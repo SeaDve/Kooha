@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/seadve/Kooha">
+    <file alias="window.ui">ui/window.ui</file>
+    <file alias="style.css">ui/style.css</file>
+
+    <file preprocess="xml-stripblanks">icons/data_icons_display-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/data_icons_selection-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/data_icons_window-symbolic.svg</file>
+  </gresource>
+</gresources>

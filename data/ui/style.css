@@ -1,0 +1,29 @@
+headerbar.flat {
+  background-image: none;
+  border: none;
+  background-color: @theme_bg_color;
+}
+
+button.wide {
+  min-width: 108px;
+}
+
+box.tall {
+  min-height: 72px;
+}
+
+.time_label {
+  font-size: 450%;
+  font-weight: 300;
+  font-feature-settings: "tnum";
+  transition-duration: 200ms;
+}
+
+.status_label {
+  font-weight: 700;
+  font-size: 112%;
+}
+
+.recording {
+  color: #e01b24;
+}

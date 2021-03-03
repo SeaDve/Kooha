@@ -1,0 +1,7 @@
+data/io.github.seadve.Kooha.desktop.in
+data/io.github.seadve.Kooha.appdata.xml.in
+data/io.github.seadve.Kooha.gschema.xml
+src/window.ui
+src/main.py
+src/window.py
+
