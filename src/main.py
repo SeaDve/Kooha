@@ -16,12 +16,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+import os
 import gi
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Handy', '1')
 
-from gi.repository import Gtk, Gio, Gdk, Handy
+from gi.repository import Gtk, Gio, Gdk, GLib, Handy
 
 from .window import KoohaWindow
 
@@ -39,12 +40,83 @@ class Application(Gtk.Application):
         style_context = Gtk.StyleContext()
         style_context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-    def do_activate(self):
-        win = self.props.active_window
-        if not win:
-            win = KoohaWindow(application=self)
-        win.present()
+        # settings init
+        self.settings = Gio.Settings.new('io.github.seadve.Kooha')
 
+        self.setup_actions()
+
+    def do_activate(self):
+        self.win = self.props.active_window
+        if not self.win:
+            self.win = KoohaWindow(application=self)
+        self.win.present()
+
+    def setup_actions(self):
+        action = Gio.SimpleAction.new_stateful("record-delay", GLib.VariantType.new("s"), GLib.Variant('s', "00"))
+        action.set_state(self.settings.get_value("record-delay"))
+        action.connect("change-state", self.set_value_record_delay)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new_stateful("video-format", GLib.VariantType.new("s"), GLib.Variant('s', "webm"))
+        action.set_state(self.settings.get_value("video-format"))
+        action.connect("change-state", self.set_value_video_format)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("select-location", None)
+        action.connect("activate", self.select_location_dialog)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("show-about", None)
+        action.connect("activate", self.show_about_dialog)
+        self.add_action(action)
+
+    def set_value_record_delay(self, action, value):
+        self.settings.set_value("record-delay", value)
+        action.set_state(value)
+
+    def set_value_video_format(self, action, value):
+        self.settings.set_value("video-format", value)
+        action.set_state(value)
+
+    def select_location_dialog(self, action, widget):
+        dialog = Gtk.FileChooserDialog(title="Select a Folder", action=Gtk.FileChooserAction.SELECT_FOLDER)
+        dialog.set_transient_for(self.win)
+        dialog.add_buttons(_("_Cancel"), Gtk.ResponseType.CANCEL, _("_Open"), Gtk.ResponseType.ACCEPT)
+        response = dialog.run()
+        if response == Gtk.ResponseType.ACCEPT:
+            directory = dialog.get_filenames()
+        else:
+            directory = None
+        dialog.destroy()
+
+        try:
+            if not os.access(directory[0], os.W_OK) or not directory[0][:5] == '/home': # not ideal solution
+                error = Gtk.MessageDialog(transient_for=self.win, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Inaccessible location"))
+                error.format_secondary_text(_("Please choose another location and retry."))
+                error.run()
+                error.destroy()
+            else:
+                self.settings.set_string("saving-location", directory[0])
+        except:
+            return
+
+    def show_about_dialog(self, action, widget):
+        about = Gtk.AboutDialog()
+        about.set_transient_for(self.win)
+        about.set_version("0.1.0")
+        about.set_program_name("Kooha")
+        about.set_logo_icon_name("io.github.seadve.Kooha")
+        about.set_authors(["Dave Patrick <davecruz48@gmail.com>"])
+        about.set_comments("Screen recorder for GNOME Wayland")
+        about.set_wrap_license(True)
+        about.set_license_type(Gtk.License.GPL_3_0)
+        about.set_copyright("© 2021 Dave Patrick")
+        about.set_website_label("Github Homepage")
+
+        about.set_website("")
+
+        about.run()
+        about.destroy()
 
 def main(version):
     app = Application()

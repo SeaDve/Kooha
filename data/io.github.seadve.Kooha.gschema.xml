@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="kooha">
+  <enum id="io.github.seadve.Kooha.Delay">
+    <value nick="00" value="0"/>
+    <value nick="05" value="1"/>
+    <value nick="10" value="2"/>
+  </enum>
+  <enum id="io.github.seadve.Kooha.Format">
+    <value nick="webm" value="0"/>
+    <value nick="mkv" value="1"/>
+    <value nick="mp4" value="2"/>
+  </enum>
 	<schema id="io.github.seadve.Kooha" path="/io/github/seadve/Kooha/">
+	  <key enum="io.github.seadve.Kooha.Delay" name="record-delay">
+      <default>"00"</default>
+      <summary>Delay before recording starts</summary>
+      <description></description>
+    </key>
+	  <key enum="io.github.seadve.Kooha.Format" name="video-format">
+      <default>"webm"</default>
+      <summary>Format of the output video</summary>
+      <description></description>
+    </key>
+	  <key type="b" name="record-audio">
+      <default>false</default>
+      <summary>Whether if the computer sounds are recorded</summary>
+      <description></description>
+    </key>
+	  <key type="b" name="record-microphone">
+      <default>false</default>
+      <summary>Whether if the microphone sounds are recorderd</summary>
+      <description></description>
+    </key>
+	  <key type="b" name="show-pointer">
+      <default>false</default>
+      <summary>Whether if the pointer is shown</summary>
+      <description></description>
+    </key>
+	  <key type="s" name="saving-location">
+      <default>"default"</default>
+      <summary>Whether if the pointer is shown</summary>
+      <description></description>
+    </key>
 	</schema>
 </schemalist>

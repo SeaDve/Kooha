@@ -8,7 +8,9 @@
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
-        "--socket=wayland"
+        "--socket=wayland",
+        "--talk-name=org.gnome.Shell.Screencast",
+        "--talk-name=org.gnome.Shell.Screenshot"
     ],
     "cleanup" : [
         "/include",

@@ -1,7 +1,8 @@
 [Desktop Entry]
-Name=kooha
+Name=Kooha
 Exec=kooha
+Icon=io.github.seadve.Kooha
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=GTK, recorder, screencast;
 StartupNotify=true
