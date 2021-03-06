@@ -33,6 +33,9 @@ class Application(Gtk.Application):
         super().__init__(application_id='io.github.seadve.Kooha',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
+        GLib.set_application_name("Kooha")
+        GLib.set_prgname('io.github.seadve.Kooha')
+
         Handy.init()
         Gst.init()
 
