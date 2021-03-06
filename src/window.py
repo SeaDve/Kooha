@@ -34,7 +34,6 @@ from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 class KoohaWindow(Handy.ApplicationWindow):
     __gtype_name__ = 'KoohaWindow'
 
-    start_record_button = Gtk.Template.Child()  #temp
     stop_record_button = Gtk.Template.Child()
     cancel_delay_button = Gtk.Template.Child()
     start_record_button_box = Gtk.Template.Child()
@@ -58,7 +57,6 @@ class KoohaWindow(Handy.ApplicationWindow):
     time_recording_label = Gtk.Template.Child()
     delay_label_box = Gtk.Template.Child()
     delay_label = Gtk.Template.Child()
-
 
     menu_button = Gtk.Template.Child()
 
