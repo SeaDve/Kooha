@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img src="data/logo/io.github.seadve.Kooha.png" alt="Kooha" width="192" height="192"/><br>
+	<img src="data/logo/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
 	Kooha
 </h1>
 
