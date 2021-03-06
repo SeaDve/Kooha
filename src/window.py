@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
+
 from time import strftime, localtime
 
 from gi.repository import Gtk, Gio, GLib, Handy
@@ -91,6 +93,11 @@ class KoohaWindow(Handy.ApplicationWindow):
         video_format = "." + self.application.settings.get_string("video-format")
         filename = fileNameTime = "/Kooha-" + strftime("%Y-%m-%d-%H:%M:%S", localtime())
         self.directory = self.application.settings.get_string("saving-location") + filename + video_format
+        if self.application.settings.get_string("saving-location") == "default":
+            video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
+            if video_directory == None:
+                video_directory = os.getenv("HOME")
+            self.directory = video_directory + filename + video_format
 
         self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle, framerate, show_pointer, pipeline, self.directory)
 
