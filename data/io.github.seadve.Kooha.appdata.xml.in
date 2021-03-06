@@ -7,7 +7,9 @@
   <name>Kooha</name>
   <summary>Simple screen recorder</summary>
 	<description>
+	  <p>
     A simple screen recorder for GNOME Wayland built with GTK and PyGObject.
+	  </p>
 	</description>
 
   <provides>
