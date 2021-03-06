@@ -136,12 +136,11 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         filename = fileNameTime = "/Kooha-" + time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
         directory = self.application.settings.get_string("saving-location") + filename + video_format
-        self.saving_location = directory
 
-
+        self.audio_recorder = AudioRecorder(record_audio, record_microphone, directory)
 
         if record_audio or record_microphone:
-            directory = self.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
+            directory = self.audio_recorder.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
 
         if self.fullscreen_mode_toggle.get_active():
             self.GNOMEScreencast.call_sync(
@@ -178,7 +177,7 @@ class KoohaWindow(Handy.ApplicationWindow):
                     -1,
                     None)
 
-        self.start_audio_record(record_audio, record_microphone)
+        self.audio_recorder.start()
 
         self.header_revealer.set_reveal_child(False)
         self.start_stop_record_button_stack.set_visible_child(self.stop_record_button)
@@ -207,55 +206,8 @@ class KoohaWindow(Handy.ApplicationWindow):
             -1,
             None)
 
-        self.stop_audio_record()
-
+        self.audio_recorder.stop()
         self.timer.stop()
-
-
-    def start_audio_record(self, record_audio, record_microphone):
-        if record_audio or record_microphone:
-            command = ""
-            command += "ffmpeg -f "
-
-            if record_audio:
-                command += "pulse -i {} ".format(self.get_default_audio_output()) # TODO test this with other devices
-
-            if record_audio and record_microphone:
-                command += "-f "
-
-            if record_microphone:
-                command += "pulse -i default "
-
-            if record_audio and record_microphone:
-                command += "-filter_complex amerge -ac 2 "
-
-            command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mp3 -y"
-
-            self.audio_subprocess = Popen(command, shell=True)
-
-            command = ""
-
-
-    def stop_audio_record(self):
-        record_audio = self.application.settings.get_boolean("record-audio")
-        record_microphone = self.application.settings.get_boolean("record-microphone")
-
-        if record_audio or record_microphone:
-            self.audio_subprocess.send_signal(signal.SIGINT)
-            sleep(1) # TODO replace with more ideal solution
-            output = Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mp3 -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
-
-
-    def get_default_audio_output(self):# TODO move this to main
-        test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
-        return str(test)[2:-3]
-
-
-
-    def get_tmp_dir(self): # TODO replace this with better solution
-        home_dir = os.getenv("HOME")
-        return home_dir
-
 
     @Gtk.Template.Callback()
     def on_fullscreen_mode_clicked(self, widget):
@@ -292,7 +244,8 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.application.settings.set_boolean("show-pointer", False)
 
 
-class Timer():
+
+class Timer:
 
     def __init__(self, label):
         self.time = 1
@@ -317,7 +270,7 @@ class Timer():
 
 
 
-class DelayTimer():
+class DelayTimer:
 
     def __init__(self, label, function):
         self.label = label
@@ -347,3 +300,52 @@ class DelayTimer():
         self.time_delay = 0
         self.delaycancel = True
     
+
+
+class AudioRecorder:
+
+    def __init__(self, record_audio, record_microphone, saving_location):
+        self.record_audio = record_audio
+        self.record_microphone = record_microphone
+        self.saving_location = saving_location
+
+    def start(self):
+        if self.record_audio or self.record_microphone:
+            command = ""
+            command += "ffmpeg -f "
+
+            if self.record_audio:
+                command += "pulse -i {} ".format(self.get_default_audio_output()) # TODO test this with other devices
+
+            if self.record_audio and self.record_microphone:
+                command += "-f "
+
+            if self.record_microphone:
+                command += "pulse -i default "
+
+            if self.record_audio and self.record_microphone:
+                command += "-filter_complex amerge -ac 2 "
+
+            command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mp3 -y"
+
+            self.audio_subprocess = Popen(command, shell=True)
+
+            command = ""
+
+
+    def stop(self):
+        if self.record_audio or self.record_microphone:
+            self.audio_subprocess.send_signal(signal.SIGINT)
+            sleep(1) # TODO replace with more ideal solution
+            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mp3 -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
+
+
+    def get_default_audio_output(self):
+        test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
+        return str(test)[2:-3]
+
+
+
+    def get_tmp_dir(self): # TODO replace this with better solution
+        home_dir = os.getenv("HOME")
+        return home_dir
