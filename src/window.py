@@ -25,10 +25,6 @@ from gi.repository import Gtk, Gio, GLib, Handy
 
 from subprocess import PIPE, Popen
 
-# add visual timer
-
-# add delay
-
 # add --disable-everything && fix unknown input format: 'pulse'
 
 # fix ffmpeg sound delay/advance && other audio bugs (echo)
@@ -44,12 +40,14 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     start_record_button = Gtk.Template.Child()  #temp
     stop_record_button = Gtk.Template.Child()
+    cancel_delay_button = Gtk.Template.Child()
     start_record_button_box = Gtk.Template.Child()
     start_stop_record_button_stack = Gtk.Template.Child()
 
     fullscreen_mode_toggle = Gtk.Template.Child()
     selection_mode_toggle = Gtk.Template.Child()
 
+    header_revealer = Gtk.Template.Child()
     title_stack = Gtk.Template.Child()
     fullscreen_mode_label = Gtk.Template.Child()
     selection_mode_label = Gtk.Template.Child()
@@ -58,9 +56,15 @@ class KoohaWindow(Handy.ApplicationWindow):
     record_microphone_toggle = Gtk.Template.Child()
     show_pointer_toggle = Gtk.Template.Child()
 
-    menu_button = Gtk.Template.Child()
+    main_stack = Gtk.Template.Child()
+    main_screen_box = Gtk.Template.Child()
+    recording_label_box = Gtk.Template.Child()
+    time_recording_label = Gtk.Template.Child()
+    delay_label_box = Gtk.Template.Child()
+    delay_label = Gtk.Template.Child()
 
-    audio_recording = False
+
+    menu_button = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -101,6 +105,27 @@ class KoohaWindow(Handy.ApplicationWindow):
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
 
+        delay = int(self.application.settings.get_string("record-delay"))
+
+        self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
+        self.delay_timer.start(delay)
+
+        if delay > 0:
+            self.main_stack.set_visible_child(self.delay_label_box)
+            self.start_stop_record_button_stack.set_visible_child(self.cancel_delay_button)
+            self.header_revealer.set_reveal_child(False)
+
+    @Gtk.Template.Callback()
+    def on_cancel_delay_button_clicked(self, widget):
+        self.delay_timer.cancel()
+
+        self.main_stack.set_visible_child(self.main_screen_box)
+        self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
+        self.header_revealer.set_reveal_child(True)
+
+
+    def start_recording(self):
+
         framerate = 30
         pipeline = "queue ! vp8enc min_quantizer=25 max_quantizer=25 cpu-used=3 cq_level=13 deadline=1 threads=3 ! queue ! matroskamux"
 
@@ -113,7 +138,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         directory = self.application.settings.get_string("saving-location") + filename + video_format
         self.saving_location = directory
 
-        delay = int(self.application.settings.get_string("record-delay"))
+
 
         if record_audio or record_microphone:
             directory = self.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
@@ -155,14 +180,25 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         self.start_audio_record(record_audio, record_microphone)
 
+        self.header_revealer.set_reveal_child(False)
         self.start_stop_record_button_stack.set_visible_child(self.stop_record_button)
+        self.main_stack.set_visible_child(self.recording_label_box)
+
+        self.timer = Timer(self.time_recording_label)
+        self.timer.start()
+
         self.application.playsound('io/github/seadve/Kooha/chime.ogg')
 
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
+        self.stop_recording()
 
+    def stop_recording(self):
+
+        self.header_revealer.set_reveal_child(True)
         self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
+        self.main_stack.set_visible_child(self.main_screen_box)
 
         self.GNOMEScreencast.call_sync(
             "StopScreencast",
@@ -172,6 +208,8 @@ class KoohaWindow(Handy.ApplicationWindow):
             None)
 
         self.stop_audio_record()
+
+        self.timer.stop()
 
 
     def start_audio_record(self, record_audio, record_microphone):
@@ -193,8 +231,6 @@ class KoohaWindow(Handy.ApplicationWindow):
 
             command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mp3 -y"
 
-            self.audio_recording = True
-
             self.audio_subprocess = Popen(command, shell=True)
 
             command = ""
@@ -208,10 +244,17 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.audio_subprocess.send_signal(signal.SIGINT)
             sleep(1) # TODO replace with more ideal solution
             output = Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mp3 -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
-            self.audio_recording = False
+
+
+    def get_default_audio_output(self):# TODO move this to main
+        test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
+        return str(test)[2:-3]
 
 
 
+    def get_tmp_dir(self): # TODO replace this with better solution
+        home_dir = os.getenv("HOME")
+        return home_dir
 
 
     @Gtk.Template.Callback()
@@ -249,22 +292,58 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.application.settings.set_boolean("show-pointer", False)
 
 
+class Timer():
 
-    @Gtk.Template.Callback()
-    def on_close_button_clicked(self, widget):
-        if self.audio_recording:
-            self.stop_audio_record()
-            sleep(1) # TODO not ideal solution (reroute close to also stop audio-recording)
-        self.destroy()
+    def __init__(self, label):
+        self.time = 1
+        self.label = label
+        self.ongoing = None
+
+        self.label.set_text("00∶00")
+
+    def displaytimer(self):
+        if self.ongoing is False:
+            return False
+        self.label.set_text(time.strftime("%M∶%S", time.gmtime(self.time)))
+        self.time += 1
+        return True
+
+    def start(self):
+        GLib.timeout_add(1000, self.displaytimer)
+
+    def stop(self):
+        self.ongoing = False
+        self.label.set_text("00∶00")
 
 
 
-    def get_default_audio_output(self):# TODO move this to main
-        test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
-        return str(test)[2:-3]
+class DelayTimer():
+
+    def __init__(self, label, function):
+        self.label = label
+        self.function = function
+        self.delaycancel = None
+
+    def start(self, time_delay):
+        self.time_delay = time_delay * 100
+        if self.time_delay > 0:
+            def countdown():
+                if self.time_delay > 0:
+                    self.time_delay -=10
+                    GLib.timeout_add(100, countdown)
+                    self.label.set_label(str((self.time_delay // 100)+1))
+                else:
+                    if not self.delaycancel:
+                        self.function()
+                        self.time_delay = time_delay * 100
+                    else:
+                        self.delaycancel = False
+            countdown()
+        else:
+            self.function()
 
 
-
-    def get_tmp_dir(self): # TODO replace this with better solution
-        home_dir = os.getenv("HOME")
-        return home_dir
+    def cancel(self):
+        self.time_delay = 0
+        self.delaycancel = True
+    

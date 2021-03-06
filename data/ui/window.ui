@@ -17,66 +17,53 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkHeaderBar">
+              <object class="GtkRevealer" id="header_revealer">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <child type="title">
-                  <object class="GtkStack" id="title_stack">
+                <property name="transition-type">crossfade</property>
+                <property name="transition-duration">150</property>
+                <property name="reveal-child">True</property>
+                <child>
+                  <object class="GtkHeaderBar">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="transition-duration">150</property>
-                    <property name="transition-type">crossfade</property>
-                    <child>
-                      <object class="GtkLabel" id="fullscreen_mode_label">
+                    <property name="show-close-button">True</property>
+                    <child type="title">
+                      <object class="GtkStack" id="title_stack">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Full Screen</property>
-                        <style>
-                          <class name="title"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="selection_mode_label">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Selection</property>
-                        <style>
-                          <class name="title"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton" id="close_button">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <signal name="clicked" handler="on_close_button_clicked" swapped="no"/>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="icon-name">window-close-symbolic</property>
+                        <property name="transition-duration">150</property>
+                        <property name="transition-type">crossfade</property>
+                        <child>
+                          <object class="GtkLabel" id="fullscreen_mode_label">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Full Screen</property>
+                            <style>
+                              <class name="title"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="selection_mode_label">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Selection</property>
+                            <style>
+                              <class name="title"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                     </child>
                     <style>
-                      <class name="titlebutton"/>
+                      <class name="flat"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
                 </child>
-                <style>
-                  <class name="flat"/>
-                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -94,13 +81,13 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">12</property>
                 <child>
-                  <object class="GtkStack">
+                  <object class="GtkStack" id="main_stack">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="transition-duration">150</property>
                     <property name="transition-type">crossfade</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkBox" id="main_screen_box">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="orientation">vertical</property>
@@ -248,21 +235,19 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="_paused_start_stack_box">
+                      <object class="GtkBox" id="recording_label_box">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="margin-bottom">18</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkLabel" id="_time_recording_label">
+                          <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">0:33</property>
+                            <property name="label" translatable="yes">Recording</property>
                             <property name="single-line-mode">True</property>
                             <style>
-                              <class name="time_label"/>
+                              <class name="status_label"/>
                             </style>
                           </object>
                           <packing>
@@ -272,13 +257,13 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="_recording_label">
+                          <object class="GtkLabel" id="time_recording_label">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Recording</property>
                             <property name="single-line-mode">True</property>
                             <style>
-                              <class name="status_label"/>
+                              <class name="time_label"/>
+                              <class name="recording"/>
                             </style>
                           </object>
                           <packing>
@@ -292,6 +277,50 @@
                         <property name="name">page1</property>
                         <property name="title" translatable="yes">page1</property>
                         <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="delay_label_box">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Recording in...</property>
+                            <property name="single-line-mode">True</property>
+                            <style>
+                              <class name="status_label"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="delay_label">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="single-line-mode">True</property>
+                            <style>
+                              <class name="time_label"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="name">page2</property>
+                        <property name="title" translatable="yes">page2</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
@@ -374,6 +403,23 @@
                         <property name="name">page1</property>
                         <property name="title" translatable="yes">page1</property>
                         <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="cancel_delay_button">
+                        <property name="label" translatable="yes">Cancel Delay</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <signal name="clicked" handler="on_cancel_delay_button_clicked" swapped="no"/>
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="name">page2</property>
+                        <property name="title" translatable="yes">page2</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
