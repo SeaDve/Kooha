@@ -36,6 +36,7 @@ from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 class KoohaWindow(Handy.ApplicationWindow):
     __gtype_name__ = 'KoohaWindow'
 
+    start_record_button = Gtk.Template.Child()
     stop_record_button = Gtk.Template.Child()
     cancel_delay_button = Gtk.Template.Child()
     start_record_button_box = Gtk.Template.Child()
@@ -80,6 +81,11 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         # timer init
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
+
+        # test if wayland
+        if os.environ['XDG_SESSION_TYPE'] != "wayland":
+            self.start_record_button.set_sensitive(False)
+            self.start_record_button.set_label("X11 is not supported")
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
