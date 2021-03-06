@@ -23,10 +23,16 @@
 A simple screen recorder for GNOME Wayland
 
 
+## What is not yet working
+* Video format settings
+* Some bugs in audio recording
+
+
 ## Build from source
 
 
 ## Credits
 
 Developed by **[Dave Patrick](https://github.com/SeaDve)**.
+
 The [chime](https://soundbible.com/1598-Electronic-Chime.html) used is under the Public Domain.
