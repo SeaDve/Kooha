@@ -127,6 +127,8 @@ class KoohaWindow(Handy.ApplicationWindow):
         if record_audio or record_microphone:
             self.directory = self.audio_recorder.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
 
+        self.video_recorder.set_directory(self.directory)
+
         self.video_recorder.start()
         self.audio_recorder.start()
 
@@ -147,7 +149,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.main_screen_box)
 
         self.video_recorder.stop()
-
         self.audio_recorder.stop()
         self.timer.stop()
 

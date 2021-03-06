@@ -104,7 +104,7 @@ class AudioRecorder:
             if self.record_audio and self.record_microphone:
                 command += "-filter_complex amerge -ac 2 "
 
-            command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mp3 -y"
+            command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mkv -y"
 
             self.audio_subprocess = Popen(command, shell=True)
 
@@ -113,8 +113,8 @@ class AudioRecorder:
     def stop(self):
         if self.record_audio or self.record_microphone:
             self.audio_subprocess.send_signal(signal.SIGINT)
-            sleep(1) # TODO replace with more ideal solution
-            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mp3 -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
+            sleep(1.5) # TODO replace with more ideal solution
+            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mkv -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
 
     def get_default_audio_output(self):
         test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
@@ -200,3 +200,6 @@ class VideoRecorder:
 
     def get_coordinates(self):
         self.coordinates = self.GNOMESelectArea.call_sync("SelectArea", None, Gio.DBusProxyFlags.NONE, -1, None)
+
+    def set_directory(self, directory):
+        self.directory = directory
