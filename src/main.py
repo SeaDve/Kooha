@@ -129,7 +129,6 @@ class Application(Gtk.Application):
         about.run()
         about.destroy()
 
-
     def playsound(self, sound):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
         playbin.props.uri = 'resource://' + sound

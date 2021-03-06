@@ -4,5 +4,7 @@ Exec=kooha
 Icon=io.github.seadve.Kooha
 Terminal=false
 Type=Application
-Categories=GTK, recorder, screencast;
+Categories=GTK;GNOME;Utility;
 StartupNotify=true
+Keywords=Screencast;Recorder;Screen;Video;
+

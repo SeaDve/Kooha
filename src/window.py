@@ -25,6 +25,8 @@ from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
 # add --disable-everything && fix unknown input format: 'pulse'
 
+# problems with pipewire
+
 # fix ffmpeg sound delay/advance && other audio bugs (echo), fix audio stream concat
 
 # fix mic bug wherein it will record computer sounds when there is no mic (add way to find mic source)

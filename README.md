@@ -3,6 +3,8 @@
 	Kooha
 </h1>
 
+[![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app) 
+[![Donate](https://img.shields.io/badge/PayPal-Donate-gray.svg?style=flat&logo=paypal&colorA=0071bb&logoColor=fff)](https://paypal.me/sedve)
 
 <p align="center"><strong>Simple screen recorder</strong></p>
 
@@ -20,7 +22,9 @@
 
 
 ## Description
-A simple screen recorder for GNOME Wayland built with GTK and PyGObject.
+NOTE: This application works only on GNOME Wayland.
+
+A simple screen recorder for GNOME Wayland built with GTK and PyGObject. Kooha allows you to record your screen and also audio from your microphone or desktop.
 
 
 ## What is not yet working
@@ -54,3 +58,7 @@ flatpak install local-repo io.github.seadve.Kooha
 Developed by **[Dave Patrick](https://github.com/SeaDve)**.
 
 The [chime](https://soundbible.com/1598-Electronic-Chime.html) used is under the Public Domain.
+
+
+## Donate
+If you want to support development, consider donating via [PayPal](https://paypal.me/sedve).
