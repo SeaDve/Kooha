@@ -70,7 +70,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.application = kwargs["application"]
 
-        # setup popover
+        # popover init
         builder = Gtk.Builder()
         builder.add_from_resource('/io/github/seadve/Kooha/menu.ui')
         menu_model = builder.get_object('menu')
@@ -82,32 +82,27 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.record_microphone_toggle.set_active(self.application.settings.get_boolean("record-microphone"))
         self.show_pointer_toggle.set_active(self.application.settings.get_boolean("show-pointer"))
 
-        # dbus init
-        self.bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
-        self.GNOMEScreencast = Gio.DBusProxy.new_sync(
-                    self.bus,
-                    Gio.DBusProxyFlags.NONE,
-                    None,
-                    "org.gnome.Shell.Screencast",
-                    "/org/gnome/Shell/Screencast",
-                    "org.gnome.Shell.Screencast",
-                    None)
-
-        self.GNOMESelectArea = Gio.DBusProxy.new_sync(
-                    self.bus,
-                    Gio.DBusProxyFlags.NONE,
-                    None,
-                    "org.gnome.Shell.Screenshot",
-                    "/org/gnome/Shell/Screenshot",
-                    "org.gnome.Shell.Screenshot",
-                    None)
+        # timer init
+        self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
 
+        framerate = 30
+        pipeline = "queue ! vp8enc min_quantizer=25 max_quantizer=25 cpu-used=3 cq_level=13 deadline=1 threads=3 ! queue ! matroskamux"
+
+        show_pointer = self.application.settings.get_boolean("show-pointer")
         delay = int(self.application.settings.get_string("record-delay"))
 
-        self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
+        video_format = "." + self.application.settings.get_string("video-format")
+        filename = fileNameTime = "/Kooha-" + time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
+        self.directory = self.application.settings.get_string("saving-location") + filename + video_format
+
+        self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle, framerate, show_pointer, pipeline, self.directory)
+
+        if not self.fullscreen_mode_toggle.get_active():
+            self.video_recorder.get_coordinates()
+
         self.delay_timer.start(delay)
 
         if delay > 0:
@@ -115,68 +110,17 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.start_stop_record_button_stack.set_visible_child(self.cancel_delay_button)
             self.header_revealer.set_reveal_child(False)
 
-    @Gtk.Template.Callback()
-    def on_cancel_delay_button_clicked(self, widget):
-        self.delay_timer.cancel()
-
-        self.main_stack.set_visible_child(self.main_screen_box)
-        self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
-        self.header_revealer.set_reveal_child(True)
-
-
     def start_recording(self):
 
-        framerate = 30
-        pipeline = "queue ! vp8enc min_quantizer=25 max_quantizer=25 cpu-used=3 cq_level=13 deadline=1 threads=3 ! queue ! matroskamux"
-
-        video_format = "." + self.application.settings.get_string("video-format")
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
-        show_pointer = self.application.settings.get_boolean("show-pointer")
 
-        filename = fileNameTime = "/Kooha-" + time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
-        directory = self.application.settings.get_string("saving-location") + filename + video_format
-
-        self.audio_recorder = AudioRecorder(record_audio, record_microphone, directory)
+        self.audio_recorder = AudioRecorder(record_audio, record_microphone, self.directory)
 
         if record_audio or record_microphone:
-            directory = self.audio_recorder.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
+            self.directory = self.audio_recorder.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
 
-        if self.fullscreen_mode_toggle.get_active():
-            self.GNOMEScreencast.call_sync(
-                        "Screencast",
-                        GLib.Variant.new_tuple(
-                            GLib.Variant.new_string(directory),
-                            GLib.Variant("a{sv}",
-                                {"framerate": GLib.Variant("i", framerate),
-                                 "draw-cursor": GLib.Variant("b", show_pointer),
-                                 "pipeline": GLib.Variant("s", pipeline)}
-                            ),
-                        ),
-                        Gio.DBusProxyFlags.NONE,
-                        -1,
-                        None)
-
-        elif self.selection_mode_toggle.get_active():
-            coordinates = self.GNOMESelectArea.call_sync("SelectArea", None, Gio.DBusProxyFlags.NONE, -1, None)
-            self.GNOMEScreencast.call_sync(
-                    "ScreencastArea",
-                    GLib.Variant.new_tuple(
-                        GLib.Variant("i", coordinates[0]),
-                        GLib.Variant("i", coordinates[1]),
-                        GLib.Variant("i", coordinates[2]),
-                        GLib.Variant("i", coordinates[3]),
-                        GLib.Variant.new_string(directory),
-                        GLib.Variant("a{sv}",
-                            {"framerate": GLib.Variant("i", framerate),
-                             "draw-cursor": GLib.Variant("b", show_pointer),
-                             "pipeline": GLib.Variant("s", pipeline)}
-                        ),
-                    ),
-                    Gio.DBusProxyFlags.NONE,
-                    -1,
-                    None)
-
+        self.video_recorder.start()
         self.audio_recorder.start()
 
         self.header_revealer.set_reveal_child(False)
@@ -188,26 +132,25 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         self.application.playsound('io/github/seadve/Kooha/chime.ogg')
 
-
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
-        self.stop_recording()
-
-    def stop_recording(self):
 
         self.header_revealer.set_reveal_child(True)
         self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
         self.main_stack.set_visible_child(self.main_screen_box)
 
-        self.GNOMEScreencast.call_sync(
-            "StopScreencast",
-            None,
-            Gio.DBusCallFlags.NONE,
-            -1,
-            None)
+        self.video_recorder.stop()
 
         self.audio_recorder.stop()
         self.timer.stop()
+
+    @Gtk.Template.Callback()
+    def on_cancel_delay_button_clicked(self, widget):
+        self.delay_timer.cancel()
+
+        self.main_stack.set_visible_child(self.main_screen_box)
+        self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
+        self.header_revealer.set_reveal_child(True)
 
     @Gtk.Template.Callback()
     def on_fullscreen_mode_clicked(self, widget):
@@ -339,3 +282,80 @@ class AudioRecorder:
     def get_tmp_dir(self): # TODO replace this with better solution
         home_dir = os.getenv("HOME")
         return home_dir
+
+
+
+class VideoRecorder:
+
+    def __init__(self, fullscreen_mode_toggle, framerate, show_pointer, pipeline, directory):
+        self.fullscreen_mode_toggle = fullscreen_mode_toggle
+        self.framerate = framerate
+        self.show_pointer = show_pointer
+        self.pipeline = pipeline
+        self.directory = directory
+
+        bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+        self.GNOMEScreencast = Gio.DBusProxy.new_sync(
+                    bus,
+                    Gio.DBusProxyFlags.NONE,
+                    None,
+                    "org.gnome.Shell.Screencast",
+                    "/org/gnome/Shell/Screencast",
+                    "org.gnome.Shell.Screencast",
+                    None)
+
+        self.GNOMESelectArea = Gio.DBusProxy.new_sync(
+                    bus,
+                    Gio.DBusProxyFlags.NONE,
+                    None,
+                    "org.gnome.Shell.Screenshot",
+                    "/org/gnome/Shell/Screenshot",
+                    "org.gnome.Shell.Screenshot",
+                    None)
+
+
+    def start(self):
+        if self.fullscreen_mode_toggle.get_active():
+            self.GNOMEScreencast.call_sync(
+                        "Screencast",
+                        GLib.Variant.new_tuple(
+                            GLib.Variant.new_string(self.directory),
+                            GLib.Variant("a{sv}",
+                                {"framerate": GLib.Variant("i", self.framerate),
+                                 "draw-cursor": GLib.Variant("b", self.show_pointer),
+                                 "pipeline": GLib.Variant("s", self.pipeline)}
+                            ),
+                        ),
+                        Gio.DBusProxyFlags.NONE,
+                        -1,
+                        None)
+
+        elif not self.fullscreen_mode_toggle.get_active():
+            self.GNOMEScreencast.call_sync(
+                    "ScreencastArea",
+                    GLib.Variant.new_tuple(
+                        GLib.Variant("i", self.coordinates[0]),
+                        GLib.Variant("i", self.coordinates[1]),
+                        GLib.Variant("i", self.coordinates[2]),
+                        GLib.Variant("i", self.coordinates[3]),
+                        GLib.Variant.new_string(self.directory),
+                        GLib.Variant("a{sv}",
+                            {"framerate": GLib.Variant("i", self.framerate),
+                             "draw-cursor": GLib.Variant("b", self.show_pointer),
+                             "pipeline": GLib.Variant("s", self.pipeline)}
+                        ),
+                    ),
+                    Gio.DBusProxyFlags.NONE,
+                    -1,
+                    None)
+
+    def stop(self):
+        self.GNOMEScreencast.call_sync(
+            "StopScreencast",
+            None,
+            Gio.DBusCallFlags.NONE,
+            -1,
+            None)
+
+    def get_coordinates(self):
+        self.coordinates = self.GNOMESelectArea.call_sync("SelectArea", None, Gio.DBusProxyFlags.NONE, -1, None)
