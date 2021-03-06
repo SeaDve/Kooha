@@ -20,6 +20,8 @@
   <developer_name>Dave Patrick</developer_name>
   <content_rating type="oars-1.1"/>
 
+  <launchable type="desktop-id">io.github.seadve.Kooha.desktop</launchable>
+
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/SeaDve/Kooha/master/screenshots/Kooha-screenshot.png</image>
