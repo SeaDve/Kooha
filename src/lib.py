@@ -122,8 +122,8 @@ class AudioRecorder:
         return str(test)[2:-3]
 
     def get_tmp_dir(self): # TODO replace this with better solution
-        home_dir = os.getenv("HOME")
-        return home_dir
+        video_dir = os.getenv("HOME") + "/Videos"
+        return video_dir
 
 
 
