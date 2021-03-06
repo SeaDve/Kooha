@@ -20,7 +20,6 @@
               <object class="GtkHeaderBar">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="show-close-button">True</property>
                 <child type="title">
                   <object class="GtkStack" id="title_stack">
                     <property name="visible">True</property>
@@ -51,6 +50,29 @@
                       </packing>
                     </child>
                   </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="close_button">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <signal name="clicked" handler="on_close_button_clicked" swapped="no"/>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="icon-name">window-close-symbolic</property>
+                      </object>
+                    </child>
+                    <style>
+                      <class name="titlebutton"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                  </packing>
                 </child>
                 <style>
                   <class name="flat"/>

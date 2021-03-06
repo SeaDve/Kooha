@@ -6,6 +6,8 @@
 
     <file alias="style.css">ui/style.css</file>
 
+    <file alias="chime.ogg">sounds/chime.ogg</file>
+
     <file preprocess="xml-stripblanks">icons/data_icons_display-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/data_icons_selection-symbolic.svg</file>
   </gresource>

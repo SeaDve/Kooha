@@ -15,7 +15,27 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import signal
+import os # not yet used
+
+import time
+from time import sleep
+
 from gi.repository import Gtk, Gio, GLib, Handy
+
+from subprocess import PIPE, Popen
+
+# add visual timer
+
+# add delay
+
+# add --disable-everything && fix unknown input format: 'pulse'
+
+# fix ffmpeg sound delay/advance && other audio bugs (echo)
+
+# fix mic bug wherein it will record computer sounds when there is no mic (add way to find mic source)
+
+# add support with other formats
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/window.ui')
@@ -39,6 +59,8 @@ class KoohaWindow(Handy.ApplicationWindow):
     show_pointer_toggle = Gtk.Template.Child()
 
     menu_button = Gtk.Template.Child()
+
+    audio_recording = False
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -76,23 +98,25 @@ class KoohaWindow(Handy.ApplicationWindow):
                     "org.gnome.Shell.Screenshot",
                     None)
 
-
-
-
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
 
         framerate = 30
         pipeline = "queue ! vp8enc min_quantizer=25 max_quantizer=25 cpu-used=3 cq_level=13 deadline=1 threads=3 ! queue ! matroskamux"
-        directory = "/home/dave/dave.mkv"
 
+        video_format = "." + self.application.settings.get_string("video-format")
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
         show_pointer = self.application.settings.get_boolean("show-pointer")
 
+        filename = fileNameTime = "/Kooha-" + time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
+        directory = self.application.settings.get_string("saving-location") + filename + video_format
+        self.saving_location = directory
+
         delay = int(self.application.settings.get_string("record-delay"))
-        video_format = self.application.settings.get_string("video-format")
-        saving_location = self.application.settings.get_string("saving-location")
+
+        if record_audio or record_microphone:
+            directory = self.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
 
         if self.fullscreen_mode_toggle.get_active():
             self.GNOMEScreencast.call_sync(
@@ -101,7 +125,7 @@ class KoohaWindow(Handy.ApplicationWindow):
                             GLib.Variant.new_string(directory),
                             GLib.Variant("a{sv}",
                                 {"framerate": GLib.Variant("i", framerate),
-                                 "draw-pointer": GLib.Variant("b", show_pointer),
+                                 "draw-cursor": GLib.Variant("b", show_pointer),
                                  "pipeline": GLib.Variant("s", pipeline)}
                             ),
                         ),
@@ -121,7 +145,7 @@ class KoohaWindow(Handy.ApplicationWindow):
                         GLib.Variant.new_string(directory),
                         GLib.Variant("a{sv}",
                             {"framerate": GLib.Variant("i", framerate),
-                             "draw-pointer": GLib.Variant("b", show_pointer),
+                             "draw-cursor": GLib.Variant("b", show_pointer),
                              "pipeline": GLib.Variant("s", pipeline)}
                         ),
                     ),
@@ -129,7 +153,10 @@ class KoohaWindow(Handy.ApplicationWindow):
                     -1,
                     None)
 
+        self.start_audio_record(record_audio, record_microphone)
+
         self.start_stop_record_button_stack.set_visible_child(self.stop_record_button)
+        self.application.playsound('io/github/seadve/Kooha/chime.ogg')
 
 
     @Gtk.Template.Callback()
@@ -143,6 +170,46 @@ class KoohaWindow(Handy.ApplicationWindow):
             Gio.DBusCallFlags.NONE,
             -1,
             None)
+
+        self.stop_audio_record()
+
+
+    def start_audio_record(self, record_audio, record_microphone):
+        if record_audio or record_microphone:
+            command = ""
+            command += "ffmpeg -f "
+
+            if record_audio:
+                command += "pulse -i {} ".format(self.get_default_audio_output()) # TODO test this with other devices
+
+            if record_audio and record_microphone:
+                command += "-f "
+
+            if record_microphone:
+                command += "pulse -i default "
+
+            if record_audio and record_microphone:
+                command += "-filter_complex amerge -ac 2 "
+
+            command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mp3 -y"
+
+            self.audio_recording = True
+
+            self.audio_subprocess = Popen(command, shell=True)
+
+            command = ""
+
+
+    def stop_audio_record(self):
+        record_audio = self.application.settings.get_boolean("record-audio")
+        record_microphone = self.application.settings.get_boolean("record-microphone")
+
+        if record_audio or record_microphone:
+            self.audio_subprocess.send_signal(signal.SIGINT)
+            sleep(1) # TODO replace with more ideal solution
+            output = Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mp3 -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
+            self.audio_recording = False
+
 
 
 
@@ -183,3 +250,21 @@ class KoohaWindow(Handy.ApplicationWindow):
 
 
 
+    @Gtk.Template.Callback()
+    def on_close_button_clicked(self, widget):
+        if self.audio_recording:
+            self.stop_audio_record()
+            sleep(1) # TODO not ideal solution (reroute close to also stop audio-recording)
+        self.destroy()
+
+
+
+    def get_default_audio_output(self):# TODO move this to main
+        test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
+        return str(test)[2:-3]
+
+
+
+    def get_tmp_dir(self): # TODO replace this with better solution
+        home_dir = os.getenv("HOME")
+        return home_dir

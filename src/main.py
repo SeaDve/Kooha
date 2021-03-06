@@ -20,9 +20,10 @@ import os
 import gi
 
 gi.require_version('Gtk', '3.0')
+gi.require_version('Gst', '1.0')
 gi.require_version('Handy', '1')
 
-from gi.repository import Gtk, Gio, Gdk, GLib, Handy
+from gi.repository import Gtk, Gio, Gdk, GLib, Gst, Handy
 
 from .window import KoohaWindow
 
@@ -33,6 +34,7 @@ class Application(Gtk.Application):
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
         Handy.init()
+        Gst.init()
 
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource('/io/github/seadve/Kooha/style.css')
@@ -117,6 +119,16 @@ class Application(Gtk.Application):
 
         about.run()
         about.destroy()
+
+
+    def playsound(self, sound):
+        playbin = Gst.ElementFactory.make('playbin', 'playbin')
+        playbin.props.uri = 'resource://' + sound
+        set_result = playbin.set_state(Gst.State.PLAYING)
+        bus = playbin.get_bus()
+        bus.poll(Gst.MessageType.EOS, Gst.CLOCK_TIME_NONE)
+        playbin.set_state(Gst.State.NULL)
+
 
 def main(version):
     app = Application()
