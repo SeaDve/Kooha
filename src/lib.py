@@ -103,6 +103,7 @@ class AudioRecorder:
 
             if self.record_audio and self.record_microphone:
                 command += "-filter_complex amerge -ac 2 "
+                #command += "-preset veryfast "
 
             command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mkv -y"
 
@@ -113,7 +114,7 @@ class AudioRecorder:
     def stop(self):
         if self.record_audio or self.record_microphone:
             self.audio_subprocess.send_signal(signal.SIGINT)
-            sleep(1.5) # TODO replace with more ideal solution
+            sleep(1) # TODO replace with more ideal solution
             Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mkv -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
 
     def get_default_audio_output(self):
