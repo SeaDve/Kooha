@@ -104,6 +104,7 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">False</property>
                                 <signal name="clicked" handler="on_fullscreen_mode_clicked" swapped="no"/>
+                                <accelerator key="f" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -129,6 +130,7 @@
                                 <property name="draw-indicator">False</property>
                                 <property name="group">fullscreen_mode_toggle</property>
                                 <signal name="clicked" handler="on_selection_mode_clicked" swapped="no"/>
+                                <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -167,6 +169,7 @@
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
                                 <signal name="toggled" handler="on_record_audio_toggled" swapped="no"/>
+                                <accelerator key="a" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -187,6 +190,7 @@
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
                                 <signal name="toggled" handler="on_record_microphone_toggled" swapped="no"/>
+                                <accelerator key="m" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -207,6 +211,7 @@
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
                                 <signal name="toggled" handler="on_show_pointer_toggled" swapped="no"/>
+                                <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -347,6 +352,7 @@
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
                             <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
+                            <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <style>
                               <class name="suggested-action"/>
                               <class name="wide"/>
@@ -372,6 +378,7 @@
                                 <property name="icon-name">open-menu-symbolic</property>
                               </object>
                             </child>
+                            <accelerator key="F10" signal="clicked"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -395,6 +402,7 @@
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <signal name="clicked" handler="on_stop_record_button_clicked" swapped="no"/>
+                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <style>
                           <class name="destructive-action"/>
                         </style>
@@ -412,6 +420,7 @@
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <signal name="clicked" handler="on_cancel_delay_button_clicked" swapped="no"/>
+                        <accelerator key="c" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <style>
                           <class name="destructive-action"/>
                         </style>

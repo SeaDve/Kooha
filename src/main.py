@@ -68,6 +68,10 @@ class Application(Gtk.Application):
         action.connect("activate", self.select_location_dialog)
         self.add_action(action)
 
+        action = Gio.SimpleAction.new("show-shortcuts", None)
+        action.connect("activate", self.show_shortcuts_window)
+        self.add_action(action)
+
         action = Gio.SimpleAction.new("show-about", None)
         action.connect("activate", self.show_about_dialog)
         self.add_action(action)
@@ -101,6 +105,11 @@ class Application(Gtk.Application):
                 self.settings.set_string("saving-location", directory[0])
         except:
             return
+
+    def show_shortcuts_window(self, action, widget):
+        window = Gtk.Builder.new_from_resource('/io/github/seadve/Kooha/shortcuts.ui').get_object('shortcuts')
+        window.set_transient_for(self.win)
+        window.present()
 
     def show_about_dialog(self, action, widget):
         about = Gtk.AboutDialog()
