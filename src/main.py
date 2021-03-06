@@ -88,18 +88,16 @@ class Application(Gtk.Application):
         action.set_state(value)
 
     def select_location_dialog(self, action, widget):
-        dialog = Gtk.FileChooserDialog(title="Select a Folder", action=Gtk.FileChooserAction.SELECT_FOLDER)
+        dialog = Gtk.FileChooserNative(title="Select a Folder", action=Gtk.FileChooserAction.SELECT_FOLDER)
         dialog.set_transient_for(self.win)
-        dialog.add_buttons(_("_Cancel"), Gtk.ResponseType.CANCEL, _("_Open"), Gtk.ResponseType.ACCEPT)
         response = dialog.run()
         if response == Gtk.ResponseType.ACCEPT:
             directory = dialog.get_filenames()
         else:
             directory = None
         dialog.destroy()
-
         try:
-            if not os.access(directory[0], os.W_OK) or not directory[0][:5] == '/home': # not ideal solution
+            if not os.access(directory[0], os.W_OK):
                 error = Gtk.MessageDialog(transient_for=self.win, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Inaccessible location"))
                 error.format_secondary_text(_("Please choose another location and retry."))
                 error.run()
