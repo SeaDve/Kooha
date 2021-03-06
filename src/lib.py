@@ -1,4 +1,4 @@
-# window.py
+# lib.py
 #
 # Copyright 2021 SeaDve
 #

@@ -4,7 +4,7 @@
 </h1>
 
 
-<p align="center"><strong>Simple Screen Recorder</strong></p>
+<p align="center"><strong>Simple screen recorder</strong></p>
 
 <p align="center">
   <img src="screenshots/Kooha-screenshot.png"/>
@@ -20,7 +20,7 @@
 
 
 ## Description
-A simple screen recorder for GNOME Wayland
+A simple screen recorder for GNOME Wayland built with GTK and PyGObject.
 
 
 ## What is not yet working
@@ -28,7 +28,25 @@ A simple screen recorder for GNOME Wayland
 * Some bugs in audio recording
 
 
-## Build from source
+## Building from source
+
+### GNOME Builder (Recommended)
+GNOME Builder is the environment used for developing this application. It can use Flatpak manifests to create a consistent building and running environment cross-distro. Thus, it is highly recommended you use it.
+
+1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
+2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
+3. Click the build button at the top once the project is loaded.
+
+
+### Manual
+```
+git clone https://github.com/SeaDve/Kooha.git
+cd Kooha
+mkdir -p $HOME/Projects/flatpak/repo
+flatpak-builder --repo=$HOME/Projects/flatpak/repo --force-clean --ccache build-dir io.github.seadve.Kooha.json
+flatpak remote-add --no-gpg-verify local-repo $HOME/Projects/flatpak/repo
+flatpak install local-repo io.github.seadve.Kooha
+```
 
 
 ## Credits

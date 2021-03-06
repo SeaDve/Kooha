@@ -66,8 +66,8 @@
             "buildsystem" : "meson",
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "file:///home/dave/Projects/kooha"
+                    "type" : "dir",
+                    "path" : "."
                 }
             ]
         }
