@@ -213,14 +213,9 @@ class KoohaWindow(Handy.ApplicationWindow):
     def on_fullscreen_mode_clicked(self, widget):
         self.title_stack.set_visible_child(self.fullscreen_mode_label)
 
-
     @Gtk.Template.Callback()
     def on_selection_mode_clicked(self, widget):
         self.title_stack.set_visible_child(self.selection_mode_label)
-
-
-
-
 
     @Gtk.Template.Callback()
     def on_record_audio_toggled(self, widget):
@@ -295,7 +290,6 @@ class DelayTimer:
         else:
             self.function()
 
-
     def cancel(self):
         self.time_delay = 0
         self.delaycancel = True
@@ -332,19 +326,15 @@ class AudioRecorder:
 
             command = ""
 
-
     def stop(self):
         if self.record_audio or self.record_microphone:
             self.audio_subprocess.send_signal(signal.SIGINT)
             sleep(1) # TODO replace with more ideal solution
             Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mp3 -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
 
-
     def get_default_audio_output(self):
         test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
         return str(test)[2:-3]
-
-
 
     def get_tmp_dir(self): # TODO replace this with better solution
         home_dir = os.getenv("HOME")
