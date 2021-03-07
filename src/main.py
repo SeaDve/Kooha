@@ -123,14 +123,13 @@ class Application(Gtk.Application):
         about.set_version("0.1.0")
         about.set_program_name("Kooha")
         about.set_logo_icon_name("io.github.seadve.Kooha")
-        about.set_authors(["Dave Patrick <davecruz48@gmail.com>"])
+        about.set_authors(["Dave Patrick"])
         about.set_comments("Screen recorder for GNOME Wayland")
         about.set_wrap_license(True)
         about.set_license_type(Gtk.License.GPL_3_0)
         about.set_copyright("© 2021 Dave Patrick")
         about.set_website_label("Github Homepage")
-
-        about.set_website("")
+        about.set_website("https://github.com/SeaDve/Kooha")
 
         about.run()
         about.destroy()
