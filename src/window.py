@@ -23,8 +23,6 @@ from gi.repository import Gtk, Gio, GLib, Handy
 
 from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
-# add quit shortcut
-
 # add --disable-everything && fix unknown input format: 'pulse'
 
 # problems with pipewire
