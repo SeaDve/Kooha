@@ -49,6 +49,7 @@ class Application(Gtk.Application):
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
 
         self.setup_actions()
+        self.set_accels_for_action("app.quit", ["<Ctrl>q"])
 
     def do_activate(self):
         self.win = self.props.active_window
@@ -77,6 +78,10 @@ class Application(Gtk.Application):
 
         action = Gio.SimpleAction.new("show-about", None)
         action.connect("activate", self.show_about_dialog)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("quit", None)
+        action.connect("activate", self.on_quit)
         self.add_action(action)
 
     def set_value_record_delay(self, action, value):
@@ -129,6 +134,11 @@ class Application(Gtk.Application):
 
         about.run()
         about.destroy()
+
+    def on_quit(self, action, *args):
+        win = self.get_windows()[0]
+        if win.header_revealer.get_reveal_child():
+            win.destroy()
 
     def playsound(self, sound):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
