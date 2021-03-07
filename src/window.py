@@ -23,13 +23,17 @@ from gi.repository import Gtk, Gio, GLib, Handy
 
 from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
-# add --disable-everything && fix unknown input format: 'pulse'
+# AudioRecorder
 
-# problems with pipewire
+    # move __init__() args to start()
 
-# fix ffmpeg sound delay/advance && other audio bugs (echo), fix audio stream concat
+    # add --disable-everything && fix unknown input format: 'pulse'
 
-# fix mic bug wherein it will record computer sounds when there is no mic (add way to find mic source)
+    # problems with pipewire
+
+    # fix ffmpeg sound delay/advance && other audio bugs (echo), fix audio stream concat
+
+    # fix mic bug wherein it will record computer sounds when there is no mic (add way to find mic source)
 
 # add support with other formats
 
@@ -101,14 +105,14 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         delay = int(self.application.settings.get_string("record-delay"))
 
-        video_format = "." + self.application.settings.get_string("video-format")
-        filename = "/Kooha-" + strftime("%Y-%m-%d-%H:%M:%S", localtime())
-        self.directory = self.application.settings.get_string("saving-location") + filename + video_format
+        video_format = f".{self.application.settings.get_string('video-format')}"
+        filename = f"/Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
+        self.directory = f"{self.application.settings.get_string('saving-location')}{filename}{video_format}"
         if self.application.settings.get_string("saving-location") == "default":
             video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
             if video_directory == None:
                 video_directory = os.getenv("HOME")
-            self.directory = video_directory + filename + video_format
+            self.directory = f"{video_directory}{filename}{video_format}"
 
         self.delay_timer.start(delay)
 
@@ -129,7 +133,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.audio_recorder = AudioRecorder(record_audio, record_microphone, self.directory)
 
         if record_audio or record_microphone:
-            self.directory = self.audio_recorder.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
+            self.directory = f"{self.audio_recorder.get_tmp_dir()}/.Kooha_tmpvideo.mkv"
 
         self.video_recorder.start(self.directory, framerate, show_pointer, pipeline)
         self.audio_recorder.start()
