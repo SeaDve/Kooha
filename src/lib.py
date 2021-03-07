@@ -115,14 +115,14 @@ class AudioRecorder:
         if self.record_audio or self.record_microphone:
             self.audio_subprocess.send_signal(signal.SIGINT)
             sleep(1) # TODO replace with more ideal solution
-            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mkv -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True) # TODO add proper tmp directories
+            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mkv -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
 
     def get_default_audio_output(self):
         test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
         return str(test)[2:-3]
 
-    def get_tmp_dir(self): # TODO replace this with better solution
-        video_dir = os.getenv("HOME") + "/Videos"
+    def get_tmp_dir(self): # TODO test with other device
+        video_dir = os.getenv("XDG_CACHE_HOME") + "/tmp"
         return video_dir
 
 
