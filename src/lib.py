@@ -27,14 +27,14 @@ from gi.repository import GLib, Gio
 class Timer:
 
     def __init__(self, label):
-        self.time = 1
         self.label = label
-        self.ongoing = None
+        self.time = 1
+        self.ongoing = True
 
         self.label.set_text("00∶00")
 
     def displaytimer(self):
-        if self.ongoing is False:
+        if not self.ongoing:
             return False
         self.label.set_text(strftime("%M∶%S", gmtime(self.time)))
         self.time += 1
@@ -45,7 +45,6 @@ class Timer:
 
     def stop(self):
         self.ongoing = False
-        self.label.set_text("00∶00")
 
 
 
