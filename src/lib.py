@@ -53,23 +53,23 @@ class DelayTimer:
     def __init__(self, label, function):
         self.label = label
         self.function = function
-        self.delaycancel = None
+
+    def displaydelay(self):
+        if self.time_delay == 10 or self.delaycancel:
+            if not self.delaycancel:
+                self.function()
+                self.delay_cancel = False
+            return False
+        self.time_delay -= 10
+        self.label.set_text(str(self.time_delay // 100 + 1))
+        return True
 
     def start(self, time_delay):
         self.time_delay = time_delay * 100
         if self.time_delay > 0:
-            def countdown():
-                if self.time_delay > 0:
-                    self.time_delay -=10
-                    GLib.timeout_add(100, countdown)
-                    self.label.set_text(str((self.time_delay // 100)+1))
-                else:
-                    if not self.delaycancel:
-                        self.function()
-                        self.time_delay = time_delay * 100
-                    else:
-                        self.delaycancel = False
-            countdown()
+            self.delaycancel = False
+            self.label.set_text(str(time_delay))
+            GLib.timeout_add(100, self.displaydelay)
         else:
             self.function()
 
