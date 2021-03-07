@@ -32,7 +32,7 @@
       <description></description>
     </key>
 	  <key type="b" name="show-pointer">
-      <default>false</default>
+      <default>true</default>
       <summary>Whether if the pointer is shown</summary>
       <description></description>
     </key>

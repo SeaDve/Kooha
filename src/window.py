@@ -23,6 +23,8 @@ from gi.repository import Gtk, Gio, GLib, Handy
 
 from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
+# improve and test performance
+
 # add --disable-everything && fix unknown input format: 'pulse'
 
 # problems with pipewire
@@ -30,6 +32,8 @@ from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 # fix ffmpeg sound delay/advance && other audio bugs (echo), fix audio stream concat
 
 # fix mic bug wherein it will record computer sounds when there is no mic (add way to find mic source)
+
+# publish to flathub and share
 
 # add support with other formats
 
