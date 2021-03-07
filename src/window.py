@@ -23,8 +23,6 @@ from gi.repository import Gtk, Gio, GLib, Handy
 
 from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
-# improve and test performance
-
 # add --disable-everything && fix unknown input format: 'pulse'
 
 # problems with pipewire
@@ -32,8 +30,6 @@ from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 # fix ffmpeg sound delay/advance && other audio bugs (echo), fix audio stream concat
 
 # fix mic bug wherein it will record computer sounds when there is no mic (add way to find mic source)
-
-# publish to flathub and share
 
 # add support with other formats
 
@@ -97,10 +93,12 @@ class KoohaWindow(Handy.ApplicationWindow):
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
 
-        framerate = 30
-        pipeline = "queue ! vp8enc min_quantizer=25 max_quantizer=25 cpu-used=3 cq_level=13 deadline=1 threads=3 ! queue ! matroskamux"
+        # recorders init
+        self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle)
 
-        show_pointer = self.application.settings.get_boolean("show-pointer")
+        if not self.fullscreen_mode_toggle.get_active():
+            self.video_recorder.get_coordinates()
+
         delay = int(self.application.settings.get_string("record-delay"))
 
         video_format = "." + self.application.settings.get_string("video-format")
@@ -112,11 +110,6 @@ class KoohaWindow(Handy.ApplicationWindow):
                 video_directory = os.getenv("HOME")
             self.directory = video_directory + filename + video_format
 
-        self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle, framerate, show_pointer, pipeline, self.directory)
-
-        if not self.fullscreen_mode_toggle.get_active():
-            self.video_recorder.get_coordinates()
-
         self.delay_timer.start(delay)
 
         if delay > 0:
@@ -126,6 +119,10 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     def start_recording(self):
 
+        framerate = 30
+        show_pointer = self.application.settings.get_boolean("show-pointer")
+        pipeline = "queue ! vp8enc min_quantizer=25 max_quantizer=25 cpu-used=3 cq_level=13 deadline=1 threads=3 ! queue ! matroskamux"
+
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
 
@@ -134,9 +131,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         if record_audio or record_microphone:
             self.directory = self.audio_recorder.get_tmp_dir() + "/.Kooha_tmpvideo.mkv"
 
-        self.video_recorder.set_directory(self.directory)
-
-        self.video_recorder.start()
+        self.video_recorder.start(self.directory, framerate, show_pointer, pipeline)
         self.audio_recorder.start()
 
         self.header_revealer.set_reveal_child(False)

@@ -127,12 +127,8 @@ class AudioRecorder:
 
 class VideoRecorder:
 
-    def __init__(self, fullscreen_mode_toggle, framerate, show_pointer, pipeline, directory):
+    def __init__(self, fullscreen_mode_toggle):
         self.fullscreen_mode_toggle = fullscreen_mode_toggle
-        self.framerate = framerate
-        self.show_pointer = show_pointer
-        self.pipeline = pipeline
-        self.directory = directory
 
         bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
         self.GNOMEScreencast = Gio.DBusProxy.new_sync(
@@ -154,7 +150,12 @@ class VideoRecorder:
                     None)
 
 
-    def start(self):
+    def start(self, directory, framerate, show_pointer, pipeline):
+        self.directory = directory
+        self.framerate = framerate
+        self.show_pointer = show_pointer
+        self.pipeline = pipeline
+
         if self.fullscreen_mode_toggle.get_active():
             self.GNOMEScreencast.call_sync(
                         "Screencast",
@@ -199,6 +200,3 @@ class VideoRecorder:
 
     def get_coordinates(self):
         self.coordinates = self.GNOMESelectArea.call_sync("SelectArea", None, Gio.DBusProxyFlags.NONE, -1, None)
-
-    def set_directory(self, directory):
-        self.directory = directory
