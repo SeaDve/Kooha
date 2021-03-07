@@ -89,27 +89,27 @@ class AudioRecorder:
 
     def start(self):
         if self.record_audio or self.record_microphone:
-            command = ""
-            command += "ffmpeg -f "
+            command_list = ["ffmpeg -f"]
 
             if self.record_audio:
-                command += "pulse -i {} ".format(self.get_default_audio_output()) # TODO test this with other devices
+                command_list.append("pulse -i {0}".format(self.get_default_audio_output())) # TODO test this with other devices
 
             if self.record_audio and self.record_microphone:
-                command += "-f "
+                command_list.append("-f")
 
             if self.record_microphone:
-                command += "pulse -i default "
+                command_list.append("pulse -i default")
 
             if self.record_audio and self.record_microphone:
-                command += "-filter_complex amerge -ac 2 "
-                #command += "-preset veryfast "
+                command_list.append("-filter_complex amerge -ac 2")
+                #command_list.append("-preset veryfast")
 
-            command += self.get_tmp_dir() + "/.Kooha_tmpaudio.mkv -y"
+            command_list.append("{0}/.Kooha_tmpaudio.mkv -y".format(self.get_tmp_dir()))
 
+            command = " ".join(command_list)
             self.audio_subprocess = Popen(command, shell=True)
 
-            command = ""
+            command_list.clear()
 
     def stop(self):
         if self.record_audio or self.record_microphone:
@@ -122,7 +122,7 @@ class AudioRecorder:
         return str(test)[2:-3]
 
     def get_tmp_dir(self): # TODO test with other device
-        video_dir = os.getenv("XDG_CACHE_HOME") + "/tmp"
+        video_dir = "{0}/tmp".format(os.getenv("XDG_CACHE_HOME"))
         return video_dir
 
 
