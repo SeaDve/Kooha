@@ -28,10 +28,6 @@ class Timer:
 
     def __init__(self, label):
         self.label = label
-        self.time = 1
-        self.ongoing = True
-
-        self.label.set_text("00∶00")
 
     def displaytimer(self):
         if not self.ongoing:
@@ -41,6 +37,9 @@ class Timer:
         return True
 
     def start(self):
+        self.time = 1
+        self.ongoing = True
+        self.label.set_text("00∶00")
         GLib.timeout_add(1000, self.displaytimer)
 
     def stop(self):

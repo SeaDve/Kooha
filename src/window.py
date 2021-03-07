@@ -85,7 +85,8 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.record_microphone_toggle.set_active(self.application.settings.get_boolean("record-microphone"))
         self.show_pointer_toggle.set_active(self.application.settings.get_boolean("show-pointer"))
 
-        # timer init
+        # timers init
+        self.timer = Timer(self.time_recording_label)
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
 
         # test if wayland
@@ -142,7 +143,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.start_stop_record_button_stack.set_visible_child(self.stop_record_button)
         self.main_stack.set_visible_child(self.recording_label_box)
 
-        self.timer = Timer(self.time_recording_label)
         self.timer.start()
 
         self.application.playsound('io/github/seadve/Kooha/chime.ogg')
