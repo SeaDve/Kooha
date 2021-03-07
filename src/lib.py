@@ -90,7 +90,7 @@ class AudioRecorder:
             command_list = ["ffmpeg -f"]
 
             if self.record_audio:
-                command_list.append("pulse -i {0}".format(self.get_default_audio_output())) # TODO test this with other devices
+                command_list.append(f"pulse -i {self.get_default_audio_output()}") # TODO test this with other devices
 
             if self.record_audio and self.record_microphone:
                 command_list.append("-f")
@@ -102,7 +102,7 @@ class AudioRecorder:
                 command_list.append("-filter_complex amerge -ac 2")
                 #command_list.append("-preset veryfast")
 
-            command_list.append("{0}/.Kooha_tmpaudio.mkv -y".format(self.get_tmp_dir()))
+            command_list.append(f"{self.get_tmp_dir()}/.Kooha_tmpaudio.mkv -y")
 
             command = " ".join(command_list)
             self.audio_subprocess = Popen(command, shell=True)
@@ -120,7 +120,7 @@ class AudioRecorder:
         return str(test)[2:-3]
 
     def get_tmp_dir(self): # TODO test with other device
-        video_dir = "{0}/tmp".format(os.getenv("XDG_CACHE_HOME"))
+        video_dir = f"{os.getenv('XDG_CACHE_HOME')}/tmp"
         return video_dir
 
 
