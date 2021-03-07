@@ -63,7 +63,7 @@ class DelayTimer:
                 if self.time_delay > 0:
                     self.time_delay -=10
                     GLib.timeout_add(100, countdown)
-                    self.label.set_label(str((self.time_delay // 100)+1))
+                    self.label.set_text(str((self.time_delay // 100)+1))
                 else:
                     if not self.delaycancel:
                         self.function()

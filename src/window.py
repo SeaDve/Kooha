@@ -99,7 +99,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         delay = int(self.application.settings.get_string("record-delay"))
 
         video_format = "." + self.application.settings.get_string("video-format")
-        filename = fileNameTime = "/Kooha-" + strftime("%Y-%m-%d-%H:%M:%S", localtime())
+        filename = "/Kooha-" + strftime("%Y-%m-%d-%H:%M:%S", localtime())
         self.directory = self.application.settings.get_string("saving-location") + filename + video_format
         if self.application.settings.get_string("saving-location") == "default":
             video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
