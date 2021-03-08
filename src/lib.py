@@ -18,9 +18,9 @@
 import signal
 import os
 
-from time import strftime, gmtime, sleep
+from time import strftime, gmtime
 
-from subprocess import PIPE, Popen
+from subprocess import PIPE, Popen, call
 
 from gi.repository import GLib, Gio
 
@@ -112,7 +112,7 @@ class AudioRecorder:
     def stop(self):
         if self.record_audio or self.record_microphone:
             self.audio_subprocess.send_signal(signal.SIGINT)
-            sleep(1) # TODO replace with more ideal solution
+            call(["sleep", "1"])
             Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mkv -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
 
     def get_default_audio_output(self):
