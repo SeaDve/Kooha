@@ -29,9 +29,11 @@ from .window import KoohaWindow
 
 
 class Application(Gtk.Application):
-    def __init__(self):
+    def __init__(self, version):
         super().__init__(application_id='io.github.seadve.Kooha',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
+
+        self.version = version
 
         GLib.set_application_name("Kooha")
         GLib.set_prgname('io.github.seadve.Kooha')
@@ -120,7 +122,7 @@ class Application(Gtk.Application):
     def show_about_dialog(self, action, widget):
         about = Gtk.AboutDialog()
         about.set_transient_for(self.win)
-        about.set_version("0.1.0")
+        about.set_version(self.version)
         about.set_program_name("Kooha")
         about.set_logo_icon_name("io.github.seadve.Kooha")
         about.set_authors(["Dave Patrick"])
@@ -149,5 +151,5 @@ class Application(Gtk.Application):
 
 
 def main(version):
-    app = Application()
+    app = Application(version)
     return app.run(sys.argv)
