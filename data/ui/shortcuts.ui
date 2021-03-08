@@ -15,7 +15,14 @@
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">F10</property>
-                <property name="title" translatable="yes" context="shortcut window">Show primary menu</property>
+                <property name="title" translatable="yes" context="shortcut window">Open menu</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;question</property>
+                <property name="title" translatable="yes" context="shortcut window">Show keyboard shortcuts</property>
               </object>
             </child>
             <child>
@@ -25,6 +32,12 @@
                 <property name="title" translatable="yes" context="shortcut window">Quit</property>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="visible">1</property>
+            <property name="title" translatable="yes" context="shortcut window">Recording</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>

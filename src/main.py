@@ -52,6 +52,7 @@ class Application(Gtk.Application):
 
         self.setup_actions()
         self.set_accels_for_action("app.quit", ["<Ctrl>q"])
+        self.set_accels_for_action("app.show-shortcuts", ["<Ctrl>question"])
 
     def do_activate(self):
         self.win = self.props.active_window
