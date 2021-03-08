@@ -25,8 +25,9 @@ A simple screen recorder for GNOME Wayland built with GTK and PyGObject. Kooha a
 
 
 ## What is not yet working
-* Video format settings
 * Some bugs in audio recording
+* Video format settings
+* Planned to support KDE Wayland
 
 
 ## Building from source
