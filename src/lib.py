@@ -119,7 +119,7 @@ class AudioRecorder:
         test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
         return str(test)[2:-3]
 
-    def get_tmp_dir(self): # TODO test with other device
+    def get_tmp_dir(self):
         video_dir = f"{os.getenv('XDG_CACHE_HOME')}/tmp"
         return video_dir
 

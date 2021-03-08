@@ -5,9 +5,6 @@
 
 <p align="center"><strong>Simple screen recorder</strong></p>
 
-[![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app) 
-[![Donate](https://img.shields.io/badge/PayPal-Donate-gray.svg?style=flat&logo=paypal&colorA=0071bb&logoColor=fff)](https://paypal.me/sedve)
-
 <p align="center">
   <img src="screenshots/Kooha-screenshot.png"/>
 </p>

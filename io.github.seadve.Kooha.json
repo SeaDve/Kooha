@@ -7,7 +7,6 @@
     "finish-args" : [
         "--share=ipc",
         "--socket=fallback-x11",
-        "--filesystem=xdg-videos",
         "--socket=wayland",
         "--socket=pulseaudio",
         "--talk-name=org.gnome.Shell.Screencast",
