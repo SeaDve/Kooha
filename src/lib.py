@@ -119,18 +119,16 @@ class AudioRecorder:
             Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.wav -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
 
     def get_default_audio_output(self): # TODO test this with other devices
-        pactl_command = Popen("pactl list sources | grep \"Name: alsa_output\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
-        command_output = str(pactl_command)[2:-3]
-        if command_output == "":
+        pactl_command = Popen("pactl list sources | grep \"Name: alsa_output\"", shell = True, stdout=PIPE).stdout.read()
+        if str(pactl_command) == "b''":
             return None
-        return command_output.split(r"\n")[0]
+        return str(pactl_command)[10:-3].split(r"\n")[0]
 
     def get_default_audio_input(self):
-        pactl_command = Popen("pactl list sources | grep \"Name: alsa_input\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
-        command_output = str(pactl_command)[2:-3]
-        if command_output == "":
+        pactl_command = Popen("pactl list sources | grep \"Name: alsa_input\"", shell = True, stdout=PIPE).stdout.read()
+        if str(pactl_command) == "b''":
             return None
-        return command_output.split(r"\n")[0]
+        return str(pactl_command)[10:-3].split(r"\n")[0]
 
     def get_tmp_dir(self):
         video_dir = f"{os.getenv('XDG_CACHE_HOME')}/tmp"
