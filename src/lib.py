@@ -105,7 +105,7 @@ class AudioRecorder:
                 command_list.append("-filter_complex amerge -ac 2")
                 #command_list.append("-preset veryfast")
 
-            command_list.append(f"{self.get_tmp_dir()}/.Kooha_tmpaudio.mkv -y")
+            command_list.append(f"{self.get_tmp_dir()}/.Kooha_tmpaudio.wav -y")
 
             command = " ".join(command_list)
             print(command)
@@ -117,7 +117,7 @@ class AudioRecorder:
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             self.audio_subprocess.send_signal(signal.SIGINT)
             call(["sleep", "1"])
-            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mkv -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
+            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.wav -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
 
     def get_default_audio_output(self): # TODO test this with other devices
         pactl_command = Popen("pactl list sources | grep \"Name: alsa_output\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
