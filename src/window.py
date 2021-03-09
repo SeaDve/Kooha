@@ -98,8 +98,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         if not self.fullscreen_mode_toggle.get_active():
             self.video_recorder.get_coordinates()
 
-        delay = int(self.application.settings.get_string("record-delay"))
-
         video_format = f".{self.application.settings.get_string('video-format')}"
         filename = f"/Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
         self.directory = f"{self.application.settings.get_string('saving-location')}{filename}{video_format}"
@@ -109,6 +107,7 @@ class KoohaWindow(Handy.ApplicationWindow):
                 video_directory = os.getenv("HOME")
             self.directory = f"{video_directory}{filename}{video_format}"
 
+        delay = int(self.application.settings.get_string("record-delay"))
         self.delay_timer.start(delay)
 
         if delay > 0:
