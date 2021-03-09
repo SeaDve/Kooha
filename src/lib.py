@@ -57,7 +57,6 @@ class DelayTimer:
         if self.time_delay == 10 or self.delaycancel:
             if not self.delaycancel:
                 self.function()
-                self.delay_cancel = False
             return False
         self.time_delay -= 10
         self.label.set_text(str(self.time_delay // 100 + 1))
@@ -73,7 +72,6 @@ class DelayTimer:
             self.function()
 
     def cancel(self):
-        self.time_delay = 0
         self.delaycancel = True
 
 
