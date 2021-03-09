@@ -31,6 +31,8 @@ from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
     # fix ffmpeg sound delay/advance sync && fix audio stream concat
 
+# GioDBus error
+
 # add support with other formats
 
 
