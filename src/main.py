@@ -106,7 +106,7 @@ class Application(Gtk.Application):
             directory = None
         dialog.destroy()
         try:
-            if not os.access(directory[0], os.W_OK) or not directory[0].startswith("/home"): # TODO replace with non workaround-y way
+            if not os.access(directory[0], os.W_OK) or not directory[0].startswith("/home"): # TODO replace with non workaround-y way and test with other devices
                 error = Gtk.MessageDialog(transient_for=self.win, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Inaccessible location"))
                 error.format_secondary_text(_("Please choose another location and retry."))
                 error.run()

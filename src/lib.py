@@ -86,38 +86,52 @@ class AudioRecorder:
         self.saving_location = saving_location
 
     def start(self):
-        if self.record_audio or self.record_microphone:
+        self.default_audio_output = self.get_default_audio_output()
+        self.default_audio_input = self.get_default_audio_input()
+
+        if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             command_list = ["ffmpeg -f"]
 
-            if self.record_audio:
-                command_list.append(f"pulse -i {self.get_default_audio_output()}") # TODO test this with other devices
+            if self.record_audio and self.default_audio_output:
+                command_list.append(f"pulse -i {self.default_audio_output}")
 
-            if self.record_audio and self.record_microphone:
+            if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
                 command_list.append("-f")
 
-            if self.record_microphone:
-                command_list.append("pulse -i default")
+            if self.record_microphone and self.default_audio_input:
+                command_list.append(f"pulse -i {self.default_audio_input}")
 
-            if self.record_audio and self.record_microphone:
+            if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
                 command_list.append("-filter_complex amerge -ac 2")
                 #command_list.append("-preset veryfast")
 
             command_list.append(f"{self.get_tmp_dir()}/.Kooha_tmpaudio.mkv -y")
 
             command = " ".join(command_list)
+            print(command)
             self.audio_subprocess = Popen(command, shell=True)
 
             command_list.clear()
 
     def stop(self):
-        if self.record_audio or self.record_microphone:
+        if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             self.audio_subprocess.send_signal(signal.SIGINT)
             call(["sleep", "1"])
             Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.mkv -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
 
-    def get_default_audio_output(self):
-        test = Popen("pactl list sources | grep \"analog.*monitor\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
-        return str(test)[2:-3]
+    def get_default_audio_output(self): # TODO test this with other devices
+        pactl_command = Popen("pactl list sources | grep \"Name: alsa_output\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
+        command_output = str(pactl_command)[2:-3]
+        if command_output == "":
+            return None
+        return command_output.split(r"\n")[0]
+
+    def get_default_audio_input(self):
+        pactl_command = Popen("pactl list sources | grep \"Name: alsa_input\" | perl -pe 's/.* //g'", shell = True, stdout=PIPE).stdout.read()
+        command_output = str(pactl_command)[2:-3]
+        if command_output == "":
+            return None
+        return command_output.split(r"\n")[0]
 
     def get_tmp_dir(self):
         video_dir = f"{os.getenv('XDG_CACHE_HOME')}/tmp"
