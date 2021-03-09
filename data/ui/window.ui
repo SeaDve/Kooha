@@ -3,6 +3,60 @@
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <requires lib="libhandy" version="1.0"/>
+  <menu id="menu">
+    <section>
+      <submenu>
+        <attribute name="label" translatable="yes">_Delay</attribute>
+        <item>
+          <attribute translatable="yes" name="label">_None</attribute>
+          <attribute name="action">app.record-delay</attribute>
+          <attribute name="target">00</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">_5 Seconds</attribute>
+          <attribute name="action">app.record-delay</attribute>
+          <attribute name="target">05</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">_10 Seconds</attribute>
+          <attribute name="action">app.record-delay</attribute>
+          <attribute name="target">10</attribute>
+        </item>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">_Video Format</attribute>
+        <item>
+          <attribute translatable="yes" name="label">_WebM</attribute>
+          <attribute name="action">app.video-format</attribute>
+          <attribute name="target">webm</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">_MKV</attribute>
+          <attribute name="action">app.video-format</attribute>
+          <attribute name="target">mkv</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">_MP4</attribute>
+          <attribute name="action">app.video-format</attribute>
+          <attribute name="target">mp4</attribute>
+        </item>
+      </submenu>
+      <item>
+        <attribute name="action">app.select-location</attribute>
+        <attribute translatable="yes" name="label">_Save to…</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="action">app.show-shortcuts</attribute>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="action">app.show-about</attribute>
+        <attribute name="label" translatable="yes">_About Kooha</attribute>
+      </item>
+    </section>
+  </menu>
   <template class="KoohaWindow" parent="HdyApplicationWindow">
     <property name="can-focus">False</property>
     <property name="resizable">False</property>
@@ -371,6 +425,7 @@
                             <property name="focus-on-click">False</property>
                             <property name="receives-default">True</property>
                             <property name="direction">up</property>
+                            <property name="menu-model">menu</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>

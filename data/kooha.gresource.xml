@@ -2,7 +2,6 @@
 <gresources>
   <gresource prefix="/io/github/seadve/Kooha">
     <file alias="window.ui">ui/window.ui</file>
-    <file alias="menu.ui">ui/menu.ui</file>
     <file alias="shortcuts.ui">ui/shortcuts.ui</file>
 
     <file alias="style.css">ui/style.css</file>

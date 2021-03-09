@@ -73,13 +73,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.application = kwargs["application"]
 
-        # popover init
-        builder = Gtk.Builder()
-        builder.add_from_resource('/io/github/seadve/Kooha/menu.ui')
-        menu_model = builder.get_object('menu')
-        popover = Gtk.Popover.new_from_model(self.menu_button, menu_model)
-        self.menu_button.set_popover(popover)
-
         # settings init
         self.record_audio_toggle.set_active(self.application.settings.get_boolean("record-audio"))
         self.record_microphone_toggle.set_active(self.application.settings.get_boolean("record-microphone"))
