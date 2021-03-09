@@ -48,7 +48,7 @@ class Application(Gtk.Application):
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource('/io/github/seadve/Kooha/style.css')
         screen = Gdk.Screen.get_default()
-        Gtk.StyleContext().add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+        Gtk.StyleContext.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
 
