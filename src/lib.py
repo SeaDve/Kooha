@@ -63,8 +63,8 @@ class DelayTimer:
         return True
 
     def start(self, time_delay):
-        self.time_delay = time_delay * 100
-        if self.time_delay > 0:
+        if time_delay > 0:
+            self.time_delay = time_delay * 100
             self.delaycancel = False
             self.label.set_text(str(time_delay))
             GLib.timeout_add(100, self.displaydelay)
