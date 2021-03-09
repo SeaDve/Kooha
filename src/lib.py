@@ -119,16 +119,16 @@ class AudioRecorder:
             Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.wav -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
 
     def get_default_audio_output(self): # TODO test this with other devices
-        pactl_command = Popen("pactl list sources | grep \"Name: alsa_output\"", shell = True, stdout=PIPE).stdout.read()
-        if str(pactl_command) == "b''":
+        pactl_output = str(Popen("pactl list sources | grep \"Name: alsa_output\"", shell = True, stdout=PIPE).stdout.read())
+        if pactl_output == "b''":
             return None
-        return str(pactl_command)[10:-3].split(r"\n")[0]
+        return pactl_output[10:-3].split(r"\n")[0]
 
     def get_default_audio_input(self):
-        pactl_command = Popen("pactl list sources | grep \"Name: alsa_input\"", shell = True, stdout=PIPE).stdout.read()
-        if str(pactl_command) == "b''":
+        pactl_output = str(Popen("pactl list sources | grep \"Name: alsa_input\"", shell = True, stdout=PIPE).stdout.read())
+        if pactl_output == "b''":
             return None
-        return str(pactl_command)[10:-3].split(r"\n")[0]
+        return pactl_output[10:-3].split(r"\n")[0]
 
     def get_tmp_dir(self):
         video_dir = f"{os.getenv('XDG_CACHE_HOME')}/tmp"
