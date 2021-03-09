@@ -85,10 +85,10 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.timer = Timer(self.time_recording_label)
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
 
-        # test if wayland
-        if os.environ['XDG_SESSION_TYPE'] != "wayland":
+        desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
+        if desktop_environment != "GNOME":
             self.start_record_button.set_sensitive(False)
-            self.start_record_button.set_label("X11 is not supported")
+            self.start_record_button.set_label(f"{desktop_environment} is not supported")
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):

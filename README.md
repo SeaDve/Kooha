@@ -19,15 +19,13 @@
 
 
 ## Description
-NOTE: This application works only on GNOME Wayland.
-
-A simple screen recorder for GNOME Wayland built with GTK and PyGObject. Kooha allows you to record your screen and also audio from your microphone or desktop.
+A simple screen recorder for GNOME built with GTK and PyGObject. Kooha allows you to record your screen and also audio from your microphone or desktop.
 
 
 ## What is not yet working
 * Some bugs in audio recording
 * Video format settings
-* Planned to support KDE Wayland
+* Planned to support KDE
 
 
 ## Building from source
