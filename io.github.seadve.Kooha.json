@@ -9,6 +9,7 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
+        "--filesystem=xdg-videos",
         "--talk-name=org.gnome.Shell.Screencast",
         "--talk-name=org.gnome.Shell.Screenshot"
     ],
