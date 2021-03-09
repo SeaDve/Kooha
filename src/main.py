@@ -44,8 +44,7 @@ class Application(Gtk.Application):
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource('/io/github/seadve/Kooha/style.css')
         screen = Gdk.Screen.get_default()
-        style_context = Gtk.StyleContext()
-        style_context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+        Gtk.StyleContext().add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         # settings init
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
@@ -107,8 +106,8 @@ class Application(Gtk.Application):
         dialog.destroy()
         try:
             if not os.access(directory[0], os.W_OK) or not directory[0].startswith("/home"): # TODO replace with non workaround-y way and test with other devices
-                error = Gtk.MessageDialog(transient_for=self.win, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Inaccessible location"))
-                error.format_secondary_text(_("Please choose another location and retry."))
+                error = Gtk.MessageDialog(transient_for=self.win, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
+                error.format_secondary_text(_("Please choose an accessible location and retry."))
                 error.run()
                 error.destroy()
             else:
@@ -134,9 +133,7 @@ class Application(Gtk.Application):
         about.set_copyright("© 2021 Dave Patrick")
         about.set_website_label("Github Homepage")
         about.set_website("https://github.com/SeaDve/Kooha")
-
         about.run()
-        about.destroy()
 
     def on_quit(self, action, *args):
         win = self.get_windows()[0]
