@@ -108,7 +108,6 @@ class AudioRecorder:
             command_list.append(f"{self.get_tmp_dir()}/.Kooha_tmpaudio.wav -y")
 
             command = " ".join(command_list)
-            print(command)
             self.audio_subprocess = Popen(command, shell=True)
 
             command_list.clear()
