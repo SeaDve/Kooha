@@ -63,14 +63,10 @@ class Application(Gtk.Application):
         self.win.present()
 
     def setup_actions(self):
-        action = Gio.SimpleAction.new_stateful("record-delay", GLib.VariantType.new("s"), GLib.Variant('s', "00"))
-        action.set_state(self.settings.get_value("record-delay"))
-        action.connect("change-state", self.set_value_record_delay)
+        action = self.settings.create_action("record-delay")
         self.add_action(action)
 
-        action = Gio.SimpleAction.new_stateful("video-format", GLib.VariantType.new("s"), GLib.Variant('s', "webm"))
-        action.set_state(self.settings.get_value("video-format"))
-        action.connect("change-state", self.set_value_video_format)
+        action = self.settings.create_action("video-format")
         self.add_action(action)
 
         action = Gio.SimpleAction.new("select-location", None)
@@ -88,14 +84,6 @@ class Application(Gtk.Application):
         action = Gio.SimpleAction.new("quit", None)
         action.connect("activate", self.on_quit)
         self.add_action(action)
-
-    def set_value_record_delay(self, action, value):
-        self.settings.set_value("record-delay", value)
-        action.set_state(value)
-
-    def set_value_video_format(self, action, value):
-        self.settings.set_value("video-format", value)
-        action.set_state(value)
 
     def select_location_dialog(self, action, widget):
         dialog = Gtk.FileChooserDialog(title="Select a Folder", action=Gtk.FileChooserAction.SELECT_FOLDER)
