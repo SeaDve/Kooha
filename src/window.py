@@ -27,6 +27,8 @@ from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
     # move __init__() args to start()
 
+    # fix issue when stopping too fast
+
     # add --disable-everything && fix unknown input format: 'pulse'
 
     # fix ffmpeg sound delay/advance sync && fix audio stream concat
