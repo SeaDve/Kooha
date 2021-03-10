@@ -31,12 +31,12 @@ class Timer:
     def refresh_time(self):
         if self.ongoing:
             self.time += 1
-            self.label.set_label("%02d∶%02d" % divmod(self.time, 60))
+            self.label.set_text("%02d∶%02d" % divmod(self.time, 60))
         return True
 
     def start(self):
         self.time = 0
-        self.label.set_label("00∶00")
+        self.label.set_text("00∶00")
         self.ongoing = True
 
     def stop(self):
