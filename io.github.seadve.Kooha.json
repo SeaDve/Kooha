@@ -54,10 +54,18 @@
     	{
             "name" : "libhandy",
             "buildsystem": "meson",
+            "config-opts":[
+          	"-Dgtk_doc=false",
+          	"-Dtests=false",
+          	"-Dexamples=false",
+          	"-Dvapi=false",
+          	"-Dglade_catalog=disabled"
+            ],
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/libhandy.git"
+                    "url" : "https://gitlab.gnome.org/GNOME/libhandy.git",
+                    "tag" : "1.0.2"
                 }
             ]
         },
