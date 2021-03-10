@@ -17,7 +17,6 @@
 
 import signal
 import os
-from time import strftime, gmtime
 from subprocess import PIPE, Popen, call
 
 from gi.repository import GLib, Gio
@@ -26,19 +25,19 @@ from gi.repository import GLib, Gio
 class Timer:
     def __init__(self, label):
         self.label = label
+        self.ongoing = False
+        GLib.timeout_add(1000, self.refresh_time)
 
-    def displaytimer(self):
-        if not self.ongoing:
-            return False
-        self.label.set_text(strftime("%M∶%S", gmtime(self.time)))
-        self.time += 1
+    def refresh_time(self):
+        if self.ongoing:
+            self.time += 1
+            self.label.set_label("%02d∶%02d" % divmod(self.time, 60))
         return True
 
     def start(self):
-        self.time = 1
+        self.time = 0
+        self.label.set_label("00∶00")
         self.ongoing = True
-        self.label.set_text("00∶00")
-        GLib.timeout_add(1000, self.displaytimer)
 
     def stop(self):
         self.ongoing = False
