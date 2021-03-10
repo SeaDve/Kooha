@@ -88,7 +88,6 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-
         self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle)
 
         if not self.fullscreen_mode_toggle.get_active():
@@ -112,7 +111,6 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.header_revealer.set_reveal_child(False)
 
     def start_recording(self):
-
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
         self.audio_recorder = AudioRecorder(record_audio, record_microphone, self.directory)
@@ -137,7 +135,6 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
-
         self.header_revealer.set_reveal_child(True)
         self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
         self.main_stack.set_visible_child(self.main_screen_box)
