@@ -77,10 +77,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.record_microphone_toggle.set_active(self.application.settings.get_boolean("record-microphone"))
         self.show_pointer_toggle.set_active(self.application.settings.get_boolean("show-pointer"))
 
-        # timers init
-        self.timer = Timer(self.time_recording_label)
-        self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
-
         desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
         if desktop_environment != "GNOME":
             self.start_record_button.set_sensitive(False)
@@ -88,6 +84,8 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
+        self.timer = Timer(self.time_recording_label)
+        self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
         self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle)
 
         if not self.fullscreen_mode_toggle.get_active():
