@@ -17,15 +17,13 @@
 
 import signal
 import os
-
 from time import strftime, gmtime
-
 from subprocess import PIPE, Popen, call
 
 from gi.repository import GLib, Gio
 
-class Timer:
 
+class Timer:
     def __init__(self, label):
         self.label = label
 
@@ -46,9 +44,7 @@ class Timer:
         self.ongoing = False
 
 
-
 class DelayTimer:
-
     def __init__(self, label, function):
         self.label = label
         self.function = function
@@ -75,9 +71,7 @@ class DelayTimer:
         self.delaycancel = True
 
 
-
 class AudioRecorder:
-
     def __init__(self, record_audio, record_microphone, saving_location):
         self.record_audio = record_audio
         self.record_microphone = record_microphone
@@ -133,9 +127,7 @@ class AudioRecorder:
         return video_dir
 
 
-
 class VideoRecorder:
-
     def __init__(self, fullscreen_mode_toggle):
         self.fullscreen_mode_toggle = fullscreen_mode_toggle
 
