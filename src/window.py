@@ -100,7 +100,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.directory = f"{self.application.settings.get_string('saving-location')}{filename}{video_format}"
         if self.application.settings.get_string("saving-location") == "default":
             video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
-            if video_directory == None:
+            if not video_directory:
                 video_directory = os.getenv("HOME")
             self.directory = f"{video_directory}{filename}{video_format}"
 
