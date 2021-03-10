@@ -19,7 +19,7 @@ import os
 
 from time import strftime, localtime
 
-from gi.repository import Gtk, Gio, GLib, Handy
+from gi.repository import Gtk, GLib, Handy
 
 from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
 
