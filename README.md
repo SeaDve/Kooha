@@ -49,4 +49,3 @@ The [chime](https://soundbible.com/1598-Electronic-Chime.html) used is under the
 
 ## Donate
 If you want to support development, consider donating via [PayPal](https://paypal.me/sedve).
-
