@@ -114,6 +114,7 @@ class Application(Gtk.Application):
     def show_about_dialog(self, action, widget):
         about = Gtk.AboutDialog()
         about.set_transient_for(self.win)
+        about.set_modal(True)
         about.set_version(self.version)
         about.set_program_name("Kooha")
         about.set_logo_icon_name("io.github.seadve.Kooha")
@@ -124,12 +125,11 @@ class Application(Gtk.Application):
         about.set_copyright("© 2021 Dave Patrick")
         about.set_website_label("Github Homepage")
         about.set_website("https://github.com/SeaDve/Kooha")
-        about.run()
+        about.show()
 
     def on_quit(self, action, *args):
-        win = self.get_windows()[0]
-        if win.header_revealer.get_reveal_child():
-            win.destroy()
+        if self.win.header_revealer.get_reveal_child():
+            self.win.destroy()
 
     def playsound(self, sound):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
