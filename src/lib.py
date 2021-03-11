@@ -26,7 +26,7 @@ class Timer:
     def __init__(self, label):
         self.label = label
         self.ongoing = False
-        GLib.timeout_add_seconds(1, self.refresh_time)
+        GLib.timeout_add_seconds(1, self.refresh_time, priority=GLib.PRIORITY_LOW)
 
     def refresh_time(self):
         if self.ongoing:
