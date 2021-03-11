@@ -158,7 +158,6 @@
                                 <property name="receives-default">False</property>
                                 <property name="draw-indicator">False</property>
                                 <signal name="clicked" handler="on_fullscreen_mode_clicked" swapped="no"/>
-                                <accelerator key="f" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -184,7 +183,6 @@
                                 <property name="draw-indicator">False</property>
                                 <property name="group">fullscreen_mode_toggle</property>
                                 <signal name="clicked" handler="on_selection_mode_clicked" swapped="no"/>
-                                <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>

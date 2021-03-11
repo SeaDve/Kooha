@@ -62,14 +62,7 @@
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;f</property>
-                <property name="title" translatable="yes" context="shortcut window">Toggle full screen mode</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
-                <property name="accelerator">&lt;ctrl&gt;s</property>
-                <property name="title" translatable="yes" context="shortcut window">Toggle selection mode</property>
+                <property name="title" translatable="yes" context="shortcut window">Toggle capture mode</property>
               </object>
             </child>
             <child>

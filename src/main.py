@@ -53,8 +53,9 @@ class Application(Gtk.Application):
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
 
         self.setup_actions()
-        self.set_accels_for_action("app.quit", ["<Ctrl>q"])
         self.set_accels_for_action("app.show-shortcuts", ["<Ctrl>question"])
+        self.set_accels_for_action("app.change-capture-mode", ["<Ctrl>f"])
+        self.set_accels_for_action("app.quit", ["<Ctrl>q"])
 
     def do_activate(self):
         self.win = self.props.active_window
@@ -79,6 +80,10 @@ class Application(Gtk.Application):
 
         action = Gio.SimpleAction.new("show-about", None)
         action.connect("activate", self.show_about_dialog)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("change-capture-mode", None)
+        action.connect("activate", self.on_change_capture_mode)
         self.add_action(action)
 
         action = Gio.SimpleAction.new("quit", None)
@@ -126,6 +131,12 @@ class Application(Gtk.Application):
         about.set_website_label("Github Homepage")
         about.set_website("https://github.com/SeaDve/Kooha")
         about.show()
+
+    def on_change_capture_mode(self, action, widget):
+        if self.win.fullscreen_mode_toggle.get_active():
+            self.win.selection_mode_toggle.set_active(True)
+        else:
+            self.win.fullscreen_mode_toggle.set_active(True)
 
     def on_quit(self, action, *args):
         if self.win.header_revealer.get_reveal_child():

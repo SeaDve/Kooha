@@ -48,7 +48,7 @@ class KoohaWindow(Handy.ApplicationWindow):
     start_stop_record_button_stack = Gtk.Template.Child()
 
     fullscreen_mode_toggle = Gtk.Template.Child()
-    selection_mode_toggle = Gtk.Template.Child() # unused
+    selection_mode_toggle = Gtk.Template.Child()
 
     header_revealer = Gtk.Template.Child()
     title_stack = Gtk.Template.Child()
