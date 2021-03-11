@@ -58,10 +58,10 @@ class Application(Gtk.Application):
         self.set_accels_for_action("app.quit", ["<Ctrl>q"])
 
     def do_activate(self):
-        self.win = self.props.active_window
-        if not self.win:
-            self.win = KoohaWindow(application=self)
-        self.win.present()
+        self.window = self.props.active_window
+        if not self.window:
+            self.window = KoohaWindow(application=self)
+        self.window.present()
 
     def setup_actions(self):
         action = self.settings.create_action("record-delay")
@@ -93,7 +93,7 @@ class Application(Gtk.Application):
     def select_location_dialog(self, action, widget):
         dialog = Gtk.FileChooserDialog(title="Select a Folder", action=Gtk.FileChooserAction.SELECT_FOLDER)
         dialog.add_buttons(_("_Cancel"), Gtk.ResponseType.CANCEL, _("_Select"), Gtk.ResponseType.ACCEPT)
-        dialog.set_transient_for(self.win)
+        dialog.set_transient_for(self.window)
         response = dialog.run()
         if response == Gtk.ResponseType.ACCEPT:
             directory = dialog.get_filenames()
@@ -102,7 +102,7 @@ class Application(Gtk.Application):
         dialog.destroy()
         try:
             if not os.access(directory[0], os.W_OK) or not directory[0].startswith("/home"): # TODO replace with non workaround-y way and test with other devices
-                error = Gtk.MessageDialog(transient_for=self.win, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
+                error = Gtk.MessageDialog(transient_for=self.window, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
                 error.format_secondary_text(_("Please choose an accessible location and retry."))
                 error.run()
                 error.destroy()
@@ -113,12 +113,12 @@ class Application(Gtk.Application):
 
     def show_shortcuts_window(self, action, widget):
         window = Gtk.Builder.new_from_resource('/io/github/seadve/Kooha/shortcuts.ui').get_object('shortcuts')
-        window.set_transient_for(self.win)
+        window.set_transient_for(self.window)
         window.present()
 
     def show_about_dialog(self, action, widget):
         about = Gtk.AboutDialog()
-        about.set_transient_for(self.win)
+        about.set_transient_for(self.window)
         about.set_modal(True)
         about.set_version(self.version)
         about.set_program_name("Kooha")
@@ -133,14 +133,14 @@ class Application(Gtk.Application):
         about.show()
 
     def on_change_capture_mode(self, action, widget):
-        if self.win.fullscreen_mode_toggle.get_active():
-            self.win.selection_mode_toggle.set_active(True)
+        if self.window.fullscreen_mode_toggle.get_active():
+            self.window.selection_mode_toggle.set_active(True)
         else:
-            self.win.fullscreen_mode_toggle.set_active(True)
+            self.window.fullscreen_mode_toggle.set_active(True)
 
     def on_quit(self, action, *args):
-        if self.win.header_revealer.get_reveal_child():
-            self.win.destroy()
+        if self.window.header_revealer.get_reveal_child():
+            self.window.destroy()
 
     def playsound(self, sound):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
