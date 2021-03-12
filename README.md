@@ -13,10 +13,10 @@
 A simple screen recorder for GNOME built with GTK and PyGObject. Kooha allows you to record your screen and also audio from your microphone or desktop.
 
 
-## What is not yet working
-* Some bugs in audio recording
-* Video format settings
-* Planned to support KDE
+## Roadmap before release
+- [ ] Use Gstreamer instead of FFMPEG
+- [ ] Video format preferences 
+- [ ] Other desktop environment support
 
 
 ## Building from source
