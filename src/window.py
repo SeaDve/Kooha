@@ -88,7 +88,7 @@ class KoohaWindow(Handy.ApplicationWindow):
                 video_directory = os.getenv("HOME")
         self.directory = f"{video_directory}{filename}{video_format}"
 
-        if os.path.exists(os.path.split(self.directory)[0]):
+        if os.path.exists(video_directory):
             delay = int(self.application.settings.get_string("record-delay"))
             self.delay_timer.start(delay)
             if delay > 0:
