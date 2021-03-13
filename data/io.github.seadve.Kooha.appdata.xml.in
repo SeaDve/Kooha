@@ -38,5 +38,10 @@
         <p>Initial release.</p>
       </description>
     </release>
+    <release version="1.0.0" date="2021-03-06">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
   </releases>
 </component>
