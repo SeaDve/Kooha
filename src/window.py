@@ -24,16 +24,6 @@ from gi.repository import Gtk, GLib, Handy
 from .timers import Timer, DelayTimer
 from .recorders import VideoRecorder, AudioRecorder
 
-# add support with other formats
-
-# AudioRecorder
-
-    # fix issue when stopping too fast
-
-    # make pipeline more efficient
-
-# GioDBus error
-
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/window.ui')
 class KoohaWindow(Handy.ApplicationWindow):
