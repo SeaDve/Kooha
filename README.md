@@ -6,6 +6,10 @@
 <p align="center"><strong>Simple screen recorder</strong></p>
 
 <p align="center">
+  <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
+</p>
+
+<p align="center">
   <img src="screenshots/Kooha-preview.png"/>
 </p>
 
