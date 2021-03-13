@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import threading
 import os
 from time import strftime, localtime
 
@@ -110,8 +111,11 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.header_revealer.set_reveal_child(False)
 
     def start_recording(self):
+        threading.Thread(target=self.application.playchime).start()
+
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
+
         self.audio_recorder = AudioRecorder(record_audio, record_microphone, self.directory)
         self.audio_recorder.start()
 
@@ -129,8 +133,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.recording_label_box)
 
         self.timer.start()
-
-        self.application.playsound('io/github/seadve/Kooha/chime.ogg')
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
