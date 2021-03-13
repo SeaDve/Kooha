@@ -145,7 +145,7 @@ class Application(Gtk.Application):
     def playchime(self):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
         playbin.props.uri = 'resource://io/github/seadve/Kooha/chime.ogg'
-        set_result = playbin.set_state(Gst.State.PLAYING)
+        playbin.set_state(Gst.State.PLAYING)
         bus = playbin.get_bus()
         bus.poll(Gst.MessageType.EOS, Gst.CLOCK_TIME_NONE)
         playbin.set_state(Gst.State.NULL)
