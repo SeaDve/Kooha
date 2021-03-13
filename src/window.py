@@ -30,13 +30,13 @@ from .recorders import VideoRecorder, AudioRecorder
 
     # fix issue when stopping too fast
 
-    # add --disable-everything && fix unknown input format: 'pulse'
+    # make pipeline more efficient
 
-    # fix ffmpeg sound delay/advance sync && fix audio stream concat
-
-# GioDBus error
+# clean code in start recording
 
 # add support with other formats
+
+# GioDBus error
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/window.ui')
@@ -81,6 +81,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         self.timer = Timer(self.time_recording_label)
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
+        self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle)
 
         desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
         if desktop_environment != "GNOME":
@@ -89,8 +90,6 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-        self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle)
-
         if not self.fullscreen_mode_toggle.get_active():
             self.video_recorder.get_coordinates()
 
