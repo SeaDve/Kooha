@@ -78,13 +78,13 @@ class AudioRecorder:
             print("audio_gst Error: %s" % err, debug)
 
     def get_default_audio_output(self):
-        pactl_output = str(Popen("pactl list sources | grep \"Name: alsa_output\" | cut -d\" \" -f2", shell = True, stdout=PIPE).stdout.read(), "utf-8")
+        pactl_output = Popen("pactl list sources | grep \"Name: alsa_output\" | cut -d\" \" -f2", shell=True, text=True, stdout=PIPE).stdout.read()
         if not pactl_output:
             return None
         return pactl_output.split("\n")[-2]
 
     def get_default_audio_input(self):
-        pactl_output = str(Popen("pactl list sources | grep \"Name: alsa_input\" | cut -d\" \" -f2", shell = True, stdout=PIPE).stdout.read(), "utf-8")
+        pactl_output = Popen("pactl list sources | grep \"Name: alsa_input\" | cut -d\" \" -f2", shell=True, text=True, stdout=PIPE).stdout.read()
         if not pactl_output:
             return None
         return pactl_output.split("\n")[-2]
