@@ -91,12 +91,10 @@ class KoohaWindow(Handy.ApplicationWindow):
         if os.path.exists(os.path.split(self.directory)[0]):
             delay = int(self.application.settings.get_string("record-delay"))
             self.delay_timer.start(delay)
-
             if delay > 0:
                 self.main_stack.set_visible_child(self.delay_label_box)
                 self.start_stop_record_button_stack.set_visible_child(self.cancel_delay_button)
                 self.header_revealer.set_reveal_child(False)
-
         else:
             error = Gtk.MessageDialog(transient_for=self, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Recording cannot start"))
             error.format_secondary_text(_("The saving location you have selected may have been deleted."))
