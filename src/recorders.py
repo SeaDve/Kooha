@@ -25,7 +25,7 @@ class AudioRecorder:
     def __init__(self, record_audio, record_microphone, saving_location):
         self.record_audio = record_audio
         self.record_microphone = record_microphone
-        self.saving_location = saving_location
+        self.saving_location = saving_location.replace(" ", "\ ")
 
     def start(self):
         self.default_audio_output = self.get_default_audio_output()
