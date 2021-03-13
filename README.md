@@ -6,7 +6,7 @@
 <p align="center"><strong>Simple screen recorder</strong></p>
 
 <p align="center">
-  <img src="screenshots/Kooha-preview.png" width="795" height="280";/>
+  <img src="screenshots/Kooha-preview.png"/>
 </p>
 
 ## Description
