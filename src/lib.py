@@ -15,11 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import signal
 import os
-from subprocess import PIPE, Popen, call
+from subprocess import PIPE, Popen
 
-from gi.repository import GLib, Gio
+from gi.repository import GLib, Gio, Gst
 
 
 class Timer:
@@ -74,42 +73,67 @@ class AudioRecorder:
     def __init__(self, record_audio, record_microphone, saving_location):
         self.record_audio = record_audio
         self.record_microphone = record_microphone
-        self.saving_location = saving_location.replace(" ", "\ ")
+        self.saving_location = saving_location
 
     def start(self):
         self.default_audio_output = self.get_default_audio_output()
         self.default_audio_input = self.get_default_audio_input()
 
+        print(self.record_audio)
+        print(self.default_audio_output)
+        print(self.record_microphone)
+        print(self.default_audio_input)
+
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
-            command_list = ["ffmpeg -f"]
-
             if self.record_audio and self.default_audio_output:
-                command_list.append(f"pulse -i {self.default_audio_output}")
+                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg'
+
+            elif self.record_microphone and self.default_audio_input:
+                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg'
 
             if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
-                command_list.append("-f")
+                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
 
-            if self.record_microphone and self.default_audio_input:
-                command_list.append(f"pulse -i {self.default_audio_input}")
+            print(audio_pipeline)
+            self.audio_gst = Gst.parse_launch(audio_pipeline)
+            bus = self.audio_gst.get_bus()
+            bus.add_signal_watch()
+            bus.connect("message", self.on_message)
 
-            if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
-                command_list.append("-filter_complex amerge -ac 2")
-                #command_list.append("-preset veryfast")
-
-            command_list.append(f"{self.get_tmp_dir()}/.Kooha_tmpaudio.wav -y")
-
-            command = " ".join(command_list)
-            self.audio_subprocess = Popen(command, shell=True)
-
-            command_list.clear()
+            self.audio_gst.set_state(Gst.State.PLAYING)
+            print("Starting AudioRecorder...")
 
     def stop(self):
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
-            self.audio_subprocess.send_signal(signal.SIGINT)
-            call(["sleep", "1"])
-            Popen("ffmpeg -i {0}/.Kooha_tmpvideo.mkv -i {0}/.Kooha_tmpaudio.wav -c:v copy -c:a aac {1} -y".format(self.get_tmp_dir(), self.saving_location), shell=True)
+            self.audio_gst.set_state(Gst.State.NULL)
+            print("Stopping AudioRecorder...")
 
-    def get_default_audio_output(self): # TODO test this with other devices
+            self.joiner_gst = Gst.parse_launch(f"matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir()}/.Kooha_tmpvideo.mkv ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg ! oggdemux ! mux.")
+            bus = self.joiner_gst.get_bus()
+            bus.add_signal_watch()
+            bus.connect('message', self.stop_message)
+            self.joiner_gst.set_state(Gst.State.PLAYING)
+
+    def stop_message(self, bus, message):
+        t = message.type
+        if t == Gst.MessageType.EOS:
+            self.joiner_gst.set_state(Gst.State.NULL)
+            print("Done Processing")
+        elif t == Gst.MessageType.ERROR:
+            self.joiner_gst.set_state(Gst.State.NULL)
+            err, debug = message.parse_error()
+            print("Error: %s" % err, debug)
+
+    def on_message(self, bus, message):
+        t = message.type
+        if t == Gst.MessageType.EOS:
+            self.audio_gst.set_state(Gst.State.NULL)
+        elif t == Gst.MessageType.ERROR:
+            self.audio_gst.set_state(Gst.State.NULL)
+            err, debug = message.parse_error()
+            print("audio_gst Error: %s" % err, debug)
+
+    def get_default_audio_output(self):
         pactl_output = str(Popen("pactl list sources | grep \"Name: alsa_output\" | cut -d\" \" -f2", shell = True, stdout=PIPE).stdout.read(), "utf-8")
         if not pactl_output:
             return None

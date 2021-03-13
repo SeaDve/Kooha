@@ -26,32 +26,6 @@
     ],
     "modules" : [
     	{
-            "name": "ffmpeg",
-            "config-opts":[
-	      	"--disable-static",
-	      	"--enable-gpl",
-	      	"--enable-libvpx",
-	      	"--enable-shared",
-	      	"--disable-ffplay",
-	      	"--disable-ffprobe",
-	      	"--disable-doc",
-	      	"--enable-bsf=vp9_superframe",
-	      	"--enable-decoder=libvpx_vp9",
-	      	"--enable-encoder=libvpx_vp9",
-	      	"--enable-demuxer=matroska",
-	      	"--enable-filter=aresample",
-	      	"--enable-protocol=file",
-	      	"--enable-libpulse",
-	      	"--enable-libmp3lame"
-            ],
-            "sources": [
-            	{
-		    "type": "git",
-		    "url": "https://github.com/FFmpeg/FFmpeg.git"
-            	}
-            ]
-        },
-    	{
             "name" : "libhandy",
             "buildsystem": "meson",
             "config-opts":[
