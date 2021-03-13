@@ -142,9 +142,9 @@ class Application(Gtk.Application):
         if self.window.header_revealer.get_reveal_child():
             self.window.destroy()
 
-    def playsound(self, sound):
+    def playchime(self):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
-        playbin.props.uri = 'resource://' + sound
+        playbin.props.uri = 'resource://io/github/seadve/Kooha/chime.ogg'
         set_result = playbin.set_state(Gst.State.PLAYING)
         bus = playbin.get_bus()
         bus.poll(Gst.MessageType.EOS, Gst.CLOCK_TIME_NONE)
