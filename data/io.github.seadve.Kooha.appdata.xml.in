@@ -40,7 +40,16 @@
     </release>
     <release version="1.0.0" date="2021-03-06">
       <description>
-        <p>Initial release.</p>
+        <p>This is the 1.0 release of Kooha. The features of this release include the following:</p>
+        <ul>
+          <li>Record your screen and also audio from your microphone or desktop</li>
+          <li>Option to show or hide the pointer</li>
+          <li>Option to record only an area on your screen</li>
+          <li>Select the saving location of the record</li>
+          <li>Ability to add a delay before recording starts</li>
+          <li>Video format settings (MKV and WebM)</li>
+          <li>And of course, keyboard shortcuts!</li>
+        </ul>
       </description>
     </release>
   </releases>
