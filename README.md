@@ -16,11 +16,12 @@ A simple screen recorder for GNOME built with GTK and PyGObject. Kooha allows yo
 ## Roadmap
 
 ### First release v 1.0
-- [ ] Use Gstreamer instead of FFMPEG
-- [ ] Video format preferences 
+- [x] Use Gstreamer instead of FFMPEG
+- [x] Video format preferences 
 
 ### v 2.0
 - [ ] Rewrite VideoRecorder for freedesktop portal
+- [ ] MP4 video format support
 - [ ] Other desktop environment support
 
 

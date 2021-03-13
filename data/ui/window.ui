@@ -35,11 +35,6 @@
           <attribute name="action">app.video-format</attribute>
           <attribute name="target">mkv</attribute>
         </item>
-        <item>
-          <attribute translatable="yes" name="label">_MP4</attribute>
-          <attribute name="action">app.video-format</attribute>
-          <attribute name="target">mp4</attribute>
-        </item>
       </submenu>
       <item>
         <attribute name="action">app.select-location</attribute>
