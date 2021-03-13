@@ -52,7 +52,7 @@ class AudioRecorder:
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             self.audio_gst.set_state(Gst.State.NULL)
 
-            self.joiner_gst = Gst.parse_launch(f"matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir()}/.Kooha_tmpvideo.mkv ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg ! oggdemux ! mux.")
+            self.joiner_gst = Gst.parse_launch(f"matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir()}/.Kooha_tmpvideo.mkv ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg ! oggdemux ! mux.")
             bus = self.joiner_gst.get_bus()
             bus.add_signal_watch()
             bus.connect('message', self.stop_message)

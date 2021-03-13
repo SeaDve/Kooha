@@ -24,17 +24,13 @@ from gi.repository import Gtk, GLib, Handy
 from .timers import Timer, DelayTimer
 from .recorders import VideoRecorder, AudioRecorder
 
-# AudioRecorder
+# add support with other formats
 
-    # move __init__() args to start()
+# AudioRecorder
 
     # fix issue when stopping too fast
 
     # make pipeline more efficient
-
-# clean code in start recording
-
-# add support with other formats
 
 # GioDBus error
 
