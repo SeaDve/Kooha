@@ -21,7 +21,8 @@ from time import strftime, localtime
 
 from gi.repository import Gtk, GLib, Handy
 
-from .lib import VideoRecorder, AudioRecorder, Timer, DelayTimer
+from .timers import Timer, DelayTimer
+from .recorders import VideoRecorder, AudioRecorder
 
 # AudioRecorder
 
