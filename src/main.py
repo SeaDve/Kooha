@@ -25,7 +25,7 @@ gi.require_version('Handy', '1')
 
 from gi.repository import Gtk, Gio, Gdk, GLib, Gst, Handy
 
-Gst.init()
+Gst.init(sys.argv)
 
 from .window import KoohaWindow
 
