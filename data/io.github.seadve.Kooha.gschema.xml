@@ -17,7 +17,7 @@
       <description></description>
     </key>
 	  <key enum="io.github.seadve.Kooha.Format" name="video-format">
-      <default>"mkv"</default>
+      <default>"webm"</default>
       <summary>Format of the output video</summary>
       <description></description>
     </key>
