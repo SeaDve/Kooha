@@ -33,6 +33,17 @@
   </screenshots>
 
   <releases>
+    <release version="1.0.1" date="2021-03-14">
+      <description>
+        <p>Version 1.0.1 brings fixes to a couple of bugs:</p>
+        <ul>
+          <li>Catch the error when the path of the directory no longer exists</li>
+          <li>Fix the bug when the path contains spaces</li>
+          <li>Possible fix for GioDBus: The name is not activatable</li>
+          <li>Make desktop environment check less strict</li>>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.0" date="2021-03-13">
       <description>
         <p>This is the 1.0 release of Kooha. The features of this release include the following:</p>
