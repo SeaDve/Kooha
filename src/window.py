@@ -70,7 +70,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle)
 
         desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
-        if desktop_environment != "GNOME":
+        if "GNOME" not in desktop_environment:
             self.start_record_button.set_sensitive(False)
             self.start_record_button.set_label(f"{desktop_environment} is not supported")
 
