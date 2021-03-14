@@ -50,6 +50,8 @@ flatpak install local-repo io.github.seadve.Kooha
 
 Developed by **[Dave Patrick](https://github.com/SeaDve)**.
 
+Inspired by [RecApp](https://github.com/amikha1lov/RecApp).
+
 The [chime](https://soundbible.com/1598-Electronic-Chime.html) used is under the Public Domain.
 
 
