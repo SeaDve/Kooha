@@ -33,13 +33,13 @@ class AudioRecorder:
 
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             if self.record_audio and self.default_audio_output:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")}'
 
             elif self.record_microphone and self.default_audio_input:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")}'
 
             if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
-                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")} pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
 
             self.audio_gst = Gst.parse_launch(audio_pipeline)
             bus = self.audio_gst.get_bus()
@@ -52,7 +52,7 @@ class AudioRecorder:
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             self.audio_gst.set_state(Gst.State.NULL)
 
-            self.joiner_gst = Gst.parse_launch(f"matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir()}/.Kooha_tmpvideo.mkv ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir()}/.Kooha_tmpaudio.ogg ! oggdemux ! mux.")
+            self.joiner_gst = Gst.parse_launch(f'matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir("audio")} ! oggdemux ! mux.')
             bus = self.joiner_gst.get_bus()
             bus.add_signal_watch()
             bus.connect('message', self.stop_message)
@@ -89,9 +89,12 @@ class AudioRecorder:
             return None
         return pactl_output.split("\n")[-2]
 
-    def get_tmp_dir(self):
-        video_dir = f"{os.getenv('XDG_CACHE_HOME')}/tmp"
-        return video_dir
+    def get_tmp_dir(self, media_type):
+        if media_type == "audio":
+            tmp_name = "audio.ogg"
+        elif media_type == "video":
+            tmp_name = "video.mkv"
+        return f"{os.getenv('XDG_CACHE_HOME')}/tmp/tmp{tmp_name}"
 
 
 class VideoRecorder:
