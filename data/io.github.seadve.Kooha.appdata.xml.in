@@ -39,6 +39,7 @@
         <ul>
           <li>Catch the error when the path of the directory no longer exists</li>
           <li>Fix the bug when the path contains spaces</li>
+          <li>Fix missing argument argv</li>
           <li>Possible fix for GioDBus: The name is not activatable</li>
           <li>Make desktop environment check less strict</li>>
         </ul>
