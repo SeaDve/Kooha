@@ -34,15 +34,12 @@ GNOME Builder is the environment used for developing this application. It can us
 2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
 3. Click the build button at the top once the project is loaded.
 
-
-### Manual
+### Manual with meson
 ```
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
-mkdir -p $HOME/Projects/flatpak/repo
-flatpak-builder --repo=$HOME/Projects/flatpak/repo --force-clean --ccache build-dir io.github.seadve.Kooha.json
-flatpak remote-add --no-gpg-verify local-repo $HOME/Projects/flatpak/repo
-flatpak install local-repo io.github.seadve.Kooha
+meson builddir --prefix=/usr/local
+ninja -C builddir install
 ```
 
 
