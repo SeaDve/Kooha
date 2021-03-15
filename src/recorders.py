@@ -28,8 +28,8 @@ class AudioRecorder:
         self.saving_location = saving_location.replace(" ", "\ ")
 
     def start(self):
-        self.default_audio_output = self.get_default_audio_output()
-        self.default_audio_input = self.get_default_audio_input()
+        self.default_audio_output = self.get_default_audio_source("alsa_output")
+        self.default_audio_input = self.get_default_audio_source("alsa_input")
 
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             if self.record_audio and self.default_audio_output:
@@ -77,14 +77,9 @@ class AudioRecorder:
             err, debug = message.parse_error()
             print("audio_gst Error: %s" % err, debug)
 
-    def get_default_audio_output(self):
-        pactl_output = Popen("pactl list sources | grep \"Name: alsa_output\" | cut -d\" \" -f2", shell=True, text=True, stdout=PIPE).stdout.read()
-        if not pactl_output:
-            return None
-        return pactl_output.split("\n")[-2]
-
-    def get_default_audio_input(self):
-        pactl_output = Popen("pactl list sources | grep \"Name: alsa_input\" | cut -d\" \" -f2", shell=True, text=True, stdout=PIPE).stdout.read()
+    def get_default_audio_source(self, source):
+        pactl_command = f"pactl list sources | grep \"Name: {source}\" | cut -d\" \" -f2"
+        pactl_output = Popen(pactl_command, shell=True, text=True, stdout=PIPE).stdout.read()
         if not pactl_output:
             return None
         return pactl_output.split("\n")[-2]
