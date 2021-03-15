@@ -13,33 +13,21 @@
 	<schema id="io.github.seadve.Kooha" path="/io/github/seadve/Kooha/">
 	  <key enum="io.github.seadve.Kooha.Delay" name="record-delay">
       <default>"00"</default>
-      <summary>Delay before recording starts</summary>
-      <description></description>
     </key>
 	  <key enum="io.github.seadve.Kooha.Format" name="video-format">
       <default>"webm"</default>
-      <summary>Format of the output video</summary>
-      <description></description>
     </key>
 	  <key type="b" name="record-audio">
       <default>false</default>
-      <summary>Whether if the computer sounds are recorded</summary>
-      <description></description>
     </key>
 	  <key type="b" name="record-microphone">
       <default>false</default>
-      <summary>Whether if the microphone sounds are recorderd</summary>
-      <description></description>
     </key>
 	  <key type="b" name="show-pointer">
       <default>true</default>
-      <summary>Whether if the pointer is shown</summary>
-      <description></description>
     </key>
 	  <key type="s" name="saving-location">
       <default>"default"</default>
-      <summary>Whether if the pointer is shown</summary>
-      <description></description>
     </key>
 	</schema>
 </schemalist>

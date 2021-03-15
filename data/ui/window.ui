@@ -6,49 +6,49 @@
   <menu id="menu">
     <section>
       <submenu>
-        <attribute name="label" translatable="yes">_Delay</attribute>
+        <attribute name="label" translatable="yes">Delay</attribute>
         <item>
-          <attribute translatable="yes" name="label">_None</attribute>
+          <attribute translatable="yes" name="label">None</attribute>
           <attribute name="action">app.record-delay</attribute>
           <attribute name="target">00</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">_5 Seconds</attribute>
+          <attribute translatable="yes" name="label">5 Seconds</attribute>
           <attribute name="action">app.record-delay</attribute>
           <attribute name="target">05</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">_10 Seconds</attribute>
+          <attribute translatable="yes" name="label">10 Seconds</attribute>
           <attribute name="action">app.record-delay</attribute>
           <attribute name="target">10</attribute>
         </item>
       </submenu>
       <submenu>
-        <attribute name="label" translatable="yes">_Video Format</attribute>
+        <attribute name="label" translatable="yes">Video Format</attribute>
         <item>
-          <attribute translatable="yes" name="label">_WebM</attribute>
+          <attribute translatable="yes" name="label">WebM</attribute>
           <attribute name="action">app.video-format</attribute>
           <attribute name="target">webm</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">_MKV</attribute>
+          <attribute translatable="yes" name="label">MKV</attribute>
           <attribute name="action">app.video-format</attribute>
           <attribute name="target">mkv</attribute>
         </item>
       </submenu>
       <item>
         <attribute name="action">app.select-location</attribute>
-        <attribute translatable="yes" name="label">_Save to…</attribute>
+        <attribute translatable="yes" name="label">Save to…</attribute>
       </item>
     </section>
     <section>
       <item>
         <attribute name="action">app.show-shortcuts</attribute>
-        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
       <item>
         <attribute name="action">app.show-about</attribute>
-        <attribute name="label" translatable="yes">_About Kooha</attribute>
+        <attribute name="label" translatable="yes">About Kooha</attribute>
       </item>
     </section>
   </menu>
@@ -283,7 +283,7 @@
                       </object>
                       <packing>
                         <property name="name">page0</property>
-                        <property name="title" translatable="yes">page0</property>
+                        <property name="title">page0</property>
                       </packing>
                     </child>
                     <child>
@@ -327,7 +327,6 @@
                       </object>
                       <packing>
                         <property name="name">page1</property>
-                        <property name="title" translatable="yes">page1</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -371,7 +370,6 @@
                       </object>
                       <packing>
                         <property name="name">page2</property>
-                        <property name="title" translatable="yes">page2</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
@@ -440,7 +438,6 @@
                       </object>
                       <packing>
                         <property name="name">page0</property>
-                        <property name="title" translatable="yes">page0</property>
                       </packing>
                     </child>
                     <child>
@@ -457,7 +454,6 @@
                       </object>
                       <packing>
                         <property name="name">page1</property>
-                        <property name="title" translatable="yes">page1</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -475,7 +471,6 @@
                       </object>
                       <packing>
                         <property name="name">page2</property>
-                        <property name="title" translatable="yes">page2</property>
                         <property name="position">2</property>
                       </packing>
                     </child>

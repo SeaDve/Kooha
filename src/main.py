@@ -23,6 +23,7 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('Gst', '1.0')
 gi.require_version('Handy', '1')
 
+from gettext import gettext as _
 from gi.repository import Gtk, Gio, Gdk, GLib, Gst, Handy
 
 Gst.init(sys.argv)
@@ -91,8 +92,8 @@ class Application(Gtk.Application):
         self.add_action(action)
 
     def select_location_dialog(self, action, widget):
-        dialog = Gtk.FileChooserDialog(title="Select a Folder", action=Gtk.FileChooserAction.SELECT_FOLDER)
-        dialog.add_buttons(_("_Cancel"), Gtk.ResponseType.CANCEL, _("_Select"), Gtk.ResponseType.ACCEPT)
+        dialog = Gtk.FileChooserDialog(title=_("Select a Folder"), action=Gtk.FileChooserAction.SELECT_FOLDER)
+        dialog.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Select"), Gtk.ResponseType.ACCEPT)
         dialog.set_transient_for(self.window)
         response = dialog.run()
         if response == Gtk.ResponseType.ACCEPT:
@@ -101,7 +102,7 @@ class Application(Gtk.Application):
             directory = None
         dialog.destroy()
         try:
-            if not os.access(directory[0], os.W_OK) or not directory[0].startswith("/home"): # TODO replace with non workaround-y way and test with other devices
+            if not os.access(directory[0], os.W_OK) or not directory[0].startswith("/home"):
                 error = Gtk.MessageDialog(transient_for=self.window, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
                 error.format_secondary_text(_("Please choose an accessible location and retry."))
                 error.run()
@@ -124,11 +125,13 @@ class Application(Gtk.Application):
         about.set_program_name("Kooha")
         about.set_logo_icon_name("io.github.seadve.Kooha")
         about.set_authors(["Dave Patrick"])
-        about.set_comments("Simple screen recorder for GNOME")
+        about.set_comments(_("Simple screen recorder for GNOME"))
         about.set_wrap_license(True)
         about.set_license_type(Gtk.License.GPL_3_0)
-        about.set_copyright("© 2021 Dave Patrick")
-        about.set_website_label("Github Homepage")
+        about.set_copyright(_("Copyright 2021 Dave Patrick"))
+        # Translators: Replace "translator-credits" with your names, one name per line
+        about.set_translator_credits(_("translator-credits"))
+        about.set_website_label(_("Github Homepage"))
         about.set_website("https://github.com/SeaDve/Kooha")
         about.show()
 

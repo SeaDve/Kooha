@@ -19,6 +19,7 @@ import threading
 import os
 from time import strftime, localtime
 
+from gettext import gettext as _
 from gi.repository import Gtk, GLib, Handy
 
 from .timers import Timer, DelayTimer
