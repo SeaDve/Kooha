@@ -102,7 +102,7 @@ class Application(Gtk.Application):
             directory = None
         dialog.destroy()
         try:
-            if not os.access(directory[0], os.W_OK) or not directory[0].startswith("/home"):
+            if not os.access(directory[0], os.W_OK) or not directory[0].startswith(os.getenv("HOME")):
                 error = Gtk.MessageDialog(transient_for=self.window, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
                 error.format_secondary_text(_("Please choose an accessible location and retry."))
                 error.run()
