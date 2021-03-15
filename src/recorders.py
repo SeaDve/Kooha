@@ -91,10 +91,10 @@ class AudioRecorder:
 
     def get_tmp_dir(self, media_type):
         if media_type == "audio":
-            tmp_name = "audio.ogg"
+            extension = ".ogg"
         elif media_type == "video":
-            tmp_name = "video.mkv"
-        return f"{os.getenv('XDG_CACHE_HOME')}/tmp/tmp{tmp_name}"
+            extension = ".mkv"
+        return f"{os.getenv('XDG_CACHE_HOME')}/tmp/tmp{media_type}{extension}"
 
 
 class VideoRecorder:
