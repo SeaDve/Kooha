@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-15 11:42+0800\n"
+"POT-Creation-Date: 2021-03-15 19:10+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,15 +27,14 @@ msgstr ""
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
 msgid "Simple screen recorder"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
-"A simple screen recorder for GNOME built with GTK and PyGObject. Kooha "
-"allows you to record your screen and also audio from your microphone or "
-"desktop."
+"Kooha is a simple screen recorder built with GTK. It allows you to record "
+"your screen and also audio from your microphone or desktop."
 msgstr ""
 
 #. Translators: please do NOT translate this
@@ -175,10 +174,6 @@ msgstr ""
 msgid "Please choose an accessible location and retry."
 msgstr ""
 
-#: src/main.py:128
-msgid "Simple screen recorder for GNOME"
-msgstr ""
-
 #: src/main.py:131
 msgid "Copyright 2021 Dave Patrick"
 msgstr ""
@@ -189,7 +184,7 @@ msgid "translator-credits"
 msgstr ""
 
 #: src/main.py:134
-msgid "Github Homepage"
+msgid "GitHub"
 msgstr ""
 
 #: src/window.py:100
