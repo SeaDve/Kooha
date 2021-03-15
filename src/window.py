@@ -73,7 +73,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
         if "GNOME" not in desktop_environment:
             self.start_record_button.set_sensitive(False)
-            self.start_record_button.set_label(f"{desktop_environment} is not supported")
+            self.start_record_button.set_label(f"{desktop_environment} is not yet supported")
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
