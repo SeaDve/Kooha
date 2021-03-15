@@ -283,7 +283,6 @@
                       </object>
                       <packing>
                         <property name="name">page0</property>
-                        <property name="title">page0</property>
                       </packing>
                     </child>
                     <child>
