@@ -34,6 +34,16 @@
   </screenshots>
 
   <releases>
+    <release version="1.0.2" date="2021-03-15">
+      <description>
+        <p>This release brings a couple of small changes:</p>
+        <ul>
+          <li>set WebM as default format</li>
+          <li>Minor fixes</li>
+          <li>Add Filipino translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2021-03-14">
       <description>
         <p>Version 1.0.1 brings fixes to a couple of bugs:</p>
