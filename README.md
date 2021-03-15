@@ -25,6 +25,13 @@ Kooha is a simple screen recorder built with GTK. It allows you to record your s
 - [ ] Other desktop environment support
 
 
+## Other Modes of Installation
+
+| Distribution | Package | Maintainer |
+|:-:|:-:|:-:|
+| Arch Linux (AUR) | [`kooha`](https://aur.archlinux.org/packages/kooha) | [Mark Wagie](https://github.com/yochananmarqos) |
+
+
 ## Building from source
 
 ### GNOME Builder (Recommended)
