@@ -44,8 +44,7 @@ class AudioRecorder:
             self.audio_gst = Gst.parse_launch(audio_pipeline)
             bus = self.audio_gst.get_bus()
             bus.add_signal_watch()
-            bus.connect("message", self.on_message)
-
+            bus.connect("message", self.on_audio_gst_message)
             self.audio_gst.set_state(Gst.State.PLAYING)
 
     def stop(self):
@@ -55,10 +54,10 @@ class AudioRecorder:
             self.joiner_gst = Gst.parse_launch(f'matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir("audio")} ! oggdemux ! mux.')
             bus = self.joiner_gst.get_bus()
             bus.add_signal_watch()
-            bus.connect('message', self.stop_message)
+            bus.connect('message', self.on_joiner_gst_message)
             self.joiner_gst.set_state(Gst.State.PLAYING)
 
-    def stop_message(self, bus, message):
+    def on_joiner_gst_message(self, bus, message):
         t = message.type
         if t == Gst.MessageType.EOS:
             self.joiner_gst.set_state(Gst.State.NULL)
@@ -68,7 +67,7 @@ class AudioRecorder:
             err, debug = message.parse_error()
             print("Error: %s" % err, debug)
 
-    def on_message(self, bus, message):
+    def on_audio_gst_message(self, bus, message):
         t = message.type
         if t == Gst.MessageType.EOS:
             self.audio_gst.set_state(Gst.State.NULL)
