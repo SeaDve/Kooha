@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-15 10:35+0800\n"
+"POT-Creation-Date: 2021-03-15 11:42+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:299
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:298
 msgid "Recording"
 msgstr ""
 
@@ -100,11 +100,11 @@ msgid "None"
 msgstr ""
 
 #: data/ui/window.ui:16
-msgid "5 Seconds"
+msgid "5 seconds"
 msgstr ""
 
 #: data/ui/window.ui:21
-msgid "10 Seconds"
+msgid "10 seconds"
 msgstr ""
 
 #: data/ui/window.ui:27
@@ -139,19 +139,19 @@ msgstr ""
 msgid "Selection"
 msgstr ""
 
-#: data/ui/window.ui:343
-msgid "Recording in..."
+#: data/ui/window.ui:342
+msgid "Recording in…"
 msgstr ""
 
-#: data/ui/window.ui:395
+#: data/ui/window.ui:394
 msgid "Record"
 msgstr ""
 
-#: data/ui/window.ui:445
+#: data/ui/window.ui:444
 msgid "Stop"
 msgstr ""
 
-#: data/ui/window.ui:462
+#: data/ui/window.ui:461
 msgid "Cancel Delay"
 msgstr ""
 

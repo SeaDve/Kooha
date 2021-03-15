@@ -20,6 +20,7 @@
 import os
 import sys
 import signal
+import locale
 import gettext
 
 VERSION = '@VERSION@'
@@ -28,7 +29,11 @@ localedir = '@localedir@'
 
 sys.path.insert(1, pkgdatadir)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
-gettext.install('kooha', localedir)
+
+locale.bindtextdomain('kooha', localedir)
+locale.textdomain('kooha')
+gettext.bindtextdomain('kooha', localedir)
+gettext.textdomain('kooha')
 
 if __name__ == '__main__':
     import gi

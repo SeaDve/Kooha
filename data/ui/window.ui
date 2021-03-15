@@ -13,12 +13,12 @@
           <attribute name="target">00</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">5 Seconds</attribute>
+          <attribute translatable="yes" name="label">5 seconds</attribute>
           <attribute name="action">app.record-delay</attribute>
           <attribute name="target">05</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">10 Seconds</attribute>
+          <attribute translatable="yes" name="label">10 seconds</attribute>
           <attribute name="action">app.record-delay</attribute>
           <attribute name="target">10</attribute>
         </item>
@@ -339,7 +339,7 @@
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Recording in...</property>
+                            <property name="label" translatable="yes">Recording in…</property>
                             <property name="single-line-mode">True</property>
                             <style>
                               <class name="status_label"/>
