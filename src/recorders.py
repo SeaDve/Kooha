@@ -81,7 +81,10 @@ class AudioRecorder:
         pactl_output = Popen(pactl_command, shell=True, text=True, stdout=PIPE).stdout.read()
         if not pactl_output:
             return None
-        return pactl_output.split("\n")[-2]
+        if source == "alsa_input":
+            return pactl_output.split("\n")[-2]
+        elif source == "alsa_output":
+            return pactl_output.split("\n")[0]
 
     def get_tmp_dir(self, media_type):
         if media_type == "audio":
