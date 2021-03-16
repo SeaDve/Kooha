@@ -52,7 +52,7 @@ ninja -C builddir install
 
 ## Credits
 
-Developed by **[Dave Patrick](https://github.com/SeaDve)**.
+Developed by **[Dave Patrick](https://github.com/SeaDve)** and [contributors](https://github.com/SeaDve/Kooha/graphs/contributors).
 
 Inspired from [RecApp](https://github.com/amikha1lov/RecApp).
 
