@@ -1,0 +1,200 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kooha package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kooha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-15 19:10+0800\n"
+"PO-Revision-Date: 2021-03-16 17:46+0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: id\n"
+
+#: data/io.github.seadve.Kooha.desktop.in:3
+#: data/io.github.seadve.Kooha.appdata.xml.in:7
+msgid "Kooha"
+msgstr "Kooha"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in:11
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr "Screencast;Perekam;Layar;Video"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
+msgid "Simple screen recorder"
+msgstr "Perekam layar sederhana"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:10
+msgid ""
+"Kooha is a simple screen recorder built with GTK. It allows you to record "
+"your screen and also audio from your microphone or desktop."
+msgstr ""
+"Kooha adalah perekam layar sederhana yang dibangun menggunakan GTK. Kooha "
+"memungkinkan Anda untuk merekam layar Anda serta suara dari mikrofon atau "
+"desktop Anda."
+
+#. Translators: please do NOT translate this
+#: data/io.github.seadve.Kooha.appdata.xml.in:19
+msgid "Dave Patrick"
+msgstr "Dave Patrick"
+
+#: data/ui/shortcuts.ui:13
+msgid "General"
+msgstr "Umum"
+
+#: data/ui/shortcuts.ui:18
+msgid "Open menu"
+msgstr "Buka menu"
+
+#: data/ui/shortcuts.ui:25
+msgid "Show keyboard shortcuts"
+msgstr "Tampilkan pintasan keyboard"
+
+#: data/ui/shortcuts.ui:32
+msgid "Quit"
+msgstr "Berhenti"
+
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:298
+msgid "Recording"
+msgstr "Merekam"
+
+#: data/ui/shortcuts.ui:45
+msgid "Toggle record"
+msgstr "Toggle perekaman"
+
+#: data/ui/shortcuts.ui:52
+msgid "Cancel delay"
+msgstr "Batalkan penundaan"
+
+#: data/ui/shortcuts.ui:60
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: data/ui/shortcuts.ui:65
+msgid "Toggle capture mode"
+msgstr "Toggle mode capture"
+
+#: data/ui/shortcuts.ui:72
+msgid "Toggle computer sounds"
+msgstr "Toggle suara komputer"
+
+#: data/ui/shortcuts.ui:79
+msgid "Toggle microphone"
+msgstr "Toggle mikrofon"
+
+#: data/ui/shortcuts.ui:86
+msgid "Toggle pointer"
+msgstr "Toggle penunjuk"
+
+#: data/ui/window.ui:9
+msgid "Delay"
+msgstr "Penundaan"
+
+#: data/ui/window.ui:11
+msgid "None"
+msgstr "Tidak ada"
+
+#: data/ui/window.ui:16
+msgid "5 seconds"
+msgstr "5 detik"
+
+#: data/ui/window.ui:21
+msgid "10 seconds"
+msgstr "10 detik"
+
+#: data/ui/window.ui:27
+msgid "Video Format"
+msgstr "Format Video"
+
+#: data/ui/window.ui:29
+msgid "WebM"
+msgstr "WebM"
+
+#: data/ui/window.ui:34
+msgid "MKV"
+msgstr "MKV"
+
+#: data/ui/window.ui:41
+msgid "Save to…"
+msgstr "Simpan di..."
+
+#: data/ui/window.ui:47
+msgid "Keyboard Shortcuts"
+msgstr "Pintasan Keyboard"
+
+#: data/ui/window.ui:51
+msgid "About Kooha"
+msgstr "Tentang Kooha"
+
+#: data/ui/window.ui:90
+msgid "Full Screen"
+msgstr "Layar Penuh"
+
+#: data/ui/window.ui:100
+msgid "Selection"
+msgstr "Pilihan"
+
+#: data/ui/window.ui:342
+msgid "Recording in…"
+msgstr "Merekam dalam..."
+
+#: data/ui/window.ui:394
+msgid "Record"
+msgstr "Rekam"
+
+#: data/ui/window.ui:444
+msgid "Stop"
+msgstr "Berhenti"
+
+#: data/ui/window.ui:461
+msgid "Cancel Delay"
+msgstr "Batalkan penundaan"
+
+#: src/main.py:95
+msgid "Select a Folder"
+msgstr "Pilih folder"
+
+#: src/main.py:96
+msgid "Cancel"
+msgstr "Batal"
+
+#: src/main.py:96
+msgid "Select"
+msgstr "Pilih"
+
+#: src/main.py:106
+msgid "Save location not set"
+msgstr "Lokasi penyimpanan belum diatur"
+
+#: src/main.py:107
+msgid "Please choose an accessible location and retry."
+msgstr "Mohon pilih tempat yang dapat diakses dan coba lagi."
+
+#: src/main.py:131
+msgid "Copyright 2021 Dave Patrick"
+msgstr "Hak Cipta 2021 Dave Patrick"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/main.py:133
+msgid "translator-credits"
+msgstr "Dani Rananta"
+
+#: src/main.py:134
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/window.py:100
+msgid "Recording cannot start"
+msgstr "Tidak dapat memulai perekaman"
+
+#: src/window.py:101
+msgid "The saving location you have selected may have been deleted."
+msgstr "Lokasi penyimpanan yang telah Anda pilih mungkin sudah dihapus."
