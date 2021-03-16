@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-15 19:10+0800\n"
-"PO-Revision-Date: 2021-03-15 19:18+0800\n"
+"POT-Creation-Date: 2021-03-16 18:45+0800\n"
+"PO-Revision-Date: 2021-03-16 18:46+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fil\n"
@@ -63,7 +63,7 @@ msgstr "Ipakita ang mga keyboard shortcut"
 msgid "Quit"
 msgstr "Isara"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:298
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:356
 msgid "Recording"
 msgstr "Nagrerekord"
 
@@ -135,27 +135,27 @@ msgstr "Mga keyboard shortcut"
 msgid "About Kooha"
 msgstr "Tungkol sa Kooha"
 
-#: data/ui/window.ui:90
+#: data/ui/window.ui:89
 msgid "Full Screen"
 msgstr "Buong screen"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:99
 msgid "Selection"
 msgstr "Seleksyon"
 
-#: data/ui/window.ui:342
-msgid "Recording in…"
-msgstr "Magrerekord sa…"
-
-#: data/ui/window.ui:394
+#: data/ui/window.ui:274
 msgid "Record"
 msgstr "Magrekord"
 
-#: data/ui/window.ui:444
+#: data/ui/window.ui:393
 msgid "Stop"
 msgstr "Huminto"
 
-#: data/ui/window.ui:461
+#: data/ui/window.ui:436
+msgid "Recording in…"
+msgstr "Magrerekord sa…"
+
+#: data/ui/window.ui:472
 msgid "Cancel Delay"
 msgstr "Ikansela ang Antala"
 
@@ -192,10 +192,10 @@ msgstr ""
 msgid "GitHub"
 msgstr ""
 
-#: src/window.py:100
+#: src/window.py:95
 msgid "Recording cannot start"
 msgstr "Hindi maaaring magstart ang pagrekord"
 
-#: src/window.py:101
+#: src/window.py:96
 msgid "The saving location you have selected may have been deleted."
 msgstr "Ang lokasyon ng paglalagyan ay maaaring nabura na."
