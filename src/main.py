@@ -141,8 +141,8 @@ class Application(Gtk.Application):
         else:
             self.window.fullscreen_mode_toggle.set_active(True)
 
-    def on_quit(self, action, *args):
-        if self.window.header_revealer.get_reveal_child():
+    def on_quit(self, action, widget):
+        if self.window.main_stack.get_visible_child() is self.window.main_screen_box:
             self.window.destroy()
 
     def playchime(self):

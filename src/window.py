@@ -34,12 +34,10 @@ class KoohaWindow(Handy.ApplicationWindow):
     stop_record_button = Gtk.Template.Child()
     cancel_delay_button = Gtk.Template.Child()
     start_record_button_box = Gtk.Template.Child()
-    start_stop_record_button_stack = Gtk.Template.Child()
 
     fullscreen_mode_toggle = Gtk.Template.Child()
     selection_mode_toggle = Gtk.Template.Child()
 
-    header_revealer = Gtk.Template.Child()
     title_stack = Gtk.Template.Child()
     fullscreen_mode_label = Gtk.Template.Child()
     selection_mode_label = Gtk.Template.Child()
@@ -94,8 +92,6 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.delay_timer.start(delay)
             if delay > 0:
                 self.main_stack.set_visible_child(self.delay_label_box)
-                self.start_stop_record_button_stack.set_visible_child(self.cancel_delay_button)
-                self.header_revealer.set_reveal_child(False)
         else:
             error = Gtk.MessageDialog(transient_for=self, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Recording cannot start"))
             error.format_secondary_text(_("The saving location you have selected may have been deleted."))
@@ -120,16 +116,12 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         self.video_recorder.start(self.directory, framerate, show_pointer, pipeline)
 
-        self.header_revealer.set_reveal_child(False)
-        self.start_stop_record_button_stack.set_visible_child(self.stop_record_button)
         self.main_stack.set_visible_child(self.recording_label_box)
 
         self.timer.start()
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
-        self.header_revealer.set_reveal_child(True)
-        self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
         self.main_stack.set_visible_child(self.main_screen_box)
 
         self.video_recorder.stop()
@@ -141,8 +133,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.delay_timer.cancel()
 
         self.main_stack.set_visible_child(self.main_screen_box)
-        self.start_stop_record_button_stack.set_visible_child(self.start_record_button_box)
-        self.header_revealer.set_reveal_child(True)
 
     @Gtk.Template.Callback()
     def on_fullscreen_mode_clicked(self, widget):
