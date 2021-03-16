@@ -59,7 +59,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.application = kwargs["application"]
 
-        # settings init
         self.record_audio_toggle.set_active(self.application.settings.get_boolean("record-audio"))
         self.record_microphone_toggle.set_active(self.application.settings.get_boolean("record-microphone"))
         self.show_pointer_toggle.set_active(self.application.settings.get_boolean("show-pointer"))
@@ -130,9 +129,9 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_cancel_delay_button_clicked(self, widget):
-        self.delay_timer.cancel()
-
         self.main_stack.set_visible_child(self.main_screen_box)
+
+        self.delay_timer.cancel()
 
     @Gtk.Template.Callback()
     def on_fullscreen_mode_clicked(self, widget):
