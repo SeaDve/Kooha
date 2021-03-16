@@ -1,0 +1,200 @@
+# Swedish translations for Kooha.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kooha package.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kooha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-15 19:10+0800\n"
+"PO-Revision-Date: 2021-03-16 09:33+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sv\n"
+
+#: data/io.github.seadve.Kooha.desktop.in:3
+#: data/io.github.seadve.Kooha.appdata.xml.in:7
+msgid "Kooha"
+msgstr "Kooha"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in:11
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
+msgid "Simple screen recorder"
+msgstr "Enkel skärminspelare"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:10
+msgid ""
+"Kooha is a simple screen recorder built with GTK. It allows you to record "
+"your screen and also audio from your microphone or desktop."
+msgstr ""
+"Kooha är en enkel skärminspelare byggd med GTK. Den låter dig spela in "
+"vad som sker på din skärm och även ljudet från din mikrofon eller "
+"skrivbordet."
+
+#. Translators: please do NOT translate this
+#: data/io.github.seadve.Kooha.appdata.xml.in:19
+msgid "Dave Patrick"
+msgstr "Dave Patrick"
+
+#: data/ui/shortcuts.ui:13
+msgid "General"
+msgstr "Allmänt"
+
+#: data/ui/shortcuts.ui:18
+msgid "Open menu"
+msgstr "Öppna menyn"
+
+#: data/ui/shortcuts.ui:25
+msgid "Show keyboard shortcuts"
+msgstr "Visa tangentbordsgenvägar"
+
+#: data/ui/shortcuts.ui:32
+msgid "Quit"
+msgstr "Avsluta"
+
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:298
+msgid "Recording"
+msgstr "Spelar in"
+
+#: data/ui/shortcuts.ui:45
+msgid "Toggle record"
+msgstr "Inspelning på/av"
+
+#: data/ui/shortcuts.ui:52
+msgid "Cancel delay"
+msgstr "Avbryt fördröjning"
+
+#: data/ui/shortcuts.ui:60
+msgid "Settings"
+msgstr "Inställningar"
+
+#: data/ui/shortcuts.ui:65
+msgid "Toggle capture mode"
+msgstr "Växla inhämtningsläge"
+
+#: data/ui/shortcuts.ui:72
+msgid "Toggle computer sounds"
+msgstr "Datorljud på/av"
+
+#: data/ui/shortcuts.ui:79
+msgid "Toggle microphone"
+msgstr "Mikrofonljud på/av"
+
+#: data/ui/shortcuts.ui:86
+msgid "Toggle pointer"
+msgstr "Visa/Dölj muspekare"
+
+#: data/ui/window.ui:9
+msgid "Delay"
+msgstr "Fördröjning"
+
+#: data/ui/window.ui:11
+msgid "None"
+msgstr "Ingen"
+
+#: data/ui/window.ui:16
+msgid "5 seconds"
+msgstr "5 sekunder"
+
+#: data/ui/window.ui:21
+msgid "10 seconds"
+msgstr "10 sekunder"
+
+#: data/ui/window.ui:27
+msgid "Video Format"
+msgstr "Videoformat"
+
+#: data/ui/window.ui:29
+msgid "WebM"
+msgstr "WebM"
+
+#: data/ui/window.ui:34
+msgid "MKV"
+msgstr "MKV"
+
+#: data/ui/window.ui:41
+msgid "Save to…"
+msgstr "Spara till…"
+
+#: data/ui/window.ui:47
+msgid "Keyboard Shortcuts"
+msgstr "Tangenbordsgenvägar"
+
+#: data/ui/window.ui:51
+msgid "About Kooha"
+msgstr "Om Kooha"
+
+#: data/ui/window.ui:90
+msgid "Full Screen"
+msgstr "Helskärm"
+
+#: data/ui/window.ui:100
+msgid "Selection"
+msgstr "Markering"
+
+#: data/ui/window.ui:342
+msgid "Recording in…"
+msgstr "Spelar in om…"
+
+#: data/ui/window.ui:394
+msgid "Record"
+msgstr "Spela in"
+
+#: data/ui/window.ui:444
+msgid "Stop"
+msgstr "Stopp"
+
+#: data/ui/window.ui:461
+msgid "Cancel Delay"
+msgstr "Avbryt fördröjning"
+
+#: src/main.py:95
+msgid "Select a Folder"
+msgstr "Välj en mapp"
+
+#: src/main.py:96
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/main.py:96
+msgid "Select"
+msgstr "Välj"
+
+#: src/main.py:106
+msgid "Save location not set"
+msgstr "Lagringsplats ej angiven"
+
+#: src/main.py:107
+msgid "Please choose an accessible location and retry."
+msgstr "Välj en åtkomlig plats och försök igen."
+
+#: src/main.py:131
+msgid "Copyright 2021 Dave Patrick"
+msgstr "Copyright 2021 Dave Patrick"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/main.py:133
+msgid "translator-credits"
+msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
+
+#: src/main.py:134
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/window.py:100
+msgid "Recording cannot start"
+msgstr "Inspelning kan inte starta"
+
+#: src/window.py:101
+msgid "The saving location you have selected may have been deleted."
+msgstr "Lagringsplatsen du har valt kanske har tagits bort."
