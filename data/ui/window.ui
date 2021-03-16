@@ -64,7 +64,7 @@
           <object class="GtkStack" id="main_stack">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="transition-duration">200</property>
+            <property name="transition-duration">150</property>
             <property name="transition-type">crossfade</property>
             <child>
               <object class="GtkBox" id="main_screen_box">
@@ -80,7 +80,7 @@
                       <object class="GtkStack" id="title_stack">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="transition-duration">200</property>
+                        <property name="transition-duration">150</property>
                         <property name="transition-type">crossfade</property>
                         <child>
                           <object class="GtkLabel" id="fullscreen_mode_label">
