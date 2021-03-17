@@ -78,13 +78,14 @@ class AudioRecorder:
 
     def get_default_audio_source(self, source):
         pactl_command = f"pactl list sources | grep \"Name: {source}\" | cut -d\" \" -f2"
-        pactl_output = Popen(pactl_command, shell=True, text=True, stdout=PIPE).stdout.read()
-        if not pactl_output:
+        pactl_output = Popen(pactl_command, shell=True, text=True, stdout=PIPE).stdout.read().split("\n")
+        print(f"Detected sources: {pactl_output}")
+        if len(pactl_output) == 1:
             return None
         if source == "alsa_output":
-            return pactl_output.split("\n")[0]
+            return pactl_output[0]
         elif source == "alsa_input":
-            return pactl_output.split("\n")[-2]
+            return pactl_output[-2]
 
     def get_tmp_dir(self, media_type):
         if media_type == "audio":
