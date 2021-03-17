@@ -1,6 +1,6 @@
 <h1 align="center">
-	<img src="data/logo/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
-	Kooha
+  <img src="data/logo/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
+  Kooha
 </h1>
 
 <p align="center"><strong>Simple screen recorder</strong></p>
