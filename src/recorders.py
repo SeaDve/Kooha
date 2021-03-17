@@ -92,7 +92,10 @@ class AudioRecorder:
             extension = ".ogg"
         elif media_type == "video":
             extension = ".mkv"
-        return f"{os.getenv('XDG_CACHE_HOME')}/tmp/tmp{media_type}{extension}"
+        directory = os.getenv('XDG_CACHE_HOME')
+        if not directory:
+            directory = ""
+        return f"{directory}/tmp/tmp{media_type}{extension}"
 
 
 class VideoRecorder:
