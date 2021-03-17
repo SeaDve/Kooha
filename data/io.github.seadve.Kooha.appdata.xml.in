@@ -34,6 +34,18 @@
   </screenshots>
 
   <releases>
+    <release version="1.0.3" date="2021-03-17">
+      <description>
+        <p>A couple of bug fixes here and improvements there:</p>
+        <ul>
+          <li>Minor performance improvements</li>
+          <li>Bug fixes</li>
+          <li>Added Swedish translations</li>
+          <li>Added Indonesian translations</li>
+          <li>Update Filipino translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.2" date="2021-03-15">
       <description>
         <p>This release brings a couple of small changes:</p>
