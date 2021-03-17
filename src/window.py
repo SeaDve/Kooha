@@ -143,21 +143,15 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_record_audio_toggled(self, widget):
-        if self.record_audio_toggle.get_active():
-            self.application.settings.set_boolean("record-audio", True)
-        else:
-            self.application.settings.set_boolean("record-audio", False)
+        state = self.record_audio_toggle.get_active()
+        self.application.settings.set_boolean("record-audio", state)
 
     @Gtk.Template.Callback()
     def on_record_microphone_toggled(self, widget):
-        if self.record_microphone_toggle.get_active():
-            self.application.settings.set_boolean("record-microphone", True)
-        else:
-            self.application.settings.set_boolean("record-microphone", False)
+        state = self.record_microphone_toggle.get_active()
+        self.application.settings.set_boolean("record-microphone", state)
 
     @Gtk.Template.Callback()
     def on_show_pointer_toggled(self, widget):
-        if self.show_pointer_toggle.get_active():
-            self.application.settings.set_boolean("show-pointer", True)
-        else:
-            self.application.settings.set_boolean("show-pointer", False)
+        state = self.show_pointer_toggle.get_active()
+        self.application.settings.set_boolean("show-pointer", state)
