@@ -134,10 +134,9 @@ class Application(Gtk.Application):
         about.show()
 
     def on_change_capture_mode(self, action, widget):
-        if self.window.fullscreen_mode_toggle.get_active():
-            self.window.selection_mode_toggle.set_active(True)
-        else:
-            self.window.fullscreen_mode_toggle.set_active(True)
+        state = self.window.fullscreen_mode_toggle.get_active()
+        self.window.selection_mode_toggle.set_active(state)
+        self.window.fullscreen_mode_toggle.set_active(not state)
 
     def on_quit(self, action, widget):
         if self.window.main_stack.get_visible_child() is self.window.main_screen_box:
