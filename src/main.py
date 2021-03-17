@@ -98,17 +98,17 @@ class Application(Gtk.Application):
         response = dialog.run()
         if response == Gtk.ResponseType.ACCEPT:
             directory = dialog.get_filenames()
-        else:
-            directory = None
         dialog.destroy()
-
-        if not os.access(directory[0], os.W_OK) or not directory[0].startswith(os.getenv("HOME")):
-            error = Gtk.MessageDialog(transient_for=self.window, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
-            error.format_secondary_text(_("Please choose an accessible location and retry."))
-            error.run()
-            error.destroy()
-        else:
-            self.settings.set_string("saving-location", directory[0])
+        try:
+            if not os.access(directory[0], os.W_OK) or not directory[0].startswith(os.getenv("HOME")):
+                error = Gtk.MessageDialog(transient_for=self.window, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
+                error.format_secondary_text(_("Please choose an accessible location and retry."))
+                error.run()
+                error.destroy()
+            else:
+                self.settings.set_string("saving-location", directory[0])
+        except:
+            return
 
     def show_shortcuts_window(self, action, widget):
         window = Gtk.Builder.new_from_resource('/io/github/seadve/Kooha/shortcuts.ui').get_object('shortcuts')
