@@ -9,8 +9,21 @@
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
 </p>
 
+<br>
 <p align="center">
-  <img src="screenshots/Kooha-preview.png"/>
+  <a href="https://hosted.weblate.org/engage/kooha/">
+    <img src="https://hosted.weblate.org/widgets/kooha/-/svg-badge.svg" alt="Translation status" />
+  </a>
+  <a href="https://github.com/SeaDve/Kooha/actions/workflows/CI.yml">
+    <img src="https://github.com/SeaDve/Kooha/actions/workflows/CI.yml/badge.svg" alt="CI status"/>
+  </a>
+  <a href="https://paypal.me/sedve">
+    <img src="https://img.shields.io/badge/PayPal-Donate-gray.svg?style=flat&logo=paypal&colorA=0071bb&logoColor=fff" alt="Donate" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="screenshots/Kooha-preview.png" alt="Preview"/>
 </p>
 
 ## Description
@@ -57,7 +70,3 @@ Developed by **[Dave Patrick](https://github.com/SeaDve)** and [contributors](ht
 Inspired from [RecApp](https://github.com/amikha1lov/RecApp).
 
 The [chime](https://soundbible.com/1598-Electronic-Chime.html) used is under the Public Domain.
-
-
-## Donate
-If you want to support development, consider donating via [PayPal](https://paypal.me/sedve).
