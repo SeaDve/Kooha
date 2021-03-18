@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-15 19:10+0800\n"
+"POT-Creation-Date: 2021-03-18 20:19+0800\n"
 "PO-Revision-Date: 2021-03-16 11:21+0100\n"
+"Last-Translator: Sébastien SERRE <sebastien@thivinfo.com>\n"
 "Language-Team: \n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: Sébastien SERRE <sebastien@thivinfo.com>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: fr_FR\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -28,7 +28,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
 msgid "Simple screen recorder"
 msgstr "Un simple enregistreur d’écran"
 
@@ -62,7 +62,7 @@ msgstr "Montrer les raccourcis clavier"
 msgid "Quit"
 msgstr "Quitter"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:298
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
 msgid "Recording"
 msgstr "Enregistrer"
 
@@ -134,27 +134,45 @@ msgstr "Raccourcis clavier"
 msgid "About Kooha"
 msgstr "A propos"
 
-#: data/ui/window.ui:90
+#: data/ui/window.ui:89
 msgid "Full Screen"
 msgstr "Plein écran"
 
-#: data/ui/window.ui:100
+#: data/ui/window.ui:99
 msgid "Selection"
 msgstr "Sélection"
 
-#: data/ui/window.ui:342
-msgid "Recording in…"
-msgstr "Enregistrer dans "
+#: data/ui/window.ui:203
+#, fuzzy
+#| msgid "Toggle computer sounds"
+msgid "Record computer sounds"
+msgstr "Activer le son de l’ordinateur"
 
-#: data/ui/window.ui:394
+#: data/ui/window.ui:225
+#, fuzzy
+#| msgid "Toggle microphone"
+msgid "Record from microphone"
+msgstr "Activer le mmicro"
+
+#: data/ui/window.ui:247
+#, fuzzy
+#| msgid "Toggle pointer"
+msgid "Show pointer"
+msgstr "Activer le pointeur"
+
+#: data/ui/window.ui:277
 msgid "Record"
 msgstr "Enregistrer"
 
-#: data/ui/window.ui:444
+#: data/ui/window.ui:396
 msgid "Stop"
 msgstr "Stop"
 
-#: data/ui/window.ui:461
+#: data/ui/window.ui:439
+msgid "Recording in…"
+msgstr "Enregistrer dans "
+
+#: data/ui/window.ui:475
 msgid "Cancel Delay"
 msgstr "Annuler le retard"
 
@@ -170,32 +188,32 @@ msgstr "Annuler"
 msgid "Select"
 msgstr "Choisir"
 
-#: src/main.py:106
+#: src/main.py:104
 msgid "Save location not set"
 msgstr "Emplacement d’enregistrement non sauvé."
 
-#: src/main.py:107
+#: src/main.py:105
 msgid "Please choose an accessible location and retry."
 msgstr "Veuillez choisir un emplacement accessible et réessayer."
 
-#: src/main.py:131
+#: src/main.py:129
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:133
+#: src/main.py:131
 msgid "translator-credits"
 msgstr "Sébastien SERRE"
 
-#: src/main.py:134
+#: src/main.py:132
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:100
+#: src/window.py:95
 msgid "Recording cannot start"
 msgstr "L’enregistrement n’a pas pu débuter"
 
-#: src/window.py:101
+#: src/window.py:96
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
 "L'emplacement d'enregistrement que vous avez sélectionné a peut-être été "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 18:45+0800\n"
+"POT-Creation-Date: 2021-03-18 20:19+0800\n"
 "PO-Revision-Date: 2021-03-18 03:02+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -30,7 +30,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
 msgid "Simple screen recorder"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Quit"
 msgstr "Выход"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:356
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
 msgid "Recording"
 msgstr "Запись"
 
@@ -141,19 +141,31 @@ msgstr ""
 msgid "Selection"
 msgstr ""
 
-#: data/ui/window.ui:274
+#: data/ui/window.ui:203
+msgid "Record computer sounds"
+msgstr ""
+
+#: data/ui/window.ui:225
+msgid "Record from microphone"
+msgstr ""
+
+#: data/ui/window.ui:247
+msgid "Show pointer"
+msgstr ""
+
+#: data/ui/window.ui:277
 msgid "Record"
 msgstr "Запись"
 
-#: data/ui/window.ui:393
+#: data/ui/window.ui:396
 msgid "Stop"
 msgstr "Остановить"
 
-#: data/ui/window.ui:436
+#: data/ui/window.ui:439
 msgid "Recording in…"
 msgstr "Запись в…"
 
-#: data/ui/window.ui:472
+#: data/ui/window.ui:475
 msgid "Cancel Delay"
 msgstr ""
 
@@ -169,24 +181,24 @@ msgstr "Отмена"
 msgid "Select"
 msgstr "Выбрать"
 
-#: src/main.py:106
+#: src/main.py:104
 msgid "Save location not set"
 msgstr ""
 
-#: src/main.py:107
+#: src/main.py:105
 msgid "Please choose an accessible location and retry."
 msgstr ""
 
-#: src/main.py:131
+#: src/main.py:129
 msgid "Copyright 2021 Dave Patrick"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:133
+#: src/main.py:131
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:134
+#: src/main.py:132
 msgid "GitHub"
 msgstr "GitHub"
 

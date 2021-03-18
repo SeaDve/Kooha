@@ -7,189 +7,209 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 18:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2021-03-18 20:19+0800\n"
+"PO-Revision-Date: 2021-03-18 12:29+0000\n"
+"Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail.com>"
+"\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"kooha/pot-file/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;gravação de tela;tela;vídeo;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
 msgid "Simple screen recorder"
-msgstr ""
+msgstr "Gravador de Tela Simples"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Kooha is a simple screen recorder built with GTK. It allows you to record "
 "your screen and also audio from your microphone or desktop."
 msgstr ""
+"Kooha é um simples gravador de tela feito com GTK. Ele permite que você "
+"grave sua tela e também o aúdio do seu microfone ou desktop."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:13
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: data/ui/shortcuts.ui:18
 msgid "Open menu"
-msgstr ""
+msgstr "Abrir o menu"
 
 #: data/ui/shortcuts.ui:25
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "Mostrar atalhos de teclado"
 
 #: data/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr ""
+msgstr "Sair"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:356
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
 msgid "Recording"
-msgstr ""
+msgstr "Gravando"
 
 #: data/ui/shortcuts.ui:45
 msgid "Toggle record"
-msgstr ""
+msgstr "Alternar gravação"
 
 #: data/ui/shortcuts.ui:52
 msgid "Cancel delay"
-msgstr ""
+msgstr "Cancelar atraso"
 
 #: data/ui/shortcuts.ui:60
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: data/ui/shortcuts.ui:65
 msgid "Toggle capture mode"
-msgstr ""
+msgstr "Alternar modo de captura"
 
 #: data/ui/shortcuts.ui:72
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Alternar sons do computador"
 
 #: data/ui/shortcuts.ui:79
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Alternar microfone"
 
 #: data/ui/shortcuts.ui:86
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Alternar mouse"
 
 #: data/ui/window.ui:9
 msgid "Delay"
-msgstr ""
+msgstr "Atraso"
 
 #: data/ui/window.ui:11
 msgid "None"
-msgstr ""
+msgstr "Nenhum"
 
 #: data/ui/window.ui:16
 msgid "5 seconds"
-msgstr ""
+msgstr "5 segundos"
 
 #: data/ui/window.ui:21
 msgid "10 seconds"
-msgstr ""
+msgstr "10 segundos"
 
 #: data/ui/window.ui:27
 msgid "Video Format"
-msgstr ""
+msgstr "Formato de Vídeo"
 
 #: data/ui/window.ui:29
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/ui/window.ui:34
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/ui/window.ui:41
 msgid "Save to…"
-msgstr ""
+msgstr "Salvar para …"
 
 #: data/ui/window.ui:47
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Atalhos de teclado"
 
 #: data/ui/window.ui:51
 msgid "About Kooha"
-msgstr ""
+msgstr "Sobre o Kooha"
 
 #: data/ui/window.ui:89
 msgid "Full Screen"
-msgstr ""
+msgstr "Tela Cheia"
 
 #: data/ui/window.ui:99
 msgid "Selection"
-msgstr ""
+msgstr "Seleção"
 
-#: data/ui/window.ui:274
+#: data/ui/window.ui:203
+msgid "Record computer sounds"
+msgstr "Gravar sons do computador"
+
+#: data/ui/window.ui:225
+msgid "Record from microphone"
+msgstr "Gravar som do microfone"
+
+#: data/ui/window.ui:247
+msgid "Show pointer"
+msgstr "Mostrar ponteiro"
+
+#: data/ui/window.ui:277
 msgid "Record"
-msgstr ""
+msgstr "Gravar"
 
-#: data/ui/window.ui:393
+#: data/ui/window.ui:396
 msgid "Stop"
-msgstr ""
+msgstr "Parar"
 
-#: data/ui/window.ui:436
+#: data/ui/window.ui:439
 msgid "Recording in…"
-msgstr ""
+msgstr "Gravando em…"
 
-#: data/ui/window.ui:472
+#: data/ui/window.ui:475
 msgid "Cancel Delay"
-msgstr ""
+msgstr "Cancelar Atraso"
 
 #: src/main.py:95
 msgid "Select a Folder"
-msgstr ""
+msgstr "Selecione uma Pasta"
 
 #: src/main.py:96
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/main.py:96
 msgid "Select"
-msgstr ""
+msgstr "Selecione"
 
-#: src/main.py:106
+#: src/main.py:104
 msgid "Save location not set"
-msgstr ""
+msgstr "Local de salvamento não definido"
 
-#: src/main.py:107
+#: src/main.py:105
 msgid "Please choose an accessible location and retry."
-msgstr ""
+msgstr "Por favor escolha um local acessível e tente novamente."
 
-#: src/main.py:131
+#: src/main.py:129
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:133
+#: src/main.py:131
 msgid "translator-credits"
 msgstr ""
+"Vitor Cardoso\n"
+"Felipe Kinoshita"
 
-#: src/main.py:134
+#: src/main.py:132
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/window.py:95
 msgid "Recording cannot start"
-msgstr ""
+msgstr "Gravação não pode iniciar"
 
 #: src/window.py:96
 msgid "The saving location you have selected may have been deleted."
-msgstr ""
+msgstr "O local que você selecionou pode ter sido deletado."
