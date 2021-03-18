@@ -37,7 +37,7 @@ class AudioRecorder:
             elif self.record_microphone and self.default_audio_input:
                 audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")}'
 
-            elif (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
+            if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
                 audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")} pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
 
             self.audio_gst = Gst.parse_launch(audio_pipeline)
