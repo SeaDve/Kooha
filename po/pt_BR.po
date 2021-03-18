@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-18 20:19+0800\n"
-"PO-Revision-Date: 2021-03-18 12:24+0000\n"
+"PO-Revision-Date: 2021-03-18 12:29+0000\n"
 "Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail.com>"
 "\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -113,7 +113,7 @@ msgstr "10 segundos"
 
 #: data/ui/window.ui:27
 msgid "Video Format"
-msgstr "Formato do Vídeo"
+msgstr "Formato de Vídeo"
 
 #: data/ui/window.ui:29
 msgid "WebM"
@@ -144,22 +144,16 @@ msgid "Selection"
 msgstr "Seleção"
 
 #: data/ui/window.ui:203
-#, fuzzy
-#| msgid "Toggle computer sounds"
 msgid "Record computer sounds"
-msgstr "Alternar sons do computador"
+msgstr "Gravar sons do computador"
 
 #: data/ui/window.ui:225
-#, fuzzy
-#| msgid "Toggle microphone"
 msgid "Record from microphone"
-msgstr "Alternar microfone"
+msgstr "Gravar som do microfone"
 
 #: data/ui/window.ui:247
-#, fuzzy
-#| msgid "Toggle pointer"
 msgid "Show pointer"
-msgstr "Alternar mouse"
+msgstr "Mostrar ponteiro"
 
 #: data/ui/window.ui:277
 msgid "Record"
