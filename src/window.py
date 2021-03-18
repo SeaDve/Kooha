@@ -42,10 +42,6 @@ class KoohaWindow(Handy.ApplicationWindow):
     fullscreen_mode_label = Gtk.Template.Child()
     selection_mode_label = Gtk.Template.Child()
 
-    record_audio_toggle = Gtk.Template.Child()
-    record_microphone_toggle = Gtk.Template.Child()
-    show_pointer_toggle = Gtk.Template.Child()
-
     main_stack = Gtk.Template.Child()
     main_screen_box = Gtk.Template.Child()
     recording_label_box = Gtk.Template.Child()
