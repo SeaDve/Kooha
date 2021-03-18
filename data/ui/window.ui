@@ -200,6 +200,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Record computer sounds</property>
                             <signal name="toggled" handler="on_record_audio_toggled" swapped="no"/>
                             <child>
                               <object class="GtkImage">
@@ -221,6 +222,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Record from microphone</property>
                             <signal name="toggled" handler="on_record_microphone_toggled" swapped="no"/>
                             <child>
                               <object class="GtkImage">
@@ -242,6 +244,7 @@
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
+                            <property name="tooltip-text" translatable="yes">Show pointer</property>
                             <signal name="toggled" handler="on_show_pointer_toggled" swapped="no"/>
                             <child>
                               <object class="GtkImage">
