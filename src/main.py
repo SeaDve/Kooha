@@ -65,6 +65,15 @@ class Application(Gtk.Application):
         self.window.present()
 
     def setup_actions(self):
+        action = self.settings.create_action("record-audio")
+        self.add_action(action)
+
+        action = self.settings.create_action("record-microphone")
+        self.add_action(action)
+
+        action = self.settings.create_action("show-pointer")
+        self.add_action(action)
+
         action = self.settings.create_action("record-delay")
         self.add_action(action)
 
