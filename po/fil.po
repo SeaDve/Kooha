@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 18:45+0800\n"
+"POT-Creation-Date: 2021-03-18 20:19+0800\n"
 "PO-Revision-Date: 2021-03-16 18:46+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
 msgid "Simple screen recorder"
 msgstr "Simpleng pangrekord ng screen"
 
@@ -63,7 +63,7 @@ msgstr "Ipakita ang mga keyboard shortcut"
 msgid "Quit"
 msgstr "Isara"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:356
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
 msgid "Recording"
 msgstr "Nagrerekord"
 
@@ -143,19 +143,37 @@ msgstr "Buong screen"
 msgid "Selection"
 msgstr "Seleksyon"
 
-#: data/ui/window.ui:274
+#: data/ui/window.ui:203
+#, fuzzy
+#| msgid "Toggle computer sounds"
+msgid "Record computer sounds"
+msgstr "I-toggle ang tunog sa ispiker"
+
+#: data/ui/window.ui:225
+#, fuzzy
+#| msgid "Toggle microphone"
+msgid "Record from microphone"
+msgstr "I-toggle ang tunog sa mikropono"
+
+#: data/ui/window.ui:247
+#, fuzzy
+#| msgid "Toggle pointer"
+msgid "Show pointer"
+msgstr "I-toggle ang pointer"
+
+#: data/ui/window.ui:277
 msgid "Record"
 msgstr "Magrekord"
 
-#: data/ui/window.ui:393
+#: data/ui/window.ui:396
 msgid "Stop"
 msgstr "Huminto"
 
-#: data/ui/window.ui:436
+#: data/ui/window.ui:439
 msgid "Recording in…"
 msgstr "Magrerekord sa…"
 
-#: data/ui/window.ui:472
+#: data/ui/window.ui:475
 msgid "Cancel Delay"
 msgstr "Ikansela ang Antala"
 
@@ -171,24 +189,24 @@ msgstr "Ikansela"
 msgid "Select"
 msgstr "Piliin"
 
-#: src/main.py:106
+#: src/main.py:104
 msgid "Save location not set"
 msgstr "Hindi na-set ang lokasyon"
 
-#: src/main.py:107
+#: src/main.py:105
 msgid "Please choose an accessible location and retry."
 msgstr "Pumili ng kayang i-access na lokasyon at ulitin."
 
-#: src/main.py:131
+#: src/main.py:129
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Kopirayt 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:133
+#: src/main.py:131
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:134
+#: src/main.py:132
 msgid "GitHub"
 msgstr ""
 
