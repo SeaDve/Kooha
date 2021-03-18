@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
 from subprocess import PIPE, Popen
 
 from gi.repository import GLib, Gio, Gst
@@ -38,7 +37,7 @@ class AudioRecorder:
             elif self.record_microphone and self.default_audio_input:
                 audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")}'
 
-            if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
+            elif (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
                 audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")} pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
 
             self.audio_gst = Gst.parse_launch(audio_pipeline)
@@ -92,7 +91,7 @@ class AudioRecorder:
             extension = ".ogg"
         elif media_type == "video":
             extension = ".mkv"
-        directory = os.getenv('XDG_CACHE_HOME')
+        directory = GLib.getenv('XDG_CACHE_HOME')
         if not directory:
             directory = ""
         return f"{directory}/tmp/tmp{media_type}{extension}"
