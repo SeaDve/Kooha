@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 18:45+0800\n"
+"POT-Creation-Date: 2021-03-18 20:19+0800\n"
 "PO-Revision-Date: 2021-03-16 17:46+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -28,7 +28,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Perekam;Layar;Video"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:128
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
 msgid "Simple screen recorder"
 msgstr "Perekam layar sederhana"
 
@@ -62,7 +62,7 @@ msgstr "Tampilkan pintasan keyboard"
 msgid "Quit"
 msgstr "Berhenti"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:356
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
 msgid "Recording"
 msgstr "Merekam"
 
@@ -142,19 +142,37 @@ msgstr "Layar Penuh"
 msgid "Selection"
 msgstr "Pilihan"
 
-#: data/ui/window.ui:274
+#: data/ui/window.ui:203
+#, fuzzy
+#| msgid "Toggle computer sounds"
+msgid "Record computer sounds"
+msgstr "Toggle suara komputer"
+
+#: data/ui/window.ui:225
+#, fuzzy
+#| msgid "Toggle microphone"
+msgid "Record from microphone"
+msgstr "Toggle mikrofon"
+
+#: data/ui/window.ui:247
+#, fuzzy
+#| msgid "Toggle pointer"
+msgid "Show pointer"
+msgstr "Toggle penunjuk"
+
+#: data/ui/window.ui:277
 msgid "Record"
 msgstr "Rekam"
 
-#: data/ui/window.ui:393
+#: data/ui/window.ui:396
 msgid "Stop"
 msgstr "Berhenti"
 
-#: data/ui/window.ui:436
+#: data/ui/window.ui:439
 msgid "Recording in…"
 msgstr "Merekam dalam..."
 
-#: data/ui/window.ui:472
+#: data/ui/window.ui:475
 msgid "Cancel Delay"
 msgstr "Batalkan penundaan"
 
@@ -170,24 +188,24 @@ msgstr "Batal"
 msgid "Select"
 msgstr "Pilih"
 
-#: src/main.py:106
+#: src/main.py:104
 msgid "Save location not set"
 msgstr "Lokasi penyimpanan belum diatur"
 
-#: src/main.py:107
+#: src/main.py:105
 msgid "Please choose an accessible location and retry."
 msgstr "Mohon pilih tempat yang dapat diakses dan coba lagi."
 
-#: src/main.py:131
+#: src/main.py:129
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Hak Cipta 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:133
+#: src/main.py:131
 msgid "translator-credits"
 msgstr "Dani Rananta"
 
-#: src/main.py:134
+#: src/main.py:132
 msgid "GitHub"
 msgstr "GitHub"
 
