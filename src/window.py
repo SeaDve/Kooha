@@ -49,8 +49,6 @@ class KoohaWindow(Handy.ApplicationWindow):
     delay_label_box = Gtk.Template.Child()
     delay_label = Gtk.Template.Child()
 
-    menu_button = Gtk.Template.Child()
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.application = kwargs["application"]
