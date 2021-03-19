@@ -129,7 +129,7 @@ class VideoRecorder:
         self.pipeline = pipeline
 
         if self.stack.get_visible_child() is self.fullscreen_mode_label:
-            self.GNOMEScreencast.call(
+            self.GNOMEScreencast.call_sync(
                         "Screencast",
                         GLib.Variant.new_tuple(
                             GLib.Variant.new_string(self.directory),
@@ -144,7 +144,7 @@ class VideoRecorder:
                         None)
 
         elif self.stack.get_visible_child() is not self.fullscreen_mode_label:
-            self.GNOMEScreencast.call(
+            self.GNOMEScreencast.call_sync(
                     "ScreencastArea",
                     GLib.Variant.new_tuple(
                         GLib.Variant("i", self.coordinates[0]),
