@@ -35,9 +35,6 @@ class KoohaWindow(Handy.ApplicationWindow):
     cancel_delay_button = Gtk.Template.Child()
     start_record_button_box = Gtk.Template.Child()
 
-    fullscreen_mode_toggle = Gtk.Template.Child()
-    selection_mode_toggle = Gtk.Template.Child()
-
     title_stack = Gtk.Template.Child()
     fullscreen_mode_label = Gtk.Template.Child()
     selection_mode_label = Gtk.Template.Child()
@@ -55,7 +52,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         self.timer = Timer(self.time_recording_label)
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
-        self.video_recorder = VideoRecorder(self.fullscreen_mode_toggle)
+        self.video_recorder = VideoRecorder(self.title_stack, self.fullscreen_mode_label)
 
         desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
         if "GNOME" not in desktop_environment:
@@ -64,7 +61,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-        if not self.fullscreen_mode_toggle.get_active():
+        if self.title_stack.get_visible_child() is self.selection_mode_label:
             self.video_recorder.get_coordinates()
 
         video_directory = self.application.settings.get_string('saving-location')
@@ -122,11 +119,3 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.main_screen_box)
 
         self.delay_timer.cancel()
-
-    @Gtk.Template.Callback()
-    def on_fullscreen_mode_clicked(self, widget):
-        self.title_stack.set_visible_child(self.fullscreen_mode_label)
-
-    @Gtk.Template.Callback()
-    def on_selection_mode_clicked(self, widget):
-        self.title_stack.set_visible_child(self.selection_mode_label)

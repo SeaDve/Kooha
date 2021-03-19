@@ -98,8 +98,9 @@ class AudioRecorder:
 
 
 class VideoRecorder:
-    def __init__(self, fullscreen_mode_toggle):
-        self.fullscreen_mode_toggle = fullscreen_mode_toggle
+    def __init__(self, stack, label):
+        self.stack = stack
+        self.fullscreen_mode_label = label
 
         bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
         self.GNOMEScreencast = Gio.DBusProxy.new_sync(
@@ -127,7 +128,7 @@ class VideoRecorder:
         self.show_pointer = show_pointer
         self.pipeline = pipeline
 
-        if self.fullscreen_mode_toggle.get_active():
+        if self.stack.get_visible_child() is self.fullscreen_mode_label:
             self.GNOMEScreencast.call(
                         "Screencast",
                         GLib.Variant.new_tuple(
@@ -142,7 +143,7 @@ class VideoRecorder:
                         -1,
                         None)
 
-        elif not self.fullscreen_mode_toggle.get_active():
+        elif self.stack.get_visible_child() is not self.fullscreen_mode_label:
             self.GNOMEScreencast.call(
                     "ScreencastArea",
                     GLib.Variant.new_tuple(

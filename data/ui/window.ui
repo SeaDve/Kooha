@@ -90,6 +90,9 @@
                               <class name="title"/>
                             </style>
                           </object>
+                          <packing>
+                            <property name="icon-name">data_icons_display-symbolic</property>
+                          </packing>
                         </child>
                         <child>
                           <object class="GtkLabel" id="selection_mode_label">
@@ -101,6 +104,7 @@
                             </style>
                           </object>
                           <packing>
+                            <property name="icon-name">data_icons_selection-symbolic</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -126,59 +130,13 @@
                     <property name="orientation">vertical</property>
                     <property name="spacing">12</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkStackSwitcher">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="homogeneous">True</property>
-                        <child>
-                          <object class="GtkRadioButton" id="fullscreen_mode_toggle">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="draw-indicator">False</property>
-                            <signal name="clicked" handler="on_fullscreen_mode_clicked" swapped="no"/>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="xpad">0</property>
-                                <property name="ypad">0</property>
-                                <property name="pixel-size">30</property>
-                                <property name="icon-name">data_icons_display-symbolic</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="selection_mode_toggle">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="draw-indicator">False</property>
-                            <property name="group">fullscreen_mode_toggle</property>
-                            <signal name="clicked" handler="on_selection_mode_clicked" swapped="no"/>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixel-size">30</property>
-                                <property name="icon-name">data_icons_selection-symbolic</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
+                        <property name="icon-size">5</property>
+                        <property name="stack">title_stack</property>
                         <style>
-                          <class name="linked"/>
                           <class name="tall"/>
                         </style>
                       </object>
