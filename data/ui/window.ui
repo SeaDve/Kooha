@@ -55,7 +55,6 @@
   <template class="KoohaWindow" parent="HdyApplicationWindow">
     <property name="can-focus">False</property>
     <property name="resizable">False</property>
-    <signal name="destroy" handler="onQuit" swapped="no"/>
     <child>
       <object class="HdyWindowHandle">
         <property name="visible">True</property>
