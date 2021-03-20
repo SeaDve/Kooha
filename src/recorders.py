@@ -27,8 +27,8 @@ class AudioRecorder:
         self.saving_location = saving_location.replace(" ", "\ ")
 
     def start(self):
-        self.default_audio_output = self.get_default_audio_source("Sink")
-        self.default_audio_input = self.get_default_audio_source("Source")
+        self.default_audio_output, self.default_audio_input = self.get_default_audio_devices()
+        print(f"Default sink: {self.default_audio_output} \nDefault source: {self.default_audio_input}")
 
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             if self.record_audio and self.default_audio_output:
@@ -75,15 +75,14 @@ class AudioRecorder:
             err, debug = message.parse_error()
             print("audio_gst Error: %s" % err, debug)
 
-    def get_default_audio_source(self, source):
-        pactl_output = Popen(f"pactl info | grep {source} | cut -d\" \" -f3", shell=True, text=True, stdout=PIPE).stdout.read().rstrip()
-        print(f"Default {source}: {pactl_output}")
-        if not pactl_output:
-            return None
-        if source == "Sink":
-            return f"{pactl_output}.monitor"
-        elif source == "Source":
-            return pactl_output
+    def get_default_audio_devices(self):
+        pactl_output = Popen(f"pactl info | grep Default | tail -n +3 | cut -d\" \" -f3", shell=True, text=True, stdout=PIPE).stdout.read().rstrip()
+        device_list = pactl_output.split("\n")
+        default_sink = f"{device_list[0]}.monitor"
+        default_source = device_list[1]
+        if default_sink == default_source:
+            return (default_sink, None)
+        return (default_sink, default_source)
 
     def get_tmp_dir(self, media_type):
         if media_type == "audio":
