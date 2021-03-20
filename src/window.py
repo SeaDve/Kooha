@@ -53,6 +53,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.timer = Timer(self.time_recording_label)
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
         self.video_recorder = VideoRecorder(self.title_stack, self.fullscreen_mode_label)
+        self.audio_recorder = AudioRecorder()
 
         desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
         if "GNOME" not in desktop_environment:
@@ -90,8 +91,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
 
-        self.audio_recorder = AudioRecorder(record_audio, record_microphone, self.directory)
-        self.audio_recorder.start()
+        self.audio_recorder.start(record_audio, record_microphone, self.directory)
 
         if (record_audio and self.audio_recorder.default_audio_output) or (record_microphone and self.audio_recorder.default_audio_input):
             self.directory = self.audio_recorder.get_tmp_dir("video")
