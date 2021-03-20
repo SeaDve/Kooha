@@ -74,7 +74,8 @@ class AudioRecorder:
             err, debug = message.parse_error()
             print("audio_gst Error: %s" % err, debug)
 
-    def get_default_audio_devices(self):
+    @staticmethod
+    def get_default_audio_devices():
         pactl_output = Popen(f'pactl info | grep Default | tail -n +3 | cut -d" " -f3', shell=True, text=True, stdout=PIPE).stdout.read().rstrip()
         device_list = pactl_output.split("\n")
         default_sink = f"{device_list[0]}.monitor"
@@ -83,7 +84,8 @@ class AudioRecorder:
             return (default_sink, None)
         return (default_sink, default_source)
 
-    def get_tmp_dir(self, media_type):
+    @staticmethod
+    def get_tmp_dir(media_type):
         if media_type == "audio":
             extension = ".ogg"
         elif media_type == "video":
