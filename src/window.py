@@ -90,7 +90,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
-        self.audio_recorder.start(record_audio, record_microphone, self.directory)
+        self.audio_recorder.start(self.directory, record_audio, record_microphone)
 
         if (record_audio and self.audio_recorder.default_audio_output) or (record_microphone and self.audio_recorder.default_audio_input):
             self.directory = self.audio_recorder.get_tmp_dir("video")
