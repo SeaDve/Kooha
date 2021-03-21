@@ -30,6 +30,10 @@
 Kooha is a simple screen recorder built with GTK. It allows you to record your screen and also audio from your microphone or desktop.
 
 
+## Tested Desktop Environments
+* GNOME Wayland and X11
+
+
 ## Roadmap
 
 ### v 2.0
