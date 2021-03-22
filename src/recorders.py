@@ -32,13 +32,13 @@ class AudioRecorder:
     def start(self):
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             if self.record_audio and self.default_audio_output:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")}'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")}'
 
             elif self.record_microphone and self.default_audio_input:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")}'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")}'
 
             if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
-                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")} pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")} pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
 
             self.audio_gst = Gst.parse_launch(audio_pipeline)
             bus = self.audio_gst.get_bus()
@@ -50,7 +50,7 @@ class AudioRecorder:
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             self.audio_gst.set_state(Gst.State.NULL)
 
-            self.joiner_gst = Gst.parse_launch(f'matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir("audio")} ! oggdemux ! mux.')
+            self.joiner_gst = Gst.parse_launch(f'matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir("audio")} ! matroskademux ! mux.')
             bus = self.joiner_gst.get_bus()
             bus.add_signal_watch()
             bus.connect('message', self.on_joiner_gst_message)
