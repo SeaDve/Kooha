@@ -9,10 +9,10 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-18 20:19+0800\n"
 "PO-Revision-Date: 2021-03-18 23:50+0000\n"
-"Last-Translator: Roberto Bautista <robertobau45@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
-"es/>\n"
-"Language: es\n"
+"Last-Translator: Nicolas Mariniello <seldon1000@tutanota.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
+"it/>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,19 +27,20 @@ msgstr "Kooha"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Capturar pantalla;Grabador;Pantalla;Vídeo;"
+msgstr "Screencast;Registratore;Schermo;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
 msgid "Simple screen recorder"
-msgstr "Grabador de pantalla simple"
+msgstr "Registratore di schermo semplice"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Kooha is a simple screen recorder built with GTK. It allows you to record "
 "your screen and also audio from your microphone or desktop."
 msgstr ""
-"Kooha es un simple grabador de pantalla hecho con GTK. Permite grabar la "
-"pantalla y también grabar audio del micrófono o dispositivo."
+"Kooha è un registratore di schermo semplice scritto in GTK. Ti permette ti "
+"registrare il tuo schermo e anche l'audio proveniente dal tuo microfono o "
+"dal desktop."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
@@ -48,71 +49,71 @@ msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:13
 msgid "General"
-msgstr "General"
+msgstr "Generale"
 
 #: data/ui/shortcuts.ui:18
 msgid "Open menu"
-msgstr "Abrir menú"
+msgstr "Apri il menù"
 
 #: data/ui/shortcuts.ui:25
 msgid "Show keyboard shortcuts"
-msgstr "Mostrar atajos de teclado"
+msgstr "Mostra le scorciatoie da tastiera"
 
 #: data/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr "Salir"
+msgstr "Esci"
 
 #: data/ui/shortcuts.ui:40 data/ui/window.ui:359
 msgid "Recording"
-msgstr "Grabando"
+msgstr "In registrazione"
 
 #: data/ui/shortcuts.ui:45
 msgid "Toggle record"
-msgstr ""
+msgstr "Pulsante registra"
 
 #: data/ui/shortcuts.ui:52
 msgid "Cancel delay"
-msgstr "Cancelar retraso"
+msgstr "Cancella il ritardo"
 
 #: data/ui/shortcuts.ui:60
 msgid "Settings"
-msgstr "Ajustes"
+msgstr "Impostazioni"
 
 #: data/ui/shortcuts.ui:65
 msgid "Toggle capture mode"
-msgstr "Cambiar modo de captura"
+msgstr "Pulsante modalità di cattura"
 
 #: data/ui/shortcuts.ui:72
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Pulsante suoni del computer"
 
 #: data/ui/shortcuts.ui:79
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Pulsante microfono"
 
 #: data/ui/shortcuts.ui:86
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Pulsante puntatore"
 
 #: data/ui/window.ui:9
 msgid "Delay"
-msgstr "Retraso"
+msgstr "Ritardo"
 
 #: data/ui/window.ui:11
 msgid "None"
-msgstr "Ninguno"
+msgstr "Nessuno"
 
 #: data/ui/window.ui:16
 msgid "5 seconds"
-msgstr "5 segundos"
+msgstr "5 secondi"
 
 #: data/ui/window.ui:21
 msgid "10 seconds"
-msgstr "10 segundos"
+msgstr "10 secondi"
 
 #: data/ui/window.ui:27
 msgid "Video Format"
-msgstr "Formato de vídeo"
+msgstr "Formato video"
 
 #: data/ui/window.ui:29
 msgid "WebM"
@@ -124,71 +125,71 @@ msgstr "MKV"
 
 #: data/ui/window.ui:41
 msgid "Save to…"
-msgstr "Guardar en…"
+msgstr "Salva in…"
 
 #: data/ui/window.ui:47
 msgid "Keyboard Shortcuts"
-msgstr "Atajos de teclado"
+msgstr "Scorciatoie da tastiera"
 
 #: data/ui/window.ui:51
 msgid "About Kooha"
-msgstr "Acerca de Kooha"
+msgstr "A proposito di Kooha"
 
 #: data/ui/window.ui:89
 msgid "Full Screen"
-msgstr "Pantalla completa"
+msgstr "Schermo Intero"
 
 #: data/ui/window.ui:99
 msgid "Selection"
-msgstr "Área"
+msgstr "Sezione"
 
 #: data/ui/window.ui:203
 msgid "Record computer sounds"
-msgstr "Grabar audio del dispositivo"
+msgstr "Registra i suoni del computer"
 
 #: data/ui/window.ui:225
 msgid "Record from microphone"
-msgstr "Grabar audio del micrófono"
+msgstr "Registra dal microfono"
 
 #: data/ui/window.ui:247
 msgid "Show pointer"
-msgstr "Mostrar puntero"
+msgstr "Mostra il puntatore"
 
 #: data/ui/window.ui:277
 msgid "Record"
-msgstr "Grabar"
+msgstr "Registra"
 
 #: data/ui/window.ui:396
 msgid "Stop"
-msgstr "Detener"
+msgstr "Ferma"
 
 #: data/ui/window.ui:439
 msgid "Recording in…"
-msgstr "Grabando en…"
+msgstr "In registrazione tra…"
 
 #: data/ui/window.ui:475
 msgid "Cancel Delay"
-msgstr "Cancelar retraso"
+msgstr "Cancella il Ritardo"
 
 #: src/main.py:95
 msgid "Select a Folder"
-msgstr "Elige una carpeta"
+msgstr "Seleziona una Cartella"
 
 #: src/main.py:96
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Annulla"
 
 #: src/main.py:96
 msgid "Select"
-msgstr "Seleccionar"
+msgstr "Seleziona"
 
 #: src/main.py:104
 msgid "Save location not set"
-msgstr "No se estableció la ubicación de guardado"
+msgstr "Percorso di salvataggio non impostato"
 
 #: src/main.py:105
 msgid "Please choose an accessible location and retry."
-msgstr "Elige una ubicación accesible e intenta de nuevo."
+msgstr "Per favore scegli un percorso accessibile e riprova."
 
 #: src/main.py:129
 msgid "Copyright 2021 Dave Patrick"
@@ -197,7 +198,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:131
 msgid "translator-credits"
-msgstr "Roberto Bautista"
+msgstr "Nicolas Mariniello"
 
 #: src/main.py:132
 msgid "GitHub"
@@ -205,9 +206,10 @@ msgstr "GitHub"
 
 #: src/window.py:95
 msgid "Recording cannot start"
-msgstr "No se puede iniciar la grabación"
+msgstr "La registrazione non può iniziare"
 
 #: src/window.py:96
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
-"Es posible que la ubicación de guardado seleccionada haya sido eliminada."
+"Il percorso di salvataggio che hai selezionato potrebbe essere stato "
+"eliminato."

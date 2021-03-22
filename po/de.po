@@ -145,19 +145,16 @@ msgstr "Auswahl"
 
 #: data/ui/window.ui:203
 #, fuzzy
-#| msgid "Toggle computer sounds"
 msgid "Record computer sounds"
 msgstr "Computertöne umschalten"
 
 #: data/ui/window.ui:225
 #, fuzzy
-#| msgid "Toggle microphone"
 msgid "Record from microphone"
 msgstr "Mikrofon umschalten"
 
 #: data/ui/window.ui:247
 #, fuzzy
-#| msgid "Toggle pointer"
 msgid "Show pointer"
 msgstr "Mauszeiger umschalten"
 

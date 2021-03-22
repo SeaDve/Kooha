@@ -8,21 +8,22 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-18 20:19+0800\n"
-"PO-Revision-Date: 2021-03-16 18:46+0800\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-03-20 15:18+0000\n"
+"Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
+"Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
+"fil/>\n"
 "Language: fil\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
-"=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
+"%10!=6 && n%10!=9));\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
@@ -144,22 +145,16 @@ msgid "Selection"
 msgstr "Seleksyon"
 
 #: data/ui/window.ui:203
-#, fuzzy
-#| msgid "Toggle computer sounds"
 msgid "Record computer sounds"
-msgstr "I-toggle ang tunog sa ispiker"
+msgstr "Irekord ang tunog sa kompyuter"
 
 #: data/ui/window.ui:225
-#, fuzzy
-#| msgid "Toggle microphone"
 msgid "Record from microphone"
-msgstr "I-toggle ang tunog sa mikropono"
+msgstr "Irekord ang tunog ng mikropono"
 
 #: data/ui/window.ui:247
-#, fuzzy
-#| msgid "Toggle pointer"
 msgid "Show pointer"
-msgstr "I-toggle ang pointer"
+msgstr "Ipakita ang pointer"
 
 #: data/ui/window.ui:277
 msgid "Record"

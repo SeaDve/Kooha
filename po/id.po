@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-18 20:19+0800\n"
-"PO-Revision-Date: 2021-03-16 17:46+0700\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-03-20 00:26+0000\n"
+"Last-Translator: liimee <alt3753.7@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
+"pot-file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -124,7 +125,7 @@ msgstr "MKV"
 
 #: data/ui/window.ui:41
 msgid "Save to…"
-msgstr "Simpan di..."
+msgstr "Simpan di…"
 
 #: data/ui/window.ui:47
 msgid "Keyboard Shortcuts"
@@ -144,19 +145,16 @@ msgstr "Pilihan"
 
 #: data/ui/window.ui:203
 #, fuzzy
-#| msgid "Toggle computer sounds"
 msgid "Record computer sounds"
 msgstr "Toggle suara komputer"
 
 #: data/ui/window.ui:225
 #, fuzzy
-#| msgid "Toggle microphone"
 msgid "Record from microphone"
 msgstr "Toggle mikrofon"
 
 #: data/ui/window.ui:247
 #, fuzzy
-#| msgid "Toggle pointer"
 msgid "Show pointer"
 msgstr "Toggle penunjuk"
 
@@ -170,7 +168,7 @@ msgstr "Berhenti"
 
 #: data/ui/window.ui:439
 msgid "Recording in…"
-msgstr "Merekam dalam..."
+msgstr "Merekam dalam…"
 
 #: data/ui/window.ui:475
 msgid "Cancel Delay"

@@ -143,19 +143,16 @@ msgstr "Markering"
 
 #: data/ui/window.ui:203
 #, fuzzy
-#| msgid "Toggle computer sounds"
 msgid "Record computer sounds"
 msgstr "Datorljud på/av"
 
 #: data/ui/window.ui:225
 #, fuzzy
-#| msgid "Toggle microphone"
 msgid "Record from microphone"
 msgstr "Mikrofonljud på/av"
 
 #: data/ui/window.ui:247
 #, fuzzy
-#| msgid "Toggle pointer"
 msgid "Show pointer"
 msgstr "Visa/Dölj muspekare"
 
