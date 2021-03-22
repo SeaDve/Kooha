@@ -65,14 +65,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         if self.title_stack.get_visible_child() is self.selection_mode_label:
             self.video_recorder.get_coordinates()
 
-        video_directory = self.application.settings.get_string('saving-location')
-        filename = f"/Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
-        video_format = f".{self.application.settings.get_string('video-format')}"
-        if self.application.settings.get_string("saving-location") == "default":
-            video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
-            if not os.path.exists(video_directory):
-                video_directory = os.getenv("HOME")
-        self.directory = f"{video_directory}{filename}{video_format}"
+        self.directory, video_directory = self.get_saving_location()
 
         if os.path.exists(video_directory):
             delay = int(self.application.settings.get_string("record-delay"))
@@ -103,6 +96,16 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.recording_label_box)
 
         self.timer.start()
+
+    def get_saving_location(self):
+        video_directory = self.application.settings.get_string('saving-location')
+        filename = f"/Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
+        video_format = f".{self.application.settings.get_string('video-format')}"
+        if self.application.settings.get_string("saving-location") == "default":
+            video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
+            if not os.path.exists(video_directory):
+                video_directory = os.getenv("HOME")
+        return (f"{video_directory}{filename}{video_format}", video_directory)
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
