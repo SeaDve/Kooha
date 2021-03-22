@@ -34,6 +34,19 @@
   </screenshots>
 
   <releases>
+    <release version="1.0.4" date="2021-03-23">
+      <description>
+        <p>This release brings a couple of improvements:</p>
+        <ul>
+          <li>New! Ability to select audio devices through GNOME Settings</li>
+          <li>Fixed when the selection is not divisible by 2</li>
+          <li>Minor UI tweaks and other bug fixes</li>
+          <li>Performance improvements</li>
+          <li>Added new translations</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.3" date="2021-03-17">
       <description>
         <p>A couple of bug fixes here and improvements there:</p>
