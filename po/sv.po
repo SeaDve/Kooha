@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 20:19+0800\n"
+"POT-Creation-Date: 2021-03-22 18:49+0800\n"
 "PO-Revision-Date: 2021-03-16 09:33+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: \n"
@@ -28,7 +28,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
 msgid "Simple screen recorder"
 msgstr "Enkel skärminspelare"
 
@@ -61,7 +61,7 @@ msgstr "Visa tangentbordsgenvägar"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
 msgid "Recording"
 msgstr "Spelar in"
 
@@ -133,82 +133,82 @@ msgstr "Tangenbordsgenvägar"
 msgid "About Kooha"
 msgstr "Om Kooha"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:88
 msgid "Full Screen"
 msgstr "Helskärm"
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:101
 msgid "Selection"
 msgstr "Markering"
 
-#: data/ui/window.ui:203
+#: data/ui/window.ui:161
 #, fuzzy
 msgid "Record computer sounds"
 msgstr "Datorljud på/av"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:183
 #, fuzzy
 msgid "Record from microphone"
 msgstr "Mikrofonljud på/av"
 
-#: data/ui/window.ui:247
+#: data/ui/window.ui:205
 #, fuzzy
 msgid "Show pointer"
 msgstr "Visa/Dölj muspekare"
 
-#: data/ui/window.ui:277
+#: data/ui/window.ui:234
 msgid "Record"
 msgstr "Spela in"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:353
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/ui/window.ui:439
+#: data/ui/window.ui:396
 msgid "Recording in…"
 msgstr "Spelar in om…"
 
-#: data/ui/window.ui:475
+#: data/ui/window.ui:432
 msgid "Cancel Delay"
 msgstr "Avbryt fördröjning"
 
-#: src/main.py:95
+#: src/main.py:104
 msgid "Select a Folder"
 msgstr "Välj en mapp"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Select"
 msgstr "Välj"
 
-#: src/main.py:104
+#: src/main.py:113
 msgid "Save location not set"
 msgstr "Lagringsplats ej angiven"
 
-#: src/main.py:105
+#: src/main.py:114
 msgid "Please choose an accessible location and retry."
 msgstr "Välj en åtkomlig plats och försök igen."
 
-#: src/main.py:129
+#: src/main.py:138
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:131
+#: src/main.py:140
 msgid "translator-credits"
 msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
 
-#: src/main.py:132
+#: src/main.py:141
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:95
+#: src/window.py:75
 msgid "Recording cannot start"
 msgstr "Inspelning kan inte starta"
 
-#: src/window.py:96
+#: src/window.py:76
 msgid "The saving location you have selected may have been deleted."
 msgstr "Lagringsplatsen du har valt kanske har tagits bort."

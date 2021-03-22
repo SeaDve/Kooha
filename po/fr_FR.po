@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 20:19+0800\n"
+"POT-Creation-Date: 2021-03-22 18:49+0800\n"
 "PO-Revision-Date: 2021-03-16 11:21+0100\n"
 "Last-Translator: Sébastien SERRE <sebastien@thivinfo.com>\n"
 "Language-Team: \n"
@@ -28,7 +28,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
 msgid "Simple screen recorder"
 msgstr "Un simple enregistreur d’écran"
 
@@ -62,7 +62,7 @@ msgstr "Montrer les raccourcis clavier"
 msgid "Quit"
 msgstr "Quitter"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
 msgid "Recording"
 msgstr "Enregistrer"
 
@@ -134,83 +134,83 @@ msgstr "Raccourcis clavier"
 msgid "About Kooha"
 msgstr "A propos"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:88
 msgid "Full Screen"
 msgstr "Plein écran"
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:101
 msgid "Selection"
 msgstr "Sélection"
 
-#: data/ui/window.ui:203
+#: data/ui/window.ui:161
 #, fuzzy
 msgid "Record computer sounds"
 msgstr "Activer le son de l’ordinateur"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:183
 #, fuzzy
 msgid "Record from microphone"
 msgstr "Activer le mmicro"
 
-#: data/ui/window.ui:247
+#: data/ui/window.ui:205
 #, fuzzy
 msgid "Show pointer"
 msgstr "Activer le pointeur"
 
-#: data/ui/window.ui:277
+#: data/ui/window.ui:234
 msgid "Record"
 msgstr "Enregistrer"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:353
 msgid "Stop"
 msgstr "Stop"
 
-#: data/ui/window.ui:439
+#: data/ui/window.ui:396
 msgid "Recording in…"
 msgstr "Enregistrer dans "
 
-#: data/ui/window.ui:475
+#: data/ui/window.ui:432
 msgid "Cancel Delay"
 msgstr "Annuler le retard"
 
-#: src/main.py:95
+#: src/main.py:104
 msgid "Select a Folder"
 msgstr "Choisir un dossier"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Select"
 msgstr "Choisir"
 
-#: src/main.py:104
+#: src/main.py:113
 msgid "Save location not set"
 msgstr "Emplacement d’enregistrement non sauvé."
 
-#: src/main.py:105
+#: src/main.py:114
 msgid "Please choose an accessible location and retry."
 msgstr "Veuillez choisir un emplacement accessible et réessayer."
 
-#: src/main.py:129
+#: src/main.py:138
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:131
+#: src/main.py:140
 msgid "translator-credits"
 msgstr "Sébastien SERRE"
 
-#: src/main.py:132
+#: src/main.py:141
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:95
+#: src/window.py:75
 msgid "Recording cannot start"
 msgstr "L’enregistrement n’a pas pu débuter"
 
-#: src/window.py:96
+#: src/window.py:76
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
 "L'emplacement d'enregistrement que vous avez sélectionné a peut-être été "
