@@ -149,8 +149,8 @@ class VideoRecorder:
                     GLib.Variant.new_tuple(
                         GLib.Variant("i", self.coordinates[0]),
                         GLib.Variant("i", self.coordinates[1]),
-                        GLib.Variant("i", self.coordinates[2]),
-                        GLib.Variant("i", self.coordinates[3]),
+                        GLib.Variant("i", self.coordinates[2] // 2 * 2),
+                        GLib.Variant("i", self.coordinates[3] // 2 * 2),
                         GLib.Variant.new_string(self.directory),
                         GLib.Variant("a{sv}",
                             {"framerate": GLib.Variant("i", self.framerate),
