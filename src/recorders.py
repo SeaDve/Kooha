@@ -148,8 +148,8 @@ class VideoRecorder:
                     GLib.Variant.new_tuple(
                         GLib.Variant("i", self.coordinates[0]),
                         GLib.Variant("i", self.coordinates[1]),
-                        GLib.Variant("i", self.coordinates[2]),
-                        GLib.Variant("i", self.coordinates[3]),
+                        GLib.Variant("i", self.width),
+                        GLib.Variant("i", self.height),
                         GLib.Variant.new_string(self.directory),
                         GLib.Variant("a{sv}",
                             {"framerate": GLib.Variant("i", self.framerate),
@@ -170,4 +170,6 @@ class VideoRecorder:
             None)
 
     def get_coordinates(self):
-        self.coordinates = self.GNOMESelectArea.call_sync("SelectArea", None, Gio.DBusProxyFlags.NONE, -1, None)
+        *self.coordinates, self.width, self.height = self.GNOMESelectArea.call_sync("SelectArea", None, Gio.DBusProxyFlags.NONE, -1, None)
+        self.width = self.width // 2 * 2
+        self.height = self.height // 2 * 2
