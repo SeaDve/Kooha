@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 20:19+0800\n"
+"POT-Creation-Date: 2021-03-22 18:49+0800\n"
 "PO-Revision-Date: 2021-03-18 03:02+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -30,7 +30,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
 msgid "Simple screen recorder"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Quit"
 msgstr "Выход"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
 msgid "Recording"
 msgstr "Запись"
 
@@ -133,79 +133,79 @@ msgstr ""
 msgid "About Kooha"
 msgstr "О Kooha"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:88
 msgid "Full Screen"
 msgstr ""
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:101
 msgid "Selection"
 msgstr ""
 
-#: data/ui/window.ui:203
+#: data/ui/window.ui:161
 msgid "Record computer sounds"
 msgstr ""
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:183
 msgid "Record from microphone"
 msgstr ""
 
-#: data/ui/window.ui:247
+#: data/ui/window.ui:205
 msgid "Show pointer"
 msgstr ""
 
-#: data/ui/window.ui:277
+#: data/ui/window.ui:234
 msgid "Record"
 msgstr "Запись"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:353
 msgid "Stop"
 msgstr "Остановить"
 
-#: data/ui/window.ui:439
+#: data/ui/window.ui:396
 msgid "Recording in…"
 msgstr "Запись в…"
 
-#: data/ui/window.ui:475
+#: data/ui/window.ui:432
 msgid "Cancel Delay"
 msgstr ""
 
-#: src/main.py:95
+#: src/main.py:104
 msgid "Select a Folder"
 msgstr "Выберите папку"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Select"
 msgstr "Выбрать"
 
-#: src/main.py:104
+#: src/main.py:113
 msgid "Save location not set"
 msgstr ""
 
-#: src/main.py:105
+#: src/main.py:114
 msgid "Please choose an accessible location and retry."
 msgstr ""
 
-#: src/main.py:129
+#: src/main.py:138
 msgid "Copyright 2021 Dave Patrick"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:131
+#: src/main.py:140
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:132
+#: src/main.py:141
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:95
+#: src/window.py:75
 msgid "Recording cannot start"
 msgstr ""
 
-#: src/window.py:96
+#: src/window.py:76
 msgid "The saving location you have selected may have been deleted."
 msgstr ""

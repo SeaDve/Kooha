@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 20:19+0800\n"
+"POT-Creation-Date: 2021-03-22 18:49+0800\n"
 "PO-Revision-Date: 2021-03-20 00:26+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
-"pot-file/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
+"file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Perekam;Layar;Video"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
 msgid "Simple screen recorder"
 msgstr "Perekam layar sederhana"
 
@@ -63,7 +63,7 @@ msgstr "Tampilkan pintasan keyboard"
 msgid "Quit"
 msgstr "Berhenti"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
 msgid "Recording"
 msgstr "Merekam"
 
@@ -135,82 +135,82 @@ msgstr "Pintasan Keyboard"
 msgid "About Kooha"
 msgstr "Tentang Kooha"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:88
 msgid "Full Screen"
 msgstr "Layar Penuh"
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:101
 msgid "Selection"
 msgstr "Pilihan"
 
-#: data/ui/window.ui:203
+#: data/ui/window.ui:161
 #, fuzzy
 msgid "Record computer sounds"
 msgstr "Toggle suara komputer"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:183
 #, fuzzy
 msgid "Record from microphone"
 msgstr "Toggle mikrofon"
 
-#: data/ui/window.ui:247
+#: data/ui/window.ui:205
 #, fuzzy
 msgid "Show pointer"
 msgstr "Toggle penunjuk"
 
-#: data/ui/window.ui:277
+#: data/ui/window.ui:234
 msgid "Record"
 msgstr "Rekam"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:353
 msgid "Stop"
 msgstr "Berhenti"
 
-#: data/ui/window.ui:439
+#: data/ui/window.ui:396
 msgid "Recording in…"
 msgstr "Merekam dalam…"
 
-#: data/ui/window.ui:475
+#: data/ui/window.ui:432
 msgid "Cancel Delay"
 msgstr "Batalkan penundaan"
 
-#: src/main.py:95
+#: src/main.py:104
 msgid "Select a Folder"
 msgstr "Pilih folder"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Select"
 msgstr "Pilih"
 
-#: src/main.py:104
+#: src/main.py:113
 msgid "Save location not set"
 msgstr "Lokasi penyimpanan belum diatur"
 
-#: src/main.py:105
+#: src/main.py:114
 msgid "Please choose an accessible location and retry."
 msgstr "Mohon pilih tempat yang dapat diakses dan coba lagi."
 
-#: src/main.py:129
+#: src/main.py:138
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Hak Cipta 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:131
+#: src/main.py:140
 msgid "translator-credits"
 msgstr "Dani Rananta"
 
-#: src/main.py:132
+#: src/main.py:141
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:95
+#: src/window.py:75
 msgid "Recording cannot start"
 msgstr "Tidak dapat memulai perekaman"
 
-#: src/window.py:96
+#: src/window.py:76
 msgid "The saving location you have selected may have been deleted."
 msgstr "Lokasi penyimpanan yang telah Anda pilih mungkin sudah dihapus."

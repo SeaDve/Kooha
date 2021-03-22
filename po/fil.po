@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 20:19+0800\n"
+"POT-Creation-Date: 2021-03-22 18:49+0800\n"
 "PO-Revision-Date: 2021-03-20 15:18+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
-"%10!=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
+"=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
@@ -30,7 +30,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:126
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
 msgid "Simple screen recorder"
 msgstr "Simpleng pangrekord ng screen"
 
@@ -64,7 +64,7 @@ msgstr "Ipakita ang mga keyboard shortcut"
 msgid "Quit"
 msgstr "Isara"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:359
+#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
 msgid "Recording"
 msgstr "Nagrerekord"
 
@@ -136,79 +136,79 @@ msgstr "Mga keyboard shortcut"
 msgid "About Kooha"
 msgstr "Tungkol sa Kooha"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:88
 msgid "Full Screen"
 msgstr "Buong screen"
 
-#: data/ui/window.ui:99
+#: data/ui/window.ui:101
 msgid "Selection"
 msgstr "Seleksyon"
 
-#: data/ui/window.ui:203
+#: data/ui/window.ui:161
 msgid "Record computer sounds"
 msgstr "Irekord ang tunog sa kompyuter"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:183
 msgid "Record from microphone"
 msgstr "Irekord ang tunog ng mikropono"
 
-#: data/ui/window.ui:247
+#: data/ui/window.ui:205
 msgid "Show pointer"
 msgstr "Ipakita ang pointer"
 
-#: data/ui/window.ui:277
+#: data/ui/window.ui:234
 msgid "Record"
 msgstr "Magrekord"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:353
 msgid "Stop"
 msgstr "Huminto"
 
-#: data/ui/window.ui:439
+#: data/ui/window.ui:396
 msgid "Recording in…"
 msgstr "Magrerekord sa…"
 
-#: data/ui/window.ui:475
+#: data/ui/window.ui:432
 msgid "Cancel Delay"
 msgstr "Ikansela ang Antala"
 
-#: src/main.py:95
+#: src/main.py:104
 msgid "Select a Folder"
 msgstr "Pumili ng folder"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Cancel"
 msgstr "Ikansela"
 
-#: src/main.py:96
+#: src/main.py:105
 msgid "Select"
 msgstr "Piliin"
 
-#: src/main.py:104
+#: src/main.py:113
 msgid "Save location not set"
 msgstr "Hindi na-set ang lokasyon"
 
-#: src/main.py:105
+#: src/main.py:114
 msgid "Please choose an accessible location and retry."
 msgstr "Pumili ng kayang i-access na lokasyon at ulitin."
 
-#: src/main.py:129
+#: src/main.py:138
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Kopirayt 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:131
+#: src/main.py:140
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:132
+#: src/main.py:141
 msgid "GitHub"
 msgstr ""
 
-#: src/window.py:95
+#: src/window.py:75
 msgid "Recording cannot start"
 msgstr "Hindi maaaring magstart ang pagrekord"
 
-#: src/window.py:96
+#: src/window.py:76
 msgid "The saving location you have selected may have been deleted."
 msgstr "Ang lokasyon ng paglalagyan ay maaaring nabura na."
