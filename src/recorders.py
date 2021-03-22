@@ -21,7 +21,7 @@ from gi.repository import GLib, Gio, Gst
 
 
 class AudioRecorder:
-    def start(self, saving_location, record_audio, record_microphone):
+    def __init__(self, saving_location, record_audio, record_microphone):
         self.saving_location = saving_location.replace(" ", "\ ")
         self.record_audio = record_audio
         self.record_microphone = record_microphone
@@ -29,6 +29,7 @@ class AudioRecorder:
         self.default_audio_output, self.default_audio_input = self.get_default_audio_devices()
         print(f"Default sink: {self.default_audio_output} \nDefault source: {self.default_audio_input}")
 
+    def start(self):
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
             if self.record_audio and self.default_audio_output:
                 audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audioconvert ! vorbisenc ! oggmux ! filesink location={self.get_tmp_dir("audio")}'
