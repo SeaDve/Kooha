@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 18:49+0800\n"
-"PO-Revision-Date: 2021-03-18 23:50+0000\n"
-"Last-Translator: Roberto Bautista <robertobau45@gmail.com>\n"
+"POT-Creation-Date: 2021-03-23 11:46+0800\n"
+"PO-Revision-Date: 2021-03-23 03:46+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -68,7 +68,7 @@ msgstr "Grabando"
 
 #: data/ui/shortcuts.ui:45
 msgid "Toggle record"
-msgstr ""
+msgstr "Alternar grabación"
 
 #: data/ui/shortcuts.ui:52
 msgid "Cancel delay"
@@ -84,15 +84,15 @@ msgstr "Cambiar modo de captura"
 
 #: data/ui/shortcuts.ui:72
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Alternar sonidos del dispositivo"
 
 #: data/ui/shortcuts.ui:79
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Alternar micrófono"
 
 #: data/ui/shortcuts.ui:86
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Alternar puntero"
 
 #: data/ui/window.ui:9
 msgid "Delay"
