@@ -39,6 +39,7 @@
         <p>This release brings a couple of improvements:</p>
         <ul>
           <li>New! Ability to select audio devices through GNOME Settings</li>
+          <li>Removed the annoying tong sound</li>
           <li>Fixed when the selection is not divisible by 2</li>
           <li>Minor UI tweaks and other bug fixes</li>
           <li>Performance improvements</li>
