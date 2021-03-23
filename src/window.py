@@ -78,6 +78,8 @@ class KoohaWindow(Handy.ApplicationWindow):
             error.destroy()
 
     def start_recording(self):
+        threading.Thread(target=self.application.playchime).start()
+
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
         self.audio_recorder = AudioRecorder(self.directory, record_audio, record_microphone)
@@ -89,7 +91,6 @@ class KoohaWindow(Handy.ApplicationWindow):
             self.directory = self.audio_recorder.get_tmp_dir("video")
 
         self.video_recorder.start(self.directory, framerate, show_pointer, pipeline)
-        threading.Thread(target=self.application.playchime).start()
         self.audio_recorder.start()
 
         self.main_stack.set_visible_child(self.recording_label_box)
