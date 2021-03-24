@@ -25,15 +25,15 @@
         "*.a"
     ],
     "modules" : [
-    	{
+        {
             "name" : "libhandy",
-            "buildsystem": "meson",
-            "config-opts":[
-          	"-Dgtk_doc=false",
-          	"-Dtests=false",
-          	"-Dexamples=false",
-          	"-Dvapi=false",
-          	"-Dglade_catalog=disabled"
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dgtk_doc=false",
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dvapi=false",
+                "-Dglade_catalog=disabled"
             ],
             "cleanup" : [
                 "/include",
