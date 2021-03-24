@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2021 Dave Patrick <davecruz48@gmail.com> -->
 <component type="desktop">
-	<id>io.github.seadve.Kooha.desktop</id>
-	<metadata_license>CC0-1.0</metadata_license>
-	<project_license>GPL-3.0-or-later</project_license>
+  <id>io.github.seadve.Kooha.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
   <name>Kooha</name>
   <summary>Simple screen recorder</summary>
-	<description>
+  <description>
     <p>
     Kooha is a simple screen recorder built with GTK. It allows you to record your screen and also audio from your microphone or desktop.
     </p>
-	</description>
+  </description>
   <url type="homepage">https://github.com/SeaDve/Kooha</url>
   <url type="bugtracker">https://github.com/SeaDve/Kooha/issues</url>
   <url type="translate">https://github.com/SeaDve/Kooha/tree/master/po</url>

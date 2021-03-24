@@ -10,24 +10,24 @@
     <value nick="mkv" value="1"/>
     <value nick="mp4" value="2"/>
   </enum>
-	<schema id="io.github.seadve.Kooha" path="/io/github/seadve/Kooha/">
-	  <key enum="io.github.seadve.Kooha.Delay" name="record-delay">
+  <schema id="io.github.seadve.Kooha" path="/io/github/seadve/Kooha/">
+    <key enum="io.github.seadve.Kooha.Delay" name="record-delay">
       <default>"00"</default>
     </key>
-	  <key enum="io.github.seadve.Kooha.Format" name="video-format">
+    <key enum="io.github.seadve.Kooha.Format" name="video-format">
       <default>"webm"</default>
     </key>
-	  <key type="b" name="record-audio">
+    <key type="b" name="record-audio">
       <default>false</default>
     </key>
-	  <key type="b" name="record-microphone">
+    <key type="b" name="record-microphone">
       <default>false</default>
     </key>
-	  <key type="b" name="show-pointer">
+    <key type="b" name="show-pointer">
       <default>true</default>
     </key>
-	  <key type="s" name="saving-location">
+    <key type="s" name="saving-location">
       <default>"default"</default>
     </key>
-	</schema>
+  </schema>
 </schemalist>
