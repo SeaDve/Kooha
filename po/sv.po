@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-23 11:46+0800\n"
+"POT-Creation-Date: 2021-03-24 17:32+0800\n"
 "PO-Revision-Date: 2021-03-24 07:50+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: \n"
@@ -45,129 +45,129 @@ msgstr ""
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/shortcuts.ui:13
+#: data/ui/shortcuts.ui:12
 msgid "General"
 msgstr "Allmänt"
 
-#: data/ui/shortcuts.ui:18
+#: data/ui/shortcuts.ui:17
 msgid "Open menu"
 msgstr "Öppna menyn"
 
-#: data/ui/shortcuts.ui:25
+#: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
 msgstr "Visa tangentbordsgenvägar"
 
-#: data/ui/shortcuts.ui:32
+#: data/ui/shortcuts.ui:31
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:208
 msgid "Recording"
 msgstr "Spelar in"
 
-#: data/ui/shortcuts.ui:45
+#: data/ui/shortcuts.ui:44
 msgid "Toggle record"
 msgstr "Inspelning på/av"
 
-#: data/ui/shortcuts.ui:52
+#: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
 msgstr "Avbryt fördröjning"
 
-#: data/ui/shortcuts.ui:60
+#: data/ui/shortcuts.ui:59
 msgid "Settings"
 msgstr "Inställningar"
 
-#: data/ui/shortcuts.ui:65
+#: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
 msgstr "Växla inhämtningsläge"
 
-#: data/ui/shortcuts.ui:72
+#: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
 msgstr "Datorljud på/av"
 
-#: data/ui/shortcuts.ui:79
+#: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
 msgstr "Mikrofonljud på/av"
 
-#: data/ui/shortcuts.ui:86
+#: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
 msgstr "Visa/Dölj muspekare"
 
-#: data/ui/window.ui:9
-msgid "Delay"
-msgstr "Fördröjning"
-
-#: data/ui/window.ui:11
-msgid "None"
-msgstr "Ingen"
-
-#: data/ui/window.ui:16
-msgid "5 seconds"
-msgstr "5 sekunder"
-
-#: data/ui/window.ui:21
-msgid "10 seconds"
-msgstr "10 sekunder"
-
-#: data/ui/window.ui:27
-msgid "Video Format"
-msgstr "Videoformat"
-
-#: data/ui/window.ui:29
-msgid "WebM"
-msgstr "WebM"
-
-#: data/ui/window.ui:34
-msgid "MKV"
-msgstr "MKV"
-
-#: data/ui/window.ui:41
-msgid "Save to…"
-msgstr "Spara till…"
-
-#: data/ui/window.ui:47
-msgid "Keyboard Shortcuts"
-msgstr "Tangenbordsgenvägar"
-
-#: data/ui/window.ui:51
-msgid "About Kooha"
-msgstr "Om Kooha"
-
-#: data/ui/window.ui:88
+#: data/ui/window.ui:32
 msgid "Full Screen"
 msgstr "Helskärm"
 
-#: data/ui/window.ui:101
+#: data/ui/window.ui:44
 msgid "Selection"
 msgstr "Markering"
 
-#: data/ui/window.ui:161
+#: data/ui/window.ui:88
 msgid "Record computer sounds"
 msgstr "Spela in datorljud"
 
-#: data/ui/window.ui:183
+#: data/ui/window.ui:104
 msgid "Record from microphone"
 msgstr "Spela in från mikrofon"
 
-#: data/ui/window.ui:205
+#: data/ui/window.ui:123
 msgid "Show pointer"
 msgstr "Visa muspekare"
 
-#: data/ui/window.ui:234
+#: data/ui/window.ui:149
 msgid "Record"
 msgstr "Spela in"
 
-#: data/ui/window.ui:353
+#: data/ui/window.ui:231
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:266
 msgid "Recording in…"
 msgstr "Spelar in om…"
 
-#: data/ui/window.ui:432
+#: data/ui/window.ui:288
 msgid "Cancel Delay"
 msgstr "Avbryt fördröjning"
+
+#: data/ui/window.ui:316
+msgid "Delay"
+msgstr "Fördröjning"
+
+#: data/ui/window.ui:318
+msgid "None"
+msgstr "Ingen"
+
+#: data/ui/window.ui:323
+msgid "5 seconds"
+msgstr "5 sekunder"
+
+#: data/ui/window.ui:328
+msgid "10 seconds"
+msgstr "10 sekunder"
+
+#: data/ui/window.ui:334
+msgid "Video Format"
+msgstr "Videoformat"
+
+#: data/ui/window.ui:336
+msgid "WebM"
+msgstr "WebM"
+
+#: data/ui/window.ui:341
+msgid "MKV"
+msgstr "MKV"
+
+#: data/ui/window.ui:348
+msgid "Save to…"
+msgstr "Spara till…"
+
+#: data/ui/window.ui:354
+msgid "Keyboard Shortcuts"
+msgstr "Tangenbordsgenvägar"
+
+#: data/ui/window.ui:358
+msgid "About Kooha"
+msgstr "Om Kooha"
 
 #: src/main.py:104
 msgid "Select a Folder"

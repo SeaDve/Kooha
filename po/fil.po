@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-23 11:46+0800\n"
+"POT-Creation-Date: 2021-03-24 17:32+0800\n"
 "PO-Revision-Date: 2021-03-24 00:46+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
-"%10!=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
+"=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
@@ -48,129 +48,129 @@ msgstr ""
 msgid "Dave Patrick"
 msgstr ""
 
-#: data/ui/shortcuts.ui:13
+#: data/ui/shortcuts.ui:12
 msgid "General"
 msgstr "Pangkalahatan"
 
-#: data/ui/shortcuts.ui:18
+#: data/ui/shortcuts.ui:17
 msgid "Open menu"
 msgstr "Buksan ang menu"
 
-#: data/ui/shortcuts.ui:25
+#: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
 msgstr "Ipakita ang mga keyboard shortcut"
 
-#: data/ui/shortcuts.ui:32
+#: data/ui/shortcuts.ui:31
 msgid "Quit"
 msgstr "Isara"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:208
 msgid "Recording"
 msgstr "Nagrerekord"
 
-#: data/ui/shortcuts.ui:45
+#: data/ui/shortcuts.ui:44
 msgid "Toggle record"
 msgstr "I-toggle ang pagrekord"
 
-#: data/ui/shortcuts.ui:52
+#: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
 msgstr "Ikansela ang antala"
 
-#: data/ui/shortcuts.ui:60
+#: data/ui/shortcuts.ui:59
 msgid "Settings"
 msgstr "Mga opsyon"
 
-#: data/ui/shortcuts.ui:65
+#: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
 msgstr "I-toggle ang paraan ng pagrekord"
 
-#: data/ui/shortcuts.ui:72
+#: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
 msgstr "I-toggle ang tunog sa ispiker"
 
-#: data/ui/shortcuts.ui:79
+#: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
 msgstr "I-toggle ang tunog sa mikropono"
 
-#: data/ui/shortcuts.ui:86
+#: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
 msgstr "I-toggle ang pointer"
 
-#: data/ui/window.ui:9
-msgid "Delay"
-msgstr "Antala"
-
-#: data/ui/window.ui:11
-msgid "None"
-msgstr "Wala"
-
-#: data/ui/window.ui:16
-msgid "5 seconds"
-msgstr "5 segundo"
-
-#: data/ui/window.ui:21
-msgid "10 seconds"
-msgstr "10 segundo"
-
-#: data/ui/window.ui:27
-msgid "Video Format"
-msgstr "Pormat ng video"
-
-#: data/ui/window.ui:29
-msgid "WebM"
-msgstr ""
-
-#: data/ui/window.ui:34
-msgid "MKV"
-msgstr ""
-
-#: data/ui/window.ui:41
-msgid "Save to…"
-msgstr "I-save sa…"
-
-#: data/ui/window.ui:47
-msgid "Keyboard Shortcuts"
-msgstr "Mga keyboard shortcut"
-
-#: data/ui/window.ui:51
-msgid "About Kooha"
-msgstr "Tungkol sa Kooha"
-
-#: data/ui/window.ui:88
+#: data/ui/window.ui:32
 msgid "Full Screen"
 msgstr "Buong screen"
 
-#: data/ui/window.ui:101
+#: data/ui/window.ui:44
 msgid "Selection"
 msgstr "Seleksyon"
 
-#: data/ui/window.ui:161
+#: data/ui/window.ui:88
 msgid "Record computer sounds"
 msgstr "Irekord ang tunog sa kompyuter"
 
-#: data/ui/window.ui:183
+#: data/ui/window.ui:104
 msgid "Record from microphone"
 msgstr "Irekord ang tunog ng mikropono"
 
-#: data/ui/window.ui:205
+#: data/ui/window.ui:123
 msgid "Show pointer"
 msgstr "Ipakita ang pointer"
 
-#: data/ui/window.ui:234
+#: data/ui/window.ui:149
 msgid "Record"
 msgstr "Magrekord"
 
-#: data/ui/window.ui:353
+#: data/ui/window.ui:231
 msgid "Stop"
 msgstr "Huminto"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:266
 msgid "Recording in…"
 msgstr "Magrerekord sa…"
 
-#: data/ui/window.ui:432
+#: data/ui/window.ui:288
 msgid "Cancel Delay"
 msgstr "Ikansela ang Antala"
+
+#: data/ui/window.ui:316
+msgid "Delay"
+msgstr "Antala"
+
+#: data/ui/window.ui:318
+msgid "None"
+msgstr "Wala"
+
+#: data/ui/window.ui:323
+msgid "5 seconds"
+msgstr "5 segundo"
+
+#: data/ui/window.ui:328
+msgid "10 seconds"
+msgstr "10 segundo"
+
+#: data/ui/window.ui:334
+msgid "Video Format"
+msgstr "Pormat ng video"
+
+#: data/ui/window.ui:336
+msgid "WebM"
+msgstr ""
+
+#: data/ui/window.ui:341
+msgid "MKV"
+msgstr ""
+
+#: data/ui/window.ui:348
+msgid "Save to…"
+msgstr "I-save sa…"
+
+#: data/ui/window.ui:354
+msgid "Keyboard Shortcuts"
+msgstr "Mga keyboard shortcut"
+
+#: data/ui/window.ui:358
+msgid "About Kooha"
+msgstr "Tungkol sa Kooha"
 
 #: src/main.py:104
 msgid "Select a Folder"

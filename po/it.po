@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-23 11:46+0800\n"
+"POT-Creation-Date: 2021-03-24 17:32+0800\n"
 "PO-Revision-Date: 2021-03-24 00:48+0000\n"
 "Last-Translator: Nicolas Mariniello <seldon1000@tutanota.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -47,129 +47,129 @@ msgstr ""
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/shortcuts.ui:13
+#: data/ui/shortcuts.ui:12
 msgid "General"
 msgstr "Generale"
 
-#: data/ui/shortcuts.ui:18
+#: data/ui/shortcuts.ui:17
 msgid "Open menu"
 msgstr "Apri il menù"
 
-#: data/ui/shortcuts.ui:25
+#: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
 msgstr "Mostra le scorciatoie da tastiera"
 
-#: data/ui/shortcuts.ui:32
+#: data/ui/shortcuts.ui:31
 msgid "Quit"
 msgstr "Esci"
 
-#: data/ui/shortcuts.ui:40 data/ui/window.ui:316
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:208
 msgid "Recording"
 msgstr "In registrazione"
 
-#: data/ui/shortcuts.ui:45
+#: data/ui/shortcuts.ui:44
 msgid "Toggle record"
 msgstr "Registra"
 
-#: data/ui/shortcuts.ui:52
+#: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
 msgstr "Cancella il ritardo"
 
-#: data/ui/shortcuts.ui:60
+#: data/ui/shortcuts.ui:59
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: data/ui/shortcuts.ui:65
+#: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
 msgstr "Cambia modalità di cattura"
 
-#: data/ui/shortcuts.ui:72
+#: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
 msgstr "Attiva i suoni del computer"
 
-#: data/ui/shortcuts.ui:79
+#: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
 msgstr "Attiva il microfono"
 
-#: data/ui/shortcuts.ui:86
+#: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
 msgstr "Attiva il puntatore"
 
-#: data/ui/window.ui:9
-msgid "Delay"
-msgstr "Ritardo"
-
-#: data/ui/window.ui:11
-msgid "None"
-msgstr "Nessuno"
-
-#: data/ui/window.ui:16
-msgid "5 seconds"
-msgstr "5 secondi"
-
-#: data/ui/window.ui:21
-msgid "10 seconds"
-msgstr "10 secondi"
-
-#: data/ui/window.ui:27
-msgid "Video Format"
-msgstr "Formato video"
-
-#: data/ui/window.ui:29
-msgid "WebM"
-msgstr "WebM"
-
-#: data/ui/window.ui:34
-msgid "MKV"
-msgstr "MKV"
-
-#: data/ui/window.ui:41
-msgid "Save to…"
-msgstr "Salva in…"
-
-#: data/ui/window.ui:47
-msgid "Keyboard Shortcuts"
-msgstr "Scorciatoie da tastiera"
-
-#: data/ui/window.ui:51
-msgid "About Kooha"
-msgstr "A proposito di Kooha"
-
-#: data/ui/window.ui:88
+#: data/ui/window.ui:32
 msgid "Full Screen"
 msgstr "Schermo Intero"
 
-#: data/ui/window.ui:101
+#: data/ui/window.ui:44
 msgid "Selection"
 msgstr "Sezione"
 
-#: data/ui/window.ui:161
+#: data/ui/window.ui:88
 msgid "Record computer sounds"
 msgstr "Registra i suoni del computer"
 
-#: data/ui/window.ui:183
+#: data/ui/window.ui:104
 msgid "Record from microphone"
 msgstr "Registra dal microfono"
 
-#: data/ui/window.ui:205
+#: data/ui/window.ui:123
 msgid "Show pointer"
 msgstr "Mostra il puntatore"
 
-#: data/ui/window.ui:234
+#: data/ui/window.ui:149
 msgid "Record"
 msgstr "Registra"
 
-#: data/ui/window.ui:353
+#: data/ui/window.ui:231
 msgid "Stop"
 msgstr "Ferma"
 
-#: data/ui/window.ui:396
+#: data/ui/window.ui:266
 msgid "Recording in…"
 msgstr "In registrazione tra…"
 
-#: data/ui/window.ui:432
+#: data/ui/window.ui:288
 msgid "Cancel Delay"
 msgstr "Cancella il Ritardo"
+
+#: data/ui/window.ui:316
+msgid "Delay"
+msgstr "Ritardo"
+
+#: data/ui/window.ui:318
+msgid "None"
+msgstr "Nessuno"
+
+#: data/ui/window.ui:323
+msgid "5 seconds"
+msgstr "5 secondi"
+
+#: data/ui/window.ui:328
+msgid "10 seconds"
+msgstr "10 secondi"
+
+#: data/ui/window.ui:334
+msgid "Video Format"
+msgstr "Formato video"
+
+#: data/ui/window.ui:336
+msgid "WebM"
+msgstr "WebM"
+
+#: data/ui/window.ui:341
+msgid "MKV"
+msgstr "MKV"
+
+#: data/ui/window.ui:348
+msgid "Save to…"
+msgstr "Salva in…"
+
+#: data/ui/window.ui:354
+msgid "Keyboard Shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#: data/ui/window.ui:358
+msgid "About Kooha"
+msgstr "A proposito di Kooha"
 
 #: src/main.py:104
 msgid "Select a Folder"
