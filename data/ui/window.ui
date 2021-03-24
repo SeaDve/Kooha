@@ -215,7 +215,6 @@
                     <child>
                       <object class="GtkLabel" id="time_recording_label">
                         <property name="visible">True</property>
-                        <property name="single-line-mode">True</property>
                         <style>
                           <class name="time_label"/>
                           <class name="recording"/>
@@ -274,7 +273,6 @@
                     <child>
                       <object class="GtkLabel" id="delay_label">
                         <property name="visible">True</property>
-                        <property name="single-line-mode">True</property>
                         <style>
                           <class name="time_label"/>
                         </style>
