@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="KoohaWindow" parent="HdyApplicationWindow">
-    <property name="can-focus">False</property>
     <property name="resizable">False</property>
     <child>
       <object class="HdyWindowHandle">
         <property name="visible">True</property>
-        <property name="can-focus">False</property>
         <child>
           <object class="GtkStack" id="main_stack">
             <property name="visible">True</property>
-            <property name="can-focus">False</property>
             <property name="transition-duration">150</property>
             <property name="transition-type">crossfade</property>
             <child>
               <object class="GtkBox" id="main_screen_box">
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkHeaderBar">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
                     <property name="show-close-button">True</property>
                     <style>
                       <class name="flat"/>
@@ -29,13 +24,11 @@
                     <child type="title">
                       <object class="GtkStack" id="title_stack">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <property name="transition-duration">150</property>
                         <property name="transition-type">crossfade</property>
                         <child>
                           <object class="GtkLabel" id="fullscreen_mode_label">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Full Screen</property>
                             <style>
                               <class name="title"/>
@@ -48,7 +41,6 @@
                         <child>
                           <object class="GtkLabel" id="selection_mode_label">
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
                             <property name="label" translatable="yes">Selection</property>
                             <style>
                               <class name="title"/>
@@ -69,7 +61,6 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
                     <property name="margin-start">18</property>
                     <property name="margin-end">18</property>
                     <property name="margin-bottom">18</property>
@@ -78,7 +69,6 @@
                     <child>
                       <object class="GtkStackSwitcher">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <property name="homogeneous">True</property>
                         <property name="icon-size">5</property>
                         <property name="stack">title_stack</property>
@@ -93,7 +83,6 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <property name="spacing">12</property>
                         <property name="homogeneous">True</property>
                         <child>
@@ -107,7 +96,6 @@
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
                               </object>
                             </child>
@@ -127,7 +115,6 @@
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
                               </object>
                             </child>
@@ -147,7 +134,6 @@
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
                                 <property name="icon-name">input-mouse-symbolic</property>
                               </object>
                             </child>
@@ -164,7 +150,6 @@
                     <child>
                       <object class="GtkBox" id="start_record_button_box">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <style>
                           <class name="linked"/>
                         </style>
@@ -197,7 +182,6 @@
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
                                 <property name="icon-name">open-menu-symbolic</property>
                               </object>
                             </child>
@@ -221,7 +205,6 @@
             <child>
               <object class="GtkBox" id="recording_label_box">
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
                 <property name="margin-start">18</property>
                 <property name="margin-end">18</property>
                 <property name="margin-top">18</property>
@@ -230,7 +213,6 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="vexpand">True</property>
@@ -238,7 +220,6 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Recording</property>
                         <property name="single-line-mode">True</property>
                         <style>
@@ -252,7 +233,6 @@
                     <child>
                       <object class="GtkLabel" id="time_recording_label">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <property name="single-line-mode">True</property>
                         <style>
                           <class name="time_label"/>
@@ -293,7 +273,6 @@
             <child>
               <object class="GtkBox" id="delay_label_box">
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
                 <property name="margin-start">18</property>
                 <property name="margin-end">18</property>
                 <property name="margin-top">18</property>
@@ -302,7 +281,6 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="vexpand">True</property>
@@ -310,7 +288,6 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Recording in…</property>
                         <property name="single-line-mode">True</property>
                         <style>
@@ -324,7 +301,6 @@
                     <child>
                       <object class="GtkLabel" id="delay_label">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
                         <property name="single-line-mode">True</property>
                         <style>
                           <class name="time_label"/>
