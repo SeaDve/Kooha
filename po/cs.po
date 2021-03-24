@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kooha package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kooha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-24 17:32+0800\n"
+"PO-Revision-Date: 2021-03-24 23:51+0000\n"
+"Last-Translator: Jan Novák <novak@silen.org>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
+"\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
+
+#: data/io.github.seadve.Kooha.desktop.in:3
+#: data/io.github.seadve.Kooha.appdata.xml.in:7
+msgid "Kooha"
+msgstr "Kooha"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in:11
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr "Záznam obrazovky;Rekordér;Obrazovka;Video;"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
+msgid "Simple screen recorder"
+msgstr "Jednoduchý program pro nahrávání obrazovky"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:10
+msgid ""
+"Kooha is a simple screen recorder built with GTK. It allows you to record "
+"your screen and also audio from your microphone or desktop."
+msgstr ""
+"Kooha je jednoduchý program na nahrávání obrazovky postavený na GTK. Dokáže "
+"nahrávat obrazovku společně se zvukem z mikrofonu nebo počítače."
+
+#. Translators: please do NOT translate this
+#: data/io.github.seadve.Kooha.appdata.xml.in:19
+msgid "Dave Patrick"
+msgstr "Dave Patrick"
+
+#: data/ui/shortcuts.ui:12
+msgid "General"
+msgstr "Obecné"
+
+#: data/ui/shortcuts.ui:17
+msgid "Open menu"
+msgstr "Otevřít nabídku"
+
+#: data/ui/shortcuts.ui:24
+msgid "Show keyboard shortcuts"
+msgstr "Zobrazit klávesové zkratky"
+
+#: data/ui/shortcuts.ui:31
+msgid "Quit"
+msgstr "Vypnout"
+
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:208
+msgid "Recording"
+msgstr "Nahrávání"
+
+#: data/ui/shortcuts.ui:44
+msgid "Toggle record"
+msgstr "Zapnout nahrávání"
+
+#: data/ui/shortcuts.ui:51
+msgid "Cancel delay"
+msgstr "Zrušit zpoždění"
+
+#: data/ui/shortcuts.ui:59
+msgid "Settings"
+msgstr "Nastavení"
+
+#: data/ui/shortcuts.ui:64
+msgid "Toggle capture mode"
+msgstr "Vybrat režim nahrávání"
+
+#: data/ui/shortcuts.ui:71
+msgid "Toggle computer sounds"
+msgstr "Zapnout nahrávání zvuku počítače"
+
+#: data/ui/shortcuts.ui:78
+msgid "Toggle microphone"
+msgstr "Zapnout mikrofón"
+
+#: data/ui/shortcuts.ui:85
+msgid "Toggle pointer"
+msgstr "Zapnout ukazatel"
+
+#: data/ui/window.ui:32
+msgid "Full Screen"
+msgstr "Celá obrazovka"
+
+#: data/ui/window.ui:44
+msgid "Selection"
+msgstr "Výběr"
+
+#: data/ui/window.ui:88
+msgid "Record computer sounds"
+msgstr "Nahrávat zvůk z počítače"
+
+#: data/ui/window.ui:104
+msgid "Record from microphone"
+msgstr "Nahrávat zvuk z mikrofonu"
+
+#: data/ui/window.ui:123
+msgid "Show pointer"
+msgstr "Zobrazit ukazatel"
+
+#: data/ui/window.ui:149
+msgid "Record"
+msgstr "Nahrát"
+
+#: data/ui/window.ui:231
+msgid "Stop"
+msgstr "Zastavit"
+
+#: data/ui/window.ui:266
+msgid "Recording in…"
+msgstr "Nahrávání za…"
+
+#: data/ui/window.ui:288
+msgid "Cancel Delay"
+msgstr "Zrušit zpoždění"
+
+#: data/ui/window.ui:316
+msgid "Delay"
+msgstr "Zpoždění"
+
+#: data/ui/window.ui:318
+msgid "None"
+msgstr "Žádný"
+
+#: data/ui/window.ui:323
+msgid "5 seconds"
+msgstr "5 sekund"
+
+#: data/ui/window.ui:328
+msgid "10 seconds"
+msgstr "10 sekund"
+
+#: data/ui/window.ui:334
+msgid "Video Format"
+msgstr "Formát videa"
+
+#: data/ui/window.ui:336
+msgid "WebM"
+msgstr "WebM"
+
+#: data/ui/window.ui:341
+msgid "MKV"
+msgstr "MKV"
+
+#: data/ui/window.ui:348
+msgid "Save to…"
+msgstr "Uložit do…"
+
+#: data/ui/window.ui:354
+msgid "Keyboard Shortcuts"
+msgstr "Klávesové zkratky"
+
+#: data/ui/window.ui:358
+msgid "About Kooha"
+msgstr "O Kooha"
+
+#: src/main.py:104
+msgid "Select a Folder"
+msgstr "Vyberte složku"
+
+#: src/main.py:105
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: src/main.py:105
+msgid "Select"
+msgstr "Vybrat"
+
+#: src/main.py:113
+msgid "Save location not set"
+msgstr "Místo pro ukládání nevybráno"
+
+#: src/main.py:114
+msgid "Please choose an accessible location and retry."
+msgstr "Prosím vyberte místo, kam máte přístup a zkuste znovu."
+
+#: src/main.py:138
+msgid "Copyright 2021 Dave Patrick"
+msgstr "Copyright 2021 Dave Patrick"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/main.py:140
+msgid "translator-credits"
+msgstr "Jan Novák / Nirsiel"
+
+#: src/main.py:141
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/window.py:75
+msgid "Recording cannot start"
+msgstr "Nelze zapnout nahrávání"
+
+#: src/window.py:76
+msgid "The saving location you have selected may have been deleted."
+msgstr "Místo vybrané pro ukládání mohlo být smazáno."
