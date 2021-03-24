@@ -87,10 +87,8 @@ class AudioRecorder:
 
     @staticmethod
     def get_tmp_dir(media_type):
-        if media_type == "audio":
-            extension = ".ogg"
-        elif media_type == "video":
-            extension = ".mkv"
+        extension_list = {"audio":".ogg", "video":".mkv"}
+        extension = extension_list[media_type]
         directory = GLib.getenv('XDG_CACHE_HOME')
         if not directory:
             directory = ""
