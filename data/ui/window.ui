@@ -1,57 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="1.0"/>
-  <menu id="menu">
-    <section>
-      <submenu>
-        <attribute name="label" translatable="yes">Delay</attribute>
-        <item>
-          <attribute translatable="yes" name="label">None</attribute>
-          <attribute name="action">app.record-delay</attribute>
-          <attribute name="target">00</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">5 seconds</attribute>
-          <attribute name="action">app.record-delay</attribute>
-          <attribute name="target">05</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">10 seconds</attribute>
-          <attribute name="action">app.record-delay</attribute>
-          <attribute name="target">10</attribute>
-        </item>
-      </submenu>
-      <submenu>
-        <attribute name="label" translatable="yes">Video Format</attribute>
-        <item>
-          <attribute translatable="yes" name="label">WebM</attribute>
-          <attribute name="action">app.video-format</attribute>
-          <attribute name="target">webm</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">MKV</attribute>
-          <attribute name="action">app.video-format</attribute>
-          <attribute name="target">mkv</attribute>
-        </item>
-      </submenu>
-      <item>
-        <attribute name="action">app.select-location</attribute>
-        <attribute translatable="yes" name="label">Save to…</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
-        <attribute name="action">app.show-shortcuts</attribute>
-        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
-      </item>
-      <item>
-        <attribute name="action">app.show-about</attribute>
-        <attribute name="label" translatable="yes">About Kooha</attribute>
-      </item>
-    </section>
-  </menu>
   <template class="KoohaWindow" parent="HdyApplicationWindow">
     <property name="can-focus">False</property>
     <property name="resizable">False</property>
@@ -75,6 +23,9 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="show-close-button">True</property>
+                    <style>
+                      <class name="flat"/>
+                    </style>
                     <child type="title">
                       <object class="GtkStack" id="title_stack">
                         <property name="visible">True</property>
@@ -110,9 +61,6 @@
                         </child>
                       </object>
                     </child>
-                    <style>
-                      <class name="flat"/>
-                    </style>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -155,6 +103,7 @@
                             <property name="receives-default">True</property>
                             <property name="action-name">app.record-audio</property>
                             <property name="tooltip-text" translatable="yes">Record computer sounds</property>
+                            <accelerator key="a" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -162,7 +111,6 @@
                                 <property name="icon-name">audio-volume-high-symbolic</property>
                               </object>
                             </child>
-                            <accelerator key="a" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                           </object>
                           <packing>
                             <property name="position">0</property>
@@ -175,6 +123,7 @@
                             <property name="receives-default">True</property>
                             <property name="action-name">app.record-microphone</property>
                             <property name="tooltip-text" translatable="yes">Record from microphone</property>
+                            <accelerator key="m" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -182,7 +131,6 @@
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
                               </object>
                             </child>
-                            <accelerator key="m" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                           </object>
                           <packing>
                             <property name="position">1</property>
@@ -195,6 +143,7 @@
                             <property name="receives-default">True</property>
                             <property name="action-name">app.show-pointer</property>
                             <property name="tooltip-text" translatable="yes">Show pointer</property>
+                            <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -202,7 +151,6 @@
                                 <property name="icon-name">input-mouse-symbolic</property>
                               </object>
                             </child>
-                            <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                           </object>
                           <packing>
                             <property name="position">2</property>
@@ -217,6 +165,9 @@
                       <object class="GtkBox" id="start_record_button_box">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <style>
+                          <class name="linked"/>
+                        </style>
                         <child>
                           <object class="GtkButton" id="start_record_button">
                             <property name="label" translatable="yes">Record</property>
@@ -242,6 +193,7 @@
                             <property name="receives-default">True</property>
                             <property name="direction">up</property>
                             <property name="menu-model">menu</property>
+                            <accelerator key="F10" signal="clicked"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -249,15 +201,11 @@
                                 <property name="icon-name">open-menu-symbolic</property>
                               </object>
                             </child>
-                            <accelerator key="F10" signal="clicked"/>
                           </object>
                           <packing>
                             <property name="position">1</property>
                           </packing>
                         </child>
-                        <style>
-                          <class name="linked"/>
-                        </style>
                       </object>
                       <packing>
                         <property name="position">2</property>
@@ -269,9 +217,6 @@
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="name">page0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox" id="recording_label_box">
@@ -342,7 +287,6 @@
                 </child>
               </object>
               <packing>
-                <property name="name">page1</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -414,7 +358,6 @@
                 </child>
               </object>
               <packing>
-                <property name="name">page2</property>
                 <property name="position">2</property>
               </packing>
             </child>
@@ -423,4 +366,53 @@
       </object>
     </child>
   </template>
+  <menu id="menu">
+    <section>
+      <submenu>
+        <attribute name="label" translatable="yes">Delay</attribute>
+        <item>
+          <attribute translatable="yes" name="label">None</attribute>
+          <attribute name="action">app.record-delay</attribute>
+          <attribute name="target">00</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">5 seconds</attribute>
+          <attribute name="action">app.record-delay</attribute>
+          <attribute name="target">05</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">10 seconds</attribute>
+          <attribute name="action">app.record-delay</attribute>
+          <attribute name="target">10</attribute>
+        </item>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">Video Format</attribute>
+        <item>
+          <attribute translatable="yes" name="label">WebM</attribute>
+          <attribute name="action">app.video-format</attribute>
+          <attribute name="target">webm</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">MKV</attribute>
+          <attribute name="action">app.video-format</attribute>
+          <attribute name="target">mkv</attribute>
+        </item>
+      </submenu>
+      <item>
+        <attribute name="action">app.select-location</attribute>
+        <attribute translatable="yes" name="label">Save to…</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="action">app.show-shortcuts</attribute>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="action">app.show-about</attribute>
+        <attribute name="label" translatable="yes">About Kooha</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
