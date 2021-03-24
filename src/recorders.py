@@ -77,7 +77,7 @@ class AudioRecorder:
 
     @staticmethod
     def get_default_audio_devices():
-        pactl_output = Popen(f'pactl info | grep Default | tail -n +3 | cut -d" " -f3', shell=True, text=True, stdout=PIPE).stdout.read().rstrip()
+        pactl_output = Popen(f'pactl info | tail -n +13 | cut -d" " -f3', shell=True, text=True, stdout=PIPE).stdout.read().rstrip()
         device_list = pactl_output.split("\n")
         default_sink = f"{device_list[0]}.monitor"
         default_source = device_list[1]
