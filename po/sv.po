@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-23 11:46+0800\n"
-"PO-Revision-Date: 2021-03-16 09:33+0100\n"
+"PO-Revision-Date: 2021-03-24 07:50+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -142,19 +142,16 @@ msgid "Selection"
 msgstr "Markering"
 
 #: data/ui/window.ui:161
-#, fuzzy
 msgid "Record computer sounds"
-msgstr "Datorljud på/av"
+msgstr "Spela in datorljud"
 
 #: data/ui/window.ui:183
-#, fuzzy
 msgid "Record from microphone"
-msgstr "Mikrofonljud på/av"
+msgstr "Spela in från mikrofon"
 
 #: data/ui/window.ui:205
-#, fuzzy
 msgid "Show pointer"
-msgstr "Visa/Dölj muspekare"
+msgstr "Visa muspekare"
 
 #: data/ui/window.ui:234
 msgid "Record"

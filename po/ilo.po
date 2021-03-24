@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-23 11:46+0800\n"
-"PO-Revision-Date: 2021-03-17 02:49+0000\n"
+"PO-Revision-Date: 2021-03-24 00:48+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Iloko <https://hosted.weblate.org/projects/kooha/pot-file/ilo/"
 ">\n"
@@ -60,7 +60,7 @@ msgstr "Ipakita ti shortcut ti keyboard"
 
 #: data/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr ""
+msgstr "Rumuar"
 
 #: data/ui/shortcuts.ui:40 data/ui/window.ui:316
 msgid "Recording"
@@ -68,7 +68,7 @@ msgstr "agrekrekord"
 
 #: data/ui/shortcuts.ui:45
 msgid "Toggle record"
-msgstr ""
+msgstr "I-toggle iti rekord"
 
 #: data/ui/shortcuts.ui:52
 msgid "Cancel delay"

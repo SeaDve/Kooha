@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-23 11:46+0800\n"
-"PO-Revision-Date: 2021-03-18 23:50+0000\n"
+"PO-Revision-Date: 2021-03-24 00:48+0000\n"
 "Last-Translator: Nicolas Mariniello <seldon1000@tutanota.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
@@ -69,7 +69,7 @@ msgstr "In registrazione"
 
 #: data/ui/shortcuts.ui:45
 msgid "Toggle record"
-msgstr "Pulsante registra"
+msgstr "Registra"
 
 #: data/ui/shortcuts.ui:52
 msgid "Cancel delay"
@@ -81,19 +81,19 @@ msgstr "Impostazioni"
 
 #: data/ui/shortcuts.ui:65
 msgid "Toggle capture mode"
-msgstr "Pulsante modalità di cattura"
+msgstr "Cambia modalità di cattura"
 
 #: data/ui/shortcuts.ui:72
 msgid "Toggle computer sounds"
-msgstr "Pulsante suoni del computer"
+msgstr "Attiva i suoni del computer"
 
 #: data/ui/shortcuts.ui:79
 msgid "Toggle microphone"
-msgstr "Pulsante microfono"
+msgstr "Attiva il microfono"
 
 #: data/ui/shortcuts.ui:86
 msgid "Toggle pointer"
-msgstr "Pulsante puntatore"
+msgstr "Attiva il puntatore"
 
 #: data/ui/window.ui:9
 msgid "Delay"
