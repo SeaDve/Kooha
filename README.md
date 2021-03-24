@@ -72,5 +72,3 @@ ninja -C builddir install
 Developed by **[Dave Patrick](https://github.com/SeaDve)** and [contributors](https://github.com/SeaDve/Kooha/graphs/contributors).
 
 Inspired from [RecApp](https://github.com/amikha1lov/RecApp).
-
-The [chime](https://soundbible.com/1598-Electronic-Chime.html) used is under the Public Domain.
