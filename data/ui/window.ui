@@ -54,9 +54,6 @@
                       </object>
                     </child>
                   </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkBox">
@@ -76,9 +73,6 @@
                           <class name="tall"/>
                         </style>
                       </object>
-                      <packing>
-                        <property name="position">0</property>
-                      </packing>
                     </child>
                     <child>
                       <object class="GtkBox">
@@ -100,9 +94,6 @@
                               </object>
                             </child>
                           </object>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
                         </child>
                         <child>
                           <object class="GtkToggleButton" id="record_microphone_toggle">
@@ -166,9 +157,6 @@
                               <class name="wide"/>
                             </style>
                           </object>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
                         </child>
                         <child>
                           <object class="GtkMenuButton" id="menu_button">
@@ -226,9 +214,6 @@
                           <class name="status_label"/>
                         </style>
                       </object>
-                      <packing>
-                        <property name="position">0</property>
-                      </packing>
                     </child>
                     <child>
                       <object class="GtkLabel" id="time_recording_label">
@@ -244,9 +229,6 @@
                       </packing>
                     </child>
                   </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="stop_record_button">
@@ -294,9 +276,6 @@
                           <class name="status_label"/>
                         </style>
                       </object>
-                      <packing>
-                        <property name="position">0</property>
-                      </packing>
                     </child>
                     <child>
                       <object class="GtkLabel" id="delay_label">
@@ -311,9 +290,6 @@
                       </packing>
                     </child>
                   </object>
-                  <packing>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="cancel_delay_button">
