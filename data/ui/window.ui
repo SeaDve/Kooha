@@ -193,10 +193,7 @@
             <child>
               <object class="GtkBox" id="recording_label_box">
                 <property name="visible">True</property>
-                <property name="margin-start">18</property>
-                <property name="margin-end">18</property>
-                <property name="margin-top">18</property>
-                <property name="margin-bottom">18</property>
+                <property name="margin">18</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
@@ -255,10 +252,7 @@
             <child>
               <object class="GtkBox" id="delay_label_box">
                 <property name="visible">True</property>
-                <property name="margin-start">18</property>
-                <property name="margin-end">18</property>
-                <property name="margin-top">18</property>
-                <property name="margin-bottom">18</property>
+                <property name="margin">18</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
