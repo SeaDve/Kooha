@@ -288,6 +288,7 @@
                     <property name="can-focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
+                    <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkLabel">
@@ -360,6 +361,7 @@
                     <property name="can-focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
+                    <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkLabel">
