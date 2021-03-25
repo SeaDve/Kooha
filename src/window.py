@@ -15,15 +15,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import threading
 import os
-from time import strftime, localtime
+import threading
+from time import localtime, strftime
 
 from gettext import gettext as _
-from gi.repository import Gtk, GLib, Handy, Gio
+from gi.repository import Gio, GLib, Gtk, Handy
 
-from .timers import Timer, DelayTimer
-from .recorders import VideoRecorder, AudioRecorder
+from .recorders import AudioRecorder, VideoRecorder
+from .timers import DelayTimer, Timer
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/window.ui')

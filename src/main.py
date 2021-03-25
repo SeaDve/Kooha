@@ -15,17 +15,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
 import os
-import gi
+import sys
+from gettext import gettext as _
 
+import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gst', '1.0')
 gi.require_version('Handy', '1')
-
-from gettext import gettext as _
 from gi.repository import Gtk, Gio, Gdk, GLib, Gst, Handy
-
 Gst.init(sys.argv)
 
 from .window import KoohaWindow

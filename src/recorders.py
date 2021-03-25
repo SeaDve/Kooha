@@ -17,7 +17,7 @@
 
 from subprocess import PIPE, Popen
 
-from gi.repository import GLib, Gio, Gst
+from gi.repository import Gio, GLib, Gst
 
 
 class AudioRecorder:
