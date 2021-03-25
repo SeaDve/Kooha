@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-24 17:32+0800\n"
+"POT-Creation-Date: 2021-03-25 16:35+0800\n"
 "PO-Revision-Date: 2021-03-22 11:00+0000\n"
 "Last-Translator: Jonathan Haas <haasjona@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Rekorder;Aufnahme;Bildschirm;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:138
 msgid "Simple screen recorder"
 msgstr "Einfache Bildschirmaufnahme"
 
@@ -131,83 +131,96 @@ msgstr "Aufnahme in…"
 msgid "Cancel Delay"
 msgstr "Verzögerung abbrechen"
 
-#: data/ui/window.ui:316
+#: data/ui/window.ui:323
+msgid "Processing"
+msgstr ""
+
+#: data/ui/window.ui:349
 msgid "Delay"
 msgstr "Verzögerung"
 
-#: data/ui/window.ui:318
+#: data/ui/window.ui:351
 msgid "None"
 msgstr "Kein"
 
-#: data/ui/window.ui:323
+#: data/ui/window.ui:356
 msgid "5 seconds"
 msgstr "5 Sekunden"
 
-#: data/ui/window.ui:328
+#: data/ui/window.ui:361
 msgid "10 seconds"
 msgstr "10 Sekunden"
 
-#: data/ui/window.ui:334
+#: data/ui/window.ui:367
 msgid "Video Format"
 msgstr "Videoformat"
 
-#: data/ui/window.ui:336
+#: data/ui/window.ui:369
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:341
+#: data/ui/window.ui:374
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:348
+#: data/ui/window.ui:381
 msgid "Save to…"
 msgstr "Speichern unter…"
 
-#: data/ui/window.ui:354
+#: data/ui/window.ui:387
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkombinationen"
 
-#: data/ui/window.ui:358
+#: data/ui/window.ui:391
 msgid "About Kooha"
 msgstr "Über Kooha"
 
-#: src/main.py:104
+#: src/main.py:107
 msgid "Select a Folder"
 msgstr "Ordner wählen"
 
-#: src/main.py:105
+#: src/main.py:108
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/main.py:105
+#: src/main.py:108
 msgid "Select"
 msgstr "Auswählen"
 
-#: src/main.py:113
+#: src/main.py:116
 msgid "Save location not set"
 msgstr "Speicherort nicht festgelegt"
 
-#: src/main.py:114
+#: src/main.py:117
 msgid "Please choose an accessible location and retry."
 msgstr "Bitte wählen Sie einen erreichbaren Ort und versuchen Sie es erneut."
 
-#: src/main.py:138
+#: src/main.py:141
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:140
+#: src/main.py:143
 msgid "translator-credits"
 msgstr "Jonathan Haas"
 
-#: src/main.py:141
+#: src/main.py:144
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:75
+#: src/window.py:76
 msgid "Recording cannot start"
 msgstr "Aufnahme kann nicht gestartet werden"
 
-#: src/window.py:76
+#: src/window.py:77
 msgid "The saving location you have selected may have been deleted."
 msgstr "Der von Ihnen gewählte Speicherort wurde möglicherweise gelöscht."
+
+#: src/window.py:115
+#, fuzzy
+msgid "Screencast Recorded!"
+msgstr "Screencast;Rekorder;Aufnahme;Bildschirm;Video;"
+
+#: src/window.py:116
+msgid "The recording has been saved in"
+msgstr ""
