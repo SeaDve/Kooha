@@ -38,10 +38,10 @@
       <description>
         <p>This update brings new features and few bug fixes:</p>
         <ul>
-          <li>Fix audio recording in other locales</li>
-          <li>Fix when using keyboard shortcuts unexpectedly</li>
+          <li>Added a processing view to avoid recording corruption</li>
+          <li>Added a notification after recording to show saving location</li>
+          <li>Added option to change framerate through Kooha's keyfile</li>
           <li>Minor improvements</li>
-          <li>Update translations</li>
         </ul>
       </description>
     </release>
