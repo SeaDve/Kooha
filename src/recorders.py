@@ -26,8 +26,9 @@ class AudioRecorder:
         self.record_audio = record_audio
         self.record_microphone = record_microphone
 
-        self.default_audio_output, self.default_audio_input = self.get_default_audio_devices()
-        print(f"Default sink: {self.default_audio_output} \nDefault source: {self.default_audio_input}")
+        if self.record_audio or self.record_microphone:
+            self.default_audio_output, self.default_audio_input = self.get_default_audio_devices()
+            print(f"Default sink: {self.default_audio_output} \nDefault source: {self.default_audio_input}")
 
     def start(self):
         if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
