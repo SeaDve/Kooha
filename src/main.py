@@ -147,7 +147,7 @@ class Application(Gtk.Application):
         about.show()
 
     def show_saving_location(self, action, widget):
-        saving_location = self.settings.get_string("saving-location")
+        saving_location = self.window.get_saving_location()[1]
         Gio.AppInfo.launch_default_for_uri(f"file://{saving_location}")
 
     def on_change_capture_mode(self, action, widget):
