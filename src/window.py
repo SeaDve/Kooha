@@ -20,7 +20,7 @@ import os
 from time import strftime, localtime
 
 from gettext import gettext as _
-from gi.repository import Gtk, GLib, Handy
+from gi.repository import Gtk, GLib, Handy, Gio
 
 from .timers import Timer, DelayTimer
 from .recorders import VideoRecorder, AudioRecorder
@@ -114,6 +114,11 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.video_recorder.stop()
         self.audio_recorder.stop()
         self.timer.stop()
+
+        notification = Gio.Notification.new(_("Screencast Recorded!"))
+        notification.set_body(_(f"The recording has been saved in {self.application.settings.get_string('saving-location')}"))
+        notification.set_default_action("app.show-saving-location")
+        self.application.send_notification(None, notification)
 
     @Gtk.Template.Callback()
     def on_cancel_delay_button_clicked(self, widget):

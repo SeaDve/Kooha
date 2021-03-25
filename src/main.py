@@ -96,6 +96,10 @@ class Application(Gtk.Application):
         action.connect("activate", self.on_change_capture_mode)
         self.add_action(action)
 
+        action = Gio.SimpleAction.new("show-saving-location", None)
+        action.connect("activate", self.show_saving_location)
+        self.add_action(action)
+
         action = Gio.SimpleAction.new("quit", None)
         action.connect("activate", self.on_quit)
         self.add_action(action)
@@ -141,6 +145,10 @@ class Application(Gtk.Application):
         about.set_website_label(_("GitHub"))
         about.set_website("https://github.com/SeaDve/Kooha")
         about.show()
+
+    def show_saving_location(self, action, widget):
+        saving_location = self.settings.get_string("saving-location")
+        Gio.AppInfo.launch_default_for_uri(f"file://{saving_location}")
 
     def on_change_capture_mode(self, action, widget):
         if self.window.main_stack.get_visible_child() is self.window.main_screen_box:
