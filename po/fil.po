@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: 2021-03-24 00:46+0000\n"
+"PO-Revision-Date: 2021-03-25 10:07+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fil/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
-"=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
+"%10!=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
@@ -46,7 +46,7 @@ msgstr ""
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
@@ -134,7 +134,7 @@ msgstr "Ikansela ang Antala"
 
 #: data/ui/window.ui:323
 msgid "Processing"
-msgstr ""
+msgstr "Nagproproseso"
 
 #: data/ui/window.ui:349
 msgid "Delay"
@@ -158,11 +158,11 @@ msgstr "Pormat ng video"
 
 #: data/ui/window.ui:369
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/ui/window.ui:374
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/ui/window.ui:381
 msgid "Save to…"
@@ -218,10 +218,9 @@ msgid "The saving location you have selected may have been deleted."
 msgstr "Ang lokasyon ng paglalagyan ay maaaring nabura na."
 
 #: src/window.py:115
-#, fuzzy
 msgid "Screencast Recorded!"
-msgstr "Screencast;Recorder;Screen;Video;Pangrekord;"
+msgstr "Ang rekording ay natapos na!"
 
 #: src/window.py:116
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "Ang rekording ay nasave sa"
