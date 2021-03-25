@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-24 17:32+0800\n"
+"POT-Creation-Date: 2021-03-25 09:23+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:135
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
 msgid "Simple screen recorder"
 msgstr ""
 
@@ -166,36 +166,36 @@ msgstr ""
 msgid "About Kooha"
 msgstr ""
 
-#: src/main.py:104
+#: src/main.py:108
 msgid "Select a Folder"
 msgstr ""
 
-#: src/main.py:105
+#: src/main.py:109
 msgid "Cancel"
 msgstr ""
 
-#: src/main.py:105
+#: src/main.py:109
 msgid "Select"
 msgstr ""
 
-#: src/main.py:113
+#: src/main.py:117
 msgid "Save location not set"
 msgstr ""
 
-#: src/main.py:114
+#: src/main.py:118
 msgid "Please choose an accessible location and retry."
 msgstr ""
 
-#: src/main.py:138
+#: src/main.py:142
 msgid "Copyright 2021 Dave Patrick"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:140
+#: src/main.py:144
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:141
+#: src/main.py:145
 msgid "GitHub"
 msgstr ""
 
@@ -205,4 +205,12 @@ msgstr ""
 
 #: src/window.py:76
 msgid "The saving location you have selected may have been deleted."
+msgstr ""
+
+#: src/window.py:118
+msgid "Screencast Recorded!"
+msgstr ""
+
+#: src/window.py:119
+msgid "The recording has been saved in"
 msgstr ""

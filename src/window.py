@@ -116,7 +116,8 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.timer.stop()
 
         notification = Gio.Notification.new(_("Screencast Recorded!"))
-        notification.set_body(_(f"The recording has been saved in {self.application.settings.get_string('saving-location')}"))
+        notification_body = _("The recording has been saved in")
+        notification.set_body(f"{notification_body} {self.application.settings.get_string('saving-location')}")
         notification.set_default_action("app.show-saving-location")
         self.application.send_notification(None, notification)
 
