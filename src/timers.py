@@ -22,9 +22,9 @@ class Timer:
     def __init__(self, label):
         self.label = label
         self.ongoing = False
-        GLib.timeout_add_seconds(1, self.refresh_time, priority=GLib.PRIORITY_LOW)
+        GLib.timeout_add_seconds(1, self._refresh_time, priority=GLib.PRIORITY_LOW)
 
-    def refresh_time(self):
+    def _refresh_time(self):
         if self.ongoing:
             self.time += 1
             self.label.set_text("%02d∶%02d" % divmod(self.time, 60))
@@ -44,7 +44,7 @@ class DelayTimer:
         self.label = label
         self.function = function
 
-    def displaydelay(self):
+    def _displaydelay(self):
         if self.time_delay == 10 or self.delaycancel:
             if not self.delaycancel:
                 self.function()
@@ -58,7 +58,7 @@ class DelayTimer:
             self.time_delay = time_delay * 100
             self.delaycancel = False
             self.label.set_text(str(time_delay))
-            GLib.timeout_add(100, self.displaydelay)
+            GLib.timeout_add(100, self._displaydelay)
         else:
             self.function()
 
