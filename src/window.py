@@ -45,6 +45,7 @@ class KoohaWindow(Handy.ApplicationWindow):
     time_recording_label = Gtk.Template.Child()
     delay_label_box = Gtk.Template.Child()
     delay_label = Gtk.Template.Child()
+    processing_label_box = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -89,6 +90,9 @@ class KoohaWindow(Handy.ApplicationWindow):
         pipeline = "queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux"
         if (record_audio and self.audio_recorder.default_audio_output) or (record_microphone and self.audio_recorder.default_audio_input):
             self.directory = self.audio_recorder.get_tmp_dir("video")
+            self.audio_mode = True
+        else:
+            self.audio_mode = False
 
         self.video_recorder.start(self.directory, framerate, show_pointer, pipeline)
         self.audio_recorder.start()
@@ -107,19 +111,24 @@ class KoohaWindow(Handy.ApplicationWindow):
                 video_directory = os.getenv("HOME")
         return (f"{video_directory}{filename}{video_format}", video_directory)
 
-    @Gtk.Template.Callback()
-    def on_stop_record_button_clicked(self, widget):
-        self.main_stack.set_visible_child(self.main_screen_box)
-
-        self.video_recorder.stop()
-        self.audio_recorder.stop()
-        self.timer.stop()
-
+    def send_recordingfinished_notification(self):
         notification = Gio.Notification.new(_("Screencast Recorded!"))
         notification_body = _("The recording has been saved in")
         notification.set_body(f"{notification_body} {self.get_saving_location()[1]}")
         notification.set_default_action("app.show-saving-location")
         self.application.send_notification(None, notification)
+
+    @Gtk.Template.Callback()
+    def on_stop_record_button_clicked(self, widget):
+        self.video_recorder.stop()
+        self.timer.stop()
+
+        if self.audio_mode:
+            self.audio_recorder.stop(self)
+            self.audio_mode = False
+        else:
+            self.main_stack.set_visible_child(self.main_screen_box)
+            self.send_recordingfinished_notification()
 
     @Gtk.Template.Callback()
     def on_cancel_delay_button_clicked(self, widget):
