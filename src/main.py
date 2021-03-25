@@ -53,9 +53,9 @@ class Application(Gtk.Application):
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
 
         self.setup_actions()
-        self.set_accels_for_action("app.show-shortcuts", ["<Ctrl>question"])
-        self.set_accels_for_action("app.change-capture-mode", ["<Ctrl>f"])
-        self.set_accels_for_action("app.quit", ["<Ctrl>q"])
+        self.set_accels_for_action("app.show-shortcuts", ("<Ctrl>question",))
+        self.set_accels_for_action("app.change-capture-mode", ("<Ctrl>f",))
+        self.set_accels_for_action("app.quit", ("<Ctrl>q",))
 
     def do_activate(self):
         self.window = self.props.active_window
