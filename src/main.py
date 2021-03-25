@@ -17,12 +17,13 @@
 
 import os
 import sys
-from gettext import gettext as _
-
 import gi
+
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gst', '1.0')
 gi.require_version('Handy', '1')
+
+from gettext import gettext as _
 from gi.repository import Gtk, Gio, Gdk, GLib, Gst, Handy
 Gst.init(sys.argv)
 

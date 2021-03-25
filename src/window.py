@@ -17,9 +17,9 @@
 
 import os
 import threading
+from gettext import gettext as _
 from time import localtime, strftime
 
-from gettext import gettext as _
 from gi.repository import Gio, GLib, Gtk, Handy
 
 from .recorders import AudioRecorder, VideoRecorder
