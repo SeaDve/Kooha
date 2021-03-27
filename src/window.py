@@ -49,7 +49,6 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
-        self.application = kwargs["application"]
         self.settings = settings
 
         self.timer = Timer(self.time_recording_label)
@@ -125,7 +124,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         notification_body = _("The recording has been saved in")
         notification.set_body(f"{notification_body} {self.get_saving_location()[1]}")
         notification.set_default_action("app.show-saving-location")
-        self.application.send_notification(None, notification)
+        self.get_application().send_notification(None, notification)
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
