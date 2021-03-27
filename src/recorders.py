@@ -31,15 +31,19 @@ class AudioRecorder:
             print(f"Default sink: {self.default_audio_output} \nDefault source: {self.default_audio_input}")
 
     def start(self):
-        if (self.record_audio and self.default_audio_output) or (self.record_microphone and self.default_audio_input):
+        if ((self.record_audio and self.default_audio_output)
+                or (self.record_microphone and self.default_audio_input)):
+            final_sink = f'! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")}'
             if self.record_audio and self.default_audio_output:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")}'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" {final_sink}'
 
             elif self.record_microphone and self.default_audio_input:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" ! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")}'
+                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" {final_sink}'
 
-            if (self.record_audio and self.default_audio_output) and (self.record_microphone and self.default_audio_input):
-                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix ! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")} pulsesrc device="{self.default_audio_input}" ! queue ! mix.'
+            if ((self.record_audio and self.default_audio_output)
+                    and (self.record_microphone and self.default_audio_input)):
+                audio_pipeline = (f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix '
+                                  f'{final_sink} pulsesrc device="{self.default_audio_input}" ! queue ! mix.')
 
             self.audio_gst = Gst.parse_launch(audio_pipeline)
             bus = self.audio_gst.get_bus()
@@ -51,7 +55,12 @@ class AudioRecorder:
         self.window = window
 
         self.audio_gst.send_event(Gst.Event.new_eos())
-        self.joiner_gst = Gst.parse_launch(f'matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir("audio")} ! matroskademux ! mux.')
+        joiner_pipeline = (f'matroskamux name=mux ! filesink location={self.saving_location} '
+                           f'filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec '
+                           '! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 '
+                           'deadline=1 static-threshold=100 threads=3 ! queue ! mux. '
+                           f'filesrc location={self.get_tmp_dir("audio")} ! matroskademux ! mux.')
+        self.joiner_gst = Gst.parse_launch(joiner_pipeline)
         bus = self.joiner_gst.get_bus()
         bus.add_signal_watch()
         bus.connect('message', self._on_joiner_gst_message)
@@ -79,7 +88,12 @@ class AudioRecorder:
 
     @staticmethod
     def get_default_audio_devices():
-        pactl_output = Popen('pactl info | tail -n +13 | cut -d" " -f3', shell=True, text=True, stdout=PIPE).stdout.read().rstrip()
+        pactl_output = Popen(
+            'pactl info | tail -n +13 | cut -d" " -f3',
+            shell=True,
+            text=True,
+            stdout=PIPE
+        ).stdout.read().rstrip()
         device_list = pactl_output.split("\n")
         default_sink = f"{device_list[0]}.monitor"
         default_source = device_list[1]
@@ -127,7 +141,8 @@ class VideoRecorder:
         self.directory = directory
         self.framerate = framerate
         self.show_pointer = show_pointer
-        self.pipeline = "queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux"
+        self.pipeline = ("queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 "
+                         "deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux")
 
         if self.stack.get_visible_child() is self.fullscreen_mode_label:
             self.gnome_screencast.call_sync(
