@@ -26,7 +26,7 @@ jobs:
         sha256sum /tmp/kooha.tar.gz | cut -d " " -f 1 > /tmp/SHA256SUM
 
     - name: Clone Flathub repository
-      run: git clone https://${{ secrets.FLATHUB_TOKEN }}:x-oauth-basic@github.com/flathub/io.github.seadve.Kooha.git /tmp/flathub
+      run: git clone https://davecruz48@gmail.com:${{ secrets.FLATHUB_TOKEN }}@github.com/flathub/io.github.seadve.Kooha.git /tmp/flathub
 
     - name: Update Flathub json
       run: |
