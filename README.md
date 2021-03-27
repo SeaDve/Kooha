@@ -37,7 +37,7 @@ Kooha is a simple screen recorder built with GTK. It allows you to record your s
 ## Roadmap
 
 ### v 2.0
-- [ ] MP4 video format support
+- [ ] MP4 video format support (Already in dev branch)
 - [ ] Rewrite VideoRecorder for freedesktop portal
 - [ ] Other desktop environment support
 
