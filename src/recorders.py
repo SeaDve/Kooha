@@ -22,7 +22,7 @@ from gi.repository import Gio, GLib, Gst
 
 class AudioRecorder:
     def __init__(self, saving_location, record_audio, record_microphone):
-        self.saving_location = saving_location.replace(" ", "\ ")
+        self.saving_location = saving_location.replace(" ", r"\ ")
         self.record_audio = record_audio
         self.record_microphone = record_microphone
 
