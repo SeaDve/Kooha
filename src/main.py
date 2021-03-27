@@ -107,7 +107,9 @@ class Application(Gtk.Application):
             return
 
     def show_shortcuts_window(self, action, widget):
-        window = Gtk.Builder.new_from_resource('/io/github/seadve/Kooha/shortcuts.ui').get_object('shortcuts')
+        builder = Gtk.Builder()
+        builder.add_from_resource('/io/github/seadve/Kooha/shortcuts.ui')
+        window = builder.get_object('shortcuts')
         window.set_transient_for(self.window)
         window.present()
 
