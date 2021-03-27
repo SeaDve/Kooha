@@ -21,6 +21,7 @@ from gettext import gettext as _
 from time import localtime, strftime
 
 from gi.repository import Gio, GLib, Gst, Gtk, Handy
+Gst.init(None)
 
 from .recorders import AudioRecorder, VideoRecorder
 from .timers import DelayTimer, Timer

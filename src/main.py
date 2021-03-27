@@ -17,15 +17,13 @@
 
 import os
 import sys
-import gi
+from gettext import gettext as _
 
+import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('Gtk', '3.0')
 gi.require_version('Handy', '1')
-
-from gettext import gettext as _
-from gi.repository import Gtk, Gio, Gdk, GLib, Gst, Handy
-Gst.init(sys.argv)
+from gi.repository import Gtk, Gio, Gdk, GLib, Handy
 
 from .window import KoohaWindow
 
@@ -72,8 +70,8 @@ class Application(Gtk.Application):
             ("select-location", self.select_location_dialog, None),
             ("show-shortcuts", self.show_shortcuts_window, ("<Ctrl>question",)),
             ("show-about", self.show_about_dialog, None),
-            ("change-capture-mode", self.on_change_capture_mode, ("<Ctrl>f",)),
             ("show-saving-location", self.show_saving_location, None),
+            ("change-capture-mode", self.on_change_capture_mode, ("<Ctrl>f",)),
             ("quit", self.on_quit, ("<Ctrl>q",)),
         ]
 
