@@ -19,8 +19,6 @@ import os
 import sys
 import gi
 
-import time
-
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gst', '1.0')
 gi.require_version('Handy', '1')
@@ -62,20 +60,13 @@ class Application(Gtk.Application):
         self.window.present()
 
     def setup_actions(self):
-        action = self.settings.create_action("record-audio")
-        self.add_action(action)
-
-        action = self.settings.create_action("record-microphone")
-        self.add_action(action)
-
-        action = self.settings.create_action("show-pointer")
-        self.add_action(action)
-
-        action = self.settings.create_action("record-delay")
-        self.add_action(action)
-
-        action = self.settings.create_action("video-format")
-        self.add_action(action)
+        settings_actions = [
+            "record-audio",
+            "record-microphone",
+            "show-pointer",
+            "record-delay",
+            "video-format",
+        ]
 
         simple_actions = [
             ("select-location", self.select_location_dialog, None),
@@ -83,8 +74,12 @@ class Application(Gtk.Application):
             ("show-about", self.show_about_dialog, None),
             ("change-capture-mode", self.on_change_capture_mode, ("<Ctrl>f",)),
             ("show-saving-location", self.show_saving_location, None),
-            ("quit", self.on_quit, ("<Ctrl>q",))
+            ("quit", self.on_quit, ("<Ctrl>q",)),
         ]
+
+        for action in settings_actions:
+            settings_action = self.settings.create_action(action)
+            self.add_action(settings_action)
 
         for action, callback, accel in simple_actions:
             simple_action = Gio.SimpleAction.new(action, None)
