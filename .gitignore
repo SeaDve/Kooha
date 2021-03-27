@@ -1,4 +1,5 @@
 *~
 .flatpak-builder/
+.mypy_cache
 build-dir/
 builddir/
