@@ -44,4 +44,3 @@ if __name__ == '__main__':
 
     from kooha import main
     sys.exit(main.main(VERSION))
-

@@ -102,7 +102,7 @@ class Application(Gtk.Application):
                 error.destroy()
             else:
                 self.settings.set_string("saving-location", directory[0])
-        except:
+        except Exception:
             return
 
     def show_shortcuts_window(self, action, widget):
@@ -149,4 +149,3 @@ class Application(Gtk.Application):
 def main(version):
     app = Application(version)
     return app.run(sys.argv)
-

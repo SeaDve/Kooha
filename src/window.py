@@ -145,4 +145,3 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.main_screen_box)
 
         self.delay_timer.cancel()
-
