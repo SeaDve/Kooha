@@ -131,37 +131,37 @@ class VideoRecorder:
 
         if self.stack.get_visible_child() is self.fullscreen_mode_label:
             self.GNOMEScreencast.call_sync(
-                        "Screencast",
-                        GLib.Variant.new_tuple(
-                            GLib.Variant.new_string(self.directory),
-                            GLib.Variant("a{sv}",
-                                {"framerate": GLib.Variant("i", self.framerate),
-                                 "draw-cursor": GLib.Variant("b", self.show_pointer),
-                                 "pipeline": GLib.Variant("s", self.pipeline)}
-                            ),
-                        ),
-                        Gio.DBusProxyFlags.NONE,
-                        -1,
-                        None)
+                "Screencast",
+                GLib.Variant.new_tuple(
+                    GLib.Variant.new_string(self.directory),
+                    GLib.Variant("a{sv}",
+                        {"framerate": GLib.Variant("i", self.framerate),
+                        "draw-cursor": GLib.Variant("b", self.show_pointer),
+                        "pipeline": GLib.Variant("s", self.pipeline)}
+                    ),
+                ),
+                Gio.DBusProxyFlags.NONE,
+                -1,
+                None)
 
         elif self.stack.get_visible_child() is not self.fullscreen_mode_label:
             self.GNOMEScreencast.call_sync(
-                    "ScreencastArea",
-                    GLib.Variant.new_tuple(
-                        GLib.Variant("i", self.coordinates[0]),
-                        GLib.Variant("i", self.coordinates[1]),
-                        GLib.Variant("i", self.coordinates[2] // 2 * 2),
-                        GLib.Variant("i", self.coordinates[3] // 2 * 2),
-                        GLib.Variant.new_string(self.directory),
-                        GLib.Variant("a{sv}",
-                            {"framerate": GLib.Variant("i", self.framerate),
-                             "draw-cursor": GLib.Variant("b", self.show_pointer),
-                             "pipeline": GLib.Variant("s", self.pipeline)}
-                        ),
+                "ScreencastArea",
+                GLib.Variant.new_tuple(
+                    GLib.Variant("i", self.coordinates[0]),
+                    GLib.Variant("i", self.coordinates[1]),
+                    GLib.Variant("i", self.coordinates[2] // 2 * 2),
+                    GLib.Variant("i", self.coordinates[3] // 2 * 2),
+                    GLib.Variant.new_string(self.directory),
+                    GLib.Variant("a{sv}",
+                        {"framerate": GLib.Variant("i", self.framerate),
+                        "draw-cursor": GLib.Variant("b", self.show_pointer),
+                        "pipeline": GLib.Variant("s", self.pipeline)}
                     ),
-                    Gio.DBusProxyFlags.NONE,
-                    -1,
-                    None)
+                ),
+                Gio.DBusProxyFlags.NONE,
+                -1,
+                None)
 
     def stop(self):
         self.GNOMEScreencast.call_sync(
@@ -172,4 +172,9 @@ class VideoRecorder:
             None)
 
     def get_coordinates(self):
-        self.coordinates = self.GNOMESelectArea.call_sync("SelectArea", None, Gio.DBusProxyFlags.NONE, -1, None)
+        self.coordinates = self.GNOMESelectArea.call_sync(
+            "SelectArea",
+            None,
+            Gio.DBusProxyFlags.NONE,
+            -1,
+            None)
