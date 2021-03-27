@@ -104,22 +104,24 @@ class VideoRecorder:
 
         bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
         self.GNOMEScreencast = Gio.DBusProxy.new_sync(
-                    bus,
-                    Gio.DBusProxyFlags.NONE,
-                    None,
-                    "org.gnome.Shell.Screencast",
-                    "/org/gnome/Shell/Screencast",
-                    "org.gnome.Shell.Screencast",
-                    None)
+            bus,
+            Gio.DBusProxyFlags.NONE,
+            None,
+            "org.gnome.Shell.Screencast",
+            "/org/gnome/Shell/Screencast",
+            "org.gnome.Shell.Screencast",
+            None
+        )
 
         self.GNOMESelectArea = Gio.DBusProxy.new_sync(
-                    bus,
-                    Gio.DBusProxyFlags.NONE,
-                    None,
-                    "org.gnome.Shell.Screenshot",
-                    "/org/gnome/Shell/Screenshot",
-                    "org.gnome.Shell.Screenshot",
-                    None)
+            bus,
+            Gio.DBusProxyFlags.NONE,
+            None,
+            "org.gnome.Shell.Screenshot",
+            "/org/gnome/Shell/Screenshot",
+            "org.gnome.Shell.Screenshot",
+            None
+        )
 
     def start(self, directory, framerate, show_pointer, pipeline):
         self.directory = directory
@@ -136,8 +138,7 @@ class VideoRecorder:
                         "framerate": GLib.Variant("i", self.framerate),
                         "draw-cursor": GLib.Variant("b", self.show_pointer),
                         "pipeline": GLib.Variant("s", self.pipeline)
-                        }
-                    ),
+                    }),
                 ),
                 Gio.DBusProxyFlags.NONE,
                 -1,
@@ -157,8 +158,7 @@ class VideoRecorder:
                         "framerate": GLib.Variant("i", self.framerate),
                         "draw-cursor": GLib.Variant("b", self.show_pointer),
                         "pipeline": GLib.Variant("s", self.pipeline)
-                        }
-                    ),
+                    }),
                 ),
                 Gio.DBusProxyFlags.NONE,
                 -1,
