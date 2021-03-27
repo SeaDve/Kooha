@@ -26,7 +26,7 @@ jobs:
         sha256sum /tmp/kooha.tar.gz | cut -d " " -f 1 > /tmp/SHA256SUM
 
     - name: Clone Flathub repository
-      run: git clone https://SeaDve:${{ secrets.FLATHUB_TOKEN }}@github.com/flathub/io.github.seadve.Kooha.git /tmp/flathub
+      run: git clone https://${{ secrets.FLATHUB_TOKEN }}@github.com/flathub/io.github.seadve.Kooha.git /tmp/flathub
 
     - name: Update Flathub json
       run: |
@@ -39,5 +39,5 @@ jobs:
         git config --global user.email "davecruz48@gmail.com"
         git config --global user.name "SeaDve"
         cd /tmp/flathub
-        git commit -am "Bump version to $(cat /tmp/VERSION)"
+        git commit -am "bump to $(cat /tmp/VERSION)"
         git push
