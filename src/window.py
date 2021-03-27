@@ -47,9 +47,10 @@ class KoohaWindow(Handy.ApplicationWindow):
     delay_label = Gtk.Template.Child()
     processing_label_box = Gtk.Template.Child()
 
-    def __init__(self, **kwargs):
+    def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
         self.application = kwargs["application"]
+        self.settings = settings
 
         self.timer = Timer(self.time_recording_label)
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
@@ -68,7 +69,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.directory, video_directory = self.get_saving_location()
 
         if os.path.exists(video_directory):
-            delay = int(self.application.settings.get_string("record-delay"))
+            delay = int(self.settings.get_string("record-delay"))
             self.delay_timer.start(delay)
             if delay > 0:
                 self.main_stack.set_visible_child(self.delay_label_box)
@@ -81,12 +82,12 @@ class KoohaWindow(Handy.ApplicationWindow):
     def start_recording(self):
         threading.Thread(target=self.playchime).start()
 
-        record_audio = self.application.settings.get_boolean("record-audio")
-        record_microphone = self.application.settings.get_boolean("record-microphone")
+        record_audio = self.settings.get_boolean("record-audio")
+        record_microphone = self.settings.get_boolean("record-microphone")
         self.audio_recorder = AudioRecorder(self.directory, record_audio, record_microphone)
 
-        framerate = self.application.settings.get_int("video-frames")
-        show_pointer = self.application.settings.get_boolean("show-pointer")
+        framerate = self.settings.get_int("video-frames")
+        show_pointer = self.settings.get_boolean("show-pointer")
         pipeline = "queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux"
         if (record_audio and self.audio_recorder.default_audio_output) or (record_microphone and self.audio_recorder.default_audio_input):
             self.directory = self.audio_recorder.get_tmp_dir("video")
@@ -110,10 +111,10 @@ class KoohaWindow(Handy.ApplicationWindow):
         playbin.set_state(Gst.State.NULL)
 
     def get_saving_location(self):
-        video_directory = self.application.settings.get_string('saving-location')
+        video_directory = self.settings.get_string('saving-location')
         filename = f"/Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
-        video_format = f".{self.application.settings.get_string('video-format')}"
-        if self.application.settings.get_string("saving-location") == "default":
+        video_format = f".{self.settings.get_string('video-format')}"
+        if self.settings.get_string("saving-location") == "default":
             video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
             if not os.path.exists(video_directory):
                 video_directory = os.getenv("HOME")

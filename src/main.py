@@ -56,7 +56,7 @@ class Application(Gtk.Application):
     def do_activate(self):
         self.window = self.props.active_window
         if not self.window:
-            self.window = KoohaWindow(application=self)
+            self.window = KoohaWindow(self.settings, application=self)
         self.window.present()
 
     def setup_actions(self):
