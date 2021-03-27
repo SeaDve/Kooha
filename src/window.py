@@ -33,10 +33,6 @@ class KoohaWindow(Handy.ApplicationWindow):
     __gtype_name__ = 'KoohaWindow'
 
     start_record_button = Gtk.Template.Child()  # will be unused when DE check is removed
-    stop_record_button = Gtk.Template.Child()
-    cancel_delay_button = Gtk.Template.Child()
-    start_record_button_box = Gtk.Template.Child()
-
     title_stack = Gtk.Template.Child()
     fullscreen_mode_label = Gtk.Template.Child()
     selection_mode_label = Gtk.Template.Child()
