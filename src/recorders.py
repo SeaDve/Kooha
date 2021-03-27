@@ -49,7 +49,6 @@ class AudioRecorder:
 
     def stop(self, window):
         self.window = window
-        self.window.main_stack.set_visible_child(self.window.processing_label_box)
 
         self.audio_gst.send_event(Gst.Event.new_eos())
         self.joiner_gst = Gst.parse_launch(f'matroskamux name=mux ! filesink location={self.saving_location} filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! mux. filesrc location={self.get_tmp_dir("audio")} ! matroskademux ! mux.')

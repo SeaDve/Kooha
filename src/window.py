@@ -133,6 +133,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.timer.stop()
 
         if self.audio_mode:
+            self.main_stack.set_visible_child(self.processing_label_box)
             self.audio_recorder.stop(self)
             self.audio_mode = False
         else:
