@@ -103,7 +103,7 @@ class VideoRecorder:
         self.fullscreen_mode_label = label
 
         bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
-        self.GNOMEScreencast = Gio.DBusProxy.new_sync(
+        self.gnome_screencast = Gio.DBusProxy.new_sync(
             bus,
             Gio.DBusProxyFlags.NONE,
             None,
@@ -113,7 +113,7 @@ class VideoRecorder:
             None
         )
 
-        self.GNOMESelectArea = Gio.DBusProxy.new_sync(
+        self.gnome_selectarea = Gio.DBusProxy.new_sync(
             bus,
             Gio.DBusProxyFlags.NONE,
             None,
@@ -130,7 +130,7 @@ class VideoRecorder:
         self.pipeline = pipeline
 
         if self.stack.get_visible_child() is self.fullscreen_mode_label:
-            self.GNOMEScreencast.call_sync(
+            self.gnome_screencast.call_sync(
                 "Screencast",
                 GLib.Variant.new_tuple(
                     GLib.Variant.new_string(self.directory),
@@ -146,7 +146,7 @@ class VideoRecorder:
             )
 
         elif self.stack.get_visible_child() is not self.fullscreen_mode_label:
-            self.GNOMEScreencast.call_sync(
+            self.gnome_screencast.call_sync(
                 "ScreencastArea",
                 GLib.Variant.new_tuple(
                     GLib.Variant("i", self.coordinates[0]),
@@ -166,7 +166,7 @@ class VideoRecorder:
             )
 
     def stop(self):
-        self.GNOMEScreencast.call_sync(
+        self.gnome_screencast.call_sync(
             "StopScreencast",
             None,
             Gio.DBusCallFlags.NONE,
@@ -175,7 +175,7 @@ class VideoRecorder:
         )
 
     def get_coordinates(self):
-        self.coordinates = self.GNOMESelectArea.call_sync(
+        self.coordinates = self.gnome_selectarea.call_sync(
             "SelectArea",
             None,
             Gio.DBusProxyFlags.NONE,
