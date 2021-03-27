@@ -20,7 +20,7 @@ import threading
 from gettext import gettext as _
 from time import localtime, strftime
 
-from gi.repository import Gio, GLib, Gtk, Handy
+from gi.repository import Gio, GLib, Gst, Gtk, Handy
 
 from .recorders import AudioRecorder, VideoRecorder
 from .timers import DelayTimer, Timer
@@ -79,7 +79,7 @@ class KoohaWindow(Handy.ApplicationWindow):
             error.destroy()
 
     def start_recording(self):
-        threading.Thread(target=self.application.playchime).start()
+        threading.Thread(target=self.playchime).start()
 
         record_audio = self.application.settings.get_boolean("record-audio")
         record_microphone = self.application.settings.get_boolean("record-microphone")
@@ -100,6 +100,14 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.recording_label_box)
 
         self.timer.start()
+
+    def playchime(self):
+        playbin = Gst.ElementFactory.make('playbin', 'playbin')
+        playbin.props.uri = 'resource://io/github/seadve/Kooha/chime.ogg'
+        playbin.set_state(Gst.State.PLAYING)
+        bus = playbin.get_bus()
+        bus.poll(Gst.MessageType.EOS, Gst.CLOCK_TIME_NONE)
+        playbin.set_state(Gst.State.NULL)
 
     def get_saving_location(self):
         video_directory = self.application.settings.get_string('saving-location')

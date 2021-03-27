@@ -142,15 +142,7 @@ class Application(Gtk.Application):
 
     def on_quit(self, action, widget):
         if self.window.main_stack.get_visible_child() is self.window.main_screen_box:
-            self.window.destroy()
-
-    def playchime(self):
-        playbin = Gst.ElementFactory.make('playbin', 'playbin')
-        playbin.props.uri = 'resource://io/github/seadve/Kooha/chime.ogg'
-        playbin.set_state(Gst.State.PLAYING)
-        bus = playbin.get_bus()
-        bus.poll(Gst.MessageType.EOS, Gst.CLOCK_TIME_NONE)
-        playbin.set_state(Gst.State.NULL)
+            self.quit()
 
 
 def main(version):
