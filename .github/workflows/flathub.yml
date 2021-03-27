@@ -34,6 +34,7 @@ jobs:
         json -I -f /tmp/flathub/io.github.seadve.Kooha.json -e "this.modules[this.modules.length - 1].sources[0].tag='$(cat /tmp/VERSION)'"
         json -I -f /tmp/flathub/io.github.seadve.Kooha.json -e "this.modules[this.modules.length - 1].sources[0].url='https://github.com/SeaDve/Kooha/archive/$(cat /tmp/VERSION).tar.gz'"
         json -I -f /tmp/flathub/io.github.seadve.Kooha.json -e "this.modules[this.modules.length - 1].sources[0].sha256='$(cat /tmp/SHA256SUM)'"
+
     - name: Push changes
       run: |
         git config --global user.email "davecruz48@gmail.com"
@@ -41,3 +42,9 @@ jobs:
         cd /tmp/flathub
         git commit -am "bump to $(cat /tmp/VERSION)"
         git push
+
+    - name: Wait for flathub build to complete
+      run: |
+        cd $GITHUB_WORKSPACE/.ci
+        chmod +x *.sh
+        ./flathub_wait_for_build.sh
