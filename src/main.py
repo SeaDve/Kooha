@@ -19,6 +19,8 @@ import os
 import sys
 import gi
 
+import time
+
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gst', '1.0')
 gi.require_version('Handy', '1')
@@ -51,11 +53,7 @@ class Application(Gtk.Application):
         Gtk.StyleContext.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
-
         self.setup_actions()
-        self.set_accels_for_action("app.show-shortcuts", ("<Ctrl>question",))
-        self.set_accels_for_action("app.change-capture-mode", ("<Ctrl>f",))
-        self.set_accels_for_action("app.quit", ("<Ctrl>q",))
 
     def do_activate(self):
         self.window = self.props.active_window
@@ -79,29 +77,20 @@ class Application(Gtk.Application):
         action = self.settings.create_action("video-format")
         self.add_action(action)
 
-        action = Gio.SimpleAction.new("select-location", None)
-        action.connect("activate", self.select_location_dialog)
-        self.add_action(action)
+        simple_actions = [
+            ("select-location", self.select_location_dialog, None),
+            ("show-shortcuts", self.show_shortcuts_window, ("<Ctrl>question",)),
+            ("show-about", self.show_about_dialog, None),
+            ("change-capture-mode", self.on_change_capture_mode, ("<Ctrl>f",)),
+            ("show-saving-location", self.show_saving_location, None),
+            ("quit", self.on_quit, ("<Ctrl>q",))
+        ]
 
-        action = Gio.SimpleAction.new("show-shortcuts", None)
-        action.connect("activate", self.show_shortcuts_window)
-        self.add_action(action)
-
-        action = Gio.SimpleAction.new("show-about", None)
-        action.connect("activate", self.show_about_dialog)
-        self.add_action(action)
-
-        action = Gio.SimpleAction.new("change-capture-mode", None)
-        action.connect("activate", self.on_change_capture_mode)
-        self.add_action(action)
-
-        action = Gio.SimpleAction.new("show-saving-location", None)
-        action.connect("activate", self.show_saving_location)
-        self.add_action(action)
-
-        action = Gio.SimpleAction.new("quit", None)
-        action.connect("activate", self.on_quit)
-        self.add_action(action)
+        for action, callback, accel in simple_actions:
+            simple_action = Gio.SimpleAction.new(action, None)
+            simple_action.connect("activate", callback)
+            self.add_action(simple_action)
+            if accel: self.set_accels_for_action(f"app.{action}", accel)
 
     def select_location_dialog(self, action, widget):
         dialog = Gtk.FileChooserDialog(title=_("Select a Folder"), action=Gtk.FileChooserAction.SELECT_FOLDER)
