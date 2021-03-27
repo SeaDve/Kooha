@@ -139,7 +139,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="start_record_button_box">
+                      <object class="GtkBox">
                         <property name="visible">True</property>
                         <style>
                           <class name="linked"/>
@@ -227,7 +227,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="stop_record_button">
+                  <object class="GtkButton">
                     <property name="label" translatable="yes">Stop</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
@@ -284,7 +284,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="cancel_delay_button">
+                  <object class="GtkButton">
                     <property name="label" translatable="yes">Cancel Delay</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
