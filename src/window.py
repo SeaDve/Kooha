@@ -75,7 +75,10 @@ class KoohaWindow(Handy.ApplicationWindow):
             if delay > 0:
                 self.main_stack.set_visible_child(self.delay_label_box)
         else:
-            error = Gtk.MessageDialog(transient_for=self, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Recording cannot start"))
+            error = Gtk.MessageDialog(transient_for=self,
+                                      type=Gtk.MessageType.WARNING,
+                                      buttons=Gtk.ButtonsType.OK,
+                                      text=_("Recording cannot start"))
             error.format_secondary_text(_("The saving location you have selected may have been deleted."))
             error.run()
             error.destroy()
