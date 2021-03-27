@@ -44,7 +44,9 @@ class Application(Gtk.Application):
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource('/io/github/seadve/Kooha/style.css')
         screen = Gdk.Screen.get_default()
-        Gtk.StyleContext.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+        Gtk.StyleContext.add_provider_for_screen(screen, css_provider,
+                                                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+                                                 )
 
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
         self.setup_actions()
@@ -87,21 +89,28 @@ class Application(Gtk.Application):
                 self.set_accels_for_action(f"app.{action}", accel)
 
     def select_location_dialog(self, action, widget):
-        dialog = Gtk.FileChooserDialog(title=_("Select a Folder"), action=Gtk.FileChooserAction.SELECT_FOLDER)
-        dialog.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL, _("Select"), Gtk.ResponseType.ACCEPT)
+        dialog = Gtk.FileChooserDialog(title=_("Select a Folder"),
+                                       action=Gtk.FileChooserAction.SELECT_FOLDER)
+        dialog.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL,
+                           _("Select"), Gtk.ResponseType.ACCEPT)
         dialog.set_transient_for(self.window)
         response = dialog.run()
         if response == Gtk.ResponseType.ACCEPT:
             directory = dialog.get_filenames()
         dialog.destroy()
         try:
-            if not os.access(directory[0], os.W_OK) or not directory[0].startswith(os.getenv("HOME")) or directory[0] == os.getenv("HOME"):
-                error = Gtk.MessageDialog(transient_for=self.window, type=Gtk.MessageType.WARNING, buttons=Gtk.ButtonsType.OK, text=_("Save location not set"))
+            homefolder = os.getenv("HOME")
+            is_in_homefolder = directory[0].startswith(homefolder)
+            if is_in_homefolder and not directory[0] == homefolder:
+                self.settings.set_string("saving-location", directory[0])
+            else:
+                error = Gtk.MessageDialog(transient_for=self.window,
+                                          type=Gtk.MessageType.WARNING,
+                                          buttons=Gtk.ButtonsType.OK,
+                                          text=_("Save location not set"))
                 error.format_secondary_text(_("Please choose an accessible location and retry."))
                 error.run()
                 error.destroy()
-            else:
-                self.settings.set_string("saving-location", directory[0])
         except Exception:
             return
 
