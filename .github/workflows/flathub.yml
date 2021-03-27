@@ -37,7 +37,7 @@ jobs:
     - name: Push changes
       run: |
         git config --global user.email "davecruz48@gmail.com"
-        git config --global user.name "SeaDve"
+        git config --global user.name "GitHub Action"
         cd /tmp/flathub
         git commit -am "bump to $(cat /tmp/VERSION)"
         git push
