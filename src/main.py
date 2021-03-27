@@ -43,8 +43,6 @@ class Application(Gtk.Application):
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
-        Handy.init()
-
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource('/io/github/seadve/Kooha/style.css')
         screen = Gdk.Screen.get_default()
@@ -52,6 +50,8 @@ class Application(Gtk.Application):
 
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
         self.setup_actions()
+
+        Handy.init()
 
     def do_activate(self):
         self.window = self.props.active_window
