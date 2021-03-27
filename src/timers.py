@@ -64,3 +64,4 @@ class DelayTimer:
 
     def cancel(self):
         self.delaycancel = True
+

@@ -89,7 +89,7 @@ class AudioRecorder:
 
     @staticmethod
     def get_tmp_dir(media_type):
-        extension_list = {"audio":".ogg", "video":".mkv"}
+        extension_list = {"audio": ".ogg", "video": ".mkv"}
         extension = extension_list[media_type]
         directory = GLib.getenv('XDG_CACHE_HOME')
         if not directory:
@@ -121,7 +121,6 @@ class VideoRecorder:
                     "org.gnome.Shell.Screenshot",
                     None)
 
-
     def start(self, directory, framerate, show_pointer, pipeline):
         self.directory = directory
         self.framerate = framerate
@@ -133,15 +132,17 @@ class VideoRecorder:
                 "Screencast",
                 GLib.Variant.new_tuple(
                     GLib.Variant.new_string(self.directory),
-                    GLib.Variant("a{sv}",
-                        {"framerate": GLib.Variant("i", self.framerate),
+                    GLib.Variant("a{sv}", {
+                        "framerate": GLib.Variant("i", self.framerate),
                         "draw-cursor": GLib.Variant("b", self.show_pointer),
-                        "pipeline": GLib.Variant("s", self.pipeline)}
+                        "pipeline": GLib.Variant("s", self.pipeline)
+                        }
                     ),
                 ),
                 Gio.DBusProxyFlags.NONE,
                 -1,
-                None)
+                None
+            )
 
         elif self.stack.get_visible_child() is not self.fullscreen_mode_label:
             self.GNOMEScreencast.call_sync(
@@ -152,15 +153,17 @@ class VideoRecorder:
                     GLib.Variant("i", self.coordinates[2] // 2 * 2),
                     GLib.Variant("i", self.coordinates[3] // 2 * 2),
                     GLib.Variant.new_string(self.directory),
-                    GLib.Variant("a{sv}",
-                        {"framerate": GLib.Variant("i", self.framerate),
+                    GLib.Variant("a{sv}", {
+                        "framerate": GLib.Variant("i", self.framerate),
                         "draw-cursor": GLib.Variant("b", self.show_pointer),
-                        "pipeline": GLib.Variant("s", self.pipeline)}
+                        "pipeline": GLib.Variant("s", self.pipeline)
+                        }
                     ),
                 ),
                 Gio.DBusProxyFlags.NONE,
                 -1,
-                None)
+                None
+            )
 
     def stop(self):
         self.GNOMEScreencast.call_sync(
@@ -168,7 +171,8 @@ class VideoRecorder:
             None,
             Gio.DBusCallFlags.NONE,
             -1,
-            None)
+            None
+        )
 
     def get_coordinates(self):
         self.coordinates = self.GNOMESelectArea.call_sync(
@@ -176,4 +180,6 @@ class VideoRecorder:
             None,
             Gio.DBusProxyFlags.NONE,
             -1,
-            None)
+            None
+        )
+

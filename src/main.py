@@ -83,7 +83,8 @@ class Application(Gtk.Application):
             simple_action = Gio.SimpleAction.new(action, None)
             simple_action.connect("activate", callback)
             self.add_action(simple_action)
-            if accel: self.set_accels_for_action(f"app.{action}", accel)
+            if accel:
+                self.set_accels_for_action(f"app.{action}", accel)
 
     def select_location_dialog(self, action, widget):
         dialog = Gtk.FileChooserDialog(title=_("Select a Folder"), action=Gtk.FileChooserAction.SELECT_FOLDER)
@@ -148,3 +149,4 @@ class Application(Gtk.Application):
 def main(version):
     app = Application(version)
     return app.run(sys.argv)
+

@@ -21,17 +21,18 @@ from gettext import gettext as _
 from time import localtime, strftime
 
 from gi.repository import Gio, GLib, Gst, Gtk, Handy
-Gst.init(None)
 
 from .recorders import AudioRecorder, VideoRecorder
 from .timers import DelayTimer, Timer
+
+Gst.init(None)
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/window.ui')
 class KoohaWindow(Handy.ApplicationWindow):
     __gtype_name__ = 'KoohaWindow'
 
-    start_record_button = Gtk.Template.Child() # will be unused when DE check is removed
+    start_record_button = Gtk.Template.Child()  # will be unused when DE check is removed
     stop_record_button = Gtk.Template.Child()
     cancel_delay_button = Gtk.Template.Child()
     start_record_button_box = Gtk.Template.Child()
@@ -144,3 +145,4 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.main_screen_box)
 
         self.delay_timer.cancel()
+
