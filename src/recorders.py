@@ -123,11 +123,11 @@ class VideoRecorder:
             None
         )
 
-    def start(self, directory, framerate, show_pointer, pipeline):
+    def start(self, directory, framerate, show_pointer):
         self.directory = directory
         self.framerate = framerate
         self.show_pointer = show_pointer
-        self.pipeline = pipeline
+        self.pipeline = "queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux"
 
         if self.stack.get_visible_child() is self.fullscreen_mode_label:
             self.gnome_screencast.call_sync(

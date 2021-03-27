@@ -92,14 +92,14 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         framerate = self.settings.get_int("video-frames")
         show_pointer = self.settings.get_boolean("show-pointer")
-        pipeline = "queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux"
-        if (record_audio and self.audio_recorder.default_audio_output) or (record_microphone and self.audio_recorder.default_audio_input):
+        if ((record_audio and self.audio_recorder.default_audio_output)
+                or (record_microphone and self.audio_recorder.default_audio_input)):
             self.directory = self.audio_recorder.get_tmp_dir("video")
             self.audio_mode = True
         else:
             self.audio_mode = False
 
-        self.video_recorder.start(self.directory, framerate, show_pointer, pipeline)
+        self.video_recorder.start(self.directory, framerate, show_pointer)
         self.audio_recorder.start()
         self.timer.start()
 
