@@ -57,7 +57,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
         self.video_recorder = VideoRecorder(self.title_stack, self.fullscreen_mode_label)
 
-        desktop_environment = os.environ['XDG_CURRENT_DESKTOP']
+        desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
         if "GNOME" not in desktop_environment:
             self.start_record_button.set_sensitive(False)
             self.start_record_button.set_label(f"{desktop_environment} is not yet supported")
@@ -112,7 +112,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         if self.settings.get_string("saving-location") == "default":
             video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
             if not os.path.exists(video_directory):
-                video_directory = os.getenv("HOME")
+                video_directory = GLib.get_home_dir()
         return (f"{video_directory}{filename}{video_format}", video_directory)
 
     def playchime(self):

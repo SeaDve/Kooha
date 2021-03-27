@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
 import sys
 from gettext import gettext as _
 
@@ -99,7 +98,7 @@ class Application(Gtk.Application):
             directory = dialog.get_filenames()
         dialog.destroy()
         try:
-            homefolder = os.getenv("HOME")
+            homefolder = GLib.get_home_dir()
             is_in_homefolder = directory[0].startswith(homefolder)
             if is_in_homefolder and not directory[0] == homefolder:
                 self.settings.set_string("saving-location", directory[0])
