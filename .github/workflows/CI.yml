@@ -1,9 +1,50 @@
+name: CI
+
 on:
   push:
     branches: [master]
   pull_request:
-name: CI
+    branches: [master]
+
 jobs:
+  flake8:
+    name: "Linter"
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          sudo apt update -y
+          sudo apt -y install flake8
+      - name: Lint with flake8
+        run: |
+          flake8 --ignore E402 --show-source src/
+
+  mypy:
+    name: "Static Type Checker"
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          sudo apt update -y
+          sudo apt -y install mypy
+      - name: Check with MyPy
+        run: |
+          mypy --ignore-missing-imports --disallow-incomplete-defs src
+
   flatpak-builder:
     name: "Flatpak Builder"
     runs-on: ubuntu-20.04
