@@ -60,12 +60,12 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-        if self.title_stack.get_visible_child() is self.selection_mode_label:
-            self.video_recorder.get_coordinates()
-
         self.directory, video_directory = self.get_saving_location()
 
         if os.path.exists(video_directory):
+            if self.title_stack.get_visible_child() is self.selection_mode_label:
+                self.video_recorder.get_coordinates()
+
             delay = int(self.settings.get_string("record-delay"))
             self.delay_timer.start(delay)
             if delay > 0:
