@@ -83,7 +83,6 @@
                           <object class="GtkToggleButton" id="record_audio_toggle">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
                             <property name="action-name">app.record-audio</property>
                             <property name="tooltip-text" translatable="yes">Record computer sounds</property>
                             <accelerator key="a" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -99,7 +98,6 @@
                           <object class="GtkToggleButton" id="record_microphone_toggle">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
                             <property name="action-name">app.record-microphone</property>
                             <property name="tooltip-text" translatable="yes">Record from microphone</property>
                             <accelerator key="m" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -118,7 +116,6 @@
                           <object class="GtkToggleButton" id="show_pointer_toggle">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
                             <property name="action-name">app.show-pointer</property>
                             <property name="tooltip-text" translatable="yes">Show pointer</property>
                             <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -149,7 +146,6 @@
                             <property name="label" translatable="yes">Record</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
                             <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
                             <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <style>
@@ -162,9 +158,6 @@
                           <object class="GtkMenuButton" id="menu_button">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="focus-on-click">False</property>
-                            <property name="receives-default">True</property>
-                            <property name="direction">up</property>
                             <property name="menu-model">menu</property>
                             <accelerator key="F10" signal="clicked"/>
                             <child>
@@ -231,7 +224,6 @@
                     <property name="label" translatable="yes">Stop</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_stop_record_button_clicked" swapped="no"/>
                     <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                     <style>
@@ -288,7 +280,6 @@
                     <property name="label" translatable="yes">Cancel Delay</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_cancel_delay_button_clicked" swapped="no"/>
                     <accelerator key="c" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                     <style>
