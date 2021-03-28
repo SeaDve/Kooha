@@ -51,7 +51,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         self.timer = Timer(self.time_recording_label)
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
-        self.video_recorder = VideoRecorder(self.title_stack, self.fullscreen_mode_label)
+        self.video_recorder = VideoRecorder()
 
         desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
         if "GNOME" not in desktop_environment:
@@ -65,6 +65,9 @@ class KoohaWindow(Handy.ApplicationWindow):
         if os.path.exists(video_directory):
             if self.title_stack.get_visible_child() is self.selection_mode_label:
                 self.video_recorder.get_coordinates()
+                self.selection_mode = True
+            else:
+                self.selection_mode = False
 
             delay = int(self.settings.get_string("record-delay"))
             self.delay_timer.start(delay)
@@ -95,7 +98,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         else:
             self.audio_mode = False
 
-        self.video_recorder.start(self.directory, framerate, show_pointer)
+        self.video_recorder.start(self.selection_mode, self.directory, framerate, show_pointer)
         self.audio_recorder.start()
         self.timer.start()
 

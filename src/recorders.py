@@ -112,10 +112,7 @@ class AudioRecorder:
 
 
 class VideoRecorder:
-    def __init__(self, stack, label):
-        self.stack = stack
-        self.fullscreen_mode_label = label
-
+    def __init__(self):
         bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
         self.gnome_screencast = Gio.DBusProxy.new_sync(
             bus,
@@ -137,14 +134,15 @@ class VideoRecorder:
             None
         )
 
-    def start(self, directory, framerate, show_pointer):
+    def start(self, selection_mode, directory, framerate, show_pointer):
+        self.selection_mode = selection_mode
         self.directory = directory
         self.framerate = framerate
         self.show_pointer = show_pointer
         self.pipeline = ("queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 "
                          "deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux")
 
-        if self.stack.get_visible_child() is self.fullscreen_mode_label:
+        if not selection_mode:
             self.gnome_screencast.call_sync(
                 "Screencast",
                 GLib.Variant.new_tuple(
@@ -160,7 +158,7 @@ class VideoRecorder:
                 None
             )
 
-        elif self.stack.get_visible_child() is not self.fullscreen_mode_label:
+        elif selection_mode:
             self.gnome_screencast.call_sync(
                 "ScreencastArea",
                 GLib.Variant.new_tuple(
