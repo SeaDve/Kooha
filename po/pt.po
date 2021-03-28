@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# telmo bruno silva seabra <telmoseabra@petalmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: 2021-03-20 00:27+0000\n"
-"Last-Translator: telmo bruno silva seabra <telmoseabra@petalmail.com>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/pot-"
-"file/pt/>\n"
+"PO-Revision-Date: 2021-03-28 14:46+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/"
+"pot-file/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7

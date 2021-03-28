@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
+# Roberto Bautista <robertobau45@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: 2021-03-23 03:46+0000\n"
+"PO-Revision-Date: 2021-03-28 14:46+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.2-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -132,7 +132,7 @@ msgstr "Cancelar retraso"
 
 #: data/ui/window.ui:323
 msgid "Processing"
-msgstr ""
+msgstr "Procesando"
 
 #: data/ui/window.ui:349
 msgid "Delay"
@@ -217,10 +217,9 @@ msgstr ""
 "Es posible que la ubicación de guardado seleccionada haya sido eliminada."
 
 #: src/window.py:115
-#, fuzzy
 msgid "Screencast Recorded!"
-msgstr "Capturar pantalla;Grabador;Pantalla;Vídeo;"
+msgstr "¡Captura de pantalla grabada!"
 
 #: src/window.py:116
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "La grabación se ha guardado en"
