@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import threading
+from threading import Thread
 from gettext import gettext as _
 from time import localtime, strftime
 
@@ -83,7 +83,7 @@ class KoohaWindow(Handy.ApplicationWindow):
             error.destroy()
 
     def start_recording(self):
-        threading.Thread(target=self.playchime).start()
+        Thread(target=self.playchime).start()
 
         record_audio = self.settings.get_boolean("record-audio")
         record_microphone = self.settings.get_boolean("record-microphone")
