@@ -16,8 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from threading import Thread
 from gettext import gettext as _
+from threading import Thread
 from time import localtime, strftime
 
 from gi.repository import Gio, GLib, Gst, Gtk, Handy
@@ -91,6 +91,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
         framerate = self.settings.get_int("video-frames")
         show_pointer = self.settings.get_boolean("show-pointer")
+
         if ((record_audio and self.audio_recorder.default_audio_output)
                 or (record_microphone and self.audio_recorder.default_audio_input)):
             directory = self.audio_recorder.get_tmp_dir("video")
