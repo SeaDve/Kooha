@@ -31,25 +31,23 @@ class AudioRecorder:
             print(f"Default sink: {self.default_audio_output} \nDefault source: {self.default_audio_input}")
 
     def start(self):
+        final_sink = f'! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")}'
+        if self.record_audio and self.default_audio_output:
+            audio_pipeline = f'pulsesrc device="{self.default_audio_output}" {final_sink}'
+
+        elif self.record_microphone and self.default_audio_input:
+            audio_pipeline = f'pulsesrc device="{self.default_audio_input}" {final_sink}'
+
         if ((self.record_audio and self.default_audio_output)
-                or (self.record_microphone and self.default_audio_input)):
-            final_sink = f'! audioconvert ! opusenc ! webmmux ! filesink location={self.get_tmp_dir("audio")}'
-            if self.record_audio and self.default_audio_output:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_output}" {final_sink}'
+                and (self.record_microphone and self.default_audio_input)):
+            audio_pipeline = (f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix '
+                              f'{final_sink} pulsesrc device="{self.default_audio_input}" ! queue ! mix.')
 
-            elif self.record_microphone and self.default_audio_input:
-                audio_pipeline = f'pulsesrc device="{self.default_audio_input}" {final_sink}'
-
-            if ((self.record_audio and self.default_audio_output)
-                    and (self.record_microphone and self.default_audio_input)):
-                audio_pipeline = (f'pulsesrc device="{self.default_audio_output}" ! audiomixer name=mix '
-                                  f'{final_sink} pulsesrc device="{self.default_audio_input}" ! queue ! mix.')
-
-            self.audio_gst = Gst.parse_launch(audio_pipeline)
-            bus = self.audio_gst.get_bus()
-            bus.add_signal_watch()
-            bus.connect("message", self._on_audio_gst_message)
-            self.audio_gst.set_state(Gst.State.PLAYING)
+        self.audio_gst = Gst.parse_launch(audio_pipeline)
+        bus = self.audio_gst.get_bus()
+        bus.add_signal_watch()
+        bus.connect("message", self._on_audio_gst_message)
+        self.audio_gst.set_state(Gst.State.PLAYING)
 
     def stop(self, window):
         self.window = window

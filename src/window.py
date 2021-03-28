@@ -93,13 +93,14 @@ class KoohaWindow(Handy.ApplicationWindow):
         show_pointer = self.settings.get_boolean("show-pointer")
         if ((record_audio and self.audio_recorder.default_audio_output)
                 or (record_microphone and self.audio_recorder.default_audio_input)):
-            self.directory = self.audio_recorder.get_tmp_dir("video")
+            directory = self.audio_recorder.get_tmp_dir("video")
+            self.video_recorder.start(self.selection_mode, directory, framerate, show_pointer)
+            self.audio_recorder.start()
             self.audio_mode = True
         else:
+            self.video_recorder.start(self.selection_mode, self.directory, framerate, show_pointer)
             self.audio_mode = False
 
-        self.video_recorder.start(self.selection_mode, self.directory, framerate, show_pointer)
-        self.audio_recorder.start()
         self.timer.start()
 
         self.main_stack.set_visible_child(self.recording_label_box)
