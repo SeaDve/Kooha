@@ -195,4 +195,4 @@ class VideoRecorder:
             -1,
             None
         )
-        self.selection_mode = True      
+        self.selection_mode = True
