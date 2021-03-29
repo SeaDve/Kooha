@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: 2021-03-16 11:21+0100\n"
-"Last-Translator: Sébastien SERRE <sebastien@thivinfo.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-03-28 14:46+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
+">\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -26,7 +26,7 @@ msgstr "Kooha"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Screencast;Recorder;Screen;Video;"
+msgstr "Vidéographie;Écran;Vidéo;Enregistrement;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:138
 msgid "Simple screen recorder"
@@ -37,8 +37,8 @@ msgid ""
 "Kooha is a simple screen recorder built with GTK. It allows you to record "
 "your screen and also audio from your microphone or desktop."
 msgstr ""
-"Kooha est un enregistreur d’écran simple conçu avec GTK. Il vous permet "
-"d’enregistrer votre écran  ainsi que l’audio de votre micro ou de votre "
+"Kooha est un enregistreur d’écran simple conçu avec GTK. Il vous permet d’"
+"enregistrer votre écran ainsi que l’audio de votre micro ou de votre "
 "ordinateur."
 
 #. Translators: please do NOT translate this
@@ -103,19 +103,16 @@ msgid "Selection"
 msgstr "Sélection"
 
 #: data/ui/window.ui:88
-#, fuzzy
 msgid "Record computer sounds"
-msgstr "Activer le son de l’ordinateur"
+msgstr "Enregistrer les sons de l’ordinateur"
 
 #: data/ui/window.ui:104
-#, fuzzy
 msgid "Record from microphone"
-msgstr "Activer le mmicro"
+msgstr "Enregistrer à partir du microphone"
 
 #: data/ui/window.ui:123
-#, fuzzy
 msgid "Show pointer"
-msgstr "Activer le pointeur"
+msgstr "Afficher le pointeur"
 
 #: data/ui/window.ui:149
 msgid "Record"
@@ -127,7 +124,7 @@ msgstr "Stop"
 
 #: data/ui/window.ui:266
 msgid "Recording in…"
-msgstr "Enregistrer dans "
+msgstr "Enregistrer dans…"
 
 #: data/ui/window.ui:288
 msgid "Cancel Delay"
@@ -135,7 +132,7 @@ msgstr "Annuler le retard"
 
 #: data/ui/window.ui:323
 msgid "Processing"
-msgstr ""
+msgstr "Traitement en cours"
 
 #: data/ui/window.ui:349
 msgid "Delay"
@@ -167,7 +164,7 @@ msgstr "MKV"
 
 #: data/ui/window.ui:381
 msgid "Save to…"
-msgstr "Enregistrer dans ..."
+msgstr "Enregistrer dans…"
 
 #: data/ui/window.ui:387
 msgid "Keyboard Shortcuts"
@@ -191,7 +188,7 @@ msgstr "Choisir"
 
 #: src/main.py:116
 msgid "Save location not set"
-msgstr "Emplacement d’enregistrement non sauvé."
+msgstr "L’emplacement de sauvegarde n’est pas défini"
 
 #: src/main.py:117
 msgid "Please choose an accessible location and retry."
@@ -204,7 +201,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:143
 msgid "translator-credits"
-msgstr "Sébastien SERRE"
+msgstr "Sébastien Serre"
 
 #: src/main.py:144
 msgid "GitHub"
@@ -217,14 +214,13 @@ msgstr "L’enregistrement n’a pas pu débuter"
 #: src/window.py:77
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
-"L'emplacement d'enregistrement que vous avez sélectionné a peut-être été "
+"L’emplacement d’enregistrement que vous avez sélectionné a peut-être été "
 "supprimé."
 
 #: src/window.py:115
-#, fuzzy
 msgid "Screencast Recorded!"
-msgstr "Screencast;Recorder;Screen;Video;"
+msgstr "Vidéographie enregistrée !"
 
 #: src/window.py:116
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "L’enregistrement a été enregistré dans"
