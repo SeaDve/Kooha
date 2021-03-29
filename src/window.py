@@ -70,6 +70,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
             delay = int(self.settings.get_string("record-delay"))
             self.delay_timer.start(delay)
+
             if delay > 0:
                 self.main_stack.set_visible_child(self.delay_label_box)
         else:
