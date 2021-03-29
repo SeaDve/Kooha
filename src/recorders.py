@@ -132,15 +132,14 @@ class VideoRecorder:
             None
         )
 
-    def start(self, selection_mode, directory, framerate, show_pointer):
-        self.selection_mode = selection_mode
+    def start(self, directory, framerate, show_pointer):
         self.directory = directory
         self.framerate = framerate
         self.show_pointer = show_pointer
         self.pipeline = ("queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 "
                          "deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux")
 
-        if not selection_mode:
+        if not self.selection_mode:
             self.gnome_screencast.call_sync(
                 "Screencast",
                 GLib.Variant.new_tuple(
@@ -156,7 +155,7 @@ class VideoRecorder:
                 None
             )
 
-        elif selection_mode:
+        elif self.selection_mode:
             self.gnome_screencast.call_sync(
                 "ScreencastArea",
                 GLib.Variant.new_tuple(
@@ -185,7 +184,10 @@ class VideoRecorder:
             None
         )
 
-    def get_coordinates(self):
+    def set_fullscreen_mode(self):
+        self.selection_mode = False
+
+    def set_selection_mode(self):
         self.coordinates = self.gnome_selectarea.call_sync(
             "SelectArea",
             None,
@@ -193,3 +195,4 @@ class VideoRecorder:
             -1,
             None
         )
+        self.selection_mode = True      
