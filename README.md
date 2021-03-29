@@ -30,10 +30,6 @@
 Kooha is a simple screen recorder built with GTK. It allows you to record your screen and also audio from your microphone or desktop.
 
 
-## Tested Desktop Environments
-* GNOME Wayland and X11
-
-
 ## Roadmap
 
 ### v 2.0
@@ -65,6 +61,17 @@ cd Kooha
 meson builddir --prefix=/usr/local
 ninja -C builddir install
 ```
+
+
+## Hidden Configuration Options
+
+### Change frames per second to 60fps
+
+#### Flatpak
+
+The default is 30 fps. Note that using other FPS may cause flickering.
+
+`flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60`
 
 
 ## Credits
