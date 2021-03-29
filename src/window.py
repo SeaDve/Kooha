@@ -108,13 +108,13 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     def get_saving_location(self):
         video_directory = self.settings.get_string('saving-location')
-        filename = f"/Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
-        video_format = f".{self.settings.get_string('video-format')}"
+        filename = f"Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
+        video_format = self.settings.get_string('video-format')
         if self.settings.get_string("saving-location") == "default":
             video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
             if not os.path.exists(video_directory):
                 video_directory = GLib.get_home_dir()
-        return (f"{video_directory}{filename}{video_format}", video_directory)
+        return (f"{video_directory}/{filename}.{video_format}", video_directory)
 
     def playchime(self):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
