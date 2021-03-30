@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kooha package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Kooha Ekran Kayıt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-25 16:35+0800\n"
+"PO-Revision-Date: 2021-03-30 12:53+0300\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: Ümit Solmaz - u2slmz@gmail.com\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: data/io.github.seadve.Kooha.desktop.in:3
+#: data/io.github.seadve.Kooha.appdata.xml.in:7
+msgid "Kooha"
+msgstr "Kooha Ekran Kayıt"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in:11
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr "Ekrankaydı;Kaydedici;Ekran;Video;"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:138
+msgid "Simple screen recorder"
+msgstr "Basit Ekran Kaydedici"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:10
+msgid ""
+"Kooha is a simple screen recorder built with GTK. It allows you to record "
+"your screen and also audio from your microphone or desktop."
+msgstr ""
+"Kooha, GTK ile inşa edilmiş basit bir ekran kaydedicidir. Ekranınızı ve "
+"ayrıca mikrofonunuzdan veya masaüstünüzden ses kaydetmenize olanak tanır."
+
+#. Translators: please do NOT translate this
+#: data/io.github.seadve.Kooha.appdata.xml.in:19
+msgid "Dave Patrick"
+msgstr "Dave Patrick"
+
+#: data/ui/shortcuts.ui:12
+msgid "General"
+msgstr "Genel"
+
+#: data/ui/shortcuts.ui:17
+msgid "Open menu"
+msgstr "Menüyü Aç"
+
+#: data/ui/shortcuts.ui:24
+msgid "Show keyboard shortcuts"
+msgstr "Klavye kısayollarını göster"
+
+#: data/ui/shortcuts.ui:31
+msgid "Quit"
+msgstr "Çık"
+
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:208
+msgid "Recording"
+msgstr "Kayıt"
+
+#: data/ui/shortcuts.ui:44
+msgid "Toggle record"
+msgstr "Kayıt Geçiş"
+
+#: data/ui/shortcuts.ui:51
+msgid "Cancel delay"
+msgstr "Gecikmeyi iptal et"
+
+#: data/ui/shortcuts.ui:59
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: data/ui/shortcuts.ui:64
+msgid "Toggle capture mode"
+msgstr "Yakalama modunu değiştir"
+
+#: data/ui/shortcuts.ui:71
+msgid "Toggle computer sounds"
+msgstr "Bilgisayar seslerini değiştir"
+
+#: data/ui/shortcuts.ui:78
+msgid "Toggle microphone"
+msgstr "Mikrofonu Değiştir"
+
+#: data/ui/shortcuts.ui:85
+msgid "Toggle pointer"
+msgstr "İşaretçiyi değiştir"
+
+#: data/ui/window.ui:32
+msgid "Full Screen"
+msgstr "Tüm Ekran"
+
+#: data/ui/window.ui:44
+msgid "Selection"
+msgstr "Seç"
+
+#: data/ui/window.ui:88
+msgid "Record computer sounds"
+msgstr "Bilgisayar seslerini kaydet"
+
+#: data/ui/window.ui:104
+msgid "Record from microphone"
+msgstr "Mikrofondan kaydet"
+
+#: data/ui/window.ui:123
+msgid "Show pointer"
+msgstr "İşaretçiyi göster"
+
+#: data/ui/window.ui:149
+msgid "Record"
+msgstr "Kayıt"
+
+#: data/ui/window.ui:231
+msgid "Stop"
+msgstr "Durdur"
+
+#: data/ui/window.ui:266
+msgid "Recording in…"
+msgstr "Kaydediliyor…"
+
+#: data/ui/window.ui:288
+msgid "Cancel Delay"
+msgstr "Gecikmeyi İptal Et"
+
+#: data/ui/window.ui:323
+msgid "Processing"
+msgstr "İşleniyor"
+
+#: data/ui/window.ui:349
+msgid "Delay"
+msgstr "Gecikme"
+
+#: data/ui/window.ui:351
+msgid "None"
+msgstr "Yok"
+
+#: data/ui/window.ui:356
+msgid "5 seconds"
+msgstr "5 saniye"
+
+#: data/ui/window.ui:361
+msgid "10 seconds"
+msgstr "10 saniye"
+
+#: data/ui/window.ui:367
+msgid "Video Format"
+msgstr "Video Biçimi"
+
+#: data/ui/window.ui:369
+msgid "WebM"
+msgstr "WebM"
+
+#: data/ui/window.ui:374
+msgid "MKV"
+msgstr "MKV"
+
+#: data/ui/window.ui:381
+msgid "Save to…"
+msgstr "Kaydetme yeri…"
+
+#: data/ui/window.ui:387
+msgid "Keyboard Shortcuts"
+msgstr "Kısayol Tuşları"
+
+#: data/ui/window.ui:391
+msgid "About Kooha"
+msgstr "Kooha Hakkında"
+
+#: src/main.py:107
+msgid "Select a Folder"
+msgstr "Klasör Seç"
+
+#: src/main.py:108
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/main.py:108
+msgid "Select"
+msgstr "Seç"
+
+#: src/main.py:116
+msgid "Save location not set"
+msgstr "Konumu kaydetme ayarlanmadı"
+
+#: src/main.py:117
+msgid "Please choose an accessible location and retry."
+msgstr "Lütfen erişilebilir bir yer seçin ve tekrar deneyin."
+
+#: src/main.py:141
+msgid "Copyright 2021 Dave Patrick"
+msgstr "Copyright 2021 Dave Patrick"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/main.py:143
+msgid "translator-credits"
+msgstr "çevirmen-kredisi"
+
+#: src/main.py:144
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/window.py:76
+msgid "Recording cannot start"
+msgstr "Kayıt başlayamıyor"
+
+#: src/window.py:77
+msgid "The saving location you have selected may have been deleted."
+msgstr "Seçtiğiniz kayıt yeri silinmiş olabilir."
+
+#: src/window.py:115
+msgid "Screencast Recorded!"
+msgstr "Ekran Kaydı Kaydedildi!"
+
+#: src/window.py:116
+msgid "The recording has been saved in"
+msgstr "Kayıt kaydedildi"
