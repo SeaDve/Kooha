@@ -48,7 +48,6 @@
                           </object>
                           <packing>
                             <property name="icon-name">data_icons_selection-symbolic</property>
-                            <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
@@ -108,9 +107,6 @@
                               </object>
                             </child>
                           </object>
-                          <packing>
-                            <property name="position">1</property>
-                          </packing>
                         </child>
                         <child>
                           <object class="GtkToggleButton" id="show_pointer_toggle">
@@ -126,14 +122,8 @@
                               </object>
                             </child>
                           </object>
-                          <packing>
-                            <property name="position">2</property>
-                          </packing>
                         </child>
                       </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
                     </child>
                     <child>
                       <object class="GtkBox">
@@ -167,19 +157,10 @@
                               </object>
                             </child>
                           </object>
-                          <packing>
-                            <property name="position">1</property>
-                          </packing>
                         </child>
                       </object>
-                      <packing>
-                        <property name="position">2</property>
-                      </packing>
                     </child>
                   </object>
-                  <packing>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
             </child>
@@ -213,9 +194,6 @@
                           <class name="recording"/>
                         </style>
                       </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
                     </child>
                   </object>
                 </child>
@@ -232,13 +210,9 @@
                   </object>
                   <packing>
                     <property name="pack-type">end</property>
-                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox" id="delay_label_box">
@@ -269,9 +243,6 @@
                           <class name="time_label"/>
                         </style>
                       </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
                     </child>
                   </object>
                 </child>
@@ -288,13 +259,9 @@
                   </object>
                   <packing>
                     <property name="pack-type">end</property>
-                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="position">2</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox" id="processing_label_box">
