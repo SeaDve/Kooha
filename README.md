@@ -12,7 +12,7 @@
 <br>
 <p align="center">
   <a href="https://hosted.weblate.org/engage/kooha/">
-    <img src="https://hosted.weblate.org/widgets/kooha/-/svg-badge.svg" alt="Translation status" />
+    <img src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg" alt="Translation status" />
   </a>
   <a href="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml">
     <img src="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml/badge.svg" alt="CI status"/>
