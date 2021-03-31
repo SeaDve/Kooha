@@ -13,7 +13,7 @@
   </description>
   <url type="homepage">https://github.com/SeaDve/Kooha</url>
   <url type="bugtracker">https://github.com/SeaDve/Kooha/issues</url>
-  <url type="translate">https://github.com/SeaDve/Kooha/tree/master/po</url>
+  <url type="translate">https://hosted.weblate.org/projects/kooha/pot-file/</url>
   <url type="donation">https://paypal.me/sedve</url>
   <!-- Translators: please do NOT translate this -->
   <developer_name>Dave Patrick</developer_name>
