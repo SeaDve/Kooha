@@ -17,9 +17,6 @@
   <a href="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml">
     <img src="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml/badge.svg" alt="CI status"/>
   </a>
-  <a href="https://paypal.me/sedve">
-    <img src="https://img.shields.io/badge/PayPal-Donate-gray.svg?style=flat&logo=paypal&colorA=0071bb&logoColor=fff" alt="Donate" />
-  </a>
 </p>
 
 <p align="center">
