@@ -1,44 +1,44 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Oğuz Ersen <oguzersen@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: 2021-03-30 12:53+0300\n"
-"Language: tr_TR\n"
+"PO-Revision-Date: 2021-04-03 04:26+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
+"tr/>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: \n"
-"Language-Team: Ümit Solmaz - u2slmz@gmail.com\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
 msgid "Kooha"
-msgstr "Kooha Ekran Kayıt"
+msgstr "Kooha"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Ekrankaydı;Kaydedici;Ekran;Video;"
+msgstr "Screencast;Recorder;Screen;Video;Ekran kaydı;Kaydedici;Ekran;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:138
 msgid "Simple screen recorder"
-msgstr "Basit Ekran Kaydedici"
+msgstr "Basit bir ekran kaydedici"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Kooha is a simple screen recorder built with GTK. It allows you to record "
 "your screen and also audio from your microphone or desktop."
 msgstr ""
-"Kooha, GTK ile inşa edilmiş basit bir ekran kaydedicidir. Ekranınızı ve "
+"Kooha, GTK ile oluşturulmuş basit bir ekran kaydedicidir. Ekranınızı ve "
 "ayrıca mikrofonunuzdan veya masaüstünüzden ses kaydetmenize olanak tanır."
 
 #. Translators: please do NOT translate this
@@ -52,7 +52,7 @@ msgstr "Genel"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
-msgstr "Menüyü Aç"
+msgstr "Menüyü aç"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
@@ -60,15 +60,15 @@ msgstr "Klavye kısayollarını göster"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr "Çık"
+msgstr "Çıkış"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:208
 msgid "Recording"
-msgstr "Kayıt"
+msgstr "Kaydediliyor"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
-msgstr "Kayıt Geçiş"
+msgstr "Kaydı aç/kapat"
 
 #: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
@@ -88,7 +88,7 @@ msgstr "Bilgisayar seslerini değiştir"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr "Mikrofonu Değiştir"
+msgstr "Mikrofonu değiştir"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
@@ -96,11 +96,11 @@ msgstr "İşaretçiyi değiştir"
 
 #: data/ui/window.ui:32
 msgid "Full Screen"
-msgstr "Tüm Ekran"
+msgstr "Tam Ekran"
 
 #: data/ui/window.ui:44
 msgid "Selection"
-msgstr "Seç"
+msgstr "Seçim"
 
 #: data/ui/window.ui:88
 msgid "Record computer sounds"
@@ -168,7 +168,7 @@ msgstr "Kaydetme yeri…"
 
 #: data/ui/window.ui:387
 msgid "Keyboard Shortcuts"
-msgstr "Kısayol Tuşları"
+msgstr "Klavye Kısayolları"
 
 #: data/ui/window.ui:391
 msgid "About Kooha"
@@ -188,7 +188,7 @@ msgstr "Seç"
 
 #: src/main.py:116
 msgid "Save location not set"
-msgstr "Konumu kaydetme ayarlanmadı"
+msgstr "Kaydetme konumu ayarlanmadı"
 
 #: src/main.py:117
 msgid "Please choose an accessible location and retry."
@@ -196,12 +196,12 @@ msgstr "Lütfen erişilebilir bir yer seçin ve tekrar deneyin."
 
 #: src/main.py:141
 msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
+msgstr "Telif hakkı 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:143
 msgid "translator-credits"
-msgstr "çevirmen-kredisi"
+msgstr "Oğuz Ersen"
 
 #: src/main.py:144
 msgid "GitHub"
@@ -213,7 +213,7 @@ msgstr "Kayıt başlayamıyor"
 
 #: src/window.py:77
 msgid "The saving location you have selected may have been deleted."
-msgstr "Seçtiğiniz kayıt yeri silinmiş olabilir."
+msgstr "Seçtiğiniz kaydetme yeri silinmiş olabilir."
 
 #: src/window.py:115
 msgid "Screencast Recorded!"

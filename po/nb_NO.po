@@ -1,20 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Allan Nordhøy <epost@anotheragency.no>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-04-03 04:26+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
+"pot-file/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -39,23 +41,23 @@ msgstr ""
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
-msgstr ""
+msgstr "Åpne meny"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "Vis tastatursnarveier"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr ""
+msgstr "Avslutt"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:208
 msgid "Recording"
@@ -163,7 +165,7 @@ msgstr ""
 
 #: data/ui/window.ui:387
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Tastatursnarveier"
 
 #: data/ui/window.ui:391
 msgid "About Kooha"
@@ -175,7 +177,7 @@ msgstr ""
 
 #: src/main.py:108
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/main.py:108
 msgid "Select"
@@ -191,16 +193,16 @@ msgstr ""
 
 #: src/main.py:141
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Opphavsrett 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:143
 msgid "translator-credits"
-msgstr ""
+msgstr "Allan Nordhøy &lt;epost@anotheragency.no&gt;"
 
 #: src/main.py:144
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/window.py:76
 msgid "Recording cannot start"

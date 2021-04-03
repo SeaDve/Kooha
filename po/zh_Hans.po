@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: 2021-03-28 14:46+0000\n"
+"PO-Revision-Date: 2021-04-03 04:26+0000\n"
 "Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
@@ -57,7 +57,7 @@ msgstr "显示快捷键列表"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr "退出 Kooha"
+msgstr "退出"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:208
 msgid "Recording"
@@ -193,7 +193,7 @@ msgstr "请选择一个可访问的位置，然后重试。"
 
 #: src/main.py:141
 msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
+msgstr "版权所有 © 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:143
