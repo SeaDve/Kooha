@@ -8,8 +8,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-25 16:35+0800\n"
 "PO-Revision-Date: 2021-04-03 04:26+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
+"Last-Translator: Ümit Solmaz <u2slmz@alvehe.com>\n"
+"Language-Team: Oğuz Ersen <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -201,7 +201,7 @@ msgstr "Telif hakkı 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:143
 msgid "translator-credits"
-msgstr "Oğuz Ersen"
+msgstr "Ümit Solmaz"
 
 #: src/main.py:144
 msgid "GitHub"
