@@ -21,6 +21,24 @@
                     <style>
                       <class name="flat"/>
                     </style>
+                    <child>
+                      <object class="GtkMenuButton" id="menu_button">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="menu-model">menu</property>
+                        <property name="valign">center</property>
+                        <accelerator key="F10" signal="clicked"/>
+                        <style>
+                          <class name="titlebutton"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="icon-name">open-menu-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                     <child type="title">
                       <object class="GtkStack" id="title_stack">
                         <property name="visible">True</property>
@@ -142,20 +160,6 @@
                               <class name="suggested-action"/>
                               <class name="wide"/>
                             </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuButton" id="menu_button">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="menu-model">menu</property>
-                            <accelerator key="F10" signal="clicked"/>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="icon-name">open-menu-symbolic</property>
-                              </object>
-                            </child>
                           </object>
                         </child>
                       </object>
