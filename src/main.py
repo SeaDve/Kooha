@@ -87,7 +87,7 @@ class Application(Gtk.Application):
             if accel:
                 self.set_accels_for_action(f"app.{action}", accel)
 
-    def select_location_dialog(self, action, widget):
+    def select_location_dialog(self, action, param):
         dialog = Gtk.FileChooserDialog(title=_("Select a Folder"),
                                        action=Gtk.FileChooserAction.SELECT_FOLDER)
         dialog.add_buttons(_("Cancel"), Gtk.ResponseType.CANCEL,
@@ -113,14 +113,14 @@ class Application(Gtk.Application):
         except Exception:
             return
 
-    def show_shortcuts_window(self, action, widget):
+    def show_shortcuts_window(self, action, param):
         builder = Gtk.Builder()
         builder.add_from_resource('/io/github/seadve/Kooha/shortcuts.ui')
         window = builder.get_object('shortcuts')
         window.set_transient_for(self.window)
         window.present()
 
-    def show_about_dialog(self, action, widget):
+    def show_about_dialog(self, action, param):
         about = Gtk.AboutDialog()
         about.set_transient_for(self.window)
         about.set_modal(True)
@@ -138,18 +138,18 @@ class Application(Gtk.Application):
         about.set_website("https://github.com/SeaDve/Kooha")
         about.show()
 
-    def show_saving_location(self, action, widget):
+    def show_saving_location(self, action, param):
         saving_location = self.window.get_saving_location()[1]
         Gio.AppInfo.launch_default_for_uri(f"file://{saving_location}")
 
-    def on_change_capture_mode(self, action, widget):
+    def on_change_capture_mode(self, action, param):
         if self.window.main_stack.get_visible_child() is self.window.main_screen_box:
             if self.window.title_stack.get_visible_child() is self.window.selection_mode_label:
                 self.window.title_stack.set_visible_child(self.window.fullscreen_mode_label)
             else:
                 self.window.title_stack.set_visible_child(self.window.selection_mode_label)
 
-    def on_quit(self, action, widget):
+    def on_quit(self, action, param):
         if self.window.main_stack.get_visible_child() is self.window.main_screen_box:
             self.quit()
 
