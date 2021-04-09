@@ -144,24 +144,16 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkButton" id="start_record_button">
+                        <property name="label" translatable="yes">Record</property>
                         <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
+                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <style>
-                          <class name="linked"/>
+                          <class name="suggested-action"/>
+                          <class name="wide"/>
                         </style>
-                        <child>
-                          <object class="GtkButton" id="start_record_button">
-                            <property name="label" translatable="yes">Record</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
-                            <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                            <style>
-                              <class name="suggested-action"/>
-                              <class name="wide"/>
-                            </style>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>
@@ -212,9 +204,6 @@
                       <class name="destructive-action"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
                 </child>
               </object>
             </child>
@@ -261,9 +250,6 @@
                       <class name="destructive-action"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
                 </child>
               </object>
             </child>
