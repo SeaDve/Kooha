@@ -34,6 +34,19 @@
   </screenshots>
 
   <releases>
+    <release version="1.1.1" date="2021-04-09">
+      <description>
+        <p>This release is composing of minor changes:</p>
+        <ul>
+          <li>Minor UI improvements</li>
+          <li>Code cleaning and minor performance improvements</li>
+          <li>Fixed a bug when trying to save in an inaccessible location</li>
+          <li>Added Persian translations</li>
+          <li>Added Chinese(simplified) translations</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2021-03-25">
       <description>
         <p>This update brings new features and few bug fixes:</p>
