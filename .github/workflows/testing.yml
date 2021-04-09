@@ -47,9 +47,9 @@ jobs:
 
   flatpak-builder:
     name: "Flatpak Builder"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-3.38
+      image: bilelmoussaoui/flatpak-github-actions:gnome-40
       options: --privileged
     steps:
     - uses: actions/checkout@v2
