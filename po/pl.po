@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-10 17:36+0800\n"
+"POT-Creation-Date: 2021-04-10 17:45+0800\n"
 "PO-Revision-Date: 2021-04-06 21:26+0000\n"
 "Last-Translator: Radek Raczkowski <rdkracz@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kooha/pot-file/pl/"
@@ -41,13 +41,12 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
-"Kooha is a simple screen recorder built with GTK with minimalist interface. "
-"It allows you to record your screen and also audio from your microphone or "
-"desktop."
+"Kooha is a simple screen recorder with a minimalist interface. You can just "
+"click the record button without having to configure a bunch of settings"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
-msgid "The main features of Kooha includes the following:"
+msgid "The main features of Kooha include the following:"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
@@ -55,7 +54,7 @@ msgid "🌠️ 🎥 Capture your screen without any hustle."
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
-msgid "🎙️ Record your microphone, computer sounds or both at the same time."
+msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
