@@ -1,12 +1,13 @@
-<div align="center">
-  <span align="center">
-    <img width="192" height="192" class="center" src="data/logo/io.github.seadve.Kooha.svg" alt="Icon">
-  </span>
-  <h1 align="center">Kooha</h1>
-  <h3 align="center"></h3>
-</div>
+<h1 align="center">
+  <img src="data/logo/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
+  Kooha
+</h1>
 
-<p align="center"><strong>Elegantly record your screen</strong></p>
+<p align="center"><strong>Simple screen recorder</strong></p>
+
+<p align="center">
+  <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
+</p>
 
 <br/>
 
