@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-10 18:41+0800\n"
+"POT-Creation-Date: 2021-04-11 07:47+0800\n"
 "PO-Revision-Date: 2021-04-03 04:26+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
@@ -49,7 +49,7 @@ msgid "The main features of Kooha include the following:"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
-msgid "🎥 Capture your screen without any hustle."
+msgid "🎥 Capture your screen without any hassle."
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
