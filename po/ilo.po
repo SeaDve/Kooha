@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-10 17:50+0800\n"
+"POT-Creation-Date: 2021-04-10 18:41+0800\n"
 "PO-Revision-Date: 2021-03-28 14:46+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Iloko <https://hosted.weblate.org/projects/kooha/pot-file/ilo/"
@@ -41,7 +41,7 @@ msgstr ""
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
-"click the record button without having to configure a bunch of settings"
+"click the record button without having to configure a bunch of settings."
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
