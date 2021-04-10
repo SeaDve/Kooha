@@ -5,11 +5,21 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Kooha</name>
-  <summary>Simple screen recorder</summary>
+  <summary>Elegantly record your screen</summary>
   <description>
-    <p>
-    Kooha is a simple screen recorder built with GTK. It allows you to record your screen and also audio from your microphone or desktop.
-    </p>
+    <p>Capture your screen in a straightforward and painless way without distractions.</p>
+    <p>Kooha is a simple screen recorder built with GTK with minimalist interface. It allows you to record your screen and also audio from your microphone or desktop.</p>
+    <p>The main features of Kooha includes the following:</p>
+    <ul>
+      <li>🌠️ 🎥 Capture your screen without any hustle.</li>
+      <li>🎙️ Record your microphone, computer sounds or both at the same time.</li>
+      <li>🖼️ Select an area of your screen to record.</li>
+      <li>⏲️ Set delay to prepare before you start recording.</li>
+      <li>📼 Support for the free Matroska and WebM formats.</li>
+      <li>🖱️ Hide or show mouse pointer.</li>
+      <li>💾 Choose a saving location for your recording.</li>
+      <li>⌨️ Utilize helpful keyboard shortcuts.</li>
+    </ul>
   </description>
   <url type="homepage">https://github.com/SeaDve/Kooha</url>
   <url type="bugtracker">https://github.com/SeaDve/Kooha/issues</url>

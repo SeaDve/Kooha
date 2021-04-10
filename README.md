@@ -1,16 +1,23 @@
-<h1 align="center">
-  <img src="data/logo/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
-  Kooha
-</h1>
+<div align="center">
+  <span align="center">
+    <img width="192" height="192" class="center" src="data/logo/io.github.seadve.Kooha.svg" alt="Icon">
+  </span>
+  <h1 align="center">Kooha</h1>
+  <h3 align="center"></h3>
+</div>
 
-<p align="center"><strong>Simple screen recorder</strong></p>
+<br/>
+
+<p align="center"><strong>Elegantly record your screen</strong></p>
 
 <p align="center">
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
 </p>
 
-<br>
 <p align="center">
+  <a href="https://github.com/SeaDve/Kooha/blob/master/COPYING">
+    <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg">
+  </a>
   <a href="https://hosted.weblate.org/engage/kooha/">
     <img src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg" alt="Translation status" />
   </a>
@@ -23,35 +30,54 @@
   <img src="screenshots/Kooha-preview.png" alt="Preview"/>
 </p>
 
-## Description
-Kooha is a simple screen recorder built with GTK. It allows you to record your screen and also audio from your microphone or desktop.
+Capture your screen in a straightforward and painless way without distractions.
+
+Kooha is a simple screen recorder built with GTK with minimalist interface. 
+It allows you to record your screen and also audio from your microphone or desktop.
+
+The main features of Kooha includes the following:
+* 🎥 Capture your screen without any hustle.
+* 🎙️ Record your microphone, computer sounds or both at the same time.
+* 🖼️ Select an area of your screen to record.
+* ⏲️ Set delay to prepare before you start recording.
+* 📼 Support for the free Matroska and WebM formats.
+* 🖱️ Hide or show mouse pointer.
+* 💾 Choose a saving location for your recording.
+* ⌨️ Utilize helpful keyboard shortcuts.
 
 
-## Roadmap
+## 🛣️ Roadmap
 
-### v 2.0
 - [ ] MP4 video format support (Already in dev branch)
-- [ ] Rewrite VideoRecorder for freedesktop portal
-- [ ] Other desktop environment support
+- [ ] Rewrite VideoRecorder for freedesktop portal to support by window or monitor recording
+- [ ] Other environments support
 
 
-## Other Modes of Installation
+## ⚙️ Hidden Configuration Options
 
-| Distribution | Package | Maintainer |
-|:-:|:-:|:-:|
-| Arch Linux (AUR) | [`kooha`](https://aur.archlinux.org/packages/kooha) | [Mark Wagie](https://github.com/yochananmarqos) |
+### 🎞️ Change frames per second to 60fps
+
+You can copy and paste this to the terminal if you installed Kooha as flatpak:
+
+`flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60`<br/> 
+or `gsettings set io.github.seadve.Kooha video-frames 60` if installed locally.
+
+Take note that using other frames per second may cause flickering, depending on
+the performance of your device. 
 
 
-## Building from source
+## 🏗️ Installation
 
-### GNOME Builder (Recommended)
-GNOME Builder is the environment used for developing this application. It can use Flatpak manifests to create a consistent building and running environment cross-distro. Thus, it is highly recommended you use it.
+### 👷 GNOME Builder
+GNOME Builder is the environment used for developing this application. 
+It can use Flatpak manifests to create a consistent building and running 
+environment cross-distro. Thus, it is highly recommended you use it.
 
 1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
 2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
 3. Click the build button at the top once the project is loaded.
 
-### Manual with meson
+### 🔧 Meson
 ```
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
@@ -60,19 +86,27 @@ ninja -C builddir install
 ```
 
 
-## Hidden Configuration Options
+## ☕ Support me
 
-### Change frames per second to 60fps
+Kooha is free and will always be for everyone to use. If you like the project and
+would like to support and fund Kooha, you can donate through Paypal or Patreon.
 
-#### Flatpak
+<tr>
+  <td style="border: none; padding: 0;">
+    <a href="https://www.paypal.com/paypalme/sedve" target="_blank">
+      <img src="resources/paypalme.png" alt="Screenshot"/>
+    </a>
+  </td>
+  <td style="border: none; padding: 0;">
+    <a href="https://www.patreon.com/SeaDve" target="_blank">
+      <img src="resources/become_a_patron_button.png" alt="Screenshot"/>
+    </a>
+  </td>
+</tr>
 
-The default is 30 fps. Note that using other FPS may cause flickering.
 
-`flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60`
+## 💝 Acknowledgment
 
-
-## Credits
-
-Developed by **[Dave Patrick](https://github.com/SeaDve)** and [contributors](https://github.com/SeaDve/Kooha/graphs/contributors).
-
-Inspired from [RecApp](https://github.com/amikha1lov/RecApp).
+[RecApp](https://github.com/amikha1lov/RecApp) is greatly inspired the creation of Kooha. 
+And also, a warm thank you to all the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors) 
+and [translators](https://hosted.weblate.org/engage/kooha/) from Weblate.
