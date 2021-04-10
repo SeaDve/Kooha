@@ -6,9 +6,9 @@
   <h3 align="center"></h3>
 </div>
 
-<br/>
-
 <p align="center"><strong>Elegantly record your screen</strong></p>
+
+<br/>
 
 <p align="center">
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
@@ -55,7 +55,7 @@ The main features of Kooha includes the following:
 
 ## ⚙️ Hidden Configuration Options
 
-### 🎞️ Change frames per second to 60fps
+### Change frames per second to 60fps
 
 You can copy and paste this to the terminal if you installed Kooha as flatpak:
 
@@ -68,7 +68,7 @@ the performance of your device.
 
 ## 🏗️ Installation
 
-### 👷 GNOME Builder
+### GNOME Builder
 GNOME Builder is the environment used for developing this application. 
 It can use Flatpak manifests to create a consistent building and running 
 environment cross-distro. Thus, it is highly recommended you use it.
@@ -77,7 +77,7 @@ environment cross-distro. Thus, it is highly recommended you use it.
 2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
 3. Click the build button at the top once the project is loaded.
 
-### 🔧 Meson
+### Meson
 ```
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
