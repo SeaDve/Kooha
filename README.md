@@ -86,23 +86,11 @@ ninja -C builddir install
 ```
 
 
-## ☕ Support me
+## ☕ Support me and the project
 
 Kooha is free and will always be for everyone to use. If you like the project and
-would like to support and fund Kooha, you can donate through Paypal or Patreon.
-
-<tr>
-  <td style="border: none; padding: 0;">
-    <a href="https://www.paypal.com/paypalme/sedve" target="_blank">
-      <img src="resources/paypalme.png" alt="Screenshot"/>
-    </a>
-  </td>
-  <td style="border: none; padding: 0;">
-    <a href="https://www.patreon.com/SeaDve" target="_blank">
-      <img src="resources/become_a_patron_button.png" alt="Screenshot"/>
-    </a>
-  </td>
-</tr>
+would like to support and fund it, you may donate through [Paypal](https://www.paypal.com/paypalme/sedve) 
+or [Patreon](https://www.patreon.com/SeaDve).
 
 
 ## 💝 Acknowledgment
