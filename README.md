@@ -62,7 +62,7 @@ Take note that using other frames per second may cause flickering, depending on
 the performance of your device. 
 
 
-## 🏗️ Installation
+## 🏗️ Building from source
 
 ### GNOME Builder
 GNOME Builder is the environment used for developing this application. 
