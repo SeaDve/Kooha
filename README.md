@@ -3,7 +3,7 @@
   Kooha
 </h1>
 
-<p align="center"><strong>Simple screen recorder</strong></p>
+<p align="center"><strong>Elegantly record your screen</strong></p>
 
 <br/>
 
@@ -54,7 +54,7 @@ The main features of Kooha includes the following:
 
 ### Change frames per second to 60fps
 
-You can copy and paste this to the terminal if you installed Kooha as flatpak:
+You can copy and paste this to the terminal if you installed Kooha as a flatpak:
 
 `flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60`<br/> 
 or `gsettings set io.github.seadve.Kooha video-frames 60` if installed locally.
