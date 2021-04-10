@@ -128,7 +128,7 @@ class Application(Gtk.Application):
         about.set_program_name("Kooha")
         about.set_logo_icon_name("io.github.seadve.Kooha")
         about.set_authors(["Dave Patrick"])
-        about.set_comments(_("Simple screen recorder"))
+        about.set_comments(_("Elegantly record your screen "))
         about.set_wrap_license(True)
         about.set_license_type(Gtk.License.GPL_3_0)
         about.set_copyright(_("Copyright 2021 Dave Patrick"))
