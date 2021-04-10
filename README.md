@@ -9,7 +9,7 @@
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
 </p>
 
-<br/>
+<br>
 <p align="center">
   <a href="https://github.com/SeaDve/Kooha/blob/master/COPYING">
     <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg">
