@@ -96,6 +96,6 @@ or [Patreon](https://www.patreon.com/SeaDve).
 
 ## 💝 Acknowledgment
 
-[RecApp](https://github.com/amikha1lov/RecApp) is greatly inspired the creation of Kooha. 
+[RecApp](https://github.com/amikha1lov/RecApp) greatly inspired the creation of Kooha. 
 And also, a warm thank you to all the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors) 
 and [translators](https://hosted.weblate.org/engage/kooha/) from Weblate.

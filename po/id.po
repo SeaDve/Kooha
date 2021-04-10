@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-10 17:50+0800\n"
-"PO-Revision-Date: 2021-04-03 04:26+0000\n"
-"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"POT-Creation-Date: 2021-04-10 18:41+0800\n"
+"PO-Revision-Date: 2021-04-10 10:42+0000\n"
+"Last-Translator: liimee <alt3753.7@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
 "file/id/>\n"
 "Language: id\n"
@@ -31,7 +31,7 @@ msgstr "Screencast;Perekam;Layar;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Rekam layar Anda dengan elegan"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
@@ -42,7 +42,7 @@ msgstr ""
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
-"click the record button without having to configure a bunch of settings"
+"click the record button without having to configure a bunch of settings."
 msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
@@ -71,11 +71,11 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Sembunyikan atau tampilkan penunjuk tetikus."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Pilih lokasi penyimpanan untuk rekaman Anda."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
