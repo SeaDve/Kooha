@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 13:17+0800\n"
+"POT-Creation-Date: 2021-04-10 17:36+0800\n"
 "PO-Revision-Date: 2021-03-28 14:46+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
@@ -28,21 +28,61 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Vidéographie;Écran;Vidéo;Enregistrement;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:131
-msgid "Simple screen recorder"
-msgstr "Un simple enregistreur d’écran"
+#: data/io.github.seadve.Kooha.appdata.xml.in:8
+msgid "Elegantly record your screen"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
-"Kooha is a simple screen recorder built with GTK. It allows you to record "
-"your screen and also audio from your microphone or desktop."
+"Capture your screen in a straightforward and painless way without "
+"distractions."
 msgstr ""
-"Kooha est un enregistreur d’écran simple conçu avec GTK. Il vous permet "
-"d’enregistrer votre écran ainsi que l’audio de votre micro ou de votre "
-"ordinateur."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:11
+msgid ""
+"Kooha is a simple screen recorder built with GTK with minimalist interface. "
+"It allows you to record your screen and also audio from your microphone or "
+"desktop."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:12
+msgid "The main features of Kooha includes the following:"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:14
+msgid "🌠️ 🎥 Capture your screen without any hustle."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:15
+msgid "🎙️ Record your microphone, computer sounds or both at the same time."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:16
+msgid "🖼️ Select an area of your screen to record."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:17
+msgid "⏲️ Set delay to prepare before you start recording."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:18
+msgid "📼 Support for the free Matroska and WebM formats."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:19
+msgid "🖱️ Hide or show mouse pointer."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:20
+msgid "💾 Choose a saving location for your recording."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:21
+msgid "⌨️ Utilize helpful keyboard shortcuts."
+msgstr ""
 
 #. Translators: please do NOT translate this
-#: data/io.github.seadve.Kooha.appdata.xml.in:19
+#: data/io.github.seadve.Kooha.appdata.xml.in:29
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -194,6 +234,10 @@ msgstr "L’emplacement de sauvegarde n’est pas défini"
 msgid "Please choose an accessible location and retry."
 msgstr "Veuillez choisir un emplacement accessible et réessayer."
 
+#: src/main.py:131
+msgid "Elegantly record your screen "
+msgstr ""
+
 #: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
@@ -224,3 +268,14 @@ msgstr "Vidéographie enregistrée !"
 #: src/window.py:129
 msgid "The recording has been saved in"
 msgstr "L’enregistrement a été enregistré dans"
+
+#~ msgid "Simple screen recorder"
+#~ msgstr "Un simple enregistreur d’écran"
+
+#~ msgid ""
+#~ "Kooha is a simple screen recorder built with GTK. It allows you to record "
+#~ "your screen and also audio from your microphone or desktop."
+#~ msgstr ""
+#~ "Kooha est un enregistreur d’écran simple conçu avec GTK. Il vous permet "
+#~ "d’enregistrer votre écran ainsi que l’audio de votre micro ou de votre "
+#~ "ordinateur."
