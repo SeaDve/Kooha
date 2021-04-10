@@ -8,11 +8,11 @@
   <summary>Elegantly record your screen</summary>
   <description>
     <p>Capture your screen in a straightforward and painless way without distractions.</p>
-    <p>Kooha is a simple screen recorder built with GTK with minimalist interface. It allows you to record your screen and also audio from your microphone or desktop.</p>
-    <p>The main features of Kooha includes the following:</p>
+    <p>Kooha is a simple screen recorder with a minimalist interface. You can just click the record button without having to configure a bunch of settings</p>
+    <p>The main features of Kooha include the following:</p>
     <ul>
       <li>🌠️ 🎥 Capture your screen without any hustle.</li>
-      <li>🎙️ Record your microphone, computer sounds or both at the same time.</li>
+      <li>🎙️ Record your microphone, computer sounds, or both at the same time.</li>
       <li>🖼️ Select an area of your screen to record.</li>
       <li>⏲️ Set delay to prepare before you start recording.</li>
       <li>📼 Support for the free Matroska and WebM formats.</li>

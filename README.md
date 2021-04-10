@@ -3,9 +3,9 @@
   Kooha
 </h1>
 
-<p align="center"><strong>Elegantly record your screen</strong></p>
-
 <br/>
+
+<p align="center"><strong>Elegantly record your screen</strong></p>
 
 <p align="center">
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
@@ -29,12 +29,12 @@
 
 Capture your screen in a straightforward and painless way without distractions.
 
-Kooha is a simple screen recorder built with GTK with minimalist interface. 
-It allows you to record your screen and also audio from your microphone or desktop.
+Kooha is a simple screen recorder with a minimalist interface. You can just click
+the record button without having to configure a bunch of settings
 
-The main features of Kooha includes the following:
+The main features of Kooha include the following:
 * 🎥 Capture your screen without any hustle.
-* 🎙️ Record your microphone, computer sounds or both at the same time.
+* 🎙️ Record your microphone, computer sounds, or both at the same time.
 * 🖼️ Select an area of your screen to record.
 * ⏲️ Set delay to prepare before you start recording.
 * 📼 Support for the free Matroska and WebM formats.
