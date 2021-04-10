@@ -32,7 +32,7 @@ Kooha is a simple screen recorder with a minimalist interface. You can just clic
 the record button without having to configure a bunch of settings.
 
 The main features of Kooha include the following:
-* 🎥 Capture your screen without any hustle.
+* 🎥 Capture your screen without any hassle.
 * 🎙️ Record your microphone, computer sounds, or both at the same time.
 * 🖼️ Select an area of your screen to record.
 * ⏲️ Set delay to prepare before you start recording.
@@ -80,6 +80,11 @@ cd Kooha
 meson builddir --prefix=/usr/local
 ninja -C builddir install
 ```
+
+
+## 🙌 Help translate Kooha
+You can help Kooha translate into your native language. If you found any typos 
+or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/kooha/) platform.
 
 
 ## ☕ Support me and the project
