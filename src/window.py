@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from gettext import gettext as _
 from threading import Thread
 from time import localtime, strftime
 
