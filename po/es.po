@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
 # Roberto Bautista <robertobau45@gmail.com>, 2021.
+# Juan David Sanchez Lean <jdsljuan@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-03-28 14:46+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"PO-Revision-Date: 2021-04-12 18:27+0000\n"
+"Last-Translator: Roberto Bautista <robertobau45@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -31,55 +32,58 @@ msgstr "Capturar pantalla;Grabador;Pantalla;Vídeo;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Graba tu pantalla elegantemente"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr ""
+msgstr "Captura tu pantalla de forma sencilla, indolora y sin distracciones."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha es un grabador de pantalla simple con una interfaz minimalista. Solo "
+"da click en el botón grabar sin tener que configurar un centenar de ajustes."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Las características principales de Kooha incluyen lo siguiente:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Graba tu pantalla sin ninguna molestia."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
+"🎙️ Graba tu micrófono, los sonidos del sistema, o ambos al mismo tiempo."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Selecciona un área de la pantalla para grabarla."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Selecciona un retraso antes de empezar a grabar."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Soporte para los formatos libres Matroska y WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Oculta o muestra el cursor."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Selecciona una ubicación para tu grabación."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Usa los útiles atajos de teclado."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
@@ -124,15 +128,15 @@ msgstr "Cambiar modo de captura"
 
 #: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
-msgstr "Alternar sonidos del dispositivo"
+msgstr "Activar o desactivar audio del dispositivo"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr "Alternar micrófono"
+msgstr "Activar o desactivar micrófono"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr "Alternar puntero"
+msgstr "Activar o desactivar puntero"
 
 #: data/ui/window.ui:50
 msgid "Full Screen"
@@ -236,7 +240,7 @@ msgstr "Elige una ubicación accesible e intenta de nuevo."
 
 #: src/main.py:131
 msgid "Elegantly record your screen "
-msgstr ""
+msgstr "Graba tu pantalla elegantemente. "
 
 #: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
