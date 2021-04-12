@@ -126,7 +126,12 @@ class Application(Gtk.Application):
         about.set_version(self.version)
         about.set_program_name("Kooha")
         about.set_logo_icon_name("io.github.seadve.Kooha")
-        about.set_authors(["Dave Patrick"])
+        about.set_authors(
+            [
+                "Dave Patrick",
+                "mathiascode"
+            ]
+        )
         about.set_comments(_("Elegantly record your screen "))
         about.set_wrap_license(True)
         about.set_license_type(Gtk.License.GPL_3_0)
