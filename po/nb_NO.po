@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Allan Nordhøy <epost@anotheragency.no>, 2021.
+# Syver Stensholt <sssandum@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-04-03 04:26+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2021-04-14 05:59+0000\n"
+"Last-Translator: Syver Stensholt <sssandum@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
 "pot-file/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -21,64 +22,67 @@ msgstr ""
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Skjermopptak;Opptaker;Skjerm;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Ta opp skjermen din på elegant vis"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr ""
+msgstr "Ta opp skjermen din på en enkel og smertefri måte uten distraksjoner."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha er en enkel skjermopptaker med et minimalistisk grensesnitt. Du kan "
+"bare klikke opptaksknappen uten å måtte konfigurere en haug med "
+"innstillinger."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Hovedfunksjonene til Kooha er følgende:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Ta opp skjermen uten stress."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Spill inn mikrofon, skrivebordslyd, eller begge på en gang."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Velg et område på skjermen som skal tas opp."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Angi en forsinkelse for å forberede deg før opptaket."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Støtte for de frie formatene Matroska og WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Skjul eller vis musepekeren."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Velg et sted der opptakene skal lagres."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Ta i bruk nyttige tastatursnarveier."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
@@ -103,107 +107,107 @@ msgstr "Avslutt"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:178
 msgid "Recording"
-msgstr ""
+msgstr "Tar opp"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
-msgstr ""
+msgstr "Start eller stopp opptak"
 
 #: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
-msgstr ""
+msgstr "Avbryt forsinkelse"
 
 #: data/ui/shortcuts.ui:59
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 #: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
-msgstr ""
+msgstr "Endre opptaksmodus"
 
 #: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Slå av/på opptak av skrivebordslyd"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Slå av/på opptak av mikrofonen"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Slå av/på opptak av musepekeren"
 
 #: data/ui/window.ui:50
 msgid "Full Screen"
-msgstr ""
+msgstr "Fullskjerm"
 
 #: data/ui/window.ui:62
 msgid "Selection"
-msgstr ""
+msgstr "Utvalg"
 
 #: data/ui/window.ui:104
 msgid "Record computer sounds"
-msgstr ""
+msgstr "Ta opp skrivebordslyder"
 
 #: data/ui/window.ui:119
 msgid "Record from microphone"
-msgstr ""
+msgstr "Ta opp fra mikrofonen"
 
 #: data/ui/window.ui:134
 msgid "Show pointer"
-msgstr ""
+msgstr "Vis musepeker"
 
 #: data/ui/window.ui:148
 msgid "Record"
-msgstr ""
+msgstr "Ta opp"
 
 #: data/ui/window.ui:198
 msgid "Stop"
-msgstr ""
+msgstr "Stopp"
 
 #: data/ui/window.ui:225
 msgid "Recording in…"
-msgstr ""
+msgstr "Tar opp om…"
 
 #: data/ui/window.ui:244
 msgid "Cancel Delay"
-msgstr ""
+msgstr "Avbryt forsinkelse"
 
 #: data/ui/window.ui:271
 msgid "Processing"
-msgstr ""
+msgstr "Behandler"
 
 #: data/ui/window.ui:297
 msgid "Delay"
-msgstr ""
+msgstr "Forsinkelse"
 
 #: data/ui/window.ui:299
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: data/ui/window.ui:304
 msgid "5 seconds"
-msgstr ""
+msgstr "5 sekunder"
 
 #: data/ui/window.ui:309
 msgid "10 seconds"
-msgstr ""
+msgstr "10 sekunder"
 
 #: data/ui/window.ui:315
 msgid "Video Format"
-msgstr ""
+msgstr "Videoformat"
 
 #: data/ui/window.ui:317
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/ui/window.ui:322
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/ui/window.ui:329
 msgid "Save to…"
-msgstr ""
+msgstr "Lagre til…"
 
 #: data/ui/window.ui:335
 msgid "Keyboard Shortcuts"
@@ -211,11 +215,11 @@ msgstr "Tastatursnarveier"
 
 #: data/ui/window.ui:339
 msgid "About Kooha"
-msgstr ""
+msgstr "Om Kooha"
 
 #: src/main.py:91
 msgid "Select a Folder"
-msgstr ""
+msgstr "Velg en mappe"
 
 #: src/main.py:93
 msgid "Cancel"
@@ -223,19 +227,19 @@ msgstr "Avbryt"
 
 #: src/main.py:94
 msgid "Select"
-msgstr ""
+msgstr "Velg"
 
 #: src/main.py:109
 msgid "Save location not set"
-msgstr ""
+msgstr "Lagringsplass er ikke valgt"
 
 #: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr ""
+msgstr "Vennligst velg en tilgjengelig plassering og prøv på nytt."
 
 #: src/main.py:131
 msgid "Elegantly record your screen "
-msgstr ""
+msgstr "Ta opp skjermen din på elegant vis "
 
 #: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
@@ -252,16 +256,16 @@ msgstr "GitHub"
 
 #: src/window.py:80
 msgid "Recording cannot start"
-msgstr ""
+msgstr "Kunne ikke starte opptak"
 
 #: src/window.py:81
 msgid "The saving location you have selected may have been deleted."
-msgstr ""
+msgstr "Lagringsplassen du valgte kan ha blitt slettet."
 
 #: src/window.py:128
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "Skjermen ble tatt opp!"
 
 #: src/window.py:129
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "Opptaket ble lagret i"
