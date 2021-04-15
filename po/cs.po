@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-03-28 14:46+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
-">\n"
+"PO-Revision-Date: 2021-04-15 06:27+0000\n"
+"Last-Translator: Jan Novák <novak@silen.org>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
+"\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,55 +30,58 @@ msgstr "Záznam obrazovky;Rekordér;Obrazovka;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Elegantně zaznamenej svou obrazovku"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
 msgstr ""
+"Zaznamenej svou obrazovku jednoduše a bez zbytečných starostí a rozptylování."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Hooha je jednoduchý nahrávač obrazovky s minimalistickým rozhraním. Můžeš "
+"ihned začít bez potřeby cokoliv nastavovat."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Hlavní funkcionality Hoohy jsou:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Zaznamenej bez problémů svou obrazovku."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Nahrávej zvuk z mikrofonu, z pořítače nebo z obojího zároveň."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Vyber oblast obrazovky pro nahrávání."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Nastav zpoždění aby jsi se připravil před nahráváním."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Podpora pro volné formáty Matroska a WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Zobraz nebo skryj svou myš."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Zvol lokaci pro ukládání nahrávek."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Využij užitečné klávesové zkratky."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
@@ -171,7 +174,7 @@ msgstr "Zrušit zpoždění"
 
 #: data/ui/window.ui:271
 msgid "Processing"
-msgstr ""
+msgstr "Zpracovávání"
 
 #: data/ui/window.ui:297
 msgid "Delay"
@@ -235,7 +238,7 @@ msgstr "Prosím vyberte místo, kam máte přístup a zkuste znovu."
 
 #: src/main.py:131
 msgid "Elegantly record your screen "
-msgstr ""
+msgstr "Elegantně nahraj svou obrazovku. "
 
 #: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
@@ -244,7 +247,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:136
 msgid "translator-credits"
-msgstr "Jan Novák / Nirsiel"
+msgstr "Jan Novák <novak@silen.org>"
 
 #: src/main.py:137
 msgid "GitHub"
@@ -259,13 +262,12 @@ msgid "The saving location you have selected may have been deleted."
 msgstr "Místo vybrané pro ukládání mohlo být smazáno."
 
 #: src/window.py:128
-#, fuzzy
 msgid "Screencast Recorded!"
-msgstr "Záznam obrazovky;Rekordér;Obrazovka;Video;"
+msgstr "Nahrávač obrazovky!"
 
 #: src/window.py:129
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "Nahrávka byla uložena"
 
 #~ msgid "Simple screen recorder"
 #~ msgstr "Jednoduchý program pro nahrávání obrazovky"

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-03-28 14:46+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-04-15 06:27+0000\n"
+"Last-Translator: Jonathan Haas <haasjona@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -31,55 +31,60 @@ msgstr "Screencast;Rekorder;Aufnahme;Bildschirm;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Ihren Bildschirm elegant aufnehmen"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
 msgstr ""
+"Erfassen Sie Ihren Bildschirm auf einfache und schmerzlose Weise ohne "
+"Ablenkung."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha ist ein einfacher Bildschirmrekorder mit einer minimalistischen "
+"Oberfläche. Sie können einfach auf die Aufnahmetaste klicken, ohne einen "
+"Haufen von Einstellungen konfigurieren zu müssen."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Zu den Hauptmerkmalen von Kooha gehören:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Erfassen Sie Ihren Bildschirm mühelos."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Nehmen Sie Ihr Mikrofon, Computertöne oder beides gleichzeitig auf."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Wählen Sie einen Bereich Ihres Bildschirms für die Aufnahme aus."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Stellen Sie eine Verzögerung ein, um die Aufnahme vorzubereiten."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Unterstützt die freien Formate Matroska und WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Mauszeiger ein- oder ausblenden."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Wählen Sie einen Speicherort für Ihre Aufnahme."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Nutzen Sie hilfreiche Tastaturkürzel."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
@@ -236,7 +241,7 @@ msgstr "Bitte wählen Sie einen erreichbaren Ort und versuchen Sie es erneut."
 
 #: src/main.py:131
 msgid "Elegantly record your screen "
-msgstr ""
+msgstr "Elegant Ihren Bildschirm aufzeichnen "
 
 #: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
@@ -265,7 +270,7 @@ msgstr "Video-Aufzeichnung aufgenommen!"
 
 #: src/window.py:129
 msgid "The recording has been saved in"
-msgstr "Die Aufnahm ist gespeichert worden in"
+msgstr "Die Aufnahme ist gespeichert worden in"
 
 #~ msgid "Simple screen recorder"
 #~ msgstr "Einfache Bildschirmaufnahme"

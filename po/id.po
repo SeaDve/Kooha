@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-04-12 18:27+0000\n"
+"PO-Revision-Date: 2021-04-15 06:26+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
 "pot-file/id/>\n"
@@ -68,7 +68,7 @@ msgstr "🖼️ Pilih area layar Anda yang ingin direkam."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Pasang penundaan untuk bersiap-siap sebelum mulai merekam."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 #, fuzzy
@@ -85,7 +85,7 @@ msgstr "💾 Pilih lokasi penyimpanan untuk rekaman Anda."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Manfaatkan pintasan keyboard yang berguna."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
