@@ -45,8 +45,8 @@ The main features of Kooha include the following:
 ## 🛣️ Roadmap
 
 - [ ] MP4 video format support (Already in dev branch)
-- [ ] Rewrite VideoRecorder for freedesktop portal to support by window or monitor recording
-- [ ] Other environments support
+- [ ] Change backend to support individual window or monitor recording
+- [ ] Other desktop environments support
 
 
 ## ⚙️ Hidden Configuration Options
