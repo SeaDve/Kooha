@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-04-14 05:59+0000\n"
-"Last-Translator: Syver Stensholt <sssandum@gmail.com>\n"
+"PO-Revision-Date: 2021-04-15 06:27+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
 "pot-file/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -37,7 +37,7 @@ msgstr "Ta opp skjermen din på elegant vis"
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr "Ta opp skjermen din på en enkel og smertefri måte uten distraksjoner."
+msgstr "Ta opp skjermen din på en enkel og grei måte uten forstyrrelser."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
@@ -45,12 +45,11 @@ msgid ""
 "click the record button without having to configure a bunch of settings."
 msgstr ""
 "Kooha er en enkel skjermopptaker med et minimalistisk grensesnitt. Du kan "
-"bare klikke opptaksknappen uten å måtte konfigurere en haug med "
-"innstillinger."
+"bare klikke opptaksknappen uten å måtte sette opp en masse innstillinger."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Hovedfunksjonene til Kooha er følgende:"
+msgstr "Kooha har blandt annet disse hovedfunksjonene:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
@@ -107,7 +106,7 @@ msgstr "Avslutt"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:178
 msgid "Recording"
-msgstr "Tar opp"
+msgstr "Tar opp …"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
@@ -235,7 +234,7 @@ msgstr "Lagringsplass er ikke valgt"
 
 #: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr "Vennligst velg en tilgjengelig plassering og prøv på nytt."
+msgstr "Velg en tilgjengelig plassering og prøv på nytt."
 
 #: src/main.py:131
 msgid "Elegantly record your screen "
@@ -264,7 +263,7 @@ msgstr "Lagringsplassen du valgte kan ha blitt slettet."
 
 #: src/window.py:128
 msgid "Screencast Recorded!"
-msgstr "Skjermen ble tatt opp!"
+msgstr "Skjermopptak innspilt."
 
 #: src/window.py:129
 msgid "The recording has been saved in"
