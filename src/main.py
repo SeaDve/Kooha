@@ -132,7 +132,7 @@ class Application(Gtk.Application):
                 "mathiascode"
             ]
         )
-        about.set_comments(_("Elegantly record your screen "))
+        about.set_comments(_("Elegantly record your screen"))
         about.set_wrap_license(True)
         about.set_license_type(Gtk.License.GPL_3_0)
         about.set_copyright(_("Copyright 2021 Dave Patrick"))
