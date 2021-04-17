@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-03-28 14:46+0000\n"
+"PO-Revision-Date: 2021-04-17 11:18+0000\n"
 "Last-Translator: سهیل خانعلی‌پور <soheil@disroot.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fa/>\n"
@@ -87,7 +87,7 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
-msgstr "فراگیر"
+msgstr "فَراگیر"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
@@ -135,7 +135,7 @@ msgstr ""
 
 #: data/ui/window.ui:50
 msgid "Full Screen"
-msgstr "سرتاسر"
+msgstr "سَرتاسَر"
 
 #: data/ui/window.ui:62
 msgid "Selection"
@@ -159,7 +159,7 @@ msgstr ""
 
 #: data/ui/window.ui:198
 msgid "Stop"
-msgstr ""
+msgstr "ایست"
 
 #: data/ui/window.ui:225
 msgid "Recording in…"
@@ -244,7 +244,7 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:136
 msgid "translator-credits"
-msgstr "سهیل خانعلی‌پور"
+msgstr "سُـھِـیـل خانعَلی‌پور"
 
 #: src/main.py:137
 msgid "GitHub"

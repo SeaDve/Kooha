@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-04-15 06:27+0000\n"
-"Last-Translator: Jonathan Haas <haasjona@gmail.com>\n"
+"PO-Revision-Date: 2021-04-17 11:18+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -169,7 +169,7 @@ msgstr "Stopp"
 
 #: data/ui/window.ui:225
 msgid "Recording in…"
-msgstr "Aufnahme in…"
+msgstr "Aufnahme in …"
 
 #: data/ui/window.ui:244
 msgid "Cancel Delay"
