@@ -21,8 +21,8 @@ from time import localtime, strftime
 
 from gi.repository import Gio, GLib, Gst, Gtk, Handy
 
-from .recorders import AudioRecorder, VideoRecorder
-from .timers import DelayTimer, Timer
+from kooha.recorders import AudioRecorder, VideoRecorder
+from kooha.timers import DelayTimer, Timer
 
 Gst.init(None)
 

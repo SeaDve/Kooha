@@ -23,7 +23,7 @@ gi.require_version('Gtk', '3.0')
 gi.require_version('Handy', '1')
 from gi.repository import Gtk, Gio, Gdk, GLib, Handy
 
-from .window import KoohaWindow
+from kooha.window import KoohaWindow
 
 
 class Application(Gtk.Application):
