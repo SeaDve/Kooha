@@ -28,7 +28,7 @@
 
 Capture your screen in a straightforward and painless way without distractions.
 
-Kooha is a simple screen recorder with a minimal interface. You can just click
+Kooha is a simple screen recorder with a minimal interface. You can simply click
 the record button without having to configure a bunch of settings.
 
 The main features of Kooha include the following:
