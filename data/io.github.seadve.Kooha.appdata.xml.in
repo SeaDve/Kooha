@@ -44,6 +44,24 @@
   </screenshots>
 
   <releases>
+    <release version="1.1.2" date="2021-04-25">
+      <description>
+        <p>This is a minor release composing of fixes and improvements:</p>
+        <ul>
+          <li>Minor performance optimizations</li>
+          <li>Updated Dutch translations</li>
+          <li>Updated Turkish translations</li>
+          <li>Updated Spanish translations</li>
+          <li>Updated Indonesian translations</li>
+          <li>Updated Filipino translations</li>
+          <li>Updated Italiantranslations</li>
+          <li>Updated French translations</li>
+          <li>Updated German translations</li>
+          <li>Updated Norwegian Bokmål translations</li>
+          <li>Updated Chinese(simplified) translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.1" date="2021-04-09">
       <description>
         <p>This release is composing of minor changes:</p>
