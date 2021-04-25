@@ -59,11 +59,11 @@ class Application(Gtk.Application):
 
     def setup_actions(self):
         settings_actions = [
-            "record-audio",
-            "record-microphone",
-            "show-pointer",
-            "record-delay",
-            "video-format",
+            ("record-audio", ("<Ctrl>a",)),
+            ("record-microphone", ("<Ctrl>m",)),
+            ("show-pointer", ("<Ctrl>p",)),
+            ("record-delay", None),
+            ("video-format", None),
         ]
 
         simple_actions = [
@@ -75,9 +75,11 @@ class Application(Gtk.Application):
             ("quit", self.on_quit, ("<Ctrl>q",)),
         ]
 
-        for action in settings_actions:
+        for action, accel in settings_actions:
             settings_action = self.settings.create_action(action)
             self.add_action(settings_action)
+            if accel:
+                self.set_accels_for_action(f"app.{action}", accel)
 
         for action, callback, accel in simple_actions:
             simple_action = Gio.SimpleAction.new(action, None)
