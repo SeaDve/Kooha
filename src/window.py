@@ -53,9 +53,10 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.video_recorder = VideoRecorder()
 
         desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
-        if "GNOME" not in desktop_environment:
+        if desktop_environment is None or "GNOME" not in desktop_environment:
             self.start_record_button.set_sensitive(False)
-            self.start_record_button.set_label(f"{desktop_environment} is not yet supported")
+            self.start_record_button.set_label(
+                unsupported_desktop_ennvironment_message(desktop_environment))
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
@@ -148,3 +149,10 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.main_screen_box)
 
         self.delay_timer.cancel()
+
+
+def unsupported_desktop_ennvironment_message(desktop_environment):
+    if desktop_environment is not None:
+        return f"{desktop_environment} is not yet supported"
+    else:
+        return "Desktop environment is not yet supported"
