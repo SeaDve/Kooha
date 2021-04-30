@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Artem <KovalevArtem.ru@gmail.com>, 2021.
+# Dzmitry Neviadomski <nevack.d@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-04-03 04:26+0000\n"
-"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
+"PO-Revision-Date: 2021-04-30 10:32+0000\n"
+"Last-Translator: Dzmitry Neviadomski <nevack.d@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -27,59 +28,63 @@ msgstr "Kooha"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;Запись экрана;Видео;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Записывайте экран элегантно"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr ""
+msgstr "Записывайте экран понятным и простым способом без отвлечений."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha — простая программа для записи экрана с минималистичным интерфейсом. "
+"Вы можете нажать кнопку записи без необходимости дополнительной настройки."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Главные возможности Kooha следующие:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Запись экрана без неудобностей."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
+"🎙️ Запись звука с микрофона, рабочего стола компьютера, или всё вместе "
+"одновременно."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Выбор области экрана для записи."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Задержка перед началом записи."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Поддержка свободных форматов Matroska и WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Возможность спрятать или показать курсор мыши."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Выбор места сохранения записи."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Поддержка полезных клавиатурных сокращений."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
@@ -108,11 +113,11 @@ msgstr "Запись"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
-msgstr ""
+msgstr "Начать/остановить запись"
 
 #: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
-msgstr ""
+msgstr "Отменить задержку"
 
 #: data/ui/shortcuts.ui:59
 msgid "Settings"
@@ -120,19 +125,19 @@ msgstr "Настройки"
 
 #: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
-msgstr ""
+msgstr "Переключить режим записи"
 
 #: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Включить/выключить запись звуков компьютера"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Включить/выключить запись микрофона"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Показать/спрятать курсор"
 
 #: data/ui/window.ui:50
 msgid "Full Screen"
@@ -144,15 +149,15 @@ msgstr "Выбор"
 
 #: data/ui/window.ui:104
 msgid "Record computer sounds"
-msgstr ""
+msgstr "Записывать звуки компьютера"
 
 #: data/ui/window.ui:119
 msgid "Record from microphone"
-msgstr ""
+msgstr "Записывать микрофон"
 
 #: data/ui/window.ui:134
 msgid "Show pointer"
-msgstr ""
+msgstr "Показывать указатель"
 
 #: data/ui/window.ui:148
 msgid "Record"
@@ -168,7 +173,7 @@ msgstr "Запись в…"
 
 #: data/ui/window.ui:244
 msgid "Cancel Delay"
-msgstr ""
+msgstr "Отменить Задержку"
 
 #: data/ui/window.ui:271
 msgid "Processing"
@@ -228,15 +233,15 @@ msgstr "Выбрать"
 
 #: src/main.py:109
 msgid "Save location not set"
-msgstr ""
+msgstr "Место сохранения не установлено"
 
 #: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr ""
+msgstr "Пожалуйста, выберите доступное для записи место и повторите."
 
 #: src/main.py:131
 msgid "Elegantly record your screen "
-msgstr ""
+msgstr "Записывайте экран элегантно "
 
 #: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
@@ -253,16 +258,16 @@ msgstr "GitHub"
 
 #: src/window.py:80
 msgid "Recording cannot start"
-msgstr ""
+msgstr "Запись не может быть начата"
 
 #: src/window.py:81
 msgid "The saving location you have selected may have been deleted."
-msgstr ""
+msgstr "Выбранное для записи место, вероятно, было удалено."
 
 #: src/window.py:128
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "Скринкаст записан!"
 
 #: src/window.py:129
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "Запись была сохранена в"
