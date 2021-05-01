@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-04-28 13:32+0000\n"
+"PO-Revision-Date: 2021-05-01 19:42+0000\n"
 "Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail.com>"
 "\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -71,7 +71,7 @@ msgstr "⏲️ Defina o atraso para se preparar antes de iniciar a gravação."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr "📼 Suporte para os formatos gratuitos Matroska e WebM"
+msgstr "📼 Suporte para os formatos gratuitos Matroska e WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
@@ -79,7 +79,7 @@ msgstr "🖱️ Oculte ou exiba o ponteiro do mouse."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Escolha um local de salvamento para a sua gravação."
+msgstr "💾 Escolha um local para salvar a gravação."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
