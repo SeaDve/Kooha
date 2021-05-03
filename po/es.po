@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the kooha package.
 # Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
 # Roberto Bautista <robertobau45@gmail.com>, 2021.
+# Juan David Sanchez Lean <jdsljuan@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: 2021-03-28 14:46+0000\n"
+"POT-Creation-Date: 2021-04-11 07:47+0800\n"
+"PO-Revision-Date: 2021-04-15 06:27+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -29,20 +30,63 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Capturar pantalla;Grabador;Pantalla;Vídeo;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:138
-msgid "Simple screen recorder"
-msgstr "Grabador de pantalla simple"
+#: data/io.github.seadve.Kooha.appdata.xml.in:8
+msgid "Elegantly record your screen"
+msgstr "Graba tu pantalla elegantemente"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
-"Kooha is a simple screen recorder built with GTK. It allows you to record "
-"your screen and also audio from your microphone or desktop."
+"Capture your screen in a straightforward and painless way without "
+"distractions."
+msgstr "Captura tu pantalla de forma sencilla, indolora y sin distracciones."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:11
+msgid ""
+"Kooha is a simple screen recorder with a minimalist interface. You can just "
+"click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha es un simple grabador de pantalla hecho con GTK. Permite grabar la "
-"pantalla y también grabar audio del micrófono o dispositivo."
+"Kooha es un grabador de pantalla simple con una interfaz minimalista. Solo "
+"da click en el botón grabar sin tener que configurar un centenar de ajustes."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:12
+msgid "The main features of Kooha include the following:"
+msgstr "Las características principales de Kooha incluyen lo siguiente:"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:14
+msgid "🎥 Capture your screen without any hassle."
+msgstr "🎥 Graba tu pantalla sin ninguna molestia."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:15
+msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+msgstr ""
+"🎙️ Graba tu micrófono, los sonidos del sistema, o ambos al mismo tiempo."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:16
+msgid "🖼️ Select an area of your screen to record."
+msgstr "🖼️ Selecciona un área de la pantalla para grabarla."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:17
+msgid "⏲️ Set delay to prepare before you start recording."
+msgstr "⏲️ Selecciona un retraso antes de empezar a grabar."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:18
+msgid "📼 Support for the free Matroska and WebM formats."
+msgstr "📼 Soporte para los formatos libres Matroska y WebM."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:19
+msgid "🖱️ Hide or show mouse pointer."
+msgstr "🖱️ Oculta o muestra el cursor."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:20
+msgid "💾 Choose a saving location for your recording."
+msgstr "💾 Selecciona una ubicación para tu grabación."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:21
+msgid "⌨️ Utilize helpful keyboard shortcuts."
+msgstr "⌨️ Usa los útiles atajos de teclado."
 
 #. Translators: please do NOT translate this
-#: data/io.github.seadve.Kooha.appdata.xml.in:19
+#: data/io.github.seadve.Kooha.appdata.xml.in:29
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -62,7 +106,7 @@ msgstr "Mostrar atajos de teclado"
 msgid "Quit"
 msgstr "Salir"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:208
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:178
 msgid "Recording"
 msgstr "Grabando"
 
@@ -84,142 +128,158 @@ msgstr "Cambiar modo de captura"
 
 #: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
-msgstr "Alternar sonidos del dispositivo"
+msgstr "Activar o desactivar audio del dispositivo"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr "Alternar micrófono"
+msgstr "Activar o desactivar micrófono"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr "Alternar puntero"
+msgstr "Activar o desactivar puntero"
 
-#: data/ui/window.ui:32
+#: data/ui/window.ui:50
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: data/ui/window.ui:44
+#: data/ui/window.ui:62
 msgid "Selection"
 msgstr "Área"
 
-#: data/ui/window.ui:88
+#: data/ui/window.ui:104
 msgid "Record computer sounds"
 msgstr "Grabar audio del dispositivo"
 
-#: data/ui/window.ui:104
+#: data/ui/window.ui:119
 msgid "Record from microphone"
 msgstr "Grabar audio del micrófono"
 
-#: data/ui/window.ui:123
+#: data/ui/window.ui:134
 msgid "Show pointer"
 msgstr "Mostrar puntero"
 
-#: data/ui/window.ui:149
+#: data/ui/window.ui:148
 msgid "Record"
 msgstr "Grabar"
 
-#: data/ui/window.ui:231
+#: data/ui/window.ui:198
 msgid "Stop"
 msgstr "Detener"
 
-#: data/ui/window.ui:266
+#: data/ui/window.ui:225
 msgid "Recording in…"
 msgstr "Grabando en…"
 
-#: data/ui/window.ui:288
+#: data/ui/window.ui:244
 msgid "Cancel Delay"
 msgstr "Cancelar retraso"
 
-#: data/ui/window.ui:323
+#: data/ui/window.ui:271
 msgid "Processing"
 msgstr "Procesando"
 
-#: data/ui/window.ui:349
+#: data/ui/window.ui:297
 msgid "Delay"
 msgstr "Retraso"
 
-#: data/ui/window.ui:351
+#: data/ui/window.ui:299
 msgid "None"
 msgstr "Ninguno"
 
-#: data/ui/window.ui:356
+#: data/ui/window.ui:304
 msgid "5 seconds"
 msgstr "5 segundos"
 
-#: data/ui/window.ui:361
+#: data/ui/window.ui:309
 msgid "10 seconds"
 msgstr "10 segundos"
 
-#: data/ui/window.ui:367
+#: data/ui/window.ui:315
 msgid "Video Format"
 msgstr "Formato de vídeo"
 
-#: data/ui/window.ui:369
+#: data/ui/window.ui:317
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:374
+#: data/ui/window.ui:322
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:381
+#: data/ui/window.ui:329
 msgid "Save to…"
 msgstr "Guardar en…"
 
-#: data/ui/window.ui:387
+#: data/ui/window.ui:335
 msgid "Keyboard Shortcuts"
 msgstr "Atajos de teclado"
 
-#: data/ui/window.ui:391
+#: data/ui/window.ui:339
 msgid "About Kooha"
 msgstr "Acerca de Kooha"
 
-#: src/main.py:107
+#: src/main.py:91
 msgid "Select a Folder"
 msgstr "Elige una carpeta"
 
-#: src/main.py:108
+#: src/main.py:93
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/main.py:108
+#: src/main.py:94
 msgid "Select"
 msgstr "Seleccionar"
 
-#: src/main.py:116
+#: src/main.py:109
 msgid "Save location not set"
 msgstr "No se estableció la ubicación de guardado"
 
-#: src/main.py:117
+#: src/main.py:110
 msgid "Please choose an accessible location and retry."
 msgstr "Elige una ubicación accesible e intenta de nuevo."
 
-#: src/main.py:141
+#: src/main.py:131
+msgid "Elegantly record your screen "
+msgstr "Graba tu pantalla elegantemente. "
+
+#: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:143
+#: src/main.py:136
 msgid "translator-credits"
-msgstr "Roberto Bautista"
+msgstr ""
+"Roberto Bautista\n"
+"Óscar Fernández Díaz"
 
-#: src/main.py:144
+#: src/main.py:137
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:76
+#: src/window.py:80
 msgid "Recording cannot start"
 msgstr "No se puede iniciar la grabación"
 
-#: src/window.py:77
+#: src/window.py:81
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
 "Es posible que la ubicación de guardado seleccionada haya sido eliminada."
 
-#: src/window.py:115
+#: src/window.py:128
 msgid "Screencast Recorded!"
 msgstr "¡Captura de pantalla grabada!"
 
-#: src/window.py:116
+#: src/window.py:129
 msgid "The recording has been saved in"
 msgstr "La grabación se ha guardado en"
+
+#~ msgid "Simple screen recorder"
+#~ msgstr "Grabador de pantalla simple"
+
+#~ msgid ""
+#~ "Kooha is a simple screen recorder built with GTK. It allows you to record "
+#~ "your screen and also audio from your microphone or desktop."
+#~ msgstr ""
+#~ "Kooha es un simple grabador de pantalla hecho con GTK. Permite grabar la "
+#~ "pantalla y también grabar audio del micrófono o dispositivo."

@@ -32,8 +32,7 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 locale.bindtextdomain('kooha', localedir)
 locale.textdomain('kooha')
-gettext.bindtextdomain('kooha', localedir)
-gettext.textdomain('kooha')
+gettext.install('kooha', localedir)
 
 if __name__ == '__main__':
     import gi

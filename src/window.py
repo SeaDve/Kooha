@@ -16,14 +16,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from gettext import gettext as _
 from threading import Thread
 from time import localtime, strftime
 
 from gi.repository import Gio, GLib, Gst, Gtk, Handy
 
-from .recorders import AudioRecorder, VideoRecorder
-from .timers import DelayTimer, Timer
+from kooha.recorders import AudioRecorder, VideoRecorder
+from kooha.timers import DelayTimer, Timer
 
 Gst.init(None)
 
@@ -54,9 +53,9 @@ class KoohaWindow(Handy.ApplicationWindow):
         self.video_recorder = VideoRecorder()
 
         desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
-        if "GNOME" not in desktop_environment:
+        if not desktop_environment or "GNOME" not in desktop_environment:
             self.start_record_button.set_sensitive(False)
-            self.start_record_button.set_label(f"{desktop_environment} is not yet supported")
+            self.start_record_button.set_label(self.get_environment_message(desktop_environment))
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
@@ -130,6 +129,11 @@ class KoohaWindow(Handy.ApplicationWindow):
         notification.set_body(f"{notification_body} {self.get_saving_location()[1]}")
         notification.set_default_action("app.show-saving-location")
         self.get_application().send_notification(None, notification)
+
+    def get_environment_message(self, desktop_environment):
+        if not desktop_environment:
+            desktop_environment = "WM"
+        return f"{desktop_environment} is not yet supported"
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):

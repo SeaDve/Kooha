@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Nicolas Mariniello <seldon1000@tutanota.com>, 2021.
-# J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# MartinIIOT <max_m@centrum.sk>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-11 07:47+0800\n"
-"PO-Revision-Date: 2021-04-17 11:18+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
-"it/>\n"
-"Language: it\n"
+"PO-Revision-Date: 2021-04-27 01:32+0000\n"
+"Last-Translator: MartinIIOT <max_m@centrum.sk>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/kooha/pot-file/sk/"
+">\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -27,64 +26,61 @@ msgstr "Kooha"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Screencast;Registratore;Schermo;Video;"
+msgstr "Záznam;Rekordér;Obrazovka;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8
 msgid "Elegantly record your screen"
-msgstr "Registra il tuo schermo elegantemente"
+msgstr "Elegantný záznam obrazovky"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr "Cattura il tuo schermo in modo diretto e indolore senza distrazioni."
+msgstr "Zachyťte obrazovku priamym a bezbolestným spôsobom bez rušenia."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha è un registratore di schermo semplice con un'interfaccia minimalista. "
-"Si può semplicemente fare clic sul pulsante di registrazione senza dover "
-"configurare un sacco di impostazioni."
+"Kooha je jednoduchý rekordér obrazovky s minimalistickým prostredím. Stačí "
+"len kliknúť na nahrávacie tlačidlo bez zložitého nastavovania."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Le caratteristiche principali di Kooha sono le seguenti:"
+msgstr "Hlavné vlastnosti Kooha zahŕňajú:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Cattura il tuo schermo senza problemi."
+msgstr "🎥 Nasnímajte obrazovku bez akýchkoľvek problémov."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
-"🎙️ Registra il tuo microfono, i suoni del computer o entrambi allo stesso "
-"tempo."
+msgstr "🎙️ Zaznamenávajte mikrofón, zvuky počítača alebo oboje súčasne."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr "🖼️ Seleziona un'area del tuo schermo da registrare."
+msgstr "🖼️ Vyberte oblasť obrazovky, ktorú chcete zaznamenať."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Imposta il ritardo da preparare prima di iniziare la registrazione."
+msgstr "⏲️ Nastavte oneskorenie pred samotným nahrávaním."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr "📼 Supporto per i formati gratuiti Matroska e WebM."
+msgstr "📼 Podpora bezplatných formátov Matroska a WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Nascondi o mostra il puntatore del mouse."
+msgstr "🖱️ Skryť alebo zobraziť kurzor myši."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Scegli una posizione di salvataggio per la tua registrazione."
+msgstr "💾 Vyberte miesto uloženia záznamu."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Utilizza utili scorciatoie da tastiera."
+msgstr "⌨️ Využite užitočné klávesové skratky."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
@@ -93,111 +89,111 @@ msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
-msgstr "Generale"
+msgstr "Všeobecné"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
-msgstr "Apri il menù"
+msgstr "Otvoriť menu"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr "Mostra le scorciatoie da tastiera"
+msgstr "Zobraziť klávesové skratky"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr "Esci"
+msgstr "Ukončiť"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:178
 msgid "Recording"
-msgstr "In registrazione"
+msgstr "Nahrávanie"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
-msgstr "Registra"
+msgstr "Prepnúť záznam"
 
 #: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
-msgstr "Cancella il ritardo"
+msgstr "Zrušiť oneskorenie"
 
 #: data/ui/shortcuts.ui:59
 msgid "Settings"
-msgstr "Impostazioni"
+msgstr "Nastavenia"
 
 #: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
-msgstr "Cambia modalità di cattura"
+msgstr "Prepnúť režim snímania"
 
 #: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
-msgstr "Attiva i suoni del computer"
+msgstr "Prepnúť zvuky počítača"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr "Attiva il microfono"
+msgstr "Prepnúť mikrofón"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr "Attiva il puntatore"
+msgstr "Prepnúť kurzor"
 
 #: data/ui/window.ui:50
 msgid "Full Screen"
-msgstr "Schermo Intero"
+msgstr "Celá obrazovka"
 
 #: data/ui/window.ui:62
 msgid "Selection"
-msgstr "Sezione"
+msgstr "Výber"
 
 #: data/ui/window.ui:104
 msgid "Record computer sounds"
-msgstr "Registra i suoni del computer"
+msgstr "Zaznamenať zvuky počítača"
 
 #: data/ui/window.ui:119
 msgid "Record from microphone"
-msgstr "Registra dal microfono"
+msgstr "Zaznamenať zvuk z mikrofónu"
 
 #: data/ui/window.ui:134
 msgid "Show pointer"
-msgstr "Mostra il puntatore"
+msgstr "Zobraziť kurzor"
 
 #: data/ui/window.ui:148
 msgid "Record"
-msgstr "Registra"
+msgstr "Zaznamenať"
 
 #: data/ui/window.ui:198
 msgid "Stop"
-msgstr "Ferma"
+msgstr "Stop"
 
 #: data/ui/window.ui:225
 msgid "Recording in…"
-msgstr "In registrazione tra…"
+msgstr "Nahrávanie za…"
 
 #: data/ui/window.ui:244
 msgid "Cancel Delay"
-msgstr "Cancella il ritardo"
+msgstr "Zrušiť oneskornie"
 
 #: data/ui/window.ui:271
 msgid "Processing"
-msgstr "Elaborazione"
+msgstr "Spracovanie"
 
 #: data/ui/window.ui:297
 msgid "Delay"
-msgstr "Ritardo"
+msgstr "Oneskorenie"
 
 #: data/ui/window.ui:299
 msgid "None"
-msgstr "Nessuno"
+msgstr "Žiadne"
 
 #: data/ui/window.ui:304
 msgid "5 seconds"
-msgstr "5 secondi"
+msgstr "5 sekúnd"
 
 #: data/ui/window.ui:309
 msgid "10 seconds"
-msgstr "10 secondi"
+msgstr "10 sekúnd"
 
 #: data/ui/window.ui:315
 msgid "Video Format"
-msgstr "Formato video"
+msgstr "Formát videa"
 
 #: data/ui/window.ui:317
 msgid "WebM"
@@ -209,39 +205,39 @@ msgstr "MKV"
 
 #: data/ui/window.ui:329
 msgid "Save to…"
-msgstr "Salva in…"
+msgstr "Uložiť do…"
 
 #: data/ui/window.ui:335
 msgid "Keyboard Shortcuts"
-msgstr "Scorciatoie da tastiera"
+msgstr "Klávesové skratky"
 
 #: data/ui/window.ui:339
 msgid "About Kooha"
-msgstr "A proposito di Kooha"
+msgstr "O Kooha"
 
 #: src/main.py:91
 msgid "Select a Folder"
-msgstr "Seleziona una Cartella"
+msgstr "Vyberte priečinok"
 
 #: src/main.py:93
 msgid "Cancel"
-msgstr "Annulla"
+msgstr "Zrušiť"
 
 #: src/main.py:94
 msgid "Select"
-msgstr "Seleziona"
+msgstr "Vybrať"
 
 #: src/main.py:109
 msgid "Save location not set"
-msgstr "Percorso di salvataggio non impostato"
+msgstr "Umiestnenie uloženia nie je nastavené"
 
 #: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr "Per favore scegli un percorso accessibile e riprova."
+msgstr "Vyberte prístupné umiestnenie a skúste to znova."
 
 #: src/main.py:131
 msgid "Elegantly record your screen "
-msgstr "Registra elegantemente il tuo schermo "
+msgstr "Elegantne zaznamenajte svoju obrazovku "
 
 #: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
@@ -250,7 +246,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:136
 msgid "translator-credits"
-msgstr "Nicolas Mariniello"
+msgstr "MartinIIOT (https://github.com/MartinIIOT)"
 
 #: src/main.py:137
 msgid "GitHub"
@@ -258,29 +254,16 @@ msgstr "GitHub"
 
 #: src/window.py:80
 msgid "Recording cannot start"
-msgstr "La registrazione non può iniziare"
+msgstr "Nahrávanie sa nedá spustiť"
 
 #: src/window.py:81
 msgid "The saving location you have selected may have been deleted."
-msgstr ""
-"Il percorso di salvataggio che hai selezionato potrebbe essere stato "
-"eliminato."
+msgstr "Miesto uloženia, ktoré ste vybrali, mohlo byť odstránené."
 
 #: src/window.py:128
 msgid "Screencast Recorded!"
-msgstr "Video dello schermo registrato!"
+msgstr "Obrazovka bola zaznamenaná!"
 
 #: src/window.py:129
 msgid "The recording has been saved in"
-msgstr "La registrazione è stata salvata in formato"
-
-#~ msgid "Simple screen recorder"
-#~ msgstr "Registratore di schermo semplice"
-
-#~ msgid ""
-#~ "Kooha is a simple screen recorder built with GTK. It allows you to record "
-#~ "your screen and also audio from your microphone or desktop."
-#~ msgstr ""
-#~ "Kooha è un registratore di schermo semplice scritto in GTK. Ti permette "
-#~ "ti registrare il tuo schermo e anche l'audio proveniente dal tuo "
-#~ "microfono o dal desktop."
+msgstr "Záznam bol uložený v"

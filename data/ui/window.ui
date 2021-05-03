@@ -21,6 +21,24 @@
                     <style>
                       <class name="flat"/>
                     </style>
+                    <child>
+                      <object class="GtkMenuButton" id="menu_button">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="menu-model">menu</property>
+                        <property name="valign">center</property>
+                        <accelerator key="F10" signal="clicked"/>
+                        <style>
+                          <class name="titlebutton"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="icon-name">open-menu-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                     <child type="title">
                       <object class="GtkStack" id="title_stack">
                         <property name="visible">True</property>
@@ -84,7 +102,6 @@
                             <property name="can-focus">True</property>
                             <property name="action-name">app.record-audio</property>
                             <property name="tooltip-text" translatable="yes">Record computer sounds</property>
-                            <accelerator key="a" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -99,7 +116,6 @@
                             <property name="can-focus">True</property>
                             <property name="action-name">app.record-microphone</property>
                             <property name="tooltip-text" translatable="yes">Record from microphone</property>
-                            <accelerator key="m" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -114,7 +130,6 @@
                             <property name="can-focus">True</property>
                             <property name="action-name">app.show-pointer</property>
                             <property name="tooltip-text" translatable="yes">Show pointer</property>
-                            <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -126,38 +141,16 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkButton" id="start_record_button">
+                        <property name="label" translatable="yes">Record</property>
                         <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
+                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <style>
-                          <class name="linked"/>
+                          <class name="suggested-action"/>
+                          <class name="wide"/>
                         </style>
-                        <child>
-                          <object class="GtkButton" id="start_record_button">
-                            <property name="label" translatable="yes">Record</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
-                            <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
-                            <style>
-                              <class name="suggested-action"/>
-                              <class name="wide"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuButton" id="menu_button">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="menu-model">menu</property>
-                            <accelerator key="F10" signal="clicked"/>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="icon-name">open-menu-symbolic</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>
@@ -208,9 +201,6 @@
                       <class name="destructive-action"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
                 </child>
               </object>
             </child>
@@ -257,9 +247,6 @@
                       <class name="destructive-action"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
                 </child>
               </object>
             </child>

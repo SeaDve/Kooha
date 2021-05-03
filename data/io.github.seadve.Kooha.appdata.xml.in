@@ -5,16 +5,26 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Kooha</name>
-  <summary>Simple screen recorder</summary>
+  <summary>Elegantly record your screen</summary>
   <description>
-    <p>
-    Kooha is a simple screen recorder built with GTK. It allows you to record your screen and also audio from your microphone or desktop.
-    </p>
+    <p>Capture your screen in a straightforward and painless way without distractions.</p>
+    <p>Kooha is a simple screen recorder with a minimalist interface. You can just click the record button without having to configure a bunch of settings.</p>
+    <p>The main features of Kooha include the following:</p>
+    <ul>
+      <li>🎥 Capture your screen without any hassle.</li>
+      <li>🎙️ Record your microphone, computer sounds, or both at the same time.</li>
+      <li>🖼️ Select an area of your screen to record.</li>
+      <li>⏲️ Set delay to prepare before you start recording.</li>
+      <li>📼 Support for the free Matroska and WebM formats.</li>
+      <li>🖱️ Hide or show mouse pointer.</li>
+      <li>💾 Choose a saving location for your recording.</li>
+      <li>⌨️ Utilize helpful keyboard shortcuts.</li>
+    </ul>
   </description>
   <url type="homepage">https://github.com/SeaDve/Kooha</url>
   <url type="bugtracker">https://github.com/SeaDve/Kooha/issues</url>
   <url type="translate">https://hosted.weblate.org/projects/kooha/pot-file/</url>
-  <url type="donation">https://paypal.me/sedve</url>
+  <url type="donation">https://liberapay.com/SeaDve/</url>
   <!-- Translators: please do NOT translate this -->
   <developer_name>Dave Patrick</developer_name>
   <content_rating type="oars-1.1"/>
@@ -34,6 +44,37 @@
   </screenshots>
 
   <releases>
+    <release version="1.1.2" date="2021-04-25">
+      <description>
+        <p>This is a minor release composing of fixes and improvements:</p>
+        <ul>
+          <li>Minor performance optimizations</li>
+          <li>Updated Dutch translations</li>
+          <li>Updated Turkish translations</li>
+          <li>Updated Spanish translations</li>
+          <li>Updated Indonesian translations</li>
+          <li>Updated Filipino translations</li>
+          <li>Updated Italian translations</li>
+          <li>Updated French translations</li>
+          <li>Updated German translations</li>
+          <li>Updated Norwegian Bokmål translations</li>
+          <li>Updated Chinese(simplified) translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.1" date="2021-04-09">
+      <description>
+        <p>This release is composing of minor changes:</p>
+        <ul>
+          <li>Minor UI improvements</li>
+          <li>Code cleaning and minor performance improvements</li>
+          <li>Fixed a bug when trying to save in an inaccessible location</li>
+          <li>Added Persian translations</li>
+          <li>Added Chinese(simplified) translations</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2021-03-25">
       <description>
         <p>This update brings new features and few bug fixes:</p>

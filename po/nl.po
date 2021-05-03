@@ -2,217 +2,284 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Heimen Stoffels <vistausss@outlook.com>, 2021.
+# Heimen Stoffels <vistausss@fastmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-25 16:35+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2021-04-11 07:47+0800\n"
+"PO-Revision-Date: 2021-04-12 18:27+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Opname;Scherm;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:138
-msgid "Simple screen recorder"
-msgstr ""
+#: data/io.github.seadve.Kooha.appdata.xml.in:8
+msgid "Elegantly record your screen"
+msgstr "Leg je scherm op elegante manier vast"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
-"Kooha is a simple screen recorder built with GTK. It allows you to record "
-"your screen and also audio from your microphone or desktop."
+"Capture your screen in a straightforward and painless way without "
+"distractions."
+msgstr "Maak een opname van je scherm op een makkelijke, duidelijke manier."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:11
+msgid ""
+"Kooha is a simple screen recorder with a minimalist interface. You can just "
+"click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha is een eenvoudige schermopnametoepassing met een minimalistische "
+"vormgeving. Klik gewoon op de opnameknop zonder allerlei instellingen te "
+"moeten doorlopen."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:12
+msgid "The main features of Kooha include the following:"
+msgstr "Enkele kenmerken:"
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:14
+msgid "🎥 Capture your screen without any hassle."
+msgstr "🎥 Maak eenvoudig opnames van je scherm."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:15
+msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+msgstr "🎙️ Neem op van je microfoon, computergeluiden of beide tegelijk."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:16
+msgid "🖼️ Select an area of your screen to record."
+msgstr "🖼️ Selecteer een op te nemen gebied."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:17
+msgid "⏲️ Set delay to prepare before you start recording."
+msgstr "⏲️ Stel een wachttijd in zodat de opname iets later start."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:18
+msgid "📼 Support for the free Matroska and WebM formats."
+msgstr "📼 Ondersteuning voor de vrije Matroska- en WebM-formaten."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:19
+msgid "🖱️ Hide or show mouse pointer."
+msgstr "🖱️ Toon of verberg de cursor."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:20
+msgid "💾 Choose a saving location for your recording."
+msgstr "💾 Kies zelf waar de opname moet worden opgeslagen."
+
+#: data/io.github.seadve.Kooha.appdata.xml.in:21
+msgid "⌨️ Utilize helpful keyboard shortcuts."
+msgstr "⌨️ Maak gebruik van handige sneltoetsen."
 
 #. Translators: please do NOT translate this
-#: data/io.github.seadve.Kooha.appdata.xml.in:19
+#: data/io.github.seadve.Kooha.appdata.xml.in:29
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
-msgstr ""
+msgstr "Menu openen"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "Sneltoetsen tonen"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr ""
+msgstr "Afsluiten"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:208
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:178
 msgid "Recording"
-msgstr ""
+msgstr "Opname"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
-msgstr ""
+msgstr "Opname aan/uit"
 
 #: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
-msgstr ""
+msgstr "Wachten afbreken"
 
 #: data/ui/shortcuts.ui:59
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
-msgstr ""
+msgstr "Opnamemodus wijzigen"
 
 #: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Computergeluiden aan/uit"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Microfoon aan/uit"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Cursor aan/uit"
 
-#: data/ui/window.ui:32
+#: data/ui/window.ui:50
 msgid "Full Screen"
-msgstr ""
+msgstr "Beeldvullende modus"
 
-#: data/ui/window.ui:44
+#: data/ui/window.ui:62
 msgid "Selection"
-msgstr ""
-
-#: data/ui/window.ui:88
-msgid "Record computer sounds"
-msgstr ""
+msgstr "Selectie"
 
 #: data/ui/window.ui:104
+msgid "Record computer sounds"
+msgstr "Computergeluiden opnemen"
+
+#: data/ui/window.ui:119
 msgid "Record from microphone"
-msgstr ""
+msgstr "Microfoonopname"
 
-#: data/ui/window.ui:123
+#: data/ui/window.ui:134
 msgid "Show pointer"
-msgstr ""
+msgstr "Cursor tonen"
 
-#: data/ui/window.ui:149
+#: data/ui/window.ui:148
 msgid "Record"
-msgstr ""
+msgstr "Opnemen"
 
-#: data/ui/window.ui:231
+#: data/ui/window.ui:198
 msgid "Stop"
-msgstr ""
+msgstr "Stoppen"
 
-#: data/ui/window.ui:266
+#: data/ui/window.ui:225
 msgid "Recording in…"
-msgstr ""
+msgstr "De opname wordt gestart over…"
 
-#: data/ui/window.ui:288
+#: data/ui/window.ui:244
 msgid "Cancel Delay"
-msgstr ""
+msgstr "Wachten afbreken"
 
-#: data/ui/window.ui:323
+#: data/ui/window.ui:271
 msgid "Processing"
-msgstr ""
+msgstr "Bezig met verwerken"
 
-#: data/ui/window.ui:349
+#: data/ui/window.ui:297
 msgid "Delay"
-msgstr ""
+msgstr "Wachttijd"
 
-#: data/ui/window.ui:351
+#: data/ui/window.ui:299
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
-#: data/ui/window.ui:356
+#: data/ui/window.ui:304
 msgid "5 seconds"
-msgstr ""
+msgstr "5 seconden"
 
-#: data/ui/window.ui:361
+#: data/ui/window.ui:309
 msgid "10 seconds"
-msgstr ""
+msgstr "10 seconden"
 
-#: data/ui/window.ui:367
+#: data/ui/window.ui:315
 msgid "Video Format"
-msgstr ""
+msgstr "Videoformaat"
 
-#: data/ui/window.ui:369
+#: data/ui/window.ui:317
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
-#: data/ui/window.ui:374
+#: data/ui/window.ui:322
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
-#: data/ui/window.ui:381
+#: data/ui/window.ui:329
 msgid "Save to…"
-msgstr ""
+msgstr "Opslaan in…"
 
-#: data/ui/window.ui:387
+#: data/ui/window.ui:335
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Sneltoetsen"
 
-#: data/ui/window.ui:391
+#: data/ui/window.ui:339
 msgid "About Kooha"
-msgstr ""
+msgstr "Over Kooha"
 
-#: src/main.py:107
+#: src/main.py:91
 msgid "Select a Folder"
-msgstr ""
+msgstr "Kies een map"
 
-#: src/main.py:108
+#: src/main.py:93
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
-#: src/main.py:108
+#: src/main.py:94
 msgid "Select"
-msgstr ""
+msgstr "Kiezen"
 
-#: src/main.py:116
+#: src/main.py:109
 msgid "Save location not set"
-msgstr ""
+msgstr "Geen opslaglocatie ingesteld"
 
-#: src/main.py:117
+#: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr ""
+msgstr "Kies een toegankelijke locatie en probeer het opnieuw."
 
-#: src/main.py:141
+#: src/main.py:131
+msgid "Elegantly record your screen "
+msgstr "Elegenante schermopnamentoepassing "
+
+#: src/main.py:134
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:143
+#: src/main.py:136
 msgid "translator-credits"
-msgstr ""
+msgstr "Heimen Stoffels"
 
-#: src/main.py:144
+#: src/main.py:137
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
-#: src/window.py:76
+#: src/window.py:80
 msgid "Recording cannot start"
-msgstr ""
+msgstr "De opname kan niet worden gestart"
 
-#: src/window.py:77
+#: src/window.py:81
 msgid "The saving location you have selected may have been deleted."
-msgstr ""
+msgstr "De gekozen opslaglocatie is mogelijk verwijderd."
 
-#: src/window.py:115
+#: src/window.py:128
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "De screencast is opgenomen!"
 
-#: src/window.py:116
+#: src/window.py:129
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "De opname is opgeslagen in"
+
+#~ msgid "🎥 Capture your screen without any hustle."
+#~ msgstr "🎥 Maak zonder gedoe een opname van je scherm."
+
+#~ msgid "Simple screen recorder"
+#~ msgstr "Eenvoudige schermopnametoepassing"
+
+#~ msgid ""
+#~ "Kooha is a simple screen recorder built with GTK. It allows you to record "
+#~ "your screen and also audio from your microphone or desktop."
+#~ msgstr ""
+#~ "Kooha is een eenvoudige schermopnametoepassing, geschreven in GTK. "
+#~ "Hiermee kun je je scherm opnemen, evenals audio van je microfoon of "
+#~ "werkomgeving."

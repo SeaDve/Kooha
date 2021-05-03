@@ -3,7 +3,7 @@
   Kooha
 </h1>
 
-<p align="center"><strong>Simple screen recorder</strong></p>
+<p align="center"><strong>Elegantly record your screen</strong></p>
 
 <p align="center">
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
@@ -11,6 +11,9 @@
 
 <br>
 <p align="center">
+  <a href="https://liberapay.com/SeaDve/">
+    <img src="https://img.shields.io/liberapay/receives/SeaDve.svg?logo=liberapay">
+  </a>
   <a href="https://hosted.weblate.org/engage/kooha/">
     <img src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg" alt="Translation status" />
   </a>
@@ -23,35 +26,54 @@
   <img src="screenshots/Kooha-preview.png" alt="Preview"/>
 </p>
 
-## Description
-Kooha is a simple screen recorder built with GTK. It allows you to record your screen and also audio from your microphone or desktop.
+Capture your screen in a straightforward and painless way without distractions.
+
+Kooha is a simple screen recorder with a minimal interface. You can simply click
+the record button without having to configure a bunch of settings.
+
+The main features of Kooha include the following:
+* 🎥 Capture your screen without any hassle.
+* 🎙️ Record your microphone, computer sounds, or both at the same time.
+* 🖼️ Select an area of your screen to record.
+* ⏲️ Set delay to prepare before you start recording.
+* 📼 Support for the free Matroska and WebM formats.
+* 🖱️ Hide or show mouse pointer.
+* 💾 Choose a saving location for your recording.
+* ⌨️ Utilize helpful keyboard shortcuts.
 
 
-## Roadmap
+## 🛣️ Roadmap
 
-### v 2.0
 - [ ] MP4 video format support (Already in dev branch)
-- [ ] Rewrite VideoRecorder for freedesktop portal
-- [ ] Other desktop environment support
+- [ ] Change backend to support individual window or monitor recording
+- [ ] Other desktop environments support
 
 
-## Other Modes of Installation
+## ⚙️ Hidden Configuration Options
 
-| Distribution | Package | Maintainer |
-|:-:|:-:|:-:|
-| Arch Linux (AUR) | [`kooha`](https://aur.archlinux.org/packages/kooha) | [Mark Wagie](https://github.com/yochananmarqos) |
+### Change frames per second to 60fps
+
+You can copy and paste this to the terminal if you installed Kooha as a flatpak:
+
+`flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60`<br/> 
+or `gsettings set io.github.seadve.Kooha video-frames 60` if installed locally.
+
+Take note that using other frames per second may cause flickering, depending on
+the performance of your device. 
 
 
-## Building from source
+## 🏗️ Building from source
 
-### GNOME Builder (Recommended)
-GNOME Builder is the environment used for developing this application. It can use Flatpak manifests to create a consistent building and running environment cross-distro. Thus, it is highly recommended you use it.
+### GNOME Builder
+GNOME Builder is the environment used for developing this application. 
+It can use Flatpak manifests to create a consistent building and running 
+environment cross-distro. Thus, it is highly recommended you use it.
 
 1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
 2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
 3. Click the build button at the top once the project is loaded.
 
-### Manual with meson
+### Meson
 ```
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
@@ -60,19 +82,19 @@ ninja -C builddir install
 ```
 
 
-## Hidden Configuration Options
-
-### Change frames per second to 60fps
-
-#### Flatpak
-
-The default is 30 fps. Note that using other FPS may cause flickering.
-
-`flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60`
+## 🙌 Help translate Kooha
+You can help Kooha translate into your native language. If you found any typos 
+or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/kooha/) platform.
 
 
-## Credits
+## ☕ Support me and the project
 
-Developed by **[Dave Patrick](https://github.com/SeaDve)** and [contributors](https://github.com/SeaDve/Kooha/graphs/contributors).
+Kooha is free and will always be for everyone to use. If you like the project and
+would like to support and fund it, you may donate through [Liberapay](https://liberapay.com/SeaDve/).
 
-Inspired from [RecApp](https://github.com/amikha1lov/RecApp).
+
+## 💝 Acknowledgment
+
+[RecApp](https://github.com/amikha1lov/RecApp) greatly inspired the creation of Kooha. 
+And also, a warm thank you to all the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors) 
+and [translators](https://hosted.weblate.org/engage/kooha/) from Weblate.
