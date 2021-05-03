@@ -248,7 +248,8 @@ msgstr "Telif hakkı 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:136
 msgid "translator-credits"
-msgstr "Oğuz Ersen"
+msgstr "Ümit Solmaz"
+"Oğuz Ersen"
 
 #: src/main.py:137
 msgid "GitHub"
