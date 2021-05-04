@@ -131,7 +131,9 @@ class Application(Gtk.Application):
         about.set_authors(
             [
                 "Dave Patrick",
-                "mathiascode"
+                "",
+                "mathiascode",
+                "FlexW",
             ]
         )
         about.set_comments(_("Elegantly record your screen"))
