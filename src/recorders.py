@@ -136,8 +136,10 @@ class VideoRecorder:
         self.directory = directory
         self.framerate = framerate
         self.show_pointer = show_pointer
-        self.pipeline = ("queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=3 cq_level=13 "
-                         "deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux")
+        self.pipeline = ("videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE "
+                         "matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=3 ! queue ! vp8enc "
+                         "cpu-used=16 max-quantizer=17 deadline=1 keyframe-mode=disabled threads=3 "
+                         "static-threshold=1000 buffer-size=20000 ! queue ! webmmux")
 
         if not self.selection_mode:
             self.gnome_screencast.call_sync(
