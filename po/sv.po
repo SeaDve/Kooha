@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 07:47+0800\n"
+"POT-Creation-Date: 2021-05-05 08:31+0800\n"
 "PO-Revision-Date: 2021-03-28 14:46+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
 msgid "Elegantly record your screen"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr "Visa tangentbordsgenvägar"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:178
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
 msgid "Recording"
 msgstr "Spelar in"
 
@@ -146,125 +146,121 @@ msgstr "Markering"
 msgid "Record computer sounds"
 msgstr "Spela in datorljud"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:118
 msgid "Record from microphone"
 msgstr "Spela in från mikrofon"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:132
 msgid "Show pointer"
 msgstr "Visa muspekare"
 
-#: data/ui/window.ui:148
+#: data/ui/window.ui:145
 msgid "Record"
 msgstr "Spela in"
 
-#: data/ui/window.ui:198
+#: data/ui/window.ui:195
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:222
 msgid "Recording in…"
 msgstr "Spelar in om…"
 
-#: data/ui/window.ui:244
+#: data/ui/window.ui:241
 msgid "Cancel Delay"
 msgstr "Avbryt fördröjning"
 
-#: data/ui/window.ui:271
+#: data/ui/window.ui:268
 msgid "Processing"
 msgstr ""
 
-#: data/ui/window.ui:297
+#: data/ui/window.ui:294
 msgid "Delay"
 msgstr "Fördröjning"
 
-#: data/ui/window.ui:299
+#: data/ui/window.ui:296
 msgid "None"
 msgstr "Ingen"
 
-#: data/ui/window.ui:304
+#: data/ui/window.ui:301
 msgid "5 seconds"
 msgstr "5 sekunder"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:306
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: data/ui/window.ui:315
+#: data/ui/window.ui:312
 msgid "Video Format"
 msgstr "Videoformat"
 
-#: data/ui/window.ui:317
+#: data/ui/window.ui:314
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:322
+#: data/ui/window.ui:319
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:329
+#: data/ui/window.ui:326
 msgid "Save to…"
 msgstr "Spara till…"
 
-#: data/ui/window.ui:335
+#: data/ui/window.ui:332
 msgid "Keyboard Shortcuts"
 msgstr "Tangenbordsgenvägar"
 
-#: data/ui/window.ui:339
+#: data/ui/window.ui:336
 msgid "About Kooha"
 msgstr "Om Kooha"
 
-#: src/main.py:91
+#: src/main.py:92
 msgid "Select a Folder"
 msgstr "Välj en mapp"
 
-#: src/main.py:93
+#: src/main.py:94
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/main.py:94
+#: src/main.py:95
 msgid "Select"
 msgstr "Välj"
 
-#: src/main.py:109
+#: src/main.py:110
 msgid "Save location not set"
 msgstr "Lagringsplats ej angiven"
 
-#: src/main.py:110
+#: src/main.py:111
 msgid "Please choose an accessible location and retry."
 msgstr "Välj en åtkomlig plats och försök igen."
 
-#: src/main.py:131
-msgid "Elegantly record your screen "
-msgstr ""
-
-#: src/main.py:134
+#: src/main.py:142
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:136
+#: src/main.py:144
 msgid "translator-credits"
 msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
 
-#: src/main.py:137
+#: src/main.py:145
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:80
+#: src/window.py:79
 msgid "Recording cannot start"
 msgstr "Inspelning kan inte starta"
 
-#: src/window.py:81
+#: src/window.py:80
 msgid "The saving location you have selected may have been deleted."
 msgstr "Lagringsplatsen du har valt kanske har tagits bort."
 
-#: src/window.py:128
+#: src/window.py:127
 #, fuzzy
 msgid "Screencast Recorded!"
 msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
 
-#: src/window.py:129
+#: src/window.py:128
 msgid "The recording has been saved in"
 msgstr ""
 

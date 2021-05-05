@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 07:47+0800\n"
+"POT-Creation-Date: 2021-05-05 08:31+0800\n"
 "PO-Revision-Date: 2021-04-15 06:27+0000\n"
 "Last-Translator: Jan Novák <novak@silen.org>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
-"\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
+">\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Záznam obrazovky;Rekordér;Obrazovka;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
 msgid "Elegantly record your screen"
 msgstr "Elegantně zaznamenej svou obrazovku"
 
@@ -104,7 +104,7 @@ msgstr "Zobrazit klávesové zkratky"
 msgid "Quit"
 msgstr "Vypnout"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:178
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
 msgid "Recording"
 msgstr "Nahrávání"
 
@@ -148,126 +148,125 @@ msgstr "Výběr"
 msgid "Record computer sounds"
 msgstr "Nahrávat zvůk z počítače"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:118
 msgid "Record from microphone"
 msgstr "Nahrávat zvuk z mikrofonu"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:132
 msgid "Show pointer"
 msgstr "Zobrazit ukazatel"
 
-#: data/ui/window.ui:148
+#: data/ui/window.ui:145
 msgid "Record"
 msgstr "Nahrát"
 
-#: data/ui/window.ui:198
+#: data/ui/window.ui:195
 msgid "Stop"
 msgstr "Zastavit"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:222
 msgid "Recording in…"
 msgstr "Nahrávání za…"
 
-#: data/ui/window.ui:244
+#: data/ui/window.ui:241
 msgid "Cancel Delay"
 msgstr "Zrušit zpoždění"
 
-#: data/ui/window.ui:271
+#: data/ui/window.ui:268
 msgid "Processing"
 msgstr "Zpracovávání"
 
-#: data/ui/window.ui:297
+#: data/ui/window.ui:294
 msgid "Delay"
 msgstr "Zpoždění"
 
-#: data/ui/window.ui:299
+#: data/ui/window.ui:296
 msgid "None"
 msgstr "Žádný"
 
-#: data/ui/window.ui:304
+#: data/ui/window.ui:301
 msgid "5 seconds"
 msgstr "5 sekund"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:306
 msgid "10 seconds"
 msgstr "10 sekund"
 
-#: data/ui/window.ui:315
+#: data/ui/window.ui:312
 msgid "Video Format"
 msgstr "Formát videa"
 
-#: data/ui/window.ui:317
+#: data/ui/window.ui:314
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:322
+#: data/ui/window.ui:319
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:329
+#: data/ui/window.ui:326
 msgid "Save to…"
 msgstr "Uložit do…"
 
-#: data/ui/window.ui:335
+#: data/ui/window.ui:332
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové zkratky"
 
-#: data/ui/window.ui:339
+#: data/ui/window.ui:336
 msgid "About Kooha"
 msgstr "O Kooha"
 
-#: src/main.py:91
+#: src/main.py:92
 msgid "Select a Folder"
 msgstr "Vyberte složku"
 
-#: src/main.py:93
+#: src/main.py:94
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/main.py:94
+#: src/main.py:95
 msgid "Select"
 msgstr "Vybrat"
 
-#: src/main.py:109
+#: src/main.py:110
 msgid "Save location not set"
 msgstr "Místo pro ukládání nevybráno"
 
-#: src/main.py:110
+#: src/main.py:111
 msgid "Please choose an accessible location and retry."
 msgstr "Prosím vyberte místo, kam máte přístup a zkuste znovu."
 
-#: src/main.py:131
-msgid "Elegantly record your screen "
-msgstr "Elegantně nahraj svou obrazovku. "
-
-#: src/main.py:134
+#: src/main.py:142
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:136
+#: src/main.py:144
 msgid "translator-credits"
 msgstr "Jan Novák <novak@silen.org>"
 
-#: src/main.py:137
+#: src/main.py:145
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:80
+#: src/window.py:79
 msgid "Recording cannot start"
 msgstr "Nelze zapnout nahrávání"
 
-#: src/window.py:81
+#: src/window.py:80
 msgid "The saving location you have selected may have been deleted."
 msgstr "Místo vybrané pro ukládání mohlo být smazáno."
 
-#: src/window.py:128
+#: src/window.py:127
 msgid "Screencast Recorded!"
 msgstr "Nahrávač obrazovky!"
 
-#: src/window.py:129
+#: src/window.py:128
 msgid "The recording has been saved in"
 msgstr "Nahrávka byla uložena"
+
+#~ msgid "Elegantly record your screen "
+#~ msgstr "Elegantně nahraj svou obrazovku. "
 
 #~ msgid "Simple screen recorder"
 #~ msgstr "Jednoduchý program pro nahrávání obrazovky"

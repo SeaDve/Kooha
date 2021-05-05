@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 07:47+0800\n"
+"POT-Creation-Date: 2021-05-05 08:31+0800\n"
 "PO-Revision-Date: 2021-04-12 18:26+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
-"%10!=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
+"=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.6-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;Pangrekord;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
 msgid "Elegantly record your screen"
 msgstr "Eleganteng i-record ang iyong screen"
 
@@ -107,7 +107,7 @@ msgstr "Ipakita ang mga keyboard shortcut"
 msgid "Quit"
 msgstr "Isara"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:178
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
 msgid "Recording"
 msgstr "Nagrerekord"
 
@@ -151,126 +151,125 @@ msgstr "Seleksyon"
 msgid "Record computer sounds"
 msgstr "Irekord ang tunog sa kompyuter"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:118
 msgid "Record from microphone"
 msgstr "Irekord ang tunog ng mikropono"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:132
 msgid "Show pointer"
 msgstr "Ipakita ang pointer"
 
-#: data/ui/window.ui:148
+#: data/ui/window.ui:145
 msgid "Record"
 msgstr "Magrekord"
 
-#: data/ui/window.ui:198
+#: data/ui/window.ui:195
 msgid "Stop"
 msgstr "Huminto"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:222
 msgid "Recording in…"
 msgstr "Magrerekord sa…"
 
-#: data/ui/window.ui:244
+#: data/ui/window.ui:241
 msgid "Cancel Delay"
 msgstr "Ikansela ang Antala"
 
-#: data/ui/window.ui:271
+#: data/ui/window.ui:268
 msgid "Processing"
 msgstr "Nagproproseso"
 
-#: data/ui/window.ui:297
+#: data/ui/window.ui:294
 msgid "Delay"
 msgstr "Antala"
 
-#: data/ui/window.ui:299
+#: data/ui/window.ui:296
 msgid "None"
 msgstr "Wala"
 
-#: data/ui/window.ui:304
+#: data/ui/window.ui:301
 msgid "5 seconds"
 msgstr "5 segundo"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:306
 msgid "10 seconds"
 msgstr "10 segundo"
 
-#: data/ui/window.ui:315
+#: data/ui/window.ui:312
 msgid "Video Format"
 msgstr "Pormat ng video"
 
-#: data/ui/window.ui:317
+#: data/ui/window.ui:314
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:322
+#: data/ui/window.ui:319
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:329
+#: data/ui/window.ui:326
 msgid "Save to…"
 msgstr "I-save sa…"
 
-#: data/ui/window.ui:335
+#: data/ui/window.ui:332
 msgid "Keyboard Shortcuts"
 msgstr "Mga keyboard shortcut"
 
-#: data/ui/window.ui:339
+#: data/ui/window.ui:336
 msgid "About Kooha"
 msgstr "Tungkol sa Kooha"
 
-#: src/main.py:91
+#: src/main.py:92
 msgid "Select a Folder"
 msgstr "Pumili ng folder"
 
-#: src/main.py:93
+#: src/main.py:94
 msgid "Cancel"
 msgstr "Ikansela"
 
-#: src/main.py:94
+#: src/main.py:95
 msgid "Select"
 msgstr "Piliin"
 
-#: src/main.py:109
+#: src/main.py:110
 msgid "Save location not set"
 msgstr "Hindi na-set ang lokasyon"
 
-#: src/main.py:110
+#: src/main.py:111
 msgid "Please choose an accessible location and retry."
 msgstr "Pumili ng kayang i-access na lokasyon at ulitin."
 
-#: src/main.py:131
-msgid "Elegantly record your screen "
-msgstr "Eleganteng I-record ang iyong screen "
-
-#: src/main.py:134
+#: src/main.py:142
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Kopirayt 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:136
+#: src/main.py:144
 msgid "translator-credits"
 msgstr "Dave Patrick"
 
-#: src/main.py:137
+#: src/main.py:145
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:80
+#: src/window.py:79
 msgid "Recording cannot start"
 msgstr "Hindi maaaring magstart ang pagrekord"
 
-#: src/window.py:81
+#: src/window.py:80
 msgid "The saving location you have selected may have been deleted."
 msgstr "Ang lokasyon ng paglalagyan ay maaaring nabura na."
 
-#: src/window.py:128
+#: src/window.py:127
 msgid "Screencast Recorded!"
 msgstr "Ang rekording ay natapos na!"
 
-#: src/window.py:129
+#: src/window.py:128
 msgid "The recording has been saved in"
 msgstr "Ang rekording ay nasave sa"
+
+#~ msgid "Elegantly record your screen "
+#~ msgstr "Eleganteng I-record ang iyong screen "
 
 #~ msgid "🎥 Capture your screen without any hustle."
 #~ msgstr "🎥 I-rekord ang iyong screen sa madaling paraan."

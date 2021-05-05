@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 07:47+0800\n"
+"POT-Creation-Date: 2021-05-05 08:31+0800\n"
 "PO-Revision-Date: 2021-05-04 14:32+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;Ekran kaydı;Kaydedici;Ekran;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
 msgid "Elegantly record your screen"
 msgstr "Ekranınızı zarif bir şekilde kaydedin"
 
@@ -105,7 +105,7 @@ msgstr "Klavye kısayollarını göster"
 msgid "Quit"
 msgstr "Çıkış"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:178
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
 msgid "Recording"
 msgstr "Kaydediliyor"
 
@@ -149,128 +149,127 @@ msgstr "Seçim"
 msgid "Record computer sounds"
 msgstr "Bilgisayar seslerini kaydet"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:118
 msgid "Record from microphone"
 msgstr "Mikrofondan kaydet"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:132
 msgid "Show pointer"
 msgstr "İşaretçiyi göster"
 
-#: data/ui/window.ui:148
+#: data/ui/window.ui:145
 msgid "Record"
 msgstr "Kayıt"
 
-#: data/ui/window.ui:198
+#: data/ui/window.ui:195
 msgid "Stop"
 msgstr "Durdur"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:222
 msgid "Recording in…"
 msgstr "Kaydediliyor…"
 
-#: data/ui/window.ui:244
+#: data/ui/window.ui:241
 msgid "Cancel Delay"
 msgstr "Gecikmeyi İptal Et"
 
-#: data/ui/window.ui:271
+#: data/ui/window.ui:268
 msgid "Processing"
 msgstr "İşleniyor"
 
-#: data/ui/window.ui:297
+#: data/ui/window.ui:294
 msgid "Delay"
 msgstr "Gecikme"
 
-#: data/ui/window.ui:299
+#: data/ui/window.ui:296
 msgid "None"
 msgstr "Yok"
 
-#: data/ui/window.ui:304
+#: data/ui/window.ui:301
 msgid "5 seconds"
 msgstr "5 saniye"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:306
 msgid "10 seconds"
 msgstr "10 saniye"
 
-#: data/ui/window.ui:315
+#: data/ui/window.ui:312
 msgid "Video Format"
 msgstr "Video Biçimi"
 
-#: data/ui/window.ui:317
+#: data/ui/window.ui:314
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:322
+#: data/ui/window.ui:319
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:329
+#: data/ui/window.ui:326
 msgid "Save to…"
 msgstr "Kaydetme yeri…"
 
-#: data/ui/window.ui:335
+#: data/ui/window.ui:332
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: data/ui/window.ui:339
+#: data/ui/window.ui:336
 msgid "About Kooha"
 msgstr "Kooha Hakkında"
 
-#: src/main.py:91
+#: src/main.py:92
 msgid "Select a Folder"
 msgstr "Klasör Seç"
 
-#: src/main.py:93
+#: src/main.py:94
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/main.py:94
+#: src/main.py:95
 msgid "Select"
 msgstr "Seç"
 
-#: src/main.py:109
+#: src/main.py:110
 msgid "Save location not set"
 msgstr "Kaydetme konumu ayarlanmadı"
 
-#: src/main.py:110
+#: src/main.py:111
 msgid "Please choose an accessible location and retry."
 msgstr "Lütfen erişilebilir bir yer seçin ve tekrar deneyin."
 
-#: src/main.py:131
-msgid "Elegantly record your screen "
-msgstr "Ekranınızı zarif bir şekilde kaydedin "
-
-#: src/main.py:134
+#: src/main.py:142
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Telif hakkı 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:136
+#: src/main.py:144
 msgid "translator-credits"
 msgstr ""
 "Ümit Solmaz\n"
 "Oğuz Ersen"
 
-#: src/main.py:137
+#: src/main.py:145
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:80
+#: src/window.py:79
 msgid "Recording cannot start"
 msgstr "Kayıt başlayamıyor"
 
-#: src/window.py:81
+#: src/window.py:80
 msgid "The saving location you have selected may have been deleted."
 msgstr "Seçtiğiniz kaydetme yeri silinmiş olabilir."
 
-#: src/window.py:128
+#: src/window.py:127
 msgid "Screencast Recorded!"
 msgstr "Ekran Kaydı Kaydedildi!"
 
-#: src/window.py:129
+#: src/window.py:128
 msgid "The recording has been saved in"
 msgstr "Kayıt kaydedildi"
+
+#~ msgid "Elegantly record your screen "
+#~ msgstr "Ekranınızı zarif bir şekilde kaydedin "
 
 #~ msgid "🎥 Capture your screen without any hustle."
 #~ msgstr "🎥 Herhangi bir uğraştırma olmadan ekranınızı yakalayın."

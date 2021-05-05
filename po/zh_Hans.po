@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 07:47+0800\n"
+"POT-Creation-Date: 2021-05-05 08:31+0800\n"
 "PO-Revision-Date: 2021-04-24 04:11+0000\n"
 "Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -28,7 +28,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;录屏;录制;视频;屏幕;屏幕录制;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
 msgid "Elegantly record your screen"
 msgstr "优雅地录制屏幕"
 
@@ -42,7 +42,8 @@ msgstr "以直截了当、无痛无扰的方式录制你的屏幕。"
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
-msgstr "Kooha 是一个界面极简的录屏软件。无需一系列的配置，只需轻点一下即可开始录制。"
+msgstr ""
+"Kooha 是一个界面极简的录屏软件。无需一系列的配置，只需轻点一下即可开始录制。"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
@@ -101,7 +102,7 @@ msgstr "显示快捷键列表"
 msgid "Quit"
 msgstr "退出"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:178
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
 msgid "Recording"
 msgstr "录制中"
 
@@ -145,126 +146,125 @@ msgstr "选区录制"
 msgid "Record computer sounds"
 msgstr "录制本机声音"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:118
 msgid "Record from microphone"
 msgstr "录制麦克风声音"
 
-#: data/ui/window.ui:134
+#: data/ui/window.ui:132
 msgid "Show pointer"
 msgstr "显示鼠标指针"
 
-#: data/ui/window.ui:148
+#: data/ui/window.ui:145
 msgid "Record"
 msgstr "录制"
 
-#: data/ui/window.ui:198
+#: data/ui/window.ui:195
 msgid "Stop"
 msgstr "停止"
 
-#: data/ui/window.ui:225
+#: data/ui/window.ui:222
 msgid "Recording in…"
 msgstr "即将录制……"
 
-#: data/ui/window.ui:244
+#: data/ui/window.ui:241
 msgid "Cancel Delay"
 msgstr "取消延迟"
 
-#: data/ui/window.ui:271
+#: data/ui/window.ui:268
 msgid "Processing"
 msgstr "处理中"
 
-#: data/ui/window.ui:297
+#: data/ui/window.ui:294
 msgid "Delay"
 msgstr "延迟"
 
-#: data/ui/window.ui:299
+#: data/ui/window.ui:296
 msgid "None"
 msgstr "无"
 
-#: data/ui/window.ui:304
+#: data/ui/window.ui:301
 msgid "5 seconds"
 msgstr "5 秒"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:306
 msgid "10 seconds"
 msgstr "10 秒"
 
-#: data/ui/window.ui:315
+#: data/ui/window.ui:312
 msgid "Video Format"
 msgstr "视频格式"
 
-#: data/ui/window.ui:317
+#: data/ui/window.ui:314
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:322
+#: data/ui/window.ui:319
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:329
+#: data/ui/window.ui:326
 msgid "Save to…"
 msgstr "保存至……"
 
-#: data/ui/window.ui:335
+#: data/ui/window.ui:332
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: data/ui/window.ui:339
+#: data/ui/window.ui:336
 msgid "About Kooha"
 msgstr "关于 Kooha"
 
-#: src/main.py:91
+#: src/main.py:92
 msgid "Select a Folder"
 msgstr "选择一个文件夹"
 
-#: src/main.py:93
+#: src/main.py:94
 msgid "Cancel"
 msgstr "取消"
 
-#: src/main.py:94
+#: src/main.py:95
 msgid "Select"
 msgstr "选择"
 
-#: src/main.py:109
+#: src/main.py:110
 msgid "Save location not set"
 msgstr "未设置保存位置"
 
-#: src/main.py:110
+#: src/main.py:111
 msgid "Please choose an accessible location and retry."
 msgstr "请选择一个可访问的位置，然后重试。"
 
-#: src/main.py:131
-msgid "Elegantly record your screen "
-msgstr "优雅地录制你的屏幕。 "
-
-#: src/main.py:134
+#: src/main.py:142
 msgid "Copyright 2021 Dave Patrick"
 msgstr "版权所有 © 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:136
+#: src/main.py:144
 msgid "translator-credits"
 msgstr "有趣的灵魂 (@TheInterestingSoul)"
 
-#: src/main.py:137
+#: src/main.py:145
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:80
+#: src/window.py:79
 msgid "Recording cannot start"
 msgstr "无法开始录制"
 
-#: src/window.py:81
+#: src/window.py:80
 msgid "The saving location you have selected may have been deleted."
 msgstr "您所选择的保存位置可能已被删除。"
 
-#: src/window.py:128
+#: src/window.py:127
 msgid "Screencast Recorded!"
 msgstr "屏幕已录制！"
 
-#: src/window.py:129
+#: src/window.py:128
 msgid "The recording has been saved in"
 msgstr "录屏视频已保存到"
+
+#~ msgid "Elegantly record your screen "
+#~ msgstr "优雅地录制你的屏幕。 "
 
 #~ msgid "Simple screen recorder"
 #~ msgstr "简单的屏幕录制工具"
