@@ -55,7 +55,7 @@ class KoohaWindow(Handy.ApplicationWindow):
         desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
         if not desktop_environment or "GNOME" not in desktop_environment:
             self.start_record_button.set_sensitive(False)
-            self.start_record_button.set_label(self.get_environment_message(desktop_environment))
+            self.start_record_button.set_label(f"{desktop_environment or 'WM'} is not yet supported")
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
@@ -129,11 +129,6 @@ class KoohaWindow(Handy.ApplicationWindow):
         notification.set_body(f"{notification_body} {self.get_saving_location()[1]}")
         notification.set_default_action("app.show-saving-location")
         self.get_application().send_notification(None, notification)
-
-    def get_environment_message(self, desktop_environment):
-        if not desktop_environment:
-            desktop_environment = "WM"
-        return f"{desktop_environment} is not yet supported"
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, widget):
