@@ -4,13 +4,14 @@
 # Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
 # Roberto Bautista <robertobau45@gmail.com>, 2021.
 # Juan David Sanchez Lean <jdsljuan@gmail.com>, 2021.
+# robert schneider <robertschv@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-05 08:31+0800\n"
-"PO-Revision-Date: 2021-04-15 06:27+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"PO-Revision-Date: 2021-05-07 18:32+0000\n"
+"Last-Translator: robert schneider <robertschv@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -247,7 +248,8 @@ msgstr "Copyright 2021 Dave Patrick"
 msgid "translator-credits"
 msgstr ""
 "Roberto Bautista\n"
-"Óscar Fernández Díaz"
+"Óscar Fernández Díaz\n"
+"Robert Schneider"
 
 #: src/main.py:145
 msgid "GitHub"
