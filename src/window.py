@@ -27,7 +27,7 @@ from kooha.timers import DelayTimer, Timer
 Gst.init(None)
 
 
-@Gtk.Template(resource_path='/io/github/seadve/Kooha/window.ui')
+@Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
 class KoohaWindow(Handy.ApplicationWindow):
     __gtype_name__ = 'KoohaWindow'
 
@@ -117,7 +117,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     def playchime(self):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')
-        playbin.props.uri = 'resource://io/github/seadve/Kooha/chime.ogg'
+        playbin.props.uri = 'resource://io/github/seadve/Kooha/sounds/chime.ogg'
         playbin.set_state(Gst.State.PLAYING)
         bus = playbin.get_bus()
         bus.poll(Gst.MessageType.EOS, Gst.CLOCK_TIME_NONE)
