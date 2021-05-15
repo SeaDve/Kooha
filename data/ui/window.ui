@@ -7,7 +7,6 @@
       <object class="GtkWindowHandle">
         <child>
           <object class="GtkStack" id="main_stack">
-            <property name="transition-duration">150</property>
             <property name="transition-type">crossfade</property>
             <child>
               <object class="GtkStackPage">
@@ -33,7 +32,6 @@
                         </child>
                         <child type="title">
                           <object class="GtkStack" id="title_stack">
-                            <property name="transition-duration">150</property>
                             <property name="transition-type">crossfade</property>
                             <style>
                               <class name="title"/>
