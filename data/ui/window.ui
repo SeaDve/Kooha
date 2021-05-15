@@ -110,6 +110,9 @@
                           <object class="GtkButton" id="start_record_button">
                             <property name="label" translatable="yes">Record</property>
                             <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
+                            <style>
+                              <class name="suggested-action"/>
+                            </style>
                             <child>
                               <object class="GtkShortcutController">
                                 <property name="scope">managed</property>
@@ -121,9 +124,6 @@
                                 </child>
                               </object>
                             </child>
-                            <style>
-                              <class name="suggested-action"/>
-                            </style>
                           </object>
                         </child>
                       </object>
@@ -170,6 +170,9 @@
                       <object class="GtkButton">
                         <property name="label" translatable="yes">Stop</property>
                         <signal name="clicked" handler="on_stop_record_button_clicked" swapped="no"/>
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
                         <child>
                           <object class="GtkShortcutController">
                             <property name="scope">managed</property>
@@ -181,9 +184,6 @@
                             </child>
                           </object>
                         </child>
-                        <style>
-                          <class name="destructive-action"/>
-                        </style>
                       </object>
                     </child>
                   </object>
@@ -227,6 +227,9 @@
                       <object class="GtkButton">
                         <property name="label" translatable="yes">Cancel Delay</property>
                         <signal name="clicked" handler="on_cancel_delay_button_clicked" swapped="no"/>
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
                         <child>
                           <object class="GtkShortcutController">
                             <property name="scope">managed</property>
@@ -238,9 +241,6 @@
                             </child>
                           </object>
                         </child>
-                        <style>
-                          <class name="destructive-action"/>
-                        </style>
                       </object>
                     </child>
                   </object>
