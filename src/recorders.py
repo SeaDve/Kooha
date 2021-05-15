@@ -69,7 +69,7 @@ class AudioRecorder:
         t = message.type
         if t == Gst.MessageType.EOS:
             self.joiner_gst.set_state(Gst.State.NULL)
-            self.window.main_stack.set_visible_child(self.window.main_screen_box)
+            self.window.main_stack.set_visible_child_name("main-screen")
             self.window.send_recordingfinished_notification()
         elif t == Gst.MessageType.ERROR:
             self.joiner_gst.set_state(Gst.State.NULL)

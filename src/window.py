@@ -34,12 +34,8 @@ class KoohaWindow(Adw.ApplicationWindow):
     start_record_button = Gtk.Template.Child()  # will be unused when DE check is removed
     title_stack = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
-    main_screen_box = Gtk.Template.Child()
-    recording_label_box = Gtk.Template.Child()
     time_recording_label = Gtk.Template.Child()
-    delay_label_box = Gtk.Template.Child()
     delay_label = Gtk.Template.Child()
-    processing_label_box = Gtk.Template.Child()
 
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
@@ -68,7 +64,7 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.delay_timer.start(delay)
 
             if delay > 0:
-                self.main_stack.set_visible_child(self.delay_label_box)
+                self.main_stack.set_visible_child_name("delay")
         else:
             error = Gtk.MessageDialog(transient_for=self, modal=True,
                                       buttons=Gtk.ButtonsType.OK, title=_("Recording cannot start"),
@@ -99,7 +95,7 @@ class KoohaWindow(Adw.ApplicationWindow):
 
         self.timer.start()
 
-        self.main_stack.set_visible_child(self.recording_label_box)
+        self.main_stack.set_visible_child_name("recording")
 
     def get_saving_location(self):
         video_directory = self.settings.get_string('saving-location')
@@ -132,15 +128,15 @@ class KoohaWindow(Adw.ApplicationWindow):
         self.timer.stop()
 
         if self.audio_mode:
-            self.main_stack.set_visible_child(self.processing_label_box)
+            self.main_stack.set_visible_child_name("processing")
             self.audio_recorder.stop(self)
             self.audio_mode = False
         else:
-            self.main_stack.set_visible_child(self.main_screen_box)
+            self.main_stack.set_visible_child_name("main-screen")
             self.send_recordingfinished_notification()
 
     @Gtk.Template.Callback()
     def on_cancel_delay_button_clicked(self, widget):
-        self.main_stack.set_visible_child(self.main_screen_box)
+        self.main_stack.set_visible_child_name("main-screen")
 
         self.delay_timer.cancel()
