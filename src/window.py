@@ -62,7 +62,7 @@ class KoohaWindow(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-        self.directory, video_directory, _ = self.get_saving_location()
+        self.directory, video_directory, frmt = self.get_saving_location()
 
         if os.path.exists(video_directory):
             if self.title_stack.get_visible_child() is self.selection_mode_label:
@@ -76,13 +76,11 @@ class KoohaWindow(Adw.ApplicationWindow):
             if delay > 0:
                 self.main_stack.set_visible_child(self.delay_label_box)
         else:
-            error = Gtk.MessageDialog(transient_for=self,
-                                      type=Gtk.MessageType.WARNING,
-                                      buttons=Gtk.ButtonsType.OK,
-                                      text=_("Recording cannot start"))
-            error.format_secondary_text(_("The saving location you have selected may have been deleted."))
-            error.run()
-            error.destroy()
+            error = Gtk.MessageDialog(transient_for=self, modal=True,
+                                      buttons=Gtk.ButtonsType.OK, title=_("Recording cannot start"),
+                                      text=_("The saving location you have selected may have been deleted."))
+            error.present()
+            error.connect("response", lambda *_: error.close())
 
     def start_recording(self):
         Thread(target=self.playchime).start()
