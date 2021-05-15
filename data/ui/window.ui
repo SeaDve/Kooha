@@ -84,22 +84,22 @@
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">app.record-audio</property>
-                                <property name="tooltip-text" translatable="yes">Record computer sounds</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Record computer sounds</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">app.record-microphone</property>
-                                <property name="tooltip-text" translatable="yes">Record from microphone</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Record from microphone</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">app.show-pointer</property>
-                                <property name="tooltip-text" translatable="yes">Show pointer</property>
                                 <property name="icon-name">input-mouse-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Show pointer</property>
                               </object>
                             </child>
                           </object>
