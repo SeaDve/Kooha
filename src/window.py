@@ -59,7 +59,7 @@ class KoohaWindow(Handy.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-        self.directory, video_directory = self.get_saving_location()
+        self.directory, video_directory, _ = self.get_saving_location()
 
         if os.path.exists(video_directory):
             if self.title_stack.get_visible_child() is self.selection_mode_label:
@@ -84,9 +84,10 @@ class KoohaWindow(Handy.ApplicationWindow):
     def start_recording(self):
         Thread(target=self.playchime).start()
 
+        muxer = 'matroskamux' if self.get_saving_location()[2] == 'mkv' else 'webmmux'
         record_audio = self.settings.get_boolean("record-audio")
         record_microphone = self.settings.get_boolean("record-microphone")
-        self.audio_recorder = AudioRecorder(self.directory, record_audio, record_microphone)
+        self.audio_recorder = AudioRecorder(self.directory, muxer, record_audio, record_microphone)
 
         framerate = self.settings.get_int("video-frames")
         show_pointer = self.settings.get_boolean("show-pointer")
@@ -94,11 +95,11 @@ class KoohaWindow(Handy.ApplicationWindow):
         if ((record_audio and self.audio_recorder.default_audio_output)
                 or (record_microphone and self.audio_recorder.default_audio_input)):
             directory = self.audio_recorder.get_tmp_dir("video")
-            self.video_recorder.start(directory, framerate, show_pointer)
+            self.video_recorder.start(directory, muxer, framerate, show_pointer)
             self.audio_recorder.start()
             self.audio_mode = True
         else:
-            self.video_recorder.start(self.directory, framerate, show_pointer)
+            self.video_recorder.start(self.directory, muxer, framerate, show_pointer)
             self.audio_mode = False
 
         self.timer.start()
@@ -113,7 +114,7 @@ class KoohaWindow(Handy.ApplicationWindow):
             video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
             if not os.path.exists(video_directory):
                 video_directory = GLib.get_home_dir()
-        return (f"{video_directory}/{filename}.{video_format}", video_directory)
+        return (f"{video_directory}/{filename}.{video_format}", video_directory, video_format)
 
     def playchime(self):
         playbin = Gst.ElementFactory.make('playbin', 'playbin')

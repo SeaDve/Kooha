@@ -21,8 +21,9 @@ from gi.repository import Gio, GLib, Gst
 
 
 class AudioRecorder:
-    def __init__(self, saving_location, record_audio, record_microphone):
+    def __init__(self, saving_location, muxer, record_audio, record_microphone):
         self.saving_location = saving_location.replace(" ", r"\ ")
+        self.muxer = muxer
         self.record_audio = record_audio
         self.record_microphone = record_microphone
 
@@ -53,7 +54,7 @@ class AudioRecorder:
         self.window = window
 
         self.audio_gst.send_event(Gst.Event.new_eos())
-        joiner_pipeline = (f'matroskamux name=mux ! filesink location={self.saving_location} '
+        joiner_pipeline = (f'{self.muxer} name=mux ! filesink location={self.saving_location} '
                            f'filesrc location={self.get_tmp_dir("video")} ! matroskademux ! vp8dec '
                            '! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 '
                            'deadline=1 static-threshold=100 threads=3 ! queue ! mux. '
@@ -132,14 +133,14 @@ class VideoRecorder:
             None
         )
 
-    def start(self, directory, framerate, show_pointer):
+    def start(self, directory, muxer, framerate, show_pointer):
         self.directory = directory
         self.framerate = framerate
         self.show_pointer = show_pointer
         self.pipeline = ("videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE "
                          "matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=3 ! queue ! vp8enc "
                          "cpu-used=16 max-quantizer=10 deadline=1 keyframe-mode=disabled threads=3 "
-                         "static-threshold=1000 buffer-size=20000 ! queue ! matroskamux")
+                         f"static-threshold=1000 buffer-size=20000 ! queue ! {muxer}")
 
         if not self.selection_mode:
             self.gnome_screencast.call_sync(
