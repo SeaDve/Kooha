@@ -26,9 +26,6 @@ from kooha.timers import DelayTimer, Timer
 
 Gst.init(None)
 
-# Fix shortcuts
-# Fix error dialogs and file chooser
-
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
 class KoohaWindow(Adw.ApplicationWindow):
@@ -36,9 +33,6 @@ class KoohaWindow(Adw.ApplicationWindow):
 
     start_record_button = Gtk.Template.Child()  # will be unused when DE check is removed
     title_stack = Gtk.Template.Child()
-    fullscreen_mode_label = Gtk.Template.Child()
-    selection_mode_label = Gtk.Template.Child()
-
     main_stack = Gtk.Template.Child()
     main_screen_box = Gtk.Template.Child()
     recording_label_box = Gtk.Template.Child()
@@ -65,7 +59,7 @@ class KoohaWindow(Adw.ApplicationWindow):
         self.directory, video_directory, frmt = self.get_saving_location()
 
         if os.path.exists(video_directory):
-            if self.title_stack.get_visible_child() is self.selection_mode_label:
+            if self.title_stack.get_visible_child_name() == "selection-mode":
                 self.video_recorder.set_selection_mode()
             else:
                 self.video_recorder.set_fullscreen_mode()

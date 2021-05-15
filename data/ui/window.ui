@@ -18,9 +18,8 @@
                       <class name="flat"/>
                     </style>
                     <child>
-                      <object class="GtkMenuButton" id="menu_button">
+                      <object class="GtkMenuButton">
                         <property name="menu-model">menu</property>
-                        <property name="valign">center</property>
                         <property name="icon-name">open-menu-symbolic</property>
                         <property name="has-frame">False</property>
                         <!-- <accelerator key="F10" signal="clicked"/> -->
@@ -38,9 +37,10 @@
                         </style>
                         <child>
                           <object class="GtkStackPage">
+                            <property name="name">fullscreen-mode</property>
                             <property name="icon-name">data_icons_display-symbolic</property>
                             <property name="child">
-                              <object class="GtkLabel" id="fullscreen_mode_label">
+                              <object class="GtkLabel">
                                 <property name="label" translatable="yes">Full Screen</property>
                               </object>
                             </property>
@@ -48,9 +48,10 @@
                         </child>
                         <child>
                           <object class="GtkStackPage">
+                            <property name="name">selection-mode</property>
                             <property name="icon-name">data_icons_selection-symbolic</property>
                             <property name="child">
-                              <object class="GtkLabel" id="selection_mode_label">
+                              <object class="GtkLabel">
                                 <property name="label" translatable="yes">Selection</property>
                               </object>
                             </property>
@@ -80,36 +81,24 @@
                         <property name="spacing">12</property>
                         <property name="homogeneous">True</property>
                         <child>
-                          <object class="GtkToggleButton" id="record_audio_toggle">
+                          <object class="GtkToggleButton">
                             <property name="action-name">app.record-audio</property>
                             <property name="tooltip-text" translatable="yes">Record computer sounds</property>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="icon-name">audio-volume-high-symbolic</property>
-                              </object>
-                            </child>
+                            <property name="icon-name">audio-volume-high-symbolic</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkToggleButton" id="record_microphone_toggle">
+                          <object class="GtkToggleButton">
                             <property name="action-name">app.record-microphone</property>
                             <property name="tooltip-text" translatable="yes">Record from microphone</property>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="icon-name">microphone-sensitivity-high-symbolic</property>
-                              </object>
-                            </child>
+                            <property name="icon-name">microphone-sensitivity-high-symbolic</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkToggleButton" id="show_pointer_toggle">
+                          <object class="GtkToggleButton">
                             <property name="action-name">app.show-pointer</property>
                             <property name="tooltip-text" translatable="yes">Show pointer</property>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="icon-name">input-mouse-symbolic</property>
-                              </object>
-                            </child>
+                            <property name="icon-name">input-mouse-symbolic</property>
                           </object>
                         </child>
                       </object>
@@ -118,7 +107,17 @@
                       <object class="GtkButton" id="start_record_button">
                         <property name="label" translatable="yes">Record</property>
                         <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
-                        <!-- <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/> -->
+                        <child>
+                          <object class="GtkShortcutController">
+                            <property name="scope">managed</property>
+                            <child>
+                              <object class="GtkShortcut">
+                                <property name="trigger">&lt;Control&gt;r</property>
+                                <property name="action">activate</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                         <style>
                           <class name="suggested-action"/>
                         </style>
@@ -137,7 +136,6 @@
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
-                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
@@ -164,7 +162,17 @@
                   <object class="GtkButton">
                     <property name="label" translatable="yes">Stop</property>
                     <signal name="clicked" handler="on_stop_record_button_clicked" swapped="no"/>
-                    <!-- <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/> -->
+                    <child>
+                      <object class="GtkShortcutController">
+                        <property name="scope">managed</property>
+                        <child>
+                          <object class="GtkShortcut">
+                            <property name="trigger">&lt;Control&gt;r</property>
+                            <property name="action">activate</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                     <style>
                       <class name="destructive-action"/>
                     </style>
@@ -181,7 +189,6 @@
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
-                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
@@ -207,7 +214,17 @@
                   <object class="GtkButton">
                     <property name="label" translatable="yes">Cancel Delay</property>
                     <signal name="clicked" handler="on_cancel_delay_button_clicked" swapped="no"/>
-                    <!-- <accelerator key="c" signal="activate" modifiers="GDK_CONTROL_MASK"/> -->
+                    <child>
+                      <object class="GtkShortcutController">
+                        <property name="scope">managed</property>
+                        <child>
+                          <object class="GtkShortcut">
+                            <property name="trigger">&lt;Control&gt;c</property>
+                            <property name="action">activate</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                     <style>
                       <class name="destructive-action"/>
                     </style>
@@ -220,7 +237,6 @@
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
-                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="vexpand">True</property>
                     <property name="spacing">6</property>
@@ -236,7 +252,6 @@
                     </child>
                     <child>
                       <object class="GtkSpinner">
-                        <property name="can-focus">0</property>
                         <property name="spinning">True</property>
                       </object>
                     </child>
