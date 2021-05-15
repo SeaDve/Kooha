@@ -19,9 +19,9 @@ import sys
 
 import gi
 gi.require_version('Gst', '1.0')
-gi.require_version('Gtk', '3.0')
-gi.require_version('Handy', '1')
-from gi.repository import Gtk, Gio, Gdk, GLib, Handy
+gi.require_version('Gtk', '4.0')
+gi.require_version('Adw', '1')
+from gi.repository import Gtk, Gio, Gdk, GLib, Adw
 
 from kooha.window import KoohaWindow
 
@@ -41,15 +41,15 @@ class Application(Gtk.Application):
 
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource('/io/github/seadve/Kooha/ui/style.css')
-        screen = Gdk.Screen.get_default()
-        Gtk.StyleContext.add_provider_for_screen(
-            screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+        display = Gdk.Display.get_default()
+        Gtk.StyleContext.add_provider_for_display(
+            display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
         )
 
         self.settings = Gio.Settings.new('io.github.seadve.Kooha')
         self.setup_actions()
 
-        Handy.init()
+        Adw.init()
 
     def do_activate(self):
         self.window = self.props.active_window

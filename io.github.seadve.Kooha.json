@@ -6,6 +6,7 @@
     "command" : "kooha",
     "finish-args" : [
         "--share=ipc",
+        "--device=dri",
         "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
@@ -25,6 +26,58 @@
         "*.a"
     ],
     "modules" : [
+        {
+            "name": "libsass",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/sass/libsass/archive/3.6.4.tar.gz",
+                    "sha256": "f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889"
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                        "autoreconf -si"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sassc",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/sass/sassc/archive/3.6.1.tar.gz",
+                    "sha256": "8cee391c49a102b4464f86fc40c4ceac3a2ada52a89c4c933d8348e3e4542a60"
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                        "autoreconf -si"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "libadwaita",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dgtk_doc=false",
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dvapi=false",
+                "-Dglade_catalog=disabled"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "branch": "main"
+                }
+            ]
+        },
         {
             "name" : "kooha",
             "builddir" : true,

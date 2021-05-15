@@ -19,16 +19,19 @@ import os
 from threading import Thread
 from time import localtime, strftime
 
-from gi.repository import Gio, GLib, Gst, Gtk, Handy
+from gi.repository import Gio, GLib, Gst, Gtk, Adw
 
 from kooha.recorders import AudioRecorder, VideoRecorder
 from kooha.timers import DelayTimer, Timer
 
 Gst.init(None)
 
+# Fix shortcuts
+# Fix error dialogs and file chooser
+
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
-class KoohaWindow(Handy.ApplicationWindow):
+class KoohaWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'KoohaWindow'
 
     start_record_button = Gtk.Template.Child()  # will be unused when DE check is removed

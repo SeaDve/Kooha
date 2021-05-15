@@ -1,15 +1,16 @@
+.large button {
+  min-width: 75px;
+  min-height: 63px;
+}
+
+stackswitcher image {
+  -gtk-icon-size: 33px;
+}
+
 headerbar.flat {
   background-image: none;
   border: none;
   background-color: @theme_bg_color;
-}
-
-button.wide {
-  min-width: 138px;
-}
-
-stackswitcher.tall {
-  min-height: 72px;
 }
 
 .time_label {
