@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Nicolas Mariniello <seldon1000@tutanota.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# Dave Patrick <davecruz48@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-05 08:31+0800\n"
-"PO-Revision-Date: 2021-04-17 11:18+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-05-16 01:37+0000\n"
+"Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -101,7 +102,7 @@ msgstr "Apri il menù"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr "Mostra le scorciatoie da tastiera"
+msgstr "Mostra scorciatoie da tastiera"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"

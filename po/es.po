@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-05 08:31+0800\n"
-"PO-Revision-Date: 2021-05-07 18:32+0000\n"
-"Last-Translator: robert schneider <robertschv@gmail.com>\n"
+"PO-Revision-Date: 2021-05-16 01:37+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -246,10 +246,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:144
 msgid "translator-credits"
-msgstr ""
-"Roberto Bautista\n"
-"Óscar Fernández Díaz\n"
-"Robert Schneider"
+msgstr "Óscar Fernández Díaz"
 
 #: src/main.py:145
 msgid "GitHub"
