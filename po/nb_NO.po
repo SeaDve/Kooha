@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:31+0800\n"
+"POT-Creation-Date: 2021-05-17 18:10+0800\n"
 "PO-Revision-Date: 2021-05-16 01:37+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Skjermopptak;Opptaker;Skjerm;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
 msgstr "Ta opp skjermen din på elegant vis"
 
@@ -104,7 +104,7 @@ msgstr "Vis tastatursnarveier"
 msgid "Quit"
 msgstr "Avslutt"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
 msgstr "Tar opp …"
 
@@ -136,134 +136,150 @@ msgstr "Slå av/på opptak av mikrofonen"
 msgid "Toggle pointer"
 msgstr "Slå av/på opptak av musepekeren"
 
-#: data/ui/window.ui:50
+#: data/ui/window.ui:27
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/window.ui:46
 msgid "Full Screen"
 msgstr "Fullskjerm"
 
-#: data/ui/window.ui:62
+#: data/ui/window.ui:57
 msgid "Selection"
 msgstr "Utvalg"
 
-#: data/ui/window.ui:104
-msgid "Record computer sounds"
-msgstr "Ta opp skrivebordslyder"
+#: data/ui/window.ui:89
+msgid "Record Computer Sounds"
+msgstr ""
 
-#: data/ui/window.ui:118
-msgid "Record from microphone"
-msgstr "Ta opp fra mikrofonen"
+#: data/ui/window.ui:96
+msgid "Record From Microphone"
+msgstr ""
 
-#: data/ui/window.ui:132
-msgid "Show pointer"
-msgstr "Vis musepeker"
+#: data/ui/window.ui:103
+msgid "Show Pointer"
+msgstr ""
 
-#: data/ui/window.ui:145
+#: data/ui/window.ui:110
 msgid "Record"
 msgstr "Ta opp"
 
-#: data/ui/window.ui:195
+#: data/ui/window.ui:170
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/ui/window.ui:222
+#: data/ui/window.ui:209
 msgid "Recording in…"
 msgstr "Tar opp om…"
 
-#: data/ui/window.ui:241
+#: data/ui/window.ui:227
 msgid "Cancel Delay"
 msgstr "Avbryt forsinkelse"
 
-#: data/ui/window.ui:268
+#: data/ui/window.ui:263
 msgid "Processing"
 msgstr "Behandler"
 
-#: data/ui/window.ui:294
+#: data/ui/window.ui:289
 msgid "Delay"
 msgstr "Forsinkelse"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:291
 msgid "None"
 msgstr "Ingen"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:296
 msgid "5 seconds"
 msgstr "5 sekunder"
 
-#: data/ui/window.ui:306
+#: data/ui/window.ui:301
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: data/ui/window.ui:312
+#: data/ui/window.ui:307
 msgid "Video Format"
 msgstr "Videoformat"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:309
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:319
+#: data/ui/window.ui:314
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:326
+#: data/ui/window.ui:321
 msgid "Save to…"
 msgstr "Lagre til…"
 
-#: data/ui/window.ui:332
+#: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
 msgstr "Tastatursnarveier"
 
-#: data/ui/window.ui:336
+#: data/ui/window.ui:331
 msgid "About Kooha"
 msgstr "Om Kooha"
 
-#: src/main.py:92
-msgid "Select a Folder"
-msgstr "Velg en mappe"
-
-#: src/main.py:94
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: src/main.py:95
-msgid "Select"
-msgstr "Velg"
-
-#: src/main.py:110
+#: src/main.py:101
 msgid "Save location not set"
 msgstr "Lagringsplass er ikke valgt"
 
-#: src/main.py:111
+#: src/main.py:102
 msgid "Please choose an accessible location and retry."
 msgstr "Velg en tilgjengelig plassering og prøv på nytt."
 
-#: src/main.py:142
+#: src/main.py:109
+msgid "Select a Folder"
+msgstr "Velg en mappe"
+
+#: src/main.py:110
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/main.py:111
+msgid "Open"
+msgstr ""
+
+#: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Opphavsrett © 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:144
+#: src/main.py:142
 msgid "translator-credits"
 msgstr "Allan Nordhøy"
 
-#: src/main.py:145
+#: src/main.py:143
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:79
+#: src/window.py:70
 msgid "Recording cannot start"
 msgstr "Kunne ikke starte opptak"
 
-#: src/window.py:80
+#: src/window.py:71
 msgid "The saving location you have selected may have been deleted."
 msgstr "Lagringsplassen du valgte kan ha blitt slettet."
 
-#: src/window.py:127
+#: src/window.py:119
 msgid "Screencast Recorded!"
 msgstr "Skjermopptak innspilt."
 
-#: src/window.py:128
+#: src/window.py:120
 msgid "The recording has been saved in"
 msgstr "Opptaket ble lagret i"
+
+#~ msgid "Record computer sounds"
+#~ msgstr "Ta opp skrivebordslyder"
+
+#~ msgid "Record from microphone"
+#~ msgstr "Ta opp fra mikrofonen"
+
+#~ msgid "Show pointer"
+#~ msgstr "Vis musepeker"
+
+#~ msgid "Select"
+#~ msgstr "Velg"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Ta opp skjermen din på elegant vis "

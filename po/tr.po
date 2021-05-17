@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:31+0800\n"
+"POT-Creation-Date: 2021-05-17 18:10+0800\n"
 "PO-Revision-Date: 2021-05-04 14:32+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;Ekran kaydı;Kaydedici;Ekran;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
 msgstr "Ekranınızı zarif bir şekilde kaydedin"
 
@@ -105,7 +105,7 @@ msgstr "Klavye kısayollarını göster"
 msgid "Quit"
 msgstr "Çıkış"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
 msgstr "Kaydediliyor"
 
@@ -137,136 +137,152 @@ msgstr "Mikrofonu değiştir"
 msgid "Toggle pointer"
 msgstr "İşaretçiyi değiştir"
 
-#: data/ui/window.ui:50
+#: data/ui/window.ui:27
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/window.ui:46
 msgid "Full Screen"
 msgstr "Tam Ekran"
 
-#: data/ui/window.ui:62
+#: data/ui/window.ui:57
 msgid "Selection"
 msgstr "Seçim"
 
-#: data/ui/window.ui:104
-msgid "Record computer sounds"
-msgstr "Bilgisayar seslerini kaydet"
+#: data/ui/window.ui:89
+msgid "Record Computer Sounds"
+msgstr ""
 
-#: data/ui/window.ui:118
-msgid "Record from microphone"
-msgstr "Mikrofondan kaydet"
+#: data/ui/window.ui:96
+msgid "Record From Microphone"
+msgstr ""
 
-#: data/ui/window.ui:132
-msgid "Show pointer"
-msgstr "İşaretçiyi göster"
+#: data/ui/window.ui:103
+msgid "Show Pointer"
+msgstr ""
 
-#: data/ui/window.ui:145
+#: data/ui/window.ui:110
 msgid "Record"
 msgstr "Kayıt"
 
-#: data/ui/window.ui:195
+#: data/ui/window.ui:170
 msgid "Stop"
 msgstr "Durdur"
 
-#: data/ui/window.ui:222
+#: data/ui/window.ui:209
 msgid "Recording in…"
 msgstr "Kaydediliyor…"
 
-#: data/ui/window.ui:241
+#: data/ui/window.ui:227
 msgid "Cancel Delay"
 msgstr "Gecikmeyi İptal Et"
 
-#: data/ui/window.ui:268
+#: data/ui/window.ui:263
 msgid "Processing"
 msgstr "İşleniyor"
 
-#: data/ui/window.ui:294
+#: data/ui/window.ui:289
 msgid "Delay"
 msgstr "Gecikme"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:291
 msgid "None"
 msgstr "Yok"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:296
 msgid "5 seconds"
 msgstr "5 saniye"
 
-#: data/ui/window.ui:306
+#: data/ui/window.ui:301
 msgid "10 seconds"
 msgstr "10 saniye"
 
-#: data/ui/window.ui:312
+#: data/ui/window.ui:307
 msgid "Video Format"
 msgstr "Video Biçimi"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:309
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:319
+#: data/ui/window.ui:314
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:326
+#: data/ui/window.ui:321
 msgid "Save to…"
 msgstr "Kaydetme yeri…"
 
-#: data/ui/window.ui:332
+#: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: data/ui/window.ui:336
+#: data/ui/window.ui:331
 msgid "About Kooha"
 msgstr "Kooha Hakkında"
 
-#: src/main.py:92
-msgid "Select a Folder"
-msgstr "Klasör Seç"
-
-#: src/main.py:94
-msgid "Cancel"
-msgstr "İptal"
-
-#: src/main.py:95
-msgid "Select"
-msgstr "Seç"
-
-#: src/main.py:110
+#: src/main.py:101
 msgid "Save location not set"
 msgstr "Kaydetme konumu ayarlanmadı"
 
-#: src/main.py:111
+#: src/main.py:102
 msgid "Please choose an accessible location and retry."
 msgstr "Lütfen erişilebilir bir yer seçin ve tekrar deneyin."
 
-#: src/main.py:142
+#: src/main.py:109
+msgid "Select a Folder"
+msgstr "Klasör Seç"
+
+#: src/main.py:110
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/main.py:111
+msgid "Open"
+msgstr ""
+
+#: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Telif hakkı 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:144
+#: src/main.py:142
 msgid "translator-credits"
 msgstr ""
 "Ümit Solmaz\n"
 "Oğuz Ersen"
 
-#: src/main.py:145
+#: src/main.py:143
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:79
+#: src/window.py:70
 msgid "Recording cannot start"
 msgstr "Kayıt başlayamıyor"
 
-#: src/window.py:80
+#: src/window.py:71
 msgid "The saving location you have selected may have been deleted."
 msgstr "Seçtiğiniz kaydetme yeri silinmiş olabilir."
 
-#: src/window.py:127
+#: src/window.py:119
 msgid "Screencast Recorded!"
 msgstr "Ekran Kaydı Kaydedildi!"
 
-#: src/window.py:128
+#: src/window.py:120
 msgid "The recording has been saved in"
 msgstr "Kayıt kaydedildi"
+
+#~ msgid "Record computer sounds"
+#~ msgstr "Bilgisayar seslerini kaydet"
+
+#~ msgid "Record from microphone"
+#~ msgstr "Mikrofondan kaydet"
+
+#~ msgid "Show pointer"
+#~ msgstr "İşaretçiyi göster"
+
+#~ msgid "Select"
+#~ msgstr "Seç"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Ekranınızı zarif bir şekilde kaydedin "

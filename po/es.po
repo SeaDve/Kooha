@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:31+0800\n"
+"POT-Creation-Date: 2021-05-17 18:10+0800\n"
 "PO-Revision-Date: 2021-05-16 01:37+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -31,7 +31,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Capturar pantalla;Grabador;Pantalla;Vídeo;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
 msgstr "Graba tu pantalla elegantemente"
 
@@ -107,7 +107,7 @@ msgstr "Mostrar atajos de teclado"
 msgid "Quit"
 msgstr "Salir"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
 msgstr "Grabando"
 
@@ -139,135 +139,151 @@ msgstr "Activar o desactivar micrófono"
 msgid "Toggle pointer"
 msgstr "Activar o desactivar puntero"
 
-#: data/ui/window.ui:50
+#: data/ui/window.ui:27
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/window.ui:46
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: data/ui/window.ui:62
+#: data/ui/window.ui:57
 msgid "Selection"
 msgstr "Área"
 
-#: data/ui/window.ui:104
-msgid "Record computer sounds"
-msgstr "Grabar audio del dispositivo"
+#: data/ui/window.ui:89
+msgid "Record Computer Sounds"
+msgstr ""
 
-#: data/ui/window.ui:118
-msgid "Record from microphone"
-msgstr "Grabar audio del micrófono"
+#: data/ui/window.ui:96
+msgid "Record From Microphone"
+msgstr ""
 
-#: data/ui/window.ui:132
-msgid "Show pointer"
-msgstr "Mostrar puntero"
+#: data/ui/window.ui:103
+msgid "Show Pointer"
+msgstr ""
 
-#: data/ui/window.ui:145
+#: data/ui/window.ui:110
 msgid "Record"
 msgstr "Grabar"
 
-#: data/ui/window.ui:195
+#: data/ui/window.ui:170
 msgid "Stop"
 msgstr "Detener"
 
-#: data/ui/window.ui:222
+#: data/ui/window.ui:209
 msgid "Recording in…"
 msgstr "Grabando en…"
 
-#: data/ui/window.ui:241
+#: data/ui/window.ui:227
 msgid "Cancel Delay"
 msgstr "Cancelar retraso"
 
-#: data/ui/window.ui:268
+#: data/ui/window.ui:263
 msgid "Processing"
 msgstr "Procesando"
 
-#: data/ui/window.ui:294
+#: data/ui/window.ui:289
 msgid "Delay"
 msgstr "Retraso"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:291
 msgid "None"
 msgstr "Ninguno"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:296
 msgid "5 seconds"
 msgstr "5 segundos"
 
-#: data/ui/window.ui:306
+#: data/ui/window.ui:301
 msgid "10 seconds"
 msgstr "10 segundos"
 
-#: data/ui/window.ui:312
+#: data/ui/window.ui:307
 msgid "Video Format"
 msgstr "Formato de vídeo"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:309
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:319
+#: data/ui/window.ui:314
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:326
+#: data/ui/window.ui:321
 msgid "Save to…"
 msgstr "Guardar en…"
 
-#: data/ui/window.ui:332
+#: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
 msgstr "Atajos de teclado"
 
-#: data/ui/window.ui:336
+#: data/ui/window.ui:331
 msgid "About Kooha"
 msgstr "Acerca de Kooha"
 
-#: src/main.py:92
-msgid "Select a Folder"
-msgstr "Elige una carpeta"
-
-#: src/main.py:94
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: src/main.py:95
-msgid "Select"
-msgstr "Seleccionar"
-
-#: src/main.py:110
+#: src/main.py:101
 msgid "Save location not set"
 msgstr "No se estableció la ubicación de guardado"
 
-#: src/main.py:111
+#: src/main.py:102
 msgid "Please choose an accessible location and retry."
 msgstr "Elige una ubicación accesible e intenta de nuevo."
 
-#: src/main.py:142
+#: src/main.py:109
+msgid "Select a Folder"
+msgstr "Elige una carpeta"
+
+#: src/main.py:110
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/main.py:111
+msgid "Open"
+msgstr ""
+
+#: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:144
+#: src/main.py:142
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz"
 
-#: src/main.py:145
+#: src/main.py:143
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:79
+#: src/window.py:70
 msgid "Recording cannot start"
 msgstr "No se puede iniciar la grabación"
 
-#: src/window.py:80
+#: src/window.py:71
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
 "Es posible que la ubicación de guardado seleccionada haya sido eliminada."
 
-#: src/window.py:127
+#: src/window.py:119
 msgid "Screencast Recorded!"
 msgstr "¡Captura de pantalla grabada!"
 
-#: src/window.py:128
+#: src/window.py:120
 msgid "The recording has been saved in"
 msgstr "La grabación se ha guardado en"
+
+#~ msgid "Record computer sounds"
+#~ msgstr "Grabar audio del dispositivo"
+
+#~ msgid "Record from microphone"
+#~ msgstr "Grabar audio del micrófono"
+
+#~ msgid "Show pointer"
+#~ msgstr "Mostrar puntero"
+
+#~ msgid "Select"
+#~ msgstr "Seleccionar"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Graba tu pantalla elegantemente. "

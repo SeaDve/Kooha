@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:31+0800\n"
+"POT-Creation-Date: 2021-05-17 18:10+0800\n"
 "PO-Revision-Date: 2021-05-01 19:42+0000\n"
 "Last-Translator: Ali Galal <ali.sameh.galal@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast ; مسجل ; شاشة ; فيديو ;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:139
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
 msgstr "سجل شاشتك بأناقة"
 
@@ -104,7 +104,7 @@ msgstr "إظهار اختصارات لوحة المفاتيح"
 msgid "Quit"
 msgstr "غلق"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:175
+#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
 msgstr "تسجيل"
 
@@ -136,132 +136,145 @@ msgstr "تبديل الميكروفون"
 msgid "Toggle pointer"
 msgstr "تبديل المؤشر"
 
-#: data/ui/window.ui:50
+#: data/ui/window.ui:27
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/window.ui:46
 msgid "Full Screen"
 msgstr "تكبير الشاشة"
 
-#: data/ui/window.ui:62
+#: data/ui/window.ui:57
 msgid "Selection"
 msgstr "اختيار"
 
-#: data/ui/window.ui:104
-msgid "Record computer sounds"
-msgstr "تسجيل أصوات الكمبيوتر"
+#: data/ui/window.ui:89
+msgid "Record Computer Sounds"
+msgstr ""
 
-#: data/ui/window.ui:118
-msgid "Record from microphone"
-msgstr "تسجيل من الميكروفون"
+#: data/ui/window.ui:96
+msgid "Record From Microphone"
+msgstr ""
 
-#: data/ui/window.ui:132
-msgid "Show pointer"
-msgstr "إظهار المؤشر"
+#: data/ui/window.ui:103
+msgid "Show Pointer"
+msgstr ""
 
-#: data/ui/window.ui:145
+#: data/ui/window.ui:110
 msgid "Record"
 msgstr "تسجيل"
 
-#: data/ui/window.ui:195
+#: data/ui/window.ui:170
 msgid "Stop"
 msgstr "إيقاف"
 
-#: data/ui/window.ui:222
+#: data/ui/window.ui:209
 msgid "Recording in…"
 msgstr "التسجيل في …"
 
-#: data/ui/window.ui:241
+#: data/ui/window.ui:227
 msgid "Cancel Delay"
 msgstr "إلغاء مدة التأخير"
 
-#: data/ui/window.ui:268
+#: data/ui/window.ui:263
 msgid "Processing"
 msgstr "معالجة"
 
-#: data/ui/window.ui:294
+#: data/ui/window.ui:289
 msgid "Delay"
 msgstr "مدة تأخير"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:291
 msgid "None"
 msgstr "لا شئ"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:296
 msgid "5 seconds"
 msgstr "5 ثوان"
 
-#: data/ui/window.ui:306
+#: data/ui/window.ui:301
 msgid "10 seconds"
 msgstr "10 ثواني"
 
-#: data/ui/window.ui:312
+#: data/ui/window.ui:307
 msgid "Video Format"
 msgstr "تنسيق الفيديو"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:309
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:319
+#: data/ui/window.ui:314
 #, fuzzy
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:326
+#: data/ui/window.ui:321
 msgid "Save to…"
 msgstr "حفظ في…"
 
-#: data/ui/window.ui:332
+#: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
 msgstr "اختصارات لوحة المفاتيح"
 
-#: data/ui/window.ui:336
+#: data/ui/window.ui:331
 msgid "About Kooha"
 msgstr "حول Kooha"
 
-#: src/main.py:92
-msgid "Select a Folder"
-msgstr "حدد مجلدا"
-
-#: src/main.py:94
-msgid "Cancel"
-msgstr ""
-
-#: src/main.py:95
-msgid "Select"
-msgstr ""
-
-#: src/main.py:110
+#: src/main.py:101
 msgid "Save location not set"
 msgstr ""
 
-#: src/main.py:111
+#: src/main.py:102
 msgid "Please choose an accessible location and retry."
 msgstr ""
 
-#: src/main.py:142
+#: src/main.py:109
+msgid "Select a Folder"
+msgstr "حدد مجلدا"
+
+#: src/main.py:110
+msgid "Cancel"
+msgstr ""
+
+#: src/main.py:111
+msgid "Open"
+msgstr ""
+
+#: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:144
+#: src/main.py:142
 msgid "translator-credits"
 msgstr ""
 
-#: src/main.py:145
+#: src/main.py:143
 msgid "GitHub"
 msgstr ""
 
-#: src/window.py:79
+#: src/window.py:70
 msgid "Recording cannot start"
 msgstr ""
 
-#: src/window.py:80
+#: src/window.py:71
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
 
-#: src/window.py:127
+#: src/window.py:119
 msgid "Screencast Recorded!"
 msgstr ""
 
-#: src/window.py:128
+#: src/window.py:120
 msgid "The recording has been saved in"
 msgstr ""
+
+#~ msgid "Record computer sounds"
+#~ msgstr "تسجيل أصوات الكمبيوتر"
+
+#~ msgid "Record from microphone"
+#~ msgstr "تسجيل من الميكروفون"
+
+#~ msgid "Show pointer"
+#~ msgstr "إظهار المؤشر"
