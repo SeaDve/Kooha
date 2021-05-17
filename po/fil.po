@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-04-12 18:26+0000\n"
+"PO-Revision-Date: 2021-05-17 10:16+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fil/>\n"
@@ -15,9 +15,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
-"=6 && n%10!=9));\n"
-"X-Generator: Weblate 4.6-dev\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
+"%10!=6 && n%10!=9));\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -141,7 +141,7 @@ msgstr "I-toggle ang pointer"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Pangunahing Menu"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -153,15 +153,15 @@ msgstr "Seleksyon"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Irekord ang Tunog Sa Kompyuter"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Irekord ang Tunog ng Mikropono"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Ipakita ang Pointer"
 
 #: data/ui/window.ui:110
 msgid "Record"
