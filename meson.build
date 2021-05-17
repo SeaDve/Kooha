@@ -1,5 +1,5 @@
 project('kooha',  
-          version: '1.1.3',
+          version: '1.2.0',
     meson_version: '>= 0.50.0',
   default_options: [ 'warning_level=2',
                    ],
