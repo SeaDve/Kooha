@@ -24,6 +24,7 @@
                             <property name="menu-model">menu</property>
                             <property name="icon-name">open-menu-symbolic</property>
                             <property name="has-frame">False</property>
+                            <property name="tooltip-text" translatable="yes">Main Menu</property>
                             <!-- <accelerator key="F10" signal="clicked"/> -->
                             <style>
                               <class name="circular"/>
