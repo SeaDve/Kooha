@@ -10,19 +10,13 @@ stackswitcher image {
 headerbar.flat {
   background-image: none;
   border: none;
-  background-color: @theme_bg_color;
+  background-color: transparent;
 }
 
 .time_label {
   font-size: 450%;
   font-weight: 300;
   font-feature-settings: "tnum";
-  transition-duration: 200ms;
-}
-
-.status_label {
-  font-weight: 700;
-  font-size: 112%;
 }
 
 .recording {

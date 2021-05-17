@@ -150,7 +150,7 @@
                             <property name="label" translatable="yes">Recording</property>
                             <property name="single-line-mode">True</property>
                             <style>
-                              <class name="status_label"/>
+                              <class name="title-4"/>
                             </style>
                           </object>
                         </child>
@@ -208,7 +208,7 @@
                             <property name="label" translatable="yes">Recording in…</property>
                             <property name="single-line-mode">True</property>
                             <style>
-                              <class name="status_label"/>
+                              <class name="title-4"/>
                             </style>
                           </object>
                         </child>
@@ -255,14 +255,14 @@
                       <object class="GtkBox">
                         <property name="valign">center</property>
                         <property name="vexpand">True</property>
-                        <property name="spacing">6</property>
+                        <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="label" translatable="yes">Processing</property>
                             <property name="single-line-mode">True</property>
                             <style>
-                              <class name="status_label"/>
+                              <class name="title-4"/>
                             </style>
                           </object>
                         </child>
