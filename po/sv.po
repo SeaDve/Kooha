@@ -2,14 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-03-28 14:46+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-05-17 11:21+0000\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
 "Language: sv\n"
@@ -17,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -31,55 +30,59 @@ msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Spela in din skärm på ett elegant sätt"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr ""
+msgstr "Spela in skärmen på ett enkelt och smärtfritt sätt utan distraktioner."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha är en enkel skärminspelare med ett minimalistiskt gränssnitt. Du kan "
+"klicka på inspelningsknappen utan att behöva konfigurera en massa "
+"inställningar."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "De viktigaste funktionerna i Kooha är följande:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Spela in skärmen utan krångel."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Spela in din mikrofon, datorljud eller båda samtidigt."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Välj ett område på skärmen för inspelning."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr ""
+"⏲️ Ställ in en fördröjning för att förbereda dig innan du börjar spela in."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Stöd för de fria formaten Matroska och WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Dölj eller visa muspekaren."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Välj en lagringsplats för inspelningen."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Använd användbara tangentbordsgenvägar."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
@@ -136,7 +139,7 @@ msgstr "Visa/Dölj muspekare"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Huvudmeny"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -148,15 +151,15 @@ msgstr "Markering"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Spela in datorljud"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Spela in från mikrofon"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Visa muspekare"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -176,7 +179,7 @@ msgstr "Avbryt fördröjning"
 
 #: data/ui/window.ui:263
 msgid "Processing"
-msgstr ""
+msgstr "Bearbetar"
 
 #: data/ui/window.ui:289
 msgid "Delay"
@@ -236,7 +239,7 @@ msgstr "Avbryt"
 
 #: src/main.py:111
 msgid "Open"
-msgstr ""
+msgstr "Öppna"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -260,13 +263,12 @@ msgid "The saving location you have selected may have been deleted."
 msgstr "Lagringsplatsen du har valt kanske har tagits bort."
 
 #: src/window.py:119
-#, fuzzy
 msgid "Screencast Recorded!"
-msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
+msgstr "Skärmvisning inspelad!"
 
 #: src/window.py:120
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "Inspelningen har sparats i"
 
 #~ msgid "Record computer sounds"
 #~ msgstr "Spela in datorljud"
