@@ -45,6 +45,7 @@ class KoohaWindow(Adw.ApplicationWindow):
         self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
         self.video_recorder = VideoRecorder()
 
+        self.start_record_button.grab_focus()
         desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
         if not desktop_environment or "GNOME" not in desktop_environment:
             self.start_record_button.set_sensitive(False)
