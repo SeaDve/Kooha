@@ -89,28 +89,28 @@ class Application(Gtk.Application):
                 self.set_accels_for_action(f"app.{action}", accel)
 
     def select_location_dialog(self, action, param):
-        def on_select_response(dialog, response):
-            if response == Gtk.ResponseType.ACCEPT:
-                directory = dialog.get_file().get_path()
-                homefolder = GLib.get_home_dir()
-                is_in_homefolder = directory.startswith(homefolder)
-                if is_in_homefolder and not directory == homefolder:
-                    self.settings.set_string("saving-location", directory)
-                else:
-                    error = Gtk.MessageDialog(transient_for=self.window, modal=True,
-                                              buttons=Gtk.ButtonsType.OK, title=_("Save location not set"),
-                                              text=_("Please choose an accessible location and retry."))
-                    error.connect("response", lambda *_: error.close())
-                    error.present()
-            dialog.close()
-
         dialog = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
                                        action=Gtk.FileChooserAction.SELECT_FOLDER,
                                        title=_("Select a Folder"))
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
         dialog.add_button(_("Open"), Gtk.ResponseType.ACCEPT,)
         dialog.present()
-        dialog.connect('response', on_select_response)
+        dialog.connect('response', self._on_select_response)
+
+    def _on_select_response(self, dialog, response):
+        if response == Gtk.ResponseType.ACCEPT:
+            directory = dialog.get_file().get_path()
+            homefolder = GLib.get_home_dir()
+            is_in_homefolder = directory.startswith(homefolder)
+            if is_in_homefolder and not directory == homefolder:
+                self.settings.set_string("saving-location", directory)
+            else:
+                error = Gtk.MessageDialog(transient_for=self.window, modal=True,
+                                          buttons=Gtk.ButtonsType.OK, title=_("Save location not set"),
+                                          text=_("Please choose an accessible location and retry."))
+                error.connect("response", lambda *_: error.close())
+                error.present()
+        dialog.close()
 
     def show_shortcuts_window(self, action, param):
         builder = Gtk.Builder()
