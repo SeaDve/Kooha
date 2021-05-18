@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# Thomas Citharel <tcit@tcit.fr>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-04-17 11:18+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-05-18 17:33+0000\n"
+"Last-Translator: Thomas Citharel <tcit@tcit.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
 "Language: fr_FR\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -141,7 +142,7 @@ msgstr "Activer le pointeur"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu principal"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -153,15 +154,15 @@ msgstr "Sélection"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Enregistrer les sons de l'ordinateur"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Enregistrer le son du micro"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Afficher le curseur"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -241,7 +242,7 @@ msgstr "Annuler"
 
 #: src/main.py:111
 msgid "Open"
-msgstr ""
+msgstr "Ouvrir"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"

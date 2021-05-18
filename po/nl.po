@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-04-12 18:27+0000\n"
+"PO-Revision-Date: 2021-05-18 17:33+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
-">\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -31,7 +31,7 @@ msgstr "Screencast;Opname;Scherm;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
-msgstr "Leg je scherm op elegante manier vast"
+msgstr "Maak op elegante wijze een schermopname"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
@@ -139,7 +139,7 @@ msgstr "Cursor aan/uit"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Hoofdmenu"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -151,15 +151,15 @@ msgstr "Selectie"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Computergeluiden opnemen"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Opnemen van microfoon"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Cursor tonen"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -179,7 +179,7 @@ msgstr "Wachten afbreken"
 
 #: data/ui/window.ui:263
 msgid "Processing"
-msgstr "Bezig met verwerken"
+msgstr "Bezig met verwerken…"
 
 #: data/ui/window.ui:289
 msgid "Delay"
@@ -239,7 +239,7 @@ msgstr "Annuleren"
 
 #: src/main.py:111
 msgid "Open"
-msgstr ""
+msgstr "Openen"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -248,7 +248,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr "Heimen Stoffels"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
 
 #: src/main.py:143
 msgid "GitHub"

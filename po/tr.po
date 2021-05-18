@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-05-04 14:32+0000\n"
+"PO-Revision-Date: 2021-05-18 17:33+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
@@ -139,7 +139,7 @@ msgstr "İşaretçiyi değiştir"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Ana Menü"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -151,15 +151,15 @@ msgstr "Seçim"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Bilgisayar Seslerini Kaydet"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Mikrofondan Kaydet"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "İşaretçiyi Göster"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -239,7 +239,7 @@ msgstr "İptal"
 
 #: src/main.py:111
 msgid "Open"
-msgstr ""
+msgstr "Aç"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-05-16 01:37+0000\n"
+"PO-Revision-Date: 2021-05-18 17:33+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
 "pot-file/nb_NO/>\n"
@@ -138,7 +138,7 @@ msgstr "Slå av/på opptak av musepekeren"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Hovedmeny"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -150,15 +150,15 @@ msgstr "Utvalg"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Ta opp datalyd"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Ta opp fra mikrofon"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Vis peker"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -238,7 +238,7 @@ msgstr "Avbryt"
 
 #: src/main.py:111
 msgid "Open"
-msgstr ""
+msgstr "Åpne"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"

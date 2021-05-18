@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-05-16 01:37+0000\n"
+"PO-Revision-Date: 2021-05-18 17:33+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
-"file/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
+"pot-file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -140,7 +140,7 @@ msgstr "Toggle penunjuk"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu Utama"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -152,15 +152,15 @@ msgstr "Pilihan"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Rekam Suara Komputer"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Rekam Dari Mikrofon"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Tampilkan Penunjuk"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -240,7 +240,7 @@ msgstr "Batal"
 
 #: src/main.py:111
 msgid "Open"
-msgstr ""
+msgstr "Buka"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -248,6 +248,7 @@ msgstr "Hak Cipta 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
+#, fuzzy
 msgid "translator-credits"
 msgstr "kredit-penerjemah"
 
