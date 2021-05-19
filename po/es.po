@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-05-16 01:37+0000\n"
+"PO-Revision-Date: 2021-05-19 22:33+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -141,7 +141,7 @@ msgstr "Activar o desactivar puntero"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Menú principal"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -153,15 +153,15 @@ msgstr "Área"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Grabar sonidos del ordenador"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Grabar desde el micrófono"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Mostrar puntero"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -241,7 +241,7 @@ msgstr "Cancelar"
 
 #: src/main.py:111
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
