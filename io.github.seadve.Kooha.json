@@ -28,6 +28,7 @@
     "modules" : [
         {
             "name": "libsass",
+            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "archive",
@@ -45,6 +46,7 @@
         },
         {
             "name": "sassc",
+            "cleanup": ["*"],
             "sources": [
                 {
                     "type": "archive",
