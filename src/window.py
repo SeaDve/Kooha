@@ -109,7 +109,7 @@ class KoohaWindow(Adw.ApplicationWindow):
         return (f"{video_directory}/{filename}.{video_format}", video_directory, video_format)
 
     def playchime(self):
-        playbin = Gst.ElementFactory.make('playbin', 'playbin')
+        playbin = Gst.ElementFactory.make('playbin')
         playbin.props.uri = 'resource://io/github/seadve/Kooha/sounds/chime.ogg'
         playbin.set_state(Gst.State.PLAYING)
         bus = playbin.get_bus()
