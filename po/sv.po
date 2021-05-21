@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
+# Luna Jernberg <droidbittin@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-17 18:10+0800\n"
-"PO-Revision-Date: 2021-05-17 11:21+0000\n"
-"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"PO-Revision-Date: 2021-05-21 20:37+0000\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
 "Language: sv\n"
@@ -248,7 +249,9 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
+msgstr ""
+"Åke Engelbrektson &lt;eson@svenskasprakfiler.se&gt;\n"
+"Luna Jernberg &lt;droidbittin@gmail.com&gt;"
 
 #: src/main.py:143
 msgid "GitHub"
