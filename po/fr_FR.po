@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 18:10+0800\n"
+"POT-Creation-Date: 2021-05-22 09:26+0800\n"
 "PO-Revision-Date: 2021-05-18 17:33+0000\n"
 "Last-Translator: Thomas Citharel <tcit@tcit.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
@@ -224,25 +224,25 @@ msgstr "Raccourcis clavier"
 msgid "About Kooha"
 msgstr "A propos"
 
-#: src/main.py:101
-msgid "Save location not set"
-msgstr "L’emplacement de sauvegarde n’est pas défini"
-
-#: src/main.py:102
-msgid "Please choose an accessible location and retry."
-msgstr "Veuillez choisir un emplacement accessible et réessayer."
-
-#: src/main.py:109
+#: src/main.py:94
 msgid "Select a Folder"
 msgstr "Choisir un dossier"
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/main.py:111
-msgid "Open"
-msgstr "Ouvrir"
+#: src/main.py:96
+msgid "Select"
+msgstr "Choisir"
+
+#: src/main.py:109
+msgid "Save location not set"
+msgstr "L’emplacement de sauvegarde n’est pas défini"
+
+#: src/main.py:110
+msgid "Please choose an accessible location and retry."
+msgstr "Veuillez choisir un emplacement accessible et réessayer."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -257,23 +257,26 @@ msgstr "Sébastien Serre"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:70
+#: src/window.py:71
 msgid "Recording cannot start"
 msgstr "L’enregistrement n’a pas pu débuter"
 
-#: src/window.py:71
+#: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
 "L’emplacement d’enregistrement que vous avez sélectionné a peut-être été "
 "supprimé."
 
-#: src/window.py:119
+#: src/window.py:120
 msgid "Screencast Recorded!"
 msgstr "Vidéographie enregistrée !"
 
-#: src/window.py:120
+#: src/window.py:121
 msgid "The recording has been saved in"
 msgstr "L’enregistrement a été enregistré dans"
+
+#~ msgid "Open"
+#~ msgstr "Ouvrir"
 
 #~ msgid "Record computer sounds"
 #~ msgstr "Enregistrer les sons de l’ordinateur"
@@ -283,9 +286,6 @@ msgstr "L’enregistrement a été enregistré dans"
 
 #~ msgid "Show pointer"
 #~ msgstr "Afficher le pointeur"
-
-#~ msgid "Select"
-#~ msgstr "Choisir"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Enregistrez élégamment votre écran "

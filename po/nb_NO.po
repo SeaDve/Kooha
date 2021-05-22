@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 18:10+0800\n"
+"POT-Creation-Date: 2021-05-22 09:26+0800\n"
 "PO-Revision-Date: 2021-05-18 17:33+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
@@ -220,25 +220,25 @@ msgstr "Tastatursnarveier"
 msgid "About Kooha"
 msgstr "Om Kooha"
 
-#: src/main.py:101
-msgid "Save location not set"
-msgstr "Lagringsplass er ikke valgt"
-
-#: src/main.py:102
-msgid "Please choose an accessible location and retry."
-msgstr "Velg en tilgjengelig plassering og prøv på nytt."
-
-#: src/main.py:109
+#: src/main.py:94
 msgid "Select a Folder"
 msgstr "Velg en mappe"
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/main.py:111
-msgid "Open"
-msgstr "Åpne"
+#: src/main.py:96
+msgid "Select"
+msgstr "Velg"
+
+#: src/main.py:109
+msgid "Save location not set"
+msgstr "Lagringsplass er ikke valgt"
+
+#: src/main.py:110
+msgid "Please choose an accessible location and retry."
+msgstr "Velg en tilgjengelig plassering og prøv på nytt."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -253,21 +253,24 @@ msgstr "Allan Nordhøy"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:70
+#: src/window.py:71
 msgid "Recording cannot start"
 msgstr "Kunne ikke starte opptak"
 
-#: src/window.py:71
+#: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
 msgstr "Lagringsplassen du valgte kan ha blitt slettet."
 
-#: src/window.py:119
+#: src/window.py:120
 msgid "Screencast Recorded!"
 msgstr "Skjermopptak innspilt."
 
-#: src/window.py:120
+#: src/window.py:121
 msgid "The recording has been saved in"
 msgstr "Opptaket ble lagret i"
+
+#~ msgid "Open"
+#~ msgstr "Åpne"
 
 #~ msgid "Record computer sounds"
 #~ msgstr "Ta opp skrivebordslyder"
@@ -277,9 +280,6 @@ msgstr "Opptaket ble lagret i"
 
 #~ msgid "Show pointer"
 #~ msgstr "Vis musepeker"
-
-#~ msgid "Select"
-#~ msgstr "Velg"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Ta opp skjermen din på elegant vis "

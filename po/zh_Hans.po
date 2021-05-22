@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 18:10+0800\n"
+"POT-Creation-Date: 2021-05-22 09:26+0800\n"
 "PO-Revision-Date: 2021-04-24 04:11+0000\n"
 "Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -218,25 +218,25 @@ msgstr "键盘快捷键"
 msgid "About Kooha"
 msgstr "关于 Kooha"
 
-#: src/main.py:101
-msgid "Save location not set"
-msgstr "未设置保存位置"
-
-#: src/main.py:102
-msgid "Please choose an accessible location and retry."
-msgstr "请选择一个可访问的位置，然后重试。"
-
-#: src/main.py:109
+#: src/main.py:94
 msgid "Select a Folder"
 msgstr "选择一个文件夹"
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Cancel"
 msgstr "取消"
 
-#: src/main.py:111
-msgid "Open"
-msgstr ""
+#: src/main.py:96
+msgid "Select"
+msgstr "选择"
+
+#: src/main.py:109
+msgid "Save location not set"
+msgstr "未设置保存位置"
+
+#: src/main.py:110
+msgid "Please choose an accessible location and retry."
+msgstr "请选择一个可访问的位置，然后重试。"
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -251,19 +251,19 @@ msgstr "有趣的灵魂 (@TheInterestingSoul)"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:70
+#: src/window.py:71
 msgid "Recording cannot start"
 msgstr "无法开始录制"
 
-#: src/window.py:71
+#: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
 msgstr "您所选择的保存位置可能已被删除。"
 
-#: src/window.py:119
+#: src/window.py:120
 msgid "Screencast Recorded!"
 msgstr "屏幕已录制！"
 
-#: src/window.py:120
+#: src/window.py:121
 msgid "The recording has been saved in"
 msgstr "录屏视频已保存到"
 
@@ -275,9 +275,6 @@ msgstr "录屏视频已保存到"
 
 #~ msgid "Show pointer"
 #~ msgstr "显示鼠标指针"
-
-#~ msgid "Select"
-#~ msgstr "选择"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "优雅地录制你的屏幕。 "

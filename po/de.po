@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 18:10+0800\n"
+"POT-Creation-Date: 2021-05-22 09:26+0800\n"
 "PO-Revision-Date: 2021-04-17 11:18+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
@@ -223,25 +223,25 @@ msgstr "Tastenkombinationen"
 msgid "About Kooha"
 msgstr "Über Kooha"
 
-#: src/main.py:101
-msgid "Save location not set"
-msgstr "Speicherort nicht festgelegt"
-
-#: src/main.py:102
-msgid "Please choose an accessible location and retry."
-msgstr "Bitte wählen Sie einen erreichbaren Ort und versuchen Sie es erneut."
-
-#: src/main.py:109
+#: src/main.py:94
 msgid "Select a Folder"
 msgstr "Ordner wählen"
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/main.py:111
-msgid "Open"
-msgstr ""
+#: src/main.py:96
+msgid "Select"
+msgstr "Auswählen"
+
+#: src/main.py:109
+msgid "Save location not set"
+msgstr "Speicherort nicht festgelegt"
+
+#: src/main.py:110
+msgid "Please choose an accessible location and retry."
+msgstr "Bitte wählen Sie einen erreichbaren Ort und versuchen Sie es erneut."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -256,19 +256,19 @@ msgstr "Jonathan Haas"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:70
+#: src/window.py:71
 msgid "Recording cannot start"
 msgstr "Aufnahme kann nicht gestartet werden"
 
-#: src/window.py:71
+#: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
 msgstr "Der von Ihnen gewählte Speicherort wurde möglicherweise gelöscht."
 
-#: src/window.py:119
+#: src/window.py:120
 msgid "Screencast Recorded!"
 msgstr "Video-Aufzeichnung aufgenommen!"
 
-#: src/window.py:120
+#: src/window.py:121
 msgid "The recording has been saved in"
 msgstr "Die Aufnahme ist gespeichert worden in"
 
@@ -280,9 +280,6 @@ msgstr "Die Aufnahme ist gespeichert worden in"
 
 #~ msgid "Show pointer"
 #~ msgstr "Mauszeiger anzeigen"
-
-#~ msgid "Select"
-#~ msgstr "Auswählen"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Elegant Ihren Bildschirm aufzeichnen "

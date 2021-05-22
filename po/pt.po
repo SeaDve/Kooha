@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 18:10+0800\n"
+"POT-Creation-Date: 2021-05-22 09:26+0800\n"
 "PO-Revision-Date: 2021-05-12 17:33+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/pot-"
@@ -220,25 +220,25 @@ msgstr "Atalhos de teclado"
 msgid "About Kooha"
 msgstr "Sobre o Kooha"
 
-#: src/main.py:101
-msgid "Save location not set"
-msgstr "Local de salvamento não definido"
-
-#: src/main.py:102
-msgid "Please choose an accessible location and retry."
-msgstr "Por favor escolha um local acessível e tente novamente."
-
-#: src/main.py:109
+#: src/main.py:94
 msgid "Select a Folder"
 msgstr "Selecione uma Pasta"
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/main.py:111
-msgid "Open"
-msgstr ""
+#: src/main.py:96
+msgid "Select"
+msgstr "Selecione"
+
+#: src/main.py:109
+msgid "Save location not set"
+msgstr "Local de salvamento não definido"
+
+#: src/main.py:110
+msgid "Please choose an accessible location and retry."
+msgstr "Por favor escolha um local acessível e tente novamente."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -253,19 +253,19 @@ msgstr "Vitor Cardoso"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:70
+#: src/window.py:71
 msgid "Recording cannot start"
 msgstr "Gravação não pode iniciar"
 
-#: src/window.py:71
+#: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
 msgstr "O local que selecionou pode ter sido deletado."
 
-#: src/window.py:119
+#: src/window.py:120
 msgid "Screencast Recorded!"
 msgstr "Gravação de ecrã gravada!"
 
-#: src/window.py:120
+#: src/window.py:121
 msgid "The recording has been saved in"
 msgstr "A gravação foi gravada em"
 
@@ -277,9 +277,6 @@ msgstr "A gravação foi gravada em"
 
 #~ msgid "Show pointer"
 #~ msgstr "Mostrar ponteiro"
-
-#~ msgid "Select"
-#~ msgstr "Selecione"
 
 #~ msgid "Simple screen recorder"
 #~ msgstr "Gravador de ecrã simples"

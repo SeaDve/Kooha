@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 18:10+0800\n"
+"POT-Creation-Date: 2021-05-22 09:26+0800\n"
 "PO-Revision-Date: 2021-05-19 22:33+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -223,25 +223,25 @@ msgstr "Atajos de teclado"
 msgid "About Kooha"
 msgstr "Acerca de Kooha"
 
-#: src/main.py:101
-msgid "Save location not set"
-msgstr "No se estableció la ubicación de guardado"
-
-#: src/main.py:102
-msgid "Please choose an accessible location and retry."
-msgstr "Elige una ubicación accesible e intenta de nuevo."
-
-#: src/main.py:109
+#: src/main.py:94
 msgid "Select a Folder"
 msgstr "Elige una carpeta"
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/main.py:111
-msgid "Open"
-msgstr "Abrir"
+#: src/main.py:96
+msgid "Select"
+msgstr "Seleccionar"
+
+#: src/main.py:109
+msgid "Save location not set"
+msgstr "No se estableció la ubicación de guardado"
+
+#: src/main.py:110
+msgid "Please choose an accessible location and retry."
+msgstr "Elige una ubicación accesible e intenta de nuevo."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -256,22 +256,25 @@ msgstr "Óscar Fernández Díaz"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:70
+#: src/window.py:71
 msgid "Recording cannot start"
 msgstr "No se puede iniciar la grabación"
 
-#: src/window.py:71
+#: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
 msgstr ""
 "Es posible que la ubicación de guardado seleccionada haya sido eliminada."
 
-#: src/window.py:119
+#: src/window.py:120
 msgid "Screencast Recorded!"
 msgstr "¡Captura de pantalla grabada!"
 
-#: src/window.py:120
+#: src/window.py:121
 msgid "The recording has been saved in"
 msgstr "La grabación se ha guardado en"
+
+#~ msgid "Open"
+#~ msgstr "Abrir"
 
 #~ msgid "Record computer sounds"
 #~ msgstr "Grabar audio del dispositivo"
@@ -281,9 +284,6 @@ msgstr "La grabación se ha guardado en"
 
 #~ msgid "Show pointer"
 #~ msgstr "Mostrar puntero"
-
-#~ msgid "Select"
-#~ msgstr "Seleccionar"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Graba tu pantalla elegantemente. "

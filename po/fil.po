@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 18:10+0800\n"
+"POT-Creation-Date: 2021-05-22 09:26+0800\n"
 "PO-Revision-Date: 2021-05-17 10:16+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
-"%10!=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
+"=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
@@ -223,25 +223,25 @@ msgstr "Mga keyboard shortcut"
 msgid "About Kooha"
 msgstr "Tungkol sa Kooha"
 
-#: src/main.py:101
-msgid "Save location not set"
-msgstr "Hindi na-set ang lokasyon"
-
-#: src/main.py:102
-msgid "Please choose an accessible location and retry."
-msgstr "Pumili ng kayang i-access na lokasyon at ulitin."
-
-#: src/main.py:109
+#: src/main.py:94
 msgid "Select a Folder"
 msgstr "Pumili ng folder"
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Cancel"
 msgstr "Ikansela"
 
-#: src/main.py:111
-msgid "Open"
-msgstr ""
+#: src/main.py:96
+msgid "Select"
+msgstr "Piliin"
+
+#: src/main.py:109
+msgid "Save location not set"
+msgstr "Hindi na-set ang lokasyon"
+
+#: src/main.py:110
+msgid "Please choose an accessible location and retry."
+msgstr "Pumili ng kayang i-access na lokasyon at ulitin."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
@@ -256,19 +256,19 @@ msgstr "Dave Patrick"
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:70
+#: src/window.py:71
 msgid "Recording cannot start"
 msgstr "Hindi maaaring magstart ang pagrekord"
 
-#: src/window.py:71
+#: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
 msgstr "Ang lokasyon ng paglalagyan ay maaaring nabura na."
 
-#: src/window.py:119
+#: src/window.py:120
 msgid "Screencast Recorded!"
 msgstr "Ang rekording ay natapos na!"
 
-#: src/window.py:120
+#: src/window.py:121
 msgid "The recording has been saved in"
 msgstr "Ang rekording ay nasave sa"
 
@@ -280,9 +280,6 @@ msgstr "Ang rekording ay nasave sa"
 
 #~ msgid "Show pointer"
 #~ msgstr "Ipakita ang pointer"
-
-#~ msgid "Select"
-#~ msgstr "Piliin"
 
 #~ msgid "Elegantly record your screen "
 #~ msgstr "Eleganteng I-record ang iyong screen "
