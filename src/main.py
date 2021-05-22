@@ -93,7 +93,7 @@ class Application(Gtk.Application):
                                        action=Gtk.FileChooserAction.SELECT_FOLDER,
                                        title=_("Select a Folder"))
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
-        dialog.add_button(_("Open"), Gtk.ResponseType.ACCEPT,)
+        dialog.add_button(_("Select"), Gtk.ResponseType.ACCEPT,)
         dialog.present()
         dialog.connect('response', self._on_select_response)
 
