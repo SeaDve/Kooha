@@ -50,7 +50,7 @@
         <ul>
           <li>Focus start record button on startup</li>
           <li>Improved UI and UX</li>
-          <li>Dynamically change the multiplexer</li>
+          <li>Fixed bug when tmp folder doesn't exist</li>
           <li>Updated Swedish translations</li>
           <li>Updated Spanish translations</li>
           <li>Updated Turkish translations</li>
