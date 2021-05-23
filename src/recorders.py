@@ -106,8 +106,8 @@ class AudioRecorder:
         extension = extension_list[media_type]
         directory = GLib.getenv('XDG_CACHE_HOME')
         if not directory:
-            directory = ""
-        return f"{directory}/tmp/tmp{media_type}.{extension}"
+            directory = "/tmp"
+        return f"{directory}/tmp{media_type}.{extension}"
 
 
 class VideoRecorder:
