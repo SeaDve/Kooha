@@ -6,259 +6,265 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-22 09:26+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"PO-Revision-Date: 2021-05-23 02:28+0000\n"
+"Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/kooha/pot-file/eu/"
+">\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Grabatzailea;Pantaila;Bideoa;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Grabatu zure pantaila dotoretasunez"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr ""
+msgstr "Hartu pantaila zuzenean eta alperrik, distrakziorik gabe."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha interfaze minimalista duen pantaila-grabagailu sinple bat da. Nahikoa "
+"da grabatzeko botoian klik egitea, doikuntza pila bat konfiguratu behar izan "
+"gabe."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Kooharen ezaugarri nagusiak hauek dira:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Kapturatu pantaila arazorik gabe."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Grabatu zure mikrofonoa, ordenagailuko soinuak edo biak batera."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Aukeratu zure pantailako eremu bat, grabatzeko."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Grabatzen hasi aurretik prestatzeko atzerapena ezarri."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Matroska eta WebM formatu libreetarako euskarria."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Saguaren erakuslea ezkutatu edo erakutsi."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Aukeratu grabazioa gordetzeko kokaleku bat."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Teklatu-lasterbideak erabili."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
-msgstr ""
+msgstr "Orokorra"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
-msgstr ""
+msgstr "Ireki menua"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "Erakutsi teklatu-lasterbideak"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr ""
+msgstr "Utzi"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
-msgstr ""
+msgstr "Grabatzen"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
-msgstr ""
+msgstr "Txandakatu grabazioa"
 
 #: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
-msgstr ""
+msgstr "Atzerapena bertan behera utzi"
 
 #: data/ui/shortcuts.ui:59
 msgid "Settings"
-msgstr ""
+msgstr "Doikuntzak"
 
 #: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
-msgstr ""
+msgstr "Txandakatu kapturatzeko modua"
 
 #: data/ui/shortcuts.ui:71
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Ordenagailuko soinuak txandakatu"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Mikrofonoa txandakatu"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Punteroa aktibatu edo desaktibatu"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu nagusia"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
-msgstr ""
+msgstr "Pantaila osoa"
 
 #: data/ui/window.ui:57
 msgid "Selection"
-msgstr ""
+msgstr "Selekzio-eremua"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Ordenagailu-soinuak grabatu"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Mikrofonotik grabatu"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Erakutsi punteroa"
 
 #: data/ui/window.ui:110
 msgid "Record"
-msgstr ""
+msgstr "Grabatu"
 
 #: data/ui/window.ui:170
 msgid "Stop"
-msgstr ""
+msgstr "Gelditu"
 
 #: data/ui/window.ui:209
 msgid "Recording in…"
-msgstr ""
+msgstr "Grabatzen…"
 
 #: data/ui/window.ui:227
 msgid "Cancel Delay"
-msgstr ""
+msgstr "Atzerapena bertan behera utzi"
 
 #: data/ui/window.ui:263
 msgid "Processing"
-msgstr ""
+msgstr "Prozesatzen"
 
 #: data/ui/window.ui:289
 msgid "Delay"
-msgstr ""
+msgstr "Atzerapena"
 
 #: data/ui/window.ui:291
 msgid "None"
-msgstr ""
+msgstr "Bat ere ez"
 
 #: data/ui/window.ui:296
 msgid "5 seconds"
-msgstr ""
+msgstr "5 segundo"
 
 #: data/ui/window.ui:301
 msgid "10 seconds"
-msgstr ""
+msgstr "10 segundo"
 
 #: data/ui/window.ui:307
 msgid "Video Format"
-msgstr ""
+msgstr "Bideo formatua"
 
 #: data/ui/window.ui:309
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/ui/window.ui:314
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/ui/window.ui:321
 msgid "Save to…"
-msgstr ""
+msgstr "Gorde hemen…"
 
 #: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Teklatu-lasterbideak"
 
 #: data/ui/window.ui:331
 msgid "About Kooha"
-msgstr ""
+msgstr "Koohari buruz"
 
 #: src/main.py:94
 msgid "Select a Folder"
-msgstr ""
+msgstr "Aukeratu karpeta bat"
 
 #: src/main.py:95
 msgid "Cancel"
-msgstr ""
+msgstr "Ezeztatu"
 
 #: src/main.py:96
 msgid "Select"
-msgstr ""
+msgstr "Hautatu"
 
 #: src/main.py:109
 msgid "Save location not set"
-msgstr ""
+msgstr "Ez da konfiguratu gordetzearen kokapena"
 
 #: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr ""
+msgstr "Mesedez, aukeratu leku irisgarri bat eta saiatu berriro."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Copyright © 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr ""
+msgstr "Sergio Varela (https://hosted.weblate.org/user/IngrownMink4/)"
 
 #: src/main.py:143
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/window.py:71
 msgid "Recording cannot start"
-msgstr ""
+msgstr "Ezin da grabatzen hasi"
 
 #: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
-msgstr ""
+msgstr "Baliteke aukeratutako gordetze-kokapena ezabatu izana."
 
 #: src/window.py:120
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "Pantaila grabatua atzematea!"
 
 #: src/window.py:121
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "Grabazioa hemen gorde da"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-22 09:26+0800\n"
-"PO-Revision-Date: 2021-05-18 17:33+0000\n"
+"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"PO-Revision-Date: 2021-05-23 02:28+0000\n"
 "Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail."
 "com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -32,7 +32,7 @@ msgstr "Screencast;Recorder;Screen;Video;gravação de tela;tela;vídeo;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
-msgstr "Grave sua tela com elegância"
+msgstr "Grave sua tela elegantemente"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
@@ -45,9 +45,8 @@ msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha é um simples gravador de tela com uma interface minimalista. Você pode "
-"simplesmente clicar no botão Gravar sem ter que ajustar um monte de "
-"configurações."
+"Kooha é um gravador de tela simples e com uma interface minimalista. Você "
+"apenas clica no botão de gravação e não precisa fazer mais nada."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
@@ -75,7 +74,7 @@ msgstr "📼 Suporte para os formatos gratuitos Matroska e WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Oculte ou exiba o ponteiro do mouse."
+msgstr "🖱️Esconda ou mostre o ponteiro do mouse."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
@@ -180,7 +179,7 @@ msgstr "Cancelar Atraso"
 
 #: data/ui/window.ui:263
 msgid "Processing"
-msgstr "Em processamento"
+msgstr "Processando"
 
 #: data/ui/window.ui:289
 msgid "Delay"
@@ -212,7 +211,7 @@ msgstr "MKV"
 
 #: data/ui/window.ui:321
 msgid "Save to…"
-msgstr "Salvar para …"
+msgstr "Salvar em…"
 
 #: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"

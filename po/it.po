@@ -4,13 +4,14 @@
 # Nicolas Mariniello <seldon1000@tutanota.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Dave Patrick <davecruz48@gmail.com>, 2021.
+# albanobattistella <albano_battistella@hotmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-22 09:26+0800\n"
-"PO-Revision-Date: 2021-05-18 17:33+0000\n"
-"Last-Translator: Nicolas Mariniello <seldon1000@tutanota.com>\n"
+"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"PO-Revision-Date: 2021-05-23 02:28+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -142,7 +143,7 @@ msgstr "Attiva il puntatore"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr "Menù principale"
+msgstr "Menu Principale"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -251,7 +252,9 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr "Nicolas Mariniello"
+msgstr ""
+"Albano Battistella\n"
+"Nicolas Mariniello"
 
 #: src/main.py:143
 msgid "GitHub"

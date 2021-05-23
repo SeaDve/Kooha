@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-22 09:26+0800\n"
-"PO-Revision-Date: 2021-05-18 17:33+0000\n"
+"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"PO-Revision-Date: 2021-05-23 02:28+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
 ">\n"
@@ -248,7 +248,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+msgstr "Heimen Stoffels &lt;vistausss@fastmail.com&gt;"
 
 #: src/main.py:143
 msgid "GitHub"
