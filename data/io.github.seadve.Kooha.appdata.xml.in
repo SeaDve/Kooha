@@ -44,6 +44,24 @@
   </screenshots>
 
   <releases>
+    <release version="1.2.1" date="2021-05-23">
+      <description>
+        <p>This release contains small fixes and improvements:</p>
+        <ul>
+          <li>Focus start record button on startup</li>
+          <li>Improved UI and UX</li>
+          <li>Dynamically change the multiplexer</li>
+          <li>Updated Swedish translations</li>
+          <li>Updated Spanish translations</li>
+          <li>Updated Turkish translations</li>
+          <li>Updated Italian translations</li>
+          <li>Updated Dutch translations</li>
+          <li>Updated French translations</li>
+          <li>Updated Portuguese (Brazil) translations</li>
+          <li>Updated Norwegian Bokmål translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.0" date="2021-05-17">
       <description>
         <p>This release brings the new GTK4 and an important fix for GNOME 40.</p>
