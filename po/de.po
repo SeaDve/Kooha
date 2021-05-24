@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Jonathan Haas <haasjona@gmail.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# Heinrich Heinzer <heinrich.heinzer@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-23 10:27+0800\n"
-"PO-Revision-Date: 2021-04-17 11:18+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2021-05-24 16:32+0000\n"
+"Last-Translator: Heinrich Heinzer <heinrich.heinzer@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -93,7 +94,7 @@ msgstr "Dave Patrick"
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
-msgstr "Allgemein"
+msgstr "Allgemeines"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
@@ -105,7 +106,7 @@ msgstr "Tastaturkürzel anzeigen"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr "Beenden"
+msgstr "Schließen"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
@@ -141,7 +142,7 @@ msgstr "Mauszeiger umschalten"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Hauptmenü"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -153,15 +154,15 @@ msgstr "Auswahl"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Computertöne aufnehmen"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Mikrophon aufnehmen"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Mauszeiger anzeigen"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -217,7 +218,7 @@ msgstr "Speichern unter…"
 
 #: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
-msgstr "Tastenkombinationen"
+msgstr "Tastatürkürzel"
 
 #: data/ui/window.ui:331
 msgid "About Kooha"
@@ -250,7 +251,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr "Jonathan Haas"
+msgstr "Übersetzer Credits"
 
 #: src/main.py:143
 msgid "GitHub"
