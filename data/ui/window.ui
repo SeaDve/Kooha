@@ -73,6 +73,7 @@
                         <child>
                           <object class="GtkStackSwitcher">
                             <property name="stack">title_stack</property>
+                            <property name="halign">center</property>
                             <style>
                               <class name="large"/>
                             </style>
