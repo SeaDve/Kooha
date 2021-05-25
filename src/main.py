@@ -142,7 +142,7 @@ class Application(Gtk.Application):
         about.set_translator_credits(_("translator-credits"))
         about.set_website_label(_("GitHub"))
         about.set_website("https://github.com/SeaDve/Kooha")
-        about.show()
+        about.present()
 
     def show_saving_location(self, action, param):
         saving_location = self.window.get_saving_location()[1]
