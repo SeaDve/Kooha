@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 import sys
 
 import gi
@@ -24,6 +25,8 @@ gi.require_version('Adw', '1')
 from gi.repository import Gtk, Gio, Gdk, GLib, Adw
 
 from kooha.window import KoohaWindow
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class Application(Gtk.Application):

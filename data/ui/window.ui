@@ -167,21 +167,35 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton">
-                        <property name="label" translatable="yes">Stop</property>
-                        <signal name="clicked" handler="on_stop_record_button_clicked" swapped="no"/>
+                      <object class="GtkBox">
                         <style>
-                          <class name="destructive-action"/>
+                          <class name="linked"/>
                         </style>
                         <child>
-                          <object class="GtkShortcutController">
-                            <property name="scope">managed</property>
+                          <object class="GtkButton">
+                            <property name="hexpand">True</property>
+                            <property name="label" translatable="yes">Stop</property>
+                            <signal name="clicked" handler="on_stop_record_button_clicked" swapped="no"/>
+                            <style>
+                              <class name="destructive-action"/>
+                            </style>
                             <child>
-                              <object class="GtkShortcut">
-                                <property name="trigger">&lt;Control&gt;r</property>
-                                <property name="action">activate</property>
+                              <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                  <object class="GtkShortcut">
+                                    <property name="trigger">&lt;Control&gt;r</property>
+                                    <property name="action">activate</property>
+                                  </object>
+                                </child>
                               </object>
                             </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="icon-name">media-playback-pause-symbolic</property>
+                            <signal name="clicked" handler="on_pause_record_button_clicked" swapped="no"/>
                           </object>
                         </child>
                       </object>

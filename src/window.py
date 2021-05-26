@@ -21,8 +21,9 @@ from time import localtime, strftime
 
 from gi.repository import Gio, GLib, Gst, Gtk, Adw
 
-from kooha.recorders import AudioRecorder, VideoRecorder
-from kooha.timers import DelayTimer, Timer
+# from kooha.recorders import AudioRecorder, VideoRecorder
+# from kooha.timers import DelayTimer, Timer
+from kooha.backend.recorder import Recorder
 
 Gst.init(None)
 
@@ -41,37 +42,41 @@ class KoohaWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
         self.settings = settings
 
-        self.timer = Timer(self.time_recording_label)
-        self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
-        self.video_recorder = VideoRecorder()
+        # self.timer = Timer(self.time_recording_label)
+        # self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
+        # self.video_recorder = VideoRecorder()
 
         self.start_record_button.grab_focus()
-        desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
-        if not desktop_environment or "GNOME" not in desktop_environment:
-            self.start_record_button.set_sensitive(False)
-            self.start_record_button.set_label(f"{desktop_environment or 'WM'} is not yet supported")
+        # desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
+        # if not desktop_environment or "GNOME" not in desktop_environment:
+        #     self.start_record_button.set_sensitive(False)
+        #     self.start_record_button.set_label(f"{desktop_environment or 'WM'} is not yet supported")
+
+        self.recorder = Recorder()
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-        self.directory, video_directory, frmt = self.get_saving_location()
+        self.recorder.start()
+        self.main_stack.set_visible_child_name("recording")
+        # self.directory, video_directory, frmt = self.get_saving_location()
 
-        if os.path.exists(video_directory):
-            if self.title_stack.get_visible_child_name() == "selection-mode":
-                self.video_recorder.set_selection_mode()
-            else:
-                self.video_recorder.set_fullscreen_mode()
+        # if os.path.exists(video_directory):
+        #     if self.title_stack.get_visible_child_name() == "selection-mode":
+        #         self.video_recorder.set_selection_mode()
+        #     else:
+        #         self.video_recorder.set_fullscreen_mode()
 
-            delay = int(self.settings.get_string("record-delay"))
-            self.delay_timer.start(delay)
+        #     delay = int(self.settings.get_string("record-delay"))
+        #     self.delay_timer.start(delay)
 
-            if delay > 0:
-                self.main_stack.set_visible_child_name("delay")
-        else:
-            error = Gtk.MessageDialog(transient_for=self, modal=True,
-                                      buttons=Gtk.ButtonsType.OK, title=_("Recording cannot start"),
-                                      text=_("The saving location you have selected may have been deleted."))
-            error.present()
-            error.connect("response", lambda *_: error.close())
+        #     if delay > 0:
+        #         self.main_stack.set_visible_child_name("delay")
+        # else:
+        #     error = Gtk.MessageDialog(transient_for=self, modal=True,
+        #                               buttons=Gtk.ButtonsType.OK, title=_("Recording cannot start"),
+        #                               text=_("The saving location you have selected may have been deleted."))
+        #     error.present()
+        #     error.connect("response", lambda *_: error.close())
 
     def start_recording(self):
         Thread(target=self.playchime).start()
@@ -124,20 +129,21 @@ class KoohaWindow(Adw.ApplicationWindow):
         self.get_application().send_notification(None, notification)
 
     @Gtk.Template.Callback()
-    def on_stop_record_button_clicked(self, widget):
-        self.video_recorder.stop()
-        self.timer.stop()
+    def on_stop_record_button_clicked(self, button):
+        self.recorder.stop()
 
-        if self.audio_mode:
-            self.main_stack.set_visible_child_name("processing")
-            self.audio_recorder.stop(self)
-            self.audio_mode = False
-        else:
-            self.main_stack.set_visible_child_name("main-screen")
-            self.send_recordingfinished_notification()
+        self.main_stack.set_visible_child_name("main-screen")
+        self.send_recordingfinished_notification()
 
     @Gtk.Template.Callback()
-    def on_cancel_delay_button_clicked(self, widget):
-        self.main_stack.set_visible_child_name("main-screen")
+    def on_pause_record_button_clicked(self, button):
+        self.recorder.pause()
 
+    # @Gtk.Template.Callback()
+    def on_resume_record_button_clicked(self, button):
+        self.recorder.resume()
+
+    @Gtk.Template.Callback()
+    def on_cancel_delay_button_clicked(self, button):
+        self.main_stack.set_visible_child_name("main-screen")
         self.delay_timer.cancel()
