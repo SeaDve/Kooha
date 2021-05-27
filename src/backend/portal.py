@@ -96,7 +96,7 @@ class Portal(GObject.GObject):
     def get_recording_info(self):
         return self.fd, self.node_id
 
-    def start(self):
+    def open(self):
         session_path, self.session_token = self._new_session_path()
         self._screencast_call(
             self.portal.CreateSession,
@@ -106,6 +106,6 @@ class Portal(GObject.GObject):
             }
         )
 
-    def stop(self):
+    def close(self):
         pass
         # TODO add way to stop a session

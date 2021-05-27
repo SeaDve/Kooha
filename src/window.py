@@ -113,14 +113,6 @@ class KoohaWindow(Adw.ApplicationWindow):
                 video_directory = GLib.get_home_dir()
         return (f"{video_directory}/{filename}.{video_format}", video_directory, video_format)
 
-    def playchime(self):
-        playbin = Gst.ElementFactory.make('playbin')
-        playbin.props.uri = 'resource://io/github/seadve/Kooha/sounds/chime.ogg'
-        playbin.set_state(Gst.State.PLAYING)
-        bus = playbin.get_bus()
-        bus.poll(Gst.MessageType.EOS, Gst.CLOCK_TIME_NONE)
-        playbin.set_state(Gst.State.NULL)
-
     def send_recordingfinished_notification(self):
         notification = Gio.Notification.new(_("Screencast Recorded!"))
         notification_body = _("The recording has been saved in")
