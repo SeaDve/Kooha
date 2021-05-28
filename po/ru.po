@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-23 10:27+0800\n"
-"PO-Revision-Date: 2021-04-30 10:32+0000\n"
-"Last-Translator: Dzmitry Neviadomski <nevack.d@gmail.com>\n"
+"PO-Revision-Date: 2021-05-28 15:32+0000\n"
+"Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -141,7 +141,7 @@ msgstr "Показать/спрятать курсор"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Главное меню"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -153,15 +153,15 @@ msgstr "Выбор"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Запись звуков компьютера"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Запись с микрофона"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Показывать указатель"
 
 #: data/ui/window.ui:110
 msgid "Record"
