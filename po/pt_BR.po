@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-23 10:27+0800\n"
-"PO-Revision-Date: 2021-05-23 02:28+0000\n"
-"Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail."
-"com>\n"
+"PO-Revision-Date: 2021-05-28 15:32+0000\n"
+"Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail.com>"
+"\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -95,11 +95,11 @@ msgstr "Geral"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
-msgstr "Abrir o menu"
+msgstr "Abrir menu"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr "Mostrar atalhos de teclado"
+msgstr "Mostrar atalhos do teclado"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
@@ -215,7 +215,7 @@ msgstr "Salvar em…"
 
 #: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
-msgstr "Atalhos de teclado"
+msgstr "Atalhos do Teclado"
 
 #: data/ui/window.ui:331
 msgid "About Kooha"

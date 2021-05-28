@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Ali Galal <ali.sameh.galal@gmail.com>, 2021.
+# احمد النهاري <alna7ari@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-23 10:27+0800\n"
-"PO-Revision-Date: 2021-05-01 19:42+0000\n"
-"Last-Translator: Ali Galal <ali.sameh.galal@gmail.com>\n"
+"PO-Revision-Date: 2021-05-28 15:32+0000\n"
+"Last-Translator: احمد النهاري <alna7ari@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
 ">\n"
 "Language: ar\n"
@@ -138,7 +139,7 @@ msgstr "تبديل المؤشر"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "القائمة الرئيسية"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
@@ -150,15 +151,15 @@ msgstr "اختيار"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "تسجيل صوت الكمبيوتر"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "تسجيل من المايكرفون"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "إظهار المؤشر"
 
 #: data/ui/window.ui:110
 msgid "Record"
@@ -227,36 +228,36 @@ msgstr "حدد مجلدا"
 
 #: src/main.py:95
 msgid "Cancel"
-msgstr ""
+msgstr "الغاء"
 
 #: src/main.py:96
 msgid "Select"
-msgstr ""
+msgstr "إختيار"
 
 #: src/main.py:109
 msgid "Save location not set"
-msgstr ""
+msgstr "لم يتم تحديد مجلد الحفظ"
 
 #: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr ""
+msgstr "الرجاء اختيار موقع يمكن الوصول إليه وإعادة المحاولة."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "جميع الحقوق محفوظة 2012 داف باتريك"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr ""
+msgstr "أرصدة المترجم"
 
 #: src/main.py:143
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/window.py:71
 msgid "Recording cannot start"
-msgstr ""
+msgstr "لايمكن بدء التسجيل"
 
 #: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
