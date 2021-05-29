@@ -57,4 +57,5 @@ jobs:
       with:
         bundle: "Kooha-dev.flatpak"
         manifest-path: "io.github.seadve.Kooha.json"
+        cache-key: flatpak-builder-${{ github.sha }}
         run-tests: "true"
