@@ -6,9 +6,9 @@ from gi.repository import Gio, GLib
 
 
 class AudioSourceType(Enum):
-    ONLY_AUDIO = 0
-    ONLY_MIC = 1
-    BOTH = 2
+    ONLY_AUDIO = 1
+    ONLY_MIC = 2
+    BOTH = 3
 
 
 class Settings(Gio.Settings):
