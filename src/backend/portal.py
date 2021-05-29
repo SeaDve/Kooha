@@ -57,7 +57,7 @@ class Portal(GObject.GObject):
                 self._on_select_sources_response,
                 self.session,
                 options={
-                    'types': dbus.UInt32(1|2),  # Which source
+                    'types': dbus.UInt32(1 | 2),  # Which source
                     'cursor_mode': dbus.UInt32(2)  # Hide/show pointer
                 }
             )
