@@ -40,19 +40,10 @@ class KoohaWindow(Adw.ApplicationWindow):
 
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
-        self.settings = settings
-
-        # self.timer = Timer(self.time_recording_label)
-        # self.delay_timer = DelayTimer(self.delay_label, self.start_recording)
-        # self.video_recorder = VideoRecorder()
-
-        self.start_record_button.grab_focus()
-        # desktop_environment = GLib.getenv('XDG_CURRENT_DESKTOP')
-        # if not desktop_environment or "GNOME" not in desktop_environment:
-        #     self.start_record_button.set_sensitive(False)
-        #     self.start_record_button.set_label(f"{desktop_environment or 'WM'} is not yet supported")
 
         self.recorder = Recorder()
+
+        self.start_record_button.grab_focus()
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
@@ -77,41 +68,6 @@ class KoohaWindow(Adw.ApplicationWindow):
         #                               text=_("The saving location you have selected may have been deleted."))
         #     error.present()
         #     error.connect("response", lambda *_: error.close())
-
-    def start_recording(self):
-        Thread(target=self.playchime).start()
-
-        muxer = 'matroskamux' if self.get_saving_location()[2] == 'mkv' else 'webmmux'
-        record_audio = self.settings.get_boolean("record-audio")
-        record_microphone = self.settings.get_boolean("record-microphone")
-        self.audio_recorder = AudioRecorder(self.directory, muxer, record_audio, record_microphone)
-
-        framerate = self.settings.get_int("video-frames")
-        show_pointer = self.settings.get_boolean("show-pointer")
-
-        if ((record_audio and self.audio_recorder.default_audio_output)
-                or (record_microphone and self.audio_recorder.default_audio_input)):
-            directory = self.audio_recorder.get_tmp_dir("video")
-            self.video_recorder.start(directory, muxer, framerate, show_pointer)
-            self.audio_recorder.start()
-            self.audio_mode = True
-        else:
-            self.video_recorder.start(self.directory, muxer, framerate, show_pointer)
-            self.audio_mode = False
-
-        self.timer.start()
-
-        self.main_stack.set_visible_child_name("recording")
-
-    def get_saving_location(self):
-        video_directory = self.settings.get_string('saving-location')
-        filename = f"Kooha-{strftime('%Y-%m-%d-%H:%M:%S', localtime())}"
-        video_format = self.settings.get_string('video-format')
-        if self.settings.get_string("saving-location") == "default":
-            video_directory = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
-            if not os.path.exists(video_directory):
-                video_directory = GLib.get_home_dir()
-        return (f"{video_directory}/{filename}.{video_format}", video_directory, video_format)
 
     def send_recordingfinished_notification(self):
         notification = Gio.Notification.new(_("Screencast Recorded!"))
