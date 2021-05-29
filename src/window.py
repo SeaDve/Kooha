@@ -21,9 +21,9 @@ from time import localtime, strftime
 
 from gi.repository import Gio, GLib, Gst, Gtk, Adw
 
-# from kooha.recorders import AudioRecorder, VideoRecorder
 # from kooha.timers import DelayTimer, Timer
-from kooha.backend.recorder import Recorder
+from kooha.backend.recorder import Recorder  # noqa: F401
+from kooha.backend.settings import Settings
 
 Gst.init(None)
 
@@ -38,17 +38,23 @@ class KoohaWindow(Adw.ApplicationWindow):
     time_recording_label = Gtk.Template.Child()
     delay_label = Gtk.Template.Child()
 
+    recorder = Gtk.Template.Child()
+
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
 
-        self.recorder = Recorder()
+        self.settings = Settings()
 
         self.start_record_button.grab_focus()
 
     @Gtk.Template.Callback()
+    def get_pause_resume_icon(self, window, recorder_state):
+        return 'media-playback-pause-symbolic' if recorder_state is Gst.State.PAUSED else 'media-playback-start-symbolic'
+
+    @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
         self.recorder.start()
-        self.main_stack.set_visible_child_name("recording")
+        self.main_stack.set_visible_child_name('recording')
         # self.directory, video_directory, frmt = self.get_saving_location()
 
         # if os.path.exists(video_directory):
@@ -72,15 +78,14 @@ class KoohaWindow(Adw.ApplicationWindow):
     def send_recordingfinished_notification(self):
         notification = Gio.Notification.new(_("Screencast Recorded!"))
         notification_body = _("The recording has been saved in")
-        notification.set_body(f"{notification_body} {self.get_saving_location()[1]}")
-        notification.set_default_action("app.show-saving-location")
+        notification.set_body(f"{notification_body} {self.settings.get_saving_location()}")
+        notification.set_default_action('app.show-saving-location')
         self.get_application().send_notification(None, notification)
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, button):
         self.recorder.stop()
-
-        self.main_stack.set_visible_child_name("main-screen")
+        self.main_stack.set_visible_child_name('main-screen')
         self.send_recordingfinished_notification()
 
     @Gtk.Template.Callback()
@@ -93,5 +98,5 @@ class KoohaWindow(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_cancel_delay_button_clicked(self, button):
-        self.main_stack.set_visible_child_name("main-screen")
+        self.main_stack.set_visible_child_name('main-screen')
         self.delay_timer.cancel()

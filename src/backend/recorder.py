@@ -7,8 +7,13 @@ from kooha.backend.settings import Settings
 
 Gst.init(None)
 
+# TODO avoid redundant pipeline state setting
+
 
 class Recorder(GObject.GObject):
+    __gtype_name__ = 'Recorder'
+
+    state = GObject.Property(type=Gst.State, default=Gst.State.NULL)
 
     def __init__(self):
 
@@ -57,9 +62,11 @@ class Recorder(GObject.GObject):
 
     def pause(self):
         self.pipeline.set_state(Gst.State.PAUSED)
+        self.state = Gst.State.PAUSED
 
     def resume(self):
         self.pipeline.set_state(Gst.State.PLAYING)
+        self.state = Gst.State.PLAYING
 
     def stop(self):
         self.pipeline.set_state(Gst.State.NULL)

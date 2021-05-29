@@ -194,6 +194,11 @@
                         </child>
                         <child>
                           <object class="GtkButton">
+                            <binding name="icon-name">
+                              <closure type="gchararray" function="get_pause_resume_icon">
+                                <lookup name="state">recorder</lookup>
+                              </closure>
+                            </binding>
                             <property name="icon-name">media-playback-pause-symbolic</property>
                             <signal name="clicked" handler="on_pause_record_button_clicked" swapped="no"/>
                           </object>
@@ -261,42 +266,12 @@
                 </property>
               </object>
             </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">processing</property>
-                <property name="child">
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="valign">center</property>
-                        <property name="vexpand">True</property>
-                        <property name="spacing">12</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">Processing</property>
-                            <property name="single-line-mode">True</property>
-                            <style>
-                              <class name="title-4"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkSpinner">
-                            <property name="spinning">True</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
-            </child>
           </object>
         </child>
       </object>
     </child>
+    <object class="Recorder" id="recorder">
+    </object>
   </template>
   <menu id="menu">
     <section>
