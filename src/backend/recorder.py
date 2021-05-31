@@ -24,11 +24,11 @@ class Recorder(GObject.GObject):
     def _on_portal_ready(self, portal):
         framerate = self.settings.get_video_framerate()
         video_format = self.settings.get_video_format()
-        saving_location = self.settings.get_file_path()
+        file_path = self.settings.get_file_path()
         fd, node_id = self.portal.get_recording_info()
         speaker_source, mic_source = self._get_default_audio_sources()
 
-        self.pipeline = Gst.parse_launch(f'pipewiresrc fd={fd} path={node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={framerate}/1 ! videoconvert ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux name=mux ! filesink location={saving_location} pulsesrc device="{mic_source}" ! queue ! audiomixer name=mix ! vorbisenc ! queue ! mux. pulsesrc device="{speaker_source}" ! queue ! mix.')
+        self.pipeline = Gst.parse_launch(f'pipewiresrc fd={fd} path={node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={framerate}/1 ! videoconvert ! queue ! vp8enc min_quantizer=10 max_quantizer=10 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 threads=3 ! queue ! matroskamux name=mux ! filesink location={file_path} pulsesrc device="{mic_source}" ! queue ! audiomixer name=mix ! vorbisenc ! queue ! mux. pulsesrc device="{speaker_source}" ! queue ! mix.')
         self.pipeline.set_state(Gst.State.PLAYING)
 
         self.record_bus = self.pipeline.get_bus()
@@ -53,8 +53,8 @@ class Recorder(GObject.GObject):
         device_list = pactl_output.split("\n")
         default_sink = f"{device_list[0]}.monitor"
         default_source = device_list[1]
-        if default_sink == default_source:
-            return default_sink, None
+        # if default_sink == default_source:
+        #     return default_sink, None
         return default_sink, default_source
 
     def start(self):
