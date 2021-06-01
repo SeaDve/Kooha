@@ -7,258 +7,269 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-23 10:27+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-06-01 13:32+0000\n"
+"Last-Translator: Mykola <mykola.lev@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
+"uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
 msgid "Kooha"
-msgstr ""
+msgstr "Куха"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Елегантно записуйте Ваш екран"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr ""
+msgstr "Записуйте Ваш екран простим та безболісним шляхом не відволікаючись."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:11
+#, fuzzy
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha (Куха) — це простий записувач екрану з мінімалістичним виглядом. Ви "
+"можете просто натиснути кнопку запису без витрачання часу на налаштування."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Основними можливостями Kooha є такі функції:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Запис екрана без зайвих рухів."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
+#, fuzzy
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Запис мікрофона, звуків комп'ютера, або обидвох одночасно."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Вибір меж записування екрана."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Налаштування затримки початку запису."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Підтримка вільних відеоформатів Matroska та WebM."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Показ або приховування вказівника миші."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Вибір місця збереження Ваших записів."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Можливість використовувати гарячі клавіші."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Дейв Патрік"
 
 #: data/ui/shortcuts.ui:12
 msgid "General"
-msgstr ""
+msgstr "Основне"
 
 #: data/ui/shortcuts.ui:17
 msgid "Open menu"
-msgstr ""
+msgstr "Відкрити меню"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "Показати гарячі клавіші"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
-msgstr ""
+msgstr "Вийти"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
-msgstr ""
+msgstr "Запис"
 
 #: data/ui/shortcuts.ui:44
+#, fuzzy
 msgid "Toggle record"
-msgstr ""
+msgstr "Перемкнути запис"
 
 #: data/ui/shortcuts.ui:51
 msgid "Cancel delay"
-msgstr ""
+msgstr "Скасувати затримку"
 
 #: data/ui/shortcuts.ui:59
 msgid "Settings"
-msgstr ""
+msgstr "Налаштування"
 
 #: data/ui/shortcuts.ui:64
 msgid "Toggle capture mode"
-msgstr ""
+msgstr "Змінити режим захоплення"
 
 #: data/ui/shortcuts.ui:71
+#, fuzzy
 msgid "Toggle computer sounds"
-msgstr ""
+msgstr "Записувати або не записувати звуки комп'ютера"
 
 #: data/ui/shortcuts.ui:78
 msgid "Toggle microphone"
-msgstr ""
+msgstr "Ввімкнути або вимкнути мікрофон"
 
 #: data/ui/shortcuts.ui:85
 msgid "Toggle pointer"
-msgstr ""
+msgstr "Показувати або сховати вказівник миші"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr ""
+msgstr "Головне Меню"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"
-msgstr ""
+msgstr "Повний екран"
 
 #: data/ui/window.ui:57
 msgid "Selection"
-msgstr ""
+msgstr "Вибір"
 
 #: data/ui/window.ui:89
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Записувати Звуки Комп'ютера"
 
 #: data/ui/window.ui:96
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Записувати Мікрофон"
 
 #: data/ui/window.ui:103
 msgid "Show Pointer"
-msgstr ""
+msgstr "Показати вказівник миші"
 
 #: data/ui/window.ui:110
+#, fuzzy
 msgid "Record"
-msgstr ""
+msgstr "Записувати"
 
 #: data/ui/window.ui:170
 msgid "Stop"
-msgstr ""
+msgstr "Зупинити"
 
 #: data/ui/window.ui:209
 msgid "Recording in…"
-msgstr ""
+msgstr "Запис через…"
 
 #: data/ui/window.ui:227
 msgid "Cancel Delay"
-msgstr ""
+msgstr "Скасувати Затримку"
 
 #: data/ui/window.ui:263
 msgid "Processing"
-msgstr ""
+msgstr "Обробка"
 
 #: data/ui/window.ui:289
 msgid "Delay"
-msgstr ""
+msgstr "Затримка"
 
 #: data/ui/window.ui:291
 msgid "None"
-msgstr ""
+msgstr "Нічого"
 
 #: data/ui/window.ui:296
 msgid "5 seconds"
-msgstr ""
+msgstr "5 секунд"
 
 #: data/ui/window.ui:301
 msgid "10 seconds"
-msgstr ""
+msgstr "10 секунд"
 
 #: data/ui/window.ui:307
 msgid "Video Format"
-msgstr ""
+msgstr "Формат Відео"
 
 #: data/ui/window.ui:309
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/ui/window.ui:314
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/ui/window.ui:321
 msgid "Save to…"
-msgstr ""
+msgstr "Зберегти в…"
 
 #: data/ui/window.ui:327
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Гарячі Клавіші"
 
 #: data/ui/window.ui:331
 msgid "About Kooha"
-msgstr ""
+msgstr "Про Kooha"
 
 #: src/main.py:94
 msgid "Select a Folder"
-msgstr ""
+msgstr "Вибрати папку"
 
 #: src/main.py:95
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: src/main.py:96
 msgid "Select"
-msgstr ""
+msgstr "Обрати"
 
 #: src/main.py:109
 msgid "Save location not set"
-msgstr ""
+msgstr "Місце збереження не вказано"
 
 #: src/main.py:110
 msgid "Please choose an accessible location and retry."
-msgstr ""
+msgstr "Будь-ласка, оберіть доступне місце збереження, і спобуйте ще раз."
 
 #: src/main.py:140
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Авторські права 2021 Дейв Патрік"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr ""
+msgstr "перекладачі"
 
 #: src/main.py:143
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/window.py:71
 msgid "Recording cannot start"
-msgstr ""
+msgstr "Неможливо почати запис"
 
 #: src/window.py:72
 msgid "The saving location you have selected may have been deleted."
-msgstr ""
+msgstr "Місце збереження яке Ви обрали може не існувати."
 
 #: src/window.py:120
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "Записано!"
 
 #: src/window.py:121
 msgid "The recording has been saved in"
-msgstr ""
+msgstr "Запис зебережено у"
