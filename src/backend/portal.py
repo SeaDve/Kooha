@@ -93,7 +93,7 @@ class Portal(GObject.GObject):
         )
         return fd_object.take()
 
-    def get_recording_info(self):
+    def get_screen_info(self):
         return self.fd, self.node_id
 
     def open(self):

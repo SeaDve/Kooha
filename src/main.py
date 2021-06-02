@@ -62,8 +62,8 @@ class Application(Gtk.Application):
 
     def setup_actions(self):
         settings_actions = [
-            ("record-audio", ("<Ctrl>a",)),
-            ("record-microphone", ("<Ctrl>m",)),
+            ("record-speaker", ("<Ctrl>a",)),
+            ("record-mic", ("<Ctrl>m",)),
             ("show-pointer", ("<Ctrl>p",)),
             ("record-delay", None),
             ("video-format", None),

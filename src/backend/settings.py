@@ -1,14 +1,11 @@
+from collections import namedtuple
 from enum import Enum
 import time
 import os
 
 from gi.repository import Gio, GLib
 
-
-class AudioSourceType(Enum):
-    ONLY_AUDIO = 1
-    ONLY_MIC = 2
-    BOTH = 3
+AudioOption = namedtuple('AudioOption', 'record_speaker record_mic')
 
 
 class Settings(Gio.Settings):
@@ -17,15 +14,9 @@ class Settings(Gio.Settings):
         super().__init__('io.github.seadve.Kooha')
 
     def get_audio_option(self):
-        is_record_audio = self.get_boolean('record-audio')
-        is_record_mic = self.get_boolean('record-microphone')
-        if is_record_audio and is_record_mic:
-            audio_option = AudioSourceType.BOTH
-        elif is_record_audio and not is_record_mic:
-            audio_option = AudioSourceType.ONLY_AUDIO
-        elif is_record_mic and not is_record_audio:
-            audio_option = AudioSourceType.ONLY_MIC
-        return audio_option
+        is_record_speaker = self.get_boolean('record-speaker')
+        is_record_mic = self.get_boolean('record-mic')
+        return AudioOption(is_record_speaker, is_record_mic)
 
     def get_video_framerate(self):
         return self.get_int('video-framerate')

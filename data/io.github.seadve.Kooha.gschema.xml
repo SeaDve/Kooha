@@ -17,10 +17,10 @@
       </choices>
       <default>"webm"</default>
     </key>
-    <key type="b" name="record-audio">
+    <key type="b" name="record-speaker">
       <default>false</default>
     </key>
-    <key type="b" name="record-microphone">
+    <key type="b" name="record-mic">
       <default>false</default>
     </key>
     <key type="b" name="show-pointer">
