@@ -23,6 +23,9 @@ class Settings(Gio.Settings):
     def get_is_show_pointer(self):
         return self.get_boolean('show-pointer')
 
+    def set_saving_location(self, directory):
+        self.set_string("saving-location", directory)
+
     def get_saving_location(self):
         saving_location = self.get_string('saving-location')
         if saving_location == 'default':

@@ -18,7 +18,6 @@
 from gi.repository import Gio, Gst, Gtk, Adw
 
 from kooha.backend.recorder import Recorder  # noqa: F401
-from kooha.backend.settings import Settings
 
 Gst.init(None)
 
@@ -38,7 +37,7 @@ class KoohaWindow(Adw.ApplicationWindow):
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
 
-        self.settings = Settings()
+        self.settings = settings
 
         self.start_record_button.grab_focus()
 

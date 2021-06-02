@@ -26,7 +26,7 @@ class Recorder(GObject.GObject):
     def _on_portal_ready(self, portal):
         framerate = self.settings.get_video_framerate()
         video_format = self.settings.get_video_format()
-        file_path = self.settings.get_file_path()
+        file_path = self.settings.get_file_path().replace(" ", r"\ ")
         audio_source_type = self.settings.get_audio_option()
         fd, node_id = self.portal.get_screen_info()
         default_audio_sources = self._get_default_audio_sources()
@@ -56,7 +56,7 @@ class Recorder(GObject.GObject):
             stdout=PIPE
         ).stdout.read().rstrip()
         device_list = pactl_output.split("\n")
-        default_sink = f"{device_list[0]}.monitor"
+        default_sink = f'{device_list[0]}.monitor'
         default_source = device_list[1]
         if default_sink == default_source:
             return default_sink, None
