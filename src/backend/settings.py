@@ -1,5 +1,4 @@
 from collections import namedtuple
-from enum import Enum
 import time
 import os
 

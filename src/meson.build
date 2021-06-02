@@ -22,8 +22,6 @@ kooha_sources = [
   '__init__.py',
   'main.py',
   'window.py',
-  'recorders.py',
-  'timers.py',
 ]
 
 install_data(kooha_sources, install_dir: moduledir)

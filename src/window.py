@@ -15,13 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
-from threading import Thread
-from time import localtime, strftime
+from gi.repository import Gio, Gst, Gtk, Adw
 
-from gi.repository import Gio, GLib, Gst, Gtk, Adw
-
-# from kooha.timers import DelayTimer, Timer
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.settings import Settings
 

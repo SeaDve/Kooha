@@ -9,6 +9,7 @@ from kooha.backend.pipeline_builder import PipelineBuilder
 Gst.init(None)
 
 # TODO avoid redundant pipeline state setting
+# TODO implement area recording
 
 
 class Recorder(GObject.GObject):
@@ -63,6 +64,8 @@ class Recorder(GObject.GObject):
 
     def start(self):
         self.portal.open()
+        # TODO add support for optional cursor recording
+        # TODO handle cancled open portal
 
     def pause(self):
         self.pipeline.set_state(Gst.State.PAUSED)
