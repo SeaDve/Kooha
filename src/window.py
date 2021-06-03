@@ -21,6 +21,7 @@ from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
 
 # TODO implement kb shortcuts for capture mode
+# TODO implement ui support for pause and resume
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
