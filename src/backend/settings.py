@@ -1,6 +1,6 @@
 from collections import namedtuple
-import time
 import os
+import time
 
 from gi.repository import Gio, GLib
 

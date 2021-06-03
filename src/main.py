@@ -163,6 +163,12 @@ class Application(Gtk.Application):
         if self.window.main_stack.get_visible_child_name() == "main-screen":
             self.quit()
 
+    def new_notification(self, title, body, action):
+        notification = Gio.Notification.new(title)
+        notification.set_body(body)
+        notification.set_default_action(action)
+        self.send_notification(None, notification)
+
 
 def main(version):
     app = Application(version)

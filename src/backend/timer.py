@@ -2,6 +2,7 @@ from gi.repository import GObject, GLib
 
 
 class Timer(GObject.GObject):
+    __gtype_name__ = 'Timer'
     __gsignals__ = {'delay-done': (GObject.SignalFlags.RUN_FIRST, None, ())}
 
     time = GObject.Property(type=int)
@@ -23,6 +24,8 @@ class Timer(GObject.GObject):
         return True
 
     def start(self, delay):
+        if not delay:
+            self.emit('delay-done')
         self.delay = delay
         self.time = delay
         self.ongoing = True
@@ -34,5 +37,4 @@ class Timer(GObject.GObject):
         self.ongoing = True
 
     def stop(self):
-        self.time = 0
         self.ongoing = False

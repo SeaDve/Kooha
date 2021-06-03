@@ -9,10 +9,12 @@ from kooha.backend.pipeline_builder import PipelineBuilder
 Gst.init(None)
 
 # TODO implement area recording
+# TODO fix pause and resume with pipewire
 
 
 class Recorder(GObject.GObject):
     __gtype_name__ = 'Recorder'
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ())}
 
     _state = Gst.State.NULL
 
@@ -42,16 +44,12 @@ class Recorder(GObject.GObject):
         pipeline_builder = PipelineBuilder(fd, node_id, framerate, file_path, video_format, audio_source_type)
         pipeline_builder.set_audio_source(*default_audio_sources)
         self.pipeline = pipeline_builder.build()
-
-        self.state = Gst.State.PLAYING
-        self.record_bus = self.pipeline.get_bus()
-        self.record_bus.add_signal_watch()
-        self.handler_id = self.record_bus.connect('message', self._on_gst_message)
+        self.emit('ready')
 
     def _on_gst_message(self, bus, message):
         t = message.type
         if t == Gst.MessageType.EOS:
-            self.stop()
+            self.state = Gst.State.NULL
         elif t == Gst.MessageType.ERROR:
             err, debug = message.parse_error()
             print("Error: %s" % err, debug)
@@ -70,10 +68,15 @@ class Recorder(GObject.GObject):
             return default_sink, None
         return default_sink, default_source
 
-    def start(self):
+    def ready(self):
         draw_pointer = self.settings.get_is_show_pointer()
         self.portal.open(draw_pointer)
-        # TODO handle cancelled open portal
+
+    def start(self):
+        self.state = Gst.State.PLAYING
+        self.record_bus = self.pipeline.get_bus()
+        self.record_bus.add_signal_watch()
+        self.record_bus.connect('message', self._on_gst_message)
 
     def pause(self):
         self.state = Gst.State.PAUSED
@@ -82,7 +85,5 @@ class Recorder(GObject.GObject):
         self.state = Gst.State.PLAYING
 
     def stop(self):
-        self.state = Gst.State.NULL
-        self.record_bus.remove_watch()
-        self.record_bus.disconnect(self.handler_id)
+        self.pipeline.send_event(Gst.Event.new_eos())
         self.portal.close()

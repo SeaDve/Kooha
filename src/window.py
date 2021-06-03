@@ -15,9 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gio, Gst, Gtk, Adw
+from gi.repository import Gst, Gtk, Adw
 
 from kooha.backend.recorder import Recorder  # noqa: F401
+from kooha.backend.timer import Timer  # noqa: F401
 
 Gst.init(None)
 
@@ -33,64 +34,52 @@ class KoohaWindow(Adw.ApplicationWindow):
     delay_label = Gtk.Template.Child()
 
     recorder = Gtk.Template.Child()
+    timer = Gtk.Template.Child()
 
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
-
         self.settings = settings
-
         self.start_record_button.grab_focus()
 
     @Gtk.Template.Callback()
-    def get_pause_resume_icon(self, window, recorder_state):
-        return 'media-playback-pause-symbolic' if recorder_state is Gst.State.PAUSED else 'media-playback-start-symbolic'
+    def on_recorder_state_notify(self, recorder, state):
+        if recorder.state == Gst.State.NULL:
+            self.main_stack.set_visible_child_name('main-screen')
+            self.props.application.new_notification(
+                title=_("Screencast Recorded!"),
+                body=f'{_("The recording has been saved in")} {self.settings.get_saving_location()}',
+                action='app.show-saving-location',
+            )
+            self.timer.stop()
+        elif recorder.state == Gst.State.PLAYING:
+            self.main_stack.set_visible_child_name('recording')
+
+    @Gtk.Template.Callback()
+    def on_recorder_ready(self, recorder):
+        record_delay = self.settings.get_record_delay()
+        self.timer.start(record_delay)
+        if record_delay:
+            self.delay_label.set_label(str(record_delay))
+            self.main_stack.set_visible_child_name('delay')
+
+    @Gtk.Template.Callback()
+    def on_timer_time_notify(self, timer, time):
+        self.delay_label.set_label(str(timer.time + 1))
+        self.time_recording_label.set_label("%02d∶%02d" % divmod(timer.time, 60))
+
+    @Gtk.Template.Callback()
+    def on_timer_delay_done(self, timer):
+        self.recorder.start()
 
     @Gtk.Template.Callback()
     def on_start_record_button_clicked(self, widget):
-        self.recorder.start()
-        self.main_stack.set_visible_child_name('recording')
-        # self.directory, video_directory, frmt = self.get_saving_location()
-
-        # if os.path.exists(video_directory):
-        #     if self.title_stack.get_visible_child_name() == "selection-mode":
-        #         self.video_recorder.set_selection_mode()
-        #     else:
-        #         self.video_recorder.set_fullscreen_mode()
-
-        #     delay = int(self.settings.get_string("record-delay"))
-        #     self.delay_timer.start(delay)
-
-        #     if delay > 0:
-        #         self.main_stack.set_visible_child_name("delay")
-        # else:
-        #     error = Gtk.MessageDialog(transient_for=self, modal=True,
-        #                               buttons=Gtk.ButtonsType.OK, title=_("Recording cannot start"),
-        #                               text=_("The saving location you have selected may have been deleted."))
-        #     error.present()
-        #     error.connect("response", lambda *_: error.close())
-
-    def send_recordingfinished_notification(self):
-        notification = Gio.Notification.new(_("Screencast Recorded!"))
-        notification_body = _("The recording has been saved in")
-        notification.set_body(f"{notification_body} {self.settings.get_saving_location()}")
-        notification.set_default_action('app.show-saving-location')
-        self.get_application().send_notification(None, notification)
+        self.recorder.ready()
 
     @Gtk.Template.Callback()
     def on_stop_record_button_clicked(self, button):
         self.recorder.stop()
-        self.main_stack.set_visible_child_name('main-screen')
-        self.send_recordingfinished_notification()
-
-    @Gtk.Template.Callback()
-    def on_pause_record_button_clicked(self, button):
-        self.recorder.pause()
-
-    # @Gtk.Template.Callback()
-    def on_resume_record_button_clicked(self, button):
-        self.recorder.resume()
 
     @Gtk.Template.Callback()
     def on_cancel_delay_button_clicked(self, button):
+        self.timer.stop()
         self.main_stack.set_visible_child_name('main-screen')
-        self.delay_timer.cancel()

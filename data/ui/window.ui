@@ -192,17 +192,6 @@
                             </child>
                           </object>
                         </child>
-                        <child>
-                          <object class="GtkButton">
-                            <binding name="icon-name">
-                              <closure type="gchararray" function="get_pause_resume_icon">
-                                <lookup name="state">recorder</lookup>
-                              </closure>
-                            </binding>
-                            <property name="icon-name">media-playback-pause-symbolic</property>
-                            <signal name="clicked" handler="on_pause_record_button_clicked" swapped="no"/>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>
@@ -271,6 +260,12 @@
       </object>
     </child>
     <object class="Recorder" id="recorder">
+      <signal name="notify::state" handler="on_recorder_state_notify" swapped="no"/>
+      <signal name="ready" handler="on_recorder_ready" swapped="no"/>
+    </object>
+    <object class="Timer" id="timer">
+      <signal name="notify::time" handler="on_timer_time_notify" swapped="no"/>
+      <signal name="delay-done" handler="on_timer_delay_done" swapped="no"/>
     </object>
   </template>
   <menu id="menu">
