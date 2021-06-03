@@ -15,19 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gst, Gtk, Adw
+from gi.repository import Gio, Gst, Gtk, Adw
 
 from kooha.backend.recorder import Recorder  # noqa: F401
-from kooha.backend.timer import Timer  # noqa: F401
+from kooha.backend.timer import Timer, TimerState  # noqa: F401
 
-Gst.init(None)
+# TODO implement kb shortcuts for capture mode
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
 class KoohaWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'KoohaWindow'
 
-    start_record_button = Gtk.Template.Child()  # will be unused when DE check is removed
+    start_record_button = Gtk.Template.Child()
     title_stack = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
     time_recording_label = Gtk.Template.Child()
@@ -39,10 +39,22 @@ class KoohaWindow(Adw.ApplicationWindow):
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
         self.settings = settings
+
         self.start_record_button.grab_focus()
+        self._setup_actions()
+
+    def _setup_actions(self):
+        settings_actions = [
+            'record-speaker', 'record-mic', 'show-pointer',
+            'record-delay', 'video-format',
+        ]
+
+        for action in settings_actions:
+            settings_action = self.settings.create_action(action)
+            self.add_action(settings_action)
 
     @Gtk.Template.Callback()
-    def on_recorder_state_notify(self, recorder, state):
+    def _on_recorder_state_notify(self, recorder, state):
         if recorder.state == Gst.State.NULL:
             self.main_stack.set_visible_child_name('main-screen')
             self.props.application.new_notification(
@@ -55,31 +67,34 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.main_stack.set_visible_child_name('recording')
 
     @Gtk.Template.Callback()
-    def on_recorder_ready(self, recorder):
-        record_delay = self.settings.get_record_delay()
-        self.timer.start(record_delay)
-        if record_delay:
-            self.delay_label.set_label(str(record_delay))
+    def _on_timer_state_notify(self, timer, state):
+        if timer.state == TimerState.DELAYED:
             self.main_stack.set_visible_child_name('delay')
+        elif timer.state == TimerState.STOPPED:
+            self.main_stack.set_visible_child_name('main-screen')
 
     @Gtk.Template.Callback()
-    def on_timer_time_notify(self, timer, time):
-        self.delay_label.set_label(str(timer.time + 1))
+    def _on_timer_time_notify(self, timer, time):
+        self.delay_label.set_label(str(timer.time))
         self.time_recording_label.set_label("%02d∶%02d" % divmod(timer.time, 60))
 
     @Gtk.Template.Callback()
-    def on_timer_delay_done(self, timer):
+    def _on_timer_delay_done(self, timer):
         self.recorder.start()
 
     @Gtk.Template.Callback()
-    def on_start_record_button_clicked(self, widget):
+    def _on_recorder_ready(self, recorder):
+        record_delay = self.settings.get_record_delay()
+        self.timer.start(record_delay)
+
+    @Gtk.Template.Callback()
+    def _on_start_record_button_clicked(self, button):
         self.recorder.ready()
 
     @Gtk.Template.Callback()
-    def on_stop_record_button_clicked(self, button):
+    def _on_stop_record_button_clicked(self, button):
         self.recorder.stop()
 
     @Gtk.Template.Callback()
-    def on_cancel_delay_button_clicked(self, button):
+    def _on_cancel_delay_button_clicked(self, button):
         self.timer.stop()
-        self.main_stack.set_visible_child_name('main-screen')

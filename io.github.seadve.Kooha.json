@@ -27,6 +27,37 @@
     ],
     "modules" : [
         {
+            "name": "x264",
+            "config-opts": [
+                "--enable-shared",
+                "--system-libx264",
+                "--enable-pic"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.videolan.org/pub/x264/snapshots/x264-snapshot-20191103-2245-stable.tar.bz2",
+                    "sha256": "d74f8f819104a94b0bd075aae39652b1957bcdd460e09b5202582c86e95a5bc0"
+                }
+            ]
+        },
+        {
+            "name": "gstreamer1-plugins-ugly",
+            "buildsystem": "meson",
+            "builddir": true,
+            "config-opts": [
+                "-Ddoc=disabled",
+                "-D=x264=enabled"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.16.2.tar.xz",
+                    "sha256": "5500415b865e8b62775d4742cbb9f37146a50caecfc0e7a6fc0160d3c560fbca"
+                }
+            ]
+        },
+        {
             "name": "dbus-python",
             "buildsystem": "simple",
             "build-commands": [

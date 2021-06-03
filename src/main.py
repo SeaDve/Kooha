@@ -22,12 +22,13 @@ import gi
 gi.require_version('Gst', '1.0')
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Gtk, Gio, Gdk, GLib, Adw
+from gi.repository import Gtk, Gio, Gdk, GLib, Adw, Gst
 
 from kooha.backend.settings import Settings
 from kooha.window import KoohaWindow
 
 logging.basicConfig(level=logging.DEBUG)
+Gst.init(None)
 
 
 class Application(Gtk.Application):
@@ -62,35 +63,24 @@ class Application(Gtk.Application):
         self.window.present()
 
     def setup_actions(self):
-        settings_actions = [
-            ("record-speaker", ("<Ctrl>a",)),
-            ("record-mic", ("<Ctrl>m",)),
-            ("show-pointer", ("<Ctrl>p",)),
-            ("record-delay", None),
-            ("video-format", None),
-        ]
-
         simple_actions = [
-            ("select-location", self.select_location_dialog, None),
-            ("show-shortcuts", self.show_shortcuts_window, ("<Ctrl>question",)),
-            ("show-about", self.show_about_dialog, None),
-            ("show-saving-location", self.show_saving_location, None),
-            ("change-capture-mode", self.on_change_capture_mode, ("<Ctrl>f",)),
-            ("quit", self.on_quit, ("<Ctrl>q",)),
+            ("select-location", self.select_location_dialog),
+            ("show-shortcuts", self.show_shortcuts_window),
+            ("show-about", self.show_about_dialog),
+            ("show-saving-location", self.show_saving_location),
+            ("quit", self.on_quit),
         ]
 
-        for action, accel in settings_actions:
-            settings_action = self.settings.create_action(action)
-            self.add_action(settings_action)
-            if accel:
-                self.set_accels_for_action(f"app.{action}", accel)
-
-        for action, callback, accel in simple_actions:
+        for action, callback in simple_actions:
             simple_action = Gio.SimpleAction.new(action, None)
             simple_action.connect("activate", callback)
             self.add_action(simple_action)
-            if accel:
-                self.set_accels_for_action(f"app.{action}", accel)
+
+        self.set_accels_for_action(f"app.show-shortcuts", ("<Ctrl>question",))
+        self.set_accels_for_action(f"app.quit", ("<Ctrl>q",))
+        self.set_accels_for_action(f"win.record-speaker", ("<Ctrl>a",))
+        self.set_accels_for_action(f"win.record-mic", ("<Ctrl>m",))
+        self.set_accels_for_action(f"win.show-pointer", ("<Ctrl>p",))
 
     def select_location_dialog(self, action, param):
         dialog = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
@@ -152,22 +142,15 @@ class Application(Gtk.Application):
         saving_location = self.settings.get_saving_location()
         Gio.AppInfo.launch_default_for_uri(f"file://{saving_location}")
 
-    def on_change_capture_mode(self, action, param):
-        if self.window.main_stack.get_visible_child_name() == "main-screen":
-            if self.window.title_stack.get_visible_child_name() == "selection-mode":
-                self.window.title_stack.set_visible_child_name("fullscreen-mode")
-            else:
-                self.window.title_stack.set_visible_child_name("selection-mode")
-
-    def on_quit(self, action, param):
-        if self.window.main_stack.get_visible_child_name() == "main-screen":
-            self.quit()
-
     def new_notification(self, title, body, action):
         notification = Gio.Notification.new(title)
         notification.set_body(body)
         notification.set_default_action(action)
         self.send_notification(None, notification)
+
+    def on_quit(self, action, param):
+        if self.window.recorder.state == Gst.State.NULL:
+            self.quit()
 
 
 def main(version):
