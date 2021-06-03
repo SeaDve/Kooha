@@ -24,7 +24,7 @@ class Settings(Gio.Settings):
         return self.get_boolean('show-pointer')
 
     def set_saving_location(self, directory):
-        self.set_string("saving-location", directory)
+        self.set_string('saving-location', directory)
 
     def get_saving_location(self):
         saving_location = self.get_string('saving-location')

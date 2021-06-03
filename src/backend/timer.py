@@ -15,16 +15,16 @@ class Timer(GObject.GObject):
         if not self.ongoing:
             return True
 
-        self.time += 1
-        if self.time == self.delay:
-            self.delay = -1
-            self.time = 0
+        if self.time == 0:
+            self.delay = None
             self.emit('delay-done')
+        self.time += -1 if self.delay else 1
+
         return True
 
     def start(self, delay):
         self.delay = delay
-        self.time = 0
+        self.time = delay
         self.ongoing = True
 
     def pause(self):
