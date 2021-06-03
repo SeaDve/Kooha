@@ -14,13 +14,22 @@ Gst.init(None)
 class Recorder(GObject.GObject):
     __gtype_name__ = 'Recorder'
 
-    state = GObject.Property(type=Gst.State, default=Gst.State.NULL)
+    _state = Gst.State.NULL
 
     def __init__(self):
 
         self.portal = Portal()
         self.portal.connect('ready', self._on_portal_ready)
         self.settings = Settings()
+
+    @GObject.Property(type=Gst.State, default=_state)
+    def state(self):
+        return self._state
+
+    @state.setter
+    def state(self, pipeline_state):
+        self._state = pipeline_state
+        self.pipeline.set_state(pipeline_state)
 
     def _on_portal_ready(self, portal):
         framerate = self.settings.get_video_framerate()
@@ -34,9 +43,7 @@ class Recorder(GObject.GObject):
         pipeline_builder.set_audio_source(*default_audio_sources)
         self.pipeline = pipeline_builder.build()
 
-        self.pipeline.set_state(Gst.State.PLAYING)
         self.state = Gst.State.PLAYING
-
         self.record_bus = self.pipeline.get_bus()
         self.record_bus.add_signal_watch()
         self.handler_id = self.record_bus.connect('message', self._on_gst_message)
@@ -69,17 +76,13 @@ class Recorder(GObject.GObject):
         # TODO handle cancelled open portal
 
     def pause(self):
-        self.pipeline.set_state(Gst.State.PAUSED)
         self.state = Gst.State.PAUSED
 
     def resume(self):
-        self.pipeline.set_state(Gst.State.PLAYING)
         self.state = Gst.State.PLAYING
 
     def stop(self):
-        self.pipeline.set_state(Gst.State.NULL)
         self.state = Gst.State.NULL
-
         self.record_bus.remove_watch()
         self.record_bus.disconnect(self.handler_id)
         self.portal.close()
