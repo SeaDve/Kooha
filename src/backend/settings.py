@@ -39,7 +39,7 @@ class Settings(Gio.Settings):
 
     def get_file_path(self):
         saving_location = self.get_saving_location()
-        filename = f"Kooha-{time.strftime('%Y-%m-%d-%H:%M:%S', time.localtime())}"
+        filename = f"Kooha {time.strftime('%m-%d-%Y %H:%M:%S', time.localtime())}"
         video_format = self.get_video_format()
         return os.path.join(saving_location, f'{filename}.{video_format}')
 
