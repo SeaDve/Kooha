@@ -63,9 +63,9 @@ class Recorder(GObject.GObject):
         return default_sink, default_source
 
     def start(self):
-        self.portal.open()
-        # TODO add support for optional cursor recording
-        # TODO handle cancled open portal
+        draw_pointer = self.settings.get_is_show_pointer()
+        self.portal.open(draw_pointer)
+        # TODO handle cancelled open portal
 
     def pause(self):
         self.pipeline.set_state(Gst.State.PAUSED)

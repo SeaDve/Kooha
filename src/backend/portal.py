@@ -58,7 +58,7 @@ class Portal(GObject.GObject):
                 self.session,
                 options={
                     'types': dbus.UInt32(1 | 2),  # Which source
-                    'cursor_mode': dbus.UInt32(2)  # Hide/show pointer
+                    'cursor_mode': dbus.UInt32(2 if self.draw_pointer else 1)
                 }
             )
 
@@ -96,7 +96,8 @@ class Portal(GObject.GObject):
     def get_screen_info(self):
         return self.fd, self.node_id
 
-    def open(self):
+    def open(self, draw_pointer):
+        self.draw_pointer = draw_pointer
         session_path, self.session_token = self._new_session_path()
         self._screencast_call(
             self.portal.CreateSession,
