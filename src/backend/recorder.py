@@ -8,7 +8,6 @@ from kooha.backend.pipeline_builder import PipelineBuilder
 
 Gst.init(None)
 
-# TODO avoid redundant pipeline state setting
 # TODO implement area recording
 
 
@@ -36,6 +35,8 @@ class Recorder(GObject.GObject):
         self.pipeline = pipeline_builder.build()
 
         self.pipeline.set_state(Gst.State.PLAYING)
+        self.state = Gst.State.PLAYING
+
         self.record_bus = self.pipeline.get_bus()
         self.record_bus.add_signal_watch()
         self.handler_id = self.record_bus.connect('message', self._on_gst_message)
@@ -43,7 +44,7 @@ class Recorder(GObject.GObject):
     def _on_gst_message(self, bus, message):
         t = message.type
         if t == Gst.MessageType.EOS:
-            self.pipeline.set_state(Gst.State.NULL)
+            self.stop()
         elif t == Gst.MessageType.ERROR:
             err, debug = message.parse_error()
             print("Error: %s" % err, debug)
@@ -77,7 +78,8 @@ class Recorder(GObject.GObject):
 
     def stop(self):
         self.pipeline.set_state(Gst.State.NULL)
+        self.state = Gst.State.NULL
+
         self.record_bus.remove_watch()
         self.record_bus.disconnect(self.handler_id)
-
         self.portal.close()
