@@ -4,6 +4,8 @@ from dbus.mainloop.glib import DBusGMainLoop
 
 from gi.repository import GObject
 
+# TODO Close the session after use
+
 
 class Portal(GObject.GObject):
     __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ())}
@@ -109,4 +111,3 @@ class Portal(GObject.GObject):
 
     def close(self):
         pass
-        # TODO add way to stop a session

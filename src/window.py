@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gio, Gst, Gtk, Adw
+from gi.repository import Gst, Gtk, Adw
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401

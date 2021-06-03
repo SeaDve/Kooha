@@ -30,6 +30,8 @@ from kooha.window import KoohaWindow
 logging.basicConfig(level=logging.DEBUG)
 Gst.init(None)
 
+# TODO Implement proper loggers
+
 
 class Application(Gtk.Application):
     def __init__(self, version):
