@@ -5,6 +5,7 @@ from dbus.mainloop.glib import DBusGMainLoop
 from gi.repository import GObject
 
 # TODO Close the session after use
+# TODO Use Giodbus and remove dbus dep
 
 
 class Portal(GObject.GObject):

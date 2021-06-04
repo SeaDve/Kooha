@@ -35,9 +35,9 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "http://download.videolan.org/pub/x264/snapshots/x264-snapshot-20191103-2245-stable.tar.bz2",
-                    "sha256": "d74f8f819104a94b0bd075aae39652b1957bcdd460e09b5202582c86e95a5bc0"
+                    "type": "git",
+                    "url": "https://code.videolan.org/videolan/x264.git",
+                    "branch": "stable"
                 }
             ]
         },

@@ -13,7 +13,7 @@ ENCODING_PROFILES = {
     },
     'mp4': {
         'muxer': 'mp4mux',
-        'video_enc': 'x264enc qp-min=17 qp-max=17 speed-preset=1 threads=%T',
+        'video_enc': 'x264enc qp-min=17 qp-max=17 speed-preset=1 threads=%T ! video/x-h264, profile=baseline',
         'audio_enc': 'opusenc',
     },
 }
