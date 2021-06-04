@@ -4,5 +4,5 @@ data/io.github.seadve.Kooha.gschema.xml
 data/ui/shortcuts.ui
 data/ui/window.ui
 src/main.py
-src/window.py
+src/ui/window.py
 

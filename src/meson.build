@@ -21,8 +21,8 @@ configure_file(
 kooha_sources = [
   '__init__.py',
   'main.py',
-  'window.py',
 ]
 
 install_data(kooha_sources, install_dir: moduledir)
 install_subdir('backend', install_dir: moduledir)
+install_subdir('ui', install_dir: moduledir)

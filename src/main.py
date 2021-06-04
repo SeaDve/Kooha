@@ -25,7 +25,8 @@ gi.require_version('Adw', '1')
 from gi.repository import Gtk, Gio, Gdk, GLib, Adw, Gst
 
 from kooha.backend.settings import Settings
-from kooha.window import KoohaWindow
+from kooha.ui.window import KoohaWindow
+from kooha.ui.error_dialog import ErrorDialog
 
 logging.basicConfig(level=logging.DEBUG)
 Gst.init(None)
@@ -54,7 +55,7 @@ class Application(Gtk.Application):
         )
 
         self.settings = Settings()
-        self.setup_actions()
+        self._setup_actions()
 
         Adw.init()
 
@@ -64,13 +65,13 @@ class Application(Gtk.Application):
             self.window = KoohaWindow(self.settings, application=self)
         self.window.present()
 
-    def setup_actions(self):
+    def _setup_actions(self):
         simple_actions = [
-            ("select-location", self.select_location_dialog),
-            ("show-shortcuts", self.show_shortcuts_window),
-            ("show-about", self.show_about_dialog),
-            ("show-saving-location", self.show_saving_location),
-            ("quit", self.on_quit),
+            ('select-location', self._on_select_location),
+            ('show-shortcuts', self._on_show_shortcuts),
+            ('show-about', self._on_show_about),
+            ('show-saving-location', self._on_show_saving_location),
+            ('quit', self._on_quit),
         ]
 
         for action, callback in simple_actions:
@@ -78,22 +79,22 @@ class Application(Gtk.Application):
             simple_action.connect("activate", callback)
             self.add_action(simple_action)
 
-        self.set_accels_for_action(f"app.show-shortcuts", ("<Ctrl>question",))
-        self.set_accels_for_action(f"app.quit", ("<Ctrl>q",))
-        self.set_accels_for_action(f"win.record-speaker", ("<Ctrl>a",))
-        self.set_accels_for_action(f"win.record-mic", ("<Ctrl>m",))
-        self.set_accels_for_action(f"win.show-pointer", ("<Ctrl>p",))
+        self.set_accels_for_action(f'app.show-shortcuts', ('<Ctrl>question',))
+        self.set_accels_for_action(f'app.quit', ('<Ctrl>q',))
+        self.set_accels_for_action(f'win.record-speaker', ('<Ctrl>a',))
+        self.set_accels_for_action(f'win.record-mic', ('<Ctrl>m',))
+        self.set_accels_for_action(f'win.show-pointer', ('<Ctrl>p',))
 
-    def select_location_dialog(self, action, param):
+    def _on_select_location(self, action, param):
         dialog = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
                                        action=Gtk.FileChooserAction.SELECT_FOLDER,
                                        title=_("Select a Folder"))
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
         dialog.add_button(_("Select"), Gtk.ResponseType.ACCEPT,)
         dialog.present()
-        dialog.connect('response', self._on_select_response)
+        dialog.connect('response', self._on_select_folder_response)
 
-    def _on_select_response(self, dialog, response):
+    def _on_select_folder_response(self, dialog, response):
         if response == Gtk.ResponseType.ACCEPT:
             directory = dialog.get_file().get_path()
             homefolder = GLib.get_home_dir()
@@ -101,27 +102,28 @@ class Application(Gtk.Application):
             if is_in_homefolder and not directory == homefolder:
                 self.settings.set_saving_location(directory)
             else:
-                error = Gtk.MessageDialog(transient_for=self.window, modal=True,
-                                          buttons=Gtk.ButtonsType.OK, title=_("Save location not set"),
-                                          text=_("Please choose an accessible location and retry."))
-                error.connect("response", lambda *_: error.close())
+                error = ErrorDialog(
+                    parent=self.window,
+                    title=_("Save location not set"),
+                    text=_("Please choose an accessible location and retry."),
+                )
                 error.present()
         dialog.close()
 
-    def show_shortcuts_window(self, action, param):
+    def _on_show_shortcuts(self, action, param):
         builder = Gtk.Builder()
         builder.add_from_resource('/io/github/seadve/Kooha/ui/shortcuts.ui')
         window = builder.get_object('shortcuts')
         window.set_transient_for(self.window)
         window.present()
 
-    def show_about_dialog(self, action, param):
+    def _on_show_about(self, action, param):
         about = Gtk.AboutDialog()
         about.set_transient_for(self.window)
         about.set_modal(True)
         about.set_version(self.version)
         about.set_program_name("Kooha")
-        about.set_logo_icon_name("io.github.seadve.Kooha")
+        about.set_logo_icon_name('io.github.seadve.Kooha')
         about.set_authors(
             [
                 "Dave Patrick",
@@ -140,19 +142,19 @@ class Application(Gtk.Application):
         about.set_website("https://github.com/SeaDve/Kooha")
         about.present()
 
-    def show_saving_location(self, action, param):
+    def _on_show_saving_location(self, action, param):
         saving_location = self.settings.get_saving_location()
-        Gio.AppInfo.launch_default_for_uri(f"file://{saving_location}")
+        Gio.AppInfo.launch_default_for_uri(f'file://{saving_location}')
+
+    def _on_quit(self, action, param):
+        if self.window.recorder.state == Gst.State.NULL:
+            self.quit()
 
     def new_notification(self, title, body, action):
         notification = Gio.Notification.new(title)
         notification.set_body(body)
         notification.set_default_action(action)
         self.send_notification(None, notification)
-
-    def on_quit(self, action, param):
-        if self.window.recorder.state == Gst.State.NULL:
-            self.quit()
 
 
 def main(version):
