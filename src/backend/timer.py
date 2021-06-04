@@ -33,7 +33,7 @@ class Timer(GObject.GObject):
             self.emit('delay-done')
         else:
             self.state = TimerState.DELAYED
-        self.time = self.delay = delay
+        self.time = delay
 
     def pause(self):
         self.state = TimerState.STOPPED
