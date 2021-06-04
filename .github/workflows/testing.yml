@@ -24,7 +24,7 @@ jobs:
           sudo apt -y install flake8
       - name: Lint with flake8
         run: |
-          flake8 --builtins=_ --ignore E402,W503 --max-complexity=10 --max-line-length=110 --show-source --statistics src/
+          flake8 --builtins=_ --ignore E402,W503 --max-complexity=10 --max-line-length=99 --show-source --statistics src/
 
   mypy:
     name: "Static Type Checker"
