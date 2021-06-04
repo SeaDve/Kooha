@@ -10,6 +10,7 @@ Gst.init(None)
 
 # TODO implement area recording
 # TODO fix pause and resume with pipewire
+# TODO test if saving_location exists before recording
 
 
 class Recorder(GObject.GObject):
