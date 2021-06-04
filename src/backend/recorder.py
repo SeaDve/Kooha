@@ -42,7 +42,8 @@ class Recorder(GObject.GObject):
         fd, node_id = self.portal.get_screen_info()
         default_audio_sources = self._get_default_audio_sources()
 
-        pipeline_builder = PipelineBuilder(fd, node_id, framerate, file_path, video_format, audio_source_type)
+        pipeline_builder = PipelineBuilder(fd, node_id, framerate, file_path,
+                                           video_format, audio_source_type)
         pipeline_builder.set_audio_source(*default_audio_sources)
         self.pipeline = pipeline_builder.build()
         self.emit('ready')

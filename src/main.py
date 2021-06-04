@@ -79,11 +79,11 @@ class Application(Gtk.Application):
             simple_action.connect("activate", callback)
             self.add_action(simple_action)
 
-        self.set_accels_for_action(f'app.show-shortcuts', ('<Ctrl>question',))
-        self.set_accels_for_action(f'app.quit', ('<Ctrl>q',))
-        self.set_accels_for_action(f'win.record-speaker', ('<Ctrl>a',))
-        self.set_accels_for_action(f'win.record-mic', ('<Ctrl>m',))
-        self.set_accels_for_action(f'win.show-pointer', ('<Ctrl>p',))
+        self.set_accels_for_action('app.show-shortcuts', ('<Ctrl>question',))
+        self.set_accels_for_action('app.quit', ('<Ctrl>q',))
+        self.set_accels_for_action('win.record-speaker', ('<Ctrl>a',))
+        self.set_accels_for_action('win.record-mic', ('<Ctrl>m',))
+        self.set_accels_for_action('win.show-pointer', ('<Ctrl>p',))
 
     def _on_select_location(self, action, param):
         dialog = Gtk.FileChooserDialog(transient_for=self.window, modal=True,

@@ -60,7 +60,8 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.main_stack.set_visible_child_name('main-screen')
             self.props.application.new_notification(
                 title=_("Screencast Recorded!"),
-                body=f'{_("The recording has been saved in")} {self.settings.get_saving_location()}',
+                body=f'{_("The recording has been saved in")} '
+                     f'{self.settings.get_saving_location()}',
                 action='app.show-saving-location',
             )
             self.timer.stop()
