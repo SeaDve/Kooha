@@ -17,9 +17,12 @@ class Portal(GObject.GObject):
         DBusGMainLoop(set_as_default=True)
         self.bus = dbus.SessionBus()
         self.sender_name = self.bus.get_unique_name()[1:].replace('.', '_')
-        self.proxy = self.bus.get_object(
-            'org.freedesktop.portal.Desktop',
-            '/org/freedesktop/portal/desktop'
+        self.proxy = dbus.Interface(
+            self.bus.get_object(
+                'org.freedesktop.portal.Desktop',
+                '/org/freedesktop/portal/desktop'
+            ),
+            'org.freedesktop.portal.ScreenCast',
         )
 
         self.request_counter = 0
@@ -47,18 +50,18 @@ class Portal(GObject.GObject):
             request_path
         )
         options['handle_token'] = request_token
-        method(*(args + (options, )), dbus_interface='org.freedesktop.portal.ScreenCast')
+        method(*(args + (options, )))
 
     def _on_create_session_response(self, response, results):
         if response:
             logging.error(f"Failed to create session: {response}")
         else:
-            self.session = results['session_handle']
+            self.session_handle = results['session_handle']
             logging.info("Session created")
             self._screencast_call(
                 self.proxy.SelectSources,
                 self._on_select_sources_response,
-                self.session,
+                self.session_handle,
                 options={
                     'types': dbus.UInt32(1 | 2),  # Which source
                     'cursor_mode': dbus.UInt32(2 if self.draw_pointer else 1)
@@ -73,7 +76,7 @@ class Portal(GObject.GObject):
             self._screencast_call(
                 self.proxy.Start,
                 self._on_start_response,
-                self.session,
+                self.session_handle,
                 ''
             )
 
@@ -86,9 +89,8 @@ class Portal(GObject.GObject):
                 logging.info(f"stream {node_id}")
 
                 fd = self.proxy.OpenPipeWireRemote(
-                    self.session,
+                    self.session_handle,
                     dbus.Dictionary(signature='sv'),
-                    dbus_interface='org.freedesktop.portal.ScreenCast'
                 ).take()
 
                 self.emit('ready', fd, node_id)
