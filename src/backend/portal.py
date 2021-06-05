@@ -17,7 +17,7 @@ class Portal(GObject.GObject):
         DBusGMainLoop(set_as_default=True)
         self.bus = dbus.SessionBus()
         self.sender_name = self.bus.get_unique_name()[1:].replace('.', '_')
-        self.portal = self.bus.get_object(
+        self.proxy = self.bus.get_object(
             'org.freedesktop.portal.Desktop',
             '/org/freedesktop/portal/desktop'
         )
@@ -56,7 +56,7 @@ class Portal(GObject.GObject):
             self.session = results['session_handle']
             logging.info("Session created")
             self._screencast_call(
-                self.portal.SelectSources,
+                self.proxy.SelectSources,
                 self._on_select_sources_response,
                 self.session,
                 options={
@@ -71,7 +71,7 @@ class Portal(GObject.GObject):
         else:
             logging.info("Sources selected")
             self._screencast_call(
-                self.portal.Start,
+                self.proxy.Start,
                 self._on_start_response,
                 self.session,
                 ''
@@ -85,7 +85,7 @@ class Portal(GObject.GObject):
             for node_id, _ in results['streams']:
                 logging.info(f"stream {node_id}")
 
-                fd = self.portal.OpenPipeWireRemote(
+                fd = self.proxy.OpenPipeWireRemote(
                     self.session,
                     dbus.Dictionary(signature='sv'),
                     dbus_interface='org.freedesktop.portal.ScreenCast'
@@ -95,12 +95,12 @@ class Portal(GObject.GObject):
 
     def open(self, draw_pointer):
         self.draw_pointer = draw_pointer
-        session_path, self.session_token = self._new_session_path()
+        _, session_token = self._new_session_path()
         self._screencast_call(
-            self.portal.CreateSession,
+            self.proxy.CreateSession,
             self._on_create_session_response,
             options={
-                'session_handle_token': self.session_token
+                'session_handle_token': session_token
             }
         )
 
