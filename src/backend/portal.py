@@ -9,7 +9,7 @@ from gi.repository import GObject
 
 
 class Portal(GObject.GObject):
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ())}
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int))}
 
     def __init__(self):
         super().__init__()
@@ -84,20 +84,14 @@ class Portal(GObject.GObject):
             logging.info("Ready for pipewire stream")
             for node_id, _ in results['streams']:
                 logging.info(f"stream {node_id}")
-                self.node_id = node_id
-                self.fd = self._get_fd()
-                self.emit('ready')
 
-    def _get_fd(self):
-        fd_object = self.portal.OpenPipeWireRemote(
-            self.session,
-            dbus.Dictionary(signature='sv'),
-            dbus_interface='org.freedesktop.portal.ScreenCast'
-        )
-        return fd_object.take()
+                fd = self.portal.OpenPipeWireRemote(
+                    self.session,
+                    dbus.Dictionary(signature='sv'),
+                    dbus_interface='org.freedesktop.portal.ScreenCast'
+                ).take()
 
-    def get_screen_info(self):
-        return self.fd, self.node_id
+                self.emit('ready', fd, node_id)
 
     def open(self, draw_pointer):
         self.draw_pointer = draw_pointer
