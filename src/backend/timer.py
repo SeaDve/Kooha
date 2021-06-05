@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 from gi.repository import GObject, GLib
 
 

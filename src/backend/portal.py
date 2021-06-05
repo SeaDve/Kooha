@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: Copyright 2018-2021 Jonas Adahl
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 import logging
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
@@ -12,10 +16,9 @@ class Portal(GObject.GObject):
 
     def __init__(self):
         super().__init__()
-
         DBusGMainLoop(set_as_default=True)
+
         self.bus = dbus.SessionBus()
-        self.sender_name = self.bus.get_unique_name()[1:].replace('.', '_')
         self.proxy = dbus.Interface(
             self.bus.get_object(
                 'org.freedesktop.portal.Desktop',
@@ -24,6 +27,7 @@ class Portal(GObject.GObject):
             'org.freedesktop.portal.ScreenCast',
         )
 
+        self.sender_name = self.bus.get_unique_name()[1:].replace('.', '_')
         self.request_counter = 0
         self.session_counter = 0
 
