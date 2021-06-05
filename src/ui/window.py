@@ -22,6 +22,8 @@ from kooha.backend.timer import Timer, TimerState  # noqa: F401
 
 # TODO implement kb shortcuts for capture mode
 # TODO implement ui support for pause and resume
+# TODO disable start button while portal is open or make the portal window modal
+# TODO close portal when the delayed is cancelled
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
