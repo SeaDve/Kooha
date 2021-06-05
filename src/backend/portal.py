@@ -106,7 +106,7 @@ class Portal(GObject.GObject):
         )
 
     def close(self):
-        session = self.bus.get_object(
+        self.bus.get_object(
             'org.freedesktop.portal.Desktop',
             self.session_handle,
         ).Close(dbus_interface='org.freedesktop.portal.Session')
