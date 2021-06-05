@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-23 10:27+0800\n"
-"PO-Revision-Date: 2021-05-23 02:28+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2021-06-05 22:33+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -143,7 +143,7 @@ msgstr "Attiva il puntatore"
 
 #: data/ui/window.ui:27
 msgid "Main Menu"
-msgstr "Menu Principale"
+msgstr "Menu principale"
 
 #: data/ui/window.ui:46
 msgid "Full Screen"

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-23 10:27+0800\n"
-"PO-Revision-Date: 2021-05-18 17:33+0000\n"
-"Last-Translator: Thomas Citharel <tcit@tcit.fr>\n"
+"PO-Revision-Date: 2021-06-05 22:33+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
 "Language: fr_FR\n"
@@ -102,7 +102,7 @@ msgstr "Ouvrir le menu"
 
 #: data/ui/shortcuts.ui:24
 msgid "Show keyboard shortcuts"
-msgstr "Montrer les raccourcis clavier"
+msgstr "Afficher les raccourcis clavier"
 
 #: data/ui/shortcuts.ui:31
 msgid "Quit"
@@ -110,7 +110,7 @@ msgstr "Quitter"
 
 #: data/ui/shortcuts.ui:39 data/ui/window.ui:151
 msgid "Recording"
-msgstr "Enregistrer"
+msgstr "Enregistrement"
 
 #: data/ui/shortcuts.ui:44
 msgid "Toggle record"
@@ -251,7 +251,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:142
 msgid "translator-credits"
-msgstr "Sébastien Serre"
+msgstr "J. Lavoie"
 
 #: src/main.py:143
 msgid "GitHub"
