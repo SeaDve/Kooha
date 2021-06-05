@@ -35,12 +35,12 @@ class Recorder(GObject.GObject):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
 
-    def _on_portal_ready(self, portal):
+    def _on_portal_ready(self, portal, *portal_data):
+        fd, node_id = (*portal_data, )
         framerate = self.settings.get_video_framerate()
-        video_format = self.settings.get_video_format()
         file_path = self.settings.get_file_path().replace(" ", r"\ ")
+        video_format = self.settings.get_video_format()
         audio_source_type = self.settings.get_audio_option()
-        fd, node_id = self.portal.get_screen_info()
         default_audio_sources = self._get_default_audio_sources()
 
         pipeline_builder = PipelineBuilder(fd, node_id, framerate, file_path,

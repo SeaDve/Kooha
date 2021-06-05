@@ -1,25 +1,26 @@
 import logging
-import dbus
-from dbus.mainloop.glib import DBusGMainLoop
 
-from gi.repository import GObject
+from gi.repository import GObject, GLib, Gio
 
 # TODO Close the session after use
-# TODO Use Giodbus and remove dbus dep
 
 
 class Portal(GObject.GObject):
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ())}
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int))}
 
     def __init__(self):
         super().__init__()
 
-        DBusGMainLoop(set_as_default=True)
-        self.bus = dbus.SessionBus()
+        self.bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
         self.sender_name = self.bus.get_unique_name()[1:].replace('.', '_')
-        self.portal = self.bus.get_object(
+        self.proxy = Gio.DBusProxy.new_sync(
+            self.bus,
+            Gio.DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
+            None,
             'org.freedesktop.portal.Desktop',
-            '/org/freedesktop/portal/desktop'
+            '/org/freedesktop/portal/desktop',
+            'org.freedesktop.portal.ScreenCast',
+            None,
         )
 
         self.request_counter = 0
@@ -39,74 +40,94 @@ class Portal(GObject.GObject):
 
     def _screencast_call(self, method, callback, *args, options={}):
         request_path, request_token = self._new_request_path()
-        self.bus.add_signal_receiver(
-            callback,
-            'Response',
-            'org.freedesktop.portal.Request',
+
+        self.bus.signal_subscribe(
             'org.freedesktop.portal.Desktop',
-            request_path
+            'org.freedesktop.portal.Request',
+            'Response',
+            request_path,
+            None,
+            Gio.DBusSignalFlags.NONE,
+            callback
         )
-        options['handle_token'] = request_token
-        method(*(args + (options, )), dbus_interface='org.freedesktop.portal.ScreenCast')
 
-    def _on_create_session_response(self, response, results):
-        if response:
-            logging.error(f"Failed to create session: {response}")
-        else:
-            self.session = results['session_handle']
-            logging.info("Session created")
-            self._screencast_call(
-                self.portal.SelectSources,
-                self._on_select_sources_response,
-                self.session,
-                options={
-                    'types': dbus.UInt32(1 | 2),  # Which source
-                    'cursor_mode': dbus.UInt32(2 if self.draw_pointer else 1)
-                }
+        self.proxy.call_sync(
+            method,
+            GLib.Variant.new_tuple(
+                *args,
+                GLib.Variant('a{sv}', {
+                    'handle_token': GLib.Variant('s', request_token),
+                    **options
+                })
+            ),
+            Gio.DBusCallFlags.NONE,
+            -1,
+            None
+        )
+
+    def _on_create_session_response(self, bus, sender, path, i_face_name, node, results):
+        if not results[1]:
+            return
+
+        self.session_handle = results[1]['session_handle']
+        logging.info("Session created")
+        self._screencast_call(
+            'SelectSources',
+            self._on_select_sources_response,
+            GLib.Variant('o', self.session_handle),
+            options={
+                'types': GLib.Variant('u', 1 | 2),  # Which source
+                'cursor_mode': GLib.Variant('u', 2 if self.draw_pointer else 1)
+            }
+        )
+
+    def _on_select_sources_response(self, bus, sender, path, i_face_name, node, results):
+        logging.info("Sources selected")
+        self._screencast_call(
+            'Start',
+            self._on_start_response,
+            GLib.Variant('o', self.session_handle),
+            GLib.Variant('s', ''),
+        )
+
+    def _on_start_response(self, bus, sender, path, i_face_name, node, results):
+        if not results[1]:
+            return
+
+
+        def testtest(self, *args):
+            print(args)
+            test = args[0].call_finish(x)
+            print(test)
+
+        logging.info("Ready for pipewire stream")
+        for node_id, _ in results[1]['streams']:
+            logging.info(f"stream {node_id}")
+
+            res = self.proxy.call(
+                'OpenPipeWireRemote',
+                GLib.Variant.new_tuple(
+                    GLib.Variant('o', self.session_handle),
+                    GLib.Variant('a{sv}', {}),
+                ),
+                Gio.DBusCallFlags.NONE,
+                -1,
+                None,
+                testtest,
             )
 
-    def _on_select_sources_response(self, response, results):
-        if response:
-            logging.error(f"Failed to select sources: {response}")
-        else:
-            logging.info("Sources selected")
-            self._screencast_call(
-                self.portal.Start,
-                self._on_start_response,
-                self.session,
-                ''
-            )
+            # print(res.unpack())
 
-    def _on_start_response(self, response, results):
-        if response:
-            logging.error(f"Failed to start: {response}")
-        else:
-            logging.info("Ready for pipewire stream")
-            for node_id, _ in results['streams']:
-                logging.info(f"stream {node_id}")
-                self.node_id = node_id
-                self.fd = self._get_fd()
-                self.emit('ready')
-
-    def _get_fd(self):
-        fd_object = self.portal.OpenPipeWireRemote(
-            self.session,
-            dbus.Dictionary(signature='sv'),
-            dbus_interface='org.freedesktop.portal.ScreenCast'
-        )
-        return fd_object.take()
-
-    def get_screen_info(self):
-        return self.fd, self.node_id
+            # self.emit('ready', fd, node_id)
 
     def open(self, draw_pointer):
         self.draw_pointer = draw_pointer
         session_path, self.session_token = self._new_session_path()
         self._screencast_call(
-            self.portal.CreateSession,
+            'CreateSession',
             self._on_create_session_response,
             options={
-                'session_handle_token': self.session_token
+                'session_handle_token': GLib.Variant('s', self.session_token),
             }
         )
 
