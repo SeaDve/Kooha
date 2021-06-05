@@ -52,6 +52,9 @@ class Recorder(GObject.GObject):
         t = message.type
         if t == Gst.MessageType.EOS:
             self.state = Gst.State.NULL
+            self.record_bus.remove_watch()
+            self.record_bus.disconnect(self.handler_id)
+            self.portal.close()
         elif t == Gst.MessageType.ERROR:
             err, debug = message.parse_error()
             print("Error: %s" % err, debug)
@@ -78,7 +81,7 @@ class Recorder(GObject.GObject):
         self.state = Gst.State.PLAYING
         self.record_bus = self.pipeline.get_bus()
         self.record_bus.add_signal_watch()
-        self.record_bus.connect('message', self._on_gst_message)
+        self.handler_id = self.record_bus.connect('message', self._on_gst_message)
 
     def pause(self):
         self.state = Gst.State.PAUSED
@@ -88,4 +91,3 @@ class Recorder(GObject.GObject):
 
     def stop(self):
         self.pipeline.send_event(Gst.Event.new_eos())
-        self.portal.close()

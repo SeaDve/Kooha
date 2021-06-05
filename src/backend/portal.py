@@ -4,7 +4,6 @@ from dbus.mainloop.glib import DBusGMainLoop
 
 from gi.repository import GObject
 
-# TODO Close the session after use
 # TODO Use Giodbus and remove dbus dep
 
 
@@ -107,4 +106,7 @@ class Portal(GObject.GObject):
         )
 
     def close(self):
-        pass
+        session = self.bus.get_object(
+            'org.freedesktop.portal.Desktop',
+            self.session_handle,
+        ).Close(dbus_interface='org.freedesktop.portal.Session')
