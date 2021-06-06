@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import logging
 from subprocess import PIPE, Popen
 
 from gi.repository import GObject, Gst
@@ -8,6 +9,8 @@ from gi.repository import GObject, Gst
 from kooha.backend.portal import Portal
 from kooha.backend.settings import Settings
 from kooha.backend.pipeline_builder import PipelineBuilder
+
+logger = logging.getLogger(__name__)
 
 Gst.init(None)
 
@@ -38,6 +41,8 @@ class Recorder(GObject.GObject):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
 
+        logger.info(f"Pipeline set to {pipeline_state} ")
+
     def _on_portal_ready(self, portal, fd, node_id):
         framerate = self.settings.get_video_framerate()
         file_path = self.settings.get_file_path().replace(" ", r"\ ")
@@ -51,6 +56,11 @@ class Recorder(GObject.GObject):
         self.pipeline = pipeline_builder.build()
         self.emit('ready')
 
+        logger.info(f'framerate: {framerate}')
+        logger.info(f'file_path: {file_path}')
+        logger.info(f'audio_source_type: {audio_source_type}')
+        logger.info(f'audio_sources: {default_audio_sources}')
+
     def _on_gst_message(self, bus, message):
         t = message.type
         if t == Gst.MessageType.EOS:
@@ -59,8 +69,8 @@ class Recorder(GObject.GObject):
             self.record_bus.disconnect(self.handler_id)
             self.portal.close()
         elif t == Gst.MessageType.ERROR:
-            err, debug = message.parse_error()
-            print("Error: %s" % err, debug)
+            error, debug = message.parse_error()
+            logger.error(f'{error} {debug}')
 
     def _get_default_audio_sources(self):
         pactl_output = Popen(
@@ -79,6 +89,8 @@ class Recorder(GObject.GObject):
     def ready(self):
         draw_pointer = self.settings.get_is_show_pointer()
         self.portal.open(draw_pointer)
+
+        logger.info(f'draw_pointer: {draw_pointer}')
 
     def start(self):
         self.record_bus = self.pipeline.get_bus()

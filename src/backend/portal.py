@@ -2,11 +2,13 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import logging
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
+import logging
 
 from gi.repository import GObject
+
+logger = logging.getLogger(__name__)
 
 # TODO Use Giodbus and remove dbus dep
 
@@ -56,47 +58,49 @@ class Portal(GObject.GObject):
         method(*(args + (options, )))
 
     def _on_create_session_response(self, response, results):
-        if response:
-            logging.error(f"Failed to create session: {response}")
-        else:
-            self.session_handle = results['session_handle']
-            logging.info("Session created")
-            self._screencast_call(
-                self.proxy.SelectSources,
-                self._on_select_sources_response,
-                self.session_handle,
-                options={
-                    'types': dbus.UInt32(1 | 2),  # Which source
-                    'cursor_mode': dbus.UInt32(2 if self.draw_pointer else 1)
-                }
-            )
+        if response != 0:
+            logger.warning(f"Failed to create session: {response}")
+            return
+
+        self.session_handle = results['session_handle']
+        logger.info("Session created")
+        self._screencast_call(
+            self.proxy.SelectSources,
+            self._on_select_sources_response,
+            self.session_handle,
+            options={
+                'types': dbus.UInt32(1 | 2),  # Which source
+                'cursor_mode': dbus.UInt32(2 if self.draw_pointer else 1)
+            }
+        )
 
     def _on_select_sources_response(self, response, results):
-        if response:
-            logging.error(f"Failed to select sources: {response}")
-        else:
-            logging.info("Sources selected")
-            self._screencast_call(
-                self.proxy.Start,
-                self._on_start_response,
-                self.session_handle,
-                ''
-            )
+        if response != 0:
+            logger.warning(f"Failed to select sources: {response}")
+            return
+
+        logger.info("Sources selected")
+        self._screencast_call(
+            self.proxy.Start,
+            self._on_start_response,
+            self.session_handle,
+            ''
+        )
 
     def _on_start_response(self, response, results):
-        if response:
-            logging.error(f"Failed to start: {response}")
-        else:
-            logging.info("Ready for pipewire stream")
-            for node_id, _ in results['streams']:
-                logging.info(f"stream {node_id}")
+        if response != 0:
+            logger.warning(f"Failed to start: {response}")
+            return
 
-                fd = self.proxy.OpenPipeWireRemote(
-                    self.session_handle,
-                    dbus.Dictionary(signature='sv'),
-                ).take()
+        logger.info("Ready for pipewire stream")
+        for node_id, _ in results['streams']:
+            logger.info(f"stream {node_id}")
+            fd = self.proxy.OpenPipeWireRemote(
+                self.session_handle,
+                dbus.Dictionary(signature='sv'),
+            ).take()
 
-                self.emit('ready', fd, node_id)
+            self.emit('ready', fd, node_id)
 
     def open(self, draw_pointer):
         self.draw_pointer = draw_pointer
@@ -114,3 +118,5 @@ class Portal(GObject.GObject):
             'org.freedesktop.portal.Desktop',
             self.session_handle,
         ).Close(dbus_interface='org.freedesktop.portal.Session')
+
+        logger.info("Portal closed")

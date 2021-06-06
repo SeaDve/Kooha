@@ -31,12 +31,12 @@ class Timer(GObject.GObject):
         return True
 
     def start(self, delay):
+        self.time = delay
         if not delay:
             self.state = TimerState.RUNNING
             self.emit('delay-done')
         else:
             self.state = TimerState.DELAYED
-        self.time = delay
 
     def pause(self):
         self.state = TimerState.STOPPED

@@ -17,8 +17,6 @@ from kooha.ui.error_dialog import ErrorDialog
 logging.basicConfig(level=logging.DEBUG)
 Gst.init(None)
 
-# TODO Implement proper loggers
-
 
 class Application(Gtk.Application):
     def __init__(self, version):
