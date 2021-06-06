@@ -69,7 +69,7 @@ class Portal(GObject.GObject):
             self._on_select_sources_response,
             self.session_handle,
             options={
-                'types': dbus.UInt32(1 | 2),  # Which source
+                'types': dbus.UInt32(1 | 2),
                 'cursor_mode': dbus.UInt32(2 if self.draw_pointer else 1)
             }
         )

@@ -88,7 +88,8 @@ class Application(Gtk.Application):
             else:
                 error = ErrorDialog(
                     parent=self.window,
-                    title=_("Save location not set"),
+                    # Translators: do not translate {directory}, it will get programatically replaced with the directory
+                    title=_(f"Inaccessible location '{directory}'"),
                     text=_("Please choose an accessible location and retry."),
                 )
                 error.present()

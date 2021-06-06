@@ -9,6 +9,8 @@ from gi.repository import Gio, GLib
 
 AudioOption = namedtuple('AudioOption', 'record_speaker record_mic')
 
+# TODO fix getting home dir since sandbox can't access it
+
 
 class Settings(Gio.Settings):
 
