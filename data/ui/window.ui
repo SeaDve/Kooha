@@ -270,7 +270,6 @@
       <signal name="notify::state" handler="_on_timer_state_notify" swapped="no"/>
       <signal name="delay-done" handler="_on_timer_delay_done" swapped="no"/>
     </object>
-    <object class="NotificationPortal" id="notification_portal"/>
   </template>
   <menu id="menu">
     <section>

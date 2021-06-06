@@ -134,6 +134,12 @@ class Application(Gtk.Application):
         if self.window.recorder.state == Gst.State.NULL:
             self.quit()
 
+    def new_notification(self, title, body, action):
+        notification = Gio.Notification.new(title)
+        notification.set_body(body)
+        notification.set_default_action(action)
+        self.send_notification('io.github.seadve.Kooha', notification)
+
 
 def main(version):
     app = Application(version)

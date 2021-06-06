@@ -5,7 +5,6 @@ from gi.repository import Gst, Gtk, Adw
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
-from kooha.backend.notification_portal import NotificationPortal  # noqa: F401
 from kooha.widgets.error_dialog import ErrorDialog
 
 # TODO implement kb shortcuts for capture mode
@@ -25,7 +24,6 @@ class KoohaWindow(Adw.ApplicationWindow):
 
     recorder = Gtk.Template.Child()
     timer = Gtk.Template.Child()
-    notification_portal = Gtk.Template.Child()
 
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
@@ -54,7 +52,7 @@ class KoohaWindow(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def _on_recorder_record_success(self, recorder, saving_location):
-        self.notification_portal.send_notification(
+        self.props.application.new_notification(
             title=_("Screencast Recorded!"),
             body=_(f"The recording has been saved in {saving_location}"),
             action='app.show-saving-location',
