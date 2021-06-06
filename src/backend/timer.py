@@ -24,7 +24,7 @@ class Timer(GObject.GObject):
     def _refresh_time(self):
         if self.state == TimerState.STOPPED:
             return True
-        if self.time == 0:
+        if self.time == 0 and self.state != TimerState.RUNNING:
             self.state = TimerState.RUNNING
             self.emit('delay-done')
         self.time += -1 if self.state == TimerState.DELAYED else 1
