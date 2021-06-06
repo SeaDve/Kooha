@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 # TODO Use Giodbus and remove dbus dep
 
 
-class Portal(GObject.GObject):
+class ScreencastPortal(GObject.GObject):
     __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int))}
 
     def __init__(self):

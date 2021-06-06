@@ -6,7 +6,7 @@ from subprocess import PIPE, Popen
 
 from gi.repository import GObject, Gst
 
-from kooha.backend.portal import Portal
+from kooha.backend.screencast_portal import ScreencastPortal
 from kooha.backend.settings import Settings
 from kooha.backend.pipeline_builder import PipelineBuilder
 
@@ -27,7 +27,7 @@ class Recorder(GObject.GObject):
 
     def __init__(self):
 
-        self.portal = Portal()
+        self.portal = ScreencastPortal()
         self.portal.connect('ready', self._on_portal_ready)
         self.settings = Settings()
 
