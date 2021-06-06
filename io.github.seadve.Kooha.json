@@ -28,8 +28,8 @@
             "name": "x264",
             "config-opts": [
                 "--enable-shared",
-                "--system-libx264",
-                "--enable-pic"
+                "--enable-pic",
+                "--disable-cli"
             ],
             "sources": [
                 {
