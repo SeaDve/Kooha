@@ -14,14 +14,13 @@ logger = logging.getLogger(__name__)
 
 # TODO implement area recording
 # TODO fix pause and resume with pipewire
-# TODO test if saving_location exists before recording
 # TODO autoadjust resolution in window mode
 
 
 class Recorder(GObject.GObject):
     __gtype_name__ = 'Recorder'
     __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ()),
-                    'record-success': (GObject.SIGNAL_RUN_FIRST, None, ()),
+                    'record-success': (GObject.SIGNAL_RUN_FIRST, None, (str, )),
                     'record-failed': (GObject.SIGNAL_RUN_FIRST, None, (str, ))}
 
     _state = Gst.State.NULL
@@ -65,7 +64,7 @@ class Recorder(GObject.GObject):
         t = message.type
         if t == Gst.MessageType.EOS:
             self._clean()
-            self.emit('record-success')
+            self.emit('record-success', self.settings.get_saving_location())
         elif t == Gst.MessageType.ERROR:
             error, debug = message.parse_error()
             self._clean()

@@ -51,11 +51,10 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.main_stack.set_visible_child_name('recording')
 
     @Gtk.Template.Callback()
-    def _on_recorder_record_success(self, recorder):
+    def _on_recorder_record_success(self, recorder, saving_location):
         self.props.application.new_notification(
             title=_("Screencast Recorded!"),
-            body=f'{_("The recording has been saved in")} '
-                 f'{self.settings.get_saving_location()}',
+            body=_(f"The recording has been saved in {saving_location}"),
             action='app.show-saving-location',
         )
 
