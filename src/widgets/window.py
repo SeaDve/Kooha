@@ -5,6 +5,7 @@ from gi.repository import Gst, Gtk, Adw
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
+from kooha.widgets.error_dialog import ErrorDialog
 
 # TODO implement kb shortcuts for capture mode
 # TODO implement ui support for pause and resume
@@ -45,15 +46,27 @@ class KoohaWindow(Adw.ApplicationWindow):
     def _on_recorder_state_notify(self, recorder, state):
         if recorder.state == Gst.State.NULL:
             self.main_stack.set_visible_child_name('main-screen')
-            self.props.application.new_notification(
-                title=_("Screencast Recorded!"),
-                body=f'{_("The recording has been saved in")} '
-                     f'{self.settings.get_saving_location()}',
-                action='app.show-saving-location',
-            )
             self.timer.stop()
         elif recorder.state == Gst.State.PLAYING:
             self.main_stack.set_visible_child_name('recording')
+
+    @Gtk.Template.Callback()
+    def _on_recorder_record_success(self, recorder):
+        self.props.application.new_notification(
+            title=_("Screencast Recorded!"),
+            body=f'{_("The recording has been saved in")} '
+                 f'{self.settings.get_saving_location()}',
+            action='app.show-saving-location',
+        )
+
+    @Gtk.Template.Callback()
+    def _on_recorder_record_failed(self, recorder, error_message):
+        error = ErrorDialog(
+            parent=self,
+            title=_("Sorry! An error has occured."),
+            text=_(error_message),
+        )
+        error.present()
 
     @Gtk.Template.Callback()
     def _on_timer_state_notify(self, timer, state):

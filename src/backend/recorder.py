@@ -12,8 +12,6 @@ from kooha.backend.pipeline_builder import PipelineBuilder
 
 logger = logging.getLogger(__name__)
 
-Gst.init(None)
-
 # TODO implement area recording
 # TODO fix pause and resume with pipewire
 # TODO test if saving_location exists before recording
@@ -22,7 +20,9 @@ Gst.init(None)
 
 class Recorder(GObject.GObject):
     __gtype_name__ = 'Recorder'
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ())}
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ()),
+                    'record-success': (GObject.SIGNAL_RUN_FIRST, None, ()),
+                    'record-failed': (GObject.SIGNAL_RUN_FIRST, None, (str, ))}
 
     _state = Gst.State.NULL
 
@@ -64,13 +64,19 @@ class Recorder(GObject.GObject):
     def _on_gst_message(self, bus, message):
         t = message.type
         if t == Gst.MessageType.EOS:
-            self.state = Gst.State.NULL
-            self.record_bus.remove_watch()
-            self.record_bus.disconnect(self.handler_id)
-            self.portal.close()
+            self._clean()
+            self.emit('record-success')
         elif t == Gst.MessageType.ERROR:
             error, debug = message.parse_error()
+            self._clean()
+            self.emit('record-failed', error)
             logger.error(f'{error} {debug}')
+
+    def _clean(self):
+        self.state = Gst.State.NULL
+        self.record_bus.remove_watch()
+        self.record_bus.disconnect(self.handler_id)
+        self.portal.close()
 
     def _get_default_audio_sources(self):
         pactl_output = Popen(

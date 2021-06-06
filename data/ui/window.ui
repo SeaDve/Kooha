@@ -262,6 +262,8 @@
     <object class="Recorder" id="recorder">
       <signal name="notify::state" handler="_on_recorder_state_notify" swapped="no"/>
       <signal name="ready" handler="_on_recorder_ready" swapped="no"/>
+      <signal name="record-success" handler="_on_recorder_record_success" swapped="no"/>
+      <signal name="record-failed" handler="_on_recorder_record_failed" swapped="no"/>
     </object>
     <object class="Timer" id="timer">
       <signal name="notify::time" handler="_on_timer_time_notify" swapped="no"/>

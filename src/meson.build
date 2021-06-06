@@ -25,4 +25,4 @@ kooha_sources = [
 
 install_data(kooha_sources, install_dir: moduledir)
 install_subdir('backend', install_dir: moduledir)
-install_subdir('ui', install_dir: moduledir)
+install_subdir('widgets', install_dir: moduledir)
