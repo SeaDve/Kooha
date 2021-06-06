@@ -81,10 +81,10 @@ class Recorder(GObject.GObject):
         self.portal.open(draw_pointer)
 
     def start(self):
-        self.state = Gst.State.PLAYING
         self.record_bus = self.pipeline.get_bus()
         self.record_bus.add_signal_watch()
         self.handler_id = self.record_bus.connect('message', self._on_gst_message)
+        self.state = Gst.State.PLAYING
 
     def pause(self):
         self.state = Gst.State.PAUSED
