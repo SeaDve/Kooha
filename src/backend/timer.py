@@ -6,8 +6,9 @@ from gi.repository import GObject, GLib
 
 class TimerState:
     RUNNING = 1
+    PAUSED = 3
     STOPPED = 2
-    DELAYED = 3
+    DELAYED = 4
 
 
 class Timer(GObject.GObject):
@@ -22,7 +23,7 @@ class Timer(GObject.GObject):
         GLib.timeout_add_seconds(1, self._refresh_time, priority=GLib.PRIORITY_LOW)
 
     def _refresh_time(self):
-        if self.state == TimerState.STOPPED:
+        if self.state in (TimerState.STOPPED, TimerState.PAUSED):
             return True
         if self.time == 0 and self.state != TimerState.RUNNING:
             self.state = TimerState.RUNNING
@@ -39,7 +40,7 @@ class Timer(GObject.GObject):
             self.state = TimerState.DELAYED
 
     def pause(self):
-        self.state = TimerState.STOPPED
+        self.state = TimerState.PAUSED
 
     def resume(self):
         self.state = TimerState.RUNNING

@@ -192,6 +192,23 @@
                             </child>
                           </object>
                         </child>
+                        <child>
+                          <object class="GtkButton" id="pause_record_button">
+                            <property name="icon-name">media-playback-pause-symbolic</property>
+                            <signal name="clicked" handler="_on_pause_record_button_clicked" swapped="no"/>
+                            <child>
+                              <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                  <object class="GtkShortcut">
+                                    <property name="trigger">&lt;Control&gt;k</property>
+                                    <property name="action">activate</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

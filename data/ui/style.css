@@ -22,3 +22,11 @@ headerbar.flat {
 .recording {
   color: #e01b24;
 }
+
+.paused {
+  animation: blinking 1.2s infinite;
+}
+
+@keyframes blinking {
+  50% { color: @theme_text_color; }
+}

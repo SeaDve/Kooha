@@ -47,6 +47,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">True</property>
+                <property name="accelerator">&lt;ctrl&gt;k</property>
+                <property name="title" translatable="yes">Toggle record pause</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">True</property>
                 <property name="accelerator">&lt;ctrl&gt;c</property>
                 <property name="title" translatable="yes">Cancel delay</property>
               </object>
