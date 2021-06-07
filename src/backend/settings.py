@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 from collections import namedtuple
 import os
 import time
@@ -5,6 +8,8 @@ import time
 from gi.repository import Gio, GLib
 
 AudioOption = namedtuple('AudioOption', 'record_speaker record_mic')
+
+# TODO fix getting home dir since sandbox can't access it
 
 
 class Settings(Gio.Settings):
@@ -30,7 +35,7 @@ class Settings(Gio.Settings):
         saving_location = self.get_string('saving-location')
         if saving_location == 'default':
             saving_location = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
-            if not os.path.exists(saving_location):
+            if not os.path.exists(saving_location or ''):
                 saving_location = GLib.get_home_dir()
         return saving_location
 

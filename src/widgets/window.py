@@ -1,27 +1,15 @@
-# window.py
-#
-# Copyright 2021 SeaDve
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from gi.repository import Gst, Gtk, Adw
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
+from kooha.widgets.error_dialog import ErrorDialog
 
 # TODO implement kb shortcuts for capture mode
 # TODO implement ui support for pause and resume
+# TODO disable start button while portal is open or make the portal window modal
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
@@ -58,15 +46,26 @@ class KoohaWindow(Adw.ApplicationWindow):
     def _on_recorder_state_notify(self, recorder, state):
         if recorder.state == Gst.State.NULL:
             self.main_stack.set_visible_child_name('main-screen')
-            self.props.application.new_notification(
-                title=_("Screencast Recorded!"),
-                body=f'{_("The recording has been saved in")} '
-                     f'{self.settings.get_saving_location()}',
-                action='app.show-saving-location',
-            )
             self.timer.stop()
         elif recorder.state == Gst.State.PLAYING:
             self.main_stack.set_visible_child_name('recording')
+
+    @Gtk.Template.Callback()
+    def _on_recorder_record_success(self, recorder, saving_location):
+        self.props.application.new_notification(
+            title=_("Screencast Recorded!"),
+            body=_(f"The recording has been saved in {saving_location}"),
+            action='app.show-saving-location',
+        )
+
+    @Gtk.Template.Callback()
+    def _on_recorder_record_failed(self, recorder, error_message):
+        error = ErrorDialog(
+            parent=self,
+            title=_("Sorry! An error has occured."),
+            text=_(error_message),
+        )
+        error.present()
 
     @Gtk.Template.Callback()
     def _on_timer_state_notify(self, timer, state):
@@ -99,4 +98,5 @@ class KoohaWindow(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def _on_cancel_delay_button_clicked(self, button):
+        self.recorder.portal.close()
         self.timer.stop()

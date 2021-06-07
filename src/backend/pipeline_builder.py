@@ -1,19 +1,25 @@
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 from gi.repository import GObject, Gst, GLib
 
 ENCODING_PROFILES = {
     'webm': {
         'muxer': 'webmmux',
-        'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
+        'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 '
+                     'static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
         'audio_enc': 'opusenc',
     },
     'mkv': {
         'muxer': 'matroskamux',
-        'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
+        'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 '
+                     'static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
         'audio_enc': 'opusenc',
     },
     'mp4': {
         'muxer': 'mp4mux',
-        'video_enc': 'x264enc qp-min=17 qp-max=17 speed-preset=1 threads=%T ! video/x-h264, profile=baseline',
+        'video_enc': 'x264enc qp-min=17 qp-max=17 speed-preset=1 threads=%T '
+                     '! video/x-h264, profile=baseline',
         'audio_enc': 'opusenc',
     },
 }
@@ -53,12 +59,12 @@ class PipelineBuilder(GObject.GObject):
         is_record_speaker = self.audio_source_type.record_speaker and self.speaker_source
         is_record_mic = self.audio_source_type.record_mic and self.mic_source
         if is_record_speaker:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.speaker_source}" ! {self._get_audio_enc()} ! queue ! mux.'
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.speaker_source}" ! {self._get_audio_enc()} ! queue ! mux.'  # noqa: E501
         elif is_record_mic:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! {self._get_audio_enc()} ! queue ! mux.'
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! {self._get_audio_enc()} ! queue ! mux.'  # noqa: E501
         else:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path}'
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path}'  # noqa: E501
         if is_record_speaker and is_record_mic:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! queue ! audiomixer name=mix ! {self._get_audio_enc()} ! queue ! mux. pulsesrc device="{self.speaker_source}" ! queue ! mix.'
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! queue ! audiomixer name=mix ! {self._get_audio_enc()} ! queue ! mux. pulsesrc device="{self.speaker_source}" ! queue ! mix.'  # noqa: E501
         pipeline_string = pipeline_string.replace('%T', str(self._get_thread_count()))
         return Gst.parse_launch(pipeline_string)

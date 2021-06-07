@@ -1,19 +1,5 @@
-# main.py
-#
-# Copyright 2021 SeaDve
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import sys
@@ -25,13 +11,11 @@ gi.require_version('Adw', '1')
 from gi.repository import Gtk, Gio, Gdk, GLib, Adw, Gst
 
 from kooha.backend.settings import Settings
-from kooha.ui.window import KoohaWindow
-from kooha.ui.error_dialog import ErrorDialog
+from kooha.widgets.window import KoohaWindow
+from kooha.widgets.error_dialog import ErrorDialog
 
 logging.basicConfig(level=logging.DEBUG)
 Gst.init(None)
-
-# TODO Implement proper loggers
 
 
 class Application(Gtk.Application):
@@ -104,7 +88,7 @@ class Application(Gtk.Application):
             else:
                 error = ErrorDialog(
                     parent=self.window,
-                    title=_("Save location not set"),
+                    title=_(f"Inaccessible location '{directory}'"),
                     text=_("Please choose an accessible location and retry."),
                 )
                 error.present()
@@ -154,7 +138,7 @@ class Application(Gtk.Application):
         notification = Gio.Notification.new(title)
         notification.set_body(body)
         notification.set_default_action(action)
-        self.send_notification(None, notification)
+        self.send_notification('io.github.seadve.Kooha', notification)
 
 
 def main(version):

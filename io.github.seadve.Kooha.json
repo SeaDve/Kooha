@@ -28,8 +28,8 @@
             "name": "x264",
             "config-opts": [
                 "--enable-shared",
-                "--system-libx264",
-                "--enable-pic"
+                "--enable-pic",
+                "--disable-cli"
             ],
             "sources": [
                 {
@@ -44,8 +44,13 @@
             "buildsystem": "meson",
             "builddir": true,
             "config-opts": [
+                "--buildtype=release",
                 "-Ddoc=disabled",
-                "-D=x264=enabled"
+                "-Dnls=disabled",
+                "-Dtests=disabled",
+                "-Dgobject-cast-checks=disabled",
+                "-Dglib-asserts=disabled",
+                "-Dglib-checks=disabled"
             ],
             "sources": [
                 {

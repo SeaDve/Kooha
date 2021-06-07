@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 from gi.repository import GObject, GLib
 
 
@@ -21,19 +24,19 @@ class Timer(GObject.GObject):
     def _refresh_time(self):
         if self.state == TimerState.STOPPED:
             return True
-        if self.time == 0:
+        if self.time == 0 and self.state != TimerState.RUNNING:
             self.state = TimerState.RUNNING
             self.emit('delay-done')
         self.time += -1 if self.state == TimerState.DELAYED else 1
         return True
 
     def start(self, delay):
+        self.time = delay
         if not delay:
             self.state = TimerState.RUNNING
             self.emit('delay-done')
         else:
             self.state = TimerState.DELAYED
-        self.time = delay
 
     def pause(self):
         self.state = TimerState.STOPPED
