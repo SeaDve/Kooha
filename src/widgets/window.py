@@ -8,7 +8,6 @@ from kooha.backend.timer import Timer, TimerState  # noqa: F401
 from kooha.widgets.error_dialog import ErrorDialog
 
 # TODO implement kb shortcuts for capture mode
-# TODO implement ui support for pause and resume
 # TODO disable start button while portal is open or make the portal window modal
 
 
