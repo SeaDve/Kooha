@@ -6,8 +6,8 @@ from gi.repository import GObject, GLib
 
 class TimerState:
     RUNNING = 1
-    PAUSED = 3
-    STOPPED = 2
+    PAUSED = 2
+    STOPPED = 3
     DELAYED = 4
 
 
