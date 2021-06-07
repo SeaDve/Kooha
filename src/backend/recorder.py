@@ -39,7 +39,7 @@ class Recorder(GObject.GObject):
     def state(self, pipeline_state):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
-        
+
         logger.info(f"Pipeline set to {pipeline_state} ")
 
     def _on_portal_ready(self, portal, fd, node_id):
