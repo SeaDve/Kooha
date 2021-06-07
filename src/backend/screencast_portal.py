@@ -99,12 +99,15 @@ class ScreencastPortal(GObject.GObject):
         logger.info("Ready for pipewire stream")
         for node_id, _ in results['streams']:
             logger.info(f"stream {node_id}")
-            fd = self.proxy.OpenPipeWireRemote(
-                '(oa{sv})',
-                self.session_handle,
-                {},
-            ).take()
-
+            response, results = self.proxy.call_with_unix_fd_list_sync(
+                'OpenPipeWireRemote',
+                GLib.Variant('(oa{sv})', (self.session_handle, {})),
+                Gio.DBusCallFlags.NONE,
+                -1,
+                None,
+                None,
+            )
+            fd = results.peek_fds()[0]
             self.emit('ready', fd, node_id)
 
     def open(self, draw_pointer):
