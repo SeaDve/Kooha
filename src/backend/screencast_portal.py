@@ -51,7 +51,7 @@ class ScreencastPortal(GObject.GObject):
             request_path,
             None,
             Gio.DBusSignalFlags.NONE,
-            callback
+            callback,
         )
         options['handle_token'] = GLib.Variant('s', request_token)
         method(signature, *args, options)
