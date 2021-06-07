@@ -55,6 +55,7 @@ class Recorder(GObject.GObject):
         self.pipeline = pipeline_builder.build()
         self.emit('ready')
 
+        logger.info(f'fd, node_id: {fd}, {node_id}')
         logger.info(f'framerate: {framerate}')
         logger.info(f'file_path: {file_path}')
         logger.info(f'audio_source_type: {audio_source_type}')

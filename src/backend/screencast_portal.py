@@ -2,15 +2,11 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import dbus
-from dbus.mainloop.glib import DBusGMainLoop
 import logging
 
-from gi.repository import GObject
+from gi.repository import GObject, GLib, Gio
 
 logger = logging.getLogger(__name__)
-
-# TODO Use Giodbus and remove dbus dep
 
 
 class ScreencastPortal(GObject.GObject):
@@ -18,15 +14,16 @@ class ScreencastPortal(GObject.GObject):
 
     def __init__(self):
         super().__init__()
-        DBusGMainLoop(set_as_default=True)
 
-        self.bus = dbus.SessionBus()
-        self.proxy = dbus.Interface(
-            self.bus.get_object(
-                'org.freedesktop.portal.Desktop',
-                '/org/freedesktop/portal/desktop'
-            ),
+        self.bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+        self.proxy = Gio.DBusProxy.new_sync(
+            self.bus,
+            Gio.DBusProxyFlags.NONE,
+            None,
+            'org.freedesktop.portal.Desktop',
+            '/org/freedesktop/portal/desktop',
             'org.freedesktop.portal.ScreenCast',
+            None,
         )
 
         self.sender_name = self.bus.get_unique_name()[1:].replace('.', '_')
@@ -45,19 +42,22 @@ class ScreencastPortal(GObject.GObject):
         path = f'/org/freedesktop/portal/desktop/request/{self.sender_name}/{token}'
         return path, token
 
-    def _screencast_call(self, method, callback, *args, options={}):
+    def _screencast_call(self, method, callback, signature, *args, options={}):
         request_path, request_token = self._new_request_path()
-        self.bus.add_signal_receiver(
-            callback,
-            'Response',
-            'org.freedesktop.portal.Request',
+        self.bus.signal_subscribe(
             'org.freedesktop.portal.Desktop',
-            request_path
+            'org.freedesktop.portal.Request',
+            'Response',
+            request_path,
+            None,
+            Gio.DBusSignalFlags.NONE,
+            callback,
         )
-        options['handle_token'] = request_token
-        method(*(args + (options, )))
+        options['handle_token'] = GLib.Variant('s', request_token)
+        method(signature, *args, options)
 
-    def _on_create_session_response(self, response, results):
+    def _on_create_session_response(self, bus, sender, path, request_path, node, output):
+        response, results = output
         if response != 0:
             logger.warning(f"Failed to create session: {response}")
             return
@@ -67,14 +67,16 @@ class ScreencastPortal(GObject.GObject):
         self._screencast_call(
             self.proxy.SelectSources,
             self._on_select_sources_response,
+            '(oa{sv})',
             self.session_handle,
             options={
-                'types': dbus.UInt32(1 | 2),
-                'cursor_mode': dbus.UInt32(2 if self.draw_pointer else 1)
+                'types': GLib.Variant('u', 1 | 2),
+                'cursor_mode': GLib.Variant('u', 2 if self.draw_pointer else 1)
             }
         )
 
-    def _on_select_sources_response(self, response, results):
+    def _on_select_sources_response(self, bus, sender, path, request_path, node, output):
+        response, results = output
         if response != 0:
             logger.warning(f"Failed to select sources: {response}")
             return
@@ -83,11 +85,13 @@ class ScreencastPortal(GObject.GObject):
         self._screencast_call(
             self.proxy.Start,
             self._on_start_response,
+            '(osa{sv})',
             self.session_handle,
-            ''
+            '',
         )
 
-    def _on_start_response(self, response, results):
+    def _on_start_response(self, bus, sender, path, request_path, node, output):
+        response, results = output
         if response != 0:
             logger.warning(f"Failed to start: {response}")
             return
@@ -95,11 +99,15 @@ class ScreencastPortal(GObject.GObject):
         logger.info("Ready for pipewire stream")
         for node_id, _ in results['streams']:
             logger.info(f"stream {node_id}")
-            fd = self.proxy.OpenPipeWireRemote(
-                self.session_handle,
-                dbus.Dictionary(signature='sv'),
-            ).take()
-
+            response, results = self.proxy.call_with_unix_fd_list_sync(
+                'OpenPipeWireRemote',
+                GLib.Variant('(oa{sv})', (self.session_handle, {})),
+                Gio.DBusCallFlags.NONE,
+                -1,
+                None,
+                None,
+            )
+            fd = results.peek_fds()[0]
             self.emit('ready', fd, node_id)
 
     def open(self, draw_pointer):
@@ -108,15 +116,21 @@ class ScreencastPortal(GObject.GObject):
         self._screencast_call(
             self.proxy.CreateSession,
             self._on_create_session_response,
+            '(a{sv})',
             options={
-                'session_handle_token': session_token
+                'session_handle_token': GLib.Variant('s', session_token),
             }
         )
 
     def close(self):
-        self.bus.get_object(
+        Gio.DBusProxy.new_for_bus_sync(
+            Gio.BusType.SESSION,
+            Gio.DBusProxyFlags.NONE,
+            None,
             'org.freedesktop.portal.Desktop',
             self.session_handle,
-        ).Close(dbus_interface='org.freedesktop.portal.Session')
+            'org.freedesktop.portal.Session',
+            None,
+        ).Close()
 
         logger.info("Portal closed")
