@@ -32,6 +32,6 @@ headerbar.flat {
 }
 
 @keyframes blinking {
-  0% { color: #e01b24; }
-  100% { color: alpha(@theme_text_color, 0.8); }
+  0% { color: alpha(@theme_text_color, 0.8); }
+  100% { color: #e01b24; }
 }
