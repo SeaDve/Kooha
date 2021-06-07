@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <template class="KoohaWindow" parent="AdwApplicationWindow">
     <property name="resizable">False</property>
+    <property name="default_width">1</property>
     <child>
       <object class="GtkWindowHandle">
         <child>
