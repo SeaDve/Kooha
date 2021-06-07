@@ -43,6 +43,10 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.add_action(settings_action)
 
     @Gtk.Template.Callback()
+    def _get_status_label_label(self, recorder, state):
+        return _("Paused") if state == Gst.State.PAUSED else _("Recording")
+
+    @Gtk.Template.Callback()
     def _on_recorder_state_notify(self, recorder, state):
         if recorder.state == Gst.State.NULL:
             self.timer.stop()
