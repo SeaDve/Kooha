@@ -24,9 +24,14 @@ headerbar.flat {
 }
 
 .paused {
-  animation: blinking 1.2s infinite;
+  animation-name: blinking;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+  animation-duration: 1s;
+
 }
 
 @keyframes blinking {
-  50% { color: @theme_text_color; }
+  0% { color: #e01b24; }
+  100% { color: alpha(@theme_text_color, 0.8); }
 }
