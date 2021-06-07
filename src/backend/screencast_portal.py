@@ -109,13 +109,13 @@ class ScreencastPortal(GObject.GObject):
 
     def open(self, draw_pointer):
         self.draw_pointer = draw_pointer
-        _, self.session_token = self._new_session_path()
+        _, session_token = self._new_session_path()
         self._screencast_call(
             self.proxy.CreateSession,
             self._on_create_session_response,
             '(a{sv})',
             options={
-                'session_handle_token': GLib.Variant('s', self.session_token),
+                'session_handle_token': GLib.Variant('s', session_token),
             }
         )
 
