@@ -80,7 +80,7 @@
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.capture-mode</property>
                                 <property name="action-target">"monitor-window"</property>
-                                <property name="icon-name">data_icons_display-symbolic</property>
+                                <property name="icon-name">display-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
                               </object>
                             </child>
@@ -88,7 +88,7 @@
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.capture-mode</property>
                                 <property name="action-target">"selection"</property>
-                                <property name="icon-name">data_icons_selection-symbolic</property>
+                                <property name="icon-name">selection-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
                               </object>
                             </child>
