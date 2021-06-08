@@ -2,7 +2,7 @@
 <gresources>
   <gresource prefix="/io/github/seadve/Kooha">
     <file preprocess="xml-stripblanks">ui/window.ui</file>
-    <file preprocess="xml-stripblanks">ui/shortcuts.ui</file>
+    <file preprocess="xml-stripblanks">ui/help_overlay.ui</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/display-symbolic.svg</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/selection-symbolic.svg</file>
     <file>ui/style.css</file>

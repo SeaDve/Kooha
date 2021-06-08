@@ -352,7 +352,7 @@
     </section>
     <section>
       <item>
-        <attribute name="action">app.show-shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
         <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
       <item>

@@ -52,7 +52,6 @@ class Application(Gtk.Application):
     def _setup_actions(self):
         simple_actions = [
             ('select-location', self._on_select_location),
-            ('show-shortcuts', self._on_show_shortcuts),
             ('show-about', self._on_show_about),
             ('show-saving-location', self._on_show_saving_location),
             ('quit', self._on_quit),
@@ -63,11 +62,11 @@ class Application(Gtk.Application):
             simple_action.connect("activate", callback)
             self.add_action(simple_action)
 
-        self.set_accels_for_action('app.show-shortcuts', ('<Ctrl>question',))
         self.set_accels_for_action('app.quit', ('<Ctrl>q',))
         self.set_accels_for_action('win.record-speaker', ('<Ctrl>a',))
         self.set_accels_for_action('win.record-mic', ('<Ctrl>m',))
         self.set_accels_for_action('win.show-pointer', ('<Ctrl>p',))
+        self.set_accels_for_action('win.show-help-overlay', ('<Ctrl>question',))
 
     def _on_select_location(self, action, param):
         dialog = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
@@ -93,13 +92,6 @@ class Application(Gtk.Application):
                 )
                 error.present()
         dialog.close()
-
-    def _on_show_shortcuts(self, action, param):
-        builder = Gtk.Builder()
-        builder.add_from_resource('/io/github/seadve/Kooha/ui/shortcuts.ui')
-        window = builder.get_object('shortcuts')
-        window.set_transient_for(self.window)
-        window.present()
 
     def _on_show_about(self, action, param):
         about = Gtk.AboutDialog()

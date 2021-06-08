@@ -7,7 +7,6 @@ from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
 from kooha.widgets.error_dialog import ErrorDialog
 
-# TODO implement kb shortcuts for capture mode
 # TODO disable start button while portal is open or make the portal window modal
 
 
@@ -35,6 +34,10 @@ class KoohaWindow(Adw.ApplicationWindow):
         self._setup_actions()
 
     def _setup_actions(self):
+        builder = Gtk.Builder.new_from_resource('/io/github/seadve/Kooha/ui/help_overlay.ui')
+        help_overlay = builder.get_object('help_overlay')
+        self.set_help_overlay(help_overlay)
+
         settings_actions = [
             'record-speaker', 'record-mic', 'show-pointer',
             'capture-mode', 'record-delay', 'video-format'
