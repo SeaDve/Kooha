@@ -17,6 +17,13 @@
       </choices>
       <default>"webm"</default>
     </key>
+    <key type="s" name="capture-mode">
+      <choices>
+        <choice value="monitor-window"/>
+        <choice value="selection"/>
+      </choices>
+      <default>"monitor-window"</default>
+    </key>
     <key type="b" name="record-speaker">
       <default>false</default>
     </key>

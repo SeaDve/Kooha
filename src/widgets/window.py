@@ -35,7 +35,7 @@ class KoohaWindow(Adw.ApplicationWindow):
     def _setup_actions(self):
         settings_actions = [
             'record-speaker', 'record-mic', 'show-pointer',
-            'record-delay', 'video-format',
+            'capture-mode', 'record-delay', 'video-format'
         ]
 
         for action in settings_actions:

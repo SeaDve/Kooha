@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class ScreencastPortal(GObject.GObject):
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int))}
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, int, int, bool))}
 
     def __init__(self):
         super().__init__()
@@ -70,8 +70,8 @@ class ScreencastPortal(GObject.GObject):
             '(oa{sv})',
             self.session_handle,
             options={
-                'types': GLib.Variant('u', 1 | 2),
-                'cursor_mode': GLib.Variant('u', 2 if self.draw_pointer else 1)
+                'types': GLib.Variant('u', 1 if self.is_selection_mode else 1 | 2),
+                'cursor_mode': GLib.Variant('u', 2 if self.is_show_pointer else 1)
             }
         )
 
@@ -97,7 +97,7 @@ class ScreencastPortal(GObject.GObject):
             return
 
         logger.info("Ready for pipewire stream")
-        for node_id, _ in results['streams']:
+        for node_id, stream_info in results['streams']:
             logger.info(f"stream {node_id}")
             response, results = self.proxy.call_with_unix_fd_list_sync(
                 'OpenPipeWireRemote',
@@ -108,10 +108,12 @@ class ScreencastPortal(GObject.GObject):
                 None,
             )
             fd = results.peek_fds()[0]
-            self.emit('ready', fd, node_id)
+            screen_width, screen_height = stream_info['size']
+            self.emit('ready', fd, node_id, screen_width, screen_height, self.is_selection_mode)
 
-    def open(self, draw_pointer):
-        self.draw_pointer = draw_pointer
+    def open(self, is_show_pointer, is_selection_mode):
+        self.is_show_pointer = is_show_pointer
+        self.is_selection_mode = is_selection_mode
         _, session_token = self._new_session_path()
         self._screencast_call(
             self.proxy.CreateSession,

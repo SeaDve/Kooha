@@ -1,9 +1,9 @@
-.large button {
+.switcher button {
   min-width: 75px;
   min-height: 63px;
 }
 
-stackswitcher image {
+.switcher button > image {
   -gtk-icon-size: 32px;
 }
 
