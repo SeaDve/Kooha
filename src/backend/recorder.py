@@ -59,6 +59,7 @@ class Recorder(GObject.GObject):
         if is_selection_mode:
             try:
                 coordinates = self.area_selector.select_area()
+                logger.info(coordinates)
                 pipeline_builder.set_coordinates(coordinates, screen_width, screen_height)
             except GLib.Error as error:
                 logger.warning(error)
