@@ -40,17 +40,17 @@
                             </style>
                             <child>
                               <object class="GtkStackPage">
-                                <property name="name">fullscreen-mode</property>
+                                <property name="name">monitor-window</property>
                                 <property name="child">
                                   <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Full Screen</property>
+                                    <property name="label" translatable="yes">Normal</property>
                                   </object>
                                 </property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkStackPage">
-                                <property name="name">selection-mode</property>
+                                <property name="name">selection</property>
                                 <property name="child">
                                   <object class="GtkLabel">
                                     <property name="label" translatable="yes">Selection</property>
