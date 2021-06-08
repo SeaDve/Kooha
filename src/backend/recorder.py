@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
-from subprocess import PIPE, Popen
+import subprocess
 
 from gi.repository import GObject, Gst
 
@@ -79,12 +79,12 @@ class Recorder(GObject.GObject):
         self.portal.close()
 
     def _get_default_audio_sources(self):
-        pactl_output = Popen(
+        pactl_output = subprocess.run(
             'pactl info | tail -n +13 | cut -d" " -f3',
+            stdout=subprocess.PIPE,
             shell=True,
-            text=True,
-            stdout=PIPE
-        ).stdout.read().rstrip()
+            text=True
+        ).stdout.rstrip()
         device_list = pactl_output.split("\n")
         default_sink = f'{device_list[0]}.monitor'
         default_source = device_list[1]
