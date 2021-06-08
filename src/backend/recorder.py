@@ -12,7 +12,6 @@ from kooha.backend.pipeline_builder import PipelineBuilder
 
 logger = logging.getLogger(__name__)
 
-# TODO implement area recording
 # TODO fix pause and resume with pipewire
 # TODO autoadjust resolution in window mode
 
@@ -55,11 +54,11 @@ class Recorder(GObject.GObject):
         self.pipeline = pipeline_builder.build()
         self.emit('ready')
 
-        logger.info(f'fd, node_id: {fd}, {node_id}')
-        logger.info(f'framerate: {framerate}')
-        logger.info(f'file_path: {file_path}')
-        logger.info(f'audio_source_type: {audio_source_type}')
-        logger.info(f'audio_sources: {default_audio_sources}')
+        logger.info(f"fd, node_id: {fd}, {node_id}")
+        logger.info(f"framerate: {framerate}")
+        logger.info(f"file_path: {file_path}")
+        logger.info(f"audio_source_type: {audio_source_type}")
+        logger.info(f"audio_sources: {default_audio_sources}")
 
     def _on_gst_message(self, bus, message):
         t = message.type
@@ -70,7 +69,7 @@ class Recorder(GObject.GObject):
             error, debug = message.parse_error()
             self._clean()
             self.emit('record-failed', error)
-            logger.error(f'{error} {debug}')
+            logger.error(f"{error} {debug}")
 
     def _clean(self):
         self.state = Gst.State.NULL
@@ -96,7 +95,7 @@ class Recorder(GObject.GObject):
         draw_pointer = self.settings.get_is_show_pointer()
         self.portal.open(draw_pointer)
 
-        logger.info(f'draw_pointer: {draw_pointer}')
+        logger.info(f"draw_pointer: {draw_pointer}")
 
     def start(self):
         self.record_bus = self.pipeline.get_bus()
