@@ -41,7 +41,6 @@
                             <child>
                               <object class="GtkStackPage">
                                 <property name="name">fullscreen-mode</property>
-                                <property name="icon-name">data_icons_display-symbolic</property>
                                 <property name="child">
                                   <object class="GtkLabel">
                                     <property name="label" translatable="yes">Full Screen</property>
@@ -52,7 +51,6 @@
                             <child>
                               <object class="GtkStackPage">
                                 <property name="name">selection-mode</property>
-                                <property name="icon-name">data_icons_selection-symbolic</property>
                                 <property name="child">
                                   <object class="GtkLabel">
                                     <property name="label" translatable="yes">Selection</property>
@@ -72,12 +70,28 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkStackSwitcher">
-                            <property name="stack">title_stack</property>
-                            <property name="halign">center</property>
+                          <object class="GtkBox">
+                            <property name="homogeneous">True</property>
                             <style>
-                              <class name="large"/>
+                              <class name="linked"/>
+                              <class name="switcher"/>
                             </style>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.capture-mode</property>
+                                <property name="action-target">"monitor-window"</property>
+                                <property name="icon-name">data_icons_display-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.capture-mode</property>
+                                <property name="action-target">"selection"</property>
+                                <property name="icon-name">data_icons_selection-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Record From Microphone</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child>

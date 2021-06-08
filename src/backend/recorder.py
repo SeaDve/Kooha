@@ -4,11 +4,12 @@
 import logging
 import subprocess
 
-from gi.repository import GObject, Gst
+from gi.repository import GObject, Gst, GLib
 
 from kooha.backend.screencast_portal import ScreencastPortal
 from kooha.backend.settings import Settings
 from kooha.backend.pipeline_builder import PipelineBuilder
+from kooha.backend.area_selector import AreaSelector
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +29,7 @@ class Recorder(GObject.GObject):
 
         self.portal = ScreencastPortal()
         self.portal.connect('ready', self._on_portal_ready)
+        self.area_selector = AreaSelector()
         self.settings = Settings()
 
     @GObject.Property(type=Gst.State, default=_state)
@@ -41,7 +43,8 @@ class Recorder(GObject.GObject):
 
         logger.info(f"Pipeline set to {pipeline_state} ")
 
-    def _on_portal_ready(self, portal, fd, node_id):
+    def _on_portal_ready(self, portal, fd, node_id,
+                         screen_width, screen_height, is_selection_mode):
         framerate = self.settings.get_video_framerate()
         file_path = self.settings.get_file_path().replace(" ", r"\ ")
         video_format = self.settings.get_video_format()
@@ -51,10 +54,23 @@ class Recorder(GObject.GObject):
         pipeline_builder = PipelineBuilder(fd, node_id, framerate, file_path,
                                            video_format, audio_source_type)
         pipeline_builder.set_audio_source(*default_audio_sources)
+
+        if is_selection_mode:
+            try:
+                coordinates = self.area_selector.select_area()
+                pipeline_builder.set_coordinates(coordinates, screen_width, screen_height)
+            except GLib.Error as error:
+                logger.warning(error)
+                if 'cancelled' not in str(error):
+                    self.emit('record-failed', error)
+                self.portal.close()
+                return
+
         self.pipeline = pipeline_builder.build()
         self.emit('ready')
 
         logger.info(f"fd, node_id: {fd}, {node_id}")
+        logger.info(f"screen_info: (screen_width, screen_height)")
         logger.info(f"framerate: {framerate}")
         logger.info(f"file_path: {file_path}")
         logger.info(f"audio_source_type: {audio_source_type}")
@@ -92,10 +108,12 @@ class Recorder(GObject.GObject):
         return default_sink, default_source
 
     def ready(self):
-        draw_pointer = self.settings.get_is_show_pointer()
-        self.portal.open(draw_pointer)
+        is_show_pointer = self.settings.get_is_show_pointer()
+        is_selection_mode = self.settings.get_is_selection_mode()
+        self.portal.open(is_show_pointer, is_selection_mode)
 
-        logger.info(f"draw_pointer: {draw_pointer}")
+        logger.info(f"is_show_pointer: {is_show_pointer}")
+        logger.info(f"is_selection_mode: {is_selection_mode}")
 
     def start(self):
         self.record_bus = self.pipeline.get_bus()
