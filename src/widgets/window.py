@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Gst, Gtk, Adw
+from gi.repository import Gst, Gtk, Adw, Gio
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
@@ -29,6 +29,8 @@ class KoohaWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
         self.settings = settings
 
+        self.settings.bind('capture-mode', self.title_stack,
+                           'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
         self.start_record_button.grab_focus()
         self._setup_actions()
 
