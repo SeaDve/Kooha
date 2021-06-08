@@ -70,7 +70,7 @@ class Recorder(GObject.GObject):
         self.emit('ready')
 
         logger.info(f"fd, node_id: {fd}, {node_id}")
-        logger.info(f"screen_info: (screen_width, screen_height)")
+        logger.info(f"screen_resolution: ({screen_width}, {screen_height})")
         logger.info(f"framerate: {framerate}")
         logger.info(f"file_path: {file_path}")
         logger.info(f"audio_source_type: {audio_source_type}")
