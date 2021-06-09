@@ -12,6 +12,8 @@ logger = logging.getLogger(__name__)
 class ScreencastPortal(GObject.GObject):
     __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, int, int, bool))}
 
+    is_window_open = GObject.Property(type=bool, default=False)
+
     def __init__(self):
         super().__init__()
 
@@ -91,6 +93,7 @@ class ScreencastPortal(GObject.GObject):
         )
 
     def _on_start_response(self, bus, sender, path, request_path, node, output):
+        self.is_window_open = False
         response, results = output
         if response != 0:
             logger.warning(f"Failed to start: {response}")
@@ -114,6 +117,8 @@ class ScreencastPortal(GObject.GObject):
     def open(self, is_show_pointer, is_selection_mode):
         self.is_show_pointer = is_show_pointer
         self.is_selection_mode = is_selection_mode
+        self.is_window_open = True
+
         _, session_token = self._new_session_path()
         self._screencast_call(
             self.proxy.CreateSession,

@@ -41,8 +41,6 @@ class Application(Gtk.Application):
         self.settings = Settings()
         self._setup_actions()
 
-        print(self.settings.get_saving_location())
-
         Adw.init()
 
     def do_activate(self):

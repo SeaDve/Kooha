@@ -1,13 +1,11 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Gst, Gtk, Adw, Gio
+from gi.repository import Gst, Gtk, Adw, Gio, GObject
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
 from kooha.widgets.error_dialog import ErrorDialog
-
-# TODO disable start button while portal is open or make the portal window modal
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
@@ -30,6 +28,8 @@ class KoohaWindow(Adw.ApplicationWindow):
 
         self.settings.bind('capture-mode', self.title_stack,
                            'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
+        self.recorder.portal.bind_property('is_window_open', self,
+                                           'visible', GObject.BindingFlags.INVERT_BOOLEAN)
         self.start_record_button.grab_focus()
         self._setup_actions()
 
@@ -48,8 +48,8 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.add_action(settings_action)
 
     @Gtk.Template.Callback()
-    def _get_status_label_label(self, recorder, state):
-        return _("Paused") if state == Gst.State.PAUSED else _("Recording")
+    def _get_status_label_label(self, window, recorder_state):
+        return _("Paused") if recorder_state == Gst.State.PAUSED else _("Recording")
 
     @Gtk.Template.Callback()
     def _on_recorder_state_notify(self, recorder, state):
