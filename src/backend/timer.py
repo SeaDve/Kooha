@@ -23,12 +23,11 @@ class Timer(GObject.GObject):
         GLib.timeout_add_seconds(1, self._refresh_time, priority=GLib.PRIORITY_LOW)
 
     def _refresh_time(self):
-        if self.state in (TimerState.STOPPED, TimerState.PAUSED):
-            return True
-        if self.time == 0 and self.state != TimerState.RUNNING:
+        if self.time == 0 and self.state == TimerState.DELAYED:
             self.state = TimerState.RUNNING
             self.emit('delay-done')
-        self.time += -1 if self.state == TimerState.DELAYED else 1
+        elif self.state not in (TimerState.PAUSED, TimerState.STOPPED):
+            self.time += -1 if self.state == TimerState.DELAYED else 1
         return True
 
     def start(self, delay):
