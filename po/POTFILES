@@ -4,4 +4,5 @@ data/io.github.seadve.Kooha.gschema.xml
 data/ui/help_overlay.ui
 data/ui/window.ui
 src/widgets/window.py
+src/backend/settings.py
 src/main.py

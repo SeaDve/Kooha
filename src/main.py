@@ -41,6 +41,8 @@ class Application(Gtk.Application):
         self.settings = Settings()
         self._setup_actions()
 
+        print(self.settings.get_saving_location())
+
         Adw.init()
 
     def do_activate(self):
@@ -74,8 +76,8 @@ class Application(Gtk.Application):
                                        title=_("Select a Folder"))
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
         dialog.add_button(_("Select"), Gtk.ResponseType.ACCEPT,)
-        dialog.present()
         dialog.connect('response', self._on_select_folder_response)
+        dialog.present()
 
     def _on_select_folder_response(self, dialog, response):
         if response == Gtk.ResponseType.ACCEPT:
