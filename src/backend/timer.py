@@ -27,7 +27,6 @@ class Timer(GObject.GObject):
             return True
         if self.time == 0 and self.state != TimerState.RUNNING:
             self.state = TimerState.RUNNING
-            self.time -= 1
             self.emit('delay-done')
         self.time += -1 if self.state == TimerState.DELAYED else 1
         return True

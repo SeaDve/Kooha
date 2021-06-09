@@ -93,7 +93,7 @@ class KoohaWindow(Adw.ApplicationWindow):
     @Gtk.Template.Callback()
     def _on_timer_time_notify(self, timer, time):
         self.delay_label.set_label(str(timer.time))
-        self.time_recording_label.set_label("%02d∶%02d" % divmod(timer.time, 60))
+        self.time_recording_label.set_label("%02d∶%02d" % divmod(timer.time - 1, 60))
 
     @Gtk.Template.Callback()
     def _on_timer_delay_done(self, timer):
