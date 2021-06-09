@@ -4,8 +4,6 @@
 
 from gi.repository import Gio
 
-# TODO implement area recording on none GNOME environments
-
 
 class AreaSelector():
 

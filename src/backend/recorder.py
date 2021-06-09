@@ -13,10 +13,6 @@ from kooha.backend.area_selector import AreaSelector
 
 logger = logging.getLogger(__name__)
 
-# TODO fix pause and resume with pipewire
-# TODO autoadjust resolution in window mode
-# TODO fix crashes when there is a delay on selection mode
-
 
 class Recorder(GObject.GObject):
     __gtype_name__ = 'Recorder'
