@@ -101,6 +101,7 @@
             "name": "libadwaita",
             "buildsystem": "meson",
             "config-opts": [
+                "-Dprofiling=false",
                 "-Dgtk_doc=false",
                 "-Dtests=false",
                 "-Dexamples=false",
