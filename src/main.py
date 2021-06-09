@@ -11,8 +11,8 @@ gi.require_version('Adw', '1')
 from gi.repository import Gtk, Gio, Gdk, GLib, Adw, Gst
 
 from kooha.backend.settings import Settings
-from kooha.widgets.window import KoohaWindow
 from kooha.widgets.error_dialog import ErrorDialog
+from kooha.widgets.window import KoohaWindow
 
 logging.basicConfig(level=logging.DEBUG)
 Gst.init(None)

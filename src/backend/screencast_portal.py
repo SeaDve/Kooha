@@ -4,9 +4,9 @@
 
 import logging
 
+import dbus
 from gi.repository import GObject
 from dbus.mainloop.glib import DBusGMainLoop
-import dbus
 
 DBusGMainLoop(set_as_default=True)
 logger = logging.getLogger(__name__)
