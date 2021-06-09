@@ -1,8 +1,7 @@
 data/io.github.seadve.Kooha.desktop.in
 data/io.github.seadve.Kooha.appdata.xml.in
 data/io.github.seadve.Kooha.gschema.xml
-data/ui/shortcuts.ui
+data/ui/help_overlay.ui
 data/ui/window.ui
+src/widgets/window.py
 src/main.py
-src/ui/window.py
-
