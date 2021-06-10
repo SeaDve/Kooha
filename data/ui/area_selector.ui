@@ -3,9 +3,10 @@
   <requires lib="gtk" version="4.0"/>
   <template class="AreaSelector" parent="GtkWindow">
     <property name="deletable">False</property>
-    <style>
-      <class name="transparent"/>
-    </style>
+    <property name="decorated">False</property>
+    <child>
+      <object class="GtkDrawingArea" id="drawing_area"/>
+    </child>
     <child>
       <object class="GtkGestureClick">
         <property name="propagation-phase">capture</property>
@@ -24,5 +25,8 @@
         <signal name="key-pressed" handler="_on_key_pressed_notify" swapped="no"/>
       </object>
     </child>
+    <style>
+      <class name="transparent"/>
+    </style>
   </template>
 </interface>

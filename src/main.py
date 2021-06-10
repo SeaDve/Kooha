@@ -49,6 +49,10 @@ class Application(Gtk.Application):
             self.window = KoohaWindow(self.settings, application=self)
         self.window.present()
 
+        from kooha.widgets.area_selector import AreaSelector
+        area_selector = AreaSelector()
+        area_selector.select_area()
+
     def _setup_actions(self):
         simple_actions = [
             ('select-location', self._on_select_location),
