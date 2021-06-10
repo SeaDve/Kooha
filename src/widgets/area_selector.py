@@ -51,12 +51,12 @@ class AreaSelector(Gtk.Window):
 
     def _drawing_area_draw(self, dwa, ctx, dwa_w, dwa_h, x, y, w, h):
         ctx.rectangle (x, y, w, h)
-        ctx.set_source_rgba(0.078, 0.396, 0.78, 0.3)
+        ctx.set_source_rgba(0.1, 0.45, 0.8, 0.3)
         ctx.fill ()
 
         ctx.rectangle (x, y, w, h)
-        ctx.set_source_rgb(0.078, 0.396, 0.78)
-        ctx.set_line_width(0.8)
+        ctx.set_source_rgb(0.1, 0.45, 0.8)
+        ctx.set_line_width(1)
         ctx.stroke ()
 
     def _get_topleft_point(self, p1, p2):
