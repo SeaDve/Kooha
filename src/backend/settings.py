@@ -28,9 +28,7 @@ class Settings(Gio.Settings):
 
     def get_is_selection_mode(self):
         capture_mode = self.get_string('capture-mode')
-        if capture_mode == 'selection':
-            return True
-        return False
+        return capture_mode == 'selection'
 
     def set_saving_location(self, directory):
         self.set_string('saving-location', directory)
