@@ -70,8 +70,8 @@ class Application(Gtk.Application):
 
     def _on_select_location(self, action, param):
         chooser = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
-                                       action=Gtk.FileChooserAction.SELECT_FOLDER,
-                                       title=_("Select a Folder"))
+                                        action=Gtk.FileChooserAction.SELECT_FOLDER,
+                                        title=_("Select a Folder"))
         chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
         chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT,)
         chooser.set_default_response(Gtk.ResponseType.ACCEPT)
