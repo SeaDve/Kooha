@@ -9,7 +9,7 @@ from gi.repository import GObject, Gst, GLib
 from kooha.backend.screencast_portal import ScreencastPortal
 from kooha.backend.settings import Settings
 from kooha.backend.pipeline_builder import PipelineBuilder
-from kooha.backend.area_selector import AreaSelector
+from kooha.widgets.area_selector import AreaSelector
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,6 @@ class Recorder(GObject.GObject):
 
         self.portal = ScreencastPortal()
         self.portal.connect('ready', self._on_portal_ready)
-        self.area_selector = AreaSelector()
         self.settings = Settings()
 
     @GObject.Property(type=Gst.State, default=_state)
@@ -53,19 +52,30 @@ class Recorder(GObject.GObject):
         pipeline_builder.set_audio_source(*default_audio_sources)
 
         if is_selection_mode:
-            try:
-                coordinates = self.area_selector.select_area()
+            area_selector = AreaSelector()
+            def on_captured(selector):
+                coordinates = area_selector.select_area_finish()
                 logger.info(f"selected_coordinates: {coordinates}")
                 pipeline_builder.set_coordinates(coordinates, screen_width, screen_height)
-            except GLib.Error as error:
-                logger.warning(error)
-                if 'cancelled' not in str(error):
-                    self.emit('record-failed', error)
-                self.portal.close()
-                return
+                self.pipeline = pipeline_builder.build()
+                self.emit('ready')
 
-        self.pipeline = pipeline_builder.build()
-        self.emit('ready')
+            def on_cancelled(selector):
+                self.portal.close()
+
+
+            area_selector.connect('captured', on_captured)
+            area_selector.connect('cancelled', on_cancelled)
+            area_selector.select_area()
+
+            # try:
+            #     coordinates = self.area_selector.select_area()
+            # except GLib.Error as error:
+            #     logger.warning(error)
+            #     if 'cancelled' not in str(error):
+            #         self.emit('record-failed', error)
+            #     self.portal.close()
+            #     return
 
         logger.info(f"fd, node_id: {fd}, {node_id}")
         logger.info(f"screen_resolution: ({screen_width}, {screen_height})")

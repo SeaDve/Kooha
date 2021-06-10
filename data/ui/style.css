@@ -35,3 +35,7 @@ headerbar.flat {
   0% { color: alpha(@theme_text_color, 0.8); }
   100% { color: #e01b24; }
 }
+
+.transparent {
+  background-color: alpha(blue, 0.1);
+}
