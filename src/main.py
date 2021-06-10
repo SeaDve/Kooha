@@ -69,17 +69,19 @@ class Application(Gtk.Application):
         self.set_accels_for_action('win.show-help-overlay', ('<Ctrl>question',))
 
     def _on_select_location(self, action, param):
-        dialog = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
+        chooser = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
                                        action=Gtk.FileChooserAction.SELECT_FOLDER,
                                        title=_("Select a Folder"))
-        dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
-        dialog.add_button(_("Select"), Gtk.ResponseType.ACCEPT,)
-        dialog.connect('response', self._on_select_folder_response)
-        dialog.present()
+        chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
+        chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT,)
+        chooser.set_default_response(Gtk.ResponseType.ACCEPT)
+        chooser.set_current_folder(Gio.File.new_for_path(self.settings.get_saving_location()))
+        chooser.connect('response', self._on_select_folder_response)
+        chooser.present()
 
-    def _on_select_folder_response(self, dialog, response):
+    def _on_select_folder_response(self, chooser, response):
         if response == Gtk.ResponseType.ACCEPT:
-            directory = dialog.get_file().get_path()
+            directory = chooser.get_file().get_path()
             homefolder = GLib.get_home_dir()
             is_in_homefolder = directory.startswith(homefolder)
             if is_in_homefolder and not directory == homefolder:
@@ -91,7 +93,7 @@ class Application(Gtk.Application):
                     text=_("Please choose an accessible location and retry."),
                 )
                 error.present()
-        dialog.close()
+        chooser.close()
 
     def _on_show_about(self, action, param):
         about = Gtk.AboutDialog()
