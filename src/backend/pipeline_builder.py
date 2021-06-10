@@ -53,16 +53,16 @@ class PipelineBuilder(GObject.GObject):
         return num_threads
 
     def _get_cropper(self):
-        def even(num):
-            return num // 2 * 2
+        if not self.coordinates:
+            return ''
 
-        if self.coordinates:
-            x, y, width, height = self.coordinates
-            right_crop = self.screen_width - (width + x)
-            bottom_crop = self.screen_height - (height + y)
-            return (f' videocrop top={even(y)} left={even(x)}'
-                    f' right={even(right_crop)} bottom={even(bottom_crop)} !')
-        return ''
+        x, y, width, height = self.coordinates
+        right_crop = self.screen_width - (width + x)
+        bottom_crop = self.screen_height - (height + y)
+
+        even = lambda num: num // 2 * 2
+        return (f' videocrop top={even(y)} left={even(x)}'
+                f' right={even(right_crop)} bottom={even(bottom_crop)} !')
 
     def set_audio_source(self, speaker_source, mic_source):
         self.speaker_source = speaker_source
