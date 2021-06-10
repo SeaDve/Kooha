@@ -38,6 +38,9 @@ class PipelineBuilder(GObject.GObject):
         self.mic_source = None
         self.coordinates = None
 
+    def _even(self, number):
+        return number // 2 * 2
+
     def _get_muxer(self):
         return ENCODING_PROFILES[self.video_format]['muxer']
 
@@ -59,10 +62,8 @@ class PipelineBuilder(GObject.GObject):
         x, y, width, height = self.coordinates
         right_crop = self.screen_width - (width + x)
         bottom_crop = self.screen_height - (height + y)
-
-        even = lambda num: num // 2 * 2
-        return (f' videocrop top={even(y)} left={even(x)}'
-                f' right={even(right_crop)} bottom={even(bottom_crop)} !')
+        return (f' videocrop top={self._even(y)} left={self._even(x)}'
+                f' right={self._even(right_crop)} bottom={self._even(bottom_crop)} !')
 
     def set_audio_source(self, speaker_source, mic_source):
         self.speaker_source = speaker_source
