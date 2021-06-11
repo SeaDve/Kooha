@@ -50,14 +50,14 @@ class AreaSelector(Gtk.Window):
         self.drawing_area.set_draw_func(self._drawing_area_draw, x, y, w, h)
 
     def _drawing_area_draw(self, dwa, ctx, dwa_w, dwa_h, x, y, w, h):
-        ctx.rectangle (x, y, w, h)
+        ctx.rectangle(x, y, w, h)
         ctx.set_source_rgba(0.1, 0.45, 0.8, 0.3)
-        ctx.fill ()
+        ctx.fill()
 
-        ctx.rectangle (x, y, w, h)
+        ctx.rectangle(x, y, w, h)
         ctx.set_source_rgb(0.1, 0.45, 0.8)
         ctx.set_line_width(1)
-        ctx.stroke ()
+        ctx.stroke()
 
     def _get_topleft_point(self, p1, p2):
         min_x = min(p1.x, p2.x)
@@ -92,4 +92,4 @@ class AreaSelector(Gtk.Window):
         self.set_cursor(Gdk.Cursor.new_from_name('crosshair'))
 
     def select_area_finish(self):
-        return self.output_coordinates     
+        return self.output_coordinates
