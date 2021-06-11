@@ -92,8 +92,4 @@ class AreaSelector(Gtk.Window):
         self.set_cursor(Gdk.Cursor.new_from_name('crosshair'))
 
     def select_area_finish(self):
-        return self.output_coordinates
-
-
-
-        
+        return self.output_coordinates     
