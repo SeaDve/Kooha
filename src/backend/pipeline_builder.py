@@ -39,7 +39,7 @@ class PipelineBuilder(GObject.GObject):
         self.coordinates = None
 
     def _even(self, number):
-        return number // 2 * 2
+        return int(number // 2 * 2)
 
     def _get_muxer(self):
         return ENCODING_PROFILES[self.video_format]['muxer']
@@ -60,8 +60,19 @@ class PipelineBuilder(GObject.GObject):
             return ''
 
         x, y, width, height = self.coordinates
-        right_crop = self.screen_width - (width + x)
-        bottom_crop = self.screen_height - (height + y)
+
+        # TODO replace 840x525 by the dimensions of the selection area
+
+        width = width * self.screen_width / 840
+        height = height * self.screen_height / 525
+        x = x * self.screen_width / 840
+        y = y * self.screen_height / 525
+        right_crop = (self.screen_width - (width + x))
+        bottom_crop = (self.screen_height - (height + y))
+        print(x)
+        print(y)
+        print(right_crop)
+        print(bottom_crop)
         return (f' videocrop top={self._even(y)} left={self._even(x)}'
                 f' right={self._even(right_crop)} bottom={self._even(bottom_crop)} !')
 
