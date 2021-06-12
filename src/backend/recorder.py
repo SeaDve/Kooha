@@ -9,7 +9,6 @@ from gi.repository import GObject, Gst, GLib
 from kooha.backend.screencast_portal import ScreencastPortal
 from kooha.backend.settings import Settings
 from kooha.backend.pipeline_builder import PipelineBuilder
-from kooha.backend.area_selector import AreaSelector
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +25,6 @@ class Recorder(GObject.GObject):
 
         self.portal = ScreencastPortal()
         self.portal.connect('ready', self._on_portal_ready)
-        self.area_selector = AreaSelector()
         self.settings = Settings()
 
     @GObject.Property(type=Gst.State, default=_state)
