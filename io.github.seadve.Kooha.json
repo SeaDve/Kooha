@@ -10,8 +10,8 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
-        "--filesystem=xdg-videos",
-        "--talk-name=org.gnome.Shell.Screenshot"
+        "--socket=session-bus",
+        "--filesystem=xdg-videos"
     ],
     "cleanup" : [
         "/include",
@@ -126,6 +126,17 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "branch": "main"
+                }
+            ]
+        },
+        {
+            "name": "area-selector",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/SeaDve/AreaSelector.git",
                     "branch": "main"
                 }
             ]

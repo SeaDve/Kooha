@@ -54,13 +54,10 @@ class Recorder(GObject.GObject):
 
         if is_selection_mode:
             try:
-                coordinates = self.area_selector.select_area()
+                coordinates = self._select_screen_area()
                 logger.info(f"selected_coordinates: {coordinates}")
                 pipeline_builder.set_coordinates(coordinates, screen_width, screen_height)
-            except GLib.Error as error:
-                logger.warning(error)
-                if 'cancelled' not in str(error):
-                    self.emit('record-failed', error)
+            except ValueError:
                 self.portal.close()
                 return
 
@@ -90,6 +87,11 @@ class Recorder(GObject.GObject):
         self.record_bus.remove_watch()
         self.record_bus.disconnect(self.handler_id)
         self.portal.close()
+
+    def _select_screen_area(self):
+        results = subprocess.run('areaselector', text=True, stdout=subprocess.PIPE).stdout
+        x, y, w, h = results.rstrip().split(", ")
+        return int(x), int(y), int(w), int(h)
 
     def _get_default_audio_sources(self):
         pactl_output = subprocess.run(
