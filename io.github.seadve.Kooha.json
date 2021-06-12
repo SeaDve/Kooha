@@ -76,6 +76,17 @@
             ]
         },
         {
+            "name": "area-selector",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/SeaDve/AreaSelector.git",
+                    "branch": "main"
+                }
+            ]
+        },
+        {
             "name": "libsass",
             "cleanup": ["*"],
             "sources": [
@@ -126,17 +137,6 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "branch": "main"
-                }
-            ]
-        },
-        {
-            "name": "area-selector",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/SeaDve/AreaSelector.git",
                     "branch": "main"
                 }
             ]
