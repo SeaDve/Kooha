@@ -10,8 +10,8 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
-        "--socket=session-bus",
-        "--filesystem=xdg-videos"
+        "--filesystem=xdg-videos",
+        "--own-name=io.github.seadve.AreaSelector"
     ],
     "cleanup" : [
         "/include",
