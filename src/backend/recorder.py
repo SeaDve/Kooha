@@ -62,8 +62,7 @@ class Recorder(GObject.GObject):
                 logger.info(f"stream screen_info: {stream_screen.w} {stream_screen.h}")
                 logger.info(f"actual screen_info: {actual_screen.w} {actual_screen.h}")
                 pipeline_builder.set_coordinates(selection, stream_screen, actual_screen)
-            except ValueError as e:
-                print(e)
+            except ValueError:
                 self.portal.close()
                 return
 
