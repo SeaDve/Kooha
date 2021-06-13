@@ -5,7 +5,7 @@ import logging
 import subprocess
 from collections import namedtuple
 
-from gi.repository import GObject, Gst, GLib
+from gi.repository import GObject, Gst
 
 from kooha.backend.screencast_portal import ScreencastPortal
 from kooha.backend.settings import Settings
