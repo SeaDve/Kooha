@@ -39,7 +39,7 @@ class PipelineBuilder(GObject.GObject):
         self.coordinates = None
 
     def _even(self, number):
-        return number // 2 * 2
+        return int(number // 2 * 2)
 
     def _get_muxer(self):
         return ENCODING_PROFILES[self.video_format]['muxer']
@@ -60,8 +60,14 @@ class PipelineBuilder(GObject.GObject):
             return ''
 
         x, y, width, height = self.coordinates
-        right_crop = self.screen_width - (width + x)
-        bottom_crop = self.screen_height - (height + y)
+
+        width *= self.stream_screen.w / self.actual_screen.w
+        height *= self.stream_screen.h / self.actual_screen.h
+        x *= self.stream_screen.w / self.actual_screen.w
+        y *= self.stream_screen.h / self.actual_screen.h
+        right_crop = (self.stream_screen.w - (width + x))
+        bottom_crop = (self.stream_screen.h - (height + y))
+
         return (f' videocrop top={self._even(y)} left={self._even(x)}'
                 f' right={self._even(right_crop)} bottom={self._even(bottom_crop)} !')
 
@@ -69,10 +75,10 @@ class PipelineBuilder(GObject.GObject):
         self.speaker_source = speaker_source
         self.mic_source = mic_source
 
-    def set_coordinates(self, coordinates, screen_width, screen_height):
+    def set_coordinates(self, coordinates, stream_screen, actual_screen):
         self.coordinates = coordinates
-        self.screen_width = screen_width
-        self.screen_height = screen_height
+        self.stream_screen = stream_screen
+        self.actual_screen = actual_screen
 
     def build(self):
         is_record_speaker = self.audio_source_type.record_speaker and self.speaker_source

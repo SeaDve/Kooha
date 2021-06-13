@@ -3,6 +3,7 @@
 
 import logging
 import subprocess
+from collections import namedtuple
 
 from gi.repository import GObject, Gst, GLib
 
@@ -11,6 +12,8 @@ from kooha.backend.settings import Settings
 from kooha.backend.pipeline_builder import PipelineBuilder
 
 logger = logging.getLogger(__name__)
+Screen = namedtuple('Screen', 'w h')
+Selection = namedtuple('Selection', 'x y w h')
 
 
 class Recorder(GObject.GObject):
@@ -39,7 +42,8 @@ class Recorder(GObject.GObject):
         logger.info(f"Pipeline set to {pipeline_state} ")
 
     def _on_portal_ready(self, portal, fd, node_id,
-                         screen_width, screen_height, is_selection_mode):
+                         stream_screen_w, stream_screen_h,
+                         is_selection_mode):
         framerate = self.settings.get_video_framerate()
         file_path = self.settings.get_file_path().replace(" ", r"\ ")
         video_format = self.settings.get_video_format()
@@ -52,10 +56,14 @@ class Recorder(GObject.GObject):
 
         if is_selection_mode:
             try:
-                coordinates = self._select_screen_area()
-                logger.info(f"selected_coordinates: {coordinates}")
-                pipeline_builder.set_coordinates(coordinates, screen_width, screen_height)
-            except ValueError:
+                stream_screen = Screen(stream_screen_w, stream_screen_h)
+                selection, actual_screen = self._select_screen_area()
+                logger.info(f"selected_coordinates: {*selection, }")
+                logger.info(f"stream screen_info: {stream_screen.w} {stream_screen.h}")
+                logger.info(f"actual screen_info: {actual_screen.w} {actual_screen.h}")
+                pipeline_builder.set_coordinates(selection, stream_screen, actual_screen)
+            except ValueError as e:
+                print(e)
                 self.portal.close()
                 return
 
@@ -63,7 +71,6 @@ class Recorder(GObject.GObject):
         self.emit('ready')
 
         logger.info(f"fd, node_id: {fd}, {node_id}")
-        logger.info(f"screen_resolution: ({screen_width}, {screen_height})")
         logger.info(f"framerate: {framerate}")
         logger.info(f"file_path: {file_path}")
         logger.info(f"audio_source_type: {audio_source_type}")
@@ -88,8 +95,8 @@ class Recorder(GObject.GObject):
 
     def _select_screen_area(self):
         results = subprocess.run('areaselector', text=True, stdout=subprocess.PIPE).stdout
-        x, y, w, h = results.rstrip().split(", ")
-        return int(x), int(y), int(w), int(h)
+        x, y, w, h, scr_w, scr_h = results.rstrip().split(" ")
+        return Selection(int(x), int(y), int(w), int(h)), Screen(int(scr_w), int(scr_h))
 
     def _get_default_audio_sources(self):
         pactl_output = subprocess.run(
