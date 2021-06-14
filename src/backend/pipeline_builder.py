@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import GObject, Gst, GLib
+from gi.repository import Gst, GLib
 
 ENCODING_PROFILES = {
     'webm': {
@@ -25,7 +25,7 @@ ENCODING_PROFILES = {
 }
 
 
-class PipelineBuilder(GObject.GObject):
+class PipelineBuilder:
 
     def __init__(self, fd, node_id, framerate, file_path, video_format, audio_source_type):
         self.fd = fd
