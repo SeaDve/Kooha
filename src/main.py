@@ -80,19 +80,24 @@ class Application(Gtk.Application):
         chooser.present()
 
     def _on_select_folder_response(self, chooser, response):
-        if response == Gtk.ResponseType.ACCEPT:
-            directory = chooser.get_file().get_path()
-            homefolder = GLib.get_home_dir()
-            is_in_homefolder = directory.startswith(homefolder)
-            if is_in_homefolder and not directory == homefolder:
-                self.settings.set_saving_location(directory)
-            else:
-                error = ErrorDialog(
-                    parent=self.window,
-                    title=_(f"Inaccessible location '{directory}'"),
-                    text=_("Please choose an accessible location and retry."),
-                )
-                error.present()
+        if response != Gtk.ResponseType.ACCEPT:
+            chooser.close()
+            return
+
+        directory = chooser.get_file().get_path()
+        homefolder = GLib.get_home_dir()
+        is_in_homefolder = directory.startswith(homefolder)
+
+        if not is_in_homefolder or directory == homefolder:
+            error = ErrorDialog(
+                parent=self.window,
+                title=_(f"Inaccessible location '{directory}'"),
+                text=_("Please choose an accessible location and retry."),
+            )
+            error.present()
+            return
+
+        self.settings.set_saving_location(directory)
         chooser.close()
 
     def _on_show_about(self, action, param):
