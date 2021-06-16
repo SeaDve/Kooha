@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"POT-Creation-Date: 2021-06-16 13:27+0800\n"
 "PO-Revision-Date: 2021-05-18 17:33+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;Ekran kaydı;Kaydedici;Ekran;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:118
 msgid "Elegantly record your screen"
 msgstr "Ekranınızı zarif bir şekilde kaydedin"
 
@@ -89,188 +89,223 @@ msgstr "⌨️ Kullanışlı klavye kısayollarını kullanın."
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/shortcuts.ui:12
+#: data/ui/help_overlay.ui:10
 msgid "General"
 msgstr "Genel"
 
-#: data/ui/shortcuts.ui:17
+#: data/ui/help_overlay.ui:14
 msgid "Open menu"
 msgstr "Menüyü aç"
 
-#: data/ui/shortcuts.ui:24
+#: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
 msgstr "Klavye kısayollarını göster"
 
-#: data/ui/shortcuts.ui:31
+#: data/ui/help_overlay.ui:26
 msgid "Quit"
 msgstr "Çıkış"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:52
 msgid "Recording"
 msgstr "Kaydediliyor"
 
-#: data/ui/shortcuts.ui:44
+#: data/ui/help_overlay.ui:37
 msgid "Toggle record"
 msgstr "Kaydı aç/kapat"
 
-#: data/ui/shortcuts.ui:51
+#: data/ui/help_overlay.ui:43
+msgid "Toggle record pause"
+msgstr ""
+
+#: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
 msgstr "Gecikmeyi iptal et"
 
-#: data/ui/shortcuts.ui:59
+#: data/ui/help_overlay.ui:56
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: data/ui/shortcuts.ui:64
-msgid "Toggle capture mode"
-msgstr "Yakalama modunu değiştir"
-
-#: data/ui/shortcuts.ui:71
+#: data/ui/help_overlay.ui:60
 msgid "Toggle computer sounds"
 msgstr "Bilgisayar seslerini değiştir"
 
-#: data/ui/shortcuts.ui:78
+#: data/ui/help_overlay.ui:66
 msgid "Toggle microphone"
 msgstr "Mikrofonu değiştir"
 
-#: data/ui/shortcuts.ui:85
+#: data/ui/help_overlay.ui:72
 msgid "Toggle pointer"
 msgstr "İşaretçiyi değiştir"
 
-#: data/ui/window.ui:27
+#: data/ui/window.ui:28
 msgid "Main Menu"
 msgstr "Ana Menü"
 
 #: data/ui/window.ui:46
-msgid "Full Screen"
-msgstr "Tam Ekran"
+msgid "Normal"
+msgstr ""
 
-#: data/ui/window.ui:57
+#: data/ui/window.ui:56
 msgid "Selection"
 msgstr "Seçim"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:84
+msgid "Capture a Monitor or Window"
+msgstr ""
+
+#: data/ui/window.ui:92
+msgid "Capture a Selection of Screen"
+msgstr ""
+
+#: data/ui/window.ui:105
 msgid "Record Computer Sounds"
 msgstr "Bilgisayar Seslerini Kaydet"
 
-#: data/ui/window.ui:96
+#: data/ui/window.ui:112
 msgid "Record From Microphone"
 msgstr "Mikrofondan Kaydet"
 
-#: data/ui/window.ui:103
+#: data/ui/window.ui:119
 msgid "Show Pointer"
 msgstr "İşaretçiyi Göster"
 
-#: data/ui/window.ui:110
+#: data/ui/window.ui:126
 msgid "Record"
 msgstr "Kayıt"
 
-#: data/ui/window.ui:170
+#: data/ui/window.ui:196
 msgid "Stop"
 msgstr "Durdur"
 
-#: data/ui/window.ui:209
+#: data/ui/window.ui:254
 msgid "Recording in…"
 msgstr "Kaydediliyor…"
 
-#: data/ui/window.ui:227
+#: data/ui/window.ui:272
 msgid "Cancel Delay"
 msgstr "Gecikmeyi İptal Et"
 
-#: data/ui/window.ui:263
-msgid "Processing"
-msgstr "İşleniyor"
-
-#: data/ui/window.ui:289
+#: data/ui/window.ui:313
 msgid "Delay"
 msgstr "Gecikme"
 
-#: data/ui/window.ui:291
+#: data/ui/window.ui:315
 msgid "None"
 msgstr "Yok"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:320
 msgid "5 seconds"
 msgstr "5 saniye"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:325
 msgid "10 seconds"
 msgstr "10 saniye"
 
-#: data/ui/window.ui:307
+#: data/ui/window.ui:331
 msgid "Video Format"
 msgstr "Video Biçimi"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:333
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:338
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:321
+#: data/ui/window.ui:343
+msgid "MP4"
+msgstr ""
+
+#: data/ui/window.ui:350
 msgid "Save to…"
 msgstr "Kaydetme yeri…"
 
-#: data/ui/window.ui:327
+#: data/ui/window.ui:356
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: data/ui/window.ui:331
+#: data/ui/window.ui:360
 msgid "About Kooha"
 msgstr "Kooha Hakkında"
 
-#: src/main.py:94
+#: src/widgets/window.py:52
+msgid "Paused"
+msgstr ""
+
+#: src/widgets/window.py:72
+msgid "Screencast Recorded!"
+msgstr "Ekran Kaydı Kaydedildi!"
+
+#: src/widgets/window.py:73
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/widgets/window.py:81
+msgid "Sorry! An error has occured."
+msgstr ""
+
+#: src/backend/settings.py:42
+msgid "Videos"
+msgstr ""
+
+#: src/main.py:74
 msgid "Select a Folder"
 msgstr "Klasör Seç"
 
-#: src/main.py:95
+#: src/main.py:75
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/main.py:96
+#: src/main.py:76
 msgid "Select"
 msgstr "Seç"
 
-#: src/main.py:109
-msgid "Save location not set"
-msgstr "Kaydetme konumu ayarlanmadı"
+#: src/main.py:94
+#, python-brace-format
+msgid "Inaccessible location '{directory}'"
+msgstr ""
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Please choose an accessible location and retry."
 msgstr "Lütfen erişilebilir bir yer seçin ve tekrar deneyin."
 
-#: src/main.py:140
+#: src/main.py:121
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Telif hakkı 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:142
+#: src/main.py:123
 msgid "translator-credits"
 msgstr ""
 "Ümit Solmaz\n"
 "Oğuz Ersen"
 
-#: src/main.py:143
+#: src/main.py:124
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:71
-msgid "Recording cannot start"
-msgstr "Kayıt başlayamıyor"
+#~ msgid "Toggle capture mode"
+#~ msgstr "Yakalama modunu değiştir"
 
-#: src/window.py:72
-msgid "The saving location you have selected may have been deleted."
-msgstr "Seçtiğiniz kaydetme yeri silinmiş olabilir."
+#~ msgid "Full Screen"
+#~ msgstr "Tam Ekran"
 
-#: src/window.py:120
-msgid "Screencast Recorded!"
-msgstr "Ekran Kaydı Kaydedildi!"
+#~ msgid "Processing"
+#~ msgstr "İşleniyor"
 
-#: src/window.py:121
-msgid "The recording has been saved in"
-msgstr "Kayıt kaydedildi"
+#~ msgid "Save location not set"
+#~ msgstr "Kaydetme konumu ayarlanmadı"
+
+#~ msgid "Recording cannot start"
+#~ msgstr "Kayıt başlayamıyor"
+
+#~ msgid "The saving location you have selected may have been deleted."
+#~ msgstr "Seçtiğiniz kaydetme yeri silinmiş olabilir."
+
+#~ msgid "The recording has been saved in"
+#~ msgstr "Kayıt kaydedildi"
 
 #~ msgid "Open"
 #~ msgstr "Aç"

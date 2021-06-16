@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"POT-Creation-Date: 2021-06-16 13:27+0800\n"
 "PO-Revision-Date: 2021-05-28 15:32+0000\n"
-"Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail.com>"
-"\n"
+"Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail."
+"com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -30,7 +30,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;gravação de tela;tela;vídeo;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:118
 msgid "Elegantly record your screen"
 msgstr "Grave sua tela elegantemente"
 
@@ -89,186 +89,221 @@ msgstr "⌨️ Utilize atalhos de teclado úteis."
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/shortcuts.ui:12
+#: data/ui/help_overlay.ui:10
 msgid "General"
 msgstr "Geral"
 
-#: data/ui/shortcuts.ui:17
+#: data/ui/help_overlay.ui:14
 msgid "Open menu"
 msgstr "Abrir menu"
 
-#: data/ui/shortcuts.ui:24
+#: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
 msgstr "Mostrar atalhos do teclado"
 
-#: data/ui/shortcuts.ui:31
+#: data/ui/help_overlay.ui:26
 msgid "Quit"
 msgstr "Sair"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:52
 msgid "Recording"
 msgstr "Gravando"
 
-#: data/ui/shortcuts.ui:44
+#: data/ui/help_overlay.ui:37
 msgid "Toggle record"
 msgstr "Alternar gravação"
 
-#: data/ui/shortcuts.ui:51
+#: data/ui/help_overlay.ui:43
+msgid "Toggle record pause"
+msgstr ""
+
+#: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
 msgstr "Cancelar atraso"
 
-#: data/ui/shortcuts.ui:59
+#: data/ui/help_overlay.ui:56
 msgid "Settings"
 msgstr "Configurações"
 
-#: data/ui/shortcuts.ui:64
-msgid "Toggle capture mode"
-msgstr "Alternar modo de captura"
-
-#: data/ui/shortcuts.ui:71
+#: data/ui/help_overlay.ui:60
 msgid "Toggle computer sounds"
 msgstr "Alternar sons do computador"
 
-#: data/ui/shortcuts.ui:78
+#: data/ui/help_overlay.ui:66
 msgid "Toggle microphone"
 msgstr "Alternar microfone"
 
-#: data/ui/shortcuts.ui:85
+#: data/ui/help_overlay.ui:72
 msgid "Toggle pointer"
 msgstr "Alternar mouse"
 
-#: data/ui/window.ui:27
+#: data/ui/window.ui:28
 msgid "Main Menu"
 msgstr "Menu Principal"
 
 #: data/ui/window.ui:46
-msgid "Full Screen"
-msgstr "Tela Cheia"
+msgid "Normal"
+msgstr ""
 
-#: data/ui/window.ui:57
+#: data/ui/window.ui:56
 msgid "Selection"
 msgstr "Seleção"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:84
+msgid "Capture a Monitor or Window"
+msgstr ""
+
+#: data/ui/window.ui:92
+msgid "Capture a Selection of Screen"
+msgstr ""
+
+#: data/ui/window.ui:105
 msgid "Record Computer Sounds"
 msgstr "Gravar Sons do Computador"
 
-#: data/ui/window.ui:96
+#: data/ui/window.ui:112
 msgid "Record From Microphone"
 msgstr "Gravar do Microfone"
 
-#: data/ui/window.ui:103
+#: data/ui/window.ui:119
 msgid "Show Pointer"
 msgstr "Mostrar ponteiro"
 
-#: data/ui/window.ui:110
+#: data/ui/window.ui:126
 msgid "Record"
 msgstr "Gravar"
 
-#: data/ui/window.ui:170
+#: data/ui/window.ui:196
 msgid "Stop"
 msgstr "Parar"
 
-#: data/ui/window.ui:209
+#: data/ui/window.ui:254
 msgid "Recording in…"
 msgstr "Gravando em…"
 
-#: data/ui/window.ui:227
+#: data/ui/window.ui:272
 msgid "Cancel Delay"
 msgstr "Cancelar Atraso"
 
-#: data/ui/window.ui:263
-msgid "Processing"
-msgstr "Processando"
-
-#: data/ui/window.ui:289
+#: data/ui/window.ui:313
 msgid "Delay"
 msgstr "Atraso"
 
-#: data/ui/window.ui:291
+#: data/ui/window.ui:315
 msgid "None"
 msgstr "Nenhum"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:320
 msgid "5 seconds"
 msgstr "5 segundos"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:325
 msgid "10 seconds"
 msgstr "10 segundos"
 
-#: data/ui/window.ui:307
+#: data/ui/window.ui:331
 msgid "Video Format"
 msgstr "Formato de Vídeo"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:333
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:338
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:321
+#: data/ui/window.ui:343
+msgid "MP4"
+msgstr ""
+
+#: data/ui/window.ui:350
 msgid "Save to…"
 msgstr "Salvar em…"
 
-#: data/ui/window.ui:327
+#: data/ui/window.ui:356
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos do Teclado"
 
-#: data/ui/window.ui:331
+#: data/ui/window.ui:360
 msgid "About Kooha"
 msgstr "Sobre o Kooha"
 
-#: src/main.py:94
+#: src/widgets/window.py:52
+msgid "Paused"
+msgstr ""
+
+#: src/widgets/window.py:72
+msgid "Screencast Recorded!"
+msgstr "Gravação de tela gravada!"
+
+#: src/widgets/window.py:73
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/widgets/window.py:81
+msgid "Sorry! An error has occured."
+msgstr ""
+
+#: src/backend/settings.py:42
+msgid "Videos"
+msgstr ""
+
+#: src/main.py:74
 msgid "Select a Folder"
 msgstr "Selecione uma Pasta"
 
-#: src/main.py:95
+#: src/main.py:75
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/main.py:96
+#: src/main.py:76
 msgid "Select"
 msgstr "Selecione"
 
-#: src/main.py:109
-msgid "Save location not set"
-msgstr "Local de salvamento não definido"
+#: src/main.py:94
+#, python-brace-format
+msgid "Inaccessible location '{directory}'"
+msgstr ""
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Please choose an accessible location and retry."
 msgstr "Por favor escolha um local acessível e tente novamente."
 
-#: src/main.py:140
+#: src/main.py:121
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:142
+#: src/main.py:123
 msgid "translator-credits"
 msgstr "Vitor Cardoso"
 
-#: src/main.py:143
+#: src/main.py:124
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:71
-msgid "Recording cannot start"
-msgstr "Gravação não pode iniciar"
+#~ msgid "Toggle capture mode"
+#~ msgstr "Alternar modo de captura"
 
-#: src/window.py:72
-msgid "The saving location you have selected may have been deleted."
-msgstr "O local que você selecionou pode ter sido deletado."
+#~ msgid "Full Screen"
+#~ msgstr "Tela Cheia"
 
-#: src/window.py:120
-msgid "Screencast Recorded!"
-msgstr "Gravação de tela gravada!"
+#~ msgid "Processing"
+#~ msgstr "Processando"
 
-#: src/window.py:121
-msgid "The recording has been saved in"
-msgstr "A gravação foi gravada em"
+#~ msgid "Save location not set"
+#~ msgstr "Local de salvamento não definido"
+
+#~ msgid "Recording cannot start"
+#~ msgstr "Gravação não pode iniciar"
+
+#~ msgid "The saving location you have selected may have been deleted."
+#~ msgstr "O local que você selecionou pode ter sido deletado."
+
+#~ msgid "The recording has been saved in"
+#~ msgstr "A gravação foi gravada em"
 
 #~ msgid "Open"
 #~ msgstr "Abrir"

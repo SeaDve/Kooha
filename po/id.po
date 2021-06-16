@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"POT-Creation-Date: 2021-06-16 13:27+0800\n"
 "PO-Revision-Date: 2021-06-03 05:32+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
-"pot-file/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
+"file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Perekam;Layar;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:118
 msgid "Elegantly record your screen"
 msgstr "Rekam layar Anda dengan elegan"
 
@@ -90,188 +90,223 @@ msgstr "⌨️ Manfaatkan pintasan keyboard yang berguna."
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/shortcuts.ui:12
+#: data/ui/help_overlay.ui:10
 msgid "General"
 msgstr "Umum"
 
-#: data/ui/shortcuts.ui:17
+#: data/ui/help_overlay.ui:14
 msgid "Open menu"
 msgstr "Buka menu"
 
-#: data/ui/shortcuts.ui:24
+#: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
 msgstr "Tampilkan pintasan keyboard"
 
-#: data/ui/shortcuts.ui:31
+#: data/ui/help_overlay.ui:26
 msgid "Quit"
 msgstr "Keluar"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:52
 msgid "Recording"
 msgstr "Merekam"
 
-#: data/ui/shortcuts.ui:44
+#: data/ui/help_overlay.ui:37
 msgid "Toggle record"
 msgstr "Toggle perekaman"
 
-#: data/ui/shortcuts.ui:51
+#: data/ui/help_overlay.ui:43
+msgid "Toggle record pause"
+msgstr ""
+
+#: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
 msgstr "Batalkan penundaan"
 
-#: data/ui/shortcuts.ui:59
+#: data/ui/help_overlay.ui:56
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: data/ui/shortcuts.ui:64
-#, fuzzy
-msgid "Toggle capture mode"
-msgstr "Toggle mode capture"
-
-#: data/ui/shortcuts.ui:71
+#: data/ui/help_overlay.ui:60
 msgid "Toggle computer sounds"
 msgstr "Toggle suara komputer"
 
-#: data/ui/shortcuts.ui:78
+#: data/ui/help_overlay.ui:66
 msgid "Toggle microphone"
 msgstr "Toggle mikrofon"
 
-#: data/ui/shortcuts.ui:85
+#: data/ui/help_overlay.ui:72
 msgid "Toggle pointer"
 msgstr "Toggle penunjuk"
 
-#: data/ui/window.ui:27
+#: data/ui/window.ui:28
 msgid "Main Menu"
 msgstr "Menu Utama"
 
 #: data/ui/window.ui:46
-msgid "Full Screen"
-msgstr "Layar Penuh"
+msgid "Normal"
+msgstr ""
 
-#: data/ui/window.ui:57
+#: data/ui/window.ui:56
 msgid "Selection"
 msgstr "Pilihan"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:84
+msgid "Capture a Monitor or Window"
+msgstr ""
+
+#: data/ui/window.ui:92
+msgid "Capture a Selection of Screen"
+msgstr ""
+
+#: data/ui/window.ui:105
 msgid "Record Computer Sounds"
 msgstr "Rekam Suara Komputer"
 
-#: data/ui/window.ui:96
+#: data/ui/window.ui:112
 msgid "Record From Microphone"
 msgstr "Rekam Dari Mikrofon"
 
-#: data/ui/window.ui:103
+#: data/ui/window.ui:119
 msgid "Show Pointer"
 msgstr "Tampilkan Penunjuk"
 
-#: data/ui/window.ui:110
+#: data/ui/window.ui:126
 msgid "Record"
 msgstr "Rekam"
 
-#: data/ui/window.ui:170
+#: data/ui/window.ui:196
 msgid "Stop"
 msgstr "Berhenti"
 
-#: data/ui/window.ui:209
+#: data/ui/window.ui:254
 msgid "Recording in…"
 msgstr "Merekam dalam…"
 
-#: data/ui/window.ui:227
+#: data/ui/window.ui:272
 msgid "Cancel Delay"
 msgstr "Batalkan penundaan"
 
-#: data/ui/window.ui:263
-msgid "Processing"
-msgstr "Memproses"
-
-#: data/ui/window.ui:289
+#: data/ui/window.ui:313
 msgid "Delay"
 msgstr "Penundaan"
 
-#: data/ui/window.ui:291
+#: data/ui/window.ui:315
 msgid "None"
 msgstr "Tidak ada"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:320
 msgid "5 seconds"
 msgstr "5 detik"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:325
 msgid "10 seconds"
 msgstr "10 detik"
 
-#: data/ui/window.ui:307
+#: data/ui/window.ui:331
 msgid "Video Format"
 msgstr "Format Video"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:333
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:338
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:321
+#: data/ui/window.ui:343
+msgid "MP4"
+msgstr ""
+
+#: data/ui/window.ui:350
 msgid "Save to…"
 msgstr "Simpan di…"
 
-#: data/ui/window.ui:327
+#: data/ui/window.ui:356
 msgid "Keyboard Shortcuts"
 msgstr "Pintasan Keyboard"
 
-#: data/ui/window.ui:331
+#: data/ui/window.ui:360
 msgid "About Kooha"
 msgstr "Tentang Kooha"
 
-#: src/main.py:94
+#: src/widgets/window.py:52
+msgid "Paused"
+msgstr ""
+
+#: src/widgets/window.py:72
+msgid "Screencast Recorded!"
+msgstr "Screencast Direkam!"
+
+#: src/widgets/window.py:73
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/widgets/window.py:81
+msgid "Sorry! An error has occured."
+msgstr ""
+
+#: src/backend/settings.py:42
+msgid "Videos"
+msgstr ""
+
+#: src/main.py:74
 msgid "Select a Folder"
 msgstr "Pilih folder"
 
-#: src/main.py:95
+#: src/main.py:75
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/main.py:96
+#: src/main.py:76
 msgid "Select"
 msgstr "Pilih"
 
-#: src/main.py:109
-msgid "Save location not set"
-msgstr "Lokasi penyimpanan belum diatur"
+#: src/main.py:94
+#, python-brace-format
+msgid "Inaccessible location '{directory}'"
+msgstr ""
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Please choose an accessible location and retry."
 msgstr "Mohon pilih tempat yang dapat diakses dan coba lagi."
 
-#: src/main.py:140
+#: src/main.py:121
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Hak Cipta 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:142
+#: src/main.py:123
 #, fuzzy
 msgid "translator-credits"
 msgstr "kredit-penerjemah"
 
-#: src/main.py:143
+#: src/main.py:124
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:71
-msgid "Recording cannot start"
-msgstr "Tidak dapat memulai perekaman"
+#, fuzzy
+#~ msgid "Toggle capture mode"
+#~ msgstr "Toggle mode capture"
 
-#: src/window.py:72
-msgid "The saving location you have selected may have been deleted."
-msgstr "Lokasi penyimpanan yang telah Anda pilih mungkin sudah dihapus."
+#~ msgid "Full Screen"
+#~ msgstr "Layar Penuh"
 
-#: src/window.py:120
-msgid "Screencast Recorded!"
-msgstr "Screencast Direkam!"
+#~ msgid "Processing"
+#~ msgstr "Memproses"
 
-#: src/window.py:121
-msgid "The recording has been saved in"
-msgstr "Rekaman telah disimpan di"
+#~ msgid "Save location not set"
+#~ msgstr "Lokasi penyimpanan belum diatur"
+
+#~ msgid "Recording cannot start"
+#~ msgstr "Tidak dapat memulai perekaman"
+
+#~ msgid "The saving location you have selected may have been deleted."
+#~ msgstr "Lokasi penyimpanan yang telah Anda pilih mungkin sudah dihapus."
+
+#~ msgid "The recording has been saved in"
+#~ msgstr "Rekaman telah disimpan di"
 
 #~ msgid "Open"
 #~ msgstr "Buka"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"POT-Creation-Date: 2021-06-16 13:27+0800\n"
 "PO-Revision-Date: 2021-05-28 15:32+0000\n"
 "Last-Translator: Artem <KovalevArtem.ru@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -30,7 +30,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;Запись экрана;Видео;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:118
 msgid "Elegantly record your screen"
 msgstr "Записывайте экран элегантно"
 
@@ -91,186 +91,221 @@ msgstr "⌨️ Поддержка полезных клавиатурных со
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/shortcuts.ui:12
+#: data/ui/help_overlay.ui:10
 msgid "General"
 msgstr "Общие"
 
-#: data/ui/shortcuts.ui:17
+#: data/ui/help_overlay.ui:14
 msgid "Open menu"
 msgstr "Открыть меню"
 
-#: data/ui/shortcuts.ui:24
+#: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
 msgstr "Показать сочетания клавиш"
 
-#: data/ui/shortcuts.ui:31
+#: data/ui/help_overlay.ui:26
 msgid "Quit"
 msgstr "Выход"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:52
 msgid "Recording"
 msgstr "Запись"
 
-#: data/ui/shortcuts.ui:44
+#: data/ui/help_overlay.ui:37
 msgid "Toggle record"
 msgstr "Начать/остановить запись"
 
-#: data/ui/shortcuts.ui:51
+#: data/ui/help_overlay.ui:43
+msgid "Toggle record pause"
+msgstr ""
+
+#: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
 msgstr "Отменить задержку"
 
-#: data/ui/shortcuts.ui:59
+#: data/ui/help_overlay.ui:56
 msgid "Settings"
 msgstr "Настройки"
 
-#: data/ui/shortcuts.ui:64
-msgid "Toggle capture mode"
-msgstr "Переключить режим записи"
-
-#: data/ui/shortcuts.ui:71
+#: data/ui/help_overlay.ui:60
 msgid "Toggle computer sounds"
 msgstr "Включить/выключить запись звуков компьютера"
 
-#: data/ui/shortcuts.ui:78
+#: data/ui/help_overlay.ui:66
 msgid "Toggle microphone"
 msgstr "Включить/выключить запись микрофона"
 
-#: data/ui/shortcuts.ui:85
+#: data/ui/help_overlay.ui:72
 msgid "Toggle pointer"
 msgstr "Показать/спрятать курсор"
 
-#: data/ui/window.ui:27
+#: data/ui/window.ui:28
 msgid "Main Menu"
 msgstr "Главное меню"
 
 #: data/ui/window.ui:46
-msgid "Full Screen"
-msgstr "Полный экран"
+msgid "Normal"
+msgstr ""
 
-#: data/ui/window.ui:57
+#: data/ui/window.ui:56
 msgid "Selection"
 msgstr "Выбор"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:84
+msgid "Capture a Monitor or Window"
+msgstr ""
+
+#: data/ui/window.ui:92
+msgid "Capture a Selection of Screen"
+msgstr ""
+
+#: data/ui/window.ui:105
 msgid "Record Computer Sounds"
 msgstr "Запись звуков компьютера"
 
-#: data/ui/window.ui:96
+#: data/ui/window.ui:112
 msgid "Record From Microphone"
 msgstr "Запись с микрофона"
 
-#: data/ui/window.ui:103
+#: data/ui/window.ui:119
 msgid "Show Pointer"
 msgstr "Показывать указатель"
 
-#: data/ui/window.ui:110
+#: data/ui/window.ui:126
 msgid "Record"
 msgstr "Запись"
 
-#: data/ui/window.ui:170
+#: data/ui/window.ui:196
 msgid "Stop"
 msgstr "Остановить"
 
-#: data/ui/window.ui:209
+#: data/ui/window.ui:254
 msgid "Recording in…"
 msgstr "Запись в…"
 
-#: data/ui/window.ui:227
+#: data/ui/window.ui:272
 msgid "Cancel Delay"
 msgstr "Отменить Задержку"
 
-#: data/ui/window.ui:263
-msgid "Processing"
-msgstr "Обработка"
-
-#: data/ui/window.ui:289
+#: data/ui/window.ui:313
 msgid "Delay"
 msgstr "Задержка"
 
-#: data/ui/window.ui:291
+#: data/ui/window.ui:315
 msgid "None"
 msgstr "Нет"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:320
 msgid "5 seconds"
 msgstr "5 секунд"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:325
 msgid "10 seconds"
 msgstr "10 секунд"
 
-#: data/ui/window.ui:307
+#: data/ui/window.ui:331
 msgid "Video Format"
 msgstr "Формат видео"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:333
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:338
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:321
+#: data/ui/window.ui:343
+msgid "MP4"
+msgstr ""
+
+#: data/ui/window.ui:350
 msgid "Save to…"
 msgstr "Сохранить в…"
 
-#: data/ui/window.ui:327
+#: data/ui/window.ui:356
 msgid "Keyboard Shortcuts"
 msgstr "Сочетания клавиш"
 
-#: data/ui/window.ui:331
+#: data/ui/window.ui:360
 msgid "About Kooha"
 msgstr "О Kooha"
 
-#: src/main.py:94
+#: src/widgets/window.py:52
+msgid "Paused"
+msgstr ""
+
+#: src/widgets/window.py:72
+msgid "Screencast Recorded!"
+msgstr "Скринкаст записан!"
+
+#: src/widgets/window.py:73
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/widgets/window.py:81
+msgid "Sorry! An error has occured."
+msgstr ""
+
+#: src/backend/settings.py:42
+msgid "Videos"
+msgstr ""
+
+#: src/main.py:74
 msgid "Select a Folder"
 msgstr "Выберите папку"
 
-#: src/main.py:95
+#: src/main.py:75
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/main.py:96
+#: src/main.py:76
 msgid "Select"
 msgstr "Выбрать"
 
-#: src/main.py:109
-msgid "Save location not set"
-msgstr "Место сохранения не установлено"
+#: src/main.py:94
+#, python-brace-format
+msgid "Inaccessible location '{directory}'"
+msgstr ""
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Please choose an accessible location and retry."
 msgstr "Пожалуйста, выберите доступное для записи место и повторите."
 
-#: src/main.py:140
+#: src/main.py:121
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Авторское право 2021 Дейв Патрик"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:142
+#: src/main.py:123
 msgid "translator-credits"
 msgstr "Kovalev Artem"
 
-#: src/main.py:143
+#: src/main.py:124
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:71
-msgid "Recording cannot start"
-msgstr "Запись не может быть начата"
+#~ msgid "Toggle capture mode"
+#~ msgstr "Переключить режим записи"
 
-#: src/window.py:72
-msgid "The saving location you have selected may have been deleted."
-msgstr "Выбранное для записи место, вероятно, было удалено."
+#~ msgid "Full Screen"
+#~ msgstr "Полный экран"
 
-#: src/window.py:120
-msgid "Screencast Recorded!"
-msgstr "Скринкаст записан!"
+#~ msgid "Processing"
+#~ msgstr "Обработка"
 
-#: src/window.py:121
-msgid "The recording has been saved in"
-msgstr "Запись была сохранена в"
+#~ msgid "Save location not set"
+#~ msgstr "Место сохранения не установлено"
+
+#~ msgid "Recording cannot start"
+#~ msgstr "Запись не может быть начата"
+
+#~ msgid "The saving location you have selected may have been deleted."
+#~ msgstr "Выбранное для записи место, вероятно, было удалено."
+
+#~ msgid "The recording has been saved in"
+#~ msgstr "Запись была сохранена в"
 
 #~ msgid "Record computer sounds"
 #~ msgstr "Записывать звуки компьютера"

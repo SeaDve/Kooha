@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 10:27+0800\n"
+"POT-Creation-Date: 2021-06-16 13:27+0800\n"
 "PO-Revision-Date: 2021-04-24 04:11+0000\n"
 "Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -28,7 +28,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;录屏;录制;视频;屏幕;屏幕录制;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:137
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:118
 msgid "Elegantly record your screen"
 msgstr "优雅地录制屏幕"
 
@@ -86,186 +86,221 @@ msgstr "⌨️ 键盘快捷键让你事半功倍。"
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/shortcuts.ui:12
+#: data/ui/help_overlay.ui:10
 msgid "General"
 msgstr "一般"
 
-#: data/ui/shortcuts.ui:17
+#: data/ui/help_overlay.ui:14
 msgid "Open menu"
 msgstr "打开菜单"
 
-#: data/ui/shortcuts.ui:24
+#: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
 msgstr "显示快捷键列表"
 
-#: data/ui/shortcuts.ui:31
+#: data/ui/help_overlay.ui:26
 msgid "Quit"
 msgstr "退出"
 
-#: data/ui/shortcuts.ui:39 data/ui/window.ui:151
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:52
 msgid "Recording"
 msgstr "录制中"
 
-#: data/ui/shortcuts.ui:44
+#: data/ui/help_overlay.ui:37
 msgid "Toggle record"
 msgstr "开始/结束录制"
 
-#: data/ui/shortcuts.ui:51
+#: data/ui/help_overlay.ui:43
+msgid "Toggle record pause"
+msgstr ""
+
+#: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
 msgstr "取消延迟"
 
-#: data/ui/shortcuts.ui:59
+#: data/ui/help_overlay.ui:56
 msgid "Settings"
 msgstr "设置"
 
-#: data/ui/shortcuts.ui:64
-msgid "Toggle capture mode"
-msgstr "切换画面捕获模式"
-
-#: data/ui/shortcuts.ui:71
+#: data/ui/help_overlay.ui:60
 msgid "Toggle computer sounds"
 msgstr "切换本机声音录制"
 
-#: data/ui/shortcuts.ui:78
+#: data/ui/help_overlay.ui:66
 msgid "Toggle microphone"
 msgstr "切换麦克风录制"
 
-#: data/ui/shortcuts.ui:85
+#: data/ui/help_overlay.ui:72
 msgid "Toggle pointer"
 msgstr "切换鼠标指针显示"
 
-#: data/ui/window.ui:27
+#: data/ui/window.ui:28
 msgid "Main Menu"
 msgstr ""
 
 #: data/ui/window.ui:46
-msgid "Full Screen"
-msgstr "全屏录制"
+msgid "Normal"
+msgstr ""
 
-#: data/ui/window.ui:57
+#: data/ui/window.ui:56
 msgid "Selection"
 msgstr "选区录制"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:84
+msgid "Capture a Monitor or Window"
+msgstr ""
+
+#: data/ui/window.ui:92
+msgid "Capture a Selection of Screen"
+msgstr ""
+
+#: data/ui/window.ui:105
 msgid "Record Computer Sounds"
 msgstr ""
 
-#: data/ui/window.ui:96
+#: data/ui/window.ui:112
 msgid "Record From Microphone"
 msgstr ""
 
-#: data/ui/window.ui:103
+#: data/ui/window.ui:119
 msgid "Show Pointer"
 msgstr ""
 
-#: data/ui/window.ui:110
+#: data/ui/window.ui:126
 msgid "Record"
 msgstr "录制"
 
-#: data/ui/window.ui:170
+#: data/ui/window.ui:196
 msgid "Stop"
 msgstr "停止"
 
-#: data/ui/window.ui:209
+#: data/ui/window.ui:254
 msgid "Recording in…"
 msgstr "即将录制……"
 
-#: data/ui/window.ui:227
+#: data/ui/window.ui:272
 msgid "Cancel Delay"
 msgstr "取消延迟"
 
-#: data/ui/window.ui:263
-msgid "Processing"
-msgstr "处理中"
-
-#: data/ui/window.ui:289
+#: data/ui/window.ui:313
 msgid "Delay"
 msgstr "延迟"
 
-#: data/ui/window.ui:291
+#: data/ui/window.ui:315
 msgid "None"
 msgstr "无"
 
-#: data/ui/window.ui:296
+#: data/ui/window.ui:320
 msgid "5 seconds"
 msgstr "5 秒"
 
-#: data/ui/window.ui:301
+#: data/ui/window.ui:325
 msgid "10 seconds"
 msgstr "10 秒"
 
-#: data/ui/window.ui:307
+#: data/ui/window.ui:331
 msgid "Video Format"
 msgstr "视频格式"
 
-#: data/ui/window.ui:309
+#: data/ui/window.ui:333
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:314
+#: data/ui/window.ui:338
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:321
+#: data/ui/window.ui:343
+msgid "MP4"
+msgstr ""
+
+#: data/ui/window.ui:350
 msgid "Save to…"
 msgstr "保存至……"
 
-#: data/ui/window.ui:327
+#: data/ui/window.ui:356
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
-#: data/ui/window.ui:331
+#: data/ui/window.ui:360
 msgid "About Kooha"
 msgstr "关于 Kooha"
 
-#: src/main.py:94
+#: src/widgets/window.py:52
+msgid "Paused"
+msgstr ""
+
+#: src/widgets/window.py:72
+msgid "Screencast Recorded!"
+msgstr "屏幕已录制！"
+
+#: src/widgets/window.py:73
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/widgets/window.py:81
+msgid "Sorry! An error has occured."
+msgstr ""
+
+#: src/backend/settings.py:42
+msgid "Videos"
+msgstr ""
+
+#: src/main.py:74
 msgid "Select a Folder"
 msgstr "选择一个文件夹"
 
-#: src/main.py:95
+#: src/main.py:75
 msgid "Cancel"
 msgstr "取消"
 
-#: src/main.py:96
+#: src/main.py:76
 msgid "Select"
 msgstr "选择"
 
-#: src/main.py:109
-msgid "Save location not set"
-msgstr "未设置保存位置"
+#: src/main.py:94
+#, python-brace-format
+msgid "Inaccessible location '{directory}'"
+msgstr ""
 
-#: src/main.py:110
+#: src/main.py:95
 msgid "Please choose an accessible location and retry."
 msgstr "请选择一个可访问的位置，然后重试。"
 
-#: src/main.py:140
+#: src/main.py:121
 msgid "Copyright 2021 Dave Patrick"
 msgstr "版权所有 © 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:142
+#: src/main.py:123
 msgid "translator-credits"
 msgstr "有趣的灵魂 (@TheInterestingSoul)"
 
-#: src/main.py:143
+#: src/main.py:124
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/window.py:71
-msgid "Recording cannot start"
-msgstr "无法开始录制"
+#~ msgid "Toggle capture mode"
+#~ msgstr "切换画面捕获模式"
 
-#: src/window.py:72
-msgid "The saving location you have selected may have been deleted."
-msgstr "您所选择的保存位置可能已被删除。"
+#~ msgid "Full Screen"
+#~ msgstr "全屏录制"
 
-#: src/window.py:120
-msgid "Screencast Recorded!"
-msgstr "屏幕已录制！"
+#~ msgid "Processing"
+#~ msgstr "处理中"
 
-#: src/window.py:121
-msgid "The recording has been saved in"
-msgstr "录屏视频已保存到"
+#~ msgid "Save location not set"
+#~ msgstr "未设置保存位置"
+
+#~ msgid "Recording cannot start"
+#~ msgstr "无法开始录制"
+
+#~ msgid "The saving location you have selected may have been deleted."
+#~ msgstr "您所选择的保存位置可能已被删除。"
+
+#~ msgid "The recording has been saved in"
+#~ msgstr "录屏视频已保存到"
 
 #~ msgid "Record computer sounds"
 #~ msgstr "录制本机声音"
