@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <template class="KoohaWindow" parent="AdwApplicationWindow">
     <property name="resizable">False</property>
+    <property name="default_width">1</property>
     <child>
       <object class="GtkWindowHandle">
         <child>
@@ -39,19 +40,17 @@
                             </style>
                             <child>
                               <object class="GtkStackPage">
-                                <property name="name">fullscreen-mode</property>
-                                <property name="icon-name">data_icons_display-symbolic</property>
+                                <property name="name">monitor-window</property>
                                 <property name="child">
                                   <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Full Screen</property>
+                                    <property name="label" translatable="yes">Normal</property>
                                   </object>
                                 </property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkStackPage">
-                                <property name="name">selection-mode</property>
-                                <property name="icon-name">data_icons_selection-symbolic</property>
+                                <property name="name">selection</property>
                                 <property name="child">
                                   <object class="GtkLabel">
                                     <property name="label" translatable="yes">Selection</property>
@@ -71,12 +70,28 @@
                         <property name="orientation">vertical</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkStackSwitcher">
-                            <property name="stack">title_stack</property>
-                            <property name="halign">center</property>
+                          <object class="GtkBox">
+                            <property name="homogeneous">True</property>
                             <style>
-                              <class name="large"/>
+                              <class name="linked"/>
+                              <class name="switcher"/>
                             </style>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.capture-mode</property>
+                                <property name="action-target">"monitor-window"</property>
+                                <property name="icon-name">display-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Capture a Monitor or Window</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.capture-mode</property>
+                                <property name="action-target">"selection"</property>
+                                <property name="icon-name">selection-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Capture a Selection of Screen</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child>
@@ -85,21 +100,21 @@
                             <property name="homogeneous">True</property>
                             <child>
                               <object class="GtkToggleButton">
-                                <property name="action-name">app.record-audio</property>
+                                <property name="action-name">win.record-speaker</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
-                                <property name="action-name">app.record-microphone</property>
+                                <property name="action-name">win.record-mic</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
-                                <property name="action-name">app.show-pointer</property>
+                                <property name="action-name">win.show-pointer</property>
                                 <property name="icon-name">input-mouse-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Show Pointer</property>
                               </object>
@@ -109,7 +124,7 @@
                         <child>
                           <object class="GtkButton" id="start_record_button">
                             <property name="label" translatable="yes">Record</property>
-                            <signal name="clicked" handler="on_start_record_button_clicked" swapped="no"/>
+                            <signal name="clicked" handler="_on_start_record_button_clicked" swapped="no"/>
                             <style>
                               <class name="suggested-action"/>
                             </style>
@@ -149,8 +164,12 @@
                         <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="yes">Recording</property>
                             <property name="single-line-mode">True</property>
+                            <binding name="label">
+                              <closure type="gchararray" function="_get_status_label_label">
+                                <lookup name="state">recorder</lookup>
+                              </closure>
+                            </binding>
                             <style>
                               <class name="title-4"/>
                             </style>
@@ -167,19 +186,44 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton">
-                        <property name="label" translatable="yes">Stop</property>
-                        <signal name="clicked" handler="on_stop_record_button_clicked" swapped="no"/>
+                      <object class="GtkBox">
                         <style>
-                          <class name="destructive-action"/>
+                          <class name="linked"/>
                         </style>
                         <child>
-                          <object class="GtkShortcutController">
-                            <property name="scope">managed</property>
+                          <object class="GtkButton">
+                            <property name="hexpand">True</property>
+                            <property name="label" translatable="yes">Stop</property>
+                            <signal name="clicked" handler="_on_stop_record_button_clicked" swapped="no"/>
+                            <style>
+                              <class name="destructive-action"/>
+                            </style>
                             <child>
-                              <object class="GtkShortcut">
-                                <property name="trigger">&lt;Control&gt;r</property>
-                                <property name="action">activate</property>
+                              <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                  <object class="GtkShortcut">
+                                    <property name="trigger">&lt;Control&gt;r</property>
+                                    <property name="action">activate</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="pause_record_button">
+                            <property name="icon-name">media-playback-pause-symbolic</property>
+                            <signal name="clicked" handler="_on_pause_record_button_clicked" swapped="no"/>
+                            <child>
+                              <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                  <object class="GtkShortcut">
+                                    <property name="trigger">&lt;Control&gt;k</property>
+                                    <property name="action">activate</property>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
@@ -226,7 +270,7 @@
                     <child>
                       <object class="GtkButton">
                         <property name="label" translatable="yes">Cancel Delay</property>
-                        <signal name="clicked" handler="on_cancel_delay_button_clicked" swapped="no"/>
+                        <signal name="clicked" handler="_on_cancel_delay_button_clicked" swapped="no"/>
                         <style>
                           <class name="destructive-action"/>
                         </style>
@@ -247,42 +291,21 @@
                 </property>
               </object>
             </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">processing</property>
-                <property name="child">
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="valign">center</property>
-                        <property name="vexpand">True</property>
-                        <property name="spacing">12</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">Processing</property>
-                            <property name="single-line-mode">True</property>
-                            <style>
-                              <class name="title-4"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkSpinner">
-                            <property name="spinning">True</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
-            </child>
           </object>
         </child>
       </object>
     </child>
+    <object class="Recorder" id="recorder">
+      <signal name="notify::state" handler="_on_recorder_state_notify" swapped="no"/>
+      <signal name="ready" handler="_on_recorder_ready" swapped="no"/>
+      <signal name="record-success" handler="_on_recorder_record_success" swapped="no"/>
+      <signal name="record-failed" handler="_on_recorder_record_failed" swapped="no"/>
+    </object>
+    <object class="Timer" id="timer">
+      <signal name="notify::time" handler="_on_timer_time_notify" swapped="no"/>
+      <signal name="notify::state" handler="_on_timer_state_notify" swapped="no"/>
+      <signal name="delay-done" handler="_on_timer_delay_done" swapped="no"/>
+    </object>
   </template>
   <menu id="menu">
     <section>
@@ -290,17 +313,17 @@
         <attribute name="label" translatable="yes">Delay</attribute>
         <item>
           <attribute translatable="yes" name="label">None</attribute>
-          <attribute name="action">app.record-delay</attribute>
+          <attribute name="action">win.record-delay</attribute>
           <attribute name="target">00</attribute>
         </item>
         <item>
           <attribute translatable="yes" name="label">5 seconds</attribute>
-          <attribute name="action">app.record-delay</attribute>
+          <attribute name="action">win.record-delay</attribute>
           <attribute name="target">05</attribute>
         </item>
         <item>
           <attribute translatable="yes" name="label">10 seconds</attribute>
-          <attribute name="action">app.record-delay</attribute>
+          <attribute name="action">win.record-delay</attribute>
           <attribute name="target">10</attribute>
         </item>
       </submenu>
@@ -308,13 +331,18 @@
         <attribute name="label" translatable="yes">Video Format</attribute>
         <item>
           <attribute translatable="yes" name="label">WebM</attribute>
-          <attribute name="action">app.video-format</attribute>
+          <attribute name="action">win.video-format</attribute>
           <attribute name="target">webm</attribute>
         </item>
         <item>
           <attribute translatable="yes" name="label">MKV</attribute>
-          <attribute name="action">app.video-format</attribute>
+          <attribute name="action">win.video-format</attribute>
           <attribute name="target">mkv</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">MP4</attribute>
+          <attribute name="action">win.video-format</attribute>
+          <attribute name="target">mp4</attribute>
         </item>
       </submenu>
       <item>
@@ -324,7 +352,7 @@
     </section>
     <section>
       <item>
-        <attribute name="action">app.show-shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
         <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
       <item>

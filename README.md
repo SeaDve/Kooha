@@ -42,13 +42,6 @@ The main features of Kooha include the following:
 * ⌨️ Utilize helpful keyboard shortcuts.
 
 
-## 🛣️ Roadmap
-
-- [ ] MP4 video format support (Already in dev branch)
-- [ ] Change backend to support individual window or monitor recording
-- [ ] Other desktop environments support
-
-
 ## ⚙️ Hidden Configuration Options
 
 ### Change frames per second to 60fps

@@ -1,9 +1,9 @@
-.large button {
+.switcher button {
   min-width: 75px;
   min-height: 63px;
 }
 
-stackswitcher image {
+.switcher button > image {
   -gtk-icon-size: 32px;
 }
 
@@ -21,4 +21,17 @@ headerbar.flat {
 
 .recording {
   color: #e01b24;
+}
+
+.paused {
+  animation-name: blinking;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+  animation-duration: 1s;
+
+}
+
+@keyframes blinking {
+  0% { color: alpha(@theme_text_color, 0.8); }
+  100% { color: #e01b24; }
 }
