@@ -44,10 +44,10 @@ class Application(Gtk.Application):
         Adw.init()
 
     def do_activate(self):
-        self.window = self.props.active_window
-        if not self.window:
-            self.window = KoohaWindow(self.settings, application=self)
-        self.window.present()
+        window = self.props.active_window
+        if not window:
+            window = KoohaWindow(self.settings, application=self)
+        window.present()
 
     def _setup_actions(self):
         simple_actions = [
@@ -69,7 +69,8 @@ class Application(Gtk.Application):
         self.set_accels_for_action('win.show-help-overlay', ('<Ctrl>question',))
 
     def _on_select_location(self, action, param):
-        chooser = Gtk.FileChooserDialog(transient_for=self.window, modal=True,
+        chooser = Gtk.FileChooserDialog(transient_for=self.props.active_window,
+                                        modal=True,
                                         action=Gtk.FileChooserAction.SELECT_FOLDER,
                                         title=_("Select a Folder"))
         chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
@@ -90,7 +91,7 @@ class Application(Gtk.Application):
 
         if not is_in_homefolder or directory == homefolder:
             error = ErrorDialog(
-                parent=self.window,
+                parent=self.props.active_window,
                 title=_(f"Inaccessible location '{directory}'"),
                 text=_("Please choose an accessible location and retry."),
             )
@@ -102,7 +103,7 @@ class Application(Gtk.Application):
 
     def _on_show_about(self, action, param):
         about = Gtk.AboutDialog()
-        about.set_transient_for(self.window)
+        about.set_transient_for(self.props.active_window)
         about.set_modal(True)
         about.set_version(self.version)
         about.set_program_name("Kooha")
@@ -130,7 +131,8 @@ class Application(Gtk.Application):
         Gio.AppInfo.launch_default_for_uri(f'file://{saving_location}')
 
     def _on_quit(self, action, param):
-        if self.window.recorder.state == Gst.State.NULL:
+        window = self.props.active_window
+        if window.recorder.state == Gst.State.NULL:
             self.quit()
 
     def new_notification(self, title, body, action):
