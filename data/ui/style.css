@@ -20,7 +20,7 @@ headerbar.flat {
 }
 
 .recording {
-  color: #e01b24;
+  color: @error_color;
 }
 
 .paused {
@@ -33,5 +33,4 @@ headerbar.flat {
 
 @keyframes blinking {
   0% { color: alpha(@theme_text_color, 0.8); }
-  100% { color: #e01b24; }
 }
