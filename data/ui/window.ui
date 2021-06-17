@@ -163,13 +163,8 @@
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="recording_label">
                             <property name="single-line-mode">True</property>
-                            <binding name="label">
-                              <closure type="gchararray" function="_get_status_label_label">
-                                <lookup name="state">recorder</lookup>
-                              </closure>
-                            </binding>
                             <style>
                               <class name="title-4"/>
                             </style>

@@ -16,6 +16,7 @@ class KoohaWindow(Adw.ApplicationWindow):
     pause_record_button = Gtk.Template.Child()
     title_stack = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
+    recording_label = Gtk.Template.Child()
     time_recording_label = Gtk.Template.Child()
     delay_label = Gtk.Template.Child()
 
@@ -48,10 +49,6 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.add_action(settings_action)
 
     @Gtk.Template.Callback()
-    def _get_status_label_label(self, window, recorder_state):
-        return _("Paused") if recorder_state == Gst.State.PAUSED else _("Recording")
-
-    @Gtk.Template.Callback()
     def _on_recorder_state_notify(self, recorder, state):
         if recorder.state == Gst.State.NULL:
             self.timer.stop()
@@ -60,10 +57,12 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.timer.resume()
             self.main_stack.set_visible_child_name('recording')
             self.pause_record_button.set_icon_name('media-playback-pause-symbolic')
+            self.recording_label.set_label(_("Recording"))
             self.time_recording_label.remove_css_class('paused')
         elif recorder.state == Gst.State.PAUSED:
             self.timer.pause()
             self.pause_record_button.set_icon_name('media-playback-start-symbolic')
+            self.recording_label.set_label(_("Paused"))
             self.time_recording_label.add_css_class('paused')
 
     @Gtk.Template.Callback()
