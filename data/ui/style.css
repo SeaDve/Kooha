@@ -28,7 +28,6 @@ headerbar.flat {
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(1.0,0,0,1.0);
   animation-duration: 1s;
-
 }
 
 @keyframes blinking {
