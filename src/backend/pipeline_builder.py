@@ -52,7 +52,7 @@ class PipelineBuilder:
 
     def _get_thread_count(self):
         num_processors = GLib.get_num_processors()
-        num_threads = min(max(1, num_processors), 64)
+        num_threads = min(num_processors, 64)
         return num_threads
 
     def _get_cropper(self):
