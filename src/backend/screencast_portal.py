@@ -24,7 +24,7 @@ class ScreencastPortal(GObject.GObject):
             'org.freedesktop.portal.Desktop',
             '/org/freedesktop/portal/desktop',
             'org.freedesktop.portal.ScreenCast',
-            None,
+            None
         )
 
         self.sender_name = self.bus.get_unique_name()[1:].replace('.', '_')
@@ -52,7 +52,7 @@ class ScreencastPortal(GObject.GObject):
             request_path,
             None,
             Gio.DBusSignalFlags.NONE,
-            callback,
+            callback
         )
         options['handle_token'] = GLib.Variant('s', request_token)
         method(signature, *args, options)
@@ -88,7 +88,7 @@ class ScreencastPortal(GObject.GObject):
             self._on_start_response,
             '(osa{sv})',
             self.session_handle,
-            '',
+            ''
         )
 
     def _on_start_response(self, bus, sender, path, request_path, node, output):
@@ -107,7 +107,7 @@ class ScreencastPortal(GObject.GObject):
                 Gio.DBusCallFlags.NONE,
                 -1,
                 None,
-                None,
+                None
             )
             fd = results.get(0)
             screen_width, screen_height = stream_info['size']
@@ -135,7 +135,7 @@ class ScreencastPortal(GObject.GObject):
             'org.freedesktop.portal.Desktop',
             self.session_handle,
             'org.freedesktop.portal.Session',
-            None,
+            None
         ).Close()
 
         logger.info("Portal closed")
