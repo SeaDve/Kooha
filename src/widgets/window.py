@@ -49,7 +49,7 @@ class KoohaWindow(Adw.ApplicationWindow):
             self.add_action(settings_action)
 
     @Gtk.Template.Callback()
-    def _on_recorder_state_notify(self, recorder, state):
+    def _on_recorder_state_notify(self, recorder, pspec):
         if recorder.state == Gst.State.NULL:
             self.timer.stop()
             self.main_stack.set_visible_child_name('main-screen')
@@ -83,14 +83,14 @@ class KoohaWindow(Adw.ApplicationWindow):
         error.present()
 
     @Gtk.Template.Callback()
-    def _on_timer_state_notify(self, timer, state):
+    def _on_timer_state_notify(self, timer, pspec):
         if timer.state == TimerState.DELAYED:
             self.main_stack.set_visible_child_name('delay')
         elif timer.state == TimerState.STOPPED:
             self.main_stack.set_visible_child_name('main-screen')
 
     @Gtk.Template.Callback()
-    def _on_timer_time_notify(self, timer, time):
+    def _on_timer_time_notify(self, timer, pspec):
         self.delay_label.set_label(str(timer.time))
         self.time_recording_label.set_label("%02d∶%02d" % divmod(timer.time, 60))
 
