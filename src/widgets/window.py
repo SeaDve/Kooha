@@ -29,8 +29,6 @@ class KoohaWindow(Adw.ApplicationWindow):
 
         self.settings.bind('capture-mode', self.title_stack,
                            'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
-        self.recorder.bind_property('is-readying', self,
-                                    'visible', GObject.BindingFlags.INVERT_BOOLEAN)
         self.start_record_button.grab_focus()
         self._setup_actions()
 

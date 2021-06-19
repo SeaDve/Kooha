@@ -291,6 +291,7 @@
       </object>
     </child>
     <object class="Recorder" id="recorder">
+      <property name="is-readying" bind-source="KoohaWindow" bind-property="visible" bind-flags="bidirectional|invert-boolean"/>
       <signal name="notify::state" handler="_on_recorder_state_notify" swapped="no"/>
       <signal name="ready" handler="_on_recorder_ready" swapped="no"/>
       <signal name="record-success" handler="_on_recorder_record_success" swapped="no"/>
