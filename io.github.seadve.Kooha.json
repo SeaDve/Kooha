@@ -11,7 +11,6 @@
         "--socket=wayland",
         "--socket=pulseaudio",
         "--filesystem=xdg-videos",
-        "--own-name=io.github.seadve.AreaSelector"
     ],
     "cleanup" : [
         "/include",
@@ -72,17 +71,6 @@
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/62/7e/d4fb56a1695fa65da0c8d3071855fa5408447b913c58c01933c2f81a269a/dbus-python-1.2.16.tar.gz",
                     "sha256": "11238f1d86c995d8aed2e22f04a1e3779f0d70e587caffeab4857f3c662ed5a4"
-                }
-            ]
-        },
-        {
-            "name": "area-selector",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/SeaDve/AreaSelector.git",
-                    "branch": "main"
                 }
             ]
         },
