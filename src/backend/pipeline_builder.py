@@ -41,6 +41,10 @@ class PipelineBuilder:
     def _even(self, number):
         return int(number // 2 * 2)
 
+    def _rescale(self, coordinates):
+        scale_factor = self.stream_screen.w / self.actual_screen.w
+        return tuple(coordinate * scale_factor for coordinate in coordinates)
+
     def _get_muxer(self):
         return ENCODING_PROFILES[self.video_format]['muxer']
 
@@ -59,12 +63,7 @@ class PipelineBuilder:
         if not self.coordinates:
             return ''
 
-        x, y, width, height = self.coordinates
-
-        width *= self.stream_screen.w / self.actual_screen.w
-        height *= self.stream_screen.h / self.actual_screen.h
-        x *= self.stream_screen.w / self.actual_screen.w
-        y *= self.stream_screen.h / self.actual_screen.h
+        x, y, width, height = self._rescale(self.coordinates)
         right_crop = (self.stream_screen.w - (width + x))
         bottom_crop = (self.stream_screen.h - (height + y))
 
