@@ -33,6 +33,7 @@ class Recorder(GObject.GObject):
 
         self.portal = ScreencastPortal()
         self.portal.connect('ready', self._on_portal_ready)
+        self.portal.connect('cancelled', self._on_portal_cancelled)
 
     @GObject.Property(type=Gst.State, default=_state)
     def state(self):
@@ -99,6 +100,9 @@ class Recorder(GObject.GObject):
             return
 
         emit_ready()
+
+    def _on_portal_cancelled(self, portal):
+        self.is_readying = False
 
     def _on_gst_message(self, bus, message):
         t = message.type

@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 
 
 class ScreencastPortal(GObject.GObject):
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, int, int, bool))}
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, int, int, bool)),
+                    'cancelled': (GObject.SIGNAL_RUN_FIRST, None, ())}
 
     def __init__(self):
         super().__init__()
@@ -87,6 +88,7 @@ class ScreencastPortal(GObject.GObject):
 
     def _on_start_response(self, response, results):
         if response != 0:
+            self.emit('cancelled')
             logger.warning(f"Failed to start: {response}")
             return
 
