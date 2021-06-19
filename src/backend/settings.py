@@ -39,8 +39,10 @@ class Settings(Gio.Settings):
             return saving_location
 
         xdg_videos_dir = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_VIDEOS)
-        guessed_videos_dir = os.path.join(GLib.get_home_dir(), _("Videos"))
-        return xdg_videos_dir or guessed_videos_dir
+        if not xdg_videos_dir:
+            return os.path.join(GLib.get_home_dir(), _("Videos"))
+
+        return xdg_videos_dir
 
     def get_video_format(self):
         return self.get_string('video-format')
