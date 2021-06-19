@@ -66,9 +66,14 @@ class Recorder(GObject.GObject):
         pipeline_builder.set_audio_source(*default_audio_sources)
 
         def emit_ready():
-            self.pipeline = pipeline_builder.build()
             self.is_readying = False
+            self.pipeline = pipeline_builder.build()
             self.emit('ready')
+
+        def clean_area_selector():
+            self.area_selector.disconnect(self.captured_id)
+            self.area_selector.disconnect(self.cancelled_id)
+            self.area_selector.hide()
 
         def on_area_selector_captured(area_selector, x, y, w, h, scr_w, scr_h):
             stream_screen = Screen(stream_screen_w, stream_screen_h)
@@ -80,18 +85,14 @@ class Recorder(GObject.GObject):
 
             selection = (x, y, w, h)
             pipeline_builder.set_coordinates(selection, stream_screen, actual_screen)
-            emit_ready()
+
             clean_area_selector()
+            emit_ready()
 
         def on_area_selector_cancelled(area_selector):
-            self.portal.close()
-            clean_area_selector()
             self.is_readying = False
-
-        def clean_area_selector():
-            self.area_selector.disconnect(self.captured_id)
-            self.area_selector.disconnect(self.cancelled_id)
-            self.area_selector.hide()
+            clean_area_selector()
+            self.portal.close()
 
         if is_selection_mode:
             self.captured_id = self.area_selector.connect('captured', on_area_selector_captured)
