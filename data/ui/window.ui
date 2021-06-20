@@ -104,6 +104,7 @@
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.record-speaker</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
+                                <property name="sensitive" bind-source="recorder" bind-property="is-readying" bind-flags="invert-boolean"/>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
                               </object>
                             </child>
@@ -111,6 +112,7 @@
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.record-mic</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
+                                <property name="sensitive" bind-source="recorder" bind-property="is-readying" bind-flags="invert-boolean"/>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
                               </object>
                             </child>
