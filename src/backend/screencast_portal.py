@@ -141,7 +141,7 @@ class ScreencastPortal(GObject.GObject):
         try:
             session_proxy.Close()
         except GLib.Error as error:
-            logger.error(error)
+            logger.exception(error)
             return
 
         logger.info("Portal closed")
