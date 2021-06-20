@@ -128,7 +128,7 @@ class ScreencastPortal(GObject.GObject):
         )
 
     def close(self):
-        Gio.DBusProxy.new_sync(
+        session_proxy = Gio.DBusProxy.new_sync(
             self.bus,
             Gio.DBusProxyFlags.NONE,
             None,
@@ -136,6 +136,12 @@ class ScreencastPortal(GObject.GObject):
             self.session_handle,
             'org.freedesktop.portal.Session',
             None
-        ).Close()
+        )
+
+        try:
+            session_proxy.Close()
+        except GLib.Error as error:
+            logger.error(error)
+            return
 
         logger.info("Portal closed")
