@@ -59,7 +59,7 @@ class Application(Gtk.Application):
 
         for action, callback in simple_actions:
             simple_action = Gio.SimpleAction.new(action, None)
-            simple_action.connect("activate", callback)
+            simple_action.connect('activate', callback)
             self.add_action(simple_action)
 
         self.set_accels_for_action('app.quit', ('<Ctrl>q',))
