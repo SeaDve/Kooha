@@ -127,8 +127,8 @@ class Recorder(GObject.GObject):
             stdout=subprocess.PIPE,
             text=True
         ).stdout.split('\n')
-        default_sink = f"{pactl_output[12].split(' ')[2]}.monitor"
-        default_source = pactl_output[13].split(' ')[2]
+        default_sink = f'{pactl_output[12].split()[2]}.monitor'
+        default_source = pactl_output[13].split()[2]
         if default_sink == default_source:
             return default_sink, None
         return default_sink, default_source
