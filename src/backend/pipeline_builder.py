@@ -38,8 +38,8 @@ class PipelineBuilder:
         self.mic_source = None
         self.coordinates = None
 
-    def _even(self, number):
-        return int(number // 2 * 2)
+    def _even_out(self, *numbers):
+        return tuple(int(number // 2 * 2) for number in numbers)
 
     def _rescale(self, coordinates):
         scale_factor = self.stream_screen.w / self.actual_screen.w
@@ -66,9 +66,10 @@ class PipelineBuilder:
         x, y, width, height = self._rescale(self.coordinates)
         right_crop = (self.stream_screen.w - (width + x))
         bottom_crop = (self.stream_screen.h - (height + y))
+        x, y, right_crop, bottom_crop = self._even_out(x, y, right_crop, bottom_crop)
 
-        return (f' videocrop top={self._even(y)} left={self._even(x)}'
-                f' right={self._even(right_crop)} bottom={self._even(bottom_crop)} !')
+        return (f' videocrop top={y} left={x}'
+                f' right={right_crop} bottom={bottom_crop} !')
 
     def _get_scaler(self):
         if not self.coordinates:
