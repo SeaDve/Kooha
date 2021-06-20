@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-16 13:27+0800\n"
-"PO-Revision-Date: 2021-04-24 04:11+0000\n"
+"PO-Revision-Date: 2021-06-20 20:34+0000\n"
 "Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -112,7 +112,7 @@ msgstr "开始/结束录制"
 
 #: data/ui/help_overlay.ui:43
 msgid "Toggle record pause"
-msgstr ""
+msgstr "暂停/继续录制"
 
 #: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
@@ -136,11 +136,11 @@ msgstr "切换鼠标指针显示"
 
 #: data/ui/window.ui:28
 msgid "Main Menu"
-msgstr ""
+msgstr "主菜单"
 
 #: data/ui/window.ui:46
 msgid "Normal"
-msgstr ""
+msgstr "一般"
 
 #: data/ui/window.ui:56
 msgid "Selection"
@@ -148,23 +148,23 @@ msgstr "选区录制"
 
 #: data/ui/window.ui:84
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "捕捉一个显示器或窗口"
 
 #: data/ui/window.ui:92
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "捕捉一个屏幕选区"
 
 #: data/ui/window.ui:105
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "录制本机声音"
 
 #: data/ui/window.ui:112
 msgid "Record From Microphone"
-msgstr ""
+msgstr "录制麦克风声音"
 
 #: data/ui/window.ui:119
 msgid "Show Pointer"
-msgstr ""
+msgstr "显示鼠标指针"
 
 #: data/ui/window.ui:126
 msgid "Record"
@@ -212,7 +212,7 @@ msgstr "MKV"
 
 #: data/ui/window.ui:343
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/ui/window.ui:350
 msgid "Save to…"
@@ -228,7 +228,7 @@ msgstr "关于 Kooha"
 
 #: src/widgets/window.py:52
 msgid "Paused"
-msgstr ""
+msgstr "已暂停"
 
 #: src/widgets/window.py:72
 msgid "Screencast Recorded!"
@@ -237,15 +237,15 @@ msgstr "屏幕已录制！"
 #: src/widgets/window.py:73
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
-msgstr ""
+msgstr "录像已保存至 {saving_location}"
 
 #: src/widgets/window.py:81
 msgid "Sorry! An error has occured."
-msgstr ""
+msgstr "抱歉！软件出现了问题。"
 
 #: src/backend/settings.py:42
 msgid "Videos"
-msgstr ""
+msgstr "视频"
 
 #: src/main.py:74
 msgid "Select a Folder"
@@ -262,7 +262,7 @@ msgstr "选择"
 #: src/main.py:94
 #, python-brace-format
 msgid "Inaccessible location '{directory}'"
-msgstr ""
+msgstr "无法访问位置 '{directory}'"
 
 #: src/main.py:95
 msgid "Please choose an accessible location and retry."

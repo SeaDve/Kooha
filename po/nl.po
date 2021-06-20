@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-16 13:27+0800\n"
-"PO-Revision-Date: 2021-05-23 02:28+0000\n"
+"PO-Revision-Date: 2021-06-20 20:34+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
-">\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -115,7 +115,7 @@ msgstr "Opname aan/uit"
 
 #: data/ui/help_overlay.ui:43
 msgid "Toggle record pause"
-msgstr ""
+msgstr "Onderbreken aan/uit"
 
 #: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
@@ -143,7 +143,7 @@ msgstr "Hoofdmenu"
 
 #: data/ui/window.ui:46
 msgid "Normal"
-msgstr ""
+msgstr "Normaal"
 
 #: data/ui/window.ui:56
 msgid "Selection"
@@ -151,11 +151,11 @@ msgstr "Selectie"
 
 #: data/ui/window.ui:84
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Beeldscherm of venster vastleggen"
 
 #: data/ui/window.ui:92
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Schermselectie vastleggen"
 
 #: data/ui/window.ui:105
 msgid "Record Computer Sounds"
@@ -215,7 +215,7 @@ msgstr "MKV"
 
 #: data/ui/window.ui:343
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/ui/window.ui:350
 msgid "Save to…"
@@ -231,7 +231,7 @@ msgstr "Over Kooha"
 
 #: src/widgets/window.py:52
 msgid "Paused"
-msgstr ""
+msgstr "Onderbroken"
 
 #: src/widgets/window.py:72
 msgid "Screencast Recorded!"
@@ -240,15 +240,15 @@ msgstr "De screencast is opgenomen!"
 #: src/widgets/window.py:73
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
-msgstr ""
+msgstr "De opname is opgeslagen in {saving_location}"
 
 #: src/widgets/window.py:81
 msgid "Sorry! An error has occured."
-msgstr ""
+msgstr "Er is een fout opgetreden."
 
 #: src/backend/settings.py:42
 msgid "Videos"
-msgstr ""
+msgstr "Video's"
 
 #: src/main.py:74
 msgid "Select a Folder"
@@ -265,7 +265,7 @@ msgstr "Kiezen"
 #: src/main.py:94
 #, python-brace-format
 msgid "Inaccessible location '{directory}'"
-msgstr ""
+msgstr "Ontoegankelijke locatie: {directory}"
 
 #: src/main.py:95
 msgid "Please choose an accessible location and retry."
@@ -278,7 +278,7 @@ msgstr "Copyright 2021 Dave Patrick"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:123
 msgid "translator-credits"
-msgstr "Heimen Stoffels &lt;vistausss@fastmail.com&gt;"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
 
 #: src/main.py:124
 msgid "GitHub"

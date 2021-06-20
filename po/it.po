@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-16 13:27+0800\n"
-"PO-Revision-Date: 2021-06-05 22:33+0000\n"
+"PO-Revision-Date: 2021-06-20 20:34+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -119,7 +119,7 @@ msgstr "Registra"
 
 #: data/ui/help_overlay.ui:43
 msgid "Toggle record pause"
-msgstr ""
+msgstr "Attiva/disattiva la pausa"
 
 #: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
@@ -147,7 +147,7 @@ msgstr "Menu principale"
 
 #: data/ui/window.ui:46
 msgid "Normal"
-msgstr ""
+msgstr "Normale"
 
 #: data/ui/window.ui:56
 msgid "Selection"
@@ -155,11 +155,11 @@ msgstr "Sezione"
 
 #: data/ui/window.ui:84
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Cattura uno schermo o una finestra"
 
 #: data/ui/window.ui:92
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Cattura una selezione di schermo"
 
 #: data/ui/window.ui:105
 msgid "Record Computer Sounds"
@@ -219,7 +219,7 @@ msgstr "MKV"
 
 #: data/ui/window.ui:343
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/ui/window.ui:350
 msgid "Save to…"
@@ -235,7 +235,7 @@ msgstr "A proposito di Kooha"
 
 #: src/widgets/window.py:52
 msgid "Paused"
-msgstr ""
+msgstr "In pausa"
 
 #: src/widgets/window.py:72
 msgid "Screencast Recorded!"
@@ -244,15 +244,15 @@ msgstr "Video dello schermo registrato!"
 #: src/widgets/window.py:73
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
-msgstr ""
+msgstr "La registrazione è stata salvata in {saving_location}"
 
 #: src/widgets/window.py:81
 msgid "Sorry! An error has occured."
-msgstr ""
+msgstr "Spiacente! Si è verificato un errore."
 
 #: src/backend/settings.py:42
 msgid "Videos"
-msgstr ""
+msgstr "Video"
 
 #: src/main.py:74
 msgid "Select a Folder"
@@ -269,7 +269,7 @@ msgstr "Seleziona"
 #: src/main.py:94
 #, python-brace-format
 msgid "Inaccessible location '{directory}'"
-msgstr ""
+msgstr "Posizione inaccessibile «{directory}»"
 
 #: src/main.py:95
 msgid "Please choose an accessible location and retry."
