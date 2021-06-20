@@ -43,7 +43,6 @@ class Recorder(GObject.GObject):
     def state(self, pipeline_state):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
-
         logger.info(f"Pipeline set to {pipeline_state} ")
 
     def _on_portal_ready(self, portal, fd, node_id,
@@ -124,14 +123,12 @@ class Recorder(GObject.GObject):
 
     def _get_default_audio_sources(self):
         pactl_output = subprocess.run(
-            'pactl info | tail -n +13 | cut -d" " -f3',
+            ['/usr/bin/pactl', 'info'],
             stdout=subprocess.PIPE,
-            shell=True,
             text=True
-        ).stdout.rstrip()
-        device_list = pactl_output.split("\n")
-        default_sink = f'{device_list[0]}.monitor'
-        default_source = device_list[1]
+        ).stdout.split('\n')
+        default_sink = f"{pactl_output[12].split(' ')[2]}.monitor"
+        default_source = pactl_output[13].split(' ')[2]
         if default_sink == default_source:
             return default_sink, None
         return default_sink, default_source
