@@ -73,8 +73,8 @@ class Application(Gtk.Application):
                                         modal=True,
                                         action=Gtk.FileChooserAction.SELECT_FOLDER,
                                         title=_("Select a Folder"))
-        chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL,)
-        chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT,)
+        chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+        chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT)
         chooser.set_default_response(Gtk.ResponseType.ACCEPT)
         chooser.set_current_folder(Gio.File.new_for_path(self.settings.get_saving_location()))
         chooser.connect('response', self._on_select_folder_response)
