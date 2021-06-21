@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <template class="KoohaWindow" parent="AdwApplicationWindow">
+  <template class="Window" parent="AdwApplicationWindow">
     <property name="resizable">False</property>
     <property name="default-width">1</property>
     <child>

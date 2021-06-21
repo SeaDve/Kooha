@@ -12,7 +12,7 @@ from gi.repository import Gtk, Gio, Gdk, GLib, Adw, Gst
 
 from kooha.backend.settings import Settings
 from kooha.widgets.error_dialog import ErrorDialog
-from kooha.widgets.window import KoohaWindow
+from kooha.widgets.window import Window
 
 logging.basicConfig(level=logging.DEBUG)
 Gst.init(None)
@@ -46,7 +46,7 @@ class Application(Gtk.Application):
     def do_activate(self):
         window = self.props.active_window
         if not window:
-            window = KoohaWindow(self.settings, application=self)
+            window = Window(self.settings, application=self)
         window.present()
 
     def _setup_actions(self):

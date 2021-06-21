@@ -9,8 +9,8 @@ from kooha.widgets.error_dialog import ErrorDialog
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
-class KoohaWindow(Adw.ApplicationWindow):
-    __gtype_name__ = 'KoohaWindow'
+class Window(Adw.ApplicationWindow):
+    __gtype_name__ = 'Window'
 
     start_record_button = Gtk.Template.Child()
     pause_record_button = Gtk.Template.Child()
