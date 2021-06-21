@@ -39,11 +39,11 @@ class PipelineBuilder:
         self.coordinates = None
 
     def _even_out(self, *numbers):
-        return tuple(int(number // 2 * 2) for number in numbers)
+        return (int(number // 2 * 2) for number in numbers)
 
     def _rescale(self, coordinates):
         scale_factor = self.stream_screen.w / self.actual_screen.w
-        return tuple(coordinate * scale_factor for coordinate in coordinates)
+        return (coordinate * scale_factor for coordinate in coordinates)
 
     def _get_muxer(self):
         return ENCODING_PROFILES[self.video_format]['muxer']
