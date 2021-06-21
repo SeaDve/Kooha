@@ -28,7 +28,3 @@ headerbar.flat {
 @keyframes blinking {
   0% { color: @theme_fg_color; }
 }
-
-#AreaSelector {
-  opacity: 0.001;
-}
