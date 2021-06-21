@@ -69,11 +69,6 @@ class Recorder(GObject.GObject):
             self.pipeline = pipeline_builder.build()
             self.emit('ready')
 
-        def clean_area_selector():
-            self.area_selector.disconnect(self.captured_id)
-            self.area_selector.disconnect(self.cancelled_id)
-            self.area_selector.hide()
-
         def on_area_selector_captured(area_selector, x, y, w, h, scr_w, scr_h):
             stream_screen = Screen(stream_screen_w, stream_screen_h)
             actual_screen = Screen(scr_w, scr_h)
@@ -85,12 +80,12 @@ class Recorder(GObject.GObject):
             selection = (x, y, w, h)
             pipeline_builder.set_coordinates(selection, stream_screen, actual_screen)
 
-            clean_area_selector()
+            self._clean_area_selector()
             emit_ready()
 
         def on_area_selector_cancelled(area_selector):
             self.is_readying = False
-            clean_area_selector()
+            self._clean_area_selector()
             self.portal.close()
 
         if is_selection_mode:
@@ -107,19 +102,24 @@ class Recorder(GObject.GObject):
     def _on_gst_message(self, bus, message):
         t = message.type
         if t == Gst.MessageType.EOS:
-            self._clean()
+            self._clean_pipeline()
             self.emit('record-success', self.settings.get_saving_location())
         elif t == Gst.MessageType.ERROR:
             error, debug = message.parse_error()
-            self._clean()
+            self._clean_pipeline()
             self.emit('record-failed', error)
             logger.error(f"{error} {debug}")
 
-    def _clean(self):
+    def _clean_pipeline(self):
         self.state = Gst.State.NULL
         self.record_bus.remove_watch()
         self.record_bus.disconnect(self.handler_id)
         self.portal.close()
+
+    def _clean_area_selector(self):
+        self.area_selector.disconnect(self.captured_id)
+        self.area_selector.disconnect(self.cancelled_id)
+        self.area_selector.hide()
 
     def _get_default_audio_sources(self):
         pactl_output = subprocess.run(
