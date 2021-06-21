@@ -13,7 +13,7 @@ headerbar.flat {
   background-color: transparent;
 }
 
-.time_label {
+.time-label {
   font-size: 450%;
   font-weight: 300;
   font-feature-settings: "tnum";

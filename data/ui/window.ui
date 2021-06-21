@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <template class="KoohaWindow" parent="AdwApplicationWindow">
     <property name="resizable">False</property>
-    <property name="default_width">1</property>
+    <property name="default-width">1</property>
     <child>
       <object class="GtkWindowHandle">
         <child>
@@ -179,7 +179,7 @@
                         <child>
                           <object class="GtkLabel" id="time_recording_label">
                             <style>
-                              <class name="time_label"/>
+                              <class name="time-label"/>
                               <class name="recording"/>
                             </style>
                           </object>
@@ -262,7 +262,7 @@
                         <child>
                           <object class="GtkLabel" id="delay_label">
                             <style>
-                              <class name="time_label"/>
+                              <class name="time-label"/>
                             </style>
                           </object>
                         </child>
