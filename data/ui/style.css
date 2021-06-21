@@ -1,16 +1,11 @@
-.switcher button {
-  min-width: 75px;
-  min-height: 63px;
-}
-
-.switcher button > image {
-  -gtk-icon-size: 32px;
-}
-
 headerbar.flat {
   background-image: none;
   border: none;
   background-color: transparent;
+}
+
+.large-icons image {
+  -gtk-icon-size: 32px;
 }
 
 .time-label {

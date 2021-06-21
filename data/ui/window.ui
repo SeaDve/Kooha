@@ -2,8 +2,9 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Window" parent="AdwApplicationWindow">
+    <property name="default-width">210</property>
+    <property name="default-height">230</property>
     <property name="resizable">False</property>
-    <property name="default-width">1</property>
     <child>
       <object class="GtkWindowHandle">
         <child>
@@ -72,9 +73,10 @@
                         <child>
                           <object class="GtkBox">
                             <property name="homogeneous">True</property>
+                            <property name="vexpand">True</property>
                             <style>
                               <class name="linked"/>
-                              <class name="switcher"/>
+                              <class name="large-icons"/>
                             </style>
                             <child>
                               <object class="GtkToggleButton">
