@@ -72,14 +72,13 @@ class Recorder(GObject.GObject):
         def on_area_selector_captured(area_selector, x, y, w, h, scr_w, scr_h):
             stream_screen = Screen(stream_screen_w, stream_screen_h)
             actual_screen = Screen(scr_w, scr_h)
+            selection = (x, y, w, h)
 
-            logger.info(f"selected_coordinates: {x, y, w, h}")
+            logger.info(f"selected_coordinates: {selection}")
             logger.info(f"stream screen_info: {stream_screen.w} {stream_screen.h}")
             logger.info(f"actual screen_info: {actual_screen.w} {actual_screen.h}")
 
-            selection = (x, y, w, h)
             pipeline_builder.set_coordinates(selection, stream_screen, actual_screen)
-
             self._clean_area_selector()
             emit_ready()
 
