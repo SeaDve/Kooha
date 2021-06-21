@@ -30,5 +30,5 @@ headerbar.flat {
 }
 
 #AreaSelector {
-  background: rgba(0, 0, 0, 0.004);
+  opacity: 0.001;
 }
