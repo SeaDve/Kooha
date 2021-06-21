@@ -33,10 +33,11 @@ class AreaSelector(Gtk.Window):
         self.end_point = Point(x, y)
 
         rectangle = self._get_geometry(self.start_point, self.end_point)
-        screen_width = self.get_size(Gtk.Orientation.HORIZONTAL)
-        screen_height = self.get_size(Gtk.Orientation.VERTICAL)
+        screen_width = self.get_width()
+        screen_height = self.get_height()
 
-        self.emit('captured', rectangle.x, rectangle.y, rectangle.w, rectangle.h,
+        self.emit('captured',
+                  rectangle.x, rectangle.y, rectangle.w, rectangle.h,
                   screen_width, screen_height)
 
         self.drawing_area.set_draw_func(self._drawing_area_clean)
