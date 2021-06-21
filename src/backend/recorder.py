@@ -39,7 +39,7 @@ class Recorder(GObject.GObject):
     def state(self):
         return self._state
 
-    @state.setter
+    @state.setter  # type: ignore
     def state(self, pipeline_state):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
@@ -68,8 +68,6 @@ class Recorder(GObject.GObject):
             self.is_readying = False
             self.pipeline = pipeline_builder.build()
             self.emit('ready')
-
-
 
         def on_area_selector_captured(area_selector, x, y, w, h, scr_w, scr_h):
             stream_screen = Screen(stream_screen_w, stream_screen_h)
