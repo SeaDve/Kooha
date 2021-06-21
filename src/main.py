@@ -19,6 +19,7 @@ Gst.init(None)
 
 
 class Application(Gtk.Application):
+
     def __init__(self, version):
         super().__init__(application_id='io.github.seadve.Kooha',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
@@ -26,7 +27,6 @@ class Application(Gtk.Application):
         self.version = version
 
         GLib.set_application_name("Kooha")
-        GLib.set_prgname('io.github.seadve.Kooha')
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
