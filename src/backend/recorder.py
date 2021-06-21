@@ -3,7 +3,6 @@
 
 import logging
 import subprocess
-from collections import namedtuple
 
 from gi.repository import GObject, Gst
 
@@ -13,8 +12,6 @@ from kooha.backend.pipeline_builder import PipelineBuilder
 from kooha.widgets.area_selector import AreaSelector
 
 logger = logging.getLogger(__name__)
-Screen = namedtuple('Screen', 'w h')
-Selection = namedtuple('Selection', 'x y w h')
 
 
 class Recorder(GObject.GObject):
@@ -45,9 +42,7 @@ class Recorder(GObject.GObject):
         self.pipeline.set_state(pipeline_state)
         logger.info(f"Pipeline set to {pipeline_state} ")
 
-    def _on_portal_ready(self, portal, fd, node_id,
-                         stream_screen_w, stream_screen_h,
-                         is_selection_mode):
+    def _on_portal_ready(self, portal, fd, node_id, stream_screen, is_selection_mode):
         framerate = self.settings.get_video_framerate()
         file_path = self.settings.get_file_path().replace(" ", r"\ ")
         video_format = self.settings.get_video_format()
@@ -69,11 +64,7 @@ class Recorder(GObject.GObject):
             self.pipeline = pipeline_builder.build()
             self.emit('ready')
 
-        def on_area_selector_captured(area_selector, x, y, w, h, scr_w, scr_h):
-            stream_screen = Screen(stream_screen_w, stream_screen_h)
-            actual_screen = Screen(scr_w, scr_h)
-            selection = (x, y, w, h)
-
+        def on_area_selector_captured(area_selector, selection, actual_screen):
             logger.info(f"selected_coordinates: {selection}")
             logger.info(f"stream screen_info: {stream_screen.w} {stream_screen.h}")
             logger.info(f"actual screen_info: {actual_screen.w} {actual_screen.h}")

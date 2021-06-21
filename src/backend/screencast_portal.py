@@ -6,11 +6,13 @@ import logging
 
 from gi.repository import GObject, GLib, Gio
 
+from kooha.widgets.area_selector import Screen
+
 logger = logging.getLogger(__name__)
 
 
 class ScreencastPortal(GObject.GObject):
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, int, int, bool)),
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, object, bool)),
                     'cancelled': (GObject.SIGNAL_RUN_FIRST, None, ())}
 
     def __init__(self):
@@ -110,8 +112,9 @@ class ScreencastPortal(GObject.GObject):
                 None
             )
             fd = results.get(0)
-            screen_width, screen_height = stream_info['size']
-            self.emit('ready', fd, node_id, screen_width, screen_height, self.is_selection_mode)
+            stream_screen = Screen(*stream_info['size'])
+
+            self.emit('ready', fd, node_id, stream_screen, self.is_selection_mode)
 
     def open(self, is_show_pointer, is_selection_mode):
         self.is_show_pointer = is_show_pointer

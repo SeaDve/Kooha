@@ -7,12 +7,13 @@ from gi.repository import Gtk, Gdk, GObject
 
 Point = namedtuple('Point', 'x y')
 Rectangle = namedtuple('Rectangle', 'x y w h')
+Screen = namedtuple('Screen', 'w h')
 
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/area_selector.ui')
 class AreaSelector(Gtk.Window):
     __gtype_name__ = 'AreaSelector'
-    __gsignals__ = {'captured': (GObject.SIGNAL_RUN_FIRST, None, (int, int, int, int, int, int)),
+    __gsignals__ = {'captured': (GObject.SIGNAL_RUN_FIRST, None, (object, object)),
                     'cancelled': (GObject.SIGNAL_RUN_FIRST, None, ())}
 
     drawing_area = Gtk.Template.Child()
@@ -32,14 +33,10 @@ class AreaSelector(Gtk.Window):
         self.dragging = False
         self.end_point = Point(x, y)
 
-        rectangle = self._get_geometry(self.start_point, self.end_point)
-        screen_width = self.get_width()
-        screen_height = self.get_height()
+        selection_rectangle = self._get_geometry(self.start_point, self.end_point)
+        actual_screen = Screen(self.get_width(), self.get_height())
 
-        self.emit('captured',
-                  rectangle.x, rectangle.y, rectangle.w, rectangle.h,
-                  screen_width, screen_height)
-
+        self.emit('captured', selection_rectangle, actual_screen)
         self.drawing_area.set_draw_func(self._drawing_area_clean)
 
     @Gtk.Template.Callback()
