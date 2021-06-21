@@ -23,6 +23,7 @@ jobs:
           pip install flake8 mypy
 
       - name: Lint with flake8
+        continue-on-error: true
         run: |
           flake8 --builtins=_ --ignore E402,W503 --max-complexity=10 --max-line-length=99 --show-source --statistics src/
 
