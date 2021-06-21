@@ -20,6 +20,9 @@
   <a href="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml">
     <img src="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml/badge.svg" alt="CI status"/>
   </a>
+  <a href="https://repology.org/project/kooha/versions">
+    <img src="https://repology.org/badge/tiny-repos/kooha.svg" alt="Packaging status">
+  </a>
 </p>
 
 <p align="center">
