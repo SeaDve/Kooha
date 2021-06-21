@@ -1,4 +1,4 @@
-name: Unit Testing
+name: Testing
 
 on:
   push:
@@ -8,25 +8,35 @@ on:
 
 jobs:
   flake8:
-    name: "Linter and Static Type Checker"
+    name: "Linter"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v1
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.9
-
       - name: Install dependencies
         run: |
-          pip install flake8 mypy
-
+          pip install flake8
       - name: Lint with flake8
-        continue-on-error: true
         run: |
           flake8 --builtins=_ --ignore E402,W503 --max-complexity=10 --max-line-length=99 --show-source --statistics src/
 
+  mypy:
+    name: "Static Type Checker"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install mypy
       - name: Check with MyPy
         run: |
           mypy --ignore-missing-imports --disallow-incomplete-defs src
