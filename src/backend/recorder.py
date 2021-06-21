@@ -69,6 +69,8 @@ class Recorder(GObject.GObject):
             self.pipeline = pipeline_builder.build()
             self.emit('ready')
 
+
+
         def on_area_selector_captured(area_selector, x, y, w, h, scr_w, scr_h):
             stream_screen = Screen(stream_screen_w, stream_screen_h)
             actual_screen = Screen(scr_w, scr_h)

@@ -46,6 +46,6 @@ jobs:
 
     - name: Wait for flathub build to complete
       run: |
-        cd $GITHUB_WORKSPACE/.ci
+        cd $GITHUB_WORKSPACE/build-aux/ci
         chmod +x *.sh
         ./flathub_wait_for_build.sh
