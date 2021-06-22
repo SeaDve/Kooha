@@ -19,19 +19,19 @@ shell_proxy = Gio.DBusProxy.new_for_bus_sync(
 class Utils:
 
     @staticmethod
-    def shell_window_eval(function, is_enabled):
+    def shell_window_eval(method, is_enabled):
         reverse_keyword = '' if is_enabled else 'un'
 
         try:
             shell_proxy.Eval(
                 '(s)',
-                f'global.display.focus_window.{reverse_keyword}{function}()'
+                f'global.display.focus_window.{reverse_keyword}{method}()'
             )
         except GLib.Error as error:
             logger.error(error)
-            logger.error(f"Failed to set {function} to {is_enabled}")
+            logger.error(f"Failed to set {method} to {is_enabled}")
         else:
-            logger.info(f"Sucessfully set {function} to {is_enabled}")
+            logger.info(f"Sucessfully set {method} to {is_enabled}")
 
     @staticmethod
     def raise_active_window():
