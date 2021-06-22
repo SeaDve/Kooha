@@ -123,7 +123,7 @@ class ScreencastPortal(GObject.GObject):
             method(signature, *args, options)
         except GLib.Error as error:
             self.emit('cancelled', error)
-            logging.info(error, exc_info=True)
+            logging.exception(error)
 
     def open(self, is_show_pointer, is_selection_mode):
         self.is_show_pointer = is_show_pointer
