@@ -23,15 +23,18 @@ class Utils:
         reverse_keyword = '' if is_enabled else 'un'
 
         try:
-            shell_proxy.Eval(
+            results = shell_proxy.Eval(
                 '(s)',
                 f'global.display.focus_window.{reverse_keyword}{method}()'
             )
         except GLib.Error as error:
             logger.error(error)
-            logger.error(f"Failed to set {method} to {is_enabled}")
-        else:
+            return
+
+        if results[0]:
             logger.info(f"Sucessfully set {method} to {is_enabled}")
+        else:
+            logger.error(results[1])
 
     @staticmethod
     def raise_active_window():
