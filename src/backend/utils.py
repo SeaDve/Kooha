@@ -23,7 +23,7 @@ class Utils:
         reverse_keyword = '' if is_enabled else 'un'
 
         try:
-            results = shell_proxy.Eval(
+            success, result = shell_proxy.Eval(
                 '(s)',
                 f'global.display.focus_window.{reverse_keyword}{method}()'
             )
@@ -31,10 +31,10 @@ class Utils:
             logger.error(error)
             return
 
-        if results[0]:
+        if success:
             logger.info(f"Sucessfully set {method} to {is_enabled}")
         else:
-            logger.error(results[1])
+            logger.error(result)
 
     @staticmethod
     def raise_active_window():
