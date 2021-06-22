@@ -20,7 +20,7 @@ class AreaSelector(Gtk.Window):
 
     def __init__(self):
         super().__init__()
-        self.drawing_area.set_cursor(Gdk.Cursor.new_from_name('crosshair'))
+        self.drawing_area.set_cursor_from_name('crosshair')
         self.drawing_area.set_draw_func(self._drawing_area_clean)
 
     @Gtk.Template.Callback()
