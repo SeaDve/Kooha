@@ -3,7 +3,7 @@
 
 from collections import namedtuple
 
-from gi.repository import Gtk, Gdk, GObject
+from gi.repository import Gtk, GObject
 
 Point = namedtuple('Point', 'x y')
 Rectangle = namedtuple('Rectangle', 'x y w h')
