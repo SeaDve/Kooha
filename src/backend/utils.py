@@ -37,11 +37,11 @@ class Utils:
             logger.error(result)
 
     @staticmethod
-    def raise_active_window():
+    def try_raise_active_window():
         Utils.shell_window_eval('make_above', True)
         Utils.shell_window_eval('stick', True)
 
     @staticmethod
-    def unraise_active_window():
+    def try_unraise_active_window():
         Utils.shell_window_eval('make_above', False)
         Utils.shell_window_eval('stick', False)
