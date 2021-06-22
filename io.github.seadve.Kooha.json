@@ -10,7 +10,8 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
-        "--filesystem=xdg-videos"
+        "--filesystem=xdg-videos",
+        "--talk-name=org.gnome.Shell"
     ],
     "cleanup" : [
         "/include",

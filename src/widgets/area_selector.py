@@ -3,7 +3,9 @@
 
 from collections import namedtuple
 
-from gi.repository import Gtk, GObject
+from gi.repository import Gtk, GObject, GLib
+
+from kooha.backend.utils import Utils
 
 Point = namedtuple('Point', 'x y')
 Rectangle = namedtuple('Rectangle', 'x y w h')
@@ -54,11 +56,16 @@ class AreaSelector(Gtk.Window):
     @Gtk.Template.Callback()
     def _on_key_pressed_notify(self, controller, keyval, keycode, state):
         if keyval == 65307:
-            self.emit('cancelled')
+            self._on_close_request(None)
 
     @Gtk.Template.Callback()
     def _on_close_request(self, window):
+        Utils.unraise_active_window()
         self.emit('cancelled')
+
+    @Gtk.Template.Callback()
+    def _on_show(self, window):
+        GLib.timeout_add(100, Utils.raise_active_window)
 
     def _drawing_area_draw(self, dwa, ctx, dwa_w, dwa_h, x, y, w, h):
         ctx.rectangle(x, y, w, h)
