@@ -69,10 +69,7 @@ class AreaSelector(Gtk.Window):
         ctx.stroke()
 
     def _drawing_area_clean(self, dwa, ctx, dwa_w, dwa_h):
-        ctx.rectangle(1.5, 1.5, dwa_w - 3, dwa_h - 3)
-        ctx.set_source_rgb(1, 1, 1)
-        ctx.set_line_width(3)
-        ctx.stroke()
+        ctx.new_path()
 
     def _get_geometry(self, p1, p2):
         min_x = min(p1.x, p2.x)
