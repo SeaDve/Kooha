@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 13:27+0800\n"
+"POT-Creation-Date: 2021-06-22 20:36+0800\n"
 "PO-Revision-Date: 2021-06-01 13:32+0000\n"
 "Last-Translator: Mykola <mykola.lev@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -29,7 +29,7 @@ msgstr "Куха"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Recorder;Screen;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:118
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:119
 msgid "Elegantly record your screen"
 msgstr "Елегантно записуйте Ваш екран"
 
@@ -106,7 +106,7 @@ msgstr "Показати гарячі клавіші"
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/ui/help_overlay.ui:33 src/widgets/window.py:52
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:56
 msgid "Recording"
 msgstr "Запис"
 
@@ -140,151 +140,159 @@ msgstr "Ввімкнути або вимкнути мікрофон"
 msgid "Toggle pointer"
 msgstr "Показувати або сховати вказівник миші"
 
-#: data/ui/window.ui:28
+#: data/ui/window.ui:31
 msgid "Main Menu"
 msgstr "Головне Меню"
 
-#: data/ui/window.ui:46
+#: data/ui/window.ui:49
 msgid "Normal"
 msgstr ""
 
-#: data/ui/window.ui:56
+#: data/ui/window.ui:59
 msgid "Selection"
 msgstr "Вибір"
 
-#: data/ui/window.ui:84
+#: data/ui/window.ui:89
 msgid "Capture a Monitor or Window"
 msgstr ""
 
-#: data/ui/window.ui:92
+#: data/ui/window.ui:98
 msgid "Capture a Selection of Screen"
 msgstr ""
 
-#: data/ui/window.ui:105
+#: data/ui/window.ui:112
 msgid "Record Computer Sounds"
 msgstr "Записувати Звуки Комп'ютера"
 
-#: data/ui/window.ui:112
+#: data/ui/window.ui:120
 msgid "Record From Microphone"
 msgstr "Записувати Мікрофон"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:128
 msgid "Show Pointer"
 msgstr "Показати вказівник миші"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:136
 #, fuzzy
 msgid "Record"
 msgstr "Записувати"
 
-#: data/ui/window.ui:196
+#: data/ui/window.ui:201
 msgid "Stop"
 msgstr "Зупинити"
 
-#: data/ui/window.ui:254
+#: data/ui/window.ui:259
 msgid "Recording in…"
 msgstr "Запис через…"
 
-#: data/ui/window.ui:272
+#: data/ui/window.ui:277
 msgid "Cancel Delay"
 msgstr "Скасувати Затримку"
 
-#: data/ui/window.ui:313
+#: data/ui/window.ui:318
 msgid "Delay"
 msgstr "Затримка"
 
-#: data/ui/window.ui:315
+#: data/ui/window.ui:320
 msgid "None"
 msgstr "Нічого"
 
-#: data/ui/window.ui:320
+#: data/ui/window.ui:325
 msgid "5 seconds"
 msgstr "5 секунд"
 
-#: data/ui/window.ui:325
+#: data/ui/window.ui:330
 msgid "10 seconds"
 msgstr "10 секунд"
 
-#: data/ui/window.ui:331
+#: data/ui/window.ui:336
 msgid "Video Format"
 msgstr "Формат Відео"
 
-#: data/ui/window.ui:333
+#: data/ui/window.ui:338
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:338
+#: data/ui/window.ui:343
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:343
+#: data/ui/window.ui:348
 msgid "MP4"
 msgstr ""
 
-#: data/ui/window.ui:350
+#: data/ui/window.ui:355
 msgid "Save to…"
 msgstr "Зберегти в…"
 
-#: data/ui/window.ui:356
+#: data/ui/window.ui:361
 msgid "Keyboard Shortcuts"
 msgstr "Гарячі Клавіші"
 
-#: data/ui/window.ui:360
+#: data/ui/window.ui:365
 msgid "About Kooha"
 msgstr "Про Kooha"
 
-#: src/widgets/window.py:52
+#: src/widgets/window.py:61
 msgid "Paused"
 msgstr ""
 
-#: src/widgets/window.py:72
+#: src/widgets/window.py:67
 msgid "Screencast Recorded!"
 msgstr "Записано!"
 
-#: src/widgets/window.py:73
+#: src/widgets/window.py:68
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
 msgstr ""
 
-#: src/widgets/window.py:81
+#: src/widgets/window.py:76
 msgid "Sorry! An error has occured."
 msgstr ""
 
-#: src/backend/settings.py:42
+#: src/backend/settings.py:43
 msgid "Videos"
 msgstr ""
 
-#: src/main.py:74
+#: src/backend/screencast_portal.py:39
+msgid "Failed to create session."
+msgstr ""
+
+#: src/backend/screencast_portal.py:59
+msgid "Failed to select sources."
+msgstr ""
+
+#: src/main.py:75
 msgid "Select a Folder"
 msgstr "Вибрати папку"
 
-#: src/main.py:75
+#: src/main.py:76
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/main.py:76
+#: src/main.py:77
 msgid "Select"
 msgstr "Обрати"
 
-#: src/main.py:94
+#: src/main.py:95
 #, python-brace-format
-msgid "Inaccessible location '{directory}'"
+msgid "Inaccessible location “{directory}”"
 msgstr ""
 
-#: src/main.py:95
+#: src/main.py:96
 msgid "Please choose an accessible location and retry."
 msgstr "Будь-ласка, оберіть доступне місце збереження, і спобуйте ще раз."
 
-#: src/main.py:121
+#: src/main.py:122
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Авторські права 2021 Дейв Патрік"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:123
+#: src/main.py:124
 msgid "translator-credits"
 msgstr "перекладачі"
 
-#: src/main.py:124
+#: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 13:27+0800\n"
+"POT-Creation-Date: 2021-06-22 20:36+0800\n"
 "PO-Revision-Date: 2021-06-16 19:37+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -29,7 +29,7 @@ msgstr "Kooha"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:118
+#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:119
 msgid "Elegantly record your screen"
 msgstr "Spela in din skärm på ett elegant sätt"
 
@@ -106,7 +106,7 @@ msgstr "Visa tangentbordsgenvägar"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/ui/help_overlay.ui:33 src/widgets/window.py:52
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:56
 msgid "Recording"
 msgstr "Spelar in"
 
@@ -138,152 +138,163 @@ msgstr "Mikrofonljud på/av"
 msgid "Toggle pointer"
 msgstr "Visa/Dölj muspekare"
 
-#: data/ui/window.ui:28
+#: data/ui/window.ui:31
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/ui/window.ui:46
+#: data/ui/window.ui:49
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/window.ui:56
+#: data/ui/window.ui:59
 msgid "Selection"
 msgstr "Markering"
 
-#: data/ui/window.ui:84
+#: data/ui/window.ui:89
 msgid "Capture a Monitor or Window"
 msgstr "Spela in en bildskärm eller ett fönster"
 
-#: data/ui/window.ui:92
+#: data/ui/window.ui:98
 msgid "Capture a Selection of Screen"
 msgstr "Spela in en del av skärmen"
 
-#: data/ui/window.ui:105
+#: data/ui/window.ui:112
 msgid "Record Computer Sounds"
 msgstr "Spela in datorljud"
 
-#: data/ui/window.ui:112
+#: data/ui/window.ui:120
 msgid "Record From Microphone"
 msgstr "Spela in från mikrofon"
 
-#: data/ui/window.ui:119
+#: data/ui/window.ui:128
 msgid "Show Pointer"
 msgstr "Visa muspekare"
 
-#: data/ui/window.ui:126
+#: data/ui/window.ui:136
 msgid "Record"
 msgstr "Spela in"
 
-#: data/ui/window.ui:196
+#: data/ui/window.ui:201
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/ui/window.ui:254
+#: data/ui/window.ui:259
 msgid "Recording in…"
 msgstr "Spelar in om…"
 
-#: data/ui/window.ui:272
+#: data/ui/window.ui:277
 msgid "Cancel Delay"
 msgstr "Avbryt fördröjning"
 
-#: data/ui/window.ui:313
+#: data/ui/window.ui:318
 msgid "Delay"
 msgstr "Fördröjning"
 
-#: data/ui/window.ui:315
+#: data/ui/window.ui:320
 msgid "None"
 msgstr "Ingen"
 
-#: data/ui/window.ui:320
+#: data/ui/window.ui:325
 msgid "5 seconds"
 msgstr "5 sekunder"
 
-#: data/ui/window.ui:325
+#: data/ui/window.ui:330
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: data/ui/window.ui:331
+#: data/ui/window.ui:336
 msgid "Video Format"
 msgstr "Videoformat"
 
-#: data/ui/window.ui:333
+#: data/ui/window.ui:338
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:338
+#: data/ui/window.ui:343
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:343
+#: data/ui/window.ui:348
 msgid "MP4"
 msgstr "MP4"
 
-#: data/ui/window.ui:350
+#: data/ui/window.ui:355
 msgid "Save to…"
 msgstr "Spara till…"
 
-#: data/ui/window.ui:356
+#: data/ui/window.ui:361
 msgid "Keyboard Shortcuts"
 msgstr "Tangenbordsgenvägar"
 
-#: data/ui/window.ui:360
+#: data/ui/window.ui:365
 msgid "About Kooha"
 msgstr "Om Kooha"
 
-#: src/widgets/window.py:52
+#: src/widgets/window.py:61
 msgid "Paused"
 msgstr "Pausad"
 
-#: src/widgets/window.py:72
+#: src/widgets/window.py:67
 msgid "Screencast Recorded!"
 msgstr "Skärmvisning inspelad!"
 
-#: src/widgets/window.py:73
+#: src/widgets/window.py:68
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
 msgstr "Inspelningen har sparats i {saving_location}"
 
-#: src/widgets/window.py:81
+#: src/widgets/window.py:76
 msgid "Sorry! An error has occured."
 msgstr "Ett fel har uppstått."
 
-#: src/backend/settings.py:42
+#: src/backend/settings.py:43
 msgid "Videos"
 msgstr "Videor"
 
-#: src/main.py:74
+#: src/backend/screencast_portal.py:39
+msgid "Failed to create session."
+msgstr ""
+
+#: src/backend/screencast_portal.py:59
+msgid "Failed to select sources."
+msgstr ""
+
+#: src/main.py:75
 msgid "Select a Folder"
 msgstr "Välj en mapp"
 
-#: src/main.py:75
+#: src/main.py:76
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/main.py:76
+#: src/main.py:77
 msgid "Select"
 msgstr "Välj"
 
-#: src/main.py:94
-#, python-brace-format
-msgid "Inaccessible location '{directory}'"
-msgstr "Oåtkomlig plats \"{directory}\""
-
 #: src/main.py:95
+#, python-brace-format
+msgid "Inaccessible location “{directory}”"
+msgstr ""
+
+#: src/main.py:96
 msgid "Please choose an accessible location and retry."
 msgstr "Välj en åtkomlig plats och försök igen."
 
-#: src/main.py:121
+#: src/main.py:122
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:123
+#: src/main.py:124
 msgid "translator-credits"
 msgstr "Åke Engelbrektson &lt;eson@svenskasprakfiler.se&gt;"
 
-#: src/main.py:124
+#: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
+
+#~ msgid "Inaccessible location '{directory}'"
+#~ msgstr "Oåtkomlig plats \"{directory}\""
 
 #~ msgid "Toggle capture mode"
 #~ msgstr "Växla inhämtningsläge"
