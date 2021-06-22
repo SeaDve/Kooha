@@ -5,6 +5,7 @@
     <property name="deletable">False</property>
     <property name="decorated">False</property>
     <property name="css-classes"/>
+    <signal name="close-request" handler="_on_close_request" swapped="no"/>
     <child>
       <object class="GtkDrawingArea" id="drawing_area"/>
     </child>
