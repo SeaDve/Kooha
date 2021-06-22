@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-22 20:36+0800\n"
-"PO-Revision-Date: 2021-06-16 19:37+0000\n"
+"PO-Revision-Date: 2021-06-22 13:30+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -253,11 +253,11 @@ msgstr "Videor"
 
 #: src/backend/screencast_portal.py:39
 msgid "Failed to create session."
-msgstr ""
+msgstr "Kunde inte skapa session."
 
 #: src/backend/screencast_portal.py:59
 msgid "Failed to select sources."
-msgstr ""
+msgstr "Kunde inte välja källor."
 
 #: src/main.py:75
 msgid "Select a Folder"
@@ -274,7 +274,7 @@ msgstr "Välj"
 #: src/main.py:95
 #, python-brace-format
 msgid "Inaccessible location “{directory}”"
-msgstr ""
+msgstr "Oåtkomlig plats “{directory}”"
 
 #: src/main.py:96
 msgid "Please choose an accessible location and retry."
