@@ -6,7 +6,8 @@ logger = logging.getLogger(__name__)
 
 shell_proxy = Gio.DBusProxy.new_for_bus_sync(
     Gio.BusType.SESSION,
-    Gio.DBusProxyFlags.NONE,
+    Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION |
+    Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS,
     None,
     'org.gnome.Shell',
     '/org/gnome/Shell',
@@ -19,10 +20,13 @@ class Utils:
 
     @staticmethod
     def shell_window_eval(function, is_enabled):
-        reverse_kw = '' if is_enabled else 'un'
+        reverse_keyword = '' if is_enabled else 'un'
 
         try:
-            shell_proxy.Eval('(s)', f'global.display.focus_window.{reverse_kw}{function}()')
+            shell_proxy.Eval(
+                '(s)',
+                f'global.display.focus_window.{reverse_keyword}{function}()'
+            )
         except GLib.Error as error:
             logger.error(error)
             logger.error(f"Failed to set {function} to {is_enabled}")
