@@ -86,8 +86,10 @@ class Recorder(GObject.GObject):
 
         emit_ready()
 
-    def _on_portal_cancelled(self, portal):
+    def _on_portal_cancelled(self, portal, error_message):
         self.is_readying = False
+        if error_message:
+            self.emit('record-failed', error_message)
 
     def _on_gst_message(self, bus, message):
         t = message.type

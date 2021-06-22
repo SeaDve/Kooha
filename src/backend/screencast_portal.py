@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 class ScreencastPortal(GObject.GObject):
     __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, object, bool)),
-                    'cancelled': (GObject.SIGNAL_RUN_FIRST, None, ())}
+                    'cancelled': (GObject.SIGNAL_RUN_FIRST, None, (str,))}
 
     def __init__(self):
         super().__init__()
@@ -36,6 +36,7 @@ class ScreencastPortal(GObject.GObject):
     def _on_create_session_response(self, bus, sender, path, request_path, node, output):
         response, results = output
         if response != 0:
+            self.emit('cancelled', _("Failed to create session."))
             logger.warning(f"Failed to create session: {response}")
             return
 
@@ -55,6 +56,7 @@ class ScreencastPortal(GObject.GObject):
     def _on_select_sources_response(self, bus, sender, path, request_path, node, output):
         response, results = output
         if response != 0:
+            self.emit('cancelled', _("Failed to select sources."))
             logger.warning(f"Failed to select sources: {response}")
             return
 
@@ -70,7 +72,7 @@ class ScreencastPortal(GObject.GObject):
     def _on_start_response(self, bus, sender, path, request_path, node, output):
         response, results = output
         if response != 0:
-            self.emit('cancelled')
+            self.emit('cancelled', None)
             logger.warning(f"Failed to start: {response}")
             return
 
@@ -116,7 +118,12 @@ class ScreencastPortal(GObject.GObject):
             callback
         )
         options['handle_token'] = GLib.Variant('s', request_token)
-        method(signature, *args, options)
+
+        try:
+            method(signature, *args, options)
+        except GLib.Error as error:
+            self.emit('cancelled', error)
+            logging.info(error, exc_info=True)
 
     def open(self, is_show_pointer, is_selection_mode):
         self.is_show_pointer = is_show_pointer
@@ -142,11 +149,5 @@ class ScreencastPortal(GObject.GObject):
             'org.freedesktop.portal.Session',
             None
         )
-
-        try:
-            session_proxy.Close()
-        except GLib.Error as error:
-            logger.exception(error)
-            return
-
+        session_proxy.Close()
         logger.info("Portal closed")
