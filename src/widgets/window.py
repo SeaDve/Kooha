@@ -12,7 +12,6 @@ from kooha.widgets.error_dialog import ErrorDialog
 class Window(Adw.ApplicationWindow):
     __gtype_name__ = 'Window'
 
-    start_record_button = Gtk.Template.Child()
     pause_record_button = Gtk.Template.Child()
     title_stack = Gtk.Template.Child()
     main_stack = Gtk.Template.Child()
@@ -29,7 +28,6 @@ class Window(Adw.ApplicationWindow):
 
         self.settings.bind('capture-mode', self.title_stack,
                            'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
-        self.start_record_button.grab_focus()
         self._setup_actions()
 
     def _setup_actions(self):
