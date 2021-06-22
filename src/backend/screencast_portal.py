@@ -33,32 +33,6 @@ class ScreencastPortal(GObject.GObject):
         self.request_counter = 0
         self.session_counter = 0
 
-    def _new_session_path(self):
-        self.session_counter += 1
-        token = f'u{self.session_counter}'
-        path = f'/org/freedesktop/portal/desktop/session/{self.sender_name}/{token}'
-        return path, token
-
-    def _new_request_path(self):
-        self.request_counter += 1
-        token = f'u{self.request_counter}'
-        path = f'/org/freedesktop/portal/desktop/request/{self.sender_name}/{token}'
-        return path, token
-
-    def _screencast_call(self, method, callback, signature, *args, options={}):
-        request_path, request_token = self._new_request_path()
-        self.bus.signal_subscribe(
-            'org.freedesktop.portal.Desktop',
-            'org.freedesktop.portal.Request',
-            'Response',
-            request_path,
-            None,
-            Gio.DBusSignalFlags.NONE,
-            callback
-        )
-        options['handle_token'] = GLib.Variant('s', request_token)
-        method(signature, *args, options)
-
     def _on_create_session_response(self, bus, sender, path, request_path, node, output):
         response, results = output
         if response != 0:
@@ -100,21 +74,49 @@ class ScreencastPortal(GObject.GObject):
             logger.warning(f"Failed to start: {response}")
             return
 
-        logger.info("Ready for pipewire stream")
-        for node_id, stream_info in results['streams']:
-            logger.info(f"stream {node_id}")
-            response, results = self.proxy.call_with_unix_fd_list_sync(
-                'OpenPipeWireRemote',
-                GLib.Variant('(oa{sv})', (self.session_handle, {})),
-                Gio.DBusCallFlags.NONE,
-                -1,
-                None,
-                None
-            )
-            fd = results.get(0)
-            stream_screen = Screen(*stream_info['size'])
+        ((node_id, stream_info),) = results['streams']
+        stream_screen = Screen(*stream_info['size'])
+        fd = self._get_fd()
 
-            self.emit('ready', fd, node_id, stream_screen, self.is_selection_mode)
+        self.emit('ready', fd, node_id, stream_screen, self.is_selection_mode)
+        logger.info("Ready for pipewire stream")
+
+    def _new_session_path(self):
+        self.session_counter += 1
+        token = f'u{self.session_counter}'
+        path = f'/org/freedesktop/portal/desktop/session/{self.sender_name}/{token}'
+        return path, token
+
+    def _new_request_path(self):
+        self.request_counter += 1
+        token = f'u{self.request_counter}'
+        path = f'/org/freedesktop/portal/desktop/request/{self.sender_name}/{token}'
+        return path, token
+
+    def _get_fd(self):
+        response, fd_list = self.proxy.call_with_unix_fd_list_sync(
+            'OpenPipeWireRemote',
+            GLib.Variant('(oa{sv})', (self.session_handle, {})),
+            Gio.DBusCallFlags.NONE,
+            -1,
+            None,
+            None
+        )
+        return fd_list.get(0)
+
+    def _screencast_call(self, method, callback, signature, *args, options={}):
+        request_path, request_token = self._new_request_path()
+        self.bus.signal_subscribe(
+            'org.freedesktop.portal.Desktop',
+            'org.freedesktop.portal.Request',
+            'Response',
+            request_path,
+            None,
+            Gio.DBusSignalFlags.NONE,
+            callback
+        )
+        options['handle_token'] = GLib.Variant('s', request_token)
+        method(signature, *args, options)
 
     def open(self, is_show_pointer, is_selection_mode):
         self.is_show_pointer = is_show_pointer
