@@ -6,8 +6,8 @@ logger = logging.getLogger(__name__)
 
 shell_proxy = Gio.DBusProxy.new_for_bus_sync(
     Gio.BusType.SESSION,
-    Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION |
-    Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS,
+    Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION
+    | Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS,
     None,
     'org.gnome.Shell',
     '/org/gnome/Shell',
