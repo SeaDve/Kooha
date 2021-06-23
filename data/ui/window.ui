@@ -349,6 +349,11 @@
           <attribute name="action">win.video-format</attribute>
           <attribute name="target">mp4</attribute>
         </item>
+        <item>
+          <attribute translatable="yes" name="label">GIF</attribute>
+          <attribute name="action">win.video-format</attribute>
+          <attribute name="target">gif</attribute>
+        </item>
       </submenu>
       <item>
         <attribute name="action">app.select-location</attribute>

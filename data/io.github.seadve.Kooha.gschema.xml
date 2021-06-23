@@ -14,6 +14,7 @@
         <choice value="webm"/>
         <choice value="mkv"/>
         <choice value="mp4"/>
+        <choice value="gif"/>
       </choices>
       <default>"webm"</default>
     </key>

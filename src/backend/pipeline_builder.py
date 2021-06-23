@@ -22,6 +22,10 @@ ENCODING_PROFILES = {
                      '! video/x-h264, profile=baseline',
         'audio_enc': 'opusenc',
     },
+    'gif': {
+        'muxer': None,
+        'video_enc': 'gifenc qos=true'
+    },
 }
 
 
@@ -43,7 +47,10 @@ class PipelineBuilder:
         return (coordinate * scale_factor for coordinate in coordinates)
 
     def _get_muxer(self):
-        return ENCODING_PROFILES[self.video_format]['muxer']
+        muxer_name = ENCODING_PROFILES[self.video_format]['muxer']
+        if not muxer_name:
+            return ''
+        return f' {muxer_name} name=mux !'
 
     def _get_video_enc(self):
         return ENCODING_PROFILES[self.video_format]['video_enc']
@@ -71,6 +78,11 @@ class PipelineBuilder:
         screen = self.stream_screen
         return f'width={screen.w} height={screen.h}'
 
+    def _get_proper_framerate(self):
+        if self.video_format == 'gif':
+            return 10
+        return self.framerate
+
     def set_settings(self, framerate, file_path, video_format, audio_source_type):
         self.framerate = framerate
         self.file_path = file_path
@@ -89,12 +101,12 @@ class PipelineBuilder:
         is_record_speaker = self.audio_source_type.record_speaker and self.speaker_source
         is_record_mic = self.audio_source_type.record_mic and self.mic_source
         if is_record_speaker:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.speaker_source}" ! {self._get_audio_enc()} ! queue ! mux.'  # noqa: E501
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self._get_proper_framerate()}/1 ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self._get_proper_framerate()}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue !{self._get_muxer()} filesink location={self.file_path} pulsesrc device="{self.speaker_source}" ! {self._get_audio_enc()} ! queue ! mux.'  # noqa: E501
         elif is_record_mic:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! {self._get_audio_enc()} ! queue ! mux.'  # noqa: E501
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self._get_proper_framerate()}/1 ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self._get_proper_framerate()}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue !{self._get_muxer()} filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! {self._get_audio_enc()} ! queue ! mux.'  # noqa: E501
         else:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path}'  # noqa: E501
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self._get_proper_framerate()}/1 ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self._get_proper_framerate()}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue !{self._get_muxer()} filesink location={self.file_path}'  # noqa: E501
         if is_record_speaker and is_record_mic:
-            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self.framerate}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue ! {self._get_muxer()} name=mux ! filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! queue ! audiomixer name=mix ! {self._get_audio_enc()} ! queue ! mux. pulsesrc device="{self.speaker_source}" ! queue ! mix.'  # noqa: E501
+            pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self._get_proper_framerate()}/1 ! rawvideoparse {self._get_dimensions()} format=bgra framerate={self._get_proper_framerate()}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue !{self._get_muxer()} filesink location={self.file_path} pulsesrc device="{self.mic_source}" ! queue ! audiomixer name=mix ! {self._get_audio_enc()} ! queue ! mux. pulsesrc device="{self.speaker_source}" ! queue ! mix.'  # noqa: E501
         pipeline_string = pipeline_string.replace('%T', str(self._get_thread_count()))
         return Gst.parse_launch(pipeline_string)
