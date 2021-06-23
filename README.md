@@ -60,6 +60,19 @@ the performance of your device.
 
 ## 🏗️ Building from source
 
+### Prerequisites
+You following packages are required to build Kooha:
+
+* meson
+* ninja
+* appstream-glib
+* python3
+* python3-gobject
+* gstreamer
+* gtk4
+* libadwaita
+
+
 ### GNOME Builder
 GNOME Builder is the environment used for developing this application. 
 It can use Flatpak manifests to create a consistent building and running 
