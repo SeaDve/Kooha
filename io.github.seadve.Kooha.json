@@ -3,6 +3,9 @@
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "40",
     "sdk" : "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
     "command" : "kooha",
     "finish-args" : [
         "--share=ipc",
@@ -25,6 +28,30 @@
         "*.a"
     ],
     "modules" : [
+        {
+            "name": "gst-plugin-gif",
+            "buildsystem" : "simple",
+            "build-options": {
+                "build-args": [
+                    "--share=network"
+                ],
+                "append-path": "/usr/lib/sdk/rust-stable/bin",
+                "env": {
+                    "CARGO_HOME": "/run/build/gst-plugin-gif/cargo"
+                }
+            },
+            "build-commands": [
+                "cargo build --release --verbose --manifest-path video/gif/Cargo.toml",
+                "install -Dm755 target/release/libgstgif.so /app/lib/gstreamer-1.0/libgstgif.so"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs",
+                    "branch": "master"
+                }
+            ]
+        },
         {
             "name": "x264",
             "config-opts": [
