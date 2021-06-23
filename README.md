@@ -70,9 +70,12 @@ environment cross-distro. Thus, it is highly recommended you use it.
 3. Click the build button at the top once the project is loaded.
 
 
-### Prerequisites
-The following packages are required to build Kooha. These are not needed when
-you used GNOME Builder as it automatically take cares of the required dependencies.
+### Meson
+
+#### Prerequisites
+The following packages are required to build Kooha. Note that these are not
+needed to be installed on your device when you use GNOME Builder because it
+takes care of the required dependencies.
 
 * meson
 * ninja
@@ -83,8 +86,7 @@ you used GNOME Builder as it automatically take cares of the required dependenci
 * gtk4
 * libadwaita
 
-
-### Meson
+#### Build Instruction
 ```
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
