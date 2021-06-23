@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-22 20:36+0800\n"
-"PO-Revision-Date: 2021-06-20 20:34+0000\n"
+"PO-Revision-Date: 2021-06-23 13:32+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
-">\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -252,11 +252,11 @@ msgstr "Video's"
 
 #: src/backend/screencast_portal.py:39
 msgid "Failed to create session."
-msgstr ""
+msgstr "De sessie kan niet worden aangemaakt."
 
 #: src/backend/screencast_portal.py:59
 msgid "Failed to select sources."
-msgstr ""
+msgstr "De bronnen kunnen niet worden geselecteerd."
 
 #: src/main.py:75
 msgid "Select a Folder"
@@ -273,7 +273,7 @@ msgstr "Kiezen"
 #: src/main.py:95
 #, python-brace-format
 msgid "Inaccessible location “{directory}”"
-msgstr ""
+msgstr "Ontoegankelijke locatie: {directory}"
 
 #: src/main.py:96
 msgid "Please choose an accessible location and retry."
@@ -281,7 +281,7 @@ msgstr "Kies een toegankelijke locatie en probeer het opnieuw."
 
 #: src/main.py:122
 msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
+msgstr "Copyright 2021, Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:124

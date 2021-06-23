@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-22 20:36+0800\n"
-"PO-Revision-Date: 2021-06-17 20:34+0000\n"
+"PO-Revision-Date: 2021-06-23 13:32+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fil/>\n"
@@ -15,9 +15,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
-"=6 && n%10!=9));\n"
-"X-Generator: Weblate 4.7\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
+"%10!=6 && n%10!=9));\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -254,11 +254,11 @@ msgstr "Mga Video"
 
 #: src/backend/screencast_portal.py:39
 msgid "Failed to create session."
-msgstr ""
+msgstr "Nabigong gumawa ng sesyon."
 
 #: src/backend/screencast_portal.py:59
 msgid "Failed to select sources."
-msgstr ""
+msgstr "Nabigong sumelekta ng mga source."
 
 #: src/main.py:75
 msgid "Select a Folder"
@@ -275,7 +275,7 @@ msgstr "Piliin"
 #: src/main.py:95
 #, python-brace-format
 msgid "Inaccessible location “{directory}”"
-msgstr ""
+msgstr "Hindi maacess ang “{directory}”"
 
 #: src/main.py:96
 msgid "Please choose an accessible location and retry."
