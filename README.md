@@ -60,8 +60,19 @@ the performance of your device.
 
 ## 🏗️ Building from source
 
+### GNOME Builder
+GNOME Builder is the environment used for developing this application. 
+It can use Flatpak manifests to create a consistent building and running 
+environment cross-distro. Thus, it is highly recommended you use it.
+
+1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
+2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
+3. Click the build button at the top once the project is loaded.
+
+
 ### Prerequisites
-You following packages are required to build Kooha:
+The following packages are required to build Kooha. These are not needed when
+you used GNOME Builder as it automatically take cares of the required dependencies.
 
 * meson
 * ninja
@@ -72,15 +83,6 @@ You following packages are required to build Kooha:
 * gtk4
 * libadwaita
 
-
-### GNOME Builder
-GNOME Builder is the environment used for developing this application. 
-It can use Flatpak manifests to create a consistent building and running 
-environment cross-distro. Thus, it is highly recommended you use it.
-
-1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
-2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
-3. Click the build button at the top once the project is loaded.
 
 ### Meson
 ```
