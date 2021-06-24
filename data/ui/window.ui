@@ -107,11 +107,6 @@
                                 <property name="action-name">win.record-speaker</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
-                                <binding name="visible">
-                                  <closure type="gboolean" function="_get_audio_toggles_sensitivity">
-                                    <lookup name="video-format">Window</lookup>
-                                  </closure>
-                                </binding>
                               </object>
                             </child>
                             <child>
@@ -119,11 +114,6 @@
                                 <property name="action-name">win.record-mic</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
-                                <binding name="visible">
-                                  <closure type="gboolean" function="_get_audio_toggles_sensitivity">
-                                    <lookup name="video-format">Window</lookup>
-                                  </closure>
-                                </binding>
                               </object>
                             </child>
                             <child>

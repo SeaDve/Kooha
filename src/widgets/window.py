@@ -22,17 +22,12 @@ class Window(Adw.ApplicationWindow):
     recorder = Gtk.Template.Child()
     timer = Gtk.Template.Child()
 
-    video_format = GObject.Property(type=str)
-
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
         self.settings = settings
 
         self.settings.bind('capture-mode', self.title_stack,
                            'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
-
-        self.settings.bind('video-format', self, 'video-format', Gio.SettingsBindFlags.DEFAULT)
-
         self._setup_actions()
 
     def _setup_actions(self):
@@ -48,10 +43,6 @@ class Window(Adw.ApplicationWindow):
         for action in settings_actions:
             settings_action = self.settings.create_action(action)
             self.add_action(settings_action)
-
-    @Gtk.Template.Callback()
-    def _get_audio_toggles_sensitivity(self, window, video_format):
-        return not video_format == 'gif'
 
     @Gtk.Template.Callback()
     def _on_recorder_state_notify(self, recorder, pspec):
