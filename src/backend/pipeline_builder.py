@@ -76,7 +76,7 @@ class PipelineBuilder:
 
     def _get_proper_framerate(self):
         if self.video_format == 'gif':
-            return 10
+            return 15
 
         return self.framerate
 
