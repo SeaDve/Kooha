@@ -5,6 +5,7 @@
     <file preprocess="xml-stripblanks">ui/help_overlay.ui</file>
     <file preprocess="xml-stripblanks">ui/area_selector.ui</file>
     <file preprocess="xml-stripblanks">icons/scalable/status/selection-symbolic.svg</file>
+    <file preprocess="xml-stripblanks">icons/scalable/status/source-pick-symbolic.svg</file>
     <file compressed="true">ui/style.css</file>
   </gresource>
 </gresources>

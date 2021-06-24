@@ -84,7 +84,7 @@
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.capture-mode</property>
                                 <property name="action-target">"monitor-window"</property>
-                                <property name="icon-name">video-display-symbolic</property>
+                                <property name="icon-name">source-pick-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Capture a Monitor or Window</property>
                               </object>
                             </child>
