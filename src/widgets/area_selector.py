@@ -62,6 +62,7 @@ class AreaSelector(Gtk.Window):
     def _on_close_request(self, window):
         Utils.try_unraise_active_window()
         self.emit('cancelled')
+        self.drawing_area.set_draw_func(self._drawing_area_clean)
 
     @Gtk.Template.Callback()
     def _on_show(self, window):
