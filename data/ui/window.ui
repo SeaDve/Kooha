@@ -85,7 +85,6 @@
                                 <property name="action-name">win.capture-mode</property>
                                 <property name="action-target">"monitor-window"</property>
                                 <property name="icon-name">video-display-symbolic</property>
-                                <property name="sensitive" bind-source="recorder" bind-property="is-readying" bind-flags="invert-boolean"/>
                                 <property name="tooltip-text" translatable="yes">Capture a Monitor or Window</property>
                               </object>
                             </child>
@@ -94,7 +93,6 @@
                                 <property name="action-name">win.capture-mode</property>
                                 <property name="action-target">"selection"</property>
                                 <property name="icon-name">selection-symbolic</property>
-                                <property name="sensitive" bind-source="recorder" bind-property="is-readying" bind-flags="invert-boolean"/>
                                 <property name="tooltip-text" translatable="yes">Capture a Selection of Screen</property>
                               </object>
                             </child>
@@ -108,23 +106,30 @@
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.record-speaker</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
-                                <property name="sensitive" bind-source="recorder" bind-property="is-readying" bind-flags="invert-boolean"/>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
+                                <binding name="visible">
+                                  <closure type="gboolean" function="_get_audio_toggles_sensitivity">
+                                    <lookup name="video-format">Window</lookup>
+                                  </closure>
+                                </binding>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.record-mic</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
-                                <property name="sensitive" bind-source="recorder" bind-property="is-readying" bind-flags="invert-boolean"/>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
+                                <binding name="visible">
+                                  <closure type="gboolean" function="_get_audio_toggles_sensitivity">
+                                    <lookup name="video-format">Window</lookup>
+                                  </closure>
+                                </binding>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.show-pointer</property>
                                 <property name="icon-name">input-mouse-symbolic</property>
-                                <property name="sensitive" bind-source="recorder" bind-property="is-readying" bind-flags="invert-boolean"/>
                                 <property name="tooltip-text" translatable="yes">Show Pointer</property>
                               </object>
                             </child>
