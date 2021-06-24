@@ -15,7 +15,7 @@ headerbar.flat {
 }
 
 .recording {
-  color: @error_color;
+  color: @destructive_bg_color;
 }
 
 .paused {
