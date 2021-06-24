@@ -6,14 +6,17 @@
 <p align="center"><strong>Elegantly record your screen</strong></p>
 
 <p align="center">
-  <a href="https://flathub.org/apps/details/io.github.seadve.Kooha"><img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
+  <a href="https://flathub.org/apps/details/io.github.seadve.Kooha">
+    <img width="200" src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub">
+  </a>
+  <br>
+  <a href="https://liberapay.com/SeaDve/donate">
+    <img src="https://liberapay.com/assets/widgets/donate.svg" alt="Donate using Liberapay">
+  </a>
 </p>
 
 <br>
 <p align="center">
-  <a href="https://liberapay.com/SeaDve/">
-    <img src="https://img.shields.io/liberapay/receives/SeaDve.svg?logo=liberapay">
-  </a>
   <a href="https://hosted.weblate.org/engage/kooha/">
     <img src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg" alt="Translation status" />
   </a>
