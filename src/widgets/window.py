@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Gst, Gtk, Adw, Gio, GObject
+from gi.repository import Gst, Gtk, Adw, Gio
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401

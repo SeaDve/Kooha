@@ -76,11 +76,7 @@ class PipelineBuilder:
 
     def _get_proper_framerate(self):
         if self.video_format == 'gif':
-<<<<<<< HEAD
             return 15
-=======
-            return 10
->>>>>>> 218951f (fix: Disable audio when format is gif)
 
         return self.framerate
 
