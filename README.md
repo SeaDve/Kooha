@@ -40,9 +40,10 @@ the record button without having to configure a bunch of settings.
 The main features of Kooha include the following:
 * 🎥 Capture your screen without any hassle.
 * 🎙️ Record your microphone, computer sounds, or both at the same time.
-* 🖼️ Select an area of your screen to record.
+* 📼 Support for WebM, MP4, GIF, and MKV formats.
+* 🖥️ Select a monitor or window to record.
+* 🔲 Create a selection to capture certain area from your screen.
 * ⏲️ Set delay to prepare before you start recording.
-* 📼 Support for the free Matroska and WebM formats.
 * 🖱️ Hide or show mouse pointer.
 * 💾 Choose a saving location for your recording.
 * ⌨️ Utilize helpful keyboard shortcuts.
