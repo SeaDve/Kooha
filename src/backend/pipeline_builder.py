@@ -60,6 +60,7 @@ class PipelineBuilder:
         muxer_name = ENCODING_PROFILES[self.video_format]['muxer']
         if not muxer_name:
             return ''
+
         return f' {muxer_name} name=mux !'
 
     def _get_scaler(self):
