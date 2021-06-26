@@ -40,7 +40,7 @@ class Recorder(GObject.GObject):
     def state(self, pipeline_state):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
-        logger.info(f"Pipeline set to {pipeline_state} ")
+        logger.info(f"Pipeline set to {pipeline_state}")
 
     def _on_portal_ready(self, portal, fd, node_id, stream_screen, is_selection_mode):
         framerate = self.settings.get_video_framerate()
@@ -55,8 +55,8 @@ class Recorder(GObject.GObject):
         logger.info(f"audio_source_type: {audio_source_type}")
         logger.info(f"audio_sources: {default_audio_sources}")
 
-        pipeline_builder = PipelineBuilder(fd, node_id, framerate, file_path,
-                                           video_format, audio_source_type)
+        pipeline_builder = PipelineBuilder(fd, node_id, stream_screen)
+        pipeline_builder.set_settings(framerate, file_path, video_format, audio_source_type)
         pipeline_builder.set_audio_source(*default_audio_sources)
 
         def emit_ready():
@@ -69,7 +69,7 @@ class Recorder(GObject.GObject):
             logger.info(f"stream screen_info: {stream_screen.w} {stream_screen.h}")
             logger.info(f"actual screen_info: {actual_screen.w} {actual_screen.h}")
 
-            pipeline_builder.set_coordinates(selection, stream_screen, actual_screen)
+            pipeline_builder.set_coordinates(selection, actual_screen)
             self._clean_area_selector()
             emit_ready()
 
