@@ -59,11 +59,6 @@ class Recorder(GObject.GObject):
         pipeline_builder.set_settings(framerate, file_path, video_format, audio_source_type)
         pipeline_builder.set_audio_source(*default_audio_sources)
 
-        def emit_ready():
-            self.is_readying = False
-            self.pipeline = pipeline_builder.build()
-            self.emit('ready')
-
         def on_area_selector_captured(area_selector, selection, actual_screen):
             logger.info(f"selected_coordinates: {selection}")
             logger.info(f"stream screen_info: {stream_screen.w} {stream_screen.h}")
@@ -71,7 +66,7 @@ class Recorder(GObject.GObject):
 
             pipeline_builder.set_coordinates(selection, actual_screen)
             self._clean_area_selector()
-            emit_ready()
+            self._build_pipeline(pipeline_builder)
 
         def on_area_selector_cancelled(area_selector):
             self.is_readying = False
@@ -84,7 +79,7 @@ class Recorder(GObject.GObject):
             self.area_selector.select_area()
             return
 
-        emit_ready()
+        self._build_pipeline(pipeline_builder)
 
     def _on_portal_cancelled(self, portal, error_message):
         self.is_readying = False
@@ -101,6 +96,11 @@ class Recorder(GObject.GObject):
             self._clean_pipeline()
             self.emit('record-failed', error)
             logger.error(f"{error} {debug}")
+
+    def _build_pipeline(self, pipeline_builder):
+        self.is_readying = False
+        self.pipeline = pipeline_builder.build()
+        self.emit('ready')
 
     def _clean_pipeline(self):
         self.state = Gst.State.NULL
