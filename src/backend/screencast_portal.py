@@ -76,7 +76,7 @@ class ScreencastPortal(GObject.GObject):
             logger.warning(f"Failed to start: {response}")
             return
 
-        ((node_id, stream_info),) = results['streams']
+        node_id, stream_info = results['streams'][0]
         stream_screen = Screen(*stream_info['size'])
         fd = self._get_fd()
 
