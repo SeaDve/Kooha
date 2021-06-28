@@ -1,10 +1,11 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from gi.repository import Gst, Gtk, Adw, Gio
+from gi.repository import Gst, Gtk, Adw, Gio, GObject
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
+from kooha.widgets.audio_toggle_button import AudioToggleButton  # noqa: F401
 from kooha.widgets.error_dialog import ErrorDialog
 
 
@@ -22,12 +23,16 @@ class Window(Adw.ApplicationWindow):
     recorder = Gtk.Template.Child()
     timer = Gtk.Template.Child()
 
+    settings_video_format = GObject.Property(type=str)
+
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
         self.settings = settings
 
         self.settings.bind('capture-mode', self.title_stack,
                            'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('video-format', self,
+                           'settings-video-format', Gio.SettingsBindFlags.DEFAULT)
         self._setup_actions()
 
     def _setup_actions(self):
@@ -43,6 +48,10 @@ class Window(Adw.ApplicationWindow):
         for action in settings_actions:
             settings_action = self.settings.create_action(action)
             self.add_action(settings_action)
+
+    @Gtk.Template.Callback()
+    def _get_audio_toggles_enablement(self, window, settings_video_format):
+        return not settings_video_format == 'gif'
 
     @Gtk.Template.Callback()
     def _on_recorder_state_notify(self, recorder, pspec):
