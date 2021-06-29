@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-22 20:36+0800\n"
-"PO-Revision-Date: 2021-06-03 05:32+0000\n"
+"PO-Revision-Date: 2021-06-29 06:32+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
-"file/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
+"pot-file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.7.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7
@@ -144,19 +144,19 @@ msgstr "Menu Utama"
 
 #: data/ui/window.ui:49
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: data/ui/window.ui:59
 msgid "Selection"
-msgstr "Pilihan"
+msgstr "Potongan"
 
 #: data/ui/window.ui:89
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Rekam Monitor atau Jendela"
 
 #: data/ui/window.ui:98
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Rekam Potongan dari Layar"
 
 #: data/ui/window.ui:112
 msgid "Record Computer Sounds"
@@ -216,7 +216,7 @@ msgstr "MKV"
 
 #: data/ui/window.ui:348
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/ui/window.ui:355
 msgid "Save to…"
@@ -232,7 +232,7 @@ msgstr "Tentang Kooha"
 
 #: src/widgets/window.py:61
 msgid "Paused"
-msgstr ""
+msgstr "Dijeda"
 
 #: src/widgets/window.py:67
 msgid "Screencast Recorded!"
@@ -241,19 +241,20 @@ msgstr "Screencast Direkam!"
 #: src/widgets/window.py:68
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
-msgstr ""
+msgstr "Rekaman telah disimpan di {saving_location}"
 
 #: src/widgets/window.py:76
 msgid "Sorry! An error has occured."
-msgstr ""
+msgstr "Maaf! Sebuah kesalahan telah terjadi."
 
 #: src/backend/settings.py:43
 msgid "Videos"
-msgstr ""
+msgstr "Video-video"
 
 #: src/backend/screencast_portal.py:39
+#, fuzzy
 msgid "Failed to create session."
-msgstr ""
+msgstr "Gagal membuat session."
 
 #: src/backend/screencast_portal.py:59
 msgid "Failed to select sources."
@@ -274,7 +275,7 @@ msgstr "Pilih"
 #: src/main.py:95
 #, python-brace-format
 msgid "Inaccessible location “{directory}”"
-msgstr ""
+msgstr "Lokasi tidak dapat diakses “{directory}”"
 
 #: src/main.py:96
 msgid "Please choose an accessible location and retry."
@@ -286,9 +287,8 @@ msgstr "Hak Cipta 2021 Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:124
-#, fuzzy
 msgid "translator-credits"
-msgstr "kredit-penerjemah"
+msgstr "liimee"
 
 #: src/main.py:125
 msgid "GitHub"
