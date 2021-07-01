@@ -31,10 +31,10 @@ ENCODING_PROFILES = {
 
 class PipelineBuilder:
 
-    def __init__(self, fd, node_id, stream_screen):
-        self.fd = fd
-        self.node_id = node_id
-        self.stream_screen = stream_screen
+    def __init__(self, pipewire_stream):
+        self.fd = pipewire_stream.fd
+        self.node_id = pipewire_stream.node_id
+        self.stream_screen = pipewire_stream.screen
         self.speaker_source = None
         self.mic_source = None
         self.coordinates = None

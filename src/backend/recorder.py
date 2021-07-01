@@ -42,27 +42,27 @@ class Recorder(GObject.GObject):
         self.pipeline.set_state(pipeline_state)
         logger.info(f"Pipeline set to {pipeline_state}")
 
-    def _on_portal_ready(self, portal, fd, node_id, stream_screen, is_selection_mode):
+    def _on_portal_ready(self, portal, pipewire_stream, is_selection_mode):
         framerate = self.settings.get_video_framerate()
         file_path = self.settings.get_file_path().replace(" ", r"\ ")
         video_format = self.settings.get_video_format()
         audio_source_type = self.settings.get_audio_option()
         default_audio_sources = self._get_default_audio_sources()
 
-        logger.info(f"fd, node_id: {fd}, {node_id}")
+        logger.info(f"fd, node_id: {pipewire_stream.fd}, {pipewire_stream.node_id}")
         logger.info(f"framerate: {framerate}")
         logger.info(f"file_path: {file_path}")
         logger.info(f"audio_source_type: {audio_source_type}")
         logger.info(f"audio_sources: {default_audio_sources}")
 
-        pipeline_builder = PipelineBuilder(fd, node_id, stream_screen)
+        pipeline_builder = PipelineBuilder(pipewire_stream)
         pipeline_builder.set_settings(framerate, file_path, video_format, audio_source_type)
         pipeline_builder.set_audio_source(*default_audio_sources)
 
         def on_area_selector_captured(area_selector, selection, actual_screen):
             logger.info(f"selected_coordinates: {selection}")
-            logger.info(f"stream screen_info: {stream_screen.w} {stream_screen.h}")
-            logger.info(f"actual screen_info: {actual_screen.w} {actual_screen.h}")
+            logger.info(f"stream screen: {pipewire_stream.screen.w}x{pipewire_stream.screen.h}")
+            logger.info(f"actual screen: {actual_screen.w}x{actual_screen.h}")
 
             pipeline_builder.set_coordinates(selection, actual_screen)
             self._clean_area_selector()

@@ -3,16 +3,17 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
+from collections import namedtuple
 
 from gi.repository import GObject, GLib, Gio
 
-from kooha.widgets.area_selector import Screen
-
 logger = logging.getLogger(__name__)
+Screen = namedtuple('Screen', 'w h')
+Stream = namedtuple('Stream', 'fd node_id screen')
 
 
 class ScreencastPortal(GObject.GObject):
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (int, int, object, bool)),
+    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (object, bool)),
                     'cancelled': (GObject.SIGNAL_RUN_FIRST, None, (str,))}
 
     def __init__(self):
@@ -76,11 +77,12 @@ class ScreencastPortal(GObject.GObject):
             logger.warning(f"Failed to start: {response}")
             return
 
+        fd = self._get_fd()
         node_id, stream_info = results['streams'][0]
         stream_screen = Screen(*stream_info['size'])
-        fd = self._get_fd()
+        pipewire_stream = Stream(fd, node_id, stream_screen)
 
-        self.emit('ready', fd, node_id, stream_screen, self.is_selection_mode)
+        self.emit('ready', pipewire_stream, self.is_selection_mode)
         logger.info("Ready for pipewire stream")
 
     def _new_session_path(self):
