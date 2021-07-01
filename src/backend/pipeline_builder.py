@@ -18,8 +18,9 @@ ENCODING_PROFILES = {
     },
     'mp4': {
         'muxer': 'mp4mux',
-        'video_enc': 'x264enc qp-max=17 speed-preset=superfast threads=%T '
-                     '! video/x-h264, profile=baseline',
+        # 'video_enc': 'x264enc qp-max=17 speed-preset=superfast threads=%T '
+        #              '! video/x-h264, profile=baseline',
+        'video_enc': 'vaapih264enc ! h264parse',
         'audio_enc': 'opusenc',
     },
     'gif': {

@@ -14,7 +14,8 @@
         "--socket=wayland",
         "--socket=pulseaudio",
         "--filesystem=xdg-videos",
-        "--talk-name=org.gnome.Shell"
+        "--talk-name=org.gnome.Shell",
+        "--env=GST_VAAPI_ALL_DRIVERS=1"
     ],
     "cleanup" : [
         "/include",
@@ -85,6 +86,22 @@
                     "type": "archive",
                     "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.16.2.tar.xz",
                     "sha256": "5500415b865e8b62775d4742cbb9f37146a50caecfc0e7a6fc0160d3c560fbca"
+                }
+            ]
+        },
+        {
+            "name": "gstreamer-vaapi",
+            "buildsystem": "meson",
+            "builddir": true,
+            "config-opts": [
+                "-Dgtk-doc=disabled",
+                "-Dexamples=disabled"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-1.16.2.tar.xz",
+                    "sha256": "191de7b0ab64a85dd0875c990721e7be95518f60e2a9106beca162004ed7c601"
                 }
             ]
         },
