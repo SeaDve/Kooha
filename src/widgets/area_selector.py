@@ -55,8 +55,10 @@ class AreaSelector(Gtk.Window):
 
     @Gtk.Template.Callback()
     def _on_key_pressed_notify(self, controller, keyval, keycode, state):
-        if keyval == 65307:
+        if keyval == 65307:  # Escape
             self._on_close_request(None)
+            return True
+        return False
 
     @Gtk.Template.Callback()
     def _on_close_request(self, window):
