@@ -79,7 +79,7 @@ class Window(Adw.ApplicationWindow):
         error = ErrorDialog(
             parent=self,
             title=_("Sorry! An error has occured."),
-            text=_(error_message),
+            text=error_message,
         )
         error.present()
 
