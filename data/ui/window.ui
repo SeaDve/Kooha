@@ -38,6 +38,11 @@
                         <child type="title">
                           <object class="GtkStack" id="title_stack">
                             <property name="transition-type">crossfade</property>
+                            <binding name="visible-child-name">
+                              <lookup name="capture-mode">
+                                <lookup name="settings">Window</lookup>
+                              </lookup>
+                            </binding>
                             <style>
                               <class name="title"/>
                             </style>
@@ -109,7 +114,9 @@
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
                                 <binding name="action-enabled">
                                   <closure type="gboolean" function="_get_audio_toggles_enablement">
-                                    <lookup name="settings-video-format">Window</lookup>
+                                    <lookup name="video-format">
+                                      <lookup name="settings">Window</lookup>
+                                    </lookup>
                                   </closure>
                                 </binding>
                               </object>
@@ -121,7 +128,9 @@
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
                                 <binding name="action-enabled">
                                   <closure type="gboolean" function="_get_audio_toggles_enablement">
-                                    <lookup name="settings-video-format">Window</lookup>
+                                    <lookup name="video-format">
+                                      <lookup name="settings">Window</lookup>
+                                    </lookup>
                                   </closure>
                                 </binding>
                               </object>

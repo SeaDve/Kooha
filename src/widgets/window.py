@@ -5,6 +5,7 @@ from gi.repository import Gst, Gtk, Adw, Gio, GObject
 
 from kooha.backend.recorder import Recorder  # noqa: F401
 from kooha.backend.timer import Timer, TimerState  # noqa: F401
+from kooha.backend.settings import Settings
 from kooha.widgets.audio_toggle_button import AudioToggleButton  # noqa: F401
 from kooha.widgets.error_dialog import ErrorDialog
 
@@ -22,17 +23,12 @@ class Window(Adw.ApplicationWindow):
 
     recorder = Gtk.Template.Child()
     timer = Gtk.Template.Child()
-
-    settings_video_format = GObject.Property(type=str)
+    settings = GObject.Property(type=Settings)
 
     def __init__(self, settings, **kwargs):
         super().__init__(**kwargs)
-        self.settings = settings
 
-        self.settings.bind('capture-mode', self.title_stack,
-                           'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('video-format', self,
-                           'settings-video-format', Gio.SettingsBindFlags.DEFAULT)
+        self.settings = settings
         self._setup_actions()
 
     def _setup_actions(self):

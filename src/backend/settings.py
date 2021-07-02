@@ -5,15 +5,21 @@ import os
 import time
 from collections import namedtuple
 
-from gi.repository import Gio, GLib
+from gi.repository import Gio, GLib, GObject
 
 AudioOption = namedtuple('AudioOption', 'record_speaker record_mic')
 
 
 class Settings(Gio.Settings):
 
+    capture_mode = GObject.Property(type=str)
+    video_format = GObject.Property(type=str)
+
     def __init__(self):
         super().__init__('io.github.seadve.Kooha')
+
+        self.bind('capture-mode', self, 'capture-mode', Gio.SettingsBindFlags.DEFAULT)
+        self.bind('video-format', self, 'video-format', Gio.SettingsBindFlags.DEFAULT)
 
     def get_audio_option(self):
         is_record_speaker = self.get_boolean('record-speaker')
