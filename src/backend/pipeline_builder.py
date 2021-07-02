@@ -6,14 +6,16 @@ from gi.repository import Gst, GLib
 ENCODING_PROFILES = {
     'webm': {
         'muxer': 'webmmux',
-        'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 '
-                     'static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
+        # 'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 '
+        #              'static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
+        'video_enc': 'vaapivp8enc',
         'audio_enc': 'opusenc',
     },
     'mkv': {
         'muxer': 'matroskamux',
-        'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 '
-                     'static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
+        # 'video_enc': 'vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 '
+        #              'static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T',
+        'video_enc': 'vaapivp8enc',
         'audio_enc': 'opusenc',
     },
     'mp4': {
