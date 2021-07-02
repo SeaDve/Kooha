@@ -19,4 +19,7 @@ class AudioToggleButton(Gtk.ToggleButton):
     @action_enabled.setter  # type: ignore
     def action_enabled(self, is_action_enabled):
         self._action_enabled = is_action_enabled
+
+        # This is a workaround. For some reason, sensitive property doesn't
+        # get updated on the widget construction, so we have to add 5ms delay.
         GLib.timeout_add(5, lambda: self.set_sensitive(is_action_enabled))
