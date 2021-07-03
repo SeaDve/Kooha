@@ -78,8 +78,8 @@ class PipelineBuilder:
             return None
 
         x, y, width, height = self._rescale(self.coordinates)
-        right_crop = (self.stream_screen.w - (width + x))
-        bottom_crop = (self.stream_screen.h - (height + y))
+        right_crop = self.stream_screen.w - (width + x)
+        bottom_crop = self.stream_screen.h - (height + y)
         x, y, right_crop, bottom_crop = self._even_out(x, y, right_crop, bottom_crop)
 
         return f'videocrop top={y} left={x} right={right_crop} bottom={bottom_crop}'
