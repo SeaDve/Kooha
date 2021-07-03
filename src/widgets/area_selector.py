@@ -3,7 +3,7 @@
 
 from collections import namedtuple
 
-from gi.repository import Gtk, GObject, GLib
+from gi.repository import Gtk, GObject, GLib, Gdk
 
 from kooha.backend.utils import Utils
 
@@ -55,7 +55,7 @@ class AreaSelector(Gtk.Window):
 
     @Gtk.Template.Callback()
     def _on_key_pressed_notify(self, controller, keyval, keycode, state):
-        if keyval == 65307:  # Escape
+        if keyval == Gdk.keyval_from_name('Escape'):
             self._on_close_request(None)
             return True
         return False
