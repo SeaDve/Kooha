@@ -59,28 +59,29 @@ class PipelineBuilder:
     def _get_muxer(self):
         muxer_name = ENCODING_PROFILES[self.video_format]['muxer']
         if not muxer_name:
-            return ''
+            return None
 
-        return f' {muxer_name} name=mux !'
+        return f'{muxer_name} name=mux'
 
     def _get_scaler(self):
         if not self.coordinates:
-            return ''
+            return None
 
-        return (f' videoscale ! video/x-raw, width={self.stream_screen.w},'
-                f' height={self.stream_screen.h} !')
+        width = self.stream_screen.w
+        height = self.stream_screen.h
+
+        return f'videoscale ! video/x-raw, width={width}, height={height}'
 
     def _get_cropper(self):
         if not self.coordinates:
-            return ''
+            return None
 
         x, y, width, height = self._rescale(self.coordinates)
         right_crop = (self.stream_screen.w - (width + x))
         bottom_crop = (self.stream_screen.h - (height + y))
         x, y, right_crop, bottom_crop = self._even_out(x, y, right_crop, bottom_crop)
 
-        return (f' videocrop top={y} left={x}'
-                f' right={right_crop} bottom={bottom_crop} !')
+        return f'videocrop top={y} left={x} right={right_crop} bottom={bottom_crop}'
 
     def _get_proper_framerate(self):
         if self.video_format == 'gif':
@@ -111,9 +112,23 @@ class PipelineBuilder:
         self.actual_screen = actual_screen
 
     def build(self):
-        is_record_speaker, is_record_mic = self._get_audio_configuration()
-        pipeline_string = f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw,max-framerate={self._get_proper_framerate()}/1 !{self._get_scaler()} videorate ! video/x-raw,framerate={self._get_proper_framerate()}/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T !{self._get_cropper()} queue ! {self._get_video_enc()} ! queue !{self._get_muxer()} filesink location={self.file_path}'  # noqa: E501
+        pipeline_elements = [
+            f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true',  # noqa: E501
+            f'video/x-raw, max-framerate={self._get_proper_framerate()}/1',
+            'videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T',  # noqa: E501
+            self._get_scaler(),
+            'videorate',
+            f'video/x-raw, framerate={self._get_proper_framerate()}/1',
+            self._get_cropper(),
+            'queue',
+            self._get_video_enc(),
+            'queue',
+            self._get_muxer(),
+            f'filesink location={self.file_path}'
+        ]
+        pipeline_string = ' ! '.join(filter(None, pipeline_elements))
 
+        is_record_speaker, is_record_mic = self._get_audio_configuration()
         if is_record_speaker and is_record_mic:
             pipeline_string = f'{pipeline_string} pulsesrc device="{self.mic_source}" ! queue ! audiomixer name=mix ! {self._get_audio_enc()} ! queue ! mux. pulsesrc device="{self.speaker_source}" ! queue ! mix.'  # noqa: E501
         elif is_record_speaker:
