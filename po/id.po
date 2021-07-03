@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-22 20:36+0800\n"
+"POT-Creation-Date: 2021-07-03 18:17+0800\n"
 "PO-Revision-Date: 2021-06-29 06:32+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
-"pot-file/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
+"file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 4.7.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
-#: data/io.github.seadve.Kooha.appdata.xml.in:7
+#: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -106,7 +106,7 @@ msgstr "Tampilkan pintasan keyboard"
 msgid "Quit"
 msgstr "Keluar"
 
-#: data/ui/help_overlay.ui:33 src/widgets/window.py:56
+#: data/ui/help_overlay.ui:33 src/widgets/window.py:61
 msgid "Recording"
 msgstr "Merekam"
 
@@ -142,121 +142,125 @@ msgstr "Toggle penunjuk"
 msgid "Main Menu"
 msgstr "Menu Utama"
 
-#: data/ui/window.ui:49
+#: data/ui/window.ui:54
 msgid "Normal"
 msgstr "Normal"
 
-#: data/ui/window.ui:59
+#: data/ui/window.ui:64
 msgid "Selection"
 msgstr "Potongan"
 
-#: data/ui/window.ui:89
+#: data/ui/window.ui:93
 msgid "Capture a Monitor or Window"
 msgstr "Rekam Monitor atau Jendela"
 
-#: data/ui/window.ui:98
+#: data/ui/window.ui:101
 msgid "Capture a Selection of Screen"
 msgstr "Rekam Potongan dari Layar"
 
-#: data/ui/window.ui:112
+#: data/ui/window.ui:114
 msgid "Record Computer Sounds"
 msgstr "Rekam Suara Komputer"
 
-#: data/ui/window.ui:120
+#: data/ui/window.ui:128
 msgid "Record From Microphone"
 msgstr "Rekam Dari Mikrofon"
 
-#: data/ui/window.ui:128
+#: data/ui/window.ui:142
 msgid "Show Pointer"
 msgstr "Tampilkan Penunjuk"
 
-#: data/ui/window.ui:136
+#: data/ui/window.ui:150
 msgid "Record"
 msgstr "Rekam"
 
-#: data/ui/window.ui:201
+#: data/ui/window.ui:215
 msgid "Stop"
 msgstr "Berhenti"
 
-#: data/ui/window.ui:259
+#: data/ui/window.ui:273
 msgid "Recording in…"
 msgstr "Merekam dalam…"
 
-#: data/ui/window.ui:277
+#: data/ui/window.ui:291
 msgid "Cancel Delay"
 msgstr "Batalkan penundaan"
 
-#: data/ui/window.ui:318
+#: data/ui/window.ui:332
 msgid "Delay"
 msgstr "Penundaan"
 
-#: data/ui/window.ui:320
+#: data/ui/window.ui:334
 msgid "None"
 msgstr "Tidak ada"
 
-#: data/ui/window.ui:325
+#: data/ui/window.ui:339
 msgid "5 seconds"
 msgstr "5 detik"
 
-#: data/ui/window.ui:330
+#: data/ui/window.ui:344
 msgid "10 seconds"
 msgstr "10 detik"
 
-#: data/ui/window.ui:336
+#: data/ui/window.ui:350
 msgid "Video Format"
 msgstr "Format Video"
 
-#: data/ui/window.ui:338
+#: data/ui/window.ui:352
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:343
+#: data/ui/window.ui:357
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:348
+#: data/ui/window.ui:362
 msgid "MP4"
 msgstr "MP4"
 
-#: data/ui/window.ui:355
+#: data/ui/window.ui:367
+msgid "GIF"
+msgstr ""
+
+#: data/ui/window.ui:374
 msgid "Save to…"
 msgstr "Simpan di…"
 
-#: data/ui/window.ui:361
+#: data/ui/window.ui:380
 msgid "Keyboard Shortcuts"
 msgstr "Pintasan Keyboard"
 
-#: data/ui/window.ui:365
+#: data/ui/window.ui:384
 msgid "About Kooha"
 msgstr "Tentang Kooha"
 
-#: src/widgets/window.py:61
+#: src/widgets/window.py:66
 msgid "Paused"
 msgstr "Dijeda"
 
-#: src/widgets/window.py:67
+#: src/widgets/window.py:72
 msgid "Screencast Recorded!"
 msgstr "Screencast Direkam!"
 
-#: src/widgets/window.py:68
+#: src/widgets/window.py:73
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
 msgstr "Rekaman telah disimpan di {saving_location}"
 
-#: src/widgets/window.py:76
+#: src/widgets/window.py:81
 msgid "Sorry! An error has occured."
 msgstr "Maaf! Sebuah kesalahan telah terjadi."
 
-#: src/backend/settings.py:43
+#: src/backend/settings.py:49
 msgid "Videos"
 msgstr "Video-video"
 
-#: src/backend/screencast_portal.py:39
+#: src/backend/screencast_portal.py:40
 #, fuzzy
 msgid "Failed to create session."
 msgstr "Gagal membuat session."
 
-#: src/backend/screencast_portal.py:59
+#: src/backend/screencast_portal.py:60
 msgid "Failed to select sources."
 msgstr ""
 
