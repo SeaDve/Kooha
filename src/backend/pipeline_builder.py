@@ -125,7 +125,7 @@ class PipelineBuilder:
             self._get_video_enc(),
             'queue',
             self._get_muxer(),
-            f'filesink location={self.file_path}'
+            f'filesink location="{self.file_path}"'
         ]
         pipeline_string = ' ! '.join(filter(None, pipeline_elements))
 

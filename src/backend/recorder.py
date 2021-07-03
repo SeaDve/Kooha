@@ -44,7 +44,7 @@ class Recorder(GObject.GObject):
 
     def _on_portal_ready(self, portal, pipewire_stream, is_selection_mode):
         framerate = self.settings.get_video_framerate()
-        file_path = self.settings.get_file_path().replace(" ", r"\ ")
+        file_path = self.settings.get_file_path()
         video_format = self.settings.get_video_format()
         audio_source_type = self.settings.get_audio_option()
         default_audio_sources = self._get_default_audio_sources()
