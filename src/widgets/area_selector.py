@@ -62,13 +62,13 @@ class AreaSelector(Gtk.Window):
 
     @Gtk.Template.Callback()
     def _on_close_request(self, window):
-        Utils.try_unraise_active_window()
+        Utils.set_raise_active_window_request(False)
         self.emit('cancelled')
         self.drawing_area.set_draw_func(self._drawing_area_clean)
 
     @Gtk.Template.Callback()
     def _on_show(self, window):
-        GLib.timeout_add(100, Utils.try_raise_active_window)
+        GLib.timeout_add(100, Utils.set_raise_active_window_request, True)
 
     def _drawing_area_draw(self, dwa, ctx, dwa_w, dwa_h, x, y, w, h):
         ctx.rectangle(x, y, w, h)

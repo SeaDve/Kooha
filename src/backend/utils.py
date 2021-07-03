@@ -22,26 +22,20 @@ class Utils:
     def shell_window_eval(method, is_enabled):
         reverse_keyword = '' if is_enabled else 'un'
 
+        success, result = shell_proxy.Eval(
+            '(s)',
+            f'global.display.focus_window.{reverse_keyword}{method}()'
+        )
+
+        if not success:
+            raise GLib.Error(result)
+
+    @staticmethod
+    def set_raise_active_window_request(is_enabled):
         try:
-            success, result = shell_proxy.Eval(
-                '(s)',
-                f'global.display.focus_window.{reverse_keyword}{method}()'
-            )
+            Utils.shell_window_eval('make_above', is_enabled)
+            Utils.shell_window_eval('stick', is_enabled)
         except GLib.Error as error:
-            logger.error(error)
-            return
-
-        if success:
-            logger.info(f"Sucessfully set {method} to {is_enabled}")
+            logging.warning(error)
         else:
-            logger.error(result)
-
-    @staticmethod
-    def try_raise_active_window():
-        Utils.shell_window_eval('make_above', True)
-        Utils.shell_window_eval('stick', True)
-
-    @staticmethod
-    def try_unraise_active_window():
-        Utils.shell_window_eval('make_above', False)
-        Utils.shell_window_eval('stick', False)
+            logger.info(f"Sucessfully raised the active window")
