@@ -3,6 +3,7 @@
 
 from gi.repository import Gst, GLib
 
+GIF_DEFAULT_FRAMERATE = 15
 ENCODING_PROFILES = {
     'webm': {
         'muxer': 'webmmux',
@@ -85,7 +86,7 @@ class PipelineBuilder:
 
     def _get_proper_framerate(self):
         if self.video_format == 'gif':
-            return 15
+            return GIF_DEFAULT_FRAMERATE
 
         return self.framerate
 
@@ -115,11 +116,11 @@ class PipelineBuilder:
         pipeline_elements = [
             f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true',  # noqa: E501
             f'video/x-raw, max-framerate={self._get_proper_framerate()}/1',
-            self._get_scaler(),
             'videorate',
             f'video/x-raw, framerate={self._get_proper_framerate()}/1',
-            'videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T',  # noqa: E501
+            self._get_scaler(),
             self._get_cropper(),
+            'videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T',  # noqa: E501
             'queue',
             self._get_video_enc(),
             'queue',
