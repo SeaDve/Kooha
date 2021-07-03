@@ -104,7 +104,7 @@ class Recorder(GObject.GObject):
 
     def _clean_pipeline(self):
         self.state = Gst.State.NULL
-        self.record_bus.remove_watch()
+        self.record_bus.remove_signal_watch()
         self.record_bus.disconnect(self.handler_id)
         self.portal.close()
 
