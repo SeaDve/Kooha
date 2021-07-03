@@ -106,7 +106,7 @@ class Application(Gtk.Application):
         about.set_transient_for(self.props.active_window)
         about.set_modal(True)
         about.set_version(self.version)
-        about.set_program_name("Kooha")
+        about.set_program_name(_("Kooha"))
         about.set_logo_icon_name('io.github.seadve.Kooha')
         about.set_authors(
             [
