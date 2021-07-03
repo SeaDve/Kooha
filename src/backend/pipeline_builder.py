@@ -115,10 +115,10 @@ class PipelineBuilder:
         pipeline_elements = [
             f'pipewiresrc fd={self.fd} path={self.node_id} do-timestamp=true keepalive-time=1000 resend-last=true',  # noqa: E501
             f'video/x-raw, max-framerate={self._get_proper_framerate()}/1',
-            'videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T',  # noqa: E501
             self._get_scaler(),
             'videorate',
             f'video/x-raw, framerate={self._get_proper_framerate()}/1',
+            'videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T',  # noqa: E501
             self._get_cropper(),
             'queue',
             self._get_video_enc(),
