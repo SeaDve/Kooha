@@ -31,6 +31,8 @@ class Application(Gtk.Application):
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
+        Adw.init()
+
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource('/io/github/seadve/Kooha/ui/style.css')
         display = Gdk.Display.get_default()
@@ -40,8 +42,6 @@ class Application(Gtk.Application):
 
         self.settings = Settings()
         self._setup_actions()
-
-        Adw.init()
 
     def do_activate(self):
         window = self.props.active_window
