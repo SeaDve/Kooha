@@ -4,7 +4,7 @@
 from gi.repository import Gst, Gtk, Adw, GObject
 
 from kooha.backend.recorder import Recorder  # noqa: F401
-from kooha.backend.timer import Timer, TimerState  # noqa: F401
+from kooha.backend.timer import Timer  # noqa: F401
 from kooha.backend.settings import Settings
 from kooha.widgets.audio_toggle_button import AudioToggleButton  # noqa: F401
 from kooha.widgets.error_dialog import ErrorDialog
@@ -85,9 +85,9 @@ class Window(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def _on_timer_state_notify(self, timer, pspec):
-        if timer.state == TimerState.DELAYED:
+        if timer.state == Timer.State.DELAYED:
             self.main_stack.set_visible_child_name('delay')
-        elif timer.state == TimerState.STOPPED:
+        elif timer.state == Timer.State.STOPPED:
             self.main_stack.set_visible_child_name('main-screen')
 
     @Gtk.Template.Callback()
