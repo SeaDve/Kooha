@@ -40,6 +40,7 @@ class AreaSelector(Gtk.Window):
 
         self.emit('captured', selection_rectangle, actual_screen)
         self.drawing_area.set_draw_func(self._drawing_area_clean)
+        self.hide()
 
     @Gtk.Template.Callback()
     def _on_motion_notify(self, controller, x, y):
@@ -65,6 +66,7 @@ class AreaSelector(Gtk.Window):
         Utils.set_raise_active_window_request(False)
         self.emit('cancelled')
         self.drawing_area.set_draw_func(self._drawing_area_clean)
+        self.hide()
 
     @Gtk.Template.Callback()
     def _on_show(self, window):

@@ -26,7 +26,10 @@ class Recorder(GObject.GObject):
     def __init__(self):
 
         self.settings = Settings()
+
         self.area_selector = AreaSelector()
+        self.area_selector.connect('captured', self._on_area_selector_captured)
+        self.area_selector.connect('cancelled', self._on_area_selector_cancelled)
 
         self.portal = ScreencastPortal()
         self.portal.connect('ready', self._on_portal_ready)
@@ -61,8 +64,6 @@ class Recorder(GObject.GObject):
         self.pipeline_builder.set_audio_source(*default_audio_sources)
 
         if is_selection_mode:
-            self.area_selector.connect('captured', self._on_area_selector_captured)
-            self.area_selector.connect('cancelled', self._on_area_selector_cancelled)
             self.area_selector.select_area()
             return
 
@@ -76,14 +77,12 @@ class Recorder(GObject.GObject):
     def _on_area_selector_captured(self, area_selector, selection, actual_screen):
         self.pipeline_builder.set_coordinates(selection, actual_screen)
         self._build_pipeline()
-        self._clean_area_selector()
 
         logger.info(f"selected_coordinates: {selection}")
         logger.info(f"actual screen: {actual_screen}")
 
     def _on_area_selector_cancelled(self, area_selector):
         self.is_readying = False
-        self._clean_area_selector()
         self.portal.close()
 
     def _on_gst_message(self, bus, message):
@@ -107,11 +106,6 @@ class Recorder(GObject.GObject):
         self.record_bus.remove_signal_watch()
         self.record_bus.disconnect(self.handler_id)
         self.portal.close()
-
-    def _clean_area_selector(self):
-        self.area_selector.disconnect_by_func(self._on_area_selector_captured)
-        self.area_selector.disconnect_by_func(self._on_area_selector_cancelled)
-        self.area_selector.hide()
 
     def _get_default_audio_sources(self):
         pactl_output = subprocess.run(
