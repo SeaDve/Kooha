@@ -42,7 +42,7 @@ class ScreencastPortal(GObject.GObject):
             return
 
         self.session_handle = results['session_handle']
-        logger.info("Session created")
+        logger.debug("Session created")
         self._screencast_call(
             self.proxy.SelectSources,
             self._on_select_sources_response,
@@ -61,7 +61,7 @@ class ScreencastPortal(GObject.GObject):
             logger.warning(f"Failed to select sources: {response}")
             return
 
-        logger.info("Sources selected")
+        logger.debug("Sources selected")
         self._screencast_call(
             self.proxy.Start,
             self._on_start_response,
@@ -83,7 +83,7 @@ class ScreencastPortal(GObject.GObject):
         pipewire_stream = Stream(fd, node_id, stream_screen)
 
         self.emit('ready', pipewire_stream, self.is_selection_mode)
-        logger.info("Ready for pipewire stream")
+        logger.debug("Ready for pipewire stream")
 
     def _new_session_path(self):
         self.session_counter += 1
@@ -152,4 +152,4 @@ class ScreencastPortal(GObject.GObject):
             None
         )
         session_proxy.Close()
-        logger.info("Portal closed")
+        logger.debug("Portal closed")

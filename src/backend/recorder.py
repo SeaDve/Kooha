@@ -43,7 +43,7 @@ class Recorder(GObject.GObject):
     def state(self, pipeline_state):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
-        logger.info(f"Pipeline set to {pipeline_state}")
+        logger.debug(f"Pipeline set to {pipeline_state}")
 
     def _on_portal_ready(self, portal, pipewire_stream, is_selection_mode):
         framerate = self.settings.get_video_framerate()
@@ -51,13 +51,6 @@ class Recorder(GObject.GObject):
         video_format = self.settings.get_video_format()
         audio_source_type = self.settings.get_audio_option()
         default_audio_sources = self._get_default_audio_sources()
-
-        logger.info(f"fd, node_id: {pipewire_stream.fd}, {pipewire_stream.node_id}")
-        logger.info(f"stream screen: {pipewire_stream.screen}")
-        logger.info(f"framerate: {framerate}")
-        logger.info(f"file_path: {file_path}")
-        logger.info(f"audio_source_type: {audio_source_type}")
-        logger.info(f"audio_sources: {default_audio_sources}")
 
         self.pipeline_builder = PipelineBuilder(pipewire_stream)
         self.pipeline_builder.set_settings(framerate, file_path, video_format, audio_source_type)
@@ -78,9 +71,6 @@ class Recorder(GObject.GObject):
         self.pipeline_builder.set_coordinates(selection, actual_screen)
         self._build_pipeline()
 
-        logger.info(f"selected_coordinates: {selection}")
-        logger.info(f"actual screen: {actual_screen}")
-
     def _on_area_selector_cancelled(self, area_selector):
         self.is_readying = False
         self.portal.close()
@@ -100,6 +90,8 @@ class Recorder(GObject.GObject):
         self.pipeline = self.pipeline_builder.build()
         self.is_readying = False
         self.emit('ready')
+
+        logger.info(self.pipeline_builder)
 
     def _clean_pipeline(self):
         self.state = Gst.State.NULL

@@ -38,4 +38,4 @@ class Utils:
         except GLib.Error as error:
             logging.warning(error)
         else:
-            logger.info(f"Sucessfully set raise active window to {is_enabled}")
+            logger.debug(f"Sucessfully set raise active window to {is_enabled}")

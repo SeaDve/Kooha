@@ -40,6 +40,9 @@ class PipelineBuilder:
         self.mic_source = None
         self.coordinates = None
 
+    def __str__(self):
+        return str(vars(self))
+
     def _even_out(self, *numbers):
         return (int(number // 2 * 2) for number in numbers)
 
