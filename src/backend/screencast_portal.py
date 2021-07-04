@@ -13,8 +13,8 @@ Stream = namedtuple('Stream', 'fd node_id screen')
 
 
 class ScreencastPortal(GObject.GObject):
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, (object, bool)),
-                    'cancelled': (GObject.SIGNAL_RUN_FIRST, None, (str,))}
+    __gsignals__ = {'ready': (GObject.SignalFlags.RUN_FIRST, None, (object, bool)),
+                    'cancelled': (GObject.SignalFlags.RUN_FIRST, None, (str,))}
 
     def __init__(self):
         super().__init__()

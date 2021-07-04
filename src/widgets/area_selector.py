@@ -15,8 +15,8 @@ Screen = namedtuple('Screen', 'w h')
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/area_selector.ui')
 class AreaSelector(Gtk.Window):
     __gtype_name__ = 'AreaSelector'
-    __gsignals__ = {'captured': (GObject.SIGNAL_RUN_FIRST, None, (object, object)),
-                    'cancelled': (GObject.SIGNAL_RUN_FIRST, None, ())}
+    __gsignals__ = {'captured': (GObject.SignalFlags.RUN_FIRST, None, (object, object)),
+                    'cancelled': (GObject.SignalFlags.RUN_FIRST, None, ())}
 
     drawing_area = Gtk.Template.Child()
 

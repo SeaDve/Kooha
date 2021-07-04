@@ -16,9 +16,9 @@ logger = logging.getLogger(__name__)
 
 class Recorder(GObject.GObject):
     __gtype_name__ = 'Recorder'
-    __gsignals__ = {'ready': (GObject.SIGNAL_RUN_FIRST, None, ()),
-                    'record-success': (GObject.SIGNAL_RUN_FIRST, None, (str, )),
-                    'record-failed': (GObject.SIGNAL_RUN_FIRST, None, (str, ))}
+    __gsignals__ = {'ready': (GObject.SignalFlags.RUN_FIRST, None, ()),
+                    'record-success': (GObject.SignalFlags.RUN_FIRST, None, (str, )),
+                    'record-failed': (GObject.SignalFlags.RUN_FIRST, None, (str, ))}
 
     is_readying = GObject.Property(type=bool, default=False)
     _state = Gst.State.NULL
