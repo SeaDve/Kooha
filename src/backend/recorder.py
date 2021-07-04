@@ -50,41 +50,41 @@ class Recorder(GObject.GObject):
         default_audio_sources = self._get_default_audio_sources()
 
         logger.info(f"fd, node_id: {pipewire_stream.fd}, {pipewire_stream.node_id}")
+        logger.info(f"stream screen: {pipewire_stream.screen}")
         logger.info(f"framerate: {framerate}")
         logger.info(f"file_path: {file_path}")
         logger.info(f"audio_source_type: {audio_source_type}")
         logger.info(f"audio_sources: {default_audio_sources}")
 
-        pipeline_builder = PipelineBuilder(pipewire_stream)
-        pipeline_builder.set_settings(framerate, file_path, video_format, audio_source_type)
-        pipeline_builder.set_audio_source(*default_audio_sources)
-
-        def on_area_selector_captured(area_selector, selection, actual_screen):
-            logger.info(f"selected_coordinates: {selection}")
-            logger.info(f"stream screen: {pipewire_stream.screen.w}x{pipewire_stream.screen.h}")
-            logger.info(f"actual screen: {actual_screen.w}x{actual_screen.h}")
-
-            pipeline_builder.set_coordinates(selection, actual_screen)
-            self._clean_area_selector()
-            self._build_pipeline(pipeline_builder)
-
-        def on_area_selector_cancelled(area_selector):
-            self.is_readying = False
-            self._clean_area_selector()
-            self.portal.close()
+        self.pipeline_builder = PipelineBuilder(pipewire_stream)
+        self.pipeline_builder.set_settings(framerate, file_path, video_format, audio_source_type)
+        self.pipeline_builder.set_audio_source(*default_audio_sources)
 
         if is_selection_mode:
-            self.captured_id = self.area_selector.connect('captured', on_area_selector_captured)
-            self.cancelled_id = self.area_selector.connect('cancelled', on_area_selector_cancelled)
+            self.area_selector.connect('captured', self._on_area_selector_captured)
+            self.area_selector.connect('cancelled', self._on_area_selector_cancelled)
             self.area_selector.select_area()
             return
 
-        self._build_pipeline(pipeline_builder)
+        self._build_pipeline()
 
     def _on_portal_cancelled(self, portal, error_message):
         self.is_readying = False
         if error_message:
             self.emit('record-failed', error_message)
+
+    def _on_area_selector_captured(self, area_selector, selection, actual_screen):
+        self.pipeline_builder.set_coordinates(selection, actual_screen)
+        self._build_pipeline()
+        self._clean_area_selector()
+
+        logger.info(f"selected_coordinates: {selection}")
+        logger.info(f"actual screen: {actual_screen}")
+
+    def _on_area_selector_cancelled(self, area_selector):
+        self.is_readying = False
+        self._clean_area_selector()
+        self.portal.close()
 
     def _on_gst_message(self, bus, message):
         t = message.type
@@ -97,9 +97,9 @@ class Recorder(GObject.GObject):
             self.emit('record-failed', error)
             logger.error(f"{error} {debug}")
 
-    def _build_pipeline(self, pipeline_builder):
+    def _build_pipeline(self):
+        self.pipeline = self.pipeline_builder.build()
         self.is_readying = False
-        self.pipeline = pipeline_builder.build()
         self.emit('ready')
 
     def _clean_pipeline(self):
@@ -109,8 +109,8 @@ class Recorder(GObject.GObject):
         self.portal.close()
 
     def _clean_area_selector(self):
-        self.area_selector.disconnect(self.captured_id)
-        self.area_selector.disconnect(self.cancelled_id)
+        self.area_selector.disconnect_by_func(self._on_area_selector_captured)
+        self.area_selector.disconnect_by_func(self._on_area_selector_cancelled)
         self.area_selector.hide()
 
     def _get_default_audio_sources(self):
