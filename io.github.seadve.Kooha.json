@@ -70,7 +70,7 @@
             ]
         },
         {
-            "name": "gstreamer1-plugins-ugly",
+            "name": "gst-plugins-ugly",
             "buildsystem": "meson",
             "builddir": true,
             "config-opts": [
