@@ -25,7 +25,7 @@ ENCODING_PROFILES = {
     },
     'gif': {
         'muxer': None,
-        'video_enc': 'gifenc qos=true'
+        'video_enc': 'gifenc speed=30 qos=true'
     },
 }
 
