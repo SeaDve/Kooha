@@ -32,7 +32,6 @@
     "modules" : [
         {
             "name": "gst-plugin-gif",
-            "cleanup": ["target"],
             "buildsystem" : "simple",
             "build-options": {
                 "build-args": [
