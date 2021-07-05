@@ -21,14 +21,14 @@ class Logger:
         if level in (GLib.LogLevelFlags.LEVEL_DEBUG, GLib.LogLevelFlags.LEVEL_WARNING):
             message = f"({filename}, {function}, {line}) {message}"
 
-        variant_dict = GLib.Variant("a{sv}", {
-            "MESSAGE": GLib.Variant("s", str(message)),
-            "CODE_FILE": GLib.Variant("s", filename),
-            "CODE_LINE": GLib.Variant("i", line),
-            "CODE_FUNC": GLib.Variant("s", function)
+        variant_dict = GLib.Variant('a{sv}', {
+            'MESSAGE': GLib.Variant('s', str(message)),
+            'CODE_FILE': GLib.Variant('s', filename),
+            'CODE_LINE': GLib.Variant('i', line),
+            'CODE_FUNC': GLib.Variant('s', function)
         })
 
-        GLib.log_variant("io.github.seadve.Kooha", level, variant_dict)
+        GLib.log_variant('io.github.seadve.Kooha', level, variant_dict)
 
     @staticmethod
     def warning(message):
