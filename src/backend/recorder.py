@@ -41,7 +41,7 @@ class Recorder(GObject.GObject):
     def state(self, pipeline_state):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
-        Logger.debug(f"Pipeline set to {pipeline_state}")
+        Logger.info(f"Pipeline set to {pipeline_state}")
 
     def _on_portal_ready(self, portal, pipewire_stream, is_selection_mode):
         framerate = self.settings.get_video_framerate()
