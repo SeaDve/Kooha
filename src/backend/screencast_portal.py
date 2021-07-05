@@ -2,12 +2,12 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import logging
 from collections import namedtuple
 
 from gi.repository import GObject, GLib, Gio
 
-logger = logging.getLogger(__name__)
+from kooha.logger import Logger
+
 Screen = namedtuple('Screen', 'w h')
 Stream = namedtuple('Stream', 'fd node_id screen')
 
@@ -38,11 +38,11 @@ class ScreencastPortal(GObject.GObject):
         response, results = output
         if response != 0:
             self.emit('cancelled', _("Failed to create session."))
-            logger.warning(f"Failed to create session: {response}")
+            Logger.warning(f"Failed to create session: {response}")
             return
 
         self.session_handle = results['session_handle']
-        logger.debug("Session created")
+        Logger.info("Session created")
         self._screencast_call(
             self.proxy.SelectSources,
             self._on_select_sources_response,
@@ -58,10 +58,10 @@ class ScreencastPortal(GObject.GObject):
         response, results = output
         if response != 0:
             self.emit('cancelled', _("Failed to select sources."))
-            logger.warning(f"Failed to select sources: {response}")
+            Logger.warning(f"Failed to select sources: {response}")
             return
 
-        logger.debug("Sources selected")
+        Logger.info("Sources selected")
         self._screencast_call(
             self.proxy.Start,
             self._on_start_response,
@@ -74,7 +74,7 @@ class ScreencastPortal(GObject.GObject):
         response, results = output
         if response != 0:
             self.emit('cancelled', None)
-            logger.warning(f"Failed to start: {response}")
+            Logger.warning(f"Failed to start: {response}")
             return
 
         fd = self._get_fd()
@@ -83,7 +83,7 @@ class ScreencastPortal(GObject.GObject):
         pipewire_stream = Stream(fd, node_id, stream_screen)
 
         self.emit('ready', pipewire_stream, self.is_selection_mode)
-        logger.debug("Ready for pipewire stream")
+        Logger.info("Ready for pipewire stream")
 
     def _new_session_path(self):
         self.session_counter += 1
@@ -125,7 +125,7 @@ class ScreencastPortal(GObject.GObject):
             method(signature, *args, options)
         except GLib.Error as error:
             self.emit('cancelled', error)
-            logging.exception(error)
+            Logger.warning(error)
 
     def open(self, is_show_pointer, is_selection_mode):
         self.is_show_pointer = is_show_pointer
@@ -152,4 +152,4 @@ class ScreencastPortal(GObject.GObject):
             None
         )
         session_proxy.Close()
-        logger.debug("Portal closed")
+        Logger.info("Portal closed")

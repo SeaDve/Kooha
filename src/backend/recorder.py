@@ -1,17 +1,15 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import logging
 import subprocess
 
 from gi.repository import GObject, Gst
 
+from kooha.logger import Logger
 from kooha.backend.screencast_portal import ScreencastPortal
 from kooha.backend.settings import Settings
 from kooha.backend.pipeline_builder import PipelineBuilder
 from kooha.widgets.area_selector import AreaSelector
-
-logger = logging.getLogger(__name__)
 
 
 class Recorder(GObject.GObject):
@@ -43,7 +41,7 @@ class Recorder(GObject.GObject):
     def state(self, pipeline_state):
         self._state = pipeline_state
         self.pipeline.set_state(pipeline_state)
-        logger.debug(f"Pipeline set to {pipeline_state}")
+        Logger.debug(f"Pipeline set to {pipeline_state}")
 
     def _on_portal_ready(self, portal, pipewire_stream, is_selection_mode):
         framerate = self.settings.get_video_framerate()
@@ -84,14 +82,14 @@ class Recorder(GObject.GObject):
             error, debug = message.parse_error()
             self._clean_pipeline()
             self.emit('record-failed', error)
-            logger.error(f"{error} {debug}")
+            Logger.debug(f"{error} {debug}")
 
     def _build_pipeline(self):
         self.pipeline = self.pipeline_builder.build()
         self.is_readying = False
         self.emit('ready')
 
-        logger.info(self.pipeline_builder)
+        Logger.debug(self.pipeline_builder)
 
     def _clean_pipeline(self):
         self.state = Gst.State.NULL
@@ -117,8 +115,8 @@ class Recorder(GObject.GObject):
         is_selection_mode = self.settings.get_is_selection_mode()
         self.portal.open(is_show_pointer, is_selection_mode)
 
-        logger.info(f"is_show_pointer: {is_show_pointer}")
-        logger.info(f"is_selection_mode: {is_selection_mode}")
+        Logger.debug(f"is_show_pointer: {is_show_pointer}")
+        Logger.debug(f"is_selection_mode: {is_selection_mode}")
 
     def start(self):
         self.record_bus = self.pipeline.get_bus()

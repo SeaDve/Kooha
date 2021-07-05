@@ -15,8 +15,8 @@
         "--socket=pulseaudio",
         "--filesystem=xdg-videos",
         "--talk-name=org.gnome.Shell",
-        "--env=G_ENABLE_DIAGNOSTIC=1",
-        "--env=GST_DEBUG=3"
+        "--env=GST_DEBUG=3",
+        "--env=G_MESSAGES_DEBUG=io.github.seadve.Kooha"
     ],
     "cleanup" : [
         "/include",

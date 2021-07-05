@@ -26,6 +26,7 @@ configure_file(
 kooha_sources = [
   '__init__.py',
   'main.py',
+  'logger.py',
 ]
 
 install_data(kooha_sources, install_dir: moduledir)

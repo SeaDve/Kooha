@@ -1,8 +1,9 @@
-import logging
+# SPDX-FileCopyrightText: Copyright 2021 SeaDve
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 from gi.repository import Gio, GLib
 
-logger = logging.getLogger(__name__)
+from kooha.logger import Logger
 
 shell_proxy = Gio.DBusProxy.new_for_bus_sync(
     Gio.BusType.SESSION,
@@ -36,6 +37,6 @@ class Utils:
             Utils.shell_window_eval('make_above', is_enabled)
             Utils.shell_window_eval('stick', is_enabled)
         except GLib.Error as error:
-            logging.warning(error)
+            Logger.warning(error)
         else:
-            logger.debug(f"Sucessfully set raise active window to {is_enabled}")
+            Logger.info(f"Sucessfully set raise active window to {is_enabled}")
