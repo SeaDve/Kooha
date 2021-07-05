@@ -82,7 +82,7 @@ class Recorder(GObject.GObject):
             error, debug = message.parse_error()
             self._clean_pipeline()
             self.emit('record-failed', error)
-            Logger.debug(f"{error} {debug}")
+            Logger.warning(f"{error} {debug}")
 
     def _build_pipeline(self):
         self.pipeline = self.pipeline_builder.build()

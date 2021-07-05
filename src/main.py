@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-import logging
 import sys
 
 import gi
@@ -14,7 +13,6 @@ from kooha.backend.settings import Settings
 from kooha.widgets.error_dialog import ErrorDialog
 from kooha.widgets.window import Window
 
-logging.basicConfig(level=logging.DEBUG)
 Gst.init(None)
 
 
