@@ -53,7 +53,9 @@ class RecorderController(GObject.GObject):
     def _on_recorder_state_notify(self, recorder, pspec):
         if recorder.state == Gst.State.NULL:
             self.timer.stop()
-            self.state = RecorderController.State.NULL
+            # No need to set state of RecorderController to NULL because that
+            # is already handled by _on_timer_state_notify. This is to avoid
+            # double emission of notify::state of this class.
         elif recorder.state == Gst.State.PLAYING:
             self.timer.resume()
             self.state = RecorderController.State.PLAYING
