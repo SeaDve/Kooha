@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 18:17+0800\n"
+"POT-Creation-Date: 2021-07-06 14:10+0800\n"
 "PO-Revision-Date: 2021-06-20 20:34+0000\n"
 "Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -234,16 +234,7 @@ msgstr "关于 Kooha"
 msgid "Paused"
 msgstr "已暂停"
 
-#: src/widgets/window.py:72
-msgid "Screencast Recorded!"
-msgstr "屏幕已录制！"
-
-#: src/widgets/window.py:73
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr "录像已保存至 {saving_location}"
-
-#: src/widgets/window.py:81
+#: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
 msgstr "抱歉！软件出现了问题。"
 
@@ -292,6 +283,19 @@ msgstr "有趣的灵魂 (@TheInterestingSoul)"
 #: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
+
+#: src/main.py:145
+msgid "Screencast Recorded!"
+msgstr "屏幕已录制！"
+
+#: src/main.py:146
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr "录像已保存至 {saving_location}"
+
+#: src/main.py:152
+msgid "Open File"
+msgstr ""
 
 #~ msgid "Inaccessible location '{directory}'"
 #~ msgstr "无法访问位置 '{directory}'"

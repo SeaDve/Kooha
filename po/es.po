@@ -5,13 +5,14 @@
 # Roberto Bautista <robertobau45@gmail.com>, 2021.
 # Juan David Sanchez Lean <jdsljuan@gmail.com>, 2021.
 # robert schneider <robertschv@gmail.com>, 2021.
+# Dave Patrick <davecruz48@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 18:17+0800\n"
-"PO-Revision-Date: 2021-07-03 00:53+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"POT-Creation-Date: 2021-07-06 14:10+0800\n"
+"PO-Revision-Date: 2021-07-06 06:13+0000\n"
+"Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -221,7 +222,7 @@ msgstr "MP4"
 
 #: data/ui/window.ui:367
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/ui/window.ui:374
 msgid "Save to…"
@@ -239,16 +240,7 @@ msgstr "Acerca de Kooha"
 msgid "Paused"
 msgstr "En pausa"
 
-#: src/widgets/window.py:72
-msgid "Screencast Recorded!"
-msgstr "¡Captura de pantalla grabada!"
-
-#: src/widgets/window.py:73
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr "La grabación se ha guardado en {saving_location}"
-
-#: src/widgets/window.py:81
+#: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
 msgstr "¡Lo siento! Se ha producido un error."
 
@@ -297,6 +289,19 @@ msgstr "Óscar Fernández Díaz"
 #: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
+
+#: src/main.py:145
+msgid "Screencast Recorded!"
+msgstr "¡Captura de pantalla grabada!"
+
+#: src/main.py:146
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr "La grabación se ha guardado en {saving_location}"
+
+#: src/main.py:152
+msgid "Open File"
+msgstr ""
 
 #~ msgid "Inaccessible location '{directory}'"
 #~ msgstr "Ruta inaccesible '{directory}'"

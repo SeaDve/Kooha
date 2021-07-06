@@ -2,28 +2,34 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # tinaxd <systemd.tinaxd@gmail.com>, 2021.
+# tinaxd <tinaxd@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 18:17+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2021-07-06 14:10+0800\n"
+"PO-Revision-Date: 2021-07-06 06:13+0000\n"
+"Last-Translator: tinaxd <tinaxd@protonmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
+"ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
+"Screencast;Recorder;Screen;Video;画面録画;画面キャプチャ;録画;キャプチャ;画"
+"面;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:119
 msgid "Elegantly record your screen"
@@ -80,23 +86,23 @@ msgstr ""
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/ui/help_overlay.ui:10
 msgid "General"
-msgstr ""
+msgstr "全般"
 
 #: data/ui/help_overlay.ui:14
 msgid "Open menu"
-msgstr ""
+msgstr "メニューを開く"
 
 #: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "ショートカット一覧を表示する"
 
 #: data/ui/help_overlay.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "終了する"
 
 #: data/ui/help_overlay.ui:33 src/widgets/window.py:61
 msgid "Recording"
@@ -116,7 +122,7 @@ msgstr ""
 
 #: data/ui/help_overlay.ui:56
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: data/ui/help_overlay.ui:60
 msgid "Toggle computer sounds"
@@ -144,31 +150,31 @@ msgstr ""
 
 #: data/ui/window.ui:93
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "モニタまたはウィンドウをキャプチャする"
 
 #: data/ui/window.ui:101
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "スクリーンの選択範囲をキャプチャする"
 
 #: data/ui/window.ui:114
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "コンピュータの音声を録音する"
 
 #: data/ui/window.ui:128
 msgid "Record From Microphone"
-msgstr ""
+msgstr "マイクの音声を録音する"
 
 #: data/ui/window.ui:142
 msgid "Show Pointer"
-msgstr ""
+msgstr "ポインターを表示する"
 
 #: data/ui/window.ui:150
 msgid "Record"
-msgstr ""
+msgstr "録画する"
 
 #: data/ui/window.ui:215
 msgid "Stop"
-msgstr ""
+msgstr "停止する"
 
 #: data/ui/window.ui:273
 msgid "Recording in…"
@@ -180,66 +186,57 @@ msgstr ""
 
 #: data/ui/window.ui:332
 msgid "Delay"
-msgstr ""
+msgstr "遅延"
 
 #: data/ui/window.ui:334
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: data/ui/window.ui:339
 msgid "5 seconds"
-msgstr ""
+msgstr "5秒"
 
 #: data/ui/window.ui:344
 msgid "10 seconds"
-msgstr ""
+msgstr "10秒"
 
 #: data/ui/window.ui:350
 msgid "Video Format"
-msgstr ""
+msgstr "動画フォーマット"
 
 #: data/ui/window.ui:352
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/ui/window.ui:357
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/ui/window.ui:362
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/ui/window.ui:367
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/ui/window.ui:374
 msgid "Save to…"
-msgstr ""
+msgstr "保存先…"
 
 #: data/ui/window.ui:380
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "キーボードショートカット"
 
 #: data/ui/window.ui:384
 msgid "About Kooha"
-msgstr ""
+msgstr "Kooha について"
 
 #: src/widgets/window.py:66
 msgid "Paused"
 msgstr ""
 
-#: src/widgets/window.py:72
-msgid "Screencast Recorded!"
-msgstr ""
-
-#: src/widgets/window.py:73
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr ""
-
-#: src/widgets/window.py:81
+#: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
 msgstr ""
 
@@ -287,4 +284,17 @@ msgstr ""
 
 #: src/main.py:125
 msgid "GitHub"
+msgstr ""
+
+#: src/main.py:145
+msgid "Screencast Recorded!"
+msgstr ""
+
+#: src/main.py:146
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/main.py:152
+msgid "Open File"
 msgstr ""

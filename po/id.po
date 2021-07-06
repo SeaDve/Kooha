@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 18:17+0800\n"
+"POT-Creation-Date: 2021-07-06 14:10+0800\n"
 "PO-Revision-Date: 2021-07-05 11:32+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
-"pot-file/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
+"file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -238,16 +238,7 @@ msgstr "Tentang Kooha"
 msgid "Paused"
 msgstr "Dijeda"
 
-#: src/widgets/window.py:72
-msgid "Screencast Recorded!"
-msgstr "Screencast Direkam!"
-
-#: src/widgets/window.py:73
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr "Rekaman telah disimpan di {saving_location}"
-
-#: src/widgets/window.py:81
+#: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
 msgstr "Maaf! Sebuah kesalahan telah terjadi."
 
@@ -297,6 +288,19 @@ msgstr "liimee"
 #: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
+
+#: src/main.py:145
+msgid "Screencast Recorded!"
+msgstr "Screencast Direkam!"
+
+#: src/main.py:146
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr "Rekaman telah disimpan di {saving_location}"
+
+#: src/main.py:152
+msgid "Open File"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Toggle capture mode"

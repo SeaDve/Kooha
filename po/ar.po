@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 18:17+0800\n"
+"POT-Creation-Date: 2021-07-06 14:10+0800\n"
 "PO-Revision-Date: 2021-05-28 15:32+0000\n"
 "Last-Translator: احمد النهاري <alna7ari@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
@@ -238,16 +238,7 @@ msgstr "حول Kooha"
 msgid "Paused"
 msgstr ""
 
-#: src/widgets/window.py:72
-msgid "Screencast Recorded!"
-msgstr ""
-
-#: src/widgets/window.py:73
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr ""
-
-#: src/widgets/window.py:81
+#: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
 msgstr ""
 
@@ -296,6 +287,19 @@ msgstr "أرصدة المترجم"
 #: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
+
+#: src/main.py:145
+msgid "Screencast Recorded!"
+msgstr ""
+
+#: src/main.py:146
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/main.py:152
+msgid "Open File"
+msgstr ""
 
 #~ msgid "Toggle capture mode"
 #~ msgstr "تبديل وضع الالتقاط"

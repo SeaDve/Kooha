@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 18:17+0800\n"
-"PO-Revision-Date: 2021-06-23 13:32+0000\n"
+"POT-Creation-Date: 2021-07-06 14:10+0800\n"
+"PO-Revision-Date: 2021-07-06 06:13+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fil/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
 "=6 && n%10!=9));\n"
-"X-Generator: Weblate 4.7.1-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
@@ -221,7 +221,7 @@ msgstr "MP4"
 
 #: data/ui/window.ui:367
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/ui/window.ui:374
 msgid "Save to…"
@@ -239,16 +239,7 @@ msgstr "Tungkol sa Kooha"
 msgid "Paused"
 msgstr "Naka-pause"
 
-#: src/widgets/window.py:72
-msgid "Screencast Recorded!"
-msgstr "Ang rekording ay natapos na!"
-
-#: src/widgets/window.py:73
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr "Ang narekord ay naka-save sa {saving_location}"
-
-#: src/widgets/window.py:81
+#: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
 msgstr "Sorry! Nagkaroon ng error."
 
@@ -297,6 +288,19 @@ msgstr "Dave Patrick"
 #: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
+
+#: src/main.py:145
+msgid "Screencast Recorded!"
+msgstr "Ang rekording ay natapos na!"
+
+#: src/main.py:146
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr "Ang narekord ay naka-save sa {saving_location}"
+
+#: src/main.py:152
+msgid "Open File"
+msgstr ""
 
 #~ msgid "Inaccessible location '{directory}'"
 #~ msgstr "Hindi ma-access ang '{directory}'"

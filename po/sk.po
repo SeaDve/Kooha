@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 18:17+0800\n"
+"POT-Creation-Date: 2021-07-06 14:10+0800\n"
 "PO-Revision-Date: 2021-04-27 01:32+0000\n"
 "Last-Translator: MartinIIOT <max_m@centrum.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kooha/pot-file/sk/"
@@ -235,16 +235,7 @@ msgstr "O Kooha"
 msgid "Paused"
 msgstr ""
 
-#: src/widgets/window.py:72
-msgid "Screencast Recorded!"
-msgstr "Obrazovka bola zaznamenaná!"
-
-#: src/widgets/window.py:73
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr ""
-
-#: src/widgets/window.py:81
+#: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
 msgstr ""
 
@@ -293,6 +284,19 @@ msgstr "MartinIIOT (https://github.com/MartinIIOT)"
 #: src/main.py:125
 msgid "GitHub"
 msgstr "GitHub"
+
+#: src/main.py:145
+msgid "Screencast Recorded!"
+msgstr "Obrazovka bola zaznamenaná!"
+
+#: src/main.py:146
+#, python-brace-format
+msgid "The recording has been saved in {saving_location}"
+msgstr ""
+
+#: src/main.py:152
+msgid "Open File"
+msgstr ""
 
 #~ msgid "Toggle capture mode"
 #~ msgstr "Prepnúť režim snímania"
