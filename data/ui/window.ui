@@ -370,7 +370,7 @@
         </item>
       </submenu>
       <item>
-        <attribute name="action">app.select-location</attribute>
+        <attribute name="action">app.select-saving-location</attribute>
         <attribute translatable="yes" name="label">Save to…</attribute>
       </item>
     </section>

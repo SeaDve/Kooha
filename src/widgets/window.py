@@ -67,12 +67,8 @@ class Window(Adw.ApplicationWindow):
             self.time_recording_label.add_css_class('paused')
 
     @Gtk.Template.Callback()
-    def _on_recorder_record_success(self, recorder, saving_location):
-        self.props.application.new_notification(
-            title=_("Screencast Recorded!"),
-            body=_(f"The recording has been saved in {saving_location}"),
-            action='app.show-saving-location',
-        )
+    def _on_recorder_record_success(self, recorder, recording_file_path):
+        self.props.application.send_record_success_notification(recording_file_path)
 
     @Gtk.Template.Callback()
     def _on_recorder_record_failed(self, recorder, error_message):

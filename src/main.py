@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import os
 import sys
 
 import gi
@@ -49,14 +50,15 @@ class Application(Gtk.Application):
 
     def _setup_actions(self):
         simple_actions = [
-            ('select-location', self._on_select_location),
-            ('show-about', self._on_show_about),
-            ('show-saving-location', self._on_show_saving_location),
-            ('quit', self._on_quit),
+            ('select-saving-location', self._on_select_saving_location, None),
+            ('show-about', self._on_show_about, None),
+            ('quit', self._on_quit, None),
+            ('show-saving-location', self._on_show_saving_location, GLib.VariantType('s')),
+            ('show-saved-recording', self._on_show_saved_recording, GLib.VariantType('s')),
         ]
 
-        for action, callback in simple_actions:
-            simple_action = Gio.SimpleAction.new(action, None)
+        for action, callback, param_type in simple_actions:
+            simple_action = Gio.SimpleAction.new(action, param_type)
             simple_action.connect('activate', callback)
             self.add_action(simple_action)
 
@@ -66,7 +68,7 @@ class Application(Gtk.Application):
         self.set_accels_for_action('win.show-pointer', ('<Ctrl>p',))
         self.set_accels_for_action('win.show-help-overlay', ('<Ctrl>question',))
 
-    def _on_select_location(self, action, param):
+    def _on_select_saving_location(self, action, param):
         chooser = Gtk.FileChooserDialog(transient_for=self.props.active_window,
                                         modal=True,
                                         action=Gtk.FileChooserAction.SELECT_FOLDER,
@@ -125,19 +127,33 @@ class Application(Gtk.Application):
         about.present()
 
     def _on_show_saving_location(self, action, param):
-        saving_location = self.settings.get_saving_location()
+        saving_location = param.unpack()
         Gio.AppInfo.launch_default_for_uri(f'file://{saving_location}')
+
+    def _on_show_saved_recording(self, action, param):
+        saved_recording = param.unpack()
+        Gio.AppInfo.launch_default_for_uri(f'file://{saved_recording}')
 
     def _on_quit(self, action, param):
         window = self.props.active_window
         if window.recorder.state == Gst.State.NULL:
             self.quit()
 
-    def new_notification(self, title, body, action):
-        notification = Gio.Notification.new(title)
-        notification.set_body(body)
-        notification.set_default_action(action)
-        self.send_notification('io.github.seadve.Kooha', notification)
+    def send_record_success_notification(self, recording_file_path):
+        saving_location = os.path.dirname(recording_file_path)
+
+        notification = Gio.Notification.new(_("Screencast Recorded!"))
+        notification.set_body(_(f"The recording has been saved in {saving_location}"))
+        notification.set_default_action_and_target(
+            'app.show-saving-location',
+            GLib.Variant('s', saving_location)
+        )
+        notification.add_button_with_target(
+            _("Open File"),
+            'app.show-saved-recording',
+            GLib.Variant('s', recording_file_path)
+        )
+        self.send_notification('record-success', notification)
 
 
 def main(version):

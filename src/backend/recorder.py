@@ -77,7 +77,7 @@ class Recorder(GObject.GObject):
         t = message.type
         if t == Gst.MessageType.EOS:
             self._clean_pipeline()
-            self.emit('record-success', self.settings.get_saving_location())
+            self.emit('record-success', self.pipeline_builder.file_path)
         elif t == Gst.MessageType.ERROR:
             error, debug = message.parse_error()
             self._clean_pipeline()
