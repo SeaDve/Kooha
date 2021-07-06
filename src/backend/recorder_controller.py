@@ -35,7 +35,7 @@ class RecorderController(GObject.GObject):
 
     def _connect_signals(self):
         self.timer.bind_property('time', self, 'time')
-        self.timer.connect('notify::state', self._on_timer_state_notify)
+        self.timer.bind_property('state', self, 'state')
         self.timer.connect('delay-done', self._on_timer_delay_done)
 
         self.recorder.bind_property('is-readying', self, 'is-readying')
@@ -44,24 +44,13 @@ class RecorderController(GObject.GObject):
         self.recorder.connect('record-success', self._on_recorder_record_success)
         self.recorder.connect('record-failed', self._on_recorder_record_failed)
 
-    def _on_timer_state_notify(self, timer, pspec):
-        if timer.state == Timer.State.DELAYED:
-            self.state = RecorderController.State.DELAYED
-        elif timer.state == Timer.State.STOPPED:
-            self.state = RecorderController.State.NULL
-
     def _on_recorder_state_notify(self, recorder, pspec):
         if recorder.state == Gst.State.NULL:
             self.timer.stop()
-            # No need to set state of RecorderController to NULL because that
-            # is already handled by _on_timer_state_notify when timer.stop() is
-            # called. This is to avoid double emission of notify::state.
         elif recorder.state == Gst.State.PLAYING:
             self.timer.resume()
-            self.state = RecorderController.State.PLAYING
         elif recorder.state == Gst.State.PAUSED:
             self.timer.pause()
-            self.state = RecorderController.State.PAUSED
 
     def _on_timer_delay_done(self, timer):
         self.recorder.start()
