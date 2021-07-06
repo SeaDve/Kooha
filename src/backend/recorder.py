@@ -22,6 +22,7 @@ class Recorder(GObject.GObject):
     _state = Gst.State.NULL
 
     def __init__(self):
+        super().__init__()
 
         self.settings = Settings()
 
