@@ -87,6 +87,7 @@ class ScreencastPortal(GObject.GObject):
             return
 
         if response == Response.FAILED:
+            self.emit('cancelled', _("Failed to start."))
             Logger.warning(f"Failed to start: {response}")
             return
 
