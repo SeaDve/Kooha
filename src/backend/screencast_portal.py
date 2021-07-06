@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: Copyright 2021 SeaDve
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from enum import IntEnum
 from collections import namedtuple
 
 from gi.repository import GObject, GLib, Gio
@@ -10,6 +11,12 @@ from kooha.logger import Logger
 
 Screen = namedtuple('Screen', 'w h')
 Stream = namedtuple('Stream', 'fd node_id screen')
+
+
+class Response(IntEnum):
+    SUCCESS = 0
+    CANCELLED = 1
+    FAILED = 2
 
 
 class ScreencastPortal(GObject.GObject):
@@ -38,7 +45,7 @@ class ScreencastPortal(GObject.GObject):
 
     def _on_create_session_response(self, bus, sender, path, request_path, node, output):
         response, results = output
-        if response != 0:
+        if response != Response.SUCCESS:
             self.emit('cancelled', _("Failed to create session."))
             Logger.warning(f"Failed to create session: {response}")
             return
@@ -58,7 +65,7 @@ class ScreencastPortal(GObject.GObject):
 
     def _on_select_sources_response(self, bus, sender, path, request_path, node, output):
         response, results = output
-        if response != 0:
+        if response != Response.SUCCESS:
             self.emit('cancelled', _("Failed to select sources."))
             Logger.warning(f"Failed to select sources: {response}")
             return
@@ -74,8 +81,12 @@ class ScreencastPortal(GObject.GObject):
 
     def _on_start_response(self, bus, sender, path, request_path, node, output):
         response, results = output
-        if response != 0:
+        if response == Response.CANCELLED:
             self.emit('cancelled', None)
+            Logger.info("Interaction cancelled")
+            return
+
+        if response == Response.FAILED:
             Logger.warning(f"Failed to start: {response}")
             return
 
