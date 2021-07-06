@@ -11,6 +11,7 @@ AudioOption = namedtuple('AudioOption', 'record_speaker record_mic')
 
 
 class Settings(Gio.Settings):
+    """Handles all the configurations and settings"""
 
     capture_mode = GObject.Property(type=str)
     video_format = GObject.Property(type=str)

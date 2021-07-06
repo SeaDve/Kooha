@@ -7,6 +7,8 @@ from gi.repository import GObject, GLib
 
 
 class Timer(GObject.GObject):
+    """Handles the delays and the Recorder timer"""
+
     __gsignals__ = {'delay-done': (GObject.SignalFlags.RUN_FIRST, None, ())}
 
     time = GObject.Property(type=int)

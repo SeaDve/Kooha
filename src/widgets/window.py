@@ -11,6 +11,8 @@ from kooha.widgets.error_dialog import ErrorDialog
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/window.ui')
 class Window(Adw.ApplicationWindow):
+    """Main window which handles states and signals from RecorderController"""
+
     __gtype_name__ = 'Window'
 
     pause_record_button = Gtk.Template.Child()

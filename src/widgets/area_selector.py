@@ -14,6 +14,8 @@ Screen = namedtuple('Screen', 'w h')
 
 @Gtk.Template(resource_path='/io/github/seadve/Kooha/ui/area_selector.ui')
 class AreaSelector(Gtk.Window):
+    """Creates a window that outputs a rectangular selection from screen"""
+
     __gtype_name__ = 'AreaSelector'
     __gsignals__ = {'captured': (GObject.SignalFlags.RUN_FIRST, None, (object, object)),
                     'cancelled': (GObject.SignalFlags.RUN_FIRST, None, ())}

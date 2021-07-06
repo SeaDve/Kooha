@@ -5,6 +5,7 @@ from gi.repository import Gtk
 
 
 class ErrorDialog(Gtk.MessageDialog):
+    """Wrapper for MessageDialog with ok button"""
 
     def __init__(self, parent, title, text):
         super().__init__(modal=True,

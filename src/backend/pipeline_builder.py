@@ -31,6 +31,7 @@ ENCODING_PROFILES = {
 
 
 class PipelineBuilder:
+    """Builds the pipeline used by the Recorder"""
 
     def __init__(self, pipewire_stream):
         self.fd = pipewire_stream.fd

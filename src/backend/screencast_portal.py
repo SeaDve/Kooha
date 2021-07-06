@@ -13,6 +13,8 @@ Stream = namedtuple('Stream', 'fd node_id screen')
 
 
 class ScreencastPortal(GObject.GObject):
+    """Opens and closes pipewire stream to be used by the pipeline in Recorder"""
+
     __gsignals__ = {'ready': (GObject.SignalFlags.RUN_FIRST, None, (object, bool)),
                     'cancelled': (GObject.SignalFlags.RUN_FIRST, None, (str,))}
 

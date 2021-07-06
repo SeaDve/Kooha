@@ -10,6 +10,8 @@ from kooha.backend.recorder import Recorder
 
 
 class RecorderController(GObject.GObject):
+    """Controls the states of Timer and Recorder"""
+
     __gtype_name__ = 'RecorderController'
     __gsignals__ = {'record-success': (GObject.SignalFlags.RUN_FIRST, None, (str, )),
                     'record-failed': (GObject.SignalFlags.RUN_FIRST, None, (str, ))}

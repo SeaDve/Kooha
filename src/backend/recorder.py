@@ -13,6 +13,11 @@ from kooha.widgets.area_selector import AreaSelector
 
 
 class Recorder(GObject.GObject):
+    """Controls the states of gstreamer pipeline
+
+    Also handles the events from ScreencastPortal and AreaSelector
+    """
+
     __gsignals__ = {'ready': (GObject.SignalFlags.RUN_FIRST, None, ()),
                     'record-success': (GObject.SignalFlags.RUN_FIRST, None, (str, )),
                     'record-failed': (GObject.SignalFlags.RUN_FIRST, None, (str, ))}

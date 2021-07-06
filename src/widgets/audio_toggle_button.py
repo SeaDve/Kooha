@@ -5,6 +5,8 @@ from gi.repository import Gtk, GObject, GLib
 
 
 class AudioToggleButton(Gtk.ToggleButton):
+    """Wrapper for toggle button to disable action"""
+
     __gtype_name__ = 'AudioToggleButton'
 
     _action_enabled = False

@@ -9,6 +9,7 @@ from gi.repository import GLib
 
 
 class Logger:
+    """Wrapper for GLib logging"""
 
     @staticmethod
     def _log(message, level):
