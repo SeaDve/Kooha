@@ -13,7 +13,6 @@ from kooha.widgets.area_selector import AreaSelector
 
 
 class Recorder(GObject.GObject):
-    __gtype_name__ = 'Recorder'
     __gsignals__ = {'ready': (GObject.SignalFlags.RUN_FIRST, None, ()),
                     'record-success': (GObject.SignalFlags.RUN_FIRST, None, (str, )),
                     'record-failed': (GObject.SignalFlags.RUN_FIRST, None, (str, ))}
