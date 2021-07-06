@@ -15,10 +15,10 @@ class Timer(GObject.GObject):
     state = GObject.Property(type=int)
 
     class State(IntEnum):
-        RUNNING = 1
-        PAUSED = 2
-        STOPPED = 3
-        DELAYED = 4
+        STOPPED = 1
+        DELAYED = 2
+        PAUSED = 3
+        RUNNING = 4
 
     def __init__(self):
         super().__init__()

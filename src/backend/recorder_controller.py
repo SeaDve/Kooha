@@ -21,10 +21,10 @@ class RecorderController(GObject.GObject):
     is_readying = GObject.Property(type=bool, default=False)
 
     class State(IntEnum):
-        PLAYING = 1
-        PAUSED = 2
-        NULL = 3
-        DELAYED = 4
+        NULL = 1
+        DELAYED = 2
+        PAUSED = 3
+        PLAYING = 4
 
     def __init__(self):
         super().__init__()
