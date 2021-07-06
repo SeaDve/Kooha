@@ -23,7 +23,7 @@ class ScreencastPortal(GObject.GObject):
     """Opens and closes pipewire stream to be used by the pipeline in Recorder"""
 
     __gsignals__ = {'ready': (GObject.SignalFlags.RUN_FIRST, None, (object, bool)),
-                    'cancelled': (GObject.SignalFlags.RUN_FIRST, None, (str,))}
+                    'revoked': (GObject.SignalFlags.RUN_FIRST, None, (str,))}
 
     def __init__(self):
         super().__init__()
@@ -46,7 +46,7 @@ class ScreencastPortal(GObject.GObject):
     def _on_create_session_response(self, bus, sender, path, request_path, node, output):
         response, results = output
         if response != Response.SUCCESS:
-            self.emit('cancelled', _("Failed to create session."))
+            self.emit('revoked', _("Failed to create session."))
             Logger.warning(f"Failed to create session: {response}")
             return
 
@@ -66,7 +66,7 @@ class ScreencastPortal(GObject.GObject):
     def _on_select_sources_response(self, bus, sender, path, request_path, node, output):
         response, results = output
         if response != Response.SUCCESS:
-            self.emit('cancelled', _("Failed to select sources."))
+            self.emit('revoked', _("Failed to select sources."))
             Logger.warning(f"Failed to select sources: {response}")
             return
 
@@ -82,12 +82,12 @@ class ScreencastPortal(GObject.GObject):
     def _on_start_response(self, bus, sender, path, request_path, node, output):
         response, results = output
         if response == Response.CANCELLED:
-            self.emit('cancelled', None)
+            self.emit('revoked', None)
             Logger.info("Interaction cancelled")
             return
 
         if response == Response.FAILED:
-            self.emit('cancelled', _("Failed to start."))
+            self.emit('revoked', _("Failed to start."))
             Logger.warning(f"Failed to start: {response}")
             return
 
@@ -138,7 +138,7 @@ class ScreencastPortal(GObject.GObject):
         try:
             method(signature, *args, options)
         except GLib.Error as error:
-            self.emit('cancelled', error)
+            self.emit('revoked', error)
             Logger.warning(error)
 
     def open(self, is_show_pointer, is_selection_mode):

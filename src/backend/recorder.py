@@ -36,7 +36,7 @@ class Recorder(GObject.GObject):
 
         self.portal = ScreencastPortal()
         self.portal.connect('ready', self._on_portal_ready)
-        self.portal.connect('cancelled', self._on_portal_cancelled)
+        self.portal.connect('revoked', self._on_portal_revoked)
 
     @GObject.Property(type=Gst.State, default=_state)
     def state(self):
@@ -65,7 +65,7 @@ class Recorder(GObject.GObject):
 
         self._build_pipeline()
 
-    def _on_portal_cancelled(self, portal, error_message):
+    def _on_portal_revoked(self, portal, error_message):
         self.is_readying = False
         if error_message:
             self.emit('record-failed', error_message)
