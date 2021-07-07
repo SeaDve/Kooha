@@ -3,7 +3,7 @@
 
 import subprocess
 
-from gi.repository import GObject, Gst
+from gi.repository import GObject, Gst, GLib
 
 from kooha.logger import Logger
 from kooha.backend.screencast_portal import ScreencastPortal
@@ -90,10 +90,15 @@ class Recorder(GObject.GObject):
             Logger.warning(f"{error} {debug}")
 
     def _build_pipeline(self):
-        self.pipeline = self.pipeline_builder.build()
-        self.is_readying = False
-        self.emit('ready')
+        try:
+            self.pipeline = self.pipeline_builder.build()
+        except GLib.Error as error:
+            self.emit('record-failed', error)
+            Logger.warning(error)
+        else:
+            self.emit('ready')
 
+        self.is_readying = False
         Logger.debug(self.pipeline_builder)
 
     def _clean_pipeline(self):
