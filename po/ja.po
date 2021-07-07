@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:10+0800\n"
-"PO-Revision-Date: 2021-07-06 06:13+0000\n"
+"PO-Revision-Date: 2021-07-07 11:20+0000\n"
 "Last-Translator: tinaxd <tinaxd@protonmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
@@ -27,9 +27,7 @@ msgstr "Kooha"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
-"Screencast;Recorder;Screen;Video;画面録画;画面キャプチャ;録画;キャプチャ;画"
-"面;"
+msgstr "Screencast;Recorder;Screen;Video;画面録画;画面キャプチャ;録画;キャプチャ;画面;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:119
 msgid "Elegantly record your screen"
