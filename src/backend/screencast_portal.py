@@ -76,7 +76,7 @@ class ScreencastPortal(GObject.GObject):
             self._on_start_response,
             '(osa{sv})',
             self.session_handle,
-            ''
+            ''  # TODO export window handle
         )
 
     def _on_start_response(self, bus, sender, path, request_path, node, output):
