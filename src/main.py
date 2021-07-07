@@ -90,11 +90,9 @@ class Application(Gtk.Application):
         is_in_homefolder = directory.startswith(homefolder)
 
         if not is_in_homefolder or directory == homefolder:
-            error = ErrorDialog(
-                parent=self.props.active_window,
-                title=_(f"Inaccessible location “{directory}”"),
-                text=_("Please choose an accessible location and retry."),
-            )
+            error = ErrorDialog(parent=self.props.active_window,
+                                title=_(f"Inaccessible location “{directory}”"),
+                                text=_("Please choose an accessible location and retry."))
             error.present()
             return
 

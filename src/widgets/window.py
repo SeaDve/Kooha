@@ -77,11 +77,9 @@ class Window(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def _on_controller_record_failed(self, controller, error_message):
-        error = ErrorDialog(
-            parent=self,
-            title=_("Sorry! An error has occured."),
-            text=error_message,
-        )
+        error = ErrorDialog(parent=self,
+                            title=_("Sorry! An error has occured."),
+                            text=error_message)
         error.present()
 
     @Gtk.Template.Callback()
