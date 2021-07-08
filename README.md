@@ -64,6 +64,13 @@ the performance of your device.
 
 ## 🏗️ Building from source
 
+### Runtime Requirements
+* pipewire
+* gstreamer-plugin-pipewire
+* xdg-desktop-portal
+* xdg-desktop-portal-(e.g., gtk, kde, wlr)
+
+
 ### GNOME Builder
 GNOME Builder is the environment used for developing this application. 
 It can use Flatpak manifests to create a consistent building and running 
