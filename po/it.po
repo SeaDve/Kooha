@@ -5,13 +5,14 @@
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Dave Patrick <davecruz48@gmail.com>, 2021.
 # albanobattistella <albano_battistella@hotmail.com>, 2021.
+# Ruggero Turra <giurrero@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:10+0800\n"
-"PO-Revision-Date: 2021-07-07 11:19+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2021-07-09 20:33+0000\n"
+"Last-Translator: Ruggero Turra <giurrero@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -304,7 +305,7 @@ msgstr "La registrazione è stata salvata in {saving_location}"
 
 #: src/main.py:152
 msgid "Open File"
-msgstr ""
+msgstr "Apri File"
 
 #~ msgid "Inaccessible location '{directory}'"
 #~ msgstr "Posizione inaccessibile «{directory}»"
