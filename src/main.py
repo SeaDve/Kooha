@@ -11,6 +11,7 @@ gi.require_version('Adw', '1')
 from gi.repository import Gtk, Gio, Gdk, GLib, Adw, Gst
 
 from kooha.backend.settings import Settings
+from kooha.backend.recorder_controller import RecorderController
 from kooha.widgets.error_dialog import ErrorDialog
 from kooha.widgets.window import Window
 
@@ -134,7 +135,8 @@ class Application(Gtk.Application):
 
     def _on_quit(self, action, param):
         window = self.props.active_window
-        if window.recorder.state == Gst.State.NULL:
+        print(window.controller.state == RecorderController.State.NULL)
+        if window.controller.state == RecorderController.State.NULL:
             self.quit()
 
     def send_record_success_notification(self, recording_file_path):

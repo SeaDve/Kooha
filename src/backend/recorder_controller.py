@@ -16,15 +16,15 @@ class RecorderController(GObject.GObject):
     __gsignals__ = {'record-success': (GObject.SignalFlags.RUN_FIRST, None, (str, )),
                     'record-failed': (GObject.SignalFlags.RUN_FIRST, None, (str, ))}
 
-    time = GObject.Property(type=int)
-    state = GObject.Property(type=int)
-    is_readying = GObject.Property(type=bool, default=False)
-
     class State(IntEnum):
         NULL = 1
         DELAYED = 2
         PAUSED = 3
         PLAYING = 4
+
+    time = GObject.Property(type=int)
+    state = GObject.Property(type=int, default=State.NULL)
+    is_readying = GObject.Property(type=bool, default=False)
 
     def __init__(self):
         super().__init__()

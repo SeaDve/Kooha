@@ -11,14 +11,14 @@ class Timer(GObject.GObject):
 
     __gsignals__ = {'delay-done': (GObject.SignalFlags.RUN_FIRST, None, ())}
 
-    time = GObject.Property(type=int)
-    state = GObject.Property(type=int)
-
     class State(IntEnum):
         STOPPED = 1
         DELAYED = 2
         PAUSED = 3
         RUNNING = 4
+
+    time = GObject.Property(type=int)
+    state = GObject.Property(type=int, default=State.STOPPED)
 
     def __init__(self):
         super().__init__()
