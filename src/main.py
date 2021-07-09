@@ -135,7 +135,6 @@ class Application(Gtk.Application):
 
     def _on_quit(self, action, param):
         window = self.props.active_window
-        print(window.controller.state == RecorderController.State.NULL)
         if window.controller.state == RecorderController.State.NULL:
             self.quit()
 
