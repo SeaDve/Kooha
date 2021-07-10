@@ -10,10 +10,9 @@
     <child>
       <object class="GtkWindowHandle">
         <child>
-          <object class="GtkStack" id="main_stack">
-            <property name="transition-type">crossfade</property>
+          <object class="AdwViewStack" id="main_stack">
             <child>
-              <object class="GtkStackPage">
+              <object class="AdwViewStackPage">
                 <property name="name">main-screen</property>
                 <property name="child">
                   <object class="GtkBox">
@@ -36,8 +35,7 @@
                           </object>
                         </child>
                         <child type="title">
-                          <object class="GtkStack" id="title_stack">
-                            <property name="transition-type">crossfade</property>
+                          <object class="AdwViewStack" id="title_stack">
                             <binding name="visible-child-name">
                               <lookup name="capture-mode">
                                 <lookup name="settings">Window</lookup>
@@ -47,7 +45,7 @@
                               <class name="title"/>
                             </style>
                             <child>
-                              <object class="GtkStackPage">
+                              <object class="AdwViewStackPage">
                                 <property name="name">monitor-window</property>
                                 <property name="child">
                                   <object class="GtkLabel">
@@ -57,7 +55,7 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkStackPage">
+                              <object class="AdwViewStackPage">
                                 <property name="name">selection</property>
                                 <property name="child">
                                   <object class="GtkLabel">
@@ -172,7 +170,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkStackPage">
+              <object class="AdwViewStackPage">
                 <property name="name">recording</property>
                 <property name="child">
                   <object class="GtkBox">
@@ -254,7 +252,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkStackPage">
+              <object class="AdwViewStackPage">
                 <property name="name">delay</property>
                 <property name="child">
                   <object class="GtkBox">
