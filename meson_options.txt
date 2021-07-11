@@ -1,0 +1,10 @@
+option(
+  'profile',
+  type: 'combo',
+  choices: [
+    'default',
+    'development'
+  ],
+  value: 'default',
+  description: 'The build profile for Kooha. One of "default" or "development".'
+)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/seadve/Kooha/">
+    <file compressed="true" preprocess="xml-stripblanks">ui/shortcuts.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
+    <file compressed="true">style.css</file>
+  </gresource>
+  <gresource prefix="/io/github/seadve/Kooha/icons/scalable/status/">
+    <file compressed="true" preprocess="xml-stripblanks" alias="selection-symbolic.svg">icons/selection-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="source-pick-symbolic.svg">icons/source-pick-symbolic.svg</file>
+  </gresource>
+</gresources>

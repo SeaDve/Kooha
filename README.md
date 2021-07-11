@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <img src="screenshots/Kooha-preview.png" alt="Preview"/>
+  <img src="data/screenshots/Kooha-preview.png" alt="Preview"/>
 </p>
 
 Capture your screen in a straightforward and painless way without distractions.

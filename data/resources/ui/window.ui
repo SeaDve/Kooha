@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KhaWindow" parent="AdwApplicationWindow">
+    <property name="resizable">False</property>
+    <property name="default-width">210</property>
+    <property name="default-height">230</property>
+    <property name="focus-widget">start_record_button</property>
+    <child>
+      <object class="GtkWindowHandle">
+        <child>
+          <object class="GtkStack" id="main_stack">
+            <property name="transition-type">crossfade</property>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">main-screen</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkHeaderBar">
+                        <style>
+                          <class name="flat"/>
+                        </style>
+                        <child>
+                          <object class="GtkMenuButton">
+                            <property name="menu-model">menu</property>
+                            <property name="icon-name">open-menu-symbolic</property>
+                            <property name="has-frame">False</property>
+                            <property name="tooltip-text" translatable="yes">Main Menu</property>
+                            <!-- <accelerator key="F10" signal="clicked"/> -->
+                            <style>
+                              <class name="circular"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child type="title">
+                          <object class="GtkStack" id="title_stack">
+                            <property name="transition-type">crossfade</property>
+                            <!-- <binding name="visible-child-name"> -->
+                            <!--   <lookup name="capture-mode"> -->
+                            <!--     <lookup name="settings">KhaWindow</lookup> -->
+                            <!--   </lookup> -->
+                            <!-- </binding> -->
+                            <style>
+                              <class name="title"/>
+                            </style>
+                            <child>
+                              <object class="GtkStackPage">
+                                <property name="name">monitor-window</property>
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">Normal</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkStackPage">
+                                <property name="name">selection</property>
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">Selection</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="homogeneous">True</property>
+                            <property name="vexpand">True</property>
+                            <style>
+                              <class name="linked"/>
+                              <class name="large-icons"/>
+                            </style>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.capture-mode</property>
+                                <property name="action-target">"monitor-window"</property>
+                                <property name="icon-name">source-pick-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Capture a Monitor or Window</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.capture-mode</property>
+                                <property name="action-target">"selection"</property>
+                                <property name="icon-name">selection-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Capture a Selection of Screen</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">12</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.record-speaker</property>
+                                <property name="icon-name">audio-volume-high-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
+                                <!-- <binding name="action-enabled"> -->
+                                <!--   <closure type="gboolean" function="_get_audio_toggles_enablement"> -->
+                                <!--     <lookup name="video-format"> -->
+                                <!--       <lookup name="settings">Window</lookup> -->
+                                <!--     </lookup> -->
+                                <!--   </closure> -->
+                                <!-- </binding> -->
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.record-mic</property>
+                                <property name="icon-name">microphone-sensitivity-high-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Record From Microphone</property>
+                                <!-- <binding name="action-enabled"> -->
+                                <!--   <closure type="gboolean" function="_get_audio_toggles_enablement"> -->
+                                <!--     <lookup name="video-format"> -->
+                                <!--       <lookup name="settings">Window</lookup> -->
+                                <!--     </lookup> -->
+                                <!--   </closure> -->
+                                <!-- </binding> -->
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkToggleButton">
+                                <property name="action-name">win.show-pointer</property>
+                                <property name="icon-name">input-mouse-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Show Pointer</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="start_record_button">
+                            <!-- <property name="sensitive" bind-source="controller" bind-property="is-readying" bind-flags="invert-boolean"/> -->
+                            <property name="label" translatable="yes">Record</property>
+                            <!-- <signal name="clicked" handler="_on_start_record_button_clicked" swapped="no"/> -->
+                            <style>
+                              <class name="suggested-action"/>
+                            </style>
+                            <child>
+                              <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                  <object class="GtkShortcut">
+                                    <property name="trigger">&lt;Control&gt;r</property>
+                                    <property name="action">activate</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">recording</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="margin-start">18</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">18</property>
+                    <property name="margin-bottom">18</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="valign">center</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel" id="recording_label">
+                            <property name="single-line-mode">True</property>
+                            <style>
+                              <class name="title-4"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="time_recording_label">
+                            <style>
+                              <class name="time-label"/>
+                              <class name="recording"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <style>
+                          <class name="linked"/>
+                        </style>
+                        <child>
+                          <object class="GtkButton" id="stop_record_button">
+                            <property name="hexpand">True</property>
+                            <property name="label" translatable="yes">Stop</property>
+                            <!-- <signal name="clicked" handler="_on_stop_record_button_clicked" swapped="no"/> -->
+                            <style>
+                              <class name="destructive-action"/>
+                            </style>
+                            <child>
+                              <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                  <object class="GtkShortcut">
+                                    <property name="trigger">&lt;Control&gt;r</property>
+                                    <property name="action">activate</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="pause_record_button">
+                            <property name="icon-name">media-playback-pause-symbolic</property>
+                            <!-- <signal name="clicked" handler="_on_pause_record_button_clicked" swapped="no"/> -->
+                            <child>
+                              <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                  <object class="GtkShortcut">
+                                    <property name="trigger">&lt;Control&gt;k</property>
+                                    <property name="action">activate</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">delay</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="margin-start">18</property>
+                    <property name="margin-end">18</property>
+                    <property name="margin-top">18</property>
+                    <property name="margin-bottom">18</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="valign">center</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Recording in…</property>
+                            <property name="single-line-mode">True</property>
+                            <style>
+                              <class name="title-4"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="delay_label">
+                            <style>
+                              <class name="time-label"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="cancel_delay_button">
+                        <property name="label" translatable="yes">Cancel Delay</property>
+                        <!-- <signal name="clicked" handler="_on_cancel_delay_button_clicked" swapped="no"/> -->
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
+                        <child>
+                          <object class="GtkShortcutController">
+                            <property name="scope">managed</property>
+                            <child>
+                              <object class="GtkShortcut">
+                                <property name="trigger">&lt;Control&gt;c</property>
+                                <property name="action">activate</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <!-- <object class="RecorderController" id="controller"> -->
+    <!--   <signal name="notify::state" handler="_on_controller_state_notify" swapped="no"/> -->
+    <!--   <signal name="notify::time" handler="_on_controller_time_notify" swapped="no"/> -->
+    <!--   <signal name="record-success" handler="_on_controller_record_success" swapped="no"/> -->
+    <!--   <signal name="record-failed" handler="_on_controller_record_failed" swapped="no"/> -->
+    <!-- </object> -->
+  </template>
+  <menu id="menu">
+    <section>
+      <submenu>
+        <attribute name="label" translatable="yes">Delay</attribute>
+        <item>
+          <attribute translatable="yes" name="label">None</attribute>
+          <attribute name="action">win.record-delay</attribute>
+          <attribute name="target">00</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">5 seconds</attribute>
+          <attribute name="action">win.record-delay</attribute>
+          <attribute name="target">05</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">10 seconds</attribute>
+          <attribute name="action">win.record-delay</attribute>
+          <attribute name="target">10</attribute>
+        </item>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">Video Format</attribute>
+        <item>
+          <attribute translatable="yes" name="label">WebM</attribute>
+          <attribute name="action">win.video-format</attribute>
+          <attribute name="target">webm</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">MKV</attribute>
+          <attribute name="action">win.video-format</attribute>
+          <attribute name="target">mkv</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">MP4</attribute>
+          <attribute name="action">win.video-format</attribute>
+          <attribute name="target">mp4</attribute>
+        </item>
+        <item>
+          <attribute translatable="yes" name="label">GIF</attribute>
+          <attribute name="action">win.video-format</attribute>
+          <attribute name="target">gif</attribute>
+        </item>
+      </submenu>
+      <item>
+        <attribute name="action">app.select-saving-location</attribute>
+        <attribute translatable="yes" name="label">Save to…</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="action">win.show-help-overlay</attribute>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="action">app.show-about</attribute>
+        <attribute name="label" translatable="yes">About Kooha</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

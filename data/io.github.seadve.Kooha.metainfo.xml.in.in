@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SeaDve 2019 <davecruz48@gmail.com> -->
+<component type="desktop-application">
+  <id>@app-id@</id>
+  <metadata_license>CC0</metadata_license>
+  <!-- Insert your license of choice here -->
+  <!-- <project_license>MIT</project_license> -->
+  <name>Kooha</name>
+  <summary>Write a GTK + Rust application</summary>
+  <description>
+    <p>A boilerplate template for GTK + Rust. It uses Meson as a build system and has flatpak support by default.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>git@github.com:SeaDve/Kooha.git/raw/master/data/resources/screenshots/screenshot1.png</image>
+      <caption>Main window</caption>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">git@github.com:SeaDve/Kooha.git</url>
+  <url type="bugtracker">git@github.com:SeaDve/Kooha.git/issues</url>
+  <content_rating type="oars-1.0" />
+  <releases>
+    <release version="0.0.1" date="2019-07-11" />
+  </releases>
+  <kudos>
+     <!--
+       GNOME Software kudos:
+       https://gitlab.gnome.org/GNOME/gnome-software/blob/master/doc/kudos.md
+     -->
+     <kudo>ModernToolkit</kudo>
+     <kudo>HiDpiIcon</kudo>
+  </kudos>
+  <developer_name>SeaDve</developer_name>
+  <update_contact>davecruz48@gmail.com</update_contact>
+  <translation type="gettext">@gettext-package@</translation>
+  <launchable type="desktop-id">@app-id@.desktop</launchable>
+</component>

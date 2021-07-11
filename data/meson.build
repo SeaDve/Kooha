@@ -1,53 +1,76 @@
-subdir('logo')
-
+subdir('icons')
+subdir('resources')
+# Desktop file
+desktop_conf = configuration_data()
+desktop_conf.set('icon', application_id)
 desktop_file = i18n.merge_file(
-  input: 'io.github.seadve.Kooha.desktop.in',
-  output: 'io.github.seadve.Kooha.desktop',
   type: 'desktop',
-  po_dir: '../po',
+  input: configure_file(
+    input: '@0@.desktop.in.in'.format(base_id),
+    output: '@BASENAME@',
+    configuration: desktop_conf
+  ),
+  output: '@0@.desktop'.format(application_id),
+  po_dir: podir,
   install: true,
-  install_dir: join_paths(get_option('datadir'), 'applications')
+  install_dir: datadir / 'applications'
 )
-
-pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
-gnome = import('gnome')
-
-gnome.compile_resources('kooha',
-  'kooha.gresource.xml',
-  gresource_bundle: true,
-  install: true,
-  install_dir: pkgdatadir,
-)
-
-desktop_utils = find_program('desktop-file-validate', required: false)
-if desktop_utils.found()
-  test('Validate desktop file', desktop_utils,
-    args: [desktop_file]
+# Validate Desktop file
+if desktop_file_validate.found()
+  test(
+    'validate-desktop',
+    desktop_file_validate,
+    args: [
+      desktop_file.full_path()
+    ],
+    depends: desktop_file,
   )
 endif
 
-appstream_file = i18n.merge_file(
-  input: 'io.github.seadve.Kooha.appdata.xml.in',
-  output: 'io.github.seadve.Kooha.appdata.xml',
-  po_dir: '../po',
+# Appdata
+appdata_conf = configuration_data()
+appdata_conf.set('app-id', application_id)
+appdata_conf.set('gettext-package', gettext_package)
+appdata_file = i18n.merge_file(
+  input: configure_file(
+    input: '@0@.metainfo.xml.in.in'.format(base_id),
+    output: '@BASENAME@',
+    configuration: appdata_conf
+  ),
+  output: '@0@.metainfo.xml'.format(application_id),
+  po_dir: podir,
   install: true,
-  install_dir: join_paths(get_option('datadir'), 'appdata')
+  install_dir: datadir / 'metainfo'
 )
-
-appstream_util = find_program('appstream-util', required: false)
+# Validate Appdata
 if appstream_util.found()
-  test('Validate appstream file', appstream_util,
-    args: ['validate-relax', appstream_file]
+  test(
+    'validate-appdata', appstream_util,
+    args: [
+      'validate', '--nonet', appdata_file.full_path()
+    ],
+    depends: appdata_file,
   )
 endif
 
-install_data('io.github.seadve.Kooha.gschema.xml',
-  install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
+# GSchema
+gschema_conf = configuration_data()
+gschema_conf.set('app-id', application_id)
+gschema_conf.set('gettext-package', gettext_package)
+configure_file(
+  input: '@0@.gschema.xml.in'.format(base_id),
+  output: '@0@.gschema.xml'.format(application_id),
+  configuration: gschema_conf,
+  install: true,
+  install_dir: datadir / 'glib-2.0' / 'schemas'
 )
 
-compile_schemas = find_program('glib-compile-schemas', required: false)
-if compile_schemas.found()
-  test('Validate schema file', compile_schemas,
-    args: ['--strict', '--dry-run', meson.current_source_dir()]
+# Validata GSchema
+if glib_compile_schemas.found()
+  test(
+    'validate-gschema', glib_compile_schemas,
+    args: [
+      '--strict', '--dry-run', meson.current_build_dir()
+    ],
   )
 endif

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Kooha
+Comment=Write a GTK + Rust application
+Type=Application
+Exec=kooha
+Terminal=false
+Categories=GNOME;GTK;
+Keywords=Gnome;GTK;
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=@icon@
+StartupNotify=true
