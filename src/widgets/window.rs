@@ -52,7 +52,6 @@ mod imp {
             Self::bind_template(klass);
         }
 
-        // You must call `Widget`'s `init_template()` within `instance_init()`.
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
             obj.init_template();
         }
@@ -62,13 +61,12 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            let builder = gtk::Builder::from_resource("/io/github/seadve/Kooha/ui/shortcuts.ui");
-            let shortcuts = builder.object("shortcuts").unwrap();
-            obj.set_help_overlay(Some(&shortcuts));
+            let builder = gtk::Builder::from_resource("/io/github/seadve/Kooha/ui/help_overlay.ui");
+            let help_overlay = builder.object("help_overlay").unwrap();
+            obj.set_help_overlay(Some(&help_overlay));
 
-            // Devel Profile
             if PROFILE == "Devel" {
-                obj.style_context().add_class("devel");
+                obj.add_css_class("devel");
             }
         }
     }
@@ -94,7 +92,6 @@ impl KhaWindow {
         window.setup_signals();
         window.setup_actions();
 
-        // Set icons for shell
         gtk::Window::set_default_icon_name(APP_ID);
 
         window
@@ -105,18 +102,16 @@ impl KhaWindow {
     }
 
     fn setup_bindings(&self) {
-        let self_ = self.get_private();
+        let imp = self.get_private();
 
-        self_
-            .settings
-            .bind_property("capture-mode", &*self_.title_stack, "visible-child-name")
+        imp.settings
+            .bind_property("capture-mode", &*imp.title_stack, "visible-child-name")
     }
 
     fn setup_signals(&self) {
-        let self_ = self.get_private();
+        let imp = self.get_private();
 
-        self_
-            .start_record_button
+        imp.start_record_button
             .connect_clicked(clone!(@weak self as win => move |_| {
                 let win_ = win.get_private();
                 win_.recorder.start();
@@ -128,7 +123,7 @@ impl KhaWindow {
     }
 
     fn setup_actions(&self) {
-        let self_ = self.get_private();
+        let imp = self.get_private();
 
         let actions = &[
             "record-speaker",
@@ -140,7 +135,7 @@ impl KhaWindow {
         ];
 
         for action in actions {
-            let settings_action = self_.settings.create_action(action);
+            let settings_action = imp.settings.create_action(action);
             self.add_action(&settings_action);
         }
     }

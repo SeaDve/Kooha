@@ -2,16 +2,15 @@ use crate::config;
 use crate::widgets::KhaWindow;
 use gio::ApplicationFlags;
 use glib::clone;
-use glib::WeakRef;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
-use gtk_macros::action;
 use log::{debug, info};
-use once_cell::sync::OnceCell;
 
 mod imp {
     use super::*;
+    use glib::WeakRef;
+    use once_cell::sync::OnceCell;
 
     #[derive(Debug, Default)]
     pub struct KhaApplication {
@@ -31,8 +30,7 @@ mod imp {
         fn activate(&self, app: &Self::Type) {
             debug!("GtkApplication<KhaApplication>::activate");
 
-            let priv_ = KhaApplication::from_instance(app);
-            if let Some(window) = priv_.window.get() {
+            if let Some(window) = self.window.get() {
                 let window = window.upgrade().unwrap();
                 window.show();
                 window.present();
@@ -77,45 +75,33 @@ impl KhaApplication {
     }
 
     fn get_main_window(&self) -> KhaWindow {
-        let priv_ = imp::KhaApplication::from_instance(self);
-        priv_.window.get().unwrap().upgrade().unwrap()
+        let imp = imp::KhaApplication::from_instance(self);
+        imp.window.get().unwrap().upgrade().unwrap()
     }
 
     fn setup_gactions(&self) {
-        // Quit
-        action!(
-            self,
-            "select-saving-location",
-            clone!(@weak self as app => move |_, _| {
-                app.select_saving_location();
-            })
-        );
+        let action_about = gio::SimpleAction::new("select-saving-location", None);
+        action_about.connect_activate(clone!(@weak self as app => move |_, _| {
+            app.select_saving_location();
+        }));
+        self.add_action(&action_about);
 
-        // About
-        action!(
-            self,
-            "show-about",
-            clone!(@weak self as app => move |_, _| {
-                app.show_about_dialog();
-            })
-        );
+        let action_about = gio::SimpleAction::new("show-about", None);
+        action_about.connect_activate(clone!(@weak self as app => move |_, _| {
+            app.show_about_dialog();
+        }));
+        self.add_action(&action_about);
 
-        action!(
-            self,
-            "quit",
-            clone!(@weak self as app => move |_, _| {
-                // This is needed to trigger the delete event
-                // and saving the window state
-                app.get_main_window().close();
-                app.quit();
-            })
-        );
+        let action_quit = gio::SimpleAction::new("quit", None);
+        action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
+            app.quit();
+        }));
+        self.add_action(&action_quit);
     }
 
-    // Sets up keyboard shortcuts
     fn setup_accels(&self) {
-        self.set_accels_for_action("app.quit", &["<Ctrl>q"]);
-        self.set_accels_for_action("win.show-help-overlay", &["<Ctrl>question"]);
+        self.set_accels_for_action("app.quit", &["<Primary>q"]);
+        self.set_accels_for_action("win.show-help-overlay", &["<Primary>question"]);
     }
 
     fn setup_css(&self) {

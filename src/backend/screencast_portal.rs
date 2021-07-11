@@ -1,9 +1,11 @@
-use ashpd::desktop::screencast::{
-    CreateSession, CreateSessionOptions, CursorMode, ScreenCastProxy, SelectSourcesOptions,
-    SourceType, StartCastOptions, Streams,
+use ashpd::{
+    desktop::screencast::{
+        CreateSession, CreateSessionOptions, CursorMode, ScreenCastProxy, SelectSourcesOptions,
+        SourceType, StartCastOptions, Streams,
+    },
+    zvariant::{Fd, ObjectPath},
+    BasicResponse, HandleToken, RequestProxy, Response, WindowIdentifier,
 };
-use ashpd::zvariant::{Fd, ObjectPath};
-use ashpd::{BasicResponse as Basic, HandleToken, RequestProxy, Response, WindowIdentifier};
 use enumflags2::BitFlags;
 use gtk::glib;
 use gtk::subclass::prelude::*;
@@ -76,7 +78,7 @@ impl KhaScreencastPortal {
         )?;
 
         let request = RequestProxy::new(&connection, &request_handle)?;
-        request.on_response(move |response: Response<Basic>| {
+        request.on_response(move |response: Response<BasicResponse>| {
             if response.is_ok() {
                 self.start_cast(session_handle, proxy, connection).unwrap();
             }

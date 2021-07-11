@@ -101,18 +101,18 @@ impl KhaRecorder {
     }
 
     fn set_state(&self, new_state: gst::State) {
-        let self_ = self.get_private();
+        let imp = self.get_private();
 
-        let mut state = self_.state.borrow_mut();
+        let mut state = imp.state.borrow_mut();
         *state = new_state;
-        let pipeline = self_.pipeline.borrow_mut().take().unwrap();
+        let pipeline = imp.pipeline.borrow_mut().take().unwrap();
         pipeline
             .set_state(new_state)
             .expect("Failed to set pipeline state");
     }
 
     pub fn start(&self) {
-        let self_ = self.get_private();
+        let imp = self.get_private();
 
         gstgif::plugin_register_static().expect("Failed to register gif plugin");
 
@@ -121,7 +121,7 @@ impl KhaRecorder {
         let gst_pipeline = gst_pipeline
             .downcast::<gst::Pipeline>()
             .expect("Couldn't downcast pipeline");
-        self_.pipeline.replace(Some(gst_pipeline));
+        imp.pipeline.replace(Some(gst_pipeline));
 
         self.set_state(gst::State::Playing);
     }

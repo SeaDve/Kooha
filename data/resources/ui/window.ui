@@ -10,10 +10,9 @@
     <child>
       <object class="GtkWindowHandle">
         <child>
-          <object class="GtkStack" id="main_stack">
-            <property name="transition-type">crossfade</property>
+          <object class="AdwViewStack" id="main_stack">
             <child>
-              <object class="GtkStackPage">
+              <object class="AdwViewStackPage">
                 <property name="name">main-screen</property>
                 <property name="child">
                   <object class="GtkBox">
@@ -36,8 +35,7 @@
                           </object>
                         </child>
                         <child type="title">
-                          <object class="GtkStack" id="title_stack">
-                            <property name="transition-type">crossfade</property>
+                          <object class="AdwViewStack" id="title_stack">
                             <!-- <binding name="visible-child-name"> -->
                             <!--   <lookup name="capture-mode"> -->
                             <!--     <lookup name="settings">KhaWindow</lookup> -->
@@ -47,7 +45,7 @@
                               <class name="title"/>
                             </style>
                             <child>
-                              <object class="GtkStackPage">
+                              <object class="AdwViewStackPage">
                                 <property name="name">monitor-window</property>
                                 <property name="child">
                                   <object class="GtkLabel">
@@ -57,7 +55,7 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkStackPage">
+                              <object class="AdwViewStackPage">
                                 <property name="name">selection</property>
                                 <property name="child">
                                   <object class="GtkLabel">
@@ -172,7 +170,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkStackPage">
+              <object class="AdwViewStackPage">
                 <property name="name">recording</property>
                 <property name="child">
                   <object class="GtkBox">
@@ -254,7 +252,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkStackPage">
+              <object class="AdwViewStackPage">
                 <property name="name">delay</property>
                 <property name="child">
                   <object class="GtkBox">
@@ -324,7 +322,7 @@
   <menu id="menu">
     <section>
       <submenu>
-        <attribute name="label" translatable="yes">Delay</attribute>
+        <attribute name="label" translatable="yes">_Delay</attribute>
         <item>
           <attribute translatable="yes" name="label">None</attribute>
           <attribute name="action">win.record-delay</attribute>
@@ -342,7 +340,7 @@
         </item>
       </submenu>
       <submenu>
-        <attribute name="label" translatable="yes">Video Format</attribute>
+        <attribute name="label" translatable="yes">_Video Format</attribute>
         <item>
           <attribute translatable="yes" name="label">WebM</attribute>
           <attribute name="action">win.video-format</attribute>
@@ -365,18 +363,18 @@
         </item>
       </submenu>
       <item>
+        <attribute translatable="yes" name="label">_Save to…</attribute>
         <attribute name="action">app.select-saving-location</attribute>
-        <attribute translatable="yes" name="label">Save to…</attribute>
       </item>
     </section>
     <section>
       <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
-        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">_About Kooha</attribute>
         <attribute name="action">app.show-about</attribute>
-        <attribute name="label" translatable="yes">About Kooha</attribute>
       </item>
     </section>
   </menu>

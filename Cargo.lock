@@ -711,12 +711,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "gtk-macros"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da5bf7748fd4cd0b2490df8debcc911809dbcbee4ece9531b96c29a9c729de5a"
-
-[[package]]
 name = "gtk4"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -828,7 +822,6 @@ dependencies = [
  "gettext-rs",
  "gst-plugin-gif",
  "gstreamer",
- "gtk-macros",
  "gtk4",
  "libadwaita",
  "log",

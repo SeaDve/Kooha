@@ -39,9 +39,9 @@ impl KhaSettings {
     }
 
     pub fn create_action(&self, action: &str) -> gio::Action {
-        let self_ = &imp::KhaSettings::from_instance(self);
+        let imp = &imp::KhaSettings::from_instance(self);
 
-        self_.settings.create_action(action)
+        imp.settings.create_action(action)
     }
 
     pub fn bind_property<P: IsA<glib::Object>>(
@@ -50,10 +50,9 @@ impl KhaSettings {
         object: &P,
         target_property: &str,
     ) {
-        let self_ = &imp::KhaSettings::from_instance(self);
+        let imp = &imp::KhaSettings::from_instance(self);
 
-        self_
-            .settings
+        imp.settings
             .bind(source_property, object, target_property)
             .flags(gio::SettingsBindFlags::DEFAULT)
             .build();
