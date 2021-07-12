@@ -1,5 +1,6 @@
 use crate::config;
 use crate::widgets::KhaWindow;
+
 use gio::ApplicationFlags;
 use glib::clone;
 use gtk::prelude::*;

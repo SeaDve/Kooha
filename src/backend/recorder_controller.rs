@@ -1,11 +1,7 @@
-use crate::backend::KhaScreencastPortal;
-use crate::backend::Stream;
-
-use glib::clone;
-use glib::GEnum;
 use gst::prelude::*;
 use gtk::glib;
 use gtk::subclass::prelude::*;
+use glib::GEnum;
 use once_cell::sync::Lazy;
 use std::{cell::Cell, cell::RefCell, rc::Rc};
 
@@ -28,30 +24,28 @@ mod imp {
     use super::*;
 
     #[derive(Debug)]
-    pub struct KhaRecorder {
-        pub pipeline: RefCell<Option<gst::Pipeline>>,
-        pub portal: KhaScreencastPortal,
-        pub is_readying: Cell<bool>,
+    pub struct KhaRecorderController {
         pub state: Rc<RefCell<RecorderState>>,
+        pub pipeline: RefCell<Option<gst::Pipeline>>,
+        pub is_readying: Cell<bool>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaRecorder {
-        const NAME: &'static str = "KhaRecorder";
-        type Type = super::KhaRecorder;
+    impl ObjectSubclass for KhaRecorderController {
+        const NAME: &'static str = "KhaRecorderController";
+        type Type = super::KhaRecorderController;
         type ParentType = glib::Object;
 
         fn new() -> Self {
             Self {
                 state: Rc::new(RefCell::new(RecorderState::default())),
-                portal: KhaScreencastPortal::new(),
-                is_readying: Cell::new(false),
                 pipeline: RefCell::new(None),
+                is_readying: Cell::new(false),
             }
         }
     }
 
-    impl ObjectImpl for KhaRecorder {
+    impl ObjectImpl for KhaRecorderController {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
@@ -116,69 +110,18 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct KhaRecorder(ObjectSubclass<imp::KhaRecorder>);
+    pub struct KhaRecorderController(ObjectSubclass<imp::KhaRecorderController>);
 }
 
-impl KhaRecorder {
+impl KhaRecorderController {
     pub fn new() -> Self {
         let obj: Self =
             glib::Object::new::<Self>(&[]).expect("Failed to initialize Recorder object");
-
-        obj.setup_signals();
-
         obj
     }
 
-    fn get_private(&self) -> &imp::KhaRecorder {
-        &imp::KhaRecorder::from_instance(self)
+    fn get_private(&self) -> &imp::KhaRecorderController {
+        &imp::KhaRecorderController::from_instance(self)
     }
 
-    fn setup_signals(&self) {
-        let imp = self.get_private();
-
-        imp.portal
-            .connect_local(
-                "ready",
-                false,
-                clone!(@weak self as rec => @default-return None, move | args | {
-                    let stream = args[1].get().unwrap();
-
-                    rec.build_pipeline(stream);
-
-                    None
-                }),
-            )
-            .expect("Could not connect to ready signal.");
-    }
-
-    fn build_pipeline(&self, stream: Stream) {
-        let imp = self.get_private();
-
-        let fd = stream.fd;
-        let node_id = stream.node_id;
-
-        println!("{}", fd);
-        println!("{}", node_id);
-        println!("{}", stream.screen.width);
-        println!("{}", stream.screen.height);
-
-        // let pipeline_string = format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=30/1 ! videoconvert ! queue ! vp8enc ! queue ! webmmux ! filesink location=/home/dave/test.webm", fd, node_id);
-        // let gst_pipeline = gst::parse_launch(&pipeline_string).expect("Failed to parse pipeline");
-        // let gst_pipeline = gst_pipeline
-        //     .downcast::<gst::Pipeline>()
-        //     .expect("Couldn't downcast pipeline");
-        // imp.pipeline.replace(Some(gst_pipeline));
-
-        // self.set_property("state", RecorderState::Playing).unwrap();
-    }
-
-    pub fn start(&self) {
-        let imp = self.get_private();
-
-        imp.portal.open();
-    }
-
-    pub fn stop(&self) {
-        self.set_property("state", RecorderState::Null).unwrap();
-    }
 }

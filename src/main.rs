@@ -21,6 +21,8 @@ fn main() {
     gtk::init().expect("Unable to start GTK4");
     adw::init();
 
+    gstgif::plugin_register_static().expect("Failed to register gif plugin");
+
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file");
     gio::resources_register(&res);
 

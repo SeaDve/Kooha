@@ -7,14 +7,33 @@ use ashpd::{
     BasicResponse, HandleToken, RequestProxy, Response, WindowIdentifier,
 };
 use enumflags2::BitFlags;
-use gtk::glib;
+use gtk::glib::{self, GBoxed};
+use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use std::collections::HashMap;
 use std::convert::TryFrom;
+use std::os::unix::prelude::AsRawFd;
 use zbus::{self, fdo::Result};
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy, GBoxed)]
+#[gboxed(type_name = "Screen")]
+pub struct Screen {
+    pub width: i32,
+    pub height: i32,
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy, GBoxed)]
+#[gboxed(type_name = "Stream")]
+pub struct Stream {
+    pub fd: i32,
+    pub node_id: u32,
+    pub screen: Screen,
+}
 
 mod imp {
     use super::*;
+    use glib::subclass::Signal;
+    use once_cell::sync::Lazy;
 
     pub struct KhaScreencastPortal {}
 
@@ -29,7 +48,22 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaScreencastPortal {}
+    impl ObjectImpl for KhaScreencastPortal {
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
+                vec![
+                    Signal::builder(
+                        "ready",
+                        &[Stream::static_type().into()],
+                        <()>::static_type().into(),
+                    )
+                    .build(),
+                    Signal::builder("revoked", &[], <()>::static_type().into()).build(),
+                ]
+            });
+            SIGNALS.as_ref()
+        }
+    }
 }
 
 glib::wrapper! {
@@ -100,12 +134,21 @@ impl KhaScreencastPortal {
         let request = RequestProxy::new(&connection, &request_handle)?;
         request.on_response(move |r: Response<Streams>| {
             r.unwrap().streams().iter().for_each(|stream| {
-                println!("{}", stream.pipewire_node_id());
-                println!("{:#?}", stream.properties());
-                println!(
-                    "{:?}",
-                    self.open_pipewire_remote(session_handle.clone(), proxy)
-                )
+                let node_id = stream.pipewire_node_id();
+                let (width, height) = stream.properties().size;
+                let fd = self
+                    .open_pipewire_remote(session_handle.clone(), proxy)
+                    .unwrap()
+                    .as_raw_fd();
+
+                let stream = Stream {
+                    fd,
+                    node_id,
+                    screen: Screen { width, height },
+                };
+
+                self.emit_by_name("ready", &[&stream])
+                    .expect("Failed to emit ready");
             });
         })?;
         Ok(())

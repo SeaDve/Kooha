@@ -1,6 +1,5 @@
 use crate::application::KhaApplication;
 use crate::backend::KhaRecorder;
-use crate::backend::KhaScreencastPortal;
 use crate::backend::KhaSettings;
 use crate::config::{APP_ID, PROFILE};
 
@@ -115,10 +114,6 @@ impl KhaWindow {
             .connect_clicked(clone!(@weak self as win => move |_| {
                 let win_ = win.get_private();
                 win_.recorder.start();
-
-                let portal = KhaScreencastPortal::new();
-                portal.open();
-
             }));
     }
 
