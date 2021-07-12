@@ -114,7 +114,10 @@ impl KhaScreencastPortal {
         let request = RequestProxy::new(&connection, &request_handle)?;
         request.on_response(move |response: Response<BasicResponse>| {
             if response.is_ok() {
-                self.start_cast(session_handle, proxy, connection).unwrap();
+                match self.start_cast(session_handle, proxy, connection) {
+                    Ok(_) => (),
+                    Err(error) => println!("Cancelled: {}", error),
+                }
             }
         })?;
         Ok(())
