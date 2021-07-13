@@ -6,7 +6,7 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use std::{cell::Cell, mem};
+use std::{cell::Cell, mem, time::Duration};
 
 use crate::backend::Screen;
 use crate::backend::Utils;
@@ -149,18 +149,16 @@ impl KhaAreaSelector {
     fn setup_signals(&self) {
         let imp = self.private();
 
-        self.connect_show(clone!(@weak self as win => move |_| {
-            let win_ = win.private();
-
-            println!("Showed");
-        }));
-
         self.connect_close_request(
             clone!(@weak self as win => @default-return Inhibit(false), move |_| {
                 win.emit_cancelled();
                 Inhibit(false)
             }),
         );
+
+        self.connect_show(clone!(@weak self as win => move |_| {
+            win.set_raise_request(true);
+        }));
 
         imp.key_event_notifier.connect_key_pressed(
             clone!(@weak self as win => @default-return Inhibit(false), move |_, keyval, _, _| {
@@ -186,12 +184,10 @@ impl KhaAreaSelector {
 
                 let start_point = win_.start_point.get();
                 let end_point = Point::new(x, y);
+
                 let selection_rectangle = Rectangle::from_points(start_point, end_point);
                 let actual_screen = Screen::new(win.width(), win.height());
-
-                win.emit_by_name("captured", &[&selection_rectangle, &actual_screen]).unwrap();
-                win.clean();
-                win.hide();
+                win.emit_captured(selection_rectangle, actual_screen);
             }));
 
         imp.motion_event_notifier
@@ -230,8 +226,28 @@ impl KhaAreaSelector {
         });
     }
 
+    fn set_raise_request(&self, is_raised: bool) {
+        if is_raised {
+            glib::timeout_add(Duration::from_millis(100), move || -> glib::Continue {
+                Utils::set_raise_active_window_request(true)
+                    .expect("Failed to raise active window");
+                glib::Continue(false)
+            });
+        } else {
+            Utils::set_raise_active_window_request(false).expect("Failed to unraise active window");
+        };
+    }
+
     fn emit_cancelled(&self) {
+        self.set_raise_request(false);
         self.emit_by_name("cancelled", &[]).unwrap();
+        self.clean();
+        self.hide();
+    }
+
+    fn emit_captured(&self, selection_rectangle: Rectangle, actual_screen: Screen) {
+        self.emit_by_name("captured", &[&selection_rectangle, &actual_screen])
+            .unwrap();
         self.clean();
         self.hide();
     }

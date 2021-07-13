@@ -171,6 +171,9 @@ impl KhaRecorderController {
         let imp = self.private();
         imp.record_delay.set(record_delay);
 
+        let are = KhaAreaSelector::new();
+        are.select_area();
+
         imp.timer.start(record_delay);
     }
 
