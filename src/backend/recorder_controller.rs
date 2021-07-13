@@ -1,22 +1,25 @@
+use glib::{clone, GEnum};
 use gst::prelude::*;
-use gtk::glib;
-use gtk::subclass::prelude::*;
-use glib::GEnum;
+use gtk::{glib, subclass::prelude::*};
 use once_cell::sync::Lazy;
+
 use std::{cell::Cell, cell::RefCell, rc::Rc};
+
+use crate::backend::{KhaRecorder, KhaTimer, TimerState};
 
 #[repr(u32)]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy, GEnum)]
-#[genum(type_name = "RecorderState")]
-pub enum RecorderState {
+#[genum(type_name = "RecorderControllerState")]
+pub enum RecorderControllerState {
     Null,
+    Delayed,
     Paused,
     Playing,
 }
 
-impl Default for RecorderState {
+impl Default for RecorderControllerState {
     fn default() -> Self {
-        RecorderState::Null
+        RecorderControllerState::Null
     }
 }
 
@@ -25,9 +28,12 @@ mod imp {
 
     #[derive(Debug)]
     pub struct KhaRecorderController {
-        pub state: Rc<RefCell<RecorderState>>,
-        pub pipeline: RefCell<Option<gst::Pipeline>>,
+        pub recorder: KhaRecorder,
+        pub timer: KhaTimer,
+        pub state: Rc<RefCell<RecorderControllerState>>,
+        pub time: Cell<i32>,
         pub is_readying: Cell<bool>,
+        pub record_delay: Cell<i32>,
     }
 
     #[glib::object_subclass]
@@ -38,9 +44,12 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                state: Rc::new(RefCell::new(RecorderState::default())),
-                pipeline: RefCell::new(None),
+                recorder: KhaRecorder::new(),
+                timer: KhaTimer::new(),
+                state: Rc::new(RefCell::new(RecorderControllerState::default())),
+                time: Cell::new(0),
                 is_readying: Cell::new(false),
+                record_delay: Cell::new(0),
             }
         }
     }
@@ -49,19 +58,28 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
+                    glib::ParamSpec::new_enum(
+                        "state",
+                        "state",
+                        "State",
+                        RecorderControllerState::static_type(),
+                        RecorderControllerState::default() as i32,
+                        glib::ParamFlags::READWRITE,
+                    ),
+                    glib::ParamSpec::new_int(
+                        "time",
+                        "time",
+                        "Time",
+                        0,
+                        std::u16::MAX as i32,
+                        0,
+                        glib::ParamFlags::READWRITE,
+                    ),
                     glib::ParamSpec::new_boolean(
                         "is-readying",
                         "is-readying",
                         "Is readying",
                         false,
-                        glib::ParamFlags::READWRITE,
-                    ),
-                    glib::ParamSpec::new_enum(
-                        "state",
-                        "state",
-                        "State",
-                        RecorderState::static_type(),
-                        RecorderState::default() as i32,
                         glib::ParamFlags::READWRITE,
                     ),
                 ]
@@ -77,23 +95,14 @@ mod imp {
             pspec: &glib::ParamSpec,
         ) {
             match pspec.name() {
-                "is-readying" => {
-                    let is_readying = value.get().unwrap();
-                    self.is_readying.set(is_readying);
-                }
                 "state" => {
-                    let state = value.get().unwrap();
-                    self.state.replace(state);
-
-                    let pipeline = self.pipeline.borrow_mut().take().unwrap();
-                    let pipeline_state = match state {
-                        RecorderState::Null => gst::State::Null,
-                        RecorderState::Paused => gst::State::Paused,
-                        RecorderState::Playing => gst::State::Playing,
-                    };
-                    pipeline
-                        .set_state(pipeline_state)
-                        .expect("Failed to set pipeline state");
+                    self.state.replace(value.get().unwrap());
+                }
+                "time" => {
+                    self.time.set(value.get().unwrap());
+                }
+                "is-readying" => {
+                    self.is_readying.set(value.get().unwrap());
                 }
                 _ => unimplemented!(),
             }
@@ -101,8 +110,9 @@ mod imp {
 
         fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
-                "is-readying" => self.is_readying.get().to_value(),
                 "state" => self.state.borrow().to_value(),
+                "time" => self.time.get().to_value(),
+                "is-readying" => self.is_readying.get().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -117,11 +127,66 @@ impl KhaRecorderController {
     pub fn new() -> Self {
         let obj: Self =
             glib::Object::new::<Self>(&[]).expect("Failed to initialize Recorder object");
+        obj.setup_signals();
+        obj.setup_bindings();
         obj
     }
 
-    fn get_private(&self) -> &imp::KhaRecorderController {
+    fn private(&self) -> &imp::KhaRecorderController {
         &imp::KhaRecorderController::from_instance(self)
     }
 
+    fn setup_bindings(&self) {
+        let imp = self.private();
+        // imp.timer.bind_property("time", imp, "time");
+    }
+
+    fn setup_signals(&self) {
+        let imp = self.private();
+
+        imp.timer.connect_notify_local(Some("state"), clone!(@weak self as reccon => move |timer, _| {
+            let new_state = match timer.property("state").unwrap().get::<TimerState>().unwrap() {
+                TimerState::Stopped => RecorderControllerState::Null,
+                TimerState::Delayed => RecorderControllerState::Delayed,
+                TimerState::Paused => RecorderControllerState::Paused,
+                TimerState::Running => RecorderControllerState::Playing,
+            };
+            reccon.set_property("state", new_state).unwrap();
+        }));
+    }
+
+    pub fn start(&self, record_delay: i32) {
+        let imp = self.private();
+        imp.record_delay.set(record_delay);
+
+        imp.timer.start(record_delay);
+    }
+
+    pub fn cancel_delay(&self) {
+        let imp = self.private();
+        // imp.recorder.portal().close();
+
+        imp.timer.stop();
+    }
+
+    pub fn stop(&self) {
+        let imp = self.private();
+        // imp.recorder.stop();
+
+        imp.timer.stop();
+    }
+
+    pub fn pause(&self) {
+        let imp = self.private();
+        // imp.recorder.pause();
+
+        imp.timer.pause();
+    }
+
+    pub fn resume(&self) {
+        let imp = self.private();
+        // imp.recorder.resume();
+
+        imp.timer.resume();
+    }
 }

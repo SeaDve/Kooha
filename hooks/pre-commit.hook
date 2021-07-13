@@ -17,7 +17,7 @@ install_rustfmt() {
     fi
 }
 
-if ! which cargo &> /dev/null || ! cargo fmt --help &> /dev/null; then
+if ! which cargo >/dev/null 2>&1 || ! cargo fmt --help >/dev/null 2>&1; then
     echo "Unable to check code style, because rustfmt could not be run."
 
     if [ ! -t 1 ]; then
@@ -31,12 +31,14 @@ if ! which cargo &> /dev/null || ! cargo fmt --help &> /dev/null; then
     echo "n: Don't install rustfmt and perform the commit"
     echo "Q: Don't install rustfmt and abort the commit"
 
-    while true; do
-        read -p "Install rustfmt via rustup? [y/n/Q]: " yn
+    echo ""
+    while true
+    do
+        echo -n "Install rustfmt via rustup? [y/n/Q]: "; read yn < /dev/tty
         case $yn in
             [Yy]* ) install_rustfmt; break;;
             [Nn]* ) echo "Performing commit."; exit 0;;
-            [Qq]* | "" ) echo "Aborting commit."; exit -1;;
+            [Qq]* | "" ) echo "Aborting commit."; exit -1 >/dev/null 2>&1;;
             * ) echo "Invalid input";;
         esac
     done
@@ -52,3 +54,4 @@ if test $? != 0; then
 else
     echo "--Checking style pass--"
 fi
+

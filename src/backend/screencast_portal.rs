@@ -1,19 +1,18 @@
 use ashpd::{
-    desktop::screencast::{
-        CreateSession, CreateSessionOptions, CursorMode, ScreenCastProxy, SelectSourcesOptions,
-        SourceType, StartCastOptions, Streams,
-    },
-    zvariant::{Fd, ObjectPath},
-    BasicResponse, HandleToken, RequestProxy, Response, WindowIdentifier,
+    desktop::{screencast, SessionProxy},
+    enumflags2::BitFlags,
+    zbus, WindowIdentifier,
 };
-use enumflags2::BitFlags;
-use gtk::glib::{self, GBoxed};
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use std::collections::HashMap;
-use std::convert::TryFrom;
-use std::os::unix::prelude::AsRawFd;
-use zbus::{self, fdo::Result};
+use futures::lock::Mutex;
+use glib::clone;
+use gtk::{
+    glib::{self, GBoxed},
+    prelude::*,
+    subclass::prelude::*,
+};
+
+use std::os::unix::io::RawFd;
+use std::sync::Arc;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy, GBoxed)]
 #[gboxed(type_name = "Screen")]
@@ -35,7 +34,9 @@ mod imp {
     use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
-    pub struct KhaScreencastPortal {}
+    pub struct KhaScreencastPortal {
+        pub session: Arc<Mutex<Option<SessionProxy<'static>>>>,
+    }
 
     #[glib::object_subclass]
     impl ObjectSubclass for KhaScreencastPortal {
@@ -44,7 +45,9 @@ mod imp {
         type ParentType = glib::Object;
 
         fn new() -> Self {
-            Self {}
+            Self {
+                session: Arc::new(Mutex::new(None)),
+            }
         }
     }
 
@@ -72,102 +75,156 @@ glib::wrapper! {
 
 impl KhaScreencastPortal {
     pub fn new() -> Self {
-        let obj: Self = glib::Object::new::<Self>(&[]).expect("Failed to initialize Portal object");
-        obj
+        glib::Object::new::<Self>(&[]).expect("Failed to initialize Portal object")
     }
 
-    fn create_session(&self) -> Result<()> {
-        let connection = zbus::Connection::new_session()?;
-        let proxy = ScreenCastProxy::new(&connection)?;
+    // fn create_session(&self) -> Result<()> {
+    //     let connection = zbus::Connection::new_session()?;
+    //     let proxy = ScreenCastProxy::new(&connection)?;
 
-        let session_token = HandleToken::try_from("session120").unwrap();
+    //     let session_token = HandleToken::try_from("session120").unwrap();
 
-        let request_handle = proxy
-            .create_session(CreateSessionOptions::default().session_handle_token(session_token))?;
-        let request = RequestProxy::new(&connection, &request_handle)?;
+    //     let request_handle = proxy
+    //         .create_session(CreateSessionOptions::default().session_handle_token(session_token))?;
+    //     let request = RequestProxy::new(&connection, &request_handle)?;
 
-        request.on_response(|r: Response<CreateSession>| {
-            match r {
-                Ok(session) => self
-                    .select_sources(session.handle(), &proxy, &connection)
-                    .unwrap(),
-                Err(_) => println!("hello!"),
-            };
-        })?;
-        Ok(())
-    }
+    //     request.on_response(|r: Response<CreateSession>| {
+    //         match r {
+    //             Ok(session) => self
+    //                 .select_sources(session.handle(), &proxy, &connection)
+    //                 .unwrap(),
+    //             Err(_) => println!("hello!"),
+    //         };
+    //     })?;
+    //     Ok(())
+    // }
 
-    fn select_sources(
-        &self,
-        session_handle: ObjectPath,
-        proxy: &ScreenCastProxy,
-        connection: &zbus::Connection,
-    ) -> Result<()> {
-        let request_handle = proxy.select_sources(
-            session_handle.clone(),
-            SelectSourcesOptions::default()
-                .multiple(true)
-                .cursor_mode(BitFlags::from(CursorMode::Metadata))
-                .types(SourceType::Monitor | SourceType::Window),
-        )?;
+    // fn select_sources(
+    //     &self,
+    //     session_handle: ObjectPath,
+    //     proxy: &ScreenCastProxy,
+    //     connection: &zbus::Connection,
+    // ) -> Result<()> {
+    //     let request_handle = proxy.select_sources(
+    //         session_handle.clone(),
+    //         SelectSourcesOptions::default()
+    //             .multiple(true)
+    //             .cursor_mode(BitFlags::from(CursorMode::Metadata))
+    //             .types(SourceType::Monitor | SourceType::Window),
+    //     )?;
 
-        let request = RequestProxy::new(&connection, &request_handle)?;
-        request.on_response(move |response: Response<BasicResponse>| {
-            if response.is_ok() {
-                match self.start_cast(session_handle, proxy, connection) {
-                    Ok(_) => (),
-                    Err(error) => println!("Cancelled: {}", error),
-                }
-            }
-        })?;
-        Ok(())
-    }
+    //     let request = RequestProxy::new(&connection, &request_handle)?;
+    //     request.on_response(move |response: Response<BasicResponse>| {
+    //         if response.is_ok() {
+    //             match self.start_cast(session_handle, proxy, connection) {
+    //                 Ok(_) => (),
+    //                 Err(error) => println!("Cancelled: {}", error),
+    //             }
+    //         }
+    //     })?;
+    //     Ok(())
+    // }
 
-    fn start_cast(
-        &self,
-        session_handle: ObjectPath,
-        proxy: &ScreenCastProxy,
-        connection: &zbus::Connection,
-    ) -> Result<()> {
-        let request_handle = proxy.start(
-            session_handle.clone(),
-            WindowIdentifier::default(),
-            StartCastOptions::default(),
-        )?;
-        let request = RequestProxy::new(&connection, &request_handle)?;
-        request.on_response(move |r: Response<Streams>| {
-            r.unwrap().streams().iter().for_each(|stream| {
-                let node_id = stream.pipewire_node_id();
-                let (width, height) = stream.properties().size;
-                let fd = self
-                    .open_pipewire_remote(session_handle.clone(), proxy)
-                    .unwrap()
-                    .as_raw_fd();
+    // fn start_cast(
+    //     &self,
+    //     session_handle: ObjectPath,
+    //     proxy: &ScreenCastProxy,
+    //     connection: &zbus::Connection,
+    // ) -> Result<()> {
+    //     let request_handle = proxy.start(
+    //         session_handle.clone(),
+    //         WindowIdentifier::default(),
+    //         StartCastOptions::default(),
+    //     )?;
+    //     let request = RequestProxy::new(&connection, &request_handle)?;
+    //     request.on_response(move |r: Response<Streams>| {
+    //         r.unwrap().streams().iter().for_each(|stream| {
+    //             let node_id = stream.pipewire_node_id();
+    //             let (width, height) = stream.properties().size;
+    //             let fd = self
+    //                 .open_pipewire_remote(session_handle.clone(), proxy)
+    //                 .unwrap()
+    //                 .as_raw_fd();
 
-                let stream = Stream {
-                    fd,
-                    node_id,
-                    screen: Screen { width, height },
-                };
+    //             let stream = Stream {
+    //                 fd,
+    //                 node_id,
+    //                 screen: Screen { width, height },
+    //             };
 
-                self.emit_by_name("ready", &[&stream])
-                    .expect("Failed to emit ready");
-            });
-        })?;
-        Ok(())
-    }
+    //             self.emit_by_name("ready", &[&stream])
+    //                 .expect("Failed to emit ready");
+    //         });
+    //     })?;
+    //     Ok(())
+    // }
 
-    fn open_pipewire_remote(
-        &self,
-        session_handle: ObjectPath,
-        proxy: &ScreenCastProxy,
-    ) -> Result<Fd> {
-        proxy.open_pipe_wire_remote(session_handle, HashMap::default())
-    }
+    // fn open_pipewire_remote(
+    //     &self,
+    //     session_handle: ObjectPath,
+    //     proxy: &ScreenCastProxy,
+    // ) -> Result<Fd> {
+    //     proxy.open_pipe_wire_remote(session_handle, HashMap::default())
+    // }
 
     pub fn open(&self) {
-        self.create_session().expect("Failed to create session");
+        let ctx = glib::MainContext::default();
+        println!("starting session");
+        ctx.spawn_local(clone!(@weak self as portal => async move {
+
+            let imp = imp::KhaScreencastPortal::from_instance(&portal);
+
+            let identifier = WindowIdentifier::default();
+            let multiple = false;
+            let types = screencast::SourceType::Monitor | screencast::SourceType::Window;
+            let cursor_mode = BitFlags::<screencast::CursorMode>::from_flag(screencast::CursorMode::Embedded);
+
+
+            match screencast(identifier, multiple, types, cursor_mode).await {
+                Ok((streams, fd, session)) => {
+                    streams.iter().for_each(|stream| {
+                        println!("{:?} {:?}", stream, fd);
+
+                    });
+
+                    imp.session.lock().await.replace(session);
+                }
+                Err(err) => {
+                    println!("{:#?}", err);
+                }
+            };
+            println!("hiiiiiiiiiiii");
+        }));
     }
 
-    pub fn close(&self) {}
+    pub fn close(&self) {
+        // let ctx = glib::MainContext::default();
+        // ctx.spawn_local(clone!(@weak self as portal => async move {
+        //     let imp = imp::KhaScreencastPortal::from_instance(&portal);
+        //     if let Some(session) = imp.session.lock().await.take() {
+        //         let _ = session.close().await;
+        //     }
+        // }));
+    }
+}
+
+pub async fn screencast(
+    window_identifier: WindowIdentifier,
+    multiple: bool,
+    types: BitFlags<screencast::SourceType>,
+    cursor_mode: BitFlags<screencast::CursorMode>,
+) -> Result<(Vec<screencast::Stream>, RawFd, SessionProxy<'static>), ashpd::Error> {
+    let connection = zbus::azync::Connection::new_session().await?;
+    let proxy = screencast::ScreenCastProxy::new(&connection).await?;
+
+    let session = proxy.create_session().await?;
+
+    proxy
+        .select_sources(&session, cursor_mode, types, multiple)
+        .await?;
+
+    let streams = proxy.start(&session, window_identifier).await?.to_vec();
+
+    let node_id = proxy.open_pipe_wire_remote(&session).await?;
+    Ok((streams, node_id, session))
 }

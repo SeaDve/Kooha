@@ -6,7 +6,7 @@ mod widgets;
 use application::KhaApplication;
 use config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 use gettextrs::*;
-use gtk::gio;
+use gtk::{gio, glib};
 
 fn main() {
     pretty_env_logger::init();
@@ -15,7 +15,7 @@ fn main() {
     bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR).expect("Unable to bind the text domain");
     textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
 
-    gtk::glib::set_application_name("Kooha");
+    glib::set_application_name("Kooha");
 
     gst::init().expect("Unable to start gstreamer");
     gtk::init().expect("Unable to start GTK4");

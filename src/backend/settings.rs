@@ -1,8 +1,6 @@
-use crate::config;
+use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use gtk::{gio, glib};
+use crate::config;
 
 mod imp {
     use super::*;
@@ -38,8 +36,12 @@ impl KhaSettings {
         obj
     }
 
+    fn private(&self) -> &imp::KhaSettings {
+        &imp::KhaSettings::from_instance(self)
+    }
+
     pub fn create_action(&self, action: &str) -> gio::Action {
-        let imp = &imp::KhaSettings::from_instance(self);
+        let imp = self.private();
 
         imp.settings.create_action(action)
     }
@@ -50,11 +52,16 @@ impl KhaSettings {
         object: &P,
         target_property: &str,
     ) {
-        let imp = &imp::KhaSettings::from_instance(self);
+        let imp = self.private();
 
         imp.settings
             .bind(source_property, object, target_property)
             .flags(gio::SettingsBindFlags::DEFAULT)
             .build();
+    }
+
+    pub fn record_delay(&self) -> i32 {
+        let imp = self.private();
+        imp.settings.string("record-delay").parse::<i32>().unwrap()
     }
 }

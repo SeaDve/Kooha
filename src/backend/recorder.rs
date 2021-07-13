@@ -1,12 +1,13 @@
 use crate::backend::KhaScreencastPortal;
 use crate::backend::Stream;
 
-use glib::clone;
-use glib::GEnum;
 use gst::prelude::*;
-use gtk::glib;
-use gtk::subclass::prelude::*;
+use gtk::{
+    glib::{self, clone, GEnum},
+    subclass::prelude::*,
+};
 use once_cell::sync::Lazy;
+
 use std::{cell::Cell, cell::RefCell, rc::Rc};
 
 #[repr(u32)]
@@ -29,7 +30,7 @@ mod imp {
 
     #[derive(Debug)]
     pub struct KhaRecorder {
-        pub pipeline: RefCell<Option<gst::Pipeline>>,
+        pub pipeline: Rc<RefCell<Option<gst::Pipeline>>>,
         pub portal: KhaScreencastPortal,
         pub is_readying: Cell<bool>,
         pub state: Rc<RefCell<RecorderState>>,
@@ -46,7 +47,7 @@ mod imp {
                 state: Rc::new(RefCell::new(RecorderState::default())),
                 portal: KhaScreencastPortal::new(),
                 is_readying: Cell::new(false),
-                pipeline: RefCell::new(None),
+                pipeline: Rc::new(RefCell::new(None)),
             }
         }
     }
@@ -84,14 +85,14 @@ mod imp {
         ) {
             match pspec.name() {
                 "is-readying" => {
-                    let is_readying = value.get().unwrap();
-                    self.is_readying.set(is_readying);
+                    self.is_readying.set(value.get().unwrap());
                 }
                 "state" => {
                     let state = value.get().unwrap();
                     self.state.replace(state);
 
-                    let pipeline = self.pipeline.borrow_mut().take().unwrap();
+                    let pipeline = self.pipeline.borrow();
+                    let pipeline = pipeline.as_ref().expect("Failed to get pipeline");
                     let pipeline_state = match state {
                         RecorderState::Null => gst::State::Null,
                         RecorderState::Paused => gst::State::Paused,
@@ -129,12 +130,12 @@ impl KhaRecorder {
         obj
     }
 
-    fn get_private(&self) -> &imp::KhaRecorder {
+    fn private(&self) -> &imp::KhaRecorder {
         &imp::KhaRecorder::from_instance(self)
     }
 
     fn setup_signals(&self) {
-        let imp = self.get_private();
+        let imp = self.private();
 
         imp.portal
             .connect_local(
@@ -152,7 +153,7 @@ impl KhaRecorder {
     }
 
     fn build_pipeline(&self, stream: Stream) {
-        let imp = self.get_private();
+        let imp = self.private();
 
         let fd = stream.fd;
         let node_id = stream.node_id;
@@ -162,23 +163,30 @@ impl KhaRecorder {
         println!("{}", stream.screen.width);
         println!("{}", stream.screen.height);
 
-        // let pipeline_string = format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=30/1 ! videoconvert ! queue ! vp8enc ! queue ! webmmux ! filesink location=/home/dave/test.webm", fd, node_id);
-        // let gst_pipeline = gst::parse_launch(&pipeline_string).expect("Failed to parse pipeline");
-        // let gst_pipeline = gst_pipeline
-        //     .downcast::<gst::Pipeline>()
-        //     .expect("Couldn't downcast pipeline");
-        // imp.pipeline.replace(Some(gst_pipeline));
+        let pipeline_string = format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! videoconvert ! queue ! vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=3 ! queue ! webmmux ! filesink location=/home/dave/test.webm", fd, node_id);
+        let gst_pipeline = gst::parse_launch(&pipeline_string).expect("Failed to parse pipeline");
+        let gst_pipeline = gst_pipeline
+            .downcast::<gst::Pipeline>()
+            .expect("Couldn't downcast pipeline");
+        imp.pipeline.replace(Some(gst_pipeline));
 
-        // self.set_property("state", RecorderState::Playing).unwrap();
+        self.set_property("state", RecorderState::Playing).unwrap();
     }
 
     pub fn start(&self) {
-        let imp = self.get_private();
-
+        let imp = self.private();
         imp.portal.open();
     }
 
     pub fn stop(&self) {
-        self.set_property("state", RecorderState::Null).unwrap();
+        let imp = self.private();
+        imp.portal.close();
+
+        // self.set_property("state", RecorderState::Null).unwrap();
+    }
+
+    pub fn portal(&self) -> &KhaScreencastPortal {
+        let imp = self.private();
+        &imp.portal
     }
 }

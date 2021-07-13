@@ -1,12 +1,12 @@
-use crate::config;
-use crate::widgets::KhaWindow;
+use gtk::{
+    gdk, gio,
+    glib::{self, clone},
+    prelude::*,
+    subclass::prelude::*,
+};
 
-use gio::ApplicationFlags;
-use glib::clone;
-use gtk::prelude::*;
-use gtk::subclass::prelude::*;
-use gtk::{gdk, gio, glib};
-use log::{debug, info};
+use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
+use crate::widgets::KhaWindow;
 
 mod imp {
     use super::*;
@@ -29,7 +29,7 @@ mod imp {
 
     impl ApplicationImpl for KhaApplication {
         fn activate(&self, app: &Self::Type) {
-            debug!("GtkApplication<KhaApplication>::activate");
+            log::debug!("GtkApplication<KhaApplication>::activate");
 
             if let Some(window) = self.window.get() {
                 let window = window.upgrade().unwrap();
@@ -38,23 +38,23 @@ mod imp {
                 return;
             }
 
-            app.set_resource_base_path(Some("/io/github/seadve/Kooha/"));
-            app.setup_css();
-
             let window = KhaWindow::new(app);
             self.window
                 .set(window.downgrade())
                 .expect("Window already set.");
 
-            app.setup_gactions();
-            app.setup_accels();
-
-            app.get_main_window().present();
+            app.main_window().present();
         }
 
         fn startup(&self, app: &Self::Type) {
-            debug!("GtkApplication<KhaApplication>::startup");
+            log::debug!("GtkApplication<KhaApplication>::startup");
             self.parent_startup(app);
+
+            gtk::Window::set_default_icon_name(APP_ID);
+
+            app.setup_css();
+            app.setup_gactions();
+            app.setup_accels();
         }
     }
 
@@ -63,19 +63,21 @@ mod imp {
 
 glib::wrapper! {
     pub struct KhaApplication(ObjectSubclass<imp::KhaApplication>)
-        @extends gio::Application, gtk::Application, @implements gio::ActionMap, gio::ActionGroup;
+        @extends gio::Application, gtk::Application,
+        @implements gio::ActionMap, gio::ActionGroup;
 }
 
 impl KhaApplication {
     pub fn new() -> Self {
         glib::Object::new(&[
-            ("application-id", &Some(config::APP_ID)),
-            ("flags", &ApplicationFlags::empty()),
+            ("application-id", &Some(APP_ID)),
+            ("flags", &gio::ApplicationFlags::empty()),
+            ("resource-base-path", &Some("/io/github/seadve/Kooha/")),
         ])
         .expect("Application initialization failed...")
     }
 
-    fn get_main_window(&self) -> KhaWindow {
+    fn main_window(&self) -> KhaWindow {
         let imp = imp::KhaApplication::from_instance(self);
         imp.window.get().unwrap().upgrade().unwrap()
     }
@@ -102,7 +104,6 @@ impl KhaApplication {
 
     fn setup_accels(&self) {
         self.set_accels_for_action("app.quit", &["<Primary>q"]);
-        self.set_accels_for_action("win.show-help-overlay", &["<Primary>question"]);
     }
 
     fn setup_css(&self) {
@@ -119,7 +120,7 @@ impl KhaApplication {
 
     fn select_saving_location(&self) {
         let chooser = gtk::FileChooserDialogBuilder::new()
-            .transient_for(&self.get_main_window())
+            .transient_for(&self.main_window())
             .modal(true)
             .action(gtk::FileChooserAction::SelectFolder)
             .title("Select a Folder")
@@ -133,11 +134,11 @@ impl KhaApplication {
 
     fn show_about_dialog(&self) {
         let dialog = gtk::AboutDialogBuilder::new()
-            .transient_for(&self.get_main_window())
+            .transient_for(&self.main_window())
             .modal(true)
             .program_name("Kooha")
-            .version(config::VERSION)
-            .logo_icon_name(config::APP_ID)
+            .version(VERSION)
+            .logo_icon_name(APP_ID)
             .website("https://github.com/SeaDve/Kooha")
             .license_type(gtk::License::Gpl30)
             .copyright("Copyright 2021 Dave Patrick")
@@ -148,9 +149,9 @@ impl KhaApplication {
     }
 
     pub fn run(&self) {
-        info!("Kooha ({})", config::APP_ID);
-        info!("Version: {} ({})", config::VERSION, config::PROFILE);
-        info!("Datadir: {}", config::PKGDATADIR);
+        log::info!("Kooha ({})", APP_ID);
+        log::info!("Version: {} ({})", VERSION, PROFILE);
+        log::info!("Datadir: {}", PKGDATADIR);
 
         ApplicationExtManual::run(self);
     }
