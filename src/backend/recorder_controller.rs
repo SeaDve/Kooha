@@ -1,14 +1,12 @@
-use glib::{clone, GEnum};
 use gst::prelude::*;
-use gtk::{glib, subclass::prelude::*};
-use once_cell::sync::Lazy;
+use gtk::{
+    glib::{self, clone, GEnum},
+    subclass::prelude::*,
+};
 
-use std::{cell::Cell, cell::RefCell, rc::Rc};
+use crate::backend::TimerState;
 
-use crate::backend::{KhaRecorder, KhaTimer, TimerState};
-
-#[repr(u32)]
-#[derive(Debug, PartialEq, PartialOrd, Clone, Copy, GEnum)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderControllerState")]
 pub enum RecorderControllerState {
     Null,
@@ -25,6 +23,12 @@ impl Default for RecorderControllerState {
 
 mod imp {
     use super::*;
+
+    use once_cell::sync::Lazy;
+
+    use std::{cell::Cell, cell::RefCell, rc::Rc};
+
+    use crate::backend::{KhaRecorder, KhaTimer};
 
     #[derive(Debug)]
     pub struct KhaRecorderController {

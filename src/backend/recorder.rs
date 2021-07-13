@@ -1,17 +1,12 @@
-use crate::backend::KhaScreencastPortal;
-use crate::backend::Stream;
-
 use gst::prelude::*;
 use gtk::{
     glib::{self, clone, GEnum},
     subclass::prelude::*,
 };
-use once_cell::sync::Lazy;
 
-use std::{cell::Cell, cell::RefCell, rc::Rc};
+use crate::backend::{KhaScreencastPortal, Stream};
 
-#[repr(u32)]
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy, GEnum)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderState")]
 pub enum RecorderState {
     Null,
@@ -27,6 +22,10 @@ impl Default for RecorderState {
 
 mod imp {
     use super::*;
+
+    use once_cell::sync::Lazy;
+
+    use std::{cell::Cell, cell::RefCell, rc::Rc};
 
     #[derive(Debug)]
     pub struct KhaRecorder {

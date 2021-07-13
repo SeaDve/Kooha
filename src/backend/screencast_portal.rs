@@ -14,7 +14,7 @@ use gtk::{
 use std::os::unix::io::RawFd;
 use std::sync::Arc;
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy, GBoxed)]
+#[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "Screen")]
 pub struct Screen {
     pub width: i32,
@@ -27,7 +27,7 @@ impl Screen {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy, GBoxed)]
+#[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "Stream")]
 pub struct Stream {
     pub fd: i32,
@@ -40,6 +40,7 @@ mod imp {
     use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
+    #[derive(Debug)]
     pub struct KhaScreencastPortal {
         pub session: Arc<Mutex<Option<SessionProxy<'static>>>>,
     }

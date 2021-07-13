@@ -6,12 +6,12 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use std::{cell::Cell, mem, time::Duration};
+use std::{mem, time::Duration};
 
 use crate::backend::Screen;
 use crate::backend::Utils;
 
-#[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
+#[derive(Debug, Clone, Copy)]
 pub struct Point {
     pub x: f64,
     pub y: f64,
@@ -23,7 +23,7 @@ impl Point {
     }
 }
 
-#[derive(Debug, PartialEq, PartialOrd, Clone, Copy, GBoxed)]
+#[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "Rectangle")]
 pub struct Rectangle {
     pub x: f64,
@@ -55,9 +55,12 @@ impl Rectangle {
 
 mod imp {
     use super::*;
+
     use glib::subclass::Signal;
     use gtk::CompositeTemplate;
     use once_cell::sync::Lazy;
+
+    use std::cell::Cell;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/area_selector.ui")]

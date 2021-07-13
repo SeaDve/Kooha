@@ -1,10 +1,11 @@
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 
-use crate::config;
-
 mod imp {
     use super::*;
 
+    use crate::config::APP_ID;
+
+    #[derive(Debug)]
     pub struct KhaSettings {
         pub settings: gio::Settings,
     }
@@ -17,7 +18,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                settings: gio::Settings::new(config::APP_ID),
+                settings: gio::Settings::new(APP_ID),
             }
         }
     }

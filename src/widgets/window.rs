@@ -7,12 +7,15 @@ use gtk::{
 };
 
 use crate::application::KhaApplication;
-use crate::backend::{KhaRecorderController, KhaSettings, RecorderControllerState};
-use crate::config::PROFILE;
+use crate::backend::RecorderControllerState;
 
 mod imp {
     use super::*;
+
     use gtk::CompositeTemplate;
+
+    use crate::backend::{KhaRecorderController, KhaSettings};
+    use crate::config::PROFILE;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]

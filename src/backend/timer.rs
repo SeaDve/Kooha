@@ -4,10 +4,7 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use std::{cell::Cell, cell::RefCell, rc::Rc};
-
-#[repr(u32)]
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy, GEnum)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "TimerState")]
 pub enum TimerState {
     Stopped,
@@ -24,9 +21,13 @@ impl Default for TimerState {
 
 mod imp {
     use super::*;
+
     use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
+    use std::{cell::Cell, cell::RefCell, rc::Rc};
+
+    #[derive(Debug)]
     pub struct KhaTimer {
         pub state: Rc<RefCell<TimerState>>,
         pub time: Cell<u32>,
