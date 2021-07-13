@@ -60,8 +60,8 @@ impl KhaSettings {
             .build();
     }
 
-    pub fn record_delay(&self) -> i32 {
+    pub fn record_delay(&self) -> u32 {
         let imp = self.private();
-        imp.settings.string("record-delay").parse::<i32>().unwrap()
+        imp.settings.string("record-delay").parse::<u32>().unwrap()
     }
 }

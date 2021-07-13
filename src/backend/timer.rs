@@ -29,7 +29,7 @@ mod imp {
 
     pub struct KhaTimer {
         pub state: Rc<RefCell<TimerState>>,
-        pub time: Cell<i32>,
+        pub time: Cell<u32>,
     }
 
     #[glib::object_subclass]
@@ -65,12 +65,12 @@ mod imp {
                         TimerState::default() as i32,
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::new_int(
+                    glib::ParamSpec::new_uint(
                         "time",
                         "time",
                         "Time",
                         0,
-                        std::u16::MAX as i32,
+                        std::u32::MAX as u32,
                         0,
                         glib::ParamFlags::READWRITE,
                     ),
@@ -116,30 +116,31 @@ impl KhaTimer {
         glib::Object::new::<Self>(&[]).expect("Failed to initialize Settings object")
     }
 
-    pub fn start(&self, delay: i32) {
+    pub fn start(&self, delay: u32) {
         self.set_property("time", delay).unwrap();
 
         glib::timeout_add_seconds_local(
             1,
             clone!(@weak self as timer  => @default-return glib::Continue(false), move || {
                 let current_state = timer.property("state").unwrap().get::<TimerState>().unwrap();
-                let current_time = timer.property("time").unwrap().get::<i32>().unwrap();
+                let current_time = timer.property("time").unwrap().get::<u32>().unwrap();
 
                 if current_state == TimerState::Stopped {
                     return glib::Continue(false);
                 }
+
                 if current_state != TimerState::Paused {
                     let new_time = match current_state {
                         TimerState::Delayed => current_time - 1,
                         _ => current_time + 1,
                     };
                     timer.set_property("time", new_time).unwrap();
-                }
-                if current_time == 0 && current_state == TimerState::Delayed {
-                    timer.set_property("state", TimerState::Running).unwrap();
-                    timer.emit_by_name("delay-done", &[]).unwrap();
-                }
 
+                    if new_time == 0 && current_state == TimerState::Delayed {
+                        timer.set_property("state", TimerState::Running).unwrap();
+                        timer.emit_by_name("delay-done", &[]).unwrap();
+                    }
+                }
                 glib::Continue(true)
             }),
         );

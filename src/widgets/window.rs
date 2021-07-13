@@ -139,7 +139,7 @@ impl KhaWindow {
         imp.recorder_controller.connect_notify_local(Some("time"), clone!(@weak self as win => move |recorder_controller, _| {
             let win_ = win.private();
 
-            let current_time = recorder_controller.property("time").unwrap().get::<i32>().unwrap();
+            let current_time = recorder_controller.property("time").unwrap().get::<u32>().unwrap();
             let seconds = current_time % 60;
             let minutes = (current_time / 60) % 60;
             let formatted_time = format!("{:02}∶{:02}", minutes, seconds);
@@ -164,7 +164,12 @@ impl KhaWindow {
         imp.pause_record_button
             .connect_clicked(clone!(@weak self as win => move |_| {
                 let win_ = win.private();
-                win_.recorder_controller.stop();
+
+                if win_.recorder_controller.is_paused() {
+                    win_.recorder_controller.resume();
+                } else {
+                    win_.recorder_controller.pause();
+                };
             }));
 
         imp.cancel_delay_button

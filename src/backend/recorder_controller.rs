@@ -31,9 +31,9 @@ mod imp {
         pub recorder: KhaRecorder,
         pub timer: KhaTimer,
         pub state: Rc<RefCell<RecorderControllerState>>,
-        pub time: Cell<i32>,
+        pub time: Cell<u32>,
         pub is_readying: Cell<bool>,
-        pub record_delay: Cell<i32>,
+        pub record_delay: Cell<u32>,
     }
 
     #[glib::object_subclass]
@@ -66,12 +66,12 @@ mod imp {
                         RecorderControllerState::default() as i32,
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::new_int(
+                    glib::ParamSpec::new_uint(
                         "time",
                         "time",
                         "Time",
                         0,
-                        std::u16::MAX as i32,
+                        std::u32::MAX as u32,
                         0,
                         glib::ParamFlags::READWRITE,
                     ),
@@ -155,7 +155,16 @@ impl KhaRecorderController {
         }));
     }
 
-    pub fn start(&self, record_delay: i32) {
+    pub fn is_paused(&self) -> bool {
+        let current_state = self
+            .property("state")
+            .unwrap()
+            .get::<RecorderControllerState>()
+            .unwrap();
+        current_state == RecorderControllerState::Paused
+    }
+
+    pub fn start(&self, record_delay: u32) {
         let imp = self.private();
         imp.record_delay.set(record_delay);
 
