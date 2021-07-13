@@ -74,8 +74,10 @@ impl KhaSettings {
         let current_saving_location = imp.settings.string("saving-location");
 
         if current_saving_location == "default" {
-            let xdg_videos_dir = glib::user_special_dir(glib::UserDirectory::Videos);
-            xdg_videos_dir.as_path().display().to_string()
+            glib::user_special_dir(glib::UserDirectory::Videos)
+                .as_path()
+                .display()
+                .to_string()
         } else {
             current_saving_location.to_string()
         }

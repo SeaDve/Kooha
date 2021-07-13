@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Kooha
-Comment=Write a GTK + Rust application
-Type=Application
 Exec=kooha
+Comment=Elegantly record your screen
+Type=Application
 Terminal=false
-Categories=GNOME;GTK;
-Keywords=Gnome;GTK;
-# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Categories=GTK;GNOME;Utility;Recorder;
+# Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+Keywords=Screencast;Recorder;Screen;Video;
 Icon=@icon@
 StartupNotify=true

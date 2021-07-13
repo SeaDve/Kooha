@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="KhaAreaSelector" parent="GtkWindow">
+    <property name="deletable">False</property>
+    <property name="decorated">False</property>
+    <property name="css-classes"/>
+    <signal name="show" handler="_on_show" swapped="no"/>
+    <signal name="close-request" handler="_on_close_request" swapped="no"/>
+    <child>
+      <object class="GtkDrawingArea" id="drawing_area"/>
+    </child>
+    <child>
+      <object class="GtkGestureClick">
+        <property name="propagation-phase">capture</property>
+        <signal name="pressed" handler="_on_pressed_notify" swapped="no"/>
+        <signal name="released" handler="_on_released_notify" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkEventControllerMotion">
+        <signal name="motion" handler="_on_motion_notify" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkEventControllerKey">
+        <property name="propagation-phase">capture</property>
+        <signal name="key-pressed" handler="_on_key_pressed_notify" swapped="no"/>
+      </object>
+    </child>
+  </template>
+</interface>
