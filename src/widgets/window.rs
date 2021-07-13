@@ -152,12 +152,14 @@ impl KhaWindow {
             .connect_clicked(clone!(@weak self as win => move |_| {
                 let win_ = win.private();
                 let record_delay = win_.settings.record_delay();
+
                 win_.recorder_controller.start(record_delay);
             }));
 
         imp.stop_record_button
             .connect_clicked(clone!(@weak self as win => move |_| {
                 let win_ = win.private();
+
                 win_.recorder_controller.stop();
             }));
 
@@ -175,6 +177,7 @@ impl KhaWindow {
         imp.cancel_delay_button
             .connect_clicked(clone!(@weak self as win => move |_| {
                 let win_ = win.private();
+
                 win_.recorder_controller.cancel_delay();
             }));
     }

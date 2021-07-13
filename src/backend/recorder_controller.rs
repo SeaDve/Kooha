@@ -138,7 +138,9 @@ impl KhaRecorderController {
 
     fn setup_bindings(&self) {
         let imp = self.private();
-        // imp.timer.bind_property("time", imp, "time");
+        self.bind_property("time", &imp.timer, "time")
+            .flags(glib::BindingFlags::BIDIRECTIONAL) // FIXME this should not be bidirectional
+            .build();
     }
 
     fn setup_signals(&self) {
