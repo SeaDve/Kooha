@@ -6,7 +6,6 @@ use once_cell::sync::Lazy;
 use std::{cell::Cell, cell::RefCell, rc::Rc};
 
 use crate::backend::{KhaRecorder, KhaTimer, TimerState};
-use crate::widgets::KhaAreaSelector;
 
 #[repr(u32)]
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy, GEnum)]
@@ -170,9 +169,6 @@ impl KhaRecorderController {
     pub fn start(&self, record_delay: u32) {
         let imp = self.private();
         imp.record_delay.set(record_delay);
-
-        let are = KhaAreaSelector::new();
-        are.select_area();
 
         imp.timer.start(record_delay);
     }

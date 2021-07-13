@@ -9,6 +9,8 @@
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
+        "--socket=pulseaudio",
+        "--filesystem=xdg-videos",
         "--talk-name=org.a11y.Bus",
         "--talk-name=org.gnome.Shell",
         "--env=RUST_LOG=kooha=debug",
