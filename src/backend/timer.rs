@@ -121,7 +121,7 @@ impl KhaTimer {
 
         glib::timeout_add_seconds_local(
             1,
-            clone!(@weak self as timer  => @default-return glib::Continue(false), move || {
+            clone!(@weak self as timer => @default-return glib::Continue(false), move || {
                 let current_state = timer.property("state").unwrap().get::<TimerState>().unwrap();
                 let current_time = timer.property("time").unwrap().get::<u32>().unwrap();
 

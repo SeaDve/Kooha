@@ -94,13 +94,13 @@ glib::wrapper! {
 
 impl KhaWindow {
     pub fn new(app: &KhaApplication) -> Self {
-        let window: Self = glib::Object::new(&[]).expect("Failed to create KhaWindow");
-        window.set_application(Some(app));
+        let win: Self = glib::Object::new(&[]).expect("Failed to create KhaWindow");
+        win.set_application(Some(app));
 
-        window.setup_bindings();
-        window.setup_signals();
-        window.setup_actions();
-        window
+        win.setup_bindings();
+        win.setup_signals();
+        win.setup_actions();
+        win
     }
 
     fn private(&self) -> &imp::KhaWindow {

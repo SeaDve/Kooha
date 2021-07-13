@@ -1,3 +1,4 @@
+mod area_selector;
 mod window;
 
-pub use self::window::KhaWindow;
+pub use self::{area_selector::KhaAreaSelector, window::KhaWindow};

@@ -6,9 +6,10 @@ use once_cell::sync::Lazy;
 use std::{cell::Cell, cell::RefCell, rc::Rc};
 
 use crate::backend::{KhaRecorder, KhaTimer, TimerState};
+use crate::widgets::KhaAreaSelector;
 
 #[repr(u32)]
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy, GEnum)]
+#[derive(Debug, PartialEq, PartialOrd, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderControllerState")]
 pub enum RecorderControllerState {
     Null,
@@ -125,11 +126,11 @@ glib::wrapper! {
 
 impl KhaRecorderController {
     pub fn new() -> Self {
-        let obj: Self =
+        let recorder_controller: Self =
             glib::Object::new::<Self>(&[]).expect("Failed to initialize Recorder object");
-        obj.setup_signals();
-        obj.setup_bindings();
-        obj
+        recorder_controller.setup_signals();
+        recorder_controller.setup_bindings();
+        recorder_controller
     }
 
     fn private(&self) -> &imp::KhaRecorderController {

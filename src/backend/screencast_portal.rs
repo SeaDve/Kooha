@@ -21,6 +21,12 @@ pub struct Screen {
     pub height: i32,
 }
 
+impl Screen {
+    pub fn new(width: i32, height: i32) -> Self {
+        Self { width, height }
+    }
+}
+
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy, GBoxed)]
 #[gboxed(type_name = "Stream")]
 pub struct Stream {

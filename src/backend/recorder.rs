@@ -122,11 +122,10 @@ glib::wrapper! {
 
 impl KhaRecorder {
     pub fn new() -> Self {
-        let obj: Self =
+        let recorder: Self =
             glib::Object::new::<Self>(&[]).expect("Failed to initialize Recorder object");
-        obj.setup_signals();
-
-        obj
+        recorder.setup_signals();
+        recorder
     }
 
     fn private(&self) -> &imp::KhaRecorder {
