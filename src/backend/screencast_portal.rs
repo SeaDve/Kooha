@@ -81,7 +81,7 @@ glib::wrapper! {
 
 impl KhaScreencastPortal {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to initialize Portal object")
+        glib::Object::new::<Self>(&[]).expect("Failed to create KhaPortal")
     }
 
     // fn create_session(&self) -> Result<()> {

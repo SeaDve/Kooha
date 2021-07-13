@@ -31,7 +31,7 @@ glib::wrapper! {
 
 impl KhaSettings {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to initialize KhaSettings object")
+        glib::Object::new::<Self>(&[]).expect("Failed to create KhaSettings")
     }
 
     fn private(&self) -> &imp::KhaSettings {

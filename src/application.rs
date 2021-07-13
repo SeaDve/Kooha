@@ -75,7 +75,7 @@ impl KhaApplication {
             ("flags", &gio::ApplicationFlags::empty()),
             ("resource-base-path", &Some("/io/github/seadve/Kooha/")),
         ])
-        .expect("Application initialization failed...")
+        .expect("Failed to initialize KhaApplication")
     }
 
     fn main_window(&self) -> KhaWindow {

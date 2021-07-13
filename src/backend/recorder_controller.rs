@@ -96,13 +96,16 @@ mod imp {
         ) {
             match pspec.name() {
                 "state" => {
-                    self.state.replace(value.get().unwrap());
+                    let state = value.get().unwrap();
+                    self.state.replace(state);
                 }
                 "time" => {
-                    self.time.set(value.get().unwrap());
+                    let time = value.get().unwrap();
+                    self.time.set(time);
                 }
                 "is-readying" => {
-                    self.is_readying.set(value.get().unwrap());
+                    let is_readying = value.get().unwrap();
+                    self.is_readying.set(is_readying);
                 }
                 _ => unimplemented!(),
             }
@@ -126,7 +129,7 @@ glib::wrapper! {
 impl KhaRecorderController {
     pub fn new() -> Self {
         let recorder_controller: Self =
-            glib::Object::new::<Self>(&[]).expect("Failed to initialize Recorder object");
+            glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorderController");
         recorder_controller.setup_signals();
         recorder_controller.setup_bindings();
         recorder_controller
@@ -138,9 +141,7 @@ impl KhaRecorderController {
 
     fn setup_bindings(&self) {
         let imp = self.private();
-        self.bind_property("time", &imp.timer, "time")
-            .flags(glib::BindingFlags::BIDIRECTIONAL) // FIXME this should not be bidirectional
-            .build();
+        imp.timer.bind_property("time", self, "time").build();
     }
 
     fn setup_signals(&self) {

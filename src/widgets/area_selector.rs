@@ -83,7 +83,7 @@ mod imp {
         fn new() -> Self {
             Self {
                 is_dragging: Cell::new(false),
-                start_point: Cell::new(Point::new(0.0, 0.0)),
+                start_point: Cell::new(Point::new(0_f64, 0_f64)),
                 drawing_area: TemplateChild::default(),
                 key_event_notifier: TemplateChild::default(),
                 click_event_notifier: TemplateChild::default(),
@@ -222,17 +222,16 @@ impl KhaAreaSelector {
             cr.set_source_rgba(0.1, 0.45, 0.8, 0.3);
             cr.fill_preserve().unwrap();
             cr.set_source_rgb(0.1, 0.45, 0.8);
-            cr.set_line_width(1 as f64);
+            cr.set_line_width(1_f64);
             cr.stroke().unwrap();
         });
     }
 
     fn set_raise_request(&self, is_raised: bool) {
         if is_raised {
-            glib::timeout_add(Duration::from_millis(100), move || -> glib::Continue {
+            glib::timeout_add_local_once(Duration::from_millis(100), move || {
                 Utils::set_raise_active_window_request(true)
                     .expect("Failed to raise active window");
-                glib::Continue(false)
             });
         } else {
             Utils::set_raise_active_window_request(false).expect("Failed to unraise active window");

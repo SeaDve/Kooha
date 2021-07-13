@@ -1,5 +1,5 @@
 use gtk::{
-    glib::{self, clone, GEnum},
+    glib::{self, clone, Continue, GEnum},
     prelude::*,
     subclass::prelude::*,
 };
@@ -88,10 +88,12 @@ mod imp {
         ) {
             match pspec.name() {
                 "state" => {
-                    self.state.replace(value.get().unwrap());
+                    let state = value.get().unwrap();
+                    self.state.replace(state);
                 }
                 "time" => {
-                    self.time.set(value.get().unwrap());
+                    let time = value.get().unwrap();
+                    self.time.set(time);
                 }
                 _ => unimplemented!(),
             }
@@ -113,7 +115,7 @@ glib::wrapper! {
 
 impl KhaTimer {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to initialize Settings object")
+        glib::Object::new::<Self>(&[]).expect("Failed to create KhaTimer")
     }
 
     pub fn start(&self, delay: u32) {
@@ -121,12 +123,12 @@ impl KhaTimer {
 
         glib::timeout_add_seconds_local(
             1,
-            clone!(@weak self as timer => @default-return glib::Continue(false), move || {
+            clone!(@weak self as timer => @default-return Continue(false), move || {
                 let current_state = timer.property("state").unwrap().get::<TimerState>().unwrap();
                 let current_time = timer.property("time").unwrap().get::<u32>().unwrap();
 
                 if current_state == TimerState::Stopped {
-                    return glib::Continue(false);
+                    return Continue(false);
                 }
 
                 if current_state != TimerState::Paused {
@@ -141,7 +143,8 @@ impl KhaTimer {
                         timer.emit_by_name("delay-done", &[]).unwrap();
                     }
                 }
-                glib::Continue(true)
+
+                Continue(true)
             }),
         );
 

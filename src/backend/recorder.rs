@@ -85,7 +85,8 @@ mod imp {
         ) {
             match pspec.name() {
                 "is-readying" => {
-                    self.is_readying.set(value.get().unwrap());
+                    let is_readying = value.get().unwrap();
+                    self.is_readying.set(is_readying);
                 }
                 "state" => {
                     let state = value.get().unwrap();
@@ -122,8 +123,7 @@ glib::wrapper! {
 
 impl KhaRecorder {
     pub fn new() -> Self {
-        let recorder: Self =
-            glib::Object::new::<Self>(&[]).expect("Failed to initialize Recorder object");
+        let recorder: Self = glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorder");
         recorder.setup_signals();
         recorder
     }
