@@ -137,12 +137,15 @@ impl KhaApplication {
             .transient_for(&self.main_window())
             .modal(true)
             .program_name("Kooha")
+            .comments("Elegantly record your screen")
             .version(VERSION)
             .logo_icon_name(APP_ID)
-            .website("https://github.com/SeaDve/Kooha")
-            .license_type(gtk::License::Gpl30)
-            .copyright("Copyright 2021 Dave Patrick")
             .authors(vec!["SeaDve".into()])
+            .translator_credits("translator-credits")
+            .copyright("Copyright 2021 Dave Patrick")
+            .license_type(gtk::License::Gpl30)
+            .website("https://github.com/SeaDve/Kooha")
+            .website_label("GitHub")
             .build();
 
         dialog.show();
