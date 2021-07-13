@@ -5,6 +5,7 @@ use gtk::{
     subclass::prelude::*,
 };
 
+use crate::backend::KhaSettings;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::KhaWindow;
 
@@ -119,6 +120,7 @@ impl KhaApplication {
     }
 
     fn select_saving_location(&self) {
+        let settings = KhaSettings::new();
         let chooser = gtk::FileChooserDialogBuilder::new()
             .transient_for(&self.main_window())
             .modal(true)
@@ -128,7 +130,37 @@ impl KhaApplication {
 
         chooser.add_button("Cancel", gtk::ResponseType::Cancel);
         chooser.add_button("Select", gtk::ResponseType::Accept);
-        // chooser.connect_response()
+        chooser.set_default_response(gtk::ResponseType::Accept);
+        chooser
+            .set_current_folder(&gio::File::for_path(settings.saving_location()))
+            .expect("Failed to set current folder");
+        chooser.connect_response(clone!(@weak self as app => move |chooser, response| {
+            if response != gtk::ResponseType::Accept {
+                chooser.close();
+                return;
+            }
+
+            let directory = chooser.file().unwrap().path().unwrap().as_path().display().to_string();
+            let homefolder = glib::home_dir().as_path().display().to_string();
+            let is_in_homefolder = directory.starts_with(&homefolder);
+
+            if !is_in_homefolder || directory == homefolder {
+                let error_dialog = gtk::MessageDialogBuilder::new()
+                    .modal(true)
+                    .buttons(gtk::ButtonsType::Ok)
+                    .transient_for(&app.main_window())
+                    .title(&format!("Inaccessible location '{}'", directory))
+                    .text("Please choose an accessible location and retry.")
+                    .build();
+                error_dialog.connect_response(move |error_dialog, _| { error_dialog.close() });
+                error_dialog.present();
+                return;
+            };
+
+            settings.set_saving_location(&directory);
+            chooser.close();
+
+        }));
         chooser.present()
     }
 

@@ -64,4 +64,15 @@ impl KhaSettings {
         let imp = self.private();
         imp.settings.string("record-delay").parse::<u32>().unwrap()
     }
+
+    pub fn set_saving_location(&self, directory: &str) {
+        let imp = self.private();
+        imp.settings
+            .set_string("saving-location", directory)
+            .unwrap();
+    }
+
+    pub fn saving_location(&self) -> &str {
+        "/home/dave/Videos"
+    }
 }
