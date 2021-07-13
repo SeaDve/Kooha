@@ -124,7 +124,6 @@ impl KhaRecorder {
     pub fn new() -> Self {
         let obj: Self =
             glib::Object::new::<Self>(&[]).expect("Failed to initialize Recorder object");
-
         obj.setup_signals();
 
         obj

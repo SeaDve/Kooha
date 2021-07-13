@@ -122,17 +122,17 @@ impl KhaWindow {
             match recorder_controller.property("state").unwrap().get::<RecorderControllerState>().unwrap() {
                 RecorderControllerState::Null => win_.main_stack.set_visible_child_name("main-screen"),
                 RecorderControllerState::Delayed => win_.main_stack.set_visible_child_name("delay"),
-                RecorderControllerState::Paused => {
-                    win_.pause_record_button.set_icon_name("media-playback-start-symbolic");
-                    win_.recording_label.set_label("Paused");
-                    win_.recording_time_label.add_css_class("paused");
-                },
                 RecorderControllerState::Playing => {
                     win_.main_stack.set_visible_child_name("recording");
                     win_.pause_record_button.set_icon_name("media-playback-pause-symbolic");
                     win_.recording_label.set_label("Recording");
                     win_.recording_time_label.remove_css_class("paused");
                 }
+                RecorderControllerState::Paused => {
+                    win_.pause_record_button.set_icon_name("media-playback-start-symbolic");
+                    win_.recording_label.set_label("Paused");
+                    win_.recording_time_label.add_css_class("paused");
+                },
             };
         }));
 

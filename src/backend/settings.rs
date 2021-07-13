@@ -31,9 +31,7 @@ glib::wrapper! {
 
 impl KhaSettings {
     pub fn new() -> Self {
-        let obj: Self =
-            glib::Object::new::<Self>(&[]).expect("Failed to initialize Settings object");
-        obj
+        glib::Object::new::<Self>(&[]).expect("Failed to initialize KhaSettings object")
     }
 
     fn private(&self) -> &imp::KhaSettings {
@@ -53,7 +51,6 @@ impl KhaSettings {
         target_property: &str,
     ) {
         let imp = self.private();
-
         imp.settings
             .bind(source_property, object, target_property)
             .flags(gio::SettingsBindFlags::DEFAULT)
@@ -72,7 +69,15 @@ impl KhaSettings {
             .unwrap();
     }
 
-    pub fn saving_location(&self) -> &str {
-        "/home/dave/Videos"
+    pub fn saving_location(&self) -> String {
+        let imp = self.private();
+        let current_saving_location = imp.settings.string("saving-location");
+
+        if current_saving_location == "default" {
+            let xdg_videos_dir = glib::user_special_dir(glib::UserDirectory::Videos);
+            xdg_videos_dir.as_path().display().to_string()
+        } else {
+            current_saving_location.to_string()
+        }
     }
 }
