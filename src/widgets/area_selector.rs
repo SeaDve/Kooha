@@ -164,9 +164,10 @@ impl KhaAreaSelector {
             clone!(@weak self as win => @default-return Inhibit(false), move |_, keyval, _, _| {
                 if keyval == Key::from_name("Escape") {
                     win.emit_cancelled();
-                    return Inhibit(true);
+                    Inhibit(true)
+                } else {
+                    Inhibit(false)
                 }
-                Inhibit(false)
             }),
         );
 
