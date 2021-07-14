@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Thomas Citharel <tcit@tcit.fr>, 2021.
+# Rémi de Chazelles <remidechazelles@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:10+0800\n"
-"PO-Revision-Date: 2021-07-07 11:19+0000\n"
-"Last-Translator: Thomas Citharel <tcit@tcit.fr>\n"
+"PO-Revision-Date: 2021-07-14 14:32+0000\n"
+"Last-Translator: Rémi de Chazelles <remidechazelles@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
 "Language: fr_FR\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
@@ -222,7 +223,7 @@ msgstr "MP4"
 
 #: data/ui/window.ui:367
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/ui/window.ui:374
 msgid "Save to…"
@@ -250,11 +251,11 @@ msgstr "Vidéos"
 
 #: src/backend/screencast_portal.py:40
 msgid "Failed to create session."
-msgstr ""
+msgstr "La création d'une session a échoué."
 
 #: src/backend/screencast_portal.py:60
 msgid "Failed to select sources."
-msgstr ""
+msgstr "Échec de la sélection des sources."
 
 #: src/main.py:75
 msgid "Select a Folder"
@@ -271,7 +272,7 @@ msgstr "Choisir"
 #: src/main.py:95
 #, python-brace-format
 msgid "Inaccessible location “{directory}”"
-msgstr ""
+msgstr "Emplacement “{directory}” inaccessible"
 
 #: src/main.py:96
 msgid "Please choose an accessible location and retry."
@@ -301,7 +302,7 @@ msgstr "L’enregistrement a été sauvegardé dans {saving_location}"
 
 #: src/main.py:152
 msgid "Open File"
-msgstr ""
+msgstr "Ouvrir un fichier"
 
 #~ msgid "Inaccessible location '{directory}'"
 #~ msgstr "Emplacement inaccessible « {directory} »"
