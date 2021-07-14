@@ -25,11 +25,11 @@ mod imp {
     use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
-    use std::{cell::Cell, cell::RefCell, rc::Rc};
+    use std::{cell::Cell, cell::RefCell};
 
     #[derive(Debug)]
     pub struct KhaTimer {
-        pub state: Rc<RefCell<TimerState>>,
+        pub state: RefCell<TimerState>,
         pub time: Cell<u32>,
     }
 
@@ -41,7 +41,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                state: Rc::new(RefCell::new(TimerState::default())),
+                state: RefCell::new(TimerState::default()),
                 time: Cell::new(0),
             }
         }

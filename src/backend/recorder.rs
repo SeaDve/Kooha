@@ -25,7 +25,10 @@ mod imp {
 
     use once_cell::sync::Lazy;
 
-    use std::{cell::Cell, cell::RefCell, rc::Rc};
+    use std::{
+        cell::{Cell, RefCell},
+        rc::Rc,
+    };
 
     #[derive(Debug)]
     pub struct KhaRecorder {

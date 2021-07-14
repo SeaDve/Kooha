@@ -26,7 +26,7 @@ mod imp {
 
     use once_cell::sync::Lazy;
 
-    use std::{cell::Cell, cell::RefCell, rc::Rc};
+    use std::{cell::Cell, cell::RefCell};
 
     use crate::backend::{KhaRecorder, KhaTimer};
 
@@ -34,7 +34,7 @@ mod imp {
     pub struct KhaRecorderController {
         pub recorder: KhaRecorder,
         pub timer: KhaTimer,
-        pub state: Rc<RefCell<RecorderControllerState>>,
+        pub state: RefCell<RecorderControllerState>,
         pub time: Cell<u32>,
         pub is_readying: Cell<bool>,
         pub record_delay: Cell<u32>,
@@ -50,7 +50,7 @@ mod imp {
             Self {
                 recorder: KhaRecorder::new(),
                 timer: KhaTimer::new(),
-                state: Rc::new(RefCell::new(RecorderControllerState::default())),
+                state: RefCell::new(RecorderControllerState::default()),
                 time: Cell::new(0),
                 is_readying: Cell::new(false),
                 record_delay: Cell::new(0),

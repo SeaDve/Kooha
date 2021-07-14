@@ -41,7 +41,6 @@ impl KhaSettings {
 
     pub fn create_action(&self, action: &str) -> gio::Action {
         let imp = self.private();
-
         imp.settings.create_action(action)
     }
 
