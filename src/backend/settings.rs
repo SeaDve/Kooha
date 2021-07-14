@@ -1,5 +1,25 @@
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 
+#[derive(Debug, Clone, Default)]
+pub struct AudioSourceType {
+    pub is_record_speaker: bool,
+    pub is_record_mic: bool,
+}
+
+#[derive(Debug, Eq, PartialEq, Clone, Copy)]
+pub enum VideoFormat {
+    Webm,
+    Mkv,
+    Mp4,
+    Gif,
+}
+
+impl Default for VideoFormat {
+    fn default() -> Self {
+        VideoFormat::Webm
+    }
+}
+
 mod imp {
     use super::*;
 
@@ -80,6 +100,17 @@ impl KhaSettings {
                 .to_string()
         } else {
             current_saving_location.to_string()
+        }
+    }
+
+    pub fn audio_source_type(&self) -> AudioSourceType {
+        let imp = self.private();
+        let is_record_speaker = imp.settings.boolean("record-speaker");
+        let is_record_mic = imp.settings.boolean("record-mic");
+
+        AudioSourceType {
+            is_record_speaker,
+            is_record_mic,
         }
     }
 }

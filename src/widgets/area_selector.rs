@@ -23,13 +23,24 @@ impl Point {
     }
 }
 
-#[derive(Debug, Clone, GBoxed)]
+#[derive(Debug, Default, Clone, GBoxed)]
 #[gboxed(type_name = "Rectangle")]
 pub struct Rectangle {
     pub x: f64,
     pub y: f64,
     pub width: f64,
     pub height: f64,
+}
+
+impl Rectangle {
+    pub fn rescale(&self, scale_factor: f64) -> Self {
+        Self {
+            x: self.x * scale_factor,
+            y: self.y * scale_factor,
+            width: self.width * scale_factor,
+            height: self.height * scale_factor,
+        }
+    }
 }
 
 impl Rectangle {

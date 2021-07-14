@@ -14,7 +14,7 @@ use gtk::{
 use std::os::unix::io::RawFd;
 use std::sync::Arc;
 
-#[derive(Debug, Clone, GBoxed)]
+#[derive(Debug, Default, Clone, GBoxed)]
 #[gboxed(type_name = "Screen")]
 pub struct Screen {
     pub width: i32,
@@ -27,7 +27,7 @@ impl Screen {
     }
 }
 
-#[derive(Debug, Clone, GBoxed)]
+#[derive(Debug, Default, Clone, GBoxed)]
 #[gboxed(type_name = "Stream")]
 pub struct Stream {
     pub fd: i32,
