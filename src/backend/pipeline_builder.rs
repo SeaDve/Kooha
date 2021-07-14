@@ -57,13 +57,13 @@ impl KhaPipelineBuilder {
         self
     }
 
-    pub fn mic_source(mut self, mic_source: &str) -> Self {
-        self.mic_source = Some(mic_source.to_string());
+    pub fn speaker_source(mut self, speaker_source: Option<String>) -> Self {
+        self.speaker_source = speaker_source;
         self
     }
 
-    pub fn speaker_source(mut self, speaker_source: &str) -> Self {
-        self.speaker_source = Some(speaker_source.to_string());
+    pub fn mic_source(mut self, mic_source: Option<String>) -> Self {
+        self.mic_source = mic_source;
         self
     }
 
