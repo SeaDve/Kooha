@@ -139,10 +139,10 @@ glib::wrapper! {
 
 impl KhaAreaSelector {
     pub fn new() -> Self {
-        let win: Self = glib::Object::new(&[]).expect("Failed to create KhaAreaSelector");
-        win.clean();
-        win.setup_signals();
-        win
+        let obj: Self = glib::Object::new(&[]).expect("Failed to create KhaAreaSelector");
+        obj.clean();
+        obj.setup_signals();
+        obj
     }
 
     fn private(&self) -> &imp::KhaAreaSelector {

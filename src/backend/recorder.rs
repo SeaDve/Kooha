@@ -125,9 +125,9 @@ glib::wrapper! {
 
 impl KhaRecorder {
     pub fn new() -> Self {
-        let recorder: Self = glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorder");
-        recorder.setup_signals();
-        recorder
+        let obj: Self = glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorder");
+        obj.setup_signals();
+        obj
     }
 
     fn private(&self) -> &imp::KhaRecorder {

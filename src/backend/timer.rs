@@ -119,14 +119,38 @@ impl KhaTimer {
         glib::Object::new::<Self>(&[]).expect("Failed to create KhaTimer")
     }
 
+    fn set_state(&self, new_state: TimerState) {
+        self.set_property("state", new_state)
+            .expect("KhaTimer failed to set state");
+    }
+
+    fn get_state(&self) -> TimerState {
+        self.property("state")
+            .unwrap()
+            .get::<TimerState>()
+            .expect("KhaTimer failed to get state")
+    }
+
+    fn set_time(&self, new_time: u32) {
+        self.set_property("time", new_time)
+            .expect("KhaTimer failed to set time");
+    }
+
+    fn get_time(&self) -> u32 {
+        self.property("time")
+            .unwrap()
+            .get::<u32>()
+            .expect("KhaTimer failed to get time")
+    }
+
     pub fn start(&self, delay: u32) {
-        self.set_property("time", delay).unwrap();
+        self.set_time(delay);
 
         glib::timeout_add_seconds_local(
             1,
-            clone!(@weak self as timer => @default-return Continue(false), move || {
-                let current_state = timer.property("state").unwrap().get::<TimerState>().unwrap();
-                let current_time = timer.property("time").unwrap().get::<u32>().unwrap();
+            clone!(@weak self as obj => @default-return Continue(true), move || {
+                let current_state = obj.get_state();
+                let current_time = obj.get_time();
 
                 if current_state == TimerState::Stopped {
                     return Continue(false);
@@ -137,11 +161,12 @@ impl KhaTimer {
                         TimerState::Delayed => current_time - 1,
                         _ => current_time + 1,
                     };
-                    timer.set_property("time", new_time).unwrap();
+
+                    obj.set_time(new_time);
 
                     if new_time == 0 && current_state == TimerState::Delayed {
-                        timer.set_property("state", TimerState::Running).unwrap();
-                        timer.emit_by_name("delay-done", &[]).unwrap();
+                        obj.set_state(TimerState::Running);
+                        obj.emit_by_name("delay-done", &[]).unwrap();
                     }
                 }
 
@@ -150,22 +175,22 @@ impl KhaTimer {
         );
 
         if delay == 0 {
-            self.set_property("state", TimerState::Running).unwrap();
+            self.set_state(TimerState::Running);
             self.emit_by_name("delay-done", &[]).unwrap();
         } else {
-            self.set_property("state", TimerState::Delayed).unwrap();
+            self.set_state(TimerState::Delayed);
         }
     }
 
     pub fn pause(&self) {
-        self.set_property("state", TimerState::Paused).unwrap();
+        self.set_state(TimerState::Paused);
     }
 
     pub fn resume(&self) {
-        self.set_property("state", TimerState::Running).unwrap();
+        self.set_state(TimerState::Running);
     }
 
     pub fn stop(&self) {
-        self.set_property("state", TimerState::Stopped).unwrap();
+        self.set_state(TimerState::Stopped);
     }
 }
