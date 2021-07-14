@@ -34,7 +34,7 @@
     <key type="b" name="show-pointer">
       <default>true</default>
     </key>
-    <key type="i" name="video-framerate">
+    <key type="u" name="video-framerate">
       <default>30</default>
     </key>
     <key type="s" name="saving-location">

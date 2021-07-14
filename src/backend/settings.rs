@@ -1,4 +1,6 @@
+use chrono::Utc;
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
+use std::path::PathBuf;
 
 #[derive(Debug, Clone, Default)]
 pub struct AudioSourceType {
@@ -77,11 +79,6 @@ impl KhaSettings {
             .build();
     }
 
-    pub fn record_delay(&self) -> u32 {
-        let imp = self.private();
-        imp.settings.string("record-delay").parse::<u32>().unwrap()
-    }
-
     pub fn set_saving_location(&self, directory: &str) {
         let imp = self.private();
         imp.settings
@@ -95,7 +92,6 @@ impl KhaSettings {
 
         if current_saving_location == "default" {
             glib::user_special_dir(glib::UserDirectory::Videos)
-                .as_path()
                 .display()
                 .to_string()
         } else {
@@ -112,5 +108,49 @@ impl KhaSettings {
             is_record_speaker,
             is_record_mic,
         }
+    }
+
+    pub fn video_framerate(&self) -> u32 {
+        let imp = self.private();
+        imp.settings.uint("video-framerate")
+    }
+
+    pub fn is_show_pointer(&self) -> bool {
+        let imp = self.private();
+        imp.settings.boolean("show-pointer")
+    }
+
+    pub fn is_selection_mode(&self) -> bool {
+        let imp = self.private();
+        let capture_mode = imp.settings.string("capture-mode");
+        capture_mode == "selection"
+    }
+
+    pub fn video_format(&self) -> VideoFormat {
+        let imp = self.private();
+        match imp.settings.string("video-format").to_string().as_ref() {
+            "webm" => VideoFormat::Webm,
+            "mkv" => VideoFormat::Mkv,
+            "mp4" => VideoFormat::Mp4,
+            "gif" => VideoFormat::Gif,
+            _ => unimplemented!(),
+        }
+    }
+
+    pub fn file_path(&self) -> PathBuf {
+        let imp = self.private();
+        let video_format_str = imp.settings.string("video-format");
+        let file_name = Utc::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
+
+        let mut path = PathBuf::new();
+        path.push(self.saving_location());
+        path.push(file_name);
+        path.set_extension(video_format_str);
+        path
+    }
+
+    pub fn record_delay(&self) -> u32 {
+        let imp = self.private();
+        imp.settings.string("record-delay").parse::<u32>().unwrap()
     }
 }

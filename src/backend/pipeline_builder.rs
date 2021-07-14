@@ -1,6 +1,7 @@
 use gtk::glib;
 
 use std::cmp::min;
+use std::path::PathBuf;
 
 use crate::backend::{AudioSourceType, Screen, Stream, VideoFormat};
 use crate::widgets::Rectangle;
@@ -22,7 +23,7 @@ pub struct KhaPipelineBuilder {
     coordinates: Option<Rectangle>,
     actual_screen: Option<Screen>,
     framerate: u32,
-    file_path: String,
+    file_path: PathBuf,
     video_format: VideoFormat,
     audio_source_type: AudioSourceType,
 }
@@ -42,8 +43,8 @@ impl KhaPipelineBuilder {
         self
     }
 
-    pub fn file_path(mut self, file_path: &str) -> Self {
-        self.file_path = file_path.to_string();
+    pub fn file_path(mut self, file_path: PathBuf) -> Self {
+        self.file_path = file_path;
         self
     }
 
@@ -258,8 +259,8 @@ impl Parser {
         self.builder.pipewire_stream.node_id
     }
 
-    fn file_path(&self) -> &str {
-        &self.builder.file_path
+    fn file_path(&self) -> String {
+        self.builder.file_path.display().to_string()
     }
 
     fn speaker_source(&self) -> Option<String> {

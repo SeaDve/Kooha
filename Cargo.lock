@@ -954,6 +954,7 @@ name = "kooha"
 version = "0.1.0"
 dependencies = [
  "ashpd",
+ "chrono",
  "futures",
  "gettext-rs",
  "gst-plugin-gif",
