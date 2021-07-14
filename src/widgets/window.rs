@@ -66,9 +66,8 @@ mod imp {
         }
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-
             KhaToggleButton::static_type();
+            Self::bind_template(klass);
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -83,6 +82,23 @@ mod imp {
             if PROFILE == "Devel" {
                 obj.add_css_class("devel");
             }
+
+            let actions = &[
+                "record-speaker",
+                "record-mic",
+                "show-pointer",
+                "capture-mode",
+                "record-delay",
+                "video-format",
+            ];
+
+            for action in actions {
+                let settings_action = self.settings.create_action(action);
+                obj.add_action(&settings_action);
+            }
+
+            self.settings
+                .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
         }
     }
 
@@ -103,21 +119,12 @@ impl KhaWindow {
         let win: Self = glib::Object::new(&[]).expect("Failed to create KhaWindow");
         win.set_application(Some(app));
 
-        win.setup_bindings();
         win.setup_signals();
-        win.setup_actions();
         win
     }
 
     fn private(&self) -> &imp::KhaWindow {
         &imp::KhaWindow::from_instance(self)
-    }
-
-    fn setup_bindings(&self) {
-        let imp = self.private();
-
-        imp.settings
-            .bind_property("capture-mode", &*imp.title_stack, "visible-child-name");
     }
 
     fn setup_signals(&self) {
@@ -186,23 +193,5 @@ impl KhaWindow {
 
                 win_.recorder_controller.cancel_delay();
             }));
-    }
-
-    fn setup_actions(&self) {
-        let imp = self.private();
-
-        let actions = &[
-            "record-speaker",
-            "record-mic",
-            "show-pointer",
-            "capture-mode",
-            "record-delay",
-            "video-format",
-        ];
-
-        for action in actions {
-            let settings_action = imp.settings.create_action(action);
-            self.add_action(&settings_action);
-        }
     }
 }

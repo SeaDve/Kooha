@@ -134,16 +134,15 @@ impl KhaApplication {
         chooser
             .set_current_folder(&gio::File::for_path(settings.saving_location()))
             .expect("Failed to set current folder");
+
         chooser.connect_response(clone!(@weak self as app => move |chooser, response| {
             if response != gtk::ResponseType::Accept {
                 chooser.close();
                 return;
             }
-
             let directory = chooser.file().unwrap().path().unwrap().as_path().display().to_string();
             let homefolder = glib::home_dir().as_path().display().to_string();
             let is_in_homefolder = directory.starts_with(&homefolder);
-
             if !is_in_homefolder || directory == homefolder {
                 let error_dialog = gtk::MessageDialogBuilder::new()
                     .modal(true)
@@ -156,11 +155,10 @@ impl KhaApplication {
                 error_dialog.present();
                 return;
             };
-
             settings.set_saving_location(&directory);
             chooser.close();
-
         }));
+
         chooser.present()
     }
 
