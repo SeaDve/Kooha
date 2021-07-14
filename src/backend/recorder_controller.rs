@@ -26,7 +26,7 @@ mod imp {
 
     use once_cell::sync::Lazy;
 
-    use std::{cell::Cell, cell::RefCell};
+    use std::cell::Cell;
 
     use crate::backend::{KhaRecorder, KhaTimer};
 
@@ -34,7 +34,7 @@ mod imp {
     pub struct KhaRecorderController {
         pub recorder: KhaRecorder,
         pub timer: KhaTimer,
-        pub state: RefCell<RecorderControllerState>,
+        pub state: Cell<RecorderControllerState>,
         pub time: Cell<u32>,
         pub is_readying: Cell<bool>,
         pub record_delay: Cell<u32>,
@@ -50,7 +50,7 @@ mod imp {
             Self {
                 recorder: KhaRecorder::new(),
                 timer: KhaTimer::new(),
-                state: RefCell::new(RecorderControllerState::default()),
+                state: Cell::new(RecorderControllerState::default()),
                 time: Cell::new(0),
                 is_readying: Cell::new(false),
                 record_delay: Cell::new(0),
@@ -101,7 +101,7 @@ mod imp {
             match pspec.name() {
                 "state" => {
                     let state = value.get().unwrap();
-                    self.state.replace(state);
+                    self.state.set(state);
                 }
                 "time" => {
                     let time = value.get().unwrap();
@@ -117,7 +117,7 @@ mod imp {
 
         fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
-                "state" => self.state.borrow().to_value(),
+                "state" => self.state.get().to_value(),
                 "time" => self.time.get().to_value(),
                 "is-readying" => self.is_readying.get().to_value(),
                 _ => unimplemented!(),

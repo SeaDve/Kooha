@@ -25,11 +25,11 @@ mod imp {
     use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
-    use std::{cell::Cell, cell::RefCell};
+    use std::cell::Cell;
 
     #[derive(Debug)]
     pub struct KhaTimer {
-        pub state: RefCell<TimerState>,
+        pub state: Cell<TimerState>,
         pub time: Cell<u32>,
     }
 
@@ -41,7 +41,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                state: RefCell::new(TimerState::default()),
+                state: Cell::new(TimerState::default()),
                 time: Cell::new(0),
             }
         }
@@ -90,7 +90,7 @@ mod imp {
             match pspec.name() {
                 "state" => {
                     let state = value.get().unwrap();
-                    self.state.replace(state);
+                    self.state.set(state);
                 }
                 "time" => {
                     let time = value.get().unwrap();
@@ -102,7 +102,7 @@ mod imp {
 
         fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
-                "state" => self.state.borrow().to_value(),
+                "state" => self.state.get().to_value(),
                 "time" => self.time.get().to_value(),
                 _ => unimplemented!(),
             }
