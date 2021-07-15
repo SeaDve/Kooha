@@ -79,26 +79,23 @@ impl KhaPipelineBuilder {
     }
 
     pub fn debug(self) {
-        let parser = Parser::new(self);
-        let pipeline_string = parser.parse();
+        let pipeline_string = PipelineParser::from_builder(self).parse();
         println!("{}", pipeline_string);
     }
 
     pub fn build(self) -> Result<gst::Element, glib::Error> {
-        let parser = Parser::new(self);
-        let pipeline_string = parser.parse();
-
+        let pipeline_string = PipelineParser::from_builder(self).parse();
         let gst_pipeline = gst::parse_launch(&pipeline_string)?;
         Ok(gst_pipeline)
     }
 }
 
-struct Parser {
+struct PipelineParser {
     builder: KhaPipelineBuilder,
 }
 
-impl Parser {
-    pub fn new(builder: KhaPipelineBuilder) -> Self {
+impl PipelineParser {
+    pub fn from_builder(builder: KhaPipelineBuilder) -> Self {
         Self { builder }
     }
 
