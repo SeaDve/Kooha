@@ -5,6 +5,7 @@ use std::{error::Error, option::Option, process};
 pub struct Utils;
 
 impl Utils {
+    // FIXME use anyhow here and in shell_window_eval
     pub fn set_raise_active_window_request(is_raised: bool) -> Result<(), Box<dyn Error>> {
         shell_window_eval("make_above", is_raised)?;
         shell_window_eval("stick", is_raised)?;

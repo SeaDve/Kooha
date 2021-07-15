@@ -126,17 +126,6 @@ impl KhaSettings {
         capture_mode == "selection"
     }
 
-    pub fn video_format(&self) -> VideoFormat {
-        let imp = self.private();
-        match imp.settings.string("video-format").to_string().as_ref() {
-            "webm" => VideoFormat::Webm,
-            "mkv" => VideoFormat::Mkv,
-            "mp4" => VideoFormat::Mp4,
-            "gif" => VideoFormat::Gif,
-            _ => unimplemented!(),
-        }
-    }
-
     pub fn file_path(&self) -> PathBuf {
         let imp = self.private();
         let video_format_str = imp.settings.string("video-format");

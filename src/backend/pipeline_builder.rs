@@ -24,7 +24,6 @@ pub struct KhaPipelineBuilder {
     actual_screen: Option<Screen>,
     framerate: u32,
     file_path: PathBuf,
-    video_format: VideoFormat,
     audio_source_type: AudioSourceType,
 }
 
@@ -45,11 +44,6 @@ impl KhaPipelineBuilder {
 
     pub fn file_path(mut self, file_path: PathBuf) -> Self {
         self.file_path = file_path;
-        self
-    }
-
-    pub fn video_format(mut self, video_format: VideoFormat) -> Self {
-        self.video_format = video_format;
         self
     }
 
@@ -112,7 +106,7 @@ impl PipelineParser {
             self.videoenc(),
             Some("queue".to_string()),
             self.muxer(),
-            Some(format!("filesink location=\"{}\"", self.file_path())),
+            Some(format!("filesink location=\"{}\"", self.file_path().display())),
         ];
 
         let pipeline_string = pipeline_elements
@@ -129,15 +123,6 @@ impl PipelineParser {
         };
 
         pipeline_string.replace("%T", self.ideal_thread_count().to_string().as_ref())
-    }
-
-    fn even_out(&self, number: f64) -> i32 {
-        number as i32 / 2 * 2
-    }
-
-    fn ideal_thread_count(&self) -> u32 {
-        let num_processors = glib::num_processors();
-        min(num_processors, 64)
     }
 
     fn videoscale(&self) -> Option<String> {
@@ -167,10 +152,10 @@ impl PipelineParser {
 
             Some(format!(
                 "videocrop top={} left={} right={} bottom={}",
-                self.even_out(y),
-                self.even_out(x),
-                self.even_out(right_crop),
-                self.even_out(bottom_crop)
+                self.round_to_even(y),
+                self.round_to_even(x),
+                self.round_to_even(right_crop),
+                self.round_to_even(bottom_crop)
             ))
         } else {
             None
@@ -178,7 +163,7 @@ impl PipelineParser {
     }
 
     fn videoenc(&self) -> Option<String> {
-        match self.builder.video_format {
+        match self.video_format() {
             VideoFormat::Webm | VideoFormat::Mkv => Some("vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T".to_string()),
             VideoFormat::Mp4 => Some("x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline".to_string()),
             VideoFormat::Gif => Some("gifenc speed=30 qos=true".to_string()),
@@ -186,14 +171,14 @@ impl PipelineParser {
     }
 
     fn audioenc(&self) -> Option<String> {
-        match self.builder.video_format {
+        match self.video_format() {
             VideoFormat::Webm | VideoFormat::Mkv | VideoFormat::Mp4 => Some("opusenc".to_string()),
             VideoFormat::Gif => None,
         }
     }
 
     fn muxer(&self) -> Option<String> {
-        match self.builder.video_format {
+        match self.video_format() {
             VideoFormat::Webm => Some("webmmux".to_string()),
             VideoFormat::Mkv => Some("matroskamux".to_string()),
             VideoFormat::Mp4 => Some("mp4mux".to_string()),
@@ -202,7 +187,7 @@ impl PipelineParser {
     }
 
     fn audio_source(&self) -> AudioSource {
-        if self.builder.video_format == VideoFormat::Gif {
+        if self.video_format() == VideoFormat::Gif {
             return AudioSource::None;
         }
 
@@ -237,7 +222,7 @@ impl PipelineParser {
     }
 
     fn framerate(&self) -> u32 {
-        match self.builder.video_format {
+        match self.video_format() {
             VideoFormat::Gif => GIF_DEFAULT_FRAMERATE,
             _ => self.builder.framerate,
         }
@@ -251,8 +236,8 @@ impl PipelineParser {
         self.builder.pipewire_stream.node_id
     }
 
-    fn file_path(&self) -> String {
-        self.builder.file_path.display().to_string()
+    fn file_path(&self) -> &PathBuf {
+        &self.builder.file_path
     }
 
     fn speaker_source(&self) -> Option<&String> {
@@ -261,5 +246,24 @@ impl PipelineParser {
 
     fn mic_source(&self) -> Option<&String> {
         self.builder.mic_source.as_ref()
+    }
+
+    fn video_format(&self) -> VideoFormat {
+        match self.file_path().extension().unwrap().to_str().unwrap() {
+            "webm" => VideoFormat::Webm,
+            "mkv" => VideoFormat::Mkv,
+            "mp4" => VideoFormat::Mp4,
+            "gif" => VideoFormat::Gif,
+            _ => unimplemented!(),
+        }
+    }
+
+    fn round_to_even(&self, number: f64) -> i32 {
+        number as i32 / 2 * 2
+    }
+
+    fn ideal_thread_count(&self) -> u32 {
+        let num_processors = glib::num_processors();
+        min(num_processors, 64)
     }
 }
