@@ -73,11 +73,11 @@ mod imp {
             klass.install_action("win.toggle-record", None, move |widget, _, _| {
                 let imp = imp::KhaWindow::from_instance(widget);
 
-                if imp.recorder_controller.is_recording() {
-                    imp.recorder_controller.stop();
-                } else {
+                if imp.recorder_controller.is_stopped() {
                     let record_delay = imp.settings.record_delay();
                     imp.recorder_controller.start(record_delay);
+                } else {
+                    imp.recorder_controller.stop();
                 }
             });
 

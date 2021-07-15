@@ -162,13 +162,13 @@ impl KhaRecorderController {
         }));
     }
 
-    pub fn is_recording(&self) -> bool {
+    pub fn is_stopped(&self) -> bool {
         let current_state = self
             .property("state")
             .unwrap()
             .get::<RecorderControllerState>()
             .unwrap();
-        current_state == RecorderControllerState::Playing
+        current_state == RecorderControllerState::Null
     }
 
     pub fn is_paused(&self) -> bool {
