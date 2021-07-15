@@ -11,13 +11,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">F10</property>
-                <property name="title" translatable="yes">Open menu</property>
+                <property name="title" translatable="yes">Open Menu</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.show-help-overlay</property>
-                <property name="title" translatable="yes">Show keyboard shortcuts</property>
+                <property name="title" translatable="yes">Show Shortcuts</property>
               </object>
             </child>
             <child>
@@ -34,19 +34,19 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.toggle-record</property>
-                <property name="title" translatable="yes">Toggle record</property>
+                <property name="title" translatable="yes">Toggle Record</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.toggle-pause</property>
-                <property name="title" translatable="yes">Toggle record pause</property>
+                <property name="title" translatable="yes">Toggle Record Pause</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.cancel-delay</property>
-                <property name="title" translatable="yes">Cancel delay</property>
+                <property name="title" translatable="yes">Cancel Delay</property>
               </object>
             </child>
           </object>
@@ -57,19 +57,19 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.record-speaker</property>
-                <property name="title" translatable="yes">Toggle computer sounds</property>
+                <property name="title" translatable="yes">Toggle Computer Sounds</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.record-mic</property>
-                <property name="title" translatable="yes">Toggle microphone</property>
+                <property name="title" translatable="yes">Toggle Microphone</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.show-pointer</property>
-                <property name="title" translatable="yes">Toggle pointer</property>
+                <property name="title" translatable="yes">Toggle Pointer</property>
               </object>
             </child>
           </object>
