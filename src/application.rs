@@ -105,6 +105,9 @@ impl KhaApplication {
         self.set_accels_for_action("win.record-speaker", &["<Primary>a"]);
         self.set_accels_for_action("win.record-mic", &["<Primary>m"]);
         self.set_accels_for_action("win.show-pointer", &["<Primary>p"]);
+        self.set_accels_for_action("win.toggle-record", &["<Primary>r"]);
+        self.set_accels_for_action("win.toggle-pause", &["<Primary>k"]);
+        self.set_accels_for_action("win.cancel-delay", &["<Primary>c"]);
     }
 
     fn setup_css(&self) {

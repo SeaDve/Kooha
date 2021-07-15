@@ -146,23 +146,13 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="start_record_button">
-                            <!-- <property name="sensitive" bind-source="controller" bind-property="is-readying" bind-flags="invert-boolean"/> -->
                             <property name="label" translatable="yes">Record</property>
+                            <property name="action-name">win.toggle-record</property>
+                            <!-- <property name="sensitive" bind-source="controller" bind-property="is-readying" bind-flags="invert-boolean"/> -->
                             <!-- <signal name="clicked" handler="_on_start_record_button_clicked" swapped="no"/> -->
                             <style>
                               <class name="suggested-action"/>
                             </style>
-                            <child>
-                              <object class="GtkShortcutController">
-                                <property name="scope">managed</property>
-                                <child>
-                                  <object class="GtkShortcut">
-                                    <property name="trigger">&lt;Control&gt;r</property>
-                                    <property name="action">activate</property>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
                           </object>
                         </child>
                       </object>
@@ -213,38 +203,18 @@
                           <object class="GtkButton" id="stop_record_button">
                             <property name="hexpand">True</property>
                             <property name="label" translatable="yes">Stop</property>
+                            <property name="action-name">win.toggle-record</property>
                             <!-- <signal name="clicked" handler="_on_stop_record_button_clicked" swapped="no"/> -->
                             <style>
                               <class name="destructive-action"/>
                             </style>
-                            <child>
-                              <object class="GtkShortcutController">
-                                <property name="scope">managed</property>
-                                <child>
-                                  <object class="GtkShortcut">
-                                    <property name="trigger">&lt;Control&gt;r</property>
-                                    <property name="action">activate</property>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
                           </object>
                         </child>
                         <child>
                           <object class="GtkButton" id="pause_record_button">
                             <property name="icon-name">media-playback-pause-symbolic</property>
+                            <property name="action-name">win.toggle-pause</property>
                             <!-- <signal name="clicked" handler="_on_pause_record_button_clicked" swapped="no"/> -->
-                            <child>
-                              <object class="GtkShortcutController">
-                                <property name="scope">managed</property>
-                                <child>
-                                  <object class="GtkShortcut">
-                                    <property name="trigger">&lt;Control&gt;k</property>
-                                    <property name="action">activate</property>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
                           </object>
                         </child>
                       </object>
@@ -289,21 +259,11 @@
                     <child>
                       <object class="GtkButton" id="cancel_delay_button">
                         <property name="label" translatable="yes">Cancel Delay</property>
+                        <property name="action-name">win.cancel-delay</property>
                         <!-- <signal name="clicked" handler="_on_cancel_delay_button_clicked" swapped="no"/> -->
                         <style>
                           <class name="destructive-action"/>
                         </style>
-                        <child>
-                          <object class="GtkShortcutController">
-                            <property name="scope">managed</property>
-                            <child>
-                              <object class="GtkShortcut">
-                                <property name="trigger">&lt;Control&gt;c</property>
-                                <property name="action">activate</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>

@@ -33,19 +33,19 @@
             <property name="title" translatable="yes">Recording</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;r</property>
+                <property name="action-name">win.toggle-record</property>
                 <property name="title" translatable="yes">Toggle record</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;k</property>
+                <property name="action-name">win.toggle-pause</property>
                 <property name="title" translatable="yes">Toggle record pause</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;c</property>
+                <property name="action-name">win.cancel-delay</property>
                 <property name="title" translatable="yes">Cancel delay</property>
               </object>
             </child>
@@ -56,19 +56,19 @@
             <property name="title" translatable="yes">Settings</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="action-name">record-speaker</property>
+                <property name="action-name">win.record-speaker</property>
                 <property name="title" translatable="yes">Toggle computer sounds</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="action-name">record-mic</property>
+                <property name="action-name">win.record-mic</property>
                 <property name="title" translatable="yes">Toggle microphone</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="action-name">show-pointer</property>
+                <property name="action-name">win.show-pointer</property>
                 <property name="title" translatable="yes">Toggle pointer</property>
               </object>
             </child>

@@ -68,6 +68,33 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             KhaToggleButton::static_type();
             Self::bind_template(klass);
+
+            klass.install_action("win.toggle-record", None, move |widget, _, _| {
+                let imp = imp::KhaWindow::from_instance(widget);
+
+                if imp.recorder_controller.is_recording() {
+                    imp.recorder_controller.stop();
+                } else {
+                    let record_delay = imp.settings.record_delay();
+                    imp.recorder_controller.start(record_delay);
+                }
+            });
+
+            klass.install_action("win.toggle-pause", None, move |widget, _, _| {
+                let imp = imp::KhaWindow::from_instance(widget);
+
+                if imp.recorder_controller.is_paused() {
+                    imp.recorder_controller.resume();
+                } else {
+                    imp.recorder_controller.pause();
+                };
+            });
+
+            klass.install_action("win.cancel-delay", None, move |widget, _, _| {
+                let imp = imp::KhaWindow::from_instance(widget);
+
+                imp.recorder_controller.cancel_delay();
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -131,6 +158,7 @@ impl KhaWindow {
 
         imp.recorder_controller.connect_notify_local(Some("state"), clone!(@weak self as win => move |recorder_controller, _| {
             let win_ = win.private();
+            // FIXME disable action where necessary
             match recorder_controller.property("state").unwrap().get::<RecorderControllerState>().unwrap() {
                 RecorderControllerState::Null => win_.main_stack.set_visible_child_name("main-screen"),
                 RecorderControllerState::Delayed => win_.main_stack.set_visible_child_name("delay"),
@@ -159,38 +187,5 @@ impl KhaWindow {
             win_.recording_time_label.set_label(&formatted_time);
             win_.delay_label.set_label(&current_time.to_string());
         }));
-
-        imp.start_record_button
-            .connect_clicked(clone!(@weak self as win => move |_| {
-                let win_ = win.private();
-                let record_delay = win_.settings.record_delay();
-
-                win_.recorder_controller.start(record_delay);
-            }));
-
-        imp.stop_record_button
-            .connect_clicked(clone!(@weak self as win => move |_| {
-                let win_ = win.private();
-
-                win_.recorder_controller.stop();
-            }));
-
-        imp.pause_record_button
-            .connect_clicked(clone!(@weak self as win => move |_| {
-                let win_ = win.private();
-
-                if win_.recorder_controller.is_paused() {
-                    win_.recorder_controller.resume();
-                } else {
-                    win_.recorder_controller.pause();
-                };
-            }));
-
-        imp.cancel_delay_button
-            .connect_clicked(clone!(@weak self as win => move |_| {
-                let win_ = win.private();
-
-                win_.recorder_controller.cancel_delay();
-            }));
     }
 }
