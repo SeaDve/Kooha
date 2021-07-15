@@ -72,13 +72,12 @@ impl KhaPipelineBuilder {
         self
     }
 
-    pub fn debug(self) {
-        let pipeline_string = PipelineParser::from_builder(self).parse();
-        println!("{}", pipeline_string);
+    pub fn parse_into_string(self) -> String {
+        PipelineParser::from_builder(self).parse()
     }
 
     pub fn build(self) -> Result<gst::Element, glib::Error> {
-        let pipeline_string = PipelineParser::from_builder(self).parse();
+        let pipeline_string = self.parse_into_string();
         let gst_pipeline = gst::parse_launch(&pipeline_string)?;
         Ok(gst_pipeline)
     }
