@@ -159,19 +159,14 @@ impl Parser {
 
     fn videocrop(&self) -> Option<String> {
         if let Some(coords) = &self.builder.coordinates {
-            let actual_screen_width = self.builder.actual_screen.as_ref().unwrap().width;
-            let stream_screen_width = self.builder.pipewire_stream.screen.width;
-            let stream_screen_height = self.builder.pipewire_stream.screen.height;
+            let actual_screen_width = self.builder.actual_screen.as_ref().unwrap().width as f64;
+            let stream_screen_width = self.builder.pipewire_stream.screen.width as f64;
+            let stream_screen_height = self.builder.pipewire_stream.screen.height as f64;
 
-            let scale_factor = stream_screen_width / actual_screen_width;
-            let Rectangle {
-                x,
-                y,
-                width,
-                height,
-            } = coords.rescale(scale_factor as f64);
-            let right_crop = stream_screen_width as f64 - (width + x);
-            let bottom_crop = stream_screen_height as f64 - (height + y);
+            let scale_factor = stream_screen_width / actual_screen_width ;
+            let (x, y, width, height) = coords.as_rescaled_tuple(scale_factor);
+            let right_crop = stream_screen_width - (width + x);
+            let bottom_crop = stream_screen_height - (height + y);
 
             Some(format!(
                 "videocrop top={} left={} right={} bottom={}",

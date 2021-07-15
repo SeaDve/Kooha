@@ -33,17 +33,6 @@ pub struct Rectangle {
 }
 
 impl Rectangle {
-    pub fn rescale(&self, scale_factor: f64) -> Self {
-        Self {
-            x: self.x * scale_factor,
-            y: self.y * scale_factor,
-            width: self.width * scale_factor,
-            height: self.height * scale_factor,
-        }
-    }
-}
-
-impl Rectangle {
     pub fn from_points(point_1: Point, point_2: Point) -> Self {
         let mut x = point_1.x.min(point_2.x);
         let mut y = point_1.y.min(point_2.y);
@@ -61,6 +50,10 @@ impl Rectangle {
             width,
             height,
         }
+    }
+
+    pub fn as_rescaled_tuple(&self, scale_factor: f64) -> (f64, f64, f64, f64) {
+        (self.x * scale_factor, self.y * scale_factor, self.width * scale_factor, self.height * scale_factor)
     }
 }
 
