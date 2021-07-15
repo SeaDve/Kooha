@@ -5,7 +5,7 @@ mod widgets;
 
 use application::KhaApplication;
 use config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
-use gettextrs::*;
+use gettextrs::{bindtextdomain, setlocale, textdomain, LocaleCategory};
 use gtk::{gio, glib};
 
 fn main() {

@@ -1,3 +1,4 @@
+use gettextrs::gettext;
 use gtk::{
     gdk, gio,
     glib::{self, clone},
@@ -128,11 +129,11 @@ impl KhaApplication {
             .transient_for(&self.main_window())
             .modal(true)
             .action(gtk::FileChooserAction::SelectFolder)
-            .title("Select a Folder")
+            .title(&gettext("Select a Folder"))
             .build();
 
-        chooser.add_button("Cancel", gtk::ResponseType::Cancel);
-        chooser.add_button("Select", gtk::ResponseType::Accept);
+        chooser.add_button(&gettext("_Cancel"), gtk::ResponseType::Cancel);
+        chooser.add_button(&gettext("_Select"), gtk::ResponseType::Accept);
         chooser.set_default_response(gtk::ResponseType::Accept);
         chooser
             .set_current_folder(&gio::File::for_path(settings.saving_location()))
@@ -151,8 +152,8 @@ impl KhaApplication {
                     .modal(true)
                     .buttons(gtk::ButtonsType::Ok)
                     .transient_for(&app.main_window())
-                    .title(&format!("Inaccessible location '{}'", directory))
-                    .text("Please choose an accessible location and retry.")
+                    .title(&gettext(&format!("Inaccessible location '{}'", directory)))
+                    .text(&gettext("Please choose an accessible location and retry."))
                     .build();
                 error_dialog.connect_response(move |error_dialog, _| { error_dialog.close() });
                 error_dialog.present();
@@ -169,8 +170,8 @@ impl KhaApplication {
         let dialog = gtk::AboutDialogBuilder::new()
             .transient_for(&self.main_window())
             .modal(true)
-            .program_name("Kooha")
-            .comments("Elegantly record your screen")
+            .program_name(&gettext("Kooha"))
+            .comments(&gettext("Elegantly record your screen"))
             .version(VERSION)
             .logo_icon_name(APP_ID)
             .authors(vec![
@@ -179,11 +180,11 @@ impl KhaApplication {
                 "Mathiascode".into(),
                 "Felix Weilbach".into(),
             ])
-            .translator_credits("translator-credits")
-            .copyright("Copyright 2021 Dave Patrick")
+            .translator_credits(&gettext("translator-credits"))
+            .copyright(&gettext("Copyright 2021 Dave Patrick"))
             .license_type(gtk::License::Gpl30)
             .website("https://github.com/SeaDve/Kooha")
-            .website_label("GitHub")
+            .website_label(&gettext("GitHub"))
             .build();
 
         dialog.show();
