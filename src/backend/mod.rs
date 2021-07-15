@@ -6,12 +6,18 @@ mod settings;
 mod timer;
 mod utils;
 
-pub use self::{
-    pipeline_builder::KhaPipelineBuilder, recorder::KhaRecorder,
-    recorder_controller::KhaRecorderController, recorder_controller::RecorderControllerState,
-    screencast_portal::KhaScreencastPortal, screencast_portal::Screen, screencast_portal::Stream,
-    settings::AudioSourceType, settings::KhaSettings, settings::VideoFormat, timer::KhaTimer,
+pub use {
+    recorder_controller::{KhaRecorderController, RecorderControllerState},
+    screencast_portal::Screen,
+    settings::KhaSettings,
+    timer::KhaTimer,
     utils::Utils,
 };
 
-use self::timer::TimerState;
+use {
+    pipeline_builder::KhaPipelineBuilder,
+    recorder::KhaRecorder,
+    screencast_portal::{KhaScreencastPortal, Stream},
+    settings::{AudioSourceType, VideoFormat},
+    timer::TimerState,
+};
