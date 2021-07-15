@@ -53,7 +53,12 @@ impl Rectangle {
     }
 
     pub fn as_rescaled_tuple(&self, scale_factor: f64) -> (f64, f64, f64, f64) {
-        (self.x * scale_factor, self.y * scale_factor, self.width * scale_factor, self.height * scale_factor)
+        (
+            self.x * scale_factor,
+            self.y * scale_factor,
+            self.width * scale_factor,
+            self.height * scale_factor,
+        )
     }
 }
 

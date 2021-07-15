@@ -54,8 +54,7 @@ mod imp {
             gtk::Window::set_default_icon_name(APP_ID);
 
             app.setup_css();
-            app.setup_gactions();
-            app.setup_accels();
+            app.setup_actions();
         }
     }
 
@@ -83,7 +82,7 @@ impl KhaApplication {
         imp.window.get().unwrap().upgrade().unwrap()
     }
 
-    fn setup_gactions(&self) {
+    fn setup_actions(&self) {
         let action_about = gio::SimpleAction::new("select-saving-location", None);
         action_about.connect_activate(clone!(@weak self as app => move |_, _| {
             app.select_saving_location();
@@ -101,10 +100,11 @@ impl KhaApplication {
             app.quit();
         }));
         self.add_action(&action_quit);
-    }
 
-    fn setup_accels(&self) {
         self.set_accels_for_action("app.quit", &["<Primary>q"]);
+        self.set_accels_for_action("win.record-speaker", &["<Primary>a"]);
+        self.set_accels_for_action("win.record-mic", &["<Primary>m"]);
+        self.set_accels_for_action("win.show-pointer", &["<Primary>p"]);
     }
 
     fn setup_css(&self) {

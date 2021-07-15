@@ -163,7 +163,7 @@ impl Parser {
             let stream_screen_width = self.builder.pipewire_stream.screen.width as f64;
             let stream_screen_height = self.builder.pipewire_stream.screen.height as f64;
 
-            let scale_factor = stream_screen_width / actual_screen_width ;
+            let scale_factor = stream_screen_width / actual_screen_width;
             let (x, y, width, height) = coords.as_rescaled_tuple(scale_factor);
             let right_crop = stream_screen_width - (width + x);
             let bottom_crop = stream_screen_height - (height + y);

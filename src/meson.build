@@ -19,11 +19,21 @@ run_command(
 )
 
 sources = files(
+  'backend/mod.rs',
+  'backend/pipeline_builder.rs',
+  'backend/recorder.rs',
+  'backend/recorder_controller.rs',
+  'backend/screencast_portal.rs',
+  'backend/settings.rs',
+  'backend/timer.rs',
+  'backend/utils.rs',
+  'widgets/area_selector.rs',
+  'widgets/mod.rs',
+  'widgets/toggle_button.rs',
+  'widgets/window.rs',
   'application.rs',
   'config.rs',
   'main.rs',
-  'widgets/window.rs',
-  'widgets/mod.rs'
 )
 
 custom_target(
