@@ -110,6 +110,11 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
+            obj.setup_signals();
+
+            self.settings
+                .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
+
             let actions = &[
                 "record-speaker",
                 "record-mic",
@@ -123,9 +128,6 @@ mod imp {
                 let settings_action = self.settings.create_action(action);
                 obj.add_action(&settings_action);
             }
-
-            self.settings
-                .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
         }
     }
 
@@ -143,10 +145,7 @@ glib::wrapper! {
 
 impl KhaWindow {
     pub fn new(app: &KhaApplication) -> Self {
-        let obj: Self = glib::Object::new(&[]).expect("Failed to create KhaWindow");
-        obj.set_application(Some(app));
-        obj.setup_signals();
-        obj
+        glib::Object::new(&[("application", app)]).expect("Failed to create KhaWindow")
     }
 
     fn private(&self) -> &imp::KhaWindow {

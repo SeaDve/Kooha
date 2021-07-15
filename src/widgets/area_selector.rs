@@ -116,6 +116,8 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
             self.drawing_area.set_cursor_from_name(Some("crosshair"));
+            obj.clean();
+            obj.setup_signals();
         }
 
         fn signals() -> &'static [Signal] {
@@ -148,10 +150,7 @@ glib::wrapper! {
 
 impl KhaAreaSelector {
     pub fn new() -> Self {
-        let obj: Self = glib::Object::new(&[]).expect("Failed to create KhaAreaSelector");
-        obj.clean();
-        obj.setup_signals();
-        obj
+        glib::Object::new(&[]).expect("Failed to create KhaAreaSelector")
     }
 
     fn private(&self) -> &imp::KhaAreaSelector {
