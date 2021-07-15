@@ -6,6 +6,8 @@ use gtk::{
     subclass::prelude::*,
 };
 
+use std::path::PathBuf;
+
 use crate::backend::KhaSettings;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::KhaWindow;
@@ -31,8 +33,6 @@ mod imp {
 
     impl ApplicationImpl for KhaApplication {
         fn activate(&self, app: &Self::Type) {
-            log::debug!("GtkApplication<KhaApplication>::activate");
-
             if let Some(window) = self.window.get() {
                 let window = window.upgrade().unwrap();
                 window.show();
@@ -49,9 +49,7 @@ mod imp {
         }
 
         fn startup(&self, app: &Self::Type) {
-            log::debug!("GtkApplication<KhaApplication>::startup");
             self.parent_startup(app);
-
             gtk::Window::set_default_icon_name(APP_ID);
 
             app.setup_css();
@@ -84,17 +82,39 @@ impl KhaApplication {
     }
 
     fn setup_actions(&self) {
-        let action_about = gio::SimpleAction::new("select-saving-location", None);
-        action_about.connect_activate(clone!(@weak self as app => move |_, _| {
+        let action_show_saving_location = gio::SimpleAction::new(
+            "show-saving-location",
+            Some(glib::VariantTy::new("s").unwrap()),
+        );
+        action_show_saving_location.connect_activate(clone!(@weak self as app => move |_, param| {
+            let saving_location = param.unwrap().get::<String>().unwrap();
+            let uri = format!("file://{}", saving_location);
+            gio::AppInfo::launch_default_for_uri(&uri, None::<&gio::AppLaunchContext>).unwrap();
+        }));
+        self.add_action(&action_show_saving_location);
+
+        let action_show_saved_recording = gio::SimpleAction::new(
+            "show-saved-recording",
+            Some(glib::VariantTy::new("s").unwrap()),
+        );
+        action_show_saved_recording.connect_activate(clone!(@weak self as app => move |_, param| {
+            let saved_recording = param.unwrap().get::<String>().unwrap();
+            let uri = format!("file://{}", saved_recording);
+            gio::AppInfo::launch_default_for_uri(&uri, None::<&gio::AppLaunchContext>).unwrap();
+        }));
+        self.add_action(&action_show_saved_recording);
+
+        let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
+        action_select_saving_location.connect_activate(clone!(@weak self as app => move |_, _| {
             app.select_saving_location();
         }));
-        self.add_action(&action_about);
+        self.add_action(&action_select_saving_location);
 
-        let action_about = gio::SimpleAction::new("show-about", None);
-        action_about.connect_activate(clone!(@weak self as app => move |_, _| {
+        let action_show_about = gio::SimpleAction::new("show-about", None);
+        action_show_about.connect_activate(clone!(@weak self as app => move |_, _| {
             app.show_about_dialog();
         }));
-        self.add_action(&action_about);
+        self.add_action(&action_show_about);
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
@@ -188,6 +208,30 @@ impl KhaApplication {
             .build();
 
         dialog.show();
+    }
+
+    pub fn send_record_success_notification(&self, recording_file_path: PathBuf) {
+        let saving_location = recording_file_path.parent().expect("File doesn't exist");
+        let notification_body = format!(
+            "The recording has been saved in {}",
+            saving_location.display()
+        );
+        let saving_location_variant = saving_location.display().to_string().to_variant();
+        let recording_file_path_variant = recording_file_path.display().to_string().to_variant();
+
+        let notification = gio::Notification::new(&gettext("Screencast Recorded!"));
+        notification.set_body(Some(&gettext(notification_body)));
+        notification.set_default_action_and_target_value(
+            "app.show-saving-location",
+            Some(&saving_location_variant),
+        );
+        notification.add_button_with_target_value(
+            &gettext("Open File"),
+            "app.show-saved-recording",
+            Some(&recording_file_path_variant),
+        );
+
+        self.send_notification(Some("record-success"), &notification);
     }
 
     pub fn run(&self) {
