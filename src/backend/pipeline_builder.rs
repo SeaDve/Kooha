@@ -8,10 +8,10 @@ use crate::widgets::Rectangle;
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
-enum AudioSource {
-    Both(String, String),
-    SpeakerOnly(String),
-    MicOnly(String),
+enum AudioSource<'a> {
+    Both(&'a str, &'a str),
+    SpeakerOnly(&'a str),
+    MicOnly(&'a str),
     None,
 }
 
@@ -258,11 +258,11 @@ impl Parser {
         self.builder.file_path.display().to_string()
     }
 
-    fn speaker_source(&self) -> Option<String> {
-        self.builder.speaker_source.clone()
+    fn speaker_source(&self) -> Option<&String> {
+        self.builder.speaker_source.as_ref()
     }
 
-    fn mic_source(&self) -> Option<String> {
-        self.builder.mic_source.clone()
+    fn mic_source(&self) -> Option<&String> {
+        self.builder.mic_source.as_ref()
     }
 }
