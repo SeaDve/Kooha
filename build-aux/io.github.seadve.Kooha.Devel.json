@@ -11,8 +11,8 @@
         "--device=dri",
         "--socket=pulseaudio",
         "--filesystem=xdg-videos",
-        "--talk-name=org.a11y.Bus",
         "--talk-name=org.gnome.Shell",
+        "--talk-name=org.a11y.Bus",
         "--env=RUST_LOG=kooha=debug",
         "--env=RUST_BACKTRACE=1",
         "--env=G_MESSAGES_DEBUG=none",
@@ -22,14 +22,7 @@
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
         "build-args" : [
             "--share=network"
-        ],
-        "test-args": [
-            "--socket=x11",
-            "--share=network"
-        ],
-        "env" : {
-            "RUST_BACKTRACE": "1"
-        }
+        ]
     },
     "modules": [
         {
@@ -42,6 +35,10 @@
                 "-Dexamples=false",
                 "-Dvapi=false",
                 "-Dglade_catalog=disabled"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig"
             ],
             "sources" : [
                 {
