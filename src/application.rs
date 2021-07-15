@@ -173,7 +173,12 @@ impl KhaApplication {
             .comments("Elegantly record your screen")
             .version(VERSION)
             .logo_icon_name(APP_ID)
-            .authors(vec!["SeaDve".into()])
+            .authors(vec![
+                "Dave Patrick".into(),
+                "".into(),
+                "Mathiascode".into(),
+                "Felix Weilbach".into(),
+            ])
             .translator_credits("translator-credits")
             .copyright("Copyright 2021 Dave Patrick")
             .license_type(gtk::License::Gpl30)
