@@ -1,7 +1,8 @@
 use adw::subclass::prelude::*;
 use gtk::{
-    gdk::keys::Key,
+    gdk::{self, keys::Key},
     glib::{self, clone, signal::Inhibit, GBoxed},
+    graphene, gsk,
     prelude::*,
     subclass::prelude::*,
 };
@@ -11,7 +12,7 @@ use std::{mem, time::Duration};
 use crate::backend::Screen;
 use crate::backend::Utils;
 
-#[derive(Debug, Default, Clone, Copy)]
+#[derive(Debug, Clone, Copy)]
 pub struct Point {
     pub x: f64,
     pub y: f64,
@@ -23,7 +24,7 @@ impl Point {
     }
 }
 
-#[derive(Debug, Default, Clone, GBoxed)]
+#[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "Rectangle")]
 pub struct Rectangle {
     pub x: f64,
@@ -69,21 +70,13 @@ mod imp {
     use gtk::CompositeTemplate;
     use once_cell::sync::Lazy;
 
-    use std::cell::Cell;
+    use std::cell::RefCell;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/area_selector.ui")]
     pub struct KhaAreaSelector {
-        pub is_dragging: Cell<bool>,
-        pub start_point: Cell<Point>,
-        #[template_child]
-        pub drawing_area: TemplateChild<gtk::DrawingArea>,
-        #[template_child]
-        pub key_event_notifier: TemplateChild<gtk::EventControllerKey>,
-        #[template_child]
-        pub click_event_notifier: TemplateChild<gtk::GestureClick>,
-        #[template_child]
-        pub motion_event_notifier: TemplateChild<gtk::EventControllerMotion>,
+        pub start_point: RefCell<Option<Point>>,
+        pub current_point: RefCell<Option<Point>>,
     }
 
     #[glib::object_subclass]
@@ -94,12 +87,8 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                is_dragging: Cell::new(false),
-                start_point: Cell::new(Point::default()),
-                drawing_area: TemplateChild::default(),
-                key_event_notifier: TemplateChild::default(),
-                click_event_notifier: TemplateChild::default(),
-                motion_event_notifier: TemplateChild::default(),
+                start_point: RefCell::new(None),
+                current_point: RefCell::new(None),
             }
         }
 
@@ -115,9 +104,61 @@ mod imp {
     impl ObjectImpl for KhaAreaSelector {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
-            self.drawing_area.set_cursor_from_name(Some("crosshair"));
-            obj.clean();
-            obj.setup_signals();
+
+            obj.set_cursor_from_name(Some("crosshair"));
+            obj.connect_close_request(
+                clone!(@weak obj => @default-return Inhibit(false), move |_| {
+                    obj.emit_cancelled();
+                    Inhibit(false)
+                }),
+            );
+            obj.connect_show(clone!(@weak obj => move |_| {
+                obj.set_raise_request(true);
+            }));
+
+            let key_controller = gtk::EventControllerKey::new();
+            key_controller.set_propagation_phase(gtk::PropagationPhase::Capture);
+            key_controller.connect_key_pressed(
+                clone!(@weak obj => @default-return Inhibit(false), move |_, keyval, _, _| {
+                    if keyval == Key::from_name("Escape") {
+                        obj.emit_cancelled();
+                        Inhibit(true)
+                    } else {
+                        Inhibit(false)
+                    }
+                }),
+            );
+            obj.add_controller(&key_controller);
+
+            let gesture_drag = gtk::GestureDrag::new();
+            gesture_drag.set_exclusive(true);
+            gesture_drag.connect_drag_begin(clone!(@weak obj => move |_, x, y| {
+                let imp = obj.private();
+                imp.start_point.replace(Some(Point::new(x, y)));
+            }));
+            gesture_drag.connect_drag_update(clone!(@weak obj => move |gesture, offset_x, offset_y| {
+                let imp = obj.private();
+                if let Some(start_point) = gesture.start_point() {
+                    let (start_x, start_y) = start_point;
+                    imp.current_point.replace(Some(Point::new(start_x + offset_x, start_y + offset_y)));
+                    obj.queue_draw();
+                }
+            }));
+            gesture_drag.connect_drag_end(clone!(@weak obj => move |gesture, offset_x, offset_y| {
+                let imp = obj.private();
+                if let Some(start_point) = gesture.start_point() {
+                    let (start_x, start_y) = start_point;
+
+                    let start_point = imp.start_point.borrow().unwrap();
+                    let end_point = Point::new(start_x + offset_x, start_y + offset_y);
+
+                    let selection_rectangle = Rectangle::from_points(start_point, end_point);
+                    let actual_screen = Screen::new(obj.width(), obj.height());
+
+                    obj.emit_captured(selection_rectangle, actual_screen);
+                }
+            }));
+            obj.add_controller(&gesture_drag);
         }
 
         fn signals() -> &'static [Signal] {
@@ -139,7 +180,54 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for KhaAreaSelector {}
+    impl WidgetImpl for KhaAreaSelector {
+        fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
+            if self.start_point.borrow().is_none() {
+                let transparent = gdk::RGBA {
+                    red: 0.0,
+                    green: 0.0,
+                    blue: 0.0,
+                    alpha: 0.0,
+                };
+                let placeholder = graphene::Rect::new(0.0, 0.0, 0.0, 0.0);
+                snapshot.append_color(&transparent, &placeholder);
+            } else {
+                let start_point = self.start_point.borrow().unwrap();
+                let current_point = self.current_point.borrow().unwrap();
+
+                let width = current_point.x - start_point.x;
+                let height = current_point.y - start_point.y;
+
+                let selection_rect = graphene::Rect::new(
+                    start_point.x as f32,
+                    start_point.y as f32,
+                    width as f32,
+                    height as f32,
+                );
+
+                let border_color = gdk::RGBABuilder::new()
+                    .red(0.1)
+                    .green(0.45)
+                    .blue(0.8)
+                    .alpha(1.0)
+                    .build();
+
+                let fill_color = gdk::RGBABuilder::new()
+                    .red(0.1)
+                    .green(0.45)
+                    .blue(0.8)
+                    .alpha(0.3)
+                    .build();
+
+                snapshot.append_color(&fill_color, &selection_rect);
+                snapshot.append_border(
+                    &gsk::RoundedRect::from_rect(selection_rect, 0.0),
+                    &[1.0, 1.0, 1.0, 1.0],
+                    &[border_color, border_color, border_color, border_color],
+                );
+            }
+        }
+    }
     impl WindowImpl for KhaAreaSelector {}
 }
 
@@ -157,87 +245,6 @@ impl KhaAreaSelector {
         &imp::KhaAreaSelector::from_instance(self)
     }
 
-    fn setup_signals(&self) {
-        let imp = self.private();
-
-        self.connect_close_request(
-            clone!(@weak self as win => @default-return Inhibit(false), move |_| {
-                win.emit_cancelled();
-                Inhibit(false)
-            }),
-        );
-
-        self.connect_show(clone!(@weak self as win => move |_| {
-            win.set_raise_request(true);
-        }));
-
-        imp.key_event_notifier.connect_key_pressed(
-            clone!(@weak self as win => @default-return Inhibit(false), move |_, keyval, _, _| {
-                if keyval == Key::from_name("Escape") {
-                    win.emit_cancelled();
-                    Inhibit(true)
-                } else {
-                    Inhibit(false)
-                }
-            }),
-        );
-
-        imp.click_event_notifier
-            .connect_pressed(clone!(@weak self as win => move |_, _, x, y| {
-                let win_ =  win.private();
-                win_.is_dragging.set(true);
-                win_.start_point.set(Point::new(x, y));
-            }));
-
-        imp.click_event_notifier
-            .connect_released(clone!(@weak self as win => move |_, _, x, y| {
-                let win_ =  win.private();
-                win_.is_dragging.set(false);
-
-                let start_point = win_.start_point.get();
-                let end_point = Point::new(x, y);
-
-                let selection_rectangle = Rectangle::from_points(start_point, end_point);
-                let actual_screen = Screen::new(win.width(), win.height());
-                win.emit_captured(selection_rectangle, actual_screen);
-            }));
-
-        imp.motion_event_notifier
-            .connect_motion(clone!(@weak self as win => move |_, x, y| {
-                let win_ =  win.private();
-                let is_dragging = win_.is_dragging.get();
-
-                if !is_dragging {
-                    return;
-                };
-
-                let start_point = win_.start_point.get();
-                let width = x - start_point.x;
-                let height = y - start_point.y;
-
-                win.draw(start_point.x, start_point.y, width, height);
-            }));
-    }
-
-    fn clean(&self) {
-        let imp = self.private();
-        imp.drawing_area.set_draw_func(move |_, cr, _, _| {
-            cr.new_path();
-        });
-    }
-
-    fn draw(&self, x: f64, y: f64, width: f64, height: f64) {
-        let imp = self.private();
-        imp.drawing_area.set_draw_func(move |_, cr, _, _| {
-            cr.rectangle(x, y, width, height);
-            cr.set_source_rgba(0.1, 0.45, 0.8, 0.3);
-            cr.fill_preserve().unwrap();
-            cr.set_source_rgb(0.1, 0.45, 0.8);
-            cr.set_line_width(1_f64);
-            cr.stroke().unwrap();
-        });
-    }
-
     fn set_raise_request(&self, is_raised: bool) {
         if is_raised {
             glib::timeout_add_local_once(Duration::from_millis(100), move || {
@@ -249,8 +256,16 @@ impl KhaAreaSelector {
         };
     }
 
-    fn emit_cancelled(&self) {
+    fn clean(&self) {
+        let imp = self.private();
+
+        imp.start_point.replace(None);
+        imp.current_point.replace(None);
+        self.queue_draw();
         self.set_raise_request(false);
+    }
+
+    fn emit_cancelled(&self) {
         self.emit_by_name("cancelled", &[]).unwrap();
         self.clean();
         self.hide();
@@ -264,8 +279,6 @@ impl KhaAreaSelector {
     }
 
     pub fn select_area(&self) {
-        let imp = self.private();
-        imp.is_dragging.set(false);
         self.fullscreen();
         self.present();
     }

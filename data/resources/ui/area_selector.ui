@@ -5,22 +5,5 @@
     <property name="deletable">False</property>
     <property name="decorated">False</property>
     <property name="css-classes"/>
-    <child>
-      <object class="GtkDrawingArea" id="drawing_area"/>
-    </child>
-    <child>
-      <object class="GtkEventControllerKey" id="key_event_notifier">
-        <property name="propagation-phase">capture</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkGestureClick" id="click_event_notifier">
-        <property name="propagation-phase">capture</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkEventControllerMotion" id="motion_event_notifier">
-      </object>
-    </child>
   </template>
 </interface>
