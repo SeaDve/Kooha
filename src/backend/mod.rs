@@ -18,6 +18,5 @@ use {
     pipeline_builder::KhaPipelineBuilder,
     recorder::KhaRecorder,
     screencast_portal::{KhaScreencastPortal, Stream},
-    settings::{AudioSourceType, VideoFormat},
     timer::TimerState,
 };

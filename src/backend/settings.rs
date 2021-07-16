@@ -2,26 +2,6 @@ use chrono::Utc;
 use gtk::{gio, glib, prelude::*, subclass::prelude::*};
 use std::path::PathBuf;
 
-#[derive(Debug, Clone, Default)]
-pub struct AudioSourceType {
-    pub is_record_speaker: bool,
-    pub is_record_mic: bool,
-}
-
-#[derive(Debug, Eq, PartialEq, Clone, Copy)]
-pub enum VideoFormat {
-    Webm,
-    Mkv,
-    Mp4,
-    Gif,
-}
-
-impl Default for VideoFormat {
-    fn default() -> Self {
-        VideoFormat::Webm
-    }
-}
-
 mod imp {
     use super::*;
 
@@ -99,20 +79,26 @@ impl KhaSettings {
         }
     }
 
-    pub fn audio_source_type(&self) -> AudioSourceType {
+    pub fn file_path(&self) -> PathBuf {
         let imp = self.private();
-        let is_record_speaker = imp.settings.boolean("record-speaker");
-        let is_record_mic = imp.settings.boolean("record-mic");
+        let video_format_str = imp.settings.string("video-format");
+        let file_name = Utc::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
 
-        AudioSourceType {
-            is_record_speaker,
-            is_record_mic,
-        }
+        let mut path = PathBuf::new();
+        path.push(self.saving_location());
+        path.push(file_name);
+        path.set_extension(video_format_str);
+        path
     }
 
-    pub fn video_framerate(&self) -> u32 {
+    pub fn is_record_speaker(&self) -> bool {
         let imp = self.private();
-        imp.settings.uint("video-framerate")
+        imp.settings.boolean("record-speaker")
+    }
+
+    pub fn is_record_mic(&self) -> bool {
+        let imp = self.private();
+        imp.settings.boolean("record-mic")
     }
 
     pub fn is_show_pointer(&self) -> bool {
@@ -126,16 +112,9 @@ impl KhaSettings {
         capture_mode == "selection"
     }
 
-    pub fn file_path(&self) -> PathBuf {
+    pub fn video_framerate(&self) -> u32 {
         let imp = self.private();
-        let video_format_str = imp.settings.string("video-format");
-        let file_name = Utc::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
-
-        let mut path = PathBuf::new();
-        path.push(self.saving_location());
-        path.push(file_name);
-        path.set_extension(video_format_str);
-        path
+        imp.settings.uint("video-framerate")
     }
 
     pub fn record_delay(&self) -> u32 {

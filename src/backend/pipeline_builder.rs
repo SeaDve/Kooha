@@ -3,7 +3,7 @@ use gtk::glib;
 use std::cmp::min;
 use std::path::PathBuf;
 
-use crate::backend::{AudioSourceType, Screen, Stream, VideoFormat};
+use crate::backend::{Screen, Stream};
 use crate::widgets::Rectangle;
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
@@ -15,16 +15,25 @@ enum AudioSource<'a> {
     None,
 }
 
+#[derive(Debug, Eq, PartialEq, Clone, Copy)]
+enum VideoFormat {
+    Webm,
+    Mkv,
+    Mp4,
+    Gif,
+}
+
 #[derive(Debug, Default)]
 pub struct KhaPipelineBuilder {
     pipewire_stream: Stream,
     speaker_source: Option<String>,
     mic_source: Option<String>,
+    is_record_speaker: bool,
+    is_record_mic: bool,
     coordinates: Option<Rectangle>,
     actual_screen: Option<Screen>,
     framerate: u32,
     file_path: PathBuf,
-    audio_source_type: AudioSourceType,
 }
 
 impl KhaPipelineBuilder {
@@ -47,11 +56,6 @@ impl KhaPipelineBuilder {
         self
     }
 
-    pub fn audio_source_type(mut self, audio_source_type: AudioSourceType) -> Self {
-        self.audio_source_type = audio_source_type;
-        self
-    }
-
     pub fn speaker_source(mut self, speaker_source: Option<String>) -> Self {
         self.speaker_source = speaker_source;
         self
@@ -59,6 +63,16 @@ impl KhaPipelineBuilder {
 
     pub fn mic_source(mut self, mic_source: Option<String>) -> Self {
         self.mic_source = mic_source;
+        self
+    }
+
+    pub fn is_record_speaker(mut self, is_record_speaker: bool) -> Self {
+        self.is_record_speaker = is_record_speaker;
+        self
+    }
+
+    pub fn is_record_mic(mut self, is_record_mic: bool) -> Self {
+        self.is_record_mic = is_record_mic;
         self
     }
 
@@ -190,33 +204,17 @@ impl PipelineParser {
             return AudioSource::None;
         }
 
-        let is_record_speaker =
-            self.builder.audio_source_type.is_record_speaker && self.speaker_source().is_some();
-        let is_record_mic =
-            self.builder.audio_source_type.is_record_mic && self.mic_source().is_some();
+        let is_record_speaker = self.builder.is_record_speaker && self.speaker_source().is_some();
+        let is_record_mic = self.builder.is_record_mic && self.mic_source().is_some();
 
-        let audio_source_type = AudioSourceType {
-            is_record_speaker,
-            is_record_mic,
-        };
+        let speaker_source = self.speaker_source();
+        let mic_source = self.mic_source();
 
-        match audio_source_type {
-            AudioSourceType {
-                is_record_speaker: true,
-                is_record_mic: true,
-            } => AudioSource::Both(self.speaker_source().unwrap(), self.mic_source().unwrap()),
-            AudioSourceType {
-                is_record_speaker: true,
-                is_record_mic: false,
-            } => AudioSource::SpeakerOnly(self.speaker_source().unwrap()),
-            AudioSourceType {
-                is_record_speaker: false,
-                is_record_mic: true,
-            } => AudioSource::MicOnly(self.mic_source().unwrap()),
-            AudioSourceType {
-                is_record_speaker: false,
-                is_record_mic: false,
-            } => AudioSource::None,
+        match (is_record_speaker, is_record_mic) {
+            (true, true) => AudioSource::Both(speaker_source.unwrap(), mic_source.unwrap()),
+            (true, false) => AudioSource::SpeakerOnly(speaker_source.unwrap()),
+            (false, true) => AudioSource::MicOnly(mic_source.unwrap()),
+            (false, false) => AudioSource::None,
         }
     }
 
