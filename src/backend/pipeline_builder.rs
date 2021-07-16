@@ -8,7 +8,7 @@ use crate::widgets::Rectangle;
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
-enum AudioSource<'a> {
+enum AudioSourceType<'a> {
     Both(&'a str, &'a str),
     SpeakerOnly(&'a str),
     MicOnly(&'a str),
@@ -128,11 +128,11 @@ impl PipelineParser {
             .collect::<Vec<String>>()
             .join(" ! ");
 
-        let pipeline_string = match self.audio_source() {
-            AudioSource::Both(speaker_source, mic_source) => format!("{} pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.", pipeline_string, speaker_source, self.audioenc().unwrap(), mic_source),
-            AudioSource::SpeakerOnly(speaker_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, speaker_source, self.audioenc().unwrap()),
-            AudioSource::MicOnly(mic_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, mic_source, self.audioenc().unwrap()),
-            AudioSource::None => pipeline_string,
+        let pipeline_string = match self.audio_source_type() {
+            AudioSourceType::Both(speaker_source, mic_source) => format!("{} pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.", pipeline_string, speaker_source, self.audioenc().unwrap(), mic_source),
+            AudioSourceType::SpeakerOnly(speaker_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, speaker_source, self.audioenc().unwrap()),
+            AudioSourceType::MicOnly(mic_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, mic_source, self.audioenc().unwrap()),
+            AudioSourceType::None => pipeline_string,
         };
 
         pipeline_string.replace("%T", self.ideal_thread_count().to_string().as_ref())
@@ -199,9 +199,9 @@ impl PipelineParser {
         }
     }
 
-    fn audio_source(&self) -> AudioSource {
+    fn audio_source_type(&self) -> AudioSourceType {
         if self.video_format() == VideoFormat::Gif {
-            return AudioSource::None;
+            return AudioSourceType::None;
         }
 
         let is_record_speaker = self.builder.is_record_speaker && self.speaker_source().is_some();
@@ -211,10 +211,10 @@ impl PipelineParser {
         let mic_source = self.mic_source();
 
         match (is_record_speaker, is_record_mic) {
-            (true, true) => AudioSource::Both(speaker_source.unwrap(), mic_source.unwrap()),
-            (true, false) => AudioSource::SpeakerOnly(speaker_source.unwrap()),
-            (false, true) => AudioSource::MicOnly(mic_source.unwrap()),
-            (false, false) => AudioSource::None,
+            (true, true) => AudioSourceType::Both(speaker_source.unwrap(), mic_source.unwrap()),
+            (true, false) => AudioSourceType::SpeakerOnly(speaker_source.unwrap()),
+            (false, true) => AudioSourceType::MicOnly(mic_source.unwrap()),
+            (false, false) => AudioSourceType::None,
         }
     }
 
