@@ -1,5 +1,10 @@
 use chrono::Utc;
-use gtk::{gio, glib, prelude::*, subclass::prelude::*};
+use gtk::{
+    gio,
+    glib::{self, signal::SignalHandlerId},
+    prelude::*,
+    subclass::prelude::*,
+};
 use std::path::PathBuf;
 
 mod imp {
@@ -59,6 +64,14 @@ impl KhaSettings {
             .build();
     }
 
+    pub fn connect_changed_notify<F: Fn(&gio::Settings, &str) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        let imp = self.private();
+        imp.settings.connect_changed(None, f)
+    }
+
     pub fn set_saving_location(&self, directory: &str) {
         let imp = self.private();
         imp.settings
@@ -89,6 +102,11 @@ impl KhaSettings {
         path.push(file_name);
         path.set_extension(video_format_str);
         path
+    }
+
+    pub fn video_format(&self) -> String {
+        let imp = self.private();
+        imp.settings.string("video-format").to_string()
     }
 
     pub fn is_record_speaker(&self) -> bool {

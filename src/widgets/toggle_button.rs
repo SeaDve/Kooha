@@ -91,4 +91,9 @@ impl KhaToggleButton {
     pub fn new() -> Self {
         glib::Object::new(&[]).expect("Failed to create KhaToggleButton")
     }
+
+    pub fn set_action_enabled(&self, is_enabled: bool) {
+        self.set_property("action-enabled", is_enabled)
+            .expect("Failed to set action enabled");
+    }
 }

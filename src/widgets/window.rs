@@ -34,6 +34,10 @@ mod imp {
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
+        pub record_speaker_toggle: TemplateChild<KhaToggleButton>,
+        #[template_child]
+        pub record_mic_toggle: TemplateChild<KhaToggleButton>,
+        #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub title_stack: TemplateChild<gtk::Stack>,
@@ -56,6 +60,8 @@ mod imp {
                 settings: KhaSettings::new(),
                 recorder_controller: KhaRecorderController::new(),
                 pause_record_button: TemplateChild::default(),
+                record_speaker_toggle: TemplateChild::default(),
+                record_mic_toggle: TemplateChild::default(),
                 main_stack: TemplateChild::default(),
                 title_stack: TemplateChild::default(),
                 recording_label: TemplateChild::default(),
@@ -111,6 +117,7 @@ mod imp {
 
             obj.setup_signals();
             obj.set_view(View::MainScreen);
+            obj.update_audio_toggles_sensitivity();
 
             self.settings
                 .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
@@ -155,6 +162,13 @@ impl KhaWindow {
     fn setup_signals(&self) {
         let imp = self.private();
 
+        imp.settings
+            .connect_changed_notify(clone!(@weak self as win => move |_, key| {
+                if key == "video-format" {
+                    win.update_audio_toggles_sensitivity()
+                };
+            }));
+
         imp.recorder_controller.connect_notify_local(
             Some("state"),
             clone!(@weak self as win => move |recorder_controller, _| {
@@ -192,6 +206,14 @@ impl KhaWindow {
                 imp.delay_label.set_label(&current_time.to_string());
             }),
         );
+    }
+
+    fn update_audio_toggles_sensitivity(&self) {
+        let imp = self.private();
+
+        let is_enabled = imp.settings.video_format() != "gif";
+        imp.record_speaker_toggle.set_action_enabled(is_enabled);
+        imp.record_mic_toggle.set_action_enabled(is_enabled);
     }
 
     fn set_view(&self, view: View) {
