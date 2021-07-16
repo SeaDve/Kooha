@@ -8,7 +8,7 @@ use gtk::{
 
 use std::path::PathBuf;
 
-use crate::backend::KhaSettings;
+use crate::backend::{KhaSettings, RecorderControllerState};
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::KhaWindow;
 
@@ -118,7 +118,11 @@ impl KhaApplication {
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
-            app.quit();
+            let recorder_controller_state = app.main_window().recorder_controller().state();
+            let allowed_states = [RecorderControllerState::Null, RecorderControllerState::Delayed];
+            if allowed_states.contains(&recorder_controller_state) {
+                app.quit();
+            };
         }));
         self.add_action(&action_quit);
 

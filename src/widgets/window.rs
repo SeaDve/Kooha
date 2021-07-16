@@ -8,7 +8,7 @@ use gtk::{
 };
 
 use crate::application::KhaApplication;
-use crate::backend::RecorderControllerState;
+use crate::backend::{KhaRecorderController, RecorderControllerState};
 use crate::widgets::KhaToggleButton;
 
 #[derive(Debug, PartialEq)]
@@ -23,7 +23,7 @@ mod imp {
 
     use gtk::CompositeTemplate;
 
-    use crate::backend::{KhaRecorderController, KhaSettings};
+    use crate::backend::KhaSettings;
     use crate::config::PROFILE;
 
     #[derive(Debug, CompositeTemplate)]
@@ -228,5 +228,10 @@ impl KhaWindow {
         self.action_set_enabled("win.toggle-record", view != View::Delay);
         self.action_set_enabled("win.toggle-pause", view == View::Recording);
         self.action_set_enabled("win.cancel-delay", view == View::Delay);
+    }
+
+    pub fn recorder_controller(&self) -> &KhaRecorderController {
+        let imp = self.private();
+        &imp.recorder_controller
     }
 }
