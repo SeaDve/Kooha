@@ -25,13 +25,7 @@ mod imp {
         pub settings: KhaSettings,
         pub recorder_controller: KhaRecorderController,
         #[template_child]
-        pub start_record_button: TemplateChild<gtk::Button>,
-        #[template_child]
-        pub stop_record_button: TemplateChild<gtk::Button>,
-        #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
-        #[template_child]
-        pub cancel_delay_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -54,10 +48,7 @@ mod imp {
             Self {
                 settings: KhaSettings::new(),
                 recorder_controller: KhaRecorderController::new(),
-                start_record_button: TemplateChild::default(),
-                stop_record_button: TemplateChild::default(),
                 pause_record_button: TemplateChild::default(),
-                cancel_delay_button: TemplateChild::default(),
                 main_stack: TemplateChild::default(),
                 title_stack: TemplateChild::default(),
                 recording_label: TemplateChild::default(),
