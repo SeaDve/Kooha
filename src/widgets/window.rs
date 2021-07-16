@@ -160,7 +160,7 @@ impl KhaWindow {
             match recorder_controller.property("state").unwrap().get::<RecorderControllerState>().unwrap() {
                 RecorderControllerState::Null => win.set_view(View::MainScreen),
                 RecorderControllerState::Delayed => win.set_view(View::Delay),
-                RecorderControllerState::Playing => {
+                RecorderControllerState::Recording => {
                     win.set_view(View::Recording);
                     imp.pause_record_button.set_icon_name("media-playback-pause-symbolic");
                     imp.recording_label.set_label(&gettext("Recording"));

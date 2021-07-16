@@ -12,7 +12,7 @@ pub enum RecorderControllerState {
     Null,
     Delayed,
     Paused,
-    Playing,
+    Recording,
 }
 
 impl Default for RecorderControllerState {
@@ -156,7 +156,7 @@ impl KhaRecorderController {
                 TimerState::Stopped => RecorderControllerState::Null,
                 TimerState::Delayed => RecorderControllerState::Delayed,
                 TimerState::Paused => RecorderControllerState::Paused,
-                TimerState::Running => RecorderControllerState::Playing,
+                TimerState::Running => RecorderControllerState::Recording,
             };
             reccon.set_property("state", new_state).unwrap();
         }));
