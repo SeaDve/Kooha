@@ -6,7 +6,7 @@ use gtk::{
 
 use crate::backend::{KhaScreencastPortal, Stream};
 
-#[derive(Debug, Eq, PartialEq, Clone, Copy, GEnum)]
+#[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderState")]
 pub enum RecorderState {
     Null,
@@ -35,7 +35,7 @@ mod imp {
         pub pipeline: Rc<RefCell<Option<gst::Pipeline>>>,
         pub portal: KhaScreencastPortal,
         pub is_readying: Cell<bool>,
-        pub state: Rc<RefCell<RecorderState>>,
+        pub state: RefCell<RecorderState>,
     }
 
     #[glib::object_subclass]
@@ -46,7 +46,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                state: Rc::new(RefCell::new(RecorderState::default())),
+                state: RefCell::new(RecorderState::default()),
                 portal: KhaScreencastPortal::new(),
                 is_readying: Cell::new(false),
                 pipeline: Rc::new(RefCell::new(None)),

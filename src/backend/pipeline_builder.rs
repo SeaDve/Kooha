@@ -15,7 +15,7 @@ enum AudioSourceType<'a> {
     None,
 }
 
-#[derive(Debug, Eq, PartialEq, Clone, Copy)]
+#[derive(PartialEq)]
 enum VideoFormat {
     Webm,
     Mkv,
@@ -23,7 +23,7 @@ enum VideoFormat {
     Gif,
 }
 
-#[derive(Debug, Default)]
+#[derive(Default)]
 pub struct KhaPipelineBuilder {
     pipewire_stream: Stream,
     speaker_source: Option<String>,

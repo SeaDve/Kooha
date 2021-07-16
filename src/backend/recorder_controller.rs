@@ -6,7 +6,7 @@ use gtk::{
 
 use crate::backend::TimerState;
 
-#[derive(Debug, Eq, PartialEq, Clone, Copy, GEnum)]
+#[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderControllerState")]
 pub enum RecorderControllerState {
     Null,

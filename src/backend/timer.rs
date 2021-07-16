@@ -4,7 +4,7 @@ use gtk::{
     subclass::prelude::*,
 };
 
-#[derive(Debug, Eq, PartialEq, Clone, Copy, GEnum)]
+#[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "TimerState")]
 pub enum TimerState {
     Stopped,

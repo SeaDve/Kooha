@@ -11,7 +11,7 @@ use std::{mem, time::Duration};
 use crate::backend::Screen;
 use crate::backend::Utils;
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Default, Clone, Copy)]
 pub struct Point {
     pub x: f64,
     pub y: f64,
@@ -95,7 +95,7 @@ mod imp {
         fn new() -> Self {
             Self {
                 is_dragging: Cell::new(false),
-                start_point: Cell::new(Point::new(0_f64, 0_f64)),
+                start_point: Cell::new(Point::default()),
                 drawing_area: TemplateChild::default(),
                 key_event_notifier: TemplateChild::default(),
                 click_event_notifier: TemplateChild::default(),
