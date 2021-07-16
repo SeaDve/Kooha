@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # telmo bruno silva seabra <telmoseabra@petalmail.com>, 2021.
 # Dave Patrick <davecruz48@gmail.com>, 2021.
+# Unai Hernández Minaberry <unihernandez22@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:10+0800\n"
-"PO-Revision-Date: 2021-07-07 11:19+0000\n"
-"Last-Translator: telmo bruno silva seabra <telmoseabra@petalmail.com>\n"
+"PO-Revision-Date: 2021-07-16 05:32+0000\n"
+"Last-Translator: Unai Hernández Minaberry <unihernandez22@gmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/kooha/pot-file/"
 "eo/>\n"
 "Language: eo\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
@@ -27,11 +28,11 @@ msgstr "Kooha"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in:11
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Vidbendregistrilo"
+msgstr "Ekranelsendi;Registrilo;Ekrano;Bildbendo;"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:119
 msgid "Elegantly record your screen"
-msgstr "Registru vian ekranon laŭ stilo"
+msgstr "Elegante registri vian ekranon"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:10
 msgid ""
@@ -44,67 +45,69 @@ msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha estas simpla ekranregistrilo kun minimumista interfaco. Vi povas nur "
+"alklaki la registran butonon sen devi agordi multajn reguligojn."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "La precipaj ebloj de Kooha inkludas la sekvantan:"
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Enkaptu vian ekranon sen iu malfacilaĵo."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Registru vian mikrofonon, komputerajn sonojn, aŭ ambaŭ sinkrone."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:16
 msgid "🖼️ Select an area of your screen to record."
-msgstr ""
+msgstr "🖼️ Elektu areon de vian ekranon por registri."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:17
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Agordu prokraston por pretigi antaŭ vi ekregistrus."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:18
 msgid "📼 Support for the free Matroska and WebM formats."
-msgstr ""
+msgstr "📼 Subteno por la liberaj Matroska and WebM formatoj."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:19
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Kaŝi aŭ elmontri musan montrilon."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:20
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Elektu surdiskigan lokon por via registro."
 
 #: data/io.github.seadve.Kooha.appdata.xml.in:21
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Uzu helpa klavara kurtvojo."
 
 #. Translators: please do NOT translate this
 #: data/io.github.seadve.Kooha.appdata.xml.in:29
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/ui/help_overlay.ui:10
 msgid "General"
-msgstr ""
+msgstr "Ĝenerala"
 
 #: data/ui/help_overlay.ui:14
 msgid "Open menu"
-msgstr ""
+msgstr "Aperti menuon"
 
 #: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "Elmontri klavarajn kurtvojojn"
 
 #: data/ui/help_overlay.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Lasi"
 
 #: data/ui/help_overlay.ui:33 src/widgets/window.py:61
 msgid "Recording"
-msgstr ""
+msgstr "Registranti"
 
 #: data/ui/help_overlay.ui:37
 msgid "Toggle record"
