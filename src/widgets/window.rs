@@ -110,6 +110,7 @@ mod imp {
             }
 
             obj.setup_signals();
+            obj.set_view(View::MainScreen);
 
             self.settings
                 .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
@@ -196,8 +197,8 @@ impl KhaWindow {
             View::Delay => imp.main_stack.set_visible_child_name("delay"),
         }
 
-        self.action_set_enabled("toggle-record", view != View::Delay);
-        self.action_set_enabled("toggle-pause", view == View::Recording);
-        self.action_set_enabled("cancel-delay", view == View::Delay);
+        self.action_set_enabled("win.toggle-record", view != View::Delay);
+        self.action_set_enabled("win.toggle-pause", view == View::Recording);
+        self.action_set_enabled("win.cancel-delay", view == View::Delay);
     }
 }
