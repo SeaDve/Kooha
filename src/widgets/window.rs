@@ -11,6 +11,13 @@ use crate::application::KhaApplication;
 use crate::backend::RecorderControllerState;
 use crate::widgets::KhaToggleButton;
 
+#[derive(Debug, PartialEq)]
+enum View {
+    MainScreen,
+    Recording,
+    Delay,
+}
+
 mod imp {
     use super::*;
 
@@ -148,35 +155,49 @@ impl KhaWindow {
         let imp = self.private();
 
         imp.recorder_controller.connect_notify_local(Some("state"), clone!(@weak self as win => move |recorder_controller, _| {
-            let win_ = win.private();
-            // FIXME disable action where necessary
+            let imp = win.private();
+
             match recorder_controller.property("state").unwrap().get::<RecorderControllerState>().unwrap() {
-                RecorderControllerState::Null => win_.main_stack.set_visible_child_name("main-screen"),
-                RecorderControllerState::Delayed => win_.main_stack.set_visible_child_name("delay"),
+                RecorderControllerState::Null => win.set_view(View::MainScreen),
+                RecorderControllerState::Delayed => win.set_view(View::Delay),
                 RecorderControllerState::Playing => {
-                    win_.main_stack.set_visible_child_name("recording");
-                    win_.pause_record_button.set_icon_name("media-playback-pause-symbolic");
-                    win_.recording_label.set_label(&gettext("Recording"));
-                    win_.recording_time_label.remove_css_class("paused");
+                    win.set_view(View::Recording);
+                    imp.pause_record_button.set_icon_name("media-playback-pause-symbolic");
+                    imp.recording_label.set_label(&gettext("Recording"));
+                    imp.recording_time_label.remove_css_class("paused");
                 }
                 RecorderControllerState::Paused => {
-                    win_.pause_record_button.set_icon_name("media-playback-start-symbolic");
-                    win_.recording_label.set_label(&gettext("Paused"));
-                    win_.recording_time_label.add_css_class("paused");
+                    imp.pause_record_button.set_icon_name("media-playback-start-symbolic");
+                    imp.recording_label.set_label(&gettext("Paused"));
+                    imp.recording_time_label.add_css_class("paused");
                 },
             };
         }));
 
         imp.recorder_controller.connect_notify_local(Some("time"), clone!(@weak self as win => move |recorder_controller, _| {
-            let win_ = win.private();
+            let imp = win.private();
 
             let current_time = recorder_controller.property("time").unwrap().get::<u32>().unwrap();
             let seconds = current_time % 60;
             let minutes = (current_time / 60) % 60;
             let formatted_time = format!("{:02}∶{:02}", minutes, seconds);
 
-            win_.recording_time_label.set_label(&formatted_time);
-            win_.delay_label.set_label(&current_time.to_string());
+            imp.recording_time_label.set_label(&formatted_time);
+            imp.delay_label.set_label(&current_time.to_string());
         }));
+    }
+
+    fn set_view(&self, view: View) {
+        let imp = self.private();
+
+        match view {
+            View::MainScreen => imp.main_stack.set_visible_child_name("main-screen"),
+            View::Recording => imp.main_stack.set_visible_child_name("recording"),
+            View::Delay => imp.main_stack.set_visible_child_name("delay"),
+        }
+
+        self.action_set_enabled("toggle-record", view != View::Delay);
+        self.action_set_enabled("toggle-pause", view == View::Recording);
+        self.action_set_enabled("cancel-delay", view == View::Delay);
     }
 }
