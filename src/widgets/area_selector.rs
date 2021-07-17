@@ -12,6 +12,19 @@ use std::{mem, time::Duration};
 use crate::backend::Screen;
 use crate::backend::Utils;
 
+const BORDER_COLOR: gdk::RGBA = gdk::RGBA {
+    red: 0.1,
+    green: 0.45,
+    blue: 0.8,
+    alpha: 1.0,
+};
+const FILL_COLOR: gdk::RGBA = gdk::RGBA {
+    red: 0.1,
+    green: 0.45,
+    blue: 0.8,
+    alpha: 0.3,
+};
+
 #[derive(Debug, Clone, Copy)]
 pub struct Point {
     pub x: f64,
@@ -183,14 +196,9 @@ mod imp {
     impl WidgetImpl for KhaAreaSelector {
         fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
             if self.start_point.borrow().is_none() {
-                let transparent = gdk::RGBA {
-                    red: 0.0,
-                    green: 0.0,
-                    blue: 0.0,
-                    alpha: 0.0,
-                };
-                let placeholder = graphene::Rect::new(0.0, 0.0, 0.0, 0.0);
-                snapshot.append_color(&transparent, &placeholder);
+                let placeholder_color = gdk::RGBABuilder::new().build();
+                let placeholder_rect = graphene::Rect::new(0.0, 0.0, 0.0, 0.0);
+                snapshot.append_color(&placeholder_color, &placeholder_rect);
             } else {
                 let start_point = self.start_point.borrow().unwrap();
                 let current_point = self.current_point.borrow().unwrap();
@@ -205,25 +213,11 @@ mod imp {
                     height as f32,
                 );
 
-                let border_color = gdk::RGBABuilder::new()
-                    .red(0.1)
-                    .green(0.45)
-                    .blue(0.8)
-                    .alpha(1.0)
-                    .build();
-
-                let fill_color = gdk::RGBABuilder::new()
-                    .red(0.1)
-                    .green(0.45)
-                    .blue(0.8)
-                    .alpha(0.3)
-                    .build();
-
-                snapshot.append_color(&fill_color, &selection_rect);
+                snapshot.append_color(&FILL_COLOR, &selection_rect);
                 snapshot.append_border(
                     &gsk::RoundedRect::from_rect(selection_rect, 0.0),
                     &[1.0, 1.0, 1.0, 1.0],
-                    &[border_color, border_color, border_color, border_color],
+                    &[BORDER_COLOR; 4],
                 );
             }
         }
@@ -256,15 +250,6 @@ impl KhaAreaSelector {
         };
     }
 
-    fn clean(&self) {
-        let imp = self.private();
-
-        imp.start_point.replace(None);
-        imp.current_point.replace(None);
-        self.queue_draw();
-        self.set_raise_request(false);
-    }
-
     fn emit_cancelled(&self) {
         self.emit_by_name("cancelled", &[]).unwrap();
         self.clean();
@@ -276,6 +261,15 @@ impl KhaAreaSelector {
             .unwrap();
         self.clean();
         self.hide();
+    }
+
+    fn clean(&self) {
+        let imp = self.private();
+
+        imp.start_point.replace(None);
+        imp.current_point.replace(None);
+        self.queue_draw();
+        self.set_raise_request(false);
     }
 
     pub fn select_area(&self) {
