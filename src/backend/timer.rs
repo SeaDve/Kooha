@@ -124,7 +124,7 @@ impl KhaTimer {
             .expect("KhaTimer failed to set state");
     }
 
-    fn get_state(&self) -> TimerState {
+    pub fn state(&self) -> TimerState {
         self.property("state")
             .unwrap()
             .get::<TimerState>()
@@ -136,7 +136,7 @@ impl KhaTimer {
             .expect("KhaTimer failed to set time");
     }
 
-    fn get_time(&self) -> u32 {
+    fn time(&self) -> u32 {
         self.property("time")
             .unwrap()
             .get::<u32>()
@@ -149,8 +149,8 @@ impl KhaTimer {
         glib::timeout_add_seconds_local(
             1,
             clone!(@weak self as obj => @default-return Continue(true), move || {
-                let current_state = obj.get_state();
-                let current_time = obj.get_time();
+                let current_state = obj.state();
+                let current_time = obj.time();
 
                 if current_state == TimerState::Stopped {
                     return Continue(false);

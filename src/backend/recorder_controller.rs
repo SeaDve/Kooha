@@ -4,7 +4,7 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use crate::backend::TimerState;
+use crate::backend::{RecorderState, TimerState};
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderControllerState")]
@@ -59,6 +59,34 @@ mod imp {
     }
 
     impl ObjectImpl for KhaRecorderController {
+        fn constructed(&self, obj: &Self::Type) {
+            self.recorder.connect_notify_local(
+                Some("state"),
+                clone!(@weak obj => move |recorder, _| {
+                    let imp = obj.private();
+
+                    match recorder.state() {
+                        RecorderState::Null => imp.timer.stop(),
+                        RecorderState::Playing => imp.timer.resume(),
+                        RecorderState::Paused => imp.timer.pause(),
+                    };
+                }),
+            );
+
+            self.timer.connect_notify_local(
+                Some("state"),
+                clone!(@weak obj => move |timer, _| {
+                    let new_state = match timer.state() {
+                        TimerState::Stopped => RecorderControllerState::Null,
+                        TimerState::Delayed => RecorderControllerState::Delayed,
+                        TimerState::Paused => RecorderControllerState::Paused,
+                        TimerState::Running => RecorderControllerState::Recording,
+                    };
+                    obj.set_property("state", new_state).unwrap();
+                }),
+            );
+        }
+
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
@@ -134,7 +162,6 @@ impl KhaRecorderController {
     pub fn new() -> Self {
         let obj: Self =
             glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorderController");
-        obj.setup_signals();
         obj.setup_bindings();
         obj
     }
@@ -146,20 +173,6 @@ impl KhaRecorderController {
     fn setup_bindings(&self) {
         let imp = self.private();
         imp.timer.bind_property("time", self, "time").build();
-    }
-
-    fn setup_signals(&self) {
-        let imp = self.private();
-
-        imp.timer.connect_notify_local(Some("state"), clone!(@weak self as reccon => move |timer, _| {
-            let new_state = match timer.property("state").unwrap().get::<TimerState>().unwrap() {
-                TimerState::Stopped => RecorderControllerState::Null,
-                TimerState::Delayed => RecorderControllerState::Delayed,
-                TimerState::Paused => RecorderControllerState::Paused,
-                TimerState::Running => RecorderControllerState::Recording,
-            };
-            reccon.set_property("state", new_state).unwrap();
-        }));
     }
 
     pub fn state(&self) -> RecorderControllerState {
@@ -196,6 +209,8 @@ impl KhaRecorderController {
         imp.record_delay.set(record_delay);
 
         imp.timer.start(record_delay);
+
+        // imp.recorder.ready();
     }
 
     pub fn cancel_delay(&self) {

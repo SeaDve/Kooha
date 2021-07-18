@@ -176,7 +176,7 @@ impl KhaScreencastPortal {
 
     pub fn open(&self) {
         let ctx = glib::MainContext::default();
-        println!("starting session");
+        log::info!("Starting session");
         ctx.spawn_local(clone!(@weak self as portal => async move {
 
             let imp = imp::KhaScreencastPortal::from_instance(&portal);

@@ -209,6 +209,13 @@ impl KhaRecorder {
         log::info!("Pipeline set to {:?}", pipeline_state);
     }
 
+    pub fn state(&self) -> RecorderState {
+        self.property("state")
+            .unwrap()
+            .get::<RecorderState>()
+            .expect("KhaRecorder failed to get state")
+    }
+
     fn set_is_readying(&self, is_readying: bool) {
         self.set_property("is-readying", is_readying)
             .expect("Failed to set recorder is_readying");

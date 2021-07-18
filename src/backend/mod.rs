@@ -16,7 +16,7 @@ pub use {
 
 use {
     pipeline_builder::KhaPipelineBuilder,
-    recorder::KhaRecorder,
+    recorder::{KhaRecorder, RecorderState},
     screencast_portal::{KhaScreencastPortal, Stream},
     timer::TimerState,
 };
