@@ -66,10 +66,11 @@ impl KhaSettings {
 
     pub fn connect_changed_notify<F: Fn(&gio::Settings, &str) + 'static>(
         &self,
+        detail: Option<&str>,
         f: F,
     ) -> SignalHandlerId {
         let imp = self.private();
-        imp.settings.connect_changed(None, f)
+        imp.settings.connect_changed(detail, f)
     }
 
     pub fn set_saving_location(&self, directory: &str) {

@@ -162,12 +162,12 @@ impl KhaWindow {
     fn setup_signals(&self) {
         let imp = self.private();
 
-        imp.settings
-            .connect_changed_notify(clone!(@weak self as win => move |_, key| {
-                if key == "video-format" {
-                    win.update_audio_toggles_sensitivity()
-                };
-            }));
+        imp.settings.connect_changed_notify(
+            Some("video-format"),
+            clone!(@weak self as win => move |_, _| {
+                win.update_audio_toggles_sensitivity();
+            }),
+        );
 
         imp.recorder_controller.connect_notify_local(
             Some("state"),
