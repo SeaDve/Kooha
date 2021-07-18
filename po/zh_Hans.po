@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:10+0800\n"
-"PO-Revision-Date: 2021-07-07 11:19+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-07-18 02:32+0000\n"
+"Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
 #: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
@@ -215,7 +215,7 @@ msgstr "MP4"
 
 #: data/ui/window.ui:367
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/ui/window.ui:374
 msgid "Save to…"
@@ -243,11 +243,11 @@ msgstr "视频"
 
 #: src/backend/screencast_portal.py:40
 msgid "Failed to create session."
-msgstr ""
+msgstr "无法创建会话。"
 
 #: src/backend/screencast_portal.py:60
 msgid "Failed to select sources."
-msgstr ""
+msgstr "无法选择录制源。"
 
 #: src/main.py:75
 msgid "Select a Folder"
@@ -264,7 +264,7 @@ msgstr "选择"
 #: src/main.py:95
 #, python-brace-format
 msgid "Inaccessible location “{directory}”"
-msgstr ""
+msgstr "无法访问 “{directory}”"
 
 #: src/main.py:96
 msgid "Please choose an accessible location and retry."
@@ -294,7 +294,7 @@ msgstr "录像已保存至 {saving_location}"
 
 #: src/main.py:152
 msgid "Open File"
-msgstr ""
+msgstr "打开文件"
 
 #~ msgid "Inaccessible location '{directory}'"
 #~ msgstr "无法访问位置 '{directory}'"
