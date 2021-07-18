@@ -181,24 +181,6 @@ impl KhaRecorderController {
         self.property("time").unwrap().get::<u32>().unwrap()
     }
 
-    pub fn is_stopped(&self) -> bool {
-        let current_state = self
-            .property("state")
-            .unwrap()
-            .get::<RecorderControllerState>()
-            .unwrap();
-        current_state == RecorderControllerState::Null
-    }
-
-    pub fn is_paused(&self) -> bool {
-        let current_state = self
-            .property("state")
-            .unwrap()
-            .get::<RecorderControllerState>()
-            .unwrap();
-        current_state == RecorderControllerState::Paused
-    }
-
     pub fn start(&self, record_delay: u32) {
         let imp = self.private();
         imp.record_delay.set(record_delay);

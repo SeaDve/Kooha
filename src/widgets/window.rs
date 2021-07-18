@@ -77,7 +77,7 @@ mod imp {
             klass.install_action("win.toggle-record", None, move |widget, _, _| {
                 let imp = imp::KhaWindow::from_instance(widget);
 
-                if imp.recorder_controller.is_stopped() {
+                if imp.recorder_controller.state() == RecorderControllerState::Null {
                     let record_delay = imp.settings.record_delay();
                     imp.recorder_controller.start(record_delay);
                 } else {
@@ -88,7 +88,7 @@ mod imp {
             klass.install_action("win.toggle-pause", None, move |widget, _, _| {
                 let imp = imp::KhaWindow::from_instance(widget);
 
-                if imp.recorder_controller.is_paused() {
+                if imp.recorder_controller.state() == RecorderControllerState::Paused {
                     imp.recorder_controller.resume();
                 } else {
                     imp.recorder_controller.pause();
