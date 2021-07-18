@@ -230,8 +230,12 @@ impl KhaWindow {
         self.action_set_enabled("win.cancel-delay", view == View::Delay);
     }
 
-    pub fn recorder_controller(&self) -> &KhaRecorderController {
+    pub fn is_safe_to_quit(&self) -> bool {
         let imp = self.private();
-        &imp.recorder_controller
+        let allowed_states = [
+            RecorderControllerState::Null,
+            RecorderControllerState::Delayed,
+        ];
+        allowed_states.contains(&imp.recorder_controller.state())
     }
 }
