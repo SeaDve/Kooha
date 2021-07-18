@@ -60,6 +60,9 @@ mod imp {
 
     impl ObjectImpl for KhaRecorderController {
         fn constructed(&self, obj: &Self::Type) {
+            let imp = obj.private();
+            imp.timer.bind_property("time", obj, "time").build();
+
             self.recorder.connect_notify_local(
                 Some("state"),
                 clone!(@weak obj => move |recorder, _| {
@@ -160,19 +163,11 @@ glib::wrapper! {
 
 impl KhaRecorderController {
     pub fn new() -> Self {
-        let obj: Self =
-            glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorderController");
-        obj.setup_bindings();
-        obj
+        glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorderController")
     }
 
     fn private(&self) -> &imp::KhaRecorderController {
         &imp::KhaRecorderController::from_instance(self)
-    }
-
-    fn setup_bindings(&self) {
-        let imp = self.private();
-        imp.timer.bind_property("time", self, "time").build();
     }
 
     pub fn state(&self) -> RecorderControllerState {
