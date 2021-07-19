@@ -197,7 +197,7 @@ mod imp {
         fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
             if self.start_point.borrow().is_none() {
                 let placeholder_color = gdk::RGBABuilder::new().build();
-                let placeholder_rect = graphene::Rect::new(0.0, 0.0, 0.0, 0.0);
+                let placeholder_rect = graphene::Rect::zero();
                 snapshot.append_color(&placeholder_color, &placeholder_rect);
             } else {
                 let start_point = self.start_point.borrow().unwrap();
