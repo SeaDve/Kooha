@@ -177,6 +177,26 @@ mod imp {
                     imp.delay_label.set_label(&current_time.to_string());
                 }),
             );
+            self.recorder_controller
+                .connect_local(
+                    "record-success",
+                    false,
+                    clone!(@weak obj => @default-return None, move |_| {
+                        println!("recorder_controller record-success");
+                        None
+                    }),
+                )
+                .unwrap();
+            self.recorder_controller
+                .connect_local(
+                    "record-failed",
+                    false,
+                    clone!(@weak obj => @default-return None, move |_| {
+                        println!("recorderer_controller record-failed");
+                        None
+                    }),
+                )
+                .unwrap();
         }
     }
 

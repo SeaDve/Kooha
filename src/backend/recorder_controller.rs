@@ -24,6 +24,7 @@ impl Default for RecorderControllerState {
 mod imp {
     use super::*;
 
+    use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
     use std::cell::Cell;
@@ -62,19 +63,9 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             let imp = obj.private();
             imp.timer.bind_property("time", obj, "time").build();
-
-            self.recorder.connect_notify_local(
-                Some("state"),
-                clone!(@weak obj => move |recorder, _| {
-                    let imp = obj.private();
-
-                    match recorder.state() {
-                        RecorderState::Null => imp.timer.stop(),
-                        RecorderState::Playing => imp.timer.resume(),
-                        RecorderState::Paused => imp.timer.pause(),
-                    };
-                }),
-            );
+            imp.recorder
+                .bind_property("is-readying", obj, "is-readying")
+                .build();
 
             self.timer.connect_notify_local(
                 Some("state"),
@@ -88,6 +79,79 @@ mod imp {
                     obj.set_property("state", new_state).unwrap();
                 }),
             );
+            self.recorder.connect_notify_local(
+                Some("state"),
+                clone!(@weak obj => move |recorder, _| {
+                    let imp = obj.private();
+
+                    match recorder.state() {
+                        RecorderState::Null => imp.timer.stop(),
+                        RecorderState::Playing => imp.timer.resume(),
+                        RecorderState::Paused => imp.timer.pause(),
+                    };
+                }),
+            );
+
+            self.timer
+                .connect_local(
+                    "delay-done",
+                    false,
+                    clone!(@weak obj => @default-return None, move |_| {
+                        println!("timer delay-done");
+                        None
+                    }),
+                )
+                .unwrap();
+            self.recorder
+                .connect_local(
+                    "ready",
+                    false,
+                    clone!(@weak obj => @default-return None, move |_| {
+                        println!("recorder ready");
+                        None
+                    }),
+                )
+                .unwrap();
+            self.recorder
+                .connect_local(
+                    "record-success",
+                    false,
+                    clone!(@weak obj => @default-return None, move |_| {
+                        println!("recorder record-success");
+                        None
+                    }),
+                )
+                .unwrap();
+            self.recorder
+                .connect_local(
+                    "record-failed",
+                    false,
+                    clone!(@weak obj => @default-return None, move |_| {
+                        println!("recorder record-failed");
+                        None
+                    }),
+                )
+                .unwrap();
+        }
+
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
+                vec![
+                    Signal::builder(
+                        "record-success",
+                        &[String::static_type().into()],
+                        <()>::static_type().into(),
+                    )
+                    .build(),
+                    Signal::builder(
+                        "record-failed",
+                        &[String::static_type().into()],
+                        <()>::static_type().into(),
+                    )
+                    .build(),
+                ]
+            });
+            SIGNALS.as_ref()
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
