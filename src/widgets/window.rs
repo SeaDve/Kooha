@@ -74,8 +74,8 @@ mod imp {
             KhaToggleButton::static_type();
             Self::bind_template(klass);
 
-            klass.install_action("win.toggle-record", None, move |widget, _, _| {
-                let imp = imp::KhaWindow::from_instance(widget);
+            klass.install_action("win.toggle-record", None, move |obj, _, _| {
+                let imp = obj.private();
 
                 if imp.recorder_controller.state() == RecorderControllerState::Null {
                     let record_delay = imp.settings.record_delay();
@@ -85,8 +85,8 @@ mod imp {
                 }
             });
 
-            klass.install_action("win.toggle-pause", None, move |widget, _, _| {
-                let imp = imp::KhaWindow::from_instance(widget);
+            klass.install_action("win.toggle-pause", None, move |obj, _, _| {
+                let imp = obj.private();
 
                 if imp.recorder_controller.state() == RecorderControllerState::Paused {
                     imp.recorder_controller.resume();
@@ -95,8 +95,8 @@ mod imp {
                 };
             });
 
-            klass.install_action("win.cancel-delay", None, move |widget, _, _| {
-                let imp = imp::KhaWindow::from_instance(widget);
+            klass.install_action("win.cancel-delay", None, move |obj, _, _| {
+                let imp = obj.private();
 
                 imp.recorder_controller.cancel_delay();
             });
@@ -245,6 +245,7 @@ impl KhaWindow {
 
     pub fn is_safe_to_quit(&self) -> bool {
         let imp = self.private();
+
         let allowed_states = [
             RecorderControllerState::Null,
             RecorderControllerState::Delayed,
