@@ -36,12 +36,13 @@ impl Utils {
             .unwrap()
             .split_whitespace()
             .nth(2)
-            .unwrap();
+            .unwrap()
+            .to_string();
 
         if default_source == default_sink {
             (Some(default_sink), None)
         } else {
-            (Some(default_sink), Some(default_source.to_string()))
+            (Some(default_sink), Some(default_source))
         }
     }
 }
