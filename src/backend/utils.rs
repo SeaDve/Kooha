@@ -1,12 +1,12 @@
+use anyhow::bail;
 use ashpd::zbus::Connection;
 
-use std::{error::Error, option::Option, process};
+use std::process;
 
 pub struct Utils;
 
 impl Utils {
-    // FIXME use anyhow here and in shell_window_eval
-    pub fn set_raise_active_window_request(is_raised: bool) -> Result<(), Box<dyn Error>> {
+    pub fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
         Utils::shell_window_eval("make_above", is_raised)?;
         Utils::shell_window_eval("stick", is_raised)?;
         Ok(())
@@ -46,7 +46,7 @@ impl Utils {
         }
     }
 
-    fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), Box<dyn Error>> {
+    fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
         let reverse_keyword = if is_enabled { "" } else { "un" };
         let command = format!(
             "global.display.focus_window.{}{}()",
@@ -54,15 +54,18 @@ impl Utils {
         );
 
         let connection = Connection::new_session()?;
-
-        // FIXME properly handle errors
-        connection.call_method(
+        let message = connection.call_method(
             Some("org.gnome.Shell"),
             "/org/gnome/Shell",
             Some("org.gnome.Shell"),
             "Eval",
-            &(command),
+            &command,
         )?;
+        let (is_success, result): (bool, String) = message.body()?;
+
+        if !is_success {
+            bail!(result);
+        };
 
         Ok(())
     }

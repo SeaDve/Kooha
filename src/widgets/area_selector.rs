@@ -240,14 +240,16 @@ impl KhaAreaSelector {
     }
 
     fn set_raise_request(&self, is_raised: bool) {
-        if is_raised {
-            glib::timeout_add_local_once(Duration::from_millis(100), move || {
-                Utils::set_raise_active_window_request(true)
-                    .expect("Failed to raise active window");
-            });
-        } else {
-            Utils::set_raise_active_window_request(false).expect("Failed to unraise active window");
-        };
+        // Delay is needed to wait for the window to show. Otherwise, it
+        // will be too early and it will raise the wrong window.
+        let delay = if is_raised { 100 } else { 0 };
+
+        glib::timeout_add_local_once(Duration::from_millis(delay), move || {
+            match Utils::set_raise_active_window_request(is_raised) {
+                Ok(_) => log::info!("Sucessfully set raise active window to {}", is_raised),
+                Err(error) => log::warn!("{}", error),
+            }
+        });
     }
 
     fn emit_cancelled(&self) {

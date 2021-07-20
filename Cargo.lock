@@ -953,6 +953,7 @@ dependencies = [
 name = "kooha"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "ashpd",
  "chrono",
  "futures",
