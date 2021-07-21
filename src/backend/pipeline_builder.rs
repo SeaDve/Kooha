@@ -133,7 +133,7 @@ impl PipelineParser {
             AudioSourceType::None => pipeline_string,
         };
 
-        pipeline_string.replace("%T", self.ideal_thread_count().to_string().as_ref())
+        pipeline_string.replace("%T", &self.ideal_thread_count().to_string())
     }
 
     fn videoscale(&self) -> Option<String> {
@@ -178,26 +178,29 @@ impl PipelineParser {
 
     fn videoenc(&self) -> Option<String> {
         match self.video_format() {
-            VideoFormat::Webm | VideoFormat::Mkv => Some("vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T".to_string()),
-            VideoFormat::Mp4 => Some("x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline".to_string()),
-            VideoFormat::Gif => Some("gifenc speed=30 qos=true".to_string()),
+            VideoFormat::Webm | VideoFormat::Mkv => Some("vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T"),
+            VideoFormat::Mp4 => Some("x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline"),
+            VideoFormat::Gif => Some("gifenc speed=30 qos=true"),
         }
+        .map(str::to_string)
     }
 
     fn audioenc(&self) -> Option<String> {
         match self.video_format() {
-            VideoFormat::Webm | VideoFormat::Mkv | VideoFormat::Mp4 => Some("opusenc".to_string()),
+            VideoFormat::Webm | VideoFormat::Mkv | VideoFormat::Mp4 => Some("opusenc"),
             VideoFormat::Gif => None,
         }
+        .map(str::to_string)
     }
 
     fn muxer(&self) -> Option<String> {
         match self.video_format() {
-            VideoFormat::Webm => Some("webmmux".to_string()),
-            VideoFormat::Mkv => Some("matroskamux".to_string()),
-            VideoFormat::Mp4 => Some("mp4mux".to_string()),
+            VideoFormat::Webm => Some("webmmux"),
+            VideoFormat::Mkv => Some("matroskamux"),
+            VideoFormat::Mp4 => Some("mp4mux"),
             VideoFormat::Gif => None,
         }
+        .map(str::to_string)
     }
 
     fn audio_source_type(&self) -> AudioSourceType {
@@ -219,6 +222,28 @@ impl PipelineParser {
         }
     }
 
+    fn video_format(&self) -> VideoFormat {
+        match self.file_path().extension().unwrap().to_str().unwrap() {
+            "webm" => VideoFormat::Webm,
+            "mkv" => VideoFormat::Mkv,
+            "mp4" => VideoFormat::Mp4,
+            "gif" => VideoFormat::Gif,
+            _ => unimplemented!(),
+        }
+    }
+
+    fn file_path(&self) -> &PathBuf {
+        &self.builder.file_path
+    }
+
+    fn speaker_source(&self) -> Option<&str> {
+        self.builder.speaker_source.as_deref()
+    }
+
+    fn mic_source(&self) -> Option<&str> {
+        self.builder.mic_source.as_deref()
+    }
+
     fn framerate(&self) -> u32 {
         match self.video_format() {
             VideoFormat::Gif => GIF_DEFAULT_FRAMERATE,
@@ -232,28 +257,6 @@ impl PipelineParser {
 
     fn node_id(&self) -> u32 {
         self.builder.pipewire_stream.node_id
-    }
-
-    fn file_path(&self) -> &PathBuf {
-        &self.builder.file_path
-    }
-
-    fn speaker_source(&self) -> Option<&String> {
-        self.builder.speaker_source.as_ref()
-    }
-
-    fn mic_source(&self) -> Option<&String> {
-        self.builder.mic_source.as_ref()
-    }
-
-    fn video_format(&self) -> VideoFormat {
-        match self.file_path().extension().unwrap().to_str().unwrap() {
-            "webm" => VideoFormat::Webm,
-            "mkv" => VideoFormat::Mkv,
-            "mp4" => VideoFormat::Mp4,
-            "gif" => VideoFormat::Gif,
-            _ => unimplemented!(),
-        }
     }
 
     fn round_to_even(&self, number: f64) -> i32 {
@@ -309,7 +312,7 @@ mod tests {
             .parse_into_string();
 
         let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=60/1 ! videorate ! video/x-raw, framerate=60/1 ! videoscale ! video/x-raw, width=1680, height=1050 ! videocrop top=5600 left=5544 right=-4984 bottom=-6230 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline ! queue ! mp4mux ! filesink location=\"/home/someone/Videos/Kooha 1-1.mp4\" pulsesrc device=\"speaker_device_123\" ! queue ! audiomixer name=mix ! opusenc ! queue ! mux. pulsesrc device=\"microphone_device_123\" ! queue ! mix."
-            .replace("%T", min(glib::num_processors(), 64).to_string().as_ref());
+            .replace("%T", &min(glib::num_processors(), 64).to_string());
         assert_eq!(output, expected_output);
     }
 }
