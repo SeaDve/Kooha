@@ -5,7 +5,6 @@ use gtk::{
     graphene, gsk,
     prelude::*,
     subclass::prelude::*,
-    CompositeTemplate,
 };
 use once_cell::sync::Lazy;
 
@@ -36,8 +35,7 @@ pub enum AreaSelectorResponse {
 mod imp {
     use super::*;
 
-    #[derive(Debug, CompositeTemplate)]
-    #[template(resource = "/io/github/seadve/Kooha/ui/area_selector.ui")]
+    #[derive(Debug)]
     pub struct AreaSelector {
         pub start_point: RefCell<Option<Point>>,
         pub current_point: RefCell<Option<Point>>,
@@ -55,21 +53,15 @@ mod imp {
                 current_point: RefCell::new(None),
             }
         }
-
-        fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
-        }
-
-        fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
-            obj.init_template();
-        }
     }
 
     impl ObjectImpl for AreaSelector {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
-
             obj.set_cursor_from_name(Some("crosshair"));
+            obj.set_decorated(false);
+            obj.set_css_classes(&[]);
+
             obj.connect_close_request(
                 clone!(@weak obj => @default-return Inhibit(false), move |_| {
                     obj.emit_response(AreaSelectorResponse::Cancelled);
