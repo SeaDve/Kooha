@@ -157,14 +157,17 @@ impl PipelineParser {
             let stream_screen_height = self.builder.pipewire_stream.screen.height as f64;
 
             let scale_factor = stream_screen_width / actual_screen_width;
-            let (x, y, width, height) = coords.as_rescaled_tuple(scale_factor);
-            let right_crop = stream_screen_width - (width + x);
-            let bottom_crop = stream_screen_height - (height + y);
+            let coords = coords.to_owned() * scale_factor;
+
+            let top_crop = coords.y;
+            let left_crop = coords.x;
+            let right_crop = stream_screen_width - (coords.width + coords.x);
+            let bottom_crop = stream_screen_height - (coords.height + coords.y);
 
             Some(format!(
                 "videocrop top={} left={} right={} bottom={}",
-                self.round_to_even(y),
-                self.round_to_even(x),
+                self.round_to_even(top_crop),
+                self.round_to_even(left_crop),
                 self.round_to_even(right_crop),
                 self.round_to_even(bottom_crop)
             ))
