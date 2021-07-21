@@ -203,6 +203,7 @@ impl Application {
                 "Mathiascode".into(),
                 "Felix Weilbach".into(),
             ])
+            // Translators: Replace "translator-credits" with your names. Put a comma between.
             .translator_credits(&gettext("translator-credits"))
             .copyright(&gettext("Copyright 2021 Dave Patrick"))
             .license_type(gtk::License::Gpl30)
