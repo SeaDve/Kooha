@@ -203,6 +203,16 @@ impl PipelineParser {
         .map(str::to_string)
     }
 
+    fn video_format(&self) -> VideoFormat {
+        match self.file_path().extension().unwrap().to_str().unwrap() {
+            "webm" => VideoFormat::Webm,
+            "mkv" => VideoFormat::Mkv,
+            "mp4" => VideoFormat::Mp4,
+            "gif" => VideoFormat::Gif,
+            _ => unimplemented!(),
+        }
+    }
+
     fn audio_source_type(&self) -> AudioSourceType {
         if self.video_format() == VideoFormat::Gif {
             return AudioSourceType::None;
@@ -222,14 +232,12 @@ impl PipelineParser {
         }
     }
 
-    fn video_format(&self) -> VideoFormat {
-        match self.file_path().extension().unwrap().to_str().unwrap() {
-            "webm" => VideoFormat::Webm,
-            "mkv" => VideoFormat::Mkv,
-            "mp4" => VideoFormat::Mp4,
-            "gif" => VideoFormat::Gif,
-            _ => unimplemented!(),
+    fn framerate(&self) -> u32 {
+        if self.video_format() == VideoFormat::Gif {
+            return GIF_DEFAULT_FRAMERATE;
         }
+
+        self.builder.framerate
     }
 
     fn file_path(&self) -> &PathBuf {
@@ -242,13 +250,6 @@ impl PipelineParser {
 
     fn mic_source(&self) -> Option<&str> {
         self.builder.mic_source.as_deref()
-    }
-
-    fn framerate(&self) -> u32 {
-        match self.video_format() {
-            VideoFormat::Gif => GIF_DEFAULT_FRAMERATE,
-            _ => self.builder.framerate,
-        }
     }
 
     fn fd(&self) -> i32 {
