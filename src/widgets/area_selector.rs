@@ -76,6 +76,13 @@ impl Rectangle {
     }
 }
 
+#[derive(Debug, Clone, GBoxed)]
+#[gboxed(type_name = "AreaSelectorResponse")]
+pub enum AreaSelectorResponse {
+    Captured(Rectangle, Screen),
+    Cancelled,
+}
+
 mod imp {
     use super::*;
 
@@ -121,7 +128,7 @@ mod imp {
             obj.set_cursor_from_name(Some("crosshair"));
             obj.connect_close_request(
                 clone!(@weak obj => @default-return Inhibit(false), move |_| {
-                    obj.emit_cancelled();
+                    obj.emit_response(AreaSelectorResponse::Cancelled);
                     Inhibit(false)
                 }),
             );
@@ -134,7 +141,7 @@ mod imp {
             key_controller.connect_key_pressed(
                 clone!(@weak obj => @default-return Inhibit(false), move |_, keyval, _, _| {
                     if keyval == Key::from_name("Escape") {
-                        obj.emit_cancelled();
+                        obj.emit_response(AreaSelectorResponse::Cancelled);
                         Inhibit(true)
                     } else {
                         Inhibit(false)
@@ -168,7 +175,7 @@ mod imp {
                     let selection_rectangle = Rectangle::from_points(start_point, end_point);
                     let actual_screen = Screen::new(obj.width(), obj.height());
 
-                    obj.emit_captured(selection_rectangle, actual_screen);
+                    obj.emit_response(AreaSelectorResponse::Captured(selection_rectangle, actual_screen));
                 }
             }));
             obj.add_controller(&gesture_drag);
@@ -176,18 +183,12 @@ mod imp {
 
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![
-                    Signal::builder(
-                        "captured",
-                        &[
-                            Rectangle::static_type().into(),
-                            Screen::static_type().into(),
-                        ],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
-                    Signal::builder("cancelled", &[], <()>::static_type().into()).build(),
-                ]
+                vec![Signal::builder(
+                    "response",
+                    &[AreaSelectorResponse::static_type().into()],
+                    <()>::static_type().into(),
+                )
+                .build()]
             });
             SIGNALS.as_ref()
         }
@@ -252,15 +253,8 @@ impl KhaAreaSelector {
         });
     }
 
-    fn emit_cancelled(&self) {
-        self.emit_by_name("cancelled", &[]).unwrap();
-        self.clean();
-        self.hide();
-    }
-
-    fn emit_captured(&self, selection_rectangle: Rectangle, actual_screen: Screen) {
-        self.emit_by_name("captured", &[&selection_rectangle, &actual_screen])
-            .unwrap();
+    fn emit_response(&self, response: AreaSelectorResponse) {
+        self.emit_by_name("response", &[&response]).unwrap();
         self.clean();
         self.hide();
     }
