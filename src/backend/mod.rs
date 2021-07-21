@@ -1,3 +1,4 @@
+mod data_types;
 mod pipeline_builder;
 mod recorder;
 mod recorder_controller;
@@ -7,8 +8,8 @@ mod timer;
 mod utils;
 
 pub use {
+    data_types::{Point, Rectangle, Screen, Stream},
     recorder_controller::{KhaRecorderController, RecorderControllerState},
-    screencast_portal::Screen,
     settings::KhaSettings,
     timer::KhaTimer,
     utils::Utils,
@@ -17,6 +18,6 @@ pub use {
 use {
     pipeline_builder::KhaPipelineBuilder,
     recorder::{KhaRecorder, RecorderState},
-    screencast_portal::{KhaScreencastPortal, Stream},
+    screencast_portal::KhaScreencastPortal,
     timer::TimerState,
 };

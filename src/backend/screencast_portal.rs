@@ -5,35 +5,12 @@ use ashpd::{
 };
 use futures::lock::Mutex;
 use glib::clone;
-use gtk::{
-    glib::{self, GBoxed},
-    prelude::*,
-    subclass::prelude::*,
-};
+use gtk::{glib, prelude::*, subclass::prelude::*};
 
 use std::os::unix::io::RawFd;
 use std::sync::Arc;
 
-#[derive(Debug, Default, Clone, GBoxed)]
-#[gboxed(type_name = "Screen")]
-pub struct Screen {
-    pub width: i32,
-    pub height: i32,
-}
-
-impl Screen {
-    pub fn new(width: i32, height: i32) -> Self {
-        Self { width, height }
-    }
-}
-
-#[derive(Debug, Default, Clone, GBoxed)]
-#[gboxed(type_name = "Stream")]
-pub struct Stream {
-    pub fd: i32,
-    pub node_id: u32,
-    pub screen: Screen,
-}
+use crate::backend::Stream;
 
 mod imp {
     use super::*;

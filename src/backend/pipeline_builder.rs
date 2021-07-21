@@ -3,8 +3,7 @@ use gtk::glib;
 use std::cmp::min;
 use std::path::PathBuf;
 
-use crate::backend::{Screen, Stream};
-use crate::widgets::Rectangle;
+use crate::backend::{Rectangle, Screen, Stream};
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 

@@ -3,7 +3,7 @@ mod toggle_button;
 mod window;
 
 pub use {
-    area_selector::{AreaSelectorResponse, KhaAreaSelector, Rectangle},
+    area_selector::{AreaSelectorResponse, KhaAreaSelector},
     window::KhaWindow,
 };
 

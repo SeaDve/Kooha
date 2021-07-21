@@ -7,10 +7,9 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use std::{mem, time::Duration};
+use std::time::Duration;
 
-use crate::backend::Screen;
-use crate::backend::Utils;
+use crate::backend::{Point, Rectangle, Screen, Utils};
 
 const BORDER_COLOR: gdk::RGBA = gdk::RGBA {
     red: 0.1,
@@ -24,57 +23,6 @@ const FILL_COLOR: gdk::RGBA = gdk::RGBA {
     blue: 0.8,
     alpha: 0.3,
 };
-
-#[derive(Debug, Clone, Copy)]
-pub struct Point {
-    pub x: f64,
-    pub y: f64,
-}
-
-impl Point {
-    pub fn new(x: f64, y: f64) -> Self {
-        Self { x, y }
-    }
-}
-
-#[derive(Debug, Clone, GBoxed)]
-#[gboxed(type_name = "Rectangle")]
-pub struct Rectangle {
-    pub x: f64,
-    pub y: f64,
-    pub width: f64,
-    pub height: f64,
-}
-
-impl Rectangle {
-    pub fn from_points(point_1: Point, point_2: Point) -> Self {
-        let mut x = point_1.x.min(point_2.x);
-        let mut y = point_1.y.min(point_2.y);
-        let mut width = (point_1.x - point_2.x).abs();
-        let mut height = (point_1.y - point_2.y).abs();
-
-        if width == 0.0 && height == 0.0 {
-            mem::swap(&mut width, &mut x);
-            mem::swap(&mut height, &mut y);
-        }
-
-        Self {
-            x,
-            y,
-            width,
-            height,
-        }
-    }
-
-    pub fn as_rescaled_tuple(&self, scale_factor: f64) -> (f64, f64, f64, f64) {
-        (
-            self.x * scale_factor,
-            self.y * scale_factor,
-            self.width * scale_factor,
-            self.height * scale_factor,
-        )
-    }
-}
 
 #[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "AreaSelectorResponse")]
