@@ -2,18 +2,6 @@ use gtk::glib::{self, GBoxed};
 
 use std::mem;
 
-#[derive(Debug, Clone, Copy)]
-pub struct Point {
-    pub x: f64,
-    pub y: f64,
-}
-
-impl Point {
-    pub fn new(x: f64, y: f64) -> Self {
-        Self { x, y }
-    }
-}
-
 #[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "Rectangle")]
 pub struct Rectangle {
@@ -50,6 +38,18 @@ impl Rectangle {
             self.width * scale_factor,
             self.height * scale_factor,
         )
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
+pub struct Point {
+    pub x: f64,
+    pub y: f64,
+}
+
+impl Point {
+    pub fn new(x: f64, y: f64) -> Self {
+        Self { x, y }
     }
 }
 
