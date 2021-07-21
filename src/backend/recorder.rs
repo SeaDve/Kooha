@@ -1,10 +1,19 @@
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, Continue, GEnum},
+    glib::{self, clone, subclass::Signal, Continue, GEnum},
     subclass::prelude::*,
 };
+use once_cell::sync::Lazy;
 
-use crate::backend::{KhaScreencastPortal, KhaSettings, Stream};
+use std::{
+    cell::{Cell, RefCell},
+    rc::Rc,
+};
+
+use crate::{
+    backend::{ScreencastPortal, Settings, Stream},
+    widgets::AreaSelector,
+};
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderState")]
@@ -23,37 +32,27 @@ impl Default for RecorderState {
 mod imp {
     use super::*;
 
-    use glib::subclass::Signal;
-    use once_cell::sync::Lazy;
-
-    use std::{
-        cell::{Cell, RefCell},
-        rc::Rc,
-    };
-
-    use crate::widgets::KhaAreaSelector;
-
     #[derive(Debug)]
-    pub struct KhaRecorder {
-        pub settings: KhaSettings,
-        pub area_selector: KhaAreaSelector,
-        pub portal: KhaScreencastPortal,
+    pub struct Recorder {
+        pub settings: Settings,
+        pub area_selector: AreaSelector,
+        pub portal: ScreencastPortal,
         pub pipeline: Rc<RefCell<Option<gst::Pipeline>>>,
         pub state: RefCell<RecorderState>,
         pub is_readying: Cell<bool>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaRecorder {
-        const NAME: &'static str = "KhaRecorder";
-        type Type = super::KhaRecorder;
+    impl ObjectSubclass for Recorder {
+        const NAME: &'static str = "Recorder";
+        type Type = super::Recorder;
         type ParentType = glib::Object;
 
         fn new() -> Self {
             Self {
-                settings: KhaSettings::new(),
-                area_selector: KhaAreaSelector::new(),
-                portal: KhaScreencastPortal::new(),
+                settings: Settings::new(),
+                area_selector: AreaSelector::new(),
+                portal: ScreencastPortal::new(),
                 pipeline: Rc::new(RefCell::new(None)),
                 state: RefCell::new(RecorderState::default()),
                 is_readying: Cell::new(false),
@@ -61,7 +60,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaRecorder {
+    impl ObjectImpl for Recorder {
         fn constructed(&self, obj: &Self::Type) {
             self.portal
                 .connect_local(
@@ -163,16 +162,16 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct KhaRecorder(ObjectSubclass<imp::KhaRecorder>);
+    pub struct Recorder(ObjectSubclass<imp::Recorder>);
 }
 
-impl KhaRecorder {
+impl Recorder {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorder")
+        glib::Object::new::<Self>(&[]).expect("Failed to create Recorder")
     }
 
-    fn private(&self) -> &imp::KhaRecorder {
-        &imp::KhaRecorder::from_instance(self)
+    fn private(&self) -> &imp::Recorder {
+        &imp::Recorder::from_instance(self)
     }
 
     fn pipeline(&self) -> gst::Pipeline {
@@ -180,12 +179,12 @@ impl KhaRecorder {
         pipeline.get::<gst::Pipeline>().unwrap()
     }
 
-    fn portal(&self) -> &KhaScreencastPortal {
+    fn portal(&self) -> &ScreencastPortal {
         let imp = self.private();
         &imp.portal
     }
 
-    fn settings(&self) -> &KhaSettings {
+    fn settings(&self) -> &Settings {
         let imp = self.private();
         &imp.settings
     }
@@ -213,7 +212,7 @@ impl KhaRecorder {
         self.property("state")
             .unwrap()
             .get::<RecorderState>()
-            .expect("KhaRecorder failed to get state")
+            .expect("Recorder failed to get state")
     }
 
     fn set_is_readying(&self, is_readying: bool) {

@@ -4,13 +4,12 @@ use gtk::{
     prelude::*,
     subclass::prelude::*,
 };
+use once_cell::sync::Lazy;
 
 use std::{cell::Cell, time::Duration};
 
 mod imp {
     use super::*;
-
-    use once_cell::sync::Lazy;
 
     #[derive(Debug)]
     pub struct KhaToggleButton {

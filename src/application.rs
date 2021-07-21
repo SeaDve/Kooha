@@ -1,37 +1,38 @@
 use gettextrs::gettext;
 use gtk::{
     gdk, gio,
-    glib::{self, clone},
+    glib::{self, clone, WeakRef},
     prelude::*,
     subclass::prelude::*,
 };
+use once_cell::sync::OnceCell;
 
 use std::path::PathBuf;
 
-use crate::backend::KhaSettings;
-use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
-use crate::widgets::KhaWindow;
+use crate::{
+    backend::Settings,
+    config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
+    widgets::MainWindow,
+};
 
 mod imp {
     use super::*;
-    use glib::WeakRef;
-    use once_cell::sync::OnceCell;
 
     #[derive(Debug, Default)]
-    pub struct KhaApplication {
-        pub window: OnceCell<WeakRef<KhaWindow>>,
+    pub struct Application {
+        pub window: OnceCell<WeakRef<MainWindow>>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaApplication {
-        const NAME: &'static str = "KhaApplication";
-        type Type = super::KhaApplication;
+    impl ObjectSubclass for Application {
+        const NAME: &'static str = "Application";
+        type Type = super::Application;
         type ParentType = gtk::Application;
     }
 
-    impl ObjectImpl for KhaApplication {}
+    impl ObjectImpl for Application {}
 
-    impl ApplicationImpl for KhaApplication {
+    impl ApplicationImpl for Application {
         fn activate(&self, app: &Self::Type) {
             if let Some(window) = self.window.get() {
                 let window = window.upgrade().unwrap();
@@ -40,7 +41,7 @@ mod imp {
                 return;
             }
 
-            let window = KhaWindow::new(app);
+            let window = MainWindow::new(app);
             self.window
                 .set(window.downgrade())
                 .expect("Window already set.");
@@ -57,27 +58,27 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for KhaApplication {}
+    impl GtkApplicationImpl for Application {}
 }
 
 glib::wrapper! {
-    pub struct KhaApplication(ObjectSubclass<imp::KhaApplication>)
+    pub struct Application(ObjectSubclass<imp::Application>)
         @extends gio::Application, gtk::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl KhaApplication {
+impl Application {
     pub fn new() -> Self {
         glib::Object::new(&[
             ("application-id", &Some(APP_ID)),
             ("flags", &gio::ApplicationFlags::empty()),
             ("resource-base-path", &Some("/io/github/seadve/Kooha/")),
         ])
-        .expect("Failed to initialize KhaApplication")
+        .expect("Failed to initialize Application")
     }
 
-    fn main_window(&self) -> KhaWindow {
-        let imp = imp::KhaApplication::from_instance(self);
+    fn main_window(&self) -> MainWindow {
+        let imp = imp::Application::from_instance(self);
         imp.window.get().unwrap().upgrade().unwrap()
     }
 
@@ -146,7 +147,7 @@ impl KhaApplication {
     }
 
     fn select_saving_location(&self) {
-        let settings = KhaSettings::new();
+        let settings = Settings::new();
         let chooser = gtk::FileChooserDialogBuilder::new()
             .transient_for(&self.main_window())
             .modal(true)

@@ -9,15 +9,15 @@ mod utils;
 
 pub use {
     data_types::{Point, Rectangle, Screen, Stream},
-    recorder_controller::{KhaRecorderController, RecorderControllerState},
-    settings::KhaSettings,
-    timer::KhaTimer,
+    recorder_controller::{RecorderController, RecorderControllerState},
+    settings::Settings,
+    timer::Timer,
     utils::Utils,
 };
 
 use {
-    pipeline_builder::KhaPipelineBuilder,
-    recorder::{KhaRecorder, RecorderState},
-    screencast_portal::KhaScreencastPortal,
+    pipeline_builder::PipelineBuilder,
+    recorder::{Recorder, RecorderState},
+    screencast_portal::ScreencastPortal,
     timer::TimerState,
 };

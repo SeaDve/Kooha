@@ -1,10 +1,13 @@
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, GEnum},
+    glib::{self, clone, subclass::Signal, GEnum},
     subclass::prelude::*,
 };
+use once_cell::sync::Lazy;
 
-use crate::backend::{RecorderState, TimerState};
+use std::cell::Cell;
+
+use crate::backend::{Recorder, RecorderState, Timer, TimerState};
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderControllerState")]
@@ -24,17 +27,10 @@ impl Default for RecorderControllerState {
 mod imp {
     use super::*;
 
-    use glib::subclass::Signal;
-    use once_cell::sync::Lazy;
-
-    use std::cell::Cell;
-
-    use crate::backend::{KhaRecorder, KhaTimer};
-
     #[derive(Debug)]
-    pub struct KhaRecorderController {
-        pub recorder: KhaRecorder,
-        pub timer: KhaTimer,
+    pub struct RecorderController {
+        pub recorder: Recorder,
+        pub timer: Timer,
         pub state: Cell<RecorderControllerState>,
         pub time: Cell<u32>,
         pub is_readying: Cell<bool>,
@@ -42,15 +38,15 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaRecorderController {
-        const NAME: &'static str = "KhaRecorderController";
-        type Type = super::KhaRecorderController;
+    impl ObjectSubclass for RecorderController {
+        const NAME: &'static str = "RecorderController";
+        type Type = super::RecorderController;
         type ParentType = glib::Object;
 
         fn new() -> Self {
             Self {
-                recorder: KhaRecorder::new(),
-                timer: KhaTimer::new(),
+                recorder: Recorder::new(),
+                timer: Timer::new(),
                 state: Cell::new(RecorderControllerState::default()),
                 time: Cell::new(0),
                 is_readying: Cell::new(false),
@@ -59,7 +55,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaRecorderController {
+    impl ObjectImpl for RecorderController {
         fn constructed(&self, obj: &Self::Type) {
             let imp = obj.private();
             imp.timer.bind_property("time", obj, "time").build();
@@ -222,16 +218,16 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct KhaRecorderController(ObjectSubclass<imp::KhaRecorderController>);
+    pub struct RecorderController(ObjectSubclass<imp::RecorderController>);
 }
 
-impl KhaRecorderController {
+impl RecorderController {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create KhaRecorderController")
+        glib::Object::new::<Self>(&[]).expect("Failed to create RecorderController")
     }
 
-    fn private(&self) -> &imp::KhaRecorderController {
-        &imp::KhaRecorderController::from_instance(self)
+    fn private(&self) -> &imp::RecorderController {
+        &imp::RecorderController::from_instance(self)
     }
 
     pub fn state(&self) -> RecorderControllerState {

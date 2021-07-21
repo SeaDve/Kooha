@@ -5,22 +5,23 @@ use gtk::{
     prelude::*,
     subclass::prelude::*,
 };
+
 use std::path::PathBuf;
+
+use crate::config::APP_ID;
 
 mod imp {
     use super::*;
 
-    use crate::config::APP_ID;
-
     #[derive(Debug)]
-    pub struct KhaSettings {
+    pub struct Settings {
         pub settings: gio::Settings,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaSettings {
-        const NAME: &'static str = "KhaSettings";
-        type Type = super::KhaSettings;
+    impl ObjectSubclass for Settings {
+        const NAME: &'static str = "Settings";
+        type Type = super::Settings;
         type ParentType = glib::Object;
 
         fn new() -> Self {
@@ -30,20 +31,20 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaSettings {}
+    impl ObjectImpl for Settings {}
 }
 
 glib::wrapper! {
-    pub struct KhaSettings(ObjectSubclass<imp::KhaSettings>);
+    pub struct Settings(ObjectSubclass<imp::Settings>);
 }
 
-impl KhaSettings {
+impl Settings {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create KhaSettings")
+        glib::Object::new::<Self>(&[]).expect("Failed to create Settings")
     }
 
-    fn private(&self) -> &imp::KhaSettings {
-        &imp::KhaSettings::from_instance(self)
+    fn private(&self) -> &imp::Settings {
+        &imp::Settings::from_instance(self)
     }
 
     pub fn create_action(&self, action: &str) -> gio::Action {

@@ -4,28 +4,29 @@ use ashpd::{
     zbus, WindowIdentifier,
 };
 use futures::lock::Mutex;
-use glib::clone;
-use gtk::{glib, prelude::*, subclass::prelude::*};
+use gtk::{
+    glib::{self, clone, subclass::Signal},
+    prelude::*,
+    subclass::prelude::*,
+};
+use once_cell::sync::Lazy;
 
-use std::os::unix::io::RawFd;
-use std::sync::Arc;
+use std::{os::unix::io::RawFd, sync::Arc};
 
 use crate::backend::Stream;
 
 mod imp {
     use super::*;
-    use glib::subclass::Signal;
-    use once_cell::sync::Lazy;
 
     #[derive(Debug)]
-    pub struct KhaScreencastPortal {
+    pub struct ScreencastPortal {
         pub session: Arc<Mutex<Option<SessionProxy<'static>>>>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaScreencastPortal {
-        const NAME: &'static str = "KhaScreencastPortal";
-        type Type = super::KhaScreencastPortal;
+    impl ObjectSubclass for ScreencastPortal {
+        const NAME: &'static str = "ScreencastPortal";
+        type Type = super::ScreencastPortal;
         type ParentType = glib::Object;
 
         fn new() -> Self {
@@ -35,7 +36,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaScreencastPortal {
+    impl ObjectImpl for ScreencastPortal {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![
@@ -54,10 +55,10 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct KhaScreencastPortal(ObjectSubclass<imp::KhaScreencastPortal>);
+    pub struct ScreencastPortal(ObjectSubclass<imp::ScreencastPortal>);
 }
 
-impl KhaScreencastPortal {
+impl ScreencastPortal {
     pub fn new() -> Self {
         glib::Object::new::<Self>(&[]).expect("Failed to create KhaPortal")
     }
@@ -156,7 +157,7 @@ impl KhaScreencastPortal {
         log::info!("Starting session");
         ctx.spawn_local(clone!(@weak self as portal => async move {
 
-            let imp = imp::KhaScreencastPortal::from_instance(&portal);
+            let imp = imp::ScreencastPortal::from_instance(&portal);
 
             let identifier = WindowIdentifier::default();
             let multiple = false;
@@ -184,7 +185,7 @@ impl KhaScreencastPortal {
     pub fn close(&self) {
         // let ctx = glib::MainContext::default();
         // ctx.spawn_local(clone!(@weak self as portal => async move {
-        //     let imp = imp::KhaScreencastPortal::from_instance(&portal);
+        //     let imp = imp::ScreencastPortal::from_instance(&portal);
         //     if let Some(session) = imp.session.lock().await.take() {
         //         let _ = session.close().await;
         //     }

@@ -1,13 +1,15 @@
 use adw::subclass::prelude::*;
 use gtk::{
     gdk::{self, keys::Key},
-    glib::{self, clone, signal::Inhibit, GBoxed},
+    glib::{self, clone, signal::Inhibit, subclass::Signal, GBoxed},
     graphene, gsk,
     prelude::*,
     subclass::prelude::*,
+    CompositeTemplate,
 };
+use once_cell::sync::Lazy;
 
-use std::time::Duration;
+use std::{cell::RefCell, time::Duration};
 
 use crate::backend::{Point, Rectangle, Screen, Utils};
 
@@ -34,23 +36,17 @@ pub enum AreaSelectorResponse {
 mod imp {
     use super::*;
 
-    use glib::subclass::Signal;
-    use gtk::CompositeTemplate;
-    use once_cell::sync::Lazy;
-
-    use std::cell::RefCell;
-
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/area_selector.ui")]
-    pub struct KhaAreaSelector {
+    pub struct AreaSelector {
         pub start_point: RefCell<Option<Point>>,
         pub current_point: RefCell<Option<Point>>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaAreaSelector {
-        const NAME: &'static str = "KhaAreaSelector";
-        type Type = super::KhaAreaSelector;
+    impl ObjectSubclass for AreaSelector {
+        const NAME: &'static str = "AreaSelector";
+        type Type = super::AreaSelector;
         type ParentType = gtk::Window;
 
         fn new() -> Self {
@@ -69,7 +65,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaAreaSelector {
+    impl ObjectImpl for AreaSelector {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
@@ -142,7 +138,7 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for KhaAreaSelector {
+    impl WidgetImpl for AreaSelector {
         fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
             if self.start_point.borrow().is_none() {
                 let placeholder_color = gdk::RGBABuilder::new().build();
@@ -171,21 +167,21 @@ mod imp {
             }
         }
     }
-    impl WindowImpl for KhaAreaSelector {}
+    impl WindowImpl for AreaSelector {}
 }
 
 glib::wrapper! {
-    pub struct KhaAreaSelector(ObjectSubclass<imp::KhaAreaSelector>)
+    pub struct AreaSelector(ObjectSubclass<imp::AreaSelector>)
         @extends gtk::Widget, gtk::Window;
 }
 
-impl KhaAreaSelector {
+impl AreaSelector {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create KhaAreaSelector")
+        glib::Object::new(&[]).expect("Failed to create AreaSelector")
     }
 
-    fn private(&self) -> &imp::KhaAreaSelector {
-        &imp::KhaAreaSelector::from_instance(self)
+    fn private(&self) -> &imp::AreaSelector {
+        &imp::AreaSelector::from_instance(self)
     }
 
     fn set_raise_request(&self, is_raised: bool) {

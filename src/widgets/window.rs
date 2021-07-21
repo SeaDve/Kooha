@@ -5,11 +5,15 @@ use gtk::{
     glib::{self, clone},
     prelude::*,
     subclass::prelude::*,
+    CompositeTemplate,
 };
 
-use crate::application::KhaApplication;
-use crate::backend::{KhaRecorderController, RecorderControllerState};
-use crate::widgets::KhaToggleButton;
+use crate::{
+    application::Application,
+    backend::{RecorderController, RecorderControllerState, Settings},
+    config::PROFILE,
+    widgets::KhaToggleButton,
+};
 
 #[derive(Debug, PartialEq)]
 enum View {
@@ -21,16 +25,11 @@ enum View {
 mod imp {
     use super::*;
 
-    use gtk::CompositeTemplate;
-
-    use crate::backend::KhaSettings;
-    use crate::config::PROFILE;
-
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
-    pub struct KhaWindow {
-        pub settings: KhaSettings,
-        pub recorder_controller: KhaRecorderController,
+    pub struct MainWindow {
+        pub settings: Settings,
+        pub recorder_controller: RecorderController,
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -50,15 +49,15 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaWindow {
-        const NAME: &'static str = "KhaWindow";
-        type Type = super::KhaWindow;
+    impl ObjectSubclass for MainWindow {
+        const NAME: &'static str = "MainWindow";
+        type Type = super::MainWindow;
         type ParentType = adw::ApplicationWindow;
 
         fn new() -> Self {
             Self {
-                settings: KhaSettings::new(),
-                recorder_controller: KhaRecorderController::new(),
+                settings: Settings::new(),
+                recorder_controller: RecorderController::new(),
                 pause_record_button: TemplateChild::default(),
                 record_speaker_toggle: TemplateChild::default(),
                 record_mic_toggle: TemplateChild::default(),
@@ -107,7 +106,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaWindow {
+    impl ObjectImpl for MainWindow {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
@@ -200,25 +199,25 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for KhaWindow {}
-    impl WindowImpl for KhaWindow {}
-    impl ApplicationWindowImpl for KhaWindow {}
-    impl AdwApplicationWindowImpl for KhaWindow {}
+    impl WidgetImpl for MainWindow {}
+    impl WindowImpl for MainWindow {}
+    impl ApplicationWindowImpl for MainWindow {}
+    impl AdwApplicationWindowImpl for MainWindow {}
 }
 
 glib::wrapper! {
-    pub struct KhaWindow(ObjectSubclass<imp::KhaWindow>)
+    pub struct MainWindow(ObjectSubclass<imp::MainWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl KhaWindow {
-    pub fn new(app: &KhaApplication) -> Self {
-        glib::Object::new(&[("application", app)]).expect("Failed to create KhaWindow")
+impl MainWindow {
+    pub fn new(app: &Application) -> Self {
+        glib::Object::new(&[("application", app)]).expect("Failed to create MainWindow")
     }
 
-    fn private(&self) -> &imp::KhaWindow {
-        &imp::KhaWindow::from_instance(self)
+    fn private(&self) -> &imp::MainWindow {
+        &imp::MainWindow::from_instance(self)
     }
 
     fn update_audio_toggles_sensitivity(&self) {

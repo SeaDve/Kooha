@@ -1,8 +1,11 @@
 use gtk::{
-    glib::{self, clone, Continue, GEnum},
+    glib::{self, clone, subclass::Signal, Continue, GEnum},
     prelude::*,
     subclass::prelude::*,
 };
+use once_cell::sync::Lazy;
+
+use std::cell::Cell;
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "TimerState")]
@@ -22,21 +25,16 @@ impl Default for TimerState {
 mod imp {
     use super::*;
 
-    use glib::subclass::Signal;
-    use once_cell::sync::Lazy;
-
-    use std::cell::Cell;
-
     #[derive(Debug)]
-    pub struct KhaTimer {
+    pub struct Timer {
         pub state: Cell<TimerState>,
         pub time: Cell<u32>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaTimer {
-        const NAME: &'static str = "KhaTimer";
-        type Type = super::KhaTimer;
+    impl ObjectSubclass for Timer {
+        const NAME: &'static str = "Timer";
+        type Type = super::Timer;
         type ParentType = glib::Object;
 
         fn new() -> Self {
@@ -47,7 +45,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaTimer {
+    impl ObjectImpl for Timer {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![Signal::builder("delay-done", &[], <()>::static_type().into()).build()]
@@ -111,36 +109,36 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct KhaTimer(ObjectSubclass<imp::KhaTimer>);
+    pub struct Timer(ObjectSubclass<imp::Timer>);
 }
 
-impl KhaTimer {
+impl Timer {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create KhaTimer")
+        glib::Object::new::<Self>(&[]).expect("Failed to create Timer")
     }
 
     fn set_state(&self, new_state: TimerState) {
         self.set_property("state", new_state)
-            .expect("KhaTimer failed to set state");
+            .expect("Failed to set timer state");
     }
 
     pub fn state(&self) -> TimerState {
         self.property("state")
             .unwrap()
             .get::<TimerState>()
-            .expect("KhaTimer failed to get state")
+            .expect("Failed to get timer state")
     }
 
     fn set_time(&self, new_time: u32) {
         self.set_property("time", new_time)
-            .expect("KhaTimer failed to set time");
+            .expect("Failed to get timer time");
     }
 
     fn time(&self) -> u32 {
         self.property("time")
             .unwrap()
             .get::<u32>()
-            .expect("KhaTimer failed to get time")
+            .expect("Failed to get timer time")
     }
 
     pub fn start(&self, delay: u32) {

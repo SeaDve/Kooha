@@ -23,7 +23,7 @@ enum VideoFormat {
 }
 
 #[derive(Default)]
-pub struct KhaPipelineBuilder {
+pub struct PipelineBuilder {
     pipewire_stream: Stream,
     speaker_source: Option<String>,
     mic_source: Option<String>,
@@ -35,7 +35,7 @@ pub struct KhaPipelineBuilder {
     file_path: PathBuf,
 }
 
-impl KhaPipelineBuilder {
+impl PipelineBuilder {
     pub fn new() -> Self {
         Self::default()
     }
@@ -96,11 +96,11 @@ impl KhaPipelineBuilder {
 }
 
 struct PipelineParser {
-    builder: KhaPipelineBuilder,
+    builder: PipelineBuilder,
 }
 
 impl PipelineParser {
-    pub fn from_builder(builder: KhaPipelineBuilder) -> Self {
+    pub fn from_builder(builder: PipelineBuilder) -> Self {
         Self { builder }
     }
 

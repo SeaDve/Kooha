@@ -3,7 +3,7 @@ mod backend;
 mod config;
 mod widgets;
 
-use application::KhaApplication;
+use application::Application;
 use config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 use gettextrs::{bindtextdomain, setlocale, textdomain, LocaleCategory};
 use gtk::{gio, glib};
@@ -26,6 +26,6 @@ fn main() {
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file");
     gio::resources_register(&res);
 
-    let app = KhaApplication::new();
+    let app = Application::new();
     app.run();
 }
