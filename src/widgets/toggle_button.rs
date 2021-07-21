@@ -12,14 +12,14 @@ mod imp {
     use super::*;
 
     #[derive(Debug)]
-    pub struct KhaToggleButton {
+    pub struct ToggleButton {
         action_enabled: Cell<bool>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for KhaToggleButton {
-        const NAME: &'static str = "KhaToggleButton";
-        type Type = super::KhaToggleButton;
+    impl ObjectSubclass for ToggleButton {
+        const NAME: &'static str = "ToggleButton";
+        type Type = super::ToggleButton;
         type ParentType = gtk::ToggleButton;
 
         fn new() -> Self {
@@ -29,7 +29,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for KhaToggleButton {
+    impl ObjectImpl for ToggleButton {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![glib::ParamSpec::new_boolean(
@@ -76,19 +76,19 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for KhaToggleButton {}
-    impl ButtonImpl for KhaToggleButton {}
-    impl ToggleButtonImpl for KhaToggleButton {}
+    impl WidgetImpl for ToggleButton {}
+    impl ButtonImpl for ToggleButton {}
+    impl ToggleButtonImpl for ToggleButton {}
 }
 
 glib::wrapper! {
-    pub struct KhaToggleButton(ObjectSubclass<imp::KhaToggleButton>)
+    pub struct ToggleButton(ObjectSubclass<imp::ToggleButton>)
         @extends gtk::Widget, gtk::Button, gtk::ToggleButton;
 }
 
-impl KhaToggleButton {
+impl ToggleButton {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create KhaToggleButton")
+        glib::Object::new(&[]).expect("Failed to create ToggleButton")
     }
 
     pub fn set_action_enabled(&self, is_enabled: bool) {

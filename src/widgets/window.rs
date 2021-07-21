@@ -12,7 +12,7 @@ use crate::{
     application::Application,
     backend::{RecorderController, RecorderControllerState, Settings},
     config::PROFILE,
-    widgets::KhaToggleButton,
+    widgets::ToggleButton,
 };
 
 #[derive(Debug, PartialEq)]
@@ -33,9 +33,9 @@ mod imp {
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub record_speaker_toggle: TemplateChild<KhaToggleButton>,
+        pub record_speaker_toggle: TemplateChild<ToggleButton>,
         #[template_child]
-        pub record_mic_toggle: TemplateChild<KhaToggleButton>,
+        pub record_mic_toggle: TemplateChild<ToggleButton>,
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -70,7 +70,7 @@ mod imp {
         }
 
         fn class_init(klass: &mut Self::Class) {
-            KhaToggleButton::static_type();
+            ToggleButton::static_type();
             Self::bind_template(klass);
 
             klass.install_action("win.toggle-record", None, move |obj, _, _| {

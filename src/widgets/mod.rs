@@ -7,4 +7,4 @@ pub use {
     window::MainWindow,
 };
 
-use toggle_button::KhaToggleButton;
+use toggle_button::ToggleButton;
