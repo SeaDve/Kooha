@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # TheInterestingSoul <wangpy01@outlook.com>, 2021.
+# Zhou Nan <zhounan@nfschina.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:10+0800\n"
-"PO-Revision-Date: 2021-07-18 02:32+0000\n"
-"Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
+"PO-Revision-Date: 2021-07-21 06:35+0000\n"
+"Last-Translator: Zhou Nan <zhounan@nfschina.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -87,7 +88,7 @@ msgstr "Dave Patrick"
 
 #: data/ui/help_overlay.ui:10
 msgid "General"
-msgstr "一般"
+msgstr "通用"
 
 #: data/ui/help_overlay.ui:14
 msgid "Open menu"
@@ -95,7 +96,7 @@ msgstr "打开菜单"
 
 #: data/ui/help_overlay.ui:20
 msgid "Show keyboard shortcuts"
-msgstr "显示快捷键列表"
+msgstr "显示键盘快捷键"
 
 #: data/ui/help_overlay.ui:26
 msgid "Quit"
@@ -223,7 +224,7 @@ msgstr "保存至……"
 
 #: data/ui/window.ui:380
 msgid "Keyboard Shortcuts"
-msgstr "键盘快捷键"
+msgstr "快捷键"
 
 #: data/ui/window.ui:384
 msgid "About Kooha"
@@ -272,12 +273,12 @@ msgstr "请选择一个可访问的位置，然后重试。"
 
 #: src/main.py:122
 msgid "Copyright 2021 Dave Patrick"
-msgstr "版权所有 © 2021 Dave Patrick"
+msgstr "版权所有: Dave Patrick"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/main.py:124
 msgid "translator-credits"
-msgstr "有趣的灵魂 (@TheInterestingSoul)"
+msgstr "Zhou Nan <zhounan@nfschina.com>"
 
 #: src/main.py:125
 msgid "GitHub"

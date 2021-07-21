@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021.
+# ToldYouThat <itoldyouthat@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:10+0800\n"
-"PO-Revision-Date: 2021-07-07 11:19+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-07-21 06:35+0000\n"
+"Last-Translator: ToldYouThat <itoldyouthat@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
 "Language: tr\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in:3
@@ -115,7 +116,7 @@ msgstr "Kaydı aç/kapat"
 
 #: data/ui/help_overlay.ui:43
 msgid "Toggle record pause"
-msgstr ""
+msgstr "Kayıt duraklatmayı aç/kapat"
 
 #: data/ui/help_overlay.ui:49
 msgid "Cancel delay"
@@ -143,7 +144,7 @@ msgstr "Ana Menü"
 
 #: data/ui/window.ui:54
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: data/ui/window.ui:64
 msgid "Selection"
@@ -151,11 +152,11 @@ msgstr "Seçim"
 
 #: data/ui/window.ui:93
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Ekran ya da Pencere Yakala"
 
 #: data/ui/window.ui:101
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Bir Ekranın Seçilmiş Kısmını Yakala"
 
 #: data/ui/window.ui:114
 msgid "Record Computer Sounds"
@@ -215,11 +216,11 @@ msgstr "MKV"
 
 #: data/ui/window.ui:362
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/ui/window.ui:367
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/ui/window.ui:374
 msgid "Save to…"
@@ -235,23 +236,23 @@ msgstr "Kooha Hakkında"
 
 #: src/widgets/window.py:66
 msgid "Paused"
-msgstr ""
+msgstr "Duraklatıldı"
 
 #: src/widgets/window.py:77
 msgid "Sorry! An error has occured."
-msgstr ""
+msgstr "Afedersiniz! Bir hata oluştu."
 
 #: src/backend/settings.py:49
 msgid "Videos"
-msgstr ""
+msgstr "Videolar"
 
 #: src/backend/screencast_portal.py:40
 msgid "Failed to create session."
-msgstr ""
+msgstr "Oturum oluşturulamadı."
 
 #: src/backend/screencast_portal.py:60
 msgid "Failed to select sources."
-msgstr ""
+msgstr "Kaynaklar seçilemedi."
 
 #: src/main.py:75
 msgid "Select a Folder"
@@ -268,7 +269,7 @@ msgstr "Seç"
 #: src/main.py:95
 #, python-brace-format
 msgid "Inaccessible location “{directory}”"
-msgstr ""
+msgstr "Erişilemeyen konum \"{directory}\""
 
 #: src/main.py:96
 msgid "Please choose an accessible location and retry."
@@ -296,11 +297,11 @@ msgstr "Ekran Kaydı Kaydedildi!"
 #: src/main.py:146
 #, python-brace-format
 msgid "The recording has been saved in {saving_location}"
-msgstr ""
+msgstr "Kayıt {saving_location} yerinin içine kaydedildi"
 
 #: src/main.py:152
 msgid "Open File"
-msgstr ""
+msgstr "Dosyayı Aç"
 
 #~ msgid "Toggle capture mode"
 #~ msgstr "Yakalama modunu değiştir"
