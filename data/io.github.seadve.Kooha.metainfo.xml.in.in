@@ -25,7 +25,6 @@
   <url type="bugtracker">https://github.com/SeaDve/Kooha/issues</url>
   <url type="translate">https://hosted.weblate.org/projects/kooha/pot-file/</url>
   <url type="donation">https://liberapay.com/SeaDve/</url>
-  <!-- Translators: please do NOT translate this -->
   <developer_name>Dave Patrick</developer_name>
   <update_contact>davecruz48@gmail.com</update_contact>
   <content_rating type="oars-1.1"/>
