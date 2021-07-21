@@ -205,11 +205,11 @@ impl PipelineParser {
             return AudioSourceType::None;
         }
 
-        let is_record_speaker = self.builder.is_record_speaker && self.speaker_source().is_some();
-        let is_record_mic = self.builder.is_record_mic && self.mic_source().is_some();
-
         let speaker_source = self.speaker_source();
         let mic_source = self.mic_source();
+
+        let is_record_speaker = self.builder.is_record_speaker && speaker_source.is_some();
+        let is_record_mic = self.builder.is_record_mic && mic_source.is_some();
 
         match (is_record_speaker, is_record_mic) {
             (true, true) => AudioSourceType::Both(speaker_source.unwrap(), mic_source.unwrap()),
@@ -263,5 +263,53 @@ impl PipelineParser {
     fn ideal_thread_count(&self) -> u32 {
         let num_processors = glib::num_processors();
         min(num_processors, 64)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use gtk::glib;
+
+    use std::cmp::min;
+    use std::path::PathBuf;
+
+    use crate::backend::{PipelineBuilder, Rectangle, Screen, Stream};
+
+    #[test]
+    fn test_pipeline_builder() {
+        let stream = Stream {
+            fd: 1,
+            node_id: 32,
+            screen: Screen::new(1680, 1050),
+        };
+        let framerate = 60;
+        let file_path = PathBuf::from("/home/someone/Videos/Kooha 1-1.mp4");
+        let is_record_speaker = true;
+        let is_record_mic = true;
+        let speaker = Some("speaker_device_123".to_string());
+        let mic = Some("microphone_device_123".to_string());
+        let coordinates = Rectangle {
+            x: 99_f64,
+            y: 100_f64,
+            width: 20_f64,
+            height: 30_f64,
+        };
+        let actual_screen = Screen::new(30, 40);
+
+        let output = PipelineBuilder::new()
+            .pipewire_stream(stream)
+            .framerate(framerate)
+            .file_path(file_path)
+            .is_record_speaker(is_record_speaker)
+            .is_record_mic(is_record_mic)
+            .speaker_source(speaker)
+            .mic_source(mic)
+            .coordinates(coordinates)
+            .actual_screen(actual_screen)
+            .parse_into_string();
+
+        let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=60/1 ! videorate ! video/x-raw, framerate=60/1 ! videoscale ! video/x-raw, width=1680, height=1050 ! videocrop top=5600 left=5544 right=-4984 bottom=-6230 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline ! queue ! mp4mux ! filesink location=\"/home/someone/Videos/Kooha 1-1.mp4\" pulsesrc device=\"speaker_device_123\" ! queue ! audiomixer name=mix ! opusenc ! queue ! mux. pulsesrc device=\"microphone_device_123\" ! queue ! mix."
+            .replace("%T", min(glib::num_processors(), 64).to_string().as_ref());
+        assert_eq!(output, expected_output);
     }
 }
