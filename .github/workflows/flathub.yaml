@@ -1,8 +1,8 @@
-name: Deploy on Flathub
-
 on:
   release:
     types: [published]
+
+name: Deploy on Flathub
 
 jobs:
   deploy:

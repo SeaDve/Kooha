@@ -2,7 +2,9 @@ on:
   push:
     branches: [main]
   pull_request:
+
 name: Testing
+
 jobs:
   check:
     name: Check
