@@ -93,14 +93,12 @@ impl Settings {
     }
 
     pub fn file_path(&self) -> PathBuf {
-        let imp = self.private();
-        let video_format_str = imp.settings.string("video-format");
         let file_name = Utc::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
 
         let mut path = PathBuf::new();
         path.push(self.saving_location());
         path.push(file_name);
-        path.set_extension(video_format_str);
+        path.set_extension(self.video_format());
         path
     }
 
