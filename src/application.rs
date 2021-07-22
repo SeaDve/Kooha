@@ -7,7 +7,7 @@ use gtk::{
 };
 use once_cell::sync::OnceCell;
 
-use std::path::PathBuf;
+use std::path::Path;
 
 use crate::{
     backend::{Settings, Utils},
@@ -216,14 +216,14 @@ impl Application {
         dialog.show();
     }
 
-    pub fn send_record_success_notification(&self, recording_file_path: PathBuf) {
+    pub fn send_record_success_notification(&self, recording_file_path: &Path) {
         let saving_location = recording_file_path.parent().expect("File doesn't exist");
         let notification_body = format!(
             "The recording has been saved in {}",
             saving_location.display()
         );
-        let saving_location_variant = saving_location.display().to_string().to_variant();
-        let recording_file_path_variant = recording_file_path.display().to_string().to_variant();
+        let saving_location_variant = saving_location.to_str().unwrap().to_variant();
+        let recording_file_path_variant = recording_file_path.to_str().unwrap().to_variant();
 
         let notification = gio::Notification::new(&gettext("Screencast Recorded!"));
         notification.set_body(Some(&gettext(notification_body)));
