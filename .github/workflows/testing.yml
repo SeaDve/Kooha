@@ -18,6 +18,21 @@ jobs:
         with:
           command: check
 
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+
+
   fmt:
     name: Rustfmt
     runs-on: ubuntu-latest
@@ -51,7 +66,7 @@ jobs:
           args: -- -D warnings
 
   flatpak:
-    name: "Flatpak"
+    name: Flatpak
     runs-on: ubuntu-latest
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-40
