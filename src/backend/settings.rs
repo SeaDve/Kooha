@@ -77,7 +77,7 @@ impl Settings {
     pub fn set_saving_location(&self, directory: &Path) {
         let imp = self.private();
         imp.settings
-            .set_string("saving-location", &directory.display().to_string())
+            .set_string("saving-location", directory.to_str().unwrap())
             .unwrap();
     }
 
