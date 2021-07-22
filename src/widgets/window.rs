@@ -114,17 +114,6 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
-            obj.update_audio_toggles_sensitivity();
-            self.settings.connect_changed_notify(
-                Some("video-format"),
-                clone!(@weak obj => move |_, _| {
-                    obj.update_audio_toggles_sensitivity();
-                }),
-            );
-
-            self.settings
-                .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
-
             let actions = &[
                 "record-speaker",
                 "record-mic",
@@ -138,6 +127,17 @@ mod imp {
                 let settings_action = self.settings.create_action(action);
                 obj.add_action(&settings_action);
             }
+
+            self.settings
+                .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
+
+            obj.update_audio_toggles_sensitivity();
+            self.settings.connect_changed_notify(
+                Some("video-format"),
+                clone!(@weak obj => move |_, _| {
+                    obj.update_audio_toggles_sensitivity();
+                }),
+            );
 
             obj.set_view(View::MainScreen);
             self.recorder_controller.connect_notify_local(
