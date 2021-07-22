@@ -139,6 +139,6 @@ impl Settings {
 
     pub fn record_delay(&self) -> u32 {
         let imp = self.private();
-        imp.settings.string("record-delay").parse::<u32>().unwrap()
+        imp.settings.string("record-delay").parse().unwrap()
     }
 }
