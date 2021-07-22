@@ -12,6 +12,7 @@ use std::{cell::RefCell, time::Duration};
 
 use crate::backend::{Point, Rectangle, Screen, Utils};
 
+const LINE_WIDTH: f32 = 1.0;
 const BORDER_COLOR: gdk::RGBA = gdk::RGBA {
     red: 0.1,
     green: 0.45,
@@ -153,7 +154,7 @@ mod imp {
                 snapshot.append_color(&FILL_COLOR, &selection_rect);
                 snapshot.append_border(
                     &gsk::RoundedRect::from_rect(selection_rect, 0.0),
-                    &[1.0, 1.0, 1.0, 1.0],
+                    &[LINE_WIDTH; 4],
                     &[BORDER_COLOR; 4],
                 );
             }
