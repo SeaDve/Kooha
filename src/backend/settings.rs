@@ -6,7 +6,7 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use crate::config::APP_ID;
 
@@ -74,23 +74,21 @@ impl Settings {
         imp.settings.connect_changed(detail, f)
     }
 
-    pub fn set_saving_location(&self, directory: &str) {
+    pub fn set_saving_location(&self, directory: &Path) {
         let imp = self.private();
         imp.settings
-            .set_string("saving-location", directory)
+            .set_string("saving-location", &directory.display().to_string())
             .unwrap();
     }
 
-    pub fn saving_location(&self) -> String {
+    pub fn saving_location(&self) -> PathBuf {
         let imp = self.private();
-        let current_saving_location = imp.settings.string("saving-location");
+        let saving_location = imp.settings.string("saving-location").to_string();
 
-        if current_saving_location == "default" {
+        if saving_location == "default" {
             glib::user_special_dir(glib::UserDirectory::Videos)
-                .display()
-                .to_string()
         } else {
-            current_saving_location.to_string()
+            PathBuf::from(saving_location)
         }
     }
 

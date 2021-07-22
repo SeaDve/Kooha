@@ -10,7 +10,7 @@ use once_cell::sync::OnceCell;
 use std::path::PathBuf;
 
 use crate::{
-    backend::Settings,
+    backend::{Settings, Utils},
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     widgets::MainWindow,
 };
@@ -167,21 +167,23 @@ impl Application {
                 chooser.close();
                 return;
             }
-            let directory = chooser.file().unwrap().path().unwrap().as_path().display().to_string();
-            let homefolder = glib::home_dir().as_path().display().to_string();
-            let is_in_homefolder = directory.starts_with(&homefolder);
-            if !is_in_homefolder || directory == homefolder {
+
+            let directory = chooser.file().unwrap().path().unwrap();
+            let is_accessible = Utils::check_if_accessible(&directory);
+
+            if !is_accessible {
                 let error_dialog = gtk::MessageDialogBuilder::new()
                     .modal(true)
                     .buttons(gtk::ButtonsType::Ok)
                     .transient_for(&app.main_window())
-                    .title(&gettext(&format!("Inaccessible location '{}'", directory)))
+                    .title(&gettext(&format!("Inaccessible location '{}'", directory.display())))
                     .text(&gettext("Please choose an accessible location and retry."))
                     .build();
-                error_dialog.connect_response(move |error_dialog, _| { error_dialog.close() });
+                error_dialog.connect_response(|error_dialog, _| error_dialog.close());
                 error_dialog.present();
                 return;
             };
+
             settings.set_saving_location(&directory);
             chooser.close();
         }));

@@ -1,17 +1,12 @@
 use anyhow::bail;
 use ashpd::zbus::Connection;
+use gtk::glib;
 
-use std::process;
+use std::{path::Path, process};
 
 pub struct Utils;
 
 impl Utils {
-    pub fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
-        Utils::shell_window_eval("make_above", is_raised)?;
-        Utils::shell_window_eval("stick", is_raised)?;
-        Ok(())
-    }
-
     pub fn default_audio_sources() -> (Option<String>, Option<String>) {
         let output = process::Command::new("/usr/bin/pactl")
             .arg("info")
@@ -44,6 +39,22 @@ impl Utils {
         } else {
             (Some(default_sink), Some(default_source))
         }
+    }
+
+    pub fn check_if_accessible(path: &Path) -> bool {
+        let path_str = path.display().to_string();
+        let homefolder = glib::home_dir().display().to_string();
+
+        let is_home_folder = path_str == homefolder;
+        let is_in_home_folder = path_str.starts_with(&homefolder);
+
+        !is_home_folder && is_in_home_folder
+    }
+
+    pub fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
+        Utils::shell_window_eval("make_above", is_raised)?;
+        Utils::shell_window_eval("stick", is_raised)?;
+        Ok(())
     }
 
     fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
