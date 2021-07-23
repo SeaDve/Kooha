@@ -10,7 +10,7 @@ use once_cell::sync::Lazy;
 
 use std::{cell::RefCell, time::Duration};
 
-use crate::backend::{Point, Rectangle, Screen, Utils};
+use crate::backend::{utils, Point, Rectangle, Screen};
 
 const LINE_WIDTH: f32 = 1.0;
 const BORDER_COLOR: gdk::RGBA = gdk::RGBA {
@@ -183,7 +183,7 @@ impl AreaSelector {
         let delay = if is_raised { 100 } else { 0 };
 
         glib::timeout_add_local_once(Duration::from_millis(delay), move || {
-            match Utils::set_raise_active_window_request(is_raised) {
+            match utils::set_raise_active_window_request(is_raised) {
                 Ok(_) => log::info!("Successfully set raise active window to {}", is_raised),
                 Err(error) => log::warn!("{}", error),
             }

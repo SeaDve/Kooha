@@ -10,7 +10,7 @@ use once_cell::sync::OnceCell;
 use std::path::Path;
 
 use crate::{
-    backend::{Settings, Utils},
+    backend::{utils, Settings},
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     widgets::MainWindow,
 };
@@ -169,7 +169,7 @@ impl Application {
             }
 
             let directory = chooser.file().unwrap().path().unwrap();
-            let is_accessible = Utils::check_if_accessible(&directory);
+            let is_accessible = utils::check_if_accessible(&directory);
 
             if !is_accessible {
                 let error_dialog = gtk::MessageDialogBuilder::new()
