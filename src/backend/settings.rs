@@ -1,4 +1,4 @@
-use chrono::Utc;
+use chrono::Local;
 use gtk::{
     gio,
     glib::{self, signal::SignalHandlerId},
@@ -93,7 +93,7 @@ impl Settings {
     }
 
     pub fn file_path(&self) -> PathBuf {
-        let file_name = Utc::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
+        let file_name = Local::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
 
         let mut path = PathBuf::new();
         path.push(self.saving_location());
