@@ -284,12 +284,12 @@
         <item>
           <attribute translatable="yes" name="label">_None</attribute>
           <attribute name="action">win.record-delay</attribute>
-          <attribute name="target">00</attribute>
+          <attribute name="target">0</attribute>
         </item>
         <item>
           <attribute translatable="yes" name="label">_5 seconds</attribute>
           <attribute name="action">win.record-delay</attribute>
-          <attribute name="target">05</attribute>
+          <attribute name="target">5</attribute>
         </item>
         <item>
           <attribute translatable="yes" name="label">_10 seconds</attribute>

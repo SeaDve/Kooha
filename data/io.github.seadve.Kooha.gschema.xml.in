@@ -3,11 +3,11 @@
   <schema path="/io/github/seadve/Kooha/" id="@app-id@" gettext-domain="@gettext-package@">
    <key type="s" name="record-delay">
       <choices>
-        <choice value="00"/>
-        <choice value="05"/>
+        <choice value="0"/>
+        <choice value="5"/>
         <choice value="10"/>
       </choices>
-      <default>"00"</default>
+      <default>"0"</default>
     </key>
     <key type="s" name="video-format">
       <choices>
