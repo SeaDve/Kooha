@@ -52,15 +52,10 @@ impl Settings {
         imp.settings.create_action(action)
     }
 
-    pub fn bind_property<P: IsA<glib::Object>>(
-        &self,
-        source_property: &str,
-        object: &P,
-        target_property: &str,
-    ) {
+    pub fn bind_property<P: IsA<glib::Object>>(&self, key: &str, object: &P, property: &str) {
         let imp = self.private();
         imp.settings
-            .bind(source_property, object, target_property)
+            .bind(key, object, property)
             .flags(gio::SettingsBindFlags::DEFAULT)
             .build();
     }
