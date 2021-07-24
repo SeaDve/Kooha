@@ -121,13 +121,13 @@ impl PipelineParser {
             Some(format!("filesink location=\"{}\"", self.file_path().display())),
         ];
 
-        let pipeline_string = pipeline_elements
+        let mut pipeline_string = pipeline_elements
             .into_iter()
             .flatten()
             .collect::<Vec<String>>()
             .join(" ! ");
 
-        let pipeline_string = match self.audio_source_type() {
+        pipeline_string = match self.audio_source_type() {
             AudioSourceType::Both(speaker_source, mic_source) => format!("{} pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.", pipeline_string, speaker_source, self.audioenc().unwrap(), mic_source),
             AudioSourceType::SpeakerOnly(speaker_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, speaker_source, self.audioenc().unwrap()),
             AudioSourceType::MicOnly(mic_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, mic_source, self.audioenc().unwrap()),
