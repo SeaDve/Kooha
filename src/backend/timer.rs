@@ -141,6 +141,18 @@ impl Timer {
             .expect("Failed to get timer time")
     }
 
+    fn update_time(&self) {
+        let current_time = self.time();
+
+        let new_time = if self.state() == TimerState::Delayed {
+            current_time - 1
+        } else {
+            current_time + 1
+        };
+
+        self.set_time(new_time);
+    }
+
     pub fn start(&self, delay: u32) {
         self.set_time(delay);
 
@@ -148,24 +160,18 @@ impl Timer {
             1,
             clone!(@weak self as obj => @default-return Continue(true), move || {
                 let current_state = obj.state();
-                let current_time = obj.time();
 
                 if current_state == TimerState::Stopped {
                     return Continue(false);
                 }
 
                 if current_state != TimerState::Paused {
-                    let new_time = match current_state {
-                        TimerState::Delayed => current_time - 1,
-                        _ => current_time + 1,
-                    };
+                    obj.update_time();
+                }
 
-                    obj.set_time(new_time);
-
-                    if new_time == 0 && current_state == TimerState::Delayed {
-                        obj.set_state(TimerState::Running);
-                        obj.emit_by_name("delay-done", &[]).unwrap();
-                    }
+                if obj.time() == 0 && current_state == TimerState::Delayed {
+                    obj.set_state(TimerState::Running);
+                    obj.emit_by_name("delay-done", &[]).unwrap();
                 }
 
                 Continue(true)
