@@ -208,7 +208,7 @@ impl PipelineParser {
             "mkv" => VideoFormat::Mkv,
             "mp4" => VideoFormat::Mp4,
             "gif" => VideoFormat::Gif,
-            _ => unimplemented!(),
+            other => unreachable!("Invalid video format: {}", other),
         }
     }
 
