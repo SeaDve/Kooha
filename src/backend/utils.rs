@@ -39,13 +39,10 @@ pub fn default_audio_sources() -> (Option<String>, Option<String>) {
 }
 
 pub fn check_if_accessible(path: &Path) -> bool {
-    let path_str = path.display().to_string();
-    let homefolder = glib::home_dir().display().to_string();
+    let home_folder = glib::home_dir();
+    let is_in_home_folder = path.starts_with(&home_folder);
 
-    let is_home_folder = path_str == homefolder;
-    let is_in_home_folder = path_str.starts_with(&homefolder);
-
-    !is_home_folder && is_in_home_folder
+    is_in_home_folder && path != home_folder
 }
 
 pub fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
