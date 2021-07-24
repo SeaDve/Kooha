@@ -5,17 +5,17 @@ mod widgets;
 
 use application::Application;
 use config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
-use gettextrs::{bindtextdomain, setlocale, textdomain, LocaleCategory};
+use gettextrs::{gettext, LocaleCategory};
 use gtk::{gio, glib};
 
 fn main() {
     pretty_env_logger::init();
 
-    setlocale(LocaleCategory::LcAll, "");
-    bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR).expect("Unable to bind the text domain");
-    textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
+    gettextrs::setlocale(LocaleCategory::LcAll, "");
+    gettextrs::bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR).expect("Unable to bind the text domain");
+    gettextrs::textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
 
-    glib::set_application_name("Kooha");
+    glib::set_application_name(&gettext("Kooha"));
 
     gst::init().expect("Unable to start gstreamer");
     gtk::init().expect("Unable to start GTK4");
