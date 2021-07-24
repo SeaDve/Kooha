@@ -262,11 +262,9 @@ impl PipelineParser {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     use std::path::PathBuf;
 
-    use crate::backend::{Rectangle, Screen, Stream};
+    use crate::backend::{utils, PipelineBuilder, Rectangle, Screen, Stream};
 
     #[test]
     fn test_pipeline_builder() {
