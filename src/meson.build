@@ -26,14 +26,15 @@ sources = files(
   'backend/screencast_portal.rs',
   'backend/settings.rs',
   'backend/timer.rs',
-  'backend/utils.rs',
   'widgets/area_selector.rs',
   'widgets/mod.rs',
   'widgets/toggle_button.rs',
   'widgets/window.rs',
   'application.rs',
   'config.rs',
+  'data_types.rs',
   'main.rs',
+  'utils.rs',
 )
 
 custom_target(

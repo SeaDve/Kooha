@@ -1,6 +1,8 @@
 mod application;
 mod backend;
 mod config;
+mod data_types;
+mod utils;
 mod widgets;
 
 use application::Application;

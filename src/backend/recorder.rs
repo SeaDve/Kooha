@@ -11,7 +11,8 @@ use std::{
 };
 
 use crate::{
-    backend::{ScreencastPortal, Settings, Stream},
+    backend::{ScreencastPortal, Settings},
+    data_types::Stream,
     widgets::AreaSelector,
 };
 

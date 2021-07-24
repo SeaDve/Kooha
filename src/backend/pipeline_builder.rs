@@ -2,7 +2,10 @@ use gtk::glib;
 
 use std::path::PathBuf;
 
-use crate::backend::{utils, Rectangle, Screen, Stream};
+use crate::{
+    data_types::{Rectangle, Screen, Stream},
+    utils,
+};
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
@@ -264,7 +267,11 @@ impl PipelineParser {
 mod tests {
     use std::path::PathBuf;
 
-    use crate::backend::{utils, PipelineBuilder, Rectangle, Screen, Stream};
+    use crate::{
+        backend::PipelineBuilder,
+        data_types::{Rectangle, Screen, Stream},
+        utils,
+    };
 
     #[test]
     fn test_pipeline_builder() {

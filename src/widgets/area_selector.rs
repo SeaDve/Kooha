@@ -10,7 +10,10 @@ use once_cell::sync::Lazy;
 
 use std::{cell::RefCell, time::Duration};
 
-use crate::backend::{utils, Point, Rectangle, Screen};
+use crate::{
+    data_types::{Point, Rectangle, Screen},
+    utils,
+};
 
 const LINE_WIDTH: f32 = 1.0;
 const BORDER_COLOR: gdk::RGBA = gdk::RGBA {

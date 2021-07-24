@@ -10,8 +10,9 @@ use once_cell::sync::OnceCell;
 use std::path::Path;
 
 use crate::{
-    backend::{utils, Settings},
+    backend::Settings,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
+    utils,
     widgets::MainWindow,
 };
 

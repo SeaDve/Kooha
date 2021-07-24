@@ -13,7 +13,7 @@ use once_cell::sync::Lazy;
 
 use std::{os::unix::io::RawFd, sync::Arc};
 
-use crate::backend::Stream;
+use crate::data_types::Stream;
 
 mod imp {
     use super::*;
