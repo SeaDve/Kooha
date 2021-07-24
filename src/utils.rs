@@ -75,10 +75,10 @@ fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
         "Eval",
         &command,
     )?;
-    let (is_success, result): (bool, String) = message.body()?;
+    let (is_success, reply): (bool, String) = message.body()?;
 
     if !is_success {
-        bail!(result);
+        bail!(reply);
     };
 
     Ok(())
