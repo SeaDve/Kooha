@@ -2,7 +2,16 @@ use anyhow::bail;
 use ashpd::zbus::Connection;
 use gtk::glib;
 
-use std::{path::Path, process};
+use std::{cmp::min, path::Path, process};
+
+pub fn round_to_even(number: f64) -> i32 {
+    number as i32 / 2 * 2
+}
+
+pub fn ideal_thread_count() -> u32 {
+    let num_processors = glib::num_processors();
+    min(num_processors, 64)
+}
 
 pub fn default_audio_sources() -> (Option<String>, Option<String>) {
     let output = process::Command::new("/usr/bin/pactl")

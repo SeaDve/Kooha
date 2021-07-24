@@ -1,12 +1,10 @@
 use gtk::glib;
 
-use std::cmp::min;
 use std::path::PathBuf;
 
-use crate::backend::{Rectangle, Screen, Stream};
+use crate::backend::{utils, Rectangle, Screen, Stream};
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
-const MAX_PROCESSORS: u32 = 64;
 
 enum AudioSourceType<'a> {
     Both(&'a str, &'a str),
@@ -134,7 +132,7 @@ impl PipelineParser {
             AudioSourceType::None => pipeline_string,
         };
 
-        pipeline_string.replace("%T", &self.ideal_thread_count().to_string())
+        pipeline_string.replace("%T", &utils::ideal_thread_count().to_string())
     }
 
     fn videoscale(&self) -> Option<String> {
@@ -167,10 +165,10 @@ impl PipelineParser {
 
             Some(format!(
                 "videocrop top={} left={} right={} bottom={}",
-                self.round_to_even(top_crop),
-                self.round_to_even(left_crop),
-                self.round_to_even(right_crop),
-                self.round_to_even(bottom_crop)
+                utils::round_to_even(top_crop),
+                utils::round_to_even(left_crop),
+                utils::round_to_even(right_crop),
+                utils::round_to_even(bottom_crop)
             ))
         } else {
             None
@@ -260,24 +258,12 @@ impl PipelineParser {
     fn node_id(&self) -> u32 {
         self.builder.pipewire_stream.node_id
     }
-
-    fn round_to_even(&self, number: f64) -> i32 {
-        number as i32 / 2 * 2
-    }
-
-    fn ideal_thread_count(&self) -> u32 {
-        let num_processors = glib::num_processors();
-        min(num_processors, MAX_PROCESSORS)
-    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    use gtk::glib;
-
-    use std::cmp::min;
     use std::path::PathBuf;
 
     use crate::backend::{Rectangle, Screen, Stream};
@@ -316,7 +302,7 @@ mod tests {
             .parse_into_string();
 
         let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=60/1 ! videorate ! video/x-raw, framerate=60/1 ! videoscale ! video/x-raw, width=1680, height=1050 ! videocrop top=5600 left=5544 right=-4984 bottom=-6230 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline ! queue ! mp4mux ! filesink location=\"/home/someone/Videos/Kooha 1-1.mp4\" pulsesrc device=\"speaker_device_123\" ! queue ! audiomixer name=mix ! opusenc ! queue ! mux. pulsesrc device=\"microphone_device_123\" ! queue ! mix."
-            .replace("%T", &min(glib::num_processors(), MAX_PROCESSORS).to_string());
+            .replace("%T", &utils::ideal_thread_count().to_string());
         assert_eq!(output, expected_output);
     }
 }
