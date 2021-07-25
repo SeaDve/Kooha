@@ -219,23 +219,20 @@ impl Application {
 
     pub fn send_record_success_notification(&self, recording_file_path: &Path) {
         let saving_location = recording_file_path.parent().expect("File doesn't exist");
-        let saving_location_str = saving_location.to_str().unwrap();
-        let saving_location_variant = saving_location_str.to_variant();
-        let recording_file_path_variant = recording_file_path.to_str().unwrap().to_variant();
 
         let notification = gio::Notification::new(&i18n("Screencast Recorded!"));
         notification.set_body(Some(&i18n_f(
             "The recording has been saved in {}",
-            &[saving_location_str],
+            &[saving_location.to_str().unwrap()],
         )));
         notification.set_default_action_and_target_value(
             "app.show-saving-location",
-            Some(&saving_location_variant),
+            Some(&saving_location.to_str().unwrap().to_variant()),
         );
         notification.add_button_with_target_value(
             &i18n("Open File"),
             "app.show-saved-recording",
-            Some(&recording_file_path_variant),
+            Some(&recording_file_path.to_str().unwrap().to_variant()),
         );
 
         self.send_notification(Some("record-success"), &notification);
