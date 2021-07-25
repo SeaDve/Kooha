@@ -33,6 +33,7 @@ sources = files(
   'application.rs',
   'config.rs',
   'data_types.rs',
+  'i18n.rs',
   'main.rs',
   'utils.rs',
 )
