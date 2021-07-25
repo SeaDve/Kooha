@@ -68,17 +68,17 @@ fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
     );
 
     let connection = Connection::new_session()?;
-    let message = connection.call_method(
+    let reply = connection.call_method(
         Some("org.gnome.Shell"),
         "/org/gnome/Shell",
         Some("org.gnome.Shell"),
         "Eval",
         &command,
     )?;
-    let (is_success, reply): (bool, String) = message.body()?;
+    let (is_success, message) = reply.body::<(bool, String)>()?;
 
     if !is_success {
-        bail!(reply);
+        bail!(message);
     };
 
     Ok(())
