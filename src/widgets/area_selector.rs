@@ -41,8 +41,8 @@ mod imp {
 
     #[derive(Debug)]
     pub struct AreaSelector {
-        pub start_point: RefCell<Option<Point>>,
-        pub current_point: RefCell<Option<Point>>,
+        pub start_position: RefCell<Option<Point>>,
+        pub current_position: RefCell<Option<Point>>,
     }
 
     #[glib::object_subclass]
@@ -53,8 +53,8 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                start_point: RefCell::new(None),
-                current_point: RefCell::new(None),
+                start_position: RefCell::new(None),
+                current_position: RefCell::new(None),
             }
         }
     }
@@ -94,25 +94,26 @@ mod imp {
             gesture_drag.set_exclusive(true);
             gesture_drag.connect_drag_begin(clone!(@weak obj => move |_, x, y| {
                 let imp = obj.private();
-                imp.start_point.replace(Some(Point::new(x, y)));
+                imp.start_position.replace(Some(Point::new(x, y)));
             }));
             gesture_drag.connect_drag_update(clone!(@weak obj => move |gesture, offset_x, offset_y| {
                 let imp = obj.private();
-                if let Some(start_point) = gesture.start_point() {
-                    let (start_x, start_y) = start_point;
-                    imp.current_point.replace(Some(Point::new(start_x + offset_x, start_y + offset_y)));
+                if let Some(gesture_start_point) = gesture.start_point() {
+                    let (start_x, start_y) = gesture_start_point;
+
+                    imp.current_position.replace(Some(Point::new(start_x + offset_x, start_y + offset_y)));
                     obj.queue_draw();
                 }
             }));
             gesture_drag.connect_drag_end(clone!(@weak obj => move |gesture, offset_x, offset_y| {
                 let imp = obj.private();
-                if let Some(start_point) = gesture.start_point() {
-                    let (start_x, start_y) = start_point;
+                if let Some(gesture_start_point) = gesture.start_point() {
+                    let (start_x, start_y) = gesture_start_point;
 
-                    let start_point = imp.start_point.borrow().unwrap();
-                    let end_point = Point::new(start_x + offset_x, start_y + offset_y);
+                    let start_position = imp.start_position.borrow().unwrap();
+                    let end_position = Point::new(start_x + offset_x, start_y + offset_y);
 
-                    let selection_rectangle = Rectangle::from_points(start_point, end_point);
+                    let selection_rectangle = Rectangle::from_points(start_position, end_position);
                     let actual_screen = Screen::new(obj.width(), obj.height());
 
                     obj.emit_response(AreaSelectorResponse::Captured(selection_rectangle, actual_screen));
@@ -136,20 +137,20 @@ mod imp {
 
     impl WidgetImpl for AreaSelector {
         fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
-            if self.start_point.borrow().is_none() {
+            if self.start_position.borrow().is_none() {
                 let placeholder_color = gdk::RGBABuilder::new().build();
                 let placeholder_rect = graphene::Rect::zero();
                 snapshot.append_color(&placeholder_color, &placeholder_rect);
             } else {
-                let start_point = self.start_point.borrow().unwrap();
-                let current_point = self.current_point.borrow().unwrap();
+                let start_position = self.start_position.borrow().unwrap();
+                let current_position = self.current_position.borrow().unwrap();
 
-                let width = current_point.x - start_point.x;
-                let height = current_point.y - start_point.y;
+                let width = current_position.x - start_position.x;
+                let height = current_position.y - start_position.y;
 
                 let selection_rect = graphene::Rect::new(
-                    start_point.x as f32,
-                    start_point.y as f32,
+                    start_position.x as f32,
+                    start_position.y as f32,
                     width as f32,
                     height as f32,
                 );
@@ -201,9 +202,9 @@ impl AreaSelector {
 
     fn clean(&self) {
         let imp = self.private();
+        imp.start_position.replace(None);
+        imp.current_position.replace(None);
 
-        imp.start_point.replace(None);
-        imp.current_point.replace(None);
         self.queue_draw();
         self.set_raise_request(false);
     }
