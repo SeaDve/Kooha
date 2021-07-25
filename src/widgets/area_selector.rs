@@ -137,12 +137,7 @@ mod imp {
 
     impl WidgetImpl for AreaSelector {
         fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
-            if self.start_position.borrow().is_none() {
-                let placeholder_color = gdk::RGBABuilder::new().build();
-                let placeholder_rect = graphene::Rect::zero();
-                snapshot.append_color(&placeholder_color, &placeholder_rect);
-            } else {
-                let start_position = self.start_position.borrow().unwrap();
+            if let Some(start_position) = *self.start_position.borrow() {
                 let current_position = self.current_position.borrow().unwrap();
 
                 let width = current_position.x - start_position.x;
@@ -161,9 +156,14 @@ mod imp {
                     &[LINE_WIDTH; 4],
                     &[BORDER_COLOR; 4],
                 );
+            } else {
+                let placeholder_color = gdk::RGBABuilder::new().build();
+                let placeholder_rect = graphene::Rect::zero();
+                snapshot.append_color(&placeholder_color, &placeholder_rect);
             }
         }
     }
+
     impl WindowImpl for AreaSelector {}
 }
 
