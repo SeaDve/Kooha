@@ -1,5 +1,4 @@
 use adw::subclass::prelude::*;
-use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone},
@@ -12,6 +11,7 @@ use crate::{
     application::Application,
     backend::{RecorderController, RecorderControllerState, Settings},
     config::PROFILE,
+    i18n::i18n,
     widgets::ToggleButton,
 };
 
@@ -151,12 +151,12 @@ mod imp {
                         RecorderControllerState::Recording => {
                             obj.set_view(View::Recording);
                             imp.pause_record_button.set_icon_name("media-playback-pause-symbolic");
-                            imp.recording_label.set_label(&gettext("Recording"));
+                            imp.recording_label.set_label(&i18n("Recording"));
                             imp.recording_time_label.remove_css_class("paused");
                         }
                         RecorderControllerState::Paused => {
                             imp.pause_record_button.set_icon_name("media-playback-start-symbolic");
-                            imp.recording_label.set_label(&gettext("Paused"));
+                            imp.recording_label.set_label(&i18n("Paused"));
                             imp.recording_time_label.add_css_class("paused");
                         },
                     };

@@ -2,12 +2,13 @@ mod application;
 mod backend;
 mod config;
 mod data_types;
+mod i18n;
 mod utils;
 mod widgets;
 
 use application::Application;
 use config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
-use gettextrs::{gettext, LocaleCategory};
+use gettextrs::LocaleCategory;
 use gtk::{gio, glib};
 
 fn main() {
@@ -17,7 +18,7 @@ fn main() {
     gettextrs::bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR).expect("Unable to bind the text domain");
     gettextrs::textdomain(GETTEXT_PACKAGE).expect("Unable to switch to the text domain");
 
-    glib::set_application_name(&gettext("Kooha"));
+    glib::set_application_name("Kooha");
 
     gst::init().expect("Unable to start gstreamer");
     gtk::init().expect("Unable to start GTK4");
