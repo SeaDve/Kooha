@@ -59,8 +59,8 @@ mod imp {
                     // get updated on widget construction, so we have to add 2ms delay.
                     glib::timeout_add_local_once(
                         Duration::from_millis(2),
-                        clone!(@weak obj as button => move || {
-                            button.set_sensitive(action_enabled);
+                        clone!(@weak obj => move || {
+                            obj.set_sensitive(action_enabled);
                         }),
                     );
                 }
