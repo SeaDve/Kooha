@@ -1,9 +1,3 @@
-headerbar.flat {
-  background-image: none;
-  box-shadow: none;
-  background-color: transparent;
-}
-
 .large-icons image {
   -gtk-icon-size: 32px;
 }
