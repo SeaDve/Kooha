@@ -247,7 +247,7 @@ impl RecorderController {
 
         imp.timer.start(record_delay);
 
-        // imp.recorder.ready();
+        imp.recorder.ready();
     }
 
     pub fn cancel_delay(&self) {

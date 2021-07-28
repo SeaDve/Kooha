@@ -11,8 +11,8 @@ use std::{
 };
 
 use crate::{
-    backend::{ScreencastPortal, Settings},
-    data_types::Stream,
+    backend::{ScreencastPortal, ScreencastPortalResponse, Settings},
+    data_types::Screen,
     widgets::AreaSelector,
 };
 
@@ -65,11 +65,19 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.portal
                 .connect_local(
-                    "ready",
+                    "response",
                     false,
                     clone!(@weak obj => @default-return None, move | args | {
-                        let stream = args[1].get().unwrap();
-                        obj.build_pipeline(stream);
+                        let response = args[1].get().unwrap();
+                        dbg!(&response);
+                        match response {
+                            ScreencastPortalResponse::Success(fd, node_id, stream_screen) => {
+                                obj.build_pipeline(fd, node_id, stream_screen);
+                            },
+                            ScreencastPortalResponse::Revoked => {
+                                // FIXME handle errors and cancelled
+                            }
+                        };
                         None
                     }),
                 )
@@ -221,16 +229,13 @@ impl Recorder {
             .expect("Failed to set recorder is_readying");
     }
 
-    fn build_pipeline(&self, stream: Stream) {
+    fn build_pipeline(&self, fd: i32, node_id: u32, stream_screen: Screen) {
         let imp = self.private();
-
-        let fd = stream.fd;
-        let node_id = stream.node_id;
 
         println!("{}", fd);
         println!("{}", node_id);
-        println!("{}", stream.screen.width);
-        println!("{}", stream.screen.height);
+        println!("{}", stream_screen.width);
+        println!("{}", stream_screen.height);
 
         let pipeline_string = format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! videoconvert ! queue ! vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=3 ! queue ! webmmux ! filesink location=/home/dave/test.webm", fd, node_id);
         let gst_pipeline = gst::parse_launch(&pipeline_string).expect("Failed to parse pipeline");
@@ -246,7 +251,8 @@ impl Recorder {
         self.set_is_readying(true);
         let is_show_pointer = self.settings().is_show_pointer();
         let is_selection_mode = self.settings().is_selection_mode();
-        self.portal().open();
+        self.portal()
+            .new_session(is_show_pointer, is_selection_mode);
 
         log::debug!("is_show_pointer: {}", is_show_pointer);
         log::debug!("is_selection_mode: {}", is_selection_mode);
@@ -290,6 +296,6 @@ impl Recorder {
     }
 
     pub fn cancel(&self) {
-        self.portal().close();
+        self.portal().close_session();
     }
 }

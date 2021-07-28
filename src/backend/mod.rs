@@ -13,6 +13,6 @@ pub use {
 use {
     pipeline_builder::PipelineBuilder,
     recorder::{Recorder, RecorderState},
-    screencast_portal::ScreencastPortal,
+    screencast_portal::{ScreencastPortal, ScreencastPortalResponse},
     timer::{Timer, TimerState},
 };
