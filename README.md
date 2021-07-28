@@ -20,8 +20,8 @@
   <a href="https://hosted.weblate.org/engage/kooha/">
     <img src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg" alt="Translation status" />
   </a>
-  <a href="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml">
-    <img src="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml/badge.svg" alt="CI status"/>
+  <a href="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml">
+    <img src="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
   </a>
   <a href="https://repology.org/project/kooha/versions">
     <img src="https://repology.org/badge/tiny-repos/kooha.svg" alt="Packaging status">
