@@ -20,7 +20,7 @@ checksum = "595d3cfa7a60d4555cb5067b99f07142a08ea778de5cf993f7b75c7d8fabc486"
 [[package]]
 name = "ashpd"
 version = "0.2.0-alpha-2"
-source = "git+https://github.com/bilelmoussaoui/ashpd#7a351be0aaf6c76931a5fbde643eeab3e9f29d79"
+source = "git+https://github.com/bilelmoussaoui/ashpd#8e01b08d72f5ce805605f7e3ef7b12fa86000635"
 dependencies = [
  "enumflags2",
  "futures",
@@ -32,6 +32,7 @@ dependencies = [
  "serde_repr",
  "strum",
  "strum_macros",
+ "tracing",
  "zbus",
  "zvariant",
  "zvariant_derive",
@@ -1597,6 +1598,38 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a31142970826733df8241ef35dc040ef98c679ab14d7c3e54d827099b3acecaa"
 dependencies = [
  "serde",
+]
+
+[[package]]
+name = "tracing"
+version = "0.1.26"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "09adeb8c97449311ccd28a427f96fb563e7fd31aabf994189879d9da2394b89d"
+dependencies = [
+ "cfg-if",
+ "pin-project-lite",
+ "tracing-attributes",
+ "tracing-core",
+]
+
+[[package]]
+name = "tracing-attributes"
+version = "0.1.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c42e6fa53307c8a17e4ccd4dc81cf5ec38db9209f59b222210375b54ee40d1e2"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "tracing-core"
+version = "0.1.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a9ff14f98b1a4b289c6248a023c1c2fa1491062964e9fed67ab29c4e4da4a052"
+dependencies = [
+ "lazy_static",
 ]
 
 [[package]]
