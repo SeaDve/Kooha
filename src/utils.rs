@@ -4,13 +4,15 @@ use gtk::glib;
 
 use std::{cmp::min, path::Path, process};
 
+const MAX_THREAD_COUNT: u32 = 64;
+
 pub fn round_to_even(number: f64) -> i32 {
     number as i32 / 2 * 2
 }
 
 pub fn ideal_thread_count() -> u32 {
     let num_processors = glib::num_processors();
-    min(num_processors, 64)
+    min(num_processors, MAX_THREAD_COUNT)
 }
 
 pub fn default_audio_sources() -> (Option<String>, Option<String>) {
