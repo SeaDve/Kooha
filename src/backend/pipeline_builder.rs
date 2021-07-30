@@ -202,7 +202,7 @@ impl PipelineParser {
             return None;
         }
 
-        let muxer = match self.video_format() {
+        let muxer = match video_format {
             VideoFormat::Webm => "webmmux",
             VideoFormat::Mkv => "matroskamux",
             VideoFormat::Mp4 => "mp4mux",
