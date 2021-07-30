@@ -5,10 +5,7 @@ use gtk::{
 };
 use once_cell::sync::Lazy;
 
-use std::{
-    cell::{Cell, RefCell},
-    sync::Mutex,
-};
+use std::cell::{Cell, RefCell};
 
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
