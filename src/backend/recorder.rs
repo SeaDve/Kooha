@@ -122,13 +122,6 @@ mod imp {
                         false,
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::new_object(
-                        "pipeline",
-                        "pipeline",
-                        "Pipeline",
-                        gst::Pipeline::static_type(),
-                        glib::ParamFlags::READWRITE,
-                    ),
                 ]
             });
             PROPERTIES.as_ref()
@@ -150,10 +143,6 @@ mod imp {
                     let is_readying = value.get().unwrap();
                     self.is_readying.set(is_readying);
                 }
-                "pipeline" => {
-                    let pipeline = value.get().unwrap();
-                    self.pipeline.replace(pipeline);
-                }
                 _ => unimplemented!(),
             }
         }
@@ -162,7 +151,6 @@ mod imp {
             match pspec.name() {
                 "state" => self.state.borrow().to_value(),
                 "is-readying" => self.is_readying.get().to_value(),
-                "pipeline" => self.pipeline.borrow().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -193,14 +181,13 @@ impl Recorder {
     }
 
     fn pipeline(&self) -> Option<gst::Pipeline> {
-        self.property("pipeline")
-            .unwrap()
-            .get::<Option<gst::Pipeline>>()
-            .unwrap()
+        let imp = self.private();
+        imp.pipeline.borrow().clone()
     }
 
     fn set_pipeline(&self, new_pipeline: Option<gst::Pipeline>) {
-        self.set_property("pipeline", new_pipeline).unwrap();
+        let imp = self.private();
+        imp.pipeline.replace(new_pipeline);
     }
 
     pub fn state(&self) -> RecorderState {
