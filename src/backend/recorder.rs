@@ -225,8 +225,8 @@ impl Recorder {
             .pipewire_stream(stream)
             .framerate(settings.video_framerate())
             .file_path(settings.file_path())
-            .is_record_speaker(settings.is_record_speaker())
-            .is_record_mic(settings.is_record_mic())
+            .record_speaker(settings.is_record_speaker())
+            .record_mic(settings.is_record_mic())
             .speaker_source(speaker_source)
             .mic_source(mic_source);
 

@@ -67,12 +67,12 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn is_record_speaker(mut self, is_record_speaker: bool) -> Self {
+    pub fn record_speaker(mut self, is_record_speaker: bool) -> Self {
         self.is_record_speaker = is_record_speaker;
         self
     }
 
-    pub fn is_record_mic(mut self, is_record_mic: bool) -> Self {
+    pub fn record_mic(mut self, is_record_mic: bool) -> Self {
         self.is_record_mic = is_record_mic;
         self
     }
@@ -305,8 +305,8 @@ mod tests {
             .pipewire_stream(stream)
             .framerate(framerate)
             .file_path(file_path)
-            .is_record_speaker(is_record_speaker)
-            .is_record_mic(is_record_mic)
+            .record_speaker(is_record_speaker)
+            .record_mic(is_record_mic)
             .speaker_source(speaker)
             .mic_source(mic)
             .coordinates(coordinates)
