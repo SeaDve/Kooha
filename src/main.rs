@@ -1,3 +1,5 @@
+#![allow(clippy::new_without_default)]
+
 mod application;
 mod backend;
 mod config;
