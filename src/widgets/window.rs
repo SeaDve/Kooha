@@ -178,20 +178,10 @@ mod imp {
             );
             self.recorder_controller
                 .connect_local(
-                    "record-success",
+                    "response",
                     false,
                     clone!(@weak obj => @default-return None, move |_| {
                         println!("recorder_controller record-success");
-                        None
-                    }),
-                )
-                .unwrap();
-            self.recorder_controller
-                .connect_local(
-                    "record-failed",
-                    false,
-                    clone!(@weak obj => @default-return None, move |_| {
-                        println!("recorderer_controller record-failed");
                         None
                     }),
                 )

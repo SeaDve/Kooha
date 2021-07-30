@@ -12,7 +12,7 @@ pub use {
 
 use {
     pipeline_builder::PipelineBuilder,
-    recorder::{Recorder, RecorderState},
+    recorder::{Recorder, RecorderResponse, RecorderState},
     screencast_portal::{ScreencastPortal, ScreencastPortalResponse},
     timer::{Timer, TimerState},
 };

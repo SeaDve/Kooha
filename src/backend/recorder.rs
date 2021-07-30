@@ -1,19 +1,20 @@
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, Continue, GEnum},
+    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
 
 use std::{
     cell::{Cell, RefCell},
-    rc::Rc,
+    sync::Mutex,
 };
 
 use crate::{
-    backend::{ScreencastPortal, ScreencastPortalResponse, Settings},
-    data_types::Screen,
-    widgets::AreaSelector,
+    backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
+    data_types::Stream,
+    utils,
+    widgets::{AreaSelector, AreaSelectorResponse},
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
@@ -30,15 +31,21 @@ impl Default for RecorderState {
     }
 }
 
+#[derive(Debug, Clone, GBoxed)]
+#[gboxed(type_name = "RecorderResponse")]
+pub enum RecorderResponse {
+    Success(String),
+    Failed(String),
+}
+
 mod imp {
     use super::*;
 
     #[derive(Debug)]
     pub struct Recorder {
         pub settings: Settings,
-        pub area_selector: AreaSelector,
         pub portal: ScreencastPortal,
-        pub pipeline: Rc<RefCell<Option<gst::Pipeline>>>,
+        pub pipeline: RefCell<Option<gst::Pipeline>>,
         pub state: RefCell<RecorderState>,
         pub is_readying: Cell<bool>,
     }
@@ -52,9 +59,8 @@ mod imp {
         fn new() -> Self {
             Self {
                 settings: Settings::new(),
-                area_selector: AreaSelector::new(),
                 portal: ScreencastPortal::new(),
-                pipeline: Rc::new(RefCell::new(None)),
+                pipeline: RefCell::new(None),
                 state: RefCell::new(RecorderState::default()),
                 is_readying: Cell::new(false),
             }
@@ -71,11 +77,13 @@ mod imp {
                         let response = args[1].get().unwrap();
                         dbg!(&response);
                         match response {
-                            ScreencastPortalResponse::Success(fd, node_id, stream_screen) => {
-                                obj.build_pipeline(fd, node_id, stream_screen);
+                            ScreencastPortalResponse::Success(fd, node_id, screen) => {
+                                let stream = Stream { fd, node_id, screen };
+                                obj.init_pipeline(stream);
                             },
                             ScreencastPortalResponse::Revoked => {
                                 // FIXME handle errors and cancelled
+                                obj.emit_response(RecorderResponse::Failed("Cancelled session".into()));
                             }
                         };
                         None
@@ -89,14 +97,8 @@ mod imp {
                 vec![
                     Signal::builder("ready", &[], <()>::static_type().into()).build(),
                     Signal::builder(
-                        "record-success",
-                        &[String::static_type().into()],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
-                    Signal::builder(
-                        "record-failed",
-                        &[String::static_type().into()],
+                        "response",
+                        &[RecorderResponse::static_type().into()],
                         <()>::static_type().into(),
                     )
                     .build(),
@@ -108,13 +110,6 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpec::new_object(
-                        "pipeline",
-                        "pipeline",
-                        "Pipeline",
-                        gst::Pipeline::static_type(),
-                        glib::ParamFlags::READWRITE,
-                    ),
                     glib::ParamSpec::new_enum(
                         "state",
                         "state",
@@ -130,6 +125,13 @@ mod imp {
                         false,
                         glib::ParamFlags::READWRITE,
                     ),
+                    glib::ParamSpec::new_object(
+                        "pipeline",
+                        "pipeline",
+                        "Pipeline",
+                        gst::Pipeline::static_type(),
+                        glib::ParamFlags::READWRITE,
+                    ),
                 ]
             });
             PROPERTIES.as_ref()
@@ -143,10 +145,6 @@ mod imp {
             pspec: &glib::ParamSpec,
         ) {
             match pspec.name() {
-                "pipeline" => {
-                    let pipeline = value.get().unwrap();
-                    self.pipeline.replace(pipeline);
-                }
                 "state" => {
                     let state = value.get().unwrap();
                     self.state.replace(state);
@@ -155,15 +153,19 @@ mod imp {
                     let is_readying = value.get().unwrap();
                     self.is_readying.set(is_readying);
                 }
+                "pipeline" => {
+                    let pipeline = value.get().unwrap();
+                    self.pipeline.replace(pipeline);
+                }
                 _ => unimplemented!(),
             }
         }
 
         fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
-                "pipeline" => self.state.borrow().to_value(),
                 "state" => self.state.borrow().to_value(),
                 "is-readying" => self.is_readying.get().to_value(),
+                "pipeline" => self.pipeline.borrow().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -183,11 +185,6 @@ impl Recorder {
         &imp::Recorder::from_instance(self)
     }
 
-    fn pipeline(&self) -> gst::Pipeline {
-        let pipeline = self.property("pipeline").unwrap();
-        pipeline.get::<gst::Pipeline>().unwrap()
-    }
-
     fn portal(&self) -> &ScreencastPortal {
         let imp = self.private();
         &imp.portal
@@ -198,53 +195,107 @@ impl Recorder {
         &imp.settings
     }
 
-    fn set_state(&self, state: RecorderState) {
-        self.set_property("state", state)
-            .expect("Failed to set recorder state");
+    fn pipeline(&self) -> Option<gst::Pipeline> {
+        self.property("pipeline")
+            .unwrap()
+            .get::<Option<gst::Pipeline>>()
+            .unwrap()
+    }
 
-        let pipeline = self.pipeline();
-
-        let pipeline_state = match state {
-            RecorderState::Null => gst::State::Null,
-            RecorderState::Paused => gst::State::Paused,
-            RecorderState::Playing => gst::State::Playing,
-        };
-
-        pipeline
-            .set_state(pipeline_state)
-            .expect("Failed to set pipeline state");
-
-        log::info!("Pipeline set to {:?}", pipeline_state);
+    fn set_pipeline(&self, new_pipeline: Option<gst::Pipeline>) {
+        self.set_property("pipeline", new_pipeline).unwrap();
     }
 
     pub fn state(&self) -> RecorderState {
         self.property("state")
             .unwrap()
             .get::<RecorderState>()
-            .expect("Recorder failed to get state")
+            .unwrap()
+    }
+
+    fn set_state(&self, state: RecorderState) {
+        self.set_property("state", state).unwrap();
+
+        let pipeline = self.pipeline().unwrap();
+
+        let new_pipeline_state = match state {
+            RecorderState::Null => gst::State::Null,
+            RecorderState::Paused => gst::State::Paused,
+            RecorderState::Playing => gst::State::Playing,
+        };
+
+        pipeline.set_state(new_pipeline_state).unwrap();
+        log::info!("Pipeline set to {:?}", new_pipeline_state);
     }
 
     fn set_is_readying(&self, is_readying: bool) {
-        self.set_property("is-readying", is_readying)
-            .expect("Failed to set recorder is_readying");
+        self.set_property("is-readying", is_readying).unwrap();
     }
 
-    fn build_pipeline(&self, fd: i32, node_id: u32, stream_screen: Screen) {
-        let imp = self.private();
+    fn init_pipeline(&self, stream: Stream) {
+        let settings = self.settings();
 
-        println!("{}", fd);
-        println!("{}", node_id);
-        println!("{}", stream_screen.width);
-        println!("{}", stream_screen.height);
+        let (speaker_source, mic_source) = utils::default_audio_sources();
 
-        let pipeline_string = format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! videoconvert ! queue ! vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=3 ! queue ! webmmux ! filesink location=/home/dave/test.webm", fd, node_id);
-        let gst_pipeline = gst::parse_launch(&pipeline_string).expect("Failed to parse pipeline");
-        let gst_pipeline = gst_pipeline
-            .downcast::<gst::Pipeline>()
-            .expect("Couldn't downcast pipeline");
-        imp.pipeline.replace(Some(gst_pipeline));
+        let pipeline_builder = PipelineBuilder::new()
+            .pipewire_stream(stream)
+            .framerate(settings.video_framerate())
+            .file_path(settings.file_path())
+            .is_record_speaker(settings.is_record_speaker())
+            .is_record_mic(settings.is_record_mic())
+            .speaker_source(speaker_source)
+            .mic_source(mic_source);
 
-        self.set_property("state", RecorderState::Playing).unwrap();
+        if settings.is_selection_mode() {
+            let area_selector = AreaSelector::new();
+            area_selector.select_area();
+            area_selector.connect_local(
+                "response",
+                false,
+                clone!(@weak self as obj, @strong pipeline_builder => @default-return None, move | args | {
+                    let response = args[1].get().unwrap();
+                    match response {
+                        AreaSelectorResponse::Captured(coords, actual_screen) => {
+                            let pipeline_builder = pipeline_builder.clone();
+
+                            let pipeline = pipeline_builder
+                                .coordinates(coords)
+                                .actual_screen(actual_screen)
+                                .build()
+                                .unwrap();
+
+                            obj.set_pipeline(Some(pipeline.downcast().unwrap()));
+                            obj.emit_ready();
+                        },
+                        AreaSelectorResponse::Cancelled => {
+                            obj.set_is_readying(false);
+                            obj.portal().close_session();
+                        },
+                    }
+                    None
+                }),
+            ).unwrap();
+        } else {
+            let pipeline = pipeline_builder.build().unwrap();
+            self.set_pipeline(Some(pipeline.downcast().unwrap()));
+            self.emit_ready();
+        };
+
+        // FIXME handle invalid pipeline errors
+        // log::debug!("Pipeline: {}", pipeline_builder.clone().parse_into_string());
+    }
+
+    fn close_pipeline(&self) {
+        self.set_state(RecorderState::Null);
+        self.portal().close_session();
+    }
+
+    fn emit_response(&self, response: RecorderResponse) {
+        self.emit_by_name("response", &[&response]).unwrap();
+    }
+
+    fn emit_ready(&self) {
+        self.emit_by_name("ready", &[]).unwrap();
     }
 
     pub fn ready(&self) {
@@ -259,18 +310,16 @@ impl Recorder {
     }
 
     pub fn start(&self) {
-        let record_bus = self
-            .pipeline()
-            .bus()
-            .expect("Failed to get bus for pipeline");
-
+        let record_bus = self.pipeline().unwrap().bus().unwrap();
         record_bus.add_watch_local(clone!(@weak self as obj => @default-return Continue(true), move |_, message: &gst::Message| {
             match message.view() {
                 gst::MessageView::Eos(..) => {
-                    obj.set_state(RecorderState::Null);
+                    obj.close_pipeline();
+                    obj.emit_response(RecorderResponse::Success("Done Recording".into()));
                 },
                 gst::MessageView::Error(error) => {
-                    obj.set_state(RecorderState::Null);
+                    obj.close_pipeline();
+                    obj.emit_response(RecorderResponse::Failed("Error recording".into()));
                     log::warn!("{}", error.debug().unwrap());
                 },
                 _ => (),
@@ -291,8 +340,7 @@ impl Recorder {
     }
 
     pub fn stop(&self) {
-        let eos_event = gst::event::Eos::new();
-        self.pipeline().send_event(eos_event);
+        self.pipeline().unwrap().send_event(gst::event::Eos::new());
     }
 
     pub fn cancel(&self) {

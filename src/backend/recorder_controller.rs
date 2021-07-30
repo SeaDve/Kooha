@@ -7,7 +7,7 @@ use once_cell::sync::Lazy;
 
 use std::cell::Cell;
 
-use crate::backend::{Recorder, RecorderState, Timer, TimerState};
+use crate::backend::{Recorder, RecorderResponse, RecorderState, Timer, TimerState};
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderControllerState")]
@@ -93,7 +93,8 @@ mod imp {
                     "delay-done",
                     false,
                     clone!(@weak obj => @default-return None, move |_| {
-                        println!("timer delay-done");
+                        let imp = obj.private();
+                        imp.recorder.start();
                         None
                     }),
                 )
@@ -103,27 +104,20 @@ mod imp {
                     "ready",
                     false,
                     clone!(@weak obj => @default-return None, move |_| {
-                        println!("recorder ready");
+                        let imp = obj.private();
+                        let record_delay = imp.record_delay.get();
+                        imp.timer.start(record_delay);
                         None
                     }),
                 )
                 .unwrap();
             self.recorder
                 .connect_local(
-                    "record-success",
+                    "response",
                     false,
-                    clone!(@weak obj => @default-return None, move |_| {
-                        println!("recorder record-success");
-                        None
-                    }),
-                )
-                .unwrap();
-            self.recorder
-                .connect_local(
-                    "record-failed",
-                    false,
-                    clone!(@weak obj => @default-return None, move |_| {
-                        println!("recorder record-failed");
+                    clone!(@weak obj => @default-return None, move | args | {
+                        let response: RecorderResponse = args[1].get().unwrap();
+                        dbg!(response);
                         None
                     }),
                 )
@@ -132,20 +126,12 @@ mod imp {
 
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![
-                    Signal::builder(
-                        "record-success",
-                        &[String::static_type().into()],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
-                    Signal::builder(
-                        "record-failed",
-                        &[String::static_type().into()],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
-                ]
+                vec![Signal::builder(
+                    "response",
+                    &[String::static_type().into()],
+                    <()>::static_type().into(),
+                )
+                .build()]
             });
             SIGNALS.as_ref()
         }
@@ -245,36 +231,27 @@ impl RecorderController {
         let imp = self.private();
         imp.record_delay.set(record_delay);
 
-        imp.timer.start(record_delay);
-
         imp.recorder.ready();
     }
 
     pub fn cancel_delay(&self) {
         let imp = self.private();
-        // imp.recorder.portal().close();
-
+        imp.recorder.cancel();
         imp.timer.stop();
     }
 
     pub fn stop(&self) {
         let imp = self.private();
-        // imp.recorder.stop();
-
-        imp.timer.stop();
+        imp.recorder.stop();
     }
 
     pub fn pause(&self) {
         let imp = self.private();
-        // imp.recorder.pause();
-
-        imp.timer.pause();
+        imp.recorder.pause();
     }
 
     pub fn resume(&self) {
         let imp = self.private();
-        // imp.recorder.resume();
-
-        imp.timer.resume();
+        imp.recorder.resume();
     }
 }

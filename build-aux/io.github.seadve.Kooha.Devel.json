@@ -15,8 +15,7 @@
         "--talk-name=org.a11y.Bus",
         "--env=RUST_LOG=kooha=debug",
         "--env=RUST_BACKTRACE=1",
-        "--env=G_MESSAGES_DEBUG=none",
-        "--env=PIPEWIRE_DEBUG=5"
+        "--env=G_MESSAGES_DEBUG=none"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",

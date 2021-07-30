@@ -24,7 +24,7 @@ enum VideoFormat {
     Gif,
 }
 
-#[derive(Default)]
+#[derive(Default, Clone)]
 pub struct PipelineBuilder {
     pipewire_stream: Stream,
     speaker_source: Option<String>,
@@ -196,13 +196,20 @@ impl PipelineParser {
     }
 
     fn muxer(&self) -> Option<String> {
-        match self.video_format() {
-            VideoFormat::Webm => Some("webmmux"),
-            VideoFormat::Mkv => Some("matroskamux"),
-            VideoFormat::Mp4 => Some("mp4mux"),
-            VideoFormat::Gif => None,
+        let video_format = self.video_format();
+
+        if video_format == VideoFormat::Gif {
+            return None;
         }
-        .map(str::to_string)
+
+        let muxer = match self.video_format() {
+            VideoFormat::Webm => "webmmux",
+            VideoFormat::Mkv => "matroskamux",
+            VideoFormat::Mp4 => "mp4mux",
+            _ => unreachable!(),
+        };
+
+        Some(format!("{} name=mux", muxer))
     }
 
     fn video_format(&self) -> VideoFormat {
