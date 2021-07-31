@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="data/logo/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
+  <img src="data/icons/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
   Kooha
 </h1>
 
@@ -20,8 +20,8 @@
   <a href="https://hosted.weblate.org/engage/kooha/">
     <img src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg" alt="Translation status" />
   </a>
-  <a href="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml">
-    <img src="https://github.com/SeaDve/Kooha/actions/workflows/testing.yml/badge.svg" alt="CI status"/>
+  <a href="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml">
+    <img src="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
   </a>
   <a href="https://repology.org/project/kooha/versions">
     <img src="https://repology.org/badge/tiny-repos/kooha.svg" alt="Packaging status">
@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <img src="screenshots/Kooha-preview.png" alt="Preview"/>
+  <img src="data/screenshots/Kooha-preview.png" alt="Preview"/>
 </p>
 
 Capture your screen in a straightforward and painless way without distractions.

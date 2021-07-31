@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schemalist>
+  <schema path="/io/github/seadve/Kooha/" id="@app-id@" gettext-domain="@gettext-package@">
+   <key type="s" name="record-delay">
+      <choices>
+        <choice value="0"/>
+        <choice value="5"/>
+        <choice value="10"/>
+      </choices>
+      <default>"0"</default>
+    </key>
+    <key type="s" name="video-format">
+      <choices>
+        <choice value="webm"/>
+        <choice value="mkv"/>
+        <choice value="mp4"/>
+        <choice value="gif"/>
+      </choices>
+      <default>"webm"</default>
+    </key>
+    <key type="s" name="capture-mode">
+      <choices>
+        <choice value="monitor-window"/>
+        <choice value="selection"/>
+      </choices>
+      <default>"monitor-window"</default>
+    </key>
+    <key type="b" name="record-speaker">
+      <default>false</default>
+    </key>
+    <key type="b" name="record-mic">
+      <default>false</default>
+    </key>
+    <key type="b" name="show-pointer">
+      <default>true</default>
+    </key>
+    <key type="u" name="video-framerate">
+      <default>30</default>
+    </key>
+    <key type="s" name="saving-location">
+      <default>"default"</default>
+    </key>
+  </schema>
+</schemalist>

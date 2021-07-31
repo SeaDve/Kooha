@@ -1,34 +1,58 @@
-pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
-moduledir = join_paths(pkgdatadir, 'kooha')
-
-revision = run_command('../build-aux/meson/revision.sh').stdout().strip()
-if revision == ''
-  revision = meson.project_version()
-endif
-
-python = import('python')
-
-conf = configuration_data()
-conf.set('PYTHON', python.find_installation('python3').path())
-conf.set('VERSION', meson.project_version())
-conf.set('REVISION', revision)
-conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
-conf.set('pkgdatadir', pkgdatadir)
-
-configure_file(
-  input: 'kooha.in',
-  output: 'kooha',
-  configuration: conf,
-  install: true,
-  install_dir: get_option('bindir')
+global_conf = configuration_data()
+global_conf.set_quoted('APP_ID', application_id)
+global_conf.set_quoted('PKGDATADIR', pkgdatadir)
+global_conf.set_quoted('PROFILE', profile)
+global_conf.set_quoted('VERSION', version + version_suffix)
+global_conf.set_quoted('GETTEXT_PACKAGE', gettext_package)
+global_conf.set_quoted('LOCALEDIR', localedir)
+config = configure_file(
+  input: 'config.rs.in',
+  output: 'config.rs',
+  configuration: global_conf
+)
+# Copy the config.rs output to the source directory.
+run_command(
+  'cp',
+  meson.build_root() / 'src' / 'config.rs',
+  meson.source_root() / 'src' / 'config.rs',
+  check: true
 )
 
-kooha_sources = [
-  '__init__.py',
-  'main.py',
-  'logger.py',
-]
+sources = files(
+  'backend/mod.rs',
+  'backend/pipeline_builder.rs',
+  'backend/recorder.rs',
+  'backend/recorder_controller.rs',
+  'backend/screencast_portal.rs',
+  'backend/settings.rs',
+  'backend/timer.rs',
+  'widgets/area_selector.rs',
+  'widgets/mod.rs',
+  'widgets/toggle_button.rs',
+  'widgets/window.rs',
+  'application.rs',
+  'config.rs',
+  'data_types.rs',
+  'i18n.rs',
+  'main.rs',
+  'utils.rs',
+)
 
-install_data(kooha_sources, install_dir: moduledir)
-install_subdir('backend', install_dir: moduledir)
-install_subdir('widgets', install_dir: moduledir)
+custom_target(
+  'cargo-build',
+  build_by_default: true,
+  input: sources,
+  output: meson.project_name(),
+  console: true,
+  install: true,
+  install_dir: bindir,
+  depends: resources,
+  command: [
+    cargo_script,
+    meson.build_root(),
+    meson.source_root(),
+    '@OUTPUT@',
+    profile,
+    meson.project_name(),
+  ]
+)

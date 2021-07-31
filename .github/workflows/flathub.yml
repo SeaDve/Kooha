@@ -1,13 +1,13 @@
-name: Deploy on Flathub
-
 on:
   release:
     types: [published]
 
+name: Deploy on Flathub
+
 jobs:
   deploy:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
@@ -46,6 +46,6 @@ jobs:
 
     - name: Wait for flathub build to complete
       run: |
-        cd $GITHUB_WORKSPACE/build-aux/ci
+        cd $GITHUB_WORKSPACE/build-aux/
         chmod +x *.sh
         ./flathub_wait_for_build.sh

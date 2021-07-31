@@ -1,0 +1,26 @@
+.large-icons image {
+  -gtk-icon-size: 32px;
+}
+
+.time-label {
+  font-size: 450%;
+  font-weight: 300;
+  font-feature-settings: "tnum";
+}
+
+.recording {
+  color: @destructive_bg_color;
+}
+
+.paused {
+  animation-name: blinking;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
+  animation-duration: 1s;
+}
+
+@keyframes blinking {
+  0% {
+    color: @theme_fg_color;
+  }
+}
