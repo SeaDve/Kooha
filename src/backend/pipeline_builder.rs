@@ -24,7 +24,7 @@ enum VideoFormat {
     Gif,
 }
 
-#[derive(Default, Clone)]
+#[derive(Debug, Default, Clone)]
 pub struct PipelineBuilder {
     pipewire_stream: Stream,
     speaker_source: Option<String>,

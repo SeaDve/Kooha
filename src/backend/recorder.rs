@@ -261,6 +261,8 @@ impl Recorder {
     }
 
     fn setup_pipeline(&self, pipeline_builder: PipelineBuilder) {
+        log::debug!("{:?}", &pipeline_builder);
+
         match pipeline_builder.build() {
             Ok(pipeline) => {
                 self.set_pipeline(Some(pipeline.downcast().unwrap()));
