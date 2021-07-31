@@ -13,9 +13,10 @@
     <ul>
       <li>🎥 Capture your screen without any hassle.</li>
       <li>🎙️ Record your microphone, computer sounds, or both at the same time.</li>
-      <li>🖼️ Select an area of your screen to record.</li>
+      <li>📼 Support for WebM, MP4, GIF, and MKV formats.</li>
+      <li>🖥️ Select a monitor or window to record.</li>
+      <li>🖼️ Create a selection to capture certain area from your screen.</li>
       <li>⏲️ Set delay to prepare before you start recording.</li>
-      <li>📼 Support for the free Matroska and WebM formats.</li>
       <li>🖱️ Hide or show mouse pointer.</li>
       <li>💾 Choose a saving location for your recording.</li>
       <li>⌨️ Utilize helpful keyboard shortcuts.</li>
@@ -32,13 +33,13 @@
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/Kooha-screenshot.png</image>
+      <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/screenshot.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/Kooha-screenshot2.png</image>
+      <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/screenshot2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/Kooha-screenshot3.png</image>
+      <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/screenshot3.png</image>
     </screenshot>
   </screenshots>
   <releases>
