@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 14:10+0800\n"
+"POT-Creation-Date: 2021-07-31 15:48+0800\n"
 "PO-Revision-Date: 2021-07-07 11:19+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kooha/pot-file/sk/"
@@ -18,27 +18,28 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 4.8-dev\n"
 
-#: data/io.github.seadve.Kooha.desktop.in:3
-#: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
+#: data/io.github.seadve.Kooha.desktop.in.in:3
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:199
 msgid "Kooha"
 msgstr "Kooha"
 
-#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.seadve.Kooha.desktop.in:11
-msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Záznam;Rekordér;Obrazovka;Video;"
-
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:119
+#: data/io.github.seadve.Kooha.desktop.in.in:5
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:200
 msgid "Elegantly record your screen"
 msgstr "Elegantný záznam obrazovky"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:10
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in.in:10
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr "Záznam;Rekordér;Obrazovka;Video;"
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
 msgstr "Zachyťte obrazovku priamym a bezbolestným spôsobom bez rušenia."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -46,257 +47,290 @@ msgstr ""
 "Kooha je jednoduchý rekordér obrazovky s minimalistickým prostredím. Stačí "
 "len kliknúť na nahrávacie tlačidlo bez zložitého nastavovania."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
 msgstr "Hlavné vlastnosti Kooha zahŕňajú:"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 Nasnímajte obrazovku bez akýchkoľvek problémov."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr "🎙️ Zaznamenávajte mikrofón, zvuky počítača alebo oboje súčasne."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:16
-msgid "🖼️ Select an area of your screen to record."
-msgstr "🖼️ Vyberte oblasť obrazovky, ktorú chcete zaznamenať."
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🖥️ Select a monitor or window to record."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+msgid "🖼️ Create a selection to capture certain area from your screen."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Nastavte oneskorenie pred samotným nahrávaním."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:18
-msgid "📼 Support for the free Matroska and WebM formats."
-msgstr "📼 Podpora bezplatných formátov Matroska a WebM."
-
-#: data/io.github.seadve.Kooha.appdata.xml.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Skryť alebo zobraziť kurzor myši."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Vyberte miesto uloženia záznamu."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Využite užitočné klávesové skratky."
 
-#. Translators: please do NOT translate this
-#: data/io.github.seadve.Kooha.appdata.xml.in:29
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/help_overlay.ui:10
+#: data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "Všeobecné"
 
-#: data/ui/help_overlay.ui:14
-msgid "Open menu"
-msgstr "Otvoriť menu"
+#: data/resources/ui/shortcuts.ui:14
+msgid "Open Menu"
+msgstr ""
 
-#: data/ui/help_overlay.ui:20
-msgid "Show keyboard shortcuts"
-msgstr "Zobraziť klávesové skratky"
+#: data/resources/ui/shortcuts.ui:20
+msgid "Show Shortcuts"
+msgstr ""
 
-#: data/ui/help_overlay.ui:26
+#: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
 msgstr "Ukončiť"
 
-#: data/ui/help_overlay.ui:33 src/widgets/window.py:61
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:162
 msgid "Recording"
 msgstr "Nahrávanie"
 
-#: data/ui/help_overlay.ui:37
-msgid "Toggle record"
-msgstr "Prepnúť záznam"
-
-#: data/ui/help_overlay.ui:43
-msgid "Toggle record pause"
+#: data/resources/ui/shortcuts.ui:37
+msgid "Toggle Record"
 msgstr ""
 
-#: data/ui/help_overlay.ui:49
-msgid "Cancel delay"
-msgstr "Zrušiť oneskorenie"
-
-#: data/ui/help_overlay.ui:56
-msgid "Settings"
-msgstr "Nastavenia"
-
-#: data/ui/help_overlay.ui:60
-msgid "Toggle computer sounds"
-msgstr "Prepnúť zvuky počítača"
-
-#: data/ui/help_overlay.ui:66
-msgid "Toggle microphone"
-msgstr "Prepnúť mikrofón"
-
-#: data/ui/help_overlay.ui:72
-msgid "Toggle pointer"
-msgstr "Prepnúť kurzor"
-
-#: data/ui/window.ui:31
-msgid "Main Menu"
+#: data/resources/ui/shortcuts.ui:43
+msgid "Toggle Record Pause"
 msgstr ""
 
-#: data/ui/window.ui:54
-msgid "Normal"
-msgstr ""
-
-#: data/ui/window.ui:64
-msgid "Selection"
-msgstr "Výber"
-
-#: data/ui/window.ui:93
-msgid "Capture a Monitor or Window"
-msgstr ""
-
-#: data/ui/window.ui:101
-msgid "Capture a Selection of Screen"
-msgstr ""
-
-#: data/ui/window.ui:114
-msgid "Record Computer Sounds"
-msgstr ""
-
-#: data/ui/window.ui:128
-msgid "Record From Microphone"
-msgstr ""
-
-#: data/ui/window.ui:142
-msgid "Show Pointer"
-msgstr ""
-
-#: data/ui/window.ui:150
-msgid "Record"
-msgstr "Zaznamenať"
-
-#: data/ui/window.ui:215
-msgid "Stop"
-msgstr "Stop"
-
-#: data/ui/window.ui:273
-msgid "Recording in…"
-msgstr "Nahrávanie za…"
-
-#: data/ui/window.ui:291
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
 msgid "Cancel Delay"
 msgstr "Zrušiť oneskornie"
 
-#: data/ui/window.ui:332
-msgid "Delay"
-msgstr "Oneskorenie"
+#: data/resources/ui/shortcuts.ui:56
+msgid "Settings"
+msgstr "Nastavenia"
 
-#: data/ui/window.ui:334
+#: data/resources/ui/shortcuts.ui:60
+msgid "Toggle Computer Sounds"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:66
+msgid "Toggle Microphone"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:72
+msgid "Toggle Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:31
+msgid "Main Menu"
+msgstr ""
+
+#: data/resources/ui/window.ui:54
+msgid "Normal"
+msgstr ""
+
+#: data/resources/ui/window.ui:64
+msgid "Selection"
+msgstr "Výber"
+
+#: data/resources/ui/window.ui:93
+msgid "Capture a Monitor or Window"
+msgstr ""
+
+#: data/resources/ui/window.ui:101
+msgid "Capture a Selection of Screen"
+msgstr ""
+
+#: data/resources/ui/window.ui:114
+msgid "Record Computer Sounds"
+msgstr ""
+
+#: data/resources/ui/window.ui:128
+msgid "Record From Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:142
+msgid "Show Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:149
+msgid "Record"
+msgstr "Zaznamenať"
+
+#: data/resources/ui/window.ui:204
+msgid "Stop"
+msgstr "Stop"
+
+#: data/resources/ui/window.ui:240
+msgid "Recording in…"
+msgstr "Nahrávanie za…"
+
+#: data/resources/ui/window.ui:283
+msgid "_Delay"
+msgstr ""
+
+#: data/resources/ui/window.ui:285
 msgid "None"
 msgstr "Žiadne"
 
-#: data/ui/window.ui:339
+#: data/resources/ui/window.ui:290
 msgid "5 seconds"
 msgstr "5 sekúnd"
 
-#: data/ui/window.ui:344
+#: data/resources/ui/window.ui:295
 msgid "10 seconds"
 msgstr "10 sekúnd"
 
-#: data/ui/window.ui:350
-msgid "Video Format"
-msgstr "Formát videa"
+#: data/resources/ui/window.ui:301
+msgid "_Video Format"
+msgstr ""
 
-#: data/ui/window.ui:352
+#: data/resources/ui/window.ui:303
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:357
+#: data/resources/ui/window.ui:308
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:362
+#: data/resources/ui/window.ui:313
 msgid "MP4"
 msgstr ""
 
-#: data/ui/window.ui:367
+#: data/resources/ui/window.ui:318
 msgid "GIF"
 msgstr ""
 
-#: data/ui/window.ui:374
-msgid "Save to…"
-msgstr "Uložiť do…"
-
-#: data/ui/window.ui:380
-msgid "Keyboard Shortcuts"
-msgstr "Klávesové skratky"
-
-#: data/ui/window.ui:384
-msgid "About Kooha"
-msgstr "O Kooha"
-
-#: src/widgets/window.py:66
-msgid "Paused"
+#: data/resources/ui/window.ui:324
+msgid "_Save to…"
 msgstr ""
 
-#: src/widgets/window.py:77
-msgid "Sorry! An error has occured."
+#: data/resources/ui/window.ui:330
+msgid "_Keyboard Shortcuts"
 msgstr ""
 
-#: src/backend/settings.py:49
-msgid "Videos"
+#: data/resources/ui/window.ui:334
+msgid "_About Kooha"
 msgstr ""
 
-#: src/backend/screencast_portal.py:40
-msgid "Failed to create session."
-msgstr ""
-
-#: src/backend/screencast_portal.py:60
-msgid "Failed to select sources."
-msgstr ""
-
-#: src/main.py:75
+#: src/application.rs:156
 msgid "Select a Folder"
 msgstr "Vyberte priečinok"
 
-#: src/main.py:76
-msgid "Cancel"
-msgstr "Zrušiť"
-
-#: src/main.py:77
-msgid "Select"
-msgstr "Vybrať"
-
-#: src/main.py:95
-#, python-brace-format
-msgid "Inaccessible location “{directory}”"
+#: src/application.rs:159
+msgid "_Cancel"
 msgstr ""
 
-#: src/main.py:96
+#: src/application.rs:160
+msgid "_Select"
+msgstr ""
+
+#: src/application.rs:180
+msgid "Inaccessible location '{}'"
+msgstr ""
+
+#: src/application.rs:181
 msgid "Please choose an accessible location and retry."
 msgstr "Vyberte prístupné umiestnenie a skúste to znova."
 
-#: src/main.py:122
-msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
-
-#. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:124
+#. Translators: Replace "translator-credits" with your names. Put a comma between.
+#: src/application.rs:210
 msgid "translator-credits"
 msgstr "MartinIIOT (https://github.com/MartinIIOT)"
 
-#: src/main.py:125
+#: src/application.rs:211
+msgid "Copyright 2021 Dave Patrick"
+msgstr "Copyright 2021 Dave Patrick"
+
+#: src/application.rs:214
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/main.py:145
+#: src/application.rs:223
 msgid "Screencast Recorded!"
 msgstr "Obrazovka bola zaznamenaná!"
 
-#: src/main.py:146
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
+#: src/application.rs:225
+msgid "The recording has been saved in {}"
 msgstr ""
 
-#: src/main.py:152
+#: src/application.rs:233
 msgid "Open File"
 msgstr ""
+
+#: src/widgets/window.rs:167
+msgid "Paused"
+msgstr ""
+
+#: src/widgets/window.rs:203
+msgid "Sorry! An error has occurred."
+msgstr ""
+
+#~ msgid "🖼️ Select an area of your screen to record."
+#~ msgstr "🖼️ Vyberte oblasť obrazovky, ktorú chcete zaznamenať."
+
+#~ msgid "📼 Support for the free Matroska and WebM formats."
+#~ msgstr "📼 Podpora bezplatných formátov Matroska a WebM."
+
+#~ msgid "Open menu"
+#~ msgstr "Otvoriť menu"
+
+#~ msgid "Show keyboard shortcuts"
+#~ msgstr "Zobraziť klávesové skratky"
+
+#~ msgid "Toggle record"
+#~ msgstr "Prepnúť záznam"
+
+#~ msgid "Cancel delay"
+#~ msgstr "Zrušiť oneskorenie"
+
+#~ msgid "Toggle computer sounds"
+#~ msgstr "Prepnúť zvuky počítača"
+
+#~ msgid "Toggle microphone"
+#~ msgstr "Prepnúť mikrofón"
+
+#~ msgid "Toggle pointer"
+#~ msgstr "Prepnúť kurzor"
+
+#~ msgid "Delay"
+#~ msgstr "Oneskorenie"
+
+#~ msgid "Video Format"
+#~ msgstr "Formát videa"
+
+#~ msgid "Save to…"
+#~ msgstr "Uložiť do…"
+
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "Klávesové skratky"
+
+#~ msgid "About Kooha"
+#~ msgstr "O Kooha"
+
+#~ msgid "Cancel"
+#~ msgstr "Zrušiť"
+
+#~ msgid "Select"
+#~ msgstr "Vybrať"
 
 #~ msgid "Toggle capture mode"
 #~ msgstr "Prepnúť režim snímania"

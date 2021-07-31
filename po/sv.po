@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 14:10+0800\n"
+"POT-Creation-Date: 2021-07-31 15:48+0800\n"
 "PO-Revision-Date: 2021-07-07 11:19+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -19,27 +19,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.8-dev\n"
 
-#: data/io.github.seadve.Kooha.desktop.in:3
-#: data/io.github.seadve.Kooha.appdata.xml.in:7 src/main.py:109
+#: data/io.github.seadve.Kooha.desktop.in.in:3
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:199
 msgid "Kooha"
 msgstr "Kooha"
 
-#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.seadve.Kooha.desktop.in:11
-msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
-
-#: data/io.github.seadve.Kooha.appdata.xml.in:8 src/main.py:119
+#: data/io.github.seadve.Kooha.desktop.in.in:5
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:200
 msgid "Elegantly record your screen"
 msgstr "Spela in din skärm på ett elegant sätt"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:10
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in.in:10
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr "Skärmutsändning;Inspelare;Skärm;Video;"
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
 msgstr "Spela in skärmen på ett enkelt och smärtfritt sätt utan distraktioner."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -48,258 +49,312 @@ msgstr ""
 "klicka på inspelningsknappen utan att behöva konfigurera en massa "
 "inställningar."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
 msgstr "De viktigaste funktionerna i Kooha är följande:"
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 Spela in skärmen utan krångel."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr "🎙️ Spela in din mikrofon, datorljud eller båda samtidigt."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:16
-msgid "🖼️ Select an area of your screen to record."
-msgstr "🖼️ Välj ett område på skärmen för inspelning."
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+msgstr ""
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🖥️ Select a monitor or window to record."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+msgid "🖼️ Create a selection to capture certain area from your screen."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr ""
 "⏲️ Ställ in en fördröjning för att förbereda dig innan du börjar spela in."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:18
-msgid "📼 Support for the free Matroska and WebM formats."
-msgstr "📼 Stöd för de fria formaten Matroska och WebM."
-
-#: data/io.github.seadve.Kooha.appdata.xml.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Dölj eller visa muspekaren."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Välj en lagringsplats för inspelningen."
 
-#: data/io.github.seadve.Kooha.appdata.xml.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Använd användbara tangentbordsgenvägar."
 
-#. Translators: please do NOT translate this
-#: data/io.github.seadve.Kooha.appdata.xml.in:29
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
-#: data/ui/help_overlay.ui:10
+#: data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "Allmänt"
 
-#: data/ui/help_overlay.ui:14
-msgid "Open menu"
-msgstr "Öppna menyn"
+#: data/resources/ui/shortcuts.ui:14
+msgid "Open Menu"
+msgstr ""
 
-#: data/ui/help_overlay.ui:20
-msgid "Show keyboard shortcuts"
-msgstr "Visa tangentbordsgenvägar"
+#: data/resources/ui/shortcuts.ui:20
+msgid "Show Shortcuts"
+msgstr ""
 
-#: data/ui/help_overlay.ui:26
+#: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/ui/help_overlay.ui:33 src/widgets/window.py:61
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:162
 msgid "Recording"
 msgstr "Spelar in"
 
-#: data/ui/help_overlay.ui:37
-msgid "Toggle record"
-msgstr "Inspelning på/av"
+#: data/resources/ui/shortcuts.ui:37
+msgid "Toggle Record"
+msgstr ""
 
-#: data/ui/help_overlay.ui:43
-msgid "Toggle record pause"
-msgstr "Inspelningspaus på/av"
+#: data/resources/ui/shortcuts.ui:43
+msgid "Toggle Record Pause"
+msgstr ""
 
-#: data/ui/help_overlay.ui:49
-msgid "Cancel delay"
-msgstr "Avbryt fördröjning"
-
-#: data/ui/help_overlay.ui:56
-msgid "Settings"
-msgstr "Inställningar"
-
-#: data/ui/help_overlay.ui:60
-msgid "Toggle computer sounds"
-msgstr "Datorljud på/av"
-
-#: data/ui/help_overlay.ui:66
-msgid "Toggle microphone"
-msgstr "Mikrofonljud på/av"
-
-#: data/ui/help_overlay.ui:72
-msgid "Toggle pointer"
-msgstr "Visa/Dölj muspekare"
-
-#: data/ui/window.ui:31
-msgid "Main Menu"
-msgstr "Huvudmeny"
-
-#: data/ui/window.ui:54
-msgid "Normal"
-msgstr "Normal"
-
-#: data/ui/window.ui:64
-msgid "Selection"
-msgstr "Markering"
-
-#: data/ui/window.ui:93
-msgid "Capture a Monitor or Window"
-msgstr "Spela in en bildskärm eller ett fönster"
-
-#: data/ui/window.ui:101
-msgid "Capture a Selection of Screen"
-msgstr "Spela in en del av skärmen"
-
-#: data/ui/window.ui:114
-msgid "Record Computer Sounds"
-msgstr "Spela in datorljud"
-
-#: data/ui/window.ui:128
-msgid "Record From Microphone"
-msgstr "Spela in från mikrofon"
-
-#: data/ui/window.ui:142
-msgid "Show Pointer"
-msgstr "Visa muspekare"
-
-#: data/ui/window.ui:150
-msgid "Record"
-msgstr "Spela in"
-
-#: data/ui/window.ui:215
-msgid "Stop"
-msgstr "Stopp"
-
-#: data/ui/window.ui:273
-msgid "Recording in…"
-msgstr "Spelar in om…"
-
-#: data/ui/window.ui:291
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
 msgid "Cancel Delay"
 msgstr "Avbryt fördröjning"
 
-#: data/ui/window.ui:332
-msgid "Delay"
-msgstr "Fördröjning"
+#: data/resources/ui/shortcuts.ui:56
+msgid "Settings"
+msgstr "Inställningar"
 
-#: data/ui/window.ui:334
+#: data/resources/ui/shortcuts.ui:60
+msgid "Toggle Computer Sounds"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:66
+msgid "Toggle Microphone"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:72
+msgid "Toggle Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:31
+msgid "Main Menu"
+msgstr "Huvudmeny"
+
+#: data/resources/ui/window.ui:54
+msgid "Normal"
+msgstr "Normal"
+
+#: data/resources/ui/window.ui:64
+msgid "Selection"
+msgstr "Markering"
+
+#: data/resources/ui/window.ui:93
+msgid "Capture a Monitor or Window"
+msgstr "Spela in en bildskärm eller ett fönster"
+
+#: data/resources/ui/window.ui:101
+msgid "Capture a Selection of Screen"
+msgstr "Spela in en del av skärmen"
+
+#: data/resources/ui/window.ui:114
+msgid "Record Computer Sounds"
+msgstr "Spela in datorljud"
+
+#: data/resources/ui/window.ui:128
+msgid "Record From Microphone"
+msgstr "Spela in från mikrofon"
+
+#: data/resources/ui/window.ui:142
+msgid "Show Pointer"
+msgstr "Visa muspekare"
+
+#: data/resources/ui/window.ui:149
+msgid "Record"
+msgstr "Spela in"
+
+#: data/resources/ui/window.ui:204
+msgid "Stop"
+msgstr "Stopp"
+
+#: data/resources/ui/window.ui:240
+msgid "Recording in…"
+msgstr "Spelar in om…"
+
+#: data/resources/ui/window.ui:283
+msgid "_Delay"
+msgstr ""
+
+#: data/resources/ui/window.ui:285
 msgid "None"
 msgstr "Ingen"
 
-#: data/ui/window.ui:339
+#: data/resources/ui/window.ui:290
 msgid "5 seconds"
 msgstr "5 sekunder"
 
-#: data/ui/window.ui:344
+#: data/resources/ui/window.ui:295
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: data/ui/window.ui:350
-msgid "Video Format"
-msgstr "Videoformat"
+#: data/resources/ui/window.ui:301
+msgid "_Video Format"
+msgstr ""
 
-#: data/ui/window.ui:352
+#: data/resources/ui/window.ui:303
 msgid "WebM"
 msgstr "WebM"
 
-#: data/ui/window.ui:357
+#: data/resources/ui/window.ui:308
 msgid "MKV"
 msgstr "MKV"
 
-#: data/ui/window.ui:362
+#: data/resources/ui/window.ui:313
 msgid "MP4"
 msgstr "MP4"
 
-#: data/ui/window.ui:367
+#: data/resources/ui/window.ui:318
 msgid "GIF"
 msgstr "GIF"
 
-#: data/ui/window.ui:374
-msgid "Save to…"
-msgstr "Spara till…"
+#: data/resources/ui/window.ui:324
+msgid "_Save to…"
+msgstr ""
 
-#: data/ui/window.ui:380
-msgid "Keyboard Shortcuts"
-msgstr "Tangenbordsgenvägar"
+#: data/resources/ui/window.ui:330
+msgid "_Keyboard Shortcuts"
+msgstr ""
 
-#: data/ui/window.ui:384
-msgid "About Kooha"
-msgstr "Om Kooha"
+#: data/resources/ui/window.ui:334
+msgid "_About Kooha"
+msgstr ""
 
-#: src/widgets/window.py:66
-msgid "Paused"
-msgstr "Pausad"
-
-#: src/widgets/window.py:77
-msgid "Sorry! An error has occured."
-msgstr "Ett fel har uppstått."
-
-#: src/backend/settings.py:49
-msgid "Videos"
-msgstr "Videor"
-
-#: src/backend/screencast_portal.py:40
-msgid "Failed to create session."
-msgstr "Kunde inte skapa session."
-
-#: src/backend/screencast_portal.py:60
-msgid "Failed to select sources."
-msgstr "Kunde inte välja källor."
-
-#: src/main.py:75
+#: src/application.rs:156
 msgid "Select a Folder"
 msgstr "Välj en mapp"
 
-#: src/main.py:76
-msgid "Cancel"
-msgstr "Avbryt"
+#: src/application.rs:159
+msgid "_Cancel"
+msgstr ""
 
-#: src/main.py:77
-msgid "Select"
-msgstr "Välj"
+#: src/application.rs:160
+msgid "_Select"
+msgstr ""
 
-#: src/main.py:95
-#, python-brace-format
-msgid "Inaccessible location “{directory}”"
-msgstr "Oåtkomlig plats “{directory}”"
+#: src/application.rs:180
+msgid "Inaccessible location '{}'"
+msgstr ""
 
-#: src/main.py:96
+#: src/application.rs:181
 msgid "Please choose an accessible location and retry."
 msgstr "Välj en åtkomlig plats och försök igen."
 
-#: src/main.py:122
-msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
-
-#. Translators: Replace "translator-credits" with your names, one name per line
-#: src/main.py:124
+#. Translators: Replace "translator-credits" with your names. Put a comma between.
+#: src/application.rs:210
 msgid "translator-credits"
 msgstr "Åke Engelbrektson &lt;eson@svenskasprakfiler.se&gt;"
 
-#: src/main.py:125
+#: src/application.rs:211
+msgid "Copyright 2021 Dave Patrick"
+msgstr "Copyright 2021 Dave Patrick"
+
+#: src/application.rs:214
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/main.py:145
+#: src/application.rs:223
 msgid "Screencast Recorded!"
 msgstr "Skärmvisning inspelad!"
 
-#: src/main.py:146
-#, python-brace-format
-msgid "The recording has been saved in {saving_location}"
-msgstr "Inspelningen har sparats i {saving_location}"
+#: src/application.rs:225
+msgid "The recording has been saved in {}"
+msgstr ""
 
-#: src/main.py:152
+#: src/application.rs:233
 msgid "Open File"
 msgstr "Öppna fil"
+
+#: src/widgets/window.rs:167
+msgid "Paused"
+msgstr "Pausad"
+
+#: src/widgets/window.rs:203
+msgid "Sorry! An error has occurred."
+msgstr ""
+
+#~ msgid "🖼️ Select an area of your screen to record."
+#~ msgstr "🖼️ Välj ett område på skärmen för inspelning."
+
+#~ msgid "📼 Support for the free Matroska and WebM formats."
+#~ msgstr "📼 Stöd för de fria formaten Matroska och WebM."
+
+#~ msgid "Open menu"
+#~ msgstr "Öppna menyn"
+
+#~ msgid "Show keyboard shortcuts"
+#~ msgstr "Visa tangentbordsgenvägar"
+
+#~ msgid "Toggle record"
+#~ msgstr "Inspelning på/av"
+
+#~ msgid "Toggle record pause"
+#~ msgstr "Inspelningspaus på/av"
+
+#~ msgid "Cancel delay"
+#~ msgstr "Avbryt fördröjning"
+
+#~ msgid "Toggle computer sounds"
+#~ msgstr "Datorljud på/av"
+
+#~ msgid "Toggle microphone"
+#~ msgstr "Mikrofonljud på/av"
+
+#~ msgid "Toggle pointer"
+#~ msgstr "Visa/Dölj muspekare"
+
+#~ msgid "Delay"
+#~ msgstr "Fördröjning"
+
+#~ msgid "Video Format"
+#~ msgstr "Videoformat"
+
+#~ msgid "Save to…"
+#~ msgstr "Spara till…"
+
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "Tangenbordsgenvägar"
+
+#~ msgid "About Kooha"
+#~ msgstr "Om Kooha"
+
+#~ msgid "Sorry! An error has occured."
+#~ msgstr "Ett fel har uppstått."
+
+#~ msgid "Videos"
+#~ msgstr "Videor"
+
+#~ msgid "Failed to create session."
+#~ msgstr "Kunde inte skapa session."
+
+#~ msgid "Failed to select sources."
+#~ msgstr "Kunde inte välja källor."
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Select"
+#~ msgstr "Välj"
+
+#~ msgid "Inaccessible location “{directory}”"
+#~ msgstr "Oåtkomlig plats “{directory}”"
+
+#~ msgid "The recording has been saved in {saving_location}"
+#~ msgstr "Inspelningen har sparats i {saving_location}"
 
 #~ msgid "Inaccessible location '{directory}'"
 #~ msgstr "Oåtkomlig plats \"{directory}\""
