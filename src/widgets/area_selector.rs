@@ -197,7 +197,7 @@ impl AreaSelector {
     fn emit_response(&self, response: AreaSelectorResponse) {
         self.emit_by_name("response", &[&response]).unwrap();
         self.clean();
-        self.hide();
+        self.close();
     }
 
     fn clean(&self) {
