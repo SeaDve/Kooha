@@ -230,26 +230,25 @@ impl Recorder {
             .speaker_source(speaker_source)
             .mic_source(mic_source);
 
-        if settings.is_selection_mode() {
-            let area_selector = AreaSelector::new();
-            area_selector.select_area();
-            area_selector.connect_local(
+        if !settings.is_selection_mode() {
+            self.setup_pipeline(pipeline_builder);
+            return;
+        }
+
+        let area_selector = AreaSelector::new();
+        area_selector.select_area();
+        area_selector.connect_local(
                 "response",
                 false,
                 clone!(@weak self as obj, @strong pipeline_builder => @default-return None, move | args | {
                     let response = args[1].get().unwrap();
                     match response {
                         AreaSelectorResponse::Captured(coords, actual_screen) => {
-                            let pipeline_builder = pipeline_builder.clone();
-
-                            let pipeline = pipeline_builder
+                            let pipeline_builder = pipeline_builder.clone()
                                 .coordinates(coords)
-                                .actual_screen(actual_screen)
-                                .build()
-                                .unwrap();
+                                .actual_screen(actual_screen);
 
-                            obj.set_pipeline(Some(pipeline.downcast().unwrap()));
-                            obj.emit_ready();
+                            obj.setup_pipeline(pipeline_builder);
                         },
                         AreaSelectorResponse::Cancelled => {
                             obj.set_is_readying(false);
@@ -259,14 +258,19 @@ impl Recorder {
                     None
                 }),
             ).unwrap();
-        } else {
-            let pipeline = pipeline_builder.build().unwrap();
-            self.set_pipeline(Some(pipeline.downcast().unwrap()));
-            self.emit_ready();
-        };
+    }
 
-        // FIXME handle invalid pipeline errors
-        // log::debug!("Pipeline: {}", pipeline_builder.clone().parse_into_string());
+    fn setup_pipeline(&self, pipeline_builder: PipelineBuilder) {
+        match pipeline_builder.build() {
+            Ok(pipeline) => {
+                self.set_pipeline(Some(pipeline.downcast().unwrap()));
+                self.emit_ready();
+            }
+            Err(error) => {
+                self.emit_response(RecorderResponse::Failed(error.to_string()));
+                log::error!("{}", error);
+            }
+        };
     }
 
     fn close_pipeline(&self) {
