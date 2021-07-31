@@ -236,7 +236,6 @@ impl Recorder {
         }
 
         let area_selector = AreaSelector::new();
-        area_selector.select_area();
         area_selector.connect_local(
                 "response",
                 false,
@@ -258,6 +257,7 @@ impl Recorder {
                     None
                 }),
             ).unwrap();
+        area_selector.select_area();
     }
 
     fn setup_pipeline(&self, pipeline_builder: PipelineBuilder) {
@@ -267,8 +267,8 @@ impl Recorder {
                 self.emit_ready();
             }
             Err(error) => {
-                self.emit_response(RecorderResponse::Failed(error.to_string()));
                 self.portal().close_session();
+                self.emit_response(RecorderResponse::Failed(error.to_string()));
                 log::error!("{}", error);
             }
         };
