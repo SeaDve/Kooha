@@ -82,7 +82,9 @@ mod imp {
                                 let stream = Stream { fd, node_id, screen };
                                 obj.init_pipeline(stream);
                             },
-                            ScreencastPortalResponse::Cancelled => (),
+                            ScreencastPortalResponse::Cancelled => {
+                                obj.set_is_readying(false);
+                            },
                             ScreencastPortalResponse::Error(error_message) => {
                                 obj.set_is_readying(false);
                                 obj.emit_response(RecorderResponse::Failed(error_message));

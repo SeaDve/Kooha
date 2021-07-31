@@ -31,6 +31,8 @@ mod imp {
         pub settings: Settings,
         pub recorder_controller: RecorderController,
         #[template_child]
+        pub start_record_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub record_speaker_toggle: TemplateChild<ToggleButton>,
@@ -58,6 +60,7 @@ mod imp {
             Self {
                 settings: Settings::new(),
                 recorder_controller: RecorderController::new(),
+                start_record_button: TemplateChild::default(),
                 pause_record_button: TemplateChild::default(),
                 record_speaker_toggle: TemplateChild::default(),
                 record_mic_toggle: TemplateChild::default(),
@@ -130,6 +133,11 @@ mod imp {
 
             self.settings
                 .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
+
+            self.recorder_controller
+                .bind_property("is-readying", &*self.start_record_button, "sensitive")
+                .flags(glib::BindingFlags::INVERT_BOOLEAN)
+                .build();
 
             obj.update_audio_toggles_sensitivity();
             self.settings.connect_changed_notify(
