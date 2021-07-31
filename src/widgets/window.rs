@@ -9,7 +9,7 @@ use gtk::{
 
 use crate::{
     application::Application,
-    backend::{RecorderController, RecorderControllerState, Settings},
+    backend::{RecorderController, RecorderControllerState, RecorderResponse, Settings},
     config::PROFILE,
     i18n::i18n,
     widgets::ToggleButton,
@@ -180,8 +180,24 @@ mod imp {
                 .connect_local(
                     "response",
                     false,
-                    clone!(@weak obj => @default-return None, move |_| {
-                        println!("recorder_controller record-success");
+                    clone!(@weak obj => @default-return None, move |args| {
+                        let response = args[1].get().unwrap();
+                        match response {
+                            RecorderResponse::Success(recording_file_path) => {
+                                println!("record-success: {}", recording_file_path);
+                            },
+                            RecorderResponse::Failed(error_message) => {
+                                let error_dialog = gtk::MessageDialogBuilder::new()
+                                    .modal(true)
+                                    .buttons(gtk::ButtonsType::Ok)
+                                    .transient_for(&obj)
+                                    .title(&i18n("Sorry! An error has occured."))
+                                    .text(&error_message)
+                                    .build();
+                                error_dialog.connect_response(|error_dialog, _| error_dialog.close());
+                                error_dialog.present();
+                            }
+                        };
                         None
                     }),
                 )

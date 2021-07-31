@@ -22,7 +22,7 @@ use crate::data_types::Screen;
 #[gboxed(type_name = "ScreencastPortalResponse")]
 pub enum ScreencastPortalResponse {
     Success(i32, u32, Screen),
-    Revoked,
+    Revoked(String),
 }
 
 mod imp {
@@ -105,7 +105,7 @@ impl ScreencastPortal {
                 }
                 Err(error) => {
                     log::warn!("{}", error);
-                    obj.emit_response(ScreencastPortalResponse::Revoked)
+                    obj.emit_response(ScreencastPortalResponse::Revoked(error.to_string()))
                 }
             };
         }));

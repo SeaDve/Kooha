@@ -6,13 +6,14 @@ mod settings;
 mod timer;
 
 pub use {
+    recorder::RecorderResponse,
     recorder_controller::{RecorderController, RecorderControllerState},
     settings::Settings,
 };
 
 use {
     pipeline_builder::PipelineBuilder,
-    recorder::{Recorder, RecorderResponse, RecorderState},
+    recorder::{Recorder, RecorderState},
     screencast_portal::{ScreencastPortal, ScreencastPortalResponse},
     timer::{Timer, TimerState},
 };

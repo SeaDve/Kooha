@@ -116,8 +116,8 @@ mod imp {
                     "response",
                     false,
                     clone!(@weak obj => @default-return None, move | args | {
-                        let response: RecorderResponse = args[1].get().unwrap();
-                        dbg!(response);
+                        let response = args[1].get().unwrap();
+                        obj.emit_response(response);
                         None
                     }),
                 )
@@ -128,7 +128,7 @@ mod imp {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![Signal::builder(
                     "response",
-                    &[String::static_type().into()],
+                    &[RecorderResponse::static_type().into()],
                     <()>::static_type().into(),
                 )
                 .build()]
@@ -214,6 +214,10 @@ impl RecorderController {
 
     fn private(&self) -> &imp::RecorderController {
         &imp::RecorderController::from_instance(self)
+    }
+
+    fn emit_response(&self, response: RecorderResponse) {
+        self.emit_by_name("response", &[&response]).unwrap();
     }
 
     pub fn state(&self) -> RecorderControllerState {

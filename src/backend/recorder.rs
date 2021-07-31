@@ -77,10 +77,9 @@ mod imp {
                                 let stream = Stream { fd, node_id, screen };
                                 obj.init_pipeline(stream);
                             },
-                            ScreencastPortalResponse::Revoked => {
-                                // FIXME handle errors and cancelled
+                            ScreencastPortalResponse::Revoked(error_message) => {
                                 obj.set_is_readying(false);
-                                obj.emit_response(RecorderResponse::Failed("Cancelled session".into()));
+                                obj.emit_response(RecorderResponse::Failed(error_message));
                             }
                         };
                         None
