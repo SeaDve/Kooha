@@ -25,6 +25,42 @@
     },
     "modules": [
         {
+            "name": "x264",
+            "config-opts": [
+                "--enable-shared",
+                "--enable-pic",
+                "--disable-cli"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://code.videolan.org/videolan/x264.git",
+                    "branch": "stable"
+                }
+            ]
+        },
+        {
+            "name": "gst-plugins-ugly",
+            "buildsystem": "meson",
+            "builddir": true,
+            "config-opts": [
+                "--buildtype=release",
+                "-Ddoc=disabled",
+                "-Dnls=disabled",
+                "-Dtests=disabled",
+                "-Dgobject-cast-checks=disabled",
+                "-Dglib-asserts=disabled",
+                "-Dglib-checks=disabled"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.16.2.tar.xz",
+                    "sha256": "5500415b865e8b62775d4742cbb9f37146a50caecfc0e7a6fc0160d3c560fbca"
+                }
+            ]
+        },
+        {
             "name" : "libadwaita",
             "buildsystem" : "meson",
             "config-opts": [
