@@ -3,11 +3,11 @@ on:
     branches: [main]
   pull_request:
 
-name: Testing
+name: CI
 
 jobs:
-  clippy:
-    name: Clippy
+  rustfmt:
+    name: Rustfmt
     runs-on: ubuntu-20.04
     container:
       image: ghcr.io/gtk-rs/gtk4-rs/gtk4:latest
@@ -18,44 +18,15 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-          components: clippy
-      - name: "examples: clippy"
-        run: cargo clippy -- -D warnings
-
-  test:
-    name: Test Suite
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: test
-
-
-  fmt:
-    name: Rustfmt
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - run: rustup component add rustfmt
-      - uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
+          components: rustfmt
+      - name: "Create blank versions of configured file"
+        run: echo -e "" >> src/config.rs
+      - name: "Run cargo clippy"
+        run: cargo fmt --all -- --color=always --check
 
   flatpak:
     name: Flatpak
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-40
       options: --privileged
