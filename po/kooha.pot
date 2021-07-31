@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 15:43+0800\n"
+"POT-Creation-Date: 2021-07-31 15:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,15 +185,15 @@ msgid "_Delay"
 msgstr ""
 
 #: data/resources/ui/window.ui:285
-msgid "_None"
+msgid "None"
 msgstr ""
 
 #: data/resources/ui/window.ui:290
-msgid "_5 seconds"
+msgid "5 seconds"
 msgstr ""
 
 #: data/resources/ui/window.ui:295
-msgid "_10 seconds"
+msgid "10 seconds"
 msgstr ""
 
 #: data/resources/ui/window.ui:301
@@ -201,19 +201,19 @@ msgid "_Video Format"
 msgstr ""
 
 #: data/resources/ui/window.ui:303
-msgid "_WebM"
+msgid "WebM"
 msgstr ""
 
 #: data/resources/ui/window.ui:308
-msgid "M_KV"
+msgid "MKV"
 msgstr ""
 
 #: data/resources/ui/window.ui:313
-msgid "M_P4"
+msgid "MP4"
 msgstr ""
 
 #: data/resources/ui/window.ui:318
-msgid "_GIF"
+msgid "GIF"
 msgstr ""
 
 #: data/resources/ui/window.ui:324
