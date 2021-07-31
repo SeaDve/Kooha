@@ -282,17 +282,17 @@
       <submenu>
         <attribute name="label" translatable="yes">_Delay</attribute>
         <item>
-          <attribute translatable="yes" name="label">_None</attribute>
+          <attribute translatable="yes" name="label">None</attribute>
           <attribute name="action">win.record-delay</attribute>
           <attribute name="target">0</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">_5 seconds</attribute>
+          <attribute translatable="yes" name="label">5 seconds</attribute>
           <attribute name="action">win.record-delay</attribute>
           <attribute name="target">5</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">_10 seconds</attribute>
+          <attribute translatable="yes" name="label">10 seconds</attribute>
           <attribute name="action">win.record-delay</attribute>
           <attribute name="target">10</attribute>
         </item>
@@ -300,22 +300,22 @@
       <submenu>
         <attribute name="label" translatable="yes">_Video Format</attribute>
         <item>
-          <attribute translatable="yes" name="label">_WebM</attribute>
+          <attribute translatable="yes" name="label">WebM</attribute>
           <attribute name="action">win.video-format</attribute>
           <attribute name="target">webm</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">M_KV</attribute>
+          <attribute translatable="yes" name="label">MKV</attribute>
           <attribute name="action">win.video-format</attribute>
           <attribute name="target">mkv</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">M_P4</attribute>
+          <attribute translatable="yes" name="label">MP4</attribute>
           <attribute name="action">win.video-format</attribute>
           <attribute name="target">mp4</attribute>
         </item>
         <item>
-          <attribute translatable="yes" name="label">_GIF</attribute>
+          <attribute translatable="yes" name="label">GIF</attribute>
           <attribute name="action">win.video-format</attribute>
           <attribute name="target">gif</attribute>
         </item>
