@@ -10,9 +10,10 @@
     <child>
       <object class="GtkWindowHandle">
         <child>
-          <object class="AdwViewStack" id="main_stack">
+          <object class="GtkStack" id="main_stack">
+            <property name="transition-type">crossfade</property>
             <child>
-              <object class="AdwViewStackPage">
+              <object class="GtkStackPage">
                 <property name="name">main-screen</property>
                 <property name="child">
                   <object class="GtkBox">
@@ -46,7 +47,7 @@
                               <class name="title"/>
                             </style>
                             <child>
-                              <object class="AdwViewStackPage">
+                              <object class="GtkStackPage">
                                 <property name="name">monitor-window</property>
                                 <property name="child">
                                   <object class="GtkLabel">
@@ -56,7 +57,7 @@
                               </object>
                             </child>
                             <child>
-                              <object class="AdwViewStackPage">
+                              <object class="GtkStackPage">
                                 <property name="name">selection</property>
                                 <property name="child">
                                   <object class="GtkLabel">
@@ -160,7 +161,7 @@
               </object>
             </child>
             <child>
-              <object class="AdwViewStackPage">
+              <object class="GtkStackPage">
                 <property name="name">recording</property>
                 <property name="child">
                   <object class="GtkBox">
@@ -220,7 +221,7 @@
               </object>
             </child>
             <child>
-              <object class="AdwViewStackPage">
+              <object class="GtkStackPage">
                 <property name="name">delay</property>
                 <property name="child">
                   <object class="GtkBox">
