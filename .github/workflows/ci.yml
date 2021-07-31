@@ -21,8 +21,8 @@ jobs:
           components: rustfmt
       - name: "Create blank versions of configured file"
         run: echo -e "" >> src/config.rs
-      - name: "Run cargo clippy"
-        run: cargo fmt --all -- --color=always --check
+      - name: "Run rustfmt"
+        run: cargo fmt --all -- --check
 
   flatpak:
     name: Flatpak

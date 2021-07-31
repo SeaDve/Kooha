@@ -64,10 +64,6 @@ mod imp {
                 pause_record_button: TemplateChild::default(),
                 record_speaker_toggle: TemplateChild::default(),
                 record_mic_toggle: TemplateChild::default(),
-
-
-
-
                 main_stack: TemplateChild::default(),
                 title_stack: TemplateChild::default(),
                 recording_label: TemplateChild::default(),
