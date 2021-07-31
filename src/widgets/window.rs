@@ -195,7 +195,7 @@ mod imp {
                                     .title(&i18n("Sorry! An error has occured."))
                                     .text(&error_message)
                                     .build();
-                                error_dialog.connect_response(|error_dialog, _| error_dialog.close());
+                                error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
                                 error_dialog.present();
                             }
                         };

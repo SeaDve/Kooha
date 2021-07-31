@@ -165,7 +165,7 @@ impl Application {
 
         chooser.connect_response(clone!(@weak self as app => move |chooser, response| {
             if response != gtk::ResponseType::Accept {
-                chooser.close();
+                chooser.destroy();
                 return;
             }
 
@@ -180,13 +180,13 @@ impl Application {
                     .title(&i18n_f("Inaccessible location '{}'", &[directory.to_str().unwrap()]))
                     .text(&i18n("Please choose an accessible location and retry."))
                     .build();
-                error_dialog.connect_response(|error_dialog, _| error_dialog.close());
+                error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
                 error_dialog.present();
                 return;
             };
 
             settings.set_saving_location(&directory);
-            chooser.close();
+            chooser.destroy();
         }));
 
         chooser.present()
