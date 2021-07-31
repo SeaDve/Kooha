@@ -72,7 +72,6 @@ mod imp {
                     false,
                     clone!(@weak obj => @default-return None, move | args | {
                         let response = args[1].get().unwrap();
-                        dbg!(&response);
                         match response {
                             ScreencastPortalResponse::Success(fd, node_id, screen) => {
                                 let stream = Stream { fd, node_id, screen };
@@ -80,6 +79,7 @@ mod imp {
                             },
                             ScreencastPortalResponse::Revoked => {
                                 // FIXME handle errors and cancelled
+                                obj.set_is_readying(false);
                                 obj.emit_response(RecorderResponse::Failed("Cancelled session".into()));
                             }
                         };
@@ -272,6 +272,8 @@ impl Recorder {
                 log::error!("{}", error);
             }
         };
+
+        self.set_is_readying(false);
     }
 
     fn close_pipeline(&self) {
