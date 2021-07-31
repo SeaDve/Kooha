@@ -200,7 +200,7 @@ mod imp {
                                     .modal(true)
                                     .buttons(gtk::ButtonsType::Ok)
                                     .transient_for(&obj)
-                                    .title(&i18n("Sorry! An error has occured."))
+                                    .title(&i18n("Sorry! An error has occurred."))
                                     .text(&error_message)
                                     .build();
                                 error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
