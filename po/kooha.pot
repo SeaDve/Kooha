@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 15:48+0800\n"
+"POT-Creation-Date: 2021-07-31 17:02+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,7 +113,7 @@ msgid "Toggle Record"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:43
-msgid "Toggle Record Pause"
+msgid "Toggle Pause"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
