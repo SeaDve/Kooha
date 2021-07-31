@@ -268,6 +268,7 @@ impl Recorder {
             }
             Err(error) => {
                 self.emit_response(RecorderResponse::Failed(error.to_string()));
+                self.portal().close_session();
                 log::error!("{}", error);
             }
         };
