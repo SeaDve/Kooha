@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 15:48+0800\n"
-"PO-Revision-Date: 2021-07-07 11:19+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"POT-Creation-Date: 2021-07-31 17:02+0800\n"
+"PO-Revision-Date: 2021-07-31 09:03+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
 ">\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:199
@@ -118,7 +118,7 @@ msgid "Toggle Record"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:43
-msgid "Toggle Record Pause"
+msgid "Toggle Pause"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258

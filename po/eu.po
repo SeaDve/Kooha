@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 15:48+0800\n"
-"PO-Revision-Date: 2021-07-28 20:34+0000\n"
-"Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
+"POT-Creation-Date: 2021-07-31 17:02+0800\n"
+"PO-Revision-Date: 2021-07-31 09:03+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/kooha/pot-file/eu/"
 ">\n"
 "Language: eu\n"
@@ -117,7 +117,7 @@ msgid "Toggle Record"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:43
-msgid "Toggle Record Pause"
+msgid "Toggle Pause"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
