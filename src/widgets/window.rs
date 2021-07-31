@@ -184,6 +184,7 @@ mod imp {
                         let response = args[1].get().unwrap();
                         match response {
                             RecorderResponse::Success(recording_file_path) => {
+                                // FIXME send a notification
                                 println!("record-success: {}", recording_file_path);
                             },
                             RecorderResponse::Failed(error_message) => {

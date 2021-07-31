@@ -308,12 +308,15 @@ impl Recorder {
             match message.view() {
                 gst::MessageView::Eos(..) => {
                     obj.close_pipeline();
+                    // FIXME send the file_path to success
                     obj.emit_response(RecorderResponse::Success("Done Recording".into()));
                 },
                 gst::MessageView::Error(error) => {
+                    let error_message = error.debug().unwrap();
+                    log::error!("{}", &error_message);
+
                     obj.close_pipeline();
-                    obj.emit_response(RecorderResponse::Failed("Error recording".into()));
-                    log::warn!("{}", error.debug().unwrap());
+                    obj.emit_response(RecorderResponse::Failed(error_message));
                 },
                 _ => (),
             }
