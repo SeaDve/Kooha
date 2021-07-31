@@ -1,3 +1,4 @@
+use ashpd::desktop::ResponseError;
 use gst::prelude::*;
 use gtk::{
     glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum},
@@ -77,9 +78,16 @@ mod imp {
                                 let stream = Stream { fd, node_id, screen };
                                 obj.init_pipeline(stream);
                             },
-                            ScreencastPortalResponse::Revoked(error_message) => {
+                            ScreencastPortalResponse::Revoked(response_error) => {
                                 obj.set_is_readying(false);
-                                obj.emit_response(RecorderResponse::Failed(error_message));
+
+                                match response_error {
+                                    ResponseError::Cancelled => (),
+                                    ResponseError::Other => {
+                                        let error_message = response_error.to_string();
+                                        obj.emit_response(RecorderResponse::Failed(error_message));
+                                    },
+                                }
                             }
                         };
                         None

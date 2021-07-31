@@ -1,10 +1,10 @@
 use ashpd::{
     desktop::{
         screencast::{CursorMode, ScreenCastProxy, SourceType, Stream},
-        SessionProxy,
+        ResponseError, SessionProxy,
     },
     enumflags2::BitFlags,
-    zbus, WindowIdentifier,
+    zbus, Error, WindowIdentifier,
 };
 use futures::lock::Mutex;
 use gtk::{
@@ -22,7 +22,7 @@ use crate::data_types::Screen;
 #[gboxed(type_name = "ScreencastPortalResponse")]
 pub enum ScreencastPortalResponse {
     Success(i32, u32, Screen),
-    Revoked(String),
+    Revoked(ResponseError),
 }
 
 mod imp {
@@ -104,8 +104,14 @@ impl ScreencastPortal {
                     imp.session.lock().await.replace(session);
                 }
                 Err(error) => {
-                    log::warn!("{}", error);
-                    obj.emit_response(ScreencastPortalResponse::Revoked(error.to_string()))
+                    log::warn!("{}", &error);
+
+                    match error {
+                        Error::Portal(response_error) => {
+                            obj.emit_response(ScreencastPortalResponse::Revoked(response_error));
+                        },
+                        _ => unreachable!(),
+                    };
                 }
             };
         }));
