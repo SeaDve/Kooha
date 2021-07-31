@@ -226,7 +226,7 @@ impl Recorder {
         };
 
         pipeline.set_state(new_pipeline_state).unwrap();
-        log::info!("Pipeline set to {:?}", new_pipeline_state);
+        log::info!("Pipeline state set to {:?}", new_pipeline_state);
     }
 
     fn set_is_readying(&self, is_readying: bool) {
