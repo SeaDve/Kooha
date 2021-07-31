@@ -62,14 +62,14 @@ Take note that using other frames per second may cause flickering, depending on
 the performance of your device. 
 
 
-## 🏗️ Building from source
-
-### Runtime Requirements
+## 📋 Runtime Requirements
 * pipewire
 * gstreamer-plugin-pipewire
 * xdg-desktop-portal
 * xdg-desktop-portal-(e.g., gtk, kde, wlr)
 
+
+## 🏗️ Building from source
 
 ### GNOME Builder
 GNOME Builder is the environment used for developing this application. 
