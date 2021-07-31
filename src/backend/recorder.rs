@@ -5,7 +5,10 @@ use gtk::{
 };
 use once_cell::sync::Lazy;
 
-use std::cell::{Cell, RefCell};
+use std::{
+    cell::{Cell, RefCell},
+    path::PathBuf,
+};
 
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
@@ -31,7 +34,7 @@ impl Default for RecorderState {
 #[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "RecorderResponse")]
 pub enum RecorderResponse {
-    Success(String),
+    Success(PathBuf),
     Failed(String),
 }
 
@@ -43,6 +46,7 @@ mod imp {
         pub settings: Settings,
         pub portal: ScreencastPortal,
         pub pipeline: RefCell<Option<gst::Pipeline>>,
+        pub current_file_path: RefCell<Option<PathBuf>>,
         pub state: RefCell<RecorderState>,
         pub is_readying: Cell<bool>,
     }
@@ -58,6 +62,7 @@ mod imp {
                 settings: Settings::new(),
                 portal: ScreencastPortal::new(),
                 pipeline: RefCell::new(None),
+                current_file_path: RefCell::new(None),
                 state: RefCell::new(RecorderState::default()),
                 is_readying: Cell::new(false),
             }
@@ -190,6 +195,16 @@ impl Recorder {
         imp.pipeline.replace(new_pipeline);
     }
 
+    fn current_file_path(&self) -> Option<PathBuf> {
+        let imp = self.private();
+        imp.current_file_path.take()
+    }
+
+    fn set_current_file_path(&self, file_path: Option<PathBuf>) {
+        let imp = self.private();
+        imp.current_file_path.replace(file_path);
+    }
+
     pub fn state(&self) -> RecorderState {
         self.property("state")
             .unwrap()
@@ -220,11 +235,13 @@ impl Recorder {
         let settings = self.settings();
 
         let (speaker_source, mic_source) = utils::default_audio_sources();
+        let file_path = settings.file_path();
+        self.set_current_file_path(Some(file_path.clone()));
 
         let pipeline_builder = PipelineBuilder::new()
             .pipewire_stream(stream)
             .framerate(settings.video_framerate())
-            .file_path(settings.file_path())
+            .file_path(file_path)
             .record_speaker(settings.is_record_speaker())
             .record_mic(settings.is_record_mic())
             .speaker_source(speaker_source)
@@ -308,8 +325,8 @@ impl Recorder {
             match message.view() {
                 gst::MessageView::Eos(..) => {
                     obj.close_pipeline();
-                    // FIXME send the file_path to success
-                    obj.emit_response(RecorderResponse::Success("Done Recording".into()));
+                    let recording_file_path = obj.current_file_path().unwrap();
+                    obj.emit_response(RecorderResponse::Success(recording_file_path));
                 },
                 gst::MessageView::Error(error) => {
                     let error_message = error.debug().unwrap();
