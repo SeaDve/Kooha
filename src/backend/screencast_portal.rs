@@ -120,7 +120,7 @@ impl ScreencastPortal {
                     imp.session.replace(Some(session));
                 }
                 Err(error) => {
-                    log::warn!("Failed to create a dbus call: {}", &error);
+                    log::warn!("Something occurred on screencast call: {}", &error);
 
                     match error {
                         Error::Portal(response_error) => {
