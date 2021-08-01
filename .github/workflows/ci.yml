@@ -32,7 +32,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v3
       with:
-        bundle: kooha-nightly.flatpak
+        bundle: kooha-devel.flatpak
         manifest-path: build-aux/io.github.seadve.Kooha.Devel.json
         run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}
