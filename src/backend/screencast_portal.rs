@@ -6,7 +6,6 @@ use ashpd::{
     enumflags2::BitFlags,
     zbus, Error, WindowIdentifier,
 };
-use futures::lock::Mutex;
 use gtk::{
     glib::{self, clone, subclass::Signal, GBoxed, WeakRef},
     prelude::*,
@@ -14,7 +13,7 @@ use gtk::{
 };
 use once_cell::sync::Lazy;
 
-use std::{cell::RefCell, os::unix::io::RawFd, sync::Arc};
+use std::{cell::RefCell, os::unix::io::RawFd};
 
 use crate::{data_types::Screen, widgets::MainWindow};
 
@@ -32,7 +31,7 @@ mod imp {
     #[derive(Debug)]
     pub struct ScreencastPortal {
         pub window: RefCell<Option<WeakRef<MainWindow>>>,
-        pub session: Arc<Mutex<Option<SessionProxy<'static>>>>,
+        pub session: RefCell<Option<SessionProxy<'static>>>,
     }
 
     #[glib::object_subclass]
@@ -44,7 +43,7 @@ mod imp {
         fn new() -> Self {
             Self {
                 window: RefCell::new(None),
-                session: Arc::new(Mutex::new(None)),
+                session: RefCell::new(None),
             }
         }
     }
@@ -118,7 +117,7 @@ impl ScreencastPortal {
 
                     obj.emit_response(ScreencastPortalResponse::Success(fd, node_id, stream_screen));
 
-                    imp.session.lock().await.replace(session);
+                    imp.session.replace(Some(session));
                 }
                 Err(error) => {
                     log::warn!("{}", &error);
@@ -148,7 +147,7 @@ impl ScreencastPortal {
         ctx.spawn_local(clone!(@weak self as obj => async move {
             let imp = obj.private();
 
-            if let Some(session) = imp.session.lock().await.take() {
+            if let Some(session) = imp.session.take() {
                 session.close().await.unwrap();
             };
         }));
