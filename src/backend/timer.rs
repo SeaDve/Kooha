@@ -59,7 +59,7 @@ mod imp {
                     glib::ParamSpec::new_enum(
                         "state",
                         "state",
-                        "State",
+                        "Current state of Self",
                         TimerState::static_type(),
                         TimerState::default() as i32,
                         glib::ParamFlags::READWRITE,
@@ -67,7 +67,7 @@ mod imp {
                     glib::ParamSpec::new_uint(
                         "time",
                         "time",
-                        "Time",
+                        "Current time",
                         0,
                         std::u32::MAX as u32,
                         0,

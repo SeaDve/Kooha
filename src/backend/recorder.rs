@@ -108,7 +108,7 @@ mod imp {
                 vec![glib::ParamSpec::new_enum(
                     "state",
                     "state",
-                    "State",
+                    "Current state of Self",
                     RecorderState::static_type(),
                     RecorderState::default() as i32,
                     glib::ParamFlags::READWRITE,
