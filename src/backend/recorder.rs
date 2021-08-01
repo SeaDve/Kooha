@@ -241,9 +241,13 @@ impl Recorder {
                                 .actual_screen(actual_screen);
 
                             obj.setup_pipeline(pipeline_builder);
+
+                            log::info!("Captured coordinates");
                         },
                         AreaSelectorResponse::Cancelled => {
                             obj.portal().close_session();
+
+                            log::info!("Cancelled capture")
                         },
                     }
                     None

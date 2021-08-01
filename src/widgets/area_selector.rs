@@ -66,16 +66,6 @@ mod imp {
             obj.set_decorated(false);
             obj.set_css_classes(&[]);
 
-            obj.connect_close_request(
-                clone!(@weak obj => @default-return Inhibit(false), move |_| {
-                    obj.emit_response(AreaSelectorResponse::Cancelled);
-                    Inhibit(false)
-                }),
-            );
-            obj.connect_show(clone!(@weak obj => move |_| {
-                obj.set_raise_request(true);
-            }));
-
             let key_controller = gtk::EventControllerKey::new();
             key_controller.set_propagation_phase(gtk::PropagationPhase::Capture);
             key_controller.connect_key_pressed(
@@ -162,9 +152,19 @@ mod imp {
                 snapshot.append_color(&placeholder_color, &placeholder_rect);
             }
         }
+
+        fn show(&self, obj: &Self::Type) {
+            self.parent_show(obj);
+            obj.set_raise_request(true);
+        }
     }
 
-    impl WindowImpl for AreaSelector {}
+    impl WindowImpl for AreaSelector {
+        fn close_request(&self, obj: &Self::Type) -> Inhibit {
+            obj.emit_response(AreaSelectorResponse::Cancelled);
+            Inhibit(false)
+        }
+    }
 }
 
 glib::wrapper! {
