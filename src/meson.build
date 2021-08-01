@@ -28,7 +28,6 @@ sources = files(
   'backend/timer.rs',
   'widgets/area_selector.rs',
   'widgets/mod.rs',
-  'widgets/toggle_button.rs',
   'widgets/window.rs',
   'application.rs',
   'config.rs',

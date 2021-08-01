@@ -108,7 +108,7 @@
                             <property name="spacing">12</property>
                             <property name="homogeneous">True</property>
                             <child>
-                              <object class="ToggleButton" id="record_speaker_toggle">
+                              <object class="GtkToggleButton">
                                 <property name="action-name">win.record-speaker</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
@@ -122,7 +122,7 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ToggleButton" id="record_mic_toggle">
+                              <object class="GtkToggleButton">
                                 <property name="action-name">win.record-mic</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
@@ -199,7 +199,7 @@
                           <class name="linked"/>
                         </style>
                         <child>
-                          <object class="GtkButton" id="stop_record_button">
+                          <object class="GtkButton">
                             <property name="hexpand">True</property>
                             <property name="label" translatable="yes">Stop</property>
                             <property name="action-name">win.toggle-record</property>
@@ -254,7 +254,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="cancel_delay_button">
+                      <object class="GtkButton">
                         <property name="label" translatable="yes">Cancel Delay</property>
                         <property name="action-name">win.cancel-delay</property>
                         <style>

@@ -12,7 +12,6 @@ use crate::{
     backend::{RecorderController, RecorderControllerState, RecorderResponse, Settings},
     config::PROFILE,
     i18n::i18n,
-    widgets::ToggleButton,
 };
 
 #[derive(Debug, PartialEq)]
@@ -34,10 +33,6 @@ mod imp {
         pub start_record_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
-        #[template_child]
-        pub record_speaker_toggle: TemplateChild<ToggleButton>,
-        #[template_child]
-        pub record_mic_toggle: TemplateChild<ToggleButton>,
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -62,8 +57,6 @@ mod imp {
                 recorder_controller: RecorderController::new(),
                 start_record_button: TemplateChild::default(),
                 pause_record_button: TemplateChild::default(),
-                record_speaker_toggle: TemplateChild::default(),
-                record_mic_toggle: TemplateChild::default(),
                 main_stack: TemplateChild::default(),
                 title_stack: TemplateChild::default(),
                 recording_label: TemplateChild::default(),
@@ -73,7 +66,6 @@ mod imp {
         }
 
         fn class_init(klass: &mut Self::Class) {
-            ToggleButton::static_type();
             Self::bind_template(klass);
 
             klass.install_action("win.toggle-record", None, move |obj, _, _| {
@@ -239,8 +231,9 @@ impl MainWindow {
         let imp = self.private();
 
         let is_enabled = imp.settings.video_format() != "gif";
-        imp.record_speaker_toggle.set_action_enabled(is_enabled);
-        imp.record_mic_toggle.set_action_enabled(is_enabled);
+
+        self.action_set_enabled("win.record-speaker", is_enabled);
+        self.action_set_enabled("win.record-mic", is_enabled);
     }
 
     fn set_view(&self, view: View) {
