@@ -91,7 +91,7 @@ impl Settings {
         let file_name = Local::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
 
         let mut path = self.saving_location();
-        path.set_file_name(file_name);
+        path.push(file_name);
         path.set_extension(self.video_format());
         path
     }
