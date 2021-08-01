@@ -11,7 +11,7 @@ use gtk::{
     prelude::*,
     subclass::prelude::*,
 };
-use once_cell::sync::Lazy;
+use once_cell::sync::{Lazy, OnceCell};
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
@@ -30,7 +30,7 @@ mod imp {
 
     #[derive(Debug)]
     pub struct ScreencastPortal {
-        pub window: RefCell<Option<WeakRef<MainWindow>>>,
+        pub window: OnceCell<WeakRef<MainWindow>>,
         pub session: RefCell<Option<SessionProxy<'static>>>,
     }
 
@@ -42,7 +42,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                window: RefCell::new(None),
+                window: OnceCell::new(),
                 session: RefCell::new(None),
             }
         }
@@ -82,12 +82,12 @@ impl ScreencastPortal {
 
     fn window(&self) -> MainWindow {
         let imp = self.private();
-        imp.window.borrow().as_ref().unwrap().upgrade().unwrap()
+        imp.window.get().unwrap().upgrade().unwrap()
     }
 
     pub fn set_window(&self, window: &MainWindow) {
         let imp = self.private();
-        imp.window.replace(Some(window.downgrade()));
+        imp.window.set(window.downgrade()).unwrap();
     }
 
     pub fn new_session(&self, is_show_pointer: bool, is_selection_mode: bool) {
