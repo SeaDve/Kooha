@@ -115,7 +115,7 @@ mod imp {
                 .connect_local(
                     "response",
                     false,
-                    clone!(@weak obj => @default-return None, move | args | {
+                    clone!(@weak obj => @default-return None, move |args| {
                         let response = args[1].get().unwrap();
                         obj.emit_response(response);
                         None

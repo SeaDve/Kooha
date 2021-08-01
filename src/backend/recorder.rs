@@ -258,7 +258,7 @@ impl Recorder {
         area_selector.connect_local(
                 "response",
                 false,
-                clone!(@weak self as obj, @strong pipeline_builder => @default-return None, move | args | {
+                clone!(@weak self as obj, @strong pipeline_builder => @default-return None, move |args| {
                     let response = args[1].get().unwrap();
                     match response {
                         AreaSelectorResponse::Captured(coords, actual_screen) => {

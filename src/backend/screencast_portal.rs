@@ -75,6 +75,10 @@ impl ScreencastPortal {
         &imp::ScreencastPortal::from_instance(self)
     }
 
+    fn emit_response(&self, response: ScreencastPortalResponse) {
+        self.emit_by_name("response", &[&response]).unwrap();
+    }
+
     pub fn new_session(&self, is_show_pointer: bool, is_selection_mode: bool) {
         let ctx = glib::MainContext::default();
         ctx.spawn_local(clone!(@weak self as obj => async move {
@@ -139,13 +143,9 @@ impl ScreencastPortal {
 
         log::info!("Session closed");
     }
-
-    fn emit_response(&self, response: ScreencastPortalResponse) {
-        self.emit_by_name("response", &[&response]).unwrap();
-    }
 }
 
-pub async fn screencast(
+async fn screencast(
     window_identifier: WindowIdentifier,
     multiple: bool,
     types: BitFlags<SourceType>,
