@@ -178,7 +178,7 @@ impl AreaSelector {
     }
 
     fn private(&self) -> &imp::AreaSelector {
-        &imp::AreaSelector::from_instance(self)
+        imp::AreaSelector::from_instance(self)
     }
 
     fn set_raise_request(&self, is_raised: bool) {

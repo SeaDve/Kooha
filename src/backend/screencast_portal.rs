@@ -74,7 +74,7 @@ impl ScreencastPortal {
     }
 
     fn private(&self) -> &imp::ScreencastPortal {
-        &imp::ScreencastPortal::from_instance(self)
+        imp::ScreencastPortal::from_instance(self)
     }
 
     fn emit_response(&self, response: ScreencastPortalResponse) {

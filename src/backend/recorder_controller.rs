@@ -198,7 +198,7 @@ impl RecorderController {
     }
 
     fn private(&self) -> &imp::RecorderController {
-        &imp::RecorderController::from_instance(self)
+        imp::RecorderController::from_instance(self)
     }
 
     fn emit_response(&self, response: RecorderResponse) {
@@ -207,7 +207,7 @@ impl RecorderController {
 
     pub fn set_window(&self, window: &MainWindow) {
         let imp = self.private();
-        imp.recorder.set_window(&window);
+        imp.recorder.set_window(window);
     }
 
     pub fn state(&self) -> RecorderControllerState {

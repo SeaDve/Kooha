@@ -152,7 +152,7 @@ impl Recorder {
     }
 
     fn private(&self) -> &imp::Recorder {
-        &imp::Recorder::from_instance(self)
+        imp::Recorder::from_instance(self)
     }
 
     fn portal(&self) -> &ScreencastPortal {

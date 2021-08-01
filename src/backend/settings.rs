@@ -44,7 +44,7 @@ impl Settings {
     }
 
     fn private(&self) -> &imp::Settings {
-        &imp::Settings::from_instance(self)
+        imp::Settings::from_instance(self)
     }
 
     pub fn create_action(&self, action: &str) -> gio::Action {

@@ -218,7 +218,7 @@ impl MainWindow {
     }
 
     fn private(&self) -> &imp::MainWindow {
-        &imp::MainWindow::from_instance(self)
+        imp::MainWindow::from_instance(self)
     }
 
     fn update_audio_toggles_sensitivity(&self) {
@@ -251,6 +251,7 @@ impl MainWindow {
             RecorderControllerState::Null,
             RecorderControllerState::Delayed,
         ];
+
         allowed_states.contains(&imp.recorder_controller.state())
     }
 }
