@@ -30,8 +30,6 @@ mod imp {
         pub settings: Settings,
         pub recorder_controller: RecorderController,
         #[template_child]
-        pub start_record_button: TemplateChild<gtk::Button>,
-        #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub main_stack: TemplateChild<gtk::Stack>,
@@ -55,7 +53,6 @@ mod imp {
             Self {
                 settings: Settings::new(),
                 recorder_controller: RecorderController::new(),
-                start_record_button: TemplateChild::default(),
                 pause_record_button: TemplateChild::default(),
                 main_stack: TemplateChild::default(),
                 title_stack: TemplateChild::default(),
