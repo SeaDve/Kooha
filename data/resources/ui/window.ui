@@ -38,11 +38,6 @@
                         <child type="title">
                           <object class="GtkStack" id="title_stack">
                             <property name="transition-type">crossfade</property>
-                            <!-- <binding name="visible-child-name"> -->
-                            <!--   <lookup name="capture-mode"> -->
-                            <!--     <lookup name="settings">KhaWindow</lookup> -->
-                            <!--   </lookup> -->
-                            <!-- </binding> -->
                             <style>
                               <class name="title"/>
                             </style>
@@ -112,13 +107,6 @@
                                 <property name="action-name">win.record-speaker</property>
                                 <property name="icon-name">audio-volume-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
-                                <!-- <binding name="action-enabled"> -->
-                                <!--   <closure type="gboolean" function="_get_audio_toggles_enablement"> -->
-                                <!--     <lookup name="video-format"> -->
-                                <!--       <lookup name="settings">Window</lookup> -->
-                                <!--     </lookup> -->
-                                <!--   </closure> -->
-                                <!-- </binding> -->
                               </object>
                             </child>
                             <child>
@@ -126,13 +114,6 @@
                                 <property name="action-name">win.record-mic</property>
                                 <property name="icon-name">microphone-sensitivity-high-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
-                                <!-- <binding name="action-enabled"> -->
-                                <!--   <closure type="gboolean" function="_get_audio_toggles_enablement"> -->
-                                <!--     <lookup name="video-format"> -->
-                                <!--       <lookup name="settings">Window</lookup> -->
-                                <!--     </lookup> -->
-                                <!--   </closure> -->
-                                <!-- </binding> -->
                               </object>
                             </child>
                             <child>
@@ -148,7 +129,6 @@
                           <object class="GtkButton" id="start_record_button">
                             <property name="label" translatable="yes">Record</property>
                             <property name="action-name">win.toggle-record</property>
-                            <!-- <property name="sensitive" bind-source="controller" bind-property="is-readying" bind-flags="invert-boolean"/> -->
                             <style>
                               <class name="suggested-action"/>
                             </style>
