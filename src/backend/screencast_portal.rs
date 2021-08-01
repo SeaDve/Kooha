@@ -151,7 +151,7 @@ pub async fn screencast(
     types: BitFlags<SourceType>,
     cursor_mode: BitFlags<CursorMode>,
 ) -> Result<(Vec<Stream>, RawFd, SessionProxy<'static>), ashpd::Error> {
-    let connection = zbus::azync::Connection::new_session().await?;
+    let connection = zbus::azync::Connection::session().await?;
     let proxy = ScreenCastProxy::new(&connection).await?;
 
     log::info!("ScreenCastProxy created");
@@ -166,7 +166,7 @@ pub async fn screencast(
 
     log::info!("Select sources window showed");
 
-    let streams = proxy.start(&session, window_identifier).await?.to_vec();
+    let streams = proxy.start(&session, &window_identifier).await?.to_vec();
 
     log::info!("Screencast session started");
 
