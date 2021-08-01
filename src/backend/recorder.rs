@@ -5,16 +5,13 @@ use gtk::{
 };
 use once_cell::sync::Lazy;
 
-use std::{
-    cell::{Cell, RefCell},
-    path::PathBuf,
-};
+use std::{cell::RefCell, path::PathBuf};
 
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
     data_types::Stream,
     utils,
-    widgets::{AreaSelector, AreaSelectorResponse},
+    widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
@@ -48,7 +45,6 @@ mod imp {
         pub pipeline: RefCell<Option<gst::Pipeline>>,
         pub current_file_path: RefCell<Option<PathBuf>>,
         pub state: RefCell<RecorderState>,
-        pub is_readying: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -64,7 +60,6 @@ mod imp {
                 pipeline: RefCell::new(None),
                 current_file_path: RefCell::new(None),
                 state: RefCell::new(RecorderState::default()),
-                is_readying: Cell::new(false),
             }
         }
     }
@@ -82,13 +77,10 @@ mod imp {
                                 let stream = Stream { fd, node_id, screen };
                                 obj.init_pipeline(stream);
                             },
-                            ScreencastPortalResponse::Cancelled => {
-                                obj.set_is_readying(false);
-                            },
                             ScreencastPortalResponse::Error(error_message) => {
-                                obj.set_is_readying(false);
                                 obj.emit_response(RecorderResponse::Failed(error_message));
                             }
+                            ScreencastPortalResponse::Cancelled => (),
                         };
                         None
                     }),
@@ -113,23 +105,14 @@ mod imp {
 
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpec::new_enum(
-                        "state",
-                        "state",
-                        "State",
-                        RecorderState::static_type(),
-                        RecorderState::default() as i32,
-                        glib::ParamFlags::READWRITE,
-                    ),
-                    glib::ParamSpec::new_boolean(
-                        "is-readying",
-                        "is-readying",
-                        "Is readying",
-                        false,
-                        glib::ParamFlags::READWRITE,
-                    ),
-                ]
+                vec![glib::ParamSpec::new_enum(
+                    "state",
+                    "state",
+                    "State",
+                    RecorderState::static_type(),
+                    RecorderState::default() as i32,
+                    glib::ParamFlags::READWRITE,
+                )]
             });
             PROPERTIES.as_ref()
         }
@@ -146,10 +129,6 @@ mod imp {
                     let state = value.get().unwrap();
                     self.state.replace(state);
                 }
-                "is-readying" => {
-                    let is_readying = value.get().unwrap();
-                    self.is_readying.set(is_readying);
-                }
                 _ => unimplemented!(),
             }
         }
@@ -157,7 +136,6 @@ mod imp {
         fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
                 "state" => self.state.borrow().to_value(),
-                "is-readying" => self.is_readying.get().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -229,10 +207,6 @@ impl Recorder {
         log::info!("Pipeline state set to {:?}", new_pipeline_state);
     }
 
-    fn set_is_readying(&self, is_readying: bool) {
-        self.set_property("is-readying", is_readying).unwrap();
-    }
-
     fn init_pipeline(&self, stream: Stream) {
         let settings = self.settings();
 
@@ -269,7 +243,6 @@ impl Recorder {
                             obj.setup_pipeline(pipeline_builder);
                         },
                         AreaSelectorResponse::Cancelled => {
-                            obj.set_is_readying(false);
                             obj.portal().close_session();
                         },
                     }
@@ -293,8 +266,6 @@ impl Recorder {
                 log::error!("{}", error);
             }
         };
-
-        self.set_is_readying(false);
     }
 
     fn close_pipeline(&self) {
@@ -310,8 +281,11 @@ impl Recorder {
         self.emit_by_name("ready", &[]).unwrap();
     }
 
+    pub fn set_window(&self, window: &MainWindow) {
+        self.portal().set_window(window);
+    }
+
     pub fn ready(&self) {
-        self.set_is_readying(true);
         let is_show_pointer = self.settings().is_show_pointer();
         let is_selection_mode = self.settings().is_selection_mode();
         self.portal()

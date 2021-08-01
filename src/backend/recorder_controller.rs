@@ -7,7 +7,10 @@ use once_cell::sync::Lazy;
 
 use std::cell::Cell;
 
-use crate::backend::{Recorder, RecorderResponse, RecorderState, Timer, TimerState};
+use crate::{
+    backend::{Recorder, RecorderResponse, RecorderState, Timer, TimerState},
+    widgets::MainWindow,
+};
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "RecorderControllerState")]
@@ -33,7 +36,6 @@ mod imp {
         pub timer: Timer,
         pub state: Cell<RecorderControllerState>,
         pub time: Cell<u32>,
-        pub is_readying: Cell<bool>,
         pub record_delay: Cell<u32>,
     }
 
@@ -49,7 +51,6 @@ mod imp {
                 timer: Timer::new(),
                 state: Cell::new(RecorderControllerState::default()),
                 time: Cell::new(0),
-                is_readying: Cell::new(false),
                 record_delay: Cell::new(0),
             }
         }
@@ -57,11 +58,7 @@ mod imp {
 
     impl ObjectImpl for RecorderController {
         fn constructed(&self, obj: &Self::Type) {
-            let imp = obj.private();
-            imp.timer.bind_property("time", obj, "time").build();
-            imp.recorder
-                .bind_property("is-readying", obj, "is-readying")
-                .build();
+            self.timer.bind_property("time", obj, "time").build();
 
             self.timer.connect_notify_local(
                 Some("state"),
@@ -156,13 +153,6 @@ mod imp {
                         0,
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::new_boolean(
-                        "is-readying",
-                        "is-readying",
-                        "Is readying",
-                        false,
-                        glib::ParamFlags::READWRITE,
-                    ),
                 ]
             });
             PROPERTIES.as_ref()
@@ -184,10 +174,6 @@ mod imp {
                     let time = value.get().unwrap();
                     self.time.set(time);
                 }
-                "is-readying" => {
-                    let is_readying = value.get().unwrap();
-                    self.is_readying.set(is_readying);
-                }
                 _ => unimplemented!(),
             }
         }
@@ -196,7 +182,6 @@ mod imp {
             match pspec.name() {
                 "state" => self.state.get().to_value(),
                 "time" => self.time.get().to_value(),
-                "is-readying" => self.is_readying.get().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -218,6 +203,11 @@ impl RecorderController {
 
     fn emit_response(&self, response: RecorderResponse) {
         self.emit_by_name("response", &[&response]).unwrap();
+    }
+
+    pub fn set_window(&self, window: &MainWindow) {
+        let imp = self.private();
+        imp.recorder.set_window(&window);
     }
 
     pub fn state(&self) -> RecorderControllerState {

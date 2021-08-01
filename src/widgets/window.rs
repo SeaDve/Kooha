@@ -126,10 +126,7 @@ mod imp {
             self.settings
                 .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
 
-            self.recorder_controller
-                .bind_property("is-readying", &*self.start_record_button, "sensitive")
-                .flags(glib::BindingFlags::INVERT_BOOLEAN)
-                .build();
+            self.recorder_controller.set_window(obj);
 
             obj.update_audio_toggles_sensitivity();
             self.settings.connect_changed_notify(

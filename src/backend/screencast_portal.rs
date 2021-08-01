@@ -8,22 +8,22 @@ use ashpd::{
 };
 use futures::lock::Mutex;
 use gtk::{
-    glib::{self, clone, subclass::Signal, GBoxed},
+    glib::{self, clone, subclass::Signal, GBoxed, WeakRef},
     prelude::*,
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
 
-use std::{os::unix::io::RawFd, sync::Arc};
+use std::{cell::RefCell, os::unix::io::RawFd, sync::Arc};
 
-use crate::data_types::Screen;
+use crate::{data_types::Screen, widgets::MainWindow};
 
 #[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "ScreencastPortalResponse")]
 pub enum ScreencastPortalResponse {
     Success(i32, u32, Screen),
-    Cancelled,
     Error(String),
+    Cancelled,
 }
 
 mod imp {
@@ -31,6 +31,7 @@ mod imp {
 
     #[derive(Debug)]
     pub struct ScreencastPortal {
+        pub window: RefCell<Option<WeakRef<MainWindow>>>,
         pub session: Arc<Mutex<Option<SessionProxy<'static>>>>,
     }
 
@@ -42,6 +43,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
+                window: RefCell::new(None),
                 session: Arc::new(Mutex::new(None)),
             }
         }
@@ -79,6 +81,16 @@ impl ScreencastPortal {
         self.emit_by_name("response", &[&response]).unwrap();
     }
 
+    fn window(&self) -> MainWindow {
+        let imp = self.private();
+        imp.window.borrow().as_ref().unwrap().upgrade().unwrap()
+    }
+
+    pub fn set_window(&self, window: &MainWindow) {
+        let imp = self.private();
+        imp.window.replace(Some(window.downgrade()));
+    }
+
     pub fn new_session(&self, is_show_pointer: bool, is_selection_mode: bool) {
         let ctx = glib::MainContext::default();
         ctx.spawn_local(clone!(@weak self as obj => async move {
@@ -94,7 +106,7 @@ impl ScreencastPortal {
             } else {
                 BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
             };
-            let identifier = WindowIdentifier::default();
+            let identifier = WindowIdentifier::from_native(&obj.window().native().unwrap()).await;
             let multiple = false;
 
             match screencast(identifier, multiple, source_type, cursor_mode).await {
