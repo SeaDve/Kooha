@@ -18,7 +18,7 @@ pub enum TimerState {
 
 impl Default for TimerState {
     fn default() -> Self {
-        TimerState::Stopped
+        Self::Stopped
     }
 }
 

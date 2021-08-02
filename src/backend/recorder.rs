@@ -24,7 +24,7 @@ pub enum RecorderState {
 
 impl Default for RecorderState {
     fn default() -> Self {
-        RecorderState::Null
+        Self::Null
     }
 }
 
