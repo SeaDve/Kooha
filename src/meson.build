@@ -55,3 +55,11 @@ custom_target(
     meson.project_name(),
   ]
 )
+
+test(
+    'run-cargo-test',
+    cargo_test_script,
+    args: [
+       meson.source_root(),
+    ]
+)
