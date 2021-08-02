@@ -62,4 +62,5 @@ test(
     args: [
        meson.source_root(),
     ]
+    timeout: 240,
 )
