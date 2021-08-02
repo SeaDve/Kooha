@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 17:02+0800\n"
+"POT-Creation-Date: 2021-08-02 17:43+0800\n"
 "PO-Revision-Date: 2021-08-01 06:23+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -66,31 +66,35 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Stöd för formaten WebM, MP4, GIF och MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🚀 Optional hardware accelerated encoding"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "Välj en skärm eller ett fönster att spela in."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "Skapa en markering för att spela in ett bestämt område på skärmen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr ""
 "⏲️ Ställ in en fördröjning för att förbereda dig innan du börjar spela in."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Dölj eller visa muspekaren."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Välj en lagringsplats för inspelningen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Använd användbara tangentbordsgenvägar."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -110,7 +114,7 @@ msgstr "Visa genvägar"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:162
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:148
 msgid "Recording"
 msgstr "Spelar in"
 
@@ -122,7 +126,7 @@ msgstr "Inspelning på/av"
 msgid "Toggle Pause"
 msgstr "Paus på/av"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:238
 msgid "Cancel Delay"
 msgstr "Avbryt fördröjning"
 
@@ -146,97 +150,97 @@ msgstr "Muspekare på/av"
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:49
 msgid "Normal"
 msgstr "Normal"
 
-#: data/resources/ui/window.ui:64
+#: data/resources/ui/window.ui:59
 msgid "Selection"
 msgstr "Markering"
 
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:88
 msgid "Capture a Monitor or Window"
 msgstr "Spela in en bildskärm eller ett fönster"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:96
 msgid "Capture a Selection of Screen"
 msgstr "Spela in en del av skärmen"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:109
 msgid "Record Computer Sounds"
 msgstr "Spela in datorljud"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:116
 msgid "Record From Microphone"
 msgstr "Spela in från mikrofon"
 
-#: data/resources/ui/window.ui:142
+#: data/resources/ui/window.ui:123
 msgid "Show Pointer"
 msgstr "Visa muspekare"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:130
 msgid "Record"
 msgstr "Spela in"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:184
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/resources/ui/window.ui:240
+#: data/resources/ui/window.ui:220
 msgid "Recording in…"
 msgstr "Spelar in om…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:263
 msgid "_Delay"
 msgstr "_Fördröjning"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:265
 msgid "None"
 msgstr "Ingen"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:270
 msgid "5 seconds"
 msgstr "5 sekunder"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:275
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:281
 msgid "_Video Format"
 msgstr "_Videoformat"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:283
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:288
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:293
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:298
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:304
 msgid "_Save to…"
 msgstr "_Spara till…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:310
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:314
 msgid "_About Kooha"
 msgstr "_Om Kooha"
 
 #: src/application.rs:156
-msgid "Select a Folder"
-msgstr "Välj en mapp"
+msgid "Select Recordings Folder"
+msgstr ""
 
 #: src/application.rs:159
 msgid "_Cancel"
@@ -247,8 +251,8 @@ msgid "_Select"
 msgstr "_Markera"
 
 #: src/application.rs:180
-msgid "Inaccessible location '{}'"
-msgstr "Platsen ej åtkomlig \"{}\""
+msgid "Cannot access “{}”"
+msgstr ""
 
 #: src/application.rs:181
 msgid "Please choose an accessible location and retry."
@@ -279,13 +283,19 @@ msgstr "Inspelningen har sparats i {}"
 msgid "Open File"
 msgstr "Öppna fil"
 
-#: src/widgets/window.rs:167
+#: src/widgets/window.rs:153
 msgid "Paused"
 msgstr "Pausad"
 
-#: src/widgets/window.rs:203
+#: src/widgets/window.rs:189
 msgid "Sorry! An error has occurred."
 msgstr "Tyvärr! Ett fel har inträffat."
+
+#~ msgid "Select a Folder"
+#~ msgstr "Välj en mapp"
+
+#~ msgid "Inaccessible location '{}'"
+#~ msgstr "Platsen ej åtkomlig \"{}\""
 
 #~ msgid "🖼️ Select an area of your screen to record."
 #~ msgstr "🖼️ Välj ett område på skärmen för inspelning."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 17:02+0800\n"
+"POT-Creation-Date: 2021-08-02 17:43+0800\n"
 "PO-Revision-Date: 2021-08-02 09:32+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
-"%10!=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
+"=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -68,31 +68,35 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Mayroong support para sa mga format na WebM, MP4, GIF at MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🚀 Optional hardware accelerated encoding"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Pumili ng monitor o window na maaaring i-record."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr ""
 "🖼️ Maaaring gumawa ng selection upang maka-capture ng area sa iyong screen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Maglagay ng delay bago magsumali ang pag-record."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Ipakita o itago ang pointer."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Pumili ng paglalagyan ng mga recording."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Gamitin ang mga malaking-tulong na mga keyboard shortcuts."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -112,7 +116,7 @@ msgstr "Ipakita ang mga Shortcuts"
 msgid "Quit"
 msgstr "Isara"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:162
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:148
 msgid "Recording"
 msgstr "Nagrerekord"
 
@@ -124,7 +128,7 @@ msgstr "I-toggle ang Record"
 msgid "Toggle Pause"
 msgstr "I-toggle ang Pause"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:238
 msgid "Cancel Delay"
 msgstr "Ikansela ang Antala"
 
@@ -148,97 +152,97 @@ msgstr "I-toggle ang Pointer"
 msgid "Main Menu"
 msgstr "Pangunahing Menu"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:49
 msgid "Normal"
 msgstr "Normal"
 
-#: data/resources/ui/window.ui:64
+#: data/resources/ui/window.ui:59
 msgid "Selection"
 msgstr "Seleksyon"
 
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:88
 msgid "Capture a Monitor or Window"
 msgstr "Mag-capture ng Monitor o Window"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:96
 msgid "Capture a Selection of Screen"
 msgstr "Magcapture ng Seleksyon ng Screen"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:109
 msgid "Record Computer Sounds"
 msgstr "Irekord ang Tunog Sa Kompyuter"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:116
 msgid "Record From Microphone"
 msgstr "Irekord ang Tunog ng Mikropono"
 
-#: data/resources/ui/window.ui:142
+#: data/resources/ui/window.ui:123
 msgid "Show Pointer"
 msgstr "Ipakita ang Pointer"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:130
 msgid "Record"
 msgstr "Magrekord"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:184
 msgid "Stop"
 msgstr "Huminto"
 
-#: data/resources/ui/window.ui:240
+#: data/resources/ui/window.ui:220
 msgid "Recording in…"
 msgstr "Magrerekord sa…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:263
 msgid "_Delay"
 msgstr "_Antala"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:265
 msgid "None"
 msgstr "Wala"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:270
 msgid "5 seconds"
 msgstr "5 segundo"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:275
 msgid "10 seconds"
 msgstr "10 segundo"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:281
 msgid "_Video Format"
 msgstr "_Pormat ng Video"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:283
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:288
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:293
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:298
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:304
 msgid "_Save to…"
 msgstr "_I-save sa…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:310
 msgid "_Keyboard Shortcuts"
 msgstr "_Mga Shortcut sa Keyboard"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:314
 msgid "_About Kooha"
 msgstr "_Tungkol sa Kooha"
 
 #: src/application.rs:156
-msgid "Select a Folder"
-msgstr "Pumili ng folder"
+msgid "Select Recordings Folder"
+msgstr ""
 
 #: src/application.rs:159
 msgid "_Cancel"
@@ -249,8 +253,8 @@ msgid "_Select"
 msgstr "_Piliin"
 
 #: src/application.rs:180
-msgid "Inaccessible location '{}'"
-msgstr "Hindi maaccess ang lokasyon na '{}'"
+msgid "Cannot access “{}”"
+msgstr ""
 
 #: src/application.rs:181
 msgid "Please choose an accessible location and retry."
@@ -281,13 +285,19 @@ msgstr "Ang recording ay nakasave sa {}"
 msgid "Open File"
 msgstr "Buksan ang File"
 
-#: src/widgets/window.rs:167
+#: src/widgets/window.rs:153
 msgid "Paused"
 msgstr "Naka-pause"
 
-#: src/widgets/window.rs:203
+#: src/widgets/window.rs:189
 msgid "Sorry! An error has occurred."
 msgstr "Paumanhin! Nagkaroon ng error."
+
+#~ msgid "Select a Folder"
+#~ msgstr "Pumili ng folder"
+
+#~ msgid "Inaccessible location '{}'"
+#~ msgstr "Hindi maaccess ang lokasyon na '{}'"
 
 #~ msgid "Toggle Record Pause"
 #~ msgstr "I-toggle ang Record Pause"

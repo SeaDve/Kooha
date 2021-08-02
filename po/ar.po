@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 17:02+0800\n"
+"POT-Creation-Date: 2021-08-02 17:43+0800\n"
 "PO-Revision-Date: 2021-07-31 09:03+0000\n"
 "Last-Translator: احمد النهاري <alna7ari@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
@@ -66,30 +66,34 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🖥️ Select a monitor or window to record."
+msgid "🚀 Optional hardware accelerated encoding"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖼️ Create a selection to capture certain area from your screen."
+msgid "🖥️ Select a monitor or window to record."
 msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+msgid "🖼️ Create a selection to capture certain area from your screen."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ ضبط التأخير للتحضير قبل بدء التسجيل."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ إخفاء أو إظهار مؤشر الماوس."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 اختر موقع الحفظ للتسجيل الخاص بك."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ استخدم اختصارات لوحة المفاتيح المفيدة."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -109,7 +113,7 @@ msgstr ""
 msgid "Quit"
 msgstr "غلق"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:162
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:148
 msgid "Recording"
 msgstr "تسجيل"
 
@@ -121,7 +125,7 @@ msgstr ""
 msgid "Toggle Pause"
 msgstr ""
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:238
 msgid "Cancel Delay"
 msgstr "إلغاء مدة التأخير"
 
@@ -145,98 +149,98 @@ msgstr ""
 msgid "Main Menu"
 msgstr "القائمة الرئيسية"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:49
 msgid "Normal"
 msgstr ""
 
-#: data/resources/ui/window.ui:64
+#: data/resources/ui/window.ui:59
 msgid "Selection"
 msgstr "اختيار"
 
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:88
 msgid "Capture a Monitor or Window"
 msgstr ""
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:96
 msgid "Capture a Selection of Screen"
 msgstr ""
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:109
 msgid "Record Computer Sounds"
 msgstr "تسجيل صوت الكمبيوتر"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:116
 msgid "Record From Microphone"
 msgstr "تسجيل من المايكرفون"
 
-#: data/resources/ui/window.ui:142
+#: data/resources/ui/window.ui:123
 msgid "Show Pointer"
 msgstr "إظهار المؤشر"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:130
 msgid "Record"
 msgstr "تسجيل"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:184
 msgid "Stop"
 msgstr "إيقاف"
 
-#: data/resources/ui/window.ui:240
+#: data/resources/ui/window.ui:220
 msgid "Recording in…"
 msgstr "التسجيل في …"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:263
 msgid "_Delay"
 msgstr ""
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:265
 msgid "None"
 msgstr "لا شئ"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:270
 msgid "5 seconds"
 msgstr "5 ثوان"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:275
 msgid "10 seconds"
 msgstr "10 ثواني"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:281
 msgid "_Video Format"
 msgstr ""
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:283
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:288
 #, fuzzy
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:293
 msgid "MP4"
 msgstr ""
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:298
 msgid "GIF"
 msgstr ""
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:304
 msgid "_Save to…"
 msgstr ""
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:310
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:314
 msgid "_About Kooha"
 msgstr ""
 
 #: src/application.rs:156
-msgid "Select a Folder"
-msgstr "حدد مجلدا"
+msgid "Select Recordings Folder"
+msgstr ""
 
 #: src/application.rs:159
 msgid "_Cancel"
@@ -247,7 +251,7 @@ msgid "_Select"
 msgstr ""
 
 #: src/application.rs:180
-msgid "Inaccessible location '{}'"
+msgid "Cannot access “{}”"
 msgstr ""
 
 #: src/application.rs:181
@@ -279,13 +283,16 @@ msgstr ""
 msgid "Open File"
 msgstr ""
 
-#: src/widgets/window.rs:167
+#: src/widgets/window.rs:153
 msgid "Paused"
 msgstr ""
 
-#: src/widgets/window.rs:203
+#: src/widgets/window.rs:189
 msgid "Sorry! An error has occurred."
 msgstr ""
+
+#~ msgid "Select a Folder"
+#~ msgstr "حدد مجلدا"
 
 #~ msgid "🖼️ Select an area of your screen to record."
 #~ msgstr "🖼️ حدد منطقة من شاشتك للتسجيل."

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-31 17:02+0800\n"
+"POT-Creation-Date: 2021-08-02 17:43+0800\n"
 "PO-Revision-Date: 2021-08-02 09:32+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
-"\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
+">\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,30 +66,34 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Ondersteuning voor webm-, mp4-, gif- en mkv-formaten."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🚀 Optional hardware accelerated encoding"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Kies het beeldscherm dat je wilt vastleggen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ Selecteer een gebied op je scherm dat je wilt vastleggen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Stel een wachttijd in zodat de opname iets later start."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Toon of verberg de cursor."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Kies zelf waar de opname moet worden opgeslagen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Maak gebruik van handige sneltoetsen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -109,7 +113,7 @@ msgstr "Sneltoetsen tonen"
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:162
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:148
 msgid "Recording"
 msgstr "Opname"
 
@@ -121,7 +125,7 @@ msgstr "Opname aan/uit"
 msgid "Toggle Pause"
 msgstr "Onderbreken/Hervatten"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:258
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:238
 msgid "Cancel Delay"
 msgstr "Wachten afbreken"
 
@@ -145,97 +149,97 @@ msgstr "Cursor tonen/verbergen"
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:49
 msgid "Normal"
 msgstr "Normaal"
 
-#: data/resources/ui/window.ui:64
+#: data/resources/ui/window.ui:59
 msgid "Selection"
 msgstr "Selectie"
 
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:88
 msgid "Capture a Monitor or Window"
 msgstr "Beeldscherm of venster vastleggen"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:96
 msgid "Capture a Selection of Screen"
 msgstr "Schermselectie vastleggen"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:109
 msgid "Record Computer Sounds"
 msgstr "Computergeluiden opnemen"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:116
 msgid "Record From Microphone"
 msgstr "Opnemen van microfoon"
 
-#: data/resources/ui/window.ui:142
+#: data/resources/ui/window.ui:123
 msgid "Show Pointer"
 msgstr "Cursor tonen"
 
-#: data/resources/ui/window.ui:149
+#: data/resources/ui/window.ui:130
 msgid "Record"
 msgstr "Opnemen"
 
-#: data/resources/ui/window.ui:204
+#: data/resources/ui/window.ui:184
 msgid "Stop"
 msgstr "Stoppen"
 
-#: data/resources/ui/window.ui:240
+#: data/resources/ui/window.ui:220
 msgid "Recording in…"
 msgstr "De opname wordt gestart over…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:263
 msgid "_Delay"
 msgstr "Wachttij_d"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:265
 msgid "None"
 msgstr "Geen"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:270
 msgid "5 seconds"
 msgstr "5 seconden"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:275
 msgid "10 seconds"
 msgstr "10 seconden"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:281
 msgid "_Video Format"
 msgstr "_Videoformaat"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:283
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:288
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:293
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:298
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:304
 msgid "_Save to…"
 msgstr "Op_slaan in…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:310
 msgid "_Keyboard Shortcuts"
 msgstr "_Sneltoetsen"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:314
 msgid "_About Kooha"
 msgstr "Over Kooh_a"
 
 #: src/application.rs:156
-msgid "Select a Folder"
-msgstr "Kies een map"
+msgid "Select Recordings Folder"
+msgstr ""
 
 #: src/application.rs:159
 msgid "_Cancel"
@@ -246,8 +250,8 @@ msgid "_Select"
 msgstr "_Selecteren"
 
 #: src/application.rs:180
-msgid "Inaccessible location '{}'"
-msgstr "Ontoegankelijke locatie: ‘{}’"
+msgid "Cannot access “{}”"
+msgstr ""
 
 #: src/application.rs:181
 msgid "Please choose an accessible location and retry."
@@ -278,13 +282,19 @@ msgstr "De opname is opgeslagen in ‘{}’"
 msgid "Open File"
 msgstr "Bestand openen"
 
-#: src/widgets/window.rs:167
+#: src/widgets/window.rs:153
 msgid "Paused"
 msgstr "Onderbroken"
 
-#: src/widgets/window.rs:203
+#: src/widgets/window.rs:189
 msgid "Sorry! An error has occurred."
 msgstr "Er is een fout opgetreden."
+
+#~ msgid "Select a Folder"
+#~ msgstr "Kies een map"
+
+#~ msgid "Inaccessible location '{}'"
+#~ msgstr "Ontoegankelijke locatie: ‘{}’"
 
 #~ msgid "🖼️ Select an area of your screen to record."
 #~ msgstr "🖼️ Selecteer een op te nemen gebied."
