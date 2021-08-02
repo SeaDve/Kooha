@@ -203,9 +203,12 @@ impl Recorder {
             RecorderState::Playing => gst::State::Playing,
         };
 
-        match pipeline.set_state(new_pipeline_state) {
-            Ok(_) => log::info!("Pipeline state set to {:?}", new_pipeline_state),
-            Err(error) => log::error!("Failed to set pipeline state: {}", error),
+        if let Err(error) = pipeline.set_state(new_pipeline_state) {
+            log::error!(
+                "Failed to set pipeline state to {:?}: {}",
+                new_pipeline_state,
+                error
+            );
         };
     }
 
@@ -307,14 +310,26 @@ impl Recorder {
             .add_watch_local(
                 clone!(@weak self as obj => @default-return Continue(true), move |_, message| {
                     match message.view() {
+                        gst::MessageView::StateChanged(sc) => {
+                            if message.src().as_ref() == Some(obj.pipeline().unwrap().upcast_ref::<gst::Object>()) {
+                                log::info!("Pipeline state set from {:?} -> {:?}", sc.old(), sc.current());
+                            }
+                        },
                         gst::MessageView::Eos(..) => {
                             obj.close_pipeline();
                             let recording_file_path = obj.current_file_path().unwrap();
                             obj.emit_response(&RecorderResponse::Success(recording_file_path));
+
+                            log::info!("Eos signal received from record bus");
                         },
                         gst::MessageView::Error(error) => {
-                            let error_message = error.debug().unwrap();
-                            log::error!("An error from record bus: {}", &error_message);
+                            let error_message = error.error().to_string();
+
+                            if let Some(debug) = error.debug() {
+                                log::error!("Error from record bus: {} (debug {})", error_message, debug);
+                            } else {
+                                log::error!("Error from record bus: {}", error_message);
+                            };
 
                             obj.close_pipeline();
                             obj.emit_response(&RecorderResponse::Failed(error_message));
