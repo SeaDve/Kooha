@@ -205,7 +205,7 @@ impl PipelineParser {
             VideoFormat::Webm => "webmmux",
             VideoFormat::Mkv => "matroskamux",
             VideoFormat::Mp4 => "mp4mux",
-            _ => unreachable!(),
+            VideoFormat::Gif => unreachable!(),
         };
 
         Some(format!("{} name=mux", muxer))
