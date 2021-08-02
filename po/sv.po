@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-02 18:18+0800\n"
-"PO-Revision-Date: 2021-08-01 06:23+0000\n"
+"PO-Revision-Date: 2021-08-02 12:58+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
@@ -67,7 +67,7 @@ msgstr "📼 Stöd för formaten WebM, MP4, GIF och MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "Hårdvaruaccelererad kodning som tillval"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
@@ -240,7 +240,7 @@ msgstr "_Om Kooha"
 
 #: src/application.rs:156
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Välj inspelningsmapp"
 
 #: src/application.rs:159
 msgid "_Cancel"
@@ -252,7 +252,7 @@ msgstr "_Markera"
 
 #: src/application.rs:180
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "Kommer inte åt “{}”"
 
 #: src/application.rs:181
 msgid "Please choose an accessible location and retry."
@@ -277,7 +277,7 @@ msgstr "Skärmvisning inspelad!"
 
 #: src/application.rs:225
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "Inspelningen har sparats i “{}”"
 
 #: src/application.rs:233
 msgid "Open File"
