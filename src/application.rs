@@ -178,7 +178,7 @@ impl Application {
                     .buttons(gtk::ButtonsType::Ok)
                     .transient_for(&app.main_window())
                     .title(&i18n_f("Cannot access “{}”", &[directory.to_str().unwrap()]))
-                    .text(&i18n("Please choose an accessible location and retry."))
+                    .text(&i18n("Please choose an accessible location and try again."))
                     .build();
                 error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
                 error_dialog.present();
