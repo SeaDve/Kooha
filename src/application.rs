@@ -153,7 +153,7 @@ impl Application {
             .transient_for(&self.main_window())
             .modal(true)
             .action(gtk::FileChooserAction::SelectFolder)
-            .title(&i18n("Select a Folder"))
+            .title(&i18n("Select Recordings Folder"))
             .build();
 
         chooser.add_button(&i18n("_Cancel"), gtk::ResponseType::Cancel);
@@ -177,7 +177,7 @@ impl Application {
                     .modal(true)
                     .buttons(gtk::ButtonsType::Ok)
                     .transient_for(&app.main_window())
-                    .title(&i18n_f("Inaccessible location '{}'", &[directory.to_str().unwrap()]))
+                    .title(&i18n_f("Cannot access “{}”", &[directory.to_str().unwrap()]))
                     .text(&i18n("Please choose an accessible location and retry."))
                     .build();
                 error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
