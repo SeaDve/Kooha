@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-02 17:43+0800\n"
+"POT-Creation-Date: 2021-08-02 18:18+0800\n"
 "PO-Revision-Date: 2021-07-31 09:03+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -275,7 +275,7 @@ msgid "Screencast Recorded!"
 msgstr "Gravação de tela gravada!"
 
 #: src/application.rs:225
-msgid "The recording has been saved in {}"
+msgid "The recording has been saved in “{}”"
 msgstr ""
 
 #: src/application.rs:233

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-02 17:43+0800\n"
-"PO-Revision-Date: 2021-08-02 09:32+0000\n"
+"POT-Creation-Date: 2021-08-02 18:18+0800\n"
+"PO-Revision-Date: 2021-08-02 10:19+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
 ">\n"
@@ -67,7 +67,7 @@ msgstr "📼 Ondersteuning voor webm-, mp4-, gif- en mkv-formaten."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Hardware-versnelde encodering (optioneel)"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
@@ -239,7 +239,7 @@ msgstr "Over Kooh_a"
 
 #: src/application.rs:156
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Kies de opnamemap"
 
 #: src/application.rs:159
 msgid "_Cancel"
@@ -251,7 +251,7 @@ msgstr "_Selecteren"
 
 #: src/application.rs:180
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "Geen toegang tot ‘{}’"
 
 #: src/application.rs:181
 msgid "Please choose an accessible location and retry."
@@ -275,8 +275,8 @@ msgid "Screencast Recorded!"
 msgstr "De screencast is opgenomen!"
 
 #: src/application.rs:225
-msgid "The recording has been saved in {}"
-msgstr "De opname is opgeslagen in ‘{}’"
+msgid "The recording has been saved in “{}”"
+msgstr ""
 
 #: src/application.rs:233
 msgid "Open File"
@@ -289,6 +289,9 @@ msgstr "Onderbroken"
 #: src/widgets/window.rs:189
 msgid "Sorry! An error has occurred."
 msgstr "Er is een fout opgetreden."
+
+#~ msgid "The recording has been saved in {}"
+#~ msgstr "De opname is opgeslagen in ‘{}’"
 
 #~ msgid "Select a Folder"
 #~ msgstr "Kies een map"
