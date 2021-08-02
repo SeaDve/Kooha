@@ -61,6 +61,6 @@ test(
     cargo_test_script,
     args: [
        meson.source_root(),
-    ]
+    ],
     timeout: 240,
 )
