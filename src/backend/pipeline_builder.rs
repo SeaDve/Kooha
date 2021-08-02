@@ -153,7 +153,7 @@ impl PipelineParser {
     }
 
     fn videocrop(&self) -> Option<String> {
-        if let Some(coords) = &self.builder.coordinates {
+        if let Some(ref coords) = self.builder.coordinates {
             let actual_screen = self.builder.actual_screen.as_ref().unwrap();
             let stream_screen = &self.builder.pipewire_stream.screen;
 
