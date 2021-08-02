@@ -288,7 +288,36 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_pipeline_builder() {
+    fn no_coordinates() {
+        let stream = Stream {
+            fd: 1,
+            node_id: 32,
+            screen: Screen::new(1680, 1050),
+        };
+        let framerate = 60;
+        let file_path = PathBuf::from("/home/someone/Videos/Kooha 1-1.mp4");
+        let is_record_speaker = true;
+        let is_record_mic = true;
+        let speaker = Some("speaker_device_123".to_string());
+        let mic = Some("microphone_device_123".to_string());
+
+        let output = PipelineBuilder::new()
+            .pipewire_stream(stream)
+            .framerate(framerate)
+            .file_path(file_path)
+            .record_speaker(is_record_speaker)
+            .record_mic(is_record_mic)
+            .speaker_source(speaker)
+            .mic_source(mic)
+            .parse_into_string();
+
+        let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=60/1 ! videorate ! video/x-raw, framerate=60/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline ! queue ! mp4mux name=mux ! filesink location=\"/home/someone/Videos/Kooha 1-1.mp4\" pulsesrc device=\"speaker_device_123\" ! queue ! audiomixer name=mix ! opusenc ! queue ! mux. pulsesrc device=\"microphone_device_123\" ! queue ! mix."
+            .replace("%T", &utils::ideal_thread_count().to_string());
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn with_coordinates() {
         let stream = Stream {
             fd: 1,
             node_id: 32,
@@ -321,6 +350,93 @@ mod tests {
             .parse_into_string();
 
         let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=60/1 ! videorate ! video/x-raw, framerate=60/1 ! videoscale ! video/x-raw, width=1680, height=1050 ! videocrop top=5600 left=5544 right=-4984 bottom=-6230 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline ! queue ! mp4mux name=mux ! filesink location=\"/home/someone/Videos/Kooha 1-1.mp4\" pulsesrc device=\"speaker_device_123\" ! queue ! audiomixer name=mix ! opusenc ! queue ! mux. pulsesrc device=\"microphone_device_123\" ! queue ! mix."
+            .replace("%T", &utils::ideal_thread_count().to_string());
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn no_both_sources_but_both_true() {
+        let stream = Stream {
+            fd: 1,
+            node_id: 32,
+            screen: Screen::new(1680, 1050),
+        };
+        let framerate = 60;
+        let file_path = PathBuf::from("/home/someone/Videos/Kooha 1-1.mp4");
+        let is_record_speaker = true;
+        let is_record_mic = true;
+        let speaker = None;
+        let mic = None;
+
+        let output = PipelineBuilder::new()
+            .pipewire_stream(stream)
+            .framerate(framerate)
+            .file_path(file_path)
+            .record_speaker(is_record_speaker)
+            .record_mic(is_record_mic)
+            .speaker_source(speaker)
+            .mic_source(mic)
+            .parse_into_string();
+
+        let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=60/1 ! videorate ! video/x-raw, framerate=60/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline ! queue ! mp4mux name=mux ! filesink location=\"/home/someone/Videos/Kooha 1-1.mp4\""
+            .replace("%T", &utils::ideal_thread_count().to_string());
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn both_false_but_has_both_sources() {
+        let stream = Stream {
+            fd: 1,
+            node_id: 32,
+            screen: Screen::new(1680, 1050),
+        };
+        let framerate = 60;
+        let file_path = PathBuf::from("/home/someone/Videos/Kooha 1-1.mp4");
+        let is_record_speaker = true;
+        let is_record_mic = true;
+        let speaker = None;
+        let mic = None;
+
+        let output = PipelineBuilder::new()
+            .pipewire_stream(stream)
+            .framerate(framerate)
+            .file_path(file_path)
+            .record_speaker(is_record_speaker)
+            .record_mic(is_record_mic)
+            .speaker_source(speaker)
+            .mic_source(mic)
+            .parse_into_string();
+
+        let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=60/1 ! videorate ! video/x-raw, framerate=60/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline ! queue ! mp4mux name=mux ! filesink location=\"/home/someone/Videos/Kooha 1-1.mp4\""
+            .replace("%T", &utils::ideal_thread_count().to_string());
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn gif_but_audio_enabled_and_60_framerate() {
+        let stream = Stream {
+            fd: 1,
+            node_id: 32,
+            screen: Screen::new(1680, 1050),
+        };
+        let framerate = 60;
+        let file_path = PathBuf::from("/home/someone/Videos/Kooha 1-1.gif");
+        let is_record_speaker = true;
+        let is_record_mic = true;
+        let speaker = Some("speaker_device_123".to_string());
+        let mic = Some("microphone_device_123".to_string());
+
+        let output = PipelineBuilder::new()
+            .pipewire_stream(stream)
+            .framerate(framerate)
+            .file_path(file_path)
+            .record_speaker(is_record_speaker)
+            .record_mic(is_record_mic)
+            .speaker_source(speaker)
+            .mic_source(mic)
+            .parse_into_string();
+
+        let expected_output = "pipewiresrc fd=1 path=32 do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate=15/1 ! videorate ! video/x-raw, framerate=15/1 ! videoconvert chroma-mode=GST_VIDEO_CHROMA_MODE_NONE dither=GST_VIDEO_DITHER_NONE matrix-mode=GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY n-threads=%T ! queue ! gifenc speed=30 qos=true ! queue ! filesink location=\"/home/someone/Videos/Kooha 1-1.gif\""
             .replace("%T", &utils::ideal_thread_count().to_string());
         assert_eq!(output, expected_output);
     }
