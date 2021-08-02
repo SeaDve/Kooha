@@ -1,6 +1,6 @@
 use gtk::glib;
 
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use crate::{
     data_types::{Rectangle, Screen, Stream},
@@ -248,8 +248,8 @@ impl PipelineParser {
         self.builder.framerate
     }
 
-    fn file_path(&self) -> &PathBuf {
-        &self.builder.file_path
+    fn file_path(&self) -> &Path {
+        self.builder.file_path.as_path()
     }
 
     fn speaker_source(&self) -> Option<&str> {
@@ -271,13 +271,7 @@ impl PipelineParser {
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
-
-    use crate::{
-        backend::PipelineBuilder,
-        data_types::{Rectangle, Screen, Stream},
-        utils,
-    };
+    use super::*;
 
     #[test]
     fn test_pipeline_builder() {
