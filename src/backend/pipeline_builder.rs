@@ -1,6 +1,9 @@
 use gtk::glib;
 
-use std::path::{Path, PathBuf};
+use std::{
+    env,
+    path::{Path, PathBuf},
+};
 
 use crate::{
     data_types::{Rectangle, Screen, Stream},
@@ -178,10 +181,20 @@ impl PipelineParser {
     }
 
     fn videoenc(&self) -> Option<String> {
-        match self.video_format() {
-            VideoFormat::Webm | VideoFormat::Mkv => Some("vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T"),
-            VideoFormat::Mp4 => Some("x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline"),
-            VideoFormat::Gif => Some("gifenc speed=30 qos=true"),
+        let is_use_vaapi = env::var("GST_VAAPI_ALL_DRIVERS").is_ok();
+
+        if is_use_vaapi {
+            match self.video_format() {
+                VideoFormat::Webm | VideoFormat::Mkv => Some("vaapivp8enc"), // FIXME Improve pipelines
+                VideoFormat::Mp4 => Some("vaapih264enc ! h264parse"),
+                VideoFormat::Gif => Some("gifenc speed=30 qos=true"), // FIXME This doesn't really use vaapi
+            }
+        } else {
+            match self.video_format() {
+                VideoFormat::Webm | VideoFormat::Mkv => Some("vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T"),
+                VideoFormat::Mp4 => Some("x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline"),
+                VideoFormat::Gif => Some("gifenc speed=30 qos=true"),
+            }
         }
         .map(str::to_string)
     }

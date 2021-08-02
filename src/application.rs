@@ -6,7 +6,7 @@ use gtk::{
 };
 use once_cell::sync::OnceCell;
 
-use std::path::Path;
+use std::{env, path::Path};
 
 use crate::{
     backend::Settings,
@@ -242,6 +242,10 @@ impl Application {
         log::info!("Kooha ({})", APP_ID);
         log::info!("Version: {} ({})", VERSION, PROFILE);
         log::info!("Datadir: {}", PKGDATADIR);
+        log::info!(
+            "VAAPI enabled: {}",
+            env::var("GST_VAAPI_ALL_DRIVERS").is_ok()
+        );
 
         ApplicationExtManual::run(self);
     }
