@@ -249,7 +249,7 @@ impl Recorder {
                         AreaSelectorResponse::Cancelled => {
                             obj.portal().close_session();
 
-                            log::info!("Cancelled capture")
+                            log::info!("Cancelled capture");
                         },
                     }
                     None

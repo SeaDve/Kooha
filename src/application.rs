@@ -189,7 +189,7 @@ impl Application {
             chooser.destroy();
         }));
 
-        chooser.present()
+        chooser.present();
     }
 
     fn show_about_dialog(&self) {
