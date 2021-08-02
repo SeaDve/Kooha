@@ -182,7 +182,7 @@ impl PipelineParser {
 
     fn videoenc(&self) -> Option<String> {
         let is_use_vaapi = env::var("GST_VAAPI_ALL_DRIVERS").is_ok();
-        log::info!("Pipeline VAAPI enabled: {}", is_use_vaapi);
+        log::debug!("is_use_vaapi: {}", is_use_vaapi);
 
         if is_use_vaapi {
             match self.video_format() {
