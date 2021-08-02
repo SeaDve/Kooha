@@ -222,7 +222,7 @@ impl Application {
 
         let notification = gio::Notification::new(&i18n("Screencast Recorded!"));
         notification.set_body(Some(&i18n_f(
-            "The recording has been saved in {}",
+            "The recording has been saved in “{}”",
             &[saving_location.to_str().unwrap()],
         )));
         notification.set_default_action_and_target_value(
