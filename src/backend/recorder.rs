@@ -8,9 +8,9 @@ use once_cell::sync::Lazy;
 use std::{cell::RefCell, path::PathBuf};
 
 use crate::{
-    backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
+    backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse},
     data_types::Stream,
-    utils,
+    settings, utils,
     widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
 };
 
@@ -40,7 +40,6 @@ mod imp {
 
     #[derive(Debug)]
     pub struct Recorder {
-        pub settings: Settings,
         pub portal: ScreencastPortal,
         pub pipeline: RefCell<Option<gst::Pipeline>>,
         pub current_file_path: RefCell<Option<PathBuf>>,
@@ -55,7 +54,6 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                settings: Settings::new(),
                 portal: ScreencastPortal::new(),
                 pipeline: RefCell::new(None),
                 current_file_path: RefCell::new(None),
@@ -160,11 +158,6 @@ impl Recorder {
         &imp.portal
     }
 
-    fn settings(&self) -> &Settings {
-        let imp = self.private();
-        &imp.settings
-    }
-
     fn pipeline(&self) -> Option<gst::Pipeline> {
         let imp = self.private();
         imp.pipeline.borrow().clone()
@@ -210,22 +203,20 @@ impl Recorder {
     }
 
     fn init_pipeline(&self, stream: Stream) {
-        let settings = self.settings();
-
         let (speaker_source, mic_source) = utils::default_audio_sources();
-        let file_path = settings.file_path();
+        let file_path = settings::file_path();
         self.set_current_file_path(Some(file_path.clone()));
 
         let pipeline_builder = PipelineBuilder::new()
             .pipewire_stream(stream)
-            .framerate(settings.video_framerate())
+            .framerate(settings::video_framerate())
             .file_path(file_path)
-            .record_speaker(settings.is_record_speaker())
-            .record_mic(settings.is_record_mic())
+            .record_speaker(settings::is_record_speaker())
+            .record_mic(settings::is_record_mic())
             .speaker_source(speaker_source)
             .mic_source(mic_source);
 
-        if !settings.is_selection_mode() {
+        if !settings::is_selection_mode() {
             self.setup_pipeline(pipeline_builder);
             return;
         }
@@ -292,8 +283,8 @@ impl Recorder {
     }
 
     pub fn ready(&self) {
-        let is_show_pointer = self.settings().is_show_pointer();
-        let is_selection_mode = self.settings().is_selection_mode();
+        let is_show_pointer = settings::is_show_pointer();
+        let is_selection_mode = settings::is_selection_mode();
         self.portal()
             .new_session(is_show_pointer, is_selection_mode);
 

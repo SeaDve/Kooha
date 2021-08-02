@@ -24,7 +24,6 @@ sources = files(
   'backend/recorder.rs',
   'backend/recorder_controller.rs',
   'backend/screencast_portal.rs',
-  'backend/settings.rs',
   'backend/timer.rs',
   'widgets/area_selector.rs',
   'widgets/mod.rs',
@@ -34,6 +33,7 @@ sources = files(
   'data_types.rs',
   'i18n.rs',
   'main.rs',
+  'settings.rs',
   'utils.rs',
 )
 
