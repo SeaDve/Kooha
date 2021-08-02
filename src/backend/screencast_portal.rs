@@ -177,7 +177,7 @@ async fn screencast(
 
     log::info!("Select sources window showed");
 
-    let streams = proxy.start(&session, &window_identifier).await?.to_vec();
+    let streams = proxy.start(&session, &window_identifier).await?;
 
     log::info!("Screencast session started");
 
