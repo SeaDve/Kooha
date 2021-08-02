@@ -303,25 +303,29 @@ impl Recorder {
 
     pub fn start(&self) {
         let record_bus = self.pipeline().unwrap().bus().unwrap();
-        record_bus.add_watch_local(clone!(@weak self as obj => @default-return Continue(true), move |_, message: &gst::Message| {
-            match message.view() {
-                gst::MessageView::Eos(..) => {
-                    obj.close_pipeline();
-                    let recording_file_path = obj.current_file_path().unwrap();
-                    obj.emit_response(&RecorderResponse::Success(recording_file_path));
-                },
-                gst::MessageView::Error(error) => {
-                    let error_message = error.debug().unwrap();
-                    log::error!("An error from record bus: {}", &error_message);
+        record_bus
+            .add_watch_local(
+                clone!(@weak self as obj => @default-return Continue(true), move |_, message| {
+                    match message.view() {
+                        gst::MessageView::Eos(..) => {
+                            obj.close_pipeline();
+                            let recording_file_path = obj.current_file_path().unwrap();
+                            obj.emit_response(&RecorderResponse::Success(recording_file_path));
+                        },
+                        gst::MessageView::Error(error) => {
+                            let error_message = error.debug().unwrap();
+                            log::error!("An error from record bus: {}", &error_message);
 
-                    obj.close_pipeline();
-                    obj.emit_response(&RecorderResponse::Failed(error_message));
-                },
-                _ => (),
-            }
+                            obj.close_pipeline();
+                            obj.emit_response(&RecorderResponse::Failed(error_message));
+                        },
+                        _ => (),
+                    }
 
-            Continue(true)
-        })).unwrap();
+                    Continue(true)
+                }),
+            )
+            .unwrap();
 
         self.set_state(RecorderState::Playing);
     }
