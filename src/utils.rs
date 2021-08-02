@@ -1,8 +1,8 @@
 use anyhow::bail;
-use ashpd::zbus::Connection;
+use ashpd::zbus;
 use gtk::glib;
 
-use std::{cmp::min, path::Path, process};
+use std::{cmp::min, path::Path, process::Command};
 
 const MAX_THREAD_COUNT: u32 = 64;
 
@@ -16,7 +16,7 @@ pub fn ideal_thread_count() -> u32 {
 }
 
 pub fn default_audio_sources() -> (Option<String>, Option<String>) {
-    let output = process::Command::new("/usr/bin/pactl")
+    let output = Command::new("/usr/bin/pactl")
         .arg("info")
         .output()
         .expect("Failed to run pactl")
@@ -69,7 +69,7 @@ fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
         reverse_keyword, method
     );
 
-    let connection = Connection::session()?;
+    let connection = zbus::Connection::session()?;
     let reply = connection.call_method(
         Some("org.gnome.Shell"),
         "/org/gnome/Shell",
