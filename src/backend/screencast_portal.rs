@@ -120,21 +120,22 @@ impl ScreencastPortal {
                     imp.session.replace(Some(session));
                 }
                 Err(error) => {
-                    log::warn!("Something occurred on screencast call: {}", &error);
-
                     match error {
                         Error::Portal(response_error) => {
                             match response_error {
                                 ResponseError::Cancelled => {
                                     obj.emit_response(&ScreencastPortalResponse::Cancelled);
+                                    log::info!("Session cancelled")
                                 },
                                 ResponseError::Other => {
                                     obj.emit_response(&ScreencastPortalResponse::Error(response_error.to_string()));
+                                    log::error!("Response error from screencast call: {}", &response_error);
                                 }
                             }
                         },
-                        other => {
-                            obj.emit_response(&ScreencastPortalResponse::Error(other.to_string()));
+                        other_error => {
+                            obj.emit_response(&ScreencastPortalResponse::Error(other_error.to_string()));
+                            log::error!("Failed to create a screencast call: {}", &other_error);
                         }
                     };
                 }
