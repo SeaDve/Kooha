@@ -118,27 +118,19 @@ impl Timer {
     }
 
     fn set_state(&self, new_state: TimerState) {
-        self.set_property("state", new_state)
-            .expect("Failed to set timer state");
+        self.set_property("state", new_state).unwrap();
     }
 
     pub fn state(&self) -> TimerState {
-        self.property("state")
-            .unwrap()
-            .get::<TimerState>()
-            .expect("Failed to get timer state")
+        self.property("state").unwrap().get::<TimerState>().unwrap()
     }
 
     fn set_time(&self, new_time: u32) {
-        self.set_property("time", new_time)
-            .expect("Failed to get timer time");
+        self.set_property("time", new_time).unwrap();
     }
 
     fn time(&self) -> u32 {
-        self.property("time")
-            .unwrap()
-            .get::<u32>()
-            .expect("Failed to get timer time")
+        self.property("time").unwrap().get::<u32>().unwrap()
     }
 
     fn update_time(&self) {
