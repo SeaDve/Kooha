@@ -9,9 +9,10 @@ use once_cell::sync::OnceCell;
 use std::path::Path;
 
 use crate::{
+    backend::Settings,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     i18n::{i18n, i18n_f},
-    settings, utils,
+    utils,
     widgets::MainWindow,
 };
 
@@ -147,6 +148,7 @@ impl Application {
     }
 
     fn select_saving_location(&self) {
+        let settings = Settings::new();
         let chooser = gtk::FileChooserDialogBuilder::new()
             .transient_for(&self.main_window())
             .modal(true)
@@ -158,7 +160,7 @@ impl Application {
         chooser.add_button(&i18n("_Select"), gtk::ResponseType::Accept);
         chooser.set_default_response(gtk::ResponseType::Accept);
         chooser
-            .set_current_folder(&gio::File::for_path(settings::saving_location()))
+            .set_current_folder(&gio::File::for_path(settings.saving_location()))
             .expect("Failed to set current folder");
 
         chooser.connect_response(clone!(@weak self as app => move |chooser, response| {
@@ -183,7 +185,7 @@ impl Application {
                 return;
             };
 
-            settings::set_saving_location(&directory);
+            settings.set_saving_location(&directory);
             chooser.destroy();
         }));
 

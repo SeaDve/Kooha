@@ -9,10 +9,9 @@ use gtk::{
 
 use crate::{
     application::Application,
-    backend::{RecorderController, RecorderControllerState, RecorderResponse},
+    backend::{RecorderController, RecorderControllerState, RecorderResponse, Settings},
     config::PROFILE,
     i18n::i18n,
-    settings,
 };
 
 #[derive(Debug, PartialEq)]
@@ -28,6 +27,7 @@ mod imp {
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct MainWindow {
+        pub settings: Settings,
         pub recorder_controller: RecorderController,
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
@@ -51,6 +51,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
+                settings: Settings::new(),
                 recorder_controller: RecorderController::new(),
                 pause_record_button: TemplateChild::default(),
                 main_stack: TemplateChild::default(),
@@ -68,7 +69,7 @@ mod imp {
                 let imp = obj.private();
 
                 if imp.recorder_controller.state() == RecorderControllerState::Null {
-                    let record_delay = settings::record_delay();
+                    let record_delay = imp.settings.record_delay();
                     imp.recorder_controller.start(record_delay);
                 } else {
                     imp.recorder_controller.stop();
@@ -115,16 +116,17 @@ mod imp {
             ];
 
             for action in actions {
-                let settings_action = settings::create_action(action);
+                let settings_action = self.settings.create_action(action);
                 obj.add_action(&settings_action);
             }
 
-            settings::bind("capture-mode", &*self.title_stack, "visible-child-name");
+            self.settings
+                .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
 
             self.recorder_controller.set_window(obj);
 
             obj.update_audio_toggles_sensitivity();
-            settings::connect_changed_notify(
+            self.settings.connect_changed_notify(
                 Some("video-format"),
                 clone!(@weak obj => move |_, _| {
                     obj.update_audio_toggles_sensitivity();
@@ -220,7 +222,9 @@ impl MainWindow {
     }
 
     fn update_audio_toggles_sensitivity(&self) {
-        let is_enabled = settings::video_format() != "gif";
+        let imp = self.private();
+
+        let is_enabled = imp.settings.video_format() != "gif";
 
         self.action_set_enabled("win.record-speaker", is_enabled);
         self.action_set_enabled("win.record-mic", is_enabled);

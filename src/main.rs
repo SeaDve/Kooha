@@ -5,7 +5,6 @@ mod backend;
 mod config;
 mod data_types;
 mod i18n;
-mod settings;
 mod utils;
 mod widgets;
 
