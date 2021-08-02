@@ -41,6 +41,7 @@ The main features of Kooha include the following:
 * 🎥 Capture your screen without any hassle.
 * 🎙️ Record your microphone, computer sounds, or both at the same time.
 * 📼 Support for WebM, MP4, GIF, and MKV formats.
+* 🚀 Optional hardware accelerated encoding
 * 🖥️ Select a monitor or window to record.
 * 🔲 Create a selection to capture certain area from your screen.
 * ⏲️ Set delay to prepare before you start recording.
@@ -50,6 +51,14 @@ The main features of Kooha include the following:
 
 
 ## ⚙️ Hidden Configuration Options
+
+### Enable hardware accelerated encoding
+
+This allows to use encoder which utilizes GPU for more efficient encoding. This
+should work on AMD and Intel. Just run Kooha with the environment variable
+`GST_VAAPI_ALL_DRIVERS` set to 1. (e.g. `GST_VAAPI_ALL_DRIVERS=1 flatpak run io.github.seadve.Kooha` 
+or just `GST_VAAPI_ALL_DRIVERS=1 kooha` in non-sandboxed installations.
+
 
 ### Change frames per second to 60fps
 
@@ -79,7 +88,6 @@ environment cross-distro. Thus, it is highly recommended you use it.
 1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
 2. In Builder, click the "Clone Repository" button at the bottom, using `https://github.com/SeaDve/Kooha.git` as the URL.
 3. Click the build button at the top once the project is loaded.
-
 
 ### Meson
 
