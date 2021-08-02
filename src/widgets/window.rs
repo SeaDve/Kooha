@@ -133,17 +133,17 @@ mod imp {
                 }),
             );
 
-            obj.set_view(View::MainScreen);
+            obj.set_view(&View::MainScreen);
             self.recorder_controller.connect_notify_local(
                 Some("state"),
                 clone!(@weak obj => move |recorder_controller, _| {
                     let imp = obj.private();
 
                     match recorder_controller.state() {
-                        RecorderControllerState::Null => obj.set_view(View::MainScreen),
-                        RecorderControllerState::Delayed => obj.set_view(View::Delay),
+                        RecorderControllerState::Null => obj.set_view(&View::MainScreen),
+                        RecorderControllerState::Delayed => obj.set_view(&View::Delay),
                         RecorderControllerState::Recording => {
-                            obj.set_view(View::Recording);
+                            obj.set_view(&View::Recording);
                             imp.pause_record_button.set_icon_name("media-playback-pause-symbolic");
                             imp.recording_label.set_label(&i18n("Recording"));
                             imp.recording_time_label.remove_css_class("paused");
@@ -230,7 +230,7 @@ impl MainWindow {
         self.action_set_enabled("win.record-mic", is_enabled);
     }
 
-    fn set_view(&self, view: View) {
+    fn set_view(&self, view: &View) {
         let imp = self.private();
 
         match view {
@@ -239,9 +239,9 @@ impl MainWindow {
             View::Delay => imp.main_stack.set_visible_child_name("delay"),
         }
 
-        self.action_set_enabled("win.toggle-record", view != View::Delay);
-        self.action_set_enabled("win.toggle-pause", view == View::Recording);
-        self.action_set_enabled("win.cancel-delay", view == View::Delay);
+        self.action_set_enabled("win.toggle-record", *view != View::Delay);
+        self.action_set_enabled("win.toggle-pause", *view == View::Recording);
+        self.action_set_enabled("win.cancel-delay", *view == View::Delay);
     }
 
     pub fn is_safe_to_quit(&self) -> bool {

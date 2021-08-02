@@ -201,8 +201,8 @@ impl RecorderController {
         imp::RecorderController::from_instance(self)
     }
 
-    fn emit_response(&self, response: RecorderResponse) {
-        self.emit_by_name("response", &[&response]).unwrap();
+    fn emit_response(&self, response: &RecorderResponse) {
+        self.emit_by_name("response", &[response]).unwrap();
     }
 
     pub fn set_window(&self, window: &MainWindow) {

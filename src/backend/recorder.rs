@@ -78,7 +78,7 @@ mod imp {
                                 obj.init_pipeline(stream);
                             },
                             ScreencastPortalResponse::Error(error_message) => {
-                                obj.emit_response(RecorderResponse::Failed(error_message));
+                                obj.emit_response(&RecorderResponse::Failed(error_message));
                             }
                             ScreencastPortalResponse::Cancelled => (),
                         };
@@ -268,7 +268,7 @@ impl Recorder {
             }
             Err(error) => {
                 self.portal().close_session();
-                self.emit_response(RecorderResponse::Failed(error.to_string()));
+                self.emit_response(&RecorderResponse::Failed(error.to_string()));
                 log::error!("Failed to build pipeline: {}", error);
             }
         };
@@ -279,8 +279,8 @@ impl Recorder {
         self.portal().close_session();
     }
 
-    fn emit_response(&self, response: RecorderResponse) {
-        self.emit_by_name("response", &[&response]).unwrap();
+    fn emit_response(&self, response: &RecorderResponse) {
+        self.emit_by_name("response", &[response]).unwrap();
     }
 
     fn emit_ready(&self) {
@@ -308,14 +308,14 @@ impl Recorder {
                 gst::MessageView::Eos(..) => {
                     obj.close_pipeline();
                     let recording_file_path = obj.current_file_path().unwrap();
-                    obj.emit_response(RecorderResponse::Success(recording_file_path));
+                    obj.emit_response(&RecorderResponse::Success(recording_file_path));
                 },
                 gst::MessageView::Error(error) => {
                     let error_message = error.debug().unwrap();
                     log::error!("An error from record bus: {}", &error_message);
 
                     obj.close_pipeline();
-                    obj.emit_response(RecorderResponse::Failed(error_message));
+                    obj.emit_response(&RecorderResponse::Failed(error_message));
                 },
                 _ => (),
             }

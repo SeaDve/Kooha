@@ -71,7 +71,7 @@ mod imp {
             key_controller.connect_key_pressed(
                 clone!(@weak obj => @default-return Inhibit(false), move |_, keyval, _, _| {
                     if keyval == Key::from_name("Escape") {
-                        obj.emit_response(AreaSelectorResponse::Cancelled);
+                        obj.emit_response(&AreaSelectorResponse::Cancelled);
                         Inhibit(true)
                     } else {
                         Inhibit(false)
@@ -106,7 +106,7 @@ mod imp {
                     let selection_rectangle = Rectangle::from_points(start_position, end_position);
                     let actual_screen = Screen::new(obj.width(), obj.height());
 
-                    obj.emit_response(AreaSelectorResponse::Captured(selection_rectangle, actual_screen));
+                    obj.emit_response(&AreaSelectorResponse::Captured(selection_rectangle, actual_screen));
                 }
             }));
             obj.add_controller(&gesture_drag);
@@ -161,7 +161,7 @@ mod imp {
 
     impl WindowImpl for AreaSelector {
         fn close_request(&self, obj: &Self::Type) -> Inhibit {
-            obj.emit_response(AreaSelectorResponse::Cancelled);
+            obj.emit_response(&AreaSelectorResponse::Cancelled);
             Inhibit(false)
         }
     }
@@ -198,8 +198,8 @@ impl AreaSelector {
         });
     }
 
-    fn emit_response(&self, response: AreaSelectorResponse) {
-        self.emit_by_name("response", &[&response]).unwrap();
+    fn emit_response(&self, response: &AreaSelectorResponse) {
+        self.emit_by_name("response", &[response]).unwrap();
         self.clean();
         self.destroy();
     }

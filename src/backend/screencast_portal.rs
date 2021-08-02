@@ -76,8 +76,8 @@ impl ScreencastPortal {
         imp::ScreencastPortal::from_instance(self)
     }
 
-    fn emit_response(&self, response: ScreencastPortalResponse) {
-        self.emit_by_name("response", &[&response]).unwrap();
+    fn emit_response(&self, response: &ScreencastPortalResponse) {
+        self.emit_by_name("response", &[response]).unwrap();
     }
 
     fn window(&self) -> MainWindow {
@@ -115,7 +115,7 @@ impl ScreencastPortal {
                     let stream_size = streams[0].size().unwrap();
                     let stream_screen = Screen::new(stream_size.0, stream_size.1);
 
-                    obj.emit_response(ScreencastPortalResponse::Success(fd, node_id, stream_screen));
+                    obj.emit_response(&ScreencastPortalResponse::Success(fd, node_id, stream_screen));
 
                     imp.session.replace(Some(session));
                 }
@@ -126,15 +126,15 @@ impl ScreencastPortal {
                         Error::Portal(response_error) => {
                             match response_error {
                                 ResponseError::Cancelled => {
-                                    obj.emit_response(ScreencastPortalResponse::Cancelled);
+                                    obj.emit_response(&ScreencastPortalResponse::Cancelled);
                                 },
                                 ResponseError::Other => {
-                                    obj.emit_response(ScreencastPortalResponse::Error(response_error.to_string()));
+                                    obj.emit_response(&ScreencastPortalResponse::Error(response_error.to_string()));
                                 }
                             }
                         },
                         other => {
-                            obj.emit_response(ScreencastPortalResponse::Error(other.to_string()));
+                            obj.emit_response(&ScreencastPortalResponse::Error(other.to_string()));
                         }
                     };
                 }

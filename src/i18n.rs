@@ -4,7 +4,7 @@ use regex::Captures;
 use regex::Regex;
 
 #[allow(dead_code)]
-fn freplace(input: String, args: &[&str]) -> String {
+fn freplace(input: &str, args: &[&str]) -> String {
     let mut parts = input.split("{}");
     let mut output = parts.next().unwrap_or("").to_string();
     for (p, a) in parts.zip(args.iter()) {
@@ -35,7 +35,7 @@ pub fn i18n(format: &str) -> String {
 #[allow(dead_code)]
 pub fn i18n_f(format: &str, args: &[&str]) -> String {
     let s = gettext(format);
-    freplace(s, args)
+    freplace(&s, args)
 }
 
 #[allow(dead_code)]
@@ -52,7 +52,7 @@ pub fn ni18n(single: &str, multiple: &str, number: u32) -> String {
 #[allow(dead_code)]
 pub fn ni18n_f(single: &str, multiple: &str, number: u32, args: &[&str]) -> String {
     let s = ngettext(single, multiple, number);
-    freplace(s, args)
+    freplace(&s, args)
 }
 
 #[allow(dead_code)]
