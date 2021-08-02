@@ -112,7 +112,7 @@
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.record-mic</property>
-                                <property name="icon-name">microphone-sensitivity-high-symbolic</property>
+                                <property name="icon-name">audio-input-microphone-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
                               </object>
                             </child>
