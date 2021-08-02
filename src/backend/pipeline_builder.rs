@@ -159,7 +159,7 @@ impl PipelineParser {
             let stream_screen_height = self.builder.pipewire_stream.screen.height as f64;
 
             let scale_factor = stream_screen_width / actual_screen_width;
-            let coords = coords.to_owned() * scale_factor;
+            let coords = coords.clone().rescale(scale_factor);
 
             let top_crop = coords.y;
             let left_crop = coords.x;

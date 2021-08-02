@@ -1,6 +1,6 @@
 use gtk::glib::{self, GBoxed};
 
-use std::{mem, ops::Mul};
+use std::mem;
 
 #[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "Rectangle")]
@@ -30,18 +30,13 @@ impl Rectangle {
             height,
         }
     }
-}
 
-impl Mul<f64> for Rectangle {
-    type Output = Self;
-
-    fn mul(self, rhs: f64) -> Self::Output {
-        Self {
-            x: self.x * rhs,
-            y: self.y * rhs,
-            width: self.width * rhs,
-            height: self.height * rhs,
-        }
+    pub fn rescale(mut self, scale_factor: f64) -> Self {
+        self.x *= scale_factor;
+        self.y *= scale_factor;
+        self.width *= scale_factor;
+        self.height *= scale_factor;
+        self
     }
 }
 
