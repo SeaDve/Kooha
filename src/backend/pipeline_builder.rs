@@ -96,7 +96,6 @@ impl PipelineBuilder {
 
     pub fn build(self) -> Result<gst::Element, glib::Error> {
         let pipeline_string = self.parse_into_string();
-
         log::debug!("pipeline_string: {}", &pipeline_string);
 
         gst::parse_launch(&pipeline_string)
@@ -348,30 +347,4 @@ impl PipelineParser {
     fn is_single_stream(&self) -> bool {
         self.streams().len() == 1
     }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn single_stream() {}
-
-    #[test]
-    fn multiple_streams() {}
-
-    #[test]
-    fn no_coordinates() {}
-
-    #[test]
-    fn with_coordinates() {}
-
-    #[test]
-    fn no_both_sources_but_both_true() {}
-
-    #[test]
-    fn both_false_but_has_both_sources() {}
-
-    #[test]
-    fn gif_but_audio_enabled_and_60_framerate() {}
 }
