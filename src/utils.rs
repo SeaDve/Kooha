@@ -85,3 +85,45 @@ fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
 
     Ok(())
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn odd_round_to_even() {
+        assert_eq!(round_to_even(3.0), 2);
+        assert_eq!(round_to_even(99.0), 98);
+    }
+
+    #[test]
+    fn even_round_to_even() {
+        assert_eq!(round_to_even(50.0), 50);
+        assert_eq!(round_to_even(4.0), 4);
+    }
+
+    #[test]
+    fn float_round_to_even() {
+        assert_eq!(round_to_even(5.3), 4);
+        assert_eq!(round_to_even(2.9), 2);
+    }
+
+    #[test]
+    fn check_if_accessible_in_home() {
+        let mut home_dir_folder = glib::home_dir();
+        home_dir_folder.push("Pictures");
+        assert!(check_if_accessible(&home_dir_folder));
+    }
+
+    #[test]
+    fn check_if_accessible_not_in_home() {
+        let random_dir = Path::new("/dev/sda");
+        assert!(!check_if_accessible(random_dir));
+    }
+
+    #[test]
+    fn check_if_accessible_home() {
+        let home_dir = glib::home_dir();
+        assert!(!check_if_accessible(&home_dir));
+    }
+}

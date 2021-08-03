@@ -168,6 +168,7 @@ impl PipelineParser {
             let right_crop = stream_screen.width as f64 - (coords.width + coords.x);
             let bottom_crop = stream_screen.height as f64 - (coords.height + coords.y);
 
+            // It is a requirement for x264enc to have even resolution.
             Some(format!(
                 "videocrop top={} left={} right={} bottom={}",
                 utils::round_to_even(top_crop),
