@@ -1,4 +1,5 @@
 use adw::subclass::prelude::*;
+use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone},
@@ -11,7 +12,6 @@ use crate::{
     application::Application,
     backend::{RecorderController, RecorderControllerState, RecorderResponse, Settings},
     config::PROFILE,
-    i18n,
 };
 
 #[derive(Debug, PartialEq)]
@@ -145,12 +145,12 @@ mod imp {
                         RecorderControllerState::Recording => {
                             obj.set_view(&View::Recording);
                             imp.pause_record_button.set_icon_name("media-playback-pause-symbolic");
-                            imp.recording_label.set_label(&i18n!("Recording"));
+                            imp.recording_label.set_label(&gettext("Recording"));
                             imp.recording_time_label.remove_css_class("paused");
                         }
                         RecorderControllerState::Paused => {
                             imp.pause_record_button.set_icon_name("media-playback-start-symbolic");
-                            imp.recording_label.set_label(&i18n!("Paused"));
+                            imp.recording_label.set_label(&gettext("Paused"));
                             imp.recording_time_label.add_css_class("paused");
                         },
                     };
@@ -186,7 +186,7 @@ mod imp {
                                     .modal(true)
                                     .buttons(gtk::ButtonsType::Ok)
                                     .transient_for(&obj)
-                                    .title(&i18n!("Sorry! An error has occurred."))
+                                    .title(&gettext("Sorry! An error has occurred."))
                                     .text(&error_message)
                                     .build();
                                 error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
