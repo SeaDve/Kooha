@@ -1,3 +1,4 @@
+use ashpd::desktop::screencast::Stream;
 use gst::prelude::*;
 use gtk::{
     glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum},
@@ -9,7 +10,6 @@ use std::{cell::RefCell, path::PathBuf};
 
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
-    data_types::Stream,
     utils,
     widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
 };
@@ -74,9 +74,7 @@ mod imp {
                         let response = args[1].get().unwrap();
                         match response {
                             ScreencastPortalResponse::Success(streams, fd) => {
-                                dbg!(streams, fd);
-                                // let stream = Stream { fd, node_id, screen };
-                                // obj.init_pipeline(stream);
+                                obj.init_pipeline(streams, fd);
                             },
                             ScreencastPortalResponse::Error(error_message) => {
                                 obj.emit_response(&RecorderResponse::Failed(error_message));
@@ -213,7 +211,7 @@ impl Recorder {
         };
     }
 
-    fn init_pipeline(&self, stream: Stream) {
+    fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
         let settings = self.settings();
 
         let (speaker_source, mic_source) = utils::default_audio_sources();
@@ -221,7 +219,8 @@ impl Recorder {
         self.set_current_file_path(Some(file_path.clone()));
 
         let pipeline_builder = PipelineBuilder::new()
-            .pipewire_stream(stream)
+            .streams(streams)
+            .fd(fd)
             .framerate(settings.video_framerate())
             .file_path(file_path)
             .record_speaker(settings.is_record_speaker())
@@ -356,6 +355,8 @@ impl Recorder {
 
     pub fn stop(&self) {
         self.pipeline().unwrap().send_event(gst::event::Eos::new());
+
+        // self.set_state(RecorderState::Null);
     }
 
     pub fn cancel(&self) {

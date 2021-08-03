@@ -64,11 +64,3 @@ impl Screen {
         Self { width, height }
     }
 }
-
-#[derive(Debug, Default, Clone, GBoxed)]
-#[gboxed(type_name = "Stream")]
-pub struct Stream {
-    pub fd: i32,
-    pub node_id: u32,
-    pub screen: Screen,
-}
