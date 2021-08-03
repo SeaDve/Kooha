@@ -84,27 +84,16 @@ impl Application {
     }
 
     fn setup_actions(&self) {
-        let action_show_saving_location = gio::SimpleAction::new(
-            "show-saving-location",
+        let action_launch_default_for_file = gio::SimpleAction::new(
+            "launch-default-for-file",
             Some(glib::VariantTy::new("s").unwrap()),
         );
-        action_show_saving_location.connect_activate(clone!(@weak self as app => move |_, param| {
-            let saving_location = param.unwrap().get::<String>().unwrap();
-            let uri = format!("file://{}", saving_location);
+        action_launch_default_for_file.connect_activate(|_, param| {
+            let file_path = param.unwrap().get::<String>().unwrap();
+            let uri = format!("file://{}", file_path);
             gio::AppInfo::launch_default_for_uri(&uri, None::<&gio::AppLaunchContext>).unwrap();
-        }));
-        self.add_action(&action_show_saving_location);
-
-        let action_show_saved_recording = gio::SimpleAction::new(
-            "show-saved-recording",
-            Some(glib::VariantTy::new("s").unwrap()),
-        );
-        action_show_saved_recording.connect_activate(clone!(@weak self as app => move |_, param| {
-            let saved_recording = param.unwrap().get::<String>().unwrap();
-            let uri = format!("file://{}", saved_recording);
-            gio::AppInfo::launch_default_for_uri(&uri, None::<&gio::AppLaunchContext>).unwrap();
-        }));
-        self.add_action(&action_show_saved_recording);
+        });
+        self.add_action(&action_launch_default_for_file);
 
         let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
         action_select_saving_location.connect_activate(clone!(@weak self as app => move |_, _| {
@@ -226,12 +215,12 @@ impl Application {
             &[saving_location.to_str().unwrap()],
         )));
         notification.set_default_action_and_target_value(
-            "app.show-saving-location",
+            "app.launch-default-for-file",
             Some(&saving_location.to_str().unwrap().to_variant()),
         );
         notification.add_button_with_target_value(
             &i18n("Open File"),
-            "app.show-saved-recording",
+            "app.launch-default-for-file",
             Some(&recording_file_path.to_str().unwrap().to_variant()),
         );
 
