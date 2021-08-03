@@ -73,9 +73,10 @@ mod imp {
                     clone!(@weak obj => @default-return None, move | args | {
                         let response = args[1].get().unwrap();
                         match response {
-                            ScreencastPortalResponse::Success(fd, node_id, screen) => {
-                                let stream = Stream { fd, node_id, screen };
-                                obj.init_pipeline(stream);
+                            ScreencastPortalResponse::Success(streams, fd) => {
+                                dbg!(streams, fd);
+                                // let stream = Stream { fd, node_id, screen };
+                                // obj.init_pipeline(stream);
                             },
                             ScreencastPortalResponse::Error(error_message) => {
                                 obj.emit_response(&RecorderResponse::Failed(error_message));

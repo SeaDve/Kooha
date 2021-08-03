@@ -15,12 +15,12 @@ use once_cell::sync::{Lazy, OnceCell};
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
-use crate::{data_types::Screen, widgets::MainWindow};
+use crate::widgets::MainWindow;
 
 #[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "ScreencastPortalResponse")]
 pub enum ScreencastPortalResponse {
-    Success(i32, u32, Screen),
+    Success(Vec<Stream>, i32),
     Error(String),
     Cancelled,
 }
@@ -106,18 +106,16 @@ impl ScreencastPortal {
                 BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
             };
             let identifier = WindowIdentifier::from_native(&obj.window().native().unwrap()).await;
-            let multiple = false;
+            let multiple = !is_selection_mode;
+
+            log::debug!("Screencast call: source_type: {:?}", source_type);
 
             match screencast(identifier, multiple, source_type, cursor_mode).await {
                 Ok(result) => {
                     let (streams, fd, session) = result;
-                    let node_id = streams[0].pipe_wire_node_id();
-                    let stream_size = streams[0].size().unwrap();
-                    let stream_screen = Screen::new(stream_size.0, stream_size.1);
-
-                    obj.emit_response(&ScreencastPortalResponse::Success(fd, node_id, stream_screen));
-
                     imp.session.replace(Some(session));
+
+                    obj.emit_response(&ScreencastPortalResponse::Success(streams, fd));
                 }
                 Err(error) => {
                     match error {
