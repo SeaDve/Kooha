@@ -162,7 +162,10 @@ impl PipelineParser {
         for (sink_num, stream) in self.streams().iter().enumerate() {
             let pad = format!("sink_{}::xpos={}", sink_num, current_res);
             compositor_elements.push(pad);
-            current_res += stream.size().unwrap().0;
+
+            // This allows us to place the videos size by size with each other, without overlaps.
+            let stream_width = stream.size().unwrap().0;
+            current_res += stream_width;
         }
 
         Some(compositor_elements.join(" "))
