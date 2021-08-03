@@ -315,7 +315,7 @@ impl Recorder {
                                 log::info!("Pipeline state set from {:?} -> {:?}", sc.old(), sc.current());
                             }
                         },
-                        gst::MessageView::Eos(..) => {
+                        gst::MessageView::Eos(_) => {
                             obj.close_pipeline();
                             let recording_file_path = obj.current_file_path().unwrap();
                             obj.emit_response(&RecorderResponse::Success(recording_file_path));
