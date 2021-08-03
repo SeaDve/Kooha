@@ -145,7 +145,7 @@ impl PipelineParser {
         }
 
         let mut current_res = 0;
-        let mut compositor_elements = vec!["compositor".to_string(), "name=comp".to_string()];
+        let mut compositor_elements = vec!["compositor name=comp operator=source".to_string()];
 
         for (sink_num, stream) in self.streams().iter().enumerate() {
             let pad = format!("sink_{}::xpos={}", sink_num, current_res);
