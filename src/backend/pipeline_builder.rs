@@ -13,13 +13,6 @@ use crate::{
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
-enum AudioSourceType<'a> {
-    Both(&'a str, &'a str),
-    SpeakerOnly(&'a str),
-    MicOnly(&'a str),
-    None,
-}
-
 #[derive(PartialEq)]
 enum VideoFormat {
     Webm,
@@ -141,12 +134,7 @@ impl PipelineParser {
             .join(" ! ");
 
         pipeline_string = format!("{} {}", pipeline_string, self.pipewiresrc());
-        pipeline_string = match self.audio_source_type() {
-            AudioSourceType::Both(speaker_source, mic_source) => format!("{} pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.", pipeline_string, speaker_source, self.audioenc().unwrap(), mic_source),
-            AudioSourceType::SpeakerOnly(speaker_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, speaker_source, self.audioenc().unwrap()),
-            AudioSourceType::MicOnly(mic_source) => format!("{} pulsesrc device=\"{}\" ! {} ! queue ! mux.", pipeline_string, mic_source, self.audioenc().unwrap()),
-            AudioSourceType::None => pipeline_string,
-        };
+        pipeline_string = format!("{} {}", pipeline_string, self.pulsesrc());
 
         pipeline_string.replace("%T", &utils::ideal_thread_count().to_string())
     }
@@ -186,6 +174,45 @@ impl PipelineParser {
         }
 
         pipewiresrc_list.join(" ")
+    }
+
+    fn pulsesrc(&self) -> String {
+        if self.video_format() == VideoFormat::Gif {
+            return "".to_string();
+        }
+
+        let speaker_source = self.speaker_source();
+        let mic_source = self.mic_source();
+
+        let is_record_speaker = self.builder.is_record_speaker && speaker_source.is_some();
+        let is_record_mic = self.builder.is_record_mic && mic_source.is_some();
+
+        let audioenc = self.audioenc().unwrap();
+
+        match (is_record_speaker, is_record_mic) {
+            (true, true) => {
+                format!("pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.",
+                    speaker_source.unwrap(),
+                    audioenc,
+                    mic_source.unwrap()
+                )
+            }
+            (true, false) => {
+                format!(
+                    "pulsesrc device=\"{}\" ! {} ! queue ! mux.",
+                    speaker_source.unwrap(),
+                    audioenc
+                )
+            }
+            (false, true) => {
+                format!(
+                    "pulsesrc device=\"{}\" ! {} ! queue ! mux.",
+                    mic_source.unwrap(),
+                    audioenc
+                )
+            }
+            (false, false) => "".to_string(),
+        }
     }
 
     fn videoscale(&self) -> Option<String> {
@@ -287,25 +314,6 @@ impl PipelineParser {
             "mp4" => VideoFormat::Mp4,
             "gif" => VideoFormat::Gif,
             other => unreachable!("Invalid video format: {}", other),
-        }
-    }
-
-    fn audio_source_type(&self) -> AudioSourceType {
-        if self.video_format() == VideoFormat::Gif {
-            return AudioSourceType::None;
-        }
-
-        let speaker_source = self.speaker_source();
-        let mic_source = self.mic_source();
-
-        let is_record_speaker = self.builder.is_record_speaker && speaker_source.is_some();
-        let is_record_mic = self.builder.is_record_mic && mic_source.is_some();
-
-        match (is_record_speaker, is_record_mic) {
-            (true, true) => AudioSourceType::Both(speaker_source.unwrap(), mic_source.unwrap()),
-            (true, false) => AudioSourceType::SpeakerOnly(speaker_source.unwrap()),
-            (false, true) => AudioSourceType::MicOnly(mic_source.unwrap()),
-            (false, false) => AudioSourceType::None,
         }
     }
 
