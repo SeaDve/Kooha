@@ -11,8 +11,7 @@ use std::path::Path;
 use crate::{
     backend::Settings,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
-    i18n::{i18n, i18n_f},
-    utils,
+    i18n, utils,
     widgets::MainWindow,
 };
 
@@ -142,11 +141,11 @@ impl Application {
             .transient_for(&self.main_window())
             .modal(true)
             .action(gtk::FileChooserAction::SelectFolder)
-            .title(&i18n("Select Recordings Folder"))
+            .title(&i18n!("Select Recordings Folder"))
             .build();
 
-        chooser.add_button(&i18n("_Cancel"), gtk::ResponseType::Cancel);
-        chooser.add_button(&i18n("_Select"), gtk::ResponseType::Accept);
+        chooser.add_button(&i18n!("_Cancel"), gtk::ResponseType::Cancel);
+        chooser.add_button(&i18n!("_Select"), gtk::ResponseType::Accept);
         chooser.set_default_response(gtk::ResponseType::Accept);
         chooser
             .set_current_folder(&gio::File::for_path(settings.saving_location()))
@@ -166,8 +165,8 @@ impl Application {
                     .modal(true)
                     .buttons(gtk::ButtonsType::Ok)
                     .transient_for(&app.main_window())
-                    .title(&i18n_f("Cannot access “{}”", &[directory.to_str().unwrap()]))
-                    .text(&i18n("Please choose an accessible location and try again."))
+                    .title(&i18n!("Cannot access “{}”", directory.to_str().unwrap()))
+                    .text(&i18n!("Please choose an accessible location and try again."))
                     .build();
                 error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
                 error_dialog.present();
@@ -185,8 +184,8 @@ impl Application {
         let dialog = gtk::AboutDialogBuilder::new()
             .transient_for(&self.main_window())
             .modal(true)
-            .program_name(&i18n("Kooha"))
-            .comments(&i18n("Elegantly record your screen"))
+            .program_name(&i18n!("Kooha"))
+            .comments(&i18n!("Elegantly record your screen"))
             .version(VERSION)
             .logo_icon_name(APP_ID)
             .authors(vec![
@@ -196,11 +195,11 @@ impl Application {
                 "Felix Weilbach".into(),
             ])
             // Translators: Replace "translator-credits" with your names. Put a comma between.
-            .translator_credits(&i18n("translator-credits"))
-            .copyright(&i18n("Copyright 2021 Dave Patrick"))
+            .translator_credits(&i18n!("translator-credits"))
+            .copyright(&i18n!("Copyright 2021 Dave Patrick"))
             .license_type(gtk::License::Gpl30)
             .website("https://github.com/SeaDve/Kooha")
-            .website_label(&i18n("GitHub"))
+            .website_label(&i18n!("GitHub"))
             .build();
 
         dialog.show();
@@ -209,17 +208,17 @@ impl Application {
     pub fn send_record_success_notification(&self, recording_file_path: &Path) {
         let saving_location = recording_file_path.parent().expect("File doesn't exist");
 
-        let notification = gio::Notification::new(&i18n("Screencast Recorded!"));
-        notification.set_body(Some(&i18n_f(
+        let notification = gio::Notification::new(&i18n!("Screencast Recorded!"));
+        notification.set_body(Some(&i18n!(
             "The recording has been saved in “{}”",
-            &[saving_location.to_str().unwrap()],
+            saving_location.to_str().unwrap()
         )));
         notification.set_default_action_and_target_value(
             "app.launch-default-for-file",
             Some(&saving_location.to_str().unwrap().to_variant()),
         );
         notification.add_button_with_target_value(
-            &i18n("Open File"),
+            &i18n!("Open File"),
             "app.launch-default-for-file",
             Some(&recording_file_path.to_str().unwrap().to_variant()),
         );
