@@ -4,6 +4,7 @@ use gtk::glib;
 use std::{
     env,
     path::{Path, PathBuf},
+    str::FromStr,
 };
 
 use crate::{
@@ -13,7 +14,8 @@ use crate::{
 
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
-#[derive(PartialEq)]
+#[derive(Debug, PartialEq, strum_macros::EnumString)]
+#[strum(serialize_all = "snake_case")]
 enum VideoFormat {
     Webm,
     Mkv,
@@ -307,13 +309,9 @@ impl PipelineParser {
     }
 
     fn video_format(&self) -> VideoFormat {
-        match self.file_path().extension().unwrap().to_str().unwrap() {
-            "webm" => VideoFormat::Webm,
-            "mkv" => VideoFormat::Mkv,
-            "mp4" => VideoFormat::Mp4,
-            "gif" => VideoFormat::Gif,
-            other => unreachable!("Invalid video format: {}", other),
-        }
+        let file_extension = self.file_path().extension().unwrap().to_str().unwrap();
+
+        VideoFormat::from_str(file_extension).expect("Invalid video format")
     }
 
     fn framerate(&self) -> u32 {
