@@ -19,6 +19,7 @@ enum View {
     MainScreen,
     Recording,
     Delay,
+    Flushing,
 }
 
 mod imp {
@@ -141,6 +142,7 @@ mod imp {
 
                     match recorder_controller.state() {
                         RecorderControllerState::Null => obj.set_view(&View::MainScreen),
+                        RecorderControllerState::Flushing => obj.set_view(&View::Flushing),
                         RecorderControllerState::Delayed => obj.set_view(&View::Delay),
                         RecorderControllerState::Recording => {
                             obj.set_view(&View::Recording);
@@ -237,6 +239,7 @@ impl MainWindow {
             View::MainScreen => imp.main_stack.set_visible_child_name("main-screen"),
             View::Recording => imp.main_stack.set_visible_child_name("recording"),
             View::Delay => imp.main_stack.set_visible_child_name("delay"),
+            View::Flushing => imp.main_stack.set_visible_child_name("flushing"),
         }
 
         self.action_set_enabled("win.toggle-record", *view != View::Delay);

@@ -19,6 +19,7 @@ pub enum RecorderControllerState {
     Delayed,
     Paused,
     Recording,
+    Flushing,
 }
 
 impl Default for RecorderControllerState {
@@ -69,7 +70,7 @@ mod imp {
                         TimerState::Paused => RecorderControllerState::Paused,
                         TimerState::Running => RecorderControllerState::Recording,
                     };
-                    obj.set_property("state", new_state).unwrap();
+                    obj.set_state(new_state);
                 }),
             );
             self.recorder.connect_notify_local(
@@ -79,8 +80,9 @@ mod imp {
 
                     match recorder.state() {
                         RecorderState::Null => imp.timer.stop(),
-                        RecorderState::Playing => imp.timer.resume(),
                         RecorderState::Paused => imp.timer.pause(),
+                        RecorderState::Playing => imp.timer.resume(),
+                        RecorderState::Flushing => obj.set_state(RecorderControllerState::Flushing),
                     };
                 }),
             );
@@ -215,6 +217,10 @@ impl RecorderController {
             .unwrap()
             .get::<RecorderControllerState>()
             .unwrap()
+    }
+
+    fn set_state(&self, state: RecorderControllerState) {
+        self.set_property("state", state).unwrap();
     }
 
     pub fn time(&self) -> u32 {

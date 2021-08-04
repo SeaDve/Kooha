@@ -20,6 +20,7 @@ pub enum RecorderState {
     Null,
     Paused,
     Playing,
+    Flushing,
 }
 
 impl Default for RecorderState {
@@ -194,14 +195,18 @@ impl Recorder {
     fn set_state(&self, state: RecorderState) {
         self.set_property("state", state).unwrap();
 
-        let pipeline = self.pipeline().unwrap();
+        if state == RecorderState::Flushing {
+            return;
+        }
 
         let new_pipeline_state = match state {
             RecorderState::Null => gst::State::Null,
             RecorderState::Paused => gst::State::Paused,
             RecorderState::Playing => gst::State::Playing,
+            RecorderState::Flushing => unreachable!(),
         };
 
+        let pipeline = self.pipeline().unwrap();
         if let Err(error) = pipeline.set_state(new_pipeline_state) {
             log::error!(
                 "Failed to set pipeline state to {:?}: {}",
@@ -354,9 +359,10 @@ impl Recorder {
     }
 
     pub fn stop(&self) {
+        self.set_state(RecorderState::Flushing);
         self.pipeline().unwrap().send_event(gst::event::Eos::new());
 
-        // self.set_state(RecorderState::Null);
+        log::info!("Sending eos event to pipeline");
     }
 
     pub fn cancel(&self) {

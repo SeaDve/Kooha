@@ -246,6 +246,33 @@
                 </property>
               </object>
             </child>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">flushing</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="valign">center</property>
+                    <property name="spacing">18</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Flushing…</property>
+                        <property name="single-line-mode">True</property>
+                        <style>
+                          <class name="title-4"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSpinner">
+                        <property name="spinning">True</property>
+                        <property name="height-request">18</property>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
