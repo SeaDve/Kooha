@@ -133,6 +133,9 @@ impl Application {
                 &provider,
                 gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
             );
+
+            log::info!("is_display_composited: {}", display.is_composited());
+            log::info!("is_display_rgba: {}", display.is_rgba());
         }
     }
 
