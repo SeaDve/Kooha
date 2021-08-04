@@ -8,13 +8,16 @@ use gtk::{
     CompositeTemplate,
 };
 
+use std::string::ToString;
+
 use crate::{
     application::Application,
     backend::{RecorderController, RecorderControllerState, RecorderResponse, Settings},
     config::PROFILE,
 };
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, strum_macros::ToString)]
+#[strum(serialize_all = "kebab_case")]
 enum View {
     MainScreen,
     Recording,
@@ -234,13 +237,8 @@ impl MainWindow {
 
     fn set_view(&self, view: &View) {
         let imp = self.private();
-
-        match view {
-            View::MainScreen => imp.main_stack.set_visible_child_name("main-screen"),
-            View::Recording => imp.main_stack.set_visible_child_name("recording"),
-            View::Delay => imp.main_stack.set_visible_child_name("delay"),
-            View::Flushing => imp.main_stack.set_visible_child_name("flushing"),
-        }
+        imp.main_stack
+            .set_visible_child_name(view.to_string().as_ref());
 
         self.action_set_enabled("win.toggle-record", *view != View::Delay);
         self.action_set_enabled("win.toggle-pause", *view == View::Recording);

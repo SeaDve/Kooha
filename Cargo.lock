@@ -978,6 +978,8 @@ dependencies = [
  "log",
  "once_cell",
  "pretty_env_logger",
+ "strum",
+ "strum_macros",
 ]
 
 [[package]]
