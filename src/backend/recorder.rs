@@ -67,6 +67,8 @@ mod imp {
 
     impl ObjectImpl for Recorder {
         fn constructed(&self, obj: &Self::Type) {
+            self.parent_constructed(obj);
+
             self.portal
                 .connect_local(
                     "response",

@@ -59,6 +59,8 @@ mod imp {
 
     impl ObjectImpl for RecorderController {
         fn constructed(&self, obj: &Self::Type) {
+            self.parent_constructed(obj);
+
             self.timer.bind_property("time", obj, "time").build();
 
             self.timer.connect_notify_local(

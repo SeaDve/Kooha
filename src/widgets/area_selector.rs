@@ -62,6 +62,7 @@ mod imp {
     impl ObjectImpl for AreaSelector {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
+
             obj.set_cursor_from_name(Some("crosshair"));
             obj.remove_css_class("background");
             obj.set_decorated(false);
