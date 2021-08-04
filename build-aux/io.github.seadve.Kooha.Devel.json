@@ -17,7 +17,8 @@
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=kooha=debug",
         "--env=G_MESSAGES_DEBUG=none",
-        "--env=GST_DEBUG=3"
+        "--env=GST_DEBUG=3",
+        "--env=PIPEWIRE_DEBUG=3"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
