@@ -33,11 +33,12 @@ mod imp {
 
     #[derive(Debug)]
     pub struct RecorderController {
-        pub recorder: Recorder,
-        pub timer: Timer,
         pub state: Cell<RecorderControllerState>,
         pub time: Cell<u32>,
+
         pub record_delay: Cell<u32>,
+        pub recorder: Recorder,
+        pub timer: Timer,
     }
 
     #[glib::object_subclass]
@@ -48,11 +49,12 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                recorder: Recorder::new(),
-                timer: Timer::new(),
                 state: Cell::new(RecorderControllerState::default()),
                 time: Cell::new(0),
+
                 record_delay: Cell::new(0),
+                recorder: Recorder::new(),
+                timer: Timer::new(),
             }
         }
     }

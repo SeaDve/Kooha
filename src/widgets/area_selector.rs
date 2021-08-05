@@ -160,28 +160,28 @@ impl AreaSelector {
             imp.start_position.replace(Some(Point::new(x, y)));
         }));
         gesture_drag.connect_drag_update(clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
-                let imp = obj.private();
-                if let Some(gesture_start_point) = gesture.start_point() {
-                    let (start_x, start_y) = gesture_start_point;
+            let imp = obj.private();
+            if let Some(gesture_start_point) = gesture.start_point() {
+                let (start_x, start_y) = gesture_start_point;
 
-                    imp.current_position.replace(Some(Point::new(start_x + offset_x, start_y + offset_y)));
-                    obj.queue_draw();
-                }
-            }));
+                imp.current_position.replace(Some(Point::new(start_x + offset_x, start_y + offset_y)));
+                obj.queue_draw();
+            }
+        }));
         gesture_drag.connect_drag_end(clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
-                let imp = obj.private();
-                if let Some(gesture_start_point) = gesture.start_point() {
-                    let (start_x, start_y) = gesture_start_point;
+            let imp = obj.private();
+            if let Some(gesture_start_point) = gesture.start_point() {
+                let (start_x, start_y) = gesture_start_point;
 
-                    let start_position = imp.start_position.borrow().unwrap();
-                    let end_position = Point::new(start_x + offset_x, start_y + offset_y);
+                let start_position = imp.start_position.borrow().unwrap();
+                let end_position = Point::new(start_x + offset_x, start_y + offset_y);
 
-                    let selection_rectangle = Rectangle::from_points(start_position, end_position);
-                    let actual_screen = Screen::new(obj.width(), obj.height());
+                let selection_rectangle = Rectangle::from_points(start_position, end_position);
+                let actual_screen = Screen::new(obj.width(), obj.height());
 
-                    obj.emit_response(&AreaSelectorResponse::Captured(selection_rectangle, actual_screen));
-                }
-            }));
+                obj.emit_response(&AreaSelectorResponse::Captured(selection_rectangle, actual_screen));
+            }
+        }));
         self.add_controller(&gesture_drag);
     }
 

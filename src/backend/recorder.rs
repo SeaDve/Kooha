@@ -41,11 +41,12 @@ mod imp {
 
     #[derive(Debug)]
     pub struct Recorder {
-        pub settings: Settings,
-        pub portal: ScreencastPortal,
+        pub state: RefCell<RecorderState>,
+
         pub pipeline: RefCell<Option<gst::Pipeline>>,
         pub current_file_path: RefCell<Option<PathBuf>>,
-        pub state: RefCell<RecorderState>,
+        pub settings: Settings,
+        pub portal: ScreencastPortal,
     }
 
     #[glib::object_subclass]
@@ -56,11 +57,12 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                settings: Settings::new(),
-                portal: ScreencastPortal::new(),
+                state: RefCell::new(RecorderState::default()),
+
                 pipeline: RefCell::new(None),
                 current_file_path: RefCell::new(None),
-                state: RefCell::new(RecorderState::default()),
+                settings: Settings::new(),
+                portal: ScreencastPortal::new(),
             }
         }
     }
