@@ -256,6 +256,10 @@ msgstr "_Ikansela"
 msgid "_Select"
 msgstr "_Piliin"
 
+#: src/application.rs:158
+msgid "Cannot access “{}”"
+msgstr "Hindi ma-access ang “{}”"
+
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
 msgstr ""
@@ -277,6 +281,10 @@ msgstr "GitHub"
 msgid "Screencast Recorded!"
 msgstr "Ang rekording ay natapos na!"
 
+#: src/application.rs:203
+msgid "The recording has been saved in “{}”"
+msgstr "Ang recording ay naka-save sa “{}”"
+
 #: src/application.rs:211
 msgid "Open File"
 msgstr "Buksan ang File"
@@ -289,14 +297,8 @@ msgstr "Naka-pause"
 msgid "Sorry! An error has occurred."
 msgstr "Paumanhin! Nagkaroon ng error."
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "Hindi ma-access ang “{}”"
-
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Pumili ng kayang i-access na lokasyon at ulitin."
-
-#~ msgid "The recording has been saved in “{}”"
-#~ msgstr "Ang recording ay naka-save sa “{}”"
 
 #~ msgid "The recording has been saved in {}"
 #~ msgstr "Ang recording ay nakasave sa {}"

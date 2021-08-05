@@ -252,6 +252,10 @@ msgstr ""
 msgid "_Select"
 msgstr ""
 
+#: src/application.rs:158
+msgid "Cannot access “{}”"
+msgstr ""
+
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
 msgstr ""
@@ -272,6 +276,10 @@ msgstr "GitHub"
 #: src/application.rs:201
 msgid "Screencast Recorded!"
 msgstr "Skjermopptak innspilt."
+
+#: src/application.rs:203
+msgid "The recording has been saved in “{}”"
+msgstr ""
 
 #: src/application.rs:211
 msgid "Open File"

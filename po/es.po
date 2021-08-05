@@ -257,6 +257,10 @@ msgstr "_Cancelar"
 msgid "_Select"
 msgstr "_Seleccionar"
 
+#: src/application.rs:158
+msgid "Cannot access “{}”"
+msgstr "No se puede acceder a “{}”"
+
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
 msgstr ""
@@ -278,6 +282,10 @@ msgstr "GitHub"
 msgid "Screencast Recorded!"
 msgstr "¡Captura de pantalla grabada!"
 
+#: src/application.rs:203
+msgid "The recording has been saved in “{}”"
+msgstr "La grabación se ha guardado en “{}”"
+
 #: src/application.rs:211
 msgid "Open File"
 msgstr "Abrir archivo"
@@ -290,14 +298,8 @@ msgstr "En pausa"
 msgid "Sorry! An error has occurred."
 msgstr "¡Ups! Ha ocurrido un error."
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "No se puede acceder a “{}”"
-
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Elige una ubicación accesible e intenta de nuevo."
-
-#~ msgid "The recording has been saved in “{}”"
-#~ msgstr "La grabación se ha guardado en “{}”"
 
 #~ msgid "Select a Folder"
 #~ msgstr "Elige una carpeta"

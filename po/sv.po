@@ -254,6 +254,10 @@ msgstr "_Avbryt"
 msgid "_Select"
 msgstr "_Markera"
 
+#: src/application.rs:158
+msgid "Cannot access “{}”"
+msgstr "Kommer inte åt “{}”"
+
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
 msgstr ""
@@ -275,6 +279,10 @@ msgstr "GitHub"
 msgid "Screencast Recorded!"
 msgstr "Skärmvisning inspelad!"
 
+#: src/application.rs:203
+msgid "The recording has been saved in “{}”"
+msgstr "Inspelningen har sparats i “{}”"
+
 #: src/application.rs:211
 msgid "Open File"
 msgstr "Öppna fil"
@@ -287,14 +295,8 @@ msgstr "Pausad"
 msgid "Sorry! An error has occurred."
 msgstr "Tyvärr! Ett fel har inträffat."
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "Kommer inte åt “{}”"
-
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Välj en åtkomlig plats och försök igen."
-
-#~ msgid "The recording has been saved in “{}”"
-#~ msgstr "Inspelningen har sparats i “{}”"
 
 #~ msgid "The recording has been saved in {}"
 #~ msgstr "Inspelningen har sparats i {}"

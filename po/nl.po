@@ -253,6 +253,10 @@ msgstr "_Annuleren"
 msgid "_Select"
 msgstr "_Selecteren"
 
+#: src/application.rs:158
+msgid "Cannot access “{}”"
+msgstr "Geen toegang tot ‘{}’"
+
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
 msgstr ""
@@ -274,6 +278,10 @@ msgstr "GitHub"
 msgid "Screencast Recorded!"
 msgstr "De screencast is opgenomen!"
 
+#: src/application.rs:203
+msgid "The recording has been saved in “{}”"
+msgstr "De opname is opgeslagen in ‘{}’"
+
 #: src/application.rs:211
 msgid "Open File"
 msgstr "Bestand openen"
@@ -286,14 +294,8 @@ msgstr "Onderbroken"
 msgid "Sorry! An error has occurred."
 msgstr "Er is een fout opgetreden."
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "Geen toegang tot ‘{}’"
-
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Kies een toegankelijke locatie en probeer het opnieuw."
-
-#~ msgid "The recording has been saved in “{}”"
-#~ msgstr "De opname is opgeslagen in ‘{}’"
 
 #~ msgid "The recording has been saved in {}"
 #~ msgstr "De opname is opgeslagen in ‘{}’"
