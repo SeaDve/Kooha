@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-02 18:18+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
+"POT-Creation-Date: 2021-08-05 13:56+0800\n"
+"PO-Revision-Date: 2021-08-05 05:58+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
 "file/id/>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:199
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:200
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
 msgid "Elegantly record your screen"
 msgstr "Rekam layar Anda dengan elegan"
 
@@ -64,7 +64,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Mendukung format WebM, MP4, GIF, dan MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Pilih monitor atau jendela yang ingin direkam."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
@@ -104,29 +104,29 @@ msgstr "Umum"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Buka Menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Tampilkan Pintasan"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
 msgstr "Keluar"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:148
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
 msgid "Recording"
 msgstr "Merekam"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Toggle Perekaman"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Toggle Jeda"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:238
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
 msgstr "Batalkan penundaan"
 
@@ -136,160 +136,165 @@ msgstr "Pengaturan"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Toggle Suara Komputer"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Toggle Mikrofon"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
 msgstr ""
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:30
 msgid "Main Menu"
 msgstr "Menu Utama"
 
-#: data/resources/ui/window.ui:49
+#: data/resources/ui/window.ui:47
 msgid "Normal"
 msgstr "Normal"
 
-#: data/resources/ui/window.ui:59
+#: data/resources/ui/window.ui:57
 msgid "Selection"
 msgstr "Potongan"
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
 msgstr "Rekam Monitor atau Jendela"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
 msgstr "Rekam Potongan dari Layar"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
 msgstr "Rekam Suara Komputer"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
 msgstr "Rekam Dari Mikrofon"
 
-#: data/resources/ui/window.ui:123
+#: data/resources/ui/window.ui:121
 msgid "Show Pointer"
 msgstr "Tampilkan Penunjuk"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:128
 msgid "Record"
 msgstr "Rekam"
 
-#: data/resources/ui/window.ui:184
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Berhenti"
 
-#: data/resources/ui/window.ui:220
+#: data/resources/ui/window.ui:218
 msgid "Recording in…"
 msgstr "Merekam dalam…"
 
-#: data/resources/ui/window.ui:263
-msgid "_Delay"
+#: data/resources/ui/window.ui:257
+msgid "Flushing…"
 msgstr ""
 
-#: data/resources/ui/window.ui:265
+#: data/resources/ui/window.ui:288
+msgid "_Delay"
+msgstr "_Penundaan"
+
+#: data/resources/ui/window.ui:290
 msgid "None"
 msgstr "Tidak ada"
 
-#: data/resources/ui/window.ui:270
+#: data/resources/ui/window.ui:295
 msgid "5 seconds"
 msgstr "5 detik"
 
-#: data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:300
 msgid "10 seconds"
 msgstr "10 detik"
 
-#: data/resources/ui/window.ui:281
+#: data/resources/ui/window.ui:306
 msgid "_Video Format"
-msgstr ""
+msgstr "Format _Video"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:308
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:288
+#: data/resources/ui/window.ui:313
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:293
+#: data/resources/ui/window.ui:318
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:298
+#: data/resources/ui/window.ui:323
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:304
+#: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr ""
+msgstr "_Simpan di…"
 
-#: data/resources/ui/window.ui:310
+#: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "Pintasan Papan _Ketik"
 
-#: data/resources/ui/window.ui:314
+#: data/resources/ui/window.ui:339
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Tentang Kooha"
 
-#: src/application.rs:156
+#: src/application.rs:134
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Pilih Folder Rekaman"
+
+#: src/application.rs:137
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: src/application.rs:138
+msgid "_Select"
+msgstr "Pi_lih"
 
 #: src/application.rs:159
-msgid "_Cancel"
+msgid "Please choose an accessible location and try again."
 msgstr ""
-
-#: src/application.rs:160
-msgid "_Select"
-msgstr ""
-
-#: src/application.rs:180
-msgid "Cannot access “{}”"
-msgstr ""
-
-#: src/application.rs:181
-msgid "Please choose an accessible location and retry."
-msgstr "Mohon pilih tempat yang dapat diakses dan coba lagi."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:210
+#: src/application.rs:188
 msgid "translator-credits"
 msgstr "liimee"
 
-#: src/application.rs:211
+#: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Hak Cipta 2021 Dave Patrick"
 
-#: src/application.rs:214
+#: src/application.rs:192
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:223
+#: src/application.rs:201
 msgid "Screencast Recorded!"
 msgstr "Screencast Direkam!"
 
-#: src/application.rs:225
-msgid "The recording has been saved in “{}”"
-msgstr ""
-
-#: src/application.rs:233
+#: src/application.rs:211
 msgid "Open File"
 msgstr "Buka Berkas"
 
-#: src/widgets/window.rs:153
+#: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "Dijeda"
 
-#: src/widgets/window.rs:189
+#: src/widgets/window.rs:208
 msgid "Sorry! An error has occurred."
-msgstr ""
+msgstr "Maaf! Sebuah kesalahan terjadi."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Tidak dapat mengakses \"{}\""
+
+#~ msgid "Please choose an accessible location and retry."
+#~ msgstr "Mohon pilih tempat yang dapat diakses dan coba lagi."
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "Rekaman telah disimpan di \"{}\""
 
 #~ msgid "Select a Folder"
 #~ msgstr "Pilih folder"

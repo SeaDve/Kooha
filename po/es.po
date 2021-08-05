@@ -6,13 +6,14 @@
 # Juan David Sanchez Lean <jdsljuan@gmail.com>, 2021.
 # robert schneider <robertschv@gmail.com>, 2021.
 # Dave Patrick <davecruz48@gmail.com>, 2021.
+# Pointify Starrcat <pointify@e.email>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-02 18:18+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
+"POT-Creation-Date: 2021-08-05 13:56+0800\n"
+"PO-Revision-Date: 2021-08-05 05:58+0000\n"
+"Last-Translator: Pointify Starrcat <pointify@e.email>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -20,15 +21,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:199
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:200
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
 msgid "Elegantly record your screen"
 msgstr "Graba tu pantalla elegantemente"
 
@@ -66,19 +67,19 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Soporte para formatos WebM, MP4, GIF, y MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Codificación acelerada por hardware opcional"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Selecciona un monitor o ventana para grabar."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Crea una selección para capturar una área específica de tu pantalla."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -106,29 +107,29 @@ msgstr "General"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Abrir menú"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Mostrar atajos"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
 msgstr "Salir"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:148
+#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
 msgid "Recording"
 msgstr "Grabando"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Habilitar/Deshabilitar grabación"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Habilitar/Deshabilitar pausa"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:238
+#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
 msgstr "Cancelar retraso"
 
@@ -138,160 +139,165 @@ msgstr "Ajustes"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Habilitar/Deshabilitar sonidos de ordenador"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Habilitar/Deshabilitar micrófono"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Habilitar/Deshabilitar cursor"
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:30
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/resources/ui/window.ui:49
+#: data/resources/ui/window.ui:47
 msgid "Normal"
 msgstr "Normal"
 
-#: data/resources/ui/window.ui:59
+#: data/resources/ui/window.ui:57
 msgid "Selection"
 msgstr "Área"
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
 msgstr "Capturar un monitor o una ventana"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
 msgstr "Capturar una selección de la pantalla"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
 msgstr "Grabar sonidos del ordenador"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
 msgstr "Grabar desde el micrófono"
 
-#: data/resources/ui/window.ui:123
+#: data/resources/ui/window.ui:121
 msgid "Show Pointer"
 msgstr "Mostrar puntero"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:128
 msgid "Record"
 msgstr "Grabar"
 
-#: data/resources/ui/window.ui:184
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Detener"
 
-#: data/resources/ui/window.ui:220
+#: data/resources/ui/window.ui:218
 msgid "Recording in…"
 msgstr "Grabando en…"
 
-#: data/resources/ui/window.ui:263
-msgid "_Delay"
+#: data/resources/ui/window.ui:257
+msgid "Flushing…"
 msgstr ""
 
-#: data/resources/ui/window.ui:265
+#: data/resources/ui/window.ui:288
+msgid "_Delay"
+msgstr "_Retraso"
+
+#: data/resources/ui/window.ui:290
 msgid "None"
 msgstr "Ninguno"
 
-#: data/resources/ui/window.ui:270
+#: data/resources/ui/window.ui:295
 msgid "5 seconds"
 msgstr "5 segundos"
 
-#: data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:300
 msgid "10 seconds"
 msgstr "10 segundos"
 
-#: data/resources/ui/window.ui:281
+#: data/resources/ui/window.ui:306
 msgid "_Video Format"
-msgstr ""
+msgstr "_Formato de vídeo"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:308
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:288
+#: data/resources/ui/window.ui:313
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:293
+#: data/resources/ui/window.ui:318
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:298
+#: data/resources/ui/window.ui:323
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:304
+#: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr ""
+msgstr "_Guardar a…"
 
-#: data/resources/ui/window.ui:310
+#: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Atajos de teclado"
 
-#: data/resources/ui/window.ui:314
+#: data/resources/ui/window.ui:339
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Acerca de Kooha"
 
-#: src/application.rs:156
+#: src/application.rs:134
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Elegir carpeta de grabaciones"
+
+#: src/application.rs:137
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: src/application.rs:138
+msgid "_Select"
+msgstr "_Seleccionar"
 
 #: src/application.rs:159
-msgid "_Cancel"
+msgid "Please choose an accessible location and try again."
 msgstr ""
-
-#: src/application.rs:160
-msgid "_Select"
-msgstr ""
-
-#: src/application.rs:180
-msgid "Cannot access “{}”"
-msgstr ""
-
-#: src/application.rs:181
-msgid "Please choose an accessible location and retry."
-msgstr "Elige una ubicación accesible e intenta de nuevo."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:210
+#: src/application.rs:188
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz"
 
-#: src/application.rs:211
+#: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
-#: src/application.rs:214
+#: src/application.rs:192
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:223
+#: src/application.rs:201
 msgid "Screencast Recorded!"
 msgstr "¡Captura de pantalla grabada!"
 
-#: src/application.rs:225
-msgid "The recording has been saved in “{}”"
-msgstr ""
-
-#: src/application.rs:233
+#: src/application.rs:211
 msgid "Open File"
 msgstr "Abrir archivo"
 
-#: src/widgets/window.rs:153
+#: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "En pausa"
 
-#: src/widgets/window.rs:189
+#: src/widgets/window.rs:208
 msgid "Sorry! An error has occurred."
-msgstr ""
+msgstr "¡Ups! Ha ocurrido un error."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "No se puede acceder a “{}”"
+
+#~ msgid "Please choose an accessible location and retry."
+#~ msgstr "Elige una ubicación accesible e intenta de nuevo."
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "La grabación se ha guardado en “{}”"
 
 #~ msgid "Select a Folder"
 #~ msgstr "Elige una carpeta"
