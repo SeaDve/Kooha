@@ -1,5 +1,5 @@
 use gtk::{
-    glib::{self, clone, subclass::Signal, Continue, GEnum},
+    glib::{self, clone, subclass::Signal, Continue, GEnum, SignalHandlerId},
     prelude::*,
     subclass::prelude::*,
 };
@@ -143,6 +143,27 @@ impl Timer {
         };
 
         self.set_time(new_time);
+    }
+
+    pub fn connect_state_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_notify_local(Some("state"), f)
+    }
+
+    pub fn connect_time_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_notify_local(Some("time"), f)
+    }
+
+    pub fn connect_delay_done<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_local("delay-done", false, f).unwrap()
     }
 
     pub fn start(&self, delay: u32) {

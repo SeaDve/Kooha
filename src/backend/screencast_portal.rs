@@ -7,7 +7,7 @@ use ashpd::{
     zbus, Error, WindowIdentifier,
 };
 use gtk::{
-    glib::{self, clone, subclass::Signal, GBoxed, WeakRef},
+    glib::{self, clone, subclass::Signal, GBoxed, SignalHandlerId, WeakRef},
     prelude::*,
     subclass::prelude::*,
 };
@@ -83,6 +83,13 @@ impl ScreencastPortal {
     fn window(&self) -> MainWindow {
         let imp = self.private();
         imp.window.get().unwrap().upgrade().unwrap()
+    }
+
+    pub fn connect_response<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_local("response", false, f).unwrap()
     }
 
     pub fn set_window(&self, window: &MainWindow) {

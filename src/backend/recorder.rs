@@ -1,7 +1,7 @@
 use ashpd::desktop::screencast::Stream;
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum},
+    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum, SignalHandlerId},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
@@ -69,25 +69,7 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            self.portal
-                .connect_local(
-                    "response",
-                    false,
-                    clone!(@weak obj => @default-return None, move | args | {
-                        let response = args[1].get().unwrap();
-                        match response {
-                            ScreencastPortalResponse::Success(streams, fd) => {
-                                obj.init_pipeline(streams, fd);
-                            },
-                            ScreencastPortalResponse::Error(error_message) => {
-                                obj.emit_response(&RecorderResponse::Failed(error_message));
-                            }
-                            ScreencastPortalResponse::Cancelled => (),
-                        };
-                        None
-                    }),
-                )
-                .unwrap();
+            obj.setup_signals();
         }
 
         fn signals() -> &'static [Signal] {
@@ -155,6 +137,26 @@ impl Recorder {
 
     fn private(&self) -> &imp::Recorder {
         imp::Recorder::from_instance(self)
+    }
+
+    fn setup_signals(&self) {
+        let imp = self.private();
+
+        imp.portal.connect_response(
+            clone!(@weak self as obj => @default-return None, move | args | {
+                let response = args[1].get().unwrap();
+                match response {
+                    ScreencastPortalResponse::Success(streams, fd) => {
+                        obj.init_pipeline(streams, fd);
+                    },
+                    ScreencastPortalResponse::Error(error_message) => {
+                        obj.emit_response(&RecorderResponse::Failed(error_message));
+                    }
+                    ScreencastPortalResponse::Cancelled => (),
+                };
+                None
+            }),
+        );
     }
 
     fn portal(&self) -> &ScreencastPortal {
@@ -241,9 +243,7 @@ impl Recorder {
         }
 
         let area_selector = AreaSelector::new();
-        area_selector.connect_local(
-                "response",
-                false,
+        area_selector.connect_response(
                 clone!(@weak self as obj, @strong pipeline_builder => @default-return None, move |args| {
                     let response = args[1].get().unwrap();
                     match response {
@@ -264,7 +264,7 @@ impl Recorder {
                     }
                     None
                 }),
-            ).unwrap();
+            );
         area_selector.select_area();
     }
 
@@ -299,6 +299,27 @@ impl Recorder {
 
     pub fn set_window(&self, window: &MainWindow) {
         self.portal().set_window(window);
+    }
+
+    pub fn connect_state_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_notify_local(Some("state"), f)
+    }
+
+    pub fn connect_response<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_local("response", false, f).unwrap()
+    }
+
+    pub fn connect_ready<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_local("ready", false, f).unwrap()
     }
 
     pub fn ready(&self) {

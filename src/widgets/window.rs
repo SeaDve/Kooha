@@ -31,8 +31,6 @@ mod imp {
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct MainWindow {
-        pub settings: Settings,
-        pub recorder_controller: RecorderController,
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -45,6 +43,9 @@ mod imp {
         pub recording_time_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub delay_label: TemplateChild<gtk::Label>,
+
+        pub settings: Settings,
+        pub recorder_controller: RecorderController,
     }
 
     #[glib::object_subclass]
@@ -55,14 +56,15 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                settings: Settings::new(),
-                recorder_controller: RecorderController::new(),
                 pause_record_button: TemplateChild::default(),
                 main_stack: TemplateChild::default(),
                 title_stack: TemplateChild::default(),
                 recording_label: TemplateChild::default(),
                 recording_time_label: TemplateChild::default(),
                 delay_label: TemplateChild::default(),
+
+                settings: Settings::new(),
+                recorder_controller: RecorderController::new(),
             }
         }
 
@@ -110,98 +112,10 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
-            let actions = &[
-                "record-speaker",
-                "record-mic",
-                "show-pointer",
-                "capture-mode",
-                "record-delay",
-                "video-format",
-            ];
-
-            for action in actions {
-                let settings_action = self.settings.create_action(action);
-                obj.add_action(&settings_action);
-            }
-
-            self.settings
-                .bind_property("capture-mode", &*self.title_stack, "visible-child-name");
-
-            self.recorder_controller.set_window(obj);
-
-            obj.update_audio_toggles_sensitivity();
-            self.settings.connect_changed_notify(
-                Some("video-format"),
-                clone!(@weak obj => move |_, _| {
-                    obj.update_audio_toggles_sensitivity();
-                }),
-            );
-
+            obj.setup_actions();
+            obj.setup_signals();
             obj.set_view(&View::MainScreen);
-            self.recorder_controller.connect_notify_local(
-                Some("state"),
-                clone!(@weak obj => move |recorder_controller, _| {
-                    let imp = obj.private();
-
-                    match recorder_controller.state() {
-                        RecorderControllerState::Null => obj.set_view(&View::MainScreen),
-                        RecorderControllerState::Flushing => obj.set_view(&View::Flushing),
-                        RecorderControllerState::Delayed => obj.set_view(&View::Delay),
-                        RecorderControllerState::Recording => {
-                            obj.set_view(&View::Recording);
-                            imp.pause_record_button.set_icon_name("media-playback-pause-symbolic");
-                            imp.recording_label.set_label(&gettext("Recording"));
-                            imp.recording_time_label.remove_css_class("paused");
-                        }
-                        RecorderControllerState::Paused => {
-                            imp.pause_record_button.set_icon_name("media-playback-start-symbolic");
-                            imp.recording_label.set_label(&gettext("Paused"));
-                            imp.recording_time_label.add_css_class("paused");
-                        },
-                    };
-                }),
-            );
-            self.recorder_controller.connect_notify_local(
-                Some("time"),
-                clone!(@weak obj => move |recorder_controller, _| {
-                    let imp = obj.private();
-
-                    let current_time = recorder_controller.time();
-                    let seconds = current_time % 60;
-                    let minutes = (current_time / 60) % 60;
-                    let formatted_time = format!("{:02}∶{:02}", minutes, seconds);
-
-                    imp.recording_time_label.set_label(&formatted_time);
-                    imp.delay_label.set_label(&current_time.to_string());
-                }),
-            );
-            self.recorder_controller
-                .connect_local(
-                    "response",
-                    false,
-                    clone!(@weak obj => @default-return None, move |args| {
-                        let response = args[1].get().unwrap();
-                        match response {
-                            RecorderResponse::Success(recording_file_path) => {
-                                let application: Application = obj.application().unwrap().downcast().unwrap();
-                                application.send_record_success_notification(&recording_file_path);
-                            },
-                            RecorderResponse::Failed(error_message) => {
-                                let error_dialog = gtk::MessageDialogBuilder::new()
-                                    .modal(true)
-                                    .buttons(gtk::ButtonsType::Ok)
-                                    .transient_for(&obj)
-                                    .title(&gettext("Sorry! An error has occurred."))
-                                    .text(&error_message)
-                                    .build();
-                                error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
-                                error_dialog.present();
-                            }
-                        };
-                        None
-                    }),
-                )
-                .unwrap();
+            obj.update_audio_toggles_sensitivity();
         }
     }
 
@@ -224,6 +138,101 @@ impl MainWindow {
 
     fn private(&self) -> &imp::MainWindow {
         imp::MainWindow::from_instance(self)
+    }
+
+    fn setup_signals(&self) {
+        let imp = self.private();
+
+        imp.settings
+            .bind_property("capture-mode", &*imp.title_stack, "visible-child-name");
+
+        imp.settings.connect_changed_notify(
+            Some("video-format"),
+            clone!(@weak self as obj => move |_, _| {
+                obj.update_audio_toggles_sensitivity();
+            }),
+        );
+
+        imp.recorder_controller.set_window(self);
+
+        imp.recorder_controller.connect_state_notify(
+            clone!(@weak self as obj => move |recorder_controller, _| {
+                let imp = obj.private();
+
+                match recorder_controller.state() {
+                    RecorderControllerState::Null => obj.set_view(&View::MainScreen),
+                    RecorderControllerState::Flushing => obj.set_view(&View::Flushing),
+                    RecorderControllerState::Delayed => obj.set_view(&View::Delay),
+                    RecorderControllerState::Recording => {
+                        obj.set_view(&View::Recording);
+                        imp.pause_record_button.set_icon_name("media-playback-pause-symbolic");
+                        imp.recording_label.set_label(&gettext("Recording"));
+                        imp.recording_time_label.remove_css_class("paused");
+                    }
+                    RecorderControllerState::Paused => {
+                        imp.pause_record_button.set_icon_name("media-playback-start-symbolic");
+                        imp.recording_label.set_label(&gettext("Paused"));
+                        imp.recording_time_label.add_css_class("paused");
+                    },
+                };
+            }),
+        );
+
+        imp.recorder_controller.connect_time_notify(
+            clone!(@weak self as obj => move |recorder_controller, _| {
+                let imp = obj.private();
+
+                let current_time = recorder_controller.time();
+                let seconds = current_time % 60;
+                let minutes = (current_time / 60) % 60;
+                let formatted_time = format!("{:02}∶{:02}", minutes, seconds);
+
+                imp.recording_time_label.set_label(&formatted_time);
+                imp.delay_label.set_label(&current_time.to_string());
+            }),
+        );
+
+        imp.recorder_controller.connect_response(
+            clone!(@weak self as obj => @default-return None, move |args| {
+            let response = args[1].get().unwrap();
+            match response {
+                RecorderResponse::Success(recording_file_path) => {
+                    let application: Application = obj.application().unwrap().downcast().unwrap();
+                        application.send_record_success_notification(&recording_file_path);
+                    },
+                    RecorderResponse::Failed(error_message) => {
+                        let error_dialog = gtk::MessageDialogBuilder::new()
+                            .modal(true)
+                            .buttons(gtk::ButtonsType::Ok)
+                            .transient_for(&obj)
+                            .title(&gettext("Sorry! An error has occurred."))
+                            .text(&error_message)
+                            .build();
+                        error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
+                        error_dialog.present();
+                    }
+                };
+                None
+            }),
+        );
+    }
+
+    fn setup_actions(&self) {
+        let imp = self.private();
+
+        let actions = &[
+            "record-speaker",
+            "record-mic",
+            "show-pointer",
+            "capture-mode",
+            "record-delay",
+            "video-format",
+        ];
+
+        for action in actions {
+            let settings_action = imp.settings.create_action(action);
+            self.add_action(&settings_action);
+        }
     }
 
     fn update_audio_toggles_sensitivity(&self) {

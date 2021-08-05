@@ -1,6 +1,6 @@
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, GEnum},
+    glib::{self, clone, subclass::Signal, GEnum, SignalHandlerId},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
@@ -61,68 +61,7 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            self.timer.bind_property("time", obj, "time").build();
-
-            self.timer.connect_notify_local(
-                Some("state"),
-                clone!(@weak obj => move |timer, _| {
-                    let new_state = match timer.state() {
-                        TimerState::Stopped => RecorderControllerState::Null,
-                        TimerState::Delayed => RecorderControllerState::Delayed,
-                        TimerState::Paused => RecorderControllerState::Paused,
-                        TimerState::Running => RecorderControllerState::Recording,
-                    };
-                    obj.set_state(new_state);
-                }),
-            );
-            self.recorder.connect_notify_local(
-                Some("state"),
-                clone!(@weak obj => move |recorder, _| {
-                    let imp = obj.private();
-
-                    match recorder.state() {
-                        RecorderState::Null => imp.timer.stop(),
-                        RecorderState::Paused => imp.timer.pause(),
-                        RecorderState::Playing => imp.timer.resume(),
-                        RecorderState::Flushing => obj.set_state(RecorderControllerState::Flushing),
-                    };
-                }),
-            );
-
-            self.timer
-                .connect_local(
-                    "delay-done",
-                    false,
-                    clone!(@weak obj => @default-return None, move |_| {
-                        let imp = obj.private();
-                        imp.recorder.start();
-                        None
-                    }),
-                )
-                .unwrap();
-            self.recorder
-                .connect_local(
-                    "ready",
-                    false,
-                    clone!(@weak obj => @default-return None, move |_| {
-                        let imp = obj.private();
-                        let record_delay = imp.record_delay.get();
-                        imp.timer.start(record_delay);
-                        None
-                    }),
-                )
-                .unwrap();
-            self.recorder
-                .connect_local(
-                    "response",
-                    false,
-                    clone!(@weak obj => @default-return None, move |args| {
-                        let response = args[1].get().unwrap();
-                        obj.emit_response(response);
-                        None
-                    }),
-                )
-                .unwrap();
+            obj.setup_signals();
         }
 
         fn signals() -> &'static [Signal] {
@@ -205,13 +144,64 @@ impl RecorderController {
         imp::RecorderController::from_instance(self)
     }
 
+    fn setup_signals(&self) {
+        let imp = self.private();
+
+        imp.timer.bind_property("time", self, "time").build();
+
+        imp.timer
+            .connect_state_notify(clone!(@weak self as obj => move |timer, _| {
+                let new_state = match timer.state() {
+                    TimerState::Stopped => RecorderControllerState::Null,
+                    TimerState::Delayed => RecorderControllerState::Delayed,
+                    TimerState::Paused => RecorderControllerState::Paused,
+                    TimerState::Running => RecorderControllerState::Recording,
+                };
+                obj.set_state(new_state);
+            }));
+
+        imp.recorder
+            .connect_state_notify(clone!(@weak self as obj => move |recorder, _| {
+                let imp = obj.private();
+
+                match recorder.state() {
+                    RecorderState::Null => imp.timer.stop(),
+                    RecorderState::Paused => imp.timer.pause(),
+                    RecorderState::Playing => imp.timer.resume(),
+                    RecorderState::Flushing => obj.set_state(RecorderControllerState::Flushing),
+                };
+            }));
+
+        imp.timer
+            .connect_delay_done(clone!(@weak self as obj => @default-return None, move |_| {
+                let imp = obj.private();
+                imp.recorder.start();
+                None
+            }));
+
+        imp.recorder
+            .connect_ready(clone!(@weak self as obj => @default-return None, move |_| {
+                let imp = obj.private();
+                let record_delay = imp.record_delay.get();
+                imp.timer.start(record_delay);
+                None
+            }));
+
+        imp.recorder.connect_response(
+            clone!(@weak self as obj => @default-return None, move |args| {
+                let response = args[1].get().unwrap();
+                obj.emit_response(response);
+                None
+            }),
+        );
+    }
+
     fn emit_response(&self, response: &RecorderResponse) {
         self.emit_by_name("response", &[response]).unwrap();
     }
 
-    pub fn set_window(&self, window: &MainWindow) {
-        let imp = self.private();
-        imp.recorder.set_window(window);
+    fn set_state(&self, state: RecorderControllerState) {
+        self.set_property("state", state).unwrap();
     }
 
     pub fn state(&self) -> RecorderControllerState {
@@ -221,12 +211,34 @@ impl RecorderController {
             .unwrap()
     }
 
-    fn set_state(&self, state: RecorderControllerState) {
-        self.set_property("state", state).unwrap();
-    }
-
     pub fn time(&self) -> u32 {
         self.property("time").unwrap().get::<u32>().unwrap()
+    }
+
+    pub fn set_window(&self, window: &MainWindow) {
+        let imp = self.private();
+        imp.recorder.set_window(window);
+    }
+
+    pub fn connect_state_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_notify_local(Some("state"), f)
+    }
+
+    pub fn connect_time_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_notify_local(Some("time"), f)
+    }
+
+    pub fn connect_response<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        self.connect_local("response", false, f).unwrap()
     }
 
     pub fn start(&self, record_delay: u32) {
