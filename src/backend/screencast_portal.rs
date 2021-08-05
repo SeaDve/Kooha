@@ -115,8 +115,6 @@ impl ScreencastPortal {
             let identifier = WindowIdentifier::from_native(&obj.window().native().unwrap()).await;
             let multiple = !is_selection_mode;
 
-            log::debug!("Screencast call: source_type: {:?}", source_type);
-
             match screencast(identifier, multiple, source_type, cursor_mode).await {
                 Ok(result) => {
                     let (streams, fd, session) = result;

@@ -1,7 +1,7 @@
 use chrono::Local;
 use gtk::{
     gio,
-    glib::{self, signal::SignalHandlerId},
+    glib::{self, SignalHandlerId},
     prelude::*,
     subclass::prelude::*,
 };
