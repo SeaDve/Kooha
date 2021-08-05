@@ -229,27 +229,27 @@ impl Recorder {
 
         let area_selector = AreaSelector::new();
         area_selector.connect_response(
-                clone!(@weak self as obj, @strong pipeline_builder => @default-return None, move |args| {
-                    let response = args[1].get().unwrap();
-                    match response {
-                        AreaSelectorResponse::Captured(coords, actual_screen) => {
-                            let pipeline_builder = pipeline_builder.clone()
-                                .coordinates(coords)
-                                .actual_screen(actual_screen);
+            clone!(@weak self as obj, @strong pipeline_builder => @default-return None, move |args| {
+                let response = args[1].get().unwrap();
+                match response {
+                    AreaSelectorResponse::Captured(coords, actual_screen) => {
+                        let pipeline_builder = pipeline_builder.clone()
+                            .coordinates(coords)
+                            .actual_screen(actual_screen);
 
-                            obj.setup_pipeline(pipeline_builder);
+                        obj.setup_pipeline(pipeline_builder);
 
-                            log::info!("Captured coordinates");
-                        },
-                        AreaSelectorResponse::Cancelled => {
-                            obj.portal().close_session();
+                        log::info!("Captured coordinates");
+                    },
+                    AreaSelectorResponse::Cancelled => {
+                        obj.portal().close_session();
 
-                            log::info!("Cancelled capture");
-                        },
-                    }
-                    None
-                }),
-            );
+                        log::info!("Cancelled capture");
+                    },
+                }
+                None
+            }),
+        );
         area_selector.select_area();
     }
 
@@ -280,6 +280,44 @@ impl Recorder {
 
     fn emit_ready(&self) {
         self.emit_by_name("ready", &[]).unwrap();
+    }
+
+    fn parse_bus_message(&self, message: &gst::Message) {
+        let imp = self.private();
+
+        match message.view() {
+            gst::MessageView::StateChanged(sc) => {
+                if message.src().as_ref()
+                    == Some(self.pipeline().unwrap().upcast_ref::<gst::Object>())
+                {
+                    log::info!(
+                        "Pipeline state set from {:?} -> {:?}",
+                        sc.old(),
+                        sc.current()
+                    );
+                }
+            }
+            gst::MessageView::Eos(_) => {
+                self.close_pipeline();
+                let recording_file_path = imp.current_file_path.take().unwrap();
+                self.emit_response(&RecorderResponse::Success(recording_file_path));
+
+                log::info!("Eos signal received from record bus");
+            }
+            gst::MessageView::Error(error) => {
+                let error_message = error.error().to_string();
+
+                if let Some(debug) = error.debug() {
+                    log::error!("Error from record bus: {} (debug {})", error_message, debug);
+                } else {
+                    log::error!("Error from record bus: {}", error_message);
+                };
+
+                self.close_pipeline();
+                self.emit_response(&RecorderResponse::Failed(error_message));
+            }
+            _ => (),
+        }
     }
 
     pub fn set_window(&self, window: &MainWindow) {
@@ -324,36 +362,7 @@ impl Recorder {
         record_bus
             .add_watch_local(
                 clone!(@weak self as obj => @default-return Continue(true), move |_, message| {
-                    let imp = obj.private();
-
-                    match message.view() {
-                        gst::MessageView::StateChanged(sc) => {
-                            if message.src().as_ref() == Some(obj.pipeline().unwrap().upcast_ref::<gst::Object>()) {
-                                log::info!("Pipeline state set from {:?} -> {:?}", sc.old(), sc.current());
-                            }
-                        },
-                        gst::MessageView::Eos(_) => {
-                            obj.close_pipeline();
-                            let recording_file_path = imp.current_file_path.take().unwrap();
-                            obj.emit_response(&RecorderResponse::Success(recording_file_path));
-
-                            log::info!("Eos signal received from record bus");
-                        },
-                        gst::MessageView::Error(error) => {
-                            let error_message = error.error().to_string();
-
-                            if let Some(debug) = error.debug() {
-                                log::error!("Error from record bus: {} (debug {})", error_message, debug);
-                            } else {
-                                log::error!("Error from record bus: {}", error_message);
-                            };
-
-                            obj.close_pipeline();
-                            obj.emit_response(&RecorderResponse::Failed(error_message));
-                        },
-                        _ => (),
-                    }
-
+                    obj.parse_bus_message(message);
                     Continue(true)
                 }),
             )
