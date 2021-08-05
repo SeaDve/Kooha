@@ -134,8 +134,12 @@ impl PipelineParser {
             .collect::<Vec<String>>()
             .join(" ! ");
 
-        pipeline_string = format!("{} {}", pipeline_string, self.pipewiresrc());
-        pipeline_string = format!("{} {}", pipeline_string, self.pulsesrc());
+        pipeline_string = format!(
+            "{} {} {}",
+            pipeline_string,
+            self.pipewiresrc(),
+            self.pulsesrc()
+        );
 
         pipeline_string.replace("%T", &utils::ideal_thread_count().to_string())
     }
