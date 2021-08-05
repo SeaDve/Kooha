@@ -248,6 +248,10 @@ msgstr ""
 msgid "_Select"
 msgstr ""
 
+#: src/application.rs:158
+msgid "Cannot access “{}”"
+msgstr ""
+
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
 msgstr ""
@@ -267,6 +271,10 @@ msgstr ""
 
 #: src/application.rs:201
 msgid "Screencast Recorded!"
+msgstr ""
+
+#: src/application.rs:203
+msgid "The recording has been saved in “{}”"
 msgstr ""
 
 #: src/application.rs:211
