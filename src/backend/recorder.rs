@@ -164,11 +164,6 @@ impl Recorder {
         &imp.portal
     }
 
-    fn settings(&self) -> &Settings {
-        let imp = self.private();
-        &imp.settings
-    }
-
     fn pipeline(&self) -> Option<gst::Pipeline> {
         let imp = self.private();
         imp.pipeline.borrow().clone()
@@ -177,16 +172,6 @@ impl Recorder {
     fn set_pipeline(&self, new_pipeline: Option<gst::Pipeline>) {
         let imp = self.private();
         imp.pipeline.replace(new_pipeline);
-    }
-
-    fn current_file_path(&self) -> Option<PathBuf> {
-        let imp = self.private();
-        imp.current_file_path.take()
-    }
-
-    fn set_current_file_path(&self, file_path: Option<PathBuf>) {
-        let imp = self.private();
-        imp.current_file_path.replace(file_path);
     }
 
     pub fn state(&self) -> RecorderState {
@@ -221,23 +206,23 @@ impl Recorder {
     }
 
     fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
-        let settings = self.settings();
+        let imp = self.private();
 
         let (speaker_source, mic_source) = utils::default_audio_sources();
-        let file_path = settings.file_path();
-        self.set_current_file_path(Some(file_path.clone()));
+        let file_path = imp.settings.file_path();
+        imp.current_file_path.replace(Some(file_path.clone()));
 
         let pipeline_builder = PipelineBuilder::new()
             .streams(streams)
             .fd(fd)
-            .framerate(settings.video_framerate())
+            .framerate(imp.settings.video_framerate())
             .file_path(file_path)
-            .record_speaker(settings.is_record_speaker())
-            .record_mic(settings.is_record_mic())
+            .record_speaker(imp.settings.is_record_speaker())
+            .record_mic(imp.settings.is_record_mic())
             .speaker_source(speaker_source)
             .mic_source(mic_source);
 
-        if !settings.is_selection_mode() {
+        if !imp.settings.is_selection_mode() {
             self.setup_pipeline(pipeline_builder);
             return;
         }
@@ -323,8 +308,10 @@ impl Recorder {
     }
 
     pub fn ready(&self) {
-        let is_show_pointer = self.settings().is_show_pointer();
-        let is_selection_mode = self.settings().is_selection_mode();
+        let imp = self.private();
+
+        let is_show_pointer = imp.settings.is_show_pointer();
+        let is_selection_mode = imp.settings.is_selection_mode();
         self.portal()
             .new_session(is_show_pointer, is_selection_mode);
 
@@ -337,6 +324,8 @@ impl Recorder {
         record_bus
             .add_watch_local(
                 clone!(@weak self as obj => @default-return Continue(true), move |_, message| {
+                    let imp = obj.private();
+
                     match message.view() {
                         gst::MessageView::StateChanged(sc) => {
                             if message.src().as_ref() == Some(obj.pipeline().unwrap().upcast_ref::<gst::Object>()) {
@@ -345,7 +334,7 @@ impl Recorder {
                         },
                         gst::MessageView::Eos(_) => {
                             obj.close_pipeline();
-                            let recording_file_path = obj.current_file_path().unwrap();
+                            let recording_file_path = imp.current_file_path.take().unwrap();
                             obj.emit_response(&RecorderResponse::Success(recording_file_path));
 
                             log::info!("Eos signal received from record bus");
