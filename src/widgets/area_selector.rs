@@ -217,5 +217,9 @@ impl AreaSelector {
     pub fn select_area(&self) {
         self.fullscreen();
         self.present();
+
+        let display = gdk::Display::default().unwrap();
+        log::info!("is_display_composited: {}", display.is_composited());
+        log::info!("is_display_rgba: {}", display.is_rgba());
     }
 }

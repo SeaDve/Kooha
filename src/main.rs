@@ -34,7 +34,6 @@ fn main() {
 
     gst::init().expect("Unable to start gstreamer");
     gtk::init().expect("Unable to start GTK4");
-    adw::init();
 
     gstgif::plugin_register_static().expect("Failed to register gif plugin");
 

@@ -1,6 +1,7 @@
+use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use gtk::{
-    gdk, gio,
+    gio,
     glib::{self, clone, WeakRef},
     prelude::*,
     subclass::prelude::*,
@@ -28,7 +29,7 @@ mod imp {
     impl ObjectSubclass for Application {
         const NAME: &'static str = "Application";
         type Type = super::Application;
-        type ParentType = gtk::Application;
+        type ParentType = adw::Application;
     }
 
     impl ObjectImpl for Application {}
@@ -54,17 +55,17 @@ mod imp {
             self.parent_startup(app);
             gtk::Window::set_default_icon_name(APP_ID);
 
-            app.setup_css();
             app.setup_actions();
         }
     }
 
     impl GtkApplicationImpl for Application {}
+    impl AdwApplicationImpl for Application {}
 }
 
 glib::wrapper! {
     pub struct Application(ObjectSubclass<imp::Application>)
-        @extends gio::Application, gtk::Application,
+        @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
@@ -122,21 +123,6 @@ impl Application {
         self.set_accels_for_action("win.toggle-record", &["<Primary>r"]);
         self.set_accels_for_action("win.toggle-pause", &["<Primary>k"]);
         self.set_accels_for_action("win.cancel-delay", &["<Primary>c"]);
-    }
-
-    fn setup_css(&self) {
-        let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/io/github/seadve/Kooha/style.css");
-        if let Some(display) = gdk::Display::default() {
-            gtk::StyleContext::add_provider_for_display(
-                &display,
-                &provider,
-                gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
-
-            log::info!("is_display_composited: {}", display.is_composited());
-            log::info!("is_display_rgba: {}", display.is_rgba());
-        }
     }
 
     fn select_saving_location(&self) {
