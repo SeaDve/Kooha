@@ -34,9 +34,9 @@ mod imp {
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub main_stack: TemplateChild<gtk::Stack>,
+        pub main_stack: TemplateChild<adw::ViewStack>,
         #[template_child]
-        pub title_stack: TemplateChild<gtk::Stack>,
+        pub title_stack: TemplateChild<adw::ViewStack>,
         #[template_child]
         pub recording_label: TemplateChild<gtk::Label>,
         #[template_child]
@@ -194,10 +194,10 @@ impl MainWindow {
 
         imp.recorder_controller.connect_response(
             clone!(@weak self as obj => @default-return None, move |args| {
-            let response = args[1].get().unwrap();
-            match response {
-                RecorderResponse::Success(recording_file_path) => {
-                    let application: Application = obj.application().unwrap().downcast().unwrap();
+                let response = args[1].get().unwrap();
+                match response {
+                    RecorderResponse::Success(recording_file_path) => {
+                        let application: Application = obj.application().unwrap().downcast().unwrap();
                         application.send_record_success_notification(&recording_file_path);
                     },
                     RecorderResponse::Failed(error_message) => {
@@ -212,7 +212,7 @@ impl MainWindow {
                         error_dialog.present();
                     }
                 };
-                None
+            None
             }),
         );
     }
