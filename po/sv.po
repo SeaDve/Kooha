@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-05 13:56+0800\n"
-"PO-Revision-Date: 2021-08-02 12:58+0000\n"
+"PO-Revision-Date: 2021-08-06 04:02+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
@@ -192,7 +192,7 @@ msgstr "Spelar in om…"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Rensar…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
@@ -260,7 +260,7 @@ msgstr "Kommer inte åt “{}”"
 
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Välj en tillgänglig plats och försök igen."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
