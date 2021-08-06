@@ -151,7 +151,7 @@ impl Recorder {
                     ScreencastPortalResponse::Success(streams, fd) => {
                         obj.init_pipeline(streams, fd);
                     },
-                    ScreencastPortalResponse::Error(error_message) => {
+                    ScreencastPortalResponse::Failed(error_message) => {
                         obj.emit_response(&RecorderResponse::Failed(error_message));
                     }
                     ScreencastPortalResponse::Cancelled => (),

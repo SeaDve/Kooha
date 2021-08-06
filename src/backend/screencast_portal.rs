@@ -21,7 +21,7 @@ use crate::widgets::MainWindow;
 #[gboxed(type_name = "ScreencastPortalResponse")]
 pub enum ScreencastPortalResponse {
     Success(Vec<Stream>, i32),
-    Error(String),
+    Failed(String),
     Cancelled,
 }
 
@@ -131,13 +131,13 @@ impl ScreencastPortal {
                                     log::info!("Session cancelled");
                                 },
                                 ResponseError::Other => {
-                                    obj.emit_response(&ScreencastPortalResponse::Error(response_error.to_string()));
+                                    obj.emit_response(&ScreencastPortalResponse::Failed(response_error.to_string()));
                                     log::error!("Response error from screencast call: {}", response_error);
                                 }
                             }
                         },
                         other_error => {
-                            obj.emit_response(&ScreencastPortalResponse::Error(other_error.to_string()));
+                            obj.emit_response(&ScreencastPortalResponse::Failed(other_error.to_string()));
                             log::error!("Failed to create a screencast call: {}", other_error);
                         }
                     };
