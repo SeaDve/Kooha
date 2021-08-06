@@ -6,7 +6,7 @@ use gtk::{
 };
 use once_cell::sync::Lazy;
 
-use std::{cell::RefCell, path::PathBuf};
+use std::{cell::RefCell, path::PathBuf, time::Duration};
 
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
@@ -239,7 +239,11 @@ impl Recorder {
                             .coordinates(coords)
                             .actual_screen(actual_screen);
 
-                        obj.setup_pipeline(pipeline_builder);
+                        // Give area selector some time to disappear before setting up pipeline
+                        // to avoid it being included in the recording.
+                        glib::timeout_add_local_once(Duration::from_millis(5), move || {
+                            obj.setup_pipeline(pipeline_builder);
+                        });
 
                         log::info!("Captured coordinates");
                     },
