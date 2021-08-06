@@ -184,7 +184,7 @@ impl RecorderController {
         imp.recorder
             .connect_ready(clone!(@weak self as obj => @default-return None, move |_| {
                 let imp = obj.private();
-                let record_delay = imp.record_delay.get();
+                let record_delay = imp.record_delay.take();
                 imp.timer.start(record_delay);
                 None
             }));

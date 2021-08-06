@@ -85,7 +85,7 @@ mod imp {
     impl WidgetImpl for AreaSelector {
         fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
             if let Some(start_position) = *self.start_position.borrow() {
-                let current_position = self.current_position.borrow().unwrap();
+                let current_position = self.current_position.take().unwrap();
 
                 let width = current_position.x - start_position.x;
                 let height = current_position.y - start_position.y;
@@ -194,7 +194,6 @@ impl AreaSelector {
     fn clean(&self) {
         let imp = self.private();
         imp.start_position.replace(None);
-        imp.current_position.replace(None);
 
         self.queue_draw();
         self.set_raise_request(false);
