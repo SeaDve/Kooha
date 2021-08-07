@@ -15,7 +15,7 @@ impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Portal(e) => f.write_str(&gettext!("Make sure to check for the runtime dependencies and \"It Doesn't Work\" page in Kooha's readme page. ({})", e)),
-            Self::Pipeline(e) => f.write_str(&gettext!("A gstreamer plugin may not be installed. If not, please report to Kooha's issue page. ({})", e)),
+            Self::Pipeline(e) => f.write_str(&gettext!("A GStreamer plugin may not be installed. If not, please report to Kooha's issue page. ({})", e)),
             Self::Recorder(e) => f.write_str(&format!("{}", e)),
         }
     }
