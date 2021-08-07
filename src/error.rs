@@ -13,7 +13,7 @@ impl std::error::Error for Error {}
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Portal(e) => f.write_str(&format!("Make sure to check for the runtime dependencies. These are listed on the Github page. ({})", e)),
+            Self::Portal(e) => f.write_str(&format!("Make sure to check for the runtime dependencies. These are listed on the Github readme page. ({})", e)),
             Self::Recorder(e) => f.write_str(&format!("{}", e)),
             Self::Pipeline(e) => f.write_str(&format!("Please report to the issue page. ({})", e)),
         }
@@ -35,9 +35,9 @@ impl From<&ashpd::Error> for Error {
 impl Error {
     pub fn title<'a>(&self) -> &'a str {
         match self {
-            Self::Portal(_) => "Screencast portal request failed",
-            Self::Recorder(_) => "Recording failed",
-            Self::Pipeline(_) => "Pipeline build failed",
+            Self::Portal(_) => "Screencast Portal Request Failed",
+            Self::Recorder(_) => "Recording Failed",
+            Self::Pipeline(_) => "Pipeline Build Failed",
         }
     }
 }
