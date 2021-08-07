@@ -205,7 +205,7 @@ impl MainWindow {
                             .modal(true)
                             .buttons(gtk::ButtonsType::Ok)
                             .transient_for(&obj)
-                            .title(&gettext("Sorry! An error has occurred."))
+                            .title(error.title())
                             .text(&error.to_string())
                             .build();
                         error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
