@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 13:56+0800\n"
+"POT-Creation-Date: 2021-08-07 11:32+0800\n"
 "PO-Revision-Date: 2021-08-05 05:58+0000\n"
 "Last-Translator: Pointify Starrcat <pointify@e.email>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -290,13 +290,36 @@ msgstr "La grabación se ha guardado en “{}”"
 msgid "Open File"
 msgstr "Abrir archivo"
 
+#: src/error.rs:17
+msgid ""
+"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
+"in Kooha's readme page. ({})"
+msgstr ""
+
+#: src/error.rs:18
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to Kooha's "
+"issue page. ({})"
+msgstr ""
+
+#: src/error.rs:39
+msgid "Screencast Portal Request Failed"
+msgstr ""
+
+#: src/error.rs:40
+msgid "Recording Failed"
+msgstr ""
+
+#: src/error.rs:41
+msgid "Pipeline Build Failed"
+msgstr ""
+
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "En pausa"
 
-#: src/widgets/window.rs:208
-msgid "Sorry! An error has occurred."
-msgstr "¡Ups! Ha ocurrido un error."
+#~ msgid "Sorry! An error has occurred."
+#~ msgstr "¡Ups! Ha ocurrido un error."
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Elige una ubicación accesible e intenta de nuevo."

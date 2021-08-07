@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 13:56+0800\n"
+"POT-Creation-Date: 2021-08-07 11:32+0800\n"
 "PO-Revision-Date: 2021-08-03 15:34+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -289,13 +289,36 @@ msgstr "Kayıt “{}” konumuna kaydedildi"
 msgid "Open File"
 msgstr "Dosyayı Aç"
 
+#: src/error.rs:17
+msgid ""
+"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
+"in Kooha's readme page. ({})"
+msgstr ""
+
+#: src/error.rs:18
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to Kooha's "
+"issue page. ({})"
+msgstr ""
+
+#: src/error.rs:39
+msgid "Screencast Portal Request Failed"
+msgstr ""
+
+#: src/error.rs:40
+msgid "Recording Failed"
+msgstr ""
+
+#: src/error.rs:41
+msgid "Pipeline Build Failed"
+msgstr ""
+
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "Duraklatıldı"
 
-#: src/widgets/window.rs:208
-msgid "Sorry! An error has occurred."
-msgstr "Üzgünüm! Bir hata oluştu."
+#~ msgid "Sorry! An error has occurred."
+#~ msgstr "Üzgünüm! Bir hata oluştu."
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Lütfen erişilebilir bir yer seçin ve tekrar deneyin."

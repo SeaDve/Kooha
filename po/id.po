@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 13:56+0800\n"
-"PO-Revision-Date: 2021-08-05 05:58+0000\n"
+"POT-Creation-Date: 2021-08-07 11:32+0800\n"
+"PO-Revision-Date: 2021-08-07 01:12+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
 "file/id/>\n"
@@ -236,7 +236,7 @@ msgstr "_Simpan di…"
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr "Pintasan Papan _Ketik"
+msgstr "_Pintasan Papan Ketik"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
@@ -287,13 +287,36 @@ msgstr "Rekaman telah disimpan di \"{}\""
 msgid "Open File"
 msgstr "Buka Berkas"
 
+#: src/error.rs:17
+msgid ""
+"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
+"in Kooha's readme page. ({})"
+msgstr ""
+
+#: src/error.rs:18
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to Kooha's "
+"issue page. ({})"
+msgstr ""
+
+#: src/error.rs:39
+msgid "Screencast Portal Request Failed"
+msgstr ""
+
+#: src/error.rs:40
+msgid "Recording Failed"
+msgstr ""
+
+#: src/error.rs:41
+msgid "Pipeline Build Failed"
+msgstr ""
+
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "Dijeda"
 
-#: src/widgets/window.rs:208
-msgid "Sorry! An error has occurred."
-msgstr "Maaf! Sebuah kesalahan terjadi."
+#~ msgid "Sorry! An error has occurred."
+#~ msgstr "Maaf! Sebuah kesalahan terjadi."
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Mohon pilih tempat yang dapat diakses dan coba lagi."

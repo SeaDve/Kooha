@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Jan Novák <novak@silen.org>, 2021.
+# Vojtěch Perník <translations@pervoj.cz>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 13:56+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: Jan Novák <novak@silen.org>\n"
+"POT-Creation-Date: 2021-08-07 11:32+0800\n"
+"PO-Revision-Date: 2021-08-07 01:12+0000\n"
+"Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
 ">\n"
 "Language: cs\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
@@ -62,19 +63,19 @@ msgstr "🎙️ Nahrávej zvuk z mikrofonu, z pořítače nebo z obojího zárov
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Podpora pro formáty WebM, MP4, GIF a MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Volitelné hardwarově akcelerované kódování"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Vyberte k nahrávání monitor nebo okno."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Vytvořte výběr, který zachytí určitou oblast z vaší obrazovky."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -102,15 +103,15 @@ msgstr "Obecné"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Otevřít menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Zobrazit zkratky"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr "Vypnout"
+msgstr "Ukončit"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
 msgid "Recording"
@@ -118,11 +119,11 @@ msgstr "Nahrávání"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Zapnout/vypnout nahrávání"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Pozastavit/pokračovat"
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
@@ -134,23 +135,23 @@ msgstr "Nastavení"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Zapnout/vypnout zvuky z plochy"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Zapnout/vypnout mikrofon"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Zapnout/vypnout kurzor"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
-msgstr ""
+msgstr "Hlavní Menu"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "Normální"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
@@ -158,23 +159,23 @@ msgstr "Výběr"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Zachytávat monitor nebo okno"
 
 #: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Zachytávat výběr obrazovky"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Nahrávat zvuky z plochy"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Nahrávat zvuk z mikrofonu"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
-msgstr ""
+msgstr "Zobrazit kurzor"
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
@@ -190,11 +191,11 @@ msgstr "Nahrávání za…"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Čištění…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
-msgstr ""
+msgstr "Z_poždění"
 
 #: data/resources/ui/window.ui:290
 msgid "None"
@@ -210,7 +211,7 @@ msgstr "10 sekund"
 
 #: data/resources/ui/window.ui:306
 msgid "_Video Format"
-msgstr ""
+msgstr "_Formát videa"
 
 #: data/resources/ui/window.ui:308
 msgid "WebM"
@@ -222,48 +223,50 @@ msgstr "MKV"
 
 #: data/resources/ui/window.ui:318
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:323
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr ""
+msgstr "_Uložit do…"
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klávesové zkratky"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
-msgstr ""
+msgstr "_O aplikaci Kooha"
 
 #: src/application.rs:134
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Vybrat adresář pro nahrávky"
 
 #: src/application.rs:137
 msgid "_Cancel"
-msgstr ""
+msgstr "_Zrušit"
 
 #: src/application.rs:138
 msgid "_Select"
-msgstr ""
+msgstr "_Vybrat"
 
 #: src/application.rs:158
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "Nelze získat přístup k \"{}\""
 
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Prosím, vyberte přístupné místo a zkuste to znovu."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
 msgid "translator-credits"
-msgstr "Jan Novák <novak@silen.org>"
+msgstr ""
+"Jan Novák <novak@silen.org>\n"
+"Vojtěch Perník <translations@pervoj.cz>"
 
 #: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"
@@ -279,19 +282,42 @@ msgstr "Nahrávač obrazovky!"
 
 #: src/application.rs:203
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "Nahrávka byla uložena do \"{}\""
 
 #: src/application.rs:211
 msgid "Open File"
+msgstr "Otevřít soubor"
+
+#: src/error.rs:17
+msgid ""
+"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
+"in Kooha's readme page. ({})"
+msgstr ""
+
+#: src/error.rs:18
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to Kooha's "
+"issue page. ({})"
+msgstr ""
+
+#: src/error.rs:39
+msgid "Screencast Portal Request Failed"
+msgstr ""
+
+#: src/error.rs:40
+msgid "Recording Failed"
+msgstr ""
+
+#: src/error.rs:41
+msgid "Pipeline Build Failed"
 msgstr ""
 
 #: src/widgets/window.rs:174
 msgid "Paused"
-msgstr ""
+msgstr "Pozastaveno"
 
-#: src/widgets/window.rs:208
-msgid "Sorry! An error has occurred."
-msgstr ""
+#~ msgid "Sorry! An error has occurred."
+#~ msgstr "Omlouváme se! Nastala chyba."
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Prosím vyberte místo, kam máte přístup a zkuste znovu."
