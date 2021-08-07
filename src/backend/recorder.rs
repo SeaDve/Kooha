@@ -388,10 +388,21 @@ impl Recorder {
     }
 
     pub fn stop(&self) {
-        self.set_state(RecorderState::Flushing);
         self.pipeline().unwrap().send_event(gst::event::Eos::new());
 
         log::info!("Sending eos event to pipeline");
+
+        // Wait 120ms before showing flushing state to avoid showing the flushing screen even though
+        // it will only process for a few ms. If the pipeline state is still not null after 120ms,
+        // then show the flushing state.
+        glib::timeout_add_local_once(
+            Duration::from_millis(120),
+            clone!(@weak self as obj => move || {
+                if obj.state() != RecorderState::Null {
+                    obj.set_state(RecorderState::Flushing);
+                }
+            }),
+        );
     }
 
     pub fn cancel(&self) {
