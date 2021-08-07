@@ -32,6 +32,7 @@ sources = files(
   'application.rs',
   'config.rs',
   'data_types.rs',
+  'error.rs',
   'main.rs',
   'utils.rs',
 )

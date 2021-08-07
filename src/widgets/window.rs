@@ -200,13 +200,13 @@ impl MainWindow {
                         let application: Application = obj.application().unwrap().downcast().unwrap();
                         application.send_record_success_notification(&recording_file_path);
                     },
-                    RecorderResponse::Failed(error_message) => {
+                    RecorderResponse::Failed(error) => {
                         let error_dialog = gtk::MessageDialogBuilder::new()
                             .modal(true)
                             .buttons(gtk::ButtonsType::Ok)
                             .transient_for(&obj)
                             .title(&gettext("Sorry! An error has occurred."))
-                            .text(&error_message)
+                            .text(&error.to_string())
                             .build();
                         error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
                         error_dialog.present();

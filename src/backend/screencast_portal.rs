@@ -4,7 +4,7 @@ use ashpd::{
         ResponseError, SessionProxy,
     },
     enumflags2::BitFlags,
-    zbus, Error, WindowIdentifier,
+    zbus, WindowIdentifier,
 };
 use gtk::{
     glib::{self, clone, subclass::Signal, GBoxed, SignalHandlerId, WeakRef},
@@ -15,13 +15,13 @@ use once_cell::sync::{Lazy, OnceCell};
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
-use crate::widgets::MainWindow;
+use crate::{error::Error, widgets::MainWindow};
 
 #[derive(Debug, Clone, GBoxed)]
 #[gboxed(type_name = "ScreencastPortalResponse")]
 pub enum ScreencastPortalResponse {
     Success(Vec<Stream>, i32),
-    Failed(String),
+    Failed(Error),
     Cancelled,
 }
 
@@ -124,20 +124,20 @@ impl ScreencastPortal {
                 }
                 Err(error) => {
                     match error {
-                        Error::Portal(response_error) => {
+                        ashpd::Error::Portal(response_error) => {
                             match response_error {
                                 ResponseError::Cancelled => {
                                     obj.emit_response(&ScreencastPortalResponse::Cancelled);
                                     log::info!("Session cancelled");
                                 },
                                 ResponseError::Other => {
-                                    obj.emit_response(&ScreencastPortalResponse::Failed(response_error.to_string()));
+                                    obj.emit_response(&ScreencastPortalResponse::Failed(Error::from(response_error)));
                                     log::error!("Response error from screencast call: {}", response_error);
                                 }
                             }
                         },
                         other_error => {
-                            obj.emit_response(&ScreencastPortalResponse::Failed(other_error.to_string()));
+                            obj.emit_response(&ScreencastPortalResponse::Failed(Error::from(&other_error)));
                             log::error!("Failed to create a screencast call: {}", other_error);
                         }
                     };

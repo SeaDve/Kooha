@@ -15,6 +15,7 @@ mod application;
 mod backend;
 mod config;
 mod data_types;
+mod error;
 mod utils;
 mod widgets;
 

@@ -10,6 +10,7 @@ use std::{cell::RefCell, path::PathBuf, time::Duration};
 
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
+    error::Error,
     utils,
     widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
 };
@@ -33,7 +34,7 @@ impl Default for RecorderState {
 #[gboxed(type_name = "RecorderResponse")]
 pub enum RecorderResponse {
     Success(PathBuf),
-    Failed(String),
+    Failed(Error),
 }
 
 mod imp {
@@ -268,9 +269,10 @@ impl Recorder {
                 self.emit_ready();
             }
             Err(error) => {
+                log::error!("Failed to build pipeline: {}", &error);
+
                 self.portal().close_session();
-                self.emit_response(&RecorderResponse::Failed(error.to_string()));
-                log::error!("Failed to build pipeline: {}", error);
+                self.emit_response(&RecorderResponse::Failed(Error::Pipeline(error)));
             }
         };
     }
@@ -320,7 +322,7 @@ impl Recorder {
                 };
 
                 self.close_pipeline();
-                self.emit_response(&RecorderResponse::Failed(error_message));
+                self.emit_response(&RecorderResponse::Failed(Error::Recorder(error.error())));
             }
             _ => (),
         }
