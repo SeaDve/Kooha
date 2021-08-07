@@ -389,7 +389,6 @@ impl Recorder {
 
     pub fn stop(&self) {
         self.pipeline().unwrap().send_event(gst::event::Eos::new());
-
         log::info!("Sending eos event to pipeline");
 
         // Wait 120ms before showing flushing state to avoid showing the flushing screen even though
