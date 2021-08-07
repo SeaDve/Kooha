@@ -110,9 +110,8 @@ mod test {
 
     #[test]
     fn check_if_accessible_in_home() {
-        let mut home_dir_folder = glib::home_dir();
-        home_dir_folder.push("Pictures");
-        assert!(check_if_accessible(&home_dir_folder));
+        let downloads_folder = glib::user_special_dir(glib::UserDirectory::Downloads);
+        assert!(check_if_accessible(&downloads_folder));
     }
 
     #[test]
