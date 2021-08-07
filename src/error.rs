@@ -13,7 +13,7 @@ impl std::error::Error for Error {}
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Portal(e) => f.write_str(&format!("Make sure to check for the runtime dependencies. These are listed on the Github readme page. ({})", e)),
+            Self::Portal(e) => f.write_str(&format!("Make sure to check for the runtime dependencies and \"It Doesn't Work\" page in Kooha's Github page. ({})", e)),
             Self::Recorder(e) => f.write_str(&format!("{}", e)),
             Self::Pipeline(e) => f.write_str(&format!("Please report to the issue page. ({})", e)),
         }

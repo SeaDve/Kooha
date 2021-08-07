@@ -50,6 +50,16 @@ The main features of Kooha include the following:
 * ⌨️ Utilize helpful keyboard shortcuts.
 
 
+## 😕 It Doesn't Work
+
+There are many possibilities on why it may not be working. You may not have
+the runtime requirements mentioned below installed, or your distro doesn't
+support it. For troubleshooting purposes the [screen cast compatibility page](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/Screencast-Compatibility)
+of `xdg-desktop-portal-wlr` wiki may be helpful in determining if your distro
+has support for it out of the box. If your distro supports it, but it still
+doesn't work, you can also check for the [troubleshooting checklist](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist).
+
+
 ## ⚙️ Hidden Configuration Options
 
 ### Enable hardware accelerated encoding
