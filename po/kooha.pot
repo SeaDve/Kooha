@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 13:56+0800\n"
+"POT-Creation-Date: 2021-08-07 09:11+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -281,10 +281,28 @@ msgstr ""
 msgid "Open File"
 msgstr ""
 
-#: src/widgets/window.rs:174
-msgid "Paused"
+#: src/error.rs:17
+msgid ""
+"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
+"in Kooha's Github page. ({})"
 msgstr ""
 
-#: src/widgets/window.rs:208
-msgid "Sorry! An error has occurred."
+#: src/error.rs:19
+msgid "Please report to the issue page. ({})"
+msgstr ""
+
+#: src/error.rs:39
+msgid "Screencast Portal Request Failed"
+msgstr ""
+
+#: src/error.rs:40
+msgid "Recording Failed"
+msgstr ""
+
+#: src/error.rs:41
+msgid "Pipeline Build Failed"
+msgstr ""
+
+#: src/widgets/window.rs:174
+msgid "Paused"
 msgstr ""

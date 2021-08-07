@@ -4,4 +4,5 @@ data/io.github.seadve.Kooha.metainfo.xml.in.in
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
 src/application.rs
+src/error.rs
 src/widgets/window.rs
