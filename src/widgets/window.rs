@@ -144,7 +144,7 @@ impl MainWindow {
         let imp = self.private();
 
         imp.settings
-            .bind_property("capture-mode", &*imp.title_stack, "visible-child-name");
+            .bind_key("capture-mode", &*imp.title_stack, "visible-child-name");
 
         imp.settings.connect_changed_notify(
             Some("video-format"),

@@ -52,7 +52,7 @@ impl Settings {
         imp.settings.create_action(action)
     }
 
-    pub fn bind_property<P: IsA<glib::Object>>(&self, key: &str, object: &P, property: &str) {
+    pub fn bind_key<P: IsA<glib::Object>>(&self, key: &str, object: &P, property: &str) {
         let imp = self.private();
         imp.settings
             .bind(key, object, property)
