@@ -116,6 +116,7 @@ impl PipelineParser {
     pub fn parse(&self) -> String {
         let pipeline_elements = vec![
             self.compositor(),
+            Some("queue name=queue0".to_string()),
             Some("videorate name=videorate".to_string()),
             Some(format!("video/x-raw, framerate={}/1", self.framerate())),
             self.videoscale(),
@@ -168,14 +169,14 @@ impl PipelineParser {
         if self.is_single_stream() {
             let node_id = self.streams()[0].pipe_wire_node_id();
 
-            // If there is a single stream, connect pipewiresrc directly to videorate.
-            return format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! queue ! videorate.", self.fd(), node_id, self.framerate());
+            // If there is a single stream, connect pipewiresrc directly to queue0.
+            return format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! queue0.", self.fd(), node_id, self.framerate());
         }
 
         let mut pipewiresrc_list = Vec::new();
         for stream in self.streams().iter() {
             let node_id = stream.pipe_wire_node_id();
-            pipewiresrc_list.push(format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! queue ! comp.", self.fd(), node_id, self.framerate()));
+            pipewiresrc_list.push(format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! comp.", self.fd(), node_id, self.framerate()));
         }
 
         pipewiresrc_list.join(" ")
