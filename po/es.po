@@ -7,13 +7,15 @@
 # robert schneider <robertschv@gmail.com>, 2021.
 # Dave Patrick <davecruz48@gmail.com>, 2021.
 # Pointify Starrcat <pointify@e.email>, 2021.
+# Chardinson De la cruz Ventura <chardinsondelacruzventura@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-05 05:58+0000\n"
-"Last-Translator: Pointify Starrcat <pointify@e.email>\n"
+"PO-Revision-Date: 2021-08-08 12:47+0000\n"
+"Last-Translator: Chardinson De la cruz Ventura "
+"<chardinsondelacruzventura@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -195,7 +197,7 @@ msgstr "Grabando en…"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Purgando…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
@@ -263,7 +265,7 @@ msgstr "No se puede acceder a “{}”"
 
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Por favor, elija un lugar accesible e inténtelo de nuevo."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
@@ -295,24 +297,28 @@ msgid ""
 "Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
 "in Kooha's readme page. ({})"
 msgstr ""
+"Asegúrese de comprobar las dependencias de ejecución y la página \"No "
+"funciona\" en la página readme de Kooha. ({})"
 
 #: src/error.rs:18
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to Kooha's "
 "issue page. ({})"
 msgstr ""
+"Es posible que el plugin de GStreamer no esté instalado. Si no es así, por "
+"favor informe en la página de problemas de Kooha. ({})"
 
 #: src/error.rs:39
 msgid "Screencast Portal Request Failed"
-msgstr ""
+msgstr "Fallo en la solicitud del portal de transmisión de pantalla"
 
 #: src/error.rs:40
 msgid "Recording Failed"
-msgstr ""
+msgstr "Fallo en la grabación"
 
 #: src/error.rs:41
 msgid "Pipeline Build Failed"
-msgstr ""
+msgstr "La construcción de la pipeline ha fallado"
 
 #: src/widgets/window.rs:174
 msgid "Paused"

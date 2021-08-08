@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # tinaxd <systemd.tinaxd@gmail.com>, 2021.
 # tinaxd <tinaxd@protonmail.com>, 2021.
+# 小山田純 <oyamada.junjun@outlook.jp>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: tinaxd <tinaxd@protonmail.com>\n"
+"PO-Revision-Date: 2021-08-08 12:47+0000\n"
+"Last-Translator: 小山田純 <oyamada.junjun@outlook.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
 "Language: ja\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
@@ -98,19 +99,19 @@ msgstr "Dave Patrick"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "全般"
+msgstr "一般"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "メニューを開く"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "ショートカット一覧"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr "終了する"
+msgstr "終了"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
 msgid "Recording"
@@ -146,7 +147,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
-msgstr ""
+msgstr "メインメニュー"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
@@ -263,15 +264,15 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
 msgid "translator-credits"
-msgstr ""
+msgstr "小山田 純"
 
 #: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Copyright 2021 Dave Patrick"
 
 #: src/application.rs:192
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/application.rs:201
 msgid "Screencast Recorded!"

@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-07 01:12+0000\n"
+"PO-Revision-Date: 2021-08-08 12:47+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
-">\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -291,24 +291,28 @@ msgid ""
 "Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
 "in Kooha's readme page. ({})"
 msgstr ""
+"Controleer de software-afhankelijkheden en de pagina ‘Kooha werkt niet’ in "
+"het leesmijbestand. ({})"
 
 #: src/error.rs:18
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to Kooha's "
 "issue page. ({})"
 msgstr ""
+"Er ontbreekt mogelijk een GStreamer-plug-in. Als dat niet het geval in, meld "
+"dit probleem dan op Kooha's issuepagina. ({})"
 
 #: src/error.rs:39
 msgid "Screencast Portal Request Failed"
-msgstr ""
+msgstr "Het screencastverzoek is mislukt"
 
 #: src/error.rs:40
 msgid "Recording Failed"
-msgstr ""
+msgstr "De opname is mislukt"
 
 #: src/error.rs:41
 msgid "Pipeline Build Failed"
-msgstr ""
+msgstr "Het bouwen van de pijplijn is mislukt"
 
 #: src/widgets/window.rs:174
 msgid "Paused"

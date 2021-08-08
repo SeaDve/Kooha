@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-06 04:02+0000\n"
+"PO-Revision-Date: 2021-08-08 12:47+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fil/>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
-"=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
+"%10!=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -294,24 +294,28 @@ msgid ""
 "Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
 "in Kooha's readme page. ({})"
 msgstr ""
+"Paki-check ang iyong mga runtime dependencies at ang \"It Doesn't Work\" na "
+"pahina sa readme page ng Kooha. ({})"
 
 #: src/error.rs:18
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to Kooha's "
 "issue page. ({})"
 msgstr ""
+"Maaaring may GStreamer plugin na hindi naka-install. Kung hindi, paki-report "
+"sa issue page ng Kooha. ({})"
 
 #: src/error.rs:39
 msgid "Screencast Portal Request Failed"
-msgstr ""
+msgstr "Screencast Portal Request Nag-fail"
 
 #: src/error.rs:40
 msgid "Recording Failed"
-msgstr ""
+msgstr "Ang Pag-record ay Nag-fail"
 
 #: src/error.rs:41
 msgid "Pipeline Build Failed"
-msgstr ""
+msgstr "Nag-fail ang Pagbuo ng Pipeline"
 
 #: src/widgets/window.rs:174
 msgid "Paused"

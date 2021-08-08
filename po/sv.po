@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-06 04:02+0000\n"
+"PO-Revision-Date: 2021-08-08 12:47+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
@@ -292,24 +292,28 @@ msgid ""
 "Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
 "in Kooha's readme page. ({})"
 msgstr ""
+"Kolla körtidsberoenden och sidan \"It Doesn't Work\" på Koohas ReadMe-sida. "
+"({})"
 
 #: src/error.rs:18
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to Kooha's "
 "issue page. ({})"
 msgstr ""
+"Ett GStreamer-instick kanske inte är installerat. Om inte, rapportera på "
+"Koohas ärendesida. ({})"
 
 #: src/error.rs:39
 msgid "Screencast Portal Request Failed"
-msgstr ""
+msgstr "Begäran om skärmsändningsportal misslyckades"
 
 #: src/error.rs:40
 msgid "Recording Failed"
-msgstr ""
+msgstr "Inspelning misslyckades"
 
 #: src/error.rs:41
 msgid "Pipeline Build Failed"
-msgstr ""
+msgstr "Pipeline-bygget misslyckades"
 
 #: src/widgets/window.rs:174
 msgid "Paused"
