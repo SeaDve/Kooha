@@ -69,7 +69,7 @@ glib::wrapper! {
 
 impl ScreencastPortal {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create KhaPortal.")
+        glib::Object::new::<Self>(&[]).expect("Failed to create ScreencastPortal.")
     }
 
     fn private(&self) -> &imp::ScreencastPortal {
