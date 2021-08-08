@@ -14,9 +14,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug)]
-    pub struct Settings {
-        pub settings: gio::Settings,
-    }
+    pub struct Settings(pub gio::Settings);
 
     #[glib::object_subclass]
     impl ObjectSubclass for Settings {
@@ -25,9 +23,7 @@ mod imp {
         type ParentType = glib::Object;
 
         fn new() -> Self {
-            Self {
-                settings: gio::Settings::new(APP_ID),
-            }
+            Self(gio::Settings::new(APP_ID))
         }
     }
 
@@ -43,18 +39,17 @@ impl Settings {
         glib::Object::new::<Self>(&[]).expect("Failed to create Settings")
     }
 
-    fn private(&self) -> &imp::Settings {
-        imp::Settings::from_instance(self)
+    fn inner(&self) -> &gio::Settings {
+        let imp = imp::Settings::from_instance(self);
+        &imp.0
     }
 
     pub fn create_action(&self, action: &str) -> gio::Action {
-        let imp = self.private();
-        imp.settings.create_action(action)
+        self.inner().create_action(action)
     }
 
     pub fn bind_key<P: IsA<glib::Object>>(&self, key: &str, object: &P, property: &str) {
-        let imp = self.private();
-        imp.settings
+        self.inner()
             .bind(key, object, property)
             .flags(gio::SettingsBindFlags::DEFAULT)
             .build();
@@ -65,20 +60,17 @@ impl Settings {
         detail: Option<&str>,
         f: F,
     ) -> SignalHandlerId {
-        let imp = self.private();
-        imp.settings.connect_changed(detail, f)
+        self.inner().connect_changed(detail, f)
     }
 
     pub fn set_saving_location(&self, directory: &Path) {
-        let imp = self.private();
-        imp.settings
+        self.inner()
             .set_string("saving-location", directory.to_str().unwrap())
             .unwrap();
     }
 
     pub fn saving_location(&self) -> PathBuf {
-        let imp = self.private();
-        let saving_location = imp.settings.string("saving-location").to_string();
+        let saving_location = self.inner().string("saving-location").to_string();
 
         if saving_location == "default" {
             glib::user_special_dir(glib::UserDirectory::Videos)
@@ -97,38 +89,31 @@ impl Settings {
     }
 
     pub fn video_format(&self) -> String {
-        let imp = self.private();
-        imp.settings.string("video-format").to_string()
+        self.inner().string("video-format").to_string()
     }
 
     pub fn is_record_speaker(&self) -> bool {
-        let imp = self.private();
-        imp.settings.boolean("record-speaker")
+        self.inner().boolean("record-speaker")
     }
 
     pub fn is_record_mic(&self) -> bool {
-        let imp = self.private();
-        imp.settings.boolean("record-mic")
+        self.inner().boolean("record-mic")
     }
 
     pub fn is_show_pointer(&self) -> bool {
-        let imp = self.private();
-        imp.settings.boolean("show-pointer")
+        self.inner().boolean("show-pointer")
     }
 
     pub fn is_selection_mode(&self) -> bool {
-        let imp = self.private();
-        let capture_mode = imp.settings.string("capture-mode");
+        let capture_mode = self.inner().string("capture-mode");
         capture_mode == "selection"
     }
 
     pub fn video_framerate(&self) -> u32 {
-        let imp = self.private();
-        imp.settings.uint("video-framerate")
+        self.inner().uint("video-framerate")
     }
 
     pub fn record_delay(&self) -> u32 {
-        let imp = self.private();
-        imp.settings.string("record-delay").parse().unwrap()
+        self.inner().string("record-delay").parse().unwrap()
     }
 }
