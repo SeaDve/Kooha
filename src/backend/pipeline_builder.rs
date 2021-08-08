@@ -117,7 +117,7 @@ impl PipelineParser {
         let pipeline_elements = vec![
             self.compositor(),
             Some("queue name=queue0".to_string()),
-            Some("videorate name=videorate".to_string()),
+            Some("videorate".to_string()),
             Some(format!("video/x-raw, framerate={}/1", self.framerate())),
             self.videoscale(),
             self.videocrop(),
