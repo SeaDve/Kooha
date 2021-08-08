@@ -187,15 +187,11 @@ impl Recorder {
     fn set_state(&self, state: RecorderState) {
         self.set_property("state", state).unwrap();
 
-        if state == RecorderState::Flushing {
-            return;
-        }
-
         let new_pipeline_state = match state {
             RecorderState::Null => gst::State::Null,
             RecorderState::Paused => gst::State::Paused,
             RecorderState::Playing => gst::State::Playing,
-            RecorderState::Flushing => unreachable!(),
+            RecorderState::Flushing => return,
         };
 
         let pipeline = self.pipeline().unwrap();

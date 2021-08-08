@@ -299,15 +299,11 @@ impl PipelineParser {
     fn muxer(&self) -> Option<String> {
         let video_format = self.video_format();
 
-        if video_format == VideoFormat::Gif {
-            return None;
-        }
-
         let muxer = match video_format {
             VideoFormat::Webm => "webmmux",
             VideoFormat::Mkv => "matroskamux",
             VideoFormat::Mp4 => "mp4mux",
-            VideoFormat::Gif => unreachable!(),
+            VideoFormat::Gif => return None,
         };
 
         Some(format!("{} name=mux", muxer))
