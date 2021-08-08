@@ -1,4 +1,3 @@
-use anyhow::bail;
 use ashpd::zbus;
 use gtk::glib;
 
@@ -80,7 +79,7 @@ fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
     let (is_success, message) = reply.body::<(bool, String)>()?;
 
     if !is_success {
-        bail!(message);
+        anyhow::bail!(message);
     };
 
     Ok(())
