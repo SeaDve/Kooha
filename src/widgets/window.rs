@@ -133,7 +133,7 @@ glib::wrapper! {
 
 impl MainWindow {
     pub fn new(app: &Application) -> Self {
-        glib::Object::new(&[("application", app)]).expect("Failed to create MainWindow")
+        glib::Object::new(&[("application", app)]).expect("Failed to create MainWindow.")
     }
 
     fn private(&self) -> &imp::MainWindow {
@@ -246,6 +246,7 @@ impl MainWindow {
 
     fn set_view(&self, view: &View) {
         let imp = self.private();
+
         imp.main_stack
             .set_visible_child_name(view.to_string().as_ref());
 

@@ -135,7 +135,7 @@ glib::wrapper! {
 
 impl Recorder {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create Recorder")
+        glib::Object::new::<Self>(&[]).expect("Failed to create Recorder.")
     }
 
     fn private(&self) -> &imp::Recorder {

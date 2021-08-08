@@ -114,7 +114,7 @@ glib::wrapper! {
 
 impl Timer {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create Timer")
+        glib::Object::new::<Self>(&[]).expect("Failed to create Timer.")
     }
 
     fn set_state(&self, new_state: TimerState) {

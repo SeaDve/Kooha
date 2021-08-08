@@ -139,7 +139,7 @@ glib::wrapper! {
 
 impl RecorderController {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create RecorderController")
+        glib::Object::new::<Self>(&[]).expect("Failed to create RecorderController.")
     }
 
     fn private(&self) -> &imp::RecorderController {
@@ -174,6 +174,14 @@ impl RecorderController {
                 };
             }));
 
+        imp.recorder.connect_response(
+            clone!(@weak self as obj => @default-return None, move |args| {
+                let response = args[1].get().unwrap();
+                obj.emit_response(response);
+                None
+            }),
+        );
+
         imp.timer
             .connect_delay_done(clone!(@weak self as obj => @default-return None, move |_| {
                 let imp = obj.private();
@@ -188,14 +196,6 @@ impl RecorderController {
                 imp.timer.start(record_delay);
                 None
             }));
-
-        imp.recorder.connect_response(
-            clone!(@weak self as obj => @default-return None, move |args| {
-                let response = args[1].get().unwrap();
-                obj.emit_response(response);
-                None
-            }),
-        );
     }
 
     fn emit_response(&self, response: &RecorderResponse) {

@@ -76,7 +76,7 @@ impl Application {
             ("flags", &gio::ApplicationFlags::empty()),
             ("resource-base-path", &Some("/io/github/seadve/Kooha/")),
         ])
-        .expect("Failed to initialize Application")
+        .expect("Failed to create Application.")
     }
 
     fn main_window(&self) -> MainWindow {
@@ -139,7 +139,7 @@ impl Application {
         chooser.set_default_response(gtk::ResponseType::Accept);
         chooser
             .set_current_folder(&gio::File::for_path(settings.saving_location()))
-            .expect("Failed to set current folder");
+            .expect("Failed to set current folder.");
 
         chooser.connect_response(clone!(@weak self as app => move |chooser, response| {
             if response != gtk::ResponseType::Accept {
@@ -196,7 +196,9 @@ impl Application {
     }
 
     pub fn send_record_success_notification(&self, recording_file_path: &Path) {
-        let saving_location = recording_file_path.parent().expect("File doesn't exist");
+        let saving_location = recording_file_path
+            .parent()
+            .expect("Directory doesn't exist.");
 
         let notification = gio::Notification::new(&gettext("Screencast Recorded!"));
         notification.set_body(Some(&gettext!(

@@ -131,7 +131,7 @@ glib::wrapper! {
 
 impl AreaSelector {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create AreaSelector")
+        glib::Object::new(&[]).expect("Failed to create AreaSelector.")
     }
 
     fn private(&self) -> &imp::AreaSelector {

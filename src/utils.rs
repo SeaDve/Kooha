@@ -19,9 +19,9 @@ pub fn default_audio_sources() -> (Option<String>, Option<String>) {
     let output = Command::new("/usr/bin/pactl")
         .arg("info")
         .output()
-        .expect("Failed to run pactl")
+        .expect("Failed to run pactl.")
         .stdout;
-    let output = String::from_utf8(output).expect("Failed to convert utf8 to String");
+    let output = String::from_utf8(output).expect("Failed to convert utf8 to String.");
 
     let default_sink = format!(
         "{}.monitor",

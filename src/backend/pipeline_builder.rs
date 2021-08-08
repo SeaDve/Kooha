@@ -25,16 +25,16 @@ enum VideoFormat {
 
 #[derive(Debug, Default, Clone)]
 pub struct PipelineBuilder {
-    streams: Vec<Stream>,
-    fd: i32,
-    speaker_source: Option<String>,
-    mic_source: Option<String>,
     is_record_speaker: bool,
     is_record_mic: bool,
-    coordinates: Option<Rectangle>,
-    actual_screen: Option<Screen>,
     framerate: u32,
     file_path: PathBuf,
+    fd: i32,
+    streams: Vec<Stream>,
+    speaker_source: Option<String>,
+    mic_source: Option<String>,
+    coordinates: Option<Rectangle>,
+    actual_screen: Option<Screen>,
 }
 
 impl PipelineBuilder {
@@ -42,13 +42,13 @@ impl PipelineBuilder {
         Self::default()
     }
 
-    pub fn streams(mut self, streams: Vec<Stream>) -> Self {
-        self.streams = streams;
+    pub fn record_speaker(mut self, is_record_speaker: bool) -> Self {
+        self.is_record_speaker = is_record_speaker;
         self
     }
 
-    pub fn fd(mut self, fd: i32) -> Self {
-        self.fd = fd;
+    pub fn record_mic(mut self, is_record_mic: bool) -> Self {
+        self.is_record_mic = is_record_mic;
         self
     }
 
@@ -62,6 +62,16 @@ impl PipelineBuilder {
         self
     }
 
+    pub fn fd(mut self, fd: i32) -> Self {
+        self.fd = fd;
+        self
+    }
+
+    pub fn streams(mut self, streams: Vec<Stream>) -> Self {
+        self.streams = streams;
+        self
+    }
+
     pub fn speaker_source(mut self, speaker_source: Option<String>) -> Self {
         self.speaker_source = speaker_source;
         self
@@ -69,16 +79,6 @@ impl PipelineBuilder {
 
     pub fn mic_source(mut self, mic_source: Option<String>) -> Self {
         self.mic_source = mic_source;
-        self
-    }
-
-    pub fn record_speaker(mut self, is_record_speaker: bool) -> Self {
-        self.is_record_speaker = is_record_speaker;
-        self
-    }
-
-    pub fn record_mic(mut self, is_record_mic: bool) -> Self {
-        self.is_record_mic = is_record_mic;
         self
     }
 
@@ -315,7 +315,7 @@ impl PipelineParser {
     fn video_format(&self) -> VideoFormat {
         let file_extension = self.file_path().extension().unwrap().to_str().unwrap();
 
-        VideoFormat::from_str(file_extension).expect("Invalid video format")
+        VideoFormat::from_str(file_extension).expect("Invalid video format.")
     }
 
     fn framerate(&self) -> u32 {

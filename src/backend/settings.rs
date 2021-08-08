@@ -36,7 +36,7 @@ glib::wrapper! {
 
 impl Settings {
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create Settings")
+        glib::Object::new::<Self>(&[]).expect("Failed to create Settings.")
     }
 
     fn inner(&self) -> &gio::Settings {
