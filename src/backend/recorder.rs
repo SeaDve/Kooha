@@ -230,13 +230,18 @@ impl Recorder {
             return;
         }
 
+        // Store pipeline_builder in RefCell<Option> to be able to be moved inside the
+        // callback, without having the entire callback to be FnOnce. This is to avoid
+        // cloning the pipeline_builder.
+        let pipeline_builder = RefCell::new(Some(pipeline_builder));
+
         let area_selector = AreaSelector::new();
         area_selector.connect_response(
             clone!(@weak self as obj => @default-return None, move |args| {
                 let response = args[1].get().unwrap();
                 match response {
                     AreaSelectorResponse::Captured(coords, actual_screen) => {
-                        let pipeline_builder = pipeline_builder.clone()
+                        let pipeline_builder = pipeline_builder.take().unwrap()
                             .coordinates(coords)
                             .actual_screen(actual_screen);
 
