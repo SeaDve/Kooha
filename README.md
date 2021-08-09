@@ -41,6 +41,7 @@ The main features of Kooha include the following:
 * 🎥 Capture your screen without any hassle.
 * 🎙️ Record your microphone, computer sounds, or both at the same time.
 * 📼 Support for WebM, MP4, GIF, and MKV formats.
+* 🗔 Multiple sources selection.
 * 🚀 Optional hardware accelerated encoding
 * 🖥️ Select a monitor or window to record.
 * 🔲 Create a selection to capture certain area from your screen.
