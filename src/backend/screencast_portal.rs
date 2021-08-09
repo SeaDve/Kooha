@@ -85,16 +85,16 @@ impl ScreencastPortal {
         imp.window.get().unwrap().upgrade().unwrap()
     }
 
+    pub fn set_window(&self, window: &MainWindow) {
+        let imp = self.private();
+        imp.window.set(window.downgrade()).unwrap();
+    }
+
     pub fn connect_response<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
         &self,
         f: F,
     ) -> SignalHandlerId {
         self.connect_local("response", false, f).unwrap()
-    }
-
-    pub fn set_window(&self, window: &MainWindow) {
-        let imp = self.private();
-        imp.window.set(window.downgrade()).unwrap();
     }
 
     pub fn new_session(&self, is_show_pointer: bool, is_selection_mode: bool) {
