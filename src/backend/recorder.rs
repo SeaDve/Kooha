@@ -230,9 +230,9 @@ impl Recorder {
             return;
         }
 
-        // Store pipeline_builder in RefCell<Option> to be able to be moved inside the
-        // callback, without having the entire callback to be FnOnce. This is to avoid
-        // cloning the pipeline_builder.
+        // This is to prove the compiler that we are only going to take the pipeline_builder once
+        // because it assumes that the callback on connect_response could be called multiple
+        // times. Otherwise, we need to clone the pipeline_builder.
         let pipeline_builder = RefCell::new(Some(pipeline_builder));
 
         let area_selector = AreaSelector::new();
