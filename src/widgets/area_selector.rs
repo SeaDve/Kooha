@@ -84,7 +84,7 @@ mod imp {
 
     impl WidgetImpl for AreaSelector {
         fn snapshot(&self, _widget: &Self::Type, snapshot: &gtk::Snapshot) {
-            if let Some(start_position) = *self.start_position.borrow() {
+            if let Some(ref start_position) = *self.start_position.borrow() {
                 let current_position = self.current_position.take().unwrap();
 
                 let width = current_position.x - start_position.x;
@@ -173,7 +173,7 @@ impl AreaSelector {
             if let Some(gesture_start_point) = gesture.start_point() {
                 let (start_x, start_y) = gesture_start_point;
 
-                let start_position = imp.start_position.borrow().unwrap();
+                let start_position = imp.start_position.take().unwrap();
                 let end_position = Point::new(start_x + offset_x, start_y + offset_y);
 
                 let selection_rectangle = Rectangle::from_points(start_position, end_position);
@@ -187,16 +187,8 @@ impl AreaSelector {
 
     fn emit_response(&self, response: &AreaSelectorResponse) {
         self.emit_by_name("response", &[response]).unwrap();
-        self.clean();
-        self.destroy();
-    }
-
-    fn clean(&self) {
-        let imp = self.private();
-        imp.start_position.replace(None);
-
-        self.queue_draw();
         self.set_raise_request(false);
+        self.destroy();
     }
 
     fn set_raise_request(&self, is_raised: bool) {
