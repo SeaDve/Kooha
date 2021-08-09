@@ -6,7 +6,11 @@ use gtk::{
 };
 use once_cell::sync::Lazy;
 
-use std::{cell::RefCell, path::PathBuf, time::Duration};
+use std::{
+    cell::{Cell, RefCell},
+    path::PathBuf,
+    time::Duration,
+};
 
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
@@ -42,7 +46,7 @@ mod imp {
 
     #[derive(Debug)]
     pub struct Recorder {
-        pub state: RefCell<RecorderState>,
+        pub state: Cell<RecorderState>,
 
         pub pipeline: RefCell<Option<gst::Pipeline>>,
         pub current_file_path: RefCell<Option<PathBuf>>,
@@ -58,7 +62,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                state: RefCell::new(RecorderState::default()),
+                state: Cell::new(RecorderState::default()),
 
                 pipeline: RefCell::new(None),
                 current_file_path: RefCell::new(None),
@@ -114,7 +118,7 @@ mod imp {
             match pspec.name() {
                 "state" => {
                     let state = value.get().unwrap();
-                    self.state.replace(state);
+                    self.state.set(state);
                 }
                 _ => unimplemented!(),
             }
@@ -122,7 +126,7 @@ mod imp {
 
         fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
-                "state" => self.state.borrow().to_value(),
+                "state" => self.state.get().to_value(),
                 _ => unimplemented!(),
             }
         }
