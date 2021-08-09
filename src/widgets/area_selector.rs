@@ -220,7 +220,7 @@ impl AreaSelector {
         self.present();
 
         let display = gdk::Display::default().unwrap();
-        log::info!("is_display_composited: {}", display.is_composited());
-        log::info!("is_display_rgba: {}", display.is_rgba());
+        log::debug!("is_display_composited: {}", display.is_composited());
+        log::debug!("is_display_rgba: {}", display.is_rgba());
     }
 }
