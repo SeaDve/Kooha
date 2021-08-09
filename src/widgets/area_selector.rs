@@ -1,4 +1,5 @@
 use adw::subclass::prelude::*;
+use futures::channel::oneshot::Canceled;
 use gtk::{
     gdk::{self, keys::Key},
     glib::{self, clone, signal::Inhibit, subclass::Signal, GBoxed, SignalHandlerId},
@@ -215,12 +216,27 @@ impl AreaSelector {
         self.connect_local("response", false, f).unwrap()
     }
 
-    pub fn select_area(&self) {
+    pub async fn select_area(&self) -> Result<(Rectangle, Screen), Canceled> {
+        let (sender, receiver) = futures::channel::oneshot::channel();
+        let sender = RefCell::new(Some(sender));
+
+        self.connect_response(move |args| {
+            let response = args[1].get().unwrap();
+            let inner_sender = sender.take().unwrap();
+            match response {
+                AreaSelectorResponse::Captured(coords, actual_screen) => {
+                    inner_sender.send((coords, actual_screen)).unwrap();
+                }
+                AreaSelectorResponse::Cancelled => {
+                    std::mem::drop(inner_sender);
+                }
+            }
+            None
+        });
+
         self.fullscreen();
         self.present();
 
-        let display = gdk::Display::default().unwrap();
-        log::debug!("is_display_composited: {}", display.is_composited());
-        log::debug!("is_display_rgba: {}", display.is_rgba());
+        receiver.await
     }
 }

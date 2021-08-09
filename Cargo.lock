@@ -970,6 +970,7 @@ dependencies = [
  "anyhow",
  "ashpd",
  "chrono",
+ "futures",
  "gettext-rs",
  "gst-plugin-gif",
  "gstreamer",

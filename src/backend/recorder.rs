@@ -16,7 +16,7 @@ use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
     error::Error,
     utils,
-    widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
+    widgets::{AreaSelector, MainWindow},
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
@@ -230,39 +230,30 @@ impl Recorder {
             return;
         }
 
-        // This is to prove the compiler that we are only going to take the pipeline_builder once
-        // because it assumes that the callback on connect_response could be called multiple
-        // times. Otherwise, we need to clone the pipeline_builder.
-        let pipeline_builder = RefCell::new(Some(pipeline_builder));
-
         let area_selector = AreaSelector::new();
-        area_selector.connect_response(
-            clone!(@weak self as obj => @default-return None, move |args| {
-                let response = args[1].get().unwrap();
-                match response {
-                    AreaSelectorResponse::Captured(coords, actual_screen) => {
-                        let pipeline_builder = pipeline_builder.take().unwrap()
-                            .coordinates(coords)
-                            .actual_screen(actual_screen);
+        let ctx = glib::MainContext::default();
+        ctx.spawn_local(clone!(@weak self as obj => async move {
+            match area_selector.select_area().await {
+                Ok((coords, actual_screen)) => {
+                    let pipeline_builder = pipeline_builder
+                        .coordinates(coords)
+                        .actual_screen(actual_screen);
 
-                        // Give area selector some time to disappear before setting up pipeline
-                        // to avoid it being included in the recording.
-                        glib::timeout_add_local_once(Duration::from_millis(5), move || {
-                            obj.setup_pipeline(pipeline_builder);
-                        });
+                    // Give area selector some time to disappear before setting up pipeline
+                    // to avoid it being included in the recording.
+                    glib::timeout_add_local_once(Duration::from_millis(5), move || {
+                        obj.setup_pipeline(pipeline_builder);
+                    });
 
-                        log::info!("Captured coordinates");
-                    },
-                    AreaSelectorResponse::Cancelled => {
-                        obj.portal().close_session();
-
-                        log::info!("Cancelled capture");
-                    },
+                    log::info!("Captured coordinates");
                 }
-                None
-            }),
-        );
-        area_selector.select_area();
+                Err(_) => {
+                    obj.portal().close_session();
+
+                    log::info!("Cancelled capture");
+                }
+            }
+        }));
     }
 
     fn setup_pipeline(&self, pipeline_builder: PipelineBuilder) {
