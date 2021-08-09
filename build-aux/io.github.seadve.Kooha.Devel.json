@@ -13,7 +13,6 @@
         "--filesystem=xdg-videos",
         "--talk-name=org.gnome.Shell",
         "--talk-name=org.a11y.Bus",
-        "--env=GST_VAAPI_ALL_DRIVERS=1",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=kooha=debug",
         "--env=G_MESSAGES_DEBUG=none",
