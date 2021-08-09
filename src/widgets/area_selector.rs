@@ -176,7 +176,7 @@ impl AreaSelector {
                 let start_position = imp.start_position.take().unwrap();
                 let end_position = Point::new(start_x + offset_x, start_y + offset_y);
 
-                let selection_rectangle = Rectangle::from_points(start_position, end_position);
+                let selection_rectangle = Rectangle::from_points(&start_position, &end_position);
                 let actual_screen = Screen::new(obj.width(), obj.height());
 
                 obj.emit_response(&AreaSelectorResponse::Captured(selection_rectangle, actual_screen));

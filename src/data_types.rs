@@ -12,7 +12,7 @@ pub struct Rectangle {
 }
 
 impl Rectangle {
-    pub fn from_points(point_1: Point, point_2: Point) -> Self {
+    pub fn from_points(point_1: &Point, point_2: &Point) -> Self {
         let mut x = point_1.x.min(point_2.x);
         let mut y = point_1.y.min(point_2.y);
         let mut width = (point_1.x - point_2.x).abs();
