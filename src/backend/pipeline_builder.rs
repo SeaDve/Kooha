@@ -151,7 +151,7 @@ impl PipelineParser {
         }
 
         let mut current_pos = 0;
-        let mut compositor_elements = vec!["compositor name=comp operator=source".to_string()];
+        let mut compositor_elements = vec!["compositor name=comp".to_string()];
 
         for (sink_num, stream) in self.streams().iter().enumerate() {
             // This allows us to place the videos size by size with each other, without overlaps.
@@ -277,13 +277,13 @@ impl PipelineParser {
             match self.video_format() {
                 VideoFormat::Webm | VideoFormat::Mkv => "vaapivp8enc", // FIXME Improve pipelines
                 VideoFormat::Mp4 => "vaapih264enc ! h264parse",
-                VideoFormat::Gif => "gifenc speed=30 qos=true", // FIXME This doesn't really use vaapi
+                VideoFormat::Gif => "gifenc speed=30", // FIXME This doesn't really use vaapi
             }
         } else {
             match self.video_format() {
                 VideoFormat::Webm | VideoFormat::Mkv => "vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T",
                 VideoFormat::Mp4 => "x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline",
-                VideoFormat::Gif => "gifenc speed=30 qos=true",
+                VideoFormat::Gif => "gifenc speed=30",
             }
         }.to_string()
     }
