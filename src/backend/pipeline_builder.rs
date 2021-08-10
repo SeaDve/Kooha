@@ -126,7 +126,7 @@ impl PipelineParser {
             Some(self.videoenc()),
             Some("queue".to_string()),
             self.muxer(),
-            Some(format!("filesink location=\"{}\"", self.file_path().display())),
+            Some(format!("filesink name=filesink location=\"{}\"", self.file_path().display())),
         ];
 
         let mut pipeline_string = pipeline_elements

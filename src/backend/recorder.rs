@@ -49,7 +49,6 @@ mod imp {
         pub state: Cell<RecorderState>,
 
         pub pipeline: RefCell<Option<gst::Pipeline>>,
-        pub current_file_path: RefCell<Option<PathBuf>>,
         pub settings: Settings,
         pub portal: ScreencastPortal,
     }
@@ -65,7 +64,6 @@ mod imp {
                 state: Cell::new(RecorderState::default()),
 
                 pipeline: RefCell::new(None),
-                current_file_path: RefCell::new(None),
                 settings: Settings::new(),
                 portal: ScreencastPortal::new(),
             }
@@ -212,16 +210,14 @@ impl Recorder {
         let imp = self.private();
 
         let (speaker_source, mic_source) = utils::default_audio_sources();
-        let file_path = imp.settings.file_path();
-        imp.current_file_path.replace(Some(file_path.clone()));
 
         let pipeline_builder = PipelineBuilder::new()
-            .streams(streams)
-            .fd(fd)
-            .framerate(imp.settings.video_framerate())
-            .file_path(file_path)
             .record_speaker(imp.settings.is_record_speaker())
             .record_mic(imp.settings.is_record_mic())
+            .framerate(imp.settings.video_framerate())
+            .file_path(imp.settings.file_path())
+            .fd(fd)
+            .streams(streams)
             .speaker_source(speaker_source)
             .mic_source(mic_source);
 
@@ -287,8 +283,6 @@ impl Recorder {
     }
 
     fn parse_bus_message(&self, message: &gst::Message) {
-        let imp = self.private();
-
         match message.view() {
             gst::MessageView::StateChanged(sc) => {
                 if message.src().as_ref()
@@ -302,8 +296,15 @@ impl Recorder {
                 }
             }
             gst::MessageView::Eos(_) => {
+                let filesink = self.pipeline().unwrap().by_name("filesink").unwrap();
+                let recording_file_path = filesink
+                    .property("location")
+                    .unwrap()
+                    .get::<String>()
+                    .unwrap()
+                    .into();
+
                 self.close_pipeline();
-                let recording_file_path = imp.current_file_path.take().unwrap();
                 self.emit_response(&RecorderResponse::Success(recording_file_path));
 
                 log::info!("Eos signal received from record bus");
