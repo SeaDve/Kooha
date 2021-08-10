@@ -1,15 +1,14 @@
 use adw::subclass::prelude::*;
-use futures::channel::oneshot::Canceled;
+use futures::channel::oneshot::{Canceled, Receiver, Sender};
 use gtk::{
     gdk::{self, keys::Key},
-    glib::{self, clone, signal::Inhibit, subclass::Signal, GBoxed, SignalHandlerId},
+    glib::{self, clone, signal::Inhibit, SignalHandlerId},
     graphene, gsk,
     prelude::*,
     subclass::prelude::*,
 };
-use once_cell::sync::Lazy;
 
-use std::{cell::RefCell, time::Duration};
+use std::{cell::RefCell, mem, time::Duration};
 
 use crate::{
     data_types::{Point, Rectangle, Screen},
@@ -30,18 +29,13 @@ const FILL_COLOR: gdk::RGBA = gdk::RGBA {
     alpha: 0.3,
 };
 
-#[derive(Debug, Clone, GBoxed)]
-#[gboxed(type_name = "AreaSelectorResponse")]
-pub enum AreaSelectorResponse {
-    Captured(Rectangle, Screen),
-    Cancelled,
-}
-
 mod imp {
     use super::*;
 
     #[derive(Debug)]
     pub struct AreaSelector {
+        pub sender: RefCell<Option<Sender<(Rectangle, Screen)>>>,
+        pub receiver: RefCell<Option<Receiver<(Rectangle, Screen)>>>,
         pub start_position: RefCell<Option<Point>>,
         pub current_position: RefCell<Option<Point>>,
     }
@@ -53,7 +47,11 @@ mod imp {
         type ParentType = gtk::Window;
 
         fn new() -> Self {
+            let (sender, receiver) = futures::channel::oneshot::channel();
+
             Self {
+                sender: RefCell::new(Some(sender)),
+                receiver: RefCell::new(Some(receiver)),
                 start_position: RefCell::new(None),
                 current_position: RefCell::new(None),
             }
@@ -68,18 +66,6 @@ mod imp {
             obj.set_cursor_from_name(Some("crosshair"));
             obj.remove_css_class("background");
             obj.set_decorated(false);
-        }
-
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder(
-                    "response",
-                    &[AreaSelectorResponse::static_type().into()],
-                    <()>::static_type().into(),
-                )
-                .build()]
-            });
-            SIGNALS.as_ref()
         }
     }
 
@@ -119,7 +105,12 @@ mod imp {
 
     impl WindowImpl for AreaSelector {
         fn close_request(&self, obj: &Self::Type) -> Inhibit {
-            obj.emit_response(&AreaSelectorResponse::Cancelled);
+            if let Some(sender) = self.sender.take() {
+                mem::drop(sender);
+            }
+
+            obj.set_raise_request(false);
+            obj.destroy();
             Inhibit(false)
         }
     }
@@ -145,7 +136,7 @@ impl AreaSelector {
         key_controller.connect_key_pressed(
             clone!(@weak self as obj => @default-return Inhibit(false), move |_, keyval, _, _| {
                 if keyval == Key::from_name("Escape") {
-                    obj.emit_response(&AreaSelectorResponse::Cancelled);
+                    obj.close();
                     Inhibit(true)
                 } else {
                     Inhibit(false)
@@ -180,16 +171,11 @@ impl AreaSelector {
                 let selection_rectangle = Rectangle::from_points(&start_position, &end_position);
                 let actual_screen = Screen::new(obj.width(), obj.height());
 
-                obj.emit_response(&AreaSelectorResponse::Captured(selection_rectangle, actual_screen));
+                imp.sender.take().unwrap().send((selection_rectangle, actual_screen)).unwrap();
+                obj.close();
             }
         }));
         self.add_controller(&gesture_drag);
-    }
-
-    fn emit_response(&self, response: &AreaSelectorResponse) {
-        self.emit_by_name("response", &[response]).unwrap();
-        self.set_raise_request(false);
-        self.destroy();
     }
 
     fn set_raise_request(&self, is_raised: bool) {
@@ -217,26 +203,11 @@ impl AreaSelector {
     }
 
     pub async fn select_area(&self) -> Result<(Rectangle, Screen), Canceled> {
-        let (sender, receiver) = futures::channel::oneshot::channel();
-        let sender = RefCell::new(Some(sender));
-
-        self.connect_response(move |args| {
-            let response = args[1].get().unwrap();
-            let inner_sender = sender.take().unwrap();
-            match response {
-                AreaSelectorResponse::Captured(coords, actual_screen) => {
-                    inner_sender.send((coords, actual_screen)).unwrap();
-                }
-                AreaSelectorResponse::Cancelled => {
-                    std::mem::drop(inner_sender);
-                }
-            }
-            None
-        });
+        let imp = self.private();
 
         self.fullscreen();
         self.present();
 
-        receiver.await
+        imp.receiver.take().unwrap().await
     }
 }
