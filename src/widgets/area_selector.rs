@@ -65,7 +65,7 @@ mod imp {
             obj.setup_signals();
             obj.set_cursor_from_name(Some("crosshair"));
             obj.remove_css_class("background");
-            obj.set_decorated(false);
+            obj.fullscreen();
         }
     }
 
@@ -208,7 +208,6 @@ impl AreaSelector {
     pub async fn select_area(&self) -> Result<(Rectangle, Screen), Canceled> {
         let imp = self.private();
 
-        self.fullscreen();
         self.present();
 
         imp.receiver.take().unwrap().await
