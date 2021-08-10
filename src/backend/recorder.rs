@@ -282,19 +282,8 @@ impl Recorder {
         self.emit_by_name("ready", &[]).unwrap();
     }
 
-    fn parse_bus_message(&self, message: &gst::Message) {
+    fn parse_bus_message(&self, message: &gst::Message) -> Continue {
         match message.view() {
-            gst::MessageView::StateChanged(sc) => {
-                if message.src().as_ref()
-                    == Some(self.pipeline().unwrap().upcast_ref::<gst::Object>())
-                {
-                    log::info!(
-                        "Pipeline state set from {:?} -> {:?}",
-                        sc.old(),
-                        sc.current()
-                    );
-                }
-            }
             gst::MessageView::Eos(_) => {
                 let filesink = self.pipeline().unwrap().by_name("filesink").unwrap();
                 let recording_file_path = filesink
@@ -306,8 +295,9 @@ impl Recorder {
 
                 self.close_pipeline();
                 self.emit_response(&RecorderResponse::Success(recording_file_path));
-
                 log::info!("Eos signal received from record bus");
+
+                Continue(false)
             }
             gst::MessageView::Error(error) => {
                 let error_message = error.error().to_string();
@@ -320,8 +310,22 @@ impl Recorder {
 
                 self.close_pipeline();
                 self.emit_response(&RecorderResponse::Failed(Error::Recorder(error.error())));
+
+                Continue(false)
             }
-            _ => (),
+            gst::MessageView::StateChanged(sc) => {
+                if message.src().as_ref()
+                    == Some(self.pipeline().unwrap().upcast_ref::<gst::Object>())
+                {
+                    log::info!(
+                        "Pipeline state set from {:?} -> {:?}",
+                        sc.old(),
+                        sc.current()
+                    );
+                }
+                Continue(true)
+            }
+            _ => Continue(true),
         }
     }
 
@@ -367,8 +371,7 @@ impl Recorder {
         record_bus
             .add_watch_local(
                 clone!(@weak self as obj => @default-return Continue(true), move |_, message| {
-                    obj.parse_bus_message(message);
-                    Continue(true)
+                    obj.parse_bus_message(message)
                 }),
             )
             .unwrap();
