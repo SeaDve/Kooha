@@ -149,21 +149,24 @@ impl AreaSelector {
         gesture_drag.set_exclusive(true);
         gesture_drag.connect_drag_begin(clone!(@weak self as obj => move |_, x, y| {
             let imp = obj.private();
-            imp.start_position.replace(Some(Point::new(x, y)));
-        }));
-        gesture_drag.connect_drag_update(clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
-            let imp = obj.private();
-            if let Some(gesture_start_point) = gesture.start_point() {
-                let (start_x, start_y) = gesture_start_point;
 
-                imp.current_position.replace(Some(Point::new(start_x + offset_x, start_y + offset_y)));
-                obj.queue_draw();
-            }
+            let start_position = Point::new(x, y);
+            imp.start_position.replace(Some(start_position));
         }));
+        gesture_drag.connect_drag_update(
+            clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
+                if let Some((start_x, start_y)) = gesture.start_point() {
+                    let imp = obj.private();
+
+                    let current_position = Point::new(start_x + offset_x, start_y + offset_y);
+                    imp.current_position.replace(Some(current_position));
+                    obj.queue_draw();
+                }
+            }),
+        );
         gesture_drag.connect_drag_end(clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
-            let imp = obj.private();
-            if let Some(gesture_start_point) = gesture.start_point() {
-                let (start_x, start_y) = gesture_start_point;
+            if let Some((start_x, start_y)) = gesture.start_point() {
+                let imp = obj.private();
 
                 let start_position = imp.start_position.take().unwrap();
                 let end_position = Point::new(start_x + offset_x, start_y + offset_y);
