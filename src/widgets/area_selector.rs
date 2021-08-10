@@ -2,7 +2,7 @@ use adw::subclass::prelude::*;
 use futures::channel::oneshot::{Canceled, Receiver, Sender};
 use gtk::{
     gdk::{self, keys::Key},
-    glib::{self, clone, signal::Inhibit, SignalHandlerId},
+    glib::{self, clone, signal::Inhibit},
     graphene, gsk,
     prelude::*,
     subclass::prelude::*,
@@ -196,13 +196,6 @@ impl AreaSelector {
                 ),
             }
         });
-    }
-
-    pub fn connect_response<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_local("response", false, f).unwrap()
     }
 
     pub async fn select_area(&self) -> Result<(Rectangle, Screen), Canceled> {
