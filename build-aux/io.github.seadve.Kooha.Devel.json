@@ -86,8 +86,7 @@
                 "-Dgtk_doc=false",
                 "-Dtests=false",
                 "-Dexamples=false",
-                "-Dvapi=false",
-                "-Dglade_catalog=disabled"
+                "-Dvapi=false"
             ],
             "cleanup": [
                 "/include",
