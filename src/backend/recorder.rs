@@ -196,7 +196,14 @@ impl Recorder {
             RecorderState::Flushing => return,
         };
 
-        let pipeline = self.pipeline().unwrap();
+        let pipeline = match new_pipeline_state {
+            gst::State::Null => {
+                let imp = self.private();
+                imp.pipeline.take().unwrap()
+            }
+            _ => self.pipeline().unwrap(),
+        };
+
         if let Err(error) = pipeline.set_state(new_pipeline_state) {
             log::error!(
                 "Failed to set pipeline state to {:?}: {}",
