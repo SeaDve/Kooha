@@ -100,7 +100,7 @@ impl PipelineBuilder {
         let pipeline_string = self.parse_into_string();
         log::debug!("pipeline_string: {}", &pipeline_string);
 
-        gst::parse_launch(&pipeline_string)
+        gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)
     }
 }
 
