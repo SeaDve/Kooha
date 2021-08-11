@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
+"PO-Revision-Date: 2021-08-11 12:33+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/pt_BR/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
@@ -103,11 +103,11 @@ msgstr "Geral"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Abrir Menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Mostrar atalhos"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
@@ -235,7 +235,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Atalhos do teclado"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
@@ -264,7 +264,7 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
 msgid "translator-credits"
-msgstr "Vitor Cardoso"
+msgstr "Vitor Cardoso /nTiago Lucas Flach"
 
 #: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"

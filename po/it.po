@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-06 04:02+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2021-08-11 12:33+0000\n"
+"Last-Translator: Nicolas Mariniello <seldon1000@tutanota.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -68,19 +68,19 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Supporta i formati WebM, MP4, GIF, e MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Codifica con accelerazione hardware opzionale"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Seleziona un monitor o una finestra da registrare."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Crea una selezione per catturare un'area specifica dal tuo schermo."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -112,7 +112,7 @@ msgstr "Apri Menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Mostra Scorciatoie"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
@@ -124,11 +124,11 @@ msgstr "In registrazione"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Interruttore Registrazione"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Interruttore Pausa"
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
@@ -140,15 +140,15 @@ msgstr "Impostazioni"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Interruttore Suoni del Computer"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Interruttore Microfono"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Interruttore Puntatore"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
@@ -196,11 +196,11 @@ msgstr "In registrazione tra…"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Ripulisco…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
-msgstr ""
+msgstr "_Ritardo"
 
 #: data/resources/ui/window.ui:290
 msgid "None"
@@ -216,7 +216,7 @@ msgstr "10 secondi"
 
 #: data/resources/ui/window.ui:306
 msgid "_Video Format"
-msgstr ""
+msgstr "_Formato Video"
 
 #: data/resources/ui/window.ui:308
 msgid "WebM"
@@ -236,42 +236,42 @@ msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr ""
+msgstr "_Salva in…"
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Scorciatoie da Tastiera"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
-msgstr ""
+msgstr "_A proposito di Kooha"
 
 #: src/application.rs:134
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Seleziona la cartella di registrazione"
 
 #: src/application.rs:137
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annulla"
 
 #: src/application.rs:138
 msgid "_Select"
-msgstr ""
+msgstr "_Seleziona"
 
 #: src/application.rs:158
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "Impossibile accedere a \"{}\""
 
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Per favore scegli una posizione accessibile e prova di nuovo."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
 msgid "translator-credits"
 msgstr ""
-"Albano Battistella\n"
-"Nicolas Mariniello"
+"Nicolas Mariniello\n"
+"Albano Battistella"
 
 #: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"
@@ -287,7 +287,7 @@ msgstr "Video dello schermo registrato!"
 
 #: src/application.rs:203
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "La registrazione è stata salvata in \"{}\""
 
 #: src/application.rs:211
 msgid "Open File"
@@ -298,24 +298,28 @@ msgid ""
 "Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
 "in Kooha's readme page. ({})"
 msgstr ""
+"Assicurati di controllare le dipendenze a runtime e la pagina \"It Doesn't "
+"Work\" nel file readme di Kooha. ({})"
 
 #: src/error.rs:18
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to Kooha's "
 "issue page. ({})"
 msgstr ""
+"Un plugin GStreamer potrebbe non essere installato. Se così, per favore "
+"riporta nella pagina dei problemi di Kooha. ({})"
 
 #: src/error.rs:39
 msgid "Screencast Portal Request Failed"
-msgstr ""
+msgstr "Richiesta del portale per la condivisione dello schermo fallita"
 
 #: src/error.rs:40
 msgid "Recording Failed"
-msgstr ""
+msgstr "Registrazione Fallita"
 
 #: src/error.rs:41
 msgid "Pipeline Build Failed"
-msgstr ""
+msgstr "Costruzione condotto fallita"
 
 #: src/widgets/window.rs:174
 msgid "Paused"

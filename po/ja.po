@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-08 12:47+0000\n"
+"PO-Revision-Date: 2021-08-11 12:33+0000\n"
 "Last-Translator: 小山田純 <oyamada.junjun@outlook.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
@@ -28,7 +28,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "エレガントに画面を記録"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -115,7 +115,7 @@ msgstr "終了"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
 msgid "Recording"
-msgstr ""
+msgstr "録画中"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
@@ -127,7 +127,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
-msgstr ""
+msgstr "録画開始をキャンセル"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Settings"
@@ -147,7 +147,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
-msgstr "メインメニュー"
+msgstr "メニュー"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
@@ -179,15 +179,15 @@ msgstr "ポインターを表示する"
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
-msgstr "録画する"
+msgstr "録画"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
-msgstr "停止する"
+msgstr "録画終了"
 
 #: data/resources/ui/window.ui:218
 msgid "Recording in…"
-msgstr ""
+msgstr "録画開始まで"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
@@ -231,27 +231,27 @@ msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr ""
+msgstr "保存先"
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_キーボードショートカット"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Koohaについて"
 
 #: src/application.rs:134
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "動画の保存先のフォルダを選択"
 
 #: src/application.rs:137
 msgid "_Cancel"
-msgstr ""
+msgstr "_キャンセル"
 
 #: src/application.rs:138
 msgid "_Select"
-msgstr ""
+msgstr "_選択"
 
 #: src/application.rs:158
 msgid "Cannot access “{}”"
