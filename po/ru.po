@@ -4,13 +4,14 @@
 # Artem <KovalevArtem.ru@gmail.com>, 2021.
 # Dzmitry Neviadomski <nevack.d@gmail.com>, 2021.
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
+# Noel Fritz <toro_75@yahoo.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: Dzmitry Neviadomski <nevack.d@gmail.com>\n"
+"PO-Revision-Date: 2021-08-12 20:34+0000\n"
+"Last-Translator: Noel Fritz <toro_75@yahoo.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
@@ -98,15 +99,17 @@ msgstr "⌨️ Поддержка полезных клавиатурных со
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
 msgid "Dave Patrick"
-msgstr "Dave Patrick"
+msgstr "Дэйв Патрик"
 
 #: data/resources/ui/shortcuts.ui:10
+#, fuzzy
 msgid "General"
-msgstr "Общие"
+msgstr "Основное"
 
 #: data/resources/ui/shortcuts.ui:14
+#, fuzzy
 msgid "Open Menu"
-msgstr ""
+msgstr "Открыть меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
