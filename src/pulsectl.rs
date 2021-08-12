@@ -6,7 +6,7 @@ fn retrieve_server_info() -> anyhow::Result<ServerInfo> {
     Ok(server_info)
 }
 
-pub fn version() -> Option<String> {
+pub fn server_version_info() -> Option<String> {
     let server_info = retrieve_server_info().ok()?;
     let server_name = server_info.server_name?;
     let server_version = server_info.server_version?;

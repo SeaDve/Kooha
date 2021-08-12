@@ -190,7 +190,7 @@ impl Recorder {
     async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
         let imp = self.private();
 
-        let pulse_server_version = pulsectl::version().unwrap_or_else(|| "None".into());
+        let pulse_server_version = pulsectl::server_version_info().unwrap_or_else(|| "None".into());
         log::debug!("pulse_server_version: {}", pulse_server_version);
 
         let (speaker_source, mic_source) = pulsectl::default_audio_sources_name();
