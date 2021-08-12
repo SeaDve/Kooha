@@ -103,7 +103,7 @@ impl ScreencastPortal {
             Err(error) => match error {
                 ashpd::Error::Portal(response_error) => match response_error {
                     ResponseError::Cancelled => {
-                        log::info!("Session cancelled");
+                        log::info!("Select sources cancelled");
                         ScreencastPortalResponse::Cancelled
                     }
                     ResponseError::Other => {
