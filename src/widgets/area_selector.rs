@@ -117,8 +117,7 @@ mod imp {
             }
 
             obj.set_raise_request(false);
-            obj.destroy();
-            Inhibit(false)
+            self.parent_close_request(obj)
         }
     }
 }
