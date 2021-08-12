@@ -206,7 +206,7 @@ impl Recorder {
             .mic_source(mic_source);
 
         if !imp.settings.is_selection_mode() {
-            self.setup_pipeline(pipeline_builder);
+            self.build_pipeline(pipeline_builder);
             return;
         }
 
@@ -222,7 +222,7 @@ impl Recorder {
                 glib::timeout_add_local_once(
                     Duration::from_millis(5),
                     clone!(@weak self as obj => move || {
-                        obj.setup_pipeline(pipeline_builder);
+                        obj.build_pipeline(pipeline_builder);
                     }),
                 );
 
@@ -236,7 +236,7 @@ impl Recorder {
         };
     }
 
-    fn setup_pipeline(&self, pipeline_builder: PipelineBuilder) {
+    fn build_pipeline(&self, pipeline_builder: PipelineBuilder) {
         log::debug!("{:#?}", &pipeline_builder);
 
         match pipeline_builder.build() {
