@@ -1,7 +1,8 @@
 use ashpd::zbus;
 use gtk::glib;
+use pulsectl::controllers::types::ServerInfo;
 
-use std::{cmp::min, path::Path, process::Command};
+use std::{cmp::min, path::Path};
 
 const MAX_THREAD_COUNT: u32 = 64;
 
@@ -14,37 +15,37 @@ pub fn ideal_thread_count() -> u32 {
     min(num_processors, MAX_THREAD_COUNT)
 }
 
-pub fn default_audio_sources() -> (Option<String>, Option<String>) {
-    let output = Command::new("/usr/bin/pactl")
-        .arg("info")
-        .output()
-        .expect("Failed to run pactl.")
-        .stdout;
-    let output = String::from_utf8(output).expect("Failed to convert utf8 to String.");
+fn pulse_server_info() -> anyhow::Result<ServerInfo> {
+    let mut source_controller = pulsectl::controllers::SourceController::create()?;
+    let server_info = source_controller.get_server_info()?;
+    Ok(server_info)
+}
 
-    let default_sink = format!(
-        "{}.monitor",
-        output
-            .lines()
-            .nth(12)
-            .unwrap()
-            .split_whitespace()
-            .nth(2)
-            .unwrap()
-    );
-    let default_source = output
-        .lines()
-        .nth(13)
-        .unwrap()
-        .split_whitespace()
-        .nth(2)
-        .unwrap()
-        .to_string();
+pub fn pulse_server_version() -> Option<String> {
+    let server_info = pulse_server_info().ok()?;
+    let server_name = server_info.server_name?;
+    let server_version = server_info.server_version?;
+    Some(format!("{} version {}", server_name, server_version))
+}
 
-    if default_source == default_sink {
-        (Some(default_sink), None)
+pub fn default_audio_sources_name() -> (Option<String>, Option<String>) {
+    let server_info = match pulse_server_info() {
+        Ok(server_info) => server_info,
+        Err(error) => {
+            log::error!("Failed to get pulse server info: {}", error);
+            return (None, None);
+        }
+    };
+
+    let default_sink_name = server_info
+        .default_sink_name
+        .map(|name| format!("{}.monitor", name));
+    let default_source_name = server_info.default_source_name;
+
+    if default_sink_name == default_source_name {
+        (default_sink_name, None)
     } else {
-        (Some(default_sink), Some(default_source))
+        (default_sink_name, default_source_name)
     }
 }
 

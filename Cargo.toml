@@ -20,3 +20,4 @@ adw = { package = "libadwaita", version = "0.1.0-alpha-3" }
 gst = { package = "gstreamer", version = "0.17" }
 gst-plugin-gif = "0.7.0"
 futures = "0.3.16"
+rust-pulsectl-fork = "0.2.12"

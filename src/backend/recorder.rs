@@ -190,7 +190,8 @@ impl Recorder {
     async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
         let imp = self.private();
 
-        let (speaker_source, mic_source) = utils::default_audio_sources();
+        let (speaker_source, mic_source) = utils::default_audio_sources_name();
+        log::debug!("pulse_server_version: {:?}", utils::pulse_server_version());
 
         let pipeline_builder = PipelineBuilder::new()
             .record_speaker(imp.settings.is_record_speaker())
