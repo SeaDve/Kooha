@@ -15,7 +15,7 @@ use std::{
 use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
     error::Error,
-    pulsectl,
+    pactl,
     widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
 };
 
@@ -190,10 +190,10 @@ impl Recorder {
     async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
         let imp = self.private();
 
-        let pulse_server_version = pulsectl::server_version_info().unwrap_or_else(|| "None".into());
+        let pulse_server_version = pactl::server_version_info().unwrap_or_else(|| "None".into());
         log::debug!("pulse_server_version: {}", pulse_server_version);
 
-        let (speaker_source, mic_source) = pulsectl::default_audio_devices_name();
+        let (speaker_source, mic_source) = pactl::default_audio_devices_name();
 
         let pipeline_builder = PipelineBuilder::new()
             .record_speaker(imp.settings.is_record_speaker())

@@ -16,7 +16,7 @@ mod backend;
 mod config;
 mod data_types;
 mod error;
-mod pulsectl;
+mod pactl;
 mod utils;
 mod widgets;
 
