@@ -13,7 +13,7 @@ pub fn server_version_info() -> Option<String> {
     Some(format!("{} version {}", server_name, server_version))
 }
 
-pub fn default_audio_sources_name() -> (Option<String>, Option<String>) {
+pub fn default_audio_devices_name() -> (Option<String>, Option<String>) {
     let server_info = match retrieve_server_info() {
         Ok(server_info) => server_info,
         Err(error) => {

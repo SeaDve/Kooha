@@ -193,7 +193,7 @@ impl Recorder {
         let pulse_server_version = pulsectl::server_version_info().unwrap_or_else(|| "None".into());
         log::debug!("pulse_server_version: {}", pulse_server_version);
 
-        let (speaker_source, mic_source) = pulsectl::default_audio_sources_name();
+        let (speaker_source, mic_source) = pulsectl::default_audio_devices_name();
 
         let pipeline_builder = PipelineBuilder::new()
             .record_speaker(imp.settings.is_record_speaker())
