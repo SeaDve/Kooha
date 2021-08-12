@@ -71,12 +71,6 @@ mod imp {
     }
 
     impl ObjectImpl for Recorder {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
-
-            obj.setup_signals();
-        }
-
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![
@@ -144,26 +138,6 @@ impl Recorder {
         imp::Recorder::from_instance(self)
     }
 
-    fn setup_signals(&self) {
-        let imp = self.private();
-
-        imp.portal.connect_response(
-            clone!(@weak self as obj => @default-return None, move | args | {
-                let response = args[1].get().unwrap();
-                match response {
-                    ScreencastPortalResponse::Success(streams, fd) => {
-                        obj.init_pipeline(streams, fd);
-                    },
-                    ScreencastPortalResponse::Failed(error_message) => {
-                        obj.emit_response(&RecorderResponse::Failed(error_message));
-                    }
-                    ScreencastPortalResponse::Cancelled => (),
-                };
-                None
-            }),
-        );
-    }
-
     fn portal(&self) -> &ScreencastPortal {
         let imp = self.private();
         &imp.portal
@@ -213,7 +187,7 @@ impl Recorder {
         };
     }
 
-    fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
+    async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
         let imp = self.private();
 
         let (speaker_source, mic_source) = utils::default_audio_sources();
@@ -234,29 +208,29 @@ impl Recorder {
         }
 
         let area_selector = AreaSelector::new();
-        let ctx = glib::MainContext::default();
-        ctx.spawn_local(clone!(@weak self as obj => async move {
-            match area_selector.select_area().await {
-                Ok((coords, actual_screen)) => {
-                    let pipeline_builder = pipeline_builder
-                        .coordinates(coords)
-                        .actual_screen(actual_screen);
+        match area_selector.select_area().await {
+            Ok((coords, actual_screen)) => {
+                let pipeline_builder = pipeline_builder
+                    .coordinates(coords)
+                    .actual_screen(actual_screen);
 
-                    // Give area selector some time to disappear before setting up pipeline
-                    // to avoid it being included in the recording.
-                    glib::timeout_add_local_once(Duration::from_millis(5), move || {
+                // Give area selector some time to disappear before setting up pipeline
+                // to avoid it being included in the recording.
+                glib::timeout_add_local_once(
+                    Duration::from_millis(5),
+                    clone!(@weak self as obj => move || {
                         obj.setup_pipeline(pipeline_builder);
-                    });
+                    }),
+                );
 
-                    log::info!("Captured coordinates");
-                }
-                Err(_) => {
-                    obj.portal().close_session();
-
-                    log::info!("Cancelled capture");
-                }
+                log::info!("Captured coordinates");
             }
-        }));
+            Err(_) => {
+                self.portal().close_session();
+
+                log::info!("Cancelled capture");
+            }
+        };
     }
 
     fn setup_pipeline(&self, pipeline_builder: PipelineBuilder) {
@@ -366,11 +340,22 @@ impl Recorder {
 
         let is_show_pointer = imp.settings.is_show_pointer();
         let is_selection_mode = imp.settings.is_selection_mode();
-        self.portal()
-            .new_session(is_show_pointer, is_selection_mode);
 
         log::debug!("is_show_pointer: {}", is_show_pointer);
         log::debug!("is_selection_mode: {}", is_selection_mode);
+
+        let ctx = glib::MainContext::default();
+        ctx.spawn_local(clone!(@weak self as obj => async move {
+            match obj.portal().new_session(is_show_pointer, is_selection_mode).await {
+                ScreencastPortalResponse::Success(streams, fd) => {
+                    obj.init_pipeline(streams, fd).await;
+                }
+                ScreencastPortalResponse::Failed(error) => {
+                    obj.emit_response(&RecorderResponse::Failed(error));
+                }
+                ScreencastPortalResponse::Cancelled => (),
+            }
+        }));
     }
 
     pub fn start(&self) {

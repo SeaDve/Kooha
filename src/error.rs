@@ -27,8 +27,8 @@ impl From<ResponseError> for Error {
     }
 }
 
-impl From<&ashpd::Error> for Error {
-    fn from(e: &ashpd::Error) -> Self {
+impl From<ashpd::Error> for Error {
+    fn from(e: ashpd::Error) -> Self {
         Self::Portal(e.to_string())
     }
 }

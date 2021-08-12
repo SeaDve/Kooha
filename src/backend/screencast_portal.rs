@@ -7,18 +7,17 @@ use ashpd::{
     zbus, WindowIdentifier,
 };
 use gtk::{
-    glib::{self, clone, subclass::Signal, GBoxed, SignalHandlerId, WeakRef},
+    glib::{self, clone, WeakRef},
     prelude::*,
     subclass::prelude::*,
 };
-use once_cell::sync::{Lazy, OnceCell};
+use once_cell::sync::OnceCell;
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
 use crate::{error::Error, widgets::MainWindow};
 
-#[derive(Debug, Clone, GBoxed)]
-#[gboxed(type_name = "ScreencastPortalResponse")]
+#[derive(Debug)]
 pub enum ScreencastPortalResponse {
     Success(Vec<Stream>, i32),
     Failed(Error),
@@ -48,19 +47,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for ScreencastPortal {
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder(
-                    "response",
-                    &[ScreencastPortalResponse::static_type().into()],
-                    <()>::static_type().into(),
-                )
-                .build()]
-            });
-            SIGNALS.as_ref()
-        }
-    }
+    impl ObjectImpl for ScreencastPortal {}
 }
 
 glib::wrapper! {
@@ -76,10 +63,6 @@ impl ScreencastPortal {
         imp::ScreencastPortal::from_instance(self)
     }
 
-    fn emit_response(&self, response: &ScreencastPortalResponse) {
-        self.emit_by_name("response", &[response]).unwrap();
-    }
-
     fn window(&self) -> MainWindow {
         let imp = self.private();
         imp.window.get().unwrap().upgrade().unwrap()
@@ -90,60 +73,50 @@ impl ScreencastPortal {
         imp.window.set(window.downgrade()).unwrap();
     }
 
-    pub fn connect_response<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
+    pub async fn new_session(
         &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_local("response", false, f).unwrap()
-    }
+        is_show_pointer: bool,
+        is_selection_mode: bool,
+    ) -> ScreencastPortalResponse {
+        let imp = self.private();
 
-    pub fn new_session(&self, is_show_pointer: bool, is_selection_mode: bool) {
-        let ctx = glib::MainContext::default();
-        ctx.spawn_local(clone!(@weak self as obj => async move {
-            let imp = obj.private();
+        let source_type = if is_selection_mode {
+            BitFlags::<SourceType>::from_flag(SourceType::Monitor)
+        } else {
+            SourceType::Monitor | SourceType::Window
+        };
+        let cursor_mode = if is_show_pointer {
+            BitFlags::<CursorMode>::from_flag(CursorMode::Embedded)
+        } else {
+            BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
+        };
+        let identifier = WindowIdentifier::from_native(&self.window().native().unwrap()).await;
+        let multiple = !is_selection_mode;
 
-            let source_type = if is_selection_mode {
-                BitFlags::<SourceType>::from_flag(SourceType::Monitor)
-            } else {
-                SourceType::Monitor | SourceType::Window
-            };
-            let cursor_mode = if is_show_pointer {
-                BitFlags::<CursorMode>::from_flag(CursorMode::Embedded)
-            } else {
-                BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
-            };
-            let identifier = WindowIdentifier::from_native(&obj.window().native().unwrap()).await;
-            let multiple = !is_selection_mode;
+        match screencast(identifier, multiple, source_type, cursor_mode).await {
+            Ok(result) => {
+                let (streams, fd, session) = result;
+                imp.session.replace(Some(session));
 
-            match screencast(identifier, multiple, source_type, cursor_mode).await {
-                Ok(result) => {
-                    let (streams, fd, session) = result;
-                    imp.session.replace(Some(session));
-
-                    obj.emit_response(&ScreencastPortalResponse::Success(streams, fd));
+                ScreencastPortalResponse::Success(streams, fd)
+            }
+            Err(error) => match error {
+                ashpd::Error::Portal(response_error) => match response_error {
+                    ResponseError::Cancelled => {
+                        log::info!("Session cancelled");
+                        ScreencastPortalResponse::Cancelled
+                    }
+                    ResponseError::Other => {
+                        log::error!("Response error from screencast call: {}", response_error);
+                        ScreencastPortalResponse::Failed(Error::from(response_error))
+                    }
+                },
+                other_error => {
+                    log::error!("Failed to create a screencast call: {}", &other_error);
+                    ScreencastPortalResponse::Failed(Error::from(other_error))
                 }
-                Err(error) => {
-                    match error {
-                        ashpd::Error::Portal(response_error) => {
-                            match response_error {
-                                ResponseError::Cancelled => {
-                                    obj.emit_response(&ScreencastPortalResponse::Cancelled);
-                                    log::info!("Session cancelled");
-                                },
-                                ResponseError::Other => {
-                                    obj.emit_response(&ScreencastPortalResponse::Failed(Error::from(response_error)));
-                                    log::error!("Response error from screencast call: {}", response_error);
-                                }
-                            }
-                        },
-                        other_error => {
-                            obj.emit_response(&ScreencastPortalResponse::Failed(Error::from(&other_error)));
-                            log::error!("Failed to create a screencast call: {}", other_error);
-                        }
-                    };
-                }
-            };
-        }));
+            },
+        }
     }
 
     pub fn close_session(&self) {
