@@ -16,7 +16,7 @@ use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
     error::Error,
     utils,
-    widgets::{AreaSelector, MainWindow},
+    widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
@@ -209,7 +209,7 @@ impl Recorder {
 
         let area_selector = AreaSelector::new();
         match area_selector.select_area().await {
-            Ok((coords, actual_screen)) => {
+            AreaSelectorResponse::Captured(coords, actual_screen) => {
                 let pipeline_builder = pipeline_builder
                     .coordinates(coords)
                     .actual_screen(actual_screen);
@@ -225,7 +225,7 @@ impl Recorder {
 
                 log::info!("Captured coordinates");
             }
-            Err(_) => {
+            AreaSelectorResponse::Cancelled => {
                 self.portal().close_session();
 
                 log::info!("Cancelled capture");

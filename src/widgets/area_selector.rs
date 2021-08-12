@@ -1,5 +1,5 @@
 use adw::subclass::prelude::*;
-use futures::channel::oneshot::{Canceled, Receiver, Sender};
+use futures::channel::oneshot::{Receiver, Sender};
 use gtk::{
     gdk::{self, keys::Key},
     glib::{self, clone, signal::Inhibit},
@@ -8,7 +8,7 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use std::{cell::RefCell, mem, time::Duration};
+use std::{cell::RefCell, time::Duration};
 
 use crate::{
     data_types::{Point, Rectangle, Screen},
@@ -29,13 +29,19 @@ const FILL_COLOR: gdk::RGBA = gdk::RGBA {
     alpha: 0.3,
 };
 
+#[derive(Debug)]
+pub enum AreaSelectorResponse {
+    Captured(Rectangle, Screen),
+    Cancelled,
+}
+
 mod imp {
     use super::*;
 
     #[derive(Debug)]
     pub struct AreaSelector {
-        pub sender: RefCell<Option<Sender<(Rectangle, Screen)>>>,
-        pub receiver: RefCell<Option<Receiver<(Rectangle, Screen)>>>,
+        pub sender: RefCell<Option<Sender<AreaSelectorResponse>>>,
+        pub receiver: RefCell<Option<Receiver<AreaSelectorResponse>>>,
         pub start_position: RefCell<Option<Point>>,
         pub current_position: RefCell<Option<Point>>,
     }
@@ -106,7 +112,8 @@ mod imp {
     impl WindowImpl for AreaSelector {
         fn close_request(&self, obj: &Self::Type) -> Inhibit {
             if let Some(sender) = self.sender.take() {
-                mem::drop(sender);
+                let response = AreaSelectorResponse::Cancelled;
+                sender.send(response).unwrap();
             }
 
             obj.set_raise_request(false);
@@ -174,7 +181,8 @@ impl AreaSelector {
                 let selection_rectangle = Rectangle::from_points(&start_position, &end_position);
                 let actual_screen = Screen::new(obj.width(), obj.height());
 
-                imp.sender.take().unwrap().send((selection_rectangle, actual_screen)).unwrap();
+                let response = AreaSelectorResponse::Captured(selection_rectangle, actual_screen);
+                imp.sender.take().unwrap().send(response).unwrap();
                 obj.close();
             }
         }));
@@ -198,11 +206,12 @@ impl AreaSelector {
         });
     }
 
-    pub async fn select_area(&self) -> Result<(Rectangle, Screen), Canceled> {
+    pub async fn select_area(&self) -> AreaSelectorResponse {
         let imp = self.private();
 
         self.present();
 
-        imp.receiver.take().unwrap().await
+        let receiver = imp.receiver.take().unwrap();
+        receiver.await.ok().unwrap()
     }
 }
