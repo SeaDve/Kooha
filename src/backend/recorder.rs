@@ -74,7 +74,7 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![
-                    Signal::builder("ready", &[], <()>::static_type().into()).build(),
+                    Signal::builder("prepared", &[], <()>::static_type().into()).build(),
                     Signal::builder(
                         "response",
                         &[RecorderResponse::static_type().into()],
@@ -242,7 +242,7 @@ impl Recorder {
         match pipeline_builder.build() {
             Ok(pipeline) => {
                 self.set_pipeline(Some(pipeline.downcast().unwrap()));
-                self.emit_ready();
+                self.emit_prepared();
             }
             Err(error) => {
                 log::error!("Failed to build pipeline: {}", &error);
@@ -262,8 +262,8 @@ impl Recorder {
         self.emit_by_name("response", &[response]).unwrap();
     }
 
-    fn emit_ready(&self) {
-        self.emit_by_name("ready", &[]).unwrap();
+    fn emit_prepared(&self) {
+        self.emit_by_name("prepared", &[]).unwrap();
     }
 
     fn parse_bus_message(&self, message: &gst::Message) -> Continue {
@@ -331,14 +331,14 @@ impl Recorder {
         self.connect_local("response", false, f).unwrap()
     }
 
-    pub fn connect_ready<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
+    pub fn connect_prepared<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
         &self,
         f: F,
     ) -> SignalHandlerId {
-        self.connect_local("ready", false, f).unwrap()
+        self.connect_local("prepared", false, f).unwrap()
     }
 
-    pub fn ready(&self) {
+    pub fn prepare(&self) {
         let imp = self.private();
 
         let is_show_pointer = imp.settings.is_show_pointer();
