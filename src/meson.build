@@ -34,6 +34,7 @@ sources = files(
   'data_types.rs',
   'error.rs',
   'main.rs',
+  'pulsectl.rs',
   'utils.rs',
 )
 
