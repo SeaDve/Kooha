@@ -5,6 +5,9 @@ on:
 
 name: CI
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   rustfmt:
     name: Rustfmt
