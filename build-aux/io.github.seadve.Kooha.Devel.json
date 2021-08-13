@@ -1,5 +1,5 @@
 {
-    "app-id": "io.github.seadve.Kooha.Devel",
+    "app-id": "io.github.seadve.Kooha",
     "runtime": "org.gnome.Platform",
     "runtime-version": "40",
     "sdk": "org.gnome.Sdk",
@@ -12,12 +12,6 @@
         "--socket=pulseaudio",
         "--filesystem=xdg-videos",
         "--talk-name=org.gnome.Shell",
-        "--talk-name=org.a11y.Bus",
-        "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=kooha=debug",
-        "--env=G_MESSAGES_DEBUG=none",
-        "--env=GST_DEBUG=3",
-        "--env=PIPEWIRE_DEBUG=3"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
@@ -102,7 +96,7 @@
             "name": "kooha",
             "buildsystem": "meson",
             "run-tests": true,
-            "config-opts": ["-Dprofile=development"],
+            "config-opts": ["-Dprofile=default"],
             "sources": [
                 {
                     "type": "dir",
