@@ -152,11 +152,12 @@ impl Application {
 
             if !is_accessible {
                 let error_dialog = gtk::MessageDialogBuilder::new()
-                    .modal(true)
+                    .text(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
+                    .secondary_text(&gettext("Please choose an accessible location and try again."))
                     .buttons(gtk::ButtonsType::Ok)
+                    .message_type(gtk::MessageType::Error)
                     .transient_for(chooser)
-                    .title(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
-                    .text(&gettext("Please choose an accessible location and try again."))
+                    .modal(true)
                     .build();
                 error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
                 error_dialog.present();

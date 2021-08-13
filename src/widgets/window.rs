@@ -202,11 +202,12 @@ impl MainWindow {
                     },
                     RecorderResponse::Failed(error) => {
                         let error_dialog = gtk::MessageDialogBuilder::new()
-                            .modal(true)
+                            .text(&error.title())
+                            .secondary_text(&error.to_string())
                             .buttons(gtk::ButtonsType::Ok)
+                            .message_type(gtk::MessageType::Error)
                             .transient_for(&obj)
-                            .title(&error.title())
-                            .text(&error.to_string())
+                            .modal(true)
                             .build();
                         error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
                         error_dialog.present();
