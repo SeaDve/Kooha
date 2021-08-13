@@ -237,7 +237,7 @@ impl Recorder {
     }
 
     fn build_pipeline(&self, pipeline_builder: PipelineBuilder) {
-        log::debug!("{:#?}", &pipeline_builder);
+        log::debug!("{:?}", &pipeline_builder);
 
         match pipeline_builder.build() {
             Ok(pipeline) => {
