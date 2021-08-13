@@ -979,7 +979,7 @@ dependencies = [
  "log",
  "once_cell",
  "pretty_env_logger",
- "rust-pulsectl-fork",
+ "pulsectl-rs",
  "strum",
  "strum_macros",
 ]
@@ -1374,6 +1374,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "pulsectl-rs"
+version = "0.2.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f293908b6acff92499517f724d21017af07467a125d13a4b08a80ecde23e2c1a"
+dependencies = [
+ "libpulse-binding",
+]
+
+[[package]]
 name = "quick-error"
 version = "1.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1444,15 +1453,6 @@ name = "regex-syntax"
 version = "0.6.25"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f497285884f3fcff424ffc933e56d7cbca511def0c9831a7f9b5f6153e3cc89b"
-
-[[package]]
-name = "rust-pulsectl-fork"
-version = "0.2.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dcbc90699dd6a642a98b11320c10751a834bda66f0038993578e6afdf514e81e"
-dependencies = [
- "libpulse-binding",
-]
 
 [[package]]
 name = "rustc_version"
