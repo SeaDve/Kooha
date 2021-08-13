@@ -17,7 +17,7 @@ pub fn default_audio_devices_name() -> (Option<String>, Option<String>) {
     let server_info = match retrieve_server_info() {
         Ok(server_info) => server_info,
         Err(error) => {
-            log::error!("Failed to get pulse server info: {}", error);
+            log::error!("Failed to retrieve server info: {}", error);
             return (None, None);
         }
     };
