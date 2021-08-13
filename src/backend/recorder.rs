@@ -241,7 +241,7 @@ impl Recorder {
 
         match pipeline_builder.build() {
             Ok(pipeline) => {
-                self.set_pipeline(Some(pipeline.downcast().unwrap()));
+                self.set_pipeline(Some(pipeline));
                 self.emit_prepared();
             }
             Err(error) => {
