@@ -1,6 +1,6 @@
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, GEnum, SignalHandlerId},
+    glib::{self, clone, subclass::Signal, GEnum, SignalHandlerId, WeakRef},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
@@ -217,7 +217,7 @@ impl RecorderController {
         self.property("time").unwrap().get::<u32>().unwrap()
     }
 
-    pub fn set_window(&self, window: &MainWindow) {
+    pub fn set_window(&self, window: WeakRef<MainWindow>) {
         let imp = self.private();
         imp.recorder.set_window(window);
     }

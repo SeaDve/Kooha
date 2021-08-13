@@ -153,7 +153,7 @@ impl MainWindow {
             }),
         );
 
-        imp.recorder_controller.set_window(self);
+        imp.recorder_controller.set_window(self.downgrade());
 
         imp.recorder_controller.connect_state_notify(
             clone!(@weak self as obj => move |recorder_controller, _| {

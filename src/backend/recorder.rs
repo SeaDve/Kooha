@@ -1,7 +1,7 @@
 use ashpd::desktop::screencast::Stream;
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum, SignalHandlerId},
+    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum, SignalHandlerId, WeakRef},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
@@ -313,7 +313,7 @@ impl Recorder {
         }
     }
 
-    pub fn set_window(&self, window: &MainWindow) {
+    pub fn set_window(&self, window: WeakRef<MainWindow>) {
         self.portal().set_window(window);
     }
 

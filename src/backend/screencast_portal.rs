@@ -68,9 +68,9 @@ impl ScreencastPortal {
         imp.window.get().unwrap().upgrade().unwrap()
     }
 
-    pub fn set_window(&self, window: &MainWindow) {
+    pub fn set_window(&self, window: WeakRef<MainWindow>) {
         let imp = self.private();
-        imp.window.set(window.downgrade()).unwrap();
+        imp.window.set(window).unwrap();
     }
 
     pub async fn new_session(
