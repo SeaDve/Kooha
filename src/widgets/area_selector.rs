@@ -48,7 +48,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for AreaSelector {
-        const NAME: &'static str = "AreaSelector";
+        const NAME: &'static str = "KoohaAreaSelector";
         type Type = super::AreaSelector;
         type ParentType = gtk::Window;
 

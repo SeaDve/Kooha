@@ -8,7 +8,7 @@ use once_cell::sync::Lazy;
 use std::cell::Cell;
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
-#[genum(type_name = "TimerState")]
+#[genum(type_name = "KoohaTimerState")]
 pub enum TimerState {
     Stopped,
     Delayed,
@@ -33,7 +33,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for Timer {
-        const NAME: &'static str = "Timer";
+        const NAME: &'static str = "KoohaTimer";
         type Type = super::Timer;
         type ParentType = glib::Object;
 

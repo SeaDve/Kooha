@@ -35,7 +35,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for ScreencastPortal {
-        const NAME: &'static str = "ScreencastPortal";
+        const NAME: &'static str = "KoohaScreencastPortal";
         type Type = super::ScreencastPortal;
         type ParentType = glib::Object;
 

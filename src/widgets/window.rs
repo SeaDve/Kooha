@@ -50,7 +50,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for MainWindow {
-        const NAME: &'static str = "MainWindow";
+        const NAME: &'static str = "KoohaMainWindow";
         type Type = super::MainWindow;
         type ParentType = adw::ApplicationWindow;
 

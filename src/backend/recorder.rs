@@ -20,7 +20,7 @@ use crate::{
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
-#[genum(type_name = "RecorderState")]
+#[genum(type_name = "KoohaRecorderState")]
 pub enum RecorderState {
     Null,
     Paused,
@@ -35,7 +35,7 @@ impl Default for RecorderState {
 }
 
 #[derive(Debug, Clone, GBoxed)]
-#[gboxed(type_name = "RecorderResponse")]
+#[gboxed(type_name = "KoohaRecorderResponse")]
 pub enum RecorderResponse {
     Success(PathBuf),
     Failed(Error),
@@ -55,7 +55,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for Recorder {
-        const NAME: &'static str = "Recorder";
+        const NAME: &'static str = "KoohaRecorder";
         type Type = super::Recorder;
         type ParentType = glib::Object;
 

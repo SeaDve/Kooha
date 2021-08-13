@@ -18,7 +18,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for Settings {
-        const NAME: &'static str = "Settings";
+        const NAME: &'static str = "KoohaSettings";
         type Type = super::Settings;
         type ParentType = glib::Object;
 

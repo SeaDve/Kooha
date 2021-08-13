@@ -13,7 +13,7 @@ use crate::{
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
-#[genum(type_name = "RecorderControllerState")]
+#[genum(type_name = "KoohaRecorderControllerState")]
 pub enum RecorderControllerState {
     Null,
     Delayed,
@@ -43,7 +43,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for RecorderController {
-        const NAME: &'static str = "RecorderController";
+        const NAME: &'static str = "KoohaRecorderController";
         type Type = super::RecorderController;
         type ParentType = glib::Object;
 
