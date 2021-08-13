@@ -11,7 +11,7 @@
         "--device=dri",
         "--socket=pulseaudio",
         "--filesystem=xdg-videos",
-        "--talk-name=org.gnome.Shell",
+        "--talk-name=org.gnome.Shell"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
