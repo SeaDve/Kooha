@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Mykola <mykola.lev@gmail.com>, 2021.
+# Ihor Hordiichuk <igor_ck@outlook.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: Mykola <mykola.lev@gmail.com>\n"
+"PO-Revision-Date: 2021-08-14 10:55+0000\n"
+"Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
 "Language: uk\n"
@@ -17,66 +18,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
 msgid "Kooha"
-msgstr "Куха"
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
 msgid "Elegantly record your screen"
-msgstr "Елегантно записуйте Ваш екран"
+msgstr "Елегантно записуйте ваш екран"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Screencast;Recorder;Screen;Video;"
+msgstr "Записувач;Екран;Відео;Screencast;Recorder;Screen;Video;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr "Записуйте Ваш екран простим та безболісним шляхом не відволікаючись."
+msgstr "Знімайте свій екран просто і безболісно, без відволікань."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
-#, fuzzy
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha (Куха) — це простий записувач екрану з мінімалістичним виглядом. Ви "
-"можете просто натиснути кнопку запису без витрачання часу на налаштування."
+"Kooha — це простий записувач екрана з мінімалістичним інтерфейсом. Ви можете "
+"просто натиснути кнопку запису без витрачання часу на налаштування."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Основними можливостями Kooha є такі функції:"
+msgstr "Основні можливості Kooha:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Запис екрана без зайвих рухів."
+msgstr "🎥 Записування екрана без зайвих рухів."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-#, fuzzy
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Запис мікрофона, звуків комп'ютера, або обидвох одночасно."
+msgstr ""
+"🎙️ Запис звуків за допомогою мікрофона, звуків комп'ютера, або обох "
+"одночасно."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Підтримка форматів WebM, MP4, GIF та MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Додаткове апаратне прискорене кодування"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Вибір монітора або вікна для записування."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Вибір ділянки екрана."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -88,11 +89,11 @@ msgstr "🖱️ Показ або приховування вказівника 
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Вибір місця збереження Ваших записів."
+msgstr "💾 Вибір місця збереження записів."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Можливість використовувати гарячі клавіші."
+msgstr "⌨️ Можливість застосовувати комбінації клавіш."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
 msgid "Dave Patrick"
@@ -100,15 +101,15 @@ msgstr "Дейв Патрік"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "Основне"
+msgstr "Загальні"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Відкрити меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Показати комбінації клавіш"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
@@ -120,11 +121,11 @@ msgstr "Запис"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Почати/зупинити записування"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Зупинити/продовжити"
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
@@ -136,23 +137,23 @@ msgstr "Налаштування"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Увімкнути/вимкнути звуки комп’ютера"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Увімкнути/вимкнути мікрофон"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Показати/сховати вказівник"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
-msgstr "Головне Меню"
+msgstr "Головне меню"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "Звичайний"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
@@ -160,28 +161,27 @@ msgstr "Вибір"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Захоплення монітора або вікна"
 
 #: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Захоплення ділянки екрана"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr "Записувати Звуки Комп'ютера"
+msgstr "Записувати звуки комп'ютера"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr "Записувати Мікрофон"
+msgstr "Записувати з мікрофона"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
 msgstr "Показати вказівник миші"
 
 #: data/resources/ui/window.ui:128
-#, fuzzy
 msgid "Record"
-msgstr "Записувати"
+msgstr "Записати"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
@@ -193,15 +193,15 @@ msgstr "Запис через…"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Очищення…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
-msgstr ""
+msgstr "_Затримка"
 
 #: data/resources/ui/window.ui:290
 msgid "None"
-msgstr "Нічого"
+msgstr "Немає"
 
 #: data/resources/ui/window.ui:295
 msgid "5 seconds"
@@ -213,7 +213,7 @@ msgstr "10 секунд"
 
 #: data/resources/ui/window.ui:306
 msgid "_Video Format"
-msgstr ""
+msgstr "_Формат відео"
 
 #: data/resources/ui/window.ui:308
 msgid "WebM"
@@ -225,43 +225,43 @@ msgstr "MKV"
 
 #: data/resources/ui/window.ui:318
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:323
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr ""
+msgstr "_Зберегти до…"
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Комбінації клавіш"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Про Kooha"
 
 #: src/application.rs:134
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Вибрати теку для записів"
 
 #: src/application.rs:137
 msgid "_Cancel"
-msgstr ""
+msgstr "_Скасувати"
 
 #: src/application.rs:138
 msgid "_Select"
-msgstr ""
+msgstr "_Вибрати"
 
 #: src/application.rs:158
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "Не вдалося отримати доступ до «{}»"
 
 #: src/application.rs:159
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Виберіть доступне розташування та повторіть спробу."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
@@ -270,7 +270,7 @@ msgstr "перекладачі"
 
 #: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"
-msgstr "Авторські права 2021 Дейв Патрік"
+msgstr "Авторське право 2021 Дейв Патрік"
 
 #: src/application.rs:192
 msgid "GitHub"
@@ -282,39 +282,43 @@ msgstr "Записано!"
 
 #: src/application.rs:203
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "Запис збережено до «{}»"
 
 #: src/application.rs:211
 msgid "Open File"
-msgstr ""
+msgstr "Відкрити файл"
 
 #: src/error.rs:17
 msgid ""
 "Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
 "in Kooha's readme page. ({})"
 msgstr ""
+"Обов'язково перевірте наявність залежностей середовища виконання та «It "
+"Doesn't Work» на сторінці readme Kooha. ({})"
 
 #: src/error.rs:18
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to Kooha's "
 "issue page. ({})"
 msgstr ""
+"Можливо, не встановлено плагін GStreamer. Якщо ні, повідомте про це на "
+"сторінці проблем Kooha. ({})"
 
 #: src/error.rs:39
 msgid "Screencast Portal Request Failed"
-msgstr ""
+msgstr "Помилка запиту на портал трансляції екрана"
 
 #: src/error.rs:40
 msgid "Recording Failed"
-msgstr ""
+msgstr "Не вдалося записати"
 
 #: src/error.rs:41
 msgid "Pipeline Build Failed"
-msgstr ""
+msgstr "Помилка побудови каналу"
 
 #: src/widgets/window.rs:174
 msgid "Paused"
-msgstr ""
+msgstr "Зупинено"
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Будь-ласка, оберіть доступне місце збереження, і спобуйте ще раз."
