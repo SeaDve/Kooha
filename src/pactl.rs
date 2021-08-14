@@ -1,6 +1,6 @@
-use pulsectl::controllers::types::ServerInfo;
+use pulsectl::{controllers::types::ServerInfo, ControllerError};
 
-fn retrieve_server_info() -> anyhow::Result<ServerInfo> {
+fn retrieve_server_info() -> Result<ServerInfo, ControllerError> {
     let mut source_controller = pulsectl::controllers::SourceController::create()?;
     let server_info = source_controller.get_server_info()?;
     Ok(server_info)
