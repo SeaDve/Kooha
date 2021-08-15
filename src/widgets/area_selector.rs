@@ -211,6 +211,6 @@ impl AreaSelector {
         self.present();
 
         let receiver = imp.receiver.take().unwrap();
-        receiver.await.ok().unwrap()
+        receiver.await.unwrap()
     }
 }
