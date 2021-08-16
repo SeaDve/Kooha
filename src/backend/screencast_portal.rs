@@ -101,18 +101,12 @@ impl ScreencastPortal {
                 ScreencastPortalResponse::Success(streams, fd)
             }
             Err(error) => match error {
-                ashpd::Error::Portal(response_error) => match response_error {
-                    ResponseError::Cancelled => {
-                        log::info!("Select sources cancelled");
-                        ScreencastPortalResponse::Cancelled
-                    }
-                    ResponseError::Other => {
-                        log::error!("Response error from screencast call: {}", response_error);
-                        ScreencastPortalResponse::Failed(Error::from(response_error))
-                    }
-                },
+                ashpd::Error::Portal(ResponseError::Cancelled) => {
+                    log::info!("Select sources cancelled");
+                    ScreencastPortalResponse::Cancelled
+                }
                 other_error => {
-                    log::error!("Failed to create a screencast call: {}", &other_error);
+                    log::error!("Error from screencast call: {}", other_error);
                     ScreencastPortalResponse::Failed(Error::from(other_error))
                 }
             },
