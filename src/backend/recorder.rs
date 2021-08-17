@@ -217,7 +217,7 @@ impl Recorder {
                     .coordinates(coords)
                     .actual_screen(actual_screen);
 
-                // Give area selector some time to disappear before setting up pipeline
+                // Give area selector some time to disappear before building pipeline
                 // to avoid it being included in the recording.
                 glib::timeout_add_local_once(
                     Duration::from_millis(5),
