@@ -120,8 +120,8 @@ takes care of the required dependencies.
 ```
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
-meson builddir --prefix=/usr/local
-ninja -C builddir install
+meson _build --prefix=/usr/local
+ninja -C _build install
 ```
 
 
