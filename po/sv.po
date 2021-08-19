@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-18 12:55+0000\n"
-"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"PO-Revision-Date: 2021-08-19 13:35+0000\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
 "Language: sv\n"
@@ -265,7 +265,7 @@ msgstr "Välj en tillgänglig plats och försök igen."
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:188
 msgid "translator-credits"
-msgstr "Luna Jernberg"
+msgstr ""
 
 #: src/application.rs:189
 msgid "Copyright 2021 Dave Patrick"
