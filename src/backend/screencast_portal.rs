@@ -106,7 +106,7 @@ impl ScreencastPortal {
                     ScreencastPortalResponse::Cancelled
                 }
                 other_error => {
-                    log::error!("Error from screencast call: {}", other_error);
+                    log::error!("Error from screencast call: {:?}", other_error);
                     ScreencastPortalResponse::Failed(Error::from(other_error))
                 }
             },

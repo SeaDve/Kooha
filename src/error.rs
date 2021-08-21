@@ -14,9 +14,9 @@ impl std::error::Error for Error {}
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Portal(e) => f.write_str(&gettext!("Make sure to check for the runtime dependencies and \"It Doesn't Work\" page in Kooha's readme page. ({})", e)),
-            Self::Pipeline(e) => f.write_str(&gettext!("A GStreamer plugin may not be installed. If not, please report to Kooha's issue page. ({})", e)),
-            Self::Recorder(e) => f.write_str(&format!("{}", e)),
+            Self::Portal(_) => f.write_str(&gettext("Screencast Portal Request Error")),
+            Self::Pipeline(_) => f.write_str(&gettext("Pipeline Build Error")),
+            Self::Recorder(_) => f.write_str(&gettext("Recording Error")),
         }
     }
 }
@@ -34,11 +34,21 @@ impl From<ashpd::Error> for Error {
 }
 
 impl Error {
-    pub fn title(&self) -> String {
+    fn message(&self) -> String {
         match self {
-            Self::Portal(_) => gettext("Screencast Portal Request Failed"),
-            Self::Recorder(_) => gettext("Recording Failed"),
-            Self::Pipeline(_) => gettext("Pipeline Build Failed"),
+            Self::Portal(e) => e.to_string(),
+            Self::Pipeline(e) => e.to_string(),
+            Self::Recorder(e) => e.to_string(),
         }
+    }
+
+    pub fn help(&self) -> String {
+        let help_message = match self {
+            Self::Portal(_) => gettext("Make sure to check for the runtime dependencies and <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."),
+            Self::Pipeline(_) => gettext("A GStreamer plugin may not be installed. If not, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
+            Self::Recorder(_) => gettext("Make sure that the saving location exists. If not, something went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
+        };
+
+        format!("{}\n\n<b>Help</b>: {}", self.message(), help_message)
     }
 }

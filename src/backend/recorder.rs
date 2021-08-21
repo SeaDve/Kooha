@@ -180,7 +180,7 @@ impl Recorder {
 
         if let Err(error) = pipeline.set_state(new_pipeline_state) {
             log::error!(
-                "Failed to set pipeline state to {:?}: {}",
+                "Failed to set pipeline state to {:?}: {:?}",
                 new_pipeline_state,
                 error
             );
@@ -245,7 +245,7 @@ impl Recorder {
                 self.emit_prepared();
             }
             Err(error) => {
-                log::error!("Failed to build pipeline: {}", &error);
+                log::error!("Failed to build pipeline: {:?}", &error);
 
                 self.portal().close_session();
                 self.emit_response(&RecorderResponse::Failed(Error::Pipeline(error)));
@@ -284,13 +284,11 @@ impl Recorder {
                 Continue(false)
             }
             gst::MessageView::Error(error) => {
-                let error_message = error.error().to_string();
-
-                if let Some(debug) = error.debug() {
-                    log::error!("Error from record bus: {} (debug {})", error_message, debug);
-                } else {
-                    log::error!("Error from record bus: {}", error_message);
-                };
+                log::error!(
+                    "Error from record bus: {:?} (debug {:?})",
+                    error.error(),
+                    error
+                );
 
                 self.close_pipeline();
                 self.emit_response(&RecorderResponse::Failed(Error::Recorder(error.error())));
