@@ -1,7 +1,7 @@
 use ashpd::desktop::screencast::Stream;
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum, SignalHandlerId, WeakRef},
+    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum, SignalHandlerId},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
@@ -16,7 +16,7 @@ use crate::{
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
     error::Error,
     pactl,
-    widgets::{AreaSelector, AreaSelectorResponse, MainWindow},
+    widgets::{AreaSelector, AreaSelectorResponse},
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
@@ -309,10 +309,6 @@ impl Recorder {
             }
             _ => Continue(true),
         }
-    }
-
-    pub fn set_window(&self, window: WeakRef<MainWindow>) {
-        self.portal().set_window(window);
     }
 
     pub fn connect_state_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(

@@ -7,15 +7,15 @@ use ashpd::{
     zbus, WindowIdentifier,
 };
 use gtk::{
-    glib::{self, clone, WeakRef},
+    gio,
+    glib::{self, clone},
     prelude::*,
     subclass::prelude::*,
 };
-use once_cell::sync::OnceCell;
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
-use crate::{error::Error, widgets::MainWindow};
+use crate::{application::Application, error::Error, widgets::MainWindow};
 
 #[derive(Debug)]
 pub enum ScreencastPortalResponse {
@@ -29,7 +29,6 @@ mod imp {
 
     #[derive(Debug)]
     pub struct ScreencastPortal {
-        pub window: OnceCell<WeakRef<MainWindow>>,
         pub session: RefCell<Option<SessionProxy<'static>>>,
     }
 
@@ -41,7 +40,6 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                window: OnceCell::new(),
                 session: RefCell::new(None),
             }
         }
@@ -64,13 +62,8 @@ impl ScreencastPortal {
     }
 
     fn window(&self) -> MainWindow {
-        let imp = self.private();
-        imp.window.get().unwrap().upgrade().unwrap()
-    }
-
-    pub fn set_window(&self, window: WeakRef<MainWindow>) {
-        let imp = self.private();
-        imp.window.set(window).unwrap();
+        let application: Application = gio::Application::default().unwrap().downcast().unwrap();
+        application.main_window()
     }
 
     pub async fn new_session(

@@ -79,11 +79,6 @@ impl Application {
         .expect("Failed to create Application.")
     }
 
-    fn main_window(&self) -> MainWindow {
-        let imp = imp::Application::from_instance(self);
-        imp.window.get().unwrap().upgrade().unwrap()
-    }
-
     fn setup_actions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
             "launch-default-for-file",
@@ -194,6 +189,11 @@ impl Application {
             .build();
 
         dialog.show();
+    }
+
+    pub fn main_window(&self) -> MainWindow {
+        let imp = imp::Application::from_instance(self);
+        imp.window.get().unwrap().upgrade().unwrap()
     }
 
     pub fn send_record_success_notification(&self, recording_file_path: &Path) {

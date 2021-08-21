@@ -1,16 +1,13 @@
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, GEnum, SignalHandlerId, WeakRef},
+    glib::{self, clone, subclass::Signal, GEnum, SignalHandlerId},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
 
 use std::cell::Cell;
 
-use crate::{
-    backend::{Recorder, RecorderResponse, RecorderState, Timer, TimerState},
-    widgets::MainWindow,
-};
+use crate::backend::{Recorder, RecorderResponse, RecorderState, Timer, TimerState};
 
 #[derive(Debug, PartialEq, Clone, Copy, GEnum)]
 #[genum(type_name = "KoohaRecorderControllerState")]
@@ -215,11 +212,6 @@ impl RecorderController {
 
     pub fn time(&self) -> u32 {
         self.property("time").unwrap().get::<u32>().unwrap()
-    }
-
-    pub fn set_window(&self, window: WeakRef<MainWindow>) {
-        let imp = self.private();
-        imp.recorder.set_window(window);
     }
 
     pub fn connect_state_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
