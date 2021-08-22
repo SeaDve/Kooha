@@ -112,7 +112,7 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
-            obj.setup_actions();
+            obj.setup_gactions();
             obj.setup_signals();
             obj.set_view(&View::Main);
             obj.update_audio_toggles_sensitivity();
@@ -217,7 +217,7 @@ impl MainWindow {
         );
     }
 
-    fn setup_actions(&self) {
+    fn setup_gactions(&self) {
         let imp = self.private();
 
         let actions = &[
