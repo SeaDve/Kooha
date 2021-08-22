@@ -114,13 +114,13 @@ impl Application {
     }
 
     fn setup_accels(&self) {
-        self.set_accels_for_action("app.quit", &["<Primary>q"]);
-        self.set_accels_for_action("win.record-speaker", &["<Primary>a"]);
-        self.set_accels_for_action("win.record-mic", &["<Primary>m"]);
-        self.set_accels_for_action("win.show-pointer", &["<Primary>p"]);
-        self.set_accels_for_action("win.toggle-record", &["<Primary>r"]);
-        self.set_accels_for_action("win.toggle-pause", &["<Primary>k"]);
-        self.set_accels_for_action("win.cancel-delay", &["<Primary>c"]);
+        self.set_accels_for_action("app.quit", &["<primary>q"]);
+        self.set_accels_for_action("win.record-speaker", &["<primary>a"]);
+        self.set_accels_for_action("win.record-mic", &["<primary>m"]);
+        self.set_accels_for_action("win.show-pointer", &["<primary>p"]);
+        self.set_accels_for_action("win.toggle-record", &["<primary>r"]);
+        self.set_accels_for_action("win.toggle-pause", &["<primary>k"]);
+        self.set_accels_for_action("win.cancel-delay", &["<primary>c"]);
     }
 
     fn select_saving_location(&self) {
