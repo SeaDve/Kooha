@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-08 12:47+0000\n"
+"POT-Creation-Date: 2021-08-21 11:34+0800\n"
+"PO-Revision-Date: 2021-08-21 12:28+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fil/>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
 "%10!=6 && n%10!=9));\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
 msgstr "Eleganteng i-record ang iyong screen"
 
@@ -68,35 +68,39 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Mayroong support para sa mga format na WebM, MP4, GIF at MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🗔 Multiple sources selection."
+msgstr "🗔 Maraiming selection ng mga source."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 Puwedeng buksan ang hardware accelerated na pag-encode"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Pumili ng monitor o window na maaaring i-record."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr ""
 "🖼️ Maaaring gumawa ng selection upang maka-capture ng area sa iyong screen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Maglagay ng delay bago magsumali ang pag-record."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Ipakita o itago ang pointer."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Pumili ng paglalagyan ng mga recording."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Gamitin ang mga malaking-tulong na mga keyboard shortcuts."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -256,70 +260,105 @@ msgstr "_Ikansela"
 msgid "_Select"
 msgstr "_Piliin"
 
-#: src/application.rs:158
+#: src/application.rs:155
 msgid "Cannot access “{}”"
 msgstr "Hindi ma-access ang “{}”"
 
-#: src/application.rs:159
+#: src/application.rs:156
 msgid "Please choose an accessible location and try again."
 msgstr "Pumili ng kayang i-access na lokasyon at ulitin."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:188
+#: src/application.rs:189
 msgid "translator-credits"
 msgstr "Dave Patrick"
 
-#: src/application.rs:189
+#: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Kopirayt 2021 Dave Patrick"
 
-#: src/application.rs:192
+#: src/application.rs:193
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:201
+#: src/application.rs:204
 msgid "Screencast Recorded!"
 msgstr "Ang rekording ay natapos na!"
 
-#: src/application.rs:203
+#: src/application.rs:206
 msgid "The recording has been saved in “{}”"
 msgstr "Ang recording ay naka-save sa “{}”"
 
-#: src/application.rs:211
+#: src/application.rs:214
 msgid "Open File"
 msgstr "Buksan ang File"
 
 #: src/error.rs:17
-msgid ""
-"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
-"in Kooha's readme page. ({})"
-msgstr ""
-"Paki-check ang iyong mga runtime dependencies at ang \"It Doesn't Work\" na "
-"pahina sa readme page ng Kooha. ({})"
+msgid "Screencast Portal Request Error"
+msgstr "Error sa Pag-request ng Screencast Portal"
 
 #: src/error.rs:18
+msgid "Pipeline Build Error"
+msgstr "Error sa Pagbuo ng Pipeline"
+
+#: src/error.rs:19
+msgid "Recording Error"
+msgstr "Error sa Pag-record"
+
+#: src/error.rs:47
 msgid ""
-"A GStreamer plugin may not be installed. If not, please report to Kooha's "
-"issue page. ({})"
+"Make sure to check for the runtime dependencies and <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
-"Maaaring may GStreamer plugin na hindi naka-install. Kung hindi, paki-report "
-"sa issue page ng Kooha. ({})"
+"Paki-check kung kumpleto ang iyong mga runtime depencies at paki-check rin "
+"ang <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't "
+"Work na pahina</a>."
 
-#: src/error.rs:39
-msgid "Screencast Portal Request Failed"
-msgstr "Screencast Portal Request Nag-fail"
+#: src/error.rs:48
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+msgstr ""
+"Maaaring may GStreamer plugin na hindi naka-install. Kung hindi naman, paki-"
+"report sa <a href=\"https://github.com/SeaDve/Kooha/issues\">issue page ng "
+"Kooha</a>."
 
-#: src/error.rs:40
-msgid "Recording Failed"
-msgstr "Ang Pag-record ay Nag-fail"
-
-#: src/error.rs:41
-msgid "Pipeline Build Failed"
-msgstr "Nag-fail ang Pagbuo ng Pipeline"
+#: src/error.rs:49
+msgid ""
+"Make sure that the saving location exists. If not, something went wrong and "
+"please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
+"issue page</a>."
+msgstr ""
+"Paki-check kung nag-eexist ang iyong saving location. Kung hindi, nagkaroon "
+"ng error at paki-report sa <a href=\"https://github.com/SeaDve/Kooha/issues\""
+">issue page ng Kooha</a>."
 
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "Naka-pause"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and \"It Doesn't Work\" "
+#~ "page in Kooha's readme page. ({})"
+#~ msgstr ""
+#~ "Paki-check ang iyong mga runtime dependencies at ang \"It Doesn't Work\" "
+#~ "na pahina sa readme page ng Kooha. ({})"
+
+#~ msgid ""
+#~ "A GStreamer plugin may not be installed. If not, please report to Kooha's "
+#~ "issue page. ({})"
+#~ msgstr ""
+#~ "Maaaring may GStreamer plugin na hindi naka-install. Kung hindi, paki-"
+#~ "report sa issue page ng Kooha. ({})"
+
+#~ msgid "Screencast Portal Request Failed"
+#~ msgstr "Screencast Portal Request Nag-fail"
+
+#~ msgid "Recording Failed"
+#~ msgstr "Ang Pag-record ay Nag-fail"
+
+#~ msgid "Pipeline Build Failed"
+#~ msgstr "Nag-fail ang Pagbuo ng Pipeline"
 
 #~ msgid "Sorry! An error has occurred."
 #~ msgstr "Paumanhin! Nagkaroon ng error."

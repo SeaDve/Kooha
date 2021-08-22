@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-14 10:55+0000\n"
+"POT-Creation-Date: 2021-08-21 11:34+0800\n"
+"PO-Revision-Date: 2021-08-22 04:35+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
 msgstr "Елегантно записуйте ваш екран"
 
@@ -60,42 +60,45 @@ msgstr "🎥 Записування екрана без зайвих рухів.
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
-"🎙️ Запис звуків за допомогою мікрофона, звуків комп'ютера, або обох "
-"одночасно."
+"🎙️ Запис звуків за допомогою мікрофона, звуків комп'ютера, або обох одночасно."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Підтримка форматів WebM, MP4, GIF та MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🗔 Multiple sources selection."
+msgstr "🗔 Вибір кількох джерел."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 Додаткове апаратне прискорене кодування"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Вибір монітора або вікна для записування."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ Вибір ділянки екрана."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Налаштування затримки початку запису."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Показ або приховування вказівника миші."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Вибір місця збереження записів."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Можливість застосовувати комбінації клавіш."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
 msgstr "Дейв Патрік"
 
@@ -255,70 +258,104 @@ msgstr "_Скасувати"
 msgid "_Select"
 msgstr "_Вибрати"
 
-#: src/application.rs:158
+#: src/application.rs:155
 msgid "Cannot access “{}”"
 msgstr "Не вдалося отримати доступ до «{}»"
 
-#: src/application.rs:159
+#: src/application.rs:156
 msgid "Please choose an accessible location and try again."
 msgstr "Виберіть доступне розташування та повторіть спробу."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:188
+#: src/application.rs:189
 msgid "translator-credits"
 msgstr "перекладачі"
 
-#: src/application.rs:189
+#: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Авторське право 2021 Дейв Патрік"
 
-#: src/application.rs:192
+#: src/application.rs:193
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:201
+#: src/application.rs:204
 msgid "Screencast Recorded!"
 msgstr "Записано!"
 
-#: src/application.rs:203
+#: src/application.rs:206
 msgid "The recording has been saved in “{}”"
 msgstr "Запис збережено до «{}»"
 
-#: src/application.rs:211
+#: src/application.rs:214
 msgid "Open File"
 msgstr "Відкрити файл"
 
 #: src/error.rs:17
-msgid ""
-"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
-"in Kooha's readme page. ({})"
-msgstr ""
-"Обов'язково перевірте наявність залежностей середовища виконання та «It "
-"Doesn't Work» на сторінці readme Kooha. ({})"
+msgid "Screencast Portal Request Error"
+msgstr "Помилка запиту порталу Screencast"
 
 #: src/error.rs:18
+msgid "Pipeline Build Error"
+msgstr "Помилка побудови pipeline"
+
+#: src/error.rs:19
+msgid "Recording Error"
+msgstr "Помилка записування"
+
+#: src/error.rs:47
 msgid ""
-"A GStreamer plugin may not be installed. If not, please report to Kooha's "
-"issue page. ({})"
+"Make sure to check for the runtime dependencies and <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
-"Можливо, не встановлено плагін GStreamer. Якщо ні, повідомте про це на "
-"сторінці проблем Kooha. ({})"
+"Обов’язково перевірте наявність залежностей виконання та <a href=\"https"
+"://github.com/SeaDve/Kooha#-it-doesnt-work\">Не працює сторінка</a>."
 
-#: src/error.rs:39
-msgid "Screencast Portal Request Failed"
-msgstr "Помилка запиту на портал трансляції екрана"
+#: src/error.rs:48
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+msgstr ""
+"Можливо, не встановлено плагін GStreamer. Якщо встановлено, тоді надішліть "
+"звіт на <a href=\"https://github.com/SeaDve/Kooha/issues\">сторінці проблем "
+"Kooha</a>."
 
-#: src/error.rs:40
-msgid "Recording Failed"
-msgstr "Не вдалося записати"
-
-#: src/error.rs:41
-msgid "Pipeline Build Failed"
-msgstr "Помилка побудови каналу"
+#: src/error.rs:49
+msgid ""
+"Make sure that the saving location exists. If not, something went wrong and "
+"please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
+"issue page</a>."
+msgstr ""
+"Переконайтеся, що розташування для збереження існує. Якщо ні, тоді щось "
+"пішло не так, тоді можете повідомити про це на <a href=\"https://github.com/"
+"SeaDve/Kooha/issues\">сторінці проблем Kooha</a>."
 
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "Зупинено"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and \"It Doesn't Work\" "
+#~ "page in Kooha's readme page. ({})"
+#~ msgstr ""
+#~ "Обов'язково перевірте наявність залежностей середовища виконання та «It "
+#~ "Doesn't Work» на сторінці readme Kooha. ({})"
+
+#~ msgid ""
+#~ "A GStreamer plugin may not be installed. If not, please report to Kooha's "
+#~ "issue page. ({})"
+#~ msgstr ""
+#~ "Можливо, не встановлено плагін GStreamer. Якщо ні, повідомте про це на "
+#~ "сторінці проблем Kooha. ({})"
+
+#~ msgid "Screencast Portal Request Failed"
+#~ msgstr "Помилка запиту на портал трансляції екрана"
+
+#~ msgid "Recording Failed"
+#~ msgstr "Не вдалося записати"
+
+#~ msgid "Pipeline Build Failed"
+#~ msgstr "Помилка побудови каналу"
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Будь-ласка, оберіть доступне місце збереження, і спобуйте ще раз."

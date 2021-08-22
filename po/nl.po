@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-07 11:32+0800\n"
-"PO-Revision-Date: 2021-08-08 12:47+0000\n"
+"POT-Creation-Date: 2021-08-21 11:34+0800\n"
+"PO-Revision-Date: 2021-08-21 12:28+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
 "\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
 msgstr "Maak op elegante wijze een schermopname"
 
@@ -66,34 +66,38 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Ondersteuning voor webm-, mp4-, gif- en mkv-formaten."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🗔 Multiple sources selection."
+msgstr "🗔 Keuze uit meerdere bronnen."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 Hardware-versnelde encodering (optioneel)"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Kies het beeldscherm dat je wilt vastleggen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ Selecteer een gebied op je scherm dat je wilt vastleggen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Stel een wachttijd in zodat de opname iets later start."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Toon of verberg de cursor."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Kies zelf waar de opname moet worden opgeslagen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Maak gebruik van handige sneltoetsen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -253,70 +257,104 @@ msgstr "_Annuleren"
 msgid "_Select"
 msgstr "_Selecteren"
 
-#: src/application.rs:158
+#: src/application.rs:155
 msgid "Cannot access “{}”"
 msgstr "Geen toegang tot ‘{}’"
 
-#: src/application.rs:159
+#: src/application.rs:156
 msgid "Please choose an accessible location and try again."
 msgstr "Kies een toegankelijke locatie en probeer het opnieuw."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:188
+#: src/application.rs:189
 msgid "translator-credits"
 msgstr "Heimen Stoffels &lt;vistausss@fastmail.com&gt;"
 
-#: src/application.rs:189
+#: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021, Dave Patrick"
 
-#: src/application.rs:192
+#: src/application.rs:193
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:201
+#: src/application.rs:204
 msgid "Screencast Recorded!"
 msgstr "De screencast is opgenomen!"
 
-#: src/application.rs:203
+#: src/application.rs:206
 msgid "The recording has been saved in “{}”"
 msgstr "De opname is opgeslagen in ‘{}’"
 
-#: src/application.rs:211
+#: src/application.rs:214
 msgid "Open File"
 msgstr "Bestand openen"
 
 #: src/error.rs:17
-msgid ""
-"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
-"in Kooha's readme page. ({})"
-msgstr ""
-"Controleer de software-afhankelijkheden en de pagina ‘Kooha werkt niet’ in "
-"het leesmijbestand. ({})"
+msgid "Screencast Portal Request Error"
+msgstr "Foutmelding bij verzoek aan screencastportaal"
 
 #: src/error.rs:18
+msgid "Pipeline Build Error"
+msgstr "Pijplijn-bouwfout"
+
+#: src/error.rs:19
+msgid "Recording Error"
+msgstr "Opnamefout"
+
+#: src/error.rs:47
 msgid ""
-"A GStreamer plugin may not be installed. If not, please report to Kooha's "
-"issue page. ({})"
+"Make sure to check for the runtime dependencies and <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
-"Er ontbreekt mogelijk een GStreamer-plug-in. Als dat niet het geval in, meld "
-"dit probleem dan op Kooha's issuepagina. ({})"
+"Controleer de afhankelijkheden en de <a href=\"https://github.com/SeaDve/"
+"Kooha#-it-doesnt-work\">It Doesn't Work</a>-pagina."
 
-#: src/error.rs:39
-msgid "Screencast Portal Request Failed"
-msgstr "Het screencastverzoek is mislukt"
+#: src/error.rs:48
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+msgstr ""
+"Mogelijk ontbreekt er een GStreamer-plug-in. Als dat niet zo is, meld dit "
+"voorval dan op <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
+"issuepagina</a>."
 
-#: src/error.rs:40
-msgid "Recording Failed"
-msgstr "De opname is mislukt"
-
-#: src/error.rs:41
-msgid "Pipeline Build Failed"
-msgstr "Het bouwen van de pijplijn is mislukt"
+#: src/error.rs:49
+msgid ""
+"Make sure that the saving location exists. If not, something went wrong and "
+"please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
+"issue page</a>."
+msgstr ""
+"Zorg er voor dat de opslaglocatie bestaat. Als dat zo is en het lukt nóg "
+"niet, meld dit voorval dan op <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha's issuepagina</a>."
 
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "Onderbroken"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and \"It Doesn't Work\" "
+#~ "page in Kooha's readme page. ({})"
+#~ msgstr ""
+#~ "Controleer de software-afhankelijkheden en de pagina ‘Kooha werkt niet’ "
+#~ "in het leesmijbestand. ({})"
+
+#~ msgid ""
+#~ "A GStreamer plugin may not be installed. If not, please report to Kooha's "
+#~ "issue page. ({})"
+#~ msgstr ""
+#~ "Er ontbreekt mogelijk een GStreamer-plug-in. Als dat niet het geval in, "
+#~ "meld dit probleem dan op Kooha's issuepagina. ({})"
+
+#~ msgid "Screencast Portal Request Failed"
+#~ msgstr "Het screencastverzoek is mislukt"
+
+#~ msgid "Recording Failed"
+#~ msgstr "De opname is mislukt"
+
+#~ msgid "Pipeline Build Failed"
+#~ msgstr "Het bouwen van de pijplijn is mislukt"
 
 #~ msgid "Sorry! An error has occurred."
 #~ msgstr "Er is een fout opgetreden."

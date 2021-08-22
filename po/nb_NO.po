@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-07 11:32+0800\n"
+"POT-Creation-Date: 2021-08-21 11:34+0800\n"
 "PO-Revision-Date: 2021-08-08 12:47+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
 msgstr "Ta opp skjermen din på elegant vis"
 
@@ -65,34 +65,38 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Støtte for WebM-, MP4-, GIF-, og MKV-formater."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🗔 Multiple sources selection."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 Valgfri maskinvareakselerert koding"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Velg en skjerm eller et vindu å ta opp."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ Opprett et utvalg for å fange et gitt område på skjermen din."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Angi en forsinkelse for å forberede deg før opptaket."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Skjul eller vis musepekeren."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Velg et sted der opptakene skal lagres."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Ta i bruk nyttige tastatursnarveier."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -253,72 +257,98 @@ msgstr "_Avbryt"
 msgid "_Select"
 msgstr "_Velg"
 
-#: src/application.rs:158
+#: src/application.rs:155
 msgid "Cannot access “{}”"
 msgstr "Får ikke tilgang til «{}»"
 
-#: src/application.rs:159
+#: src/application.rs:156
 msgid "Please choose an accessible location and try again."
 msgstr "Velg en tilgjengelig mappe og prøv igjen."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:188
+#: src/application.rs:189
 msgid "translator-credits"
 msgstr "Allan Nordhøy"
 
-#: src/application.rs:189
+#: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Opphavsrett © 2021 Dave Patrick"
 
-#: src/application.rs:192
+#: src/application.rs:193
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:201
+#: src/application.rs:204
 msgid "Screencast Recorded!"
 msgstr "Skjermopptak innspilt."
 
-#: src/application.rs:203
+#: src/application.rs:206
 msgid "The recording has been saved in “{}”"
 msgstr "Opptaket har blitt lagret i «{}»"
 
-#: src/application.rs:211
+#: src/application.rs:214
 msgid "Open File"
 msgstr "Åpne fil"
 
 #: src/error.rs:17
-#, fuzzy
-msgid ""
-"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
-"in Kooha's readme page. ({})"
+msgid "Screencast Portal Request Error"
 msgstr ""
-"Husk å sjekke kjøretidsavhengigheter og «Det virker ikke»-siden i Koohas "
-"LESMEG-side. ({})"
 
 #: src/error.rs:18
-msgid ""
-"A GStreamer plugin may not be installed. If not, please report to Kooha's "
-"issue page. ({})"
+msgid "Pipeline Build Error"
 msgstr ""
-"Et GStreamer-programtillegg kan ikke installeres. Hvis ikke kan du "
-"rapportere feilen til Koohas feilsporer. ({})"
 
-#: src/error.rs:39
-msgid "Screencast Portal Request Failed"
-msgstr "Kunne ikke sende forespørsel til skjermdelingsportal"
+#: src/error.rs:19
+msgid "Recording Error"
+msgstr ""
 
-#: src/error.rs:40
-msgid "Recording Failed"
-msgstr "Opptak mislyktes"
+#: src/error.rs:47
+msgid ""
+"Make sure to check for the runtime dependencies and <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+msgstr ""
 
-#: src/error.rs:41
-#, fuzzy
-msgid "Pipeline Build Failed"
-msgstr "Rørlagt bygg mislyktes"
+#: src/error.rs:48
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+msgstr ""
+
+#: src/error.rs:49
+msgid ""
+"Make sure that the saving location exists. If not, something went wrong and "
+"please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
+"issue page</a>."
+msgstr ""
 
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "På pause"
+
+#, fuzzy
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and \"It Doesn't Work\" "
+#~ "page in Kooha's readme page. ({})"
+#~ msgstr ""
+#~ "Husk å sjekke kjøretidsavhengigheter og «Det virker ikke»-siden i Koohas "
+#~ "LESMEG-side. ({})"
+
+#~ msgid ""
+#~ "A GStreamer plugin may not be installed. If not, please report to Kooha's "
+#~ "issue page. ({})"
+#~ msgstr ""
+#~ "Et GStreamer-programtillegg kan ikke installeres. Hvis ikke kan du "
+#~ "rapportere feilen til Koohas feilsporer. ({})"
+
+#~ msgid "Screencast Portal Request Failed"
+#~ msgstr "Kunne ikke sende forespørsel til skjermdelingsportal"
+
+#~ msgid "Recording Failed"
+#~ msgstr "Opptak mislyktes"
+
+#, fuzzy
+#~ msgid "Pipeline Build Failed"
+#~ msgstr "Rørlagt bygg mislyktes"
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "Velg en tilgjengelig plassering og prøv på nytt."

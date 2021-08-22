@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-07 11:32+0800\n"
+"POT-Creation-Date: 2021-08-21 11:34+0800\n"
 "PO-Revision-Date: 2021-08-19 13:35+0000\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Generator: Weblate 4.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:177
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
 msgstr "Spela in din skärm på ett elegant sätt"
 
@@ -66,35 +66,39 @@ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Stöd för formaten WebM, MP4, GIF och MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🗔 Multiple sources selection."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "Hårdvaruaccelererad kodning som tillval"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
 msgstr "Välj en skärm eller ett fönster att spela in."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "Skapa en markering för att spela in ett bestämt område på skärmen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr ""
 "⏲️ Ställ in en fördröjning för att förbereda dig innan du börjar spela in."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Dölj eller visa muspekaren."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Välj en lagringsplats för inspelningen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Använd användbara tangentbordsgenvägar."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
 msgstr "Dave Patrick"
 
@@ -254,70 +258,96 @@ msgstr "_Avbryt"
 msgid "_Select"
 msgstr "_Markera"
 
-#: src/application.rs:158
+#: src/application.rs:155
 msgid "Cannot access “{}”"
 msgstr "Kommer inte åt “{}”"
 
-#: src/application.rs:159
+#: src/application.rs:156
 msgid "Please choose an accessible location and try again."
 msgstr "Välj en tillgänglig plats och försök igen."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:188
+#: src/application.rs:189
 msgid "translator-credits"
 msgstr ""
 
-#: src/application.rs:189
+#: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
-#: src/application.rs:192
+#: src/application.rs:193
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:201
+#: src/application.rs:204
 msgid "Screencast Recorded!"
 msgstr "Skärmvisning inspelad!"
 
-#: src/application.rs:203
+#: src/application.rs:206
 msgid "The recording has been saved in “{}”"
 msgstr "Inspelningen har sparats i “{}”"
 
-#: src/application.rs:211
+#: src/application.rs:214
 msgid "Open File"
 msgstr "Öppna fil"
 
 #: src/error.rs:17
-msgid ""
-"Make sure to check for the runtime dependencies and \"It Doesn't Work\" page "
-"in Kooha's readme page. ({})"
+msgid "Screencast Portal Request Error"
 msgstr ""
-"Kolla körtidsberoenden och sidan \"It Doesn't Work\" på Koohas ReadMe-sida. "
-"({})"
 
 #: src/error.rs:18
-msgid ""
-"A GStreamer plugin may not be installed. If not, please report to Kooha's "
-"issue page. ({})"
+msgid "Pipeline Build Error"
 msgstr ""
-"Ett GStreamer-instick kanske inte är installerat. Om inte, rapportera på "
-"Koohas ärendesida. ({})"
 
-#: src/error.rs:39
-msgid "Screencast Portal Request Failed"
-msgstr "Begäran om skärmsändningsportal misslyckades"
+#: src/error.rs:19
+msgid "Recording Error"
+msgstr ""
 
-#: src/error.rs:40
-msgid "Recording Failed"
-msgstr "Inspelning misslyckades"
+#: src/error.rs:47
+msgid ""
+"Make sure to check for the runtime dependencies and <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+msgstr ""
 
-#: src/error.rs:41
-msgid "Pipeline Build Failed"
-msgstr "Pipeline-bygget misslyckades"
+#: src/error.rs:48
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+msgstr ""
+
+#: src/error.rs:49
+msgid ""
+"Make sure that the saving location exists. If not, something went wrong and "
+"please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
+"issue page</a>."
+msgstr ""
 
 #: src/widgets/window.rs:174
 msgid "Paused"
 msgstr "Pausad"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and \"It Doesn't Work\" "
+#~ "page in Kooha's readme page. ({})"
+#~ msgstr ""
+#~ "Kolla körtidsberoenden och sidan \"It Doesn't Work\" på Koohas ReadMe-"
+#~ "sida. ({})"
+
+#~ msgid ""
+#~ "A GStreamer plugin may not be installed. If not, please report to Kooha's "
+#~ "issue page. ({})"
+#~ msgstr ""
+#~ "Ett GStreamer-instick kanske inte är installerat. Om inte, rapportera på "
+#~ "Koohas ärendesida. ({})"
+
+#~ msgid "Screencast Portal Request Failed"
+#~ msgstr "Begäran om skärmsändningsportal misslyckades"
+
+#~ msgid "Recording Failed"
+#~ msgstr "Inspelning misslyckades"
+
+#~ msgid "Pipeline Build Failed"
+#~ msgstr "Pipeline-bygget misslyckades"
 
 #~ msgid "Sorry! An error has occurred."
 #~ msgstr "Tyvärr! Ett fel har inträffat."
