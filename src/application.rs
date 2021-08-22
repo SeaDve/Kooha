@@ -55,7 +55,8 @@ mod imp {
             self.parent_startup(app);
             gtk::Window::set_default_icon_name(APP_ID);
 
-            app.setup_actions();
+            app.setup_gactions();
+            app.setup_accels();
         }
     }
 
@@ -79,7 +80,7 @@ impl Application {
         .expect("Failed to create Application.")
     }
 
-    fn setup_actions(&self) {
+    fn setup_gactions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
             "launch-default-for-file",
             Some(glib::VariantTy::new("s").unwrap()),
@@ -110,7 +111,9 @@ impl Application {
             };
         }));
         self.add_action(&action_quit);
+    }
 
+    fn setup_accels(&self) {
         self.set_accels_for_action("app.quit", &["<Primary>q"]);
         self.set_accels_for_action("win.record-speaker", &["<Primary>a"]);
         self.set_accels_for_action("win.record-mic", &["<Primary>m"]);
