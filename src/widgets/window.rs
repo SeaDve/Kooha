@@ -17,9 +17,9 @@ use crate::{
 };
 
 #[derive(Debug, PartialEq, strum_macros::ToString)]
-#[strum(serialize_all = "kebab_case")]
+#[strum(serialize_all = "snake_case")]
 enum View {
-    MainScreen,
+    Main,
     Recording,
     Delay,
     Flushing,
@@ -114,7 +114,7 @@ mod imp {
 
             obj.setup_actions();
             obj.setup_signals();
-            obj.set_view(&View::MainScreen);
+            obj.set_view(&View::Main);
             obj.update_audio_toggles_sensitivity();
         }
     }
@@ -158,7 +158,7 @@ impl MainWindow {
                 let imp = obj.private();
 
                 match recorder_controller.state() {
-                    RecorderControllerState::Null => obj.set_view(&View::MainScreen),
+                    RecorderControllerState::Null => obj.set_view(&View::Main),
                     RecorderControllerState::Flushing => obj.set_view(&View::Flushing),
                     RecorderControllerState::Delayed => obj.set_view(&View::Delay),
                     RecorderControllerState::Recording => {

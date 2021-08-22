@@ -13,7 +13,7 @@
           <object class="AdwViewStack" id="main_stack">
             <child>
               <object class="AdwViewStackPage">
-                <property name="name">main-screen</property>
+                <property name="name">main</property>
                 <property name="child">
                   <object class="GtkBox">
                     <property name="orientation">vertical</property>
