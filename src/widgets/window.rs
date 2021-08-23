@@ -266,3 +266,16 @@ impl MainWindow {
         allowed_states.contains(&imp.recorder_controller.state())
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn view_to_string() {
+        assert_eq!(View::Main.to_string(), "main");
+        assert_eq!(View::Recording.to_string(), "recording");
+        assert_eq!(View::Delay.to_string(), "delay");
+        assert_eq!(View::Flushing.to_string(), "flushing");
+    }
+}
