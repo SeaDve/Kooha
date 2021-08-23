@@ -348,3 +348,16 @@ impl PipelineParser {
         self.streams().len() == 1
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn video_format_from_str() {
+        assert_eq!(VideoFormat::Webm, VideoFormat::from_str("webm").unwrap());
+        assert_eq!(VideoFormat::Mkv, VideoFormat::from_str("mkv").unwrap());
+        assert_eq!(VideoFormat::Mp4, VideoFormat::from_str("mp4").unwrap());
+        assert_eq!(VideoFormat::Gif, VideoFormat::from_str("gif").unwrap());
+    }
+}
