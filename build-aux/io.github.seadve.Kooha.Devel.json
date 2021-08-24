@@ -46,8 +46,8 @@
             "buildsystem": "meson",
             "builddir": true,
             "config-opts": [
-                "--buildtype=release",
                 "-Ddoc=disabled",
+                "-Dorc=disabled",
                 "-Dnls=disabled",
                 "-Dtests=disabled",
                 "-Dgobject-cast-checks=disabled",
@@ -67,8 +67,10 @@
             "buildsystem": "meson",
             "builddir": true,
             "config-opts": [
-                "-Dgtk-doc=disabled",
-                "-Dexamples=disabled"
+                "-Ddoc=disabled",
+                "-Dtests=disabled",
+                "-Dexamples=disabled",
+                "-Dwith_encoders=yes"
             ],
             "sources": [
                 {
