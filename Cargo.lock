@@ -179,9 +179,9 @@ checksum = "631ae5198c9be5e753e5cc215e1bd73c2b466a3565173db433f52bb9d3e66dba"
 
 [[package]]
 name = "cairo-rs"
-version = "0.14.1"
+version = "0.14.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a408c13bbc04c3337b94194c1a4d04067097439b79dbc1dcbceba299d828b9ea"
+checksum = "f859ade407c19810ae920b4fafab92189ed312adad490d08fb16b5f49f1e2207"
 dependencies = [
  "bitflags",
  "cairo-sys-rs",
@@ -609,9 +609,9 @@ dependencies = [
 
 [[package]]
 name = "gio"
-version = "0.14.0"
+version = "0.14.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "86c6823b39d46d22cac2466de261f28d7f049ebc18f7b35296a42c7ed8a88325"
+checksum = "402a7057cd21d64bfa7ac027b344a7f50f677fb3308693df0e8c70fb55d29f0d"
 dependencies = [
  "bitflags",
  "futures-channel",
@@ -639,9 +639,9 @@ dependencies = [
 
 [[package]]
 name = "glib"
-version = "0.14.2"
+version = "0.14.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dbecad7a3a898ee749d491ce2ae0decb0bce9e736f9747bc49159b1cea5d37f4"
+checksum = "a8fb802e3798d75b415bea8f016eed88d50106ce82f1274e80f31d80cfd4b056"
 dependencies = [
  "bitflags",
  "futures-channel",
@@ -772,9 +772,9 @@ dependencies = [
 
 [[package]]
 name = "gstreamer"
-version = "0.17.2"
+version = "0.17.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4aa71d1b3f562645e2d3b96c8d5cf1f26174696e37781ef34193311da733f98c"
+checksum = "810e68483c27518ec8491d71ee163f9fc03dcc4ebacee98caa348e8a064898ef"
 dependencies = [
  "bitflags",
  "cfg-if",
@@ -822,9 +822,9 @@ dependencies = [
 
 [[package]]
 name = "gstreamer-sys"
-version = "0.17.0"
+version = "0.17.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8188ba998999a4a16005c3984812807ff882a87f5f3457c3d5bbbfcbdf631ebd"
+checksum = "a81704feeb3e8599913bdd1e738455c2991a01ff4a1780cb62200993e454cc3e"
 dependencies = [
  "glib-sys",
  "gobject-sys",
@@ -1035,9 +1035,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.99"
+version = "0.2.100"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a7f823d141fe0a24df1e23b4af4e3c7ba9e5966ec514ea068c93024aa7deb765"
+checksum = "a1fa8cddc8fbbee11227ef194b5317ed014b8acbf15139bd716a18ad3fe99ec5"
 
 [[package]]
 name = "libloading"
@@ -1109,9 +1109,9 @@ dependencies = [
 
 [[package]]
 name = "memchr"
-version = "2.4.0"
+version = "2.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b16bd47d9e329435e309c58469fe0791c2d0d1ba96ec0954152a5ae2b04387dc"
+checksum = "308cc39be01b73d0d18f82a0e7b2a3df85245f84af96fdddc5d202d27e47b86a"
 
 [[package]]
 name = "memoffset"
@@ -1232,9 +1232,9 @@ checksum = "692fcb63b64b1758029e0a96ee63e049ce8c5948587f2f7208df04625e5f6b56"
 
 [[package]]
 name = "pango"
-version = "0.14.0"
+version = "0.14.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "415823a4fb9f1789785cd6e2d2413816f2ecff92380382969aaca9c400e13a19"
+checksum = "e1fc88307d9797976ea62722ff2ec5de3fae279c6e20100ed3f49ca1a4bf3f96"
 dependencies = [
  "bitflags",
  "glib",
@@ -1386,9 +1386,9 @@ dependencies = [
 
 [[package]]
 name = "pulsectl-rs"
-version = "0.3.1"
+version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c8613e38b57e56110da67cb1ce6b4cc3dfa383dc758cd899d3e05977ff634ad"
+checksum = "06a988bceed1981b2c5fc4a3da0e4e073fdaff8e6bd022b089f54bc573dc3cfc"
 dependencies = [
  "libpulse-binding",
 ]
@@ -1500,18 +1500,18 @@ dependencies = [
 
 [[package]]
 name = "serde"
-version = "1.0.127"
+version = "1.0.129"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f03b9878abf6d14e6779d3f24f07b2cfa90352cfec4acc5aab8f1ac7f146fae8"
+checksum = "d1f72836d2aa753853178eda473a3b9d8e4eefdaf20523b919677e6de489f8f1"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.127"
+version = "1.0.129"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a024926d3432516606328597e0f224a51355a493b49fdd67e9209187cbe55ecc"
+checksum = "e57ae87ad533d9a56427558b516d0adac283614e347abf85b0dc0cbbf0a249f3"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1592,9 +1592,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "1.0.74"
+version = "1.0.75"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1873d832550d4588c3dbc20f01361ab00bfe741048f71e3fecf145a7cc18b29c"
+checksum = "b7f58f7e8eaa0009c5fec437aabf511bd9933e4b2d7407bd05273c01a8906ea7"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1698,9 +1698,9 @@ dependencies = [
 
 [[package]]
 name = "tracing-core"
-version = "0.1.18"
+version = "0.1.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a9ff14f98b1a4b289c6248a023c1c2fa1491062964e9fed67ab29c4e4da4a052"
+checksum = "2ca517f43f0fb96e0c3072ed5c275fe5eece87e8cb52f4a77b69226d3b1c9df8"
 dependencies = [
  "lazy_static",
 ]
