@@ -1,7 +1,7 @@
 mod area_selector;
-mod window;
+mod main_window;
 
 pub use {
     area_selector::{AreaSelector, AreaSelectorResponse},
-    window::MainWindow,
+    main_window::MainWindow,
 };
