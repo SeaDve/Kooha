@@ -277,7 +277,7 @@ impl PipelineParser {
         if is_use_vaapi {
             match self.video_format() {
                 VideoFormat::Webm | VideoFormat::Mkv => "vaapivp8enc", // FIXME Improve pipelines
-                VideoFormat::Mp4 => "vaapih264enc ! h264parse",
+                VideoFormat::Mp4 => "vaapih264enc max-qp=17 ! h264parse",
                 VideoFormat::Gif => "gifenc speed=30", // FIXME This doesn't really use vaapi
             }
         } else {
