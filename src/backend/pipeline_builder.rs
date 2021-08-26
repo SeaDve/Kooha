@@ -151,19 +151,24 @@ impl PipelineParser {
             return None;
         }
 
+        // This allows us to place the videos side by side with each other, without overlaps.
         let mut current_pos = 0;
-        let mut compositor_elements = vec!["compositor name=comp".to_string()];
+        let compositor_elements: Vec<String> = self
+            .streams()
+            .iter()
+            .enumerate()
+            .map(|(sink_num, stream)| {
+                let pad = format!("sink_{}::xpos={}", sink_num, current_pos);
+                let stream_width = stream.size().unwrap().0;
+                current_pos += stream_width;
+                pad
+            })
+            .collect();
 
-        for (sink_num, stream) in self.streams().iter().enumerate() {
-            // This allows us to place the videos side by side with each other, without overlaps.
-            let pad = format!("sink_{}::xpos={}", sink_num, current_pos);
-            compositor_elements.push(pad);
-
-            let stream_width = stream.size().unwrap().0;
-            current_pos += stream_width;
-        }
-
-        Some(compositor_elements.join(" "))
+        Some(format!(
+            "compositor name=comp {}",
+            compositor_elements.join(" ")
+        ))
     }
 
     fn pipewiresrc(&self) -> String {
