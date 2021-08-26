@@ -220,7 +220,7 @@ impl MainWindow {
     fn setup_gactions(&self) {
         let imp = self.private();
 
-        let actions = &[
+        let actions = [
             "record-speaker",
             "record-mic",
             "show-pointer",
