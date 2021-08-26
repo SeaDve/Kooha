@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # سهیل خانعلی‌پور <soheil@disroot.org>, 2021.
 # Soheil Khanalipur <soheil@disroot.org>, 2021.
+# عبدالرئوف عابدی <abdolraoofabedi@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: Soheil Khanalipur <soheil@disroot.org>\n"
+"PO-Revision-Date: 2021-08-26 12:33+0000\n"
+"Last-Translator: عبدالرئوف عابدی <abdolraoofabedi@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fa/>\n"
 "Language: fa\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -265,7 +266,7 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:189
 msgid "translator-credits"
-msgstr "سُـھِـیـل خانعَلی‌پور"
+msgstr "مترجم-اعتبار"
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
