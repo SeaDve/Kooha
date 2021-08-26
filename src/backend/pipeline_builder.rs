@@ -153,7 +153,7 @@ impl PipelineParser {
 
         // This allows us to place the videos side by side with each other, without overlaps.
         let mut current_pos = 0;
-        let compositor_elements: Vec<String> = self
+        let compositor_pads: Vec<String> = self
             .streams()
             .iter()
             .enumerate()
@@ -167,7 +167,7 @@ impl PipelineParser {
 
         Some(format!(
             "compositor name=comp {}",
-            compositor_elements.join(" ")
+            compositor_pads.join(" ")
         ))
     }
 
