@@ -139,7 +139,7 @@ impl Application {
             .set_current_folder(&gio::File::for_path(settings.saving_location()))
             .expect("Failed to set current folder.");
 
-        chooser.connect_response(clone!(@weak self as app => move |chooser, response| {
+        chooser.connect_response(move |chooser, response| {
             if response != gtk::ResponseType::Accept {
                 chooser.destroy();
                 return;
@@ -151,7 +151,9 @@ impl Application {
             if !is_accessible {
                 let error_dialog = gtk::MessageDialogBuilder::new()
                     .text(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
-                    .secondary_text(&gettext("Please choose an accessible location and try again."))
+                    .secondary_text(&gettext(
+                        "Please choose an accessible location and try again.",
+                    ))
                     .buttons(gtk::ButtonsType::Ok)
                     .message_type(gtk::MessageType::Error)
                     .transient_for(chooser)
@@ -164,7 +166,7 @@ impl Application {
 
             settings.set_saving_location(&directory);
             chooser.destroy();
-        }));
+        });
 
         chooser.present();
     }
