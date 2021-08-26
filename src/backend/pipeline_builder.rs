@@ -155,7 +155,7 @@ impl PipelineParser {
         let mut compositor_elements = vec!["compositor name=comp".to_string()];
 
         for (sink_num, stream) in self.streams().iter().enumerate() {
-            // This allows us to place the videos size by size with each other, without overlaps.
+            // This allows us to place the videos side by side with each other, without overlaps.
             let pad = format!("sink_{}::xpos={}", sink_num, current_pos);
             compositor_elements.push(pad);
 
