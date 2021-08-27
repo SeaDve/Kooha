@@ -66,6 +66,11 @@ if get_option('profile') == 'development'
   run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit')
 endif
 
+cargo_sources = files(
+  'Cargo.toml',
+  'Cargo.lock',
+)
+
 subdir('data')
 subdir('po')
 subdir('src')

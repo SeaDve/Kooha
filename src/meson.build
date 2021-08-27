@@ -18,7 +18,7 @@ run_command(
   check: true
 )
 
-sources = files(
+rust_sources = files(
   'backend/mod.rs',
   'backend/pipeline_builder.rs',
   'backend/recorder.rs',
@@ -37,6 +37,8 @@ sources = files(
   'pactl.rs',
   'utils.rs',
 )
+
+sources = [rust_sources, cargo_sources]
 
 custom_target(
   'cargo-build',
