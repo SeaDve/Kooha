@@ -30,7 +30,7 @@ jobs:
       options: --privileged
     steps:
     - uses: actions/checkout@v2
-    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v3
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
       with:
         bundle: kooha-devel.flatpak
         manifest-path: build-aux/io.github.seadve.Kooha.Devel.json
