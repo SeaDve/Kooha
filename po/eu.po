@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-21 03:36+0000\n"
+"PO-Revision-Date: 2021-08-27 14:32+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/kooha/pot-file/eu/"
 ">\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -66,7 +66,7 @@ msgstr "📼 WebM, MP4, GIF eta MKV formatuetarako euskarria."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Hainbat iturrien hautaketa."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
@@ -291,27 +291,32 @@ msgstr "Ireki artxiboa"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Errorea screencast atariko eskaeran"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "Errorea pipelina eraikitzean"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Grabazio-errorea"
 
 #: src/error.rs:47
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"Egiaztatu exekuzio-denbora eta <a href=\"https://github.com/SeaDve/Kooha#-it-"
+"doesnt-work\"> orrialdea ez dabil </a>."
 
 #: src/error.rs:48
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Baliteke GStreamer-en plugin bat instalatuta ez egotea. Hala ez bada, "
+"jakinarazi, mesedez, <a href=\"https://github.com/SeaDve/Kooha/issues\"> "
+"Kooha problemen orria </a>."
 
 #: src/error.rs:49
 msgid ""
@@ -319,6 +324,9 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"Ziurtatu gordetzearen kokalekua existitzen dela. Hala ez bada, zerbait "
+"gaizki joan da, eta, mesedez, jakinarazi honi: <a href=\"https://github.com/"
+"SeaDve/Kooha/issues\">Kooharen arazoen orria</a>."
 
 #: src/widgets/window.rs:174
 msgid "Paused"
