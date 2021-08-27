@@ -74,20 +74,29 @@ To enable all the supported drivers, set `GST_VAAPI_ALL_DRIVERS` to 1, and to
 set Kooha to use vaapi elements, also set `KOOHA_VAAPI` to 1. Both are needed
 to be set to enable hardware accelerated encoding.
 
-To run Kooha with both enabled, run `GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 kooha`
-or `GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 flatpak run io.github.seadve.Kooha` if
-installed through flatpak.
+To run Kooha with both enabled, run the following command:
+```shell
+GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 flatpak run io.github.seadve.Kooha
+```
+or if installed locally, run
+```shell
+GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 kooha
+```
 
 
 ### Change frames per second to 60fps
 
-You can copy and paste this to the terminal if you installed Kooha as a flatpak:
-
-`flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60`<br/> 
-or `gsettings set io.github.seadve.Kooha video-frames 60` if installed locally.
-
 Take note that using other frames per second may cause flickering, depending on
 the performance of your device. 
+
+You can copy and paste this to the terminal if you installed Kooha as a flatpak:
+```shell
+flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60
+```
+or if installed locally, run
+```
+gsettings set io.github.seadve.Kooha video-frames 60
+``` 
 
 
 ## 📋 Runtime Requirements
@@ -125,7 +134,7 @@ takes care of the required dependencies.
 * libadwaita
 
 #### Build Instruction
-```
+```shell
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
 meson _build --prefix=/usr/local
