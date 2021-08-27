@@ -65,10 +65,18 @@ doesn't work, you can also check for the [troubleshooting checklist](https://git
 
 ### Enable hardware accelerated encoding
 
-This allows using an encoder that utilizes GPU for more efficient encoding. This
-should work on AMD and Intel. Just run Kooha with the environment variable
-`GST_VAAPI_ALL_DRIVERS` set to 1. (e.g. `GST_VAAPI_ALL_DRIVERS=1 flatpak run io.github.seadve.Kooha` 
-or just `GST_VAAPI_ALL_DRIVERS=1 kooha` in non-sandboxed installations.
+Enabling hardware accelerated encoding allows the encoder to utilize GPU for
+more efficient or perhaps faster encoding. It may give errors such as
+`no element vaapivp8enc` depending on the featues and capability of your 
+hardware, so it is not guaranteed to work on all devices.
+
+To enable all the supported drivers, set `GST_VAAPI_ALL_DRIVERS` to 1, and to
+set Kooha to use vaapi elements, also set `KOOHA_VAAPI` to 1. Both are needed
+to be set to enable hardware accelerated encoding.
+
+To run Kooha with both enabled, run `GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 kooha`
+or `GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 flatpak run io.github.seadve.Kooha` if
+installed through flatpak.
 
 
 ### Change frames per second to 60fps
