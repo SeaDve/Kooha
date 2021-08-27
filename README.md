@@ -94,9 +94,9 @@ You can copy and paste this to the terminal if you installed Kooha as a flatpak:
 flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60
 ```
 or if installed locally, run
-```
+```shell
 gsettings set io.github.seadve.Kooha video-frames 60
-``` 
+```
 
 
 ## 📋 Runtime Requirements
@@ -109,8 +109,8 @@ gsettings set io.github.seadve.Kooha video-frames 60
 ## 🏗️ Building from source
 
 ### GNOME Builder
-GNOME Builder is the environment used for developing this application. 
-It can use Flatpak manifests to create a consistent building and running 
+GNOME Builder is the environment used for developing this application.
+It can use Flatpak manifests to create a consistent building and running
 environment cross-distro. Thus, it is highly recommended you use it.
 
 1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
@@ -143,7 +143,7 @@ ninja -C _build install
 
 
 ## 🙌 Help translate Kooha
-You can help Kooha translate into your native language. If you found any typos 
+You can help Kooha translate into your native language. If you found any typos
 or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/kooha/) platform.
 
 
@@ -155,6 +155,6 @@ would like to support and fund it, you may donate through [Liberapay](https://li
 
 ## 💝 Acknowledgment
 
-[RecApp](https://github.com/amikha1lov/RecApp) greatly inspired the creation of Kooha. 
-And also, a warm thank you to all the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors) 
+[RecApp](https://github.com/amikha1lov/RecApp) greatly inspired the creation of Kooha.
+And also, a warm thank you to all the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors)
 and [translators](https://hosted.weblate.org/engage/kooha/) from Weblate.
