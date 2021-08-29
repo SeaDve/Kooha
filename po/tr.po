@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-03 15:34+0000\n"
+"PO-Revision-Date: 2021-08-29 06:33+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -68,7 +68,7 @@ msgstr "📼 WebM, MP4, GIF ve MKV biçimleri desteği."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Çoklu kaynak seçimi."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
@@ -196,7 +196,7 @@ msgstr "Kaydediliyor…"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Temizleniyor…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
@@ -264,7 +264,7 @@ msgstr "“{}” dizinine erişilemiyor"
 
 #: src/application.rs:156
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Lütfen erişilebilir bir konum seçin ve tekrar deneyin."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:189
@@ -295,27 +295,31 @@ msgstr "Dosyayı Aç"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Ekran Kaydı Portal İstek Hatası"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "İş Hattı Oluşturma Hatası"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Kaydetme Hatası"
 
 #: src/error.rs:47
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"Çalışma zamanı bağımlılıklarını ve <a href=\"https://github.com/SeaDve/Kooha"
+"#-it-doesnt-work\">Çalışmıyor sayfasını</a> gözden geçirdiğinizden emin olun."
 
 #: src/error.rs:48
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Bir GStreamer eklentisi kurulmamış olabilir. Değilse, lütfen <a href=\"https"
+"://github.com/SeaDve/Kooha/issues\">Kooha'nın sorun sayfasına</a> bildirin."
 
 #: src/error.rs:49
 msgid ""
@@ -323,6 +327,9 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"Kaydetme konumunun var olduğundan emin olun. Değilse, bir şeyler ters "
+"gitmiştir ve lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/issues\""
+">Kooha'nın sorun sayfasına</a> bildirin."
 
 #: src/widgets/window.rs:174
 msgid "Paused"
