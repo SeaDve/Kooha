@@ -102,7 +102,7 @@ mod imp {
 
         fn set_property(
             &self,
-            _obj: &Self::Type,
+            obj: &Self::Type,
             _id: usize,
             value: &glib::Value,
             pspec: &glib::ParamSpec,
@@ -111,6 +111,26 @@ mod imp {
                 "state" => {
                     let state = value.get().unwrap();
                     self.state.set(state);
+
+                    let new_pipeline_state = match state {
+                        RecorderState::Null => gst::State::Null,
+                        RecorderState::Paused => gst::State::Paused,
+                        RecorderState::Playing => gst::State::Playing,
+                        RecorderState::Flushing => return,
+                    };
+
+                    let pipeline = match new_pipeline_state {
+                        gst::State::Null => self.pipeline.take().unwrap(),
+                        _ => obj.pipeline().unwrap(),
+                    };
+
+                    if let Err(error) = pipeline.set_state(new_pipeline_state) {
+                        log::error!(
+                            "Failed to set pipeline state to {:?}: {:?}",
+                            new_pipeline_state,
+                            error
+                        );
+                    };
                 }
                 _ => unimplemented!(),
             }
@@ -162,29 +182,6 @@ impl Recorder {
 
     fn set_state(&self, state: RecorderState) {
         self.set_property("state", state).unwrap();
-
-        let new_pipeline_state = match state {
-            RecorderState::Null => gst::State::Null,
-            RecorderState::Paused => gst::State::Paused,
-            RecorderState::Playing => gst::State::Playing,
-            RecorderState::Flushing => return,
-        };
-
-        let pipeline = match new_pipeline_state {
-            gst::State::Null => {
-                let imp = self.private();
-                imp.pipeline.take().unwrap()
-            }
-            _ => self.pipeline().unwrap(),
-        };
-
-        if let Err(error) = pipeline.set_state(new_pipeline_state) {
-            log::error!(
-                "Failed to set pipeline state to {:?}: {:?}",
-                new_pipeline_state,
-                error
-            );
-        };
     }
 
     async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
