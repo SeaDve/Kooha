@@ -32,7 +32,7 @@
   <img src="data/screenshots/preview.png" alt="Preview"/>
 </p>
 
-Capture your screen in a straightforward and painless way without distractions.
+Capture your screen in a intuitive and straightforward way without distractions.
 
 Kooha is a simple screen recorder with a minimal interface. You can simply click
 the record button without having to configure a bunch of settings.
@@ -57,8 +57,8 @@ There are many possibilities on why it may not be working. You may not have
 the runtime requirements mentioned below installed, or your distro doesn't
 support it. For troubleshooting purposes the [screen cast compatibility page](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/Screencast-Compatibility)
 of `xdg-desktop-portal-wlr` wiki may be helpful in determining if your distro
-has support for it out of the box. If your distro supports it, but it still
-doesn't work, you can also check for the [troubleshooting checklist](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist).
+has support for it out of the box. If it does, but it still doesn't work, you 
+can also check for the [troubleshooting checklist](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist).
 
 
 ## ⚙️ Hidden Configuration Options
@@ -66,15 +66,15 @@ doesn't work, you can also check for the [troubleshooting checklist](https://git
 ### Enable hardware accelerated encoding
 
 Enabling hardware accelerated encoding allows the encoder to utilize GPU for
-more efficient or perhaps faster encoding. It may give errors such as
-`no element vaapivp8enc` depending on the featues and capability of your 
-hardware, so it is not guaranteed to work on all devices.
+more efficient or perhaps faster encoding. It is not guaranteed to work on all
+devices, so it may give errors such as `no element vaapivp8enc` depending on the
+features and capability of your hardware.
 
-To enable all the supported drivers, set `GST_VAAPI_ALL_DRIVERS` to 1, and to
-set Kooha to use vaapi elements, also set `KOOHA_VAAPI` to 1. Both are needed
-to be set to enable hardware accelerated encoding.
+To enable all the supported drivers and force Kooha to use VAAPI elements, set 
+`GST_VAAPI_ALL_DRIVERS` and `KOOHA_VAAPI` both to 1 respectively. These
+environment variables are needed for hardware accelerated encoding.
 
-To run Kooha with both enabled, run the following command:
+To run Kooha with both set, run the following command:
 ```shell
 GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 flatpak run io.github.seadve.Kooha
 ```
@@ -82,7 +82,6 @@ or if installed locally, run
 ```shell
 GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 kooha
 ```
-
 
 ### Change frames per second to 60fps
 
@@ -100,6 +99,7 @@ gsettings set io.github.seadve.Kooha video-frames 60
 
 
 ## 📋 Runtime Requirements
+
 * pipewire
 * gstreamer-plugin-pipewire
 * xdg-desktop-portal
@@ -109,6 +109,7 @@ gsettings set io.github.seadve.Kooha video-frames 60
 ## 🏗️ Building from source
 
 ### GNOME Builder
+
 GNOME Builder is the environment used for developing this application.
 It can use Flatpak manifests to create a consistent building and running
 environment cross-distro. Thus, it is highly recommended you use it.
@@ -120,9 +121,8 @@ environment cross-distro. Thus, it is highly recommended you use it.
 ### Meson
 
 #### Prerequisites
-The following packages are required to build Kooha. Note that these are not
-needed to be installed on your device when you use GNOME Builder because it
-takes care of the required dependencies.
+
+The following packages are required to build Kooha:
 
 * meson
 * ninja
@@ -134,6 +134,7 @@ takes care of the required dependencies.
 * libadwaita
 
 #### Build Instruction
+
 ```shell
 git clone https://github.com/SeaDve/Kooha.git
 cd Kooha
@@ -143,6 +144,7 @@ ninja -C _build install
 
 
 ## 🙌 Help translate Kooha
+
 You can help Kooha translate into your native language. If you found any typos
 or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/kooha/) platform.
 
