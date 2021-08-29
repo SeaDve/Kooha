@@ -92,12 +92,8 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn parse_into_string(self) -> String {
-        PipelineAssembler::from_builder(self).assemble()
-    }
-
     pub fn build(self) -> Result<gst::Pipeline, glib::Error> {
-        let pipeline_string = self.parse_into_string();
+        let pipeline_string = PipelineAssembler::from_builder(self).assemble();
         log::debug!("pipeline_string: {}", &pipeline_string);
 
         gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)
