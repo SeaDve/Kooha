@@ -352,6 +352,12 @@ impl Recorder {
         }));
     }
 
+    pub fn cancel_prepare(&self) {
+        let imp = self.private();
+        imp.pipeline.take();
+        self.portal().close_session();
+    }
+
     pub fn start(&self) {
         let record_bus = self.pipeline().unwrap().bus().unwrap();
         record_bus
@@ -388,9 +394,5 @@ impl Recorder {
                 }
             }),
         );
-    }
-
-    pub fn cancel(&self) {
-        self.portal().close_session();
     }
 }

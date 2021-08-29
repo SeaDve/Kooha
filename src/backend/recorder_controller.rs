@@ -238,13 +238,12 @@ impl RecorderController {
     pub fn start(&self, record_delay: u32) {
         let imp = self.private();
         imp.record_delay.set(record_delay);
-
         imp.recorder.prepare();
     }
 
     pub fn cancel_delay(&self) {
         let imp = self.private();
-        imp.recorder.cancel();
+        imp.recorder.cancel_prepare();
         imp.timer.stop();
     }
 
