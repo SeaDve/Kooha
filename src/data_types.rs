@@ -1,9 +1,6 @@
-use gtk::glib::{self, GBoxed};
-
 use std::mem;
 
-#[derive(Debug, Clone, GBoxed)]
-#[gboxed(type_name = "KoohaRectangle")]
+#[derive(Debug, Clone, Copy)]
 pub struct Rectangle {
     pub x: f64,
     pub y: f64,
@@ -52,8 +49,7 @@ impl Point {
     }
 }
 
-#[derive(Debug, Default, Clone, GBoxed)]
-#[gboxed(type_name = "KoohaScreen")]
+#[derive(Debug, Default)]
 pub struct Screen {
     pub width: i32,
     pub height: i32,

@@ -23,7 +23,7 @@ enum VideoFormat {
     Gif,
 }
 
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default)]
 pub struct PipelineBuilder {
     is_record_speaker: bool,
     is_record_mic: bool,
@@ -252,7 +252,7 @@ impl PipelineParser {
             let stream_height = stream.size().unwrap().1;
 
             let scale_factor = (stream_width / actual_screen.width) as f64;
-            let coords = coords.clone().rescale(scale_factor);
+            let coords = coords.rescale(scale_factor);
 
             let top_crop = coords.y;
             let left_crop = coords.x;
