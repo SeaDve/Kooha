@@ -106,7 +106,7 @@ impl Application {
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
-            if app.main_window().is_safe_to_quit() {
+            if app.main_window().is_safe_to_close() {
                 app.quit();
             };
         }));

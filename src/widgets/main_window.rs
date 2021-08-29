@@ -255,7 +255,7 @@ impl MainWindow {
         self.action_set_enabled("win.cancel-delay", *view == View::Delay);
     }
 
-    pub fn is_safe_to_quit(&self) -> bool {
+    pub fn is_safe_to_close(&self) -> bool {
         let imp = self.private();
 
         let allowed_states = [
