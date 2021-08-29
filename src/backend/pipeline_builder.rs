@@ -93,7 +93,7 @@ impl PipelineBuilder {
     }
 
     pub fn parse_into_string(self) -> String {
-        PipelineParser::from_builder(self).parse()
+        PipelineAssembler::from_builder(self).assemble()
     }
 
     pub fn build(self) -> Result<gst::Pipeline, glib::Error> {
@@ -105,16 +105,16 @@ impl PipelineBuilder {
     }
 }
 
-struct PipelineParser {
+struct PipelineAssembler {
     builder: PipelineBuilder,
 }
 
-impl PipelineParser {
+impl PipelineAssembler {
     pub fn from_builder(builder: PipelineBuilder) -> Self {
         Self { builder }
     }
 
-    pub fn parse(&self) -> String {
+    pub fn assemble(&self) -> String {
         let pipeline_elements = vec![
             self.compositor(),
             Some("queue name=queue0".to_string()),
