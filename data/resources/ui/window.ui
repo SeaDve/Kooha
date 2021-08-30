@@ -275,12 +275,6 @@
         </child>
       </object>
     </child>
-    <!-- <object class="RecorderController" id="controller"> -->
-    <!--   <signal name="notify::state" handler="_on_controller_state_notify" swapped="no"/> -->
-    <!--   <signal name="notify::time" handler="_on_controller_time_notify" swapped="no"/> -->
-    <!--   <signal name="record-success" handler="_on_controller_record_success" swapped="no"/> -->
-    <!--   <signal name="record-failed" handler="_on_controller_record_failed" swapped="no"/> -->
-    <!-- </object> -->
   </template>
   <menu id="menu">
     <section>
