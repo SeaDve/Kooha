@@ -28,7 +28,7 @@ enum View {
 mod imp {
     use super::*;
 
-    #[derive(Debug, CompositeTemplate)]
+    #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct MainWindow {
         #[template_child]
@@ -52,19 +52,6 @@ mod imp {
         const NAME: &'static str = "KoohaMainWindow";
         type Type = super::MainWindow;
         type ParentType = adw::ApplicationWindow;
-
-        fn new() -> Self {
-            Self {
-                pause_record_button: TemplateChild::default(),
-                main_stack: TemplateChild::default(),
-                title_stack: TemplateChild::default(),
-                recording_label: TemplateChild::default(),
-                recording_time_label: TemplateChild::default(),
-                delay_label: TemplateChild::default(),
-
-                recorder_controller: RecorderController::new(),
-            }
-        }
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);

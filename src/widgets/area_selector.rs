@@ -38,7 +38,7 @@ pub enum AreaSelectorResponse {
 mod imp {
     use super::*;
 
-    #[derive(Debug)]
+    #[derive(Debug, Default)]
     pub struct AreaSelector {
         pub sender: RefCell<Option<Sender<AreaSelectorResponse>>>,
         pub receiver: RefCell<Option<Receiver<AreaSelectorResponse>>>,
@@ -51,17 +51,6 @@ mod imp {
         const NAME: &'static str = "KoohaAreaSelector";
         type Type = super::AreaSelector;
         type ParentType = gtk::Window;
-
-        fn new() -> Self {
-            let (sender, receiver) = futures::channel::oneshot::channel();
-
-            Self {
-                sender: RefCell::new(Some(sender)),
-                receiver: RefCell::new(Some(receiver)),
-                start_position: RefCell::new(None),
-                current_position: RefCell::new(None),
-            }
-        }
     }
 
     impl ObjectImpl for AreaSelector {
@@ -208,9 +197,19 @@ impl AreaSelector {
     pub async fn select_area(&self) -> AreaSelectorResponse {
         let imp = self.private();
 
+        let (sender, receiver) = futures::channel::oneshot::channel();
+        imp.sender.replace(Some(sender));
+        imp.receiver.replace(Some(receiver));
+
         self.present();
 
         let receiver = imp.receiver.take().unwrap();
         receiver.await.unwrap()
+    }
+}
+
+impl Default for AreaSelector {
+    fn default() -> Self {
+        Self::new()
     }
 }

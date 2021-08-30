@@ -45,7 +45,7 @@ pub enum RecorderResponse {
 mod imp {
     use super::*;
 
-    #[derive(Debug)]
+    #[derive(Debug, Default)]
     pub struct Recorder {
         pub state: Cell<RecorderState>,
 
@@ -58,15 +58,6 @@ mod imp {
         const NAME: &'static str = "KoohaRecorder";
         type Type = super::Recorder;
         type ParentType = glib::Object;
-
-        fn new() -> Self {
-            Self {
-                state: Cell::new(RecorderState::default()),
-
-                pipeline: RefCell::new(None),
-                portal: ScreencastPortal::new(),
-            }
-        }
     }
 
     impl ObjectImpl for Recorder {
@@ -393,5 +384,11 @@ impl Recorder {
                 }
             }),
         );
+    }
+}
+
+impl Default for Recorder {
+    fn default() -> Self {
+        Self::new()
     }
 }

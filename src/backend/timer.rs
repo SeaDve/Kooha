@@ -25,7 +25,7 @@ impl Default for TimerState {
 mod imp {
     use super::*;
 
-    #[derive(Debug)]
+    #[derive(Debug, Default)]
     pub struct Timer {
         pub state: Cell<TimerState>,
         pub time: Cell<u32>,
@@ -36,13 +36,6 @@ mod imp {
         const NAME: &'static str = "KoohaTimer";
         type Type = super::Timer;
         type ParentType = glib::Object;
-
-        fn new() -> Self {
-            Self {
-                state: Cell::new(TimerState::default()),
-                time: Cell::new(0),
-            }
-        }
     }
 
     impl ObjectImpl for Timer {
@@ -209,5 +202,11 @@ impl Timer {
 
     pub fn stop(&self) {
         self.set_state(TimerState::Stopped);
+    }
+}
+
+impl Default for Timer {
+    fn default() -> Self {
+        Self::new()
     }
 }

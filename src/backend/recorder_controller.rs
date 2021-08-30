@@ -28,7 +28,7 @@ impl Default for RecorderControllerState {
 mod imp {
     use super::*;
 
-    #[derive(Debug)]
+    #[derive(Debug, Default)]
     pub struct RecorderController {
         pub state: Cell<RecorderControllerState>,
         pub time: Cell<u32>,
@@ -43,17 +43,6 @@ mod imp {
         const NAME: &'static str = "KoohaRecorderController";
         type Type = super::RecorderController;
         type ParentType = glib::Object;
-
-        fn new() -> Self {
-            Self {
-                state: Cell::new(RecorderControllerState::default()),
-                time: Cell::new(0),
-
-                record_delay: Cell::new(0),
-                recorder: Recorder::new(),
-                timer: Timer::new(),
-            }
-        }
     }
 
     impl ObjectImpl for RecorderController {
@@ -260,5 +249,11 @@ impl RecorderController {
     pub fn resume(&self) {
         let imp = self.private();
         imp.recorder.resume();
+    }
+}
+
+impl Default for RecorderController {
+    fn default() -> Self {
+        Self::new()
     }
 }

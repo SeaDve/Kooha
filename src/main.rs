@@ -1,4 +1,3 @@
-#![allow(clippy::new_without_default)]
 #![warn(clippy::semicolon_if_nothing_returned)]
 #![warn(clippy::match_wildcard_for_single_variants)]
 #![warn(clippy::inefficient_to_string)]

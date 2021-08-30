@@ -27,7 +27,7 @@ pub enum ScreencastPortalResponse {
 mod imp {
     use super::*;
 
-    #[derive(Debug)]
+    #[derive(Debug, Default)]
     pub struct ScreencastPortal {
         pub session: RefCell<Option<SessionProxy<'static>>>,
     }
@@ -37,12 +37,6 @@ mod imp {
         const NAME: &'static str = "KoohaScreencastPortal";
         type Type = super::ScreencastPortal;
         type ParentType = glib::Object;
-
-        fn new() -> Self {
-            Self {
-                session: RefCell::new(None),
-            }
-        }
     }
 
     impl ObjectImpl for ScreencastPortal {}
@@ -150,4 +144,10 @@ async fn screencast(
     log::info!("Ready for pipewire stream");
 
     Ok((streams, fd, session))
+}
+
+impl Default for ScreencastPortal {
+    fn default() -> Self {
+        Self::new()
+    }
 }
