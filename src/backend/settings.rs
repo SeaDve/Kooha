@@ -117,3 +117,9 @@ impl Settings {
         self.inner().string("record-delay").parse().unwrap()
     }
 }
+
+impl Default for Settings {
+    fn default() -> Self {
+        Self::new()
+    }
+}

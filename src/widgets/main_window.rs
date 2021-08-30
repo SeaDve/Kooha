@@ -12,7 +12,7 @@ use std::string::ToString;
 
 use crate::{
     application::Application,
-    backend::{RecorderController, RecorderControllerState, RecorderResponse, Settings},
+    backend::{RecorderController, RecorderControllerState, RecorderResponse},
     config::PROFILE,
 };
 
@@ -44,7 +44,6 @@ mod imp {
         #[template_child]
         pub delay_label: TemplateChild<gtk::Label>,
 
-        pub settings: Settings,
         pub recorder_controller: RecorderController,
     }
 
@@ -63,7 +62,6 @@ mod imp {
                 recording_time_label: TemplateChild::default(),
                 delay_label: TemplateChild::default(),
 
-                settings: Settings::new(),
                 recorder_controller: RecorderController::new(),
             }
         }
@@ -75,7 +73,8 @@ mod imp {
                 let imp = obj.private();
 
                 if imp.recorder_controller.state() == RecorderControllerState::Null {
-                    let record_delay = imp.settings.record_delay();
+                    let settings = Application::default().settings();
+                    let record_delay = settings.record_delay();
                     imp.recorder_controller.start(record_delay);
                 } else {
                     imp.recorder_controller.stop();
@@ -143,10 +142,11 @@ impl MainWindow {
     fn setup_signals(&self) {
         let imp = self.private();
 
-        imp.settings
-            .bind_key("capture-mode", &*imp.title_stack, "visible-child-name");
+        let settings = Application::default().settings();
 
-        imp.settings.connect_changed_notify(
+        settings.bind_key("capture-mode", &*imp.title_stack, "visible-child-name");
+
+        settings.connect_changed_notify(
             Some("video-format"),
             clone!(@weak self as obj => move |_, _| {
                 obj.update_audio_toggles_sensitivity();
@@ -218,8 +218,6 @@ impl MainWindow {
     }
 
     fn setup_gactions(&self) {
-        let imp = self.private();
-
         let actions = [
             "record-speaker",
             "record-mic",
@@ -229,16 +227,17 @@ impl MainWindow {
             "video-format",
         ];
 
+        let settings = Application::default().settings();
+
         for action in actions {
-            let settings_action = imp.settings.create_action(action);
+            let settings_action = settings.create_action(action);
             self.add_action(&settings_action);
         }
     }
 
     fn update_audio_toggles_sensitivity(&self) {
-        let imp = self.private();
-
-        let is_enabled = imp.settings.video_format() != "gif";
+        let settings = Application::default().settings();
+        let is_enabled = settings.video_format() != "gif";
 
         self.action_set_enabled("win.record-speaker", is_enabled);
         self.action_set_enabled("win.record-mic", is_enabled);

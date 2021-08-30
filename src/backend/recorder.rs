@@ -13,7 +13,8 @@ use std::{
 };
 
 use crate::{
-    backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse, Settings},
+    application::Application,
+    backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse},
     error::Error,
     pactl,
     widgets::{AreaSelector, AreaSelectorResponse},
@@ -49,7 +50,6 @@ mod imp {
         pub state: Cell<RecorderState>,
 
         pub pipeline: RefCell<Option<gst::Pipeline>>,
-        pub settings: Settings,
         pub portal: ScreencastPortal,
     }
 
@@ -64,7 +64,6 @@ mod imp {
                 state: Cell::new(RecorderState::default()),
 
                 pipeline: RefCell::new(None),
-                settings: Settings::new(),
                 portal: ScreencastPortal::new(),
             }
         }
@@ -185,7 +184,7 @@ impl Recorder {
     }
 
     async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
-        let imp = self.private();
+        let settings = Application::default().settings();
 
         let pulse_server_version = pactl::server_version_info().unwrap_or_else(|| "None".into());
         log::debug!("pulse_server_version: {}", pulse_server_version);
@@ -193,16 +192,16 @@ impl Recorder {
         let (speaker_source, mic_source) = pactl::default_audio_devices_name();
 
         let pipeline_builder = PipelineBuilder::new()
-            .record_speaker(imp.settings.is_record_speaker())
-            .record_mic(imp.settings.is_record_mic())
-            .framerate(imp.settings.video_framerate())
-            .file_path(imp.settings.file_path())
+            .record_speaker(settings.is_record_speaker())
+            .record_mic(settings.is_record_mic())
+            .framerate(settings.video_framerate())
+            .file_path(settings.file_path())
             .fd(fd)
             .streams(streams)
             .speaker_source(speaker_source)
             .mic_source(mic_source);
 
-        if !imp.settings.is_selection_mode() {
+        if !settings.is_selection_mode() {
             self.build_pipeline(pipeline_builder);
             return;
         }
@@ -330,10 +329,10 @@ impl Recorder {
     }
 
     pub fn prepare(&self) {
-        let imp = self.private();
+        let settings = Application::default().settings();
 
-        let is_show_pointer = imp.settings.is_show_pointer();
-        let is_selection_mode = imp.settings.is_selection_mode();
+        let is_show_pointer = settings.is_show_pointer();
+        let is_selection_mode = settings.is_selection_mode();
 
         log::debug!("is_show_pointer: {}", is_show_pointer);
         log::debug!("is_selection_mode: {}", is_selection_mode);

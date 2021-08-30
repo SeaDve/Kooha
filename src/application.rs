@@ -23,6 +23,7 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct Application {
         pub window: OnceCell<WeakRef<MainWindow>>,
+        pub settings: Settings,
     }
 
     #[glib::object_subclass]
@@ -80,6 +81,10 @@ impl Application {
         .expect("Failed to create Application.")
     }
 
+    fn private(&self) -> &imp::Application {
+        imp::Application::from_instance(self)
+    }
+
     fn setup_gactions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
             "launch-default-for-file",
@@ -124,7 +129,8 @@ impl Application {
     }
 
     fn select_saving_location(&self) {
-        let settings = Settings::new();
+        let settings = self.settings();
+
         let chooser = gtk::FileChooserDialogBuilder::new()
             .transient_for(&self.main_window())
             .modal(true)
@@ -196,8 +202,13 @@ impl Application {
         dialog.show();
     }
 
+    pub fn settings(&self) -> Settings {
+        let imp = self.private();
+        imp.settings.clone()
+    }
+
     pub fn main_window(&self) -> MainWindow {
-        let imp = imp::Application::from_instance(self);
+        let imp = self.private();
         imp.window.get().unwrap().upgrade().unwrap()
     }
 
@@ -230,5 +241,14 @@ impl Application {
         log::info!("Datadir: {}", PKGDATADIR);
 
         ApplicationExtManual::run(self);
+    }
+}
+
+impl Default for Application {
+    fn default() -> Self {
+        gio::Application::default()
+            .unwrap()
+            .downcast::<Application>()
+            .unwrap()
     }
 }
