@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Radek Raczkowski <rdkracz@gmail.com>, 2021.
+# Adam Hulewicz <dontbesoso@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: Radek Raczkowski <rdkracz@gmail.com>\n"
+"PO-Revision-Date: 2021-08-31 05:45+0000\n"
+"Last-Translator: Adam Hulewicz <dontbesoso@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kooha/pot-file/pl/"
 ">\n"
 "Language: pl\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -27,7 +28,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Elegancko nagrywa twój ekran"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -64,7 +65,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "Wybór wielu źródeł."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
@@ -72,19 +73,19 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "Wybierz monitor lub okno, aby rozpocząć nagrywanie."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Utwórz zaznaczenie, aby przechwycić określony obszar ekranu."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Ustaw opóźnienie, aby przygotować się przed rozpoczęciem nagrywania."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "Pokaż lub ukryj wskaźnik myszy."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
@@ -96,27 +97,27 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Otwórz menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Pokaż skróty klawiaturowe"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Zakończ"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
 msgid "Recording"
-msgstr ""
+msgstr "Nagrywanie"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
@@ -132,7 +133,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Settings"
-msgstr ""
+msgstr "Ustawienia"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
@@ -148,7 +149,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu główne"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
@@ -156,7 +157,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
-msgstr ""
+msgstr "Zaznaczenie"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
@@ -168,15 +169,15 @@ msgstr ""
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Nagrywaj dźwięk z komputera"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Nagrywaj dźwięk z mikrofonu"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
-msgstr ""
+msgstr "Pokaż wskaźnik"
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
@@ -200,15 +201,15 @@ msgstr ""
 
 #: data/resources/ui/window.ui:290
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 #: data/resources/ui/window.ui:295
 msgid "5 seconds"
-msgstr ""
+msgstr "5 sekund"
 
 #: data/resources/ui/window.ui:300
 msgid "10 seconds"
-msgstr ""
+msgstr "10 sekund"
 
 #: data/resources/ui/window.ui:306
 msgid "_Video Format"
@@ -216,19 +217,19 @@ msgstr ""
 
 #: data/resources/ui/window.ui:308
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/resources/ui/window.ui:313
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/resources/ui/window.ui:318
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:323
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
@@ -269,23 +270,23 @@ msgstr ""
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Prawa autorskie 2021 Dave Patrick"
 
 #: src/application.rs:193
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/application.rs:204
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "Ukończono nagranie!"
 
 #: src/application.rs:206
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "Nagranie zostało zapisane w “{}”"
 
 #: src/application.rs:214
 msgid "Open File"
-msgstr ""
+msgstr "Otwórz plik"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
@@ -297,7 +298,7 @@ msgstr ""
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Błąd nagrywania"
 
 #: src/error.rs:47
 msgid ""
@@ -320,4 +321,4 @@ msgstr ""
 
 #: src/widgets/window.rs:174
 msgid "Paused"
-msgstr ""
+msgstr "Pauza"

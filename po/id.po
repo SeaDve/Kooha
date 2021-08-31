@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-26 12:33+0000\n"
+"PO-Revision-Date: 2021-08-31 05:45+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
 "pot-file/id/>\n"
@@ -298,11 +298,11 @@ msgstr ""
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "Kesalahan Pipeline Build"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Kesalahan Perekaman"
 
 #: src/error.rs:47
 msgid ""
