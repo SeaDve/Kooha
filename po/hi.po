@@ -7,184 +7,192 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-09-04 18:34+0000\n"
+"Last-Translator: Hemish <hemish04082005@gmail.com>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/kooha/pot-file/hi/>"
+"\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "अपनी स्क्रीन को अच्छे ढंग से रिकॉर्ड करें"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;रिकार्ड;स्क्रीन;वीडीयो;वीडीओ;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
 msgstr ""
+"बिना किसी विकर्षण के अपनी स्क्रीन को सीधे और दर्द रहित तरीके से कैप्चर करें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"‌‌Kooha एक साधारण स्क्रीन रिकॉर्डर है जिसमें न्यूनतम इंटरफ़ेस है। आप सेटिंग्"
+"स के एक समूह को कॉन्फ़िगर किए बिना रिकॉर्ड बटन पर क्लिक कर सकते हैं।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Kooha की मुख्य विशेषताओं निम्नलिखित हैं:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 बिना किसी परेशानी के अपनी स्क्रीन कैप्चर करें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
+"️ 🎙️अपने माइक्रोफ़ोन, कंप्यूटर की आवाज़ या दोनों को एक ही समय पर रिकॉर्ड "
+"करें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "WebM, MP4, GIF और MKV प्रारूपों में रिकार्ड करने में समर्थ।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 एकाधिक स्रोत चयन।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 वैकल्पिक हार्डवेयर त्वरित एन्कोडिंग"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ ️रिकॉर्ड करने के लिए मॉनिटर या विंडो चुनें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ अपनी स्क्रीन से निश्चित क्षेत्र को कैप्चर करने के लिए एक चयन बनाएँ।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "️ ⏲️रिकॉर्डिंग शुरू करने से पहले तैयारी के लिए विलंब समय सेट करें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ ️माउस पॉइंटर छुपाएँ या दिखाएँ।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "अपनी रिकॉर्डिंग को सहेजने का स्थान चुनें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ उपयोगी कीबोर्ड शॉर्टकट का उपयोग करें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "आम (General)"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "मेनू खोलें"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "शॉर्टकट दिखाएँ"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "बंद करें"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
 msgid "Recording"
-msgstr ""
+msgstr "रिकार्डिंग"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "रिकार्डिंग को बंद-शुरू करें"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr ""
+msgstr "रिकार्डिंग पाज़-शुरू करें"
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
-msgstr ""
+msgstr "विलंब समय रद्द करें"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Settings"
-msgstr ""
+msgstr "सेटिंग्स"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "कंप्यूटर की ध्वनियों को रिकार्ड करने या ना करने को बदलें"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "माइक्रोफ़ोन को रिकार्ड करने या ना करने को बदलें"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "माऊस पाइंटर को रिकार्ड करने या ना करने को बदलें"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
-msgstr ""
+msgstr "मुख्य मेनू"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "साधारण"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
-msgstr ""
+msgstr "चयन"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "मॉनिटर या विंडो कैप्चर करें"
 
 #: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "स्क्रीन का चयन कैप्चर करें"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "कंप्यूटर की ध्वनियाँ रिकार्ड करें"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr ""
+msgstr "माइक्रोफ़ोन से रिकॉर्ड करें"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
-msgstr ""
+msgstr "माउस पॉइंटर दिखाएँ"
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
-msgstr ""
+msgstr "रिकार्ड करें"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
-msgstr ""
+msgstr "रोकें"
 
 #: data/resources/ui/window.ui:218
 msgid "Recording in…"
-msgstr ""
+msgstr "इतने क्षणों में रिकार्डिंग शुरू…"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
@@ -212,19 +220,19 @@ msgstr ""
 
 #: data/resources/ui/window.ui:308
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/resources/ui/window.ui:313
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/resources/ui/window.ui:318
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:323
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
@@ -261,31 +269,31 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:189
 msgid "translator-credits"
-msgstr ""
+msgstr "Hemish (hemish04082005)"
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Copyright 2021 Dave Patrick"
 
 #: src/application.rs:193
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/application.rs:204
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "स्क्रीन रिकार्डिंग पूर्ण हुई!"
 
 #: src/application.rs:206
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "रिकार्डिंग को {} में सहेज दिया गया है।"
 
 #: src/application.rs:214
 msgid "Open File"
-msgstr ""
+msgstr "फाइल खोलें"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "स्क्रीनकास्ट पोर्टल से अनुरोध में त्रुटि (Error)"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"

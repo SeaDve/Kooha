@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # liimee <alt3753.7@gmail.com>, 2021.
 # Reza Almanda <rezaalmanda27@gmail.com>, 2021.
+# Sucipto <show.cheap@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-31 05:45+0000\n"
-"Last-Translator: liimee <alt3753.7@gmail.com>\n"
+"PO-Revision-Date: 2021-09-04 18:34+0000\n"
+"Last-Translator: Sucipto <show.cheap@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
 "pot-file/id/>\n"
 "Language: id\n"
@@ -68,7 +69,7 @@ msgstr "📼 Mendukung format WebM, MP4, GIF, dan MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Pilihan berbagai sumber."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
@@ -80,7 +81,7 @@ msgstr "🖥️ Pilih monitor atau jendela yang ingin direkam."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Buat seleksi untuk menangkap area tertentu dari layar anda."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
