@@ -6,13 +6,14 @@
 # Dave Patrick <davecruz48@gmail.com>, 2021.
 # albanobattistella <albano_battistella@hotmail.com>, 2021.
 # Ruggero Turra <giurrero@gmail.com>, 2021.
+# Michael Moroni <michaelmoroni@disroot.org>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-11 12:33+0000\n"
-"Last-Translator: Nicolas Mariniello <seldon1000@tutanota.com>\n"
+"PO-Revision-Date: 2021-09-08 09:33+0000\n"
+"Last-Translator: Michael Moroni <michaelmoroni@disroot.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -156,7 +157,7 @@ msgstr "Interruttore Puntatore"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
-msgstr "Menu Principale"
+msgstr "Menù principale"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
@@ -275,7 +276,8 @@ msgstr "Per favore scegli una posizione accessibile e prova di nuovo."
 msgid "translator-credits"
 msgstr ""
 "Nicolas Mariniello\n"
-"Albano Battistella"
+"Albano Battistella\n"
+"Michael Moroni"
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
