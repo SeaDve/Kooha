@@ -244,8 +244,7 @@ impl PipelineAssembler {
             let stream = &self.streams()[0];
 
             let actual_screen = self.builder.actual_screen.as_ref().unwrap();
-            let stream_width = stream.size().unwrap().0;
-            let stream_height = stream.size().unwrap().1;
+            let (stream_width, stream_height) = stream.size().unwrap();
 
             let scale_factor = (stream_width / actual_screen.width) as f64;
             let coords = coords.rescale(scale_factor);
