@@ -5,13 +5,14 @@
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Heinrich Heinzer <heinrich.heinzer@gmail.com>, 2021.
 # Nico <d3sox@protonmail.com>, 2021.
+# Milo Ivir <mail@milotype.de>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-31 05:45+0000\n"
-"Last-Translator: Nico <d3sox@protonmail.com>\n"
+"PO-Revision-Date: 2021-09-11 17:33+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -274,7 +275,7 @@ msgstr "Bitte wähle einen zugänglichen Pfad und versuche es erneut."
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:189
 msgid "translator-credits"
-msgstr "Übersetzer Credits"
+msgstr "Jonathan Haas"
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"

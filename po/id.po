@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-09-10 12:32+0000\n"
+"PO-Revision-Date: 2021-09-11 17:33+0000\n"
 "Last-Translator: Sucipto <sucipto@pm.me>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
 "pot-file/id/>\n"
@@ -150,7 +150,7 @@ msgstr "Toggle Mikrofon"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Toggle Penunjuk"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
@@ -197,7 +197,6 @@ msgid "Recording in…"
 msgstr "Merekam dalam…"
 
 #: data/resources/ui/window.ui:257
-#, fuzzy
 msgid "Flushing…"
 msgstr "Membersihkan…"
 
@@ -296,7 +295,7 @@ msgstr "Buka Berkas"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Kesalahan Permintaan Screencast Portal"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
@@ -311,6 +310,8 @@ msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"Pastikan untuk memeriksa ketergantungan runtime dan <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">laman Ini Tidak Berfungsi</a>."
 
 #: src/error.rs:48
 msgid ""
@@ -327,6 +328,9 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"Pastikan lokasi penyimpanan tersedia. Jika tidak, ada yang tidak beres dan "
+"lapor ke <a href=\"https://github.com/SeaDve/Kooha/issues\"> laman masalah "
+"Kooha</a>."
 
 #: src/widgets/window.rs:174
 msgid "Paused"
