@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-22 13:16+0000\n"
+"PO-Revision-Date: 2021-09-17 09:34+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -32,7 +32,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
 msgid "Elegantly record your screen"
-msgstr "Graba tu pantalla elegantemente"
+msgstr "Grabe su pantalla elegantemente"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -43,15 +43,15 @@ msgstr "Capturar pantalla;Grabador;Pantalla;Vídeo;"
 msgid ""
 "Capture your screen in a straightforward and painless way without "
 "distractions."
-msgstr "Captura tu pantalla de forma sencilla, indolora y sin distracciones."
+msgstr "Capture su pantalla de forma sencilla, indolora y sin distracciones."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha es un grabador de pantalla simple con una interfaz minimalista. Solo "
-"da click en el botón grabar sin tener que configurar un centenar de ajustes."
+"Kooha es un grabador de pantalla simple con una interfaz minimalista. Pulse "
+"en el botón grabar sin tener que configurar un centenar de ajustes."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
@@ -59,12 +59,12 @@ msgstr "Las características principales de Kooha incluyen lo siguiente:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Graba tu pantalla sin ninguna molestia."
+msgstr "🎥 Grabar su pantalla sin ninguna molestia."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
-"🎙️ Graba tu micrófono, los sonidos del sistema, o ambos al mismo tiempo."
+"🎙️ Grabar su micrófono, los sonidos del sistema, o ambos al mismo tiempo."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
@@ -80,27 +80,28 @@ msgstr "🚀 Codificación acelerada por hardware opcional"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Selecciona un monitor o ventana para grabar."
+msgstr "🖥️ Seleccionar un monitor o ventana para grabar."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ Crea una selección para capturar una área específica de tu pantalla."
+msgstr ""
+"🖼️ Crear una selección para capturar una área específica de su pantalla."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Selecciona un retraso antes de empezar a grabar."
+msgstr "⏲️ Seleccionar un retardo antes de empezar a grabar."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Oculta o muestra el cursor."
+msgstr "🖱️ Ocultar o mostrar el puntero."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Selecciona una ubicación para tu grabación."
+msgstr "💾 Seleccionar una ubicación para su grabación."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Usa los útiles atajos de teclado."
+msgstr "⌨️ Usar los útiles atajos del teclado."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
@@ -128,15 +129,15 @@ msgstr "Grabando"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr "Habilitar/Deshabilitar grabación"
+msgstr "Conmutar grabación"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr "Habilitar/Deshabilitar pausa"
+msgstr "Conmutar pausa"
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
-msgstr "Cancelar retraso"
+msgstr "Cancelar retardo"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Settings"
@@ -144,15 +145,15 @@ msgstr "Ajustes"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr "Habilitar/Deshabilitar sonidos de ordenador"
+msgstr "Conmutar sonidos del ordenador"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr "Habilitar/Deshabilitar micrófono"
+msgstr "Conmutar micrófono"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr "Habilitar/Deshabilitar cursor"
+msgstr "Conmutar puntero"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
@@ -164,7 +165,7 @@ msgstr "Normal"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
-msgstr "Área"
+msgstr "Selección"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
@@ -204,7 +205,7 @@ msgstr "Purgando…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
-msgstr "_Retraso"
+msgstr "_Retardo"
 
 #: data/resources/ui/window.ui:290
 msgid "None"
@@ -240,11 +241,11 @@ msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr "_Guardar a…"
+msgstr "_Guardar en…"
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr "_Atajos de teclado"
+msgstr "_Atajos del teclado"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
@@ -273,7 +274,7 @@ msgstr "Por favor, elija un lugar accesible e inténtelo de nuevo."
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:189
 msgid "translator-credits"
-msgstr "Óscar Fernández Díaz"
+msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
@@ -301,7 +302,7 @@ msgstr "Error de solicitud del portal de transmisión de pantalla"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr "Error de construcción de la pipeline"
+msgstr "Error de construcción de la tubería"
 
 #: src/error.rs:19
 msgid "Recording Error"
