@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-11 12:33+0000\n"
+"PO-Revision-Date: 2021-09-22 07:35+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fi/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -69,7 +69,7 @@ msgstr "📼 Tuki WebM-, MP4-, GIF- ja MKV-tiedostomuodoille."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Usein lähteiden valinta."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
@@ -294,7 +294,7 @@ msgstr "Avaa tiedosto"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Näyttötallenneportaalin pyyntövirhe"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
@@ -302,7 +302,7 @@ msgstr ""
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Nauhoitusvirhe"
 
 #: src/error.rs:47
 msgid ""

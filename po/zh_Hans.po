@@ -4,13 +4,14 @@
 # TheInterestingSoul <wangpy01@outlook.com>, 2021.
 # Zhou Nan <zhounan@nfschina.com>, 2021.
 # Zhongrui Cao <zhongrui.cao@suse.com>, 2021.
+# WhiredPlanck <fungdaat31@outlook.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-08-31 05:45+0000\n"
-"Last-Translator: Zhongrui Cao <zhongrui.cao@suse.com>\n"
+"PO-Revision-Date: 2021-09-22 07:35+0000\n"
+"Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
@@ -62,23 +63,23 @@ msgstr "🎙️ 录制麦克风或计算机声音，抑或两者同时录制。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 支持 WebM、MP4、GIF 和 MKV 格式。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 多个画面来源选择。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 可选硬件加速编码"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ 选择显示器或窗口以录制。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ 在屏幕上选择特定区域来捕获画面。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -122,11 +123,11 @@ msgstr "录制中"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "切换录制状态"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Pause"
-msgstr ""
+msgstr "切换暂停状态"
 
 #: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
 msgid "Cancel Delay"
@@ -138,15 +139,15 @@ msgstr "设置"
 
 #: data/resources/ui/shortcuts.ui:60
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "切换电脑声音录制状态"
 
 #: data/resources/ui/shortcuts.ui:66
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "切换麦克风录制状态"
 
 #: data/resources/ui/shortcuts.ui:72
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "切换鼠标指针显示状态"
 
 #: data/resources/ui/window.ui:30
 msgid "Main Menu"
@@ -194,11 +195,11 @@ msgstr "即将录制……"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "冲制中…"
 
 #: data/resources/ui/window.ui:288
 msgid "_Delay"
-msgstr ""
+msgstr "延迟(_D)"
 
 #: data/resources/ui/window.ui:290
 msgid "None"
@@ -214,7 +215,7 @@ msgstr "10 秒"
 
 #: data/resources/ui/window.ui:306
 msgid "_Video Format"
-msgstr ""
+msgstr "视频格式(_V)"
 
 #: data/resources/ui/window.ui:308
 msgid "WebM"
@@ -234,42 +235,43 @@ msgstr "GIF"
 
 #: data/resources/ui/window.ui:329
 msgid "_Save to…"
-msgstr ""
+msgstr "保存到(_S)…"
 
 #: data/resources/ui/window.ui:335
 msgid "_Keyboard Shortcuts"
-msgstr "快捷键"
+msgstr "快捷键(_K)"
 
 #: data/resources/ui/window.ui:339
 msgid "_About Kooha"
-msgstr ""
+msgstr "关于 Kooha (_A)"
 
 #: src/application.rs:134
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "选择录制保存文件夹"
 
 #: src/application.rs:137
 msgid "_Cancel"
-msgstr ""
+msgstr "取消(_C)"
 
 #: src/application.rs:138
 msgid "_Select"
-msgstr ""
+msgstr "选择(_S)"
 
 #: src/application.rs:155
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "无法访问“{}”"
 
 #: src/application.rs:156
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "请选择一个可以访问的位置并重试。"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:189
 msgid "translator-credits"
 msgstr ""
 "Zhou Nan &lt;zhounan@nfschina.com&gt;\n"
-"Zhongrui Cao &lt;zhongrui.cao@suse.com&gt;"
+"Zhongrui Cao &lt;zhongrui.cao@suse.com&gt;\n"
+"WhiredPlanck &lt;wplanck@aosc.io&gt;"
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
@@ -285,7 +287,7 @@ msgstr "屏幕已录制！"
 
 #: src/application.rs:206
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "录制文件已保存到“{}”"
 
 #: src/application.rs:214
 msgid "Open File"
@@ -293,27 +295,31 @@ msgstr "打开文件"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "请求录制入口时出错"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "管道构建时出错"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "录制时出错"
 
 #: src/error.rs:47
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"请确保检查运行时依赖和<a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\""
+">“为何不工作”说明页</a>。"
 
 #: src/error.rs:48
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"GStreamer 插件或许未安装。如果不是这样，请将此报告到 <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha 的 Issue 页处</a>。"
 
 #: src/error.rs:49
 msgid ""
@@ -321,6 +327,8 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"请确保保存的位置存在。如果位置确实存在，说明有故障，请将此报告到 <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha 的 Issue 页处</a>。"
 
 #: src/widgets/window.rs:174
 msgid "Paused"

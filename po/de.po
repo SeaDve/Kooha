@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-21 11:34+0800\n"
-"PO-Revision-Date: 2021-09-11 17:33+0000\n"
+"PO-Revision-Date: 2021-09-22 07:35+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
@@ -275,7 +275,9 @@ msgstr "Bitte wähle einen zugänglichen Pfad und versuche es erneut."
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:189
 msgid "translator-credits"
-msgstr "Jonathan Haas"
+msgstr ""
+"Jonathan Haas\n"
+"Milo Ivir"
 
 #: src/application.rs:190
 msgid "Copyright 2021 Dave Patrick"
