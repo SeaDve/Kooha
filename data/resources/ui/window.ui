@@ -188,6 +188,7 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="pause_record_button">
+                            <property name="visible">False</property>
                             <property name="icon-name">media-playback-pause-symbolic</property>
                             <property name="action-name">win.toggle-pause</property>
                           </object>

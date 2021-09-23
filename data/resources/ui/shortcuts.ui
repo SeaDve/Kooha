@@ -39,6 +39,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="visible">False</property>
                 <property name="action-name">win.toggle-pause</property>
                 <property name="title" translatable="yes">Toggle Pause</property>
               </object>
