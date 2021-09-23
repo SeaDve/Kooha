@@ -75,7 +75,7 @@
                             <property name="homogeneous">True</property>
                             <property name="vexpand">True</property>
                             <style>
-                              <class name="toggle-group"/>
+                              <class name="linked"/>
                               <class name="large-icons"/>
                             </style>
                             <child>
