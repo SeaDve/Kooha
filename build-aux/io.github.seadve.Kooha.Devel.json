@@ -1,7 +1,7 @@
 {
     "app-id": "io.github.seadve.Kooha.Devel",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "41beta",
+    "runtime-version": "41",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
     "command": "kooha",
