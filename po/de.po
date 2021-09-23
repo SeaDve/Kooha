@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-21 11:34+0800\n"
+"POT-Creation-Date: 2021-09-23 15:30+0800\n"
 "PO-Revision-Date: 2021-09-22 07:35+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
@@ -23,12 +23,12 @@ msgstr ""
 "X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
 msgid "Elegantly record your screen"
 msgstr "Ihren Bildschirm elegant aufnehmen"
 
@@ -39,11 +39,9 @@ msgstr "Screencast;Rekorder;Aufnahme;Bildschirm;Video;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
-"Capture your screen in a straightforward and painless way without "
+"Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
-"Erfassen Sie Ihren Bildschirm auf einfache und schmerzlose Weise ohne "
-"Ablenkung."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -124,7 +122,7 @@ msgstr "Tastaturkürzel anzeigen"
 msgid "Quit"
 msgstr "Schließen"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
+#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
 msgstr "Aufnahme"
 
@@ -132,31 +130,31 @@ msgstr "Aufnahme"
 msgid "Toggle Record"
 msgstr "Aufnahme umschalten"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
 msgstr "Pause umschalten"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
+#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
 msgstr "Verzögerung abbrechen"
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: data/resources/ui/shortcuts.ui:60
+#: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
 msgstr "Computersounds umschalten"
 
-#: data/resources/ui/shortcuts.ui:66
+#: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
 msgstr "Mikrofon umschalten"
 
-#: data/resources/ui/shortcuts.ui:72
+#: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
 msgstr "Cursor umschalten"
 
-#: data/resources/ui/window.ui:30
+#: data/resources/ui/window.ui:31
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
@@ -196,106 +194,106 @@ msgstr "Aufnehmen"
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/resources/ui/window.ui:218
+#: data/resources/ui/window.ui:219
 msgid "Recording in…"
 msgstr "Aufnahme in …"
 
-#: data/resources/ui/window.ui:257
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Abschließen…"
 
-#: data/resources/ui/window.ui:288
+#: data/resources/ui/window.ui:283
 msgid "_Delay"
 msgstr "_Verzögerung"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:285
 msgid "None"
 msgstr "Kein"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:290
 msgid "5 seconds"
 msgstr "5 Sekunden"
 
-#: data/resources/ui/window.ui:300
+#: data/resources/ui/window.ui:295
 msgid "10 seconds"
 msgstr "10 Sekunden"
 
-#: data/resources/ui/window.ui:306
+#: data/resources/ui/window.ui:301
 msgid "_Video Format"
 msgstr "_Videoformat"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:303
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:308
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:313
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:323
+#: data/resources/ui/window.ui:318
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:329
+#: data/resources/ui/window.ui:324
 msgid "_Save to…"
 msgstr "_Speichern unter…"
 
-#: data/resources/ui/window.ui:335
+#: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturkürzel"
 
-#: data/resources/ui/window.ui:339
+#: data/resources/ui/window.ui:334
 msgid "_About Kooha"
 msgstr "_Über Kooha"
 
-#: src/application.rs:134
+#: src/application.rs:138
 msgid "Select Recordings Folder"
 msgstr "Aufnahmeordner auswählen"
 
-#: src/application.rs:137
+#: src/application.rs:141
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: src/application.rs:138
+#: src/application.rs:142
 msgid "_Select"
 msgstr "_Auswählen"
 
-#: src/application.rs:155
+#: src/application.rs:159
 msgid "Cannot access “{}”"
 msgstr "Kein Zugriff auf „{}“"
 
-#: src/application.rs:156
+#: src/application.rs:161
 msgid "Please choose an accessible location and try again."
 msgstr "Bitte wähle einen zugänglichen Pfad und versuche es erneut."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:189
+#: src/application.rs:195
 msgid "translator-credits"
 msgstr ""
 "Jonathan Haas\n"
 "Milo Ivir"
 
-#: src/application.rs:190
+#: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
-#: src/application.rs:193
+#: src/application.rs:199
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:204
+#: src/application.rs:220
 msgid "Screencast Recorded!"
 msgstr "Video-Aufzeichnung aufgenommen!"
 
-#: src/application.rs:206
+#: src/application.rs:222
 msgid "The recording has been saved in “{}”"
 msgstr "Die Aufnahme wurde in „{}“ gespeichert"
 
-#: src/application.rs:214
+#: src/application.rs:230
 msgid "Open File"
 msgstr "Datei öffnen"
 
@@ -339,9 +337,16 @@ msgstr ""
 "Problem war, ist etwas anderes schiefgelaufen. Bitte melden Sie dies auf der "
 "<a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha Issue-Seite</a>."
 
-#: src/widgets/window.rs:174
+#: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "Pausiert"
+
+#~ msgid ""
+#~ "Capture your screen in a straightforward and painless way without "
+#~ "distractions."
+#~ msgstr ""
+#~ "Erfassen Sie Ihren Bildschirm auf einfache und schmerzlose Weise ohne "
+#~ "Ablenkung."
 
 #~ msgid ""
 #~ "Make sure to check for the runtime dependencies and \"It Doesn't Work\" "

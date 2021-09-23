@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-21 11:34+0800\n"
+"POT-Creation-Date: 2021-09-23 15:30+0800\n"
 "PO-Revision-Date: 2021-08-22 04:35+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -21,12 +21,12 @@ msgstr ""
 "X-Generator: Weblate 4.8.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
 msgid "Elegantly record your screen"
 msgstr "Елегантно записуйте ваш екран"
 
@@ -37,9 +37,9 @@ msgstr "Записувач;Екран;Відео;Screencast;Recorder;Screen;Vide
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
-"Capture your screen in a straightforward and painless way without "
+"Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr "Знімайте свій екран просто і безболісно, без відволікань."
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -118,7 +118,7 @@ msgstr "Показати комбінації клавіш"
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
+#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
 msgstr "Запис"
 
@@ -126,31 +126,31 @@ msgstr "Запис"
 msgid "Toggle Record"
 msgstr "Почати/зупинити записування"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
 msgstr "Зупинити/продовжити"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
+#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
 msgstr "Скасувати Затримку"
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
 msgstr "Налаштування"
 
-#: data/resources/ui/shortcuts.ui:60
+#: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
 msgstr "Увімкнути/вимкнути звуки комп’ютера"
 
-#: data/resources/ui/shortcuts.ui:66
+#: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
 msgstr "Увімкнути/вимкнути мікрофон"
 
-#: data/resources/ui/shortcuts.ui:72
+#: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
 msgstr "Показати/сховати вказівник"
 
-#: data/resources/ui/window.ui:30
+#: data/resources/ui/window.ui:31
 msgid "Main Menu"
 msgstr "Головне меню"
 
@@ -190,104 +190,104 @@ msgstr "Записати"
 msgid "Stop"
 msgstr "Зупинити"
 
-#: data/resources/ui/window.ui:218
+#: data/resources/ui/window.ui:219
 msgid "Recording in…"
 msgstr "Запис через…"
 
-#: data/resources/ui/window.ui:257
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Очищення…"
 
-#: data/resources/ui/window.ui:288
+#: data/resources/ui/window.ui:283
 msgid "_Delay"
 msgstr "_Затримка"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:285
 msgid "None"
 msgstr "Немає"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:290
 msgid "5 seconds"
 msgstr "5 секунд"
 
-#: data/resources/ui/window.ui:300
+#: data/resources/ui/window.ui:295
 msgid "10 seconds"
 msgstr "10 секунд"
 
-#: data/resources/ui/window.ui:306
+#: data/resources/ui/window.ui:301
 msgid "_Video Format"
 msgstr "_Формат відео"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:303
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:308
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:313
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:323
+#: data/resources/ui/window.ui:318
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:329
+#: data/resources/ui/window.ui:324
 msgid "_Save to…"
 msgstr "_Зберегти до…"
 
-#: data/resources/ui/window.ui:335
+#: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбінації клавіш"
 
-#: data/resources/ui/window.ui:339
+#: data/resources/ui/window.ui:334
 msgid "_About Kooha"
 msgstr "_Про Kooha"
 
-#: src/application.rs:134
+#: src/application.rs:138
 msgid "Select Recordings Folder"
 msgstr "Вибрати теку для записів"
 
-#: src/application.rs:137
+#: src/application.rs:141
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: src/application.rs:138
+#: src/application.rs:142
 msgid "_Select"
 msgstr "_Вибрати"
 
-#: src/application.rs:155
+#: src/application.rs:159
 msgid "Cannot access “{}”"
 msgstr "Не вдалося отримати доступ до «{}»"
 
-#: src/application.rs:156
+#: src/application.rs:161
 msgid "Please choose an accessible location and try again."
 msgstr "Виберіть доступне розташування та повторіть спробу."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:189
+#: src/application.rs:195
 msgid "translator-credits"
 msgstr "перекладачі"
 
-#: src/application.rs:190
+#: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Авторське право 2021 Дейв Патрік"
 
-#: src/application.rs:193
+#: src/application.rs:199
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:204
+#: src/application.rs:220
 msgid "Screencast Recorded!"
 msgstr "Записано!"
 
-#: src/application.rs:206
+#: src/application.rs:222
 msgid "The recording has been saved in “{}”"
 msgstr "Запис збережено до «{}»"
 
-#: src/application.rs:214
+#: src/application.rs:230
 msgid "Open File"
 msgstr "Відкрити файл"
 
@@ -308,8 +308,8 @@ msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
-"Обов’язково перевірте наявність залежностей виконання та <a href=\"https"
-"://github.com/SeaDve/Kooha#-it-doesnt-work\">Не працює сторінка</a>."
+"Обов’язково перевірте наявність залежностей виконання та <a href=\"https://"
+"github.com/SeaDve/Kooha#-it-doesnt-work\">Не працює сторінка</a>."
 
 #: src/error.rs:48
 msgid ""
@@ -330,9 +330,14 @@ msgstr ""
 "пішло не так, тоді можете повідомити про це на <a href=\"https://github.com/"
 "SeaDve/Kooha/issues\">сторінці проблем Kooha</a>."
 
-#: src/widgets/window.rs:174
+#: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "Зупинено"
+
+#~ msgid ""
+#~ "Capture your screen in a straightforward and painless way without "
+#~ "distractions."
+#~ msgstr "Знімайте свій екран просто і безболісно, без відволікань."
 
 #~ msgid ""
 #~ "Make sure to check for the runtime dependencies and \"It Doesn't Work\" "

@@ -6,25 +6,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
-"Report-Msgid-Bugs-To: https://github.com/SeaDve/Kooha/issues\n"
-"POT-Creation-Date: 2021-08-21 11:34+0800\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-23 15:30+0800\n"
 "PO-Revision-Date: 2021-08-31 12:34+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: ko\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
 msgid "Kooha"
 msgstr "쿠하"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
 msgid "Elegantly record your screen"
 msgstr "화면을 우아하게 녹화해보세요"
 
@@ -37,9 +37,9 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
-"Capture your screen in a straightforward and painless way without "
+"Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr "어떤 방해요소 없이 간단하고 번거로움 없게 화면을 찍으세요."
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -117,7 +117,7 @@ msgstr "바로 가기 키 표시"
 msgid "Quit"
 msgstr "끝내기"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
+#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
 msgstr "녹화중"
 
@@ -125,31 +125,31 @@ msgstr "녹화중"
 msgid "Toggle Record"
 msgstr "녹화 전환"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
 msgstr "일시정지 전환"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
+#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
 msgstr "지연 취소"
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
 msgstr "설정"
 
-#: data/resources/ui/shortcuts.ui:60
+#: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
 msgstr "컴퓨터 소리 전환"
 
-#: data/resources/ui/shortcuts.ui:66
+#: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
 msgstr "마이크로폰 전환"
 
-#: data/resources/ui/shortcuts.ui:72
+#: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
 msgstr "포인터 상태 전환"
 
-#: data/resources/ui/window.ui:30
+#: data/resources/ui/window.ui:31
 msgid "Main Menu"
 msgstr "주 메뉴"
 
@@ -189,104 +189,104 @@ msgstr "녹화"
 msgid "Stop"
 msgstr "정지"
 
-#: data/resources/ui/window.ui:218
+#: data/resources/ui/window.ui:219
 msgid "Recording in…"
 msgstr "녹화 중…"
 
-#: data/resources/ui/window.ui:257
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "지우는 중…"
 
-#: data/resources/ui/window.ui:288
+#: data/resources/ui/window.ui:283
 msgid "_Delay"
 msgstr "지연(_D)"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:285
 msgid "None"
 msgstr "없음"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:290
 msgid "5 seconds"
 msgstr "5초"
 
-#: data/resources/ui/window.ui:300
+#: data/resources/ui/window.ui:295
 msgid "10 seconds"
 msgstr "10초"
 
-#: data/resources/ui/window.ui:306
+#: data/resources/ui/window.ui:301
 msgid "_Video Format"
 msgstr "동영상 형식(_V)"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:303
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:308
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:313
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:323
+#: data/resources/ui/window.ui:318
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:329
+#: data/resources/ui/window.ui:324
 msgid "_Save to…"
 msgstr "다음 위치에 저장(_S)…"
 
-#: data/resources/ui/window.ui:335
+#: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기 키(_K)"
 
-#: data/resources/ui/window.ui:339
+#: data/resources/ui/window.ui:334
 msgid "_About Kooha"
 msgstr "쿠하 정보(_A)"
 
-#: src/application.rs:134
+#: src/application.rs:138
 msgid "Select Recordings Folder"
 msgstr "녹화 폴더 선택"
 
-#: src/application.rs:137
+#: src/application.rs:141
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: src/application.rs:138
+#: src/application.rs:142
 msgid "_Select"
 msgstr "선택(_S)"
 
-#: src/application.rs:155
+#: src/application.rs:159
 msgid "Cannot access “{}”"
 msgstr "“{}”에 접근할 수 없습니다"
 
-#: src/application.rs:156
+#: src/application.rs:161
 msgid "Please choose an accessible location and try again."
 msgstr "열 수 있는 위치를 선택하고 다시 시도하십시오."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:189
+#: src/application.rs:195
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>"
 
-#: src/application.rs:190
+#: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
-#: src/application.rs:193
+#: src/application.rs:199
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:204
+#: src/application.rs:220
 msgid "Screencast Recorded!"
 msgstr "스크린 캐스트를 녹화했습니다!"
 
-#: src/application.rs:206
+#: src/application.rs:222
 msgid "The recording has been saved in “{}”"
 msgstr "녹화분을 “{}”에 저장했습니다"
 
-#: src/application.rs:214
+#: src/application.rs:230
 msgid "Open File"
 msgstr "파일 열기"
 
@@ -329,6 +329,11 @@ msgstr ""
 "므로 <a href=\"https://github.com/SeaDve/Kooha/issues\">쿠하 문제 보고 페이지"
 "</a>에 보고하십시오."
 
-#: src/widgets/window.rs:174
+#: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "일시정지함"
+
+#~ msgid ""
+#~ "Capture your screen in a straightforward and painless way without "
+#~ "distractions."
+#~ msgstr "어떤 방해요소 없이 간단하고 번거로움 없게 화면을 찍으세요."

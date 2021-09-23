@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-21 11:34+0800\n"
+"POT-Creation-Date: 2021-09-23 15:30+0800\n"
 "PO-Revision-Date: 2021-09-17 09:34+0000\n"
 "Last-Translator: Muhammad Yasser <iamrokt@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
@@ -23,12 +23,12 @@ msgstr ""
 "X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:178
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:179
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
 msgid "Elegantly record your screen"
 msgstr "سجل شاشتك بأناقة"
 
@@ -39,9 +39,9 @@ msgstr "تسجيل الشاشة;مسجل;شاشة;فيديو ;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
-"Capture your screen in a straightforward and painless way without "
+"Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr "التقط صورة لشاشتك بطريقة مباشرة وسهلة دون تشتيت الانتباه."
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -119,7 +119,7 @@ msgstr "إظهار الإختصارات"
 msgid "Quit"
 msgstr "خروج"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/window.rs:169
+#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
 msgstr "جارٍ التسجيل"
 
@@ -127,31 +127,31 @@ msgstr "جارٍ التسجيل"
 msgid "Toggle Record"
 msgstr "بدء/إيقاف التسجيل"
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
 msgstr "تمكين/تعطيل الإيقاف مؤقتًا"
 
-#: data/resources/ui/shortcuts.ui:49 data/resources/ui/window.ui:236
+#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
 msgstr "إلغاء المُهلة الزمنية قبل التسجيل"
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: data/resources/ui/shortcuts.ui:60
+#: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
 msgstr "تمكين/تعطيل أصوات الحاسوب"
 
-#: data/resources/ui/shortcuts.ui:66
+#: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
 msgstr "تمكين/تعطيل المايكروفون"
 
-#: data/resources/ui/shortcuts.ui:72
+#: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
 msgstr "تمكين/تعطيل مؤشر الفأرة"
 
-#: data/resources/ui/window.ui:30
+#: data/resources/ui/window.ui:31
 msgid "Main Menu"
 msgstr "القائمة الرئيسية"
 
@@ -191,104 +191,104 @@ msgstr "سجِّل"
 msgid "Stop"
 msgstr "أوقف"
 
-#: data/resources/ui/window.ui:218
+#: data/resources/ui/window.ui:219
 msgid "Recording in…"
 msgstr "سيبدأ التسجيل خلال …"
 
-#: data/resources/ui/window.ui:257
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "جارِِ التفريغ…"
 
-#: data/resources/ui/window.ui:288
+#: data/resources/ui/window.ui:283
 msgid "_Delay"
 msgstr "_انتظار قبل التسجيل"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:285
 msgid "None"
 msgstr "لا شئ"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:290
 msgid "5 seconds"
 msgstr "5 ثوانٍ"
 
-#: data/resources/ui/window.ui:300
+#: data/resources/ui/window.ui:295
 msgid "10 seconds"
 msgstr "10 ثواني"
 
-#: data/resources/ui/window.ui:306
+#: data/resources/ui/window.ui:301
 msgid "_Video Format"
 msgstr "_صيغة الفيديو"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:303
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:308
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:313
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:323
+#: data/resources/ui/window.ui:318
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:329
+#: data/resources/ui/window.ui:324
 msgid "_Save to…"
 msgstr "_الحفظ في…"
 
-#: data/resources/ui/window.ui:335
+#: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
 msgstr "_إختصارات لوحة المفاتيح"
 
-#: data/resources/ui/window.ui:339
+#: data/resources/ui/window.ui:334
 msgid "_About Kooha"
 msgstr "_عن Kooha"
 
-#: src/application.rs:134
+#: src/application.rs:138
 msgid "Select Recordings Folder"
 msgstr "اختر مجلَّد حفظ التسجيلات"
 
-#: src/application.rs:137
+#: src/application.rs:141
 msgid "_Cancel"
 msgstr "_إلغاء"
 
-#: src/application.rs:138
+#: src/application.rs:142
 msgid "_Select"
 msgstr "_حدِّد"
 
-#: src/application.rs:155
+#: src/application.rs:159
 msgid "Cannot access “{}”"
 msgstr "لا يمكن الوصول ل \"{}\""
 
-#: src/application.rs:156
+#: src/application.rs:161
 msgid "Please choose an accessible location and try again."
 msgstr "الرجاء اختيار مسار للحفظ موجود بالفعل والمحاولة مجددًا."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:189
+#: src/application.rs:195
 msgid "translator-credits"
 msgstr "Mehdi Essalehi,Muhammad Yasser"
 
-#: src/application.rs:190
+#: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
 msgstr "الحقوق Dave Patrick 2021"
 
-#: src/application.rs:193
+#: src/application.rs:199
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:204
+#: src/application.rs:220
 msgid "Screencast Recorded!"
 msgstr "تم تسجيل الشاشة!"
 
-#: src/application.rs:206
+#: src/application.rs:222
 msgid "The recording has been saved in “{}”"
 msgstr "تم حفظ التسجيل في \"{}\""
 
-#: src/application.rs:214
+#: src/application.rs:230
 msgid "Open File"
 msgstr "فتح ملف"
 
@@ -326,13 +326,18 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
-"الرجاء التأكد من أن مسار حفظ التسجيل موجود بالفعل. إذا كان موجودًا بالفعل، "
-"قم بالإبلاغ في <a href=\"https://github.com/SeaDve/Kooha/issues\">صفحة مشاكل "
+"الرجاء التأكد من أن مسار حفظ التسجيل موجود بالفعل. إذا كان موجودًا بالفعل، قم "
+"بالإبلاغ في <a href=\"https://github.com/SeaDve/Kooha/issues\">صفحة مشاكل "
 "كووها</a>."
 
-#: src/widgets/window.rs:174
+#: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "مُوقف مؤقتًا"
+
+#~ msgid ""
+#~ "Capture your screen in a straightforward and painless way without "
+#~ "distractions."
+#~ msgstr "التقط صورة لشاشتك بطريقة مباشرة وسهلة دون تشتيت الانتباه."
 
 #~ msgid "Please choose an accessible location and retry."
 #~ msgstr "الرجاء اختيار موقع يمكن الوصول إليه وإعادة المحاولة."
