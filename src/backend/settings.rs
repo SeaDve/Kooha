@@ -80,7 +80,7 @@ impl Settings {
     }
 
     pub fn file_path(&self) -> PathBuf {
-        let file_name = Local::now().format("Kooha %m-%d-%Y %H:%M:%S").to_string();
+        let file_name = Local::now().format("Kooha-%m-%d-%Y-%H-%M-%S").to_string();
 
         let mut path = self.saving_location();
         path.push(file_name);
