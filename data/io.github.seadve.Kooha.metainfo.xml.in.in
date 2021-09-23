@@ -45,6 +45,26 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.0.0" date="2021-09-23">
+      <description>
+        <p>This is a big release containing a lot of fixes and new features!</p>
+        <ul>
+          <li>Added MP4 and GIF formats</li>
+          <li>Added feature to record a single window or monitor</li>
+          <li>Added optional-in hardware accelerated encoding</li>
+          <li>Added multiple video sources recording</li>
+          <li>Added much improved error handling</li>
+          <li>Fixed broken UI on non-default close button placement</li>
+          <li>Fixed major bug in GNOME 41</li>
+          <li>Fixed off selection region on integer scaling</li>
+          <li>Fixed saving the recording to a hidden directory</li>
+          <li>Improved performance</li>
+          <li>Now working for certain desktop environments and window managers</li>
+          <li>Full rewrite to Rust</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.1" date="2021-05-23">
       <description>
         <p>This release contains small fixes and improvements:</p>
