@@ -88,7 +88,7 @@ impl ScreencastPortal {
                 ScreencastPortalResponse::Success(streams, fd)
             }
             Err(error) => match error {
-                ashpd::Error::Portal(ResponseError::Cancelled) => {
+                ashpd::Error::Response(ResponseError::Cancelled) => {
                     log::info!("Select sources cancelled");
                     ScreencastPortalResponse::Cancelled
                 }

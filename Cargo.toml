@@ -15,8 +15,8 @@ pretty_env_logger = "0.4"
 once_cell = "1.5"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 ashpd = { version = "0.2.0-alpha-3", features = ["feature_gtk4"] }
-gtk = { package = "gtk4", version = "0.2" }
-adw = { package = "libadwaita", version = "0.1.0-alpha-3" }
+gtk = { package = "gtk4", version = "0.3" }
+adw = { package = "libadwaita", version = "0.1.0-alpha-4" }
 gst = { package = "gstreamer", version = "0.17" }
 gst-plugin-gif = "0.7.0"
 futures = "0.3.16"
