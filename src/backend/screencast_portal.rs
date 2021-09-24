@@ -122,25 +122,29 @@ async fn screencast(
 ) -> Result<(Vec<Stream>, RawFd, SessionProxy<'static>), ashpd::Error> {
     let connection = zbus::azync::Connection::session().await?;
     let proxy = ScreenCastProxy::new(&connection).await?;
-
     log::info!("ScreenCastProxy created");
 
-    let session = proxy.create_session().await?;
+    log::debug!(
+        "available_cursor_modes: {:?}",
+        proxy.available_cursor_modes().await?
+    );
+    log::debug!(
+        "available_source_types: {:?}",
+        proxy.available_source_types().await?
+    );
 
+    let session = proxy.create_session().await?;
     log::info!("Session created");
 
     proxy
         .select_sources(&session, cursor_mode, types, multiple)
         .await?;
-
     log::info!("Select sources window showed");
 
     let streams = proxy.start(&session, &window_identifier).await?;
-
     log::info!("Screencast session started");
 
     let fd = proxy.open_pipe_wire_remote(&session).await?;
-
     log::info!("Ready for pipewire stream");
 
     Ok((streams, fd, session))
