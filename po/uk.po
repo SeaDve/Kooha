@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-09-24 15:39+0000\n"
+"PO-Revision-Date: 2021-09-25 22:36+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -271,7 +271,7 @@ msgstr "Виберіть доступне розташування та повт
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:195
 msgid "translator-credits"
-msgstr "перекладачі"
+msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
 
 #: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
