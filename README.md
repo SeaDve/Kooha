@@ -90,11 +90,11 @@ the performance of your device.
 
 You can copy and paste this to the terminal if you installed Kooha as a flatpak:
 ```shell
-flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-frames 60
+flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-framerate 60
 ```
 or if installed locally, run
 ```shell
-gsettings set io.github.seadve.Kooha video-frames 60
+gsettings set io.github.seadve.Kooha video-framerate 60
 ```
 
 
