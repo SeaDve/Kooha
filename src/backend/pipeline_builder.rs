@@ -276,13 +276,13 @@ impl PipelineAssembler {
             match self.video_format() {
                 VideoFormat::Webm | VideoFormat::Mkv => "vaapivp8enc", // FIXME Improve pipelines
                 VideoFormat::Mp4 => "vaapih264enc max-qp=17 ! h264parse",
-                VideoFormat::Gif => "gifenc speed=30", // FIXME This doesn't really use vaapi
+                VideoFormat::Gif => "gifenc repeat=-1 speed=30", // FIXME This doesn't really use vaapi
             }
         } else {
             match self.video_format() {
                 VideoFormat::Webm | VideoFormat::Mkv => "vp8enc max_quantizer=17 cpu-used=16 cq_level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=%T",
                 VideoFormat::Mp4 => "x264enc qp-max=17 speed-preset=superfast threads=%T ! video/x-h264, profile=baseline",
-                VideoFormat::Gif => "gifenc speed=30",
+                VideoFormat::Gif => "gifenc repeat=-1 speed=30",
             }
         }.to_string()
     }
