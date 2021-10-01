@@ -4,7 +4,6 @@ about: Create a report to help Kooha improve
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **System Info**
@@ -21,8 +20,7 @@ A clear and concise description of what the bug is.
 Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
-3. Scroll down to '....'
-4. See error
+3. See error
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -31,4 +29,6 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Additional context**
-Please attach the logs from running Kooha with the following environment variables `RUST_BACKTRACE=1 RUST_LOG=kooha=debug GST_DEBUG=3 PIPEWIRE_DEBUG=3`
+If applicable, please attach the logs from running Kooha with the following 
+environment variables `RUST_BACKTRACE=1 RUST_LOG=kooha=debug GST_DEBUG=3 PIPEWIRE_DEBUG=3`
+while running kooha (e.g. `RUST_BACKTRACE=1 RUST_LOG=kooha=debug GST_DEBUG=3 PIPEWIRE_DEBUG=3 flatpak run io.github.seadve.Kooha`)
