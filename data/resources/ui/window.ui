@@ -284,17 +284,17 @@
         <item>
           <attribute translatable="yes" name="label">None</attribute>
           <attribute name="action">win.record-delay</attribute>
-          <attribute name="target">0</attribute>
+          <attribute name="target" type="u">0</attribute>
         </item>
         <item>
           <attribute translatable="yes" name="label">5 seconds</attribute>
           <attribute name="action">win.record-delay</attribute>
-          <attribute name="target">5</attribute>
+          <attribute name="target" type="u">5</attribute>
         </item>
         <item>
           <attribute translatable="yes" name="label">10 seconds</attribute>
           <attribute name="action">win.record-delay</attribute>
-          <attribute name="target">10</attribute>
+          <attribute name="target" type="u">10</attribute>
         </item>
       </submenu>
       <submenu>

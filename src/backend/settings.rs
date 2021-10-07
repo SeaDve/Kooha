@@ -114,7 +114,7 @@ impl Settings {
     }
 
     pub fn record_delay(&self) -> u32 {
-        self.inner().string("record-delay").parse().unwrap()
+        self.inner().uint("record-delay")
     }
 }
 
