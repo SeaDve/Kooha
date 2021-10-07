@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # MartinIIOT <max_m@centrum.sk>, 2021.
+# Dušan Kazik <prescott66@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-07-31 09:03+0000\n"
-"Last-Translator: MartinIIOT <max_m@centrum.sk>\n"
+"PO-Revision-Date: 2021-10-07 08:05+0000\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kooha/pot-file/sk/"
 ">\n"
 "Language: sk\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.7.2-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -26,74 +27,77 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
 msgid "Elegantly record your screen"
-msgstr "Elegantný záznam obrazovky"
+msgstr "Elegantne zaznamenáva vašu obrazovku"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Záznam;Rekordér;Obrazovka;Video;"
+msgstr "záznam;záznamník;rekordér;obrazovka;video;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
+"Zachytávajte vašu obrazovku intuitívnym a zreteľným spôsobom bez "
+"rozptyľovania."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha je jednoduchý rekordér obrazovky s minimalistickým prostredím. Stačí "
-"len kliknúť na nahrávacie tlačidlo bez zložitého nastavovania."
+"Aplikácia Kooha je jednoduchým záznamníkom obrazovky s minimalistickým "
+"rozhraním. Stačí len kliknúť na zaznamenávacie tlačidlo bez zložitého "
+"nastavovania."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Hlavné vlastnosti Kooha zahŕňajú:"
+msgstr "Hlavnými funkciami aplikácie Kooha sú:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Nasnímajte obrazovku bez akýchkoľvek problémov."
+msgstr "🎥 Zachytenie vašej obrazovky bez problémov."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Zaznamenávajte mikrofón, zvuky počítača alebo oboje súčasne."
+msgstr "🎙️ Záznam vášho mikrofónu, počítačových zvukov alebo oboch súčasne."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Podpora formátov WebM, MP4, GIF a MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Výber viacerých zdrojov."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Voliteľné dekódovanie akcelerované pomocou hardvéru."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Výber monitora alebo okna na zaznamenanie."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Vytvorenie výberu na zachytenie určitej oblasti vašej obrazovky."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Nastavte oneskorenie pred samotným nahrávaním."
+msgstr "⏲️ Nastavenie oneskorenia na prípravu pred zahájením zaznamenávania."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Skryť alebo zobraziť kurzor myši."
+msgstr "🖱️ Skrytie alebo zobrazenie ukazovateľa myši."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Vyberte miesto uloženia záznamu."
+msgstr "💾 Voľba miesta pre uloženie vášho záznamu."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Využite užitočné klávesové skratky."
+msgstr "⌨️ Využitie užitočných klávesových skratiek."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
@@ -105,31 +109,31 @@ msgstr "Všeobecné"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Otvorenie ponuky"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Zobrazenie klávesových skratiek"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr "Ukončiť"
+msgstr "Ukončenie"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
-msgstr "Nahrávanie"
+msgstr "Zaznamenávanie"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Prepnutie zaznamenávania"
 
 #: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Prepnutie pozastavenia"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
-msgstr "Zrušiť oneskornie"
+msgstr "Zrušiť oneskorenie"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -137,23 +141,23 @@ msgstr "Nastavenia"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Prepnutie počítačových zvukov"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Prepnutie mikrofónu"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Prepnutie ukazovateľa"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
-msgstr ""
+msgstr "Hlavná ponuka"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "Normálne"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
@@ -161,23 +165,23 @@ msgstr "Výber"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Zachytí monitor alebo okno"
 
 #: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Zachytí výber obrazovky"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "Zaznamená počítačové zvuky"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr ""
+msgstr "Zaznamená z mikrofónu"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
-msgstr ""
+msgstr "Zobrazí ukazovateľa"
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
@@ -185,19 +189,19 @@ msgstr "Zaznamenať"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
-msgstr "Stop"
+msgstr "Zastaviť"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr "Nahrávanie za…"
+msgstr "Zaznamenáva sa…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
-msgstr ""
+msgstr "Čistí sa…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr ""
+msgstr "Onesko_renie"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
@@ -213,7 +217,7 @@ msgstr "10 sekúnd"
 
 #: data/resources/ui/window.ui:301
 msgid "_Video Format"
-msgstr ""
+msgstr "Formát _videa"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
@@ -225,52 +229,54 @@ msgstr "MKV"
 
 #: data/resources/ui/window.ui:313
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:318
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:324
 msgid "_Save to…"
-msgstr ""
+msgstr "Uložiť do…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klávesové skratky"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr ""
+msgstr "_O aplikácii Kooha"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Výber priečinka pre záznamy"
 
 #: src/application.rs:141
 msgid "_Cancel"
-msgstr ""
+msgstr "_Zrušiť"
 
 #: src/application.rs:142
 msgid "_Select"
-msgstr ""
+msgstr "V_ybrať"
 
 #: src/application.rs:159
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "Nedá sa získať prístup k priečinku „{}“"
 
 #: src/application.rs:161
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Prosím, zvoľte prístupné umiestnenie a skúste to znovu."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:195
 msgid "translator-credits"
-msgstr "MartinIIOT (https://github.com/MartinIIOT)"
+msgstr ""
+"MartinIIOT <https://github.com/MartinIIOT>\n"
+"Dušan Kazik <prescott66@gmail.com>"
 
 #: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
+msgstr "Autorské práva 2021 Dave Patrick"
 
 #: src/application.rs:199
 msgid "GitHub"
@@ -278,39 +284,44 @@ msgstr "GitHub"
 
 #: src/application.rs:220
 msgid "Screencast Recorded!"
-msgstr "Obrazovka bola zaznamenaná!"
+msgstr "Záznam obrazovky bol vytvorený!"
 
 #: src/application.rs:222
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "Záznam bol uložený do „{}“"
 
 #: src/application.rs:230
 msgid "Open File"
-msgstr ""
+msgstr "Otvoriť súbor"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Chyba požiadavky portálu záznamu obrazovky"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "Chyba zostavenia zreťazenia"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Chyba záznamu"
 
 #: src/error.rs:47
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"Skontrolujte závislosti prostredia a stránku <a href=\"https://github.com/"
+"SeaDve/Kooha#-it-doesnt-work\">Nefunguje to</a>."
 
 #: src/error.rs:48
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Zásuvný modul platformy GStreamer možno nie je nainštalovaný. Ak nie je, "
+"nahláste to, prosím na stránke <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Problémy s aplikáciou Kooha</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -318,10 +329,13 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"Uistite sa, že umiestnenie pre uloženie existuje. Ak nie, niekde sa stala "
+"chyba, ktorú nahláste, prosím na stránke <a href=\"https://github.com/SeaDve/"
+"Kooha/issues\">Problémy s aplikáciou Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr ""
+msgstr "Pozastavené"
 
 #~ msgid ""
 #~ "Capture your screen in a straightforward and painless way without "

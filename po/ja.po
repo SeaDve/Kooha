@@ -4,13 +4,14 @@
 # tinaxd <systemd.tinaxd@gmail.com>, 2021.
 # tinaxd <tinaxd@protonmail.com>, 2021.
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-08-11 12:33+0000\n"
-"Last-Translator: 小山田純 <oyamada.junjun@outlook.jp>\n"
+"PO-Revision-Date: 2021-10-07 08:05+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
 "Language: ja\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -111,7 +112,7 @@ msgstr "メニューを開く"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr "ショートカット一覧"
+msgstr "ショートカット一覧を表示"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
@@ -123,11 +124,11 @@ msgstr "録画中"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "録画の開始／終了"
 
 #: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
-msgstr ""
+msgstr "録画の一時停止／再開"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
@@ -139,15 +140,15 @@ msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "コンピューター内部音の録音を有効化／無効化"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "マイクからの録音を有効化／無効化"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "ポインターの表示／非表示"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
@@ -155,11 +156,11 @@ msgstr "メニュー"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "通常"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
-msgstr ""
+msgstr "選択範囲"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
@@ -215,7 +216,7 @@ msgstr "10秒"
 
 #: data/resources/ui/window.ui:301
 msgid "_Video Format"
-msgstr ""
+msgstr "動画の形式(_F)"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
@@ -235,15 +236,15 @@ msgstr "GIF"
 
 #: data/resources/ui/window.ui:324
 msgid "_Save to…"
-msgstr "保存先"
+msgstr "保存先(_S)…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr "_キーボードショートカット"
+msgstr "キーボードショートカット(_K)"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr "_Koohaについて"
+msgstr "Koohaについて(_A)"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
@@ -251,24 +252,26 @@ msgstr "動画の保存先のフォルダを選択"
 
 #: src/application.rs:141
 msgid "_Cancel"
-msgstr "_キャンセル"
+msgstr "キャンセル(_C)"
 
 #: src/application.rs:142
 msgid "_Select"
-msgstr "_選択"
+msgstr "選択(_S)"
 
 #: src/application.rs:159
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "“{}”にアクセスできません"
 
 #: src/application.rs:161
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "アクセス可能な場所を選んで、もう一度お試しください。"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:195
 msgid "translator-credits"
-msgstr "小山田 純"
+msgstr ""
+"小山田 純,\n"
+"Ryo Nakano"
 
 #: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
@@ -280,39 +283,43 @@ msgstr "GitHub"
 
 #: src/application.rs:220
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "スクリーンキャストを保存しました！"
 
 #: src/application.rs:222
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "録画は“{}”に保存されました"
 
 #: src/application.rs:230
 msgid "Open File"
-msgstr ""
+msgstr "ファイルを開く"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "スクリーンキャストポータルの要求エラー"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "パイプラインの組み立てエラー"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "録画エラー"
 
 #: src/error.rs:47
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"ランタイムがインストール済みか確認してください。<a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-"
+"work\">動作しない場合</a>も参照してください。"
 
 #: src/error.rs:48
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"GStreamer プラグインがインストールされていない可能性があります。インストール済みなのにこのエラーが表示されている場合は、<a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Koohaのバグトラッカー</a>で報告してください。"
 
 #: src/error.rs:49
 msgid ""
@@ -320,6 +327,8 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"保存先の場所が存在するか確認してください。保存先が存在している場合、何らかの不具合が発生しているので<a href=\"https://github."
+"com/SeaDve/Kooha/issues\">Koohaのバグトラッカー</a>で報告してください。"
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
