@@ -1,0 +1,335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kooha package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Dušan Simić <dusan.simic1810@gmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kooha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-23 15:30+0800\n"
+"PO-Revision-Date: 2021-10-15 15:44+0200\n"
+"Last-Translator: Dušan Simić <dusan.simic1810@gmail.com>\n"
+"Language-Team: Serbian <gnome-sr@googlegroups.com>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: data/io.github.seadve.Kooha.desktop.in.in:3
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
+msgid "Kooha"
+msgstr "Kooha"
+
+#: data/io.github.seadve.Kooha.desktop.in.in:5
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
+msgid "Elegantly record your screen"
+msgstr "Snimi ekran na elegantan način"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in.in:10
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr "Videosnimak ekrana;rekorder;ekran;video;"
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+msgid ""
+"Capture your screen in a intuitive and straightforward way without "
+"distractions."
+msgstr "Snimi ekran na intuitivan i jednostavan način bež smetnji."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+msgid ""
+"Kooha is a simple screen recorder with a minimalist interface. You can just "
+"click the record button without having to configure a bunch of settings."
+msgstr ""
+"Kooha je jednostavan snimatelj ekrana sa minimalnim interfejsom. Možeš samo "
+"pritisnuti dugme za snimanje bez postavljanja ikakvih podešavanja."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+msgid "The main features of Kooha include the following:"
+msgstr "Glavne funkcionalnosti u Kooha su:"
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+msgid "🎥 Capture your screen without any hassle."
+msgstr "🎥 Snimi ekran bez muke."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+msgstr "🎙️ Snimi mikrofon, zvuk sa računara ili oba u isto vreme."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+msgstr "📼 Podrška za WebM, MP4, GIF, i MKV formate."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🗔 Multiple sources selection."
+msgstr "🗔 Izbor više izvora."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+msgid "🚀 Optional hardware accelerated encoding"
+msgstr "🚀 Opciono hardverski ubrzano kodiranje"
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+msgid "🖥️ Select a monitor or window to record."
+msgstr "🖥️ Odaberi monitor ili prozor koji bi da snimaš."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+msgid "🖼️ Create a selection to capture certain area from your screen."
+msgstr "🖼️ Izaberite prostor za snimanje određenog područja ekrana."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#, fuzzy
+msgid "⏲️ Set delay to prepare before you start recording."
+msgstr "⏲️ Postavi kašnjenje da biste se pripremili pre početka snimanja."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+msgid "🖱️ Hide or show mouse pointer."
+msgstr "🖱️ Prikaži ili sakrij kursor."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+msgid "💾 Choose a saving location for your recording."
+msgstr "💾 Odaberi mesto za čuvanje snimka."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
+msgid "⌨️ Utilize helpful keyboard shortcuts."
+msgstr "⌨️ Koristite prečice na tastaturi."
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
+msgid "Dave Patrick"
+msgstr "Dave Patrick"
+
+#: data/resources/ui/shortcuts.ui:10
+msgid "General"
+msgstr "Opšte"
+
+#: data/resources/ui/shortcuts.ui:14
+msgid "Open Menu"
+msgstr "Otvori izbornik"
+
+#: data/resources/ui/shortcuts.ui:20
+msgid "Show Shortcuts"
+msgstr "Prikaz prečica"
+
+#: data/resources/ui/shortcuts.ui:26
+msgid "Quit"
+msgstr "Izađi"
+
+#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
+msgid "Recording"
+msgstr "Snimanje"
+
+#: data/resources/ui/shortcuts.ui:37
+msgid "Toggle Record"
+msgstr "Pokreni/zaustavi snimanje"
+
+#: data/resources/ui/shortcuts.ui:44
+msgid "Toggle Pause"
+msgstr "Pauziraj/nastavi snimanje"
+
+#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
+msgid "Cancel Delay"
+msgstr "Otkaži kašnjenje"
+
+#: data/resources/ui/shortcuts.ui:57
+msgid "Settings"
+msgstr "Podešavanja"
+
+#: data/resources/ui/shortcuts.ui:61
+msgid "Toggle Computer Sounds"
+msgstr "Uključi/isključi zvuke sa računara"
+
+#: data/resources/ui/shortcuts.ui:67
+msgid "Toggle Microphone"
+msgstr "Uključi/isključi mikrofon"
+
+#: data/resources/ui/shortcuts.ui:73
+msgid "Toggle Pointer"
+msgstr "Prikaži/sakrij kursor"
+
+#: data/resources/ui/window.ui:31
+msgid "Main Menu"
+msgstr "Glavni izbornik"
+
+#: data/resources/ui/window.ui:47
+msgid "Normal"
+msgstr "Normalno"
+
+#: data/resources/ui/window.ui:57
+msgid "Selection"
+msgstr "Izbor"
+
+#: data/resources/ui/window.ui:86
+msgid "Capture a Monitor or Window"
+msgstr "Snimi monitor ili prozor"
+
+#: data/resources/ui/window.ui:94
+msgid "Capture a Selection of Screen"
+msgstr "Snimi područje ekrana"
+
+#: data/resources/ui/window.ui:107
+msgid "Record Computer Sounds"
+msgstr "Snimi zvuke računara"
+
+#: data/resources/ui/window.ui:114
+msgid "Record From Microphone"
+msgstr "Snimi mikrofon"
+
+#: data/resources/ui/window.ui:121
+msgid "Show Pointer"
+msgstr "Prikaži kursor"
+
+#: data/resources/ui/window.ui:128
+msgid "Record"
+msgstr "Snimi"
+
+#: data/resources/ui/window.ui:182
+msgid "Stop"
+msgstr "Zaustavi"
+
+#: data/resources/ui/window.ui:219
+msgid "Recording in…"
+msgstr "Snimam u…"
+
+#: data/resources/ui/window.ui:258
+msgid "Flushing…"
+msgstr "Ispiram…"
+
+#: data/resources/ui/window.ui:283
+msgid "_Delay"
+msgstr "_Kašnjenje"
+
+#: data/resources/ui/window.ui:285
+msgid "None"
+msgstr "Nema"
+
+#: data/resources/ui/window.ui:290
+msgid "5 seconds"
+msgstr "5 sekundi"
+
+#: data/resources/ui/window.ui:295
+msgid "10 seconds"
+msgstr "10 sekundi"
+
+#: data/resources/ui/window.ui:301
+msgid "_Video Format"
+msgstr "_Format videa"
+
+#: data/resources/ui/window.ui:303
+msgid "WebM"
+msgstr "WebM"
+
+#: data/resources/ui/window.ui:308
+msgid "MKV"
+msgstr "MKV"
+
+#: data/resources/ui/window.ui:313
+msgid "MP4"
+msgstr "MP4"
+
+#: data/resources/ui/window.ui:318
+msgid "GIF"
+msgstr "GIF"
+
+#: data/resources/ui/window.ui:324
+msgid "_Save to…"
+msgstr "_Sačuvaj u…"
+
+#: data/resources/ui/window.ui:330
+msgid "_Keyboard Shortcuts"
+msgstr "_Prečice na tastaturi"
+
+#: data/resources/ui/window.ui:334
+msgid "_About Kooha"
+msgstr "_O Kooha"
+
+#: src/application.rs:138
+msgid "Select Recordings Folder"
+msgstr "Izaberi fasciklu za snimke"
+
+#: src/application.rs:141
+msgid "_Cancel"
+msgstr "_Otkaži"
+
+#: src/application.rs:142
+msgid "_Select"
+msgstr "_Izaberi"
+
+#: src/application.rs:159
+msgid "Cannot access “{}”"
+msgstr "Ne mogu da da pirstupim “{}”"
+
+#: src/application.rs:161
+msgid "Please choose an accessible location and try again."
+msgstr "Molim te odaberi pristupačnu lokaciju i pokušaj ponovo."
+
+#. Translators: Replace "translator-credits" with your names. Put a comma between.
+#: src/application.rs:195
+msgid "translator-credits"
+msgstr "  Dušan Simić <dusan.simic1810@gmail.com>"
+
+#: src/application.rs:196
+msgid "Copyright 2021 Dave Patrick"
+msgstr "Copyright 2021 Dave Patrick"
+
+#: src/application.rs:199
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/application.rs:220
+msgid "Screencast Recorded!"
+msgstr "Ekran je snimljen!"
+
+#: src/application.rs:222
+msgid "The recording has been saved in “{}”"
+msgstr "Snimak je sačuvan u “{}”"
+
+#: src/application.rs:230
+msgid "Open File"
+msgstr "Otvori datoteku"
+
+#: src/error.rs:17
+msgid "Screencast Portal Request Error"
+msgstr "Greška kod portala za snimanje ekrana"
+
+#: src/error.rs:18
+msgid "Pipeline Build Error"
+msgstr "Greška kod cevovoda za izgradnju"
+
+#: src/error.rs:19
+msgid "Recording Error"
+msgstr "Greška prilikom snimanja"
+
+#: src/error.rs:47
+msgid ""
+"Make sure to check for the runtime dependencies and <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+msgstr ""
+"Proverite sve zavisnosti za vreme izvršavanja <a href=\"https://github.com/"
+"SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work stranica</a>."
+
+#: src/error.rs:48
+msgid ""
+"A GStreamer plugin may not be installed. If not, please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+msgstr ""
+"Dodatak GStreamer možda nije instaliran. Ukoliko jeste, prijavi na <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha-inoj stranici za probleme</"
+"a>."
+
+#: src/error.rs:49
+msgid ""
+"Make sure that the saving location exists. If not, something went wrong and "
+"please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
+"issue page</a>."
+msgstr ""
+"Pobrini se da lokacija za čuvanje postoji. Ukoliko postoji, nešto je pošlo "
+"naopako i molim te prijavi na <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha-inoj stranici za probleme</a>."
+
+#: src/widgets/main_window.rs:159
+msgid "Paused"
+msgstr "Pauzirano"
