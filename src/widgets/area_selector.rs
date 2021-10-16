@@ -1,5 +1,5 @@
 use adw::subclass::prelude::*;
-use futures::channel::oneshot::{Receiver, Sender};
+use futures::channel::oneshot::Sender;
 use gtk::{
     gdk::{self, keys::Key},
     glib::{self, clone, signal::Inhibit},
@@ -41,7 +41,6 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct AreaSelector {
         pub sender: RefCell<Option<Sender<AreaSelectorResponse>>>,
-        pub receiver: RefCell<Option<Receiver<AreaSelectorResponse>>>,
         pub start_position: RefCell<Option<Point>>,
         pub current_position: RefCell<Option<Point>>,
     }
@@ -195,15 +194,12 @@ impl AreaSelector {
     }
 
     pub async fn select_area(&self) -> AreaSelectorResponse {
-        let imp = self.private();
-
         let (sender, receiver) = futures::channel::oneshot::channel();
+        let imp = self.private();
         imp.sender.replace(Some(sender));
-        imp.receiver.replace(Some(receiver));
 
         self.present();
 
-        let receiver = imp.receiver.take().unwrap();
         receiver.await.unwrap()
     }
 }
