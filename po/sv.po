@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
 # Luna Jernberg <droidbittin@gmail.com>, 2021.
+# Kristoffer Grundström <swedishsailfishosuser@tutanota.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-08-19 13:35+0000\n"
-"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"PO-Revision-Date: 2021-10-17 22:34+0000\n"
+"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
 "Language: sv\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -39,6 +40,7 @@ msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
+"Fånga din skärm på ett intuitivt och rakt på sak-sätt utan distraktioner."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -269,7 +271,7 @@ msgstr "Välj en tillgänglig plats och försök igen."
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:195
 msgid "translator-credits"
-msgstr ""
+msgstr "Kristoffer Grundström"
 
 #: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
