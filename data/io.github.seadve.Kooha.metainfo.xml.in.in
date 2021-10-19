@@ -45,6 +45,27 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.0.1" date="2021-10-20">
+      <description>
+        <p>This is a minor release:</p>
+        <ul>
+          <li>GIF recordings now loops infinitely</li>
+          <li>Minor codebase improvements</li>
+          <li>Added Serbian Cyrillic translations</li>
+          <li>Added Serbian Latin translations</li>
+          <li>Updated Croatian translations</li>
+          <li>Updated Ukrainian translations</li>
+          <li>Updated Basque translations</li>
+          <li>Updated Dutch translations</li>
+          <li>Updated Turkish translations</li>
+          <li>Updated Italian translations</li>
+          <li>Updated Spanish translations</li>
+          <li>Updated Hungarian translations</li>
+          <li>Updated German translations</li>
+          <li>Updated Slovak translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0.0" date="2021-09-23">
       <description>
         <p>This is a big release containing a lot of fixes and new features!</p>
