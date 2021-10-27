@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-08-08 12:47+0000\n"
+"PO-Revision-Date: 2021-10-27 12:12+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
 "pot-file/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -38,7 +38,7 @@ msgstr "Skjermopptak;Opptaker;Skjerm;Video;"
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "Ta opp skjermen din på en enkel og lettbeint måte uten forstyrrelser."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -66,7 +66,7 @@ msgstr "📼 Støtte for WebM-, MP4-, GIF-, og MKV-formater."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Flere lydkilder kan velges."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
@@ -300,19 +300,24 @@ msgstr ""
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Opptaksfeil"
 
 #: src/error.rs:47
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"Forsikre deg om at du sjekker kjøretidsavhengighetene og <a href=\"https"
+"://github.com/SeaDve/Kooha#-it-doesnt-work\">Det virker ikke</a>-siden."
 
 #: src/error.rs:48
 msgid ""
 "A GStreamer plugin may not be installed. If not, please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Et GStreamer-programtillegg er kanskje ikke installert. Hvis dette ikke er "
+"tilfelle kan du rapportere det på <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha sin feilsporer</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -320,6 +325,9 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"Forsikre deg om at lagringsstedet finnes. Hvis det ikke gjør det og noe gikk "
+"galt kan du rapportere det på <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha sin feilsporer</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"

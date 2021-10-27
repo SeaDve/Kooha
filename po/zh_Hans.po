@@ -5,13 +5,14 @@
 # Zhou Nan <zhounan@nfschina.com>, 2021.
 # Zhongrui Cao <zhongrui.cao@suse.com>, 2021.
 # WhiredPlanck <fungdaat31@outlook.com>, 2021.
+# Liu Tao <lyuutau@outlook.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-09-22 07:35+0000\n"
-"Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
+"PO-Revision-Date: 2021-10-27 12:12+0000\n"
+"Last-Translator: Liu Tao <lyuutau@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -40,7 +41,7 @@ msgstr "Screencast;Recorder;Screen;Video;录屏;录制;视频;屏幕;屏幕录�
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "以直观、直接的方式捕捉屏幕，无需分心。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-10-25 11:38+0000\n"
+"PO-Revision-Date: 2021-10-27 12:12+0000\n"
 "Last-Translator: Jan Novák <novak@silen.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
 "\n"
@@ -269,7 +269,7 @@ msgstr "Prosím, vyberte přístupné místo a zkuste to znovu."
 #: src/application.rs:195
 msgid "translator-credits"
 msgstr ""
-"Jan Novák <novak@silen.org>\n"
+"Jan Novák <jan.novak@silen.org>\n"
 "Vojtěch Perník <translations@pervoj.cz>"
 
 #: src/application.rs:196
@@ -298,7 +298,7 @@ msgstr "Chyba požadavku portálu Screencast"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "Chyba při sestavování v pipeline"
 
 #: src/error.rs:19
 msgid "Recording Error"
@@ -317,6 +317,9 @@ msgid ""
 "A GStreamer plugin may not be installed. If not, please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Plugin GStreamer nejspíše nebude nainstalovaný, pokud není prosíme o "
+"vyplnění reportu na <a href=\"https://github.com/SeaDve/Kooha/issues\""
+">Kooha's issue page</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -324,6 +327,9 @@ msgid ""
 "please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
 "issue page</a>."
 msgstr ""
+"Ujisti se že existuje umístění kam chceš ukládat, pokud ne něco se pokazilo, "
+"můžeš vyplnit report na <a href=\"https://github.com/SeaDve/Kooha/issues\""
+">Kooha's issue page</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
