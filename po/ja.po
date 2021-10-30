@@ -5,13 +5,14 @@
 # tinaxd <tinaxd@protonmail.com>, 2021.
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
 # Ryo Nakano <ryonakaknock3@gmail.com>, 2021.
+# Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-10-07 08:05+0000\n"
-"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"PO-Revision-Date: 2021-10-30 08:38+0000\n"
+"Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
 "Language: ja\n"
@@ -48,55 +49,55 @@ msgstr ""
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
-msgstr ""
+msgstr "Koohaはシンプルでミニマルなインターフェイスを備えたスクリーンレコーダーです。複雑な設定をせず、ボタン一つで録画することができます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Koohaの特徴は以下の通りです："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 手間をかけずに画面を記録。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ マイクの音声、コンピュータのサウンド、またはその両方を記録できます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 WebM、MP4、GIF、MKVのフォーマットに対応。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 複数のソースを選択。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 ハードウェアアクセラレーションのレコーディング対応"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ モニターまたはウィンドウの録画を選択できます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ 選択した範囲を録画できます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ 録画前にタイマーをセットすることもできます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ カーソルを非表示にしての録画もできます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 保存する場所を選択できます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ 役に立つキーボードショートカットもあります。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
@@ -200,7 +201,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr ""
+msgstr "タイマー(_D)"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
@@ -271,7 +272,9 @@ msgstr "アクセス可能な場所を選んで、もう一度お試しくださ
 msgid "translator-credits"
 msgstr ""
 "小山田 純,\n"
-"Ryo Nakano"
+"Ryo Nakano\n"
+"\n"
+"Sibuya Kaz"
 
 #: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
