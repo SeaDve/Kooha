@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-10-30 08:38+0000\n"
+"PO-Revision-Date: 2021-11-01 13:35+0000\n"
 "Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "直感的かつ分かりやすい方法で気を散らすことなく画面をキャプチャします。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -73,7 +73,7 @@ msgstr "🗔 複数のソースを選択。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 ハードウェアアクセラレーションのレコーディング対応"
+msgstr "🚀 ハードウェアアクセラレーションのレコーディングに対応"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
@@ -85,7 +85,7 @@ msgstr "🖼️ 選択した範囲を録画できます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ 録画前にタイマーをセットすることもできます。"
+msgstr "⏲️ 録画開始前にタイマーをセットすることもできます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
@@ -197,7 +197,7 @@ msgstr "録画開始まで"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
-msgstr ""
+msgstr "フラッシング…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
@@ -274,7 +274,7 @@ msgstr ""
 "小山田 純,\n"
 "Ryo Nakano\n"
 "\n"
-"Sibuya Kaz"
+"Kaz Sibuya"
 
 #: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
@@ -335,7 +335,7 @@ msgstr ""
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr ""
+msgstr "一時停止"
 
 #~ msgid "Open menu"
 #~ msgstr "メニューを開く"
