@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-23 15:30+0800\n"
-"PO-Revision-Date: 2021-11-02 18:54+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-11-03 19:33+0000\n"
+"Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://hosted.weblate.org/projects/kooha/pot-file/"
 "oc/>\n"
 "Language: oc\n"
@@ -281,19 +281,19 @@ msgstr "GitHub"
 
 #: src/application.rs:220
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "Captura d’ecran enregistrada !"
 
 #: src/application.rs:222
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "L’enregistrament es estat gardat dins « {} »"
 
 #: src/application.rs:230
 msgid "Open File"
-msgstr ""
+msgstr "Dobrir un fichièr"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Error de requèsta al portal de transmission de l’ecran"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
@@ -301,7 +301,7 @@ msgstr ""
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Error d’enregistrament"
 
 #: src/error.rs:47
 msgid ""
@@ -324,4 +324,4 @@ msgstr ""
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr ""
+msgstr "En pausa"
