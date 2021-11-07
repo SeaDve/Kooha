@@ -45,8 +45,8 @@ impl Error {
     pub fn help(&self) -> String {
         let help_message = match self {
             Self::Portal(_) => gettext("Make sure to check for the runtime dependencies and <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."),
-            Self::Pipeline(_) => gettext("A GStreamer plugin may not be installed. If not, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
-            Self::Recorder(_) => gettext("Make sure that the saving location exists. If not, something went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
+            Self::Pipeline(_) => gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
+            Self::Recorder(_) => gettext("Make sure that the saving location exists. If it actually exists, something went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
         };
 
         format!("{}\n\n<b>Help</b>: {}", self.message(), help_message)
