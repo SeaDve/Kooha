@@ -126,10 +126,14 @@ The following packages are required to build Kooha:
 
 * meson
 * ninja
-* appstream-glib
-* python3
-* python3-gobject
+* appstream-glib (for checks)
+* cargo
+* x264 (for MP4)
 * gstreamer
+* gstreamer-plugins-base
+* gstreamer-plugins-ugly (for MP4)
+* gstreamer-vaapi (for hardware acceleration)
+* glib2
 * gtk4
 * libadwaita
 
