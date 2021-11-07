@@ -352,7 +352,7 @@ impl Recorder {
         let record_bus = self.pipeline().unwrap().bus().unwrap();
         record_bus
             .add_watch_local(
-                clone!(@weak self as obj => @default-return Continue(true), move |_, message| {
+                clone!(@weak self as obj => @default-return Continue(false), move |_, message| {
                     obj.parse_bus_message(message)
                 }),
             )

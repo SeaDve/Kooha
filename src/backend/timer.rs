@@ -164,7 +164,7 @@ impl Timer {
 
         glib::timeout_add_seconds_local(
             1,
-            clone!(@weak self as obj => @default-return Continue(true), move || {
+            clone!(@weak self as obj => @default-return Continue(false), move || {
                 let current_state = obj.state();
 
                 if current_state == TimerState::Stopped {
