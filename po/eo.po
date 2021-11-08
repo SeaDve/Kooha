@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-23 15:30+0800\n"
+"POT-Creation-Date: 2021-11-07 11:29+0800\n"
 "PO-Revision-Date: 2021-07-31 09:03+0000\n"
 "Last-Translator: telmo bruno silva seabra <telmoseabra@petalmail.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -310,15 +310,16 @@ msgstr ""
 
 #: src/error.rs:48
 msgid ""
-"A GStreamer plugin may not be installed. If not, please report to <a href="
-"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+"A GStreamer plugin may not be installed. If it is installed but still does "
+"not work properly, please report to <a href=\"https://github.com/SeaDve/"
+"Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
 #: src/error.rs:49
 msgid ""
-"Make sure that the saving location exists. If not, something went wrong and "
-"please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's "
-"issue page</a>."
+"Make sure that the saving location exists. If it actually exists, something "
+"went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha's issue page</a>."
 msgstr ""
 
 #: src/widgets/main_window.rs:159
