@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-11-01 13:35+0000\n"
+"PO-Revision-Date: 2021-11-18 03:35+0000\n"
 "Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -324,6 +324,8 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"GStreamer プラグインがインストールされていない可能性があります。もしインストールされてるのに動かないなら、ここに報告してください<a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Koohaのissue ページ</a>"
 
 #: src/error.rs:49
 msgid ""
@@ -331,6 +333,8 @@ msgid ""
 "went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
 "issues\">Kooha's issue page</a>."
 msgstr ""
+"保存される場所がありません。もしある場合はここに報告してください<a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Koohaの issue ページ</a>。"
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
