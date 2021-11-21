@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-11-12 19:51+0000\n"
+"PO-Revision-Date: 2021-11-21 19:49+0000\n"
 "Last-Translator: inkhorn <inkhorn@hostux.ninja>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/pt_BR/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -29,7 +29,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
 msgid "Elegantly record your screen"
-msgstr "Grave sua tela elegantemente"
+msgstr "Grave sua tela com elegância"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -52,15 +52,15 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Os principais recursos do Kooha incluem o seguinte:"
+msgstr "Os principais recursos do Kooha incluem:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Capture sua tela sem complicações."
+msgstr "🎥 Captura da sua tela sem complicações."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Grave seu microfone, sons do computador ou ambos ao mesmo tempo."
+msgstr "🎙️ Gravação via microfone, sons no computador ou ambos ao mesmo tempo."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
@@ -72,11 +72,11 @@ msgstr "🗔 Seleção de fontes múltiplas."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Opcional codificação acelerada via hardware"
+msgstr "🚀 Codificação acelerada opcional via hardware"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Selecione um monitor ou janela para gravar."
+msgstr "🖥️ Seleção de monitor ou janela para gravar."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
@@ -84,19 +84,20 @@ msgstr "🖼️ Escolha uma secção para capturar determinada área da sua tela
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Defina o atraso para se preparar antes de iniciar a gravação."
+msgstr ""
+"⏲️ Configuração de adiamento para preparar-se antes de iniciar a gravação."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️Esconda ou mostre o ponteiro do mouse."
+msgstr "🖱️Esconder ou mostrar o ponteiro do mouse."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Escolha um local para salvar a gravação."
+msgstr "💾 Definir um local para salvar a gravação."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Utilize atalhos de teclado úteis."
+msgstr "⌨️ Utilizar atalhos de teclado."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
@@ -108,7 +109,7 @@ msgstr "Geral"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr "Abrir Menu"
+msgstr "Abrir menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
@@ -120,7 +121,7 @@ msgstr "Sair"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
-msgstr "Gravando"
+msgstr "Gravação"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
@@ -132,7 +133,7 @@ msgstr "Alternar o botão de pausar"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
-msgstr "Cancelar Atraso"
+msgstr "Cancelar adiamento"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -140,19 +141,19 @@ msgstr "Configurações"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr "Alternar a opção de sons do computador"
+msgstr "Alternar sons do computador"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr "Alternar o microfone"
+msgstr "Alternar microfone"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr "Alternar o ponteiro"
+msgstr "Alternar ponteiro"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
-msgstr "Menu Principal"
+msgstr "Menu principal"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
@@ -164,19 +165,19 @@ msgstr "Seleção"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr "Capturar um Monitor ou Janela"
+msgstr "Capturar um monitor ou janela"
 
 #: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
-msgstr "Capturar uma Seleção da Tela"
+msgstr "Capturar uma área da tela"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr "Gravar Sons do Computador"
+msgstr "Gravar sons do computador"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr "Gravar do Microfone"
+msgstr "Gravar via microfone"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
@@ -200,7 +201,7 @@ msgstr "Em andamento…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr "Atraso"
+msgstr "Adiamento"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
@@ -216,7 +217,7 @@ msgstr "10 segundos"
 
 #: data/resources/ui/window.ui:301
 msgid "_Video Format"
-msgstr "Formato de _Vídeo"
+msgstr "Formato de _vídeo"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
@@ -240,15 +241,15 @@ msgstr "_Salvar para…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr "_Atalhos do teclado"
+msgstr "_Atalhos de teclado"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr "Sobre o Kooha"
+msgstr "Sobre o Kooh_a"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
-msgstr "Selecione Pasta de Gravações"
+msgstr "Selecione pasta de gravações"
 
 #: src/application.rs:141
 msgid "_Cancel"
@@ -269,7 +270,7 @@ msgstr "Por favor, escolha um local acessível e tente novamente."
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:195
 msgid "translator-credits"
-msgstr "Vitor Cardoso /nTiago Lucas Flach, inkhorn"
+msgstr "Vitor Cardoso, Tiago Lucas Flach, inkhorn"
 
 #: src/application.rs:196
 msgid "Copyright 2021 Dave Patrick"
@@ -281,7 +282,7 @@ msgstr "GitHub"
 
 #: src/application.rs:220
 msgid "Screencast Recorded!"
-msgstr "Captura da tela registrada!"
+msgstr "Captura da tela concluída!"
 
 #: src/application.rs:222
 msgid "The recording has been saved in “{}”"
@@ -293,7 +294,7 @@ msgstr "Abrir arquivo"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr "Error requesting recording portal"
+msgstr "Erro ao solicitar portal de gravação"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
@@ -318,9 +319,9 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"O plugin do GStreamer pode não estar instalado. Se ele estiver instalado mas "
-"ainda não funcionar corretamente, favor relatar no <a href=\"https://github."
-"com/SeaDve/Kooha/issues\">site do Kooha</a>."
+"Provavelmente o plugin do GStreamer não está instalado. Se estiver "
+"instalado, mas não funcionar corretamente, por favor informe no <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">site do Kooha</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -328,9 +329,9 @@ msgid ""
 "went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
 "issues\">Kooha's issue page</a>."
 msgstr ""
-"Certifique-se de que o local para salvar exista. Se ele realmente existir, "
-"alguma coisa deu errado, favor, relatar no <a href=\"https://github.com/"
-"SeaDve/Kooha/issues\">site do Kooha</a>."
+"Certifique-se de que o local para salvar está válido. Se ele de fato "
+"existir, alguma coisa está errada, por favor informe no <a href=\"https"
+"://github.com/SeaDve/Kooha/issues\">site do Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"

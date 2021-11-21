@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-09-24 15:39+0000\n"
+"PO-Revision-Date: 2021-11-21 19:49+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -81,7 +81,7 @@ msgstr "🚀 Codifica con accelerazione hardware opzionale"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Seleziona un monitor o una finestra da registrare."
+msgstr "🖥️ Seleziona il monitor o la finestra da registrare."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
@@ -325,6 +325,9 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Un plugin GStreamer potrebbe non essere installato. Se è installato ma "
+"continua a non funzionare correttamente, segnalalo a <a href=\"https://github"
+".com/SeaDve/Kooha/issues\">pagina dei problemi di Kohoha</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -332,6 +335,9 @@ msgid ""
 "went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
 "issues\">Kooha's issue page</a>."
 msgstr ""
+"Assicurati che la posizione di salvataggio esista. Se esiste effettivamente, "
+"qualcosa è andato storto e segnalalo a <a href=\"https://github.com/SeaDve/"
+"Kooha/issues\">pagina dei problemi di Kohoha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
