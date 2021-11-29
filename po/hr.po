@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-09-24 15:39+0000\n"
+"PO-Revision-Date: 2021-11-29 15:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "hr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -316,6 +316,9 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Dodatak GStreamer možda nije instaliran. Ako je instaliran, ali i dalje ne "
+"radi ispravno, prijavi problem na <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">Kooha</a> stranici za prijavu problema."
 
 #: src/error.rs:49
 msgid ""
@@ -323,6 +326,9 @@ msgid ""
 "went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
 "issues\">Kooha's issue page</a>."
 msgstr ""
+"Provjeri postoji li mjesto za spremanje. Ako postoji, nešto ne radi ispravno "
+"te prijavi problem na <a href=\"https://github.com/SeaDve/Kooha/issues\""
+">Kooha</a> stranici za prijavu problema."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
