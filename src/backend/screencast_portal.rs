@@ -7,7 +7,6 @@ use ashpd::{
     zbus, WindowIdentifier,
 };
 use gtk::{
-    gio,
     glib::{self, clone},
     prelude::*,
     subclass::prelude::*,
@@ -15,7 +14,7 @@ use gtk::{
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
-use crate::{application::Application, error::Error, widgets::MainWindow};
+use crate::{application::Application, error::Error};
 
 #[derive(Debug)]
 pub enum ScreencastPortalResponse {
@@ -55,11 +54,6 @@ impl ScreencastPortal {
         imp::ScreencastPortal::from_instance(self)
     }
 
-    fn window(&self) -> MainWindow {
-        let application: Application = gio::Application::default().unwrap().downcast().unwrap();
-        application.main_window()
-    }
-
     pub async fn new_session(
         &self,
         is_show_pointer: bool,
@@ -72,12 +66,16 @@ impl ScreencastPortal {
         } else {
             SourceType::Monitor | SourceType::Window
         };
+
         let cursor_mode = if is_show_pointer {
             BitFlags::<CursorMode>::from_flag(CursorMode::Embedded)
         } else {
             BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
         };
-        let identifier = WindowIdentifier::from_native(&self.window().native().unwrap()).await;
+
+        let main_window = Application::default().main_window();
+        let identifier = WindowIdentifier::from_native(&main_window.native().unwrap()).await;
+
         let multiple = !is_selection_mode;
 
         match screencast(identifier, multiple, source_type, cursor_mode).await {
