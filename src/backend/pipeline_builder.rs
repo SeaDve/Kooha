@@ -126,20 +126,15 @@ impl PipelineAssembler {
             Some(format!("filesink name=filesink location=\"{}\"", self.file_path().display())),
         ];
 
-        let mut pipeline_string = pipeline_elements
+        let pipeline_string = pipeline_elements
             .into_iter()
             .flatten()
             .collect::<Vec<String>>()
             .join(" ! ");
 
-        pipeline_string = format!(
-            "{} {} {}",
-            pipeline_string,
-            self.pipewiresrc(),
-            self.pulsesrc()
-        );
-
-        pipeline_string.replace("%T", &utils::ideal_thread_count().to_string())
+        [pipeline_string, self.pipewiresrc(), self.pulsesrc()]
+            .join(" ")
+            .replace("%T", &utils::ideal_thread_count().to_string())
     }
 
     fn compositor(&self) -> Option<String> {
