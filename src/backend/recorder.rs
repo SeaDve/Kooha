@@ -206,12 +206,8 @@ impl Recorder {
 
                 // Give area selector some time to disappear before building pipeline
                 // to avoid it being included in the recording.
-                glib::timeout_add_local_once(
-                    Duration::from_millis(5),
-                    clone!(@weak self as obj => move || {
-                        obj.build_pipeline(pipeline_builder);
-                    }),
-                );
+                glib::timeout_future(Duration::from_millis(150)).await;
+                self.build_pipeline(pipeline_builder);
 
                 log::info!("Captured coordinates");
             }
