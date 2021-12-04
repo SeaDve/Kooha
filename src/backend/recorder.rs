@@ -1,7 +1,7 @@
 use ashpd::desktop::screencast::Stream;
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, Continue, GBoxed, GEnum, SignalHandlerId},
+    glib::{self, clone, subclass::Signal, GBoxed, GEnum},
     subclass::prelude::*,
 };
 use once_cell::sync::Lazy;
@@ -298,25 +298,36 @@ impl Recorder {
         }
     }
 
-    pub fn connect_state_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_notify_local(Some("state"), f)
+    pub fn connect_state_notify<F>(&self, f: F) -> glib::SignalHandlerId
+    where
+        F: Fn(&Self) + 'static,
+    {
+        self.connect_notify_local(Some("state"), move |obj, _| f(obj))
     }
 
-    pub fn connect_response<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_local("response", false, f).unwrap()
+    pub fn connect_response<F>(&self, f: F) -> glib::SignalHandlerId
+    where
+        F: Fn(&Self, &RecorderResponse) + 'static,
+    {
+        self.connect_local("response", true, move |values| {
+            let obj = values[0].get::<Self>().unwrap();
+            let response = values[1].get::<RecorderResponse>().unwrap();
+            f(&obj, &response);
+            None
+        })
+        .unwrap()
     }
 
-    pub fn connect_prepared<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_local("prepared", false, f).unwrap()
+    pub fn connect_prepared<F>(&self, f: F) -> glib::SignalHandlerId
+    where
+        F: Fn(&Self) + 'static,
+    {
+        self.connect_local("prepared", true, move |values| {
+            let obj = values[0].get::<Self>().unwrap();
+            f(&obj);
+            None
+        })
+        .unwrap()
     }
 
     pub fn prepare(&self) {

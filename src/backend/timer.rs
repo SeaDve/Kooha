@@ -1,5 +1,5 @@
 use gtk::{
-    glib::{self, clone, subclass::Signal, Continue, GEnum, SignalHandlerId},
+    glib::{self, clone, subclass::Signal, GEnum},
     prelude::*,
     subclass::prelude::*,
 };
@@ -138,25 +138,30 @@ impl Timer {
         self.set_time(new_time);
     }
 
-    pub fn connect_state_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_notify_local(Some("state"), f)
+    pub fn connect_state_notify<F>(&self, f: F) -> glib::SignalHandlerId
+    where
+        F: Fn(&Self) + 'static,
+    {
+        self.connect_notify_local(Some("state"), move |obj, _| f(obj))
     }
 
-    pub fn connect_time_notify<F: Fn(&Self, &glib::ParamSpec) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_notify_local(Some("time"), f)
+    pub fn connect_time_notify<F>(&self, f: F) -> glib::SignalHandlerId
+    where
+        F: Fn(&Self) + 'static,
+    {
+        self.connect_notify_local(Some("time"), move |obj, _| f(obj))
     }
 
-    pub fn connect_delay_done<F: Fn(&[glib::Value]) -> Option<glib::Value> + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId {
-        self.connect_local("delay-done", false, f).unwrap()
+    pub fn connect_delay_done<F>(&self, f: F) -> glib::SignalHandlerId
+    where
+        F: Fn(&Self) + 'static,
+    {
+        self.connect_local("delay-done", true, move |values| {
+            let obj = values[0].get::<Self>().unwrap();
+            f(&obj);
+            None
+        })
+        .unwrap()
     }
 
     pub fn start(&self, delay: u32) {

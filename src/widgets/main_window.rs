@@ -141,7 +141,7 @@ impl MainWindow {
         );
 
         imp.recorder_controller.connect_state_notify(
-            clone!(@weak self as obj => move |recorder_controller, _| {
+            clone!(@weak self as obj => move |recorder_controller| {
                 let imp = obj.private();
 
                 match recorder_controller.state() {
@@ -164,7 +164,7 @@ impl MainWindow {
         );
 
         imp.recorder_controller.connect_time_notify(
-            clone!(@weak self as obj => move |recorder_controller, _| {
+            clone!(@weak self as obj => move |recorder_controller| {
                 let imp = obj.private();
 
                 let current_time = recorder_controller.time();
@@ -178,8 +178,7 @@ impl MainWindow {
         );
 
         imp.recorder_controller.connect_response(
-            clone!(@weak self as obj => @default-return None, move |args| {
-                let response = args[1].get().unwrap();
+            clone!(@weak self as obj => move |_, response| {
                 match response {
                     RecorderResponse::Success(recording_file_path) => {
                         let application: Application = obj.application().unwrap().downcast().unwrap();
@@ -202,7 +201,6 @@ impl MainWindow {
                         error_dialog.present();
                     }
                 };
-            None
             }),
         );
     }
