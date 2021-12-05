@@ -14,4 +14,4 @@ jobs:
         with:
           check_filenames: true
           ignore_words_list: "crate,ser"
-          skip: "*.svg, *.po"
+          skip: "*.svg,*.po"
