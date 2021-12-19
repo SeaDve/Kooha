@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-12-17 22:51+0000\n"
+"PO-Revision-Date: 2021-12-19 06:50+0000\n"
 "Last-Translator: Maxime Leroy <lisacintosh@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
@@ -71,7 +71,7 @@ msgstr "📼 Support pour les formats WebM, MP4, GIF, et MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Sélection de plusieurs sources."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
@@ -200,11 +200,11 @@ msgstr "Enregistrer dans…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
-msgstr ""
+msgstr "Vidage…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr ""
+msgstr "_Délai"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
@@ -252,7 +252,7 @@ msgstr "_À propos de Kooha"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Sélectionner le dossier des enregistrements"
 
 #: src/application.rs:141
 msgid "_Cancel"
@@ -268,7 +268,7 @@ msgstr "Ne peut accéder à « {} »"
 
 #: src/application.rs:161
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Veuillez choisir une localisation accessible puis réessayez."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:195
@@ -289,19 +289,20 @@ msgstr "Vidéographie enregistrée !"
 
 #: src/application.rs:222
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "L'enregistrement à été enregistré dans « {} »"
 
 #: src/application.rs:230
 msgid "Open File"
 msgstr "Ouvrir un fichier"
 
 #: src/error.rs:17
+#, fuzzy
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Échec de la requête vers le portail Screencast"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "Échec de la construction de la pipeline"
 
 #: src/error.rs:19
 msgid "Recording Error"
@@ -312,6 +313,8 @@ msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"Veuillez vérifier les dépendances d'exécution et la page <a href=\"https"
+"://github.com/SeaDve/Kooha#-it-doesnt-work\">Ça ne marche pas</a>."
 
 #: src/error.rs:48
 msgid ""
@@ -319,6 +322,10 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Le greffon GStreamer peut ne pas être installé. S'il est installé mais que "
+"ça ne fonctionne toujours pas correctement, merci de le signaler sur <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">la page des problèmes de "
+"Kooha</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -326,6 +333,10 @@ msgid ""
 "went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
 "issues\">Kooha's issue page</a>."
 msgstr ""
+"Veuillez vérifier que l'emplacement de destination des enregistrements "
+"existe. Si c'est déjà le cas, une erreur s'est produite, merci de la "
+"signaler sur <a href=\"https://github.com/SeaDve/Kooha/issues\">la page des "
+"problèmes de Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
