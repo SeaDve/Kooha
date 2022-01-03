@@ -5,13 +5,14 @@
 # Dzmitry Neviadomski <nevack.d@gmail.com>, 2021.
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
 # Noel Fritz <toro_75@yahoo.com>, 2021.
+# MrWooltrest <nikitaec101@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-08-12 20:34+0000\n"
-"Last-Translator: Noel Fritz <toro_75@yahoo.com>\n"
+"PO-Revision-Date: 2022-01-03 16:52+0000\n"
+"Last-Translator: MrWooltrest <nikitaec101@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -67,19 +68,19 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Поддерживает форматы WebM, MP4, GIF, и MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Возможность выбора нескольких источников."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Опциональное аппаратное ускорение"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️Выберите монитор или окно для записи."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
@@ -117,7 +118,7 @@ msgstr "Открыть меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Показывать ярлыки"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
@@ -129,11 +130,11 @@ msgstr "Запись"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Переключить запись"
 
 #: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Переключить паузу"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
@@ -145,15 +146,15 @@ msgstr "Настройки"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Переключить запись звуков компьютера"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Переключить запись микрофона"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Переключить видимость указателя"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
@@ -169,11 +170,11 @@ msgstr "Выбор"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Запись монитора или окна"
 
 #: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Запись части экрана"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
@@ -201,11 +202,11 @@ msgstr "Запись в…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
-msgstr ""
+msgstr "Очистка…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr ""
+msgstr "_Задержка"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
@@ -221,7 +222,7 @@ msgstr "10 секунд"
 
 #: data/resources/ui/window.ui:301
 msgid "_Video Format"
-msgstr ""
+msgstr "_Видео формат"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
@@ -233,23 +234,23 @@ msgstr "MKV"
 
 #: data/resources/ui/window.ui:313
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:318
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:324
 msgid "_Save to…"
-msgstr ""
+msgstr "_Сохранить в…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Комбинации клавиш"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Про Kooha"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
@@ -257,19 +258,19 @@ msgstr ""
 
 #: src/application.rs:141
 msgid "_Cancel"
-msgstr ""
+msgstr "_Отменить"
 
 #: src/application.rs:142
 msgid "_Select"
-msgstr ""
+msgstr "_Выбрать"
 
 #: src/application.rs:159
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "_Нет доступа к  \"{}\""
 
 #: src/application.rs:161
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Пожалуйста, выберите доступное место для файла и попробуйте снова."
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:195
@@ -290,23 +291,23 @@ msgstr "Скринкаст записан!"
 
 #: src/application.rs:222
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "Запись была сохранена в \"{}\""
 
 #: src/application.rs:230
 msgid "Open File"
-msgstr ""
+msgstr "Открыть файл"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Ошибка запроса Screencast"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "Ошибка построения Pipeline"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "Ошибка записи"
 
 #: src/error.rs:47
 msgid ""
@@ -330,7 +331,7 @@ msgstr ""
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr ""
+msgstr "На паузе"
 
 #~ msgid ""
 #~ "Capture your screen in a straightforward and painless way without "
