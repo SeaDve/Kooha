@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Sergio Varela <sergitroll9@gmail.com>, 2021.
+# Sergio Varela <sergitroll9@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-09-24 15:39+0000\n"
+"PO-Revision-Date: 2022-01-07 12:54+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/kooha/pot-file/eu/"
 ">\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
@@ -316,6 +316,9 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Baliteke GStreamer-en plugin bat instalatuta ez egotea. Instalatuta badago "
+"baina behar bezala funtzionatzen ez badu, jakinarazi, mesedez, <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha intzidentzia-orrian</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -323,6 +326,9 @@ msgid ""
 "went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
 "issues\">Kooha's issue page</a>."
 msgstr ""
+"Ziurtatu gordetzearen kokalekua existitzen dela. Benetan existitzen bada, "
+"zerbait gaizki joan da eta, mesedez, jakinarazi helbide honetara: <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha intzidentzien orria</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
