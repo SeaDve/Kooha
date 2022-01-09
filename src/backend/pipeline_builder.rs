@@ -235,7 +235,7 @@ impl PipelineAssembler {
     }
 
     fn videocrop(&self) -> Option<String> {
-        if let Some(ref coords) = self.builder.coordinates {
+        self.builder.coordinates.map(|ref coords| {
             let stream = &self.streams()[0];
 
             let actual_screen = self.builder.actual_screen.as_ref().unwrap();
@@ -250,16 +250,14 @@ impl PipelineAssembler {
             let bottom_crop = stream_height as f64 - (coords.height + coords.y);
 
             // It is a requirement for x264enc to have even resolution.
-            Some(format!(
+            format!(
                 "videocrop top={} left={} right={} bottom={}",
                 utils::round_to_even(top_crop),
                 utils::round_to_even(left_crop),
                 utils::round_to_even(right_crop),
                 utils::round_to_even(bottom_crop)
-            ))
-        } else {
-            None
-        }
+            )
+        })
     }
 
     fn videoenc(&self) -> String {
