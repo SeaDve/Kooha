@@ -188,7 +188,7 @@ impl MainWindow {
                         recent_manager.add_item(&gio::File::for_path(recording_file_path).uri());
                     },
                     RecorderResponse::Failed(error) => {
-                        let error_dialog = gtk::MessageDialogBuilder::new()
+                        let error_dialog = gtk::MessageDialog::builder()
                             .text(&error.to_string())
                             .secondary_text(&error.help())
                             .secondary_use_markup(true)

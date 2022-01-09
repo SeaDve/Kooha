@@ -13,7 +13,6 @@ use std::path::Path;
 use crate::{
     backend::Settings,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
-    utils,
     widgets::MainWindow,
 };
 
@@ -23,6 +22,7 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct Application {
         pub window: OnceCell<WeakRef<MainWindow>>,
+        pub folder_chooser: OnceCell<gtk::FileChooserNative>,
         pub settings: Settings,
     }
 
@@ -128,19 +128,16 @@ impl Application {
         self.set_accels_for_action("win.cancel-delay", &["<primary>c"]);
     }
 
-    fn select_saving_location(&self) {
+    fn folder_chooser(&self) -> gtk::FileChooserNative {
         let settings = self.settings();
 
-        let chooser = gtk::FileChooserDialogBuilder::new()
+        let chooser = gtk::FileChooserNative::builder()
             .transient_for(&self.main_window())
             .modal(true)
             .action(gtk::FileChooserAction::SelectFolder)
             .title(&gettext("Select Recordings Folder"))
             .build();
 
-        chooser.add_button(&gettext("_Cancel"), gtk::ResponseType::Cancel);
-        chooser.add_button(&gettext("_Select"), gtk::ResponseType::Accept);
-        chooser.set_default_response(gtk::ResponseType::Accept);
         chooser
             .set_current_folder(&gio::File::for_path(settings.saving_location()))
             .expect("Failed to set current folder.");
@@ -152,33 +149,24 @@ impl Application {
             }
 
             let directory = chooser.file().unwrap().path().unwrap();
-            let is_accessible = utils::check_if_accessible(&directory);
-
-            if !is_accessible {
-                let error_dialog = gtk::MessageDialogBuilder::new()
-                    .text(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
-                    .secondary_text(&gettext(
-                        "Please choose an accessible location and try again.",
-                    ))
-                    .buttons(gtk::ButtonsType::Ok)
-                    .message_type(gtk::MessageType::Error)
-                    .transient_for(chooser)
-                    .modal(true)
-                    .build();
-                error_dialog.connect_response(|error_dialog, _| error_dialog.destroy());
-                error_dialog.present();
-                return;
-            };
-
             settings.set_saving_location(&directory);
+
             chooser.destroy();
         });
 
-        chooser.present();
+        chooser
+    }
+
+    fn select_saving_location(&self) {
+        let imp = self.private();
+
+        let chooser = imp.folder_chooser.get_or_init(|| self.folder_chooser());
+
+        chooser.show();
     }
 
     fn show_about_dialog(&self) {
-        let dialog = gtk::AboutDialogBuilder::new()
+        let dialog = gtk::AboutDialog::builder()
             .transient_for(&self.main_window())
             .modal(true)
             .program_name(&gettext("Kooha"))

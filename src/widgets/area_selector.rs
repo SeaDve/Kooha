@@ -85,7 +85,7 @@ mod imp {
                     &[BORDER_COLOR; 4],
                 );
             } else {
-                let placeholder_color = gdk::RGBABuilder::new().build();
+                let placeholder_color = gdk::RGBA::builder().build();
                 let placeholder_rect = graphene::Rect::zero();
                 snapshot.append_color(&placeholder_color, &placeholder_rect);
             }

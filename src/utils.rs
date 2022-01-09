@@ -1,7 +1,7 @@
 use ashpd::zbus;
 use gtk::glib;
 
-use std::{cmp, path::Path};
+use std::cmp;
 
 const MAX_THREAD_COUNT: u32 = 64;
 
@@ -12,13 +12,6 @@ pub fn round_to_even(number: f64) -> i32 {
 pub fn ideal_thread_count() -> u32 {
     let num_processors = glib::num_processors();
     cmp::min(num_processors, MAX_THREAD_COUNT)
-}
-
-pub fn check_if_accessible(path: &Path) -> bool {
-    let home_folder = glib::home_dir();
-    let is_in_home_folder = path.starts_with(&home_folder);
-
-    is_in_home_folder && path != home_folder
 }
 
 pub fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
@@ -71,23 +64,5 @@ mod test {
     fn float_round_to_even() {
         assert_eq!(round_to_even(5.3), 4);
         assert_eq!(round_to_even(2.9), 2);
-    }
-
-    #[test]
-    fn check_if_accessible_in_home() {
-        let folder = glib::home_dir().join("some-folder");
-        assert!(check_if_accessible(&folder));
-    }
-
-    #[test]
-    fn check_if_accessible_not_in_home() {
-        let random_dir = Path::new("/dev/sda");
-        assert!(!check_if_accessible(random_dir));
-    }
-
-    #[test]
-    fn check_if_accessible_home() {
-        let home_dir = glib::home_dir();
-        assert!(!check_if_accessible(&home_dir));
     }
 }
