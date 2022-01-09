@@ -75,8 +75,8 @@ mod test {
 
     #[test]
     fn check_if_accessible_in_home() {
-        let downloads_folder = glib::user_special_dir(glib::UserDirectory::Downloads);
-        assert!(check_if_accessible(&downloads_folder));
+        let folder = glib::home_dir().join("some-folder");
+        assert!(check_if_accessible(&folder));
     }
 
     #[test]
