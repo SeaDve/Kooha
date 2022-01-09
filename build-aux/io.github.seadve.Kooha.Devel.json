@@ -96,7 +96,7 @@
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "branch" : "main"
+                    "tag" : "1.0.0.alpha.4"
                 }
             ]
         },
