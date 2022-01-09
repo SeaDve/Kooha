@@ -8,3 +8,4 @@ src/config.rs
 *.ui.in~
 *.ui~
 .flatpak/
+vendor/
