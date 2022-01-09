@@ -6,6 +6,17 @@ on:
 name: CI
 
 jobs:
+  codespell:
+    name: Codespell
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: codespell-project/actions-codespell@master
+        with:
+          check_filenames: true
+          ignore_words_list: "crate,ser"
+          skip: "*.svg,*.po"
+
   rustfmt:
     name: Rustfmt
     runs-on: ubuntu-20.04
@@ -32,7 +43,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
       with:
-        bundle: kooha-devel.flatpak
+        bundle: kooha.flatpak
         manifest-path: build-aux/io.github.seadve.Kooha.Devel.json
         run-tests: true
         cache-key: flatpak-builder-${{ github.sha }}
