@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:29+0800\n"
+"POT-Creation-Date: 2022-01-10 07:44+0800\n"
 "PO-Revision-Date: 2021-10-11 15:27+0000\n"
 "Last-Translator: Nico <d3sox@protonmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
@@ -23,12 +23,12 @@ msgstr ""
 "X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
 msgstr "Ihren Bildschirm elegant aufnehmen"
 
@@ -256,47 +256,31 @@ msgstr "_Über Kooha"
 msgid "Select Recordings Folder"
 msgstr "Aufnahmeordner auswählen"
 
-#: src/application.rs:141
-msgid "_Cancel"
-msgstr "_Abbrechen"
-
-#: src/application.rs:142
-msgid "_Select"
-msgstr "_Auswählen"
-
-#: src/application.rs:159
-msgid "Cannot access “{}”"
-msgstr "Kein Zugriff auf „{}“"
-
-#: src/application.rs:161
-msgid "Please choose an accessible location and try again."
-msgstr "Bitte wähle einen zugänglichen Pfad und versuche es erneut."
-
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:195
+#: src/application.rs:183
 msgid "translator-credits"
 msgstr ""
 "Jonathan Haas\n"
 "Milo Ivir\n"
 "D3SOX"
 
-#: src/application.rs:196
+#: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
-#: src/application.rs:199
+#: src/application.rs:187
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:220
+#: src/application.rs:208
 msgid "Screencast Recorded!"
 msgstr "Video-Aufzeichnung aufgenommen!"
 
-#: src/application.rs:222
+#: src/application.rs:210
 msgid "The recording has been saved in “{}”"
 msgstr "Die Aufnahme wurde in „{}“ gespeichert"
 
-#: src/application.rs:230
+#: src/application.rs:218
 msgid "Open File"
 msgstr "Datei öffnen"
 
@@ -330,14 +314,26 @@ msgstr ""
 
 #: src/error.rs:49
 msgid ""
-"Make sure that the saving location exists. If it actually exists, something "
-"went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Kooha's issue page</a>."
+"Make sure that the saving location exists or is accessible. If it actually "
+"exists or is accessible, something went wrong and please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "Pausiert"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Abbrechen"
+
+#~ msgid "_Select"
+#~ msgstr "_Auswählen"
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Kein Zugriff auf „{}“"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Bitte wähle einen zugänglichen Pfad und versuche es erneut."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="

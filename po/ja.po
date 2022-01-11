@@ -4,14 +4,14 @@
 # tinaxd <systemd.tinaxd@gmail.com>, 2021.
 # tinaxd <tinaxd@protonmail.com>, 2021.
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
-# Ryo Nakano <ryonakaknock3@gmail.com>, 2021.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022.
 # Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-11-19 03:51+0000\n"
+"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"PO-Revision-Date: 2022-01-11 00:10+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
@@ -20,15 +20,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
 msgstr "エレガントに画面を記録"
 
@@ -253,47 +253,31 @@ msgstr "Koohaについて(_A)"
 msgid "Select Recordings Folder"
 msgstr "動画の保存先のフォルダを選択"
 
-#: src/application.rs:141
-msgid "_Cancel"
-msgstr "キャンセル(_C)"
-
-#: src/application.rs:142
-msgid "_Select"
-msgstr "選択(_S)"
-
-#: src/application.rs:159
-msgid "Cannot access “{}”"
-msgstr "“{}”にアクセスできません"
-
-#: src/application.rs:161
-msgid "Please choose an accessible location and try again."
-msgstr "アクセス可能な場所を選んで、もう一度お試しください。"
-
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:195
+#: src/application.rs:183
 msgid "translator-credits"
 msgstr ""
 "小山田 純,\n"
 "Ryo Nakano,\n"
 "Kaz Sibuya"
 
-#: src/application.rs:196
+#: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
-#: src/application.rs:199
+#: src/application.rs:187
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:220
+#: src/application.rs:208
 msgid "Screencast Recorded!"
 msgstr "スクリーンキャストを保存しました！"
 
-#: src/application.rs:222
+#: src/application.rs:210
 msgid "The recording has been saved in “{}”"
 msgstr "録画は“{}”に保存されました"
 
-#: src/application.rs:230
+#: src/application.rs:218
 msgid "Open File"
 msgstr "ファイルを開く"
 
@@ -323,21 +307,43 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"GStreamer プラグインがインストールされていない可能性があります。インストール済みなのに動かない場合は、<a href=\"https"
-"://github.com/SeaDve/Kooha/issues\">Koohaのバグトラッカー</a>で報告してください。"
+"GStreamer プラグインがインストールされていない可能性があります。インストール"
+"済みなのに動かない場合は、<a href=\"https://github.com/SeaDve/Kooha/issues"
+"\">Koohaのバグトラッカー</a>で報告してください。"
 
 #: src/error.rs:49
 msgid ""
-"Make sure that the saving location exists. If it actually exists, something "
-"went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Kooha's issue page</a>."
+"Make sure that the saving location exists or is accessible. If it actually "
+"exists or is accessible, something went wrong and please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"保存先が存在するか確認してください。存在しているのに動かない場合、何らかの不具合が発生しているので<a href=\"https://github."
-"com/SeaDve/Kooha/issues\">Koohaのバグトラッカー</a>で報告してください。"
+"保存先が存在していてアクセス可能か確認してください。存在していてアクセス可能なのに動かない場合、何らかの不具合が発生しているので<a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Koohaのバグトラッカー</a>で報告してください。"
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "一時停止"
+
+#~ msgid "_Cancel"
+#~ msgstr "キャンセル(_C)"
+
+#~ msgid "_Select"
+#~ msgstr "選択(_S)"
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "“{}”にアクセスできません"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "アクセス可能な場所を選んで、もう一度お試しください。"
+
+#~ msgid ""
+#~ "Make sure that the saving location exists. If it actually exists, "
+#~ "something went wrong and please report to <a href=\"https://github.com/"
+#~ "SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ msgstr ""
+#~ "保存先が存在するか確認してください。存在しているのに動かない場合、何らかの"
+#~ "不具合が発生しているので<a href=\"https://github.com/SeaDve/Kooha/issues"
+#~ "\">Koohaのバグトラッカー</a>で報告してください。"
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="

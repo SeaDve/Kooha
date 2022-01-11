@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:29+0800\n"
+"POT-Creation-Date: 2022-01-10 07:44+0800\n"
 "PO-Revision-Date: 2021-12-10 19:54+0000\n"
 "Last-Translator: Jan Kuparinen <copper_fin@hotmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Generator: Weblate 4.10-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
 msgstr "Tallenna näyttösi tapahtumat"
 
@@ -252,44 +252,28 @@ msgstr "_Tietoja - Kooha"
 msgid "Select Recordings Folder"
 msgstr "Valitse nauhoitusten kansio"
 
-#: src/application.rs:141
-msgid "_Cancel"
-msgstr "_Peru"
-
-#: src/application.rs:142
-msgid "_Select"
-msgstr "_Valitse"
-
-#: src/application.rs:159
-msgid "Cannot access “{}”"
-msgstr "Ei pääsyä kohteeseen “{}”"
-
-#: src/application.rs:161
-msgid "Please choose an accessible location and try again."
-msgstr "Valitse sijainti, johon käyttöoikeudet riittävät, ja yritä uudelleen."
-
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:195
+#: src/application.rs:183
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/application.rs:196
+#: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Tekijänoikeus 2021 Dave Patrick"
 
-#: src/application.rs:199
+#: src/application.rs:187
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:220
+#: src/application.rs:208
 msgid "Screencast Recorded!"
 msgstr "Näyttötallenne nauhoitettu!"
 
-#: src/application.rs:222
+#: src/application.rs:210
 msgid "The recording has been saved in “{}”"
 msgstr "Nauhoitus on tallennettu kohteeseen “{}”"
 
-#: src/application.rs:230
+#: src/application.rs:218
 msgid "Open File"
 msgstr "Avaa tiedosto"
 
@@ -310,8 +294,8 @@ msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
-"Varmista, että tarkistat ajonaikaiset riippuvuudet ja <a href=\"https"
-"://github.com/SeaDve/Kooha#-it-doesnt-work\">Se ei toimi -sivun</a>."
+"Varmista, että tarkistat ajonaikaiset riippuvuudet ja <a href=\"https://"
+"github.com/SeaDve/Kooha#-it-doesnt-work\">Se ei toimi -sivun</a>."
 
 #: src/error.rs:48
 msgid ""
@@ -325,17 +309,36 @@ msgstr ""
 
 #: src/error.rs:49
 msgid ""
-"Make sure that the saving location exists. If it actually exists, something "
-"went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Kooha's issue page</a>."
+"Make sure that the saving location exists or is accessible. If it actually "
+"exists or is accessible, something went wrong and please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"Varmista, että tallennuspaikka on olemassa. Jos se todella on olemassa, "
-"jotain meni pieleen. Ilmoita siitä <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Koohan vikailmoitusjärjestelmään</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "Keskeytetty"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Peru"
+
+#~ msgid "_Select"
+#~ msgstr "_Valitse"
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Ei pääsyä kohteeseen “{}”"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr ""
+#~ "Valitse sijainti, johon käyttöoikeudet riittävät, ja yritä uudelleen."
+
+#~ msgid ""
+#~ "Make sure that the saving location exists. If it actually exists, "
+#~ "something went wrong and please report to <a href=\"https://github.com/"
+#~ "SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ msgstr ""
+#~ "Varmista, että tallennuspaikka on olemassa. Jos se todella on olemassa, "
+#~ "jotain meni pieleen. Ilmoita siitä <a href=\"https://github.com/SeaDve/"
+#~ "Kooha/issues\">Koohan vikailmoitusjärjestelmään</a>."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="

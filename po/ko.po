@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:29+0800\n"
+"POT-Creation-Date: 2022-01-10 07:44+0800\n"
 "PO-Revision-Date: 2021-08-31 12:34+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
 msgstr "쿠하"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
 msgstr "화면을 우아하게 녹화해보세요"
 
@@ -249,44 +249,28 @@ msgstr "쿠하 정보(_A)"
 msgid "Select Recordings Folder"
 msgstr "녹화 폴더 선택"
 
-#: src/application.rs:141
-msgid "_Cancel"
-msgstr "취소(_C)"
-
-#: src/application.rs:142
-msgid "_Select"
-msgstr "선택(_S)"
-
-#: src/application.rs:159
-msgid "Cannot access “{}”"
-msgstr "“{}”에 접근할 수 없습니다"
-
-#: src/application.rs:161
-msgid "Please choose an accessible location and try again."
-msgstr "열 수 있는 위치를 선택하고 다시 시도하십시오."
-
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:195
+#: src/application.rs:183
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>"
 
-#: src/application.rs:196
+#: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Copyright 2021 Dave Patrick"
 
-#: src/application.rs:199
+#: src/application.rs:187
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:220
+#: src/application.rs:208
 msgid "Screencast Recorded!"
 msgstr "스크린 캐스트를 녹화했습니다!"
 
-#: src/application.rs:222
+#: src/application.rs:210
 msgid "The recording has been saved in “{}”"
 msgstr "녹화분을 “{}”에 저장했습니다"
 
-#: src/application.rs:230
+#: src/application.rs:218
 msgid "Open File"
 msgstr "파일 열기"
 
@@ -319,14 +303,26 @@ msgstr ""
 
 #: src/error.rs:49
 msgid ""
-"Make sure that the saving location exists. If it actually exists, something "
-"went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Kooha's issue page</a>."
+"Make sure that the saving location exists or is accessible. If it actually "
+"exists or is accessible, something went wrong and please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "일시정지함"
+
+#~ msgid "_Cancel"
+#~ msgstr "취소(_C)"
+
+#~ msgid "_Select"
+#~ msgstr "선택(_S)"
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "“{}”에 접근할 수 없습니다"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "열 수 있는 위치를 선택하고 다시 시도하십시오."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="

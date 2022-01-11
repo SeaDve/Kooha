@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Oğuz Ersen <oguzersen@protonmail.com>, 2021.
+# Oğuz Ersen <oguzersen@protonmail.com>, 2021, 2022.
 # ToldYouThat <itoldyouthat@protonmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-11-08 22:52+0000\n"
+"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"PO-Revision-Date: 2022-01-11 00:10+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
 msgstr "Ekranınızı zarif bir şekilde kaydedin"
 
@@ -251,46 +251,30 @@ msgstr "Kooha _Hakkında"
 msgid "Select Recordings Folder"
 msgstr "Kayıtlar Klasörünü Seç"
 
-#: src/application.rs:141
-msgid "_Cancel"
-msgstr "_İptal"
-
-#: src/application.rs:142
-msgid "_Select"
-msgstr "_Seç"
-
-#: src/application.rs:159
-msgid "Cannot access “{}”"
-msgstr "“{}” dizinine erişilemiyor"
-
-#: src/application.rs:161
-msgid "Please choose an accessible location and try again."
-msgstr "Lütfen erişilebilir bir konum seçin ve tekrar deneyin."
-
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:195
+#: src/application.rs:183
 msgid "translator-credits"
 msgstr ""
 "Ümit Solmaz\n"
 "Oğuz Ersen"
 
-#: src/application.rs:196
+#: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Telif hakkı 2021 Dave Patrick"
 
-#: src/application.rs:199
+#: src/application.rs:187
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:220
+#: src/application.rs:208
 msgid "Screencast Recorded!"
 msgstr "Ekran Kaydı Kaydedildi!"
 
-#: src/application.rs:222
+#: src/application.rs:210
 msgid "The recording has been saved in “{}”"
 msgstr "Kayıt “{}” konumuna kaydedildi"
 
-#: src/application.rs:230
+#: src/application.rs:218
 msgid "Open File"
 msgstr "Dosyayı Aç"
 
@@ -322,22 +306,44 @@ msgid ""
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 "Bir GStreamer eklentisi kurulmamış olabilir. Kuruluysa ancak yine de düzgün "
-"çalışmıyorsa lütfen <a href=\"https://github.com/SeaDve/Kooha/issues\""
-">Kooha'nın sorun sayfasına</a> bildirin."
+"çalışmıyorsa lütfen <a href=\"https://github.com/SeaDve/Kooha/issues"
+"\">Kooha'nın sorun sayfasına</a> bildirin."
 
 #: src/error.rs:49
 msgid ""
-"Make sure that the saving location exists. If it actually exists, something "
-"went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Kooha's issue page</a>."
+"Make sure that the saving location exists or is accessible. If it actually "
+"exists or is accessible, something went wrong and please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"Kaydetme konumunun var olduğundan emin olun. Gerçekten varsa, bir şeyler "
-"ters gitmiştir ve lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Kooha'nın sorun sayfasına</a> bildirin."
+"Kaydetme konumunun var olduğundan veya erişilebilir olduğundan emin olun. "
+"Gerçekten varsa veya erişilebilir durumdaysa, bir şeyler ters gitmiştir ve "
+"lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha'nın "
+"sorun sayfasında</a> bildirin."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "Duraklatıldı"
+
+#~ msgid "_Cancel"
+#~ msgstr "_İptal"
+
+#~ msgid "_Select"
+#~ msgstr "_Seç"
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "“{}” dizinine erişilemiyor"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Lütfen erişilebilir bir konum seçin ve tekrar deneyin."
+
+#~ msgid ""
+#~ "Make sure that the saving location exists. If it actually exists, "
+#~ "something went wrong and please report to <a href=\"https://github.com/"
+#~ "SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ msgstr ""
+#~ "Kaydetme konumunun var olduğundan emin olun. Gerçekten varsa, bir şeyler "
+#~ "ters gitmiştir ve lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha'nın sorun sayfasına</a> bildirin."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="

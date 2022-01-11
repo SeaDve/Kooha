@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Mykola <mykola.lev@gmail.com>, 2021.
-# Ihor Hordiichuk <igor_ck@outlook.com>, 2021.
+# Ihor Hordiichuk <igor_ck@outlook.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 11:29+0800\n"
-"PO-Revision-Date: 2021-11-08 22:52+0000\n"
+"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"PO-Revision-Date: 2022-01-11 00:10+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:184
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:185
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
 msgstr "Елегантно записуйте ваш екран"
 
@@ -252,44 +252,28 @@ msgstr "_Про Kooha"
 msgid "Select Recordings Folder"
 msgstr "Вибрати теку для записів"
 
-#: src/application.rs:141
-msgid "_Cancel"
-msgstr "_Скасувати"
-
-#: src/application.rs:142
-msgid "_Select"
-msgstr "_Вибрати"
-
-#: src/application.rs:159
-msgid "Cannot access “{}”"
-msgstr "Не вдалося отримати доступ до «{}»"
-
-#: src/application.rs:161
-msgid "Please choose an accessible location and try again."
-msgstr "Виберіть доступне розташування та повторіть спробу."
-
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:195
+#: src/application.rs:183
 msgid "translator-credits"
 msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
 
-#: src/application.rs:196
+#: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
 msgstr "Авторське право 2021 Дейв Патрік"
 
-#: src/application.rs:199
+#: src/application.rs:187
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:220
+#: src/application.rs:208
 msgid "Screencast Recorded!"
 msgstr "Записано!"
 
-#: src/application.rs:222
+#: src/application.rs:210
 msgid "The recording has been saved in “{}”"
 msgstr "Запис збережено до «{}»"
 
-#: src/application.rs:230
+#: src/application.rs:218
 msgid "Open File"
 msgstr "Відкрити файл"
 
@@ -320,22 +304,43 @@ msgid ""
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 "Можливо не встановлено плагін GStreamer. Якщо він встановлений, але не "
-"працює належним чином, повідомте про це на сторінці проблем <a href=\"https"
-"://github.com/SeaDve/Kooha/issues\">Kooha</a>."
+"працює належним чином, повідомте про це на сторінці проблем <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha</a>."
 
 #: src/error.rs:49
 msgid ""
-"Make sure that the saving location exists. If it actually exists, something "
-"went wrong and please report to <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">Kooha's issue page</a>."
+"Make sure that the saving location exists or is accessible. If it actually "
+"exists or is accessible, something went wrong and please report to <a href="
+"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"Переконайтеся, що місце збереження існує. Якщо воно справді існує, щось "
-"пішло не так. Повідомте про це на сторінці проблем <a href=\"https://github."
-"com/SeaDve/Kooha/issues\">Kooha</a>."
+"Переконайтеся, що місце збереження існує та доступне. Якщо так, це вказує, "
+"що сталася невідома помилка. Будь ласка, повідомте про неї на <a href=\"https"
+"://github.com/SeaDve/Kooha/issues\">сторінці обговорень Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
 msgstr "Зупинено"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Скасувати"
+
+#~ msgid "_Select"
+#~ msgstr "_Вибрати"
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Не вдалося отримати доступ до «{}»"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Виберіть доступне розташування та повторіть спробу."
+
+#~ msgid ""
+#~ "Make sure that the saving location exists. If it actually exists, "
+#~ "something went wrong and please report to <a href=\"https://github.com/"
+#~ "SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ msgstr ""
+#~ "Переконайтеся, що місце збереження існує. Якщо воно справді існує, щось "
+#~ "пішло не так. Повідомте про це на сторінці проблем <a href=\"https://"
+#~ "github.com/SeaDve/Kooha/issues\">Kooha</a>."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="
