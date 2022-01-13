@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021, 2022.
 # Roberto Bautista <robertobau45@gmail.com>, 2021.
 # Juan David Sanchez Lean <jdsljuan@gmail.com>, 2021.
 # robert schneider <robertschv@gmail.com>, 2021.
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2021-11-14 09:50+0000\n"
+"PO-Revision-Date: 2022-01-13 11:53+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9.1-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -318,6 +318,9 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Asegúrese de que la ubicación de guardado existe o es accesible. Si existe o "
+"es accesible, algo ha ido mal y, por favor, informe en la <a href=\"https"
+"://github.com/SeaDve/Kooha/issues\">página de incidencias de Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
