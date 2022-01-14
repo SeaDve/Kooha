@@ -103,21 +103,21 @@
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.record-speaker</property>
-                                <property name="icon-name">audio-volume-high-symbolic</property>
+                                <property name="icon-name">speakers-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.record-mic</property>
-                                <property name="icon-name">audio-input-microphone-symbolic</property>
+                                <property name="icon-name">microphone-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Record From Microphone</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkToggleButton">
                                 <property name="action-name">win.show-pointer</property>
-                                <property name="icon-name">input-mouse-symbolic</property>
+                                <property name="icon-name">mouse-symbolic</property>
                                 <property name="tooltip-text" translatable="yes">Show Pointer</property>
                               </object>
                             </child>
