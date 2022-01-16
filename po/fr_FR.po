@@ -4,13 +4,13 @@
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Thomas Citharel <tcit@tcit.fr>, 2021.
 # Rémi de Chazelles <remidechazelles@gmail.com>, 2021.
-# Maxime Leroy <lisacintosh@gmail.com>, 2021.
+# Maxime Leroy <lisacintosh@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2021-12-19 06:50+0000\n"
+"PO-Revision-Date: 2022-01-16 09:53+0000\n"
 "Last-Translator: Maxime Leroy <lisacintosh@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -317,6 +317,9 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Veillez à ce que la localisation enregistrée existe et est accessible. Si "
+"c'est bien le cas, merci de reporter ce problème sur <a href=\"https://github"
+".com/SeaDve/Kooha/issues\">la page des problèmes de Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"

@@ -4,7 +4,7 @@
 # Nicolas Mariniello <seldon1000@tutanota.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Dave Patrick <davecruz48@gmail.com>, 2021.
-# albanobattistella <albano_battistella@hotmail.com>, 2021.
+# albanobattistella <albano_battistella@hotmail.com>, 2021, 2022.
 # Ruggero Turra <giurrero@gmail.com>, 2021.
 # Michael Moroni <michaelmoroni@disroot.org>, 2021.
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2021-11-21 19:49+0000\n"
+"PO-Revision-Date: 2022-01-16 09:53+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -319,6 +319,10 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Assicurati che la posizione di salvataggio esista o sia accessibile. Se "
+"esiste effettivamente o è accessibile, qualcosa è andato storto e si prega "
+"di segnalarlo su <a href=\"https://github.com/SeaDve/Kooha/issues\">La "
+"pagina dei problemi di Koha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
