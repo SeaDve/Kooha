@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-09 23:51+0000\n"
+"PO-Revision-Date: 2022-01-18 17:53+0000\n"
 "Last-Translator: MrWooltrest <nikitaec101@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -112,7 +112,6 @@ msgid "General"
 msgstr "Основное"
 
 #: data/resources/ui/shortcuts.ui:14
-#, fuzzy
 msgid "Open Menu"
 msgstr "Открыть меню"
 
@@ -162,7 +161,7 @@ msgstr "Главное меню"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "Стандартное"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
@@ -298,6 +297,8 @@ msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"Не забудьте проверить зависимости и <a href=\"https://github.com/SeaDve/Kooha"
+"#-it-doesnt-work\">страницу \"Оно не работает!\"</a>."
 
 #: src/error.rs:48
 msgid ""
