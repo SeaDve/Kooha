@@ -1,57 +1,22 @@
 #!/bin/sh
+# Depends on: build-aux/checks.py
 # Source: https://gitlab.gnome.org/GNOME/fractal/blob/master/hooks/pre-commit.hook
 
-install_rustfmt() {
-    if ! which rustup &> /dev/null; then
-        curl https://sh.rustup.rs -sSf  | sh -s -- -y
-        export PATH=$PATH:$HOME/.cargo/bin
-        if ! which rustup &> /dev/null; then
-            echo "Failed to install rustup. Performing the commit without style checking."
-            exit 0
-        fi
-    fi
+# Style helpers
+b_red="\e[1;31m"
+b_green="\e[1;32m"
+endc="\e[0m"
 
-    if ! rustup component list|grep rustfmt &> /dev/null; then
-        echo "Installing rustfmt…"
-        rustup component add rustfmt
-    fi
-}
+aborting="  ${b_red}ABORTING${endc}"
+running="   ${b_green}RUNNING${endc}"
+creating="  ${b_green}CREATING${endc}"
 
-if ! which cargo >/dev/null 2>&1 || ! cargo fmt --help >/dev/null 2>&1; then
-    echo "Unable to check code style, because rustfmt could not be run."
-
-    if [ ! -t 1 ]; then
-        # No input is possible
-        echo "Performing commit."
-        exit 0
-    fi
-
+echo -e "${running} pre-commit hook (To ignore, run: git commit --no-verify)"
+if build-aux/checks.py; then
     echo ""
-    echo "y: Install rustfmt via rustup"
-    echo "n: Don't install rustfmt and perform the commit"
-    echo "Q: Don't install rustfmt and abort the commit"
-
-    echo ""
-    while true
-    do
-        echo -n "Install rustfmt via rustup? [y/n/Q]: "; read yn < /dev/tty
-        case $yn in
-            [Yy]* ) install_rustfmt; break;;
-            [Nn]* ) echo "Performing commit."; exit 0;;
-            [Qq]* | "" ) echo "Aborting commit."; exit -1 >/dev/null 2>&1;;
-            * ) echo "Invalid input";;
-        esac
-    done
-fi
-
-echo "--Checking style--"
-cargo fmt --all -- --check
-if test $? != 0; then
-    echo "--Checking style fail--"
-    echo "Please fix the above issues, either manually or by running: cargo fmt --all"
-
-    exit -1
+    echo -e "${creating} commit"
 else
-    echo "--Checking style pass--"
+    echo ""
+    echo -e "${aborting} commit, please fix the above issues"
+    exit 1
 fi
-

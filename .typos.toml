@@ -1,0 +1,2 @@
+[files]
+extend-exclude = ["data/icons/*.svg", "po/*.po"]
