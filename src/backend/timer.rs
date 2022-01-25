@@ -3,7 +3,6 @@ use gtk::{
     prelude::*,
     subclass::prelude::*,
 };
-use once_cell::sync::Lazy;
 
 use std::cell::Cell;
 
@@ -25,6 +24,7 @@ impl Default for TimerState {
 mod imp {
     use super::*;
     use glib::subclass::Signal;
+    use once_cell::sync::Lazy;
 
     #[derive(Debug, Default)]
     pub struct Timer {
