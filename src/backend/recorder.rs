@@ -84,51 +84,15 @@ mod imp {
                     "Current state of Self",
                     RecorderState::static_type(),
                     RecorderState::default() as i32,
-                    glib::ParamFlags::READWRITE,
+                    glib::ParamFlags::READABLE,
                 )]
             });
             PROPERTIES.as_ref()
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
-                "state" => {
-                    let state = value.get().unwrap();
-                    self.state.set(state);
-
-                    let new_pipeline_state = match state {
-                        RecorderState::Null => gst::State::Null,
-                        RecorderState::Paused => gst::State::Paused,
-                        RecorderState::Playing => gst::State::Playing,
-                        RecorderState::Flushing => return,
-                    };
-
-                    let pipeline = match new_pipeline_state {
-                        gst::State::Null => self.pipeline.take().unwrap(),
-                        _ => obj.pipeline().unwrap(),
-                    };
-
-                    if let Err(error) = pipeline.set_state(new_pipeline_state) {
-                        log::error!(
-                            "Failed to set pipeline state to {:?}: {:?}",
-                            new_pipeline_state,
-                            error
-                        );
-                    };
-                }
-                _ => unimplemented!(),
-            }
-        }
-
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "state" => self.state.get().to_value(),
+                "state" => obj.state().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -144,139 +108,8 @@ impl Recorder {
         glib::Object::new::<Self>(&[]).expect("Failed to create Recorder.")
     }
 
-    fn portal(&self) -> &ScreencastPortal {
-        &self.imp().portal
-    }
-
-    fn pipeline(&self) -> Option<gst::Pipeline> {
-        self.imp().pipeline.borrow().clone()
-    }
-
-    fn set_pipeline(&self, new_pipeline: Option<gst::Pipeline>) {
-        self.imp().pipeline.replace(new_pipeline);
-    }
-
     pub fn state(&self) -> RecorderState {
-        self.property("state")
-    }
-
-    fn set_state(&self, state: RecorderState) {
-        self.set_property("state", state);
-    }
-
-    async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
-        let settings = Application::default().settings();
-
-        let pulse_server_version = pactl::server_version_info().unwrap_or_else(|| "None".into());
-        log::debug!("pulse_server_version: {}", pulse_server_version);
-
-        let (speaker_source, mic_source) = pactl::default_audio_devices_name();
-
-        let pipeline_builder = PipelineBuilder::new()
-            .record_speaker(settings.is_record_speaker())
-            .record_mic(settings.is_record_mic())
-            .framerate(settings.video_framerate())
-            .file_path(settings.file_path())
-            .fd(fd)
-            .streams(streams)
-            .speaker_source(speaker_source)
-            .mic_source(mic_source);
-
-        if !settings.is_selection_mode() {
-            self.build_pipeline(pipeline_builder);
-            return;
-        }
-
-        let area_selector = AreaSelector::new();
-        match area_selector.select_area().await {
-            AreaSelectorResponse::Captured(coords, actual_screen) => {
-                let pipeline_builder = pipeline_builder
-                    .coordinates(coords)
-                    .actual_screen(actual_screen);
-
-                // Give area selector some time to disappear before building pipeline
-                // to avoid it being included in the recording.
-                glib::timeout_future(Duration::from_millis(150)).await;
-                self.build_pipeline(pipeline_builder);
-
-                log::info!("Captured coordinates");
-            }
-            AreaSelectorResponse::Cancelled => {
-                self.portal().close_session();
-
-                log::info!("Cancelled capture");
-            }
-        };
-    }
-
-    fn build_pipeline(&self, pipeline_builder: PipelineBuilder) {
-        log::debug!("{:?}", &pipeline_builder);
-
-        match pipeline_builder.build() {
-            Ok(pipeline) => {
-                self.set_pipeline(Some(pipeline));
-                self.emit_prepared();
-            }
-            Err(error) => {
-                log::error!("Failed to build pipeline: {:?}", &error);
-
-                self.portal().close_session();
-                self.emit_response(&RecorderResponse::Failed(Error::Pipeline(error)));
-            }
-        };
-    }
-
-    fn close_pipeline(&self) {
-        self.set_state(RecorderState::Null);
-        self.portal().close_session();
-    }
-
-    fn emit_response(&self, response: &RecorderResponse) {
-        self.emit_by_name::<()>("response", &[response]);
-    }
-
-    fn emit_prepared(&self) {
-        self.emit_by_name::<()>("prepared", &[]);
-    }
-
-    fn parse_bus_message(&self, message: &gst::Message) -> Continue {
-        match message.view() {
-            gst::MessageView::Eos(_) => {
-                let filesink = self.pipeline().unwrap().by_name("filesink").unwrap();
-                let recording_file_path = filesink.property::<String>("location").into();
-
-                self.close_pipeline();
-                self.emit_response(&RecorderResponse::Success(recording_file_path));
-                log::info!("Eos signal received from record bus");
-
-                Continue(false)
-            }
-            gst::MessageView::Error(error) => {
-                log::error!(
-                    "Error from record bus: {:?} (debug {:?})",
-                    error.error(),
-                    error
-                );
-
-                self.close_pipeline();
-                self.emit_response(&RecorderResponse::Failed(Error::Recorder(error.error())));
-
-                Continue(false)
-            }
-            gst::MessageView::StateChanged(sc) => {
-                if message.src().as_ref()
-                    == Some(self.pipeline().unwrap().upcast_ref::<gst::Object>())
-                {
-                    log::info!(
-                        "Pipeline state set from {:?} -> {:?}",
-                        sc.old(),
-                        sc.current()
-                    );
-                }
-                Continue(true)
-            }
-            _ => Continue(true),
-        }
+        self.imp().state.get()
     }
 
     pub fn connect_state_notify<F>(&self, f: F) -> glib::SignalHandlerId
@@ -342,20 +175,20 @@ impl Recorder {
         record_bus
             .add_watch_local(
                 clone!(@weak self as obj => @default-return Continue(false), move |_, message| {
-                    obj.parse_bus_message(message)
+                    obj.handle_bus_message(message)
                 }),
             )
             .unwrap();
 
-        self.set_state(RecorderState::Playing);
+        self.set_state(RecorderState::Playing).unwrap();
     }
 
     pub fn pause(&self) {
-        self.set_state(RecorderState::Paused);
+        self.set_state(RecorderState::Paused).unwrap();
     }
 
     pub fn resume(&self) {
-        self.set_state(RecorderState::Playing);
+        self.set_state(RecorderState::Playing).unwrap();
     }
 
     pub fn stop(&self) {
@@ -369,10 +202,179 @@ impl Recorder {
             Duration::from_millis(120),
             clone!(@weak self as obj => move || {
                 if obj.state() != RecorderState::Null {
-                    obj.set_state(RecorderState::Flushing);
+                    obj.set_state(RecorderState::Flushing).unwrap();
                 }
             }),
         );
+    }
+
+    fn set_state(&self, state: RecorderState) -> anyhow::Result<()> {
+        let pipeline = self
+            .pipeline()
+            .ok_or_else(|| anyhow::anyhow!("Pipeline not found"))?;
+
+        match state {
+            RecorderState::Null => {
+                pipeline.set_state(gst::State::Null)?;
+                log::info!("Player state changed to Stopped");
+
+                // Changing the state to NULL flushes the pipeline.
+                // Thus, the change message never arrives.
+                self.imp().state.set(state);
+                self.notify("state");
+            }
+            RecorderState::Flushing => {
+                self.imp().state.set(state);
+                self.notify("state");
+            }
+            RecorderState::Paused => {
+                pipeline.set_state(gst::State::Paused)?;
+            }
+            RecorderState::Playing => {
+                pipeline.set_state(gst::State::Playing)?;
+            }
+        }
+
+        Ok(())
+    }
+
+    fn portal(&self) -> &ScreencastPortal {
+        &self.imp().portal
+    }
+
+    fn pipeline(&self) -> Option<gst::Pipeline> {
+        self.imp().pipeline.borrow().clone()
+    }
+
+    async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
+        let settings = Application::default().settings();
+
+        let pulse_server_version = pactl::server_version_info().unwrap_or_else(|| "None".into());
+        log::debug!("pulse_server_version: {}", pulse_server_version);
+
+        let (speaker_source, mic_source) = pactl::default_audio_devices_name();
+
+        let pipeline_builder = PipelineBuilder::new()
+            .record_speaker(settings.is_record_speaker())
+            .record_mic(settings.is_record_mic())
+            .framerate(settings.video_framerate())
+            .file_path(settings.file_path())
+            .fd(fd)
+            .streams(streams)
+            .speaker_source(speaker_source)
+            .mic_source(mic_source);
+
+        if !settings.is_selection_mode() {
+            self.build_pipeline(pipeline_builder);
+            return;
+        }
+
+        let area_selector = AreaSelector::new();
+        match area_selector.select_area().await {
+            AreaSelectorResponse::Captured(coords, actual_screen) => {
+                let pipeline_builder = pipeline_builder
+                    .coordinates(coords)
+                    .actual_screen(actual_screen);
+
+                // Give area selector some time to disappear before building pipeline
+                // to avoid it being included in the recording.
+                glib::timeout_future(Duration::from_millis(150)).await;
+                self.build_pipeline(pipeline_builder);
+
+                log::info!("Captured coordinates");
+            }
+            AreaSelectorResponse::Cancelled => {
+                self.portal().close_session();
+
+                log::info!("Cancelled capture");
+            }
+        };
+    }
+
+    fn build_pipeline(&self, pipeline_builder: PipelineBuilder) {
+        log::debug!("{:?}", &pipeline_builder);
+
+        match pipeline_builder.build() {
+            Ok(pipeline) => {
+                self.imp().pipeline.replace(Some(pipeline));
+                self.emit_by_name::<()>("prepared", &[]);
+            }
+            Err(error) => {
+                log::error!("Failed to build pipeline: {:?}", &error);
+
+                self.portal().close_session();
+                self.emit_response(&RecorderResponse::Failed(Error::Pipeline(error)));
+            }
+        };
+    }
+
+    fn close_pipeline(&self) {
+        self.set_state(RecorderState::Null).unwrap();
+        self.portal().close_session();
+    }
+
+    fn emit_response(&self, response: &RecorderResponse) {
+        self.emit_by_name::<()>("response", &[response]);
+    }
+
+    fn handle_bus_message(&self, message: &gst::Message) -> Continue {
+        match message.view() {
+            gst::MessageView::Eos(_) => self.on_bus_eos(),
+            gst::MessageView::Error(ref message) => self.on_bus_error(message),
+            gst::MessageView::StateChanged(ref message) => self.on_state_changed(message),
+            _ => Continue(true),
+        }
+    }
+
+    fn on_bus_eos(&self) -> Continue {
+        let filesink = self.pipeline().unwrap().by_name("filesink").unwrap();
+        let recording_file_path = filesink.property::<String>("location").into();
+
+        self.close_pipeline();
+        self.emit_response(&RecorderResponse::Success(recording_file_path));
+        log::info!("Eos signal received from record bus");
+
+        Continue(false)
+    }
+
+    fn on_bus_error(&self, message: &gst::message::Error) -> Continue {
+        log::error!(
+            "Error from record bus: {:?} (debug {:?})",
+            message.error(),
+            message
+        );
+
+        self.close_pipeline();
+        self.emit_response(&RecorderResponse::Failed(Error::Recorder(message.error())));
+
+        Continue(false)
+    }
+
+    fn on_state_changed(&self, message: &gst::message::StateChanged) -> Continue {
+        if message.src().as_ref() != Some(self.pipeline().unwrap().upcast_ref::<gst::Object>()) {
+            return Continue(true);
+        }
+
+        let old_state = message.old();
+        let new_state = message.current();
+
+        log::info!(
+            "Recorder state changed: `{:?}` -> `{:?}`",
+            old_state,
+            new_state
+        );
+
+        let state = match new_state {
+            gst::State::Null => RecorderState::Null,
+            gst::State::Paused => RecorderState::Paused,
+            gst::State::Playing => RecorderState::Playing,
+            _ => return Continue(true),
+        };
+
+        self.imp().state.set(state);
+        self.notify("state");
+
+        Continue(true)
     }
 }
 
