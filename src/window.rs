@@ -30,7 +30,7 @@ mod imp {
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
-    pub struct MainWindow {
+    pub struct Window {
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -48,9 +48,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for MainWindow {
-        const NAME: &'static str = "KoohaMainWindow";
-        type Type = super::MainWindow;
+    impl ObjectSubclass for Window {
+        const NAME: &'static str = "KoohaWindow";
+        type Type = super::Window;
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -88,7 +88,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for MainWindow {
+    impl ObjectImpl for Window {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
@@ -103,21 +103,21 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for MainWindow {}
-    impl WindowImpl for MainWindow {}
-    impl ApplicationWindowImpl for MainWindow {}
-    impl AdwApplicationWindowImpl for MainWindow {}
+    impl WidgetImpl for Window {}
+    impl WindowImpl for Window {}
+    impl ApplicationWindowImpl for Window {}
+    impl AdwApplicationWindowImpl for Window {}
 }
 
 glib::wrapper! {
-    pub struct MainWindow(ObjectSubclass<imp::MainWindow>)
+    pub struct Window(ObjectSubclass<imp::Window>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup, gtk::Native;
 }
 
-impl MainWindow {
+impl Window {
     pub fn new(app: &Application) -> Self {
-        glib::Object::new(&[("application", app)]).expect("Failed to create MainWindow.")
+        glib::Object::new(&[("application", app)]).expect("Failed to create Window.")
     }
 
     fn setup_signals(&self) {

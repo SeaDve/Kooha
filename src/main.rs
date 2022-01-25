@@ -18,6 +18,7 @@ mod error;
 mod pactl;
 mod utils;
 mod widgets;
+mod window;
 
 use application::Application;
 use config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};

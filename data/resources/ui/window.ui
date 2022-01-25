@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="KoohaMainWindow" parent="AdwApplicationWindow">
+  <template class="KoohaWindow" parent="AdwApplicationWindow">
     <property name="resizable">False</property>
     <property name="default-width">210</property>
     <property name="default-height">230</property>

@@ -6,4 +6,4 @@ data/resources/ui/window.ui
 src/application.rs
 src/error.rs
 src/main.rs
-src/widgets/main_window.rs
+src/window.rs

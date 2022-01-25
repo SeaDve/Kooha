@@ -13,7 +13,7 @@ use std::path::Path;
 use crate::{
     backend::Settings,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
-    widgets::MainWindow,
+    window::Window,
 };
 
 mod imp {
@@ -21,7 +21,7 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct Application {
-        pub window: OnceCell<WeakRef<MainWindow>>,
+        pub window: OnceCell<WeakRef<Window>>,
         pub folder_chooser: OnceCell<gtk::FileChooserNative>,
         pub settings: Settings,
     }
@@ -44,7 +44,7 @@ mod imp {
                 return;
             }
 
-            let window = MainWindow::new(app);
+            let window = Window::new(app);
             self.window
                 .set(window.downgrade())
                 .expect("Window already set.");
@@ -189,7 +189,7 @@ impl Application {
         self.imp().settings.clone()
     }
 
-    pub fn main_window(&self) -> MainWindow {
+    pub fn main_window(&self) -> Window {
         self.imp().window.get().unwrap().upgrade().unwrap()
     }
 
