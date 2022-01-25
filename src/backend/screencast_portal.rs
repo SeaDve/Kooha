@@ -8,13 +8,12 @@ use ashpd::{
 };
 use gtk::{
     glib::{self, clone},
-    prelude::*,
     subclass::prelude::*,
 };
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
-use crate::{application::Application, error::Error};
+use crate::{backend::Settings, error::Error, Application};
 
 #[derive(Debug)]
 pub enum ScreencastPortalResponse {
@@ -49,8 +48,29 @@ impl ScreencastPortal {
         glib::Object::new::<Self>(&[]).expect("Failed to create ScreencastPortal.")
     }
 
-    fn private(&self) -> &imp::ScreencastPortal {
-        imp::ScreencastPortal::from_instance(self)
+    fn cursor_mode(is_show_pointer: bool) -> BitFlags<CursorMode> {
+        if is_show_pointer {
+            BitFlags::<CursorMode>::from_flag(CursorMode::Embedded)
+        } else {
+            BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
+        }
+    }
+
+    fn source_type(is_selection_mode: bool) -> BitFlags<SourceType> {
+        if is_selection_mode {
+            BitFlags::<SourceType>::from_flag(SourceType::Monitor)
+        } else {
+            SourceType::Monitor | SourceType::Window
+        }
+    }
+
+    fn settings() -> Settings {
+        Application::default().settings()
+    }
+
+    async fn identifier() -> WindowIdentifier {
+        let main_window = Application::default().main_window();
+        WindowIdentifier::from_native(&main_window).await
     }
 
     pub async fn new_session(
@@ -58,29 +78,25 @@ impl ScreencastPortal {
         is_show_pointer: bool,
         is_selection_mode: bool,
     ) -> ScreencastPortalResponse {
-        let imp = self.private();
-
-        let source_type = if is_selection_mode {
-            BitFlags::<SourceType>::from_flag(SourceType::Monitor)
-        } else {
-            SourceType::Monitor | SourceType::Window
-        };
-
-        let cursor_mode = if is_show_pointer {
-            BitFlags::<CursorMode>::from_flag(CursorMode::Embedded)
-        } else {
-            BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
-        };
-
-        let main_window = Application::default().main_window();
-        let identifier = WindowIdentifier::from_native(&main_window.native().unwrap()).await;
-
+        let identifier = Self::identifier().await;
         let multiple = !is_selection_mode;
+        let source_type = Self::source_type(is_selection_mode);
+        let cursor_mode = Self::cursor_mode(is_show_pointer);
+        let restore_token = Self::settings().screencast_restore_token();
 
-        match screencast(identifier, multiple, source_type, cursor_mode).await {
+        match screencast(
+            identifier,
+            multiple,
+            source_type,
+            cursor_mode,
+            restore_token.as_deref(),
+        )
+        .await
+        {
             Ok(result) => {
-                let (streams, fd, session) = result;
-                imp.session.replace(Some(session));
+                let (streams, fd, restore_token, session) = result;
+                self.imp().session.replace(Some(session));
+                Self::settings().set_screencast_restore_token(restore_token.as_deref());
 
                 ScreencastPortalResponse::Success(streams, fd)
             }
@@ -100,9 +116,7 @@ impl ScreencastPortal {
     pub fn close_session(&self) {
         let ctx = glib::MainContext::default();
         ctx.spawn_local(clone!(@weak self as obj => async move {
-            let imp = obj.private();
-
-            if let Some(session) = imp.session.take() {
+            if let Some(session) = obj.imp().session.take() {
                 session.close().await.unwrap();
             };
         }));
@@ -116,10 +130,13 @@ async fn screencast(
     multiple: bool,
     types: BitFlags<SourceType>,
     cursor_mode: BitFlags<CursorMode>,
-) -> Result<(Vec<Stream>, RawFd, SessionProxy<'static>), ashpd::Error> {
+    restore_token: Option<&str>,
+) -> Result<(Vec<Stream>, RawFd, Option<String>, SessionProxy<'static>), ashpd::Error> {
     let connection = zbus::Connection::session().await?;
     let proxy = ScreenCastProxy::new(&connection).await?;
     log::info!("ScreenCastProxy created");
+
+    log::debug!("restore_token: {:?}", restore_token);
 
     log::debug!(
         "available_cursor_modes: {:?}",
@@ -139,19 +156,21 @@ async fn screencast(
             cursor_mode,
             types,
             multiple,
-            None,
-            PersistMode::DoNot,
+            restore_token,
+            PersistMode::ExplicitlyRevoked,
         )
         .await?;
     log::info!("Select sources window showed");
 
-    let (streams, _restore_token) = proxy.start(&session, &window_identifier).await?;
+    let (streams, output_restore_token) = proxy.start(&session, &window_identifier).await?;
     log::info!("Screencast session started");
+
+    log::debug!("output_restore_token: {:?}", output_restore_token);
 
     let fd = proxy.open_pipe_wire_remote(&session).await?;
     log::info!("Ready for pipewire stream");
 
-    Ok((streams, fd, session))
+    Ok((streams, fd, output_restore_token, session))
 }
 
 impl Default for ScreencastPortal {

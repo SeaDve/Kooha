@@ -39,8 +39,7 @@ impl Settings {
     }
 
     fn inner(&self) -> &gio::Settings {
-        let imp = imp::Settings::from_instance(self);
-        &imp.0
+        &self.imp().0
     }
 
     pub fn create_action(&self, action: &str) -> gio::Action {
@@ -114,6 +113,25 @@ impl Settings {
 
     pub fn record_delay(&self) -> u32 {
         self.inner().uint("record-delay")
+    }
+
+    pub fn set_screencast_restore_token(&self, restore_token: Option<&str>) {
+        self.inner()
+            .set_string(
+                "screencast-restore-token",
+                restore_token.unwrap_or_default(),
+            )
+            .unwrap();
+    }
+
+    pub fn screencast_restore_token(&self) -> Option<String> {
+        let restore_token = self.inner().string("screencast-restore-token");
+
+        if restore_token.is_empty() {
+            None
+        } else {
+            Some(restore_token.to_string())
+        }
     }
 }
 

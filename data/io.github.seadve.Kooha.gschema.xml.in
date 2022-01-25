@@ -35,5 +35,8 @@
     <key type="u" name="video-framerate">
       <default>30</default>
     </key>
+    <key type="s" name="screencast-restore-token">
+      <default>""</default>
+    </key>
   </schema>
 </schemalist>
