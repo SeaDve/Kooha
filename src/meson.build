@@ -18,52 +18,44 @@ run_command(
   check: true
 )
 
-rust_sources = files(
-  'backend/mod.rs',
-  'backend/pipeline_builder.rs',
-  'backend/recorder.rs',
-  'backend/recorder_controller.rs',
-  'backend/screencast_portal.rs',
-  'backend/settings.rs',
-  'backend/timer.rs',
-  'widgets/area_selector.rs',
-  'widgets/main_window.rs',
-  'widgets/mod.rs',
-  'application.rs',
-  'config.rs',
-  'data_types.rs',
-  'error.rs',
-  'main.rs',
-  'pactl.rs',
-  'utils.rs',
-)
+manifest_path = meson.project_source_root() / 'Cargo.toml'
+cargo_home = meson.project_build_root() / 'cargo-home'
+cargo_target_dir = meson.project_build_root() / 'src'
 
-sources = [rust_sources, cargo_sources]
+cargo_options = [ '--manifest-path', manifest_path ]
+cargo_options += [ '--target-dir', cargo_target_dir ]
 
-custom_target(
+if get_option('profile') == 'default'
+  cargo_options += [ '--release' ]
+  rust_target = 'release'
+  message('Building in release mode')
+else
+  rust_target = 'debug'
+  message('Building in debug mode')
+endif
+
+cargo_env = [ 'CARGO_HOME=' + cargo_home ]
+
+cargo_build = custom_target(
   'cargo-build',
   build_by_default: true,
-  input: sources,
+  build_always_stale: true,
   output: meson.project_name(),
   console: true,
   install: true,
   install_dir: bindir,
   depends: resources,
   command: [
-    cargo_script,
-    meson.project_build_root(),
-    meson.project_source_root(),
-    '@OUTPUT@',
-    profile,
-    meson.project_name(),
+    'env',
+    cargo_env,
+    cargo, 'build',
+    cargo_options,
+    '&&',
+    'cp', 'src' / rust_target / meson.project_name(), '@OUTPUT@',
   ]
 )
 
-cargo_target_dir = meson.project_build_root() / 'target'
-cargo_home = meson.project_build_root() / 'cargo-home'
-manifest_path = meson.project_source_root() / 'Cargo.toml'
-
-test (
+test(
   'cargo-test',
   cargo,
   args: [
@@ -80,7 +72,7 @@ test (
   timeout: 300, # give cargo more time
 )
 
-test (
+test(
   'cargo-clippy',
   cargo,
   args: [

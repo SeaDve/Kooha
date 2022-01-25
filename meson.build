@@ -24,13 +24,8 @@ glib_compile_schemas = find_program('glib-compile-schemas', required: true)
 desktop_file_validate = find_program('desktop-file-validate', required: false)
 appstream_util = find_program('appstream-util', required: false)
 cargo = find_program('cargo', required: true)
-cargo_script = find_program('build-aux/cargo.py')
 
 version = meson.project_version()
-version_array = version.split('.')
-major_version = version_array[0].to_int()
-minor_version = version_array[1].to_int()
-version_micro = version_array[2].to_int()
 
 prefix = get_option('prefix')
 bindir = prefix / get_option('bindir')
@@ -68,11 +63,6 @@ if get_option('profile') == 'development'
   message('Setting up git pre-commit hook..')
   run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit')
 endif
-
-cargo_sources = files(
-  'Cargo.toml',
-  'Cargo.lock',
-)
 
 subdir('data')
 subdir('po')
