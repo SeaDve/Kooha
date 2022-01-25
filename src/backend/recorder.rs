@@ -13,10 +13,10 @@ use std::{
 
 use crate::{
     application::Application,
+    area_selector::{AreaSelector, AreaSelectorResponse},
     backend::{PipelineBuilder, ScreencastPortal, ScreencastPortalResponse},
     error::Error,
     pactl,
-    widgets::{AreaSelector, AreaSelectorResponse},
 };
 
 #[derive(Debug, PartialEq, Clone, Copy, glib::Enum)]

@@ -11,13 +11,13 @@
 #![warn(clippy::option_if_let_else)]
 
 mod application;
+mod area_selector;
 mod backend;
 mod config;
 mod data_types;
 mod error;
 mod pactl;
 mod utils;
-mod widgets;
 mod window;
 
 use application::Application;
