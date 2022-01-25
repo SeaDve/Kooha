@@ -81,10 +81,6 @@ impl Application {
         .expect("Failed to create Application.")
     }
 
-    fn private(&self) -> &imp::Application {
-        imp::Application::from_instance(self)
-    }
-
     fn setup_gactions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
             "launch-default-for-file",
@@ -158,11 +154,10 @@ impl Application {
     }
 
     fn select_saving_location(&self) {
-        let imp = self.private();
-
-        let chooser = imp.folder_chooser.get_or_init(|| self.folder_chooser());
-
-        chooser.show();
+        self.imp()
+            .folder_chooser
+            .get_or_init(|| self.folder_chooser())
+            .show();
     }
 
     fn show_about_dialog(&self) {
@@ -191,13 +186,11 @@ impl Application {
     }
 
     pub fn settings(&self) -> Settings {
-        let imp = self.private();
-        imp.settings.clone()
+        self.imp().settings.clone()
     }
 
     pub fn main_window(&self) -> MainWindow {
-        let imp = self.private();
-        imp.window.get().unwrap().upgrade().unwrap()
+        self.imp().window.get().unwrap().upgrade().unwrap()
     }
 
     pub fn send_record_success_notification(&self, recording_file_path: &Path) {

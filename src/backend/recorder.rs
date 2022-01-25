@@ -144,23 +144,16 @@ impl Recorder {
         glib::Object::new::<Self>(&[]).expect("Failed to create Recorder.")
     }
 
-    fn private(&self) -> &imp::Recorder {
-        imp::Recorder::from_instance(self)
-    }
-
     fn portal(&self) -> &ScreencastPortal {
-        let imp = self.private();
-        &imp.portal
+        &self.imp().portal
     }
 
     fn pipeline(&self) -> Option<gst::Pipeline> {
-        let imp = self.private();
-        imp.pipeline.borrow().clone()
+        self.imp().pipeline.borrow().clone()
     }
 
     fn set_pipeline(&self, new_pipeline: Option<gst::Pipeline>) {
-        let imp = self.private();
-        imp.pipeline.replace(new_pipeline);
+        self.imp().pipeline.replace(new_pipeline);
     }
 
     pub fn state(&self) -> RecorderState {
@@ -340,8 +333,7 @@ impl Recorder {
     }
 
     pub fn cancel_prepare(&self) {
-        let imp = self.private();
-        imp.pipeline.take();
+        self.imp().pipeline.take();
         self.portal().close_session();
     }
 

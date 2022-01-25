@@ -121,10 +121,6 @@ impl AreaSelector {
         glib::Object::new(&[]).expect("Failed to create AreaSelector.")
     }
 
-    fn private(&self) -> &imp::AreaSelector {
-        imp::AreaSelector::from_instance(self)
-    }
-
     fn setup_signals(&self) {
         let key_controller = gtk::EventControllerKey::new();
         key_controller.set_propagation_phase(gtk::PropagationPhase::Capture);
@@ -143,25 +139,21 @@ impl AreaSelector {
         let gesture_drag = gtk::GestureDrag::new();
         gesture_drag.set_exclusive(true);
         gesture_drag.connect_drag_begin(clone!(@weak self as obj => move |_, x, y| {
-            let imp = obj.private();
-
             let start_position = Point::new(x, y);
-            imp.start_position.replace(Some(start_position));
+            obj.imp().start_position.replace(Some(start_position));
         }));
         gesture_drag.connect_drag_update(
             clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
                 if let Some((start_x, start_y)) = gesture.start_point() {
-                    let imp = obj.private();
-
                     let current_position = Point::new(start_x + offset_x, start_y + offset_y);
-                    imp.current_position.replace(Some(current_position));
+                    obj.imp().current_position.replace(Some(current_position));
                     obj.queue_draw();
                 }
             }),
         );
         gesture_drag.connect_drag_end(clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
             if let Some((start_x, start_y)) = gesture.start_point() {
-                let imp = obj.private();
+                let imp = obj.imp();
 
                 let start_position = imp.start_position.take().unwrap();
                 let end_position = Point::new(start_x + offset_x, start_y + offset_y);
@@ -196,8 +188,7 @@ impl AreaSelector {
 
     pub async fn select_area(&self) -> AreaSelectorResponse {
         let (sender, receiver) = futures::channel::oneshot::channel();
-        let imp = self.private();
-        imp.sender.replace(Some(sender));
+        self.imp().sender.replace(Some(sender));
 
         self.present();
 

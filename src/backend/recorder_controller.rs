@@ -128,12 +128,8 @@ impl RecorderController {
         glib::Object::new::<Self>(&[]).expect("Failed to create RecorderController.")
     }
 
-    fn private(&self) -> &imp::RecorderController {
-        imp::RecorderController::from_instance(self)
-    }
-
     fn setup_signals(&self) {
-        let imp = self.private();
+        let imp = self.imp();
 
         imp.timer.bind_property("time", self, "time").build();
 
@@ -150,7 +146,7 @@ impl RecorderController {
 
         imp.recorder
             .connect_state_notify(clone!(@weak self as obj => move |recorder| {
-                let imp = obj.private();
+                let imp = obj.imp();
 
                 match recorder.state() {
                     RecorderState::Null => imp.timer.stop(),
@@ -167,13 +163,12 @@ impl RecorderController {
 
         imp.timer
             .connect_delay_done(clone!(@weak self as obj => move |_| {
-                let imp = obj.private();
-                imp.recorder.start();
+                obj.imp().recorder.start();
             }));
 
         imp.recorder
             .connect_prepared(clone!(@weak self as obj => move |_| {
-                let imp = obj.private();
+                let imp = obj.imp();
                 let record_delay = imp.record_delay.take();
                 imp.timer.start(record_delay);
             }));
@@ -222,30 +217,27 @@ impl RecorderController {
     }
 
     pub fn start(&self, record_delay: u32) {
-        let imp = self.private();
+        let imp = self.imp();
         imp.record_delay.set(record_delay);
         imp.recorder.prepare();
     }
 
     pub fn cancel_delay(&self) {
-        let imp = self.private();
+        let imp = self.imp();
         imp.recorder.cancel_prepare();
         imp.timer.stop();
     }
 
     pub fn stop(&self) {
-        let imp = self.private();
-        imp.recorder.stop();
+        self.imp().recorder.stop();
     }
 
     pub fn pause(&self) {
-        let imp = self.private();
-        imp.recorder.pause();
+        self.imp().recorder.pause();
     }
 
     pub fn resume(&self) {
-        let imp = self.private();
-        imp.recorder.resume();
+        self.imp().recorder.resume();
     }
 }
 

@@ -57,7 +57,7 @@ mod imp {
             Self::bind_template(klass);
 
             klass.install_action("win.toggle-record", None, move |obj, _, _| {
-                let imp = obj.private();
+                let imp = obj.imp();
 
                 if imp.recorder_controller.state() == RecorderControllerState::Null {
                     let settings = Application::default().settings();
@@ -69,7 +69,7 @@ mod imp {
             });
 
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
-                let imp = obj.private();
+                let imp = obj.imp();
 
                 if imp.recorder_controller.state() == RecorderControllerState::Paused {
                     imp.recorder_controller.resume();
@@ -79,9 +79,7 @@ mod imp {
             });
 
             klass.install_action("win.cancel-delay", None, move |obj, _, _| {
-                let imp = obj.private();
-
-                imp.recorder_controller.cancel_delay();
+                obj.imp().recorder_controller.cancel_delay();
             });
         }
 
@@ -122,12 +120,8 @@ impl MainWindow {
         glib::Object::new(&[("application", app)]).expect("Failed to create MainWindow.")
     }
 
-    fn private(&self) -> &imp::MainWindow {
-        imp::MainWindow::from_instance(self)
-    }
-
     fn setup_signals(&self) {
-        let imp = self.private();
+        let imp = self.imp();
 
         let settings = Application::default().settings();
 
@@ -142,7 +136,7 @@ impl MainWindow {
 
         imp.recorder_controller.connect_state_notify(
             clone!(@weak self as obj => move |recorder_controller| {
-                let imp = obj.private();
+                let imp = obj.imp();
 
                 match recorder_controller.state() {
                     RecorderControllerState::Null => obj.set_view(&View::Main),
@@ -165,7 +159,7 @@ impl MainWindow {
 
         imp.recorder_controller.connect_time_notify(
             clone!(@weak self as obj => move |recorder_controller| {
-                let imp = obj.private();
+                let imp = obj.imp();
 
                 let current_time = recorder_controller.time();
                 let seconds = current_time % 60;
@@ -232,9 +226,8 @@ impl MainWindow {
     }
 
     fn set_view(&self, view: &View) {
-        let imp = self.private();
-
-        imp.main_stack
+        self.imp()
+            .main_stack
             .set_visible_child_name(view.to_string().as_ref());
 
         self.action_set_enabled("win.toggle-record", *view != View::Delay);
@@ -243,14 +236,12 @@ impl MainWindow {
     }
 
     pub fn is_safe_to_close(&self) -> bool {
-        let imp = self.private();
-
         let allowed_states = [
             RecorderControllerState::Null,
             RecorderControllerState::Delayed,
         ];
 
-        allowed_states.contains(&imp.recorder_controller.state())
+        allowed_states.contains(&self.imp().recorder_controller.state())
     }
 }
 
