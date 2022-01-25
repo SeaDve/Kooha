@@ -2,16 +2,14 @@ use ashpd::desktop::screencast::Stream;
 use gtk::{glib, prelude::*};
 
 use std::{
-    env,
+    cmp, env,
     path::{Path, PathBuf},
     str::FromStr,
 };
 
-use crate::{
-    data_types::{Rectangle, Screen},
-    utils,
-};
+use crate::data_types::{Rectangle, Screen};
 
+const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
 #[derive(Debug, PartialEq, strum_macros::EnumString)]
@@ -134,7 +132,7 @@ impl PipelineAssembler {
 
         [pipeline_string, self.pipewiresrc(), self.pulsesrc()]
             .join(" ")
-            .replace("%T", &utils::ideal_thread_count().to_string())
+            .replace("%T", &ideal_thread_count().to_string())
     }
 
     fn compositor(&self) -> Option<String> {
@@ -252,10 +250,10 @@ impl PipelineAssembler {
             // It is a requirement for x264enc to have even resolution.
             format!(
                 "videocrop top={} left={} right={} bottom={}",
-                utils::round_to_even(top_crop),
-                utils::round_to_even(left_crop),
-                utils::round_to_even(right_crop),
-                utils::round_to_even(bottom_crop)
+                round_to_even(top_crop),
+                round_to_even(left_crop),
+                round_to_even(right_crop),
+                round_to_even(bottom_crop)
             )
         })
     }
@@ -340,9 +338,36 @@ impl PipelineAssembler {
     }
 }
 
+pub const fn round_to_even(number: f64) -> i32 {
+    number as i32 / 2 * 2
+}
+
+pub fn ideal_thread_count() -> u32 {
+    let num_processors = glib::num_processors();
+    cmp::min(num_processors, MAX_THREAD_COUNT)
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
+
+    #[test]
+    fn odd_round_to_even() {
+        assert_eq!(round_to_even(3.0), 2);
+        assert_eq!(round_to_even(99.0), 98);
+    }
+
+    #[test]
+    fn even_round_to_even() {
+        assert_eq!(round_to_even(50.0), 50);
+        assert_eq!(round_to_even(4.0), 4);
+    }
+
+    #[test]
+    fn float_round_to_even() {
+        assert_eq!(round_to_even(5.3), 4);
+        assert_eq!(round_to_even(2.9), 2);
+    }
 
     #[test]
     fn video_format_from_str() {

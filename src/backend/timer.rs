@@ -55,7 +55,7 @@ mod imp {
                         "Current state of Self",
                         TimerState::static_type(),
                         TimerState::default() as i32,
-                        glib::ParamFlags::READWRITE,
+                        glib::ParamFlags::READABLE,
                     ),
                     glib::ParamSpecUInt::new(
                         "time",
@@ -64,37 +64,17 @@ mod imp {
                         0,
                         std::u32::MAX as u32,
                         0,
-                        glib::ParamFlags::READWRITE,
+                        glib::ParamFlags::READABLE,
                     ),
                 ]
             });
             PROPERTIES.as_ref()
         }
 
-        fn set_property(
-            &self,
-            _obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
-                "state" => {
-                    let state = value.get().unwrap();
-                    self.state.set(state);
-                }
-                "time" => {
-                    let time = value.get().unwrap();
-                    self.time.set(time);
-                }
-                _ => unimplemented!(),
-            }
-        }
-
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "state" => self.state.get().to_value(),
-                "time" => self.time.get().to_value(),
+                "state" => obj.state().to_value(),
+                "time" => obj.time().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -110,32 +90,12 @@ impl Timer {
         glib::Object::new::<Self>(&[]).expect("Failed to create Timer.")
     }
 
-    fn set_state(&self, new_state: TimerState) {
-        self.set_property("state", new_state);
-    }
-
     pub fn state(&self) -> TimerState {
-        self.property("state")
+        self.imp().state.get()
     }
 
-    fn set_time(&self, new_time: u32) {
-        self.set_property("time", new_time);
-    }
-
-    fn time(&self) -> u32 {
-        self.property("time")
-    }
-
-    fn update_time(&self) {
-        let current_time = self.time();
-
-        let new_time = if self.state() == TimerState::Delayed {
-            current_time - 1
-        } else {
-            current_time + 1
-        };
-
-        self.set_time(new_time);
+    pub fn time(&self) -> u32 {
+        self.imp().time.get()
     }
 
     pub fn connect_state_notify<F>(&self, f: F) -> glib::SignalHandlerId
@@ -206,6 +166,28 @@ impl Timer {
 
     pub fn stop(&self) {
         self.set_state(TimerState::Stopped);
+    }
+
+    fn set_state(&self, state: TimerState) {
+        self.imp().state.set(state);
+        self.notify("state");
+    }
+
+    fn set_time(&self, time: u32) {
+        self.imp().time.set(time);
+        self.notify("time");
+    }
+
+    fn update_time(&self) {
+        let current_time = self.time();
+
+        let new_time = if self.state() == TimerState::Delayed {
+            current_time - 1
+        } else {
+            current_time + 1
+        };
+
+        self.set_time(new_time);
     }
 }
 

@@ -1,18 +1,4 @@
 use ashpd::zbus;
-use gtk::glib;
-
-use std::cmp;
-
-const MAX_THREAD_COUNT: u32 = 64;
-
-pub const fn round_to_even(number: f64) -> i32 {
-    number as i32 / 2 * 2
-}
-
-pub fn ideal_thread_count() -> u32 {
-    let num_processors = glib::num_processors();
-    cmp::min(num_processors, MAX_THREAD_COUNT)
-}
 
 pub fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
     shell_window_eval("make_above", is_raised)?;
@@ -42,27 +28,4 @@ fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
     };
 
     Ok(())
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn odd_round_to_even() {
-        assert_eq!(round_to_even(3.0), 2);
-        assert_eq!(round_to_even(99.0), 98);
-    }
-
-    #[test]
-    fn even_round_to_even() {
-        assert_eq!(round_to_even(50.0), 50);
-        assert_eq!(round_to_even(4.0), 4);
-    }
-
-    #[test]
-    fn float_round_to_even() {
-        assert_eq!(round_to_even(5.3), 4);
-        assert_eq!(round_to_even(2.9), 2);
-    }
 }
