@@ -1,6 +1,6 @@
 use ashpd::{
     desktop::{
-        screencast::{CursorMode, ScreenCastProxy, SourceType, Stream},
+        screencast::{CursorMode, PersistMode, ScreenCastProxy, SourceType, Stream},
         ResponseError, SessionProxy,
     },
     enumflags2::BitFlags,
@@ -35,7 +35,6 @@ mod imp {
     impl ObjectSubclass for ScreencastPortal {
         const NAME: &'static str = "KoohaScreencastPortal";
         type Type = super::ScreencastPortal;
-        type ParentType = glib::Object;
     }
 
     impl ObjectImpl for ScreencastPortal {}
@@ -118,7 +117,7 @@ async fn screencast(
     types: BitFlags<SourceType>,
     cursor_mode: BitFlags<CursorMode>,
 ) -> Result<(Vec<Stream>, RawFd, SessionProxy<'static>), ashpd::Error> {
-    let connection = zbus::azync::Connection::session().await?;
+    let connection = zbus::Connection::session().await?;
     let proxy = ScreenCastProxy::new(&connection).await?;
     log::info!("ScreenCastProxy created");
 
@@ -135,11 +134,18 @@ async fn screencast(
     log::info!("Session created");
 
     proxy
-        .select_sources(&session, cursor_mode, types, multiple)
+        .select_sources(
+            &session,
+            cursor_mode,
+            types,
+            multiple,
+            None,
+            PersistMode::DoNot,
+        )
         .await?;
     log::info!("Select sources window showed");
 
-    let streams = proxy.start(&session, &window_identifier).await?;
+    let (streams, _restore_token) = proxy.start(&session, &window_identifier).await?;
     log::info!("Screencast session started");
 
     let fd = proxy.open_pipe_wire_remote(&session).await?;

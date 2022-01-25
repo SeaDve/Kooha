@@ -1,7 +1,7 @@
 use adw::subclass::prelude::*;
 use futures::channel::oneshot::Sender;
 use gtk::{
-    gdk::{self, keys::Key},
+    gdk,
     glib::{self, clone, signal::Inhibit},
     graphene, gsk,
     prelude::*,
@@ -16,18 +16,6 @@ use crate::{
 };
 
 const LINE_WIDTH: f32 = 1.0;
-const BORDER_COLOR: gdk::RGBA = gdk::RGBA {
-    red: 0.1,
-    green: 0.45,
-    blue: 0.8,
-    alpha: 1.0,
-};
-const FILL_COLOR: gdk::RGBA = gdk::RGBA {
-    red: 0.1,
-    green: 0.45,
-    blue: 0.8,
-    alpha: 0.3,
-};
 
 #[derive(Debug)]
 pub enum AreaSelectorResponse {
@@ -78,11 +66,24 @@ mod imp {
                     height as f32,
                 );
 
-                snapshot.append_color(&FILL_COLOR, &selection_rect);
+                let border_color = gdk::RGBA::builder()
+                    .red(0.1)
+                    .green(0.45)
+                    .blue(0.8)
+                    .alpha(1.0)
+                    .build();
+                let fill_color = gdk::RGBA::builder()
+                    .red(0.1)
+                    .green(0.45)
+                    .blue(0.8)
+                    .alpha(0.3)
+                    .build();
+
+                snapshot.append_color(&fill_color, &selection_rect);
                 snapshot.append_border(
                     &gsk::RoundedRect::from_rect(selection_rect, 0.0),
                     &[LINE_WIDTH; 4],
-                    &[BORDER_COLOR; 4],
+                    &[border_color; 4],
                 );
             } else {
                 let placeholder_color = gdk::RGBA::builder().build();
@@ -129,7 +130,7 @@ impl AreaSelector {
         key_controller.set_propagation_phase(gtk::PropagationPhase::Capture);
         key_controller.connect_key_pressed(
             clone!(@weak self as obj => @default-return Inhibit(false), move |_, keyval, _, _| {
-                if keyval == Key::from_name("Escape") {
+                if keyval == gdk::Key::Escape {
                     obj.close();
                     Inhibit(true)
                 } else {

@@ -1,16 +1,15 @@
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, GEnum},
+    glib::{self, clone},
     subclass::prelude::*,
 };
-use once_cell::sync::Lazy;
 
 use std::cell::Cell;
 
 use crate::backend::{Recorder, RecorderResponse, RecorderState, Timer, TimerState};
 
-#[derive(Debug, PartialEq, Clone, Copy, GEnum)]
-#[genum(type_name = "KoohaRecorderControllerState")]
+#[derive(Debug, PartialEq, Clone, Copy, glib::Enum)]
+#[enum_type(name = "KoohaRecorderControllerState")]
 pub enum RecorderControllerState {
     Null,
     Delayed,
@@ -27,6 +26,8 @@ impl Default for RecorderControllerState {
 
 mod imp {
     use super::*;
+    use glib::subclass::Signal;
+    use once_cell::sync::Lazy;
 
     #[derive(Debug, Default)]
     pub struct RecorderController {
@@ -42,7 +43,6 @@ mod imp {
     impl ObjectSubclass for RecorderController {
         const NAME: &'static str = "KoohaRecorderController";
         type Type = super::RecorderController;
-        type ParentType = glib::Object;
     }
 
     impl ObjectImpl for RecorderController {
@@ -67,7 +67,7 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpec::new_enum(
+                    glib::ParamSpecEnum::new(
                         "state",
                         "state",
                         "Current state of Self",
@@ -75,7 +75,7 @@ mod imp {
                         RecorderControllerState::default() as i32,
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::new_uint(
+                    glib::ParamSpecUInt::new(
                         "time",
                         "time",
                         "Current time",
@@ -180,22 +180,19 @@ impl RecorderController {
     }
 
     fn emit_response(&self, response: &RecorderResponse) {
-        self.emit_by_name("response", &[response]).unwrap();
+        self.emit_by_name::<()>("response", &[response]);
     }
 
     fn set_state(&self, state: RecorderControllerState) {
-        self.set_property("state", state).unwrap();
+        self.set_property("state", state);
     }
 
     pub fn state(&self) -> RecorderControllerState {
         self.property("state")
-            .unwrap()
-            .get::<RecorderControllerState>()
-            .unwrap()
     }
 
     pub fn time(&self) -> u32 {
-        self.property("time").unwrap().get::<u32>().unwrap()
+        self.property("time")
     }
 
     pub fn connect_state_notify<F>(&self, f: F) -> glib::SignalHandlerId
@@ -222,7 +219,6 @@ impl RecorderController {
             f(&obj, &response);
             None
         })
-        .unwrap()
     }
 
     pub fn start(&self, record_delay: u32) {

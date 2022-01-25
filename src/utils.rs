@@ -27,7 +27,7 @@ fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
         reverse_keyword, method
     );
 
-    let connection = zbus::Connection::session()?;
+    let connection = zbus::blocking::Connection::session()?;
     let reply = connection.call_method(
         Some("org.gnome.Shell"),
         "/org/gnome/Shell",

@@ -1,10 +1,9 @@
 use ashpd::desktop::screencast::Stream;
 use gst::prelude::*;
 use gtk::{
-    glib::{self, clone, subclass::Signal, GBoxed, GEnum},
+    glib::{self, clone},
     subclass::prelude::*,
 };
-use once_cell::sync::Lazy;
 
 use std::{
     cell::{Cell, RefCell},
@@ -20,8 +19,8 @@ use crate::{
     widgets::{AreaSelector, AreaSelectorResponse},
 };
 
-#[derive(Debug, PartialEq, Clone, Copy, GEnum)]
-#[genum(type_name = "KoohaRecorderState")]
+#[derive(Debug, PartialEq, Clone, Copy, glib::Enum)]
+#[enum_type(name = "KoohaRecorderState")]
 pub enum RecorderState {
     Null,
     Paused,
@@ -35,8 +34,8 @@ impl Default for RecorderState {
     }
 }
 
-#[derive(Debug, Clone, GBoxed)]
-#[gboxed(type_name = "KoohaRecorderResponse")]
+#[derive(Debug, Clone, glib::Boxed)]
+#[boxed_type(name = "KoohaRecorderResponse")]
 pub enum RecorderResponse {
     Success(PathBuf),
     Failed(Error),
@@ -44,6 +43,8 @@ pub enum RecorderResponse {
 
 mod imp {
     use super::*;
+    use glib::subclass::Signal;
+    use once_cell::sync::Lazy;
 
     #[derive(Debug, Default)]
     pub struct Recorder {
@@ -57,7 +58,6 @@ mod imp {
     impl ObjectSubclass for Recorder {
         const NAME: &'static str = "KoohaRecorder";
         type Type = super::Recorder;
-        type ParentType = glib::Object;
     }
 
     impl ObjectImpl for Recorder {
@@ -78,7 +78,7 @@ mod imp {
 
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpec::new_enum(
+                vec![glib::ParamSpecEnum::new(
                     "state",
                     "state",
                     "Current state of Self",
@@ -165,13 +165,10 @@ impl Recorder {
 
     pub fn state(&self) -> RecorderState {
         self.property("state")
-            .unwrap()
-            .get::<RecorderState>()
-            .unwrap()
     }
 
     fn set_state(&self, state: RecorderState) {
-        self.set_property("state", state).unwrap();
+        self.set_property("state", state);
     }
 
     async fn init_pipeline(&self, streams: Vec<Stream>, fd: i32) {
@@ -242,23 +239,18 @@ impl Recorder {
     }
 
     fn emit_response(&self, response: &RecorderResponse) {
-        self.emit_by_name("response", &[response]).unwrap();
+        self.emit_by_name::<()>("response", &[response]);
     }
 
     fn emit_prepared(&self) {
-        self.emit_by_name("prepared", &[]).unwrap();
+        self.emit_by_name::<()>("prepared", &[]);
     }
 
     fn parse_bus_message(&self, message: &gst::Message) -> Continue {
         match message.view() {
             gst::MessageView::Eos(_) => {
                 let filesink = self.pipeline().unwrap().by_name("filesink").unwrap();
-                let recording_file_path = filesink
-                    .property("location")
-                    .unwrap()
-                    .get::<String>()
-                    .unwrap()
-                    .into();
+                let recording_file_path = filesink.property::<String>("location").into();
 
                 self.close_pipeline();
                 self.emit_response(&RecorderResponse::Success(recording_file_path));
@@ -311,7 +303,6 @@ impl Recorder {
             f(&obj, &response);
             None
         })
-        .unwrap()
     }
 
     pub fn connect_prepared<F>(&self, f: F) -> glib::SignalHandlerId
@@ -323,7 +314,6 @@ impl Recorder {
             f(&obj);
             None
         })
-        .unwrap()
     }
 
     pub fn prepare(&self) {

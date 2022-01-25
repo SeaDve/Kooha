@@ -1,5 +1,5 @@
 use gtk::{
-    glib::{self, clone, subclass::Signal, GEnum},
+    glib::{self, clone},
     prelude::*,
     subclass::prelude::*,
 };
@@ -7,8 +7,8 @@ use once_cell::sync::Lazy;
 
 use std::cell::Cell;
 
-#[derive(Debug, PartialEq, Clone, Copy, GEnum)]
-#[genum(type_name = "KoohaTimerState")]
+#[derive(Debug, PartialEq, Clone, Copy, glib::Enum)]
+#[enum_type(name = "KoohaTimerState")]
 pub enum TimerState {
     Stopped,
     Delayed,
@@ -24,6 +24,7 @@ impl Default for TimerState {
 
 mod imp {
     use super::*;
+    use glib::subclass::Signal;
 
     #[derive(Debug, Default)]
     pub struct Timer {
@@ -35,7 +36,6 @@ mod imp {
     impl ObjectSubclass for Timer {
         const NAME: &'static str = "KoohaTimer";
         type Type = super::Timer;
-        type ParentType = glib::Object;
     }
 
     impl ObjectImpl for Timer {
@@ -49,7 +49,7 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpec::new_enum(
+                    glib::ParamSpecEnum::new(
                         "state",
                         "state",
                         "Current state of Self",
@@ -57,7 +57,7 @@ mod imp {
                         TimerState::default() as i32,
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::new_uint(
+                    glib::ParamSpecUInt::new(
                         "time",
                         "time",
                         "Current time",
@@ -111,19 +111,19 @@ impl Timer {
     }
 
     fn set_state(&self, new_state: TimerState) {
-        self.set_property("state", new_state).unwrap();
+        self.set_property("state", new_state);
     }
 
     pub fn state(&self) -> TimerState {
-        self.property("state").unwrap().get::<TimerState>().unwrap()
+        self.property("state")
     }
 
     fn set_time(&self, new_time: u32) {
-        self.set_property("time", new_time).unwrap();
+        self.set_property("time", new_time);
     }
 
     fn time(&self) -> u32 {
-        self.property("time").unwrap().get::<u32>().unwrap()
+        self.property("time")
     }
 
     fn update_time(&self) {
@@ -161,7 +161,6 @@ impl Timer {
             f(&obj);
             None
         })
-        .unwrap()
     }
 
     pub fn start(&self, delay: u32) {
@@ -182,7 +181,7 @@ impl Timer {
 
                 if obj.time() == 0 && current_state == TimerState::Delayed {
                     obj.set_state(TimerState::Running);
-                    obj.emit_by_name("delay-done", &[]).unwrap();
+                    obj.emit_by_name::<()>("delay-done", &[]);
                 }
 
                 Continue(true)
@@ -191,7 +190,7 @@ impl Timer {
 
         if delay == 0 {
             self.set_state(TimerState::Running);
-            self.emit_by_name("delay-done", &[]).unwrap();
+            self.emit_by_name::<()>("delay-done", &[]);
         } else {
             self.set_state(TimerState::Delayed);
         }

@@ -16,7 +16,7 @@ use crate::{
     config::PROFILE,
 };
 
-#[derive(Debug, PartialEq, strum_macros::ToString)]
+#[derive(Debug, PartialEq, strum_macros::Display)]
 #[strum(serialize_all = "snake_case")]
 enum View {
     Main,
