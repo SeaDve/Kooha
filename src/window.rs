@@ -11,9 +11,9 @@ use gtk::{
 use std::string::ToString;
 
 use crate::{
-    application::Application,
     backend::{RecorderController, RecorderControllerState, RecorderResponse},
     config::PROFILE,
+    Application,
 };
 
 #[derive(Debug, PartialEq, strum_macros::Display)]

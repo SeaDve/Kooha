@@ -44,7 +44,7 @@ pub struct Point {
 }
 
 impl Point {
-    pub fn new(x: f64, y: f64) -> Self {
+    pub const fn new(x: f64, y: f64) -> Self {
         Self { x, y }
     }
 }
@@ -56,7 +56,7 @@ pub struct Screen {
 }
 
 impl Screen {
-    pub fn new(width: i32, height: i32) -> Self {
+    pub const fn new(width: i32, height: i32) -> Self {
         Self { width, height }
     }
 }

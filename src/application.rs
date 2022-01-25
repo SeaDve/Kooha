@@ -11,8 +11,8 @@ use once_cell::sync::OnceCell;
 use std::path::Path;
 
 use crate::{
-    backend::Settings,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
+    settings::Settings,
     window::Window,
 };
 

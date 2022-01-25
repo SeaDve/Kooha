@@ -13,7 +13,7 @@ use gtk::{
 
 use std::{cell::RefCell, os::unix::io::RawFd};
 
-use crate::{backend::Settings, error::Error, Application};
+use crate::{error::Error, settings::Settings, Application};
 
 #[derive(Debug)]
 pub enum ScreencastPortalResponse {

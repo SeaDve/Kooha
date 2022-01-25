@@ -71,7 +71,7 @@ impl Settings {
         let saving_location = self.inner().string("saving-location").to_string();
 
         if saving_location == "default" {
-            glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(|| glib::home_dir())
+            glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir)
         } else {
             PathBuf::from(saving_location)
         }

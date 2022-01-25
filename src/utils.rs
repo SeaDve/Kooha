@@ -5,7 +5,7 @@ use std::cmp;
 
 const MAX_THREAD_COUNT: u32 = 64;
 
-pub fn round_to_even(number: f64) -> i32 {
+pub const fn round_to_even(number: f64) -> i32 {
     number as i32 / 2 * 2
 }
 
