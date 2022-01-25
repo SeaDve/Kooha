@@ -13,8 +13,8 @@ config = configure_file(
 # Copy the config.rs output to the source directory.
 run_command(
   'cp',
-  meson.build_root() / 'src' / 'config.rs',
-  meson.source_root() / 'src' / 'config.rs',
+  meson.project_build_root() / 'src' / 'config.rs',
+  meson.project_source_root() / 'src' / 'config.rs',
   check: true
 )
 
@@ -51,17 +51,17 @@ custom_target(
   depends: resources,
   command: [
     cargo_script,
-    meson.build_root(),
-    meson.source_root(),
+    meson.project_build_root(),
+    meson.project_source_root(),
     '@OUTPUT@',
     profile,
     meson.project_name(),
   ]
 )
 
-cargo_target_dir = meson.build_root() / 'target'
-cargo_home = meson.build_root() / 'cargo-home'
-manifest_path = meson.source_root() / 'Cargo.toml'
+cargo_target_dir = meson.project_build_root() / 'target'
+cargo_home = meson.project_build_root() / 'cargo-home'
+manifest_path = meson.project_source_root() / 'Cargo.toml'
 
 test (
   'cargo-test',
