@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-02-05 00:03+0000\n"
+"PO-Revision-Date: 2022-02-07 12:55+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/kooha/pot-file/da/"
 ">\n"
@@ -252,7 +252,7 @@ msgstr "Vælg Optagelsesmappe"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr ""
+msgstr "Marc Eckert"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
