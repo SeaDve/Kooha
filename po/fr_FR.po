@@ -5,12 +5,13 @@
 # Thomas Citharel <tcit@tcit.fr>, 2021.
 # Rémi de Chazelles <remidechazelles@gmail.com>, 2021.
 # Maxime Leroy <lisacintosh@gmail.com>, 2021, 2022.
+# Magik Leo <magikleo.yopmail@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-16 09:53+0000\n"
+"PO-Revision-Date: 2022-02-15 05:53+0000\n"
 "Last-Translator: Maxime Leroy <lisacintosh@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -67,7 +68,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Support pour les formats WebM, MP4, GIF, et MKV."
+msgstr "📼 Prise en charge des formats WebM, MP4, GIF et MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
@@ -75,11 +76,11 @@ msgstr "🗔 Sélection de plusieurs sources."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Encodage pouvant bénéficier de l'accélération matérielle en option"
+msgstr "🚀 L'encodage peut bénéficier de l'accélération matérielle"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Sélectionnez un écran ou une fenêtre pour enregistrer."
+msgstr "Choisissez un écran ou une fenêtre à enregistrer."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
@@ -280,7 +281,6 @@ msgid "Open File"
 msgstr "Ouvrir un fichier"
 
 #: src/error.rs:17
-#, fuzzy
 msgid "Screencast Portal Request Error"
 msgstr "Échec de la requête vers le portail Screencast"
 
