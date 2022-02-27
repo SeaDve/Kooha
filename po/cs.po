@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Jan Novák <novak@silen.org>, 2021.
+# Jan Novák <novak@silen.org>, 2021, 2022.
 # Vojtěch Perník <translations@pervoj.cz>, 2021.
 # Petr Šimáček <petr.simacek@gmail.com>, 2021.
 msgid ""
@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2021-10-27 12:12+0000\n"
+"PO-Revision-Date: 2022-02-27 18:56+0000\n"
 "Last-Translator: Jan Novák <novak@silen.org>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
-">\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
+"\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.11.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -302,6 +302,9 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"GStreamer plugin možná není nainstalován. Pokud je nainstalovaný ale "
+"nefunguje, prosím pošli report na <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\"> stránce s chybami Kooha </a>."
 
 #: src/error.rs:49
 msgid ""
@@ -309,6 +312,10 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Zajisti aby místo pro ukládání existovalo a bylo dostupné. Pokud místo "
+"existuje a je skutečně dostupné, něco se pokazilo. Porsím zašli report s "
+"chybou na <a href=\"https://github.com/SeaDve/Kooha/issues\"> stránku s "
+"chybami kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
