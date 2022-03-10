@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-03-06 14:56+0000\n"
+"PO-Revision-Date: 2022-03-10 12:52+0000\n"
 "Last-Translator: MSKF <walkingdeadstudio@outlook.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fa/>\n"
@@ -29,73 +29,76 @@ msgstr "کوها"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
-msgstr "صفحهٔ خود را با ظرافت ضبط کنید"
+msgstr "صفحه‌نمایش خود را با ظرافت ضبط کنید"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
-"Screencast;Recorder;Screen;Video;اسکرین‌شات;اسکرین‌کست;ضبط;صفحه;ویدیو;ویدئو;"
+"kooha;Screencast;Recorder;Screen;Video;اسکرین‌شات;اسکرین‌کست;ضبط;صفحه‌نمایش;و"
+"یدیو;ویدئو;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "صفحه‌نمایش خود را به صورت شهودی و سرراست و بدون حواس‌پرتی ضبط کنید."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"کوها یک ضبط کنندهٔ صفحه‌نمایش با رابطی کمینه‌گراست. فقط لازم است روی دکمهٔ "
+"ضبط کلیک کنید؛ بدون نیاز به پیکربندی هیچ تنظیماتی."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "قابلیت‌های اصلی کوها عبارتند از:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 ضبط صفحه‌نمایش‌تان بدون هیچ عذابی."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ ضبط میکروفون‌تان، صداهای رایانه، یا هر دو در یک زمان."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 پشتیبانی از قالب‌های WebM، ‏MP4، ‏GIF، و MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 گزینش چندین منبع."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 کدبندی شتاب‌یافتهٔ سخت‌افزاری اختیاری"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ گزینش یک صفحه‌نمایش یا پنجره برای ضبط."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ ایجاد یک گزینش برای ضبط ناحیهٔ معیّن از صفحه‌نمایش‌تان."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ تنظیم تأخیر برای آمادگی قبل از شروع ضبط."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ پنهان یا نمایان کردن نشانگر موشی."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 انتخاب یک مکان برای ذخیرهٔ ضبط‌هایتان."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ استفاده از میان‌برهای صفحه‌کلید کارآمد."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
@@ -122,14 +125,12 @@ msgid "Recording"
 msgstr "در حال ضبط"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Toggle Record"
-msgstr "تعویض ضبط"
+msgstr "تغییر حالت دکمهٔ ضبط"
 
 #: data/resources/ui/shortcuts.ui:44
-#, fuzzy
 msgid "Toggle Pause"
-msgstr "تعویض مکث"
+msgstr "تغییر حالت دکمهٔ مکث"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
@@ -140,19 +141,16 @@ msgid "Settings"
 msgstr "تنظیمات"
 
 #: data/resources/ui/shortcuts.ui:61
-#, fuzzy
 msgid "Toggle Computer Sounds"
-msgstr "تعویض صداهای رایانه"
+msgstr "تغییر حالت دکمهٔ صداهای رایانه"
 
 #: data/resources/ui/shortcuts.ui:67
-#, fuzzy
 msgid "Toggle Microphone"
-msgstr "تعویض میکروفن"
+msgstr "تغییر حالت دکمهٔ میکروفن"
 
 #: data/resources/ui/shortcuts.ui:73
-#, fuzzy
 msgid "Toggle Pointer"
-msgstr "تعویض نشانگر"
+msgstr "تغییر حالت دکمهٔ نشانگر"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
@@ -200,7 +198,7 @@ msgstr "ضبط در…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
-msgstr ""
+msgstr "فلاش کردن…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
@@ -280,9 +278,8 @@ msgid "Open File"
 msgstr "گشودن پرونده"
 
 #: src/error.rs:17
-#, fuzzy
 msgid "Screencast Portal Request Error"
-msgstr "خطای درخواست درگاه اسکرین‌کست"
+msgstr "خطای درخواست درگاه ضبط صفحه‌نمایش"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
