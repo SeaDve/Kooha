@@ -5,13 +5,14 @@
 # Soheil Khanalipur <soheil@disroot.org>, 2021.
 # عبدالرئوف عابدی <abdolraoofabedi@gmail.com>, 2021.
 # MSKF <walkingdeadstudio@outlook.com>, 2021, 2022.
+# MohammadSaleh Kamyab <mskf1383@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-03-10 12:52+0000\n"
-"Last-Translator: MSKF <walkingdeadstudio@outlook.com>\n"
+"PO-Revision-Date: 2022-03-15 09:54+0000\n"
+"Last-Translator: MohammadSaleh Kamyab <mskf1383@protonmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fa/>\n"
 "Language: fa\n"
