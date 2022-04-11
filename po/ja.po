@@ -5,14 +5,14 @@
 # tinaxd <tinaxd@protonmail.com>, 2021.
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
 # Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022.
-# Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021.
+# Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-11 00:10+0000\n"
-"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"PO-Revision-Date: 2022-04-11 05:07+0000\n"
+"Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
 "Language: ja\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -99,7 +99,7 @@ msgstr "💾 保存先を選択できます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ 役に立つキーボードショートカットもあります。"
+msgstr "⌨️ 便利なキーボードショートカットもあります。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
