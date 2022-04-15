@@ -4,13 +4,14 @@
 # Radek Raczkowski <rdkracz@gmail.com>, 2021.
 # Adam Hulewicz <dontbesoso@gmail.com>, 2021.
 # Radosław Korotkiewicz <Ezioleq@wp.pl>, 2022.
+# Carlod <carlod@disroot.org>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-11 00:10+0000\n"
-"Last-Translator: Radosław Korotkiewicz <Ezioleq@wp.pl>\n"
+"PO-Revision-Date: 2022-04-15 18:09+0000\n"
+"Last-Translator: Carlod <carlod@disroot.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kooha/pot-file/pl/"
 ">\n"
 "Language: pl\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -41,7 +42,7 @@ msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
-"Przechwytuj swój ekran w intuitywny i prosty sposób bez rozpraszania uwagi."
+"Przechwytuj swój ekran w intuicyjny i prosty sposób bez rozpraszania uwagi."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
