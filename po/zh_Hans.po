@@ -7,13 +7,14 @@
 # WhiredPlanck <fungdaat31@outlook.com>, 2021.
 # Liu Tao <lyuutau@outlook.com>, 2021.
 # joe <ourmicroid@outlook.com>, 2022.
+# lumingzh <lumingzh@qq.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-22 07:53+0000\n"
-"Last-Translator: joe <ourmicroid@outlook.com>\n"
+"PO-Revision-Date: 2022-04-17 09:03+0000\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -257,7 +258,8 @@ msgid "translator-credits"
 msgstr ""
 "Zhou Nan &lt;zhounan@nfschina.com&gt;\n"
 "Zhongrui Cao &lt;zhongrui.cao@suse.com&gt;\n"
-"WhiredPlanck &lt;wplanck@aosc.io&gt;"
+"WhiredPlanck &lt;wplanck@aosc.io&gt;\n"
+"lumingzh &lt;lumingzh@qq.com&gt;"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
