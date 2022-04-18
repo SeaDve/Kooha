@@ -6,13 +6,14 @@
 # Rémi de Chazelles <remidechazelles@gmail.com>, 2021.
 # Maxime Leroy <lisacintosh@gmail.com>, 2021, 2022.
 # Magik Leo <magikleo.yopmail@gmail.com>, 2022.
+# matb <perso@mathieu-bousquet.fr>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-02-15 05:53+0000\n"
-"Last-Translator: Maxime Leroy <lisacintosh@gmail.com>\n"
+"PO-Revision-Date: 2022-04-18 11:07+0000\n"
+"Last-Translator: matb <perso@mathieu-bousquet.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
 "Language: fr_FR\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -35,7 +36,7 @@ msgstr "Enregistrez élégamment votre écran"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Vidéographie;Écran;Vidéo;Enregistrement;"
+msgstr "Capture d'écran;Enregistrement;Écran;Vidéo;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
@@ -113,7 +114,7 @@ msgstr "Général"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr "Ouvrir le Menu"
+msgstr "Ouvrir le menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
@@ -245,7 +246,7 @@ msgstr "_Sauvegarder sous…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr "Raccourcis _clavier"
+msgstr "_Raccourcis Clavier"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
@@ -258,11 +259,11 @@ msgstr "Sélectionner le dossier des enregistrements"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr "J. Lavoie"
+msgstr "J. Lavoie, M. Bousquet"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
+msgstr "Droits d'auteur 2021 Dave Patrick"
 
 #: src/application.rs:187
 msgid "GitHub"
