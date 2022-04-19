@@ -6,13 +6,14 @@
 # Heinrich Heinzer <heinrich.heinzer@gmail.com>, 2021.
 # Nico <d3sox@protonmail.com>, 2021.
 # Milo Ivir <mail@milotype.de>, 2021.
+# sal0max <msal.coding@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2021-10-11 15:27+0000\n"
-"Last-Translator: Nico <d3sox@protonmail.com>\n"
+"PO-Revision-Date: 2022-04-19 14:07+0000\n"
+"Last-Translator: sal0max <msal.coding@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -262,7 +263,8 @@ msgid "translator-credits"
 msgstr ""
 "Jonathan Haas\n"
 "Milo Ivir\n"
-"D3SOX"
+"D3SOX\n"
+"Maximilian Salomon"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
@@ -311,6 +313,9 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Unter Umständen ist kein GStreamer-Plugin installiert. Falls es installiert "
+"ist, aber nicht funktioniert, das Problem bitte auf der <a href=\"https"
+"://github.com/SeaDve/Kooha/issues\">Kooha Issue Seite</a> melden."
 
 #: src/error.rs:49
 msgid ""
@@ -318,6 +323,10 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Bitte sicherstellen, dass der Speicherort existiert und zugreifbar ist. "
+"Falls er existiert und zugreifbar ist, ist etwas schief gegangen. Das "
+"Problem bitte auf der <a href=\"https://github.com/SeaDve/Kooha/issues\""
+">Kooha Issue Seite</a> melden."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
