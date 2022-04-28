@@ -7,13 +7,14 @@
 # albanobattistella <albano_battistella@hotmail.com>, 2021, 2022.
 # Ruggero Turra <giurrero@gmail.com>, 2021.
 # Michael Moroni <michaelmoroni@disroot.org>, 2021.
+# Andrea Brandi <git@andreabrandi.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-16 09:53+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2022-04-28 23:02+0000\n"
+"Last-Translator: Andrea Brandi <git@andreabrandi.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -133,11 +134,11 @@ msgstr "Interruttore Registrazione"
 
 #: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
-msgstr "Interruttore Pausa"
+msgstr "Attiva/disattiva pausa"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
-msgstr "Cancella il ritardo"
+msgstr "Annulla ritardo"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -145,19 +146,19 @@ msgstr "Impostazioni"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr "Interruttore Suoni del Computer"
+msgstr "Attiva/disattiva suoni del computer"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr "Interruttore Microfono"
+msgstr "Attiva/disattiva microfono"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr "Interruttore Puntatore"
+msgstr "Attiva/disattiva puntatore"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
-msgstr "Menù principale"
+msgstr "Menu principale"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
@@ -201,7 +202,7 @@ msgstr "In registrazione tra…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
-msgstr "Ripulisco…"
+msgstr "Pulizia…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
@@ -221,7 +222,7 @@ msgstr "10 secondi"
 
 #: data/resources/ui/window.ui:301
 msgid "_Video Format"
-msgstr "_Formato Video"
+msgstr "_Formato video"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
@@ -245,11 +246,11 @@ msgstr "_Salva in…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr "_Scorciatoie da Tastiera"
+msgstr "_Scorciatoie da tastiera"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr "_A proposito di Kooha"
+msgstr "_Informazioni su Kooha"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
@@ -261,7 +262,8 @@ msgid "translator-credits"
 msgstr ""
 "Nicolas Mariniello\n"
 "Albano Battistella\n"
-"Michael Moroni"
+"Michael Moroni\n"
+"Andrea Brandi"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
@@ -281,11 +283,11 @@ msgstr "La registrazione è stata salvata in \"{}\""
 
 #: src/application.rs:218
 msgid "Open File"
-msgstr "Apri File"
+msgstr "Apri file"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr "Errore di richiesta del portale Screencast"
+msgstr "Errore di richiesta portale dello screencast"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
@@ -300,8 +302,8 @@ msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
-"Assicurati di controllare le dipendenze di runtime e <a href=\"https://"
-"github.com/SeaDve/Kooha#-it-doesnt-work\">se non funziona la pagina</a>."
+"Controllare le dipendenze di runtime e la pagina <a href=\"https://github."
+"com/SeaDve/Kooha#-it-doesnt-work\">se non funziona</a>."
 
 #: src/error.rs:48
 msgid ""
@@ -310,8 +312,8 @@ msgid ""
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 "Un plugin GStreamer potrebbe non essere installato. Se è installato ma "
-"continua a non funzionare correttamente, segnalalo a <a href=\"https://"
-"github.com/SeaDve/Kooha/issues\">pagina dei problemi di Kohoha</a>."
+"continua a non funzionare correttamente, segnalarlo alla <a href=\"https"
+"://github.com/SeaDve/Kooha/issues\">pagina dei problemi di Kooha</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -319,10 +321,10 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"Assicurati che la posizione di salvataggio esista o sia accessibile. Se "
-"esiste effettivamente o è accessibile, qualcosa è andato storto e si prega "
-"di segnalarlo su <a href=\"https://github.com/SeaDve/Kooha/issues\">La "
-"pagina dei problemi di Koha</a>."
+"Assicurarsi che la posizione di salvataggio esista o sia accessibile. Se "
+"esiste effettivamente o è accessibile, qualcosa è andato storto. Segnalare "
+"il problema alla <a href=\"https://github.com/SeaDve/Kooha/issues\">pagina "
+"dei problemi di Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
