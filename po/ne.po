@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-05-15 13:19+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2022-05-17 03:17+0000\n"
+"Last-Translator: Diggaj Upadhyay <dcozupadhyay@duck.com>\n"
 "Language-Team: Nepali <https://hosted.weblate.org/projects/kooha/pot-file/ne/"
 ">\n"
 "Language: ne\n"
@@ -109,83 +109,85 @@ msgstr "सामान्य"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "मेनु खोल्नुहोस्"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "सर्टकटहरू देखाउनुहोस्"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "बाहिर निस्कनुहोस्"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
-msgstr ""
+msgstr "रेकर्डिङ"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "रेकर्ड टगल गर्नुहोस्"
 
 #: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
-msgstr ""
+msgstr "पज टगल गर्नुहोस्"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
+#, fuzzy
 msgid "Cancel Delay"
-msgstr ""
+msgstr "अन्तराल रद्द गर्नुहोस्"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
-msgstr ""
+msgstr "सेटिङहरू"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "कम्प्युटर ध्वनि टगल गर्नुहोस्"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "माइक्रोफोन टगल गर्नुहोस्"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "सूचक टगल गर्नुहोस्"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
-msgstr ""
+msgstr "मुख्य मेनु"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "सामान्य"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
-msgstr ""
+msgstr "चयन"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "मनिटर वा विन्डो क्याप्चर गर्नुहोस्"
 
 #: data/resources/ui/window.ui:94
+#, fuzzy
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "स्क्रिनको चयन क्याप्चर गर्नुहोस्"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "कम्प्युटर ध्वनि रेकर्ड गर्नुहोस्"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr ""
+msgstr "माइक्रोफोनबाट रेकर्ड गर्नुहोस्"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
-msgstr ""
+msgstr "सूचक देखाउनुहोस्"
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
-msgstr ""
+msgstr "रेकर्ड"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
@@ -193,106 +195,112 @@ msgstr "रोक्नुहोस्"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr ""
+msgstr "रेकर्डिङ प्रक्रियामा…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
-msgstr ""
+msgstr "फ्लस गर्दै…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr ""
+msgstr "_ढिला"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
-msgstr ""
+msgstr "केहि छैन"
 
 #: data/resources/ui/window.ui:290
 msgid "5 seconds"
-msgstr ""
+msgstr "५ सेकेन्ड"
 
 #: data/resources/ui/window.ui:295
 msgid "10 seconds"
-msgstr ""
+msgstr "१० सेकेन्ड"
 
 #: data/resources/ui/window.ui:301
+#, fuzzy
 msgid "_Video Format"
-msgstr ""
+msgstr "_भिडियो ढाँचा"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/resources/ui/window.ui:308
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/resources/ui/window.ui:313
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:318
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:324
+#, fuzzy
 msgid "_Save to…"
-msgstr ""
+msgstr "_कहाँ बचत गर्न चयन गर्नुहोस्…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_कीबोर्ड सर्टकटहरू"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr ""
+msgstr "_कोहा को बारेमा"
 
 #: src/application.rs:138
+#, fuzzy
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "रेकर्डिङ फोल्डर चयन गर्नुहोस्"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr ""
+msgstr "अनुवादक-क्रेडिट"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "प्रतिलिपि अधिकार २०२१ डेभ प्याट्रिक"
 
 #: src/application.rs:187
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/application.rs:208
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "स्क्रिनकास्ट रेकर्ड गरियो!"
 
 #: src/application.rs:210
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "रेकर्डिङ \"{}\" मा सुरक्षित गरिएको छ"
 
 #: src/application.rs:218
 msgid "Open File"
-msgstr ""
+msgstr "फाइल खोल्नुहोस्"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "स्क्रिनकास्ट पोर्टल अनुरोध त्रुटि"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "पाइपलाइन निर्माण त्रुटि"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "रेकर्डिङ त्रुटि"
 
 #: src/error.rs:47
+#, fuzzy
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"रनटाइम निर्भरता र <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\""
+"> को लागि जाँच गर्न निश्चित गर्नुहोस्"
 
 #: src/error.rs:48
 msgid ""
@@ -310,4 +318,4 @@ msgstr ""
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr ""
+msgstr "रोकियो"

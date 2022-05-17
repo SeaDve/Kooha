@@ -6,13 +6,14 @@
 # Artem <Localizer_in_Russian@protonmail.com>, 2021.
 # Noel Fritz <toro_75@yahoo.com>, 2021.
 # MrWooltrest <nikitaec101@gmail.com>, 2022.
+# Alex <ibf7@ya.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-18 17:53+0000\n"
-"Last-Translator: MrWooltrest <nikitaec101@gmail.com>\n"
+"PO-Revision-Date: 2022-05-17 03:17+0000\n"
+"Last-Translator: Alex <ibf7@ya.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -43,6 +44,8 @@ msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
+"Захватывайте свой экран интуитивно понятным и простым способом, не "
+"отвлекаясь."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
