@@ -7,13 +7,14 @@
 # Noel Fritz <toro_75@yahoo.com>, 2021.
 # MrWooltrest <nikitaec101@gmail.com>, 2022.
 # Alex <ibf7@ya.ru>, 2022.
+# Cherro59 <garavil@mail.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-05-17 03:17+0000\n"
-"Last-Translator: Alex <ibf7@ya.ru>\n"
+"PO-Revision-Date: 2022-05-18 18:14+0000\n"
+"Last-Translator: Cherro59 <garavil@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -319,6 +320,10 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Убедитесь что этот путь для сохранения существует и доступен для записи. "
+"Если он существует и доступен для записи, что-то пошло не так. Пожалуйста "
+"отправьте баг-репорт сюда - <a href=\"https://github.com/SeaDve/Kooha/"
+"issues\">"
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
