@@ -5,13 +5,14 @@
 # Adam Hulewicz <dontbesoso@gmail.com>, 2021.
 # Radosław Korotkiewicz <Ezioleq@wp.pl>, 2022.
 # Carlod <carlod@disroot.org>, 2022.
+# gnu-ewm <gnu.ewm@protonmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-04-15 18:09+0000\n"
-"Last-Translator: Carlod <carlod@disroot.org>\n"
+"PO-Revision-Date: 2022-05-22 22:14+0000\n"
+"Last-Translator: gnu-ewm <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kooha/pot-file/pl/"
 ">\n"
 "Language: pl\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -63,7 +64,8 @@ msgstr "🎥 Przechwytywanie twojego ekranu bez żadnych zmartwień."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Nagrywanie mikrofonu, dźwięków z komputera lub obu jednocześnie."
+msgstr ""
+"🎙️ Nagrywanie dźwięku z mikrofonu, dźwięków z komputera lub obu jednocześnie."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
@@ -193,7 +195,7 @@ msgstr "Nagrywaj"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
-msgstr "Zakończ"
+msgstr "Zatrzymaj"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -258,7 +260,7 @@ msgstr "Wybierz katalog nagrań"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr "Radek Raczkowski,Adam Hulewicz,Radosław Korotkiewicz"
+msgstr "Radek Raczkowski, Adam Hulewicz, Radosław Korotkiewicz"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"

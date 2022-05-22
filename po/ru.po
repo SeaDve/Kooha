@@ -8,13 +8,15 @@
 # MrWooltrest <nikitaec101@gmail.com>, 2022.
 # Alex <ibf7@ya.ru>, 2022.
 # Cherro59 <garavil@mail.ru>, 2022.
+# Feodor Rusanov <f.rusanov@gmail.com>, 2022.
+# VBB <librusekus35790@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-05-18 18:14+0000\n"
-"Last-Translator: Cherro59 <garavil@mail.ru>\n"
+"PO-Revision-Date: 2022-05-22 22:14+0000\n"
+"Last-Translator: VBB <librusekus35790@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -88,7 +90,7 @@ msgstr "🖥️Выберите монитор или окно для запис
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ Выберите часть экрана для записи."
+msgstr "🖼️ Выберите область экрана для записи."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -111,7 +113,6 @@ msgid "Dave Patrick"
 msgstr "Дэйв Патрик"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgid "General"
 msgstr "Основное"
 
