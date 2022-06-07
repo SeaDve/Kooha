@@ -5,13 +5,14 @@
 # Reza Almanda <rezaalmanda27@gmail.com>, 2021.
 # Sucipto <show.cheap@gmail.com>, 2021.
 # Sucipto <sucipto@pm.me>, 2021.
+# Hervy Qurrotul Ainur Rozi <hervyqa@proton.me>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-28 07:56+0000\n"
-"Last-Translator: liimee <alt3753.7@gmail.com>\n"
+"PO-Revision-Date: 2022-06-07 04:15+0000\n"
+"Last-Translator: Hervy Qurrotul Ainur Rozi <hervyqa@proton.me>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
 "pot-file/id/>\n"
 "Language: id\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -255,7 +256,7 @@ msgstr "Pilih Folder Rekaman"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr "liimee"
+msgstr "kredit-penerjemah"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
