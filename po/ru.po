@@ -10,13 +10,14 @@
 # Cherro59 <garavil@mail.ru>, 2022.
 # Feodor Rusanov <f.rusanov@gmail.com>, 2022.
 # VBB <librusekus35790@gmail.com>, 2022.
+# Daudix UFO <ddaudix@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-05-22 22:14+0000\n"
-"Last-Translator: VBB <librusekus35790@gmail.com>\n"
+"PO-Revision-Date: 2022-06-20 00:19+0000\n"
+"Last-Translator: Daudix UFO <ddaudix@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -40,7 +41,7 @@ msgstr "Записывайте экран элегантно"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Screencast;Recorder;Screen;Video;Запись экрана;Видео;"
+msgstr "Скринкаст;Запись;Экран;Видео;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
@@ -86,7 +87,7 @@ msgstr "🚀 Опциональное аппаратное ускорение"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️Выберите монитор или окно для записи."
+msgstr "🖥️ Выберите монитор или окно для записи."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
@@ -98,7 +99,7 @@ msgstr "⏲️ Задержка перед началом записи."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Возможность спрятать или показать курсор мыши."
+msgstr "🖱️ Возможность спрятать или показать курсор."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
@@ -106,7 +107,7 @@ msgstr "💾 Выбор места сохранения записи."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Поддержка полезных клавиатурных сокращений."
+msgstr "⌨️ Поддержка полезных комбинаций клавиш."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
@@ -122,11 +123,11 @@ msgstr "Открыть меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr "Показывать ярлыки"
+msgstr "Показывать комбинации клавиш"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr "Выход"
+msgstr "Выйти"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
@@ -146,19 +147,19 @@ msgstr "Отменить Задержку"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Параметры"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr "Переключить запись звуков компьютера"
+msgstr "Переключить звуки компьютера"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr "Переключить запись микрофона"
+msgstr "Переключить микрофон"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr "Переключить видимость указателя"
+msgstr "Переключить указатель"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
@@ -202,7 +203,7 @@ msgstr "Остановить"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr "Запись в…"
+msgstr "Запись через…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
@@ -254,7 +255,7 @@ msgstr "_Комбинации клавиш"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr "_Про Kooha"
+msgstr "_О Kooha"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
@@ -263,7 +264,7 @@ msgstr "Выберите папку для записей"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr "Kovalev Artem"
+msgstr "Ковалев Артем, Давид Лапшин"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
@@ -287,7 +288,7 @@ msgstr "Открыть файл"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr "Ошибка запроса Screencast"
+msgstr "Ошибка запроса портала скринкаста"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
@@ -312,8 +313,8 @@ msgid ""
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 "Плагин GStreamer может быть не установлен. Если он установлен, но не "
-"работает, напишите на <a href=\"https://github.com/SeaDve/Kooha/issues"
-"\">странице \"Проблемы Kooha\"</a>."
+"работает, пожалуйста сообщите это на <a href=\"https://github.com/SeaDve/"
+"Kooha/issues\">странице \"Неполадки Kooha\"</a>."
 
 #: src/error.rs:49
 msgid ""
@@ -323,12 +324,12 @@ msgid ""
 msgstr ""
 "Убедитесь что этот путь для сохранения существует и доступен для записи. "
 "Если он существует и доступен для записи, что-то пошло не так. Пожалуйста "
-"отправьте баг-репорт сюда - <a href=\"https://github.com/SeaDve/Kooha/"
-"issues\">"
+"сообщите это на странице <a href=\"https://github.com/SeaDve/Kooha/issues\"> "
+"\"Неполадки Kooha\" </a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr "На паузе"
+msgstr "Приостановлено"
 
 #~ msgid "_Cancel"
 #~ msgstr "_Отменить"
