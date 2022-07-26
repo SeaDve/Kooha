@@ -5,21 +5,22 @@
 # ssantos <ssantos@web.de>, 2021, 2022.
 # Boud Knight <doubzarref@gmail.com>, 2021.
 # Juliano de Souza Camargo <julianosc@protonmail.com>, 2021.
+# Laura Vasconcelos Pereira Felippe <lauravpf@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-01-03 16:52+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/pot-"
-"file/pt/>\n"
+"PO-Revision-Date: 2022-07-26 14:24+0000\n"
+"Last-Translator: Laura Vasconcelos Pereira Felippe <lauravpf@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/"
+"pot-file/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -29,25 +30,25 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
-msgstr "Grave o seu ecrã com estilo"
+msgstr "Grave sua tela com estilo"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Captura de ecrã;gravador;ecrã;video;"
+msgstr "Captura de Tela;Gravador;Tela;Vídeo;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr "Capture seu ecrã duma forma intuitiva e direta, sem distrações."
+msgstr "Capture sua tela de forma intuitiva e direta, sem distrações."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha é um gravador de ecrã simples com uma interface minimalista. Basta "
+"Kooha é um gravador de tela simples com uma interface minimalista. Basta "
 "clicar no botão de gravação sem ter de configurar um monte de definições."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
@@ -312,6 +313,10 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Certifique-se de que o local em que você que salvar existe ou está "
+"acessível. Se ele realmente existe ou é acessível, algo deu errado, por "
+"favor, informe o erro <a href=\"https://github.com/SeaDve/Kooha/issues\">na "
+"página de problemas do Kooha</a>."
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
