@@ -7,283 +7,290 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-07-27 17:16+0000\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"kooha/pot-file/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "優雅地錄下螢幕內容"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;螢幕錄影;錄影;螢幕;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "用可觀並直覺的方式截取您的螢幕，沒有讓人分心的東西。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
-msgstr ""
+msgstr "Kooha 是一個簡潔的螢幕錄影工具。Kooha "
+"使用極簡化的介面，您只需要按下錄影按鈕，不需要調整一大堆設定。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "以下是 Kooha 的主要功能："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 一點麻煩都沒有地截取您的螢幕。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ 錄下您的麥克風、電腦內部音訊，或是兩個都錄。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 支援 WebM、MP4、GIF 及 MKV 格式。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 選取多個來源。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 編碼可以選擇使用硬體加速"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ 選取要錄影的螢幕或視窗。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ 選取並截取螢幕的一部分。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ 設定開始錄影前的延遲，讓您進行準備。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ 隱藏或顯示滑鼠游標。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 選擇您的錄影要儲存的地方。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ 利用好用的鍵盤快捷鍵。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "開啟選單"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "顯示快捷鍵"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "離開"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
-msgstr ""
+msgstr "正在錄影"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "切換錄影"
 
 #: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
-msgstr ""
+msgstr "切換暫停"
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
-msgstr ""
+msgstr "取消延遲"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "切換電腦內部音訊"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "切換麥克風"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "切換游標"
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
-msgstr ""
+msgstr "主選單"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
-msgstr ""
+msgstr "一般"
 
 #: data/resources/ui/window.ui:57
 msgid "Selection"
-msgstr ""
+msgstr "選取區域"
 
 #: data/resources/ui/window.ui:86
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "截取一個螢幕或視窗"
 
 #: data/resources/ui/window.ui:94
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "選取畫面上的區域進行截取"
 
 #: data/resources/ui/window.ui:107
 msgid "Record Computer Sounds"
-msgstr ""
+msgstr "錄下電腦內部音訊"
 
 #: data/resources/ui/window.ui:114
 msgid "Record From Microphone"
-msgstr ""
+msgstr "錄下麥克風"
 
 #: data/resources/ui/window.ui:121
 msgid "Show Pointer"
-msgstr ""
+msgstr "顯示游標"
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
-msgstr ""
+msgstr "錄影"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
-msgstr ""
+msgstr "停止"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr ""
+msgstr "即將開始錄影…"
 
 #: data/resources/ui/window.ui:258
+#, fuzzy
 msgid "Flushing…"
-msgstr ""
+msgstr "正在寫入…"
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr ""
+msgstr "延遲(_D)"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
-msgstr ""
+msgstr "無"
 
 #: data/resources/ui/window.ui:290
 msgid "5 seconds"
-msgstr ""
+msgstr "5 秒"
 
 #: data/resources/ui/window.ui:295
 msgid "10 seconds"
-msgstr ""
+msgstr "10 秒"
 
 #: data/resources/ui/window.ui:301
 msgid "_Video Format"
-msgstr ""
+msgstr "影片格式(_V)"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/resources/ui/window.ui:308
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/resources/ui/window.ui:313
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:318
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:324
 msgid "_Save to…"
-msgstr ""
+msgstr "儲存到(_S)…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "鍵盤快捷鍵(_K)"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr ""
+msgstr "關於 Kooha(_A)"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "選取儲存錄影的資料夾"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr ""
+msgstr "Kisaragi Hiu"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Copyright 2021 Dave Patrick"
 
 #: src/application.rs:187
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/application.rs:208
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "螢幕錄影完成！"
 
 #: src/application.rs:210
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "已將錄影儲存到「{}」"
 
 #: src/application.rs:218
 msgid "Open File"
-msgstr ""
+msgstr "開啟檔案"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "螢幕錄影 (screencast) portal 請求錯誤"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
-msgstr ""
+msgstr "管線建構錯誤"
 
 #: src/error.rs:19
 msgid "Recording Error"
-msgstr ""
+msgstr "錄影錯誤"
 
 #: src/error.rs:47
 msgid ""
 "Make sure to check for the runtime dependencies and <a href=\"https://github."
 "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 msgstr ""
+"請確保執行時所需的軟體有安裝。也請參照<a href=\"https://github.com/SeaDve/"
+"Kooha#-it-doesnt-work\">無法正常運作時的說明</a>。"
 
 #: src/error.rs:48
 msgid ""
@@ -291,6 +298,9 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"可能有一個 GStreamer 外掛程式尚未安裝。如果已經安裝了卻還是無法正常運作，"
+"請到 <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha 的 issue "
+"頁面</a>進行回報。"
 
 #: src/error.rs:49
 msgid ""
@@ -298,7 +308,10 @@ msgid ""
 "exists or is accessible, something went wrong and please report to <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"請確保儲存的目的地存在或是可存取。如果它的確存在或可存取，那就代表有東西出錯"
+"了，請到 <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha 的 issue "
+"頁面</a>進行回報。"
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr ""
+msgstr "已暫停"

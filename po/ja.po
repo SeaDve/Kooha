@@ -6,13 +6,14 @@
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
 # Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022.
 # Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021, 2022.
+# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-04-11 05:07+0000\n"
-"Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
+"PO-Revision-Date: 2022-07-27 17:15+0000\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
 "Language: ja\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
@@ -191,11 +192,11 @@ msgstr "録画"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
-msgstr "録画終了"
+msgstr "停止"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr "録画開始まで"
+msgstr "録画開始まで…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
@@ -259,7 +260,8 @@ msgid "translator-credits"
 msgstr ""
 "小山田 純,\n"
 "Ryo Nakano,\n"
-"Kaz Sibuya"
+"Kaz Sibuya,\n"
+"Kisaragi Hiu"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
