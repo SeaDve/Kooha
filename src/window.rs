@@ -34,9 +34,9 @@ mod imp {
         #[template_child]
         pub pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub main_stack: TemplateChild<adw::ViewStack>,
+        pub main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub title_stack: TemplateChild<adw::ViewStack>,
+        pub title_stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub recording_label: TemplateChild<gtk::Label>,
         #[template_child]
