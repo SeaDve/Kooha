@@ -1,5 +1,5 @@
 use adw::subclass::prelude::*;
-use futures::channel::oneshot::Sender;
+use futures_channel::oneshot::{Sender, self};
 use gtk::{
     gdk,
     glib::{self, clone, signal::Inhibit},
@@ -87,7 +87,7 @@ impl AreaSelector {
     }
 
     pub async fn select_area(&self) -> AreaSelectorResponse {
-        let (sender, receiver) = futures::channel::oneshot::channel();
+        let (sender, receiver) = oneshot::channel();
         self.imp().sender.replace(Some(sender));
 
         self.present();

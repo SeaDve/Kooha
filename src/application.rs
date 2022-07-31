@@ -131,7 +131,7 @@ impl Application {
             .build();
 
         chooser
-            .set_current_folder(&gio::File::for_path(settings.saving_location()))
+            .set_current_folder(Some(&gio::File::for_path(settings.saving_location())))
             .expect("Failed to set current folder.");
 
         chooser.connect_response(move |chooser, response| {
