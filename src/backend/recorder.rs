@@ -337,7 +337,7 @@ impl Recorder {
         Continue(false)
     }
 
-    fn on_bus_error(&self, message: &gst::message::Error) -> Continue {
+    fn on_bus_error(&self, message: &gst::message::Error<'_>) -> Continue {
         log::error!(
             "Error from record bus: {:?} (debug {:?})",
             message.error(),
@@ -350,7 +350,7 @@ impl Recorder {
         Continue(false)
     }
 
-    fn on_state_changed(&self, message: &gst::message::StateChanged) -> Continue {
+    fn on_state_changed(&self, message: &gst::message::StateChanged<'_>) -> Continue {
         if message.src().as_ref() != Some(self.pipeline().unwrap().upcast_ref::<gst::Object>()) {
             return Continue(true);
         }

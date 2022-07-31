@@ -198,7 +198,7 @@ impl Window {
         match response {
             RecorderResponse::Success(recording_file_path) => {
                 let application: Application = self.application().unwrap().downcast().unwrap();
-                application.send_record_success_notification(&recording_file_path);
+                application.send_record_success_notification(recording_file_path);
 
                 let recent_manager = gtk::RecentManager::default();
                 recent_manager.add_item(&gio::File::for_path(recording_file_path).uri());
@@ -247,7 +247,7 @@ impl Window {
 
         imp.recorder_controller.connect_response(
             clone!(@weak self as obj => move |recorder_controller, response| {
-                obj.on_recorder_controller_response(recorder_controller, response)
+                obj.on_recorder_controller_response(recorder_controller, response);
             }),
         );
     }
