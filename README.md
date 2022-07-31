@@ -1,30 +1,37 @@
 <h1 align="center">
-  <img src="data/icons/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/><br>
+  <img src="data/icons/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/>
+  <br>
   Kooha
 </h1>
 
-<p align="center"><strong>Elegantly record your screen</strong></p>
+<p align="center">
+  <strong>Elegantly record your screen</strong>
+</p>
 
 <p align="center">
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha">
-    <img width="200" src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub">
+    <img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-i-en.svg"/>
   </a>
   <br>
   <a href="https://liberapay.com/SeaDve/donate">
-    <img src="https://liberapay.com/assets/widgets/donate.svg" alt="Donate using Liberapay">
+    <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">
   </a>
 </p>
 
 <br>
+
 <p align="center">
   <a href="https://hosted.weblate.org/engage/kooha/">
-    <img src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg" alt="Translation status" />
+    <img alt="Translation status" src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg"/>
   </a>
   <a href="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml">
-    <img src="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml/badge.svg" alt="CI status"/>
+    <img alt="CI status" src="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml/badge.svg"/>
+  </a>
+  <a href="https://flathub.org/apps/details/io.github.seadve.Kooha">
+    <img alt="Flathub downloads" src="https://img.shields.io/badge/dynamic/json?color=informational&label=downloads&logo=flathub&logoColor=white&query=%24.installs_total&url=https%3A%2F%2Fflathub.org%2Fapi%2Fv2%2Fstats%2Fio.github.seadve.Kooha"/>
   </a>
   <a href="https://repology.org/project/kooha/versions">
-    <img src="https://repology.org/badge/tiny-repos/kooha.svg" alt="Packaging status">
+    <img alt="Packaging status" src="https://repology.org/badge/tiny-repos/kooha.svg">
   </a>
 </p>
 
@@ -57,7 +64,7 @@ There are many possibilities on why it may not be working. You may not have
 the runtime requirements mentioned below installed, or your distro doesn't
 support it. For troubleshooting purposes the [screen cast compatibility page](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/Screencast-Compatibility)
 of `xdg-desktop-portal-wlr` wiki may be helpful in determining if your distro
-has support for it out of the box. If it does, but it still doesn't work, you 
+has support for it out of the box. If it does, but it still doesn't work, you
 can also check for the [troubleshooting checklist](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist).
 
 
@@ -70,7 +77,7 @@ more efficient or perhaps faster encoding. It is not guaranteed to work on all
 devices, so it may give errors such as `no element vaapivp8enc` depending on the
 features and capability of your hardware.
 
-To enable all the supported drivers and force Kooha to use VAAPI elements, set 
+To enable all the supported drivers and force Kooha to use VAAPI elements, set
 `GST_VAAPI_ALL_DRIVERS` and `KOOHA_VAAPI` both to 1 respectively. These
 environment variables are needed for hardware accelerated encoding.
 
@@ -86,7 +93,7 @@ GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 kooha
 ### Change frames per second to 60fps
 
 Take note that using other frames per second may cause flickering, depending on
-the performance of your device. 
+the performance of your device.
 
 You can copy and paste this to the terminal if you installed Kooha as a flatpak:
 ```shell
