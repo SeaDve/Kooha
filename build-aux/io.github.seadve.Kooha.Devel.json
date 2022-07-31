@@ -1,11 +1,13 @@
 {
     "app-id": "io.github.seadve.Kooha.Devel",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "41",
+    "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
-    "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
     "command": "kooha",
-    "finish-args" : [
+    "finish-args": [
         "--device=dri",
         "--filesystem=xdg-videos",
         "--socket=fallback-x11",
@@ -18,9 +20,9 @@
         "--env=GST_DEBUG=3",
         "--env=PIPEWIRE_DEBUG=3"
     ],
-    "build-options" : {
-        "append-path" : "/usr/lib/sdk/rust-stable/bin",
-        "build-args" : [
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin",
+        "build-args": [
             "--share=network"
         ]
     },
@@ -80,30 +82,12 @@
             ]
         },
         {
-            "name" : "libadwaita",
-            "buildsystem" : "meson",
-            "config-opts": [
-                "-Dtests=false",
-                "-Dexamples=false",
-                "-Dvapi=false"
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "tag" : "1.0.0.alpha.4"
-                }
-            ]
-        },
-        {
             "name": "kooha",
             "buildsystem": "meson",
             "run-tests": true,
-            "config-opts": ["-Dprofile=development"],
+            "config-opts": [
+                "-Dprofile=development"
+            ],
             "sources": [
                 {
                     "type": "dir",
