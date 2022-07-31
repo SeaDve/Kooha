@@ -58,12 +58,6 @@ meson.add_dist_script(
   meson.project_source_root()
 )
 
-if get_option('profile') == 'development'
-  # Setup pre-commit hook for ensuring coding style is always consistent
-  message('Setting up git pre-commit hook..')
-  run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit')
-endif
-
 subdir('data')
 subdir('po')
 subdir('src')
