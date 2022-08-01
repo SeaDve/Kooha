@@ -21,6 +21,7 @@ gst = { package = "gstreamer", version = "0.18.2" }
 gst-plugin-gif = "0.8.0"
 futures-channel = "0.3.19"
 pulsectl-rs = "0.3.2"
+gsettings-macro = "0.1.11"
 
 [dev-dependencies]
 approx = "0.5.1"

@@ -15,8 +15,8 @@ use std::{
 
 use crate::{
     area_selector::AreaSelector, cancelled::Cancelled, clock_time::ClockTime, pactl,
-    pipeline_builder::PipelineBuilder, screencast_session::ScreencastSession, settings::Settings,
-    timer::Timer, utils, Application,
+    pipeline_builder::PipelineBuilder, screencast_session::ScreencastSession,
+    settings::CaptureMode, timer::Timer, utils, Application,
 };
 
 #[derive(Debug, Default, Clone, PartialEq, Eq, glib::Boxed)]
@@ -121,7 +121,7 @@ impl Recording {
 
         let imp = self.imp();
 
-        let settings = Settings::new();
+        let settings = Application::default().settings();
 
         // setup screencast session
         let screencast_session = ScreencastSession::new().await?;
@@ -135,28 +135,28 @@ impl Recording {
         );
         let (streams, restore_token, fd) = screencast_session
             .start(
-                if settings.is_show_pointer() {
+                if settings.show_pointer() {
                     BitFlags::<CursorMode>::from_flag(CursorMode::Embedded)
                 } else {
                     BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
                 },
-                if settings.is_selection_mode() {
+                if settings.capture_mode() == CaptureMode::Selection {
                     BitFlags::<SourceType>::from_flag(SourceType::Monitor)
                 } else {
                     SourceType::Monitor | SourceType::Window
                 },
-                !settings.is_selection_mode(),
-                settings.screencast_restore_token().as_deref(),
+                settings.capture_mode() == CaptureMode::MonitorWindow,
+                Some(&settings.screencast_restore_token()),
                 PersistMode::DoNot,
                 Some(Application::default().main_window()),
             )
             .await?;
         imp.session.replace(Some(screencast_session));
-        settings.set_screencast_restore_token(restore_token.as_deref());
+        settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
         // select area
         let mut pipeline_builder = PipelineBuilder::new();
-        if settings.is_selection_mode() {
+        if settings.capture_mode() == CaptureMode::Selection {
             match AreaSelector::new().select_area().await {
                 Ok((coords, actual_screen)) => {
                     pipeline_builder
@@ -210,8 +210,8 @@ impl Recording {
         log::debug!("pulse_server_version: {}", pulse_server_version);
         let (speaker_source, mic_source) = pactl::default_audio_devices_name();
         pipeline_builder
-            .record_speaker(settings.is_record_speaker())
-            .record_mic(settings.is_record_mic())
+            .record_speaker(settings.record_speaker())
+            .record_mic(settings.record_mic())
             .framerate(settings.video_framerate())
             .file_path(settings.file_path())
             .fd(fd)

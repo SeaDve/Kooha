@@ -1,76 +1,33 @@
-use chrono::Local;
+use chrono::Local; // TODO remove chrono dep
+use gsettings_macro::gen_settings;
 use gtk::{
-    gio,
-    glib::{self, SignalHandlerId},
-    prelude::*,
-    subclass::prelude::*,
+    gio::{self, prelude::*},
+    glib,
 };
 
 use std::path::{Path, PathBuf};
 
 use crate::config::APP_ID;
 
-// TODO use gsettings-macro
+#[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
+#[gen_settings_skip(key_name = "saving-location")]
+pub struct Settings;
 
-mod imp {
-    use super::*;
-
-    #[derive(Debug)]
-    pub struct Settings(pub gio::Settings);
-
-    #[glib::object_subclass]
-    impl ObjectSubclass for Settings {
-        const NAME: &'static str = "KoohaSettings";
-        type Type = super::Settings;
-
-        fn new() -> Self {
-            Self(gio::Settings::new(APP_ID))
-        }
+impl Default for Settings {
+    fn default() -> Self {
+        Self::new(APP_ID)
     }
-
-    impl ObjectImpl for Settings {}
-}
-
-glib::wrapper! {
-    pub struct Settings(ObjectSubclass<imp::Settings>);
 }
 
 impl Settings {
-    pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create Settings.")
-    }
-
-    fn inner(&self) -> &gio::Settings {
-        &self.imp().0
-    }
-
-    pub fn create_action(&self, action: &str) -> gio::Action {
-        self.inner().create_action(action)
-    }
-
-    pub fn bind_key<P: IsA<glib::Object>>(&self, key: &str, object: &P, property: &str) {
-        self.inner()
-            .bind(key, object, property)
-            .flags(gio::SettingsBindFlags::DEFAULT)
-            .build();
-    }
-
-    pub fn connect_changed_notify<F: Fn(&gio::Settings, &str) + 'static>(
-        &self,
-        detail: Option<&str>,
-        f: F,
-    ) -> SignalHandlerId {
-        self.inner().connect_changed(detail, f)
-    }
-
     pub fn set_saving_location(&self, directory: &Path) {
-        self.inner()
+        self.0
             .set_string("saving-location", directory.to_str().unwrap())
             .unwrap();
     }
 
     pub fn saving_location(&self) -> PathBuf {
-        let saving_location = self.inner().string("saving-location").to_string();
+        let saving_location = self.0.string("saving-location").to_string();
 
         if saving_location == "default" {
             glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir)
@@ -84,61 +41,7 @@ impl Settings {
 
         let mut path = self.saving_location();
         path.push(file_name);
-        path.set_extension(self.video_format());
+        path.set_extension(&self.video_format().to_variant().get::<String>().unwrap());
         path
-    }
-
-    pub fn video_format(&self) -> String {
-        self.inner().string("video-format").to_string()
-    }
-
-    pub fn is_record_speaker(&self) -> bool {
-        self.inner().boolean("record-speaker")
-    }
-
-    pub fn is_record_mic(&self) -> bool {
-        self.inner().boolean("record-mic")
-    }
-
-    pub fn is_show_pointer(&self) -> bool {
-        self.inner().boolean("show-pointer")
-    }
-
-    pub fn is_selection_mode(&self) -> bool {
-        let capture_mode = self.inner().string("capture-mode");
-        capture_mode == "selection"
-    }
-
-    pub fn video_framerate(&self) -> u32 {
-        self.inner().uint("video-framerate")
-    }
-
-    pub fn record_delay(&self) -> u32 {
-        self.inner().uint("record-delay")
-    }
-
-    pub fn set_screencast_restore_token(&self, restore_token: Option<&str>) {
-        self.inner()
-            .set_string(
-                "screencast-restore-token",
-                restore_token.unwrap_or_default(),
-            )
-            .unwrap();
-    }
-
-    pub fn screencast_restore_token(&self) -> Option<String> {
-        let restore_token = self.inner().string("screencast-restore-token");
-
-        if restore_token.is_empty() {
-            None
-        } else {
-            Some(restore_token.to_string())
-        }
-    }
-}
-
-impl Default for Settings {
-    fn default() -> Self {
-        Self::new()
     }
 }

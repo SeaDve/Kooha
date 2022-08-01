@@ -708,6 +708,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "gsettings-macro"
+version = "0.1.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2b9e966814fd3fbdbd49ff0fd47cd531f1632b2c5fb06cf25c674a14f146b253"
+dependencies = [
+ "heck",
+ "proc-macro-error",
+ "proc-macro2",
+ "quick-xml 0.23.0",
+ "quote",
+ "serde",
+ "syn",
+]
+
+[[package]]
 name = "gsk4"
 version = "0.4.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -889,7 +904,7 @@ dependencies = [
  "proc-macro-crate",
  "proc-macro-error",
  "proc-macro2",
- "quick-xml",
+ "quick-xml 0.22.0",
  "quote",
  "syn",
 ]
@@ -962,6 +977,7 @@ dependencies = [
  "chrono",
  "futures-channel",
  "gettext-rs",
+ "gsettings-macro",
  "gst-plugin-gif",
  "gstreamer",
  "gtk4",
@@ -1403,6 +1419,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8533f14c8382aaad0d592c812ac3b826162128b65662331e1127b45c3d18536b"
 dependencies = [
  "memchr",
+]
+
+[[package]]
+name = "quick-xml"
+version = "0.23.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9279fbdacaad3baf559d8cabe0acc3d06e30ea14931af31af79578ac0946decc"
+dependencies = [
+ "memchr",
+ "serde",
 ]
 
 [[package]]

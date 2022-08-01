@@ -13,6 +13,7 @@ use std::{cell::RefCell, string::ToString, time::Duration};
 use crate::{
     config::PROFILE,
     recording::{Recording, RecordingError, RecordingState},
+    settings::VideoFormat,
     utils, Application,
 };
 
@@ -140,7 +141,7 @@ impl Window {
 
     fn update_audio_toggles_sensitivity(&self) {
         let settings = Application::default().settings();
-        let is_enabled = settings.video_format() != "gif";
+        let is_enabled = settings.video_format() != VideoFormat::Gif;
 
         self.action_set_enabled("win.record-speaker", is_enabled);
         self.action_set_enabled("win.record-mic", is_enabled);
@@ -307,9 +308,11 @@ impl Window {
 
         let settings = Application::default().settings();
 
-        settings.bind_key("capture-mode", &*imp.title_stack, "visible-child-name");
+        settings
+            .bind("capture-mode", &*imp.title_stack, "visible-child-name")
+            .build();
 
-        settings.connect_changed_notify(
+        settings.connect_changed(
             Some("video-format"),
             clone!(@weak self as obj => move |_, _| {
                 obj.update_audio_toggles_sensitivity();
