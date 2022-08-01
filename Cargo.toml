@@ -7,7 +7,6 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.53"
-chrono = "0.4.19"
 strum = "0.24.0"
 strum_macros = "0.24.0"
 log = "0.4.14"

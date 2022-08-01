@@ -1,4 +1,3 @@
-use chrono::Local; // TODO remove chrono dep
 use gsettings_macro::gen_settings;
 use gtk::{
     gio::{self, prelude::*},
@@ -37,7 +36,11 @@ impl Settings {
     }
 
     pub fn file_path(&self) -> PathBuf {
-        let file_name = Local::now().format("Kooha-%F-%H-%M-%S").to_string();
+        let file_name = glib::DateTime::now_local()
+            .expect("You are somehow on year 9999")
+            .format("Kooha-%F-%H-%M-%S") // TODO improve format
+            .expect("Invalid format string")
+            .to_string();
 
         let mut path = self.saving_location();
         path.push(file_name);
