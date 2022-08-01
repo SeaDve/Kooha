@@ -23,12 +23,17 @@
 
 mod application;
 mod area_selector;
-mod backend;
+mod cancelled;
+mod clock_time;
 mod config;
 mod data_types;
 mod error;
 mod pactl;
+mod pipeline_builder;
+mod recording;
+mod screencast_session;
 mod settings;
+mod timer;
 mod utils;
 mod window;
 

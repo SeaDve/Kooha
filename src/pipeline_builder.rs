@@ -40,58 +40,60 @@ impl PipelineBuilder {
         Self::default()
     }
 
-    pub fn record_speaker(mut self, is_record_speaker: bool) -> Self {
+    pub fn record_speaker(&mut self, is_record_speaker: bool) -> &mut Self {
         self.is_record_speaker = is_record_speaker;
         self
     }
 
-    pub fn record_mic(mut self, is_record_mic: bool) -> Self {
+    pub fn record_mic(&mut self, is_record_mic: bool) -> &mut Self {
         self.is_record_mic = is_record_mic;
         self
     }
 
-    pub fn framerate(mut self, framerate: u32) -> Self {
+    pub fn framerate(&mut self, framerate: u32) -> &mut Self {
         self.framerate = framerate;
         self
     }
 
-    pub fn file_path(mut self, file_path: PathBuf) -> Self {
+    pub fn file_path(&mut self, file_path: PathBuf) -> &mut Self {
         self.file_path = file_path;
         self
     }
 
-    pub fn fd(mut self, fd: i32) -> Self {
+    pub fn fd(&mut self, fd: i32) -> &mut Self {
         self.fd = fd;
         self
     }
 
-    pub fn streams(mut self, streams: Vec<Stream>) -> Self {
+    pub fn streams(&mut self, streams: Vec<Stream>) -> &mut Self {
         self.streams = streams;
         self
     }
 
-    pub fn speaker_source(mut self, speaker_source: Option<String>) -> Self {
+    pub fn speaker_source(&mut self, speaker_source: Option<String>) -> &mut Self {
         self.speaker_source = speaker_source;
         self
     }
 
-    pub fn mic_source(mut self, mic_source: Option<String>) -> Self {
+    pub fn mic_source(&mut self, mic_source: Option<String>) -> &mut Self {
         self.mic_source = mic_source;
         self
     }
 
-    pub fn coordinates(mut self, coordinates: Rectangle) -> Self {
+    pub fn coordinates(&mut self, coordinates: Rectangle) -> &mut Self {
         self.coordinates = Some(coordinates);
         self
     }
 
-    pub fn actual_screen(mut self, actual_screen: Screen) -> Self {
+    pub fn actual_screen(&mut self, actual_screen: Screen) -> &mut Self {
         self.actual_screen = Some(actual_screen);
         self
     }
 
-    pub fn build(self) -> Result<gst::Pipeline, glib::Error> {
-        let pipeline_string = PipelineAssembler::from_builder(self).assemble();
+    pub fn build(&mut self) -> Result<gst::Pipeline, glib::Error> {
+        use std::mem;
+
+        let pipeline_string = PipelineAssembler::from_builder(mem::take(self)).assemble();
         log::debug!("pipeline_string: {}", &pipeline_string);
 
         gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)

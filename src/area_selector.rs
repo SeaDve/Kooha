@@ -1,5 +1,5 @@
 use adw::subclass::prelude::*;
-use futures_channel::oneshot::{Sender, self};
+use futures_channel::oneshot::{self, Sender};
 use gtk::{
     gdk,
     glib::{self, clone, signal::Inhibit},
@@ -11,17 +11,14 @@ use gtk::{
 use std::{cell::RefCell, time::Duration};
 
 use crate::{
+    cancelled::Cancelled,
     data_types::{Point, Rectangle, Screen},
     utils,
 };
 
 const LINE_WIDTH: f32 = 1.0;
 
-#[derive(Debug)]
-pub enum AreaSelectorResponse {
-    Captured(Rectangle, Screen),
-    Cancelled,
-}
+pub type AreaSelectorResponse = Result<(Rectangle, Screen), Cancelled>;
 
 mod imp {
     use super::*;
@@ -66,7 +63,7 @@ mod imp {
     impl WindowImpl for AreaSelector {
         fn close_request(&self, obj: &Self::Type) -> Inhibit {
             if let Some(sender) = self.sender.take() {
-                let response = AreaSelectorResponse::Cancelled;
+                let response = Err(Cancelled::new("Cancelled area selection"));
                 sender.send(response).unwrap();
             }
 
@@ -194,7 +191,7 @@ impl AreaSelector {
                 let selection_rectangle = Rectangle::from_points(&start_position, &end_position);
                 let actual_screen = Screen::new(obj.width(), obj.height());
 
-                let response = AreaSelectorResponse::Captured(selection_rectangle, actual_screen);
+                let response = Ok((selection_rectangle, actual_screen));
                 imp.sender.take().unwrap().send(response).unwrap();
                 obj.close();
             }

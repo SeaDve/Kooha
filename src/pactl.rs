@@ -1,5 +1,7 @@
 use pulsectl::{controllers::types::ServerInfo, ControllerError};
 
+// TODO replace with gstreamer device monitor
+
 fn retrieve_server_info() -> Result<ServerInfo, ControllerError> {
     let mut source_controller = pulsectl::controllers::SourceController::create()?;
     let server_info = source_controller.get_server_info()?;

@@ -10,6 +10,8 @@ use std::path::{Path, PathBuf};
 
 use crate::config::APP_ID;
 
+// TODO use gsettings-macro
+
 mod imp {
     use super::*;
 
