@@ -117,7 +117,7 @@ impl PipelineAssembler {
     fn file_path(&self) -> PathBuf {
         let file_name = glib::DateTime::now_local()
             .expect("You are somehow on year 9999")
-            .format("Kooha-%F-%H-%M-%S") // TODO improve format
+            .format("Kooha-%F-%H-%M-%S")
             .expect("Invalid format string");
 
         let mut path = self.builder.saving_location.join(file_name);
