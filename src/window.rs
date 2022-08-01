@@ -33,19 +33,19 @@ mod imp {
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct Window {
         #[template_child]
-        pub pause_record_button: TemplateChild<gtk::Button>,
+        pub(super) pause_record_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub main_stack: TemplateChild<gtk::Stack>,
+        pub(super) main_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub title_stack: TemplateChild<gtk::Stack>,
+        pub(super) title_stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub recording_label: TemplateChild<gtk::Label>,
+        pub(super) recording_label: TemplateChild<gtk::Label>,
         #[template_child]
-        pub recording_time_label: TemplateChild<gtk::Label>,
+        pub(super) recording_time_label: TemplateChild<gtk::Label>,
         #[template_child]
-        pub delay_label: TemplateChild<gtk::Label>,
+        pub(super) delay_label: TemplateChild<gtk::Label>,
 
-        pub recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
+        pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
 
     #[glib::object_subclass]

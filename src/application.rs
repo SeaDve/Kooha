@@ -22,9 +22,8 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct Application {
-        pub window: OnceCell<WeakRef<Window>>,
-        pub folder_chooser: OnceCell<gtk::FileChooserNative>,
-        pub settings: Settings,
+        pub(super) window: OnceCell<WeakRef<Window>>,
+        pub(super) settings: Settings,
     }
 
     #[glib::object_subclass]

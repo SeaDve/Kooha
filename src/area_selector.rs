@@ -25,9 +25,9 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct AreaSelector {
-        pub sender: RefCell<Option<Sender<AreaSelectorResponse>>>,
-        pub start_position: RefCell<Option<Point>>,
-        pub current_position: RefCell<Option<Point>>,
+        pub(super) sender: RefCell<Option<Sender<AreaSelectorResponse>>>,
+        pub(super) start_position: RefCell<Option<Point>>,
+        pub(super) current_position: RefCell<Option<Point>>,
     }
 
     #[glib::object_subclass]
