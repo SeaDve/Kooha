@@ -7,11 +7,10 @@ assignees: ''
 ---
 
 **System Info**
-- Kooha version (2.0.0, or including the commit hash if applicable)
-- Distro information and version (Fedora 34 Workstation, etc.)
-- Desktop Environment information and version (GNOME 41, etc.)
-- Display Server (Wayland, etc.)
-- Flatpak?
+<!--
+Click on Kooha's Main Menu then go to Troubleshooting > Debugging
+Information, copy the text, and paste it here.
+-->
 
 **Describe the bug**
 A clear and concise description of what the bug is.
@@ -29,6 +28,6 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Additional context**
-If applicable, please attach the logs from running Kooha with the following 
-environment variables `RUST_BACKTRACE=1 RUST_LOG=kooha=debug GST_DEBUG=3 PIPEWIRE_DEBUG=3`
-while running kooha (e.g. `RUST_BACKTRACE=1 RUST_LOG=kooha=debug GST_DEBUG=3 PIPEWIRE_DEBUG=3 flatpak run io.github.seadve.Kooha`)
+If applicable, please attach the logs from running Kooha in the
+terminal with the following environment variables: `RUST_BACKTRACE=1 RUST_LOG=kooha=debug GST_DEBUG=3 PIPEWIRE_DEBUG=3`
+(e.g., `RUST_BACKTRACE=1 RUST_LOG=kooha=debug GST_DEBUG=3 PIPEWIRE_DEBUG=3 flatpak run io.github.seadve.Kooha`).
