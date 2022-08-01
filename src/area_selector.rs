@@ -19,11 +19,27 @@ const LINE_WIDTH: f32 = 1.0;
 
 pub type AreaSelectorResponse = Result<(Rectangle, Screen), Cancelled>;
 
+pub async fn select_area() -> AreaSelectorResponse {
+    let selector: AreaSelector = glib::Object::new(&[]).expect("Failed to create AreaSelector.");
+    selector.present();
+
+    // Delay is needed to wait for the window to show. Otherwise, it
+    // will be too early and it will raise the wrong window.
+    glib::timeout_future(Duration::from_millis(100)).await;
+    set_raise_active_window_request(true).await;
+
+    let res = selector.wait_response().await;
+
+    set_raise_active_window_request(false).await;
+
+    res
+}
+
 mod imp {
     use super::*;
 
     #[derive(Debug, Default)]
-    pub struct AreaSelector {
+    pub(super) struct AreaSelector {
         pub(super) sender: RefCell<Option<Sender<AreaSelectorResponse>>>,
         pub(super) start_position: RefCell<Option<Point>>,
         pub(super) current_position: RefCell<Option<Point>>,
@@ -52,11 +68,6 @@ mod imp {
         fn snapshot(&self, obj: &Self::Type, snapshot: &gtk::Snapshot) {
             obj.on_snapshot(snapshot);
         }
-
-        fn show(&self, obj: &Self::Type) {
-            self.parent_show(obj);
-            obj.set_raise_request(true);
-        }
     }
 
     impl WindowImpl for AreaSelector {
@@ -66,46 +77,22 @@ mod imp {
                 sender.send(response).unwrap();
             }
 
-            obj.set_raise_request(false);
             self.parent_close_request(obj)
         }
     }
 }
 
 glib::wrapper! {
-    pub struct AreaSelector(ObjectSubclass<imp::AreaSelector>)
+    struct AreaSelector(ObjectSubclass<imp::AreaSelector>)
         @extends gtk::Widget, gtk::Window;
 }
 
 impl AreaSelector {
-    pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create AreaSelector.")
-    }
-
-    pub async fn select_area(&self) -> AreaSelectorResponse {
+    async fn wait_response(&self) -> AreaSelectorResponse {
         let (sender, receiver) = oneshot::channel();
         self.imp().sender.replace(Some(sender));
 
-        self.present();
-
         receiver.await.unwrap()
-    }
-
-    fn set_raise_request(&self, is_raised: bool) {
-        // Delay is needed to wait for the window to show. Otherwise, it
-        // will be too early and it will raise the wrong window.
-        let delay = if is_raised { 100 } else { 0 };
-
-        glib::timeout_add_local_once(Duration::from_millis(delay), move || {
-            match set_raise_active_window_request(is_raised) {
-                Ok(_) => tracing::info!("Successfully set raise active window to {}", is_raised),
-                Err(error) => tracing::warn!(
-                    "Failed to set raise active window to {}: {}",
-                    is_raised,
-                    error
-                ),
-            }
-        });
     }
 
     fn on_snapshot(&self, snapshot: &gtk::Snapshot) {
@@ -199,33 +186,40 @@ impl AreaSelector {
     }
 }
 
-impl Default for AreaSelector {
-    fn default() -> Self {
-        Self::new()
+async fn set_raise_active_window_request(is_raised: bool) {
+    async fn inner(is_raised: bool) -> anyhow::Result<()> {
+        shell_window_eval("make_above", is_raised).await?;
+        shell_window_eval("stick", is_raised).await?;
+        Ok(())
+    }
+
+    match inner(is_raised).await {
+        Ok(_) => tracing::info!("Successfully set raise active window to {}", is_raised),
+        Err(error) => tracing::warn!(
+            "Failed to set raise active window to {}: {}",
+            is_raised,
+            error
+        ),
     }
 }
 
-fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
-    shell_window_eval("make_above", is_raised)?;
-    shell_window_eval("stick", is_raised)?;
-    Ok(())
-}
-
-fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
+async fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
     let reverse_keyword = if is_enabled { "" } else { "un" };
     let command = format!(
         "global.display.focus_window.{}{}()",
         reverse_keyword, method
     );
 
-    let connection = zbus::blocking::Connection::session()?;
-    let reply = connection.call_method(
-        Some("org.gnome.Shell"),
-        "/org/gnome/Shell",
-        Some("org.gnome.Shell"),
-        "Eval",
-        &command,
-    )?;
+    let connection = zbus::Connection::session().await?;
+    let reply = connection
+        .call_method(
+            Some("org.gnome.Shell"),
+            "/org/gnome/Shell",
+            Some("org.gnome.Shell"),
+            "Eval",
+            &command,
+        )
+        .await?;
     let (is_success, message) = reply.body::<(bool, String)>()?;
 
     if !is_success {

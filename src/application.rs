@@ -131,7 +131,7 @@ impl Application {
         action_launch_default_for_file.connect_activate(|_, param| {
             let file_path = param.unwrap().get::<String>().unwrap();
             let uri = format!("file://{}", file_path);
-            gio::AppInfo::launch_default_for_uri(&uri, None::<&gio::AppLaunchContext>).unwrap();
+            gio::AppInfo::launch_default_for_uri(&uri, gio::AppLaunchContext::NONE).unwrap();
         });
         self.add_action(&action_launch_default_for_file);
 
