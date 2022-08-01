@@ -15,13 +15,23 @@ use crate::{
     utils, Application,
 };
 
-#[derive(Debug, PartialEq, strum_macros::Display)]
-#[strum(serialize_all = "snake_case")] // TODO remove strum dependency
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum View {
     Main,
     Recording,
     Delay,
     Flushing,
+}
+
+impl View {
+    fn to_ui_file_id(self) -> &'static str {
+        match self {
+            View::Main => "main",
+            View::Recording => "recording",
+            View::Delay => "delay",
+            View::Flushing => "flushing",
+        }
+    }
 }
 
 mod imp {
@@ -90,7 +100,7 @@ mod imp {
             obj.setup_gactions();
             obj.setup_signals();
 
-            obj.set_view(&View::Main);
+            obj.set_view(View::Main);
             obj.update_audio_toggles_sensitivity();
         }
     }
@@ -127,14 +137,14 @@ impl Window {
             })
     }
 
-    fn set_view(&self, view: &View) {
+    fn set_view(&self, view: View) {
         self.imp()
             .main_stack
-            .set_visible_child_name(view.to_string().as_ref());
+            .set_visible_child_name(view.to_ui_file_id());
 
-        self.action_set_enabled("win.toggle-record", *view != View::Delay);
-        self.action_set_enabled("win.toggle-pause", *view == View::Recording);
-        self.action_set_enabled("win.cancel-delay", *view == View::Delay);
+        self.action_set_enabled("win.toggle-record", view != View::Delay);
+        self.action_set_enabled("win.toggle-pause", view == View::Recording);
+        self.action_set_enabled("win.cancel-delay", view == View::Delay);
     }
 
     fn update_audio_toggles_sensitivity(&self) {
@@ -226,14 +236,14 @@ impl Window {
         let imp = self.imp();
 
         match recorder_controller.state() {
-            RecordingState::Null => self.set_view(&View::Main),
-            RecordingState::Flushing => self.set_view(&View::Flushing),
+            RecordingState::Null => self.set_view(View::Main),
+            RecordingState::Flushing => self.set_view(View::Flushing),
             RecordingState::Delayed { secs_left } => {
                 imp.delay_label.set_text(&secs_left.to_string());
-                self.set_view(&View::Delay);
+                self.set_view(View::Delay);
             }
             RecordingState::Recording => {
-                self.set_view(&View::Recording);
+                self.set_view(View::Recording);
                 imp.pause_record_button
                     .set_icon_name("media-playback-pause-symbolic");
                 imp.recording_label.set_label(&gettext("Recording"));
@@ -246,7 +256,7 @@ impl Window {
                 imp.recording_time_label.add_css_class("paused");
             }
             RecordingState::Finished(res) => {
-                self.set_view(&View::Main);
+                self.set_view(View::Main);
 
                 match res {
                     Ok(recording_file_path) => {
@@ -332,18 +342,5 @@ impl Window {
             let settings_action = settings.create_action(action);
             self.add_action(&settings_action);
         }
-    }
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn view_to_string() {
-        assert_eq!(View::Main.to_string(), "main");
-        assert_eq!(View::Recording.to_string(), "recording");
-        assert_eq!(View::Delay.to_string(), "delay");
-        assert_eq!(View::Flushing.to_string(), "flushing");
     }
 }
