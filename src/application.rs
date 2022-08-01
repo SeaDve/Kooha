@@ -10,6 +10,7 @@ use once_cell::unsync::OnceCell;
 use std::path::Path;
 
 use crate::{
+    about_window,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     settings::Settings,
     utils,
@@ -122,30 +123,6 @@ impl Application {
         ApplicationExtManual::run(self);
     }
 
-    fn show_about_dialog(&self) {
-        let dialog = gtk::AboutDialog::builder()
-            .modal(true)
-            .program_name(&gettext("Kooha"))
-            .comments(&gettext("Elegantly record your screen"))
-            .version(VERSION)
-            .logo_icon_name(APP_ID)
-            .authors(vec![
-                "Dave Patrick".into(),
-                "".into(),
-                "Mathiascode".into(),
-                "Felix Weilbach".into(),
-            ])
-            // Translators: Replace "translator-credits" with your names. Put a comma between.
-            .translator_credits(&gettext("translator-credits"))
-            .copyright(&gettext("Copyright 2021 Dave Patrick"))
-            .license_type(gtk::License::Gpl30)
-            .website("https://github.com/SeaDve/Kooha")
-            .website_label(&gettext("GitHub"))
-            .build();
-        dialog.set_transient_for(self.main_window().as_ref());
-        dialog.present();
-    }
-
     fn setup_gactions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
             "launch-default-for-file",
@@ -168,7 +145,7 @@ impl Application {
 
         let action_show_about = gio::SimpleAction::new("show-about", None);
         action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
-            obj.show_about_dialog();
+            about_window::present(obj.main_window().as_ref());
         }));
         self.add_action(&action_show_about);
 
