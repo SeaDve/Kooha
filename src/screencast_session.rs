@@ -51,7 +51,7 @@ impl ScreencastSession {
                 cursor_mode,
                 source_type,
                 is_multiple_sources,
-                restore_token,
+                restore_token.filter(|s| !s.is_empty()),
                 persist_mode,
             )
             .await?;
