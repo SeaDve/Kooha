@@ -110,8 +110,8 @@ impl Future for Timer {
         let duration = self.duration;
         self.state
             .secs_left_changed_source_id
-            .replace(Some(glib::timeout_add_seconds_local(
-                1,
+            .replace(Some(glib::timeout_add_local(
+                Duration::from_millis(200),
                 clone!(@weak self.state as state => @default-return Continue(false), move || {
                     let elapsed_secs = state
                         .instant
