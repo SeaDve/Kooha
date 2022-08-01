@@ -18,7 +18,6 @@ pub struct ScreencastSession {
 
 impl ScreencastSession {
     pub async fn new() -> ashpd::Result<Self> {
-        // TODO use gio dbus for less deps
         // TODO fix `Invalid client serial`
         let connection = zbus::Connection::session().await?;
         let proxy = ScreenCastProxy::new(&connection).await?;
