@@ -6,7 +6,7 @@ use ashpd::{
     enumflags2::BitFlags,
     zbus, WindowIdentifier,
 };
-use gtk::glib::IsA;
+use gtk::prelude::*;
 
 use std::os::unix::io::RawFd;
 
@@ -43,7 +43,7 @@ impl ScreencastSession {
         is_multiple_sources: bool,
         restore_token: Option<&str>,
         persist_mode: PersistMode,
-        parent_window: Option<impl IsA<gtk::Native>>,
+        parent_window: Option<&impl IsA<gtk::Window>>,
     ) -> ashpd::Result<(Vec<Stream>, Option<String>, RawFd)> {
         self.proxy
             .select_sources(
@@ -57,7 +57,7 @@ impl ScreencastSession {
             .await?;
 
         let window_identifier = if let Some(window) = parent_window {
-            WindowIdentifier::from_native(&window).await
+            WindowIdentifier::from_native(window.upcast_ref()).await
         } else {
             WindowIdentifier::None
         };

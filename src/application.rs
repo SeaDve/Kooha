@@ -37,28 +37,21 @@ mod imp {
     impl ObjectImpl for Application {}
 
     impl ApplicationImpl for Application {
-        fn activate(&self, app: &Self::Type) {
-            if let Some(window) = self.window.get() {
-                let window = window.upgrade().unwrap();
-                window.show();
+        fn activate(&self, obj: &Self::Type) {
+            self.parent_activate(obj);
+
+            if let Some(window) = obj.main_window() {
                 window.present();
-                return;
             }
-
-            let window = Window::new(app);
-            self.window
-                .set(window.downgrade())
-                .expect("Window already set.");
-
-            app.main_window().present();
         }
 
-        fn startup(&self, app: &Self::Type) {
-            self.parent_startup(app);
+        fn startup(&self, obj: &Self::Type) {
+            self.parent_startup(obj);
+
             gtk::Window::set_default_icon_name(APP_ID);
 
-            app.setup_gactions();
-            app.setup_accels();
+            obj.setup_gactions();
+            obj.setup_accels();
         }
     }
 
@@ -86,9 +79,18 @@ impl Application {
         self.imp().settings.clone()
     }
 
-    // TODO make nullable
-    pub fn main_window(&self) -> Window {
-        self.imp().window.get().unwrap().upgrade().unwrap()
+    pub fn main_window(&self) -> Option<Window> {
+        let main_window = self
+            .imp()
+            .window
+            .get_or_init(|| Window::new(self).downgrade())
+            .upgrade();
+
+        if main_window.is_none() {
+            log::warn!("Failed to upgrade WeakRef<Window>");
+        }
+
+        main_window
     }
 
     pub fn send_record_success_notification(&self, recording_file_path: &Path) {
@@ -124,7 +126,6 @@ impl Application {
 
     fn show_about_dialog(&self) {
         let dialog = gtk::AboutDialog::builder()
-            .transient_for(&self.main_window())
             .modal(true)
             .program_name(&gettext("Kooha"))
             .comments(&gettext("Elegantly record your screen"))
@@ -143,8 +144,8 @@ impl Application {
             .website("https://github.com/SeaDve/Kooha")
             .website_label(&gettext("GitHub"))
             .build();
-
-        dialog.show();
+        dialog.set_transient_for(self.main_window().as_ref());
+        dialog.present();
     }
 
     fn setup_gactions(&self) {
@@ -160,24 +161,24 @@ impl Application {
         self.add_action(&action_launch_default_for_file);
 
         let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
-        action_select_saving_location.connect_activate(clone!(@weak self as app => move |_, _| {
+        action_select_saving_location.connect_activate(clone!(@weak self as obj => move |_, _| {
             utils::spawn(async move {
-                app.settings().select_saving_location(Some(&app.main_window())).await;
+                obj.settings().select_saving_location(obj.main_window().as_ref()).await;
             });
         }));
         self.add_action(&action_select_saving_location);
 
         let action_show_about = gio::SimpleAction::new("show-about", None);
-        action_show_about.connect_activate(clone!(@weak self as app => move |_, _| {
-            app.show_about_dialog();
+        action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
+            obj.show_about_dialog();
         }));
         self.add_action(&action_show_about);
 
         let action_quit = gio::SimpleAction::new("quit", None);
-        action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
-            if app.main_window().is_safe_to_close() {
-                app.quit();
-            };
+        action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
+            if obj.main_window().map_or(true, |win| win.is_safe_to_close()) {
+                obj.quit();
+            }
         }));
         self.add_action(&action_quit);
     }
