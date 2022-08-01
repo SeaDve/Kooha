@@ -24,13 +24,25 @@ impl Result {
 }
 
 /// Reference counted cancellable timer future
-#[derive(Debug)]
+#[derive(Clone)]
 pub struct Timer {
-    duration: Duration,
-    state: Rc<State>,
+    inner: Rc<Inner>,
 }
 
-struct State {
+impl fmt::Debug for Timer {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("State")
+            .field("duration", &self.inner.duration)
+            .field("is_done", &self.inner.is_done.get())
+            .field("is_cancelled", &self.inner.is_cancelled.get())
+            .field("elapsed", &self.inner.instant.get().map(|i| i.elapsed()))
+            .finish()
+    }
+}
+
+struct Inner {
+    duration: Duration,
+
     secs_left_changed_cb: Box<dyn Fn(u64) + 'static>,
     secs_left_changed_source_id: RefCell<Option<glib::SourceId>>,
 
@@ -42,13 +54,23 @@ struct State {
     source_id: RefCell<Option<glib::SourceId>>,
 }
 
-impl fmt::Debug for State {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.debug_struct("State")
-            .field("is_done", &self.is_done)
-            .field("is_cancelled", &self.is_cancelled)
-            .field("elapsed", &self.instant.get().map(|i| i.elapsed()))
-            .finish()
+impl Inner {
+    fn secs_left(&self) -> u64 {
+        if self.is_done.get() {
+            return 0;
+        }
+
+        if self.is_cancelled.get() {
+            return 0;
+        }
+
+        let elapsed_secs = self
+            .instant
+            .get()
+            .map_or(Duration::ZERO, |instant| instant.elapsed())
+            .as_secs();
+
+        self.duration.as_secs() - elapsed_secs
     }
 }
 
@@ -56,8 +78,8 @@ impl Timer {
     /// The timer will start as it gets polled
     pub fn new(duration: Duration, secs_left_changed_cb: impl Fn(u64) + 'static) -> Self {
         Self {
-            duration,
-            state: Rc::new(State {
+            inner: Rc::new(Inner {
+                duration,
                 secs_left_changed_cb: Box::new(secs_left_changed_cb),
                 secs_left_changed_source_id: RefCell::new(None),
                 is_done: Cell::new(false),
@@ -70,27 +92,18 @@ impl Timer {
     }
 
     pub fn cancel(&self) {
-        self.state.is_cancelled.set(true);
+        self.inner.is_cancelled.set(true);
 
-        if let Some(source_id) = self.state.source_id.take() {
+        if let Some(source_id) = self.inner.source_id.take() {
             source_id.remove();
         }
 
-        if let Some(source_id) = self.state.secs_left_changed_source_id.take() {
+        if let Some(source_id) = self.inner.secs_left_changed_source_id.take() {
             source_id.remove();
         }
 
-        if let Some(waker) = self.state.waker.take() {
+        if let Some(waker) = self.inner.waker.take() {
             waker.wake();
-        }
-    }
-}
-
-impl Clone for Timer {
-    fn clone(&self) -> Self {
-        Self {
-            duration: self.duration,
-            state: Rc::clone(&self.state),
         }
     }
 }
@@ -99,54 +112,46 @@ impl Future for Timer {
     type Output = Result;
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
-        if self.duration == Duration::ZERO {
-            self.state.is_done.set(true);
+        if self.inner.duration == Duration::ZERO {
+            self.inner.is_done.set(true);
             return Poll::Ready(Result::Ok);
         }
 
         let waker = cx.waker().clone();
-        self.state.waker.replace(Some(waker));
+        self.inner.waker.replace(Some(waker));
 
-        let duration = self.duration;
-        self.state
+        self.inner
             .secs_left_changed_source_id
             .replace(Some(glib::timeout_add_local(
                 Duration::from_millis(200),
-                clone!(@weak self.state as state => @default-return Continue(false), move || {
-                    let elapsed_secs = state
-                        .instant
-                        .get()
-                        .map_or(Duration::ZERO, |instant| instant.elapsed())
-                        .as_secs();
-
-                    let secs_left = duration.as_secs() - elapsed_secs;
-                    (state.secs_left_changed_cb)(secs_left);
+                clone!(@weak self.inner as inner => @default-return Continue(false), move || {
+                    (inner.secs_left_changed_cb)(inner.secs_left());
                     Continue(true)
                 }),
             )));
 
-        self.state
+        self.inner
             .source_id
             .replace(Some(glib::timeout_add_local_once(
-                self.duration,
-                clone!(@weak self.state as state => move || {
-                    state.is_done.set(true);
+                self.inner.duration,
+                clone!(@weak self.inner as inner => move || {
+                    inner.is_done.set(true);
 
-                    if let Some(source_id) = state.secs_left_changed_source_id.take() {
+                    if let Some(source_id) = inner.secs_left_changed_source_id.take() {
                         source_id.remove();
                     }
 
-                    if let Some(waker) = state.waker.take() {
+                    if let Some(waker) = inner.waker.take() {
                         waker.wake();
                     }
                 }),
             )));
-        self.state.instant.set(Some(Instant::now()));
-        (self.state.secs_left_changed_cb)(duration.as_secs());
+        self.inner.instant.set(Some(Instant::now()));
+        (self.inner.secs_left_changed_cb)(self.inner.secs_left());
 
-        if self.state.is_cancelled.get() {
+        if self.inner.is_cancelled.get() {
             Poll::Ready(Result::Cancelled)
-        } else if self.state.is_done.get() {
+        } else if self.inner.is_done.get() {
             Poll::Ready(Result::Ok)
         } else {
             Poll::Pending
