@@ -34,17 +34,4 @@ impl Settings {
             PathBuf::from(saving_location)
         }
     }
-
-    pub fn file_path(&self) -> PathBuf {
-        let file_name = glib::DateTime::now_local()
-            .expect("You are somehow on year 9999")
-            .format("Kooha-%F-%H-%M-%S") // TODO improve format
-            .expect("Invalid format string")
-            .to_string();
-
-        let mut path = self.saving_location();
-        path.push(file_name);
-        path.set_extension(&self.video_format().to_variant().get::<String>().unwrap());
-        path
-    }
 }

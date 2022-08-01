@@ -161,7 +161,13 @@ impl Recording {
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
         // select area
-        let mut pipeline_builder = PipelineBuilder::new();
+        let mut pipeline_builder = PipelineBuilder::new(
+            settings.video_framerate(),
+            &settings.saving_location(),
+            settings.video_format(),
+            fd,
+            streams,
+        );
         if settings.capture_mode() == CaptureMode::Selection {
             match AreaSelector::new().select_area().await {
                 Ok((coords, actual_screen)) => {
@@ -211,7 +217,7 @@ impl Recording {
             return Ok(());
         }
 
-        // setup pipeline
+        // setup audio sources
         if settings.record_mic() {
             pipeline_builder
                 .mic_source(audio_device::find_default_name(AudioDeviceClass::Source).await?);
@@ -220,11 +226,6 @@ impl Recording {
             pipeline_builder
                 .speaker_source(audio_device::find_default_name(AudioDeviceClass::Sink).await?);
         }
-        pipeline_builder
-            .framerate(settings.video_framerate())
-            .file_path(settings.file_path())
-            .fd(fd)
-            .streams(streams);
 
         // build pipeline
         let pipeline = pipeline_builder.build()?;

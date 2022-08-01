@@ -3,29 +3,24 @@ use gtk::{glib, prelude::*};
 
 use std::{
     cmp, env,
+    os::unix::io::RawFd,
     path::{Path, PathBuf},
-    str::FromStr,
 };
 
-use crate::data_types::{Rectangle, Screen};
+use crate::{
+    data_types::{Rectangle, Screen},
+    settings::VideoFormat,
+};
 
 const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
-#[derive(Debug, PartialEq, strum_macros::EnumString)]
-#[strum(serialize_all = "snake_case")]
-enum VideoFormat {
-    Webm,
-    Mkv,
-    Mp4,
-    Gif,
-}
-
-#[derive(Debug, Default)]
+#[derive(Debug)]
 pub struct PipelineBuilder {
     framerate: u32,
-    file_path: PathBuf,
-    fd: i32,
+    saving_location: PathBuf,
+    format: VideoFormat,
+    fd: RawFd,
     streams: Vec<Stream>,
     speaker_source: Option<String>,
     mic_source: Option<String>,
@@ -34,28 +29,24 @@ pub struct PipelineBuilder {
 }
 
 impl PipelineBuilder {
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    pub fn framerate(&mut self, framerate: u32) -> &mut Self {
-        self.framerate = framerate;
-        self
-    }
-
-    pub fn file_path(&mut self, file_path: PathBuf) -> &mut Self {
-        self.file_path = file_path;
-        self
-    }
-
-    pub fn fd(&mut self, fd: i32) -> &mut Self {
-        self.fd = fd;
-        self
-    }
-
-    pub fn streams(&mut self, streams: Vec<Stream>) -> &mut Self {
-        self.streams = streams;
-        self
+    pub fn new(
+        framerate: u32,
+        saving_location: &Path,
+        format: VideoFormat,
+        fd: RawFd,
+        streams: Vec<Stream>,
+    ) -> Self {
+        Self {
+            framerate,
+            saving_location: saving_location.to_path_buf(),
+            format,
+            fd,
+            streams,
+            speaker_source: None,
+            mic_source: None,
+            coordinates: None,
+            actual_screen: None,
+        }
     }
 
     pub fn speaker_source(&mut self, speaker_source: String) -> &mut Self {
@@ -78,10 +69,8 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn build(&mut self) -> Result<gst::Pipeline, glib::Error> {
-        use std::mem;
-
-        let pipeline_string = PipelineAssembler::from_builder(mem::take(self)).assemble();
+    pub fn build(self) -> Result<gst::Pipeline, glib::Error> {
+        let pipeline_string = PipelineAssembler::from_builder(self).assemble();
         log::debug!("pipeline_string: {}", &pipeline_string);
 
         gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)
@@ -123,6 +112,22 @@ impl PipelineAssembler {
         [pipeline_string, self.pipewiresrc(), self.pulsesrc()]
             .join(" ")
             .replace("%T", &ideal_thread_count().to_string())
+    }
+
+    fn file_path(&self) -> PathBuf {
+        let file_name = glib::DateTime::now_local()
+            .expect("You are somehow on year 9999")
+            .format("Kooha-%F-%H-%M-%S") // TODO improve format
+            .expect("Invalid format string");
+
+        let mut path = self.builder.saving_location.join(file_name);
+        path.set_extension(match self.video_format() {
+            VideoFormat::Webm => "webm",
+            VideoFormat::Mkv => "mkv",
+            VideoFormat::Mp4 => "mp4",
+            VideoFormat::Gif => "gif",
+        });
+        path
     }
 
     fn compositor(&self) -> Option<String> {
@@ -282,9 +287,7 @@ impl PipelineAssembler {
     }
 
     fn video_format(&self) -> VideoFormat {
-        let file_extension = self.file_path().extension().unwrap().to_str().unwrap();
-
-        VideoFormat::from_str(file_extension).expect("Invalid video format.")
+        self.builder.format
     }
 
     fn framerate(&self) -> u32 {
@@ -293,10 +296,6 @@ impl PipelineAssembler {
         }
 
         self.builder.framerate
-    }
-
-    fn file_path(&self) -> &Path {
-        self.builder.file_path.as_path()
     }
 
     fn speaker_source(&self) -> Option<&str> {
@@ -349,13 +348,5 @@ mod test {
     fn float_round_to_even() {
         assert_eq!(round_to_even(5.3), 4);
         assert_eq!(round_to_even(2.9), 2);
-    }
-
-    #[test]
-    fn video_format_from_str() {
-        assert_eq!(VideoFormat::Webm, VideoFormat::from_str("webm").unwrap());
-        assert_eq!(VideoFormat::Mkv, VideoFormat::from_str("mkv").unwrap());
-        assert_eq!(VideoFormat::Mp4, VideoFormat::from_str("mp4").unwrap());
-        assert_eq!(VideoFormat::Gif, VideoFormat::from_str("gif").unwrap());
     }
 }
