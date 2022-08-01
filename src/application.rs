@@ -13,6 +13,7 @@ use std::path::Path;
 use crate::{
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     settings::Settings,
+    utils,
     window::Window,
 };
 
@@ -85,6 +86,7 @@ impl Application {
         self.imp().settings.clone()
     }
 
+    // TODO make nullable
     pub fn main_window(&self) -> Window {
         self.imp().window.get().unwrap().upgrade().unwrap()
     }
@@ -118,42 +120,6 @@ impl Application {
         log::info!("Datadir: {}", PKGDATADIR);
 
         ApplicationExtManual::run(self);
-    }
-
-    fn folder_chooser(&self) -> gtk::FileChooserNative {
-        let settings = self.settings();
-
-        let chooser = gtk::FileChooserNative::builder()
-            .transient_for(&self.main_window())
-            .modal(true)
-            .action(gtk::FileChooserAction::SelectFolder)
-            .title(&gettext("Select Recordings Folder"))
-            .build();
-
-        chooser
-            .set_current_folder(Some(&gio::File::for_path(settings.saving_location())))
-            .expect("Failed to set current folder.");
-
-        chooser.connect_response(move |chooser, response| {
-            if response != gtk::ResponseType::Accept {
-                chooser.destroy();
-                return;
-            }
-
-            let directory = chooser.file().unwrap().path().unwrap();
-            settings.set_saving_location(&directory);
-
-            chooser.destroy();
-        });
-
-        chooser
-    }
-
-    fn select_saving_location(&self) {
-        self.imp()
-            .folder_chooser
-            .get_or_init(|| self.folder_chooser())
-            .show();
     }
 
     fn show_about_dialog(&self) {
@@ -195,7 +161,9 @@ impl Application {
 
         let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
         action_select_saving_location.connect_activate(clone!(@weak self as app => move |_, _| {
-            app.select_saving_location();
+            utils::spawn(async move {
+                app.settings().select_saving_location(Some(&app.main_window())).await;
+            });
         }));
         self.add_action(&action_select_saving_location);
 
