@@ -475,3 +475,9 @@ impl Recording {
         }
     }
 }
+
+impl Default for Recording {
+    fn default() -> Self {
+        Self::new()
+    }
+}

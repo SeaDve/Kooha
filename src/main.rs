@@ -16,10 +16,7 @@
     clippy::unused_async,
     clippy::default_trait_access
 )]
-#![allow(
-    clippy::new_without_default,
-    clippy::format_push_string // TODO remove once gettext-rs fixes macro issues
-)]
+#![allow(clippy::format_push_string)] // TODO remove once gettext-rs fixes macro issues
 
 mod about_window;
 mod application;
