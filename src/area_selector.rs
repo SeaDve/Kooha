@@ -1,4 +1,5 @@
 use adw::subclass::prelude::*;
+use ashpd::zbus;
 use futures_channel::oneshot::{self, Sender};
 use gtk::{
     gdk,
@@ -13,7 +14,6 @@ use std::{cell::RefCell, time::Duration};
 use crate::{
     cancelled::Cancelled,
     data_types::{Point, Rectangle, Screen},
-    utils,
 };
 
 const LINE_WIDTH: f32 = 1.0;
@@ -98,7 +98,7 @@ impl AreaSelector {
         let delay = if is_raised { 100 } else { 0 };
 
         glib::timeout_add_local_once(Duration::from_millis(delay), move || {
-            match utils::set_raise_active_window_request(is_raised) {
+            match set_raise_active_window_request(is_raised) {
                 Ok(_) => log::info!("Successfully set raise active window to {}", is_raised),
                 Err(error) => log::warn!(
                     "Failed to set raise active window to {}: {}",
@@ -204,4 +204,34 @@ impl Default for AreaSelector {
     fn default() -> Self {
         Self::new()
     }
+}
+
+fn set_raise_active_window_request(is_raised: bool) -> anyhow::Result<()> {
+    shell_window_eval("make_above", is_raised)?;
+    shell_window_eval("stick", is_raised)?;
+    Ok(())
+}
+
+fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
+    let reverse_keyword = if is_enabled { "" } else { "un" };
+    let command = format!(
+        "global.display.focus_window.{}{}()",
+        reverse_keyword, method
+    );
+
+    let connection = zbus::blocking::Connection::session()?;
+    let reply = connection.call_method(
+        Some("org.gnome.Shell"),
+        "/org/gnome/Shell",
+        Some("org.gnome.Shell"),
+        "Eval",
+        &command,
+    )?;
+    let (is_success, message) = reply.body::<(bool, String)>()?;
+
+    if !is_success {
+        anyhow::bail!(message);
+    };
+
+    Ok(())
 }
