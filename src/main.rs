@@ -56,8 +56,6 @@ fn main() {
     glib::set_application_name(&gettext("Kooha"));
 
     gst::init().expect("Unable to start gstreamer.");
-    gtk::init().expect("Unable to start GTK4.");
-
     gstgif::plugin_register_static().expect("Failed to register gif plugin.");
 
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file.");
