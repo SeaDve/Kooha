@@ -428,7 +428,7 @@ impl Recording {
                     source_id.remove();
                 }
 
-                // TODO handle path better
+                // TODO handle paths better here and in settings
                 let filesink = self.pipeline().by_name("filesink").unwrap();
                 let recording_file_path = filesink.property::<String>("location").into();
 
