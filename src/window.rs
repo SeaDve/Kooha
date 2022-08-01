@@ -158,16 +158,10 @@ impl Window {
     async fn toggle_record(&self) -> anyhow::Result<()> {
         let imp = self.imp();
 
-        dbg!("Toggle record");
-
         if let Some((ref recording, _)) = *imp.recording.borrow() {
-            dbg!("Stopped recording on toggle record");
-
             recording.stop()?;
             return Ok(());
         }
-
-        dbg!("Creating new recording on toggle record");
 
         let recording = Recording::new();
         let handler_ids = vec![
@@ -192,8 +186,6 @@ impl Window {
             return Err(err);
         }
 
-        dbg!(imp.recording.borrow());
-
         Ok(())
     }
 
@@ -214,20 +206,13 @@ impl Window {
     fn cancel_delay(&self) {
         let imp = self.imp();
 
-        dbg!("Delayed");
-        dbg!(imp.recording.borrow());
-
         if let Some((recording, handler_ids)) = imp.recording.take() {
-            dbg!("Delayed has recording");
-
             utils::spawn(async move {
                 recording.cancel().await;
 
                 for handler_id in handler_ids {
                     recording.disconnect(handler_id);
                 }
-
-                dbg!("Cancelled successfully");
             });
         }
     }

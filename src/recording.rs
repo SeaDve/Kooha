@@ -103,7 +103,7 @@ mod imp {
 
             if let Some(pipeline) = self.pipeline.get() {
                 if let Err(err) = pipeline.set_state(gst::State::Null) {
-                    tracing::warn!("Failed to stop pipeline on dipose: {:?}", err);
+                    tracing::warn!("Failed to stop pipeline on dispose: {:?}", err);
                 }
             }
         }
