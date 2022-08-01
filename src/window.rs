@@ -97,8 +97,7 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
-            obj.setup_gactions();
-            obj.setup_signals();
+            obj.setup_settings();
 
             obj.set_view(View::Main);
             obj.update_audio_toggles_sensitivity();
@@ -294,7 +293,7 @@ impl Window {
         imp.recording_time_label.set_label(&formatted_time);
     }
 
-    fn setup_signals(&self) {
+    fn setup_settings(&self) {
         let imp = self.imp();
 
         let settings = Application::default().settings();
@@ -309,9 +308,7 @@ impl Window {
                 obj.update_audio_toggles_sensitivity();
             }),
         );
-    }
 
-    fn setup_gactions(&self) {
         let actions = [
             "record-speaker",
             "record-mic",
@@ -320,8 +317,6 @@ impl Window {
             "record-delay",
             "video-format",
         ];
-
-        let settings = Application::default().settings();
 
         for action in actions {
             let settings_action = settings.create_action(action);
