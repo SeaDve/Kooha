@@ -23,8 +23,6 @@ enum VideoFormat {
 
 #[derive(Debug, Default)]
 pub struct PipelineBuilder {
-    is_record_speaker: bool,
-    is_record_mic: bool,
     framerate: u32,
     file_path: PathBuf,
     fd: i32,
@@ -38,18 +36,6 @@ pub struct PipelineBuilder {
 impl PipelineBuilder {
     pub fn new() -> Self {
         Self::default()
-    }
-
-    // TODO Auto infer if has speaker source
-    pub fn record_speaker(&mut self, is_record_speaker: bool) -> &mut Self {
-        self.is_record_speaker = is_record_speaker;
-        self
-    }
-
-    // TODO Auto infer if has mic source
-    pub fn record_mic(&mut self, is_record_mic: bool) -> &mut Self {
-        self.is_record_mic = is_record_mic;
-        self
     }
 
     pub fn framerate(&mut self, framerate: u32) -> &mut Self {
@@ -72,13 +58,13 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn speaker_source(&mut self, speaker_source: Option<String>) -> &mut Self {
-        self.speaker_source = speaker_source;
+    pub fn speaker_source(&mut self, speaker_source: String) -> &mut Self {
+        self.speaker_source = Some(speaker_source);
         self
     }
 
-    pub fn mic_source(&mut self, mic_source: Option<String>) -> &mut Self {
-        self.mic_source = mic_source;
+    pub fn mic_source(&mut self, mic_source: String) -> &mut Self {
+        self.mic_source = Some(mic_source);
         self
     }
 
@@ -140,7 +126,7 @@ impl PipelineAssembler {
     }
 
     fn compositor(&self) -> Option<String> {
-        if self.is_single_stream() {
+        if self.has_single_stream() {
             return None;
         }
 
@@ -165,7 +151,7 @@ impl PipelineAssembler {
     }
 
     fn pipewiresrc(&self) -> String {
-        if self.is_single_stream() {
+        if self.has_single_stream() {
             // If there is a single stream, connect pipewiresrc directly to queue0.
             let node_id = self.streams()[0].pipe_wire_node_id();
             return format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! queue0.", self.fd(), node_id, self.framerate());
@@ -184,37 +170,29 @@ impl PipelineAssembler {
             return "".to_string();
         }
 
-        let speaker_source = self.speaker_source();
-        let mic_source = self.mic_source();
-
-        let is_record_speaker = self.builder.is_record_speaker && speaker_source.is_some();
-        let is_record_mic = self.builder.is_record_mic && mic_source.is_some();
-
         let audioenc = self.audioenc().unwrap();
 
-        match (is_record_speaker, is_record_mic) {
-            (true, true) => {
+        match (self.speaker_source(), self.mic_source()) {
+            (Some(speaker_source), Some(mic_source)) => {
                 format!("pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.",
-                    speaker_source.unwrap(),
+                    speaker_source,
                     audioenc,
-                    mic_source.unwrap()
+                    mic_source,
                 )
             }
-            (true, false) => {
+            (Some(speaker_source), None) => {
                 format!(
                     "pulsesrc device=\"{}\" ! {} ! queue ! mux.",
-                    speaker_source.unwrap(),
-                    audioenc
+                    speaker_source, audioenc
                 )
             }
-            (false, true) => {
+            (None, Some(mic_source)) => {
                 format!(
                     "pulsesrc device=\"{}\" ! {} ! queue ! mux.",
-                    mic_source.unwrap(),
-                    audioenc
+                    mic_source, audioenc
                 )
             }
-            (false, false) => "".to_string(),
+            (None, None) => "".to_string(),
         }
     }
 
@@ -337,7 +315,7 @@ impl PipelineAssembler {
         &self.builder.streams
     }
 
-    fn is_single_stream(&self) -> bool {
+    fn has_single_stream(&self) -> bool {
         self.streams().len() == 1
     }
 }

@@ -214,17 +214,11 @@ impl Recording {
         // setup pipeline
         if settings.record_mic() {
             pipeline_builder
-                .record_mic(settings.record_mic())
-                .mic_source(Some(
-                    audio_device::find_default_name(AudioDeviceClass::Source).await?,
-                ));
+                .mic_source(audio_device::find_default_name(AudioDeviceClass::Source).await?);
         }
         if settings.record_speaker() {
             pipeline_builder
-                .record_speaker(settings.record_speaker())
-                .speaker_source(Some(
-                    audio_device::find_default_name(AudioDeviceClass::Sink).await?,
-                ));
+                .speaker_source(audio_device::find_default_name(AudioDeviceClass::Sink).await?);
         }
         pipeline_builder
             .framerate(settings.video_framerate())
