@@ -4,7 +4,6 @@ use gtk::{
     gio,
     glib::{self, clone, WeakRef},
     prelude::*,
-    subclass::prelude::*,
 };
 use once_cell::unsync::OnceCell;
 

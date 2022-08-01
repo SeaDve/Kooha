@@ -995,10 +995,11 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libadwaita"
-version = "0.1.1"
+version = "0.2.0-alpha.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f2ae453d28e3b91f03749f02b1531e8cfe315a1d0762b77a61797d2ab80bb87d"
+checksum = "49ad2318c7abc8629b1d1ed381bd0356c184ae8f4caebc044ef9de1782c86046"
 dependencies = [
+ "futures-channel",
  "gdk-pixbuf",
  "gdk4",
  "gio",
@@ -1012,9 +1013,9 @@ dependencies = [
 
 [[package]]
 name = "libadwaita-sys"
-version = "0.1.0"
+version = "0.2.0-alpha.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f18b6ac4cadd252a89f5cba0a5a4e99836131795d6fad37b859ac79e8cb7d2c8"
+checksum = "e835f99b92f6e7f43ddb2c0ca79d9d21124a170190876505e03484f337f7edc7"
 dependencies = [
  "gdk4-sys",
  "gio-sys",

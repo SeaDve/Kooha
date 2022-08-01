@@ -6,7 +6,6 @@ use gtk::{
     glib::{self, clone, signal::Inhibit},
     graphene, gsk,
     prelude::*,
-    subclass::prelude::*,
 };
 
 use std::{cell::RefCell, time::Duration};

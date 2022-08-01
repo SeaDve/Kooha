@@ -82,6 +82,23 @@
             ]
         },
         {
+            "name": "libadwaita",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dvapi=false",
+                "-Dintrospection=disabled"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "tag": "1.2.alpha"
+                }
+            ]
+        },
+        {
             "name": "kooha",
             "buildsystem": "meson",
             "run-tests": true,

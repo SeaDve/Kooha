@@ -1,6 +1,7 @@
+use adw::prelude::*;
 use gettextrs::gettext;
 use gsettings_macro::gen_settings;
-use gtk::{gio, glib, prelude::*};
+use gtk::{gio, glib};
 
 use std::path::{Path, PathBuf};
 
@@ -50,18 +51,17 @@ impl Settings {
                 self.0.set_string("saving-location", directory_str).unwrap();
                 log::info!("Saving location set to {}", directory_str);
             } else {
-                let error_dialog = gtk::MessageDialog::builder()
-                    .text(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
-                    .secondary_text(&gettext(
+                let err_dialog = adw::MessageDialog::builder()
+                    .heading(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
+                    .body(&gettext(
                         "Please choose an accessible location and try again.",
                     ))
-                    .buttons(gtk::ButtonsType::Ok)
-                    .message_type(gtk::MessageType::Error)
+                    .default_response("ok")
                     .modal(true)
                     .build();
-                error_dialog.set_transient_for(transient_for);
-                error_dialog.connect_response(|error_dialog, _| error_dialog.close());
-                error_dialog.present();
+                err_dialog.add_response("ok", &gettext("Ok"));
+                err_dialog.set_transient_for(transient_for);
+                err_dialog.present();
             }
         } else {
             log::info!("No saving location selected");

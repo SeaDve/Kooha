@@ -1,10 +1,8 @@
-use adw::subclass::prelude::*;
+use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone},
-    prelude::*,
-    subclass::prelude::*,
     CompositeTemplate,
 };
 
@@ -265,18 +263,16 @@ impl Window {
                                 log::info!("Cancelled: {}", cancelled);
                             }
                             RecordingError::Gstreamer(_) => {
-                                let error_dialog = gtk::MessageDialog::builder()
-                                    .text(&err.to_string())
-                                    // .secondary_text(&error.help()) // TODO improve err handling
-                                    .secondary_use_markup(true)
-                                    .buttons(gtk::ButtonsType::Ok)
-                                    .message_type(gtk::MessageType::Error)
+                                let err_dialog = adw::MessageDialog::builder()
+                                    .heading(&err.to_string())
+                                    // .body(&error.help()) // TODO improve err handling
+                                    .body_use_markup(true)
+                                    .default_response("ok")
                                     .transient_for(self)
                                     .modal(true)
                                     .build();
-                                error_dialog
-                                    .connect_response(|error_dialog, _| error_dialog.destroy());
-                                error_dialog.present();
+                                err_dialog.add_response("ok", &gettext("Ok"));
+                                err_dialog.present();
                             }
                         }
                     }
