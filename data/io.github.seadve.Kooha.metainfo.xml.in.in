@@ -44,6 +44,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.1.0" date="2021-10-20">
+      <description>
+        <p>This release contains major fixes:</p>
+        <ul>
+          <li>Added 3 seconds delay</li>
+          <li>Major codebase stability improvements</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0.1" date="2021-10-20">
       <description>
         <p>This is a minor release:</p>

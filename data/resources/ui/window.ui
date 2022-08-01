@@ -289,6 +289,11 @@
           <attribute name="target" type="u">0</attribute>
         </item>
         <item>
+          <attribute translatable="yes" name="label">3 seconds</attribute>
+          <attribute name="action">win.record-delay</attribute>
+          <attribute name="target" type="u">3</attribute>
+        </item>
+        <item>
           <attribute translatable="yes" name="label">5 seconds</attribute>
           <attribute name="action">win.record-delay</attribute>
           <attribute name="target" type="u">5</attribute>
