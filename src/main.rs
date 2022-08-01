@@ -23,12 +23,12 @@
 
 mod application;
 mod area_selector;
+mod audio_device;
 mod cancelled;
 mod clock_time;
 mod config;
 mod data_types;
 mod error;
-mod pactl;
 mod pipeline_builder;
 mod recording;
 mod screencast_session;
@@ -39,9 +39,12 @@ mod window;
 
 use gettextrs::{gettext, LocaleCategory};
 use gtk::{gio, glib};
+use once_cell::sync::Lazy;
 
 use self::application::Application;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
+
+static THREAD_POOL: Lazy<glib::ThreadPool> = Lazy::new(|| glib::ThreadPool::shared(None).unwrap());
 
 fn main() {
     pretty_env_logger::init(); // TODO use tracing

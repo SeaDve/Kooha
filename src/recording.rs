@@ -14,9 +14,15 @@ use std::{
 };
 
 use crate::{
-    area_selector::AreaSelector, cancelled::Cancelled, clock_time::ClockTime, pactl,
-    pipeline_builder::PipelineBuilder, screencast_session::ScreencastSession,
-    settings::CaptureMode, timer::Timer, utils, Application,
+    area_selector::AreaSelector,
+    audio_device::{self, Class as AudioDeviceClass},
+    cancelled::Cancelled,
+    clock_time::ClockTime,
+    pipeline_builder::PipelineBuilder,
+    screencast_session::ScreencastSession,
+    settings::CaptureMode,
+    timer::Timer,
+    utils, Application,
 };
 
 #[derive(Debug, Default, Clone, PartialEq, Eq, glib::Boxed)]
@@ -206,18 +212,25 @@ impl Recording {
         }
 
         // setup pipeline
-        let pulse_server_version = pactl::server_version_info().unwrap_or_else(|| "None".into());
-        log::debug!("pulse_server_version: {}", pulse_server_version);
-        let (speaker_source, mic_source) = pactl::default_audio_devices_name();
+        if settings.record_mic() {
+            pipeline_builder
+                .record_mic(settings.record_mic())
+                .mic_source(Some(
+                    audio_device::find_default_name(AudioDeviceClass::Source).await?,
+                ));
+        }
+        if settings.record_speaker() {
+            pipeline_builder
+                .record_speaker(settings.record_speaker())
+                .speaker_source(Some(
+                    audio_device::find_default_name(AudioDeviceClass::Sink).await?,
+                ));
+        }
         pipeline_builder
-            .record_speaker(settings.record_speaker())
-            .record_mic(settings.record_mic())
             .framerate(settings.video_framerate())
             .file_path(settings.file_path())
             .fd(fd)
-            .streams(streams)
-            .speaker_source(speaker_source)
-            .mic_source(mic_source);
+            .streams(streams);
 
         // build pipeline
         let pipeline = pipeline_builder.build()?;

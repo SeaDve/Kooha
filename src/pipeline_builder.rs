@@ -40,11 +40,13 @@ impl PipelineBuilder {
         Self::default()
     }
 
+    // TODO Auto infer if has speaker source
     pub fn record_speaker(&mut self, is_record_speaker: bool) -> &mut Self {
         self.is_record_speaker = is_record_speaker;
         self
     }
 
+    // TODO Auto infer if has mic source
     pub fn record_mic(&mut self, is_record_mic: bool) -> &mut Self {
         self.is_record_mic = is_record_mic;
         self
