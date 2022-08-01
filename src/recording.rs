@@ -103,7 +103,7 @@ mod imp {
 
             if let Some(pipeline) = self.pipeline.get() {
                 if let Err(err) = pipeline.set_state(gst::State::Null) {
-                    log::warn!("Failed to stop pipeline on dipose: {:?}", err);
+                    tracing::warn!("Failed to stop pipeline on dipose: {:?}", err);
                 }
             }
         }
@@ -131,11 +131,11 @@ impl Recording {
 
         // setup screencast session
         let screencast_session = ScreencastSession::new().await?;
-        log::debug!(
+        tracing::debug!(
             "Available cursor modes: {:?}",
             screencast_session.available_cursor_modes().await
         );
-        log::debug!(
+        tracing::debug!(
             "Available source types: {:?}",
             screencast_session.available_source_types().await
         );
@@ -178,7 +178,7 @@ impl Recording {
                 Err(err) => {
                     if let Some(session) = imp.session.take() {
                         if let Err(err) = session.close().await {
-                            log::warn!("Failed to close session on timer cancelled: {:?}", err);
+                            tracing::warn!("Failed to close session on timer cancelled: {:?}", err);
                         };
                     }
 
@@ -206,7 +206,7 @@ impl Recording {
         if timer_res.is_cancelled() {
             if let Some(session) = imp.session.take() {
                 if let Err(err) = session.close().await {
-                    log::warn!("Failed to close session on timer cancelled: {:?}", err);
+                    tracing::warn!("Failed to close session on timer cancelled: {:?}", err);
                 };
             }
 
@@ -291,7 +291,7 @@ impl Recording {
             "already finished recording"
         );
 
-        log::info!("Sending eos event to pipeline");
+        tracing::info!("Sending eos event to pipeline");
         self.pipeline().send_event(gst::event::Eos::new());
         self.set_state(RecordingState::Flushing);
 
@@ -301,7 +301,7 @@ impl Recording {
     pub async fn cancel(&self) {
         let imp = self.imp();
 
-        log::info!("Cancelling recording");
+        tracing::info!("Cancelling recording");
 
         if let Some(timer) = imp.timer.take() {
             timer.cancel();
@@ -309,7 +309,7 @@ impl Recording {
 
         if let Some(pipeline) = imp.pipeline.get() {
             if let Err(err) = pipeline.set_state(gst::State::Null) {
-                log::warn!("Failed to stop pipeline on cancel: {err:?}");
+                tracing::warn!("Failed to stop pipeline on cancel: {err:?}");
             }
 
             let _ = pipeline.bus().unwrap().remove_watch();
@@ -317,7 +317,7 @@ impl Recording {
 
         if let Some(session) = imp.session.take() {
             if let Err(err) = session.close().await {
-                log::warn!("Failed to close screencast session on cancel: {err:?}");
+                tracing::warn!("Failed to close screencast session on cancel: {err:?}");
             }
         }
 
@@ -389,20 +389,20 @@ impl Recording {
 
         match message.view() {
             MessageView::Error(ref err) => {
-                log::error!(
+                tracing::error!(
                     "Error from record bus: {:?} (debug {:#?})",
                     err.error(),
                     err
                 );
 
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
-                    log::warn!("Failed to stop pipeline on error: {err:?}");
+                    tracing::warn!("Failed to stop pipeline on error: {err:?}");
                 }
 
                 if let Some(session) = imp.session.take() {
                     utils::spawn(async move {
                         if let Err(err) = session.close().await {
-                            log::warn!("Failed to close screencast session on error: {err:?}");
+                            tracing::warn!("Failed to close screencast session on error: {err:?}");
                         }
                     });
                 }
@@ -418,16 +418,16 @@ impl Recording {
                 Continue(false)
             }
             MessageView::Eos(..) => {
-                log::info!("Eos signal received from record bus");
+                tracing::info!("Eos signal received from record bus");
 
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
-                    log::error!("Failed to stop pipeline on eos: {err:?}");
+                    tracing::error!("Failed to stop pipeline on eos: {err:?}");
                 }
 
                 if let Some(session) = imp.session.take() {
                     utils::spawn(async move {
                         if let Err(err) = session.close().await {
-                            log::warn!("Failed to close screencast session on eos: {err:?}");
+                            tracing::warn!("Failed to close screencast session on eos: {err:?}");
                         }
                     });
                 }
@@ -456,7 +456,7 @@ impl Recording {
 
                 let new_state = sc.current();
 
-                log::info!(
+                tracing::info!(
                     "Pipeline state changed from `{:?}` -> `{:?}`",
                     sc.old(),
                     new_state,

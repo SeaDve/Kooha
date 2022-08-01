@@ -31,7 +31,7 @@ impl Settings {
         if let Err(err) =
             chooser.set_current_folder(Some(&gio::File::for_path(self.saving_location())))
         {
-            log::warn!("Failed to set current folder: {:?}", err);
+            tracing::warn!("Failed to set current folder: {:?}", err);
         }
 
         chooser.add_button(&gettext("_Cancel"), gtk::ResponseType::Cancel);
@@ -49,7 +49,7 @@ impl Settings {
             if is_accessible(directory) {
                 let directory_str = directory.to_str().unwrap();
                 self.0.set_string("saving-location", directory_str).unwrap();
-                log::info!("Saving location set to {}", directory_str);
+                tracing::info!("Saving location set to {}", directory_str);
             } else {
                 let err_dialog = adw::MessageDialog::builder()
                     .heading(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
@@ -64,7 +64,7 @@ impl Settings {
                 err_dialog.present();
             }
         } else {
-            log::info!("No saving location selected");
+            tracing::info!("No saving location selected");
         }
 
         chooser.close();

@@ -68,14 +68,14 @@ mod imp {
             klass.install_action("win.toggle-record", None, move |obj, _, _| {
                 utils::spawn(clone!(@weak obj => async move {
                     if let Err(err) = obj.toggle_record().await {
-                        log::error!("Failed to toggle record: {:?}", err);
+                        tracing::error!("Failed to toggle record: {:?}", err);
                     }
                 }));
             });
 
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
                 if let Err(err) = obj.toggle_pause() {
-                    log::error!("Failed to toggle pause: {:?}", err);
+                    tracing::error!("Failed to toggle pause: {:?}", err);
                 }
             });
 
@@ -270,7 +270,7 @@ impl Window {
                     Err(err) => {
                         match err {
                             RecordingError::Cancelled(cancelled) => {
-                                log::info!("Cancelled: {}", cancelled);
+                                tracing::info!("Cancelled: {}", cancelled);
                             }
                             RecordingError::Gstreamer(_) => {
                                 let err_dialog = adw::MessageDialog::builder()

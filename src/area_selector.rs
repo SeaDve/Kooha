@@ -98,8 +98,8 @@ impl AreaSelector {
 
         glib::timeout_add_local_once(Duration::from_millis(delay), move || {
             match set_raise_active_window_request(is_raised) {
-                Ok(_) => log::info!("Successfully set raise active window to {}", is_raised),
-                Err(error) => log::warn!(
+                Ok(_) => tracing::info!("Successfully set raise active window to {}", is_raised),
+                Err(error) => tracing::warn!(
                     "Failed to set raise active window to {}: {}",
                     is_raised,
                     error

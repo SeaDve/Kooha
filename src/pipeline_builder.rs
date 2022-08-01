@@ -71,7 +71,7 @@ impl PipelineBuilder {
 
     pub fn build(self) -> Result<gst::Pipeline, glib::Error> {
         let pipeline_string = PipelineAssembler::from_builder(self).assemble();
-        log::debug!("pipeline_string: {}", &pipeline_string);
+        tracing::debug!("pipeline_string: {}", &pipeline_string);
 
         gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)
             .map(|element| element.downcast().unwrap())
@@ -248,7 +248,7 @@ impl PipelineAssembler {
     fn videoenc(&self) -> String {
         let value = env::var("KOOHA_VAAPI").unwrap_or_default();
         let is_use_vaapi = value == "1";
-        log::debug!("is_use_vaapi: {}", is_use_vaapi);
+        tracing::debug!("is_use_vaapi: {}", is_use_vaapi);
 
         if is_use_vaapi {
             match self.video_format() {

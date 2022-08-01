@@ -40,7 +40,7 @@ fn find_default_name_inner(class: Class) -> anyhow::Result<String> {
     let devices = device_monitor.devices();
     device_monitor.stop();
 
-    log::info!("Finding device name for class `{:?}`", class);
+    tracing::info!("Finding device name for class `{:?}`", class);
 
     for device in devices {
         let device_class = Class::for_str(&device.device_class())?;

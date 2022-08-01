@@ -86,7 +86,7 @@ impl Application {
             .upgrade();
 
         if main_window.is_none() {
-            log::warn!("Failed to upgrade WeakRef<Window>");
+            tracing::warn!("Failed to upgrade WeakRef<Window>");
         }
 
         main_window
@@ -116,9 +116,9 @@ impl Application {
     }
 
     pub fn run(&self) {
-        log::info!("Kooha ({})", APP_ID);
-        log::info!("Version: {} ({})", VERSION, PROFILE);
-        log::info!("Datadir: {}", PKGDATADIR);
+        tracing::info!("Kooha ({})", APP_ID);
+        tracing::info!("Version: {} ({})", VERSION, PROFILE);
+        tracing::info!("Datadir: {}", PKGDATADIR);
 
         ApplicationExtManual::run(self);
     }
