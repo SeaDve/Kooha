@@ -66,6 +66,7 @@ test(
     '--nocapture',
   ],
   env: [
+    'RUST_BACKTRACE=1',
     'CARGO_HOME=@0@'.format(cargo_home),
     'PATH=/app/bin:/usr/bin:/usr/lib/sdk/rust-stable/bin',
   ],
