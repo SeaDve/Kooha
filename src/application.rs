@@ -195,6 +195,11 @@ impl Application {
 
 impl Default for Application {
     fn default() -> Self {
+        debug_assert!(
+            gtk::is_initialized_main_thread(),
+            "Application can only be accessed in the main thread"
+        );
+
         gio::Application::default().unwrap().downcast().unwrap()
     }
 }
