@@ -244,8 +244,7 @@ impl Window {
 
                 match res {
                     Ok(recording_file_path) => {
-                        let application: Application =
-                            self.application().unwrap().downcast().unwrap();
+                        let application = Application::default();
                         application.send_record_success_notification(&recording_file_path);
 
                         let recent_manager = gtk::RecentManager::default();

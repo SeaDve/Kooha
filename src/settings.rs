@@ -52,7 +52,7 @@ impl Settings {
                 tracing::info!("Saving location set to {}", directory_str);
             } else {
                 let err_dialog = adw::MessageDialog::builder()
-                    .heading(&gettext!("Cannot access “{}”", directory.to_str().unwrap()))
+                    .heading(&gettext!("Cannot access “{}”", directory.display()))
                     .body(&gettext(
                         "Please choose an accessible location and try again.",
                     ))
