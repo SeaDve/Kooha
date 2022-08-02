@@ -131,6 +131,7 @@ impl Application {
         action_launch_default_for_file.connect_activate(|_, param| {
             let file_path = param.unwrap().get::<PathBuf>().unwrap();
             let file = gio::File::for_path(file_path);
+            // TODO use gtk::show_uri here
             gio::AppInfo::launch_default_for_uri(&file.uri(), gio::AppLaunchContext::NONE).unwrap();
         });
         self.add_action(&action_launch_default_for_file);
