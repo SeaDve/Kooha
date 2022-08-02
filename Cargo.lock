@@ -49,6 +49,7 @@ dependencies = [
  "rand",
  "serde",
  "serde_repr",
+ "tracing",
  "zbus",
 ]
 
