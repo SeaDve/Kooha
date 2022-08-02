@@ -1,7 +1,7 @@
 use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use gtk::{
-    gio,
+    gdk, gio,
     glib::{self, clone, WeakRef},
     prelude::*,
 };
@@ -125,16 +125,22 @@ impl Application {
             "launch-default-for-path",
             Some(glib::VariantTy::new("ay").unwrap()),
         );
-        action_launch_default_for_file.connect_activate(|_, param| {
+        action_launch_default_for_file.connect_activate(clone!(@weak self as obj => move |_, param| {
             let file_path = param.unwrap().get::<PathBuf>().unwrap();
-            let file = gio::File::for_path(file_path);
-            // TODO use gtk::show_uri here
-            if let Err(err) =
-                gio::AppInfo::launch_default_for_uri(&file.uri(), gio::AppLaunchContext::NONE)
-            {
-                tracing::warn!("Failed to launch default for uri: {:?}", err);
-            }
-        });
+            let file_uri = gio::File::for_path(file_path).uri();
+
+            utils::spawn(async move {
+                if let Err(err) = gtk::show_uri_full_future(
+                    obj.main_window().as_ref(),
+                    &file_uri,
+                    gdk::CURRENT_TIME,
+                )
+                .await
+                {
+                    tracing::warn!("Failed to launch default for uri `{}`: {:?}", file_uri, err);
+                }
+            });
+        }));
         self.add_action(&action_launch_default_for_file);
 
         let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
