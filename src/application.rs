@@ -103,12 +103,12 @@ impl Application {
             saving_location.display()
         )));
         notification.set_default_action_and_target_value(
-            "app.launch-default-for-file",
+            "app.launch-default-for-path",
             Some(&saving_location.to_variant()),
         );
         notification.add_button_with_target_value(
             &gettext("Open File"),
-            "app.launch-default-for-file",
+            "app.launch-default-for-path",
             Some(&recording_file_path.to_variant()),
         );
 
@@ -125,7 +125,7 @@ impl Application {
 
     fn setup_gactions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
-            "launch-default-for-file",
+            "launch-default-for-path",
             Some(glib::VariantTy::new("ay").unwrap()),
         );
         action_launch_default_for_file.connect_activate(|_, param| {
