@@ -100,7 +100,7 @@ impl Application {
         let notification = gio::Notification::new(&gettext("Screencast Recorded!"));
         notification.set_body(Some(&gettext!(
             "The recording has been saved in “{}”",
-            saving_location.to_str().unwrap()
+            saving_location.display()
         )));
         notification.set_default_action_and_target_value(
             "app.launch-default-for-file",
