@@ -4,7 +4,8 @@
     "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.rust-stable"
+        "org.freedesktop.Sdk.Extension.rust-stable",
+        "org.freedesktop.Sdk.Extension.llvm14"
     ],
     "command": "kooha",
     "finish-args": [
@@ -19,10 +20,14 @@
         "--env=G_MESSAGES_DEBUG=none"
     ],
     "build-options": {
-        "append-path": "/usr/lib/sdk/rust-stable/bin",
+        "append-path": "/usr/lib/sdk/llvm14/bin:/usr/lib/sdk/rust-stable/bin",
         "build-args": [
             "--share=network"
-        ]
+        ],
+        "env": {
+            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
+            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
+        }
     },
     "modules": [
         {
