@@ -14,9 +14,8 @@ use std::{
 };
 
 use crate::{
-    area_selector,
+    area_selector::{self, Response as AreaSelectorResponse},
     audio_device::{self, Class as AudioDeviceClass},
-    cancelled::Cancelled,
     clock_time::ClockTime,
     pipeline_builder::PipelineBuilder,
     screencast_session::ScreencastSession,
@@ -41,13 +40,19 @@ pub enum RecordingState {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum RecordingError {
-    Cancelled(Cancelled),
+    Cancelled(String),
     Gstreamer(glib::Error),
 }
 
 impl fmt::Display for RecordingError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "Recording error: {:?}", self)
+    }
+}
+
+impl RecordingError {
+    pub fn cancelled(task_name: &str) -> Self {
+        RecordingError::Cancelled(format!("Cancelled {}", task_name))
     }
 }
 
@@ -170,23 +175,23 @@ impl Recording {
         );
         if settings.capture_mode() == CaptureMode::Selection {
             match area_selector::select_area().await {
-                Ok((coords, actual_screen)) => {
+                AreaSelectorResponse::Ok { selection, screen } => {
                     pipeline_builder
-                        .coordinates(coords)
-                        .actual_screen(actual_screen);
+                        .coordinates(selection)
+                        .actual_screen(screen);
                 }
-                Err(err) => {
+                AreaSelectorResponse::Cancelled => {
                     if let Some(session) = imp.session.take() {
                         if let Err(err) = session.close().await {
                             tracing::warn!("Failed to close session on timer cancelled: {:?}", err);
                         };
                     }
 
-                    self.set_state(RecordingState::Finished(Err(RecordingError::Cancelled(
-                        Cancelled::new("Cancelled timer"),
+                    self.set_state(RecordingState::Finished(Err(RecordingError::cancelled(
+                        "area selection",
                     ))));
 
-                    return Err(err.into());
+                    return Err(anyhow::anyhow!("Area selection cancelled"));
                 }
             }
         }
@@ -210,8 +215,8 @@ impl Recording {
                 };
             }
 
-            self.set_state(RecordingState::Finished(Err(RecordingError::Cancelled(
-                Cancelled::new("Cancelled timer"),
+            self.set_state(RecordingState::Finished(Err(RecordingError::cancelled(
+                "timer",
             ))));
 
             return Ok(());
@@ -325,8 +330,8 @@ impl Recording {
             source_id.remove();
         }
 
-        self.set_state(RecordingState::Finished(Err(RecordingError::Cancelled(
-            Cancelled::default(),
+        self.set_state(RecordingState::Finished(Err(RecordingError::cancelled(
+            "manually",
         ))));
 
         // TODO delete recorded file

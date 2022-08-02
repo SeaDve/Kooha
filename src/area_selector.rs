@@ -10,16 +10,21 @@ use gtk::{
 
 use std::{cell::RefCell, time::Duration};
 
-use crate::{
-    cancelled::Cancelled,
-    data_types::{Point, Rectangle, Screen},
-};
+use crate::data_types::{Point, Rectangle, Screen};
 
 const LINE_WIDTH: f32 = 1.0;
 
-pub type AreaSelectorResponse = Result<(Rectangle, Screen), Cancelled>;
+#[derive(Debug, Clone, Copy)]
+#[must_use]
+pub enum Response {
+    Ok {
+        selection: Rectangle,
+        screen: Screen,
+    },
+    Cancelled,
+}
 
-pub async fn select_area() -> AreaSelectorResponse {
+pub async fn select_area() -> Response {
     let selector: AreaSelector = glib::Object::new(&[]).expect("Failed to create AreaSelector.");
     selector.present();
 
@@ -40,7 +45,7 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub(super) struct AreaSelector {
-        pub(super) sender: RefCell<Option<Sender<AreaSelectorResponse>>>,
+        pub(super) sender: RefCell<Option<Sender<Response>>>,
         pub(super) start_position: RefCell<Option<Point>>,
         pub(super) current_position: RefCell<Option<Point>>,
     }
@@ -73,8 +78,7 @@ mod imp {
     impl WindowImpl for AreaSelector {
         fn close_request(&self, obj: &Self::Type) -> Inhibit {
             if let Some(sender) = self.sender.take() {
-                let response = Err(Cancelled::new("Cancelled area selection"));
-                sender.send(response).unwrap();
+                let _ = sender.send(Response::Cancelled);
             }
 
             self.parent_close_request(obj)
@@ -88,7 +92,7 @@ glib::wrapper! {
 }
 
 impl AreaSelector {
-    async fn wait_response(&self) -> AreaSelectorResponse {
+    async fn wait_response(&self) -> Response {
         let (sender, receiver) = oneshot::channel();
         self.imp().sender.replace(Some(sender));
 
@@ -167,21 +171,26 @@ impl AreaSelector {
                 }
             }),
         );
-        gesture_drag.connect_drag_end(clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
-            if let Some((start_x, start_y)) = gesture.start_point() {
-                let imp = obj.imp();
+        gesture_drag.connect_drag_end(
+            clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
+                if let Some((start_x, start_y)) = gesture.start_point() {
+                    let imp = obj.imp();
 
-                let start_position = imp.start_position.take().unwrap();
-                let end_position = Point::new(start_x + offset_x, start_y + offset_y);
+                    let start_position = imp.start_position.take().unwrap();
+                    let end_position = Point::new(start_x + offset_x, start_y + offset_y);
 
-                let selection_rectangle = Rectangle::from_points(&start_position, &end_position);
-                let actual_screen = Screen::new(obj.width(), obj.height());
+                    let selection = Rectangle::from_points(&start_position, &end_position);
+                    let screen = Screen::new(obj.width(), obj.height());
 
-                let response = Ok((selection_rectangle, actual_screen));
-                imp.sender.take().unwrap().send(response).unwrap();
-                obj.close();
-            }
-        }));
+                    imp.sender
+                        .take()
+                        .unwrap()
+                        .send(Response::Ok { selection, screen })
+                        .unwrap();
+                    obj.close();
+                }
+            }),
+        );
         self.add_controller(&gesture_drag);
     }
 }

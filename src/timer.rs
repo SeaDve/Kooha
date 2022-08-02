@@ -71,7 +71,7 @@ impl Inner {
 }
 
 impl Timer {
-    /// The timer will start as it gets polled
+    /// The timer will start as soon as it gets polled
     pub fn new(duration: Duration, secs_left_changed_cb: impl Fn(u64) + 'static) -> Self {
         Self {
             inner: Rc::new(Inner {
