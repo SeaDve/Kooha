@@ -56,11 +56,7 @@ struct Inner {
 
 impl Inner {
     fn secs_left(&self) -> u64 {
-        if self.is_done.get() {
-            return 0;
-        }
-
-        if self.is_cancelled.get() {
+        if self.is_done.get() || self.is_cancelled.get() {
             return 0;
         }
 
