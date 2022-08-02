@@ -97,19 +97,16 @@ impl Application {
             .parent()
             .expect("Directory doesn't exist.");
 
-        let notification = gio::Notification::new(&gettext("Screencast Recorded!"));
-        notification.set_body(Some(&gettext!(
-            "The recording has been saved in “{}”",
-            saving_location.display()
-        )));
+        let notification = gio::Notification::new(&gettext("Screencast recorded"));
+        notification.set_body(Some(&gettext("Click here to view the video.")));
         notification.set_default_action_and_target_value(
             "app.launch-default-for-path",
-            Some(&saving_location.to_variant()),
+            Some(&recording_file_path.to_variant()),
         );
         notification.add_button_with_target_value(
-            &gettext("Open File"),
+            &gettext("Show in Files"),
             "app.launch-default-for-path",
-            Some(&recording_file_path.to_variant()),
+            Some(&saving_location.to_variant()),
         );
 
         self.send_notification(Some("record-success"), &notification);
