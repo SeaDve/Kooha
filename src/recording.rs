@@ -14,7 +14,7 @@ use std::{
 };
 
 use crate::{
-    area_selector::{self, Response as AreaSelectorResponse},
+    area_selector::{AreaSelector, Response as AreaSelectorResponse},
     audio_device::{self, Class as AudioDeviceClass},
     clock_time::ClockTime,
     pipeline_builder::PipelineBuilder,
@@ -174,7 +174,7 @@ impl Recording {
             streams,
         );
         if settings.capture_mode() == CaptureMode::Selection {
-            match area_selector::select_area().await {
+            match AreaSelector::select_area().await {
                 AreaSelectorResponse::Ok { selection, screen } => {
                     pipeline_builder
                         .coordinates(selection)

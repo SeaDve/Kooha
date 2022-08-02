@@ -24,27 +24,11 @@ pub enum Response {
     Cancelled,
 }
 
-pub async fn select_area() -> Response {
-    let selector: AreaSelector = glib::Object::new(&[]).expect("Failed to create AreaSelector.");
-    selector.present();
-
-    // Delay is needed to wait for the window to show. Otherwise, it
-    // will be too early and it will raise the wrong window.
-    glib::timeout_future(Duration::from_millis(100)).await;
-    set_raise_active_window_request(true).await;
-
-    let res = selector.wait_response().await;
-
-    set_raise_active_window_request(false).await;
-
-    res
-}
-
 mod imp {
     use super::*;
 
     #[derive(Debug, Default)]
-    pub(super) struct AreaSelector {
+    pub struct AreaSelector {
         pub(super) sender: RefCell<Option<Sender<Response>>>,
         pub(super) start_position: RefCell<Option<Point>>,
         pub(super) current_position: RefCell<Option<Point>>,
@@ -87,16 +71,28 @@ mod imp {
 }
 
 glib::wrapper! {
-    struct AreaSelector(ObjectSubclass<imp::AreaSelector>)
+    pub struct AreaSelector(ObjectSubclass<imp::AreaSelector>)
         @extends gtk::Widget, gtk::Window;
 }
 
 impl AreaSelector {
-    async fn wait_response(&self) -> Response {
+    pub async fn select_area() -> Response {
+        let this: AreaSelector = glib::Object::new(&[]).expect("Failed to create AreaSelector.");
         let (sender, receiver) = oneshot::channel();
-        self.imp().sender.replace(Some(sender));
+        this.imp().sender.replace(Some(sender));
 
-        receiver.await.unwrap()
+        this.present();
+
+        // Delay is needed to wait for the window to show. Otherwise, it
+        // will be too early and it will raise the wrong window.
+        glib::timeout_future(Duration::from_millis(100)).await;
+        set_raise_active_window_request(true).await;
+
+        let res = receiver.await.unwrap();
+
+        set_raise_active_window_request(false).await;
+
+        res
     }
 
     fn on_snapshot(&self, snapshot: &gtk::Snapshot) {
