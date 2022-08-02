@@ -47,9 +47,8 @@ impl Settings {
 
         if let Some(ref directory) = chooser.file().and_then(|file| file.path()) {
             if is_accessible(directory) {
-                let directory_str = directory.to_str().unwrap();
-                self.0.set_string("saving-location", directory_str).unwrap();
-                tracing::info!("Saving location set to {}", directory_str);
+                self.0.set("saving-location", directory).unwrap();
+                tracing::info!("Saving location set to {}", directory.display());
             } else {
                 let err_dialog = adw::MessageDialog::builder()
                     .heading(&gettext!("Cannot access “{}”", directory.display()))
@@ -71,12 +70,12 @@ impl Settings {
     }
 
     pub fn saving_location(&self) -> PathBuf {
-        let saving_location = self.0.string("saving-location").to_string();
+        let saving_location: PathBuf = self.0.get("saving-location");
 
-        if saving_location == "default" {
+        if saving_location.as_os_str().is_empty() {
             glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir)
         } else {
-            PathBuf::from(saving_location)
+            saving_location
         }
     }
 }
