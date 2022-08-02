@@ -7,7 +7,7 @@ use gtk::{
 };
 use once_cell::unsync::OnceCell;
 
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use crate::{
     about_window,
@@ -104,12 +104,12 @@ impl Application {
         )));
         notification.set_default_action_and_target_value(
             "app.launch-default-for-file",
-            Some(&saving_location.to_str().unwrap().to_variant()),
+            Some(&saving_location.to_variant()),
         );
         notification.add_button_with_target_value(
             &gettext("Open File"),
             "app.launch-default-for-file",
-            Some(&recording_file_path.to_str().unwrap().to_variant()),
+            Some(&recording_file_path.to_variant()),
         );
 
         self.send_notification(Some("record-success"), &notification);
@@ -126,12 +126,12 @@ impl Application {
     fn setup_gactions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
             "launch-default-for-file",
-            Some(glib::VariantTy::new("s").unwrap()),
+            Some(glib::VariantTy::new("ay").unwrap()),
         );
         action_launch_default_for_file.connect_activate(|_, param| {
-            let file_path = param.unwrap().get::<String>().unwrap();
-            let uri = format!("file://{}", file_path);
-            gio::AppInfo::launch_default_for_uri(&uri, gio::AppLaunchContext::NONE).unwrap();
+            let file_path = param.unwrap().get::<PathBuf>().unwrap();
+            let file = gio::File::for_path(file_path);
+            gio::AppInfo::launch_default_for_uri(&file.uri(), gio::AppLaunchContext::NONE).unwrap();
         });
         self.add_action(&action_launch_default_for_file);
 
