@@ -337,11 +337,11 @@ impl PipelineAssembler {
     }
 }
 
-pub const fn round_to_even(number: f32) -> i32 {
+fn round_to_even(number: f32) -> i32 {
     number as i32 / 2 * 2
 }
 
-pub fn ideal_thread_count() -> u32 {
+fn ideal_thread_count() -> u32 {
     let num_processors = glib::num_processors();
     cmp::min(num_processors, MAX_THREAD_COUNT)
 }
