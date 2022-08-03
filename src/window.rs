@@ -8,34 +8,15 @@ use gtk::{
 };
 use parking_lot::Mutex;
 
-use std::time::Duration;
+use std::{path::PathBuf, time::Duration};
 
 use crate::{
     config::PROFILE,
     help::Help,
     recording::{Recording, RecordingError, RecordingState},
-    settings::VideoFormat,
+    settings::{CaptureMode, VideoFormat},
     utils, Application,
 };
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-enum View {
-    Main,
-    Recording,
-    Delay,
-    Flushing,
-}
-
-impl View {
-    fn to_ui_file_id(self) -> &'static str {
-        match self {
-            View::Main => "main",
-            View::Recording => "recording",
-            View::Delay => "delay",
-            View::Flushing => "flushing",
-        }
-    }
-}
 
 mod imp {
     use super::*;
@@ -44,17 +25,25 @@ mod imp {
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct Window {
         #[template_child]
-        pub(super) pause_record_button: TemplateChild<gtk::Button>,
+        pub(super) title: TemplateChild<adw::WindowTitle>,
         #[template_child]
-        pub(super) main_stack: TemplateChild<gtk::Stack>,
+        pub(super) stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub(super) title_stack: TemplateChild<gtk::Stack>,
+        pub(super) main_page: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub(super) recording_page: TemplateChild<gtk::Box>,
         #[template_child]
         pub(super) recording_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub(super) recording_time_label: TemplateChild<gtk::Label>,
         #[template_child]
+        pub(super) pause_record_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub(super) delay_page: TemplateChild<gtk::Box>,
+        #[template_child]
         pub(super) delay_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub(super) flushing_page: TemplateChild<gtk::Box>,
 
         pub(super) recording: Mutex<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
@@ -102,8 +91,9 @@ mod imp {
 
             obj.setup_settings();
 
-            obj.set_view(View::Main);
+            obj.update_view();
             obj.update_audio_toggles_sensitivity();
+            obj.update_title_label();
         }
     }
 
@@ -158,29 +148,20 @@ impl Window {
         err_dialog.present();
     }
 
-    fn set_view(&self, view: View) {
-        self.imp()
-            .main_stack
-            .set_visible_child_name(view.to_ui_file_id());
-
-        self.action_set_enabled("win.toggle-record", view != View::Delay);
-        self.action_set_enabled("win.toggle-pause", view == View::Recording);
-        self.action_set_enabled("win.cancel-delay", view == View::Delay);
-    }
-
-    fn update_audio_toggles_sensitivity(&self) {
-        let settings = Application::default().settings();
-        let is_enabled = settings.video_format() != VideoFormat::Gif;
-
-        self.action_set_enabled("win.record-speaker", is_enabled);
-        self.action_set_enabled("win.record-mic", is_enabled);
-    }
-
-    #[allow(clippy::await_holding_lock)]
     async fn toggle_record(&self) {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.lock() {
+        let mut recording: Option<Recording> = None;
+
+        {
+            let _lock = imp.recording.lock();
+
+            if let Some((ref tmp, _)) = *_lock {
+                recording = Some(tmp.clone());
+            }
+        }
+
+        if let Some(ref recording) = recording.take() {
             recording.stop().await;
             return;
         }
@@ -188,7 +169,11 @@ impl Window {
         let recording = Recording::new();
         let handler_ids = vec![
             recording.connect_state_notify(clone!(@weak self as obj => move |recording| {
-                obj.on_recording_state_notify(recording);
+                if let RecordingState::Finished(res) = recording.state() {
+                    obj.on_recording_finished(&res);
+                }
+
+                obj.update_view();
             })),
             recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
                 obj.on_recording_duration_notify(recording);
@@ -234,58 +219,35 @@ impl Window {
         }
     }
 
-    fn on_recording_state_notify(&self, recorder_controller: &Recording) {
+    fn on_recording_finished(&self, res: &Result<PathBuf, RecordingError>) {
         let imp = self.imp();
 
-        match recorder_controller.state() {
-            RecordingState::Null => self.set_view(View::Main),
-            RecordingState::Flushing => self.set_view(View::Flushing), // todo made cancellable at this state
-            RecordingState::Delayed { secs_left } => {
-                imp.delay_label.set_text(&secs_left.to_string());
-                self.set_view(View::Delay);
-            }
-            RecordingState::Recording => {
-                self.set_view(View::Recording);
-                imp.pause_record_button
-                    .set_icon_name("media-playback-pause-symbolic");
-                imp.recording_label.set_label(&gettext("Recording"));
-                imp.recording_time_label.remove_css_class("paused");
-            }
-            RecordingState::Paused => {
-                imp.pause_record_button
-                    .set_icon_name("media-playback-start-symbolic");
-                imp.recording_label.set_label(&gettext("Paused"));
-                imp.recording_time_label.add_css_class("paused");
-            }
-            RecordingState::Finished(res) => {
-                self.set_view(View::Main);
+        match res {
+            Ok(ref recording_file_path) => {
+                let application = Application::default();
+                application.send_record_success_notification(recording_file_path);
 
-                match *res {
-                    Ok(ref recording_file_path) => {
-                        let application = Application::default();
-                        application.send_record_success_notification(recording_file_path);
-
-                        let recent_manager = gtk::RecentManager::default();
-                        recent_manager.add_item(&gio::File::for_path(recording_file_path).uri());
-                    }
-                    Err(ref err) => match err.current_context() {
-                        RecordingError::Cancelled(cancelled) => {
-                            tracing::info!("Cancelled: {}", cancelled);
-                        }
-                        _ => {
-                            tracing::error!("{:?}", err);
-                            self.present_error(err);
-                        }
-                    },
+                let recent_manager = gtk::RecentManager::default();
+                recent_manager.add_item(&gio::File::for_path(recording_file_path).uri());
+            }
+            Err(ref err) => match err.current_context() {
+                RecordingError::Cancelled(cancelled) => {
+                    tracing::info!("Cancelled: {}", cancelled);
                 }
-
-                if let Some((recording, handler_ids)) = imp.recording.lock().take() {
-                    for handler_id in handler_ids {
-                        recording.disconnect(handler_id);
-                    }
+                _ => {
+                    tracing::error!("{:?}", err);
+                    self.present_error(err);
                 }
+            },
+        }
+
+        if let Some((recording, handler_ids)) = imp.recording.lock().take() {
+            for handler_id in handler_ids {
+                recording.disconnect(handler_id);
             }
-        };
+        } else {
+            tracing::error!("Recording finished but no stored recording");
+        }
     }
 
     fn on_recording_duration_notify(&self, recording: &Recording) {
@@ -300,34 +262,97 @@ impl Window {
         imp.recording_time_label.set_label(&formatted_time);
     }
 
-    fn setup_settings(&self) {
+    fn update_view(&self) {
+        let imp = self.imp();
+
+        // TODO disregard ms granularity recording state change
+
+        let state = imp
+            .recording
+            .lock()
+            .as_ref()
+            .map_or(RecordingState::Null, |(recording, _)| recording.state());
+
+        match state {
+            RecordingState::Null | RecordingState::Finished(_) => {
+                imp.stack.set_visible_child(&*imp.main_page);
+            }
+            RecordingState::Delayed { secs_left } => {
+                imp.delay_label.set_text(&secs_left.to_string());
+
+                imp.stack.set_visible_child(&*imp.delay_page);
+            }
+            RecordingState::Recording => {
+                imp.pause_record_button
+                    .set_icon_name("media-playback-pause-symbolic");
+                imp.recording_label.set_label(&gettext("Recording"));
+                imp.recording_time_label.remove_css_class("paused");
+
+                imp.stack.set_visible_child(&*imp.recording_page);
+            }
+            RecordingState::Paused => {
+                imp.pause_record_button
+                    .set_icon_name("media-playback-start-symbolic");
+                imp.recording_label.set_label(&gettext("Paused"));
+                imp.recording_time_label.add_css_class("paused");
+
+                imp.stack.set_visible_child(&*imp.recording_page);
+            }
+            RecordingState::Flushing => imp.stack.set_visible_child(&*imp.flushing_page),
+        }
+
+        self.action_set_enabled(
+            "win.toggle-record",
+            !matches!(
+                state,
+                RecordingState::Delayed { .. } | RecordingState::Flushing
+            ),
+        );
+        self.action_set_enabled(
+            "win.toggle-pause",
+            matches!(state, RecordingState::Recording),
+        );
+        self.action_set_enabled(
+            "win.cancel-delay",
+            matches!(state, RecordingState::Delayed { .. }),
+        );
+    }
+
+    fn update_title_label(&self) {
         let imp = self.imp();
 
         let settings = Application::default().settings();
 
-        settings
-            .bind("capture-mode", &*imp.title_stack, "visible-child-name")
-            .build();
-
-        settings.connect_changed(
-            Some("video-format"),
-            clone!(@weak self as obj => move |_, _| {
-                obj.update_audio_toggles_sensitivity();
-            }),
-        );
-
-        let actions = [
-            "record-speaker",
-            "record-mic",
-            "show-pointer",
-            "capture-mode",
-            "record-delay",
-            "video-format",
-        ];
-
-        for action in actions {
-            let settings_action = settings.create_action(action);
-            self.add_action(&settings_action);
+        match settings.capture_mode() {
+            CaptureMode::MonitorWindow => imp.title.set_title(&gettext("Normal")),
+            CaptureMode::Selection => imp.title.set_title(&gettext("Selection")),
         }
+    }
+
+    fn update_audio_toggles_sensitivity(&self) {
+        let settings = Application::default().settings();
+        let is_enabled = settings.video_format() != VideoFormat::Gif;
+
+        self.action_set_enabled("win.record-speaker", is_enabled);
+        self.action_set_enabled("win.record-mic", is_enabled);
+    }
+
+    fn setup_settings(&self) {
+        let settings = Application::default().settings();
+
+        settings.connect_capture_mode_changed(clone!(@weak self as obj => move |_| {
+            obj.update_title_label();
+        }));
+
+        settings.connect_video_format_changed(clone!(@weak self as obj => move |_| {
+            obj.update_audio_toggles_sensitivity();
+        }));
+
+        self.add_action(&settings.create_record_speaker_action());
+        self.add_action(&settings.create_record_mic_action());
+        self.add_action(&settings.create_show_pointer_action());
+        self.add_action(&settings.create_capture_mode_action());
+        self.add_action(&settings.create_record_delay_action());
+        self.add_action(&settings.create_video_format_action());
     }
 }

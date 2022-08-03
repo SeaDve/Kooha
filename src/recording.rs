@@ -503,10 +503,9 @@ impl Recording {
                     source_id.remove();
                 }
 
-                let state = Err(Report::from(e.error()).change_context(RecordingError::Other))
-                    .attach_printable_lazy(|| {
-                        e.debug().unwrap_or_else(|| "<no debug>".to_string())
-                    });
+                let state = Err(Report::from(e.error()))
+                    .attach_printable_lazy(|| e.debug().unwrap_or_else(|| "<no debug>".to_string()))
+                    .change_context(RecordingError::Other);
 
                 if e.error().matches(gst::ResourceError::OpenWrite) {
                     self.set_state(RecordingState::Finished(Rc::new(

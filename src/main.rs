@@ -18,9 +18,6 @@
 )]
 #![allow(clippy::format_push_string)] // TODO remove once gettext-rs fixes macro issues
 
-// TODO simplify window.rs code
-// TODO reduce unwraps in the whole codebase
-
 mod about_window;
 mod application;
 mod area_selector;
