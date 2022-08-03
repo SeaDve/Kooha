@@ -2,7 +2,7 @@ use ashpd::{
     desktop::screencast::{CursorMode, PersistMode, SourceType},
     enumflags2::BitFlags,
 };
-use error_stack::{IntoReport, Report, Result, ResultExt};
+use error_stack::{IntoReport, Report, Result, ResultExt, Context};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::glib::{self, clone, subclass::prelude::*};
@@ -78,7 +78,7 @@ impl RecordingState {
     }
 }
 
-#[derive(Debug, thiserror::Error)]
+#[derive(Debug)]
 pub enum RecordingError {
     NoDeviceFound(AudioDeviceClass),
     Cancelled(String),
@@ -97,6 +97,8 @@ impl fmt::Display for RecordingError {
         }
     }
 }
+
+impl Context for RecordingError {}
 
 impl RecordingError {
     pub fn cancelled(task_name: &str) -> Report<Self> {

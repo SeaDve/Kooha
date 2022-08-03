@@ -1,5 +1,5 @@
 use ashpd::desktop::screencast::Stream;
-use error_stack::{IntoReport, Result, ResultExt};
+use error_stack::{Context, IntoReport, Result, ResultExt};
 use gtk::{
     glib,
     graphene::{Rect, Size},
@@ -7,7 +7,7 @@ use gtk::{
 };
 
 use std::{
-    cmp, env,
+    cmp, env, fmt,
     os::unix::io::RawFd,
     path::{Path, PathBuf},
 };
@@ -17,9 +17,16 @@ use crate::settings::VideoFormat;
 const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
-#[derive(Debug, thiserror::Error)]
-#[error("pipeline build error")]
+#[derive(Debug)]
 pub struct PipelineBuildError;
+
+impl fmt::Display for PipelineBuildError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str("pipeline build error")
+    }
+}
+
+impl Context for PipelineBuildError {}
 
 #[derive(Debug)]
 pub struct PipelineBuilder {

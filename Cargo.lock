@@ -948,7 +948,6 @@ dependencies = [
  "gtk4",
  "libadwaita",
  "once_cell",
- "thiserror",
  "tracing",
  "tracing-subscriber",
 ]

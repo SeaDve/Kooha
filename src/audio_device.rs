@@ -1,6 +1,8 @@
-use error_stack::{IntoReport, Report, Result, ResultExt};
+use error_stack::{Context, IntoReport, Report, Result, ResultExt};
 use gettextrs::gettext;
 use gst::prelude::*;
+
+use std::fmt;
 
 use crate::{help::ResultExt as HelpResultExt, THREAD_POOL};
 
@@ -28,9 +30,16 @@ impl Class {
     }
 }
 
-#[derive(Debug, thiserror::Error)]
-#[error("Default device name find error")]
+#[derive(Debug)]
 pub struct FindDefaultDeviceNameError;
+
+impl fmt::Display for FindDefaultDeviceNameError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str("Default device name find error")
+    }
+}
+
+impl Context for FindDefaultDeviceNameError {}
 
 pub async fn find_default_name(class: Class) -> Result<String, FindDefaultDeviceNameError> {
     THREAD_POOL

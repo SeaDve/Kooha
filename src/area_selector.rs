@@ -1,6 +1,6 @@
 use adw::subclass::prelude::*;
 use ashpd::zbus;
-use error_stack::{IntoReport, Report, Result, ResultExt};
+use error_stack::{Context, IntoReport, Report, Result, ResultExt};
 use futures_channel::oneshot::{self, Sender};
 use gtk::{
     gdk,
@@ -10,7 +10,7 @@ use gtk::{
     prelude::*,
 };
 
-use std::{cell::RefCell, time::Duration};
+use std::{cell::RefCell, fmt, time::Duration};
 
 const LINE_WIDTH: f32 = 1.0;
 
@@ -209,9 +209,16 @@ async fn set_raise_active_window_request(is_raised: bool) {
     }
 }
 
-#[derive(Debug, thiserror::Error)]
-#[error("Evaluating shell window command error")]
+#[derive(Debug)]
 pub struct ShellWindowEvalError;
+
+impl fmt::Display for ShellWindowEvalError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str("Evaluating shell window command error")
+    }
+}
+
+impl Context for ShellWindowEvalError {}
 
 async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), ShellWindowEvalError> {
     let reverse_keyword = if is_enabled { "" } else { "un" };

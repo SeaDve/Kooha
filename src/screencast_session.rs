@@ -6,19 +6,28 @@ use ashpd::{
     enumflags2::BitFlags,
     zbus, PortalError, WindowIdentifier,
 };
-use error_stack::{IntoReport, Report, Result, ResultExt};
+use error_stack::{IntoReport, Report, Result, ResultExt, Context};
 use gtk::prelude::*;
 
-use std::os::unix::io::RawFd;
+use std::{fmt, os::unix::io::RawFd};
 
-#[derive(Debug, thiserror::Error)]
+#[derive(Debug)]
 
 pub enum ScreencastSessionError {
-    #[error("screencast session cancelled")]
     Cancelled,
-    #[error("screencast session error")]
     Other,
 }
+
+impl fmt::Display for ScreencastSessionError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Cancelled => f.write_str("screencast session cancelled"),
+            Self::Other => f.write_str("screencast session error"),
+        }
+    }
+}
+
+impl Context for ScreencastSessionError {}
 
 #[derive(Debug)]
 pub struct ScreencastSession {
