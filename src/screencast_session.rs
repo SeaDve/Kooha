@@ -6,7 +6,7 @@ use ashpd::{
     enumflags2::BitFlags,
     zbus, PortalError, WindowIdentifier,
 };
-use error_stack::{IntoReport, Report, Result, ResultExt, Context};
+use error_stack::{Context, IntoReport, Report, Result, ResultExt};
 use gtk::prelude::*;
 
 use std::{fmt, os::unix::io::RawFd};

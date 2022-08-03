@@ -2,7 +2,7 @@ use ashpd::{
     desktop::screencast::{CursorMode, PersistMode, SourceType},
     enumflags2::BitFlags,
 };
-use error_stack::{IntoReport, Report, Result, ResultExt, Context};
+use error_stack::{Context, IntoReport, Report, Result, ResultExt};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::glib::{self, clone, subclass::prelude::*};
