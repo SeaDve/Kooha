@@ -1,6 +1,10 @@
 use ashpd::desktop::screencast::Stream;
 use error_stack::{IntoReport, Result, ResultExt};
-use gtk::{glib, prelude::*};
+use gtk::{
+    glib,
+    graphene::{Rect, Size},
+    prelude::*,
+};
 
 use std::{
     cmp, env,
@@ -8,10 +12,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use crate::{
-    data_types::{Rectangle, Screen},
-    settings::VideoFormat,
-};
+use crate::settings::VideoFormat;
 
 const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
@@ -29,8 +30,8 @@ pub struct PipelineBuilder {
     streams: Vec<Stream>,
     speaker_source: Option<String>,
     mic_source: Option<String>,
-    coordinates: Option<Rectangle>,
-    actual_screen: Option<Screen>,
+    coordinates: Option<Rect>,
+    actual_screen: Option<Size>,
 }
 
 impl PipelineBuilder {
@@ -64,12 +65,12 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn coordinates(&mut self, coordinates: Rectangle) -> &mut Self {
+    pub fn coordinates(&mut self, coordinates: Rect) -> &mut Self {
         self.coordinates = Some(coordinates);
         self
     }
 
-    pub fn actual_screen(&mut self, actual_screen: Screen) -> &mut Self {
+    pub fn actual_screen(&mut self, actual_screen: Size) -> &mut Self {
         self.actual_screen = Some(actual_screen);
         self
     }
@@ -236,13 +237,13 @@ impl PipelineAssembler {
             let actual_screen = self.builder.actual_screen.as_ref().unwrap();
             let (stream_width, stream_height) = stream.size().unwrap();
 
-            let scale_factor = (stream_width / actual_screen.width) as f64;
-            let coords = coords.rescale(scale_factor);
+            let scale_factor = stream_width as f32 / actual_screen.width();
+            let coords = coords.scale(scale_factor, scale_factor);
 
-            let top_crop = coords.y;
-            let left_crop = coords.x;
-            let right_crop = stream_width as f64 - (coords.width + coords.x);
-            let bottom_crop = stream_height as f64 - (coords.height + coords.y);
+            let top_crop = coords.y();
+            let left_crop = coords.x();
+            let right_crop = stream_width as f32 - (coords.width() + coords.x());
+            let bottom_crop = stream_height as f32 - (coords.height() + coords.y());
 
             // It is a requirement for x264enc to have even resolution.
             format!(
@@ -329,7 +330,7 @@ impl PipelineAssembler {
     }
 }
 
-pub const fn round_to_even(number: f64) -> i32 {
+pub const fn round_to_even(number: f32) -> i32 {
     number as i32 / 2 * 2
 }
 

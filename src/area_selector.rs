@@ -5,23 +5,19 @@ use futures_channel::oneshot::{self, Sender};
 use gtk::{
     gdk,
     glib::{self, clone, signal::Inhibit},
-    graphene, gsk,
+    graphene::{Point, Rect, Size},
+    gsk,
     prelude::*,
 };
 
 use std::{cell::RefCell, time::Duration};
-
-use crate::data_types::{Point, Rectangle, Screen};
 
 const LINE_WIDTH: f32 = 1.0;
 
 #[derive(Debug, Clone, Copy)]
 #[must_use]
 pub enum Response {
-    Ok {
-        selection: Rectangle,
-        screen: Screen,
-    },
+    Ok { selection: Rect, screen: Size },
     Cancelled,
 }
 
@@ -102,12 +98,12 @@ impl AreaSelector {
         if let Some(ref start_position) = *imp.start_position.borrow() {
             let current_position = imp.current_position.take().unwrap();
 
-            let width = current_position.x - start_position.x;
-            let height = current_position.y - start_position.y;
+            let width = current_position.x() - start_position.x();
+            let height = current_position.y() - start_position.y();
 
-            let selection_rect = graphene::Rect::new(
-                start_position.x as f32,
-                start_position.y as f32,
+            let selection_rect = Rect::new(
+                start_position.x() as f32,
+                start_position.y() as f32,
                 width as f32,
                 height as f32,
             );
@@ -133,7 +129,7 @@ impl AreaSelector {
             );
         } else {
             let placeholder_color = gdk::RGBA::builder().build();
-            let placeholder_rect = graphene::Rect::zero();
+            let placeholder_rect = Rect::zero();
             snapshot.append_color(&placeholder_color, &placeholder_rect);
         }
     }
@@ -156,13 +152,13 @@ impl AreaSelector {
         let gesture_drag = gtk::GestureDrag::new();
         gesture_drag.set_exclusive(true);
         gesture_drag.connect_drag_begin(clone!(@weak self as obj => move |_, x, y| {
-            let start_position = Point::new(x, y);
+            let start_position = Point::new(x as f32, y as f32);
             obj.imp().start_position.replace(Some(start_position));
         }));
         gesture_drag.connect_drag_update(
             clone!(@weak self as obj => move |gesture, offset_x, offset_y| {
                 if let Some((start_x, start_y)) = gesture.start_point() {
-                    let current_position = Point::new(start_x + offset_x, start_y + offset_y);
+                    let current_position = Point::new((start_x + offset_x) as f32, (start_y + offset_y) as f32);
                     obj.imp().current_position.replace(Some(current_position));
                     obj.queue_draw();
                 }
@@ -174,10 +170,10 @@ impl AreaSelector {
                     let imp = obj.imp();
 
                     let start_position = imp.start_position.take().unwrap();
-                    let end_position = Point::new(start_x + offset_x, start_y + offset_y);
+                    let end_position = Point::new((start_x + offset_x) as f32, (start_y + offset_y) as f32);
 
-                    let selection = Rectangle::from_points(&start_position, &end_position);
-                    let screen = Screen::new(obj.width(), obj.height());
+                    let selection = rect_from_points(start_position, end_position);
+                    let screen = Size::new(obj.width() as f32, obj.height() as f32);
 
                     imp.sender
                         .take()
@@ -257,4 +253,79 @@ async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), ShellWi
     };
 
     Ok(())
+}
+
+/// Create a [`Rect`] from two [`Point`]s.
+///
+/// If two points are equal, the `x` and `y` are set
+/// to 0 and the width and height respectively will
+/// be the `x` and `y`.
+fn rect_from_points(a: Point, b: Point) -> Rect {
+    use std::mem;
+
+    let a_x = a.x();
+    let a_y = a.y();
+    let b_x = b.x();
+    let b_y = b.y();
+
+    let mut x = a_x.min(b_x);
+    let mut y = a_y.min(b_y);
+
+    let mut w = (a_x - b_x).abs();
+    let mut h = (a_y - b_y).abs();
+
+    if w == 0.0 && h == 0.0 {
+        mem::swap(&mut w, &mut x);
+        mem::swap(&mut h, &mut y);
+    }
+
+    Rect::new(x, y, w, h)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn rect_from_points_zero() {
+        let rec = rect_from_points(Point::zero(), Point::zero());
+        assert_eq!(rec.x(), 0.0);
+        assert_eq!(rec.y(), 0.0);
+        assert_eq!(rec.width(), 0.0);
+        assert_eq!(rec.height(), 0.0);
+    }
+
+    #[test]
+    fn rect_from_points_other() {
+        let rect = rect_from_points(Point::new(10.0, 20.0), Point::new(30.0, 40.0));
+        assert_eq!(rect.x(), 10.0);
+        assert_eq!(rect.y(), 20.0);
+        assert_eq!(rect.width(), 20.0);
+        assert_eq!(rect.height(), 20.0);
+    }
+
+    #[test]
+    fn rect_from_points_other_1() {
+        let rect = rect_from_points(Point::new(20.0, 40.0), Point::new(10.0, 30.0));
+        assert_eq!(rect.x(), 10.0);
+        assert_eq!(rect.y(), 30.0);
+        assert_eq!(rect.width(), 10.0);
+        assert_eq!(rect.height(), 10.0);
+    }
+
+    #[test]
+    fn rect_from_points_commutative() {
+        let rect_a = rect_from_points(Point::new(10.0, 30.0), Point::new(20.0, 40.0));
+        let rect_b = rect_from_points(Point::new(20.0, 40.0), Point::new(10.0, 30.0));
+        assert_eq!(rect_a, rect_b);
+    }
+
+    #[test]
+    fn rect_from_equal_points() {
+        let rect = rect_from_points(Point::new(10.0, 10.0), Point::new(10.0, 10.0));
+        assert_eq!(rect.x(), 0.0);
+        assert_eq!(rect.y(), 0.0);
+        assert_eq!(rect.width(), 10.0);
+        assert_eq!(rect.height(), 10.0);
+    }
 }

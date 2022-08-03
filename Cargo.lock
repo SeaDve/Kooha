@@ -27,15 +27,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bb07d2053ccdbe10e2af2995a2f116c1330396493dc1269f6a91d0ae82e19704"
 
 [[package]]
-name = "approx"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cab112f0a86d568ea0e627cc1d6be74a1e9cd55214684db5561995f6dad897c6"
-dependencies = [
- "num-traits",
-]
-
-[[package]]
 name = "ashpd"
 version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -947,7 +938,6 @@ dependencies = [
 name = "kooha"
 version = "2.0.1"
 dependencies = [
- "approx",
  "ashpd",
  "error-stack",
  "futures-channel",

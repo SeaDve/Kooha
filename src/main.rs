@@ -24,7 +24,6 @@ mod area_selector;
 mod audio_device;
 mod clock_time;
 mod config;
-mod data_types;
 mod help;
 mod pipeline_builder;
 mod recording;
