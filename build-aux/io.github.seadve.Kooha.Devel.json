@@ -16,7 +16,7 @@
         "--socket=wayland",
         "--talk-name=org.gnome.Shell",
         "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=kooha,ashpd=debug",
+        "--env=RUST_LOG=kooha=debug",
         "--env=G_MESSAGES_DEBUG=none"
     ],
     "build-options": {

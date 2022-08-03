@@ -1,5 +1,6 @@
 use adw::subclass::prelude::*;
 use ashpd::zbus;
+use error_stack::{IntoReport, Report, Result, ResultExt};
 use futures_channel::oneshot::{self, Sender};
 use gtk::{
     gdk,
@@ -192,30 +193,42 @@ impl AreaSelector {
 }
 
 async fn set_raise_active_window_request(is_raised: bool) {
-    async fn inner(is_raised: bool) -> anyhow::Result<()> {
-        shell_window_eval("make_above", is_raised).await?;
-        shell_window_eval("stick", is_raised).await?;
+    async fn inner(is_raised: bool) -> Result<(), ShellWindowEvalError> {
+        shell_window_eval("make_above", is_raised)
+            .await
+            .attach_printable("Failed to invoke `make_above` method")?;
+        shell_window_eval("stick", is_raised)
+            .await
+            .attach_printable("Failed to invoke `stick` method")?;
         Ok(())
     }
 
     match inner(is_raised).await {
-        Ok(_) => tracing::info!("Successfully set raise active window to {}", is_raised),
+        Ok(_) => tracing::info!("Successfully set raise active window to {}", is_raised,),
         Err(error) => tracing::warn!(
-            "Failed to set raise active window to {}: {}",
+            "Failed to set raise active window to {}: {:?}",
             is_raised,
             error
         ),
     }
 }
 
-async fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()> {
+#[derive(Debug, thiserror::Error)]
+#[error("Evaluating shell window command error")]
+pub struct ShellWindowEvalError;
+
+async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), ShellWindowEvalError> {
     let reverse_keyword = if is_enabled { "" } else { "un" };
     let command = format!(
         "global.display.focus_window.{}{}()",
         reverse_keyword, method
     );
 
-    let connection = zbus::Connection::session().await?;
+    let connection = zbus::Connection::session()
+        .await
+        .report()
+        .change_context(ShellWindowEvalError)
+        .attach_printable("Failed to create zbus connection")?;
     let reply = connection
         .call_method(
             Some("org.gnome.Shell"),
@@ -224,11 +237,23 @@ async fn shell_window_eval(method: &str, is_enabled: bool) -> anyhow::Result<()>
             "Eval",
             &command,
         )
-        .await?;
-    let (is_success, message) = reply.body::<(bool, String)>()?;
+        .await
+        .report()
+        .change_context(ShellWindowEvalError)
+        .attach_printable_lazy(|| format!("Failed to eval command `{}`", &command))?;
+    let (is_success, message) = reply
+        .body::<(bool, String)>()
+        .report()
+        .change_context(ShellWindowEvalError)
+        .attach_printable("Expected (bool, String) type reply")?;
 
     if !is_success {
-        anyhow::bail!(message);
+        return Err(Report::new(ShellWindowEvalError)).attach_printable_lazy(|| {
+            format!(
+                "Shell replied with no success. Got a message of {}",
+                message
+            )
+        });
     };
 
     Ok(())

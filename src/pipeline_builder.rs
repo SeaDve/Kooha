@@ -1,4 +1,5 @@
 use ashpd::desktop::screencast::Stream;
+use error_stack::{IntoReport, Result, ResultExt};
 use gtk::{glib, prelude::*};
 
 use std::{
@@ -14,6 +15,10 @@ use crate::{
 
 const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
+
+#[derive(Debug, thiserror::Error)]
+#[error("pipeline build error")]
+pub struct PipelineBuildError;
 
 #[derive(Debug)]
 pub struct PipelineBuilder {
@@ -69,12 +74,17 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn build(self) -> Result<gst::Pipeline, glib::Error> {
-        let pipeline_string = PipelineAssembler::from_builder(self).assemble();
-        tracing::debug!("pipeline_string: {}", &pipeline_string);
+    pub fn build(self) -> Result<gst::Pipeline, PipelineBuildError> {
+        let string = PipelineAssembler::from_builder(self).assemble();
+        tracing::debug!("pipeline_string: {}", &string);
 
-        gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)
+        gst::parse_launch_full(&string, None, gst::ParseFlags::FATAL_ERRORS)
             .map(|element| element.downcast().unwrap())
+            .report()
+            .change_context(PipelineBuildError)
+            .attach_printable_lazy(|| {
+                format!("failed to parse string into pipeline. String: {}", string)
+            })
     }
 }
 

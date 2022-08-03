@@ -1,4 +1,5 @@
 use adw::{prelude::*, subclass::prelude::*};
+use error_stack::{Report, Result};
 use gettextrs::gettext;
 use gtk::{
     gio,
@@ -6,10 +7,11 @@ use gtk::{
     CompositeTemplate,
 };
 
-use std::{cell::RefCell, string::ToString, time::Duration};
+use std::{string::ToString, sync::Mutex, time::Duration};
 
 use crate::{
     config::PROFILE,
+    help::Help,
     recording::{Recording, RecordingError, RecordingState},
     settings::VideoFormat,
     utils, Application,
@@ -53,7 +55,7 @@ mod imp {
         #[template_child]
         pub(super) delay_label: TemplateChild<gtk::Label>,
 
-        pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
+        pub(super) recording: Mutex<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
 
     #[glib::object_subclass]
@@ -67,15 +69,15 @@ mod imp {
 
             klass.install_action("win.toggle-record", None, move |obj, _, _| {
                 utils::spawn(clone!(@weak obj => async move {
-                    if let Err(err) = obj.toggle_record().await {
-                        tracing::error!("Failed to toggle record: {:?}", err);
-                    }
+                    obj.toggle_record().await;
                 }));
             });
 
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
                 if let Err(err) = obj.toggle_pause() {
-                    tracing::error!("Failed to toggle pause: {:?}", err);
+                    let err = err.attach_printable("Failed to toggle pause");
+                    tracing::error!("{:?}", err);
+                    obj.present_error(&err);
                 }
             });
 
@@ -124,7 +126,8 @@ impl Window {
     pub fn is_safe_to_close(&self) -> bool {
         self.imp()
             .recording
-            .borrow()
+            .lock()
+            .unwrap()
             .as_ref()
             .map_or(true, |(ref recording, _)| {
                 matches!(
@@ -134,6 +137,25 @@ impl Window {
                         | RecordingState::Finished(..)
                 )
             })
+    }
+
+    pub fn present_error<T>(&self, err: &Report<T>) {
+        let err_dialog = adw::MessageDialog::builder()
+            .heading(&err.to_string())
+            .body_use_markup(true)
+            .default_response("ok")
+            .transient_for(self)
+            .modal(true)
+            .build();
+
+        // TODO add widget to show detailed error
+
+        if let Some(ref help) = err.downcast_ref::<Help>() {
+            err_dialog.set_body(&format!("<b>{}</b>: {}", gettext("Help"), help));
+        }
+
+        err_dialog.add_response("ok", &gettext("Ok"));
+        err_dialog.present();
     }
 
     fn set_view(&self, view: View) {
@@ -154,12 +176,13 @@ impl Window {
         self.action_set_enabled("win.record-mic", is_enabled);
     }
 
-    async fn toggle_record(&self) -> anyhow::Result<()> {
+    #[allow(clippy::await_holding_lock)]
+    async fn toggle_record(&self) {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.borrow() {
-            recording.stop()?;
-            return Ok(());
+        if let Some((ref recording, _)) = *imp.recording.lock().unwrap() {
+            recording.stop().await;
+            return;
         }
 
         let recording = Recording::new();
@@ -171,27 +194,22 @@ impl Window {
                 obj.on_recording_duration_notify(recording);
             })),
         ];
-        imp.recording
-            .replace(Some((recording.clone(), handler_ids)));
+        *imp.recording.lock().unwrap() = Some((recording.clone(), handler_ids));
 
         let settings = Application::default().settings();
         let record_delay = settings.record_delay();
 
-        if let Err(err) = recording
+        recording
             .start(Duration::from_secs(record_delay as u64))
-            .await
-        {
-            imp.recording.replace(None);
-            return Err(err);
-        }
-
-        Ok(())
+            .await;
     }
 
-    fn toggle_pause(&self) -> anyhow::Result<()> {
+    fn toggle_pause(&self) -> Result<(), RecordingError> {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.borrow() {
+        let recording_lock = imp.recording.lock().unwrap();
+
+        if let Some((ref recording, _)) = *recording_lock {
             if matches!(recording.state(), RecordingState::Paused) {
                 recording.resume()?;
             } else {
@@ -205,7 +223,7 @@ impl Window {
     fn cancel_delay(&self) {
         let imp = self.imp();
 
-        if let Some((recording, handler_ids)) = imp.recording.take() {
+        if let Some((recording, handler_ids)) = imp.recording.lock().unwrap().take() {
             utils::spawn(async move {
                 recording.cancel().await;
 
@@ -221,7 +239,7 @@ impl Window {
 
         match recorder_controller.state() {
             RecordingState::Null => self.set_view(View::Main),
-            RecordingState::Flushing => self.set_view(View::Flushing),
+            RecordingState::Flushing => self.set_view(View::Flushing), // todo made cancellable at this state
             RecordingState::Delayed { secs_left } => {
                 imp.delay_label.set_text(&secs_left.to_string());
                 self.set_view(View::Delay);
@@ -242,36 +260,26 @@ impl Window {
             RecordingState::Finished(res) => {
                 self.set_view(View::Main);
 
-                match res {
-                    Ok(recording_file_path) => {
+                match *res {
+                    Ok(ref recording_file_path) => {
                         let application = Application::default();
-                        application.send_record_success_notification(&recording_file_path);
+                        application.send_record_success_notification(recording_file_path);
 
                         let recent_manager = gtk::RecentManager::default();
                         recent_manager.add_item(&gio::File::for_path(recording_file_path).uri());
                     }
-                    Err(err) => {
-                        match err {
-                            RecordingError::Cancelled(cancelled) => {
-                                tracing::info!("Cancelled: {}", cancelled);
-                            }
-                            RecordingError::Gstreamer(_) => {
-                                let err_dialog = adw::MessageDialog::builder()
-                                    .heading(&err.to_string())
-                                    // .body(&error.help()) // TODO improve err handling
-                                    .body_use_markup(true)
-                                    .default_response("ok")
-                                    .transient_for(self)
-                                    .modal(true)
-                                    .build();
-                                err_dialog.add_response("ok", &gettext("Ok"));
-                                err_dialog.present();
-                            }
+                    Err(ref err) => match err.current_context() {
+                        RecordingError::Cancelled(cancelled) => {
+                            tracing::info!("Cancelled: {}", cancelled);
                         }
-                    }
+                        _ => {
+                            tracing::error!("{:?}", err);
+                            self.present_error(err);
+                        }
+                    },
                 }
 
-                if let Some((recording, handler_ids)) = imp.recording.take() {
+                if let Some((recording, handler_ids)) = imp.recording.lock().unwrap().take() {
                     for handler_id in handler_ids {
                         recording.disconnect(handler_id);
                     }

@@ -19,7 +19,7 @@
 #![allow(clippy::format_push_string)] // TODO remove once gettext-rs fixes macro issues
 
 // TODO simplify window.rs code
-// TODO reduce unwraps  in the whole codebase
+// TODO reduce unwraps in the whole codebase
 
 mod about_window;
 mod application;
@@ -28,7 +28,7 @@ mod audio_device;
 mod clock_time;
 mod config;
 mod data_types;
-mod error;
+mod help;
 mod pipeline_builder;
 mod recording;
 mod screencast_session;
