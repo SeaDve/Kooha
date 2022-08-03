@@ -34,9 +34,8 @@ static PORTAL_ERROR_HELP: Lazy<String> = Lazy::new(|| {
 static PIPELINE_ERROR_HELP: Lazy<String> = Lazy::new(|| {
     gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>.")
 });
-static WRITE_ERROR_HELP: Lazy<String> = Lazy::new(|| {
-    gettext("Make sure that the saving location exists or is accessible. If it actually exists or is accessible, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>.")
-});
+static WRITE_ERROR_HELP: Lazy<String> =
+    Lazy::new(|| gettext("Make sure that the saving location exists or is accessible."));
 
 #[derive(Debug, Default, Clone, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
@@ -176,6 +175,11 @@ impl Recording {
     }
 
     pub async fn start(&self, delay: Duration) {
+        if !matches!(self.state(), RecordingState::Null) {
+            tracing::error!("Trying to start recording on a non-null state");
+            return;
+        }
+
         if let Err(err) = self.start_inner(delay).await {
             if let Some(session) = self.imp().session.take() {
                 if let Err(err) = session.close().await {
@@ -191,11 +195,6 @@ impl Recording {
     }
 
     async fn start_inner(&self, delay: Duration) -> Result<(), RecordingError> {
-        if !matches!(self.state(), RecordingState::Null) {
-            return Err(Report::new(RecordingError::Other))
-                .attach_printable("cannot start recording if state is not null");
-        }
-
         let imp = self.imp();
 
         let settings = Application::default().settings();
@@ -365,6 +364,16 @@ impl Recording {
     }
 
     pub async fn stop(&self) {
+        let state = self.state();
+
+        if matches!(
+            state,
+            RecordingState::Null | RecordingState::Flushing | RecordingState::Finished(_)
+        ) {
+            tracing::error!("Trying to stop recording on a `{:?}` state", state);
+            return;
+        }
+
         if let Err(err) = self.stop_inner() {
             if let Some(session) = self.imp().session.take() {
                 if let Err(err) = session.close().await {
@@ -380,15 +389,6 @@ impl Recording {
     }
 
     fn stop_inner(&self) -> Result<(), RecordingError> {
-        match self.state() {
-            RecordingState::Null | RecordingState::Flushing | RecordingState::Finished(_) => {
-                return Err(Report::new(RecordingError::Other)).attach_printable(
-                    "recording can not be stopped when on null, flushing, or finished state",
-                );
-            }
-            _ => {}
-        }
-
         tracing::info!("Sending eos event to pipeline");
         self.pipeline().send_event(gst::event::Eos::new());
         self.set_state(RecordingState::Flushing);
@@ -503,13 +503,12 @@ impl Recording {
                     source_id.remove();
                 }
 
-                let err = e.error();
+                let state = Err(Report::from(e.error()).change_context(RecordingError::Other))
+                    .attach_printable_lazy(|| {
+                        e.debug().unwrap_or_else(|| "<no debug>".to_string())
+                    });
 
-                let state = Err(e.error())
-                    .report()
-                    .change_context(RecordingError::Other);
-
-                if err.matches(gst::ResourceError::OpenWrite) {
+                if e.error().matches(gst::ResourceError::OpenWrite) {
                     self.set_state(RecordingState::Finished(Rc::new(
                         state.attach_help(&WRITE_ERROR_HELP),
                     )));

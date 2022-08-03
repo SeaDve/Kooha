@@ -6,8 +6,9 @@ use gtk::{
     glib::{self, clone},
     CompositeTemplate,
 };
+use parking_lot::Mutex;
 
-use std::{string::ToString, sync::Mutex, time::Duration};
+use std::time::Duration;
 
 use crate::{
     config::PROFILE,
@@ -127,7 +128,6 @@ impl Window {
         self.imp()
             .recording
             .lock()
-            .unwrap()
             .as_ref()
             .map_or(true, |(ref recording, _)| {
                 matches!(
@@ -180,7 +180,7 @@ impl Window {
     async fn toggle_record(&self) {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.lock().unwrap() {
+        if let Some((ref recording, _)) = *imp.recording.lock() {
             recording.stop().await;
             return;
         }
@@ -194,7 +194,9 @@ impl Window {
                 obj.on_recording_duration_notify(recording);
             })),
         ];
-        *imp.recording.lock().unwrap() = Some((recording.clone(), handler_ids));
+        imp.recording
+            .lock()
+            .replace((recording.clone(), handler_ids));
 
         let settings = Application::default().settings();
         let record_delay = settings.record_delay();
@@ -207,9 +209,7 @@ impl Window {
     fn toggle_pause(&self) -> Result<(), RecordingError> {
         let imp = self.imp();
 
-        let recording_lock = imp.recording.lock().unwrap();
-
-        if let Some((ref recording, _)) = *recording_lock {
+        if let Some((ref recording, _)) = *imp.recording.lock() {
             if matches!(recording.state(), RecordingState::Paused) {
                 recording.resume()?;
             } else {
@@ -223,7 +223,7 @@ impl Window {
     fn cancel_delay(&self) {
         let imp = self.imp();
 
-        if let Some((recording, handler_ids)) = imp.recording.lock().unwrap().take() {
+        if let Some((recording, handler_ids)) = imp.recording.lock().take() {
             utils::spawn(async move {
                 recording.cancel().await;
 
@@ -279,7 +279,7 @@ impl Window {
                     },
                 }
 
-                if let Some((recording, handler_ids)) = imp.recording.lock().unwrap().take() {
+                if let Some((recording, handler_ids)) = imp.recording.lock().take() {
                     for handler_id in handler_ids {
                         recording.disconnect(handler_id);
                     }
