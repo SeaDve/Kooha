@@ -6,7 +6,6 @@ license = "GPL-3.0-or-later"
 edition = "2021"
 
 [dependencies]
-parking_lot = "0.12.1"
 thiserror = "1.0.31"
 error-stack = "0.1.1"
 tracing = "0.1.36"

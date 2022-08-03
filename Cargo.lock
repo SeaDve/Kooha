@@ -958,7 +958,6 @@ dependencies = [
  "gtk4",
  "libadwaita",
  "once_cell",
- "parking_lot",
  "thiserror",
  "tracing",
  "tracing-subscriber",

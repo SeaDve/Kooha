@@ -6,9 +6,8 @@ use gtk::{
     glib::{self, clone},
     CompositeTemplate,
 };
-use parking_lot::Mutex;
 
-use std::{path::PathBuf, time::Duration};
+use std::{cell::RefCell, path::PathBuf, time::Duration};
 
 use crate::{
     config::PROFILE,
@@ -45,7 +44,7 @@ mod imp {
         #[template_child]
         pub(super) flushing_page: TemplateChild<gtk::Box>,
 
-        pub(super) recording: Mutex<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
+        pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
 
     #[glib::object_subclass]
@@ -117,7 +116,7 @@ impl Window {
     pub fn is_safe_to_close(&self) -> bool {
         self.imp()
             .recording
-            .lock()
+            .borrow()
             .as_ref()
             .map_or(true, |(ref recording, _)| {
                 matches!(
@@ -151,18 +150,8 @@ impl Window {
     async fn toggle_record(&self) {
         let imp = self.imp();
 
-        let mut recording: Option<Recording> = None;
-
-        {
-            let _lock = imp.recording.lock();
-
-            if let Some((ref tmp, _)) = *_lock {
-                recording = Some(tmp.clone());
-            }
-        }
-
-        if let Some(ref recording) = recording.take() {
-            recording.stop().await;
+        if let Some((ref recording, _)) = *imp.recording.borrow() {
+            recording.stop();
             return;
         }
 
@@ -180,8 +169,7 @@ impl Window {
             })),
         ];
         imp.recording
-            .lock()
-            .replace((recording.clone(), handler_ids));
+            .replace(Some((recording.clone(), handler_ids)));
 
         let settings = Application::default().settings();
         let record_delay = settings.record_delay();
@@ -194,7 +182,7 @@ impl Window {
     fn toggle_pause(&self) -> Result<(), RecordingError> {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.lock() {
+        if let Some((ref recording, _)) = *imp.recording.borrow() {
             if matches!(recording.state(), RecordingState::Paused) {
                 recording.resume()?;
             } else {
@@ -208,7 +196,7 @@ impl Window {
     fn cancel_delay(&self) {
         let imp = self.imp();
 
-        if let Some((recording, handler_ids)) = imp.recording.lock().take() {
+        if let Some((recording, handler_ids)) = imp.recording.take() {
             utils::spawn(async move {
                 recording.cancel().await;
 
@@ -241,7 +229,7 @@ impl Window {
             },
         }
 
-        if let Some((recording, handler_ids)) = imp.recording.lock().take() {
+        if let Some((recording, handler_ids)) = imp.recording.take() {
             for handler_id in handler_ids {
                 recording.disconnect(handler_id);
             }
@@ -269,7 +257,7 @@ impl Window {
 
         let state = imp
             .recording
-            .lock()
+            .borrow()
             .as_ref()
             .map_or(RecordingState::Null, |(recording, _)| recording.state());
 

@@ -363,7 +363,7 @@ impl Recording {
         Ok(())
     }
 
-    pub async fn stop(&self) {
+    pub fn stop(&self) {
         let state = self.state();
 
         if matches!(
@@ -376,12 +376,14 @@ impl Recording {
 
         if let Err(err) = self.stop_inner() {
             if let Some(session) = self.imp().session.take() {
-                if let Err(err) = session.close().await {
-                    tracing::warn!(
-                        "Failed to close session on failed to start recording: {:?}",
-                        err
-                    );
-                };
+                utils::spawn(async move {
+                    if let Err(err) = session.close().await {
+                        tracing::warn!(
+                            "Failed to close session on failed to start recording: {:?}",
+                            err
+                        );
+                    };
+                });
             }
 
             self.set_state(RecordingState::finished_err(err));
