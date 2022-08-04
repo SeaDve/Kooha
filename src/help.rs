@@ -18,7 +18,10 @@ impl fmt::Display for Help {
 
 pub trait ResultExt {
     fn attach_help(self, msg: &str) -> Self;
-    fn attach_help_lazy(self, msg_func: impl FnOnce() -> String) -> Self;
+    fn attach_help_lazy<F, O>(self, msg_func: F) -> Self
+    where
+        F: FnOnce() -> O,
+        O: fmt::Display + Send + Sync + 'static;
 }
 
 impl<T, C> ResultExt for Result<T, C> {
@@ -31,7 +34,11 @@ impl<T, C> ResultExt for Result<T, C> {
     }
 
     #[track_caller]
-    fn attach_help_lazy(self, msg_func: impl FnOnce() -> String) -> Self {
+    fn attach_help_lazy<F, O>(self, msg_func: F) -> Self
+    where
+        F: FnOnce() -> O,
+        O: fmt::Display + Send + Sync + 'static,
+    {
         match self {
             Ok(ok) => Ok(ok),
             Err(report) => Err(report.attach(msg_func())),
