@@ -31,11 +31,6 @@ use crate::{
 static PORTAL_ERROR_HELP: Lazy<String> = Lazy::new(|| {
     gettext("Make sure to check for the runtime dependencies and <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>.")
 });
-static PIPELINE_ERROR_HELP: Lazy<String> = Lazy::new(|| {
-    gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>.")
-});
-static WRITE_ERROR_HELP: Lazy<String> =
-    Lazy::new(|| gettext("Make sure that the saving location exists or is accessible."));
 
 #[derive(Debug, Default, Clone, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
@@ -306,7 +301,7 @@ impl Recording {
             .build()
             .change_context(RecordingError::Other)
             .attach_printable("failed to build pipeline")
-            .attach_help(&PIPELINE_ERROR_HELP)?;
+            .attach_help_lazy(|| gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."))?;
         imp.pipeline.set(pipeline.clone()).unwrap();
         pipeline
             .bus()
@@ -512,9 +507,9 @@ impl Recording {
                     .change_context(RecordingError::Other);
 
                 if e.error().matches(gst::ResourceError::OpenWrite) {
-                    self.set_state(RecordingState::Finished(Rc::new(
-                        state.attach_help(&WRITE_ERROR_HELP),
-                    )));
+                    self.set_state(RecordingState::Finished(Rc::new(state.attach_help_lazy(
+                        || gettext("Make sure that the saving location exists or is accessible."),
+                    ))));
                 } else {
                     self.set_state(RecordingState::Finished(Rc::new(state)));
                 }
