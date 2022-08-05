@@ -14,7 +14,7 @@ use self::{
     handle_token::HandleToken, object_path::ObjectPath, window_identifier::WindowIdentifier,
 };
 
-// TODO add timeout limit
+const DEFAULT_TIMEOUT_MS: i32 = 5000;
 
 #[derive(Debug)]
 
@@ -143,7 +143,7 @@ impl ScreencastSession {
                 None,
                 None,
                 gio::DBusCallFlags::NONE,
-                -1,
+                DEFAULT_TIMEOUT_MS,
             )
             .await
             .report()
@@ -263,7 +263,7 @@ impl ScreencastSession {
                         .to_variant(),
                 ),
                 gio::DBusCallFlags::NONE,
-                -1,
+                DEFAULT_TIMEOUT_MS,
                 gio::UnixFDList::NONE,
             )
             .await
@@ -318,10 +318,8 @@ async fn screencast_request_call(
         Some(&request_path),
         None,
         gio::DBusSignalFlags::NONE,
-        move |_connection, _sender_name, object_path, _interface_name, _signal_name, output| {
+        move |_connection, _sender_name, _object_path, _interface_name, _signal_name, output| {
             if let Some(tx) = tx.take() {
-                tracing::info!("Received response to request {}", object_path);
-
                 let _ = tx.send(output.clone());
             } else {
                 tracing::warn!("Received another response for already finished request");
@@ -329,17 +327,21 @@ async fn screencast_request_call(
         },
     );
 
-    tracing::info!("Subscribed to request response {}", request_path);
-
     let (path, response_variant) = futures_util::try_join!(
         async {
             proxy
-                .call_future(method, Some(parameters), gio::DBusCallFlags::NONE, -1)
+                .call_future(
+                    method,
+                    Some(parameters),
+                    gio::DBusCallFlags::NONE,
+                    DEFAULT_TIMEOUT_MS,
+                )
                 .await
                 .report()
                 .change_context(ScreencastSessionError::Other)
         },
         async {
+            // TODO Add timeout
             rx.await
                 .report()
                 .change_context(ScreencastSessionError::Cancelled)
