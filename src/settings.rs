@@ -5,7 +5,7 @@ use gtk::{gio, glib};
 
 use std::path::{Path, PathBuf};
 
-use crate::config::APP_ID;
+use crate::{config::APP_ID, utils};
 
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
 #[gen_settings_skip(key_name = "saving-location")]
@@ -81,7 +81,7 @@ impl Settings {
 }
 
 fn is_accessible(path: &Path) -> bool {
-    if !ashpd::is_sandboxed() {
+    if !utils::is_flatpak() {
         return true;
     }
 

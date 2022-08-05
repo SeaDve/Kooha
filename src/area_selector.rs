@@ -1,9 +1,8 @@
 use adw::subclass::prelude::*;
-use ashpd::zbus;
 use error_stack::{Context, IntoReport, Report, Result, ResultExt};
 use futures_channel::oneshot::{self, Sender};
 use gtk::{
-    gdk,
+    gdk, gio,
     glib::{self, clone, signal::Inhibit},
     graphene::{Point, Rect, Size},
     gsk,
@@ -222,41 +221,40 @@ impl Context for ShellWindowEvalError {}
 
 async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), ShellWindowEvalError> {
     let reverse_keyword = if is_enabled { "" } else { "un" };
-    let command = format!(
+    let script = format!(
         "global.display.focus_window.{}{}()",
         reverse_keyword, method
     );
 
-    let connection = zbus::Connection::session()
+    let connection = gio::bus_get_future(gio::BusType::Session)
         .await
         .report()
         .change_context(ShellWindowEvalError)
-        .attach_printable("Failed to create zbus connection")?;
+        .attach_printable("Failed to get session bus connection")?;
     let reply = connection
-        .call_method(
+        .call_future(
             Some("org.gnome.Shell"),
             "/org/gnome/Shell",
-            Some("org.gnome.Shell"),
+            "org.gnome.Shell",
             "Eval",
-            &command,
+            Some(&(&script,).to_variant()),
+            None,
+            gio::DBusCallFlags::NONE,
+            -1,
         )
         .await
         .report()
         .change_context(ShellWindowEvalError)
-        .attach_printable_lazy(|| format!("Failed to eval command `{}`", &command))?;
-    let (is_success, message) = reply
-        .body::<(bool, String)>()
-        .report()
-        .change_context(ShellWindowEvalError)
-        .attach_printable("Expected (bool, String) type reply")?;
+        .attach_printable_lazy(|| format!("Failed to call shell eval with script `{}`", &script))?;
+    let (is_success, message) = reply.get::<(bool, String)>().ok_or_else(|| {
+        Report::new(ShellWindowEvalError).attach_printable("Expected (bool, String) type reply")
+    })?;
 
     if !is_success {
-        return Err(Report::new(ShellWindowEvalError)).attach_printable_lazy(|| {
-            format!(
-                "Shell replied with no success. Got a message of {}",
-                message
-            )
-        });
+        return Err(Report::new(ShellWindowEvalError).attach_printable(format!(
+            "Shell replied with no success. Got a message of {}",
+            message
+        )));
     };
 
     Ok(())

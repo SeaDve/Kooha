@@ -7,7 +7,7 @@ use std::{
     io::{prelude::*, BufReader},
 };
 
-use crate::config::{APP_ID, VERSION};
+use crate::{config::{APP_ID, VERSION}, utils};
 
 pub fn present(transient_for: Option<&impl IsA<gtk::Window>>) {
     let win = adw::AboutWindow::builder()
@@ -51,7 +51,7 @@ pub fn present(transient_for: Option<&impl IsA<gtk::Window>>) {
 }
 
 fn debug_info() -> String {
-    let is_flatpak = ashpd::is_sandboxed();
+    let is_flatpak = utils::is_flatpak();
     let distribution = distribution_info().unwrap_or_else(|| "<unknown>".into());
     let desktop_session = env::var("DESKTOP_SESSION").unwrap_or_else(|_| "<unknown>".into());
     let display_server = env::var("XDG_SESSION_TYPE").unwrap_or_else(|_| "<unknown>".into());

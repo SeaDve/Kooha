@@ -1,7 +1,3 @@
-use ashpd::{
-    desktop::screencast::{CursorMode, PersistMode, SourceType},
-    enumflags2::BitFlags,
-};
 use error_stack::{Context, IntoReport, Report, Result, ResultExt};
 use gettextrs::gettext;
 use gst::prelude::*;
@@ -22,7 +18,9 @@ use crate::{
     clock_time::ClockTime,
     help::ResultExt as HelpResultExt,
     pipeline_builder::PipelineBuilder,
-    screencast_session::{ScreencastSession, ScreencastSessionError},
+    screencast_session::{
+        CursorMode, PersistMode, ScreencastSession, ScreencastSessionError, SourceType,
+    },
     settings::CaptureMode,
     timer::Timer,
     utils, Application,
@@ -210,16 +208,16 @@ impl Recording {
             screencast_session.available_source_types().await
         );
         let (streams, restore_token, fd) = match screencast_session
-            .start(
+            .begin(
                 if settings.show_pointer() {
-                    BitFlags::<CursorMode>::from_flag(CursorMode::Embedded)
+                    CursorMode::EMBEDDED
                 } else {
-                    BitFlags::<CursorMode>::from_flag(CursorMode::Hidden)
+                    CursorMode::HIDDEN
                 },
                 if settings.capture_mode() == CaptureMode::Selection {
-                    BitFlags::<SourceType>::from_flag(SourceType::Monitor)
+                    SourceType::MONITOR
                 } else {
-                    SourceType::Monitor | SourceType::Window
+                    SourceType::MONITOR | SourceType::WINDOW
                 },
                 settings.capture_mode() == CaptureMode::MonitorWindow,
                 Some(&settings.screencast_restore_token()),

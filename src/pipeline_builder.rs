@@ -1,4 +1,3 @@
-use ashpd::desktop::screencast::Stream;
 use error_stack::{Context, IntoReport, Result, ResultExt};
 use gtk::{
     glib,
@@ -12,7 +11,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use crate::settings::VideoFormat;
+use crate::{screencast_session::Stream, settings::VideoFormat};
 
 const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
@@ -161,7 +160,7 @@ impl PipelineAssembler {
             .enumerate()
             .map(|(sink_num, stream)| {
                 let pad = format!("sink_{}::xpos={}", sink_num, current_pos);
-                let stream_width = stream.size().unwrap().0;
+                let stream_width = stream.size.0;
                 current_pos += stream_width;
                 pad
             })
@@ -176,12 +175,12 @@ impl PipelineAssembler {
     fn pipewiresrc(&self) -> String {
         if self.has_single_stream() {
             // If there is a single stream, connect pipewiresrc directly to queue0.
-            let node_id = self.streams()[0].pipe_wire_node_id();
+            let node_id = self.streams()[0].node_id;
             return format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! queue0.", self.fd(), node_id, self.framerate());
         }
 
         let pipewiresrc_list: Vec<String> = self.streams().iter().map(|stream| {
-            let node_id = stream.pipe_wire_node_id();
+            let node_id = stream.node_id;
             format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! comp.", self.fd(), node_id, self.framerate())
         }).collect();
 
@@ -224,9 +223,7 @@ impl PipelineAssembler {
             // We could freely get the first stream because screencast portal won't allow multiple
             // sources selection if it is selection mode. Thus, there will be always single stream
             // present when we have coordinates. (The same applies with videocrop).
-            let stream = &self.streams()[0];
-            let width = stream.size().unwrap().0;
-            let height = stream.size().unwrap().1;
+            let (width, height) = self.streams()[0].size;
 
             Some(format!(
                 "videoscale ! video/x-raw, width={}, height={}",
@@ -242,7 +239,7 @@ impl PipelineAssembler {
             let stream = &self.streams()[0];
 
             let actual_screen = self.builder.actual_screen.as_ref().unwrap();
-            let (stream_width, stream_height) = stream.size().unwrap();
+            let (stream_width, stream_height) = stream.size;
 
             let scale_factor = stream_width as f32 / actual_screen.width();
             let coords = coords.scale(scale_factor, scale_factor);
