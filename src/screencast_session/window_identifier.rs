@@ -25,7 +25,7 @@ impl fmt::Display for WindowIdentifier {
             WindowIdentifier::Wayland { handle, .. } => {
                 write!(f, "wayland:{}", handle.as_deref().unwrap_or_default())
             }
-            WindowIdentifier::X11(xid) => write!(f, "x11:0x{:x}", xid),
+            WindowIdentifier::X11(xid) => write!(f, "x11:{:#x}", xid),
             WindowIdentifier::None => f.write_str(""),
         }
     }
