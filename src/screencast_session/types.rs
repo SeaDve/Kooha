@@ -29,7 +29,6 @@ pub enum PersistMode {
 
 type StreamVariantType = (u32, HashMap<String, glib::Variant>);
 
-#[allow(dead_code)]
 #[derive(Debug)]
 pub struct Stream {
     node_id: u32,
