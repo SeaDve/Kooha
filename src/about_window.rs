@@ -7,7 +7,10 @@ use std::{
     io::{prelude::*, BufReader},
 };
 
-use crate::{config::{APP_ID, VERSION}, utils};
+use crate::{
+    config::{APP_ID, VERSION},
+    utils,
+};
 
 pub fn present(transient_for: Option<&impl IsA<gtk::Window>>) {
     let win = adw::AboutWindow::builder()
