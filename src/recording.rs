@@ -329,6 +329,7 @@ impl Recording {
     }
 
     pub fn pause(&self) -> Result<(), RecordingError> {
+        // TODO maybe use report!, bail! or ensure! macros
         if !matches!(self.state(), RecordingState::Recording) {
             return Err(Report::new(RecordingError::Other))
                 .attach_printable("recording can only be paused from recording state");
@@ -499,6 +500,8 @@ impl Recording {
                 if let Some(source_id) = imp.duration_source_id.take() {
                     source_id.remove();
                 }
+
+                // TODO print error quarks for all glib::Error
 
                 let state = Report::from(e.error())
                     .attach_printable(e.debug().unwrap_or_else(|| "<no debug>".to_string()))
