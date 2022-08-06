@@ -8,7 +8,7 @@ use gtk::{
 
 use std::{cell::RefCell, fmt};
 
-static WINDOW_HANDLE_KEY: &str = "kooha-wayland-window-handle";
+const WINDOW_HANDLE_KEY: &str = "kooha-wayland-window-handle";
 
 pub enum WindowIdentifier {
     Wayland {
