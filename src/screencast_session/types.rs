@@ -98,7 +98,7 @@ mod tests {
 
     #[test]
     fn stream_from_variant() {
-        let variant = glib::Variant::parse(None, "[(uint32 63, {'id': <'0'>, 'source_type': <uint32 1>, 'position': <(2, 2)>, 'size': <(1680, 1050)>})]").unwrap();
+        let variant = glib::Variant::parse(None, "(uint32 63, {'id': <'0'>, 'source_type': <uint32 1>, 'position': <(2, 2)>, 'size': <(1680, 1050)>})").unwrap();
         assert_eq!(variant.type_(), Stream::static_variant_type());
 
         let stream = variant.get::<Stream>().unwrap();
@@ -112,8 +112,7 @@ mod tests {
     #[test]
     fn stream_from_variant_optional() {
         let variant =
-            glib::Variant::parse(Some(&Stream::static_variant_type()), "[(uint32 63, {})]")
-                .unwrap();
+            glib::Variant::parse(Some(&Stream::static_variant_type()), "(uint32 63, {})").unwrap();
 
         let stream = variant.get::<Stream>().unwrap();
         assert_eq!(stream.node_id(), 63);
