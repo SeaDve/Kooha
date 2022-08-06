@@ -19,12 +19,6 @@ pub enum WindowIdentifier {
     None,
 }
 
-impl Default for WindowIdentifier {
-    fn default() -> Self {
-        Self::None
-    }
-}
-
 impl fmt::Display for WindowIdentifier {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
