@@ -150,6 +150,8 @@ impl Window {
             .min_content_width(360)
             .build();
 
+        // TODO hide detailed error report by default
+
         let err_dialog = adw::MessageDialog::builder()
             .heading(&err.to_string())
             .body_use_markup(true)
