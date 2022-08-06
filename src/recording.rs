@@ -16,7 +16,7 @@ use crate::{
     area_selector::{AreaSelector, Response as AreaSelectorResponse},
     audio_device::{self, Class as AudioDeviceClass},
     clock_time::ClockTime,
-    help::ResultExt as HelpResultExt,
+    help::{ReportExt, ResultExt as HelpResultExt},
     pipeline_builder::PipelineBuilder,
     screencast_session::{
         CursorMode, PersistMode, ScreencastSession, ScreencastSessionError, SourceType,
@@ -198,7 +198,7 @@ impl Recording {
         let screencast_session = ScreencastSession::new()
             .await
             .change_context(RecordingError::Other)
-            .attach_help(&PORTAL_ERROR_HELP)?;
+            .attach_help_lazy(|| PORTAL_ERROR_HELP.as_str())?;
         tracing::debug!(
             "Available cursor modes: {:?}",
             screencast_session.available_cursor_modes().await
@@ -234,8 +234,8 @@ impl Recording {
 
                 return Err(err
                     .change_context(RecordingError::Other)
-                    .attach_printable("Failed to start screencast session"))
-                .attach_help(&PORTAL_ERROR_HELP)?;
+                    .attach_printable("Failed to start screencast session")
+                    .attach_help(&PORTAL_ERROR_HELP));
             }
         };
         imp.session.replace(Some(screencast_session));
@@ -500,16 +500,16 @@ impl Recording {
                     source_id.remove();
                 }
 
-                let state = Err(Report::from(e.error()))
-                    .attach_printable_lazy(|| e.debug().unwrap_or_else(|| "<no debug>".to_string()))
+                let state = Report::from(e.error())
+                    .attach_printable(e.debug().unwrap_or_else(|| "<no debug>".to_string()))
                     .change_context(RecordingError::Other);
 
                 if e.error().matches(gst::ResourceError::OpenWrite) {
-                    self.set_state(RecordingState::Finished(Rc::new(state.attach_help_lazy(
-                        || gettext("Make sure that the saving location exists or is accessible."),
+                    self.set_state(RecordingState::finished_err(state.attach_help(&gettext(
+                        "Make sure that the saving location exists or is accessible.",
                     ))));
                 } else {
-                    self.set_state(RecordingState::Finished(Rc::new(state)));
+                    self.set_state(RecordingState::finished_err(state));
                 }
 
                 Continue(false)
