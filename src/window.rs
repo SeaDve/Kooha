@@ -129,15 +129,35 @@ impl Window {
     }
 
     pub fn present_error<T>(&self, err: &Report<T>) {
+        let err_buffer = gtk::TextBuffer::builder()
+            .text(&format!("{:?}", err))
+            .build();
+
+        let err_view = gtk::TextView::builder()
+            .buffer(&err_buffer)
+            .editable(false)
+            .monospace(true)
+            .top_margin(6)
+            .bottom_margin(6)
+            .left_margin(6)
+            .right_margin(6)
+            .build();
+        err_view.add_css_class("card");
+
+        let scrolled_window = gtk::ScrolledWindow::builder()
+            .child(&err_view)
+            .min_content_height(180)
+            .min_content_width(360)
+            .build();
+
         let err_dialog = adw::MessageDialog::builder()
             .heading(&err.to_string())
             .body_use_markup(true)
             .default_response("ok")
             .transient_for(self)
             .modal(true)
+            .extra_child(&scrolled_window)
             .build();
-
-        // TODO add widget to show detailed error
 
         if let Some(ref help) = err.downcast_ref::<Help>() {
             err_dialog.set_body(&format!("<b>{}</b>: {}", gettext("Help"), help));
