@@ -227,7 +227,8 @@ impl PipelineAssembler {
 
             Some(format!(
                 "videoscale ! video/x-raw, width={}, height={}",
-                width, height
+                round_to_even(width),
+                round_to_even(height)
             ))
         } else {
             None
@@ -252,10 +253,10 @@ impl PipelineAssembler {
             // It is a requirement for x264enc to have even resolution.
             format!(
                 "videocrop top={} left={} right={} bottom={}",
-                round_to_even(top_crop),
-                round_to_even(left_crop),
-                round_to_even(right_crop),
-                round_to_even(bottom_crop)
+                round_to_even_f32(top_crop),
+                round_to_even_f32(left_crop),
+                round_to_even_f32(right_crop),
+                round_to_even_f32(bottom_crop)
             )
         })
     }
@@ -334,8 +335,12 @@ impl PipelineAssembler {
     }
 }
 
-fn round_to_even(number: f32) -> i32 {
+fn round_to_even_f32(number: f32) -> i32 {
     number as i32 / 2 * 2
+}
+
+fn round_to_even(number: i32) -> i32 {
+    number / 2 * 2
 }
 
 fn ideal_thread_count() -> u32 {
@@ -347,21 +352,39 @@ fn ideal_thread_count() -> u32 {
 mod test {
     use super::*;
 
+    macro_rules! assert_even {
+        ($number:expr) => {
+            assert_eq!(round_to_even($number) % 2, 0)
+        };
+    }
+
     #[test]
     fn odd_round_to_even() {
-        assert_eq!(round_to_even(3.0), 2);
-        assert_eq!(round_to_even(99.0), 98);
+        assert_even!(round_to_even(3));
+        assert_even!(round_to_even(3));
+    }
+
+    #[test]
+    fn odd_round_to_even_f32() {
+        assert_even!(round_to_even_f32(3.0));
+        assert_even!(round_to_even_f32(99.0));
     }
 
     #[test]
     fn even_round_to_even() {
-        assert_eq!(round_to_even(50.0), 50);
-        assert_eq!(round_to_even(4.0), 4);
+        assert_even!(round_to_even(50));
+        assert_even!(round_to_even(4));
     }
 
     #[test]
-    fn float_round_to_even() {
-        assert_eq!(round_to_even(5.3), 4);
-        assert_eq!(round_to_even(2.9), 2);
+    fn even_round_to_even_f32() {
+        assert_even!(round_to_even_f32(50.0));
+        assert_even!(round_to_even_f32(4.0));
+    }
+
+    #[test]
+    fn float_round_to_even_f32() {
+        assert_even!(round_to_even_f32(5.3));
+        assert_even!(round_to_even_f32(2.9));
     }
 }
