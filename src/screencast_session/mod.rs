@@ -174,24 +174,27 @@ impl ScreencastSession {
 
         tracing::info!("Started screencast session");
 
-        let streams = response
-            .get("streams")
-            .ok_or_else(|| {
-                Report::new(ScreencastSessionError::Other)
-                    .attach_printable("No streams received from response")
-            })?
-            .get::<Vec<Stream>>()
-            .ok_or_else(|| {
-                Report::new(ScreencastSessionError::Other)
-                    .attach_printable("Invalid streams signature")
-            })?;
+        let streams_variant = response.get("streams").ok_or_else(|| {
+            Report::new(ScreencastSessionError::Other)
+                .attach_printable("No streams received from response")
+        })?;
+
+        let streams = streams_variant.get::<Vec<Stream>>().ok_or_else(|| {
+            Report::new(ScreencastSessionError::Other).attach_printable(format!(
+                "Expected streams signature of {}. Got {}",
+                <Vec<Stream>>::static_variant_type(),
+                streams_variant.type_()
+            ))
+        })?;
+
+        tracing::info!("Received streams {:?}", streams);
 
         match response.get("restore_token") {
             Some(restore_token) => Ok((
                 streams,
                 Some(restore_token.get::<String>().ok_or_else(|| {
                     Report::new(ScreencastSessionError::Other)
-                        .attach_printable("Invalid streams signature")
+                        .attach_printable("Invalid restore token signature")
                 })?),
             )),
             None => Ok((streams, None)),
