@@ -360,8 +360,8 @@ mod test {
 
     #[test]
     fn odd_round_to_even() {
-        assert_even!(round_to_even(3));
-        assert_even!(round_to_even(3));
+        assert_even!(round_to_even(5));
+        assert_even!(round_to_even(101));
     }
 
     #[test]
@@ -378,8 +378,8 @@ mod test {
 
     #[test]
     fn even_round_to_even_f32() {
-        assert_even!(round_to_even_f32(50.0));
-        assert_even!(round_to_even_f32(4.0));
+        assert_even!(round_to_even_f32(300.0));
+        assert_even!(round_to_even_f32(6.0));
     }
 
     #[test]
