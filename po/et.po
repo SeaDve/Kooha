@@ -7,112 +7,117 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-08-06 00:23+0000\n"
+"Last-Translator: Henri <contact@hen.ee>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/kooha/pot-file/"
+"et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Elegantselt salvesta ekraani"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;ekraanisalvestus;salvestaja;ekraan;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "Salvesta ekraani lihtsalt ja intuitiivselt ilma segajateta."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha on lihtne minimalistlik ekraanisalvestaja. Pole vaja seadistada, "
+"lihtsalt vajutad salvesta nupule."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Kooha põhifunktsioonid:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Salvesta ekraani ilma vaevata."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
+msgstr "🎙️ Lindista mikrofonist, arvutist või mõlemad samal ajal."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 WebM, MP4, GIF ja MKV tugi."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Vali mitmetest allikatest."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Valikuline riistvara kiirendatud kodeerimine"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Vali monitor või aken, mida salvestada."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Vali ala, mida salvestada ekraanilt."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Seadista viivitus, enne kui hakkad salvestama."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Peida või näita kursorit."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Vali salvestuse salvestamisasukoht."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Kasuta kasulikke kiirklahve."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
 msgid "Dave Patrick"
-msgstr ""
+msgstr "Dave Patrick"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "Üldine"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Ava valikud"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Näita kiirklahve"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Lahku"
 
 #: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
 msgid "Recording"
-msgstr ""
+msgstr "Salvestamine"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
@@ -124,11 +129,11 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
 msgid "Cancel Delay"
-msgstr ""
+msgstr "Tühista viivitus"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
-msgstr ""
+msgstr "Sätted"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
@@ -144,7 +149,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:31
 msgid "Main Menu"
-msgstr ""
+msgstr "Valikud"
 
 #: data/resources/ui/window.ui:47
 msgid "Normal"
@@ -176,15 +181,15 @@ msgstr ""
 
 #: data/resources/ui/window.ui:128
 msgid "Record"
-msgstr ""
+msgstr "Salvesta"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
-msgstr ""
+msgstr "Peata"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr ""
+msgstr "Salvestus algab…"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
@@ -192,68 +197,68 @@ msgstr ""
 
 #: data/resources/ui/window.ui:283
 msgid "_Delay"
-msgstr ""
+msgstr "_Viivitus"
 
 #: data/resources/ui/window.ui:285
 msgid "None"
-msgstr ""
+msgstr "Pole"
 
 #: data/resources/ui/window.ui:290
 msgid "5 seconds"
-msgstr ""
+msgstr "5 sekundit"
 
 #: data/resources/ui/window.ui:295
 msgid "10 seconds"
-msgstr ""
+msgstr "10 sekundit"
 
 #: data/resources/ui/window.ui:301
 msgid "_Video Format"
-msgstr ""
+msgstr "_Video formaat"
 
 #: data/resources/ui/window.ui:303
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/resources/ui/window.ui:308
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/resources/ui/window.ui:313
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:318
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:324
 msgid "_Save to…"
-msgstr ""
+msgstr "_Salvesta asukohta…"
 
 #: data/resources/ui/window.ui:330
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Kiirklahvid"
 
 #: data/resources/ui/window.ui:334
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Teave"
 
 #: src/application.rs:138
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Vali salvestusasukoha kaust"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr ""
+msgstr "Henri &lt;contact@hen.ee&gt;, 2022"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
-msgstr ""
+msgstr "Autoriõigus 2021 Dave Patrick"
 
 #: src/application.rs:187
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/application.rs:208
 msgid "Screencast Recorded!"
