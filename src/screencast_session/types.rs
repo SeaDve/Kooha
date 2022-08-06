@@ -1,4 +1,4 @@
-use gtk::glib::{self, bitflags::bitflags};
+use gtk::glib::{self, bitflags::bitflags, FromVariant, StaticVariantType};
 
 use std::collections::HashMap;
 
@@ -26,6 +26,8 @@ pub enum PersistMode {
     Application = 1,
     ExplicitlyRevoked = 2,
 }
+
+type StreamVariantType = (u32, HashMap<String, glib::Variant>);
 
 #[allow(dead_code)]
 #[derive(Debug)]
@@ -60,9 +62,9 @@ impl Stream {
     }
 }
 
-impl glib::FromVariant for Stream {
+impl FromVariant for Stream {
     fn from_variant(variant: &glib::Variant) -> Option<Self> {
-        let (node_id, props) = variant.get::<(u32, HashMap<String, glib::Variant>)>()?;
+        let (node_id, props) = variant.get::<StreamVariantType>()?;
         Some(Self {
             node_id,
             id: props.get("id").and_then(|id| id.get()),
@@ -76,8 +78,48 @@ impl glib::FromVariant for Stream {
     }
 }
 
-impl glib::StaticVariantType for Stream {
+impl StaticVariantType for Stream {
     fn static_variant_type() -> std::borrow::Cow<'static, glib::VariantTy> {
-        <(u32, HashMap<String, glib::Variant>)>::static_variant_type()
+        <StreamVariantType>::static_variant_type()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn stream_static_variant_type() {
+        assert_eq!(
+            Stream::static_variant_type(),
+            glib::VariantTy::new("(ua{sv})").unwrap()
+        );
+    }
+
+    #[test]
+    fn stream_from_variant() {
+        let variant = glib::Variant::parse(None, "[(uint32 63, {'id': <'0'>, 'source_type': <uint32 1>, 'position': <(2, 2)>, 'size': <(1680, 1050)>})]").unwrap();
+        assert_eq!(variant.type_(), Stream::static_variant_type());
+
+        let stream = variant.get::<Stream>().unwrap();
+        assert_eq!(stream.node_id(), 63);
+        assert_eq!(stream.id(), Some("0"));
+        assert_eq!(stream.position(), Some((2, 2)));
+        assert_eq!(stream.size(), Some((1680, 1050)));
+        assert_eq!(stream.source_type(), Some(SourceType::MONITOR));
+    }
+
+    #[test]
+    fn stream_from_variant_optional() {
+        let variant =
+            glib::Variant::parse(Some(&Stream::static_variant_type()), "[(uint32 63, {})]")
+                .unwrap();
+
+        let stream = variant.get::<Stream>().unwrap();
+        assert_eq!(stream.node_id(), 63);
+        assert_eq!(stream.id(), None);
+        assert_eq!(stream.position(), None);
+        assert_eq!(stream.size(), None);
+        assert_eq!(stream.source_type(), None);
     }
 }
