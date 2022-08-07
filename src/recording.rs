@@ -1,4 +1,4 @@
-use error_stack::{Context, IntoReport, Report, Result, ResultExt};
+use anyhow::{anyhow, ensure, Context, Error, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::glib::{self, clone, subclass::prelude::*};
@@ -6,7 +6,6 @@ use once_cell::{sync::Lazy, unsync::OnceCell};
 
 use std::{
     cell::{Cell, RefCell},
-    fmt,
     path::PathBuf,
     rc::Rc,
     time::Duration,
@@ -15,12 +14,11 @@ use std::{
 use crate::{
     area_selector::{AreaSelector, Response as AreaSelectorResponse},
     audio_device::{self, Class as AudioDeviceClass},
+    cancelled::Cancelled,
     clock_time::ClockTime,
-    help::{ReportExt, ResultExt as HelpResultExt},
+    help::{ErrorExt, ResultExt},
     pipeline_builder::PipelineBuilder,
-    screencast_session::{
-        CursorMode, PersistMode, ScreencastSession, ScreencastSessionError, SourceType,
-    },
+    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
     settings::CaptureMode,
     timer::Timer,
     utils, Application,
@@ -41,7 +39,7 @@ pub enum RecordingState {
     Recording,
     Paused,
     Flushing,
-    Finished(Rc<Result<PathBuf, RecordingError>>),
+    Finished(Rc<Result<PathBuf>>),
 }
 
 impl RecordingState {
@@ -49,7 +47,7 @@ impl RecordingState {
         Self::Finished(Rc::new(Ok(val)))
     }
 
-    fn finished_err(err: Report<RecordingError>) -> Self {
+    fn finished_err(err: Error) -> Self {
         Self::Finished(Rc::new(Err(err)))
     }
 
@@ -68,37 +66,6 @@ impl RecordingState {
             (Self::Finished(_), Self::Finished(_)) => true,
             _ => false,
         }
-    }
-}
-
-#[derive(Debug)]
-pub enum RecordingError {
-    NoDeviceFound(AudioDeviceClass),
-    Cancelled(String),
-    Other,
-}
-
-impl fmt::Display for RecordingError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            RecordingError::NoDeviceFound(class) => match class {
-                AudioDeviceClass::Sink => f.write_str(&gettext("No desktop speaker source found")),
-                AudioDeviceClass::Source => f.write_str(&gettext("No microphone found")),
-            },
-            RecordingError::Cancelled(task) => f.write_str(&gettext!("Cancelled {}", task)),
-            RecordingError::Other => f.write_str(&gettext("Something went wrong")),
-        }
-    }
-}
-
-impl Context for RecordingError {}
-
-impl RecordingError {
-    pub fn cancelled(task_name: &str) -> Report<Self> {
-        Report::new(RecordingError::Cancelled(format!(
-            "Cancelled {}",
-            task_name
-        )))
     }
 }
 
@@ -189,16 +156,16 @@ impl Recording {
         }
     }
 
-    async fn start_inner(&self, delay: Duration) -> Result<(), RecordingError> {
+    async fn start_inner(&self, delay: Duration) -> Result<()> {
         let imp = self.imp();
 
         let settings = Application::default().settings();
 
         // setup screencast session
-        let screencast_session = ScreencastSession::new()
-            .await
-            .change_context(RecordingError::Other)
-            .attach_help_lazy(|| PORTAL_ERROR_HELP.as_str())?;
+        let screencast_session = ScreencastSession::new().await.with_help(
+            || PORTAL_ERROR_HELP.as_str(),
+            || "Failed to start screencast session",
+        )?;
         tracing::debug!(
             "Available cursor modes: {:?}",
             screencast_session.available_cursor_modes().await
@@ -207,7 +174,7 @@ impl Recording {
             "Available source types: {:?}",
             screencast_session.available_source_types().await
         );
-        let (streams, restore_token, fd) = match screencast_session
+        let (streams, restore_token, fd) = screencast_session
             .begin(
                 if settings.show_pointer() {
                     CursorMode::EMBEDDED
@@ -224,20 +191,7 @@ impl Recording {
                 PersistMode::DoNot,
                 Application::default().main_window().as_ref(),
             )
-            .await
-        {
-            Ok(val) => val,
-            Err(err) => {
-                if matches!(err.current_context(), ScreencastSessionError::Cancelled) {
-                    return Err(RecordingError::cancelled("screencast session"));
-                }
-
-                return Err(err
-                    .change_context(RecordingError::Other)
-                    .attach_printable("Failed to start screencast session")
-                    .attach_help(&PORTAL_ERROR_HELP));
-            }
-        };
+            .await?;
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
@@ -257,7 +211,7 @@ impl Recording {
                         .actual_screen(screen);
                 }
                 AreaSelectorResponse::Cancelled => {
-                    return Err(RecordingError::cancelled("area selection"));
+                    return Err(Cancelled::new("area selection").into());
                 }
             }
         }
@@ -274,32 +228,32 @@ impl Recording {
         imp.timer.replace(Some(Timer::clone(&timer)));
         let timer_res = timer.await;
         self.set_state(RecordingState::Null);
-        if timer_res.is_cancelled() {
-            return Err(RecordingError::cancelled("timer"));
-        }
+
+        ensure!(!timer_res.is_cancelled(), Cancelled::new("timer"));
 
         // setup audio sources
         if settings.record_mic() {
             pipeline_builder.mic_source(
                 audio_device::find_default_name(AudioDeviceClass::Source)
                     .await
-                    .change_context(RecordingError::NoDeviceFound(AudioDeviceClass::Source))?,
+                    .context("No microphone source found")?,
             );
         }
         if settings.record_speaker() {
             pipeline_builder.speaker_source(
                 audio_device::find_default_name(AudioDeviceClass::Sink)
                     .await
-                    .change_context(RecordingError::NoDeviceFound(AudioDeviceClass::Sink))?,
+                    .context("No desktop speaker source found")?,
             );
         }
 
         // build pipeline
         let pipeline = pipeline_builder
             .build()
-            .change_context(RecordingError::Other)
-            .attach_printable("failed to build pipeline")
-            .attach_help_lazy(|| gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."))?;
+            .with_help(
+                || gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
+                ||"Failed to build pipeline"
+            )?;
         imp.pipeline.set(pipeline.clone()).unwrap();
         pipeline
             .bus()
@@ -319,42 +273,35 @@ impl Recording {
         )));
         pipeline
             .set_state(gst::State::Playing)
-            .report()
-            .change_context(RecordingError::Other)
-            .attach_printable("failed to set pipeline state to playing")?;
+            .context("Failed to initialize pipeline state to playing")?;
         // TODO Add preparing state
         self.update_duration();
 
         Ok(())
     }
 
-    pub fn pause(&self) -> Result<(), RecordingError> {
-        // TODO maybe use report!, bail! or ensure! macros
-        if !matches!(self.state(), RecordingState::Recording) {
-            return Err(Report::new(RecordingError::Other))
-                .attach_printable("recording can only be paused from recording state");
-        }
+    pub fn pause(&self) -> Result<()> {
+        ensure!(
+            matches!(self.state(), RecordingState::Recording),
+            "Recording can only be paused from recording state"
+        );
 
         self.pipeline()
             .set_state(gst::State::Paused)
-            .report()
-            .change_context(RecordingError::Other)
-            .attach_printable("failed to set pipeline state to paused")?;
+            .context("Failed to set pipeline state to paused")?;
 
         Ok(())
     }
 
-    pub fn resume(&self) -> Result<(), RecordingError> {
-        if matches!(self.state(), RecordingState::Paused) {
-            return Err(Report::new(RecordingError::Other))
-                .attach_printable("recording can only be resumed from paused state");
-        }
+    pub fn resume(&self) -> Result<()> {
+        ensure!(
+            matches!(self.state(), RecordingState::Paused),
+            "Recording can only be resumed from paused state"
+        );
 
         self.pipeline()
             .set_state(gst::State::Playing)
-            .report()
-            .change_context(RecordingError::Other)
-            .attach_printable("failed to set pipeline state to playing from paused")?;
+            .context("Failed to set pipeline state to playing from paused")?;
 
         Ok(())
     }
@@ -386,7 +333,7 @@ impl Recording {
         }
     }
 
-    fn stop_inner(&self) -> Result<(), RecordingError> {
+    fn stop_inner(&self) -> Result<()> {
         tracing::info!("Sending eos event to pipeline");
         self.pipeline().send_event(gst::event::Eos::new());
         self.set_state(RecordingState::Flushing);
@@ -421,8 +368,8 @@ impl Recording {
             source_id.remove();
         }
 
-        self.set_state(RecordingState::finished_err(RecordingError::cancelled(
-            "manually",
+        self.set_state(RecordingState::finished_err(anyhow!(
+            "Failed to start recording"
         )));
 
         // TODO delete recorded file
@@ -503,16 +450,18 @@ impl Recording {
 
                 // TODO print error quarks for all glib::Error
 
-                let state = Report::from(e.error())
-                    .attach_printable(e.debug().unwrap_or_else(|| "<no debug>".to_string()))
-                    .change_context(RecordingError::Other);
+                let error = Error::from(e.error())
+                    .context(e.debug().unwrap_or_else(|| "<no debug>".to_string()));
 
                 if e.error().matches(gst::ResourceError::OpenWrite) {
-                    self.set_state(RecordingState::finished_err(state.attach_help(&gettext(
-                        "Make sure that the saving location exists or is accessible.",
-                    ))));
+                    let error = error.help(
+                        gettext("Make sure that the saving location exists or is accessible."),
+                        "Failed to open file for writing",
+                    );
+
+                    self.set_state(RecordingState::finished_err(error));
                 } else {
-                    self.set_state(RecordingState::finished_err(state));
+                    self.set_state(RecordingState::finished_err(error));
                 }
 
                 Continue(false)

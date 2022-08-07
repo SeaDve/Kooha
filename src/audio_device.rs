@@ -1,8 +1,6 @@
-use error_stack::{Context, IntoReport, Report, Result, ResultExt};
+use anyhow::{anyhow, Context, Error, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
-
-use std::fmt;
 
 use crate::{help::ResultExt as HelpResultExt, THREAD_POOL};
 
@@ -30,36 +28,21 @@ impl Class {
     }
 }
 
-#[derive(Debug)]
-pub struct FindDefaultDeviceNameError;
-
-impl fmt::Display for FindDefaultDeviceNameError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("Default device name find error")
-    }
-}
-
-impl Context for FindDefaultDeviceNameError {}
-
-pub async fn find_default_name(class: Class) -> Result<String, FindDefaultDeviceNameError> {
+pub async fn find_default_name(class: Class) -> Result<String> {
     THREAD_POOL
         .push_future(move || find_default_name_inner(class))
-        .report()
-        .change_context(FindDefaultDeviceNameError)
-        .attach_printable("failed to push future to main thread pool")?
+        .context("Failed to push future to main thread pool")?
         .await
 }
 
-fn find_default_name_inner(class: Class) -> Result<String, FindDefaultDeviceNameError> {
+fn find_default_name_inner(class: Class) -> Result<String> {
     let device_monitor = gst::DeviceMonitor::new();
     device_monitor.add_filter(Some(class.as_str()), None);
 
-    device_monitor
-        .start()
-        .report()
-        .change_context(FindDefaultDeviceNameError)
-        .attach_printable("failed to start device monitor")
-        .attach_help_lazy(|| gettext("Make sure that you have pulseaudio in your system."))?;
+    device_monitor.start().map_err(Error::from).with_help(
+        || gettext("Make sure that you have pulseaudio in your system."),
+        || "Failed to start device monitor",
+    )?;
     let devices = device_monitor.devices();
     device_monitor.stop();
 
@@ -125,5 +108,5 @@ fn find_default_name_inner(class: Class) -> Result<String, FindDefaultDeviceName
         return Ok(node_name);
     }
 
-    Err(Report::new(FindDefaultDeviceNameError)).attach_printable("failed to get a match")
+    Err(anyhow!("Failed to find a default device"))
 }

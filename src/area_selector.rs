@@ -1,5 +1,5 @@
 use adw::subclass::prelude::*;
-use error_stack::{Context, IntoReport, Report, Result, ResultExt};
+use anyhow::{anyhow, ensure, Context, Result};
 use futures_channel::oneshot::{self, Sender};
 use gtk::{
     gdk, gio,
@@ -9,7 +9,7 @@ use gtk::{
     prelude::*,
 };
 
-use std::{cell::RefCell, fmt, time::Duration};
+use std::{cell::RefCell, time::Duration};
 
 const LINE_WIDTH: f32 = 1.0;
 
@@ -188,13 +188,13 @@ impl AreaSelector {
 }
 
 async fn set_raise_active_window_request(is_raised: bool) {
-    async fn inner(is_raised: bool) -> Result<(), ShellWindowEvalError> {
+    async fn inner(is_raised: bool) -> Result<()> {
         shell_window_eval("make_above", is_raised)
             .await
-            .attach_printable("Failed to invoke `make_above` method")?;
+            .context("Failed to invoke `make_above` method")?;
         shell_window_eval("stick", is_raised)
             .await
-            .attach_printable("Failed to invoke `stick` method")?;
+            .context("Failed to invoke `stick` method")?;
         Ok(())
     }
 
@@ -208,18 +208,7 @@ async fn set_raise_active_window_request(is_raised: bool) {
     }
 }
 
-#[derive(Debug)]
-pub struct ShellWindowEvalError;
-
-impl fmt::Display for ShellWindowEvalError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("Evaluating shell window command error")
-    }
-}
-
-impl Context for ShellWindowEvalError {}
-
-async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), ShellWindowEvalError> {
+async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<()> {
     let reverse_keyword = if is_enabled { "" } else { "un" };
     let script = format!(
         "global.display.focus_window.{}{}()",
@@ -228,9 +217,7 @@ async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), ShellWi
 
     let connection = gio::bus_get_future(gio::BusType::Session)
         .await
-        .report()
-        .change_context(ShellWindowEvalError)
-        .attach_printable("Failed to get session bus connection")?;
+        .context("Failed to get session bus connection")?;
     let reply = connection
         .call_future(
             Some("org.gnome.Shell"),
@@ -243,19 +230,16 @@ async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<(), ShellWi
             -1,
         )
         .await
-        .report()
-        .change_context(ShellWindowEvalError)
-        .attach_printable_lazy(|| format!("Failed to call shell eval with script `{}`", &script))?;
-    let (is_success, message) = reply.get::<(bool, String)>().ok_or_else(|| {
-        Report::new(ShellWindowEvalError).attach_printable("Expected (bool, String) type reply")
-    })?;
+        .with_context(|| format!("Failed to call shell eval with script `{}`", &script))?;
+    let (is_success, message) = reply
+        .get::<(bool, String)>()
+        .ok_or_else(|| anyhow!("Expected type (bs). Got {:?}", reply.type_()))?;
 
-    if !is_success {
-        return Err(Report::new(ShellWindowEvalError).attach_printable(format!(
-            "Shell replied with no success. Got a message of {}",
-            message
-        )));
-    };
+    ensure!(
+        is_success,
+        "Shell replied with no success. Got a message of {}",
+        message
+    );
 
     Ok(())
 }

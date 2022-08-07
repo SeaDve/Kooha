@@ -3,38 +3,19 @@ mod object_path;
 mod types;
 mod window_identifier;
 
-use error_stack::{report, Context, IntoReport, Report, Result, ResultExt};
+use anyhow::{anyhow, ensure, Context, Result};
 use futures_channel::oneshot;
 use gtk::{gio, glib, prelude::*};
 
-use std::{cell::RefCell, collections::HashMap, fmt, os::unix::io::RawFd};
+use std::{cell::RefCell, collections::HashMap, os::unix::io::RawFd};
 
 pub use self::types::{CursorMode, PersistMode, SourceType, Stream};
 use self::{
     handle_token::HandleToken, object_path::ObjectPath, window_identifier::WindowIdentifier,
 };
+use crate::cancelled::Cancelled;
 
 const DEFAULT_TIMEOUT_MS: i32 = 5000;
-
-#[derive(Debug)]
-
-pub enum ScreencastSessionError {
-    Cancelled,
-    Response,
-    Other,
-}
-
-impl fmt::Display for ScreencastSessionError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            Self::Cancelled => f.write_str("screencast session cancelled"),
-            Self::Response => f.write_str("screencast session response error"),
-            Self::Other => f.write_str("screencast session error"),
-        }
-    }
-}
-
-impl Context for ScreencastSessionError {}
 
 #[derive(Debug)]
 pub struct ScreencastSession {
@@ -43,7 +24,7 @@ pub struct ScreencastSession {
 }
 
 impl ScreencastSession {
-    pub async fn new() -> Result<Self, ScreencastSessionError> {
+    pub async fn new() -> Result<Self> {
         let proxy = gio::DBusProxy::for_bus_future(
             gio::BusType::Session,
             gio::DBusProxyFlags::NONE,
@@ -53,9 +34,7 @@ impl ScreencastSession {
             "org.freedesktop.portal.ScreenCast",
         )
         .await
-        .report()
-        .change_context(ScreencastSessionError::Other)
-        .attach_printable("failed to create screencast proxy")?;
+        .context("Failed to create screencast proxy")?;
 
         let session_handle_token = HandleToken::new();
         let handle_token = HandleToken::new();
@@ -71,17 +50,17 @@ impl ScreencastSession {
             &(session_options,).to_variant(),
         )
         .await
-        .attach_printable("failed to create session")?;
+        .context("Failed to create session")?;
 
         tracing::info!("Created screencast session");
 
         let session_handle = response
             .get("session_handle")
-            .ok_or_else(|| Report::new(ScreencastSessionError::Other))?
+            .ok_or_else(|| anyhow!("Expected session_handle"))?
             .get::<ObjectPath>()
-            .ok_or_else(|| Report::new(ScreencastSessionError::Other))?;
+            .ok_or_else(|| anyhow!("Expected session_handle of type o"))?;
 
-        assert!(session_handle
+        debug_assert!(session_handle
             .as_str()
             .ends_with(&session_handle_token.as_str()));
 
@@ -99,7 +78,7 @@ impl ScreencastSession {
         restore_token: Option<&str>,
         persist_mode: PersistMode,
         parent_window: Option<&impl IsA<gtk::Window>>,
-    ) -> Result<(Vec<Stream>, Option<String>, RawFd), ScreencastSessionError> {
+    ) -> Result<(Vec<Stream>, Option<String>, RawFd)> {
         self.select_sources(
             source_type,
             is_multiple_sources,
@@ -108,7 +87,7 @@ impl ScreencastSession {
             persist_mode,
         )
         .await
-        .attach_printable("failed to invoke select sources method")?;
+        .context("Failed to select sources")?;
 
         let window_identifier = if let Some(window) = parent_window {
             WindowIdentifier::new(window.upcast_ref()).await
@@ -119,19 +98,17 @@ impl ScreencastSession {
         let (streams, output_restore_token) = self
             .start(window_identifier)
             .await
-            .attach_printable("failed to invoke start method")?;
+            .context("Failed to start screencast session")?;
 
         let fd = self
             .open_pipe_wire_remote()
             .await
-            .attach_printable("failed to invoke open pipe wire remote method")?;
+            .context("Failed to open pipe wire remote")?;
 
         Ok((streams, output_restore_token, fd))
     }
 
-    pub async fn close(&self) -> Result<(), ScreencastSessionError> {
-        tracing::info!("Created screencast session");
-
+    pub async fn close(&self) -> Result<()> {
         let ret = self
             .proxy
             .connection()
@@ -146,19 +123,46 @@ impl ScreencastSession {
                 DEFAULT_TIMEOUT_MS,
             )
             .await
-            .report()
-            .change_context(ScreencastSessionError::Other)
-            .attach_printable("Failed to close session")?;
+            .context("Failed to invoke Close on the session")?;
 
-        assert_eq!(ret.get(), Some(()));
+        debug_assert_eq!(ret.get(), Some(()));
+
+        tracing::info!("Closed screencast session");
 
         Ok(())
+    }
+
+    pub async fn available_cursor_modes(&self) -> Result<CursorMode> {
+        let value = self.property::<u32>("AvailableCursorModes")?;
+
+        CursorMode::from_bits(value).ok_or_else(|| anyhow!("Invalid cursor mode: {}", value))
+    }
+
+    pub async fn available_source_types(&self) -> Result<SourceType> {
+        let value = self.property::<u32>("AvailableSourceTypes")?;
+
+        SourceType::from_bits(value).ok_or_else(|| anyhow!("Invalid source type: {}", value))
+    }
+
+    fn property<T: glib::FromVariant>(&self, name: &str) -> Result<T> {
+        let variant = self
+            .proxy
+            .cached_property(name)
+            .ok_or_else(|| anyhow!("No cached {} property", name))?;
+
+        variant.get::<T>().ok_or_else(|| {
+            anyhow!(
+                "Expected {} type. Got {}",
+                T::static_variant_type(),
+                variant.type_()
+            )
+        })
     }
 
     async fn start(
         &self,
         window_identifier: WindowIdentifier,
-    ) -> Result<(Vec<Stream>, Option<String>), ScreencastSessionError> {
+    ) -> Result<(Vec<Stream>, Option<String>)> {
         let handle_token = HandleToken::new();
 
         let options = HashMap::from([("handle_token", handle_token.to_variant())]);
@@ -169,52 +173,32 @@ impl ScreencastSession {
             "Start",
             &(&self.session_handle, window_identifier, options).to_variant(),
         )
-        .await
-        .attach_printable("failed to start session")?;
+        .await?;
 
         tracing::info!("Started screencast session");
 
-        let streams_variant = response.get("streams").ok_or_else(|| {
-            Report::new(ScreencastSessionError::Other)
-                .attach_printable("No streams received from response")
-        })?;
+        let streams_variant = response
+            .get("streams")
+            .ok_or_else(|| anyhow!("No streams received from response"))?;
 
         let streams = streams_variant.get::<Vec<Stream>>().ok_or_else(|| {
-            Report::new(ScreencastSessionError::Other).attach_printable(format!(
+            anyhow!(
                 "Expected streams signature of {}. Got {}",
                 <Vec<Stream>>::static_variant_type(),
                 streams_variant.type_()
-            ))
+            )
         })?;
 
         tracing::info!("Received streams {:?}", streams);
 
-        match response.get("restore_token") {
-            Some(restore_token) => Ok((
-                streams,
-                Some(restore_token.get::<String>().ok_or_else(|| {
-                    Report::new(ScreencastSessionError::Other)
-                        .attach_printable("Invalid restore token signature")
-                })?),
-            )),
-            None => Ok((streams, None)),
+        if let Some(variant) = response.get("restore_token") {
+            let restore_token = variant.get::<String>().ok_or_else(|| {
+                anyhow!("Expected restore_token of type s. Got {}", variant.type_())
+            })?;
+            return Ok((streams, Some(restore_token)));
         }
-    }
 
-    pub async fn available_cursor_modes(&self) -> Result<CursorMode, ScreencastSessionError> {
-        self.proxy
-            .cached_property("AvailableCursorModes")
-            .and_then(|variant| variant.get::<u32>())
-            .and_then(CursorMode::from_bits)
-            .ok_or_else(|| Report::new(ScreencastSessionError::Other))
-    }
-
-    pub async fn available_source_types(&self) -> Result<SourceType, ScreencastSessionError> {
-        self.proxy
-            .cached_property("AvailableSourceTypes")
-            .and_then(|variant| variant.get::<u32>())
-            .and_then(SourceType::from_bits)
-            .ok_or_else(|| Report::new(ScreencastSessionError::Other))
+        Ok((streams, None))
     }
 
     async fn select_sources(
@@ -224,7 +208,7 @@ impl ScreencastSession {
         cursor_mode: CursorMode,
         restore_token: Option<&str>,
         persist_mode: PersistMode,
-    ) -> Result<(), ScreencastSessionError> {
+    ) -> Result<()> {
         let handle_token = HandleToken::new();
 
         let mut options = vec![
@@ -245,15 +229,14 @@ impl ScreencastSession {
             "SelectSources",
             &(&self.session_handle, HashMap::from_iter(options)).to_variant(),
         )
-        .await
-        .attach_printable("failed to get available cursor modes property")?;
+        .await?;
 
         tracing::info!("Selected sources");
 
         Ok(())
     }
 
-    async fn open_pipe_wire_remote(&self) -> Result<RawFd, ScreencastSessionError> {
+    async fn open_pipe_wire_remote(&self) -> Result<RawFd> {
         let (_, fd_list) = self
             .proxy
             .call_with_unix_fd_list_future(
@@ -269,23 +252,13 @@ impl ScreencastSession {
                 DEFAULT_TIMEOUT_MS,
                 gio::UnixFDList::NONE,
             )
-            .await
-            .report()
-            .change_context(ScreencastSessionError::Other)
-            .attach_printable("failed to open pipe wire remote")?;
+            .await?;
 
         tracing::info!("Opened pipe wire remote");
 
         let mut fds = fd_list.steal_fds();
 
-        if fds.len() != 1 {
-            return Err(
-                Report::new(ScreencastSessionError::Other).attach_printable(format!(
-                    "Expected 1 fd from OpenPipeWireRemote, got {}",
-                    fds.len()
-                )),
-            );
-        }
+        ensure!(fds.len() == 1, "Expected 1 fd, got {}", fds.len());
 
         Ok(fds.pop().unwrap())
     }
@@ -296,7 +269,7 @@ async fn screencast_request_call(
     handle_token: &HandleToken,
     method: &str,
     parameters: &glib::Variant,
-) -> Result<HashMap<String, glib::Variant>, ScreencastSessionError> {
+) -> Result<HashMap<String, glib::Variant>> {
     let connection = proxy.connection();
 
     let unique_identifier = connection
@@ -330,48 +303,48 @@ async fn screencast_request_call(
         },
     );
 
-    let (path, response_variant) = futures_util::try_join!(
-        async {
-            proxy
-                .call_future(
-                    method,
-                    Some(parameters),
-                    gio::DBusCallFlags::NONE,
-                    DEFAULT_TIMEOUT_MS,
-                )
-                .await
-                .report()
-                .change_context(ScreencastSessionError::Other)
-        },
-        async {
-            // TODO Add timeout
-            rx.await
-                .report()
-                .change_context(ScreencastSessionError::Cancelled)
-        }
-    )?;
+    let path = proxy
+        .call_future(
+            method,
+            Some(parameters),
+            gio::DBusCallFlags::NONE,
+            DEFAULT_TIMEOUT_MS,
+        )
+        .await
+        .with_context(|| {
+            format!(
+                "Failed to call `{}` with parameters: {:?}",
+                method, parameters
+            )
+        })?;
 
-    assert_eq!(path.get::<(String,)>().map(|(p,)| p), Some(request_path));
+    // TODO Add timeout
+    let response_variant = rx
+        .await
+        .with_context(|| Cancelled::new(method))
+        .context("Sender dropped")?;
+
+    debug_assert_eq!(path.get::<(String,)>().map(|(p,)| p), Some(request_path));
 
     connection.signal_unsubscribe(subscription_id);
 
     let (response_no, response) = response_variant
         .get::<(u32, HashMap<String, glib::Variant>)>()
         .ok_or_else(|| {
-            Report::new(ScreencastSessionError::Other).attach_printable(format!(
+            anyhow!(
                 "Expected return type of ua{{sv}}. Got {} with value {:?}",
                 response_variant.type_(),
                 response_variant.print(true)
-            ))
+            )
         })?;
 
     match response_no {
         0 => Ok(response),
-        1 => Err(report!(ScreencastSessionError::Cancelled)),
-        2 => Err(report!(ScreencastSessionError::Response)),
-        o => {
-            tracing::warn!("Unexpected response number {}", o);
-            Err(report!(ScreencastSessionError::Response))
-        }
+        1 => Err(Cancelled::new(method)).context("Cancelled by user"),
+        2 => Err(anyhow!(
+            "Interaction was ended in some other way with response {:?}",
+            response
+        )),
+        no => Err(anyhow!("Unknown response number of {}", no)),
     }
 }

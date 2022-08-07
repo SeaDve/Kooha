@@ -1,4 +1,4 @@
-use error_stack::{Context, IntoReport, Result, ResultExt};
+use anyhow::{Context, Result};
 use gtk::{
     glib,
     graphene::{Rect, Size},
@@ -6,7 +6,7 @@ use gtk::{
 };
 
 use std::{
-    cmp, env, fmt,
+    cmp, env,
     os::unix::io::RawFd,
     path::{Path, PathBuf},
 };
@@ -15,17 +15,6 @@ use crate::{screencast_session::Stream, settings::VideoFormat};
 
 const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
-
-#[derive(Debug)]
-pub struct PipelineBuildError;
-
-impl fmt::Display for PipelineBuildError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("pipeline build error")
-    }
-}
-
-impl Context for PipelineBuildError {}
 
 #[derive(Debug)]
 pub struct PipelineBuilder {
@@ -81,17 +70,13 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn build(self) -> Result<gst::Pipeline, PipelineBuildError> {
+    pub fn build(self) -> Result<gst::Pipeline> {
         let string = PipelineAssembler::from_builder(self).assemble();
         tracing::debug!("pipeline_string: {}", &string);
 
         gst::parse_launch_full(&string, None, gst::ParseFlags::FATAL_ERRORS)
             .map(|element| element.downcast().unwrap())
-            .report()
-            .change_context(PipelineBuildError)
-            .attach_printable_lazy(|| {
-                format!("failed to parse string into pipeline. String: {}", string)
-            })
+            .with_context(|| format!("Failed to parse string into pipeline. string: {}", string))
     }
 }
 

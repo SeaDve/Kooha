@@ -1,5 +1,5 @@
 use adw::{prelude::*, subclass::prelude::*};
-use error_stack::{Report, Result};
+use anyhow::{Error, Result};
 use gettextrs::gettext;
 use gtk::{
     gio,
@@ -10,9 +10,10 @@ use gtk::{
 use std::{cell::RefCell, path::PathBuf, time::Duration};
 
 use crate::{
+    cancelled::Cancelled,
     config::PROFILE,
     help::Help,
-    recording::{Recording, RecordingError, RecordingState},
+    recording::{Recording, RecordingState},
     settings::{CaptureMode, VideoFormat},
     utils, Application,
 };
@@ -64,7 +65,7 @@ mod imp {
 
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
                 if let Err(err) = obj.toggle_pause() {
-                    let err = err.attach_printable("Failed to toggle pause");
+                    let err = err.context("Failed to toggle pause");
                     tracing::error!("{:?}", err);
                     obj.present_error(&err);
                 }
@@ -128,7 +129,7 @@ impl Window {
             })
     }
 
-    pub fn present_error<T>(&self, err: &Report<T>) {
+    pub fn present_error(&self, err: &Error) {
         let err_buffer = gtk::TextBuffer::builder()
             .text(&format!("{:?}", err))
             .build();
@@ -201,7 +202,7 @@ impl Window {
             .await;
     }
 
-    fn toggle_pause(&self) -> Result<(), RecordingError> {
+    fn toggle_pause(&self) -> Result<()> {
         let imp = self.imp();
 
         if let Some((ref recording, _)) = *imp.recording.borrow() {
@@ -229,7 +230,7 @@ impl Window {
         }
     }
 
-    fn on_recording_finished(&self, res: &Result<PathBuf, RecordingError>) {
+    fn on_recording_finished(&self, res: &Result<PathBuf>) {
         let imp = self.imp();
 
         match res {
@@ -240,15 +241,14 @@ impl Window {
                 let recent_manager = gtk::RecentManager::default();
                 recent_manager.add_item(&gio::File::for_path(recording_file_path).uri());
             }
-            Err(ref err) => match err.current_context() {
-                RecordingError::Cancelled(cancelled) => {
-                    tracing::info!("Cancelled: {}", cancelled);
-                }
-                _ => {
+            Err(ref err) => {
+                if err.is::<Cancelled>() {
+                    tracing::info!("{:?}", err);
+                } else {
                     tracing::error!("{:?}", err);
                     self.present_error(err);
                 }
-            },
+            }
         }
 
         if let Some((recording, handler_ids)) = imp.recording.take() {
