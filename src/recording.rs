@@ -156,7 +156,7 @@ impl Recording {
         // setup screencast session
         let screencast_session = ScreencastSession::new().await.with_help(
             || PORTAL_ERROR_HELP.as_str(),
-            || "Failed to start screencast session",
+            || "Failed create screencast session",
         )?;
         tracing::debug!(
             "Available cursor modes: {:?}",
@@ -183,7 +183,11 @@ impl Recording {
                 PersistMode::DoNot,
                 Application::default().main_window().as_ref(),
             )
-            .await?;
+            .await
+            .with_help(
+                || PORTAL_ERROR_HELP.as_str(),
+                || "Failed to begin screencast session",
+            )?;
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
