@@ -1,7 +1,10 @@
 use adw::prelude::*;
 use gettextrs::gettext;
 use gsettings_macro::gen_settings;
-use gtk::{gio, glib};
+use gtk::{
+    gio,
+    glib::{self, clone},
+};
 
 use std::path::{Path, PathBuf};
 
@@ -20,7 +23,7 @@ impl Default for Settings {
 impl Settings {
     /// Opens a `FileChooserDialog` to select a folder and updates
     /// the settings with the selected folder.
-    pub async fn select_saving_location(&self, transient_for: Option<&impl IsA<gtk::Window>>) {
+    pub fn select_saving_location(&self, transient_for: Option<&impl IsA<gtk::Window>>) {
         let chooser = gtk::FileChooserDialog::builder()
             .modal(true)
             .action(gtk::FileChooserAction::SelectFolder)
@@ -38,35 +41,39 @@ impl Settings {
         chooser.add_button(&gettext("_Select"), gtk::ResponseType::Accept);
         chooser.set_default_response(gtk::ResponseType::Accept);
 
-        let response = chooser.run_future().await;
+        chooser.present();
 
-        if response != gtk::ResponseType::Accept {
-            chooser.close();
-            return;
-        }
-
-        if let Some(ref directory) = chooser.file().and_then(|file| file.path()) {
-            if is_accessible(directory) {
-                self.0.set("saving-location", directory).unwrap();
-                tracing::info!("Saving location set to {}", directory.display());
-            } else {
-                let err_dialog = adw::MessageDialog::builder()
-                    .heading(&gettext!("Cannot access “{}”", directory.display()))
-                    .body(&gettext(
-                        "Please choose an accessible location and try again.",
-                    ))
-                    .default_response("ok")
-                    .modal(true)
-                    .build();
-                err_dialog.add_response("ok", &gettext("Ok"));
-                err_dialog.set_transient_for(transient_for);
-                err_dialog.present();
+        let inner = &self.0;
+        chooser.connect_response(clone!(@weak inner => move |chooser, response| {
+            if response != gtk::ResponseType::Accept {
+                chooser.close();
+                return;
             }
-        } else {
-            tracing::info!("No saving location selected");
-        }
 
-        chooser.close();
+            let directory = if let Some(directory) = chooser.file().and_then(|file| file.path()) {
+                directory
+            } else {
+                present_message(
+                    &gettext("No folder selected"),
+                    &gettext("Please choose a folder and try again"),
+                    Some(chooser),
+                );
+                return;
+            };
+
+            if !is_accessible(&directory) {
+                present_message(
+                    &gettext!("Cannot access “{}”", directory.display()),
+                    &gettext("Please choose an accessible location and try again."),
+                    Some(chooser),
+                );
+                return;
+            }
+
+            inner.set("saving-location", &directory).unwrap();
+            tracing::info!("Saving location set to {}", directory.display());
+            chooser.close();
+        }));
     }
 
     pub fn saving_location(&self) -> PathBuf {
@@ -78,6 +85,18 @@ impl Settings {
             saving_location
         }
     }
+}
+
+fn present_message(heading: &str, body: &str, transient_for: Option<&impl IsA<gtk::Window>>) {
+    let dialog = adw::MessageDialog::builder()
+        .heading(heading)
+        .body(body)
+        .default_response("ok")
+        .modal(true)
+        .build();
+    dialog.add_response("ok", &gettext("Ok"));
+    dialog.set_transient_for(transient_for);
+    dialog.present();
 }
 
 fn is_accessible(path: &Path) -> bool {

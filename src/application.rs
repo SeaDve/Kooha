@@ -148,9 +148,7 @@ impl Application {
 
         let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
         action_select_saving_location.connect_activate(clone!(@weak self as obj => move |_, _| {
-            utils::spawn(async move {
-                obj.settings().select_saving_location(obj.main_window().as_ref()).await;
-            });
+            obj.settings().select_saving_location(obj.main_window().as_ref());
         }));
         self.add_action(&action_select_saving_location);
 
