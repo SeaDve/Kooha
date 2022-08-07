@@ -255,6 +255,8 @@ impl Window {
             for handler_id in handler_ids {
                 recording.disconnect(handler_id);
             }
+        // We don't want to error out as we already took the recording in
+        // `Self::cancel_delay`
         } else if res.is_ok() || !res.as_ref().unwrap_err().is::<Cancelled>() {
             tracing::error!("Recording finished but no stored recording");
         }
