@@ -85,7 +85,7 @@ struct PipelineAssembler {
 }
 
 impl PipelineAssembler {
-    pub const fn from_builder(builder: PipelineBuilder) -> Self {
+    pub fn from_builder(builder: PipelineBuilder) -> Self {
         Self { builder }
     }
 
@@ -307,11 +307,11 @@ impl PipelineAssembler {
         self.builder.mic_source.as_deref()
     }
 
-    const fn fd(&self) -> i32 {
+    fn fd(&self) -> i32 {
         self.builder.fd
     }
 
-    const fn streams(&self) -> &Vec<Stream> {
+    fn streams(&self) -> &Vec<Stream> {
         &self.builder.streams
     }
 
