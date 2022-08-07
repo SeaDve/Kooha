@@ -55,7 +55,7 @@ impl Settings {
             } else {
                 present_message(
                     &gettext("No folder selected"),
-                    &gettext("Please choose a folder and try again"),
+                    &gettext("Please choose a folder and try again."),
                     Some(chooser),
                 );
                 return;
