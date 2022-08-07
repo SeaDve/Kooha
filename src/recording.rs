@@ -1,4 +1,4 @@
-use anyhow::{anyhow, ensure, Context, Error, Result};
+use anyhow::{ensure, Context, Error, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::glib::{self, clone, subclass::prelude::*};
@@ -143,15 +143,7 @@ impl Recording {
         }
 
         if let Err(err) = self.start_inner(delay).await {
-            if let Some(session) = self.imp().session.take() {
-                if let Err(err) = session.close().await {
-                    tracing::warn!(
-                        "Failed to close session on failed to start recording: {:?}",
-                        err
-                    );
-                };
-            }
-
+            self.close_session();
             self.set_state(RecordingState::finished_err(err));
         }
     }
@@ -313,17 +305,7 @@ impl Recording {
         }
 
         if let Err(err) = self.stop_inner() {
-            if let Some(session) = self.imp().session.take() {
-                utils::spawn(async move {
-                    if let Err(err) = session.close().await {
-                        tracing::warn!(
-                            "Failed to close session on failed to start recording: {:?}",
-                            err
-                        );
-                    };
-                });
-            }
-
+            self.close_session();
             self.set_state(RecordingState::finished_err(err));
         }
     }
@@ -336,7 +318,7 @@ impl Recording {
         Ok(())
     }
 
-    pub async fn cancel(&self) {
+    pub fn cancel(&self) {
         let imp = self.imp();
 
         tracing::info!("Cancelling recording");
@@ -353,19 +335,15 @@ impl Recording {
             let _ = pipeline.bus().unwrap().remove_watch();
         }
 
-        if let Some(session) = imp.session.take() {
-            if let Err(err) = session.close().await {
-                tracing::warn!("Failed to close screencast session on cancel: {err:?}");
-            }
-        }
+        self.close_session();
 
         if let Some(source_id) = imp.duration_source_id.take() {
             source_id.remove();
         }
 
-        self.set_state(RecordingState::finished_err(anyhow!(
-            "Failed to start recording"
-        )));
+        self.set_state(RecordingState::finished_err(Error::from(Cancelled::new(
+            "recording",
+        ))));
 
         // TODO delete recorded file
     }
@@ -408,6 +386,17 @@ impl Recording {
             .expect("pipeline not set, make sure to start recording first")
     }
 
+    // Closes session on the background
+    fn close_session(&self) {
+        if let Some(session) = self.imp().session.take() {
+            utils::spawn(async move {
+                if let Err(err) = session.close().await {
+                    tracing::warn!("Failed to close screencast session: {:?}", err);
+                }
+            });
+        }
+    }
+
     fn update_duration(&self) {
         let clock_time = self
             .imp()
@@ -431,13 +420,7 @@ impl Recording {
                     tracing::warn!("Failed to stop pipeline on error: {err:?}");
                 }
 
-                if let Some(session) = imp.session.take() {
-                    utils::spawn(async move {
-                        if let Err(err) = session.close().await {
-                            tracing::warn!("Failed to close screencast session on error: {err:?}");
-                        }
-                    });
-                }
+                self.close_session();
 
                 if let Some(source_id) = imp.duration_source_id.take() {
                     source_id.remove();
@@ -468,13 +451,7 @@ impl Recording {
                     tracing::error!("Failed to stop pipeline on eos: {err:?}");
                 }
 
-                if let Some(session) = imp.session.take() {
-                    utils::spawn(async move {
-                        if let Err(err) = session.close().await {
-                            tracing::warn!("Failed to close screencast session on eos: {err:?}");
-                        }
-                    });
-                }
+                self.close_session();
 
                 if let Some(source_id) = imp.duration_source_id.take() {
                     source_id.remove();

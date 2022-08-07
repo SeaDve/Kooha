@@ -219,14 +219,14 @@ impl Window {
     fn cancel_delay(&self) {
         let imp = self.imp();
 
+        // We cannot borrow here since cancelling recording will trigger
+        // recording finished that will borrow_mut and take the recording.
         if let Some((recording, handler_ids)) = imp.recording.take() {
-            utils::spawn(async move {
-                recording.cancel().await;
+            recording.cancel();
 
-                for handler_id in handler_ids {
-                    recording.disconnect(handler_id);
-                }
-            });
+            for handler_id in handler_ids {
+                recording.disconnect(handler_id);
+            }
         }
     }
 
@@ -255,7 +255,7 @@ impl Window {
             for handler_id in handler_ids {
                 recording.disconnect(handler_id);
             }
-        } else {
+        } else if res.is_ok() || !res.as_ref().unwrap_err().is::<Cancelled>() {
             tracing::error!("Recording finished but no stored recording");
         }
     }
