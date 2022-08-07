@@ -9,9 +9,9 @@ use gtk::{
     prelude::*,
 };
 
-use crate::cancelled::Cancelled;
-
 use std::{cell::RefCell, time::Duration};
+
+use crate::cancelled::Cancelled;
 
 const LINE_WIDTH: f32 = 1.0;
 

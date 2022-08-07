@@ -2,7 +2,7 @@ use anyhow::{anyhow, Context, Error, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 
-use crate::{help::ResultExt as HelpResultExt, THREAD_POOL};
+use crate::{help::ResultExt, THREAD_POOL};
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Class {
