@@ -9,16 +9,13 @@ use gtk::{
     prelude::*,
 };
 
+use crate::cancelled::Cancelled;
+
 use std::{cell::RefCell, time::Duration};
 
 const LINE_WIDTH: f32 = 1.0;
 
-#[derive(Debug, Clone, Copy)]
-#[must_use]
-pub enum Response {
-    Ok { selection: Rect, screen: Size },
-    Cancelled,
-}
+type Response = Result<(Rect, Size)>;
 
 mod imp {
     use super::*;
@@ -58,7 +55,10 @@ mod imp {
     impl WindowImpl for AreaSelector {
         fn close_request(&self, obj: &Self::Type) -> Inhibit {
             if let Some(sender) = self.sender.take() {
-                let _ = sender.send(Response::Cancelled);
+                let _ = sender.send(
+                    Err(anyhow!("Received close request"))
+                        .context(Cancelled::new("area selection")),
+                );
             }
 
             self.parent_close_request(obj)
@@ -177,7 +177,7 @@ impl AreaSelector {
                     imp.sender
                         .take()
                         .unwrap()
-                        .send(Response::Ok { selection, screen })
+                        .send(Ok((selection, screen)))
                         .unwrap();
                     obj.close();
                 }

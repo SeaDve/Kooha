@@ -12,7 +12,7 @@ use std::{
 };
 
 use crate::{
-    area_selector::{AreaSelector, Response as AreaSelectorResponse},
+    area_selector::AreaSelector,
     audio_device::{self, Class as AudioDeviceClass},
     cancelled::Cancelled,
     clock_time::ClockTime,
@@ -204,16 +204,11 @@ impl Recording {
             streams,
         );
         if settings.capture_mode() == CaptureMode::Selection {
-            match AreaSelector::select_area().await {
-                AreaSelectorResponse::Ok { selection, screen } => {
-                    pipeline_builder
-                        .coordinates(selection)
-                        .actual_screen(screen);
-                }
-                AreaSelectorResponse::Cancelled => {
-                    return Err(Cancelled::new("area selection").into());
-                }
-            }
+            let (selection, screen) = AreaSelector::select_area().await?;
+
+            pipeline_builder
+                .coordinates(selection)
+                .actual_screen(screen);
         }
 
         // setup timer
