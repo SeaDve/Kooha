@@ -252,7 +252,7 @@ impl Recording {
             .build()
             .with_help(
                 || gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
-                ||"Failed to build pipeline"
+                || "Failed to build pipeline"
             )?;
         imp.pipeline.set(pipeline.clone()).unwrap();
         pipeline
