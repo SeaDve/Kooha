@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-10 07:44+0800\n"
-"PO-Revision-Date: 2022-08-06 00:23+0000\n"
+"PO-Revision-Date: 2022-08-07 01:18+0000\n"
 "Last-Translator: Henri <contact@hen.ee>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "et/>\n"
@@ -250,7 +250,7 @@ msgstr "Vali salvestusasukoha kaust"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/application.rs:183
 msgid "translator-credits"
-msgstr "Henri &lt;contact@hen.ee&gt;, 2022"
+msgstr "Henri <contact@hen.ee>"
 
 #: src/application.rs:184
 msgid "Copyright 2021 Dave Patrick"
@@ -262,19 +262,19 @@ msgstr "GitHub"
 
 #: src/application.rs:208
 msgid "Screencast Recorded!"
-msgstr ""
+msgstr "Salvestus lindistatud!"
 
 #: src/application.rs:210
 msgid "The recording has been saved in “{}”"
-msgstr ""
+msgstr "Salvestati \"{}\" kausta"
 
 #: src/application.rs:218
 msgid "Open File"
-msgstr ""
+msgstr "Ava fail"
 
 #: src/error.rs:17
 msgid "Screencast Portal Request Error"
-msgstr ""
+msgstr "Salvestuse portaali viga"
 
 #: src/error.rs:18
 msgid "Pipeline Build Error"
@@ -306,4 +306,4 @@ msgstr ""
 
 #: src/widgets/main_window.rs:159
 msgid "Paused"
-msgstr ""
+msgstr "Peatatud"
