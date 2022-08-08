@@ -217,10 +217,7 @@ impl Recording {
             }),
         );
         imp.timer.replace(Some(Timer::clone(&timer)));
-        let timer_res = timer.await;
-        self.set_state(RecordingState::Null);
-
-        ensure!(!timer_res.is_cancelled(), Cancelled::new("timer"));
+        timer.await?;
 
         // setup audio sources
         if settings.record_mic() {

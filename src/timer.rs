@@ -10,18 +10,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-#[derive(Debug, Clone, Copy)]
-#[must_use]
-pub enum Result {
-    Ok,
-    Cancelled,
-}
-
-impl Result {
-    pub fn is_cancelled(self) -> bool {
-        matches!(self, Self::Cancelled)
-    }
-}
+use crate::cancelled::Cancelled;
 
 /// Reference counted cancellable timer future
 #[derive(Clone)]
@@ -105,12 +94,12 @@ impl Timer {
 }
 
 impl Future for Timer {
-    type Output = Result;
+    type Output = Result<(), Cancelled>;
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         if self.inner.duration == Duration::ZERO {
             self.inner.is_done.set(true);
-            return Poll::Ready(Result::Ok);
+            return Poll::Ready(Ok(()));
         }
 
         let waker = cx.waker().clone();
@@ -146,9 +135,9 @@ impl Future for Timer {
         (self.inner.secs_left_changed_cb)(self.inner.secs_left());
 
         if self.inner.is_cancelled.get() {
-            Poll::Ready(Result::Cancelled)
+            Poll::Ready(Err(Cancelled::new("timer")))
         } else if self.inner.is_done.get() {
-            Poll::Ready(Result::Ok)
+            Poll::Ready(Ok(()))
         } else {
             Poll::Pending
         }
