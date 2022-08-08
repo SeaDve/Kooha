@@ -50,22 +50,31 @@
                         <property name="vexpand">True</property>
                         <style>
                           <class name="linked"/>
-                          <class name="large-icons"/>
                         </style>
                         <child>
                           <object class="GtkToggleButton">
                             <property name="action-name">win.capture-mode</property>
                             <property name="action-target">"monitor-window"</property>
-                            <property name="icon-name">source-pick-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Capture a Monitor or Window</property>
+                            <property name="child">
+                              <object class="GtkImage">
+                                <property name="icon-name">source-pick-symbolic</property>
+                                <property name="pixel-size">32</property>
+                              </object>
+                            </property>
                           </object>
                         </child>
                         <child>
                           <object class="GtkToggleButton">
                             <property name="action-name">win.capture-mode</property>
                             <property name="action-target">"selection"</property>
-                            <property name="icon-name">selection-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Capture a Selection of Screen</property>
+                            <property name="child">
+                              <object class="GtkImage">
+                                <property name="icon-name">selection-symbolic</property>
+                                <property name="pixel-size">32</property>
+                              </object>
+                            </property>
                           </object>
                         </child>
                       </object>

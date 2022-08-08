@@ -8,10 +8,6 @@ label.large-time {
   font-feature-settings: "tnum";
 }
 
-.large-icons image {
-  -gtk-icon-size: 32px;
-}
-
 .recording {
   color: @destructive_bg_color;
 }
