@@ -3,7 +3,7 @@ use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
     gio::{self, prelude::*},
-    glib::{self, clone, subclass::prelude::*},
+    glib::{self, clone, closure_local, subclass::prelude::*},
 };
 use once_cell::{sync::Lazy, unsync::OnceCell};
 
@@ -32,9 +32,9 @@ static PORTAL_ERROR_HELP: Lazy<String> = Lazy::new(|| {
     gettext("Make sure to check for the runtime dependencies and <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>.")
 });
 
-#[derive(Debug, Default, Clone, glib::Boxed)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
-pub enum RecordingState {
+pub enum State {
     #[default]
     Init,
     Delayed {
@@ -43,38 +43,16 @@ pub enum RecordingState {
     Recording,
     Paused,
     Flushing,
-    Finished(Rc<Result<gio::File>>),
+    Finished,
 }
 
-impl RecordingState {
-    fn finished_ok(val: gio::File) -> Self {
-        Self::Finished(Rc::new(Ok(val)))
-    }
-
-    fn finished_err(err: Error) -> Self {
-        Self::Finished(Rc::new(Err(err)))
-    }
-
-    fn eq_variant(&self, rhs: &Self) -> bool {
-        match (self, rhs) {
-            (Self::Init, Self::Init) => true,
-            (
-                Self::Delayed { secs_left },
-                Self::Delayed {
-                    secs_left: rhs_secs_left,
-                },
-            ) => secs_left == rhs_secs_left,
-            (Self::Recording, Self::Recording) => true,
-            (Self::Paused, Self::Paused) => true,
-            (Self::Flushing, Self::Flushing) => true,
-            (Self::Finished(_), Self::Finished(_)) => true,
-            _ => false,
-        }
-    }
-}
+#[derive(Debug, Clone, glib::SharedBoxed)]
+#[shared_boxed_type(name = "KoohaRecordingResult")]
+struct BoxedResult(Rc<Result<gio::File>>);
 
 mod imp {
     use super::*;
+    use glib::subclass::Signal;
 
     #[derive(Debug, Default)]
     pub struct Recording {
@@ -85,7 +63,7 @@ mod imp {
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
         pub(super) pipeline: OnceCell<gst::Pipeline>,
 
-        pub(super) state: RefCell<RecordingState>,
+        pub(super) state: Cell<State>,
         pub(super) duration: Cell<ClockTime>,
     }
 
@@ -99,7 +77,7 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecBoxed::builder("state", RecordingState::static_type())
+                    glib::ParamSpecBoxed::builder("state", State::static_type())
                         .flags(glib::ParamFlags::READABLE)
                         .build(),
                     glib::ParamSpecBoxed::builder("duration", ClockTime::static_type())
@@ -117,6 +95,19 @@ mod imp {
                 "duration" => obj.duration().to_value(),
                 _ => unimplemented!(),
             }
+        }
+
+        fn signals() -> &'static [glib::subclass::Signal] {
+            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
+                vec![Signal::builder(
+                    "finished",
+                    &[BoxedResult::static_type().into()],
+                    <()>::static_type().into(),
+                )
+                .build()]
+            });
+
+            SIGNALS.as_ref()
         }
 
         fn dispose(&self, _obj: &Self::Type) {
@@ -143,14 +134,14 @@ impl Recording {
     }
 
     pub async fn start(&self, delay: Duration) {
-        if !matches!(self.state(), RecordingState::Init) {
+        if !matches!(self.state(), State::Init) {
             tracing::error!("Trying to start recording on a non-init state");
             return;
         }
 
         if let Err(err) = self.start_inner(delay).await {
             self.close_session();
-            self.set_state(RecordingState::finished_err(err));
+            self.set_finished(Err(err));
         }
     }
 
@@ -222,7 +213,7 @@ impl Recording {
         let timer = Timer::new(
             delay,
             clone!(@weak self as obj => move |secs_left| {
-                obj.set_state(RecordingState::Delayed {
+                obj.set_state(State::Delayed {
                     secs_left
                 });
             }),
@@ -284,7 +275,7 @@ impl Recording {
 
     pub fn pause(&self) -> Result<()> {
         ensure!(
-            matches!(self.state(), RecordingState::Recording),
+            matches!(self.state(), State::Recording),
             "Recording can only be paused from recording state"
         );
 
@@ -297,7 +288,7 @@ impl Recording {
 
     pub fn resume(&self) -> Result<()> {
         ensure!(
-            matches!(self.state(), RecordingState::Paused),
+            matches!(self.state(), State::Paused),
             "Recording can only be resumed from paused state"
         );
 
@@ -311,24 +302,21 @@ impl Recording {
     pub fn stop(&self) {
         let state = self.state();
 
-        if matches!(
-            state,
-            RecordingState::Init | RecordingState::Flushing | RecordingState::Finished(_)
-        ) {
+        if matches!(state, State::Init | State::Flushing | State::Finished) {
             tracing::error!("Trying to stop recording on a `{:?}` state", state);
             return;
         }
 
         if let Err(err) = self.stop_inner() {
             self.close_session();
-            self.set_state(RecordingState::finished_err(err));
+            self.set_finished(Err(err));
         }
     }
 
     fn stop_inner(&self) -> Result<()> {
         tracing::info!("Sending eos event to pipeline");
         self.pipeline().send_event(gst::event::Eos::new());
-        self.set_state(RecordingState::Flushing);
+        self.set_state(State::Flushing);
 
         Ok(())
     }
@@ -356,15 +344,13 @@ impl Recording {
             source_id.remove();
         }
 
-        self.set_state(RecordingState::finished_err(Error::from(Cancelled::new(
-            "recording",
-        ))));
+        self.set_finished(Err(Error::from(Cancelled::new("recording"))));
 
         self.delete_file();
     }
 
-    pub fn state(&self) -> RecordingState {
-        self.imp().state.borrow().clone()
+    pub fn state(&self) -> State {
+        self.imp().state.get()
     }
 
     pub fn connect_state_notify<F>(&self, f: F) -> glib::SignalHandlerId
@@ -385,8 +371,21 @@ impl Recording {
         self.connect_notify_local(Some("duration"), move |obj, _| f(obj))
     }
 
-    fn set_state(&self, state: RecordingState) {
-        if state.eq_variant(&self.state()) {
+    pub fn connect_finished<F>(&self, f: F) -> glib::SignalHandlerId
+    where
+        F: Fn(&Self, &Result<gio::File>) + 'static,
+    {
+        self.connect_closure(
+            "finished",
+            true,
+            closure_local!(|obj: &Self, result: BoxedResult| {
+                f(obj, &result.0);
+            }),
+        )
+    }
+
+    fn set_state(&self, state: State) {
+        if state == self.state() {
             return;
         }
 
@@ -399,6 +398,13 @@ impl Recording {
             .pipeline
             .get()
             .expect("pipeline not set, make sure to start recording first")
+    }
+
+    fn set_finished(&self, res: Result<gio::File>) {
+        self.set_state(State::Finished);
+
+        let result = BoxedResult(Rc::new(res));
+        self.emit_by_name::<()>("finished", &[&result]);
     }
 
     /// Closes session on the background
@@ -462,10 +468,9 @@ impl Recording {
                         gettext("Make sure that the saving location exists or is accessible."),
                         "Failed to open file for writing",
                     );
-
-                    self.set_state(RecordingState::finished_err(error));
+                    self.set_finished(Err(error));
                 } else {
-                    self.set_state(RecordingState::finished_err(error));
+                    self.set_finished(Err(error));
                 }
 
                 self.delete_file();
@@ -495,7 +500,7 @@ impl Recording {
                     Some(file.path().unwrap())
                 );
 
-                self.set_state(RecordingState::finished_ok(file.clone()));
+                self.set_finished(Ok(file.clone()));
 
                 Continue(false)
             }
@@ -518,8 +523,8 @@ impl Recording {
                 );
 
                 let state = match new_state {
-                    gst::State::Paused => RecordingState::Paused,
-                    gst::State::Playing => RecordingState::Recording,
+                    gst::State::Paused => State::Paused,
+                    gst::State::Playing => State::Recording,
                     _ => return Continue(true),
                 };
                 self.set_state(state);

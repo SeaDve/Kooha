@@ -14,7 +14,7 @@ use crate::{
     cancelled::Cancelled,
     config::PROFILE,
     help::Help,
-    recording::{Recording, RecordingState},
+    recording::{Recording, State as RecordingState},
     settings::{CaptureMode, VideoFormat},
     utils, Application,
 };
@@ -131,7 +131,7 @@ impl Window {
                         recording.state(),
                         RecordingState::Init
                             | RecordingState::Delayed { .. }
-                            | RecordingState::Finished(..)
+                            | RecordingState::Finished
                     )
                 });
 
@@ -195,15 +195,14 @@ impl Window {
 
         let recording = Recording::new();
         let handler_ids = vec![
-            recording.connect_state_notify(clone!(@weak self as obj => move |recording| {
-                if let RecordingState::Finished(res) = recording.state() {
-                    obj.on_recording_finished(&res);
-                }
-
+            recording.connect_state_notify(clone!(@weak self as obj => move |_| {
                 obj.update_view();
             })),
             recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
                 obj.on_recording_duration_notify(recording);
+            })),
+            recording.connect_finished(clone!(@weak self as obj => move |recording, res| {
+                obj.on_recording_finished(recording, res);
             })),
         ];
         *imp.recording.lock().await = Some((recording.clone(), handler_ids));
@@ -238,7 +237,9 @@ impl Window {
         }
     }
 
-    fn on_recording_finished(&self, res: &Result<gio::File>) {
+    fn on_recording_finished(&self, recording: &Recording, res: &Result<gio::File>) {
+        debug_assert_eq!(recording.state(), RecordingState::Finished);
+
         match res {
             Ok(ref recording_file) => {
                 let application = Application::default();
@@ -265,7 +266,7 @@ impl Window {
                     recording.disconnect(handler_id);
                 }
             } else {
-                tracing::error!("Recording finished but no stored recording");
+                tracing::warn!("Recording finished but no stored recording");
             }
         }));
     }
@@ -301,7 +302,7 @@ impl Window {
             .map_or(RecordingState::Init, |(recording, _)| recording.state());
 
         match state {
-            RecordingState::Init | RecordingState::Finished(_) => {
+            RecordingState::Init | RecordingState::Finished => {
                 imp.stack.set_visible_child(&*imp.main_page);
             }
             RecordingState::Delayed { secs_left } => {
