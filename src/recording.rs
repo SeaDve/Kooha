@@ -262,7 +262,6 @@ impl Recording {
         pipeline
             .set_state(gst::State::Playing)
             .context("Failed to initialize pipeline state to playing")?;
-        // TODO Add preparing state
         self.update_duration();
 
         Ok(())
