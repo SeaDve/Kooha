@@ -132,8 +132,9 @@ impl Application {
                 )
                 .await
                 {
+                    tracing::warn!("Failed to launch default for uri `{}`: {:?}", file_uri, err);
+
                     if let Some(window) = obj.main_window() {
-                        tracing::warn!("Failed to launch default for uri `{}`: {:?}", file_uri, err);
                         window.present_error(&err.into());
                     }
                 }
