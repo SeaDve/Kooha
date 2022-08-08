@@ -32,7 +32,7 @@ static PORTAL_ERROR_HELP: Lazy<String> = Lazy::new(|| {
 #[boxed_type(name = "KoohaRecordingState")]
 pub enum RecordingState {
     #[default]
-    Null,
+    Init,
     Delayed {
         secs_left: u64,
     },
@@ -53,7 +53,7 @@ impl RecordingState {
 
     fn eq_variant(&self, rhs: &Self) -> bool {
         match (self, rhs) {
-            (Self::Null, Self::Null) => true,
+            (Self::Init, Self::Init) => true,
             (
                 Self::Delayed { secs_left },
                 Self::Delayed {
@@ -137,8 +137,8 @@ impl Recording {
     }
 
     pub async fn start(&self, delay: Duration) {
-        if !matches!(self.state(), RecordingState::Null) {
-            tracing::error!("Trying to start recording on a non-null state");
+        if !matches!(self.state(), RecordingState::Init) {
+            tracing::error!("Trying to start recording on a non-init state");
             return;
         }
 
@@ -298,7 +298,7 @@ impl Recording {
 
         if matches!(
             state,
-            RecordingState::Null | RecordingState::Flushing | RecordingState::Finished(_)
+            RecordingState::Init | RecordingState::Flushing | RecordingState::Finished(_)
         ) {
             tracing::error!("Trying to stop recording on a `{:?}` state", state);
             return;

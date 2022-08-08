@@ -129,7 +129,7 @@ impl Window {
                 .map_or(true, |(ref recording, _)| {
                     matches!(
                         recording.state(),
-                        RecordingState::Null
+                        RecordingState::Init
                             | RecordingState::Delayed { .. }
                             | RecordingState::Finished(..)
                     )
@@ -298,10 +298,10 @@ impl Window {
             .lock()
             .await
             .as_ref()
-            .map_or(RecordingState::Null, |(recording, _)| recording.state());
+            .map_or(RecordingState::Init, |(recording, _)| recording.state());
 
         match state {
-            RecordingState::Null | RecordingState::Finished(_) => {
+            RecordingState::Init | RecordingState::Finished(_) => {
                 imp.stack.set_visible_child(&*imp.main_page);
             }
             RecordingState::Delayed { secs_left } => {
