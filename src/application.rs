@@ -7,8 +7,6 @@ use gtk::{
 };
 use once_cell::unsync::OnceCell;
 
-use std::path::{Path, PathBuf};
-
 use crate::{
     about_window,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
@@ -92,21 +90,19 @@ impl Application {
         main_window
     }
 
-    pub fn send_record_success_notification(&self, recording_file_path: &Path) {
-        let saving_location = recording_file_path
-            .parent()
-            .expect("Directory doesn't exist.");
+    pub fn send_record_success_notification(&self, recording_file: &gio::File) {
+        let recording_file_parent = recording_file.parent().expect("Directory doesn't exist.");
 
         let notification = gio::Notification::new(&gettext("Screencast recorded"));
         notification.set_body(Some(&gettext("Click here to view the video.")));
         notification.set_default_action_and_target_value(
             "app.launch-default-for-path",
-            Some(&recording_file_path.to_variant()),
+            Some(&recording_file.uri().to_variant()),
         );
         notification.add_button_with_target_value(
             &gettext("Show in Files"),
             "app.launch-default-for-path",
-            Some(&saving_location.to_variant()),
+            Some(&recording_file_parent.uri().to_variant()),
         );
 
         self.send_notification(Some("record-success"), &notification);
@@ -123,11 +119,10 @@ impl Application {
     fn setup_gactions(&self) {
         let action_launch_default_for_file = gio::SimpleAction::new(
             "launch-default-for-path",
-            Some(glib::VariantTy::new("ay").unwrap()),
+            Some(glib::VariantTy::new("s").unwrap()),
         );
         action_launch_default_for_file.connect_activate(clone!(@weak self as obj => move |_, param| {
-            let file_path = param.unwrap().get::<PathBuf>().unwrap();
-            let file_uri = gio::File::for_path(file_path).uri();
+            let file_uri = param.unwrap().get::<String>().unwrap();
 
             utils::spawn(async move {
                 if let Err(err) = gtk::show_uri_full_future(

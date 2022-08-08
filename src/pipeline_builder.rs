@@ -18,8 +18,8 @@ const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
 #[derive(Debug)]
 pub struct PipelineBuilder {
+    file_path: PathBuf,
     framerate: u32,
-    saving_location: PathBuf,
     format: VideoFormat,
     fd: RawFd,
     streams: Vec<Stream>,
@@ -31,15 +31,15 @@ pub struct PipelineBuilder {
 
 impl PipelineBuilder {
     pub fn new(
+        file_path: &Path,
         framerate: u32,
-        saving_location: &Path,
         format: VideoFormat,
         fd: RawFd,
         streams: Vec<Stream>,
     ) -> Self {
         Self {
+            file_path: file_path.to_path_buf(),
             framerate,
-            saving_location: saving_location.to_path_buf(),
             format,
             fd,
             streams,
@@ -71,7 +71,7 @@ impl PipelineBuilder {
     }
 
     pub fn build(self) -> Result<gst::Pipeline> {
-        let string = PipelineAssembler::from_builder(self).assemble();
+        let string = PipelineAssembler::from_builder(self).assemble()?;
         tracing::debug!("pipeline_string: {}", &string);
 
         gst::parse_launch_full(&string, None, gst::ParseFlags::FATAL_ERRORS)
@@ -89,7 +89,13 @@ impl PipelineAssembler {
         Self { builder }
     }
 
-    pub fn assemble(&self) -> String {
+    pub fn assemble(&self) -> Result<String> {
+        let file_path = self
+            .builder
+            .file_path
+            .to_str()
+            .ok_or_else(|| anyhow::anyhow!("Could not convert file_path to string."))?;
+
         let pipeline_elements = vec![
             self.compositor(),
             Some("queue name=queue0".to_string()),
@@ -102,7 +108,7 @@ impl PipelineAssembler {
             Some(self.videoenc()),
             Some("queue".to_string()),
             self.muxer(),
-            Some(format!("filesink name=filesink location=\"{}\"", self.file_path().display())),
+            Some(format!("filesink name=filesink location=\"{}\"", file_path)),
         ];
 
         let pipeline_string = pipeline_elements
@@ -111,25 +117,13 @@ impl PipelineAssembler {
             .collect::<Vec<String>>()
             .join(" ! ");
 
-        [pipeline_string, self.pipewiresrc(), self.pulsesrc()]
-            .join(" ")
-            .replace("%T", &ideal_thread_count().to_string())
-    }
-
-    fn file_path(&self) -> PathBuf {
-        let file_name = glib::DateTime::now_local()
-            .expect("You are somehow on year 9999")
-            .format("Kooha-%F-%H-%M-%S")
-            .expect("Invalid format string");
-
-        let mut path = self.builder.saving_location.join(file_name);
-        path.set_extension(match self.video_format() {
-            VideoFormat::Webm => "webm",
-            VideoFormat::Mkv => "mkv",
-            VideoFormat::Mp4 => "mp4",
-            VideoFormat::Gif => "gif",
-        });
-        path
+        Ok([
+            pipeline_string,
+            self.pipewiresrc(),
+            self.pulsesrc().unwrap_or_default(),
+        ]
+        .join(" ")
+        .replace("%T", &ideal_thread_count().to_string()))
     }
 
     fn compositor(&self) -> Option<String> {
@@ -172,34 +166,33 @@ impl PipelineAssembler {
         pipewiresrc_list.join(" ")
     }
 
-    fn pulsesrc(&self) -> String {
-        if self.video_format() == VideoFormat::Gif {
-            return "".to_string();
-        }
-
-        let audioenc = self.audioenc().unwrap();
+    fn pulsesrc(&self) -> Option<String> {
+        let audioenc = match self.video_format() {
+            VideoFormat::Webm | VideoFormat::Mkv | VideoFormat::Mp4 => "opusenc",
+            VideoFormat::Gif => return None,
+        };
 
         match (self.speaker_source(), self.mic_source()) {
             (Some(speaker_source), Some(mic_source)) => {
-                format!("pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.",
+                Some(format!("pulsesrc device=\"{}\" ! queue ! audiomixer name=mix ! {} ! queue ! mux. pulsesrc device=\"{}\" ! queue ! mix.",
                     speaker_source,
                     audioenc,
                     mic_source,
-                )
+                ))
             }
             (Some(speaker_source), None) => {
-                format!(
+                Some(format!(
                     "pulsesrc device=\"{}\" ! {} ! queue ! mux.",
                     speaker_source, audioenc
-                )
+                ))
             }
             (None, Some(mic_source)) => {
-                format!(
+                Some(format!(
                     "pulsesrc device=\"{}\" ! {} ! queue ! mux.",
                     mic_source, audioenc
-                )
+                ))
             }
-            (None, None) => "".to_string(),
+            (None, None) => None,
         }
     }
 
@@ -266,14 +259,6 @@ impl PipelineAssembler {
                 VideoFormat::Gif => "gifenc repeat=-1 speed=30",
             }
         }.to_string()
-    }
-
-    fn audioenc(&self) -> Option<String> {
-        match self.video_format() {
-            VideoFormat::Webm | VideoFormat::Mkv | VideoFormat::Mp4 => Some("opusenc"),
-            VideoFormat::Gif => None,
-        }
-        .map(str::to_string)
     }
 
     fn muxer(&self) -> Option<String> {

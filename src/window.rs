@@ -8,7 +8,7 @@ use gtk::{
     CompositeTemplate,
 };
 
-use std::{path::PathBuf, time::Duration};
+use std::time::Duration;
 
 use crate::{
     cancelled::Cancelled,
@@ -238,14 +238,14 @@ impl Window {
         }
     }
 
-    fn on_recording_finished(&self, res: &Result<PathBuf>) {
+    fn on_recording_finished(&self, res: &Result<gio::File>) {
         match res {
-            Ok(ref recording_file_path) => {
+            Ok(ref recording_file) => {
                 let application = Application::default();
-                application.send_record_success_notification(recording_file_path);
+                application.send_record_success_notification(recording_file);
 
                 let recent_manager = gtk::RecentManager::default();
-                recent_manager.add_item(&gio::File::for_path(recording_file_path).uri());
+                recent_manager.add_item(&recording_file.uri());
             }
             Err(ref err) => {
                 if err.is::<Cancelled>() {
