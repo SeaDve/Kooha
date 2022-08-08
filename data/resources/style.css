@@ -1,3 +1,7 @@
+row .error-view {
+  padding: 0px;
+}
+
 .large-icons image {
   -gtk-icon-size: 32px;
 }

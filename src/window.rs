@@ -158,15 +158,30 @@ impl Window {
             .left_margin(6)
             .right_margin(6)
             .build();
-        err_view.add_css_class("card");
 
         let scrolled_window = gtk::ScrolledWindow::builder()
             .child(&err_view)
-            .min_content_height(180)
+            .min_content_height(120)
             .min_content_width(360)
             .build();
 
-        // TODO hide detailed error report by default
+        let scrolled_window_row = gtk::ListBoxRow::builder()
+            .child(&scrolled_window)
+            .overflow(gtk::Overflow::Hidden)
+            .activatable(false)
+            .build();
+        scrolled_window_row.add_css_class("error-view");
+
+        let expander = adw::ExpanderRow::builder()
+            .title(&gettext("Show detailed error"))
+            .build();
+        expander.add_row(&scrolled_window_row);
+
+        let list_box = gtk::ListBox::builder()
+            .selection_mode(gtk::SelectionMode::None)
+            .build();
+        list_box.add_css_class("boxed-list");
+        list_box.append(&expander);
 
         let err_dialog = adw::MessageDialog::builder()
             .heading(&err.to_string())
@@ -174,7 +189,7 @@ impl Window {
             .default_response("ok")
             .transient_for(self)
             .modal(true)
-            .extra_child(&scrolled_window)
+            .extra_child(&list_box)
             .build();
 
         if let Some(ref help) = err.downcast_ref::<Help>() {
