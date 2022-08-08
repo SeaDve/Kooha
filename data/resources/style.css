@@ -19,6 +19,10 @@ label.paused {
   animation-duration: 1s;
 }
 
+button.copy-done {
+  color: @accent_bg_color;
+}
+
 @keyframes blinking {
   0% {
     color: @window_fg_color;

@@ -3,7 +3,7 @@ use anyhow::{ensure, Error, Result};
 use futures_util::lock::Mutex;
 use gettextrs::gettext;
 use gtk::{
-    gio,
+    gdk, gio,
     glib::{self, clone},
     CompositeTemplate,
 };
@@ -145,12 +145,10 @@ impl Window {
     }
 
     pub fn present_error(&self, err: &Error) {
-        let err_buffer = gtk::TextBuffer::builder()
-            .text(&format!("{:?}", err))
-            .build();
+        let err_text = format!("{:?}", err);
 
         let err_view = gtk::TextView::builder()
-            .buffer(&err_buffer)
+            .buffer(&gtk::TextBuffer::builder().text(&err_text).build())
             .editable(false)
             .monospace(true)
             .top_margin(6)
@@ -169,13 +167,32 @@ impl Window {
             .child(&scrolled_window)
             .overflow(gtk::Overflow::Hidden)
             .activatable(false)
+            .selectable(false)
             .build();
         scrolled_window_row.add_css_class("error-view");
 
+        let copy_button = gtk::Button::builder()
+            .tooltip_text(&gettext("Copy to clipboard"))
+            .icon_name("edit-copy-symbolic")
+            .valign(gtk::Align::Center)
+            .build();
+        copy_button.connect_clicked(move |button| {
+            if let Some(display) = gdk::Display::default() {
+                display.clipboard().set_text(&err_text);
+                button.set_tooltip_text(Some(&gettext("Copied to clipboard")));
+                button.set_icon_name("checkmark-symbolic");
+                button.add_css_class("copy-done");
+            } else {
+                tracing::error!("Failed to copy error to clipboard: No display");
+            }
+        });
+
         let expander = adw::ExpanderRow::builder()
             .title(&gettext("Show detailed error"))
+            .activatable(false)
             .build();
         expander.add_row(&scrolled_window_row);
+        expander.add_action(&copy_button);
 
         let list_box = gtk::ListBox::builder()
             .selection_mode(gtk::SelectionMode::None)
