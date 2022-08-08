@@ -8,11 +8,11 @@ label.large-time {
   font-feature-settings: "tnum";
 }
 
-.recording {
+label.recording {
   color: @destructive_bg_color;
 }
 
-.paused {
+label.paused {
   animation-name: blinking;
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
