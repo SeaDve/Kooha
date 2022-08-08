@@ -18,4 +18,5 @@ adw = { package = "libadwaita", version = "0.2.0-alpha.2", features = ["v1_2"] }
 gst = { package = "gstreamer", version = "0.18.2" }
 gst-plugin-gif = "0.8.0"
 futures-channel = "0.3.19"
+futures-util = { version = "0.3", default-features = false }
 gsettings-macro = "0.1.11"

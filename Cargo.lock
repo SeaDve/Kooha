@@ -654,6 +654,7 @@ version = "2.0.1"
 dependencies = [
  "anyhow",
  "futures-channel",
+ "futures-util",
  "gdk4-wayland",
  "gdk4-x11",
  "gettext-rs",

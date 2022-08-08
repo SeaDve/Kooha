@@ -1,5 +1,6 @@
 use adw::{prelude::*, subclass::prelude::*};
-use anyhow::{Error, Result};
+use anyhow::{ensure, Error, Result};
+use futures_util::lock::Mutex;
 use gettextrs::gettext;
 use gtk::{
     gio,
@@ -7,7 +8,7 @@ use gtk::{
     CompositeTemplate,
 };
 
-use std::{cell::RefCell, path::PathBuf, time::Duration};
+use std::{path::PathBuf, time::Duration};
 
 use crate::{
     cancelled::Cancelled,
@@ -45,7 +46,7 @@ mod imp {
         #[template_child]
         pub(super) flushing_page: TemplateChild<gtk::Box>,
 
-        pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
+        pub(super) recording: Mutex<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
 
     #[glib::object_subclass]
@@ -64,15 +65,19 @@ mod imp {
             });
 
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
-                if let Err(err) = obj.toggle_pause() {
-                    let err = err.context("Failed to toggle pause");
-                    tracing::error!("{:?}", err);
-                    obj.present_error(&err);
-                }
+                utils::spawn(clone!(@weak obj => async move {
+                    if let Err(err) = obj.toggle_pause().await {
+                        let err = err.context("Failed to toggle pause");
+                        tracing::error!("{:?}", err);
+                        obj.present_error(&err);
+                    }
+                }));
             });
 
             klass.install_action("win.cancel-delay", None, move |obj, _, _| {
-                obj.cancel_delay();
+                utils::spawn(clone!(@weak obj => async move {
+                    obj.cancel_delay().await;
+                }));
             });
         }
 
@@ -114,19 +119,29 @@ impl Window {
         glib::Object::new(&[("application", app)]).expect("Failed to create Window.")
     }
 
-    pub fn is_safe_to_close(&self) -> bool {
-        self.imp()
-            .recording
-            .borrow()
-            .as_ref()
-            .map_or(true, |(ref recording, _)| {
-                matches!(
-                    recording.state(),
-                    RecordingState::Null
-                        | RecordingState::Delayed { .. }
-                        | RecordingState::Finished(..)
-                )
-            })
+    pub async fn close(&self) -> Result<()> {
+        let is_safe_to_close =
+            self.imp()
+                .recording
+                .lock()
+                .await
+                .as_ref()
+                .map_or(true, |(ref recording, _)| {
+                    matches!(
+                        recording.state(),
+                        RecordingState::Null
+                            | RecordingState::Delayed { .. }
+                            | RecordingState::Finished(..)
+                    )
+                });
+
+        ensure!(
+            is_safe_to_close,
+            "Cannot close window while recording is in progress"
+        );
+
+        GtkWindowExt::close(self);
+        Ok(())
     }
 
     pub fn present_error(&self, err: &Error) {
@@ -173,7 +188,7 @@ impl Window {
     async fn toggle_record(&self) {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.borrow() {
+        if let Some((ref recording, _)) = *imp.recording.lock().await {
             recording.stop();
             return;
         }
@@ -191,8 +206,7 @@ impl Window {
                 obj.on_recording_duration_notify(recording);
             })),
         ];
-        imp.recording
-            .replace(Some((recording.clone(), handler_ids)));
+        *imp.recording.lock().await = Some((recording.clone(), handler_ids));
 
         let settings = Application::default().settings();
         let record_delay = settings.record_delay();
@@ -202,10 +216,10 @@ impl Window {
             .await;
     }
 
-    fn toggle_pause(&self) -> Result<()> {
+    async fn toggle_pause(&self) -> Result<()> {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.borrow() {
+        if let Some((ref recording, _)) = *imp.recording.lock().await {
             if matches!(recording.state(), RecordingState::Paused) {
                 recording.resume()?;
             } else {
@@ -216,23 +230,15 @@ impl Window {
         Ok(())
     }
 
-    fn cancel_delay(&self) {
+    async fn cancel_delay(&self) {
         let imp = self.imp();
 
-        // We cannot borrow here since cancelling recording will trigger
-        // recording finished that will borrow_mut and take the recording.
-        if let Some((recording, handler_ids)) = imp.recording.take() {
+        if let Some((ref recording, _)) = *imp.recording.lock().await {
             recording.cancel();
-
-            for handler_id in handler_ids {
-                recording.disconnect(handler_id);
-            }
         }
     }
 
     fn on_recording_finished(&self, res: &Result<PathBuf>) {
-        let imp = self.imp();
-
         match res {
             Ok(ref recording_file_path) => {
                 let application = Application::default();
@@ -251,15 +257,17 @@ impl Window {
             }
         }
 
-        if let Some((recording, handler_ids)) = imp.recording.take() {
-            for handler_id in handler_ids {
-                recording.disconnect(handler_id);
+        utils::spawn(clone!(@weak self as obj => async move {
+            let recording = obj.imp().recording.lock().await.take();
+
+            if let Some((recording, handler_ids)) = recording {
+                for handler_id in handler_ids {
+                    recording.disconnect(handler_id);
+                }
+            } else {
+                tracing::error!("Recording finished but no stored recording");
             }
-        // We don't want to error out as we already took the recording in
-        // `Self::cancel_delay`
-        } else if res.is_ok() || !res.as_ref().unwrap_err().is::<Cancelled>() {
-            tracing::error!("Recording finished but no stored recording");
-        }
+        }));
     }
 
     fn on_recording_duration_notify(&self, recording: &Recording) {
@@ -275,13 +283,20 @@ impl Window {
     }
 
     fn update_view(&self) {
+        utils::spawn(clone!(@weak self as obj => async move {
+            obj.update_view_inner().await;
+        }));
+    }
+
+    async fn update_view_inner(&self) {
         let imp = self.imp();
 
         // TODO disregard ms granularity recording state change
 
         let state = imp
             .recording
-            .borrow()
+            .lock()
+            .await
             .as_ref()
             .map_or(RecordingState::Null, |(recording, _)| recording.state());
 
