@@ -180,7 +180,7 @@ impl Application {
         self.set_accels_for_action("win.show-pointer", &["<primary>p"]);
         self.set_accels_for_action("win.toggle-record", &["<primary>r"]);
         // self.set_accels_for_action("win.toggle-pause", &["<primary>k"]); // See issue #112 in GitHub repo
-        self.set_accels_for_action("win.cancel-delay", &["<primary>c"]);
+        self.set_accels_for_action("win.cancel-record", &["<primary>c"]);
     }
 }
 

@@ -49,6 +49,7 @@
         <p>This release contains major fixes:</p>
         <ul>
           <li>Added 3 seconds delay</li>
+          <li>Added ability to cancel recording while flushing</li>
           <li>Fixed x264 encoder failing to initialize on uneven resolutions</li>
           <li>Improved support information in the new about window</li>
           <li>Improved error handling</li>

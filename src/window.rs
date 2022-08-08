@@ -74,9 +74,9 @@ mod imp {
                 }));
             });
 
-            klass.install_action("win.cancel-delay", None, move |obj, _, _| {
+            klass.install_action("win.cancel-record", None, move |obj, _, _| {
                 utils::spawn(clone!(@weak obj => async move {
-                    obj.cancel_delay().await;
+                    obj.cancel_record().await;
                 }));
             });
         }
@@ -230,7 +230,7 @@ impl Window {
         Ok(())
     }
 
-    async fn cancel_delay(&self) {
+    async fn cancel_record(&self) {
         let imp = self.imp();
 
         if let Some((ref recording, _)) = *imp.recording.lock().await {
@@ -340,8 +340,11 @@ impl Window {
             matches!(state, RecordingState::Recording),
         );
         self.action_set_enabled(
-            "win.cancel-delay",
-            matches!(state, RecordingState::Delayed { .. }),
+            "win.cancel-record",
+            matches!(
+                state,
+                RecordingState::Delayed { .. } | RecordingState::Flushing
+            ),
         );
     }
 

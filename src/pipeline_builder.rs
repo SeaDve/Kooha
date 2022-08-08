@@ -247,6 +247,8 @@ impl PipelineAssembler {
     }
 
     fn videoenc(&self) -> String {
+        // TODO consider using encodebin
+
         let value = env::var("KOOHA_VAAPI").unwrap_or_default();
         let is_use_vaapi = value == "1";
         tracing::debug!("is_use_vaapi: {}", is_use_vaapi);
