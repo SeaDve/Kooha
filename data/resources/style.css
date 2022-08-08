@@ -21,6 +21,6 @@ label.paused {
 
 @keyframes blinking {
   0% {
-    color: @theme_fg_color;
+    color: @window_fg_color;
   }
 }
