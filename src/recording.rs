@@ -272,7 +272,11 @@ impl Recording {
         )));
         pipeline
             .set_state(gst::State::Playing)
-            .context("Failed to initialize pipeline state to playing")?;
+            .map_err(Error::from)
+            .with_help(
+                || gettext("Make sure that the saving location exists or is accessible."),
+                || "Failed to initialize pipeline state to playing",
+            )?;
         self.update_duration();
 
         Ok(())
