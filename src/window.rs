@@ -3,7 +3,7 @@ use anyhow::{ensure, Error, Result};
 use futures_util::lock::Mutex;
 use gettextrs::gettext;
 use gtk::{
-    gdk, gio,
+    gio,
     glib::{self, clone},
     CompositeTemplate,
 };
@@ -177,14 +177,10 @@ impl Window {
             .valign(gtk::Align::Center)
             .build();
         copy_button.connect_clicked(move |button| {
-            if let Some(display) = gdk::Display::default() {
-                display.clipboard().set_text(&err_text);
-                button.set_tooltip_text(Some(&gettext("Copied to clipboard")));
-                button.set_icon_name("checkmark-symbolic");
-                button.add_css_class("copy-done");
-            } else {
-                tracing::error!("Failed to copy error to clipboard: No display");
-            }
+            button.display().clipboard().set_text(&err_text);
+            button.set_tooltip_text(Some(&gettext("Copied to clipboard")));
+            button.set_icon_name("checkmark-symbolic");
+            button.add_css_class("copy-done");
         });
 
         let expander = adw::ExpanderRow::builder()
