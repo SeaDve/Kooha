@@ -3,11 +3,12 @@ mod object_path;
 mod types;
 mod window_identifier;
 
-use anyhow::{anyhow, ensure, Context, Result};
+use anyhow::{anyhow, bail, ensure, Context, Result};
 use futures_channel::oneshot;
+use futures_util::future::{self, Either};
 use gtk::{gio, glib, prelude::*};
 
-use std::{cell::RefCell, collections::HashMap, os::unix::io::RawFd};
+use std::{cell::RefCell, collections::HashMap, os::unix::io::RawFd, time::Duration};
 
 pub use self::types::{CursorMode, PersistMode, SourceType, Stream};
 use self::{
@@ -15,7 +16,7 @@ use self::{
 };
 use crate::cancelled::Cancelled;
 
-const DEFAULT_TIMEOUT_MS: i32 = 5000;
+const DEFAULT_TIMEOUT: Duration = Duration::from_secs(5);
 
 #[derive(Debug)]
 pub struct ScreencastSession {
@@ -120,7 +121,7 @@ impl ScreencastSession {
                 None,
                 None,
                 gio::DBusCallFlags::NONE,
-                DEFAULT_TIMEOUT_MS,
+                DEFAULT_TIMEOUT.as_millis() as i32,
             )
             .await
             .context("Failed to invoke Close on the session")?;
@@ -249,7 +250,7 @@ impl ScreencastSession {
                         .to_variant(),
                 ),
                 gio::DBusCallFlags::NONE,
-                DEFAULT_TIMEOUT_MS,
+                DEFAULT_TIMEOUT.as_millis() as i32,
                 gio::UnixFDList::NONE,
             )
             .await?;
@@ -308,7 +309,7 @@ async fn screencast_request_call(
             method,
             Some(parameters),
             gio::DBusCallFlags::NONE,
-            DEFAULT_TIMEOUT_MS,
+            DEFAULT_TIMEOUT.as_millis() as i32,
         )
         .await
         .with_context(|| {
@@ -318,11 +319,12 @@ async fn screencast_request_call(
             )
         })?;
 
-    // TODO Add timeout
-    let response_variant = rx
-        .await
-        .with_context(|| Cancelled::new(method))
-        .context("Sender dropped")?;
+    let response_variant = match future::select(rx, glib::timeout_future(DEFAULT_TIMEOUT)).await {
+        Either::Left((res, _)) => res
+            .with_context(|| Cancelled::new(method))
+            .context("Sender dropped")?,
+        Either::Right(_) => bail!("Request response timed out"),
+    };
 
     debug_assert_eq!(path.get::<(String,)>().map(|(p,)| p), Some(request_path));
 
