@@ -1,15 +1,15 @@
-row .error-view {
+row.error-view {
   padding: 0px;
+}
+
+label.large-time {
+  font-size: 450%;
+  font-weight: 300;
+  font-feature-settings: "tnum";
 }
 
 .large-icons image {
   -gtk-icon-size: 32px;
-}
-
-.time-label {
-  font-size: 450%;
-  font-weight: 300;
-  font-feature-settings: "tnum";
 }
 
 .recording {

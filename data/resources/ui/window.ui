@@ -133,7 +133,7 @@
                     <child>
                       <object class="GtkLabel" id="recording_time_label">
                         <style>
-                          <class name="time-label"/>
+                          <class name="large-time"/>
                           <class name="recording"/>
                         </style>
                       </object>
@@ -190,7 +190,7 @@
                     <child>
                       <object class="GtkLabel" id="delay_label">
                         <style>
-                          <class name="time-label"/>
+                          <class name="large-time"/>
                         </style>
                       </object>
                     </child>
