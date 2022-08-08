@@ -47,7 +47,7 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.cancel-record</property>
-                <property name="title" translatable="yes">Cancel Delay</property>
+                <property name="title" translatable="yes">Cancel Record</property>
               </object>
             </child>
           </object>
