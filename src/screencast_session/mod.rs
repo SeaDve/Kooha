@@ -3,9 +3,8 @@ mod object_path;
 mod types;
 mod window_identifier;
 
-use anyhow::{anyhow, bail, ensure, Context, Result};
+use anyhow::{anyhow, ensure, Context, Result};
 use futures_channel::oneshot;
-use futures_util::future::{self, Either};
 use gtk::{gio, glib, prelude::*};
 
 use std::{cell::RefCell, collections::HashMap, os::unix::io::RawFd, time::Duration};
@@ -319,12 +318,10 @@ async fn screencast_request_call(
             )
         })?;
 
-    let response_variant = match future::select(rx, glib::timeout_future(DEFAULT_TIMEOUT)).await {
-        Either::Left((res, _)) => res
-            .with_context(|| Cancelled::new(method))
-            .context("Sender dropped")?,
-        Either::Right(_) => bail!("Request response timed out"),
-    };
+    let response_variant = rx
+        .await
+        .with_context(|| Cancelled::new(method))
+        .context("Sender dropped")?;
 
     debug_assert_eq!(path.get::<(String,)>().map(|(p,)| p), Some(request_path));
 
