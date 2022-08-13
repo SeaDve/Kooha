@@ -186,8 +186,8 @@ mod tests {
         let timer = Timer::new(Duration::ZERO, |_| {});
 
         assert!(timer.clone().now_or_never().unwrap().is_ok());
-        assert!(!timer.inner.is_done.get());
-        assert!(timer.inner.is_cancelled.get());
+        assert!(timer.inner.is_done.get());
+        assert!(!timer.inner.is_cancelled.get());
         assert_eq!(timer.inner.secs_left(), 0);
     }
 }
