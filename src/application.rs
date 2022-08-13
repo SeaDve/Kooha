@@ -96,12 +96,12 @@ impl Application {
         let notification = gio::Notification::new(&gettext("Screencast recorded"));
         notification.set_body(Some(&gettext("Click here to view the video.")));
         notification.set_default_action_and_target_value(
-            "app.launch-default-for-path",
+            "app.launch-default-for-uri",
             Some(&recording_file.uri().to_variant()),
         );
         notification.add_button_with_target_value(
             &gettext("Show in Files"),
-            "app.launch-default-for-path",
+            "app.launch-default-for-uri",
             Some(&recording_file_parent.uri().to_variant()),
         );
 
@@ -117,11 +117,11 @@ impl Application {
     }
 
     fn setup_gactions(&self) {
-        let action_launch_default_for_file = gio::SimpleAction::new(
-            "launch-default-for-path",
+        let action_launch_default_for_uri = gio::SimpleAction::new(
+            "launch-default-for-uri",
             Some(glib::VariantTy::new("s").unwrap()),
         );
-        action_launch_default_for_file.connect_activate(clone!(@weak self as obj => move |_, param| {
+        action_launch_default_for_uri.connect_activate(clone!(@weak self as obj => move |_, param| {
             let file_uri = param.unwrap().get::<String>().unwrap();
 
             utils::spawn(async move {
@@ -140,7 +140,7 @@ impl Application {
                 }
             });
         }));
-        self.add_action(&action_launch_default_for_file);
+        self.add_action(&action_launch_default_for_uri);
 
         let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
         action_select_saving_location.connect_activate(clone!(@weak self as obj => move |_, _| {
