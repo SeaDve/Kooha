@@ -1,3 +1,4 @@
+use futures_util::future::FusedFuture;
 use gtk::glib::{self, clone, Continue};
 
 use std::{
@@ -145,6 +146,12 @@ impl Future for Timer {
         } else {
             Poll::Pending
         }
+    }
+}
+
+impl FusedFuture for Timer {
+    fn is_terminated(&self) -> bool {
+        self.inner.is_done.get() || self.inner.is_cancelled.get()
     }
 }
 
