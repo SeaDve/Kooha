@@ -48,9 +48,11 @@
       <description>
         <p>This release contains major fixes:</p>
         <ul>
-          <li>Added 3 seconds delay</li>
           <li>Added ability to cancel recording while flushing</li>
+          <li>Added 3 seconds delay</li>
           <li>Fixed x264 encoder failing to initialize on uneven resolutions</li>
+          <li>Recordings are now stored by default in `~/Videos/Kooha` (This won't affect existing settings)</li>
+          <li>"Show in Files" button in notifications now highlights the file</li>
           <li>Improved support information in the new about window</li>
           <li>Improved error handling</li>
           <li>Major codebase stability improvements</li>

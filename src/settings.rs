@@ -6,7 +6,10 @@ use gtk::{
     glib::{self, clone},
 };
 
-use std::path::{Path, PathBuf};
+use std::{
+    fs,
+    path::{Path, PathBuf},
+};
 
 use crate::{config::APP_ID, utils};
 
@@ -79,11 +82,25 @@ impl Settings {
     pub fn saving_location(&self) -> PathBuf {
         let saving_location: PathBuf = self.0.get("saving-location");
 
-        if saving_location.as_os_str().is_empty() {
-            glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir)
-        } else {
-            saving_location
+        if !saving_location.as_os_str().is_empty() {
+            return saving_location;
         }
+
+        let saving_location =
+            glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir);
+
+        let kooha_saving_location = saving_location.join("Kooha");
+
+        if let Err(err) = fs::create_dir_all(&kooha_saving_location) {
+            tracing::warn!(
+                "Failed to create dir at `{}`: {:?}",
+                kooha_saving_location.display(),
+                err
+            );
+            return saving_location;
+        }
+
+        kooha_saving_location
     }
 }
 
