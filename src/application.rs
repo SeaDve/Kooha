@@ -91,8 +91,6 @@ impl Application {
     }
 
     pub fn send_record_success_notification(&self, recording_file: &gio::File) {
-        let recording_file_parent = recording_file.parent().expect("Directory doesn't exist.");
-
         let notification = gio::Notification::new(&gettext("Screencast recorded"));
         notification.set_body(Some(&gettext("Click here to view the video.")));
         notification.set_default_action_and_target_value(
@@ -101,8 +99,8 @@ impl Application {
         );
         notification.add_button_with_target_value(
             &gettext("Show in Files"),
-            "app.launch-default-for-uri",
-            Some(&recording_file_parent.uri().to_variant()),
+            "app.show-in-files",
+            Some(&recording_file.uri().to_variant()),
         );
 
         self.send_notification(Some("record-success"), &notification);
@@ -116,31 +114,46 @@ impl Application {
         ApplicationExtManual::run(self);
     }
 
+    async fn try_show_uri(&self, uri: &str) {
+        if let Err(err) =
+            gtk::show_uri_full_future(self.main_window().as_ref(), uri, gdk::CURRENT_TIME).await
+        {
+            tracing::warn!("Failed to launch default for uri `{}`: {:?}", uri, err);
+
+            if let Some(window) = self.main_window() {
+                window.present_error(&err.into());
+            }
+        }
+    }
+
     fn setup_gactions(&self) {
-        let action_launch_default_for_uri = gio::SimpleAction::new(
-            "launch-default-for-uri",
-            Some(glib::VariantTy::new("s").unwrap()),
+        let action_launch_default_for_uri =
+            gio::SimpleAction::new("launch-default-for-uri", Some(glib::VariantTy::STRING));
+        action_launch_default_for_uri.connect_activate(
+            clone!(@weak self as obj => move |_, param| {
+                let file_uri = param.unwrap().get::<String>().unwrap();
+
+                utils::spawn(async move {
+                    obj.try_show_uri(&file_uri).await;
+                });
+            }),
         );
-        action_launch_default_for_uri.connect_activate(clone!(@weak self as obj => move |_, param| {
-            let file_uri = param.unwrap().get::<String>().unwrap();
+        self.add_action(&action_launch_default_for_uri);
+
+        let action_show_in_files =
+            gio::SimpleAction::new("show-in-files", Some(glib::VariantTy::STRING));
+        action_show_in_files.connect_activate(clone!(@weak self as obj => move |_, param| {
+            let uri = param.unwrap().get::<String>().unwrap();
 
             utils::spawn(async move {
-                if let Err(err) = gtk::show_uri_full_future(
-                    obj.main_window().as_ref(),
-                    &file_uri,
-                    gdk::CURRENT_TIME,
-                )
-                .await
-                {
-                    tracing::warn!("Failed to launch default for uri `{}`: {:?}", file_uri, err);
+                if let Err(err) = utils::show_items(&[&uri]).await {
+                    tracing::warn!("Failed to show items: {:?}", err);
 
-                    if let Some(window) = obj.main_window() {
-                        window.present_error(&err.into());
-                    }
+                    obj.try_show_uri(&uri).await;
                 }
             });
         }));
-        self.add_action(&action_launch_default_for_uri);
+        self.add_action(&action_show_in_files);
 
         let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
         action_select_saving_location.connect_activate(clone!(@weak self as obj => move |_, _| {

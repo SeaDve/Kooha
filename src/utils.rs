@@ -1,4 +1,5 @@
-use gtk::glib;
+use anyhow::{Context, Result};
+use gtk::gio::{self, glib, prelude::*};
 
 use std::path::Path;
 
@@ -11,4 +12,32 @@ pub fn spawn<F: std::future::Future<Output = ()> + 'static>(fut: F) {
 /// Whether the application is running in a flatpak sandbox.
 pub fn is_flatpak() -> bool {
     Path::new("/.flatpak-info").exists()
+}
+
+/// Shows items in the default file manager.
+pub async fn show_items(uris: &[&str]) -> Result<()> {
+    let connection = gio::bus_get_future(gio::BusType::Session)
+        .await
+        .context("Failed to get session bus connection")?;
+
+    connection
+        .call_future(
+            Some("org.freedesktop.FileManager1"),
+            "/org/freedesktop/FileManager1",
+            "org.freedesktop.FileManager1",
+            "ShowItems",
+            Some(&(&uris, "").to_variant()),
+            None,
+            gio::DBusCallFlags::NONE,
+            -1,
+        )
+        .await
+        .with_context(|| {
+            format!(
+                "Failed to call show uris on org.freedesktop.FileManager1 `{:?}`",
+                &uris
+            )
+        })?;
+
+    Ok(())
 }
