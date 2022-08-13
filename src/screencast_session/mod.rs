@@ -132,6 +132,10 @@ impl ScreencastSession {
         Ok(())
     }
 
+    pub async fn version(&self) -> Result<u32> {
+        self.property("version")
+    }
+
     pub async fn available_cursor_modes(&self) -> Result<CursorMode> {
         let value = self.property::<u32>("AvailableCursorModes")?;
 

@@ -156,6 +156,10 @@ impl Recording {
             || "Failed create screencast session",
         )?;
         tracing::debug!(
+            "ScreenCast portal version: {:?}",
+            screencast_session.version().await
+        );
+        tracing::debug!(
             "Available cursor modes: {:?}",
             screencast_session.available_cursor_modes().await
         );
