@@ -302,7 +302,7 @@ impl Window {
     fn on_recording_duration_notify(&self, recording: &Recording) {
         let imp = self.imp();
 
-        let duration_secs = recording.duration().as_secs();
+        let duration_secs = recording.duration().seconds();
 
         let seconds_display = duration_secs % 60;
         let minutes_display = (duration_secs / 60) % 60;

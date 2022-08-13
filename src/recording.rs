@@ -19,7 +19,6 @@ use crate::{
     area_selector::AreaSelector,
     audio_device::{self, Class as AudioDeviceClass},
     cancelled::Cancelled,
-    clock_time::ClockTime,
     help::{ErrorExt, ResultExt},
     pipeline_builder::PipelineBuilder,
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
@@ -64,7 +63,7 @@ mod imp {
         pub(super) pipeline: OnceCell<gst::Pipeline>,
 
         pub(super) state: Cell<State>,
-        pub(super) duration: Cell<ClockTime>,
+        pub(super) duration: Cell<gst::ClockTime>,
     }
 
     #[glib::object_subclass]
@@ -80,7 +79,8 @@ mod imp {
                     glib::ParamSpecBoxed::builder("state", State::static_type())
                         .flags(glib::ParamFlags::READABLE)
                         .build(),
-                    glib::ParamSpecBoxed::builder("duration", ClockTime::static_type())
+                    glib::ParamSpecUInt64::builder("duration")
+                        .maximum(*gst::ClockTime::MAX.as_ref())
                         .flags(glib::ParamFlags::READABLE)
                         .build(),
                 ]
@@ -360,7 +360,7 @@ impl Recording {
         self.connect_notify_local(Some("state"), move |obj, _| f(obj))
     }
 
-    pub fn duration(&self) -> ClockTime {
+    pub fn duration(&self) -> gst::ClockTime {
         self.imp().duration.get()
     }
 
@@ -437,7 +437,7 @@ impl Recording {
             .and_then(|pipeline| pipeline.query_position::<gst::ClockTime>())
             .unwrap_or(gst::ClockTime::ZERO);
 
-        self.imp().duration.set(clock_time.into());
+        self.imp().duration.set(clock_time);
         self.notify("duration");
     }
 

@@ -23,7 +23,6 @@ mod application;
 mod area_selector;
 mod audio_device;
 mod cancelled;
-mod clock_time;
 mod config;
 mod help;
 mod pipeline_builder;
