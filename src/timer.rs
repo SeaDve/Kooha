@@ -77,6 +77,10 @@ impl Timer {
     }
 
     pub fn cancel(&self) {
+        if self.inner.is_cancelled.get() || self.inner.is_done.get() {
+            return;
+        }
+
         self.inner.is_cancelled.set(true);
 
         if let Some(source_id) = self.inner.source_id.take() {
