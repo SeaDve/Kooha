@@ -108,7 +108,7 @@ impl ScreencastSession {
         Ok((streams, output_restore_token, fd))
     }
 
-    pub async fn close(&self) -> Result<()> {
+    pub async fn close(self) -> Result<()> {
         let ret = self
             .proxy
             .connection()
