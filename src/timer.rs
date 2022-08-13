@@ -20,7 +20,7 @@ pub struct Timer {
 
 impl fmt::Debug for Timer {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.debug_struct("State")
+        f.debug_struct("Timer")
             .field("duration", &self.inner.duration)
             .field("is_done", &self.inner.is_done.get())
             .field("is_cancelled", &self.inner.is_cancelled.get())
@@ -147,5 +147,47 @@ impl Future for Timer {
 impl Drop for Timer {
     fn drop(&mut self) {
         self.cancel();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    use futures_util::FutureExt;
+
+    #[gtk::test]
+    async fn normal() {
+        let timer = Timer::new(Duration::from_nanos(10), |_| {});
+        assert_eq!(timer.inner.duration, Duration::from_nanos(10));
+
+        assert!(timer.clone().await.is_ok());
+        assert!(timer.inner.is_done.get());
+        assert!(!timer.inner.is_cancelled.get());
+        assert_eq!(timer.inner.secs_left(), 0);
+    }
+
+    #[gtk::test]
+    async fn cancelled() {
+        let timer = Timer::new(Duration::from_nanos(10), |_| {});
+        timer.cancel();
+
+        assert!(timer.clone().await.is_err());
+        assert!(!timer.inner.is_done.get());
+        assert!(timer.inner.is_cancelled.get());
+        assert_eq!(timer.inner.secs_left(), 0);
+    }
+
+    #[gtk::test]
+    fn zero_duration() {
+        let control = Timer::new(Duration::from_nanos(10), |_| {});
+        assert!(control.now_or_never().is_none());
+
+        let timer = Timer::new(Duration::ZERO, |_| {});
+
+        assert!(timer.clone().now_or_never().unwrap().is_ok());
+        assert!(!timer.inner.is_done.get());
+        assert!(timer.inner.is_cancelled.get());
+        assert_eq!(timer.inner.secs_left(), 0);
     }
 }
