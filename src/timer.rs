@@ -23,10 +23,26 @@ impl fmt::Debug for Timer {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("Timer")
             .field("duration", &self.inner.duration)
-            .field("is_done", &self.inner.is_done.get())
-            .field("is_cancelled", &self.inner.is_cancelled.get())
+            .field("state", &self.inner.state.get())
             .field("elapsed", &self.inner.instant.get().map(|i| i.elapsed()))
             .finish()
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
+enum State {
+    Waiting,
+    Cancelled,
+    Done,
+}
+
+impl State {
+    fn into_poll(self) -> Poll<<Timer as Future>::Output> {
+        match self {
+            State::Waiting => Poll::Pending,
+            State::Cancelled => Poll::Ready(Err(Cancelled::new("timer"))),
+            State::Done => Poll::Ready(Ok(())),
+        }
     }
 }
 
@@ -36,8 +52,7 @@ struct Inner {
     secs_left_changed_cb: Box<dyn Fn(u64) + 'static>,
     secs_left_changed_source_id: RefCell<Option<glib::SourceId>>,
 
-    is_done: Cell<bool>,
-    is_cancelled: Cell<bool>,
+    state: Cell<State>,
 
     instant: Cell<Option<Instant>>,
     waker: RefCell<Option<Waker>>,
@@ -46,7 +61,7 @@ struct Inner {
 
 impl Inner {
     fn secs_left(&self) -> u64 {
-        if self.is_done.get() || self.is_cancelled.get() {
+        if self.is_terminated() {
             return 0;
         }
 
@@ -58,6 +73,10 @@ impl Inner {
 
         self.duration.as_secs() - elapsed_secs
     }
+
+    fn is_terminated(&self) -> bool {
+        matches!(self.state.get(), State::Done | State::Cancelled)
+    }
 }
 
 impl Timer {
@@ -68,8 +87,7 @@ impl Timer {
                 duration,
                 secs_left_changed_cb: Box::new(secs_left_changed_cb),
                 secs_left_changed_source_id: RefCell::new(None),
-                is_done: Cell::new(false),
-                is_cancelled: Cell::new(false),
+                state: Cell::new(State::Waiting),
                 instant: Cell::new(None),
                 waker: RefCell::new(None),
                 source_id: RefCell::new(None),
@@ -77,12 +95,13 @@ impl Timer {
         }
     }
 
+    #[track_caller]
     pub fn cancel(&self) {
-        if self.inner.is_cancelled.get() || self.inner.is_done.get() {
+        if self.inner.is_terminated() {
             return;
         }
 
-        self.inner.is_cancelled.set(true);
+        self.inner.state.set(State::Cancelled);
 
         if let Some(source_id) = self.inner.source_id.take() {
             source_id.remove();
@@ -102,8 +121,13 @@ impl Future for Timer {
     type Output = Result<(), Cancelled>;
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
+        match self.inner.state.get().into_poll() {
+            ready @ Poll::Ready(_) => return ready,
+            Poll::Pending => {}
+        }
+
         if self.inner.duration == Duration::ZERO {
-            self.inner.is_done.set(true);
+            self.inner.state.set(State::Done);
             return Poll::Ready(Ok(()));
         }
 
@@ -125,7 +149,7 @@ impl Future for Timer {
             .replace(Some(glib::timeout_add_local_once(
                 self.inner.duration,
                 clone!(@weak self.inner as inner => move || {
-                    inner.is_done.set(true);
+                    inner.state.set(State::Done);
 
                     if let Some(source_id) = inner.secs_left_changed_source_id.take() {
                         source_id.remove();
@@ -139,19 +163,15 @@ impl Future for Timer {
         self.inner.instant.set(Some(Instant::now()));
         (self.inner.secs_left_changed_cb)(self.inner.secs_left());
 
-        if self.inner.is_cancelled.get() {
-            Poll::Ready(Err(Cancelled::new("timer")))
-        } else if self.inner.is_done.get() {
-            Poll::Ready(Ok(()))
-        } else {
-            Poll::Pending
-        }
+        if matches!(self.inner.state.get(), State::Waiting) {}
+
+        self.inner.state.get().into_poll()
     }
 }
 
 impl FusedFuture for Timer {
     fn is_terminated(&self) -> bool {
-        self.inner.is_done.get() || self.inner.is_cancelled.get()
+        self.inner.is_terminated()
     }
 }
 
@@ -171,21 +191,22 @@ mod tests {
     async fn normal() {
         let timer = Timer::new(Duration::from_nanos(10), |_| {});
         assert_eq!(timer.inner.duration, Duration::from_nanos(10));
+        assert!(matches!(timer.inner.state.get(), State::Waiting));
 
         assert!(timer.clone().await.is_ok());
-        assert!(timer.inner.is_done.get());
-        assert!(!timer.inner.is_cancelled.get());
+        assert!(matches!(timer.inner.state.get(), State::Done));
         assert_eq!(timer.inner.secs_left(), 0);
     }
 
     #[gtk::test]
     async fn cancelled() {
         let timer = Timer::new(Duration::from_nanos(10), |_| {});
+        assert!(matches!(timer.inner.state.get(), State::Waiting));
+
         timer.cancel();
 
         assert!(timer.clone().await.is_err());
-        assert!(!timer.inner.is_done.get());
-        assert!(timer.inner.is_cancelled.get());
+        assert!(matches!(timer.inner.state.get(), State::Cancelled));
         assert_eq!(timer.inner.secs_left(), 0);
     }
 
@@ -197,8 +218,7 @@ mod tests {
         let timer = Timer::new(Duration::ZERO, |_| {});
 
         assert!(timer.clone().now_or_never().unwrap().is_ok());
-        assert!(timer.inner.is_done.get());
-        assert!(!timer.inner.is_cancelled.get());
+        assert!(matches!(timer.inner.state.get(), State::Done));
         assert_eq!(timer.inner.secs_left(), 0);
     }
 }
