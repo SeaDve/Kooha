@@ -107,13 +107,31 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="start_record_button">
-                        <property name="tooltip-text" translatable="yes">Start Recording</property>
-                        <property name="label" translatable="yes">Record</property>
-                        <property name="action-name">win.toggle-record</property>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkButton" id="start_record_button">
+                            <property name="hexpand">True</property>
+                            <property name="tooltip-text" translatable="yes">Start Recording</property>
+                            <property name="label" translatable="yes">Record</property>
+                            <property name="action-name">win.toggle-record</property>
+                            <style>
+                              <class name="suggested-action"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkRevealer" id="forget_video_sources_revealer">
+                            <property name="transition-type">slide-left</property>
+                            <property name="child">
+                              <object class="GtkButton">
+                                <property name="margin-start">12</property>
+                                <property name="tooltip-text" translatable="yes">Forget Previously Selected Video Sources</property>
+                                <property name="icon-name">refresh-symbolic</property>
+                                <property name="action-name">win.forget-video-sources</property>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

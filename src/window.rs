@@ -32,6 +32,8 @@ mod imp {
         #[template_child]
         pub(super) main_page: TemplateChild<gtk::Box>,
         #[template_child]
+        pub(super) forget_video_sources_revealer: TemplateChild<gtk::Revealer>,
+        #[template_child]
         pub(super) recording_page: TemplateChild<gtk::Box>,
         #[template_child]
         pub(super) recording_label: TemplateChild<gtk::Label>,
@@ -78,6 +80,12 @@ mod imp {
                 utils::spawn(clone!(@weak obj => async move {
                     obj.cancel_record().await;
                 }));
+            });
+
+            klass.install_action("win.forget-video-sources", None, move |_obj, _, _| {
+                Application::default()
+                    .settings()
+                    .set_screencast_restore_token("");
             });
         }
 
@@ -396,6 +404,17 @@ impl Window {
         self.action_set_enabled("win.record-mic", is_enabled);
     }
 
+    fn update_forget_video_sources_action(&self) {
+        let settings = Application::default().settings();
+        let has_restore_token = !settings.screencast_restore_token().is_empty();
+
+        self.imp()
+            .forget_video_sources_revealer
+            .set_reveal_child(has_restore_token);
+
+        self.action_set_enabled("win.forget-video-sources", has_restore_token);
+    }
+
     fn setup_settings(&self) {
         let settings = Application::default().settings();
 
@@ -406,6 +425,14 @@ impl Window {
         settings.connect_video_format_changed(clone!(@weak self as obj => move |_| {
             obj.update_audio_toggles_sensitivity();
         }));
+
+        settings.connect_screencast_restore_token_changed(clone!(@weak self as obj => move |_| {
+            obj.update_forget_video_sources_action();
+        }));
+
+        self.update_title_label();
+        self.update_audio_toggles_sensitivity();
+        self.update_forget_video_sources_action();
 
         self.add_action(&settings.create_record_speaker_action());
         self.add_action(&settings.create_record_mic_action());

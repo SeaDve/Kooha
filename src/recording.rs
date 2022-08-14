@@ -181,7 +181,7 @@ impl Recording {
                 },
                 settings.capture_mode() == CaptureMode::MonitorWindow,
                 Some(&settings.screencast_restore_token()),
-                PersistMode::DoNot,
+                PersistMode::ExplicitlyRevoked,
                 Application::default().main_window().as_ref(),
             )
             .await

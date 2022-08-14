@@ -48,6 +48,7 @@
       <description>
         <p>This release contains major fixes:</p>
         <ul>
+          <li>Remember previously selected video sources</li>
           <li>Added ability to cancel recording while flushing</li>
           <li>Added 3 seconds delay</li>
           <li>Fixed x264 encoder failing to initialize on uneven resolutions</li>
