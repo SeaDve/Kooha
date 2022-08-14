@@ -95,7 +95,6 @@ impl Timer {
         }
     }
 
-    #[track_caller]
     pub fn cancel(&self) {
         if self.inner.is_terminated() {
             return;
