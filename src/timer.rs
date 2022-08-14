@@ -37,7 +37,7 @@ enum State {
 }
 
 impl State {
-    fn into_poll(self) -> Poll<<Timer as Future>::Output> {
+    fn to_poll(self) -> Poll<<Timer as Future>::Output> {
         match self {
             State::Waiting => Poll::Pending,
             State::Cancelled => Poll::Ready(Err(Cancelled::new("timer"))),
@@ -121,7 +121,7 @@ impl Future for Timer {
     type Output = Result<(), Cancelled>;
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
-        match self.inner.state.get().into_poll() {
+        match self.inner.state.get().to_poll() {
             ready @ Poll::Ready(_) => return ready,
             Poll::Pending => {}
         }
@@ -165,7 +165,7 @@ impl Future for Timer {
 
         if matches!(self.inner.state.get(), State::Waiting) {}
 
-        self.inner.state.get().into_poll()
+        self.inner.state.get().to_poll()
     }
 }
 
