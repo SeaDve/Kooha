@@ -3,7 +3,7 @@ use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
     gio::{self, prelude::*},
-    glib::{self, clone, closure_local, subclass::prelude::*},
+    glib::{self, clone, closure_local, subclass::prelude::*, translate::IntoGlib},
 };
 use once_cell::{sync::Lazy, unsync::OnceCell};
 
@@ -80,7 +80,7 @@ mod imp {
                         .flags(glib::ParamFlags::READABLE)
                         .build(),
                     glib::ParamSpecUInt64::builder("duration")
-                        .maximum(*gst::ClockTime::MAX.as_ref())
+                        .maximum(gst::ClockTime::MAX.into_glib())
                         .flags(glib::ParamFlags::READABLE)
                         .build(),
                 ]
