@@ -217,7 +217,7 @@ async fn shell_window_eval(method: &str, is_enabled: bool) -> Result<()> {
 
     let connection = gio::bus_get_future(gio::BusType::Session)
         .await
-        .context("Failed to get session bus connection")?;
+        .context("Failed to get session bus")?;
     let reply = connection
         .call_future(
             Some("org.gnome.Shell"),

@@ -18,7 +18,7 @@ pub fn is_flatpak() -> bool {
 pub async fn show_items(uris: &[&str]) -> Result<()> {
     let connection = gio::bus_get_future(gio::BusType::Session)
         .await
-        .context("Failed to get session bus connection")?;
+        .context("Failed to get session bus")?;
 
     connection
         .call_future(
@@ -34,7 +34,7 @@ pub async fn show_items(uris: &[&str]) -> Result<()> {
         .await
         .with_context(|| {
             format!(
-                "Failed to call show uris on org.freedesktop.FileManager1 `{:?}`",
+                "Failed to invoke org.freedesktop.FileManager1.ShowItems with uris: {:?}",
                 &uris
             )
         })?;
