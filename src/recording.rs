@@ -562,3 +562,36 @@ fn new_recording_path(saving_location: &Path, video_format: VideoFormat) -> Path
 
     path
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn duration() {
+        let recording = Recording::new();
+        assert_eq!(recording.duration(), gst::ClockTime::ZERO);
+        assert_eq!(
+            recording.property::<gst::ClockTime>("duration"),
+            gst::ClockTime::ZERO
+        );
+        assert_eq!(
+            recording.property::<u64>("duration"),
+            gst::ClockTime::ZERO.into_glib()
+        );
+
+        recording
+            .imp()
+            .duration
+            .set(gst::ClockTime::from_seconds(3));
+        assert_eq!(recording.duration(), gst::ClockTime::from_seconds(3));
+        assert_eq!(
+            recording.property::<gst::ClockTime>("duration"),
+            gst::ClockTime::from_seconds(3)
+        );
+        assert_eq!(
+            recording.property::<u64>("duration"),
+            gst::ClockTime::from_seconds(3).into_glib()
+        );
+    }
+}
