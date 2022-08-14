@@ -163,8 +163,6 @@ impl Future for Timer {
         self.inner.instant.set(Some(Instant::now()));
         (self.inner.secs_left_changed_cb)(self.inner.secs_left());
 
-        if matches!(self.inner.state.get(), State::Waiting) {}
-
         self.inner.state.get().to_poll()
     }
 }
