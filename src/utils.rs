@@ -15,7 +15,7 @@ pub fn is_flatpak() -> bool {
 }
 
 /// Shows items in the default file manager.
-pub async fn show_items(uris: &[&str]) -> Result<()> {
+pub async fn show_items(uris: &[&str], startup_id: &str) -> Result<()> {
     let connection = gio::bus_get_future(gio::BusType::Session)
         .await
         .context("Failed to get session bus")?;
@@ -26,7 +26,7 @@ pub async fn show_items(uris: &[&str]) -> Result<()> {
             "/org/freedesktop/FileManager1",
             "org.freedesktop.FileManager1",
             "ShowItems",
-            Some(&(&uris, "").to_variant()),
+            Some(&(uris, startup_id).to_variant()),
             None,
             gio::DBusCallFlags::NONE,
             -1,

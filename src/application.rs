@@ -146,7 +146,7 @@ impl Application {
             let uri = param.unwrap().get::<String>().unwrap();
 
             utils::spawn(async move {
-                if let Err(err) = utils::show_items(&[&uri]).await {
+                if let Err(err) = utils::show_items(&[&uri], "").await {
                     tracing::warn!("Failed to show items: {:?}", err);
 
                     obj.try_show_uri(&uri).await;
