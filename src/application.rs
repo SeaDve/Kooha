@@ -8,7 +8,7 @@ use gtk::{
 use once_cell::unsync::OnceCell;
 
 use crate::{
-    about_window,
+    about,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     settings::Settings,
     utils,
@@ -163,7 +163,7 @@ impl Application {
 
         let action_show_about = gio::SimpleAction::new("show-about", None);
         action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
-            about_window::present(obj.main_window().as_ref());
+            about::present_window(obj.main_window().as_ref());
         }));
         self.add_action(&action_show_about);
 

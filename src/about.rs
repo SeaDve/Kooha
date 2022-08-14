@@ -12,7 +12,7 @@ use crate::{
     utils,
 };
 
-pub fn present(transient_for: Option<&impl IsA<gtk::Window>>) {
+pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
     let win = adw::AboutWindow::builder()
         .modal(true)
         .application_icon(APP_ID)
