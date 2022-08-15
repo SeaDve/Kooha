@@ -40,7 +40,7 @@ fn find_default_name_inner(class: Class) -> Result<String> {
     device_monitor.add_filter(Some(class.as_str()), None);
 
     device_monitor.start().map_err(Error::from).with_help(
-        || gettext("Make sure that you have pulseaudio setup in your system."),
+        || gettext("Make sure that you have PulseAudio installed in your system."),
         || gettext("Failed to start device monitor"),
     )?;
     let devices = device_monitor.devices();

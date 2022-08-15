@@ -155,7 +155,7 @@ impl Recording {
             .context("Failed to create ScreencastSession")
             .with_help(
                 || gettext!("Check out {} for help.", IT_DOES_NOT_WORK_LINK),
-                || gettext("Failed start recording"),
+                || gettext("Failed to start recording"),
             )?;
         tracing::debug!(
             "ScreenCast portal version: {:?}",
@@ -273,7 +273,7 @@ impl Recording {
             .map_err(Error::from)
             .context("Failed to initialize pipeline state to playing")
             .with_help(
-                || gettext("Make sure that the saving location exists or is accessible."),
+                || gettext("Make sure that the saving location exists and is accessible."),
                 || gettext("Failed to start recording"),
             )?;
         self.update_duration();
