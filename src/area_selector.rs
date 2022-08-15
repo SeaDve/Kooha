@@ -1,4 +1,3 @@
-use adw::subclass::prelude::*;
 use anyhow::{anyhow, ensure, Context, Result};
 use futures_channel::oneshot::{self, Sender};
 use gtk::{
@@ -7,6 +6,7 @@ use gtk::{
     graphene::{Point, Rect, Size},
     gsk,
     prelude::*,
+    subclass::prelude::*,
 };
 
 use std::{cell::RefCell, time::Duration};
