@@ -10,8 +10,7 @@ use once_cell::{sync::Lazy, unsync::OnceCell};
 use std::{
     cell::{Cell, RefCell},
     os::unix::prelude::RawFd,
-    path::Path,
-    path::PathBuf,
+    path::{Path, PathBuf},
     rc::Rc,
     time::Duration,
 };
@@ -487,13 +486,13 @@ impl Recording {
                     source_id.remove();
                 }
 
-                let pipeline_file_path = self
-                    .pipeline()
-                    .by_name("filesink")
-                    .map(|fs| fs.property::<String>("location"));
                 let file = imp.file.get().unwrap();
+
                 debug_assert_eq!(
-                    pipeline_file_path.map(|path| PathBuf::from(&path)),
+                    self.pipeline()
+                        .by_name("filesink")
+                        .map(|fs| fs.property::<String>("location"))
+                        .map(|path| PathBuf::from(&path)),
                     Some(file.path().unwrap())
                 );
 
