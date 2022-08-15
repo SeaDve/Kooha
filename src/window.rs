@@ -334,8 +334,6 @@ impl Window {
 
                 imp.recording_time_label
                     .set_label(&format_time(gst::ClockTime::ZERO));
-                imp.delay_label
-                    .set_label(&format_time(gst::ClockTime::ZERO));
             }
             RecordingState::Delayed { secs_left } => {
                 imp.delay_label.set_label(&secs_left.to_string());
