@@ -453,7 +453,12 @@ impl Recording {
                 if e.error().matches(gst::ResourceError::OpenWrite) {
                     let error = error.help(
                         gettext("Make sure that the saving location exists and is accessible."),
-                        if let Some(ref path) = imp.file.get().and_then(|f| f.path()) {
+                        if let Some(ref path) = imp
+                            .file
+                            .get()
+                            .and_then(|f| f.path())
+                            .and_then(|path| path.parent().map(|p| p.to_owned()))
+                        {
                             // Translators: {} will be replaced with a path to the folder.
                             gettext!("Failed to open “{}” for writing", path.display())
                         } else {
