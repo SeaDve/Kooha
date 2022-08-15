@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"POT-Creation-Date: 2022-08-15 10:26+0800\n"
 "PO-Revision-Date: 2021-08-31 12:34+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
@@ -19,12 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: src/main.rs:52
 msgid "Kooha"
 msgstr "쿠하"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
 msgstr "화면을 우아하게 녹화해보세요"
 
@@ -35,13 +36,13 @@ msgstr ""
 "Screencast;스크린캐스트;생방송;방송;Recorder;레코더;Screen;화면;스크린;Video;"
 "비디오;동영상;영상;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -49,57 +50,57 @@ msgstr ""
 "쿠하는 최소주의를 지향하는 인터페이스를 갖춘 간단한 화면 녹화기입니다. 번거로"
 "운 설정을 하지 않고 그냥 녹화 단추만 눌러 녹화할 수 있습니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
 msgstr "쿠하의 주요 기능은 다음과 같습니다:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 어떤 번거로움 없이 화면을 찍습니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr "🎙️ 마이크로폰, 컴퓨터 소리 또는 둘 다 동시에 녹음합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 WebM, MP4, GIF, MKV 형식을 지원합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
 msgstr "🗔 여러 원본을 선택합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 추가 하드웨어 가속 인코딩"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ 녹화할 모니터 또는 창을 선택합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ 화면에서 녹화할 영역을 선택합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ 녹화 시작 전 준비 지연 시간을 설정합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ 마우스 포인터를 숨기거나 나타낼 수 있습니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 녹화 저장 위치를 선택합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ 쓸만한 키보드 바로 가기 키를 활용합니다."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
-msgid "Dave Patrick"
-msgstr "Dave Patrick"
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+msgid "Dave Patrick Caberto"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -117,7 +118,7 @@ msgstr "바로 가기 키 표시"
 msgid "Quit"
 msgstr "끝내기"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
+#: data/resources/ui/shortcuts.ui:33 src/window.rs:352
 msgid "Recording"
 msgstr "녹화중"
 
@@ -129,9 +130,9 @@ msgstr "녹화 전환"
 msgid "Toggle Pause"
 msgstr "일시정지 전환"
 
-#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
-msgid "Cancel Delay"
-msgstr "지연 취소"
+#: data/resources/ui/shortcuts.ui:50
+msgid "Cancel Record"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -149,180 +150,304 @@ msgstr "마이크로폰 전환"
 msgid "Toggle Pointer"
 msgstr "포인터 상태 전환"
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:29
 msgid "Main Menu"
 msgstr "주 메뉴"
 
-#: data/resources/ui/window.ui:47
-msgid "Normal"
-msgstr "일반"
-
-#: data/resources/ui/window.ui:57
-msgid "Selection"
-msgstr "선택"
-
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
 msgstr "모니터 또는 창 캡쳐"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
 msgstr "화면 선택 영역 캡쳐"
 
-#: data/resources/ui/window.ui:107
+#: data/resources/ui/window.ui:90
 msgid "Record Computer Sounds"
 msgstr "컴퓨터 소리 녹음"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:97
 msgid "Record From Microphone"
 msgstr "마이크로폰 소리 녹음"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "포인터 표시"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:114
+msgid "Start Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:115
 msgid "Record"
 msgstr "녹화"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:128
+msgid "Forget Previously Selected Video Sources"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Stop Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:180
 msgid "Stop"
 msgstr "정지"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:190
+msgid "Pause Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:213
 msgid "Recording in…"
 msgstr "녹화 중…"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
+msgid "Cancel Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
+msgid "Cancel"
+msgstr ""
+
+#: data/resources/ui/window.ui:256
 msgid "Flushing…"
 msgstr "지우는 중…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:291
 msgid "_Delay"
 msgstr "지연(_D)"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:293
 msgid "None"
 msgstr "없음"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:298
+msgid "3 seconds"
+msgstr ""
+
+#: data/resources/ui/window.ui:303
 msgid "5 seconds"
 msgstr "5초"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:308
 msgid "10 seconds"
 msgstr "10초"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:314
 msgid "_Video Format"
 msgstr "동영상 형식(_V)"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:316
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:321
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:326
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:331
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:337
 msgid "_Save to…"
 msgstr "다음 위치에 저장(_S)…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:343
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기 키(_K)"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:347
 msgid "_About Kooha"
 msgstr "쿠하 정보(_A)"
 
-#: src/application.rs:138
-msgid "Select Recordings Folder"
-msgstr "녹화 폴더 선택"
+#: src/about.rs:22
+msgid "© 2022 Dave Patrick Caberto"
+msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:183
+#: src/about.rs:30
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>"
 
-#: src/application.rs:184
-msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
+#: src/about.rs:38
+msgid "Donate (Liberapay)"
+msgstr ""
 
-#: src/application.rs:187
+#: src/about.rs:42
+msgid "Donate (PayPal)"
+msgstr ""
+
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:208
-msgid "Screencast Recorded!"
-msgstr "스크린 캐스트를 녹화했습니다!"
-
-#: src/application.rs:210
-msgid "The recording has been saved in “{}”"
-msgstr "녹화분을 “{}”에 저장했습니다"
-
-#: src/application.rs:218
-msgid "Open File"
-msgstr "파일 열기"
-
-#: src/error.rs:17
-msgid "Screencast Portal Request Error"
-msgstr "스크린캐스트 포털 요청 오류"
-
-#: src/error.rs:18
-msgid "Pipeline Build Error"
-msgstr "파이프라인 빌드 오류"
-
-#: src/error.rs:19
-msgid "Recording Error"
-msgstr "녹화 오류"
-
-#: src/error.rs:47
-msgid ""
-"Make sure to check for the runtime dependencies and <a href=\"https://github."
-"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#: src/about.rs:48
+msgid "Translate"
 msgstr ""
-"런타임 의존 요소와 <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work"
-"\">It Doesn't Work 페이지(영문)</a>를 확인하십시오."
 
-#: src/error.rs:48
+#: src/application.rs:94
+msgid "Screencast recorded"
+msgstr ""
+
+#: src/application.rs:95
+msgid "Click here to view the video."
+msgstr ""
+
+#: src/application.rs:101
+msgid "Show in Files"
+msgstr ""
+
+#: src/audio_device.rs:43
+msgid "Make sure that you have PulseAudio installed in your system."
+msgstr ""
+
+#: src/audio_device.rs:44
+msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/recording.rs:157 src/recording.rs:192
+msgid "Check out {} for help."
+msgstr ""
+
+#: src/recording.rs:158 src/recording.rs:193 src/recording.rs:252
+#: src/recording.rs:277
+msgid "Failed to start recording"
+msgstr ""
+
+#: src/recording.rs:236
+msgid "No microphone source found"
+msgstr ""
+
+#: src/recording.rs:243
+msgid "No desktop speaker source found"
+msgstr ""
+
+#: src/recording.rs:251
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
-#: src/error.rs:49
-msgid ""
-"Make sure that the saving location exists or is accessible. If it actually "
-"exists or is accessible, something went wrong and please report to <a href="
-"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#: src/recording.rs:276 src/recording.rs:477
+msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/widgets/main_window.rs:159
+#: src/recording.rs:473
+msgid "An error occurred while recording"
+msgstr ""
+
+#: src/recording.rs:479
+msgid "Failed to open “{}” for writing"
+msgstr ""
+
+#: src/recording.rs:481
+msgid "Failed to open file for writing"
+msgstr ""
+
+#: src/settings.rs:33
+msgid "Select Recordings Folder"
+msgstr "녹화 폴더 선택"
+
+#: src/settings.rs:43
+msgid "_Cancel"
+msgstr "취소(_C)"
+
+#: src/settings.rs:44
+msgid "_Select"
+msgstr "선택(_S)"
+
+#: src/settings.rs:60
+msgid "No folder selected"
+msgstr ""
+
+#: src/settings.rs:61
+msgid "Please choose a folder and try again."
+msgstr ""
+
+#: src/settings.rs:69
+msgid "Cannot access “{}”"
+msgstr "“{}”에 접근할 수 없습니다"
+
+#: src/settings.rs:70
+msgid "Please choose an accessible location and try again."
+msgstr "열 수 있는 위치를 선택하고 다시 시도하십시오."
+
+#: src/settings.rs:114 src/window.rs:220
+msgid "Ok"
+msgstr ""
+
+#: src/window.rs:72
+msgid "Failed to toggle pause"
+msgstr ""
+
+#: src/window.rs:183
+msgid "Copy to clipboard"
+msgstr ""
+
+#: src/window.rs:189
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/window.rs:195
+msgid "Show detailed error"
+msgstr ""
+
+#: src/window.rs:217
+msgid "Help"
+msgstr ""
+
+#: src/window.rs:360
 msgid "Paused"
 msgstr "일시정지함"
 
-#~ msgid "_Cancel"
-#~ msgstr "취소(_C)"
+#: src/window.rs:394
+msgid "Normal"
+msgstr "일반"
 
-#~ msgid "_Select"
-#~ msgstr "선택(_S)"
+#: src/window.rs:395
+msgid "Selection"
+msgstr "선택"
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "“{}”에 접근할 수 없습니다"
+#~ msgid "Dave Patrick"
+#~ msgstr "Dave Patrick"
 
-#~ msgid "Please choose an accessible location and try again."
-#~ msgstr "열 수 있는 위치를 선택하고 다시 시도하십시오."
+#~ msgid "Cancel Delay"
+#~ msgstr "지연 취소"
+
+#~ msgid "Copyright 2021 Dave Patrick"
+#~ msgstr "Copyright 2021 Dave Patrick"
+
+#~ msgid "Screencast Recorded!"
+#~ msgstr "스크린 캐스트를 녹화했습니다!"
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "녹화분을 “{}”에 저장했습니다"
+
+#~ msgid "Open File"
+#~ msgstr "파일 열기"
+
+#~ msgid "Screencast Portal Request Error"
+#~ msgstr "스크린캐스트 포털 요청 오류"
+
+#~ msgid "Pipeline Build Error"
+#~ msgstr "파이프라인 빌드 오류"
+
+#~ msgid "Recording Error"
+#~ msgstr "녹화 오류"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and <a href=\"https://"
+#~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#~ msgstr ""
+#~ "런타임 의존 요소와 <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-"
+#~ "work\">It Doesn't Work 페이지(영문)</a>를 확인하십시오."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="

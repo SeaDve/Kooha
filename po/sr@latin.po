@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"POT-Creation-Date: 2022-08-15 10:26+0800\n"
 "PO-Revision-Date: 2021-10-15 15:44+0200\n"
 "Last-Translator: Dušan Simić <dusan.simic1810@gmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.com>\n"
@@ -21,12 +21,13 @@ msgstr ""
 "X-Generator: Gtranslator 40.0\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: src/main.rs:52
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
 msgstr "Snimi ekran na elegantan način"
 
@@ -35,13 +36,13 @@ msgstr "Snimi ekran na elegantan način"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Videosnimak ekrana;rekorder;ekran;video;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr "Snimi ekran na intuitivan i jednostavan način bež smetnji."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -49,58 +50,58 @@ msgstr ""
 "Kooha je jednostavan snimatelj ekrana sa minimalnim interfejsom. Možeš samo "
 "pritisnuti dugme za snimanje bez postavljanja ikakvih podešavanja."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
 msgstr "Glavne funkcionalnosti u Kooha su:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 Snimi ekran bez muke."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr "🎙️ Snimi mikrofon, zvuk sa računara ili oba u isto vreme."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Podrška za WebM, MP4, GIF, i MKV formate."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
 msgstr "🗔 Izbor više izvora."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 Opciono hardverski ubrzano kodiranje"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Odaberi monitor ili prozor koji bi da snimaš."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ Izaberite prostor za snimanje određenog područja ekrana."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 #, fuzzy
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Postavi kašnjenje da biste se pripremili pre početka snimanja."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Prikaži ili sakrij kursor."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Odaberi mesto za čuvanje snimka."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Koristite prečice na tastaturi."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
-msgid "Dave Patrick"
-msgstr "Dave Patrick"
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+msgid "Dave Patrick Caberto"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -118,7 +119,7 @@ msgstr "Prikaz prečica"
 msgid "Quit"
 msgstr "Izađi"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
+#: data/resources/ui/shortcuts.ui:33 src/window.rs:352
 msgid "Recording"
 msgstr "Snimanje"
 
@@ -130,9 +131,9 @@ msgstr "Pokreni/zaustavi snimanje"
 msgid "Toggle Pause"
 msgstr "Pauziraj/nastavi snimanje"
 
-#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
-msgid "Cancel Delay"
-msgstr "Otkaži kašnjenje"
+#: data/resources/ui/shortcuts.ui:50
+msgid "Cancel Record"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -150,180 +151,304 @@ msgstr "Uključi/isključi mikrofon"
 msgid "Toggle Pointer"
 msgstr "Prikaži/sakrij kursor"
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:29
 msgid "Main Menu"
 msgstr "Glavni izbornik"
 
-#: data/resources/ui/window.ui:47
-msgid "Normal"
-msgstr "Normalno"
-
-#: data/resources/ui/window.ui:57
-msgid "Selection"
-msgstr "Izbor"
-
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
 msgstr "Snimi monitor ili prozor"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
 msgstr "Snimi područje ekrana"
 
-#: data/resources/ui/window.ui:107
+#: data/resources/ui/window.ui:90
 msgid "Record Computer Sounds"
 msgstr "Snimi zvuke računara"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:97
 msgid "Record From Microphone"
 msgstr "Snimi mikrofon"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "Prikaži kursor"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:114
+msgid "Start Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:115
 msgid "Record"
 msgstr "Snimi"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:128
+msgid "Forget Previously Selected Video Sources"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Stop Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:180
 msgid "Stop"
 msgstr "Zaustavi"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:190
+msgid "Pause Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:213
 msgid "Recording in…"
 msgstr "Snimam u…"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
+msgid "Cancel Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
+msgid "Cancel"
+msgstr ""
+
+#: data/resources/ui/window.ui:256
 msgid "Flushing…"
 msgstr "Ispiram…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:291
 msgid "_Delay"
 msgstr "_Kašnjenje"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:293
 msgid "None"
 msgstr "Nema"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:298
+msgid "3 seconds"
+msgstr ""
+
+#: data/resources/ui/window.ui:303
 msgid "5 seconds"
 msgstr "5 sekundi"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:308
 msgid "10 seconds"
 msgstr "10 sekundi"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:314
 msgid "_Video Format"
 msgstr "_Format videa"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:316
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:321
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:326
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:331
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:337
 msgid "_Save to…"
 msgstr "_Sačuvaj u…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:343
 msgid "_Keyboard Shortcuts"
 msgstr "_Prečice na tastaturi"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:347
 msgid "_About Kooha"
 msgstr "_O Kooha"
 
-#: src/application.rs:138
-msgid "Select Recordings Folder"
-msgstr "Izaberi fasciklu za snimke"
+#: src/about.rs:22
+msgid "© 2022 Dave Patrick Caberto"
+msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:183
+#: src/about.rs:30
 msgid "translator-credits"
 msgstr "  Dušan Simić <dusan.simic1810@gmail.com>"
 
-#: src/application.rs:184
-msgid "Copyright 2021 Dave Patrick"
-msgstr "Copyright 2021 Dave Patrick"
+#: src/about.rs:38
+msgid "Donate (Liberapay)"
+msgstr ""
 
-#: src/application.rs:187
+#: src/about.rs:42
+msgid "Donate (PayPal)"
+msgstr ""
+
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:208
-msgid "Screencast Recorded!"
-msgstr "Ekran je snimljen!"
-
-#: src/application.rs:210
-msgid "The recording has been saved in “{}”"
-msgstr "Snimak je sačuvan u “{}”"
-
-#: src/application.rs:218
-msgid "Open File"
-msgstr "Otvori datoteku"
-
-#: src/error.rs:17
-msgid "Screencast Portal Request Error"
-msgstr "Greška kod portala za snimanje ekrana"
-
-#: src/error.rs:18
-msgid "Pipeline Build Error"
-msgstr "Greška kod cevovoda za izgradnju"
-
-#: src/error.rs:19
-msgid "Recording Error"
-msgstr "Greška prilikom snimanja"
-
-#: src/error.rs:47
-msgid ""
-"Make sure to check for the runtime dependencies and <a href=\"https://github."
-"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#: src/about.rs:48
+msgid "Translate"
 msgstr ""
-"Proverite sve zavisnosti za vreme izvršavanja <a href=\"https://github.com/"
-"SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work stranica</a>."
 
-#: src/error.rs:48
+#: src/application.rs:94
+msgid "Screencast recorded"
+msgstr ""
+
+#: src/application.rs:95
+msgid "Click here to view the video."
+msgstr ""
+
+#: src/application.rs:101
+msgid "Show in Files"
+msgstr ""
+
+#: src/audio_device.rs:43
+msgid "Make sure that you have PulseAudio installed in your system."
+msgstr ""
+
+#: src/audio_device.rs:44
+msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/recording.rs:157 src/recording.rs:192
+msgid "Check out {} for help."
+msgstr ""
+
+#: src/recording.rs:158 src/recording.rs:193 src/recording.rs:252
+#: src/recording.rs:277
+msgid "Failed to start recording"
+msgstr ""
+
+#: src/recording.rs:236
+msgid "No microphone source found"
+msgstr ""
+
+#: src/recording.rs:243
+msgid "No desktop speaker source found"
+msgstr ""
+
+#: src/recording.rs:251
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
-#: src/error.rs:49
-msgid ""
-"Make sure that the saving location exists or is accessible. If it actually "
-"exists or is accessible, something went wrong and please report to <a href="
-"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#: src/recording.rs:276 src/recording.rs:477
+msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/widgets/main_window.rs:159
+#: src/recording.rs:473
+msgid "An error occurred while recording"
+msgstr ""
+
+#: src/recording.rs:479
+msgid "Failed to open “{}” for writing"
+msgstr ""
+
+#: src/recording.rs:481
+msgid "Failed to open file for writing"
+msgstr ""
+
+#: src/settings.rs:33
+msgid "Select Recordings Folder"
+msgstr "Izaberi fasciklu za snimke"
+
+#: src/settings.rs:43
+msgid "_Cancel"
+msgstr "_Otkaži"
+
+#: src/settings.rs:44
+msgid "_Select"
+msgstr "_Izaberi"
+
+#: src/settings.rs:60
+msgid "No folder selected"
+msgstr ""
+
+#: src/settings.rs:61
+msgid "Please choose a folder and try again."
+msgstr ""
+
+#: src/settings.rs:69
+msgid "Cannot access “{}”"
+msgstr "Ne mogu da da pirstupim “{}”"
+
+#: src/settings.rs:70
+msgid "Please choose an accessible location and try again."
+msgstr "Molim te odaberi pristupačnu lokaciju i pokušaj ponovo."
+
+#: src/settings.rs:114 src/window.rs:220
+msgid "Ok"
+msgstr ""
+
+#: src/window.rs:72
+msgid "Failed to toggle pause"
+msgstr ""
+
+#: src/window.rs:183
+msgid "Copy to clipboard"
+msgstr ""
+
+#: src/window.rs:189
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/window.rs:195
+msgid "Show detailed error"
+msgstr ""
+
+#: src/window.rs:217
+msgid "Help"
+msgstr ""
+
+#: src/window.rs:360
 msgid "Paused"
 msgstr "Pauzirano"
 
-#~ msgid "_Cancel"
-#~ msgstr "_Otkaži"
+#: src/window.rs:394
+msgid "Normal"
+msgstr "Normalno"
 
-#~ msgid "_Select"
-#~ msgstr "_Izaberi"
+#: src/window.rs:395
+msgid "Selection"
+msgstr "Izbor"
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "Ne mogu da da pirstupim “{}”"
+#~ msgid "Dave Patrick"
+#~ msgstr "Dave Patrick"
 
-#~ msgid "Please choose an accessible location and try again."
-#~ msgstr "Molim te odaberi pristupačnu lokaciju i pokušaj ponovo."
+#~ msgid "Cancel Delay"
+#~ msgstr "Otkaži kašnjenje"
+
+#~ msgid "Copyright 2021 Dave Patrick"
+#~ msgstr "Copyright 2021 Dave Patrick"
+
+#~ msgid "Screencast Recorded!"
+#~ msgstr "Ekran je snimljen!"
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "Snimak je sačuvan u “{}”"
+
+#~ msgid "Open File"
+#~ msgstr "Otvori datoteku"
+
+#~ msgid "Screencast Portal Request Error"
+#~ msgstr "Greška kod portala za snimanje ekrana"
+
+#~ msgid "Pipeline Build Error"
+#~ msgstr "Greška kod cevovoda za izgradnju"
+
+#~ msgid "Recording Error"
+#~ msgstr "Greška prilikom snimanja"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and <a href=\"https://"
+#~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#~ msgstr ""
+#~ "Proverite sve zavisnosti za vreme izvršavanja <a href=\"https://github."
+#~ "com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work stranica</a>."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="

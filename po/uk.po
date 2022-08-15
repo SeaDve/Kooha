@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"POT-Creation-Date: 2022-08-15 10:26+0800\n"
 "PO-Revision-Date: 2022-01-11 00:10+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -21,12 +21,13 @@ msgstr ""
 "X-Generator: Weblate 4.10.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: src/main.rs:52
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
 msgstr "Елегантно записуйте ваш екран"
 
@@ -35,7 +36,7 @@ msgstr "Елегантно записуйте ваш екран"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Записувач;Екран;Відео;Screencast;Recorder;Screen;Video;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
@@ -43,7 +44,7 @@ msgstr ""
 "Вибирайте ділянку інтуїтивно зрозумілим і простим способом без зайвих "
 "чинників."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -51,58 +52,58 @@ msgstr ""
 "Kooha — це простий записувач екрана з мінімалістичним інтерфейсом. Ви можете "
 "просто натиснути кнопку запису без витрачання часу на налаштування."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
 msgstr "Основні можливості Kooha:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 Записування екрана без зайвих рухів."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
 "🎙️ Запис звуків за допомогою мікрофона, звуків комп'ютера, або обох одночасно."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Підтримка форматів WebM, MP4, GIF та MKV."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
 msgstr "🗔 Вибір кількох джерел."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 Додаткове апаратне прискорене кодування"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Вибір монітора або вікна для записування."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ Вибір ділянки екрана."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ Налаштування затримки початку запису."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Показ або приховування вказівника миші."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Вибір місця збереження записів."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Можливість застосовувати комбінації клавіш."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
-msgid "Dave Patrick"
-msgstr "Дейв Патрік"
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+msgid "Dave Patrick Caberto"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -120,7 +121,7 @@ msgstr "Показати комбінації клавіш"
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
+#: data/resources/ui/shortcuts.ui:33 src/window.rs:352
 msgid "Recording"
 msgstr "Запис"
 
@@ -132,9 +133,9 @@ msgstr "Почати/зупинити записування"
 msgid "Toggle Pause"
 msgstr "Зупинити/продовжити"
 
-#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
-msgid "Cancel Delay"
-msgstr "Скасувати Затримку"
+#: data/resources/ui/shortcuts.ui:50
+msgid "Cancel Record"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -152,152 +153,185 @@ msgstr "Увімкнути/вимкнути мікрофон"
 msgid "Toggle Pointer"
 msgstr "Показати/сховати вказівник"
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:29
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/resources/ui/window.ui:47
-msgid "Normal"
-msgstr "Звичайний"
-
-#: data/resources/ui/window.ui:57
-msgid "Selection"
-msgstr "Вибір"
-
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
 msgstr "Захоплення монітора або вікна"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
 msgstr "Захоплення ділянки екрана"
 
-#: data/resources/ui/window.ui:107
+#: data/resources/ui/window.ui:90
 msgid "Record Computer Sounds"
 msgstr "Записувати звуки комп'ютера"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:97
 msgid "Record From Microphone"
 msgstr "Записувати з мікрофона"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "Показати вказівник миші"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:114
+msgid "Start Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:115
 msgid "Record"
 msgstr "Записати"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:128
+msgid "Forget Previously Selected Video Sources"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Stop Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:180
 msgid "Stop"
 msgstr "Зупинити"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:190
+msgid "Pause Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:213
 msgid "Recording in…"
 msgstr "Запис через…"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
+msgid "Cancel Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: data/resources/ui/window.ui:256
 msgid "Flushing…"
 msgstr "Очищення…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:291
 msgid "_Delay"
 msgstr "_Затримка"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:293
 msgid "None"
 msgstr "Немає"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:298
+msgid "3 seconds"
+msgstr ""
+
+#: data/resources/ui/window.ui:303
 msgid "5 seconds"
 msgstr "5 секунд"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:308
 msgid "10 seconds"
 msgstr "10 секунд"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:314
 msgid "_Video Format"
 msgstr "_Формат відео"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:316
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:321
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:326
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:331
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:337
 msgid "_Save to…"
 msgstr "_Зберегти до…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:343
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбінації клавіш"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:347
 msgid "_About Kooha"
 msgstr "_Про Kooha"
 
-#: src/application.rs:138
-msgid "Select Recordings Folder"
-msgstr "Вибрати теку для записів"
+#: src/about.rs:22
+msgid "© 2022 Dave Patrick Caberto"
+msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:183
+#: src/about.rs:30
 msgid "translator-credits"
 msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
 
-#: src/application.rs:184
-msgid "Copyright 2021 Dave Patrick"
-msgstr "Авторське право 2021 Дейв Патрік"
+#: src/about.rs:38
+msgid "Donate (Liberapay)"
+msgstr ""
 
-#: src/application.rs:187
+#: src/about.rs:42
+msgid "Donate (PayPal)"
+msgstr ""
+
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:208
-msgid "Screencast Recorded!"
-msgstr "Записано!"
-
-#: src/application.rs:210
-msgid "The recording has been saved in “{}”"
-msgstr "Запис збережено до «{}»"
-
-#: src/application.rs:218
-msgid "Open File"
-msgstr "Відкрити файл"
-
-#: src/error.rs:17
-msgid "Screencast Portal Request Error"
-msgstr "Помилка запиту порталу Screencast"
-
-#: src/error.rs:18
-msgid "Pipeline Build Error"
-msgstr "Помилка побудови pipeline"
-
-#: src/error.rs:19
-msgid "Recording Error"
-msgstr "Помилка записування"
-
-#: src/error.rs:47
-msgid ""
-"Make sure to check for the runtime dependencies and <a href=\"https://github."
-"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#: src/about.rs:48
+msgid "Translate"
 msgstr ""
-"Обов’язково перевірте наявність залежностей виконання та <a href=\"https://"
-"github.com/SeaDve/Kooha#-it-doesnt-work\">Не працює сторінка</a>."
 
-#: src/error.rs:48
+#: src/application.rs:94
+msgid "Screencast recorded"
+msgstr ""
+
+#: src/application.rs:95
+msgid "Click here to view the video."
+msgstr ""
+
+#: src/application.rs:101
+msgid "Show in Files"
+msgstr ""
+
+#: src/audio_device.rs:43
+msgid "Make sure that you have PulseAudio installed in your system."
+msgstr ""
+
+#: src/audio_device.rs:44
+msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/recording.rs:157 src/recording.rs:192
+msgid "Check out {} for help."
+msgstr ""
+
+#: src/recording.rs:158 src/recording.rs:193 src/recording.rs:252
+#: src/recording.rs:277
+msgid "Failed to start recording"
+msgstr ""
+
+#: src/recording.rs:236
+msgid "No microphone source found"
+msgstr ""
+
+#: src/recording.rs:243
+msgid "No desktop speaker source found"
+msgstr ""
+
+#: src/recording.rs:251
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
@@ -307,31 +341,131 @@ msgstr ""
 "працює належним чином, повідомте про це на сторінці проблем <a href="
 "\"https://github.com/SeaDve/Kooha/issues\">Kooha</a>."
 
-#: src/error.rs:49
-msgid ""
-"Make sure that the saving location exists or is accessible. If it actually "
-"exists or is accessible, something went wrong and please report to <a href="
-"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#: src/recording.rs:276 src/recording.rs:477
+msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
-"Переконайтеся, що місце збереження існує та доступне. Якщо так, це вказує, "
-"що сталася невідома помилка. Будь ласка, повідомте про неї на <a href=\"https"
-"://github.com/SeaDve/Kooha/issues\">сторінці обговорень Kooha</a>."
 
-#: src/widgets/main_window.rs:159
+#: src/recording.rs:473
+msgid "An error occurred while recording"
+msgstr ""
+
+#: src/recording.rs:479
+msgid "Failed to open “{}” for writing"
+msgstr ""
+
+#: src/recording.rs:481
+msgid "Failed to open file for writing"
+msgstr ""
+
+#: src/settings.rs:33
+msgid "Select Recordings Folder"
+msgstr "Вибрати теку для записів"
+
+#: src/settings.rs:43
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: src/settings.rs:44
+msgid "_Select"
+msgstr "_Вибрати"
+
+#: src/settings.rs:60
+msgid "No folder selected"
+msgstr ""
+
+#: src/settings.rs:61
+msgid "Please choose a folder and try again."
+msgstr ""
+
+#: src/settings.rs:69
+msgid "Cannot access “{}”"
+msgstr "Не вдалося отримати доступ до «{}»"
+
+#: src/settings.rs:70
+msgid "Please choose an accessible location and try again."
+msgstr "Виберіть доступне розташування та повторіть спробу."
+
+#: src/settings.rs:114 src/window.rs:220
+msgid "Ok"
+msgstr ""
+
+#: src/window.rs:72
+msgid "Failed to toggle pause"
+msgstr ""
+
+#: src/window.rs:183
+msgid "Copy to clipboard"
+msgstr ""
+
+#: src/window.rs:189
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/window.rs:195
+msgid "Show detailed error"
+msgstr ""
+
+#: src/window.rs:217
+msgid "Help"
+msgstr ""
+
+#: src/window.rs:360
 msgid "Paused"
 msgstr "Зупинено"
 
-#~ msgid "_Cancel"
-#~ msgstr "_Скасувати"
+#: src/window.rs:394
+msgid "Normal"
+msgstr "Звичайний"
 
-#~ msgid "_Select"
-#~ msgstr "_Вибрати"
+#: src/window.rs:395
+msgid "Selection"
+msgstr "Вибір"
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "Не вдалося отримати доступ до «{}»"
+#~ msgid "Dave Patrick"
+#~ msgstr "Дейв Патрік"
 
-#~ msgid "Please choose an accessible location and try again."
-#~ msgstr "Виберіть доступне розташування та повторіть спробу."
+#~ msgid "Cancel Delay"
+#~ msgstr "Скасувати Затримку"
+
+#~ msgid "Copyright 2021 Dave Patrick"
+#~ msgstr "Авторське право 2021 Дейв Патрік"
+
+#~ msgid "Screencast Recorded!"
+#~ msgstr "Записано!"
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "Запис збережено до «{}»"
+
+#~ msgid "Open File"
+#~ msgstr "Відкрити файл"
+
+#~ msgid "Screencast Portal Request Error"
+#~ msgstr "Помилка запиту порталу Screencast"
+
+#~ msgid "Pipeline Build Error"
+#~ msgstr "Помилка побудови pipeline"
+
+#~ msgid "Recording Error"
+#~ msgstr "Помилка записування"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and <a href=\"https://"
+#~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#~ msgstr ""
+#~ "Обов’язково перевірте наявність залежностей виконання та <a href="
+#~ "\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">Не працює сторінка</"
+#~ "a>."
+
+#~ msgid ""
+#~ "Make sure that the saving location exists or is accessible. If it "
+#~ "actually exists or is accessible, something went wrong and please report "
+#~ "to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</"
+#~ "a>."
+#~ msgstr ""
+#~ "Переконайтеся, що місце збереження існує та доступне. Якщо так, це "
+#~ "вказує, що сталася невідома помилка. Будь ласка, повідомте про неї на <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">сторінці обговорень "
+#~ "Kooha</a>."
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If it actually exists, "
@@ -436,9 +570,6 @@ msgstr "Зупинено"
 
 #~ msgid "About Kooha"
 #~ msgstr "Про Kooha"
-
-#~ msgid "Cancel"
-#~ msgstr "Скасувати"
 
 #~ msgid "Select"
 #~ msgstr "Обрати"

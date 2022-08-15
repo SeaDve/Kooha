@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"POT-Creation-Date: 2022-08-15 10:26+0800\n"
 "PO-Revision-Date: 2022-02-07 12:55+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/kooha/pot-file/da/"
@@ -19,12 +19,13 @@ msgstr ""
 "X-Generator: Weblate 4.11-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: src/main.rs:52
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
 msgstr "Optag din skærm på en elegant måde"
 
@@ -33,13 +34,13 @@ msgstr "Optag din skærm på en elegant måde"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Optag;Skærm;Video;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr "Optag din skærm på en intuitiv og ligetil måde uden distraktioner."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -48,58 +49,58 @@ msgstr ""
 "bare klikke på optageknappen uden at skulle konfigurere en masse "
 "indstillinger."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
 msgstr "De vigtigste funktioner i Kooha omfatter følgende:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 Optag din skærm uden besvær."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr "🎙️ Optag din mikrofon, computerlyde eller begge dele på samme tid."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 Understøttelse af WebM-, MP4-, GIF- og MKV-formater."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
 msgstr "🗔 Valg af flere kilder."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 Valgfri hardwareaccelereret kodning"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ Vælg en skærm eller et vindue til at optage."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ Opret en markering for at optage bestemte områder fra skærmen."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr ""
 "⏲️ Indstil forsinkelsen for at forberede dig, før du begynder at optage."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ Skjul eller vis musemarkøren."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 Vælg et sted at gemme din optagelse."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ Brug nyttige tastaturgenveje."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
-msgid "Dave Patrick"
-msgstr "Dave Patrick"
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+msgid "Dave Patrick Caberto"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -117,7 +118,7 @@ msgstr "Vis genveje"
 msgid "Quit"
 msgstr "Afslut"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
+#: data/resources/ui/shortcuts.ui:33 src/window.rs:352
 msgid "Recording"
 msgstr "Optagelse"
 
@@ -129,9 +130,9 @@ msgstr "Start/stop optagelse"
 msgid "Toggle Pause"
 msgstr "Slå pause til/fra"
 
-#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
-msgid "Cancel Delay"
-msgstr "Annuller forsinkelse"
+#: data/resources/ui/shortcuts.ui:50
+msgid "Cancel Record"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -149,152 +150,185 @@ msgstr "Slå mikrofon til/fra"
 msgid "Toggle Pointer"
 msgstr "Slå musemarkør til/fra"
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:29
 msgid "Main Menu"
 msgstr "Hovedmenu"
 
-#: data/resources/ui/window.ui:47
-msgid "Normal"
-msgstr "Normal"
-
-#: data/resources/ui/window.ui:57
-msgid "Selection"
-msgstr "Udvælgelse"
-
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
 msgstr "Optage en skærm eller et vindue"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
 msgstr "Optag et udvalg af skærmen"
 
-#: data/resources/ui/window.ui:107
+#: data/resources/ui/window.ui:90
 msgid "Record Computer Sounds"
 msgstr "Optag computerlyde"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:97
 msgid "Record From Microphone"
 msgstr "Optag fra mikrofon"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "Vis markør"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:114
+msgid "Start Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:115
 msgid "Record"
 msgstr "Optag"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:128
+msgid "Forget Previously Selected Video Sources"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Stop Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:180
 msgid "Stop"
 msgstr "Stop"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:190
+msgid "Pause Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:213
 msgid "Recording in…"
 msgstr "Optager om…"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
+msgid "Cancel Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
+msgid "Cancel"
+msgstr ""
+
+#: data/resources/ui/window.ui:256
 msgid "Flushing…"
 msgstr "Renser…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:291
 msgid "_Delay"
 msgstr "_Forsinkelse"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:293
 msgid "None"
 msgstr "Ingen"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:298
+msgid "3 seconds"
+msgstr ""
+
+#: data/resources/ui/window.ui:303
 msgid "5 seconds"
 msgstr "5 sekunder"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:308
 msgid "10 seconds"
 msgstr "10 sekunder"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:314
 msgid "_Video Format"
 msgstr "_Videoformat"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:316
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:321
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:326
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:331
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:337
 msgid "_Save to…"
 msgstr "_Gem til…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:343
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:347
 msgid "_About Kooha"
 msgstr "_Om Kooha"
 
-#: src/application.rs:138
-msgid "Select Recordings Folder"
-msgstr "Vælg Optagelsesmappe"
+#: src/about.rs:22
+msgid "© 2022 Dave Patrick Caberto"
+msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:183
+#: src/about.rs:30
 msgid "translator-credits"
 msgstr "Marc Eckert"
 
-#: src/application.rs:184
-msgid "Copyright 2021 Dave Patrick"
-msgstr "Ophavsret 2021 Dave Patrick"
+#: src/about.rs:38
+msgid "Donate (Liberapay)"
+msgstr ""
 
-#: src/application.rs:187
+#: src/about.rs:42
+msgid "Donate (PayPal)"
+msgstr ""
+
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:208
-msgid "Screencast Recorded!"
-msgstr "Screencast optaget!"
-
-#: src/application.rs:210
-msgid "The recording has been saved in “{}”"
-msgstr "Optagelsen er blevet gemt i \"{}\""
-
-#: src/application.rs:218
-msgid "Open File"
-msgstr "Åben fil"
-
-#: src/error.rs:17
-msgid "Screencast Portal Request Error"
-msgstr "Fejl i screencast-portalanmodning"
-
-#: src/error.rs:18
-msgid "Pipeline Build Error"
-msgstr "Pipeline Build-fejl"
-
-#: src/error.rs:19
-msgid "Recording Error"
-msgstr "Der opstod en fejl under optagelse"
-
-#: src/error.rs:47
-msgid ""
-"Make sure to check for the runtime dependencies and <a href=\"https://github."
-"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#: src/about.rs:48
+msgid "Translate"
 msgstr ""
-"Sørg for at tjekke for runtime-afhængigheder og <a href=\"https://github.com/"
-"SeaDve/Kooha#-it-doesnt-work\">Det virker ikke</a>."
 
-#: src/error.rs:48
+#: src/application.rs:94
+msgid "Screencast recorded"
+msgstr ""
+
+#: src/application.rs:95
+msgid "Click here to view the video."
+msgstr ""
+
+#: src/application.rs:101
+msgid "Show in Files"
+msgstr ""
+
+#: src/audio_device.rs:43
+msgid "Make sure that you have PulseAudio installed in your system."
+msgstr ""
+
+#: src/audio_device.rs:44
+msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/recording.rs:157 src/recording.rs:192
+msgid "Check out {} for help."
+msgstr ""
+
+#: src/recording.rs:158 src/recording.rs:193 src/recording.rs:252
+#: src/recording.rs:277
+msgid "Failed to start recording"
+msgstr ""
+
+#: src/recording.rs:236
+msgid "No microphone source found"
+msgstr ""
+
+#: src/recording.rs:243
+msgid "No desktop speaker source found"
+msgstr ""
+
+#: src/recording.rs:251
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
@@ -304,17 +338,127 @@ msgstr ""
 "installeret, men stadig ikke fungerer korrekt, skal du rapportere det til <a "
 "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's problem-side</a>."
 
-#: src/error.rs:49
-msgid ""
-"Make sure that the saving location exists or is accessible. If it actually "
-"exists or is accessible, something went wrong and please report to <a href="
-"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#: src/recording.rs:276 src/recording.rs:477
+msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
-"Sørg for, at gemmerstedet findes eller er tilgængeligt. Hvis den faktisk "
-"eksisterer eller er tilgængelig, er der gået noget galt, og du bedes "
-"rapportere det til <a href=\"https://github.com/SeaDve/Kooha/issues\""
-">Kooha's problem-side</a>."
 
-#: src/widgets/main_window.rs:159
+#: src/recording.rs:473
+msgid "An error occurred while recording"
+msgstr ""
+
+#: src/recording.rs:479
+msgid "Failed to open “{}” for writing"
+msgstr ""
+
+#: src/recording.rs:481
+msgid "Failed to open file for writing"
+msgstr ""
+
+#: src/settings.rs:33
+msgid "Select Recordings Folder"
+msgstr "Vælg Optagelsesmappe"
+
+#: src/settings.rs:43
+msgid "_Cancel"
+msgstr ""
+
+#: src/settings.rs:44
+msgid "_Select"
+msgstr ""
+
+#: src/settings.rs:60
+msgid "No folder selected"
+msgstr ""
+
+#: src/settings.rs:61
+msgid "Please choose a folder and try again."
+msgstr ""
+
+#: src/settings.rs:69
+msgid "Cannot access “{}”"
+msgstr ""
+
+#: src/settings.rs:70
+msgid "Please choose an accessible location and try again."
+msgstr ""
+
+#: src/settings.rs:114 src/window.rs:220
+msgid "Ok"
+msgstr ""
+
+#: src/window.rs:72
+msgid "Failed to toggle pause"
+msgstr ""
+
+#: src/window.rs:183
+msgid "Copy to clipboard"
+msgstr ""
+
+#: src/window.rs:189
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/window.rs:195
+msgid "Show detailed error"
+msgstr ""
+
+#: src/window.rs:217
+msgid "Help"
+msgstr ""
+
+#: src/window.rs:360
 msgid "Paused"
 msgstr "På pause"
+
+#: src/window.rs:394
+msgid "Normal"
+msgstr "Normal"
+
+#: src/window.rs:395
+msgid "Selection"
+msgstr "Udvælgelse"
+
+#~ msgid "Dave Patrick"
+#~ msgstr "Dave Patrick"
+
+#~ msgid "Cancel Delay"
+#~ msgstr "Annuller forsinkelse"
+
+#~ msgid "Copyright 2021 Dave Patrick"
+#~ msgstr "Ophavsret 2021 Dave Patrick"
+
+#~ msgid "Screencast Recorded!"
+#~ msgstr "Screencast optaget!"
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "Optagelsen er blevet gemt i \"{}\""
+
+#~ msgid "Open File"
+#~ msgstr "Åben fil"
+
+#~ msgid "Screencast Portal Request Error"
+#~ msgstr "Fejl i screencast-portalanmodning"
+
+#~ msgid "Pipeline Build Error"
+#~ msgstr "Pipeline Build-fejl"
+
+#~ msgid "Recording Error"
+#~ msgstr "Der opstod en fejl under optagelse"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and <a href=\"https://"
+#~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#~ msgstr ""
+#~ "Sørg for at tjekke for runtime-afhængigheder og <a href=\"https://github."
+#~ "com/SeaDve/Kooha#-it-doesnt-work\">Det virker ikke</a>."
+
+#~ msgid ""
+#~ "Make sure that the saving location exists or is accessible. If it "
+#~ "actually exists or is accessible, something went wrong and please report "
+#~ "to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</"
+#~ "a>."
+#~ msgstr ""
+#~ "Sørg for, at gemmerstedet findes eller er tilgængeligt. Hvis den faktisk "
+#~ "eksisterer eller er tilgængelig, er der gået noget galt, og du bedes "
+#~ "rapportere det til <a href=\"https://github.com/SeaDve/Kooha/issues"
+#~ "\">Kooha's problem-side</a>."

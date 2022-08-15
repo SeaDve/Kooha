@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"POT-Creation-Date: 2022-08-15 10:26+0800\n"
 "PO-Revision-Date: 2022-05-17 03:17+0000\n"
 "Last-Translator: Diggaj Upadhyay <dcozupadhyay@duck.com>\n"
 "Language-Team: Nepali <https://hosted.weblate.org/projects/kooha/pot-file/ne/"
@@ -19,13 +19,14 @@ msgstr ""
 "X-Generator: Weblate 4.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: src/main.rs:52
 #, fuzzy
 msgid "Kooha"
 msgstr "कोहा"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
 msgstr "सुन्दर रूपमा आफ्नो स्क्रिन रेकर्ड गर्नुहोस्"
 
@@ -34,74 +35,72 @@ msgstr "सुन्दर रूपमा आफ्नो स्क्रिन
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "स्क्रिनकास्ट; रेकर्डर; स्क्रिन; भिडियो;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 #, fuzzy
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr "आफ्नो स्क्रिनलाई सहज र सीधा तरिकाले विचलित नगरी खिच्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
 msgstr "कोहा को मुख्य विशेषताहरु निम्न समावेश छन्:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 कुनै झन्झट बिना आफ्नो स्क्रिन क्याप्चर गर्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
-"🎙️ आफ्नो माइक्रोफोन, कम्प्युटर ध्वनि, वा दुबै एकै समयमा रेकर्ड गर्नुहोस्।"
+msgstr "🎙️ आफ्नो माइक्रोफोन, कम्प्युटर ध्वनि, वा दुबै एकै समयमा रेकर्ड गर्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "📼 WebM, MP4, GIF, र MKV ढाँचाहरूको लागि समर्थन।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
 msgstr "🗔 बहु स्रोत चयन।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 वैकल्पिक हार्डवेयर एक्सेलेरेटेड एन्कोडिङ"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ रेकर्ड गर्न मनिटर वा विन्डो चयन गर्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
-"🖼️ आफ्नो स्क्रिनबाट निश्चित क्षेत्र क्याप्चर गर्न चयन सिर्जना गर्नुहोस्।"
+msgstr "🖼️ आफ्नो स्क्रिनबाट निश्चित क्षेत्र क्याप्चर गर्न चयन सिर्जना गर्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 #, fuzzy
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "⏲️ तपाईंले रेकर्डिङ सुरु गर्नु अघि तयारी गर्न ढिलाइ सेट गर्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 #, fuzzy
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️माउस सूचक लुकाउनुहोस् वा देखाउनुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 आफ्नो रेकर्डिङको लागि बचत स्थान छान्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ उपयोगी किबोर्ड सर्टकटहरू प्रयोग गर्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
-msgid "Dave Patrick"
-msgstr "डेभ प्याट्रिक"
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+msgid "Dave Patrick Caberto"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -119,7 +118,7 @@ msgstr "सर्टकटहरू देखाउनुहोस्"
 msgid "Quit"
 msgstr "बाहिर निस्कनुहोस्"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
+#: data/resources/ui/shortcuts.ui:33 src/window.rs:352
 msgid "Recording"
 msgstr "रेकर्डिङ"
 
@@ -131,10 +130,9 @@ msgstr "रेकर्ड टगल गर्नुहोस्"
 msgid "Toggle Pause"
 msgstr "पज टगल गर्नुहोस्"
 
-#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
-#, fuzzy
-msgid "Cancel Delay"
-msgstr "अन्तराल रद्द गर्नुहोस्"
+#: data/resources/ui/shortcuts.ui:50
+msgid "Cancel Record"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -152,170 +150,307 @@ msgstr "माइक्रोफोन टगल गर्नुहोस्"
 msgid "Toggle Pointer"
 msgstr "सूचक टगल गर्नुहोस्"
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:29
 msgid "Main Menu"
 msgstr "मुख्य मेनु"
 
-#: data/resources/ui/window.ui:47
-msgid "Normal"
-msgstr "सामान्य"
-
-#: data/resources/ui/window.ui:57
-msgid "Selection"
-msgstr "चयन"
-
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
 msgstr "मनिटर वा विन्डो क्याप्चर गर्नुहोस्"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:71
 #, fuzzy
 msgid "Capture a Selection of Screen"
 msgstr "स्क्रिनको चयन क्याप्चर गर्नुहोस्"
 
-#: data/resources/ui/window.ui:107
+#: data/resources/ui/window.ui:90
 msgid "Record Computer Sounds"
 msgstr "कम्प्युटर ध्वनि रेकर्ड गर्नुहोस्"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:97
 msgid "Record From Microphone"
 msgstr "माइक्रोफोनबाट रेकर्ड गर्नुहोस्"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "सूचक देखाउनुहोस्"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:114
+msgid "Start Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:115
 msgid "Record"
 msgstr "रेकर्ड"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:128
+msgid "Forget Previously Selected Video Sources"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Stop Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:180
 msgid "Stop"
 msgstr "रोक्नुहोस्"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:190
+msgid "Pause Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:213
 msgid "Recording in…"
 msgstr "रेकर्डिङ प्रक्रियामा…"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
+msgid "Cancel Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
+msgid "Cancel"
+msgstr ""
+
+#: data/resources/ui/window.ui:256
 msgid "Flushing…"
 msgstr "फ्लस गर्दै…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:291
 msgid "_Delay"
 msgstr "_ढिला"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:293
 msgid "None"
 msgstr "केहि छैन"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:298
+msgid "3 seconds"
+msgstr ""
+
+#: data/resources/ui/window.ui:303
 msgid "5 seconds"
 msgstr "५ सेकेन्ड"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:308
 msgid "10 seconds"
 msgstr "१० सेकेन्ड"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:314
 #, fuzzy
 msgid "_Video Format"
 msgstr "_भिडियो ढाँचा"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:316
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:321
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:326
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:331
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:337
 #, fuzzy
 msgid "_Save to…"
 msgstr "_कहाँ बचत गर्न चयन गर्नुहोस्…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:343
 msgid "_Keyboard Shortcuts"
 msgstr "_कीबोर्ड सर्टकटहरू"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:347
 msgid "_About Kooha"
 msgstr "_कोहा को बारेमा"
 
-#: src/application.rs:138
-#, fuzzy
-msgid "Select Recordings Folder"
-msgstr "रेकर्डिङ फोल्डर चयन गर्नुहोस्"
+#: src/about.rs:22
+msgid "© 2022 Dave Patrick Caberto"
+msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:183
+#: src/about.rs:30
 msgid "translator-credits"
 msgstr "अनुवादक-क्रेडिट"
 
-#: src/application.rs:184
-msgid "Copyright 2021 Dave Patrick"
-msgstr "प्रतिलिपि अधिकार २०२१ डेभ प्याट्रिक"
+#: src/about.rs:38
+msgid "Donate (Liberapay)"
+msgstr ""
 
-#: src/application.rs:187
+#: src/about.rs:42
+msgid "Donate (PayPal)"
+msgstr ""
+
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:208
-msgid "Screencast Recorded!"
-msgstr "स्क्रिनकास्ट रेकर्ड गरियो!"
-
-#: src/application.rs:210
-msgid "The recording has been saved in “{}”"
-msgstr "रेकर्डिङ \"{}\" मा सुरक्षित गरिएको छ"
-
-#: src/application.rs:218
-msgid "Open File"
-msgstr "फाइल खोल्नुहोस्"
-
-#: src/error.rs:17
-msgid "Screencast Portal Request Error"
-msgstr "स्क्रिनकास्ट पोर्टल अनुरोध त्रुटि"
-
-#: src/error.rs:18
-msgid "Pipeline Build Error"
-msgstr "पाइपलाइन निर्माण त्रुटि"
-
-#: src/error.rs:19
-msgid "Recording Error"
-msgstr "रेकर्डिङ त्रुटि"
-
-#: src/error.rs:47
-#, fuzzy
-msgid ""
-"Make sure to check for the runtime dependencies and <a href=\"https://github."
-"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#: src/about.rs:48
+msgid "Translate"
 msgstr ""
-"रनटाइम निर्भरता र <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\""
-"> को लागि जाँच गर्न निश्चित गर्नुहोस्"
 
-#: src/error.rs:48
+#: src/application.rs:94
+msgid "Screencast recorded"
+msgstr ""
+
+#: src/application.rs:95
+msgid "Click here to view the video."
+msgstr ""
+
+#: src/application.rs:101
+msgid "Show in Files"
+msgstr ""
+
+#: src/audio_device.rs:43
+msgid "Make sure that you have PulseAudio installed in your system."
+msgstr ""
+
+#: src/audio_device.rs:44
+msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/recording.rs:157 src/recording.rs:192
+msgid "Check out {} for help."
+msgstr ""
+
+#: src/recording.rs:158 src/recording.rs:193 src/recording.rs:252
+#: src/recording.rs:277
+msgid "Failed to start recording"
+msgstr ""
+
+#: src/recording.rs:236
+msgid "No microphone source found"
+msgstr ""
+
+#: src/recording.rs:243
+msgid "No desktop speaker source found"
+msgstr ""
+
+#: src/recording.rs:251
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
-#: src/error.rs:49
-msgid ""
-"Make sure that the saving location exists or is accessible. If it actually "
-"exists or is accessible, something went wrong and please report to <a href="
-"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#: src/recording.rs:276 src/recording.rs:477
+msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/widgets/main_window.rs:159
+#: src/recording.rs:473
+msgid "An error occurred while recording"
+msgstr ""
+
+#: src/recording.rs:479
+msgid "Failed to open “{}” for writing"
+msgstr ""
+
+#: src/recording.rs:481
+msgid "Failed to open file for writing"
+msgstr ""
+
+#: src/settings.rs:33
+#, fuzzy
+msgid "Select Recordings Folder"
+msgstr "रेकर्डिङ फोल्डर चयन गर्नुहोस्"
+
+#: src/settings.rs:43
+msgid "_Cancel"
+msgstr ""
+
+#: src/settings.rs:44
+msgid "_Select"
+msgstr ""
+
+#: src/settings.rs:60
+msgid "No folder selected"
+msgstr ""
+
+#: src/settings.rs:61
+msgid "Please choose a folder and try again."
+msgstr ""
+
+#: src/settings.rs:69
+msgid "Cannot access “{}”"
+msgstr ""
+
+#: src/settings.rs:70
+msgid "Please choose an accessible location and try again."
+msgstr ""
+
+#: src/settings.rs:114 src/window.rs:220
+msgid "Ok"
+msgstr ""
+
+#: src/window.rs:72
+msgid "Failed to toggle pause"
+msgstr ""
+
+#: src/window.rs:183
+msgid "Copy to clipboard"
+msgstr ""
+
+#: src/window.rs:189
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/window.rs:195
+msgid "Show detailed error"
+msgstr ""
+
+#: src/window.rs:217
+msgid "Help"
+msgstr ""
+
+#: src/window.rs:360
 msgid "Paused"
 msgstr "रोकियो"
+
+#: src/window.rs:394
+msgid "Normal"
+msgstr "सामान्य"
+
+#: src/window.rs:395
+msgid "Selection"
+msgstr "चयन"
+
+#~ msgid "Dave Patrick"
+#~ msgstr "डेभ प्याट्रिक"
+
+#, fuzzy
+#~ msgid "Cancel Delay"
+#~ msgstr "अन्तराल रद्द गर्नुहोस्"
+
+#~ msgid "Copyright 2021 Dave Patrick"
+#~ msgstr "प्रतिलिपि अधिकार २०२१ डेभ प्याट्रिक"
+
+#~ msgid "Screencast Recorded!"
+#~ msgstr "स्क्रिनकास्ट रेकर्ड गरियो!"
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "रेकर्डिङ \"{}\" मा सुरक्षित गरिएको छ"
+
+#~ msgid "Open File"
+#~ msgstr "फाइल खोल्नुहोस्"
+
+#~ msgid "Screencast Portal Request Error"
+#~ msgstr "स्क्रिनकास्ट पोर्टल अनुरोध त्रुटि"
+
+#~ msgid "Pipeline Build Error"
+#~ msgstr "पाइपलाइन निर्माण त्रुटि"
+
+#~ msgid "Recording Error"
+#~ msgstr "रेकर्डिङ त्रुटि"
+
+#, fuzzy
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and <a href=\"https://"
+#~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#~ msgstr ""
+#~ "रनटाइम निर्भरता र <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work"
+#~ "\"> को लागि जाँच गर्न निश्चित गर्नुहोस्"

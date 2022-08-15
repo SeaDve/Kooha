@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 07:44+0800\n"
+"POT-Creation-Date: 2022-08-15 10:26+0800\n"
 "PO-Revision-Date: 2021-09-17 09:34+0000\n"
 "Last-Translator: Muhammad Yasser <iamrokt@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
@@ -23,12 +23,13 @@ msgstr ""
 "X-Generator: Weblate 4.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/application.rs:172
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: src/main.rs:52
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8 src/application.rs:173
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
 msgstr "سجل شاشتك بأناقة"
 
@@ -37,13 +38,13 @@ msgstr "سجل شاشتك بأناقة"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "تسجيل الشاشة;مسجل;شاشة;فيديو ;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -51,57 +52,57 @@ msgstr ""
 "Kooha هو مسجل شاشة بسيط بواجهة بسيطة. يمكنك فقط النقر فوق زر التسجيل دون "
 "الحاجة إلى ضبط العديد من الإعدادات."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
 msgstr "تشمل الميزات الرئيسية ل Kooha ما يلي:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
 msgstr "🎥 التقط شاشتك دون أي متاعب."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr "سجل المايكروفون، أصوات الحاسوب، أو كليهما في نفس الوقت."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
 msgstr "الصيغ المدعومة GIF، MP4، WebM، و MKV."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
 msgstr "اختيار عدة مصادر."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
 msgstr "🚀 ترميز مسرَّع بالعتاد اختياريًا"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
 msgstr "🖥️ اختر شاشة أو نافذة لتسجيلها."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
 msgstr "🖼️ حدد منطقة معيَّنة في شاشتك لتسجيلها."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
 msgstr "ضبط مهلة زمنية قبل بدء التسجيل."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
 msgstr "🖱️ إخفاء أو إظهار مؤشر الفأرة."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
 msgstr "💾 اختر مكان حفظ التسجيل."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:24
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
 msgstr "⌨️ استخدم اختصارات مفيدة في لوحة المفاتيح."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:31
-msgid "Dave Patrick"
-msgstr "Dave Patrick"
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+msgid "Dave Patrick Caberto"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -119,7 +120,7 @@ msgstr "إظهار الإختصارات"
 msgid "Quit"
 msgstr "خروج"
 
-#: data/resources/ui/shortcuts.ui:33 src/widgets/main_window.rs:154
+#: data/resources/ui/shortcuts.ui:33 src/window.rs:352
 msgid "Recording"
 msgstr "جارٍ التسجيل"
 
@@ -131,9 +132,9 @@ msgstr "بدء/إيقاف التسجيل"
 msgid "Toggle Pause"
 msgstr "تمكين/تعطيل الإيقاف مؤقتًا"
 
-#: data/resources/ui/shortcuts.ui:50 data/resources/ui/window.ui:237
-msgid "Cancel Delay"
-msgstr "إلغاء المُهلة الزمنية قبل التسجيل"
+#: data/resources/ui/shortcuts.ui:50
+msgid "Cancel Record"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -151,180 +152,304 @@ msgstr "تمكين/تعطيل المايكروفون"
 msgid "Toggle Pointer"
 msgstr "تمكين/تعطيل مؤشر الفأرة"
 
-#: data/resources/ui/window.ui:31
+#: data/resources/ui/window.ui:29
 msgid "Main Menu"
 msgstr "القائمة الرئيسية"
 
-#: data/resources/ui/window.ui:47
-msgid "Normal"
-msgstr "طبيعي"
-
-#: data/resources/ui/window.ui:57
-msgid "Selection"
-msgstr "اختيار"
-
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
 msgstr "التقاط شاشة أو نافذة"
 
-#: data/resources/ui/window.ui:94
+#: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
 msgstr "التقاط جزء محدد من الشاشة"
 
-#: data/resources/ui/window.ui:107
+#: data/resources/ui/window.ui:90
 msgid "Record Computer Sounds"
 msgstr "تسجيل صوت الحاسوب"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:97
 msgid "Record From Microphone"
 msgstr "تسجيل من المايكروفون"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "إظهار مؤشر الفأرة"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:114
+msgid "Start Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:115
 msgid "Record"
 msgstr "سجِّل"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:128
+msgid "Forget Previously Selected Video Sources"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Stop Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:180
 msgid "Stop"
 msgstr "أوقف"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:190
+msgid "Pause Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:213
 msgid "Recording in…"
 msgstr "سيبدأ التسجيل خلال …"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
+msgid "Cancel Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
+msgid "Cancel"
+msgstr "الغاء"
+
+#: data/resources/ui/window.ui:256
 msgid "Flushing…"
 msgstr "جارِِ التفريغ…"
 
-#: data/resources/ui/window.ui:283
+#: data/resources/ui/window.ui:291
 msgid "_Delay"
 msgstr "_انتظار قبل التسجيل"
 
-#: data/resources/ui/window.ui:285
+#: data/resources/ui/window.ui:293
 msgid "None"
 msgstr "لا شئ"
 
-#: data/resources/ui/window.ui:290
+#: data/resources/ui/window.ui:298
+msgid "3 seconds"
+msgstr ""
+
+#: data/resources/ui/window.ui:303
 msgid "5 seconds"
 msgstr "5 ثوانٍ"
 
-#: data/resources/ui/window.ui:295
+#: data/resources/ui/window.ui:308
 msgid "10 seconds"
 msgstr "10 ثواني"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:314
 msgid "_Video Format"
 msgstr "_صيغة الفيديو"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:316
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:321
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:313
+#: data/resources/ui/window.ui:326
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:318
+#: data/resources/ui/window.ui:331
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:337
 msgid "_Save to…"
 msgstr "_الحفظ في…"
 
-#: data/resources/ui/window.ui:330
+#: data/resources/ui/window.ui:343
 msgid "_Keyboard Shortcuts"
 msgstr "_إختصارات لوحة المفاتيح"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:347
 msgid "_About Kooha"
 msgstr "_عن Kooha"
 
-#: src/application.rs:138
-msgid "Select Recordings Folder"
-msgstr "اختر مجلَّد حفظ التسجيلات"
+#: src/about.rs:22
+msgid "© 2022 Dave Patrick Caberto"
+msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/application.rs:183
+#: src/about.rs:30
 msgid "translator-credits"
 msgstr "Mehdi Essalehi,Muhammad Yasser"
 
-#: src/application.rs:184
-msgid "Copyright 2021 Dave Patrick"
-msgstr "الحقوق Dave Patrick 2021"
+#: src/about.rs:38
+msgid "Donate (Liberapay)"
+msgstr ""
 
-#: src/application.rs:187
+#: src/about.rs:42
+msgid "Donate (PayPal)"
+msgstr ""
+
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/application.rs:208
-msgid "Screencast Recorded!"
-msgstr "تم تسجيل الشاشة!"
-
-#: src/application.rs:210
-msgid "The recording has been saved in “{}”"
-msgstr "تم حفظ التسجيل في \"{}\""
-
-#: src/application.rs:218
-msgid "Open File"
-msgstr "فتح ملف"
-
-#: src/error.rs:17
-msgid "Screencast Portal Request Error"
-msgstr "خطأ عند طلب منْفذ تسجيل الشاشة"
-
-#: src/error.rs:18
-msgid "Pipeline Build Error"
-msgstr "خطأ عند إنشاء خط التوصيل"
-
-#: src/error.rs:19
-msgid "Recording Error"
-msgstr "خطأ عند التسجيل"
-
-#: src/error.rs:47
-msgid ""
-"Make sure to check for the runtime dependencies and <a href=\"https://github."
-"com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#: src/about.rs:48
+msgid "Translate"
 msgstr ""
-"تأكد من التحقق من متطلبات تشغيل البرنامج و <a href=\"https://github.com/"
-"SeaDve/Kooha#-it-doesnt-work\">صفحة الأعطال</a>."
 
-#: src/error.rs:48
+#: src/application.rs:94
+msgid "Screencast recorded"
+msgstr ""
+
+#: src/application.rs:95
+msgid "Click here to view the video."
+msgstr ""
+
+#: src/application.rs:101
+msgid "Show in Files"
+msgstr ""
+
+#: src/audio_device.rs:43
+msgid "Make sure that you have PulseAudio installed in your system."
+msgstr ""
+
+#: src/audio_device.rs:44
+msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/recording.rs:157 src/recording.rs:192
+msgid "Check out {} for help."
+msgstr ""
+
+#: src/recording.rs:158 src/recording.rs:193 src/recording.rs:252
+#: src/recording.rs:277
+msgid "Failed to start recording"
+msgstr ""
+
+#: src/recording.rs:236
+msgid "No microphone source found"
+msgstr ""
+
+#: src/recording.rs:243
+msgid "No desktop speaker source found"
+msgstr ""
+
+#: src/recording.rs:251
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
-#: src/error.rs:49
-msgid ""
-"Make sure that the saving location exists or is accessible. If it actually "
-"exists or is accessible, something went wrong and please report to <a href="
-"\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#: src/recording.rs:276 src/recording.rs:477
+msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/widgets/main_window.rs:159
+#: src/recording.rs:473
+msgid "An error occurred while recording"
+msgstr ""
+
+#: src/recording.rs:479
+msgid "Failed to open “{}” for writing"
+msgstr ""
+
+#: src/recording.rs:481
+msgid "Failed to open file for writing"
+msgstr ""
+
+#: src/settings.rs:33
+msgid "Select Recordings Folder"
+msgstr "اختر مجلَّد حفظ التسجيلات"
+
+#: src/settings.rs:43
+msgid "_Cancel"
+msgstr "_إلغاء"
+
+#: src/settings.rs:44
+msgid "_Select"
+msgstr "_حدِّد"
+
+#: src/settings.rs:60
+msgid "No folder selected"
+msgstr ""
+
+#: src/settings.rs:61
+msgid "Please choose a folder and try again."
+msgstr ""
+
+#: src/settings.rs:69
+msgid "Cannot access “{}”"
+msgstr "لا يمكن الوصول ل \"{}\""
+
+#: src/settings.rs:70
+msgid "Please choose an accessible location and try again."
+msgstr "الرجاء اختيار مسار للحفظ موجود بالفعل والمحاولة مجددًا."
+
+#: src/settings.rs:114 src/window.rs:220
+msgid "Ok"
+msgstr ""
+
+#: src/window.rs:72
+msgid "Failed to toggle pause"
+msgstr ""
+
+#: src/window.rs:183
+msgid "Copy to clipboard"
+msgstr ""
+
+#: src/window.rs:189
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/window.rs:195
+msgid "Show detailed error"
+msgstr ""
+
+#: src/window.rs:217
+msgid "Help"
+msgstr ""
+
+#: src/window.rs:360
 msgid "Paused"
 msgstr "مُوقف مؤقتًا"
 
-#~ msgid "_Cancel"
-#~ msgstr "_إلغاء"
+#: src/window.rs:394
+msgid "Normal"
+msgstr "طبيعي"
 
-#~ msgid "_Select"
-#~ msgstr "_حدِّد"
+#: src/window.rs:395
+msgid "Selection"
+msgstr "اختيار"
 
-#~ msgid "Cannot access “{}”"
-#~ msgstr "لا يمكن الوصول ل \"{}\""
+#~ msgid "Dave Patrick"
+#~ msgstr "Dave Patrick"
 
-#~ msgid "Please choose an accessible location and try again."
-#~ msgstr "الرجاء اختيار مسار للحفظ موجود بالفعل والمحاولة مجددًا."
+#~ msgid "Cancel Delay"
+#~ msgstr "إلغاء المُهلة الزمنية قبل التسجيل"
+
+#~ msgid "Copyright 2021 Dave Patrick"
+#~ msgstr "الحقوق Dave Patrick 2021"
+
+#~ msgid "Screencast Recorded!"
+#~ msgstr "تم تسجيل الشاشة!"
+
+#~ msgid "The recording has been saved in “{}”"
+#~ msgstr "تم حفظ التسجيل في \"{}\""
+
+#~ msgid "Open File"
+#~ msgstr "فتح ملف"
+
+#~ msgid "Screencast Portal Request Error"
+#~ msgstr "خطأ عند طلب منْفذ تسجيل الشاشة"
+
+#~ msgid "Pipeline Build Error"
+#~ msgstr "خطأ عند إنشاء خط التوصيل"
+
+#~ msgid "Recording Error"
+#~ msgstr "خطأ عند التسجيل"
+
+#~ msgid ""
+#~ "Make sure to check for the runtime dependencies and <a href=\"https://"
+#~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
+#~ msgstr ""
+#~ "تأكد من التحقق من متطلبات تشغيل البرنامج و <a href=\"https://github.com/"
+#~ "SeaDve/Kooha#-it-doesnt-work\">صفحة الأعطال</a>."
 
 #~ msgid ""
 #~ "A GStreamer plugin may not be installed. If not, please report to <a href="
@@ -395,9 +520,6 @@ msgstr "مُوقف مؤقتًا"
 
 #~ msgid "About Kooha"
 #~ msgstr "حول Kooha"
-
-#~ msgid "Cancel"
-#~ msgstr "الغاء"
 
 #~ msgid "Select"
 #~ msgstr "إختيار"
