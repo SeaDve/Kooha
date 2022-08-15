@@ -27,9 +27,8 @@ use crate::{
     utils, Application,
 };
 
-static PORTAL_ERROR_HELP: Lazy<String> = Lazy::new(|| {
-    gettext("Make sure to check for the runtime dependencies and <a href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>.")
-});
+const IT_DOES_NOT_WORK_LINK: &str =
+    r#"<a href="https://github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
@@ -151,10 +150,13 @@ impl Recording {
         let settings = Application::default().settings();
 
         // setup screencast session
-        let screencast_session = ScreencastSession::new().await.with_help(
-            || PORTAL_ERROR_HELP.as_str(),
-            || "Failed create screencast session",
-        )?;
+        let screencast_session = ScreencastSession::new()
+            .await
+            .context("Failed to create ScreencastSession")
+            .with_help(
+                || gettext!("Check out {} for help.", IT_DOES_NOT_WORK_LINK),
+                || gettext("Failed start recording"),
+            )?;
         tracing::debug!(
             "ScreenCast portal version: {:?}",
             screencast_session.version().await
@@ -185,9 +187,10 @@ impl Recording {
                 Application::default().main_window().as_ref(),
             )
             .await
+            .context("Failed to begine ScreencastSession")
             .with_help(
-                || PORTAL_ERROR_HELP.as_str(),
-                || "Failed to begin screencast session",
+                || gettext!("Check out {} for help.", IT_DOES_NOT_WORK_LINK),
+                || gettext("Failed to start recording"),
             )?;
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
@@ -230,14 +233,14 @@ impl Recording {
             pipeline_builder.mic_source(
                 audio_device::find_default_name(AudioDeviceClass::Source)
                     .await
-                    .context("No microphone source found")?,
+                    .with_context(|| gettext("No microphone source found"))?,
             );
         }
         if settings.record_speaker() {
             pipeline_builder.speaker_source(
                 audio_device::find_default_name(AudioDeviceClass::Sink)
                     .await
-                    .context("No desktop speaker source found")?,
+                    .with_context(|| gettext("No desktop speaker source found"))?,
             );
         }
 
@@ -246,7 +249,7 @@ impl Recording {
             .build()
             .with_help(
                 || gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
-                || "Failed to build pipeline"
+                || gettext("Failed to start recording")
             )?;
         imp.pipeline.set(pipeline.clone()).unwrap();
         pipeline
@@ -268,9 +271,10 @@ impl Recording {
         pipeline
             .set_state(gst::State::Playing)
             .map_err(Error::from)
+            .context("Failed to initialize pipeline state to playing")
             .with_help(
                 || gettext("Make sure that the saving location exists or is accessible."),
-                || "Failed to initialize pipeline state to playing",
+                || gettext("Failed to start recording"),
             )?;
         self.update_duration();
 
@@ -465,12 +469,17 @@ impl Recording {
                 // TODO print error quarks for all glib::Error
 
                 let error = Error::from(e.error())
-                    .context(e.debug().unwrap_or_else(|| "<no debug>".to_string()));
+                    .context(e.debug().unwrap_or_else(|| "<no debug>".to_string()))
+                    .context(gettext("An error occurred while recording"));
 
                 if e.error().matches(gst::ResourceError::OpenWrite) {
                     let error = error.help(
-                        gettext("Make sure that the saving location exists or is accessible."),
-                        "Failed to open file for writing",
+                        gettext("Make sure that the saving location exists and is accessible."),
+                        if let Some(ref path) = imp.file.get().and_then(|f| f.path()) {
+                            gettext!("Failed to open “{}” for writing", path.display())
+                        } else {
+                            gettext("Failed to open file for writing")
+                        },
                     );
                     self.set_finished(Err(error));
                 } else {

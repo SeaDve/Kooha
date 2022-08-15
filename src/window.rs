@@ -69,7 +69,7 @@ mod imp {
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
                 utils::spawn(clone!(@weak obj => async move {
                     if let Err(err) = obj.toggle_pause().await {
-                        let err = err.context("Failed to toggle pause");
+                        let err = err.context(gettext("Failed to toggle pause"));
                         tracing::error!("{:?}", err);
                         obj.present_error(&err);
                     }
