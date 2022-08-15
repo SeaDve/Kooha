@@ -1,4 +1,5 @@
 use adw::subclass::prelude::*;
+use anyhow::{Context, Result};
 use gettextrs::gettext;
 use gtk::{
     gdk, gio,
@@ -147,7 +148,7 @@ impl Application {
             let uri = param.unwrap().get::<String>().unwrap();
 
             utils::spawn(async move {
-                if let Err(err) = utils::show_items(&[&uri], "").await {
+                if let Err(err) = show_items(&[&uri], "").await {
                     tracing::warn!("Failed to show items: {:?}", err);
 
                     obj.try_show_uri(&uri).await;
@@ -203,4 +204,31 @@ impl Default for Application {
 
         gio::Application::default().unwrap().downcast().unwrap()
     }
+}
+
+async fn show_items(uris: &[&str], startup_id: &str) -> Result<()> {
+    let connection = gio::bus_get_future(gio::BusType::Session)
+        .await
+        .context("Failed to get session bus")?;
+
+    connection
+        .call_future(
+            Some("org.freedesktop.FileManager1"),
+            "/org/freedesktop/FileManager1",
+            "org.freedesktop.FileManager1",
+            "ShowItems",
+            Some(&(uris, startup_id).to_variant()),
+            None,
+            gio::DBusCallFlags::NONE,
+            -1,
+        )
+        .await
+        .with_context(|| {
+            format!(
+                "Failed to invoke org.freedesktop.FileManager1.ShowItems with uris: {:?}",
+                &uris
+            )
+        })?;
+
+    Ok(())
 }
