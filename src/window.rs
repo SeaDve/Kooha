@@ -437,12 +437,13 @@ impl Window {
     }
 }
 
-/// Format time in MM:SS
+/// Format time in MM:SS. The MM part will be more than 2 digits
+/// if the time is >= 1 hour.
 fn format_time(clock_time: gst::ClockTime) -> String {
     let secs = clock_time.seconds();
 
     let seconds_display = secs % 60;
-    let minutes_display = (secs / 60) % 60;
+    let minutes_display = secs / 60;
     format!("{:02}∶{:02}", minutes_display, seconds_display)
 }
 
@@ -455,8 +456,12 @@ mod tests {
         assert_eq!(format_time(gst::ClockTime::ZERO), "00∶00");
         assert_eq!(format_time(gst::ClockTime::from_seconds(31)), "00∶31");
         assert_eq!(
-            format_time(gst::ClockTime::from_seconds(33 * 60 + 15)),
-            "33∶15"
+            format_time(gst::ClockTime::from_seconds(8 * 60 + 1)),
+            "08∶01"
+        );
+        assert_eq!(
+            format_time(gst::ClockTime::from_seconds(33 * 60 + 3)),
+            "33∶03"
         );
         assert_eq!(
             format_time(gst::ClockTime::from_seconds(59 * 60 + 59)),
@@ -467,6 +472,10 @@ mod tests {
     #[test]
     fn format_time_more_than_1_hour() {
         assert_eq!(format_time(gst::ClockTime::from_seconds(60 * 60)), "60∶00");
+        assert_eq!(
+            format_time(gst::ClockTime::from_seconds(60 * 60 + 9)),
+            "60∶09"
+        );
         assert_eq!(
             format_time(gst::ClockTime::from_seconds(60 * 60 + 31)),
             "60∶31"
