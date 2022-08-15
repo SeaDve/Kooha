@@ -53,7 +53,7 @@
           <li>Use different icons for settings toggle button to discern state more clearly</li>
           <li>Added 3 seconds delay option</li>
           <li>Fixed x264 encoder failing to initialize on uneven resolutions</li>
-          <li>Fixed minutes stucked on 00 if time is equal or greater than an hour</li>
+          <li>Fixed minutes stuck on 00 if time is equal or greater than an hour</li>
           <li>Recordings are now stored by default in `~/Videos/Kooha` (This won't affect existing settings)</li>
           <li>"Show in Files" button in notifications now highlights the file in the file manager</li>
           <li>Improved support information in the new about window</li>
