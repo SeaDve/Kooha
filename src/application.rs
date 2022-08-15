@@ -206,6 +206,7 @@ impl Default for Application {
     }
 }
 
+/// Shows items in the default file manager.
 async fn show_items(uris: &[&str], startup_id: &str) -> Result<()> {
     let connection = gio::bus_get_future(gio::BusType::Session)
         .await

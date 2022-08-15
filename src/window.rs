@@ -237,7 +237,8 @@ impl Window {
                 obj.update_view();
             })),
             recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
-                obj.on_recording_duration_notify(recording);
+                let formatted_time = format_time(recording.duration());
+                obj.imp().recording_time_label.set_label(&formatted_time);
             })),
             recording.connect_finished(clone!(@weak self as obj => move |recording, res| {
                 obj.on_recording_finished(recording, res);
@@ -309,18 +310,6 @@ impl Window {
         }));
     }
 
-    fn on_recording_duration_notify(&self, recording: &Recording) {
-        let imp = self.imp();
-
-        let duration_secs = recording.duration().seconds();
-
-        let seconds_display = duration_secs % 60;
-        let minutes_display = (duration_secs / 60) % 60;
-        let formatted_time = format!("{:02}∶{:02}", minutes_display, seconds_display);
-
-        imp.recording_time_label.set_label(&formatted_time);
-    }
-
     fn update_view(&self) {
         utils::spawn(clone!(@weak self as obj => async move {
             obj.update_view_inner().await;
@@ -342,9 +331,14 @@ impl Window {
         match state {
             RecordingState::Init | RecordingState::Finished => {
                 imp.stack.set_visible_child(&*imp.main_page);
+
+                imp.recording_time_label
+                    .set_label(&format_time(gst::ClockTime::ZERO));
+                imp.delay_label
+                    .set_label(&format_time(gst::ClockTime::ZERO));
             }
             RecordingState::Delayed { secs_left } => {
-                imp.delay_label.set_text(&secs_left.to_string());
+                imp.delay_label.set_label(&secs_left.to_string());
 
                 imp.stack.set_visible_child(&*imp.delay_page);
             }
@@ -442,5 +436,46 @@ impl Window {
         self.add_action(&settings.create_capture_mode_action());
         self.add_action(&settings.create_record_delay_action());
         self.add_action(&settings.create_video_format_action());
+    }
+}
+
+/// Format time in MM:SS
+fn format_time(clock_time: gst::ClockTime) -> String {
+    let secs = clock_time.seconds();
+
+    let seconds_display = secs % 60;
+    let minutes_display = (secs / 60) % 60;
+    format!("{:02}∶{:02}", minutes_display, seconds_display)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn format_time_less_than_1_hour() {
+        assert_eq!(format_time(gst::ClockTime::ZERO), "00∶00");
+        assert_eq!(format_time(gst::ClockTime::from_seconds(31)), "00∶31");
+        assert_eq!(
+            format_time(gst::ClockTime::from_seconds(33 * 60 + 15)),
+            "33∶15"
+        );
+        assert_eq!(
+            format_time(gst::ClockTime::from_seconds(59 * 60 + 59)),
+            "59∶59"
+        );
+    }
+
+    #[test]
+    fn format_time_more_than_1_hour() {
+        assert_eq!(format_time(gst::ClockTime::from_seconds(60 * 60)), "60∶00");
+        assert_eq!(
+            format_time(gst::ClockTime::from_seconds(60 * 60 + 31)),
+            "60∶31"
+        );
+        assert_eq!(
+            format_time(gst::ClockTime::from_seconds(100 * 60 + 20)),
+            "100∶20"
+        );
     }
 }
