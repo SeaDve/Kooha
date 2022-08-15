@@ -46,7 +46,7 @@
   <releases>
     <release version="2.1.0" date="2021-10-20">
       <description>
-        <p>This release contains major features and fixes:</p>
+        <p>This release contains new features and fixes:</p>
         <ul>
           <li>Remember previously selected video sources</li>
           <li>Added ability to cancel while flushing the recording</li>
