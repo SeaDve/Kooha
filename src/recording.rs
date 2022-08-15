@@ -449,8 +449,8 @@ impl Recording {
                     .context(e.debug().unwrap_or_else(|| "<no debug>".to_string()))
                     .context(gettext("An error occurred while recording"));
 
-                if e.error().matches(gst::ResourceError::OpenWrite) {
-                    let error = error.help(
+                let error = if e.error().matches(gst::ResourceError::OpenWrite) {
+                    error.help(
                         gettext("Make sure that the saving location exists and is accessible."),
                         if let Some(ref path) = imp
                             .file
@@ -463,12 +463,12 @@ impl Recording {
                         } else {
                             gettext("Failed to open file for writing")
                         },
-                    );
-                    self.set_finished(Err(error));
+                    )
                 } else {
-                    self.set_finished(Err(error));
-                }
+                    error
+                };
 
+                self.set_finished(Err(error));
                 self.delete_file();
 
                 Continue(false)
