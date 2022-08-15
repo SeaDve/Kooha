@@ -292,6 +292,7 @@ impl Window {
                     tracing::info!("{:?}", err);
                 } else {
                     tracing::error!("{:?}", err);
+                    self.surface().beep();
                     self.present_error(err);
                 }
             }
