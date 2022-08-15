@@ -9,6 +9,7 @@ use once_cell::{sync::Lazy, unsync::OnceCell};
 
 use std::{
     cell::{Cell, RefCell},
+    os::unix::prelude::RawFd,
     path::Path,
     path::PathBuf,
     rc::Rc,
@@ -21,14 +22,11 @@ use crate::{
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
     pipeline_builder::PipelineBuilder,
-    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
+    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
     settings::{CaptureMode, VideoFormat},
     timer::Timer,
     utils, Application,
 };
-
-const IT_DOES_NOT_WORK_LINK: &str =
-    r#"<a href="https://github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
@@ -150,48 +148,28 @@ impl Recording {
         let settings = Application::default().settings();
 
         // setup screencast session
-        let screencast_session = ScreencastSession::new()
-            .await
-            .context("Failed to create ScreencastSession")
-            .with_help(
-                || gettext!("Check out {} for help.", IT_DOES_NOT_WORK_LINK),
-                || gettext("Failed to start recording"),
-            )?;
-        tracing::debug!(
-            "ScreenCast portal version: {:?}",
-            screencast_session.version().await
-        );
-        tracing::debug!(
-            "Available cursor modes: {:?}",
-            screencast_session.available_cursor_modes().await
-        );
-        tracing::debug!(
-            "Available source types: {:?}",
-            screencast_session.available_source_types().await
-        );
-        let (streams, restore_token, fd) = screencast_session
-            .begin(
-                if settings.show_pointer() {
-                    CursorMode::EMBEDDED
-                } else {
-                    CursorMode::HIDDEN
-                },
-                if settings.capture_mode() == CaptureMode::Selection {
-                    SourceType::MONITOR
-                } else {
-                    SourceType::MONITOR | SourceType::WINDOW
-                },
-                settings.capture_mode() == CaptureMode::MonitorWindow,
-                Some(&settings.screencast_restore_token()),
-                PersistMode::ExplicitlyRevoked,
-                Application::default().main_window().as_ref(),
-            )
-            .await
-            .context("Failed to begine ScreencastSession")
-            .with_help(
-                || gettext!("Check out {} for help.", IT_DOES_NOT_WORK_LINK),
-                || gettext("Failed to start recording"),
-            )?;
+        let (screencast_session, streams, restore_token, fd) = new_screencast_session(
+            if settings.show_pointer() {
+                CursorMode::EMBEDDED
+            } else {
+                CursorMode::HIDDEN
+            },
+            if settings.capture_mode() == CaptureMode::Selection {
+                SourceType::MONITOR
+            } else {
+                SourceType::MONITOR | SourceType::WINDOW
+            },
+            settings.capture_mode() == CaptureMode::MonitorWindow,
+            Some(&settings.screencast_restore_token()),
+            PersistMode::ExplicitlyRevoked,
+            Application::default().main_window().as_ref(),
+        )
+        .await
+        .with_help(
+            // Translators: {} will be replaced with a link to a webpage.
+            || gettext!("Check out {} for help.", r#"<a href="https://github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
+            || gettext("Failed to start recording"),
+        )?;
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
@@ -476,6 +454,7 @@ impl Recording {
                     let error = error.help(
                         gettext("Make sure that the saving location exists and is accessible."),
                         if let Some(ref path) = imp.file.get().and_then(|f| f.path()) {
+                            // Translators: {} will be replaced with a path to the folder.
                             gettext!("Failed to open “{}” for writing", path.display())
                         } else {
                             gettext("Failed to open file for writing")
@@ -570,6 +549,46 @@ fn new_recording_path(saving_location: &Path, video_format: VideoFormat) -> Path
     });
 
     path
+}
+
+async fn new_screencast_session(
+    cursor_mode: CursorMode,
+    source_type: SourceType,
+    is_multiple_sources: bool,
+    restore_token: Option<&str>,
+    persist_mode: PersistMode,
+    parent_window: Option<&impl IsA<gtk::Window>>,
+) -> Result<(ScreencastSession, Vec<Stream>, Option<String>, RawFd)> {
+    let screencast_session = ScreencastSession::new()
+        .await
+        .context("Failed to create ScreencastSession")?;
+
+    tracing::debug!(
+        "ScreenCast portal version: {:?}",
+        screencast_session.version().await
+    );
+    tracing::debug!(
+        "Available cursor modes: {:?}",
+        screencast_session.available_cursor_modes().await
+    );
+    tracing::debug!(
+        "Available source types: {:?}",
+        screencast_session.available_source_types().await
+    );
+
+    let (streams, restore_token, fd) = screencast_session
+        .begin(
+            cursor_mode,
+            source_type,
+            is_multiple_sources,
+            restore_token,
+            persist_mode,
+            parent_window,
+        )
+        .await
+        .context("Failed to begin ScreencastSession")?;
+
+    Ok((screencast_session, streams, restore_token, fd))
 }
 
 #[cfg(test)]

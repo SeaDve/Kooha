@@ -66,6 +66,7 @@ impl Settings {
 
             if !is_accessible(&directory) {
                 present_message(
+                    // Translators: {} will be replaced with a path to the folder.
                     &gettext!("Cannot access “{}”", directory.display()),
                     &gettext("Please choose an accessible location and try again."),
                     Some(chooser),

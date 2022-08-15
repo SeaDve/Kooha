@@ -91,6 +91,7 @@ impl Application {
     }
 
     pub fn send_record_success_notification(&self, recording_file: &gio::File) {
+        // Translators: This is a message that the user will see when the recording is finished.
         let notification = gio::Notification::new(&gettext("Screencast recorded"));
         notification.set_body(Some(&gettext("Click here to view the video.")));
         notification.set_default_action_and_target_value(
