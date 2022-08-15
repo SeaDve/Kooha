@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-15 10:26+0800\n"
-"PO-Revision-Date: 2022-04-05 10:07+0000\n"
-"Last-Translator: Fran Diéguez <fran.dieguez@mabishu.com>\n"
+"POT-Creation-Date: 2022-08-15 10:46+0800\n"
+"PO-Revision-Date: 2022-08-15 02:48+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/kooha/pot-file/"
 "gl/>\n"
 "Language: gl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -207,7 +207,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: data/resources/ui/window.ui:256
 msgid "Flushing…"
@@ -290,15 +290,16 @@ msgstr "GitHub"
 msgid "Translate"
 msgstr ""
 
-#: src/application.rs:94
+#. Translators: This is a message that the user will see when the recording is finished.
+#: src/application.rs:95
 msgid "Screencast recorded"
 msgstr ""
 
-#: src/application.rs:95
+#: src/application.rs:96
 msgid "Click here to view the video."
 msgstr ""
 
-#: src/application.rs:101
+#: src/application.rs:102
 msgid "Show in Files"
 msgstr ""
 
@@ -310,24 +311,26 @@ msgstr ""
 msgid "Failed to start device monitor"
 msgstr ""
 
-#: src/recording.rs:157 src/recording.rs:192
-msgid "Check out {} for help."
-msgstr ""
-
-#: src/recording.rs:158 src/recording.rs:193 src/recording.rs:252
-#: src/recording.rs:277
+#. Translators: {} will be replaced with a link to a webpage.
+#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
+#: src/recording.rs:171 src/recording.rs:230 src/recording.rs:255
 msgid "Failed to start recording"
 msgstr ""
 
-#: src/recording.rs:236
+#. Translators: {} will be replaced with a link to a webpage.
+#: src/recording.rs:170
+msgid "Check out {} for help."
+msgstr ""
+
+#: src/recording.rs:214
 msgid "No microphone source found"
 msgstr ""
 
-#: src/recording.rs:243
+#: src/recording.rs:221
 msgid "No desktop speaker source found"
 msgstr ""
 
-#: src/recording.rs:251
+#: src/recording.rs:229
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
@@ -338,19 +341,20 @@ msgstr ""
 "\"https://github.com/SeaDve/Kooha/issues\">páxina de incidencias de Kooha</"
 "a>."
 
-#: src/recording.rs:276 src/recording.rs:477
+#: src/recording.rs:254 src/recording.rs:455
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/recording.rs:473
+#: src/recording.rs:451
 msgid "An error occurred while recording"
 msgstr ""
 
-#: src/recording.rs:479
+#. Translators: {} will be replaced with a path to the folder.
+#: src/recording.rs:458
 msgid "Failed to open “{}” for writing"
 msgstr ""
 
-#: src/recording.rs:481
+#: src/recording.rs:460
 msgid "Failed to open file for writing"
 msgstr ""
 
@@ -374,15 +378,16 @@ msgstr ""
 msgid "Please choose a folder and try again."
 msgstr ""
 
-#: src/settings.rs:69
+#. Translators: {} will be replaced with a path to the folder.
+#: src/settings.rs:70
 msgid "Cannot access “{}”"
 msgstr "Non se pode acceder a “{}”"
 
-#: src/settings.rs:70
+#: src/settings.rs:71
 msgid "Please choose an accessible location and try again."
 msgstr "Por favor, elixa un lugar accesíbel e ténteo de novo."
 
-#: src/settings.rs:114 src/window.rs:220
+#: src/settings.rs:115 src/window.rs:220
 msgid "Ok"
 msgstr ""
 
