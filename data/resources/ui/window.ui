@@ -84,24 +84,27 @@
                         <property name="spacing">12</property>
                         <property name="homogeneous">True</property>
                         <child>
-                          <object class="GtkToggleButton">
-                            <property name="action-name">win.record-speaker</property>
-                            <property name="icon-name">speakers-symbolic</property>
+                          <object class="MsaiToggleButton">
                             <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
+                            <property name="action-name">win.record-speaker</property>
+                            <property name="default-icon-name">audio-volume-muted-symbolic</property>
+                            <property name="toggled-icon-name">audio-volume-high-symbolic</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkToggleButton">
-                            <property name="action-name">win.record-mic</property>
-                            <property name="icon-name">microphone-symbolic</property>
+                          <object class="MsaiToggleButton">
                             <property name="tooltip-text" translatable="yes">Record From Microphone</property>
+                            <property name="action-name">win.record-mic</property>
+                            <property name="default-icon-name">microphone-disabled-symbolic</property>
+                            <property name="toggled-icon-name">microphone2-symbolic</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkToggleButton">
-                            <property name="action-name">win.show-pointer</property>
-                            <property name="icon-name">mouse-symbolic</property>
+                          <object class="MsaiToggleButton">
                             <property name="tooltip-text" translatable="yes">Show Pointer</property>
+                            <property name="action-name">win.show-pointer</property>
+                            <property name="default-icon-name">mouse-wireless-disabled-symbolic</property>
+                            <property name="toggled-icon-name">mouse-wireless-symbolic</property>
                           </object>
                         </child>
                       </object>

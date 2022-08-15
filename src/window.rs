@@ -16,6 +16,7 @@ use crate::{
     help::Help,
     recording::{Recording, State as RecordingState},
     settings::{CaptureMode, VideoFormat},
+    toggle_button::ToggleButton,
     utils, Application,
 };
 
@@ -58,6 +59,7 @@ mod imp {
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
+            ToggleButton::static_type();
             Self::bind_template(klass);
 
             klass.install_action("win.toggle-record", None, move |obj, _, _| {
