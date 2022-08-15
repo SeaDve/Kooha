@@ -22,9 +22,9 @@ use crate::{
     help::{ErrorExt, ResultExt},
     pipeline_builder::PipelineBuilder,
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
-    settings::{CaptureMode, VideoFormat},
+    settings::{CaptureMode, Settings, VideoFormat},
     timer::Timer,
-    utils, Application,
+    utils,
 };
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
@@ -129,22 +129,24 @@ impl Recording {
         glib::Object::new(&[]).expect("Failed to create Recording.")
     }
 
-    pub async fn start(&self, delay: Duration) {
+    pub async fn start(&self, parent: Option<&impl IsA<gtk::Window>>, settings: Settings) {
         if !matches!(self.state(), State::Init) {
             tracing::error!("Trying to start recording on a non-init state");
             return;
         }
 
-        if let Err(err) = self.start_inner(delay).await {
+        if let Err(err) = self.start_inner(parent, settings).await {
             self.close_session();
             self.set_finished(Err(err));
         }
     }
 
-    async fn start_inner(&self, delay: Duration) -> Result<()> {
+    async fn start_inner(
+        &self,
+        parent: Option<&impl IsA<gtk::Window>>,
+        settings: Settings,
+    ) -> Result<()> {
         let imp = self.imp();
-
-        let settings = Application::default().settings();
 
         // setup screencast session
         let (screencast_session, streams, restore_token, fd) = new_screencast_session(
@@ -161,7 +163,7 @@ impl Recording {
             settings.capture_mode() == CaptureMode::MonitorWindow,
             Some(&settings.screencast_restore_token()),
             PersistMode::ExplicitlyRevoked,
-            Application::default().main_window().as_ref(),
+            parent,
         )
         .await
         .with_help(
@@ -194,8 +196,9 @@ impl Recording {
         }
 
         // setup timer
+        let record_delay = Duration::from_secs(settings.record_delay() as u64);
         let timer = Timer::new(
-            delay,
+            record_delay,
             clone!(@weak self as obj => move |secs_left| {
                 obj.set_state(State::Delayed {
                     secs_left

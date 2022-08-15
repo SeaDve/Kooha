@@ -38,8 +38,10 @@ use gettextrs::{gettext, LocaleCategory};
 use gtk::{gio, glib};
 use once_cell::sync::Lazy;
 
-use self::application::Application;
-use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
+use self::{
+    application::Application,
+    config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE},
+};
 
 static THREAD_POOL: Lazy<glib::ThreadPool> = Lazy::new(|| glib::ThreadPool::shared(None).unwrap());
 

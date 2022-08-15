@@ -8,8 +8,6 @@ use gtk::{
     CompositeTemplate,
 };
 
-use std::time::Duration;
-
 use crate::{
     cancelled::Cancelled,
     config::PROFILE,
@@ -247,11 +245,7 @@ impl Window {
         *imp.recording.lock().await = Some((recording.clone(), handler_ids));
 
         let settings = Application::default().settings();
-        let record_delay = settings.record_delay();
-
-        recording
-            .start(Duration::from_secs(record_delay as u64))
-            .await;
+        recording.start(Some(self), settings).await;
     }
 
     async fn toggle_pause(&self) -> Result<()> {
