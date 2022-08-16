@@ -1,10 +1,11 @@
+mod handle;
 mod handle_token;
 mod object_path;
 mod types;
 mod variant_dict;
 mod window_identifier;
 
-use anyhow::{anyhow, bail, ensure, Context, Result};
+use anyhow::{anyhow, bail, Context, Result};
 use futures_channel::oneshot;
 use futures_util::future::{self, Either};
 use gtk::{
@@ -17,7 +18,7 @@ use std::{cell::RefCell, os::unix::io::RawFd, time::Duration};
 
 pub use self::types::{CursorMode, PersistMode, SourceType, Stream};
 use self::{
-    handle_token::HandleToken, object_path::ObjectPath, variant_dict::VariantDict,
+    handle::Handle, handle_token::HandleToken, object_path::ObjectPath, variant_dict::VariantDict,
     window_identifier::WindowIdentifier,
 };
 use crate::cancelled::Cancelled;
@@ -225,7 +226,7 @@ impl ScreencastSession {
     }
 
     async fn open_pipe_wire_remote(&self) -> Result<RawFd> {
-        let (_, fd_list) = self
+        let (fd_index_variant, fd_list) = self
             .proxy
             .call_with_unix_fd_list_future(
                 "OpenPipeWireRemote",
@@ -238,11 +239,15 @@ impl ScreencastSession {
 
         tracing::info!("Opened pipe wire remote");
 
-        let mut fds = fd_list.steal_fds();
+        let fd_index = variant_get::<Handle>(&fd_index_variant)?;
 
-        ensure!(fds.len() == 1, "Expected 1 fd, got {}", fds.len());
+        debug_assert_eq!(fd_list.length(), 1);
 
-        Ok(fds.pop().unwrap())
+        let fd = fd_list
+            .get(fd_index.inner())
+            .with_context(|| format!("Failed to get fd at index `{}`", fd_index.inner()))?;
+
+        Ok(fd)
     }
 }
 
