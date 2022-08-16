@@ -1,17 +1,23 @@
 mod handle_token;
 mod object_path;
 mod types;
+mod variant_dict;
 mod window_identifier;
 
 use anyhow::{anyhow, ensure, Context, Result};
 use futures_channel::oneshot;
-use gtk::{gio, glib, prelude::*};
+use gtk::{
+    gio,
+    glib::{self, FromVariant},
+    prelude::*,
+};
 
-use std::{cell::RefCell, collections::HashMap, os::unix::io::RawFd, time::Duration};
+use std::{cell::RefCell, os::unix::io::RawFd, time::Duration};
 
 pub use self::types::{CursorMode, PersistMode, SourceType, Stream};
 use self::{
-    handle_token::HandleToken, object_path::ObjectPath, window_identifier::WindowIdentifier,
+    handle_token::HandleToken, object_path::ObjectPath, variant_dict::VariantDict,
+    window_identifier::WindowIdentifier,
 };
 use crate::cancelled::Cancelled;
 
@@ -39,7 +45,7 @@ impl ScreencastSession {
         let session_handle_token = HandleToken::new();
         let handle_token = HandleToken::new();
 
-        let session_options = HashMap::from([
+        let session_options = VariantDict::from_iter([
             ("handle_token", handle_token.to_variant()),
             ("session_handle_token", session_handle_token.to_variant()),
         ]);
@@ -54,11 +60,7 @@ impl ScreencastSession {
 
         tracing::info!("Created screencast session");
 
-        let session_handle = response
-            .get("session_handle")
-            .ok_or_else(|| anyhow!("Expected session_handle"))?
-            .get::<ObjectPath>()
-            .ok_or_else(|| anyhow!("Expected session_handle of type o"))?;
+        let session_handle = response.get::<ObjectPath>("session_handle")?;
 
         debug_assert!(session_handle
             .as_str()
@@ -109,7 +111,7 @@ impl ScreencastSession {
     }
 
     pub async fn close(self) -> Result<()> {
-        let ret = self
+        let response = self
             .proxy
             .connection()
             .call_future(
@@ -124,8 +126,7 @@ impl ScreencastSession {
             )
             .await
             .context("Failed to invoke Close on the session")?;
-
-        debug_assert_eq!(ret.get(), Some(()));
+        debug_assert!(variant_get::<()>(&response).is_ok());
 
         tracing::info!("Closed screencast session");
 
@@ -148,19 +149,13 @@ impl ScreencastSession {
         SourceType::from_bits(value).ok_or_else(|| anyhow!("Invalid source type: {}", value))
     }
 
-    fn property<T: glib::FromVariant>(&self, name: &str) -> Result<T> {
+    fn property<T: FromVariant>(&self, name: &str) -> Result<T> {
         let variant = self
             .proxy
             .cached_property(name)
-            .ok_or_else(|| anyhow!("No cached {} property", name))?;
+            .ok_or_else(|| anyhow!("No cached property named `{}`", name))?;
 
-        variant.get::<T>().ok_or_else(|| {
-            anyhow!(
-                "Expected {} type. Got {}",
-                T::static_variant_type(),
-                variant.type_()
-            )
-        })
+        variant_get::<T>(&variant)
     }
 
     async fn start(
@@ -169,7 +164,7 @@ impl ScreencastSession {
     ) -> Result<(Vec<Stream>, Option<String>)> {
         let handle_token = HandleToken::new();
 
-        let options = HashMap::from([("handle_token", handle_token.to_variant())]);
+        let options = VariantDict::from_iter([("handle_token", handle_token.to_variant())]);
 
         let response = screencast_request_call(
             &self.proxy,
@@ -181,24 +176,11 @@ impl ScreencastSession {
 
         tracing::info!("Started screencast session");
 
-        let streams_variant = response
-            .get("streams")
-            .ok_or_else(|| anyhow!("No streams received from response"))?;
-
-        let streams = streams_variant.get::<Vec<Stream>>().ok_or_else(|| {
-            anyhow!(
-                "Expected streams signature of {}. Got {}",
-                <Vec<Stream>>::static_variant_type(),
-                streams_variant.type_()
-            )
-        })?;
+        let streams = response.get::<Vec<Stream>>("streams")?;
 
         tracing::info!("Received streams {:?}", streams);
 
-        if let Some(variant) = response.get("restore_token") {
-            let restore_token = variant.get::<String>().ok_or_else(|| {
-                anyhow!("Expected restore_token of type s. Got {}", variant.type_())
-            })?;
+        if let Some(restore_token) = response.get_optional("restore_token")? {
             return Ok((streams, Some(restore_token)));
         }
 
@@ -227,13 +209,14 @@ impl ScreencastSession {
             options.push(("restore_token", restore_token.to_variant()));
         }
 
-        screencast_request_call(
+        let response = screencast_request_call(
             &self.proxy,
             &handle_token,
             "SelectSources",
-            &(&self.session_handle, HashMap::from_iter(options)).to_variant(),
+            &(&self.session_handle, VariantDict::from_iter(options)).to_variant(),
         )
         .await?;
+        debug_assert!(response.is_empty());
 
         tracing::info!("Selected sources");
 
@@ -245,13 +228,7 @@ impl ScreencastSession {
             .proxy
             .call_with_unix_fd_list_future(
                 "OpenPipeWireRemote",
-                Some(
-                    &(
-                        &self.session_handle,
-                        HashMap::<String, glib::Variant>::new(),
-                    )
-                        .to_variant(),
-                ),
+                Some(&(&self.session_handle, VariantDict::new()).to_variant()),
                 gio::DBusCallFlags::NONE,
                 DEFAULT_TIMEOUT.as_millis() as i32,
                 gio::UnixFDList::NONE,
@@ -273,7 +250,7 @@ async fn screencast_request_call(
     handle_token: &HandleToken,
     method: &str,
     parameters: &glib::Variant,
-) -> Result<HashMap<String, glib::Variant>> {
+) -> Result<VariantDict> {
     let connection = proxy.connection();
 
     let unique_identifier = connection
@@ -321,25 +298,18 @@ async fn screencast_request_call(
                 method, parameters
             )
         })?;
+    debug_assert_eq!(
+        variant_get::<(String,)>(&path).map(|(p,)| p).unwrap(),
+        request_path
+    );
 
-    let response_variant = rx
+    let response = rx
         .await
         .with_context(|| Cancelled::new(method))
         .context("Sender dropped")?;
-
-    debug_assert_eq!(path.get::<(String,)>().map(|(p,)| p), Some(request_path));
-
     connection.signal_unsubscribe(subscription_id);
 
-    let (response_no, response) = response_variant
-        .get::<(u32, HashMap<String, glib::Variant>)>()
-        .ok_or_else(|| {
-            anyhow!(
-                "Expected return type of ua{{sv}}. Got {} with value {:?}",
-                response_variant.type_(),
-                response_variant.print(true)
-            )
-        })?;
+    let (response_no, response) = variant_get::<(u32, VariantDict)>(&response)?;
 
     match response_no {
         0 => Ok(response),
@@ -349,5 +319,39 @@ async fn screencast_request_call(
             response
         )),
         no => Err(anyhow!("Unknown response number of {}", no)),
+    }
+}
+
+/// Provides error messages on incorrect variant type.
+fn variant_get<T: FromVariant>(variant: &glib::Variant) -> Result<T> {
+    variant.get::<T>().ok_or_else(|| {
+        anyhow!(
+            "Expected type `{}`; got `{}` with value `{}`",
+            T::static_variant_type(),
+            variant.type_(),
+            variant.print(true)
+        )
+    })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn get_variant_ok() {
+        let variant = ("foo",).to_variant();
+        let (value,) = variant_get::<(String,)>(&variant).unwrap();
+        assert_eq!(value, "foo");
+    }
+
+    #[test]
+    fn get_variant_wrong_type() {
+        let variant = "foo".to_variant();
+        let err = variant_get::<u32>(&variant).unwrap_err();
+        assert_eq!(
+            "Expected type `u`; got `s` with value `foo`",
+            err.to_string()
+        );
     }
 }

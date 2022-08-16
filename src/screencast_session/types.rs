@@ -1,6 +1,8 @@
 use gtk::glib::{self, bitflags::bitflags, FromVariant, StaticVariantType};
 
-use std::collections::HashMap;
+use std::borrow::Cow;
+
+use super::VariantDict;
 
 bitflags! {
     pub struct CursorMode: u32 {
@@ -27,7 +29,7 @@ pub enum PersistMode {
     ExplicitlyRevoked = 2,
 }
 
-type StreamVariantType = (u32, HashMap<String, glib::Variant>);
+type StreamVariantType = (u32, VariantDict);
 
 #[derive(Debug)]
 pub struct Stream {
@@ -61,25 +63,25 @@ impl Stream {
     }
 }
 
+impl StaticVariantType for Stream {
+    fn static_variant_type() -> Cow<'static, glib::VariantTy> {
+        <StreamVariantType>::static_variant_type()
+    }
+}
+
 impl FromVariant for Stream {
     fn from_variant(variant: &glib::Variant) -> Option<Self> {
         let (node_id, props) = variant.get::<StreamVariantType>()?;
         Some(Self {
             node_id,
-            id: props.get("id").and_then(|id| id.get()),
-            position: props.get("position").and_then(|id| id.get()),
-            size: props.get("size").and_then(|id| id.get()),
+            id: props.get("id").ok(),
+            position: props.get("position").ok(),
+            size: props.get("size").ok(),
             source_type: props
-                .get("source_type")
-                .and_then(|source_type| source_type.get::<u32>())
+                .get::<u32>("source_type")
+                .ok()
                 .and_then(SourceType::from_bits),
         })
-    }
-}
-
-impl StaticVariantType for Stream {
-    fn static_variant_type() -> std::borrow::Cow<'static, glib::VariantTy> {
-        <StreamVariantType>::static_variant_type()
     }
 }
 

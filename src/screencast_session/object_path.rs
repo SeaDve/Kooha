@@ -5,15 +5,15 @@ use std::borrow::Cow;
 #[derive(Debug)]
 pub struct ObjectPath(String);
 
-impl FromVariant for ObjectPath {
-    fn from_variant(value: &glib::Variant) -> Option<Self> {
-        Self::new(value.get::<String>()?.as_str())
-    }
-}
-
 impl StaticVariantType for ObjectPath {
     fn static_variant_type() -> Cow<'static, glib::VariantTy> {
         Cow::Borrowed(glib::VariantTy::OBJECT_PATH)
+    }
+}
+
+impl FromVariant for ObjectPath {
+    fn from_variant(value: &glib::Variant) -> Option<Self> {
+        Self::new(value.get::<String>()?.as_str())
     }
 }
 

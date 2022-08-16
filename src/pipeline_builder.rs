@@ -17,6 +17,7 @@ const MAX_THREAD_COUNT: u32 = 64;
 const GIF_DEFAULT_FRAMERATE: u32 = 15;
 
 #[derive(Debug)]
+#[must_use]
 pub struct PipelineBuilder {
     file_path: PathBuf,
     framerate: u32,
