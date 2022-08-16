@@ -157,6 +157,8 @@ impl Recording {
         let imp = self.imp();
 
         // setup screencast session
+        let restore_token = settings.screencast_restore_token();
+        settings.set_screencast_restore_token("");
         let (screencast_session, streams, restore_token, fd) = new_screencast_session(
             if settings.show_pointer() {
                 CursorMode::EMBEDDED
@@ -169,7 +171,7 @@ impl Recording {
                 SourceType::MONITOR | SourceType::WINDOW
             },
             settings.capture_mode() == CaptureMode::MonitorWindow,
-            Some(&settings.screencast_restore_token()),
+            Some(&restore_token),
             PersistMode::ExplicitlyRevoked,
             parent,
         )
