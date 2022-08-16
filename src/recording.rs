@@ -106,15 +106,23 @@ mod imp {
             SIGNALS.as_ref()
         }
 
-        fn dispose(&self, _obj: &Self::Type) {
-            if let Some(source_id) = self.duration_source_id.take() {
-                source_id.remove();
+        fn dispose(&self, obj: &Self::Type) {
+            if let Some(timer) = self.timer.take() {
+                timer.cancel();
             }
 
             if let Some(pipeline) = self.pipeline.get() {
                 if let Err(err) = pipeline.set_state(gst::State::Null) {
                     tracing::warn!("Failed to stop pipeline on dispose: {:?}", err);
                 }
+
+                let _ = pipeline.bus().unwrap().remove_watch();
+            }
+
+            obj.close_session();
+
+            if let Some(source_id) = self.duration_source_id.take() {
+                source_id.remove();
             }
         }
     }
