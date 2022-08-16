@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-15 10:46+0800\n"
-"PO-Revision-Date: 2022-01-11 00:10+0000\n"
+"PO-Revision-Date: 2022-08-16 16:19+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
-">\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -102,7 +102,7 @@ msgstr "⌨️ Maak gebruik van handige sneltoetsen."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -134,7 +134,7 @@ msgstr "Onderbreken/Hervatten"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Opname stoppen"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -178,7 +178,7 @@ msgstr "Cursor tonen"
 
 #: data/resources/ui/window.ui:114
 msgid "Start Recording"
-msgstr ""
+msgstr "Opname starten"
 
 #: data/resources/ui/window.ui:115
 msgid "Record"
@@ -186,11 +186,11 @@ msgstr "Opnemen"
 
 #: data/resources/ui/window.ui:128
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Eerder gekozen videobronnen vergeten"
 
 #: data/resources/ui/window.ui:179
 msgid "Stop Recording"
-msgstr ""
+msgstr "Opname stoppen"
 
 #: data/resources/ui/window.ui:180
 msgid "Stop"
@@ -198,7 +198,7 @@ msgstr "Stoppen"
 
 #: data/resources/ui/window.ui:190
 msgid "Pause Recording"
-msgstr ""
+msgstr "Opname onderbreken"
 
 #: data/resources/ui/window.ui:213
 msgid "Recording in…"
@@ -206,7 +206,7 @@ msgstr "De opname wordt gestart over…"
 
 #: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Opname stoppen"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
 msgid "Cancel"
@@ -226,7 +226,7 @@ msgstr "Geen"
 
 #: data/resources/ui/window.ui:298
 msgid "3 seconds"
-msgstr ""
+msgstr "3 seconden"
 
 #: data/resources/ui/window.ui:303
 msgid "5 seconds"
@@ -270,7 +270,7 @@ msgstr "Over Kooh_a"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -279,11 +279,11 @@ msgstr "Heimen Stoffels &lt;vistausss@fastmail.com&gt;"
 
 #: src/about.rs:38
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Doneren (Liberapay)"
 
 #: src/about.rs:42
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Doneren (PayPal)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -291,47 +291,47 @@ msgstr "GitHub"
 
 #: src/about.rs:48
 msgid "Translate"
-msgstr ""
+msgstr "Vertalen"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:95
 msgid "Screencast recorded"
-msgstr ""
+msgstr "De opname is afgerond"
 
 #: src/application.rs:96
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Klik hier om de video te bekijken."
 
 #: src/application.rs:102
 msgid "Show in Files"
-msgstr ""
+msgstr "Tonen in bestandsbeheer"
 
 #: src/audio_device.rs:43
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Zorg er voor dat PulseAudio geïnstalleerd is."
 
 #: src/audio_device.rs:44
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "De apparaatzoekdienst kan niet worden gestart"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:171 src/recording.rs:230 src/recording.rs:255
 msgid "Failed to start recording"
-msgstr ""
+msgstr "De opname kan niet worden gestart"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:170
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Ga naar {} om de documentatie te bekijken."
 
 #: src/recording.rs:214
 msgid "No microphone source found"
-msgstr ""
+msgstr "Er is geen microfoon aangetroffen"
 
 #: src/recording.rs:221
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Er is geen luidspreker aangetroffen"
 
 #: src/recording.rs:229
 msgid ""
@@ -345,20 +345,20 @@ msgstr ""
 
 #: src/recording.rs:254 src/recording.rs:455
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Zorg er voor dat de opslaglocatie bestaat en toegankelijk is."
 
 #: src/recording.rs:451
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Er is een fout opgetreden tijdens de opname"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:458
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Er kan niet worden weggeschreven naar “{}”"
 
 #: src/recording.rs:460
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Het bestand kan niet worden weggeschreven"
 
 #: src/settings.rs:33
 msgid "Select Recordings Folder"
@@ -374,11 +374,11 @@ msgstr "_Selecteren"
 
 #: src/settings.rs:60
 msgid "No folder selected"
-msgstr ""
+msgstr "Geen map gekozen"
 
 #: src/settings.rs:61
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Kies een map en probeer het opnieuw."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:70
@@ -391,27 +391,27 @@ msgstr "Kies een toegankelijke locatie en probeer het opnieuw."
 
 #: src/settings.rs:115 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Oké"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Het onderbreken/hervatten is mislukt"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopiëren naar klembord"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "De tekst is gekopieerd naar het klembord"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Uitgebreide foutmelding tonen"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Hulp"
 
 #: src/window.rs:360
 msgid "Paused"

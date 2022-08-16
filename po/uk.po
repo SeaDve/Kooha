@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-15 10:46+0800\n"
-"PO-Revision-Date: 2022-01-11 00:10+0000\n"
+"PO-Revision-Date: 2022-08-16 16:19+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -103,7 +103,7 @@ msgstr "⌨️ Можливість застосовувати комбінац�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -135,7 +135,7 @@ msgstr "Зупинити/продовжити"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Скасувати запис"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -179,7 +179,7 @@ msgstr "Показати вказівник миші"
 
 #: data/resources/ui/window.ui:114
 msgid "Start Recording"
-msgstr ""
+msgstr "Розпочати запис"
 
 #: data/resources/ui/window.ui:115
 msgid "Record"
@@ -187,11 +187,11 @@ msgstr "Записати"
 
 #: data/resources/ui/window.ui:128
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Забути раніше вибрані джерела відео"
 
 #: data/resources/ui/window.ui:179
 msgid "Stop Recording"
-msgstr ""
+msgstr "Зупинити запис"
 
 #: data/resources/ui/window.ui:180
 msgid "Stop"
@@ -199,7 +199,7 @@ msgstr "Зупинити"
 
 #: data/resources/ui/window.ui:190
 msgid "Pause Recording"
-msgstr ""
+msgstr "Призупинити запис"
 
 #: data/resources/ui/window.ui:213
 msgid "Recording in…"
@@ -207,7 +207,7 @@ msgstr "Запис через…"
 
 #: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Скасувати запис"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
 msgid "Cancel"
@@ -227,7 +227,7 @@ msgstr "Немає"
 
 #: data/resources/ui/window.ui:298
 msgid "3 seconds"
-msgstr ""
+msgstr "3 секунди"
 
 #: data/resources/ui/window.ui:303
 msgid "5 seconds"
@@ -271,7 +271,7 @@ msgstr "_Про Kooha"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -280,11 +280,11 @@ msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
 
 #: src/about.rs:38
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Допомогти (Liberapay)"
 
 #: src/about.rs:42
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Допомогти (PayPal)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -292,47 +292,47 @@ msgstr "GitHub"
 
 #: src/about.rs:48
 msgid "Translate"
-msgstr ""
+msgstr "Перекласти"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:95
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Скрінкаст записаний"
 
 #: src/application.rs:96
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Клацніть тут, щоб переглянути відео."
 
 #: src/application.rs:102
 msgid "Show in Files"
-msgstr ""
+msgstr "Показати у файлах"
 
 #: src/audio_device.rs:43
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Переконайтеся, що у вашій системі встановлено PulseAudio."
 
 #: src/audio_device.rs:44
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Не вдалося запустити монітор пристрою"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:171 src/recording.rs:230 src/recording.rs:255
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Не вдалося розпочати запис"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:170
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Перегляньте {}, щоб отримати довідку."
 
 #: src/recording.rs:214
 msgid "No microphone source found"
-msgstr ""
+msgstr "Не знайдено мікрофона"
 
 #: src/recording.rs:221
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Не знайдено динаміка настільного ПК"
 
 #: src/recording.rs:229
 msgid ""
@@ -346,20 +346,20 @@ msgstr ""
 
 #: src/recording.rs:254 src/recording.rs:455
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Переконайтеся, що місце збереження існує та доступне."
 
 #: src/recording.rs:451
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Сталася помилка під час запису"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:458
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Не вдалося відкрити «{}» для запису"
 
 #: src/recording.rs:460
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Не вдалося відкрити файл для запису"
 
 #: src/settings.rs:33
 msgid "Select Recordings Folder"
@@ -375,11 +375,11 @@ msgstr "_Вибрати"
 
 #: src/settings.rs:60
 msgid "No folder selected"
-msgstr ""
+msgstr "Тека не вибрана"
 
 #: src/settings.rs:61
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Виберіть теку та повторіть спробу."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:70
@@ -392,27 +392,27 @@ msgstr "Виберіть доступне розташування та повт
 
 #: src/settings.rs:115 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Гаразд"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Не вдалося перемкнути паузу"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Копіювання до буфера обміну"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Скопійовано до буфера обміну"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Показати подробиці помилки"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Довідка"
 
 #: src/window.rs:360
 msgid "Paused"
