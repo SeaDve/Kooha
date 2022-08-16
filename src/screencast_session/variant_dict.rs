@@ -41,7 +41,7 @@ impl VariantDict {
 
         let value = variant.get::<T>().ok_or_else(|| {
             anyhow!(
-                "Expected key `{}` of type `{}`; got `{}` with value {}",
+                "Expected key `{}` of type `{}`; got `{}` with value `{}`",
                 key,
                 T::static_variant_type(),
                 variant.type_(),
