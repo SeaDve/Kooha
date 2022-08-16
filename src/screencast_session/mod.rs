@@ -350,7 +350,7 @@ mod tests {
         let variant = "foo".to_variant();
         let err = variant_get::<u32>(&variant).unwrap_err();
         assert_eq!(
-            "Expected type `u`; got `s` with value `foo`",
+            "Expected type `u`; got `s` with value `'foo'`",
             err.to_string()
         );
     }

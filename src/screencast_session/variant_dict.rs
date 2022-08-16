@@ -116,7 +116,7 @@ mod tests {
         let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
         assert_eq!(
             var_dict.get::<u32>("test").unwrap_err().to_string(),
-            "Expected key `test` of type `u`; got `s` with value `value`"
+            "Expected key `test` of type `u`; got `s` with value `'value'`"
         );
     }
 
@@ -143,7 +143,7 @@ mod tests {
                 .get_optional::<u32>("test")
                 .unwrap_err()
                 .to_string(),
-            "Expected key `test` of type `u`; got `s` with value `value`"
+            "Expected key `test` of type `u`; got `s` with value `'value'`"
         );
     }
 
