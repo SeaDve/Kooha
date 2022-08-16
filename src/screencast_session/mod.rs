@@ -4,8 +4,9 @@ mod types;
 mod variant_dict;
 mod window_identifier;
 
-use anyhow::{anyhow, ensure, Context, Result};
+use anyhow::{anyhow, bail, ensure, Context, Result};
 use futures_channel::oneshot;
+use futures_util::future::{self, Either};
 use gtk::{
     gio,
     glib::{self, FromVariant},
@@ -265,8 +266,35 @@ async fn screencast_request_call(
         handle_token.as_str()
     );
 
-    let (tx, rx) = oneshot::channel();
-    let tx = RefCell::new(Some(tx));
+    let request_proxy = gio::DBusProxy::for_bus_future(
+        gio::BusType::Session,
+        gio::DBusProxyFlags::DO_NOT_AUTO_START
+            | gio::DBusProxyFlags::DO_NOT_CONNECT_SIGNALS
+            | gio::DBusProxyFlags::DO_NOT_LOAD_PROPERTIES,
+        None,
+        "org.freedesktop.portal.Desktop",
+        &request_path,
+        "org.freedesktop.portal.Request",
+    )
+    .await?;
+
+    let (name_owner_lost_tx, name_owner_lost_rx) = oneshot::channel();
+    let name_owner_lost_tx = RefCell::new(Some(name_owner_lost_tx));
+
+    let handler_id = request_proxy.connect_notify_local(Some("g-name-owner"), move |proxy, _| {
+        if proxy.g_name_owner().is_none() {
+            tracing::warn!("Lost request name owner");
+
+            if let Some(tx) = name_owner_lost_tx.take() {
+                let _ = tx.send(());
+            } else {
+                tracing::warn!("Received another g name owner notify");
+            }
+        }
+    });
+
+    let (response_tx, response_rx) = oneshot::channel();
+    let response_tx = RefCell::new(Some(response_tx));
 
     let subscription_id = connection.signal_subscribe(
         Some("org.freedesktop.portal.Desktop"),
@@ -276,7 +304,7 @@ async fn screencast_request_call(
         None,
         gio::DBusSignalFlags::NONE,
         move |_connection, _sender_name, _object_path, _interface_name, _signal_name, output| {
-            if let Some(tx) = tx.take() {
+            if let Some(tx) = response_tx.take() {
                 let _ = tx.send(output.clone());
             } else {
                 tracing::warn!("Received another response for already finished request");
@@ -303,11 +331,18 @@ async fn screencast_request_call(
         request_path
     );
 
-    let response = rx
-        .await
-        .with_context(|| Cancelled::new(method))
-        .context("Sender dropped")?;
+    tracing::info!("Waiting request response for method `{}`", method);
+
+    let response = match future::select(response_rx, name_owner_lost_rx).await {
+        Either::Left((res, _)) => res
+            .with_context(|| Cancelled::new(method))
+            .context("Sender dropped")?,
+        Either::Right(_) => bail!("Lost name owner for request"),
+    };
+    request_proxy.disconnect(handler_id);
     connection.signal_unsubscribe(subscription_id);
+
+    tracing::info!("Request response received for method `{}`", method);
 
     let (response_no, response) = variant_get::<(u32, VariantDict)>(&response)?;
 
