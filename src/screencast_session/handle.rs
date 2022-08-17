@@ -1,5 +1,4 @@
-use gdk_wayland::glib::translate::ToGlibPtr;
-use gtk::glib::{self, FromVariant, StaticVariantType};
+use gtk::glib::{self, translate::ToGlibPtr, FromVariant, StaticVariantType};
 
 use std::borrow::Cow;
 
