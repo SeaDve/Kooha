@@ -332,7 +332,7 @@ async fn screencast_request_call(
             )
         })?;
     debug_assert_eq!(
-        variant_get::<(String,)>(&path).map(|(p,)| p).unwrap(),
+        variant_get::<(ObjectPath,)>(&path).unwrap().0.as_str(),
         request_path
     );
 
