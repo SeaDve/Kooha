@@ -53,6 +53,12 @@ mod tests {
     }
 
     #[test]
+    fn to_variant_err() {
+        let o = ObjectPath::new("invalidpath");
+        assert!(o.is_none());
+    }
+
+    #[test]
     fn static_variant_type() {
         assert_eq!(
             ObjectPath::static_variant_type(),
@@ -62,10 +68,13 @@ mod tests {
 
     #[test]
     fn from_variant() {
-        let o_variant = ObjectPath::new("/com/example/Object").unwrap().to_variant();
+        let variant_a = ObjectPath::new("/com/example/Object").unwrap().to_variant();
         assert_eq!(
-            o_variant.get::<ObjectPath>().unwrap().as_str(),
+            variant_a.get::<ObjectPath>().unwrap().as_str(),
             "/com/example/Object"
         );
+
+        let variant_b = glib::Variant::parse(Some(glib::VariantTy::OBJECT_PATH), "'/foo'").unwrap();
+        assert_eq!(variant_b.get::<String>().unwrap(), "/foo");
     }
 }

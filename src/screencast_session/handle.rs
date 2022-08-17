@@ -26,3 +26,19 @@ impl FromVariant for Handle {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn static_variant_type() {
+        assert_eq!(Handle::static_variant_type(), glib::VariantTy::HANDLE);
+    }
+
+    #[test]
+    fn from_variant() {
+        let h_variant = glib::Variant::parse(None, "handle 2").unwrap();
+        assert_eq!(h_variant.get::<Handle>().unwrap().inner(), 2);
+    }
+}
