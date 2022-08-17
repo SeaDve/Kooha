@@ -1,4 +1,4 @@
-use gtk::glib::{self, FromVariant, StaticVariantType, ToVariant};
+use gtk::glib::{self, translate::ToGlibPtr, FromVariant, StaticVariantType, ToVariant};
 
 use std::borrow::Cow;
 
@@ -21,7 +21,7 @@ impl ToVariant for ObjectPath {
     fn to_variant(&self) -> glib::Variant {
         unsafe {
             glib::translate::from_glib_none(glib::ffi::g_variant_new_object_path(
-                glib::translate::ToGlibPtr::to_glib_none(&self.0).0,
+                self.0.to_glib_none().0,
             ))
         }
     }
