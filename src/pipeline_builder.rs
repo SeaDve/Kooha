@@ -1,4 +1,4 @@
-use anyhow::{Context, Result};
+use anyhow::{anyhow, Context, Result};
 use gtk::{
     glib,
     graphene::{Rect, Size},
@@ -95,7 +95,7 @@ impl PipelineAssembler {
             .builder
             .file_path
             .to_str()
-            .ok_or_else(|| anyhow::anyhow!("Could not convert file_path to string."))?;
+            .ok_or_else(|| anyhow!("Could not convert file_path to string."))?;
 
         let pipeline_elements = vec![
             self.compositor(),

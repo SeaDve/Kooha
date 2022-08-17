@@ -272,7 +272,7 @@ async fn screencast_request_call(
             handle_token.as_str()
         );
         ObjectPath::new(&path)
-            .with_context(|| anyhow!("Failed to create object path from `{}`", path))?
+            .ok_or_else(|| anyhow!("Failed to create object path from `{}`", path))?
     };
 
     let request_proxy = gio::DBusProxy::for_bus_future(
