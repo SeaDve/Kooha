@@ -23,6 +23,7 @@ impl FromVariant for Handle {
             return None;
         }
 
+        // SAFETY: The variant's static variant type was verfied above.
         unsafe {
             Some(Handle(glib::ffi::g_variant_get_handle(
                 value.to_glib_none().0,

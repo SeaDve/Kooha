@@ -19,6 +19,8 @@ impl FromVariant for ObjectPath {
 
 impl ToVariant for ObjectPath {
     fn to_variant(&self) -> glib::Variant {
+        // SAFETY: The only way to construct an `ObjectPath` is to go through
+        // `new` function, which also verifies the input.
         unsafe {
             glib::translate::from_glib_none(glib::ffi::g_variant_new_object_path(
                 self.0.to_glib_none().0,
