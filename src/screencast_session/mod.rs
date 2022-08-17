@@ -265,11 +265,15 @@ async fn screencast_request_call(
         .trim_start_matches(':')
         .replace('.', "_");
 
-    let request_path = format!(
-        "/org/freedesktop/portal/desktop/request/{}/{}",
-        unique_identifier,
-        handle_token.as_str()
-    );
+    let request_path = {
+        let path = format!(
+            "/org/freedesktop/portal/desktop/request/{}/{}",
+            unique_identifier,
+            handle_token.as_str()
+        );
+        ObjectPath::new(&path)
+            .with_context(|| anyhow!("Failed to create object path from `{}`", path))?
+    };
 
     let request_proxy = gio::DBusProxy::for_bus_future(
         gio::BusType::Session,
@@ -278,7 +282,7 @@ async fn screencast_request_call(
             | gio::DBusProxyFlags::DO_NOT_LOAD_PROPERTIES,
         None,
         "org.freedesktop.portal.Desktop",
-        &request_path,
+        request_path.as_str(),
         "org.freedesktop.portal.Request",
     )
     .await?;
@@ -305,7 +309,7 @@ async fn screencast_request_call(
         Some("org.freedesktop.portal.Desktop"),
         Some("org.freedesktop.portal.Request"),
         Some("Response"),
-        Some(&request_path),
+        Some(request_path.as_str()),
         None,
         gio::DBusSignalFlags::NONE,
         move |_connection, _sender_name, _object_path, _interface_name, _signal_name, output| {
@@ -331,10 +335,7 @@ async fn screencast_request_call(
                 method, parameters
             )
         })?;
-    debug_assert_eq!(
-        variant_get::<(ObjectPath,)>(&path).unwrap().0.as_str(),
-        request_path
-    );
+    debug_assert_eq!(variant_get::<(ObjectPath,)>(&path).unwrap().0, request_path);
 
     tracing::info!("Waiting request response for method `{}`", method);
 

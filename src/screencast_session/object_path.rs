@@ -2,7 +2,7 @@ use gtk::glib::{self, translate::ToGlibPtr, FromVariant, StaticVariantType, ToVa
 
 use std::borrow::Cow;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub struct ObjectPath(String);
 
 impl StaticVariantType for ObjectPath {
@@ -13,7 +13,7 @@ impl StaticVariantType for ObjectPath {
 
 impl FromVariant for ObjectPath {
     fn from_variant(value: &glib::Variant) -> Option<Self> {
-        Self::new(value.get::<String>()?.as_str())
+        Self::new(value.get::<String>()?)
     }
 }
 
@@ -30,13 +30,15 @@ impl ToVariant for ObjectPath {
 }
 
 impl ObjectPath {
-    pub fn new(string: &str) -> Option<Self> {
-        if !glib::Variant::is_object_path(string) {
+    pub fn new(value: impl Into<String>) -> Option<Self> {
+        let string = value.into();
+
+        if !glib::Variant::is_object_path(&string) {
             tracing::warn!("Invalid object path `{}`", string);
             return None;
         }
 
-        Some(Self(string.to_string()))
+        Some(Self(string))
     }
 
     pub fn as_str(&self) -> &str {
