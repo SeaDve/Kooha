@@ -313,8 +313,8 @@ impl Recording {
 
     fn stop_inner(&self) -> Result<()> {
         tracing::info!("Sending eos event to pipeline");
-        self.pipeline().send_event(gst::event::Eos::new());
         self.set_state(State::Flushing);
+        self.pipeline().send_event(gst::event::Eos::new());
 
         Ok(())
     }
