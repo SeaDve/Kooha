@@ -489,6 +489,10 @@ impl Recording {
             MessageView::Eos(..) => {
                 tracing::info!("Eos signal received from record bus");
 
+                if self.state() != State::Flushing {
+                    tracing::error!("Received an Eos signal on a {:?} state", self.state());
+                }
+
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
                     tracing::error!("Failed to stop pipeline on eos: {err:?}");
                 }
