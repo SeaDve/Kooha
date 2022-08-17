@@ -19,6 +19,10 @@ impl StaticVariantType for Handle {
 
 impl FromVariant for Handle {
     fn from_variant(value: &glib::Variant) -> Option<Self> {
+        if !value.is::<Handle>() {
+            return None;
+        }
+
         unsafe {
             Some(Handle(glib::ffi::g_variant_get_handle(
                 value.to_glib_none().0,
@@ -40,5 +44,11 @@ mod tests {
     fn from_variant() {
         let h_variant = glib::Variant::parse(None, "handle 2").unwrap();
         assert_eq!(h_variant.get::<Handle>().unwrap().inner(), 2);
+    }
+
+    #[test]
+    fn from_variant_err() {
+        let h_variant = glib::Variant::parse(None, "(handle 2,)").unwrap();
+        assert!(h_variant.get::<Handle>().is_none());
     }
 }

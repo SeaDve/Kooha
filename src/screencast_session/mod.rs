@@ -239,7 +239,7 @@ impl ScreencastSession {
 
         tracing::info!("Opened pipe wire remote");
 
-        let fd_index = variant_get::<Handle>(&fd_index_variant)?;
+        let (fd_index,) = variant_get::<(Handle,)>(&fd_index_variant)?;
 
         debug_assert_eq!(fd_list.length(), 1);
 
