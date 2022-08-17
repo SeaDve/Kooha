@@ -305,18 +305,9 @@ impl Recording {
             return;
         }
 
-        if let Err(err) = self.stop_inner() {
-            self.close_session();
-            self.set_finished(Err(err));
-        }
-    }
-
-    fn stop_inner(&self) -> Result<()> {
         tracing::info!("Sending eos event to pipeline");
         self.set_state(State::Flushing);
         self.pipeline().send_event(gst::event::Eos::new());
-
-        Ok(())
     }
 
     pub fn cancel(&self) {

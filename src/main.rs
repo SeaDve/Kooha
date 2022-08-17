@@ -14,7 +14,8 @@
     clippy::if_not_else,
     clippy::doc_markdown,
     clippy::unused_async,
-    clippy::default_trait_access
+    clippy::default_trait_access,
+    clippy::unnecessary_wraps
 )]
 #![allow(clippy::format_push_string)] // TODO remove once gettext-rs fixes macro issues
 
