@@ -75,7 +75,7 @@ impl Settings {
             }
 
             inner.set("saving-location", &directory).unwrap();
-            tracing::info!("Saving location set to {}", directory.display());
+            tracing::debug!("Saving location set to {}", directory.display());
             chooser.close();
         }));
     }

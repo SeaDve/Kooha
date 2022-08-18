@@ -46,13 +46,13 @@ fn find_default_name_inner(class: Class) -> Result<String> {
     let devices = device_monitor.devices();
     device_monitor.stop();
 
-    tracing::info!("Finding device name for class `{:?}`", class);
+    tracing::debug!("Finding device name for class `{:?}`", class);
 
     for device in devices {
         let device_class = match Class::for_str(&device.device_class()) {
             Some(device_class) => device_class,
             None => {
-                tracing::info!(
+                tracing::debug!(
                     "Skipping device `{}` as it has unknown device class `{}`",
                     device.name(),
                     device.device_class()
@@ -89,7 +89,7 @@ fn find_default_name_inner(class: Class) -> Result<String> {
         };
 
         if !is_default {
-            tracing::info!(
+            tracing::debug!(
                 "Skipping device `{}` as it is not the default",
                 device.name()
             );

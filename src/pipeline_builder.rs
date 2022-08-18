@@ -72,12 +72,17 @@ impl PipelineBuilder {
     }
 
     pub fn build(self) -> Result<gst::Pipeline> {
-        let string = PipelineAssembler::from_builder(self).assemble()?;
-        tracing::debug!("pipeline_string: {}", &string);
+        let pipeline_string = PipelineAssembler::from_builder(self).assemble()?;
+        tracing::info!(?pipeline_string);
 
-        gst::parse_launch_full(&string, None, gst::ParseFlags::FATAL_ERRORS)
+        gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)
             .map(|element| element.downcast().unwrap())
-            .with_context(|| format!("Failed to parse string into pipeline. string: {}", string))
+            .with_context(|| {
+                format!(
+                    "Failed to parse string into pipeline. string: {}",
+                    pipeline_string
+                )
+            })
     }
 }
 
@@ -245,7 +250,8 @@ impl PipelineAssembler {
 
         let value = env::var("KOOHA_VAAPI").unwrap_or_default();
         let is_use_vaapi = value == "1";
-        tracing::debug!("is_use_vaapi: {}", is_use_vaapi);
+
+        tracing::debug!(?is_use_vaapi);
 
         if is_use_vaapi {
             match self.video_format() {

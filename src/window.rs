@@ -283,7 +283,7 @@ impl Window {
             }
             Err(ref err) => {
                 if err.is::<Cancelled>() {
-                    tracing::info!("{:?}", err);
+                    tracing::debug!("{:?}", err);
                 } else {
                     tracing::error!("{:?}", err);
                     self.surface().beep();

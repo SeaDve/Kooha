@@ -305,15 +305,16 @@ impl Recording {
             return;
         }
 
-        tracing::info!("Sending eos event to pipeline");
         self.set_state(State::Flushing);
+
+        tracing::debug!("Sending eos event to pipeline");
         self.pipeline().send_event(gst::event::Eos::new());
     }
 
     pub fn cancel(&self) {
         let imp = self.imp();
 
-        tracing::info!("Cancelling recording");
+        tracing::debug!("Cancelling recording");
 
         if let Some(timer) = imp.timer.take() {
             timer.cancel();
@@ -321,7 +322,7 @@ impl Recording {
 
         if let Some(pipeline) = imp.pipeline.get() {
             if let Err(err) = pipeline.set_state(gst::State::Null) {
-                tracing::warn!("Failed to stop pipeline on cancel: {err:?}");
+                tracing::warn!("Failed to stop pipeline on cancel: {:?}", err);
             }
 
             let _ = pipeline.bus().unwrap().remove_watch();
@@ -433,14 +434,16 @@ impl Recording {
     fn handle_bus_message(&self, message: &gst::Message) -> glib::Continue {
         use gst::MessageView;
 
+        tracing::trace!("Received bus message {:?}", message);
+
         let imp = self.imp();
 
         match message.view() {
             MessageView::Error(ref e) => {
-                tracing::debug!("Received error at bus at state `{:?}`", self.state());
+                tracing::debug!(state = ?self.state(), "Received error at bus");
 
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
-                    tracing::warn!("Failed to stop pipeline on error: {err:?}");
+                    tracing::warn!("Failed to stop pipeline on error: {:?}", err);
                 }
 
                 self.close_session();
@@ -480,14 +483,14 @@ impl Recording {
                 Continue(false)
             }
             MessageView::Eos(..) => {
-                tracing::info!("Eos signal received from record bus");
+                tracing::debug!("Eos signal received from record bus");
 
                 if self.state() != State::Flushing {
                     tracing::error!("Received an Eos signal on a {:?} state", self.state());
                 }
 
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
-                    tracing::error!("Failed to stop pipeline on eos: {err:?}");
+                    tracing::error!("Failed to stop pipeline on eos: {:?}", err);
                 }
 
                 self.close_session();
@@ -522,7 +525,7 @@ impl Recording {
 
                 let new_state = sc.current();
 
-                tracing::info!(
+                tracing::debug!(
                     "Pipeline state changed from `{:?}` -> `{:?}`",
                     sc.old(),
                     new_state,

@@ -198,13 +198,12 @@ async fn set_raise_active_window_request(is_raised: bool) {
         Ok(())
     }
 
-    match inner(is_raised).await {
-        Ok(_) => tracing::info!("Successfully set raise active window to {}", is_raised,),
-        Err(error) => tracing::warn!(
+    if let Err(err) = inner(is_raised).await {
+        tracing::warn!(
             "Failed to set raise active window to {}: {:?}",
             is_raised,
-            error
-        ),
+            err
+        );
     }
 }
 
