@@ -437,6 +437,8 @@ impl Recording {
 
         match message.view() {
             MessageView::Error(ref e) => {
+                tracing::debug!("Received error at bus at state `{:?}`", self.state());
+
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
                     tracing::warn!("Failed to stop pipeline on error: {err:?}");
                 }

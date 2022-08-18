@@ -180,7 +180,7 @@ impl ScreencastSession {
 
         let streams = response.get::<Vec<Stream>>("streams")?;
 
-        tracing::info!("Received streams {:?}", streams);
+        tracing::debug!("Received streams {:?}", streams);
 
         if let Some(restore_token) = response.get_optional("restore_token")? {
             return Ok((streams, Some(restore_token)));
