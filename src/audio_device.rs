@@ -53,7 +53,7 @@ fn find_default_name_inner(class: Class) -> Result<String> {
             Some(device_class) => device_class,
             None => {
                 tracing::info!(
-                    "Skipping device `{}` because it has unknown device class `{}`",
+                    "Skipping device `{}` as it has unknown device class `{}`",
                     device.name(),
                     device.device_class()
                 );
@@ -68,7 +68,10 @@ fn find_default_name_inner(class: Class) -> Result<String> {
         let properties = match device.properties() {
             Some(properties) => properties,
             None => {
-                tracing::warn!("Device `{}` somehow has no properties", device.name());
+                tracing::warn!(
+                    "Skipping device `{}` as it has no properties",
+                    device.name()
+                );
                 continue;
             }
         };
@@ -77,7 +80,7 @@ fn find_default_name_inner(class: Class) -> Result<String> {
             Ok(is_default) => is_default,
             Err(err) => {
                 tracing::warn!(
-                    "Device `{}` somehow has no properties. {:?}",
+                    "Skipping device `{}` as it has no `is-default` property. {:?}",
                     device.name(),
                     err
                 );
@@ -86,6 +89,10 @@ fn find_default_name_inner(class: Class) -> Result<String> {
         };
 
         if !is_default {
+            tracing::info!(
+                "Skipping device `{}` as it is not the default",
+                device.name()
+            );
             continue;
         }
 
@@ -93,7 +100,7 @@ fn find_default_name_inner(class: Class) -> Result<String> {
             Ok(node_name) => node_name,
             Err(error) => {
                 tracing::warn!(
-                    "Device `{}` has no node.name property. {:?}",
+                    "Skipping device `{}` as it has no node.name property. {:?}",
                     device.name(),
                     error
                 );
