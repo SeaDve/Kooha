@@ -120,7 +120,7 @@ impl Application {
         if let Err(err) =
             gtk::show_uri_full_future(self.main_window().as_ref(), uri, gdk::CURRENT_TIME).await
         {
-            tracing::warn!("Failed to launch default for uri `{}`: {:?}", uri, err);
+            tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
 
             if let Some(window) = self.main_window() {
                 window.present_error(&err.into());

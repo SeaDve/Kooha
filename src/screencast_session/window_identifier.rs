@@ -75,7 +75,7 @@ impl WindowIdentifier {
             Self::X11(surface.xid())
         } else {
             tracing::warn!(
-                "Unknown surface backend type: {:?}",
+                "Unhandled surface backend type: {:?}",
                 surface.display().backend()
             );
             Self::None
