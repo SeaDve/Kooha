@@ -42,7 +42,7 @@
                 {
                     "type": "git",
                     "url": "https://code.videolan.org/videolan/x264.git",
-                    "branch": "stable"
+                    "commit": "baee400fa9ced6f5481a728138fed6e867b0ff7f"
                 }
             ]
         },
@@ -98,7 +98,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "tag": "1.2.alpha"
+                    "tag": "1.2.beta"
                 }
             ]
         },
