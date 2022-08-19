@@ -68,6 +68,7 @@ fn release_notes() -> &'static str {
       <li>Improved support information in the new about window</li>
       <li>Improved error handling</li>
       <li>Improved codebase and stability</li>
+      <li>Updated translations</li>
     </ul>"#
 }
 
