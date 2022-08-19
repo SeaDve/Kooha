@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-15 10:46+0800\n"
+"POT-Creation-Date: 2022-08-19 21:16+0800\n"
 "PO-Revision-Date: 2022-08-15 03:02+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -15,13 +15,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n"
-"%10!=6 && n%10!=9));\n"
+"Plural-Forms: nplurals=2; plural=(n==1 || n==2 || n==3 || (n%10!=4 && n%10!"
+"=6 && n%10!=9));\n"
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
-#: src/main.rs:52
+#: src/main.rs:57
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -120,7 +120,7 @@ msgstr "Ipakita ang mga Shortcuts"
 msgid "Quit"
 msgstr "Isara"
 
-#: data/resources/ui/shortcuts.ui:33 src/window.rs:352
+#: data/resources/ui/shortcuts.ui:33 src/window.rs:341
 msgid "Recording"
 msgstr "Nagrerekord"
 
@@ -164,11 +164,11 @@ msgstr "Mag-capture ng Monitor o Window"
 msgid "Capture a Selection of Screen"
 msgstr "Magcapture ng Seleksyon ng Screen"
 
-#: data/resources/ui/window.ui:90
+#: data/resources/ui/window.ui:88
 msgid "Record Computer Sounds"
 msgstr "Irekord ang Tunog Sa Kompyuter"
 
-#: data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:96
 msgid "Record From Microphone"
 msgstr "Irekord ang Tunog ng Mikropono"
 
@@ -176,95 +176,95 @@ msgstr "Irekord ang Tunog ng Mikropono"
 msgid "Show Pointer"
 msgstr "Ipakita ang Pointer"
 
-#: data/resources/ui/window.ui:114
+#: data/resources/ui/window.ui:117
 msgid "Start Recording"
 msgstr "Mag-start Magrekord"
 
-#: data/resources/ui/window.ui:115
+#: data/resources/ui/window.ui:118
 msgid "Record"
 msgstr "Magrekord"
 
-#: data/resources/ui/window.ui:128
+#: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
 msgstr "Kalimutan ang Sinelektang Source ng Video"
 
-#: data/resources/ui/window.ui:179
+#: data/resources/ui/window.ui:182
 msgid "Stop Recording"
 msgstr "Ihinto ang Pagrekord"
 
-#: data/resources/ui/window.ui:180
+#: data/resources/ui/window.ui:183
 msgid "Stop"
 msgstr "Huminto"
 
-#: data/resources/ui/window.ui:190
+#: data/resources/ui/window.ui:193
 msgid "Pause Recording"
 msgstr "I-pause Pagrekord"
 
-#: data/resources/ui/window.ui:213
+#: data/resources/ui/window.ui:216
 msgid "Recording in…"
 msgstr "Magrerekord sa…"
 
-#: data/resources/ui/window.ui:231 data/resources/ui/window.ui:273
+#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:276
 msgid "Cancel Recording"
 msgstr "Ikansela ang Pagrekord"
 
-#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:274
+#: data/resources/ui/window.ui:235 data/resources/ui/window.ui:277
 msgid "Cancel"
 msgstr "Ikansela"
 
-#: data/resources/ui/window.ui:256
+#: data/resources/ui/window.ui:259
 msgid "Flushing…"
 msgstr "Nagflu-flush…"
 
-#: data/resources/ui/window.ui:291
+#: data/resources/ui/window.ui:294
 msgid "_Delay"
 msgstr "_Antala"
 
-#: data/resources/ui/window.ui:293
+#: data/resources/ui/window.ui:296
 msgid "None"
 msgstr "Wala"
 
-#: data/resources/ui/window.ui:298
+#: data/resources/ui/window.ui:301
 msgid "3 seconds"
 msgstr "3 segundo"
 
-#: data/resources/ui/window.ui:303
+#: data/resources/ui/window.ui:306
 msgid "5 seconds"
 msgstr "5 segundo"
 
-#: data/resources/ui/window.ui:308
+#: data/resources/ui/window.ui:311
 msgid "10 seconds"
 msgstr "10 segundo"
 
-#: data/resources/ui/window.ui:314
+#: data/resources/ui/window.ui:317
 msgid "_Video Format"
 msgstr "_Pormat ng Video"
 
-#: data/resources/ui/window.ui:316
+#: data/resources/ui/window.ui:319
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:321
+#: data/resources/ui/window.ui:324
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:326
+#: data/resources/ui/window.ui:329
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:331
+#: data/resources/ui/window.ui:334
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:337
+#: data/resources/ui/window.ui:340
 msgid "_Save to…"
 msgstr "_I-save sa…"
 
-#: data/resources/ui/window.ui:343
+#: data/resources/ui/window.ui:346
 msgid "_Keyboard Shortcuts"
 msgstr "_Mga Shortcut sa Keyboard"
 
-#: data/resources/ui/window.ui:347
+#: data/resources/ui/window.ui:350
 msgid "_About Kooha"
 msgstr "_Tungkol sa Kooha"
 
@@ -277,32 +277,32 @@ msgstr "© 2022 Dave Patrick Caberto"
 msgid "translator-credits"
 msgstr "Dave Patrick"
 
-#: src/about.rs:38
+#: src/about.rs:39
 msgid "Donate (Liberapay)"
 msgstr "Mag-donate (Liberapay)"
 
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "Donate (PayPal)"
 msgstr "Mag-donate (PayPal)"
 
-#: src/about.rs:46
+#: src/about.rs:47
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "Translate"
 msgstr "Mag-translate"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:95
+#: src/application.rs:96
 msgid "Screencast recorded"
 msgstr "Tapos na magrekord"
 
-#: src/application.rs:96
+#: src/application.rs:97
 msgid "Click here to view the video."
 msgstr "Pindutin ito upang makita ang video."
 
-#: src/application.rs:102
+#: src/application.rs:103
 msgid "Show in Files"
 msgstr "Ipakita sa Files"
 
@@ -316,24 +316,24 @@ msgstr "Hindi masimulan ang device monitor"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:171 src/recording.rs:230 src/recording.rs:255
+#: src/recording.rs:184 src/recording.rs:244 src/recording.rs:269
 msgid "Failed to start recording"
 msgstr "Hindi masimulan ang pagrekord"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:170
+#: src/recording.rs:183
 msgid "Check out {} for help."
 msgstr "Tignan ang {} para sa tulong."
 
-#: src/recording.rs:214
+#: src/recording.rs:228
 msgid "No microphone source found"
 msgstr "Walang makitang mikropono"
 
-#: src/recording.rs:221
+#: src/recording.rs:235
 msgid "No desktop speaker source found"
 msgstr "Walang mapagkunan ng tunog mula sa desktop"
 
-#: src/recording.rs:229
+#: src/recording.rs:243
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
@@ -343,20 +343,20 @@ msgstr ""
 "paki-report sa <a href=\"https://github.com/SeaDve/Kooha/issues\">issue "
 "page</a>."
 
-#: src/recording.rs:254 src/recording.rs:455
+#: src/recording.rs:268 src/recording.rs:467
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Siguraduhin na ang paglalagyan ng rekording ay naa-access."
 
-#: src/recording.rs:451
+#: src/recording.rs:463
 msgid "An error occurred while recording"
 msgstr "Nagkaroon ng problema habang nagrerekord"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:458
+#: src/recording.rs:475
 msgid "Failed to open “{}” for writing"
 msgstr "Hindi mai-open ang “{}”"
 
-#: src/recording.rs:460
+#: src/recording.rs:477
 msgid "Failed to open file for writing"
 msgstr "Hindi mai-open ang file"
 
@@ -413,15 +413,15 @@ msgstr "Ipakita ang detalyadong error"
 msgid "Help"
 msgstr "Tulong"
 
-#: src/window.rs:360
+#: src/window.rs:349
 msgid "Paused"
 msgstr "Naka-pause"
 
-#: src/window.rs:394
+#: src/window.rs:383
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window.rs:395
+#: src/window.rs:384
 msgid "Selection"
 msgstr "Seleksyon"
 
