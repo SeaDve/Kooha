@@ -73,7 +73,7 @@ impl PipelineBuilder {
 
     pub fn build(self) -> Result<gst::Pipeline> {
         let pipeline_string = PipelineAssembler::from_builder(self).assemble()?;
-        tracing::info!(?pipeline_string);
+        tracing::debug!(?pipeline_string);
 
         gst::parse_launch_full(&pipeline_string, None, gst::ParseFlags::FATAL_ERRORS)
             .map(|element| element.downcast().unwrap())
