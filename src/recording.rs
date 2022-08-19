@@ -310,6 +310,8 @@ impl Recording {
         self.set_state(State::Flushing);
 
         tracing::debug!("Sending eos event to pipeline");
+        // FIXME Maybe it is needed to verify if we received the same
+        // eos event by checking its seqnum in the bus?
         self.pipeline().send_event(gst::event::Eos::new());
     }
 
