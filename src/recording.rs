@@ -27,6 +27,8 @@ use crate::{
     utils,
 };
 
+const DEFAULT_DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
+
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
 pub enum State {
@@ -252,7 +254,7 @@ impl Recording {
             )
             .unwrap();
         imp.duration_source_id.replace(Some(glib::timeout_add_local(
-            Duration::from_millis(200),
+            DEFAULT_DURATION_UPDATE_INTERVAL,
             clone!(@weak self as obj => @default-return Continue(false), move || {
                 obj.update_duration();
                 Continue(true)

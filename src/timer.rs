@@ -13,6 +13,8 @@ use std::{
 
 use crate::cancelled::Cancelled;
 
+const DEFAULT_SECS_LEFT_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
+
 /// Reference counted cancellable timer future
 #[derive(Clone)]
 pub struct Timer {
@@ -136,7 +138,7 @@ impl Future for Timer {
         self.inner
             .secs_left_changed_source_id
             .replace(Some(glib::timeout_add_local(
-                Duration::from_millis(200),
+                DEFAULT_SECS_LEFT_UPDATE_INTERVAL,
                 clone!(@weak self.inner as inner => @default-return Continue(false), move || {
                     (inner.secs_left_changed_cb)(inner.secs_left());
                     Continue(true)
