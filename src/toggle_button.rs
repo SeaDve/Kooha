@@ -33,11 +33,11 @@ mod imp {
                     glib::ParamSpecString::builder("toggled-icon-name")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
-                    // Icon name to show on un-toggled state
+                    // Tooltip text to show on un-toggled state
                     glib::ParamSpecString::builder("default-tooltip-text")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
-                    // Icon name to show on toggled state
+                    // Tooltip text to show on toggled state
                     glib::ParamSpecString::builder("toggled-tooltip-text")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
