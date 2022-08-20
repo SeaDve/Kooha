@@ -44,6 +44,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.1.1" date="2022-08-19">
+      <description>
+        <p>This release contains fixes:</p>
+        <ul>
+          <li>Improved tooltip text on settings toggle buttons</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.1.0" date="2022-08-19">
       <description>
         <p>This release contains new features and fixes:</p>
