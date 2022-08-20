@@ -9,12 +9,14 @@ use gtk::{
 use std::{
     fs,
     path::{Path, PathBuf},
+    time::Duration,
 };
 
 use crate::{config::APP_ID, utils};
 
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
 #[gen_settings_skip(key_name = "saving-location")]
+#[gen_settings_skip(key_name = "record-delay")]
 pub struct Settings;
 
 impl Default for Settings {
@@ -102,6 +104,14 @@ impl Settings {
         }
 
         kooha_saving_location
+    }
+
+    pub fn record_delay(&self) -> Duration {
+        Duration::from_secs(self.0.get::<u32>("record-delay") as u64)
+    }
+
+    pub fn create_record_delay_action(&self) -> gio::Action {
+        self.0.create_action("record-delay")
     }
 }
 

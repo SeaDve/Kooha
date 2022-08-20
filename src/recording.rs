@@ -208,9 +208,8 @@ impl Recording {
         }
 
         // setup timer
-        let record_delay = Duration::from_secs(settings.record_delay() as u64);
         let timer = Timer::new(
-            record_delay,
+            settings.record_delay(),
             clone!(@weak self as obj => move |secs_left| {
                 obj.set_state(State::Delayed {
                     secs_left
