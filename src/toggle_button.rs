@@ -11,6 +11,8 @@ mod imp {
         pub(super) is_active: Cell<bool>,
         pub(super) default_icon_name: RefCell<String>,
         pub(super) toggled_icon_name: RefCell<String>,
+        pub(super) default_tooltip_text: RefCell<String>,
+        pub(super) toggled_tooltip_text: RefCell<String>,
     }
 
     #[glib::object_subclass]
@@ -34,6 +36,14 @@ mod imp {
                         .build(),
                     // Icon name to show on toggled state
                     glib::ParamSpecString::builder("toggled-icon-name")
+                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
+                        .build(),
+                    // Icon name to show on un-toggled state
+                    glib::ParamSpecString::builder("default-tooltip-text")
+                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
+                        .build(),
+                    // Icon name to show on toggled state
+                    glib::ParamSpecString::builder("toggled-tooltip-text")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
                 ]
@@ -62,6 +72,14 @@ mod imp {
                     let toggled_icon_name = value.get().unwrap();
                     obj.set_toggled_icon_name(toggled_icon_name);
                 }
+                "default-tooltip-text" => {
+                    let default_tooltip_text = value.get().unwrap();
+                    obj.set_default_tooltip_text(default_tooltip_text);
+                }
+                "toggled-tooltip-text" => {
+                    let toggled_tooltip_text = value.get().unwrap();
+                    obj.set_toggled_tooltip_text(toggled_tooltip_text);
+                }
                 _ => unimplemented!(),
             }
         }
@@ -71,6 +89,8 @@ mod imp {
                 "active" => obj.is_active().to_value(),
                 "default-icon-name" => obj.default_icon_name().to_value(),
                 "toggled-icon-name" => obj.toggled_icon_name().to_value(),
+                "default-tooltip-text" => obj.default_tooltip_text().to_value(),
+                "toggled-tooltip-text" => obj.toggled_tooltip_text().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -103,6 +123,7 @@ impl ToggleButton {
 
         self.imp().is_active.set(is_active);
         self.update_icon_name();
+        self.update_tooltip_text();
         self.notify("active");
     }
 
@@ -142,6 +163,38 @@ impl ToggleButton {
         self.imp().toggled_icon_name.borrow().clone()
     }
 
+    pub fn set_default_tooltip_text(&self, default_tooltip_text: &str) {
+        if default_tooltip_text == self.default_tooltip_text().as_str() {
+            return;
+        }
+
+        self.imp()
+            .default_tooltip_text
+            .replace(default_tooltip_text.to_string());
+        self.update_tooltip_text();
+        self.notify("default-tooltip-text");
+    }
+
+    pub fn default_tooltip_text(&self) -> String {
+        self.imp().default_tooltip_text.borrow().clone()
+    }
+
+    pub fn set_toggled_tooltip_text(&self, toggled_tooltip_text: &str) {
+        if toggled_tooltip_text == self.toggled_tooltip_text().as_str() {
+            return;
+        }
+
+        self.imp()
+            .toggled_tooltip_text
+            .replace(toggled_tooltip_text.to_string());
+        self.update_tooltip_text();
+        self.notify("toggled-tooltip-text");
+    }
+
+    pub fn toggled_tooltip_text(&self) -> String {
+        self.imp().toggled_tooltip_text.borrow().clone()
+    }
+
     fn update_icon_name(&self) {
         let icon_name = if self.is_active() {
             self.toggled_icon_name()
@@ -149,6 +202,19 @@ impl ToggleButton {
             self.default_icon_name()
         };
         self.set_icon_name(&icon_name);
+    }
+
+    fn update_tooltip_text(&self) {
+        let tooltip_text = if self.is_active() {
+            self.toggled_tooltip_text()
+        } else {
+            self.default_tooltip_text()
+        };
+        self.set_tooltip_text(if tooltip_text.is_empty() {
+            None
+        } else {
+            Some(&tooltip_text)
+        });
     }
 }
 

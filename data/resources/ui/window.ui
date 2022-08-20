@@ -85,26 +85,29 @@
                         <property name="homogeneous">True</property>
                         <child>
                           <object class="MsaiToggleButton">
-                            <property name="tooltip-text" translatable="yes">Record Computer Sounds</property>
                             <property name="action-name">win.record-speaker</property>
                             <property name="default-icon-name">audio-volume-muted-symbolic</property>
                             <property name="toggled-icon-name">audio-volume-high-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Desktop Sounds</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Desktop Sounds</property>
                           </object>
                         </child>
                         <child>
                           <object class="MsaiToggleButton">
-                            <property name="tooltip-text" translatable="yes">Record From Microphone</property>
                             <property name="action-name">win.record-mic</property>
                             <property name="default-icon-name">microphone-disabled-symbolic</property>
                             <property name="toggled-icon-name">microphone2-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Microphone</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Microphone</property>
                           </object>
                         </child>
                         <child>
                           <object class="MsaiToggleButton">
-                            <property name="tooltip-text" translatable="yes">Show Pointer</property>
                             <property name="action-name">win.show-pointer</property>
                             <property name="default-icon-name">mouse-wireless-disabled-symbolic</property>
                             <property name="toggled-icon-name">mouse-wireless-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Show Pointer</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Hide Pointer</property>
                           </object>
                         </child>
                       </object>
