@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 20:51+0800\n"
+"POT-Creation-Date: 2022-08-21 21:02+0800\n"
 "PO-Revision-Date: 2022-07-19 11:16+0000\n"
 "Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
@@ -289,19 +289,19 @@ msgstr ""
 "Jan Novák <jan.novak@silen.org>\n"
 "Vojtěch Perník <translations@pervoj.cz>"
 
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "Donate (Liberapay)"
 msgstr ""
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Donate (PayPal)"
 msgstr ""
 
-#: src/about.rs:47
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:49
+#: src/about.rs:50
 msgid "Translate"
 msgstr ""
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 20:51+0800\n"
+"POT-Creation-Date: 2022-08-21 21:02+0800\n"
 "PO-Revision-Date: 2022-08-21 11:17+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -293,19 +293,19 @@ msgstr "© 2022 Dave Patrick Caberto"
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "Donate (Liberapay)"
 msgstr "Donar (Liberapay)"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Donate (PayPal)"
 msgstr "Donar (PayPal)"
 
-#: src/about.rs:47
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:49
+#: src/about.rs:50
 msgid "Translate"
 msgstr "Traducir"
 

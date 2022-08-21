@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 20:51+0800\n"
-"PO-Revision-Date: 2022-08-21 11:17+0000\n"
-"Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
+"POT-Creation-Date: 2022-08-21 21:02+0800\n"
+"PO-Revision-Date: 2022-08-21 13:02+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/"
 ">\n"
 "Language: ta\n"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "ஜெனரல்"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -108,11 +108,11 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "குறுக்குவழிகளைக் காட்டு"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "வெளியேறு"
 
 #: data/resources/ui/shortcuts.ui:33 src/window.rs:341
 msgid "Recording"
@@ -283,19 +283,19 @@ msgstr ""
 msgid "translator-credits"
 msgstr "மொழிபெயர்ப்பாளர்-வரவுகள்"
 
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "Donate (Liberapay)"
 msgstr ""
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Donate (PayPal)"
 msgstr ""
 
-#: src/about.rs:47
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "கிட்ஹப்"
 
-#: src/about.rs:49
+#: src/about.rs:50
 msgid "Translate"
 msgstr ""
 

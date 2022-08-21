@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 20:51+0800\n"
+"POT-Creation-Date: 2022-08-21 21:02+0800\n"
 "PO-Revision-Date: 2022-02-07 12:55+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/kooha/pot-file/da/"
@@ -287,19 +287,19 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Marc Eckert"
 
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "Donate (Liberapay)"
 msgstr ""
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Donate (PayPal)"
 msgstr ""
 
-#: src/about.rs:47
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:49
+#: src/about.rs:50
 msgid "Translate"
 msgstr ""
 

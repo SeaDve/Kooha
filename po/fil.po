@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 20:51+0800\n"
+"POT-Creation-Date: 2022-08-21 21:02+0800\n"
 "PO-Revision-Date: 2022-08-15 03:02+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -289,19 +289,19 @@ msgstr "© 2022 Dave Patrick Caberto"
 msgid "translator-credits"
 msgstr "Dave Patrick"
 
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "Donate (Liberapay)"
 msgstr "Mag-donate (Liberapay)"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Donate (PayPal)"
 msgstr "Mag-donate (PayPal)"
 
-#: src/about.rs:47
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:49
+#: src/about.rs:50
 msgid "Translate"
 msgstr "Mag-translate"
 

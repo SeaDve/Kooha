@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 20:51+0800\n"
+"POT-Creation-Date: 2022-08-21 21:02+0800\n"
 "PO-Revision-Date: 2022-08-16 16:19+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
@@ -289,19 +289,19 @@ msgstr "© 2022 Dave Patrick Caberto"
 msgid "translator-credits"
 msgstr "Heimen Stoffels &lt;vistausss@fastmail.com&gt;"
 
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "Donate (Liberapay)"
 msgstr "Doneren (Liberapay)"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Donate (PayPal)"
 msgstr "Doneren (PayPal)"
 
-#: src/about.rs:47
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:49
+#: src/about.rs:50
 msgid "Translate"
 msgstr "Vertalen"
 
