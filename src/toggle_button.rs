@@ -41,6 +41,8 @@ mod imp {
                     glib::ParamSpecString::builder("toggled-tooltip-text")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
+                    glib::ParamSpecOverride::for_class::<gtk::Button>("icon-name"),
+                    glib::ParamSpecOverride::for_class::<gtk::Widget>("tooltip-text"),
                 ]
             });
 
@@ -70,6 +72,12 @@ mod imp {
                 "toggled-tooltip-text" => {
                     let toggled_tooltip_text = value.get().unwrap();
                     obj.set_toggled_tooltip_text(toggled_tooltip_text);
+                }
+                "icon-name" | "tooltip-text" => {
+                    panic!(
+                        "KoohaToggleButton does not support `{}` property",
+                        pspec.name()
+                    );
                 }
                 _ => unimplemented!(),
             }
