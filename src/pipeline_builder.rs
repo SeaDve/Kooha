@@ -161,12 +161,12 @@ impl PipelineAssembler {
         if self.has_single_stream() {
             // If there is a single stream, connect pipewiresrc directly to queue0.
             let node_id = self.streams()[0].node_id();
-            return format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! queue0.", self.fd(), node_id, self.framerate());
+            return format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw ! queue0.", self.fd(), node_id);
         }
 
         let pipewiresrc_list: Vec<String> = self.streams().iter().map(|stream| {
             let node_id = stream.node_id();
-            format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw, max-framerate={}/1 ! comp.", self.fd(), node_id, self.framerate())
+            format!("pipewiresrc fd={} path={} do-timestamp=true keepalive-time=1000 resend-last=true ! video/x-raw ! comp.", self.fd(), node_id)
         }).collect();
 
         pipewiresrc_list.join(" ")
