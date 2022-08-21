@@ -141,7 +141,7 @@ mod pa {
         proplist::{properties, Proplist},
     };
 
-    use std::{cell::RefCell, time::Duration};
+    use std::{cell::RefCell, fmt, time::Duration};
 
     use super::Class;
     use crate::{config::APP_ID, help::ResultExt, utils};
@@ -151,6 +151,12 @@ mod pa {
     pub struct Server {
         main_loop: pulse_glib::Mainloop,
         context: Context,
+    }
+
+    impl fmt::Debug for Server {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            f.write_str("Server")
+        }
     }
 
     impl Server {
