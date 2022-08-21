@@ -83,10 +83,10 @@ impl Settings {
     }
 
     pub fn saving_location(&self) -> PathBuf {
-        let saving_location: PathBuf = self.0.get("saving-location");
+        let stored_saving_location: PathBuf = self.0.get("saving-location");
 
-        if !saving_location.as_os_str().is_empty() {
-            return saving_location;
+        if !stored_saving_location.as_os_str().is_empty() {
+            return stored_saving_location;
         }
 
         let saving_location =
