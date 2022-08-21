@@ -1,11 +1,7 @@
-use anyhow::{anyhow, bail, Context, Error, Result};
-use futures_channel::oneshot;
+use anyhow::{anyhow, Context, Error, Result};
 use gettextrs::gettext;
-use gtk::glib::{self, clone};
 
-use std::{cell::RefCell, rc::Rc, time::Duration};
-
-use crate::{config::APP_ID, help::ResultExt, utils, THREAD_POOL};
+use crate::{help::ResultExt, THREAD_POOL};
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Class {
@@ -40,8 +36,10 @@ pub async fn find_default_name(class: Class) -> Result<String> {
         Ok(res) => Ok(res),
         Err(err) => {
             tracing::warn!("Failed to find default name using gstreamer: {:?}", err);
-            tracing::debug!("Falling back with pulse");
-            find_default_name_pulse(class).await
+            tracing::debug!("Manually using libpulse instead");
+
+            let server = pa::Server::connect().await?;
+            server.find_default_device_name(class).await
         }
     }
 }
@@ -131,116 +129,151 @@ fn find_default_name_gst(class: Class) -> Result<String> {
     Err(anyhow!("Failed to find a default device"))
 }
 
-const DEFAULT_PULSE_TIMEOUT: Duration = Duration::from_secs(2);
-
-async fn find_default_name_pulse(class: Class) -> Result<String> {
+mod pa {
+    use anyhow::{anyhow, bail, Context as ErrContext, Error, Result};
+    use futures_channel::oneshot;
+    use gettextrs::gettext;
+    use gtk::glib::{self, clone};
     use pulse::{
         context::{Context, FlagSet, State},
+        def::Retval,
+        mainloop::api::Mainloop,
         proplist::{properties, Proplist},
     };
-    use pulse_glib::Mainloop;
 
-    let mainloop = Mainloop::new(None).context("Failed to create pulse Mainloop")?;
+    use std::{cell::RefCell, rc::Rc, time::Duration};
 
-    let mut proplist = Proplist::new().unwrap();
-    proplist
-        .set_str(properties::APPLICATION_ID, APP_ID)
-        .unwrap();
-    proplist
-        .set_str(properties::APPLICATION_NAME, "Kooha")
-        .unwrap();
+    use super::Class;
+    use crate::{config::APP_ID, help::ResultExt, utils};
 
-    let mut context = Context::new_with_proplist(&mainloop, APP_ID, &proplist)
-        .context("Failed to create pulse Context")?;
+    const DEFAULT_TIMEOUT: Duration = Duration::from_secs(2);
 
-    context
-        .connect(None, FlagSet::NOFLAGS, None)
-        .map_err(Error::from)
-        .with_help(
-            || gettext("Make sure that you have PulseAudio installed in your system."),
-            || gettext("Failed to connect to PulseAudio daemon"),
-        )?;
+    pub struct Server {
+        main_loop: pulse_glib::Mainloop,
+        context: Rc<RefCell<Context>>,
+    }
 
-    let context = Rc::new(RefCell::new(context));
+    impl Server {
+        pub async fn connect() -> Result<Self> {
+            let main_loop =
+                pulse_glib::Mainloop::new(None).context("Failed to create pulse Mainloop")?;
 
-    let (state_tx, state_rx) = oneshot::channel();
-    let state_tx = RefCell::new(Some(state_tx));
+            let mut proplist = Proplist::new().unwrap();
+            proplist
+                .set_str(properties::APPLICATION_ID, APP_ID)
+                .unwrap();
+            proplist
+                .set_str(properties::APPLICATION_NAME, "Kooha")
+                .unwrap();
 
-    context
-        .borrow_mut()
-        .set_state_callback(Some(Box::new(clone!(@weak context => move  || {
-            match context.borrow().get_state() {
-                State::Ready => {
-                    if let Some(tx) = state_tx.take() {
-                        let _ = tx.send(Ok(()));
-                    } else {
-                        tracing::error!("Received ready state twice!");
-                    }
-                }
-                State::Failed => {
-                    if let Some(tx) = state_tx.take() {
-                        let _ = tx.send(Err(anyhow!("Received failed state on context")));
-                    } else {
-                        tracing::error!("Received failed state twice!");
-                    }
-                }
-                State::Terminated => {
-                    if let Some(tx) = state_tx.take() {
-                        let _ = tx.send(Err(anyhow!("Context connection terminated")));
-                    } else {
-                        tracing::error!("Received failed state twice!");
-                    }
-                }
-                _ => {}
-            };
-        }))));
+            let mut context = Context::new_with_proplist(&main_loop, APP_ID, &proplist)
+                .context("Failed to create pulse Context")?;
 
-    utils::future_timeout(state_rx, DEFAULT_PULSE_TIMEOUT)
-        .await
-        .context("Waiting context ready timeout")?
-        .unwrap()?;
+            context
+                .connect(None, FlagSet::NOFLAGS, None)
+                .map_err(Error::from)
+                .with_help(
+                    || gettext("Make sure that you have PulseAudio installed in your system."),
+                    || gettext("Failed to connect to PulseAudio daemon"),
+                )?;
 
-    let (operation_tx, operation_rx) = oneshot::channel();
-    let operation_tx = RefCell::new(Some(operation_tx));
+            let context = Rc::new(RefCell::new(context));
 
-    let mut operation = context
-        .borrow()
-        .introspect()
-        .get_server_info(move |server_info| {
-            let tx = if let Some(tx) = operation_tx.take() {
-                tx
-            } else {
-                tracing::error!("Called get_server_info twice!");
-                return;
-            };
+            let (state_tx, state_rx) = oneshot::channel();
+            let state_tx = RefCell::new(Some(state_tx));
 
-            match class {
-                Class::Source => {
-                    let _ = tx.send(
-                        server_info
-                            .default_source_name
-                            .as_ref()
-                            .map(|s| s.to_string()),
-                    );
-                }
-                Class::Sink => {
-                    let _ = tx.send(
-                        server_info
-                            .default_sink_name
-                            .as_ref()
-                            .map(|s| format!("{}.monitor", s)),
-                    );
-                }
-            }
-        });
+            context.borrow_mut().set_state_callback(Some(Box::new(
+                clone!(@weak context => move  || {
+                    match context.borrow().get_state() {
+                        State::Ready => {
+                            if let Some(tx) = state_tx.take() {
+                                let _ = tx.send(Ok(()));
+                            } else {
+                                tracing::error!("Received ready state twice!");
+                            }
+                        }
+                        State::Failed => {
+                            if let Some(tx) = state_tx.take() {
+                                let _ = tx.send(Err(anyhow!("Received failed state on context")));
+                            } else {
+                                tracing::error!("Received failed state twice!");
+                            }
+                        }
+                        State::Terminated => {
+                            if let Some(tx) = state_tx.take() {
+                                let _ = tx.send(Err(anyhow!("Context connection terminated")));
+                            } else {
+                                tracing::error!("Received failed state twice!");
+                            }
+                        }
+                        _ => {}
+                    };
+                }),
+            )));
 
-    let name = match utils::future_timeout(operation_rx, DEFAULT_PULSE_TIMEOUT).await {
-        Ok(name) => name.unwrap().context("Found no default device")?,
-        Err(err) => {
-            operation.cancel();
-            bail!("Failed to receive get_server_info result: {:?}", err)
+            utils::future_timeout(state_rx, DEFAULT_TIMEOUT)
+                .await
+                .context("Waiting context ready timeout reached")?
+                .unwrap()?;
+
+            Ok(Self { main_loop, context })
         }
-    };
 
-    Ok(name)
+        pub async fn find_default_device_name(&self, class: Class) -> Result<String> {
+            let (operation_tx, operation_rx) = oneshot::channel();
+            let operation_tx = RefCell::new(Some(operation_tx));
+
+            let mut operation =
+                self.context
+                    .borrow()
+                    .introspect()
+                    .get_server_info(move |server_info| {
+                        let tx = if let Some(tx) = operation_tx.take() {
+                            tx
+                        } else {
+                            tracing::error!("Called get_server_info twice!");
+                            return;
+                        };
+
+                        match class {
+                            Class::Source => {
+                                let _ = tx.send(
+                                    server_info
+                                        .default_source_name
+                                        .as_ref()
+                                        .map(|s| s.to_string()),
+                                );
+                            }
+                            Class::Sink => {
+                                let _ = tx.send(
+                                    server_info
+                                        .default_sink_name
+                                        .as_ref()
+                                        .map(|s| format!("{}.monitor", s)),
+                                );
+                            }
+                        }
+                    });
+
+            let name = match utils::future_timeout(operation_rx, DEFAULT_TIMEOUT).await {
+                Ok(name) => name.unwrap().context("Found no default device")?,
+                Err(err) => {
+                    operation.cancel();
+                    bail!("Failed to receive get_server_info result: {:?}", err)
+                }
+            };
+
+            Ok(name)
+        }
+    }
+
+    impl Drop for Server {
+        fn drop(&mut self) {
+            let mut context = self.context.borrow_mut();
+            context.set_state_callback(None);
+            context.disconnect();
+
+            self.main_loop.quit(Retval(0));
+        }
+    }
 }
