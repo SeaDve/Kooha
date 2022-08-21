@@ -44,11 +44,12 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="2.1.1" date="2022-08-19">
+    <release version="2.1.1" date="2022-08-21">
       <description>
         <p>This release contains fixes:</p>
         <ul>
           <li>Improved tooltip text on settings toggle buttons</li>
+          <li>Fallback to manual mode when failed to get default device name through GStreamer device monitor</li>
         </ul>
       </description>
     </release>
