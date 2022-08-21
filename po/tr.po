@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021, 2022.
 # ToldYouThat <itoldyouthat@protonmail.com>, 2021.
+# Sabri Ünal <libreajans@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-19 21:16+0800\n"
-"PO-Revision-Date: 2022-01-11 00:10+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"PO-Revision-Date: 2022-08-21 11:17+0000\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
 "Language: tr\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.14-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -102,7 +103,7 @@ msgstr "⌨️ Kullanışlı klavye kısayollarını kullanın."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -134,7 +135,7 @@ msgstr "Duraklatmayı Aç/Kapat"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Kaydı İptal Et"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -178,7 +179,7 @@ msgstr "İşaretçiyi Göster"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr ""
+msgstr "Kayıt Başlat"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
@@ -186,11 +187,11 @@ msgstr "Kayıt"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Önceden Seçilen Video Kaynaklarını Unut"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
-msgstr ""
+msgstr "Kaydı Durdur"
 
 #: data/resources/ui/window.ui:183
 msgid "Stop"
@@ -198,7 +199,7 @@ msgstr "Durdur"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr ""
+msgstr "Kaydı Duraklat"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
@@ -206,7 +207,7 @@ msgstr "Kaydediliyor…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:276
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Kaydı İptal Et"
 
 #: data/resources/ui/window.ui:235 data/resources/ui/window.ui:277
 msgid "Cancel"
@@ -226,7 +227,7 @@ msgstr "Yok"
 
 #: data/resources/ui/window.ui:301
 msgid "3 seconds"
-msgstr ""
+msgstr "3 saniye"
 
 #: data/resources/ui/window.ui:306
 msgid "5 seconds"
@@ -270,7 +271,7 @@ msgstr "Kooha _Hakkında"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -281,11 +282,11 @@ msgstr ""
 
 #: src/about.rs:39
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Bağış Yap (Liberapay)"
 
 #: src/about.rs:43
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Bağış Yap (PayPal)"
 
 #: src/about.rs:47
 msgid "GitHub"
@@ -293,47 +294,47 @@ msgstr "GitHub"
 
 #: src/about.rs:49
 msgid "Translate"
-msgstr ""
+msgstr "Çevir"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Ekran kaydı kaydedildi"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Videoyu görüntülemek için tıklayınız."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Dosyalarda Göster"
 
 #: src/audio_device.rs:43
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Sisteminizde PulseAudio'nun kurulu olduğundan emin olun."
 
 #: src/audio_device.rs:44
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Aygıt monitörü başlatılamadı"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:244 src/recording.rs:269
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Kayıt başlatılamadı"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Yardım için {} adresine göz atın."
 
 #: src/recording.rs:228
 msgid "No microphone source found"
-msgstr ""
+msgstr "Mikrofon kaynağı bulunamadı"
 
 #: src/recording.rs:235
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Masaüstü hoparlör kaynağı bulunamadı"
 
 #: src/recording.rs:243
 msgid ""
@@ -347,20 +348,20 @@ msgstr ""
 
 #: src/recording.rs:268 src/recording.rs:467
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Kaydetme konumunun var olduğundan ve erişilebilir olduğundan emin olun."
 
 #: src/recording.rs:463
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Kayıt sırasında bir hata oluştu"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:475
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "\"{}\" yazma için açılamadı"
 
 #: src/recording.rs:477
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Dosya yazma için açılamadı"
 
 #: src/settings.rs:33
 msgid "Select Recordings Folder"
@@ -376,11 +377,11 @@ msgstr "_Seç"
 
 #: src/settings.rs:60
 msgid "No folder selected"
-msgstr ""
+msgstr "Klasör seçilmedi"
 
 #: src/settings.rs:61
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Lütfen bir klasör seçin ve tekrar deneyin."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:70
@@ -393,27 +394,27 @@ msgstr "Lütfen erişilebilir bir konum seçin ve tekrar deneyin."
 
 #: src/settings.rs:115 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Tamam"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Duraklatma değiştirilemedi"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Panoya kopyala"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Panoya kopyalandı"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Ayrıntılı hata göster"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 #: src/window.rs:349
 msgid "Paused"

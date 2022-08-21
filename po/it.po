@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-19 21:16+0800\n"
-"PO-Revision-Date: 2022-04-28 23:02+0000\n"
-"Last-Translator: Andrea Brandi <git@andreabrandi.com>\n"
+"PO-Revision-Date: 2022-08-21 11:17+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -107,7 +107,7 @@ msgstr "⌨️ Utilizza utili scorciatoie da tastiera."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -139,7 +139,7 @@ msgstr "Attiva/disattiva pausa"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Cancella registrazione"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -183,7 +183,7 @@ msgstr "Mostra il puntatore"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr ""
+msgstr "Inizia a registrare"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
@@ -191,11 +191,11 @@ msgstr "Registra"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Dimentica le sorgenti video selezionate in precedenza"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
-msgstr ""
+msgstr "Interrompi registrazione"
 
 #: data/resources/ui/window.ui:183
 msgid "Stop"
@@ -203,7 +203,7 @@ msgstr "Ferma"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr ""
+msgstr "Metti in pausa la registrazione"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
@@ -211,7 +211,7 @@ msgstr "In registrazione tra…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:276
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Cancella registrazione"
 
 #: data/resources/ui/window.ui:235 data/resources/ui/window.ui:277
 msgid "Cancel"
@@ -231,7 +231,7 @@ msgstr "Nessuno"
 
 #: data/resources/ui/window.ui:301
 msgid "3 seconds"
-msgstr ""
+msgstr "3 secondi"
 
 #: data/resources/ui/window.ui:306
 msgid "5 seconds"
@@ -275,7 +275,7 @@ msgstr "_Informazioni su Kooha"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -288,11 +288,11 @@ msgstr ""
 
 #: src/about.rs:39
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Donazione (Liberapay)"
 
 #: src/about.rs:43
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Donazione (PayPal)"
 
 #: src/about.rs:47
 msgid "GitHub"
@@ -300,47 +300,47 @@ msgstr "GitHub"
 
 #: src/about.rs:49
 msgid "Translate"
-msgstr ""
+msgstr "Traduci"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Screencast registrato"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Clicca qui per vedere il video."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Mostra in File"
 
 #: src/audio_device.rs:43
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Assicurati di avere PulseAudio installato nel tuo sistema."
 
 #: src/audio_device.rs:44
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Impossibile avviare il monitoraggio del dispositivo"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:244 src/recording.rs:269
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Impossibile avviare la registrazione"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Dai un'occhiata a {} per assistenza."
 
 #: src/recording.rs:228
 msgid "No microphone source found"
-msgstr ""
+msgstr "Nessuna sorgente microfono trovata"
 
 #: src/recording.rs:235
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Nessuna fonte di altoparlanti desktop trovata"
 
 #: src/recording.rs:243
 msgid ""
@@ -354,20 +354,20 @@ msgstr ""
 
 #: src/recording.rs:268 src/recording.rs:467
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Assicurati che la posizione di salvataggio esista e sia accessibile."
 
 #: src/recording.rs:463
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Si è verificato un errore durante la registrazione"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:475
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Impossibile aprire \"{}\" per la scrittura"
 
 #: src/recording.rs:477
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Impossibile aprire il file per la scrittura"
 
 #: src/settings.rs:33
 msgid "Select Recordings Folder"
@@ -383,11 +383,11 @@ msgstr "_Seleziona"
 
 #: src/settings.rs:60
 msgid "No folder selected"
-msgstr ""
+msgstr "Nessuna cartella selezionata"
 
 #: src/settings.rs:61
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Scegli una cartella e riprova."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:70
@@ -400,27 +400,27 @@ msgstr "Per favore scegli una posizione accessibile e prova di nuovo."
 
 #: src/settings.rs:115 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Impossibile attivare/disattivare la pausa"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Copia negli appunti"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Copiato negli appunti"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Visualizza errore dettagliato"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #: src/window.rs:349
 msgid "Paused"

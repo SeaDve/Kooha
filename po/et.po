@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-19 21:16+0800\n"
-"PO-Revision-Date: 2022-08-07 01:18+0000\n"
+"PO-Revision-Date: 2022-08-21 11:17+0000\n"
 "Last-Translator: Henri <contact@hen.ee>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "et/>\n"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:235 data/resources/ui/window.ui:277
 msgid "Cancel"
-msgstr ""
+msgstr "Tühista"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
