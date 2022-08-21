@@ -333,7 +333,7 @@ mod test {
 
     macro_rules! assert_even {
         ($number:expr) => {
-            assert_eq!(round_to_even($number) % 2, 0)
+            assert_eq!($number % 2, 0)
         };
     }
 
