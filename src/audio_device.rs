@@ -130,10 +130,10 @@ fn find_default_name_gst(class: Class) -> Result<String> {
 }
 
 mod pa {
-    use anyhow::{anyhow, bail, Context as ErrContext, Error, Result};
-    use futures_channel::oneshot;
+    use anyhow::{bail, Context as ErrContext, Error, Result};
+    use futures_channel::{mpsc, oneshot};
+    use futures_util::StreamExt;
     use gettextrs::gettext;
-    use gtk::glib::{self, clone};
     use pulse::{
         context::{Context, FlagSet, State},
         def::Retval,
@@ -141,7 +141,7 @@ mod pa {
         proplist::{properties, Proplist},
     };
 
-    use std::{cell::RefCell, rc::Rc, time::Duration};
+    use std::{cell::RefCell, time::Duration};
 
     use super::Class;
     use crate::{config::APP_ID, help::ResultExt, utils};
@@ -150,7 +150,7 @@ mod pa {
 
     pub struct Server {
         main_loop: pulse_glib::Mainloop,
-        context: Rc<RefCell<Context>>,
+        context: Context,
     }
 
     impl Server {
@@ -177,85 +177,64 @@ mod pa {
                     || gettext("Failed to connect to PulseAudio daemon"),
                 )?;
 
-            let context = Rc::new(RefCell::new(context));
+            let (mut tx, mut rx) = mpsc::channel(1);
 
-            let (state_tx, state_rx) = oneshot::channel();
-            let state_tx = RefCell::new(Some(state_tx));
+            context.set_state_callback(Some(Box::new(move || {
+                let _ = tx.start_send(());
+            })));
 
-            context.borrow_mut().set_state_callback(Some(Box::new(
-                clone!(@weak context => move  || {
-                    match context.borrow().get_state() {
-                        State::Ready => {
-                            if let Some(tx) = state_tx.take() {
-                                let _ = tx.send(Ok(()));
-                            } else {
-                                tracing::error!("Received ready state twice!");
-                            }
-                        }
-                        State::Failed => {
-                            if let Some(tx) = state_tx.take() {
-                                let _ = tx.send(Err(anyhow!("Received failed state on context")));
-                            } else {
-                                tracing::error!("Received failed state twice!");
-                            }
-                        }
-                        State::Terminated => {
-                            if let Some(tx) = state_tx.take() {
-                                let _ = tx.send(Err(anyhow!("Context connection terminated")));
-                            } else {
-                                tracing::error!("Received failed state twice!");
-                            }
-                        }
-                        _ => {}
-                    };
-                }),
-            )));
+            tracing::debug!("Waiting for PA server connection");
 
-            utils::future_timeout(state_rx, DEFAULT_TIMEOUT)
-                .await
-                .context("Waiting context ready timeout reached")?
-                .unwrap()?;
+            while rx.next().await.is_some() {
+                match context.get_state() {
+                    State::Ready => break,
+                    State::Failed => bail!("Received failed state while connecting"),
+                    State::Terminated => bail!("Context connection terminated"),
+                    _ => {}
+                }
+            }
+
+            tracing::debug!("PA Server connected");
 
             Ok(Self { main_loop, context })
         }
 
         pub async fn find_default_device_name(&self, class: Class) -> Result<String> {
-            let (operation_tx, operation_rx) = oneshot::channel();
-            let operation_tx = RefCell::new(Some(operation_tx));
+            let (tx, rx) = oneshot::channel();
+            let tx = RefCell::new(Some(tx));
 
-            let mut operation =
-                self.context
-                    .borrow()
-                    .introspect()
-                    .get_server_info(move |server_info| {
-                        let tx = if let Some(tx) = operation_tx.take() {
-                            tx
-                        } else {
-                            tracing::error!("Called get_server_info twice!");
-                            return;
-                        };
+            let mut operation = self
+                .context
+                .introspect()
+                .get_server_info(move |server_info| {
+                    let tx = if let Some(tx) = tx.take() {
+                        tx
+                    } else {
+                        tracing::error!("Called get_server_info twice!");
+                        return;
+                    };
 
-                        match class {
-                            Class::Source => {
-                                let _ = tx.send(
-                                    server_info
-                                        .default_source_name
-                                        .as_ref()
-                                        .map(|s| s.to_string()),
-                                );
-                            }
-                            Class::Sink => {
-                                let _ = tx.send(
-                                    server_info
-                                        .default_sink_name
-                                        .as_ref()
-                                        .map(|s| format!("{}.monitor", s)),
-                                );
-                            }
+                    match class {
+                        Class::Source => {
+                            let _ = tx.send(
+                                server_info
+                                    .default_source_name
+                                    .as_ref()
+                                    .map(|s| s.to_string()),
+                            );
                         }
-                    });
+                        Class::Sink => {
+                            let _ = tx.send(
+                                server_info
+                                    .default_sink_name
+                                    .as_ref()
+                                    .map(|s| format!("{}.monitor", s)),
+                            );
+                        }
+                    }
+                });
 
-            let name = match utils::future_timeout(operation_rx, DEFAULT_TIMEOUT).await {
+            let name = match utils::future_timeout(rx, DEFAULT_TIMEOUT).await {
                 Ok(name) => name.unwrap().context("Found no default device")?,
                 Err(err) => {
                     operation.cancel();
@@ -269,10 +248,8 @@ mod pa {
 
     impl Drop for Server {
         fn drop(&mut self) {
-            let mut context = self.context.borrow_mut();
-            context.set_state_callback(None);
-            context.disconnect();
-
+            self.context.set_state_callback(None);
+            self.context.disconnect();
             self.main_loop.quit(Retval(0));
         }
     }
