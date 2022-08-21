@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 21:16+0800\n"
+"POT-Creation-Date: 2022-08-21 20:51+0800\n"
 "PO-Revision-Date: 2022-08-15 02:48+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -167,107 +167,119 @@ msgstr "モニタまたはウィンドウをキャプチャする"
 msgid "Capture a Selection of Screen"
 msgstr "スクリーンの選択範囲をキャプチャする"
 
-#: data/resources/ui/window.ui:88
-msgid "Record Computer Sounds"
-msgstr "コンピュータの音声を録音する"
+#: data/resources/ui/window.ui:91
+msgid "Enable Desktop Sounds"
+msgstr ""
 
-#: data/resources/ui/window.ui:96
-msgid "Record From Microphone"
-msgstr "マイクの音声を録音する"
+#: data/resources/ui/window.ui:92
+msgid "Disable Desktop Sounds"
+msgstr ""
 
-#: data/resources/ui/window.ui:104
+#: data/resources/ui/window.ui:100
+msgid "Enable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:101
+msgid "Disable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:109
 msgid "Show Pointer"
 msgstr "ポインターを表示する"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:110
+msgid "Hide Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:120
 msgid "Start Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:118
+#: data/resources/ui/window.ui:121
 msgid "Record"
 msgstr "録画"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
 msgstr ""
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:185
 msgid "Stop Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:183
+#: data/resources/ui/window.ui:186
 msgid "Stop"
 msgstr "停止"
 
-#: data/resources/ui/window.ui:193
+#: data/resources/ui/window.ui:196
 msgid "Pause Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:216
+#: data/resources/ui/window.ui:219
 msgid "Recording in…"
 msgstr "録画開始まで…"
 
-#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:276
+#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:235 data/resources/ui/window.ui:277
+#: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: data/resources/ui/window.ui:259
+#: data/resources/ui/window.ui:262
 msgid "Flushing…"
 msgstr "フラッシング…"
 
-#: data/resources/ui/window.ui:294
+#: data/resources/ui/window.ui:297
 msgid "_Delay"
 msgstr "タイマー(_D)"
 
-#: data/resources/ui/window.ui:296
+#: data/resources/ui/window.ui:299
 msgid "None"
 msgstr "なし"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:304
 msgid "3 seconds"
 msgstr ""
 
-#: data/resources/ui/window.ui:306
+#: data/resources/ui/window.ui:309
 msgid "5 seconds"
 msgstr "5秒"
 
-#: data/resources/ui/window.ui:311
+#: data/resources/ui/window.ui:314
 msgid "10 seconds"
 msgstr "10秒"
 
-#: data/resources/ui/window.ui:317
+#: data/resources/ui/window.ui:320
 msgid "_Video Format"
 msgstr "動画の形式(_F)"
 
-#: data/resources/ui/window.ui:319
+#: data/resources/ui/window.ui:322
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:327
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:329
+#: data/resources/ui/window.ui:332
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:337
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:340
+#: data/resources/ui/window.ui:343
 msgid "_Save to…"
 msgstr "保存先(_S)…"
 
-#: data/resources/ui/window.ui:346
+#: data/resources/ui/window.ui:349
 msgid "_Keyboard Shortcuts"
 msgstr "キーボードショートカット(_K)"
 
-#: data/resources/ui/window.ui:350
+#: data/resources/ui/window.ui:353
 msgid "_About Kooha"
 msgstr "Koohaについて(_A)"
 
@@ -313,17 +325,21 @@ msgstr ""
 msgid "Show in Files"
 msgstr ""
 
-#: src/audio_device.rs:43
+#: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr ""
 
-#: src/audio_device.rs:44
+#: src/audio_device.rs:55
 msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/audio_device.rs:183
+msgid "Failed to connect to PulseAudio daemon"
 msgstr ""
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:184 src/recording.rs:244 src/recording.rs:269
+#: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr ""
 
@@ -332,15 +348,15 @@ msgstr ""
 msgid "Check out {} for help."
 msgstr ""
 
-#: src/recording.rs:228
+#: src/recording.rs:227
 msgid "No microphone source found"
 msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:234
 msgid "No desktop speaker source found"
 msgstr ""
 
-#: src/recording.rs:243
+#: src/recording.rs:242
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
@@ -350,53 +366,53 @@ msgstr ""
 "済みなのに動かない場合は、<a href=\"https://github.com/SeaDve/Kooha/issues"
 "\">Koohaのバグトラッカー</a>で報告してください。"
 
-#: src/recording.rs:268 src/recording.rs:467
+#: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/recording.rs:463
+#: src/recording.rs:462
 msgid "An error occurred while recording"
 msgstr ""
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:475
+#: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
 msgstr ""
 
-#: src/recording.rs:477
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr ""
 
-#: src/settings.rs:33
+#: src/settings.rs:35
 msgid "Select Recordings Folder"
 msgstr "動画の保存先のフォルダを選択"
 
-#: src/settings.rs:43
+#: src/settings.rs:45
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: src/settings.rs:44
+#: src/settings.rs:46
 msgid "_Select"
 msgstr "選択(_S)"
 
-#: src/settings.rs:60
+#: src/settings.rs:62
 msgid "No folder selected"
 msgstr ""
 
-#: src/settings.rs:61
+#: src/settings.rs:63
 msgid "Please choose a folder and try again."
 msgstr ""
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:70
+#: src/settings.rs:72
 msgid "Cannot access “{}”"
 msgstr "“{}”にアクセスできません"
 
-#: src/settings.rs:71
+#: src/settings.rs:73
 msgid "Please choose an accessible location and try again."
 msgstr "アクセス可能な場所を選んで、もう一度お試しください。"
 
-#: src/settings.rs:115 src/window.rs:220
+#: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
 msgstr ""
 
@@ -431,6 +447,12 @@ msgstr "通常"
 #: src/window.rs:384
 msgid "Selection"
 msgstr "選択範囲"
+
+#~ msgid "Record Computer Sounds"
+#~ msgstr "コンピュータの音声を録音する"
+
+#~ msgid "Record From Microphone"
+#~ msgstr "マイクの音声を録音する"
 
 #~ msgid "Dave Patrick"
 #~ msgstr "Dave Patrick"

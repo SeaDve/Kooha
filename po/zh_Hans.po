@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 21:16+0800\n"
+"POT-Creation-Date: 2022-08-21 20:51+0800\n"
 "PO-Revision-Date: 2022-07-31 03:16+0000\n"
 "Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -165,107 +165,119 @@ msgstr "捕捉一个显示器或窗口"
 msgid "Capture a Selection of Screen"
 msgstr "捕捉一个屏幕选区"
 
-#: data/resources/ui/window.ui:88
-msgid "Record Computer Sounds"
-msgstr "录制本机声音"
+#: data/resources/ui/window.ui:91
+msgid "Enable Desktop Sounds"
+msgstr ""
 
-#: data/resources/ui/window.ui:96
-msgid "Record From Microphone"
-msgstr "录制麦克风声音"
+#: data/resources/ui/window.ui:92
+msgid "Disable Desktop Sounds"
+msgstr ""
 
-#: data/resources/ui/window.ui:104
+#: data/resources/ui/window.ui:100
+msgid "Enable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:101
+msgid "Disable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:109
 msgid "Show Pointer"
 msgstr "显示鼠标指针"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:110
+msgid "Hide Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:120
 msgid "Start Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:118
+#: data/resources/ui/window.ui:121
 msgid "Record"
 msgstr "录制"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
 msgstr ""
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:185
 msgid "Stop Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:183
+#: data/resources/ui/window.ui:186
 msgid "Stop"
 msgstr "停止"
 
-#: data/resources/ui/window.ui:193
+#: data/resources/ui/window.ui:196
 msgid "Pause Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:216
+#: data/resources/ui/window.ui:219
 msgid "Recording in…"
 msgstr "即将录制……"
 
-#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:276
+#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:235 data/resources/ui/window.ui:277
+#: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
 msgstr "取消"
 
-#: data/resources/ui/window.ui:259
+#: data/resources/ui/window.ui:262
 msgid "Flushing…"
 msgstr "冲制中…"
 
-#: data/resources/ui/window.ui:294
+#: data/resources/ui/window.ui:297
 msgid "_Delay"
 msgstr "延迟(_D)"
 
-#: data/resources/ui/window.ui:296
+#: data/resources/ui/window.ui:299
 msgid "None"
 msgstr "无"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:304
 msgid "3 seconds"
 msgstr ""
 
-#: data/resources/ui/window.ui:306
+#: data/resources/ui/window.ui:309
 msgid "5 seconds"
 msgstr "5 秒"
 
-#: data/resources/ui/window.ui:311
+#: data/resources/ui/window.ui:314
 msgid "10 seconds"
 msgstr "10 秒"
 
-#: data/resources/ui/window.ui:317
+#: data/resources/ui/window.ui:320
 msgid "_Video Format"
 msgstr "视频格式(_V)"
 
-#: data/resources/ui/window.ui:319
+#: data/resources/ui/window.ui:322
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:327
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:329
+#: data/resources/ui/window.ui:332
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:337
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:340
+#: data/resources/ui/window.ui:343
 msgid "_Save to…"
 msgstr "保存到(_S)…"
 
-#: data/resources/ui/window.ui:346
+#: data/resources/ui/window.ui:349
 msgid "_Keyboard Shortcuts"
 msgstr "快捷键(_K)"
 
-#: data/resources/ui/window.ui:350
+#: data/resources/ui/window.ui:353
 msgid "_About Kooha"
 msgstr "关于 Kooha (_A)"
 
@@ -312,17 +324,21 @@ msgstr ""
 msgid "Show in Files"
 msgstr ""
 
-#: src/audio_device.rs:43
+#: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr ""
 
-#: src/audio_device.rs:44
+#: src/audio_device.rs:55
 msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/audio_device.rs:183
+msgid "Failed to connect to PulseAudio daemon"
 msgstr ""
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:184 src/recording.rs:244 src/recording.rs:269
+#: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr ""
 
@@ -331,15 +347,15 @@ msgstr ""
 msgid "Check out {} for help."
 msgstr ""
 
-#: src/recording.rs:228
+#: src/recording.rs:227
 msgid "No microphone source found"
 msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:234
 msgid "No desktop speaker source found"
 msgstr ""
 
-#: src/recording.rs:243
+#: src/recording.rs:242
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
@@ -348,53 +364,53 @@ msgstr ""
 "可能未安装 GStreamer 插件。如果已安装但仍无法正常工作，请报告<a href="
 "\"https://github.com/SeaDve/Kooha/issues\">kooha问题页面</a>。"
 
-#: src/recording.rs:268 src/recording.rs:467
+#: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/recording.rs:463
+#: src/recording.rs:462
 msgid "An error occurred while recording"
 msgstr ""
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:475
+#: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
 msgstr ""
 
-#: src/recording.rs:477
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr ""
 
-#: src/settings.rs:33
+#: src/settings.rs:35
 msgid "Select Recordings Folder"
 msgstr "选择录制保存文件夹"
 
-#: src/settings.rs:43
+#: src/settings.rs:45
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: src/settings.rs:44
+#: src/settings.rs:46
 msgid "_Select"
 msgstr "选择(_S)"
 
-#: src/settings.rs:60
+#: src/settings.rs:62
 msgid "No folder selected"
 msgstr ""
 
-#: src/settings.rs:61
+#: src/settings.rs:63
 msgid "Please choose a folder and try again."
 msgstr ""
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:70
+#: src/settings.rs:72
 msgid "Cannot access “{}”"
 msgstr "无法访问“{}”"
 
-#: src/settings.rs:71
+#: src/settings.rs:73
 msgid "Please choose an accessible location and try again."
 msgstr "请选择一个可以访问的位置并重试。"
 
-#: src/settings.rs:115 src/window.rs:220
+#: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
 msgstr ""
 
@@ -429,6 +445,12 @@ msgstr "一般"
 #: src/window.rs:384
 msgid "Selection"
 msgstr "选区录制"
+
+#~ msgid "Record Computer Sounds"
+#~ msgstr "录制本机声音"
+
+#~ msgid "Record From Microphone"
+#~ msgstr "录制麦克风声音"
 
 #~ msgid "Dave Patrick"
 #~ msgstr "Dave Patrick"

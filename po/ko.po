@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 21:16+0800\n"
+"POT-Creation-Date: 2022-08-21 20:51+0800\n"
 "PO-Revision-Date: 2021-08-31 12:34+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
@@ -162,107 +162,119 @@ msgstr "모니터 또는 창 캡쳐"
 msgid "Capture a Selection of Screen"
 msgstr "화면 선택 영역 캡쳐"
 
-#: data/resources/ui/window.ui:88
-msgid "Record Computer Sounds"
-msgstr "컴퓨터 소리 녹음"
+#: data/resources/ui/window.ui:91
+msgid "Enable Desktop Sounds"
+msgstr ""
 
-#: data/resources/ui/window.ui:96
-msgid "Record From Microphone"
-msgstr "마이크로폰 소리 녹음"
+#: data/resources/ui/window.ui:92
+msgid "Disable Desktop Sounds"
+msgstr ""
 
-#: data/resources/ui/window.ui:104
+#: data/resources/ui/window.ui:100
+msgid "Enable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:101
+msgid "Disable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:109
 msgid "Show Pointer"
 msgstr "포인터 표시"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:110
+msgid "Hide Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:120
 msgid "Start Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:118
+#: data/resources/ui/window.ui:121
 msgid "Record"
 msgstr "녹화"
 
-#: data/resources/ui/window.ui:131
+#: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
 msgstr ""
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:185
 msgid "Stop Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:183
+#: data/resources/ui/window.ui:186
 msgid "Stop"
 msgstr "정지"
 
-#: data/resources/ui/window.ui:193
+#: data/resources/ui/window.ui:196
 msgid "Pause Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:216
+#: data/resources/ui/window.ui:219
 msgid "Recording in…"
 msgstr "녹화 중…"
 
-#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:276
+#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
 msgstr ""
 
-#: data/resources/ui/window.ui:235 data/resources/ui/window.ui:277
+#: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
 msgstr ""
 
-#: data/resources/ui/window.ui:259
+#: data/resources/ui/window.ui:262
 msgid "Flushing…"
 msgstr "지우는 중…"
 
-#: data/resources/ui/window.ui:294
+#: data/resources/ui/window.ui:297
 msgid "_Delay"
 msgstr "지연(_D)"
 
-#: data/resources/ui/window.ui:296
+#: data/resources/ui/window.ui:299
 msgid "None"
 msgstr "없음"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:304
 msgid "3 seconds"
 msgstr ""
 
-#: data/resources/ui/window.ui:306
+#: data/resources/ui/window.ui:309
 msgid "5 seconds"
 msgstr "5초"
 
-#: data/resources/ui/window.ui:311
+#: data/resources/ui/window.ui:314
 msgid "10 seconds"
 msgstr "10초"
 
-#: data/resources/ui/window.ui:317
+#: data/resources/ui/window.ui:320
 msgid "_Video Format"
 msgstr "동영상 형식(_V)"
 
-#: data/resources/ui/window.ui:319
+#: data/resources/ui/window.ui:322
 msgid "WebM"
 msgstr "WebM"
 
-#: data/resources/ui/window.ui:324
+#: data/resources/ui/window.ui:327
 msgid "MKV"
 msgstr "MKV"
 
-#: data/resources/ui/window.ui:329
+#: data/resources/ui/window.ui:332
 msgid "MP4"
 msgstr "MP4"
 
-#: data/resources/ui/window.ui:334
+#: data/resources/ui/window.ui:337
 msgid "GIF"
 msgstr "GIF"
 
-#: data/resources/ui/window.ui:340
+#: data/resources/ui/window.ui:343
 msgid "_Save to…"
 msgstr "다음 위치에 저장(_S)…"
 
-#: data/resources/ui/window.ui:346
+#: data/resources/ui/window.ui:349
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기 키(_K)"
 
-#: data/resources/ui/window.ui:350
+#: data/resources/ui/window.ui:353
 msgid "_About Kooha"
 msgstr "쿠하 정보(_A)"
 
@@ -304,17 +316,21 @@ msgstr ""
 msgid "Show in Files"
 msgstr ""
 
-#: src/audio_device.rs:43
+#: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr ""
 
-#: src/audio_device.rs:44
+#: src/audio_device.rs:55
 msgid "Failed to start device monitor"
+msgstr ""
+
+#: src/audio_device.rs:183
+msgid "Failed to connect to PulseAudio daemon"
 msgstr ""
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:184 src/recording.rs:244 src/recording.rs:269
+#: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr ""
 
@@ -323,68 +339,68 @@ msgstr ""
 msgid "Check out {} for help."
 msgstr ""
 
-#: src/recording.rs:228
+#: src/recording.rs:227
 msgid "No microphone source found"
 msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:234
 msgid "No desktop speaker source found"
 msgstr ""
 
-#: src/recording.rs:243
+#: src/recording.rs:242
 msgid ""
 "A GStreamer plugin may not be installed. If it is installed but still does "
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
 
-#: src/recording.rs:268 src/recording.rs:467
+#: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/recording.rs:463
+#: src/recording.rs:462
 msgid "An error occurred while recording"
 msgstr ""
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:475
+#: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
 msgstr ""
 
-#: src/recording.rs:477
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr ""
 
-#: src/settings.rs:33
+#: src/settings.rs:35
 msgid "Select Recordings Folder"
 msgstr "녹화 폴더 선택"
 
-#: src/settings.rs:43
+#: src/settings.rs:45
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: src/settings.rs:44
+#: src/settings.rs:46
 msgid "_Select"
 msgstr "선택(_S)"
 
-#: src/settings.rs:60
+#: src/settings.rs:62
 msgid "No folder selected"
 msgstr ""
 
-#: src/settings.rs:61
+#: src/settings.rs:63
 msgid "Please choose a folder and try again."
 msgstr ""
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:70
+#: src/settings.rs:72
 msgid "Cannot access “{}”"
 msgstr "“{}”에 접근할 수 없습니다"
 
-#: src/settings.rs:71
+#: src/settings.rs:73
 msgid "Please choose an accessible location and try again."
 msgstr "열 수 있는 위치를 선택하고 다시 시도하십시오."
 
-#: src/settings.rs:115 src/window.rs:220
+#: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
 msgstr ""
 
@@ -419,6 +435,12 @@ msgstr "일반"
 #: src/window.rs:384
 msgid "Selection"
 msgstr "선택"
+
+#~ msgid "Record Computer Sounds"
+#~ msgstr "컴퓨터 소리 녹음"
+
+#~ msgid "Record From Microphone"
+#~ msgstr "마이크로폰 소리 녹음"
 
 #~ msgid "Dave Patrick"
 #~ msgstr "Dave Patrick"
