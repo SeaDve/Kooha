@@ -32,6 +32,7 @@ pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
         .support_url("https://github.com/SeaDve/Kooha/discussions")
         .debug_info(&debug_info())
         .debug_info_filename("kooha-debug-info")
+        .release_notes_version("2.1.0")
         .release_notes(release_notes())
         .build();
 
@@ -65,6 +66,7 @@ fn release_notes() -> &'static str {
       <li>Fixed minutes stuck on 00 if time is equal or greater than an hour</li>
       <li>Recordings are now stored by default in `~/Videos/Kooha` (This won't affect existing settings)</li>
       <li>"Show in Files" button in notifications now highlights the file in the file manager</li>
+      <li>Improved tooltip text on settings toggle buttons</li>
       <li>Improved support information in the new about window</li>
       <li>Improved error handling</li>
       <li>Improved codebase and stability</li>
