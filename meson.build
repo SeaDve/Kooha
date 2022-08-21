@@ -18,6 +18,8 @@ dependency('libadwaita-1', version: '>= 1.0.0.alpha.4')
 dependency('gstreamer-1.0', version: '>= 1.18')
 dependency('gstreamer-base-1.0', version: '>= 1.18')
 dependency('gstreamer-plugins-base-1.0', version: '>= 1.18')
+dependency('libpulse-mainloop-glib', version: '>= 15.0')
+dependency('libpulse', version: '>= 15.0')
 
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
