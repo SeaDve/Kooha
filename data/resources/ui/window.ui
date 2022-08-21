@@ -84,7 +84,7 @@
                         <property name="spacing">12</property>
                         <property name="homogeneous">True</property>
                         <child>
-                          <object class="MsaiToggleButton">
+                          <object class="KoohaToggleButton">
                             <property name="action-name">win.record-speaker</property>
                             <property name="default-icon-name">audio-volume-muted-symbolic</property>
                             <property name="toggled-icon-name">audio-volume-high-symbolic</property>
@@ -93,7 +93,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="MsaiToggleButton">
+                          <object class="KoohaToggleButton">
                             <property name="action-name">win.record-mic</property>
                             <property name="default-icon-name">microphone-disabled-symbolic</property>
                             <property name="toggled-icon-name">microphone2-symbolic</property>
@@ -102,7 +102,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="MsaiToggleButton">
+                          <object class="KoohaToggleButton">
                             <property name="action-name">win.show-pointer</property>
                             <property name="default-icon-name">mouse-wireless-disabled-symbolic</property>
                             <property name="toggled-icon-name">mouse-wireless-symbolic</property>

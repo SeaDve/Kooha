@@ -16,7 +16,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for ToggleButton {
-        const NAME: &'static str = "MsaiToggleButton";
+        const NAME: &'static str = "KoohaToggleButton";
         type Type = super::ToggleButton;
         type ParentType = gtk::ToggleButton;
     }
@@ -108,7 +108,7 @@ glib::wrapper! {
 
 impl ToggleButton {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create MsaiToggleButton.")
+        glib::Object::new(&[]).expect("Failed to create KoohaToggleButton.")
     }
 
     pub fn set_default_icon_name(&self, default_icon_name: &str) {
