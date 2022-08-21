@@ -98,11 +98,11 @@ fn find_default_name_inner(class: Class) -> Result<String> {
 
         let mut node_name = match properties.get::<String>("node.name") {
             Ok(node_name) => node_name,
-            Err(error) => {
+            Err(err) => {
                 tracing::warn!(
                     "Skipping device `{}` as it has no node.name property. {:?}",
                     device.name(),
-                    error
+                    err
                 );
                 continue;
             }
