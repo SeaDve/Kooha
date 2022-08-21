@@ -99,6 +99,9 @@ mod imp {
 }
 
 glib::wrapper! {
+    /// A toggle button that shows different icons and tooltips depending on the state.
+    ///
+    /// Note: `icon-name` and `tooltip-text` must not be set directly.
      pub struct ToggleButton(ObjectSubclass<imp::ToggleButton>)
         @extends gtk::Widget, gtk::Button, gtk::ToggleButton;
 }
