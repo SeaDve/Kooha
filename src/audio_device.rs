@@ -158,7 +158,7 @@ mod pa {
 
     impl fmt::Debug for Context {
         fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-            f.write_str("Server")
+            f.write_str("Context")
         }
     }
 
@@ -192,7 +192,7 @@ mod pa {
                 let _ = tx.start_send(());
             })));
 
-            tracing::debug!("Waiting for PA server connection");
+            tracing::debug!("Waiting for context server connection");
 
             while rx.next().await.is_some() {
                 match inner.get_state() {
@@ -203,7 +203,7 @@ mod pa {
                 }
             }
 
-            tracing::debug!("PA Server connected");
+            tracing::debug!("Connected context to server");
 
             inner.set_state_callback(None);
 
