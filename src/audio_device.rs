@@ -206,6 +206,8 @@ mod pa {
 
             tracing::debug!("PA Server connected");
 
+            context.set_state_callback(None);
+
             Ok(Self { main_loop, context })
         }
 
@@ -258,7 +260,6 @@ mod pa {
 
     impl Drop for Server {
         fn drop(&mut self) {
-            self.context.set_state_callback(None);
             self.context.disconnect();
             self.main_loop.quit(Retval(0));
         }
