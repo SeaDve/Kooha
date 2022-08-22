@@ -39,8 +39,8 @@ pub async fn find_default_name(class: Class) -> Result<String> {
             tracing::warn!("Failed to find default name using gstreamer: {:?}", err);
             tracing::debug!("Manually using libpulse instead");
 
-            let server = pa::Server::connect().await?;
-            server.find_default_device_name(class).await
+            let pa_context = pa::Context::connect().await?;
+            pa_context.find_default_device_name(class).await
         }
     }
 }
@@ -138,7 +138,7 @@ mod pa {
     use gettextrs::gettext;
     use gtk::glib;
     use pulse::{
-        context::{Context, FlagSet, State},
+        context::{Context as ContextInner, FlagSet, State},
         def::Retval,
         mainloop::api::Mainloop,
         proplist::{properties, Proplist},
@@ -151,18 +151,18 @@ mod pa {
 
     const DEFAULT_TIMEOUT: Duration = Duration::from_secs(2);
 
-    pub struct Server {
+    pub struct Context {
+        inner: ContextInner,
         main_loop: pulse_glib::Mainloop,
-        context: Context,
     }
 
-    impl fmt::Debug for Server {
+    impl fmt::Debug for Context {
         fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
             f.write_str("Server")
         }
     }
 
-    impl Server {
+    impl Context {
         pub async fn connect() -> Result<Self> {
             let main_loop =
                 pulse_glib::Mainloop::new(None).context("Failed to create pulse Mainloop")?;
@@ -175,7 +175,7 @@ mod pa {
                 .set_str(properties::APPLICATION_NAME, "Kooha")
                 .unwrap();
 
-            let mut context = Context::new_with_proplist(&main_loop, APP_ID, &proplist)
+            let mut context = ContextInner::new_with_proplist(&main_loop, APP_ID, &proplist)
                 .context("Failed to create pulse Context")?;
 
             context
@@ -207,43 +207,43 @@ mod pa {
 
             context.set_state_callback(None);
 
-            Ok(Self { main_loop, context })
+            Ok(Self {
+                inner: context,
+                main_loop,
+            })
         }
 
         pub async fn find_default_device_name(&self, class: Class) -> Result<String> {
             let (tx, rx) = oneshot::channel();
             let tx = RefCell::new(Some(tx));
 
-            let mut operation = self
-                .context
-                .introspect()
-                .get_server_info(move |server_info| {
-                    let tx = if let Some(tx) = tx.take() {
-                        tx
-                    } else {
-                        tracing::error!("Called get_server_info twice!");
-                        return;
-                    };
+            let mut operation = self.inner.introspect().get_server_info(move |server_info| {
+                let tx = if let Some(tx) = tx.take() {
+                    tx
+                } else {
+                    tracing::error!("Called get_server_info twice!");
+                    return;
+                };
 
-                    match class {
-                        Class::Source => {
-                            let _ = tx.send(
-                                server_info
-                                    .default_source_name
-                                    .as_ref()
-                                    .map(|s| s.to_string()),
-                            );
-                        }
-                        Class::Sink => {
-                            let _ = tx.send(
-                                server_info
-                                    .default_sink_name
-                                    .as_ref()
-                                    .map(|s| format!("{}.monitor", s)),
-                            );
-                        }
+                match class {
+                    Class::Source => {
+                        let _ = tx.send(
+                            server_info
+                                .default_source_name
+                                .as_ref()
+                                .map(|s| s.to_string()),
+                        );
                     }
-                });
+                    Class::Sink => {
+                        let _ = tx.send(
+                            server_info
+                                .default_sink_name
+                                .as_ref()
+                                .map(|s| format!("{}.monitor", s)),
+                        );
+                    }
+                }
+            });
 
             let name = match future::select(rx, glib::timeout_future(DEFAULT_TIMEOUT)).await {
                 Either::Left((name, _)) => name,
@@ -257,9 +257,9 @@ mod pa {
         }
     }
 
-    impl Drop for Server {
+    impl Drop for Context {
         fn drop(&mut self) {
-            self.context.disconnect();
+            self.inner.disconnect();
             self.main_loop.quit(Retval(0));
         }
     }
