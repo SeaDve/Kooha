@@ -1,5 +1,6 @@
 use anyhow::{anyhow, Context, Error, Result};
 use gettextrs::gettext;
+use gst::prelude::*;
 
 use crate::{help::ResultExt, THREAD_POOL};
 
@@ -45,8 +46,6 @@ pub async fn find_default_name(class: Class) -> Result<String> {
 }
 
 fn find_default_name_gst(class: Class) -> Result<String> {
-    use gst::prelude::*;
-
     let device_monitor = gst::DeviceMonitor::new();
     device_monitor.add_filter(Some(class.as_str()), None);
 
