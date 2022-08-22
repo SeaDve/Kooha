@@ -198,8 +198,8 @@ mod pa {
             while rx.next().await.is_some() {
                 match context.get_state() {
                     State::Ready => break,
-                    State::Failed => bail!("Received failed state while connecting"),
-                    State::Terminated => bail!("Context connection terminated"),
+                    State::Failed => bail!("Connection failed or disconnected"),
+                    State::Terminated => bail!("Connection context terminated"),
                     _ => {}
                 }
             }
