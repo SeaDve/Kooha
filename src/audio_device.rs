@@ -144,7 +144,7 @@ mod pa {
         proplist::{properties, Proplist},
     };
 
-    use std::{cell::RefCell, fmt, time::Duration};
+    use std::{fmt, time::Duration};
 
     use super::Class;
     use crate::{config::APP_ID, help::ResultExt};
@@ -212,7 +212,7 @@ mod pa {
 
         pub async fn find_default_device_name(&self, class: Class) -> Result<String> {
             let (tx, rx) = oneshot::channel();
-            let tx = RefCell::new(Some(tx));
+            let mut tx = Some(tx);
 
             let mut operation = self.inner.introspect().get_server_info(move |server_info| {
                 let tx = if let Some(tx) = tx.take() {
