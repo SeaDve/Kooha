@@ -139,8 +139,6 @@ mod pa {
     use gtk::glib;
     use pulse::{
         context::{Context as ContextInner, FlagSet, State},
-        def::Retval,
-        mainloop::api::Mainloop,
         proplist::{properties, Proplist},
     };
 
@@ -153,6 +151,10 @@ mod pa {
 
     pub struct Context {
         inner: ContextInner,
+
+        // `ContextInner` does not hold a reference causing it
+        // to be freed and cause error after `Context::connect`.
+        #[allow(dead_code)]
         main_loop: pulse_glib::Mainloop,
     }
 
@@ -257,7 +259,6 @@ mod pa {
     impl Drop for Context {
         fn drop(&mut self) {
             self.inner.disconnect();
-            self.main_loop.quit(Retval(0));
         }
     }
 }
