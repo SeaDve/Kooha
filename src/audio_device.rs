@@ -175,10 +175,10 @@ mod pa {
                 .set_str(properties::APPLICATION_NAME, "Kooha")
                 .unwrap();
 
-            let mut context = ContextInner::new_with_proplist(&main_loop, APP_ID, &proplist)
+            let mut inner = ContextInner::new_with_proplist(&main_loop, APP_ID, &proplist)
                 .context("Failed to create pulse Context")?;
 
-            context
+            inner
                 .connect(None, FlagSet::NOFLAGS, None)
                 .map_err(Error::from)
                 .with_help(
@@ -188,14 +188,14 @@ mod pa {
 
             let (mut tx, mut rx) = mpsc::channel(1);
 
-            context.set_state_callback(Some(Box::new(move || {
+            inner.set_state_callback(Some(Box::new(move || {
                 let _ = tx.start_send(());
             })));
 
             tracing::debug!("Waiting for PA server connection");
 
             while rx.next().await.is_some() {
-                match context.get_state() {
+                match inner.get_state() {
                     State::Ready => break,
                     State::Failed => bail!("Connection failed or disconnected"),
                     State::Terminated => bail!("Connection context terminated"),
@@ -205,12 +205,9 @@ mod pa {
 
             tracing::debug!("PA Server connected");
 
-            context.set_state_callback(None);
+            inner.set_state_callback(None);
 
-            Ok(Self {
-                inner: context,
-                main_loop,
-            })
+            Ok(Self { inner, main_loop })
         }
 
         pub async fn find_default_device_name(&self, class: Class) -> Result<String> {
