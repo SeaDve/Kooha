@@ -132,8 +132,12 @@ fn find_default_name_gst(class: Class) -> Result<String> {
 mod pa {
     use anyhow::{bail, Context as ErrContext, Error, Result};
     use futures_channel::{mpsc, oneshot};
-    use futures_util::StreamExt;
+    use futures_util::{
+        future::{self, Either},
+        StreamExt,
+    };
     use gettextrs::gettext;
+    use gtk::glib;
     use pulse::{
         context::{Context, FlagSet, State},
         def::Retval,
@@ -144,7 +148,7 @@ mod pa {
     use std::{cell::RefCell, fmt, time::Duration};
 
     use super::Class;
-    use crate::{config::APP_ID, help::ResultExt, utils};
+    use crate::{config::APP_ID, help::ResultExt};
 
     const DEFAULT_TIMEOUT: Duration = Duration::from_secs(2);
 
@@ -240,15 +244,15 @@ mod pa {
                     }
                 });
 
-            let name = match utils::future_timeout(rx, DEFAULT_TIMEOUT).await {
-                Ok(name) => name.unwrap().context("Found no default device")?,
-                Err(err) => {
+            let name = match future::select(rx, glib::timeout_future(DEFAULT_TIMEOUT)).await {
+                Either::Left((name, _)) => name,
+                Either::Right(_) => {
                     operation.cancel();
-                    bail!("Failed to receive get_server_info result: {:?}", err)
+                    bail!("get_server_info operation timeout reached");
                 }
             };
 
-            Ok(name)
+            name.unwrap().context("Found no default device")
         }
     }
 
