@@ -200,11 +200,8 @@ impl Recording {
 
         // select area
         if settings.capture_mode() == CaptureMode::Selection {
-            let (selection, screen) = AreaSelector::select_area().await?;
-
-            pipeline_builder
-                .coordinates(selection)
-                .actual_screen(screen);
+            let (coords, screen) = AreaSelector::select_area().await?;
+            pipeline_builder.select_area_context(coords, screen);
         }
 
         // setup timer
@@ -505,7 +502,7 @@ impl Recording {
 
                 debug_assert_eq!(
                     self.pipeline()
-                        .by_name("filesink")
+                        .by_name("filesink0")
                         .map(|fs| fs.property::<String>("location"))
                         .map(|path| PathBuf::from(&path)),
                     Some(file.path().unwrap())
