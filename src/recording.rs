@@ -502,7 +502,7 @@ impl Recording {
 
                 debug_assert_eq!(
                     self.pipeline()
-                        .by_name("filesink0")
+                        .by_name("filesink")
                         .map(|fs| fs.property::<String>("location"))
                         .map(|path| PathBuf::from(&path)),
                     Some(file.path().unwrap())

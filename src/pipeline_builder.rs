@@ -81,7 +81,7 @@ impl PipelineBuilder {
         encodebin.set_property("profile", &create_profile(self.format));
         encodebin.set_property("avoid-reencoding", true);
         let queue = element_factory_make("queue")?;
-        let filesink = element_factory_make("filesink")?;
+        let filesink = element_factory_make_named("filesink", Some("filesink"))?;
         filesink.set_property(
             "location",
             self.file_path
@@ -97,7 +97,15 @@ impl PipelineBuilder {
             _ => self.framerate,
         };
 
-        tracing::debug!(stream_len = ?self.streams.len());
+        tracing::debug!(
+            file_path = ?self.file_path,
+            format = ?self.format,
+            framerate,
+            stream_len = self.streams.len(),
+            streams = ?self.streams,
+            speaker_source = ?self.speaker_source,
+            mic_source = ?self.mic_source,
+        );
 
         let videosrc_bin = match self.streams.len() {
             0 => bail!("Found no streams"),
@@ -140,6 +148,26 @@ impl PipelineBuilder {
                     .request_pad_simple("audio_%u")
                     .context("Failed to request audio_%u pad from encodebin")?,
             )?;
+        }
+
+        if tracing::enabled!(tracing::Level::DEBUG) {
+            let codec_elements = pipeline
+                .iterate_recurse()
+                .into_iter()
+                .filter_map(|element| {
+                    let element = element.unwrap();
+                    element
+                        .metadata(&gst::ELEMENT_METADATA_KLASS)
+                        .unwrap()
+                        .contains("Codec")
+                        .then(|| {
+                            element
+                                .factory()
+                                .map_or_else(|| element.name(), |f| f.name())
+                        })
+                })
+                .collect::<Vec<_>>();
+            tracing::debug!(?codec_elements);
         }
 
         Ok(pipeline)
@@ -213,9 +241,16 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
     container_profile
 }
 
-fn element_factory_make(element_name: &str) -> Result<gst::Element> {
-    gst::ElementFactory::make(element_name, None)
-        .with_context(|| format!("Failed to make element `{}`", element_name))
+fn element_factory_make(factory_name: &str) -> Result<gst::Element> {
+    element_factory_make_named(factory_name, None)
+}
+
+fn element_factory_make_named(
+    factory_name: &str,
+    element_name: Option<&str>,
+) -> Result<gst::Element> {
+    gst::ElementFactory::make(factory_name, element_name)
+        .with_context(|| format!("Failed to make element `{}`", factory_name))
 }
 
 fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
@@ -251,6 +286,8 @@ fn videocrop_compute(
     let left_crop = coords.x();
     let right_crop = stream_width as f32 - (coords.width() + coords.x());
     let bottom_crop = stream_height as f32 - (coords.height() + coords.y());
+
+    tracing::debug!(top_crop, left_crop, right_crop, bottom_crop);
 
     // x264enc requires even resolution.
     let crop = element_factory_make("videocrop")?;
