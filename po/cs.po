@@ -4,15 +4,16 @@
 # Jan Novák <novak@silen.org>, 2021, 2022.
 # Vojtěch Perník <translations@pervoj.cz>, 2021, 2022.
 # Petr Šimáček <petr.simacek@gmail.com>, 2021.
+# multiflexi <multi.flexi@seznam.cz>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-07-19 11:16+0000\n"
-"Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
-">\n"
+"PO-Revision-Date: 2022-08-23 12:15+0000\n"
+"Last-Translator: multiflexi <multi.flexi@seznam.cz>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
+"\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +30,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
-msgstr "Elegantně zaznamenej svou obrazovku"
+msgstr "Elegantně zaznamenejte svou obrazovku"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -47,24 +48,24 @@ msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Hooha je jednoduchý nahrávač obrazovky s minimalistickým rozhraním. Můžeš "
-"ihned začít bez potřeby cokoliv nastavovat."
+"Kooha je jednoduchý záznam obrazovky s minimalistickým rozhraním. Můžete "
+"pouze kliknout na tlačítko nahrávat bez nutnosti cokoliv nastavovat."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
-msgstr "Hlavní funkcionality Hoohy jsou:"
+msgstr "Hlavní funkce Kooha jsou:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Zaznamenej bez problémů svou obrazovku."
+msgstr "🎥 Zaznamenejte svou obrazovku bez problémů."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Nahrávej zvuk z mikrofonu, z pořítače nebo z obojího zároveň."
+msgstr "🎙️ Nahrávejte zvuk z mikrofonu, z pořítače nebo z obojího zároveň."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Podpora pro formáty WebM, MP4, GIF a MKV."
+msgstr "📼 Podpora formátů WebM, MP4, GIF a MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
@@ -84,23 +85,23 @@ msgstr "🖼️ Vytvořte výběr, který zachytí určitou oblast z vaší obra
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Nastav zpoždění aby jsi se připravil před nahráváním."
+msgstr "⏲️ Nastavte zpoždění, aby jste se připravili před nahráváním."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Zobraz nebo skryj svou myš."
+msgstr "🖱️ Zobrazte nebo skryjte ukazatele myši."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Zvol lokaci pro ukládání nahrávek."
+msgstr "💾 Zvolte místo uložení svých nahrávek."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Využij užitečné klávesové zkratky."
+msgstr "⌨️ Využijte užitečné klávesové zkratky."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -132,7 +133,7 @@ msgstr "Pozastavit/pokračovat"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Zrušit nahrávání"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -164,19 +165,19 @@ msgstr "Zachytávat výběr obrazovky"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Zapnout systémové zvuky"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Vypnout systémové zvuky"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Zapnout mikrofon"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Vypnout mikrofon"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -184,11 +185,11 @@ msgstr "Zobrazit kurzor"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Skrýt ukazatel myši"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Začít nahrávat"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -196,11 +197,11 @@ msgstr "Nahrát"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Zapomenout předchozí zdroje videa"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Zastavit nahrávání"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -208,7 +209,7 @@ msgstr "Zastavit"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Pozastavit nahrávání"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -216,7 +217,7 @@ msgstr "Nahrávání za…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Zrušit nahrávání"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
@@ -236,7 +237,7 @@ msgstr "Žádný"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3 sekundy"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
@@ -280,22 +281,23 @@ msgstr "_O aplikaci Kooha"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
 msgid "translator-credits"
 msgstr ""
 "Jan Novák <jan.novak@silen.org>\n"
-"Vojtěch Perník <translations@pervoj.cz>"
+"Vojtěch Perník <translations@pervoj.cz>\n"
+"Jaroslav Svoboda <jaroslav.svoboda@vse.cz>"
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Podpořit (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Podpořit (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -303,51 +305,51 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Překládat"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Záznam obrazovky ukončen"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Klikněte zde pro zobrazení videa."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Zobrazit v Souborech"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Ujistěte se, že máte nainstalováno PulseAudio."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Odposlouchávání zařízení selhalo"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Připojení k PulseAudio daemonu selhalo"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Nahrávání selhalo"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Pro pomoc navštivte {}."
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "Nenalezen žádný mikrofonní zdroj"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Nenalezen žádný zdroj s reproduktory"
 
 #: src/recording.rs:242
 msgid ""
@@ -361,7 +363,7 @@ msgstr ""
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Ujistěte se, že místo pro uložení existuje a je dostupné."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
@@ -390,7 +392,7 @@ msgstr "_Vybrat"
 
 #: src/settings.rs:62
 msgid "No folder selected"
-msgstr ""
+msgstr "Nebyla vybrána žádná složka"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
@@ -407,27 +409,27 @@ msgstr "Prosím, vyberte přístupné místo a zkuste to znovu."
 
 #: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Pozastavení se nezdařilo"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopírovat do schránky"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Zkopírováno do schránky"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Zobrazit podrobnosti chyby"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Nápověda"
 
 #: src/window.rs:349
 msgid "Paused"

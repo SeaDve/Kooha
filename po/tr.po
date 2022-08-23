@@ -4,13 +4,14 @@
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021, 2022.
 # ToldYouThat <itoldyouthat@protonmail.com>, 2021.
 # Sabri Ünal <libreajans@gmail.com>, 2022.
+# Oğuz Ersen <oguz@ersen.moe>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-21 11:17+0000\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"PO-Revision-Date: 2022-08-23 12:15+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
 "Language: tr\n"
@@ -167,19 +168,19 @@ msgstr "Bir Ekranın Seçilmiş Kısmını Yakala"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Masaüstü Seslerini Etkinleştir"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Masaüstü Seslerini Devre Dışı Bırak"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Mikrofonu Etkinleştir"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Mikrofonu Devre Dışı Bırak"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -187,7 +188,7 @@ msgstr "İşaretçiyi Göster"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "İşaretçiyi Gizle"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
@@ -331,7 +332,7 @@ msgstr "Aygıt monitörü başlatılamadı"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "PulseAudio programına bağlanılamadı"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),

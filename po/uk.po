@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-16 16:19+0000\n"
+"PO-Revision-Date: 2022-08-23 12:15+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -167,19 +167,19 @@ msgstr "Захоплення ділянки екрана"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Увімкнути звуки комп'ютера"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Вимкнути звуки комп'ютера"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Увімкнути мікрофон"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Вимкнути мікрофон"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -187,7 +187,7 @@ msgstr "Показати вказівник миші"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Сховати вказівник"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
@@ -329,7 +329,7 @@ msgstr "Не вдалося запустити монітор пристрою"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Не вдалося під'єднатися до фонової служби PulseAudio"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
