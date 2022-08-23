@@ -60,7 +60,7 @@ impl ScreencastSession {
         .await
         .context("Failed to create session")?;
 
-        tracing::debug!(?response, "Created screencast session");
+        tracing::debug!(%response, "Created screencast session");
 
         let session_handle = response.get::<ObjectPath>("session_handle")?;
 
@@ -130,7 +130,7 @@ impl ScreencastSession {
             .context("Failed to invoke Close on the session")?;
         debug_assert!(variant_get::<()>(&response).is_ok());
 
-        tracing::debug!(?response, "Closed screencast session");
+        tracing::debug!(%response, "Closed screencast session");
 
         Ok(())
     }
@@ -176,7 +176,7 @@ impl ScreencastSession {
         )
         .await?;
 
-        tracing::debug!(?response, "Started screencast session");
+        tracing::debug!(%response, "Started screencast session");
 
         let streams = response.get::<Vec<Stream>>("streams")?;
 
@@ -218,7 +218,7 @@ impl ScreencastSession {
         .await?;
         debug_assert!(response.is_empty());
 
-        tracing::debug!(?response, "Selected sources");
+        tracing::debug!(%response, "Selected sources");
 
         Ok(())
     }
@@ -235,7 +235,7 @@ impl ScreencastSession {
             )
             .await?;
 
-        tracing::debug!(?response, fd_list = ?fd_list.peek_fds(), "Opened pipe wire remote");
+        tracing::debug!(%response, fd_list = ?fd_list.peek_fds(), "Opened pipe wire remote");
 
         let (fd_index,) = variant_get::<(Handle,)>(&response)?;
 
@@ -368,7 +368,7 @@ fn variant_get<T: FromVariant>(variant: &glib::Variant) -> Result<T> {
             "Expected type `{}`; got `{}` with value `{}`",
             T::static_variant_type(),
             variant.type_(),
-            variant.print(true)
+            variant
         )
     })
 }
