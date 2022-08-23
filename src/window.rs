@@ -363,7 +363,7 @@ impl Window {
         );
         self.action_set_enabled(
             "win.toggle-pause",
-            matches!(state, RecordingState::Recording),
+            matches!(state, RecordingState::Recording | RecordingState::Paused),
         );
         self.action_set_enabled(
             "win.cancel-record",
