@@ -79,7 +79,6 @@ impl PipelineBuilder {
 
         let encodebin = element_factory_make("encodebin")?;
         encodebin.set_property("profile", &create_profile(self.format));
-        encodebin.set_property("avoid-reencoding", true);
         let queue = element_factory_make("queue")?;
         let filesink = element_factory_make_named("filesink", Some("filesink"))?;
         filesink.set_property(
