@@ -54,10 +54,7 @@
                 "-Ddoc=disabled",
                 "-Dorc=disabled",
                 "-Dnls=disabled",
-                "-Dtests=disabled",
-                "-Dgobject-cast-checks=disabled",
-                "-Dglib-asserts=disabled",
-                "-Dglib-checks=disabled"
+                "-Dtests=disabled"
             ],
             "sources": [
                 {
