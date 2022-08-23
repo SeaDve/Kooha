@@ -175,9 +175,8 @@ impl PipelineBuilder {
 }
 
 fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerProfile {
-    // FIXME broken gif and mp4
-
     if video_format == VideoFormat::Gif {
+        // TODO broken gif
         let caps = gst::Caps::builder("image/gif").build();
         let video_profile = gst_pbutils::EncodingVideoProfile::builder(&caps)
             .presence(0)
@@ -188,7 +187,7 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
             .build();
     }
 
-    // TODO option to force vaapi
+    // TODO option to force vaapi and block vaapi (fixes broken mp4)
     // TODO modify element_properties
     let video_profile = {
         let caps = match video_format {
