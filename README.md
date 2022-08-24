@@ -77,6 +77,9 @@ more efficient or perhaps faster encoding. It is not guaranteed to work on all
 devices, so it may give errors such as `no element vaapivp8enc` depending on the
 features and capability of your hardware.
 
+First, you have to install `gstreamer-vaapi` on your system. If Kooha is installed
+through Flatpak, it is as simple as running `flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi`.
+
 To enable all the supported drivers and force Kooha to use VAAPI elements, set
 `GST_VAAPI_ALL_DRIVERS` and `KOOHA_VAAPI` both to 1 respectively. These
 environment variables are needed for hardware accelerated encoding.
