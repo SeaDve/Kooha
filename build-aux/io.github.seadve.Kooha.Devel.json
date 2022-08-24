@@ -18,7 +18,8 @@
         "--talk-name=org.freedesktop.FileManager1",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=kooha=debug",
-        "--env=G_MESSAGES_DEBUG=none"
+        "--env=G_MESSAGES_DEBUG=none",
+        "--env=GST_DEBUG=3"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/llvm14/bin:/usr/lib/sdk/rust-stable/bin",
