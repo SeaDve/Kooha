@@ -15,7 +15,7 @@ use std::{
 use crate::{screencast_session::Stream, settings::VideoFormat};
 
 const MAX_THREAD_COUNT: u32 = 64;
-const DEFAULT_GIF_FRAMERATE: u32 = 15;
+const GIF_FRAMERATE_OVERRIDE: u32 = 15;
 
 #[derive(Debug)]
 struct SelectAreaContext {
@@ -92,7 +92,7 @@ impl PipelineBuilder {
         gst::Element::link_many(&[&encodebin, &queue, &filesink])?;
 
         let framerate = match self.format {
-            VideoFormat::Gif => DEFAULT_GIF_FRAMERATE,
+            VideoFormat::Gif => GIF_FRAMERATE_OVERRIDE,
             _ => self.framerate,
         };
 
@@ -318,8 +318,6 @@ fn multi_stream_pipewiresrc_bin(fd: i32, streams: &[Stream], framerate: u32) -> 
 
     let mut last_pos = 0;
     for stream in streams {
-        // TODO maybe put another videoconvert here
-
         let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
         let videorate = element_factory_make("videorate")?;
         let videorate_capsfilter = element_factory_make("capsfilter")?;
