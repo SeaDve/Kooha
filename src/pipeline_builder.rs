@@ -169,65 +169,61 @@ impl PipelineBuilder {
     }
 }
 
+/// Create an encoding profile based on video format
 fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerProfile {
-    if video_format == VideoFormat::Gif {
-        // TODO broken gif
-        let caps = gst::Caps::builder("image/gif").build();
-        let video_profile = gst_pbutils::EncodingVideoProfile::builder(&caps)
-            .presence(0)
-            .build();
-        return gst_pbutils::EncodingContainerProfile::builder(&caps)
-            .presence(0)
-            .add_profile(&video_profile)
-            .build();
-    }
+    use profile::{Builder as ProfileBuilder, ElementPropertiesBuilder};
 
-    // TODO option to force vaapi and block vaapi (fixes broken mp4)
-    // TODO modify element_properties
-    let video_profile = {
-        let caps = match video_format {
-            VideoFormat::Webm => gst::Caps::builder("video/x-vp8").build(),
-            VideoFormat::Mkv => gst::Caps::builder("video/x-vp8").build(),
-            VideoFormat::Mp4 => gst::Caps::builder("video/x-h264")
-                .field("alignment", "au")
-                .field("stream-format", "avc")
-                .build(),
-            VideoFormat::Gif => unreachable!(),
-        };
-        gst_pbutils::EncodingVideoProfile::builder(&caps)
-            .variable_framerate(false)
-            .presence(0)
-            .build()
-    };
+    // TODO Option for vaapi
 
-    let audio_profile = {
-        let caps = match video_format {
-            VideoFormat::Webm => gst::Caps::builder("audio/x-opus").build(),
-            VideoFormat::Mkv => gst::Caps::builder("audio/x-opus").build(),
-            VideoFormat::Mp4 => gst::Caps::builder("audio/mpeg")
-                .field("mpegversion", 1)
-                .field("layer", 3)
-                .build(),
-            VideoFormat::Gif => unreachable!(),
-        };
-        gst_pbutils::EncodingAudioProfile::builder(&caps)
-            .presence(0)
-            .build()
-    };
+    let thread_count = ideal_thread_count();
 
-    let container_profile = {
-        let caps = match video_format {
-            VideoFormat::Webm => gst::Caps::builder("video/webm").build(),
-            VideoFormat::Mkv => gst::Caps::builder("video/x-matroska").build(),
-            VideoFormat::Mp4 => gst::Caps::builder("video/quicktime")
-                .field("variant", "iso")
+    let container_profile = match video_format {
+        VideoFormat::Webm => {
+            ProfileBuilder::new_simple("video/webm", "video/x-vp8", "audio/x-opus")
+                .video_preset("vp8enc")
+                .video_element_properties(
+                    ElementPropertiesBuilder::new("vp8enc")
+                        .field("max-quantizer", 17)
+                        .field("cpu-used", 16)
+                        .field("cq-level", 13)
+                        .field("deadline", 1)
+                        .field("static-threshold", 100)
+                        .field_from_str("keyframe-mode", "disabled")
+                        .field("buffer-size", 20000)
+                        .field("threads", thread_count)
+                        .build(),
+                )
+                .build()
+        }
+        VideoFormat::Mkv => {
+            ProfileBuilder::new_simple("video/x-matroska", "video/x-h264", "audio/x-opus")
+                .video_preset("x264enc")
+                .video_element_properties(
+                    ElementPropertiesBuilder::new("x264enc")
+                        .field("qp-max", 17)
+                        .field_from_str("speed-preset", "superfast")
+                        .field("threads", thread_count)
+                        .build(),
+                )
+                .build()
+        }
+        VideoFormat::Mp4 => ProfileBuilder::new(
+            caps("video/quicktime"),
+            gst::Caps::builder("video/x-h264")
+                .field("profile", "baseline")
                 .build(),
-            VideoFormat::Gif => unreachable!(),
-        };
-        gst_pbutils::EncodingContainerProfile::builder(&caps)
-            .add_profile(&video_profile)
-            .add_profile(&audio_profile)
-            .build()
+            caps("audio/mpeg"),
+        )
+        .video_preset("x264enc")
+        .video_element_properties(
+            ElementPropertiesBuilder::new("x264enc")
+                .field("qp-max", 17)
+                .field_from_str("speed-preset", "superfast")
+                .field("threads", thread_count)
+                .build(),
+        )
+        .build(),
+        VideoFormat::Gif => todo!("Unsupported video format"), // FIXME
     };
 
     tracing::debug!(suggested_file_extension = ?container_profile.file_extension());
@@ -235,10 +231,19 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
     container_profile
 }
 
+/// Helper function to create a caps with just a name.
+fn caps(name: &str) -> gst::Caps {
+    gst::Caps::new_simple(name, &[])
+}
+
+/// Helper function for more helpful error messages when failing
+/// to make an element.
 fn element_factory_make(factory_name: &str) -> Result<gst::Element> {
     element_factory_make_named(factory_name, None)
 }
 
+/// Helper function for more helpful error messages when failing
+/// to make an element.
 fn element_factory_make_named(
     factory_name: &str,
     element_name: Option<&str>,
@@ -266,6 +271,8 @@ fn videoconvert_with_default() -> Result<gst::Element> {
     Ok(conv)
 }
 
+/// Create a videocrop element that computes the crop from the given coordinates
+/// and size.
 fn videocrop_compute(
     stream_width: i32,
     stream_height: i32,
@@ -422,8 +429,229 @@ fn round_to_even_f32(number: f32) -> i32 {
 }
 
 fn ideal_thread_count() -> u32 {
-    let num_processors = glib::num_processors();
-    cmp::min(num_processors, MAX_THREAD_COUNT)
+    cmp::min(glib::num_processors(), MAX_THREAD_COUNT)
+}
+
+mod profile {
+    use anyhow::{anyhow, Result};
+    use gst_pbutils::prelude::*;
+    use gtk::glib::{
+        self,
+        translate::{ToGlibPtr, UnsafeFrom},
+    };
+
+    use super::{caps, element_factory_make};
+
+    pub struct ElementPropertiesBuilder {
+        structure: gst::Structure,
+    }
+
+    impl ElementPropertiesBuilder {
+        pub fn new(element_name: &str) -> Self {
+            Self {
+                structure: gst::Structure::new_empty(element_name),
+            }
+        }
+
+        pub fn field<V: ToSendValue + Sync>(mut self, name: &str, value: V) -> Self {
+            self.structure.set(name, value);
+            self
+        }
+
+        /// Parse the value into the type of the element's property.
+        ///
+        /// The element is based on the given name on `Self::new` and
+        /// the element's property is based on the recently given name.
+        pub fn field_from_str(self, name: &str, value: &str) -> Self {
+            self.try_field_from_str(name, value).unwrap()
+        }
+
+        pub fn try_field_from_str(mut self, name: &str, value: &str) -> Result<Self> {
+            let element = element_factory_make(self.structure.name())?;
+            let pspec = element.find_property(name).ok_or_else(|| {
+                anyhow!(
+                    "Property `{}` not found on type `{}`",
+                    name,
+                    element.type_()
+                )
+            })?;
+            let value = unsafe {
+                glib::SendValue::unsafe_from(
+                    glib::Value::deserialize_with_pspec(value, &pspec)?.into_raw(),
+                )
+            };
+
+            self.structure.set_value(name, value);
+            Ok(self)
+        }
+
+        pub fn build(self) -> gst::Structure {
+            self.structure
+        }
+    }
+
+    pub struct Builder {
+        container_caps: gst::Caps,
+        container_preset_name: Option<String>,
+        container_element_properties: Vec<gst::Structure>,
+
+        video_caps: gst::Caps,
+        video_preset_name: Option<String>,
+        video_element_properties: Vec<gst::Structure>,
+
+        audio_caps: gst::Caps,
+        audio_preset_name: Option<String>,
+        audio_element_properties: Vec<gst::Structure>,
+    }
+
+    #[allow(dead_code)]
+    impl Builder {
+        pub fn new(
+            container_caps: gst::Caps,
+            video_caps: gst::Caps,
+            audio_caps: gst::Caps,
+        ) -> Self {
+            Self {
+                container_caps,
+                container_preset_name: None,
+                container_element_properties: Vec::new(),
+                video_caps,
+                video_preset_name: None,
+                video_element_properties: Vec::new(),
+                audio_caps,
+                audio_preset_name: None,
+                audio_element_properties: Vec::new(),
+            }
+        }
+
+        pub fn new_simple(
+            container_caps_name: &str,
+            video_caps_name: &str,
+            audio_caps_name: &str,
+        ) -> Self {
+            Self::new(
+                caps(container_caps_name),
+                caps(video_caps_name),
+                caps(audio_caps_name),
+            )
+        }
+
+        pub fn container_preset(mut self, preset_name: &str) -> Self {
+            self.container_preset_name = Some(preset_name.to_string());
+            self
+        }
+
+        pub fn video_preset(mut self, preset_name: &str) -> Self {
+            self.video_preset_name = Some(preset_name.to_string());
+            self
+        }
+
+        pub fn audio_preset(mut self, preset_name: &str) -> Self {
+            self.audio_preset_name = Some(preset_name.to_string());
+            self
+        }
+
+        /// Appends to the container element properties.
+        pub fn container_element_properties(mut self, element_properties: gst::Structure) -> Self {
+            self.container_element_properties.push(element_properties);
+            self
+        }
+
+        /// Appends to the video element properties.
+        pub fn video_element_properties(mut self, element_properties: gst::Structure) -> Self {
+            self.video_element_properties.push(element_properties);
+            self
+        }
+
+        /// Appends to the audio element properties.
+        pub fn audio_element_properties(mut self, element_properties: gst::Structure) -> Self {
+            self.audio_element_properties.push(element_properties);
+            self
+        }
+
+        pub fn build(self) -> gst_pbutils::EncodingContainerProfile {
+            let video_profile = {
+                let mut builder =
+                    gst_pbutils::EncodingVideoProfile::builder(&self.video_caps).presence(0);
+
+                if let Some(ref preset_name) = self.video_preset_name {
+                    builder = builder.preset_name(preset_name);
+                }
+
+                let profile = builder.build();
+
+                if !self.video_element_properties.is_empty() {
+                    profile.set_element_properties(&self.video_element_properties);
+                }
+
+                profile
+            };
+
+            let audio_profile = {
+                let mut builder =
+                    gst_pbutils::EncodingAudioProfile::builder(&self.audio_caps).presence(0);
+
+                if let Some(ref preset_name) = self.audio_preset_name {
+                    builder = builder.preset_name(preset_name);
+                }
+
+                let profile = builder.build();
+
+                if !self.audio_element_properties.is_empty() {
+                    profile.set_element_properties(&self.audio_element_properties);
+                }
+
+                profile
+            };
+
+            let container_profile = {
+                let mut builder =
+                    gst_pbutils::EncodingContainerProfile::builder(&self.container_caps)
+                        .add_profile(&video_profile)
+                        .add_profile(&audio_profile)
+                        .presence(0);
+
+                if let Some(ref preset_name) = self.container_preset_name {
+                    builder = builder.preset_name(preset_name);
+                }
+
+                let profile = builder.build();
+
+                if !self.container_element_properties.is_empty() {
+                    profile.set_element_properties(&self.container_element_properties);
+                }
+
+                profile
+            };
+
+            container_profile
+        }
+    }
+
+    trait EncodingProfileExt {
+        fn set_element_properties(&self, element_properties: &[gst::Structure]);
+    }
+
+    impl<T: IsA<gst_pbutils::EncodingProfile>> EncodingProfileExt for T {
+        fn set_element_properties(&self, element_properties: &[gst::Structure]) {
+            let actual_element_properties = gst::Structure::builder("element-properties-map")
+                .field(
+                    "map",
+                    element_properties
+                        .iter()
+                        .map(|ep| ep.to_send_value())
+                        .collect::<gst::List>(),
+                )
+                .build();
+
+            unsafe {
+                gst_pbutils::ffi::gst_encoding_profile_set_element_properties(
+                    self.as_ref().to_glib_none().0,
+                    actual_element_properties.to_glib_full(),
+                );
+            }
+        }
+    }
 }
 
 #[cfg(test)]
