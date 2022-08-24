@@ -429,6 +429,10 @@ impl Recording {
             .and_then(|pipeline| pipeline.query_position::<gst::ClockTime>())
             .unwrap_or(gst::ClockTime::ZERO);
 
+        if clock_time == self.duration() {
+            return;
+        }
+
         self.imp().duration.set(clock_time);
         self.notify("duration");
     }
