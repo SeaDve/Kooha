@@ -433,8 +433,6 @@ impl Recording {
     fn handle_bus_message(&self, message: &gst::Message) -> glib::Continue {
         use gst::MessageView;
 
-        tracing::trace!("Received bus message {:?}", message);
-
         let imp = self.imp();
 
         match message.view() {
@@ -513,19 +511,27 @@ impl Recording {
                 Continue(false)
             }
             MessageView::StateChanged(sc) => {
+                let new_state = sc.current();
+
                 if message.src().as_ref()
                     != imp
                         .pipeline
                         .get()
                         .map(|pipeline| pipeline.upcast_ref::<gst::Object>())
                 {
+                    tracing::trace!(
+                        "`{}` changed state from `{:?}` -> `{:?}`",
+                        message
+                            .src()
+                            .map_or_else(|| "<unknown source>".into(), |e| e.name()),
+                        sc.old(),
+                        new_state,
+                    );
                     return Continue(true);
                 }
 
-                let new_state = sc.current();
-
                 tracing::debug!(
-                    "Pipeline state changed from `{:?}` -> `{:?}`",
+                    "Pipeline changed state from `{:?}` -> `{:?}`",
                     sc.old(),
                     new_state,
                 );
@@ -539,7 +545,18 @@ impl Recording {
 
                 Continue(true)
             }
-            _ => Continue(true),
+            MessageView::Warning(w) => {
+                tracing::warn!("Received warning message on bus: {:?}", w);
+                Continue(true)
+            }
+            MessageView::Info(i) => {
+                tracing::debug!("Received info message on bus: {:?}", i);
+                Continue(true)
+            }
+            other => {
+                tracing::trace!("Received other message on bus: {:?}", other);
+                Continue(true)
+            }
         }
     }
 }
