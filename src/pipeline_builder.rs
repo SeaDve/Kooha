@@ -462,11 +462,11 @@ mod profile {
         ///
         /// The element is based on the given name on `Self::new` and
         /// the element's property is based on the recently given name.
-        pub fn field_from_str(self, name: &str, value: &str) -> Self {
-            self.try_field_from_str(name, value).unwrap()
+        pub fn field_from_str(self, name: &str, string: &str) -> Self {
+            self.try_field_from_str(name, string).unwrap()
         }
 
-        pub fn try_field_from_str(mut self, name: &str, value: &str) -> Result<Self> {
+        pub fn try_field_from_str(mut self, name: &str, string: &str) -> Result<Self> {
             let element = element_factory_make(self.structure.name())?;
             let pspec = element.find_property(name).ok_or_else(|| {
                 anyhow!(
@@ -477,7 +477,7 @@ mod profile {
             })?;
             let value = unsafe {
                 glib::SendValue::unsafe_from(
-                    glib::Value::deserialize_with_pspec(value, &pspec)?.into_raw(),
+                    glib::Value::deserialize_with_pspec(string, &pspec)?.into_raw(),
                 )
             };
 
