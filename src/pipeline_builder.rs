@@ -150,23 +150,24 @@ impl PipelineBuilder {
         }
 
         if tracing::enabled!(tracing::Level::DEBUG) {
-            let codec_elements = pipeline
+            let encodebin_elements = encodebin
+                .downcast::<gst::Bin>()
+                .unwrap()
                 .iterate_recurse()
                 .into_iter()
-                .filter_map(|element| {
+                .map(|element| {
                     let element = element.unwrap();
-                    element
-                        .metadata(&gst::ELEMENT_METADATA_KLASS)
-                        .unwrap()
-                        .contains("Codec")
-                        .then(|| {
-                            element
-                                .factory()
-                                .map_or_else(|| element.name(), |f| f.name())
-                        })
+                    let name = element
+                        .factory()
+                        .map_or_else(|| element.name(), |f| f.name());
+                    if name == "capsfilter" {
+                        element.property::<gst::Caps>("caps").to_string()
+                    } else {
+                        name.to_string()
+                    }
                 })
                 .collect::<Vec<_>>();
-            tracing::debug!(?codec_elements);
+            tracing::debug!(?encodebin_elements);
         }
 
         Ok(pipeline)
