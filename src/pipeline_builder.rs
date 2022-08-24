@@ -1,4 +1,4 @@
-use anyhow::{bail, Context, Result};
+use anyhow::{bail, Context, Ok, Result};
 use gst::prelude::*;
 use gst_pbutils::prelude::*;
 use gtk::{
@@ -130,24 +130,19 @@ impl PipelineBuilder {
                 .context("Failed to request video_%u pad from encodebin")?,
         )?;
 
-        let mut audiosrc_bins = Vec::new();
-        if let Some(ref device_name) = self.speaker_source {
-            let pulsesrc_bin = pulsesrc_bin(device_name)?;
-            audiosrc_bins.push(pulsesrc_bin);
-        }
-        if let Some(ref device_name) = self.mic_source {
-            let pulsesrc_bin = pulsesrc_bin(device_name)?;
-            audiosrc_bins.push(pulsesrc_bin);
-        }
-
-        for bin in audiosrc_bins {
-            pipeline.add(&bin)?;
-            bin.static_pad("src").unwrap().link(
-                &encodebin
-                    .request_pad_simple("audio_%u")
-                    .context("Failed to request audio_%u pad from encodebin")?,
-            )?;
-        }
+        [&self.speaker_source, &self.mic_source]
+            .iter()
+            .filter_map(|d| d.as_ref()) // Filter out None
+            .try_for_each(|device_name| {
+                let pulsesrc_bin = pulsesrc_bin(device_name)?;
+                pipeline.add(&pulsesrc_bin)?;
+                pulsesrc_bin.static_pad("src").unwrap().link(
+                    &encodebin
+                        .request_pad_simple("audio_%u")
+                        .context("Failed to request audio_%u pad from encodebin")?,
+                )?;
+                Ok(())
+            })?;
 
         if tracing::enabled!(tracing::Level::DEBUG) {
             let encodebin_elements = encodebin
