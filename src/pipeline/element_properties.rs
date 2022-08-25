@@ -193,6 +193,38 @@ impl ElementFactoryPropertiesMap {
         property_name: &str,
         string: &str,
     ) -> Result<Self, glib::BoolError> {
+        self.set_field_from_str(property_name, string)?;
+        Ok(self)
+    }
+
+    /// Parses the given string into a property of element from the
+    /// given `factory_name` with type based on the property's param spec.
+    ///
+    /// This works similar to `GObjectExtManualGst::set_property_from_str`.
+    ///
+    /// Note: The property will not be set if any of `factory_name`, `property_name`
+    /// or `string` is invalid.
+    pub fn field_from_str(mut self, property_name: &str, string: &str) -> Self {
+        if let Err(err) = self.set_field_from_str(property_name, string) {
+            tracing::error!(
+                "Failed to set property `{}` to `{}`: {:?}",
+                property_name,
+                string,
+                err
+            );
+        }
+        self
+    }
+
+    pub fn into_inner(self) -> gst::Structure {
+        self.0
+    }
+
+    fn set_field_from_str(
+        &mut self,
+        property_name: &str,
+        string: &str,
+    ) -> Result<(), glib::BoolError> {
         let factory_name = self.0.name();
         let element = gst::ElementFactory::make(factory_name, None).map_err(|_| {
             glib::bool_error!(
@@ -213,19 +245,7 @@ impl ElementFactoryPropertiesMap {
             )
         };
         self.0.set_value(property_name, value);
-        Ok(self)
-    }
-
-    /// Parses the given string into a property of element from the
-    /// given `factory_name` with type based on the property's param spec.
-    ///
-    /// This works similar to `GObjectExtManualGst::set_property_from_str`.
-    pub fn field_from_str(self, property_name: &str, string: &str) -> Self {
-        self.field_try_from_str(property_name, string).unwrap()
-    }
-
-    pub fn into_inner(self) -> gst::Structure {
-        self.0
+        Ok(())
     }
 }
 
