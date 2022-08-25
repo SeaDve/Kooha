@@ -235,6 +235,8 @@ mod tests {
 
     #[test]
     fn element_properties_general_builder() {
+        gst::init().unwrap();
+
         let elem_props = ElementProperties::builder_general()
             .field("string-prop", "hi")
             .field("boolean-prop", true)
@@ -247,6 +249,8 @@ mod tests {
 
     #[test]
     fn element_properties_map_builder() {
+        gst::init().unwrap();
+
         let props_map = ElementFactoryPropertiesMap::new("vp8enc")
             .field("cq-level", 13)
             .field("resize-allowed", false);
@@ -271,6 +275,8 @@ mod tests {
 
     #[test]
     fn element_factory_properties_map_field_from_str() {
+        gst::init().unwrap();
+
         let prop_map_s = ElementFactoryPropertiesMap::new("vp8enc")
             .field("threads", 16)
             .field_from_str("keyframe-mode", "disabled")
