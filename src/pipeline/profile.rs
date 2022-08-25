@@ -62,19 +62,16 @@ impl Builder {
         self
     }
 
-    /// Appends to the container element properties.
     pub fn container_element_properties(mut self, element_properties: ElementProperties) -> Self {
         self.container_element_properties = Some(element_properties);
         self
     }
 
-    /// Appends to the video element properties.
     pub fn video_element_properties(mut self, element_properties: ElementProperties) -> Self {
         self.video_element_properties = Some(element_properties);
         self
     }
 
-    /// Appends to the audio element properties.
     pub fn audio_element_properties(mut self, element_properties: ElementProperties) -> Self {
         self.audio_element_properties = Some(element_properties);
         self
