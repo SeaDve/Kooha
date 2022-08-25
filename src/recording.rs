@@ -20,7 +20,7 @@ use crate::{
     audio_device::{self, Class as AudioDeviceClass},
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
-    pipeline_builder::PipelineBuilder,
+    pipeline::PipelineBuilder,
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
     settings::{CaptureMode, Settings, VideoFormat},
     timer::Timer,

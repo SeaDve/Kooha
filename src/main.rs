@@ -27,7 +27,7 @@ mod audio_device;
 mod cancelled;
 mod config;
 mod help;
-mod pipeline_builder;
+mod pipeline;
 mod recording;
 mod screencast_session;
 mod settings;

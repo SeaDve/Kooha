@@ -1,3 +1,6 @@
+mod element_properties;
+mod profile;
+
 use anyhow::{bail, Context, Ok, Result};
 use gst::prelude::*;
 use gst_pbutils::prelude::*;
@@ -12,6 +15,10 @@ use std::{
     path::{Path, PathBuf},
 };
 
+use self::{
+    element_properties::{ElementFactoryPropertiesMap, ElementProperties},
+    profile::Builder as ProfileBuilder,
+};
 use crate::{screencast_session::Stream, settings::VideoFormat};
 
 const MAX_THREAD_COUNT: u32 = 64;
@@ -171,8 +178,6 @@ impl PipelineBuilder {
 
 /// Create an encoding profile based on video format
 fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerProfile {
-    use profile::{Builder as ProfileBuilder, ElementPropertiesBuilder};
-
     // TODO Option for vaapi
 
     let thread_count = ideal_thread_count();
@@ -182,15 +187,18 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
             ProfileBuilder::new_simple("video/webm", "video/x-vp8", "audio/x-opus")
                 .video_preset("vp8enc")
                 .video_element_properties(
-                    ElementPropertiesBuilder::new("vp8enc")
-                        .field("max-quantizer", 17)
-                        .field("cpu-used", 16)
-                        .field("cq-level", 13)
-                        .field("deadline", 1)
-                        .field("static-threshold", 100)
-                        .field_from_str("keyframe-mode", "disabled")
-                        .field("buffer-size", 20000)
-                        .field("threads", thread_count)
+                    ElementProperties::builder_map()
+                        .item(
+                            ElementFactoryPropertiesMap::new("vp8enc")
+                                .field("max-quantizer", 17)
+                                .field("cpu-used", 16)
+                                .field("cq-level", 13)
+                                .field("deadline", 1)
+                                .field("static-threshold", 100)
+                                .field_from_str("keyframe-mode", "disabled")
+                                .field("buffer-size", 20000)
+                                .field("threads", thread_count),
+                        )
                         .build(),
                 )
                 .build()
@@ -204,10 +212,13 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
         )
         .video_preset("x264enc")
         .video_element_properties(
-            ElementPropertiesBuilder::new("x264enc")
-                .field("qp-max", 17)
-                .field_from_str("speed-preset", "superfast")
-                .field("threads", thread_count)
+            ElementProperties::builder_map()
+                .item(
+                    ElementFactoryPropertiesMap::new("x264enc")
+                        .field("qp-max", 17)
+                        .field_from_str("speed-preset", "superfast")
+                        .field("threads", thread_count),
+                )
                 .build(),
         )
         .build(),
@@ -220,10 +231,13 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
         )
         .video_preset("x264enc")
         .video_element_properties(
-            ElementPropertiesBuilder::new("x264enc")
-                .field("qp-max", 17)
-                .field_from_str("speed-preset", "superfast")
-                .field("threads", thread_count)
+            ElementProperties::builder_map()
+                .item(
+                    ElementFactoryPropertiesMap::new("x264enc")
+                        .field("qp-max", 17)
+                        .field_from_str("speed-preset", "superfast")
+                        .field("threads", thread_count),
+                )
                 .build(),
         )
         .build(),
@@ -434,228 +448,6 @@ fn round_to_even_f32(number: f32) -> i32 {
 
 fn ideal_thread_count() -> u32 {
     cmp::min(glib::num_processors(), MAX_THREAD_COUNT)
-}
-
-mod profile {
-    use anyhow::{anyhow, Result};
-    use gst_pbutils::prelude::*;
-    use gtk::glib::{
-        self,
-        translate::{ToGlibPtr, UnsafeFrom},
-    };
-
-    use super::{caps, element_factory_make};
-
-    pub struct ElementPropertiesBuilder {
-        structure: gst::Structure,
-    }
-
-    impl ElementPropertiesBuilder {
-        pub fn new(element_name: &str) -> Self {
-            Self {
-                structure: gst::Structure::new_empty(element_name),
-            }
-        }
-
-        pub fn field<V: ToSendValue + Sync>(mut self, name: &str, value: V) -> Self {
-            self.structure.set(name, value);
-            self
-        }
-
-        /// Parse the value into the type of the element's property.
-        ///
-        /// The element is based on the given name on `Self::new` and
-        /// the element's property is based on the recently given name.
-        pub fn field_from_str(self, name: &str, string: &str) -> Self {
-            self.try_field_from_str(name, string).unwrap()
-        }
-
-        pub fn try_field_from_str(mut self, name: &str, string: &str) -> Result<Self> {
-            let element = element_factory_make(self.structure.name())?;
-            let pspec = element.find_property(name).ok_or_else(|| {
-                anyhow!(
-                    "Property `{}` not found on type `{}`",
-                    name,
-                    element.type_()
-                )
-            })?;
-            let value = unsafe {
-                glib::SendValue::unsafe_from(
-                    glib::Value::deserialize_with_pspec(string, &pspec)?.into_raw(),
-                )
-            };
-
-            self.structure.set_value(name, value);
-            Ok(self)
-        }
-
-        pub fn build(self) -> gst::Structure {
-            self.structure
-        }
-    }
-
-    pub struct Builder {
-        container_caps: gst::Caps,
-        container_preset_name: Option<String>,
-        container_element_properties: Vec<gst::Structure>,
-
-        video_caps: gst::Caps,
-        video_preset_name: Option<String>,
-        video_element_properties: Vec<gst::Structure>,
-
-        audio_caps: gst::Caps,
-        audio_preset_name: Option<String>,
-        audio_element_properties: Vec<gst::Structure>,
-    }
-
-    #[allow(dead_code)]
-    impl Builder {
-        pub fn new(
-            container_caps: gst::Caps,
-            video_caps: gst::Caps,
-            audio_caps: gst::Caps,
-        ) -> Self {
-            Self {
-                container_caps,
-                container_preset_name: None,
-                container_element_properties: Vec::new(),
-                video_caps,
-                video_preset_name: None,
-                video_element_properties: Vec::new(),
-                audio_caps,
-                audio_preset_name: None,
-                audio_element_properties: Vec::new(),
-            }
-        }
-
-        pub fn new_simple(
-            container_caps_name: &str,
-            video_caps_name: &str,
-            audio_caps_name: &str,
-        ) -> Self {
-            Self::new(
-                caps(container_caps_name),
-                caps(video_caps_name),
-                caps(audio_caps_name),
-            )
-        }
-
-        pub fn container_preset(mut self, preset_name: &str) -> Self {
-            self.container_preset_name = Some(preset_name.to_string());
-            self
-        }
-
-        pub fn video_preset(mut self, preset_name: &str) -> Self {
-            self.video_preset_name = Some(preset_name.to_string());
-            self
-        }
-
-        pub fn audio_preset(mut self, preset_name: &str) -> Self {
-            self.audio_preset_name = Some(preset_name.to_string());
-            self
-        }
-
-        /// Appends to the container element properties.
-        pub fn container_element_properties(mut self, element_properties: gst::Structure) -> Self {
-            self.container_element_properties.push(element_properties);
-            self
-        }
-
-        /// Appends to the video element properties.
-        pub fn video_element_properties(mut self, element_properties: gst::Structure) -> Self {
-            self.video_element_properties.push(element_properties);
-            self
-        }
-
-        /// Appends to the audio element properties.
-        pub fn audio_element_properties(mut self, element_properties: gst::Structure) -> Self {
-            self.audio_element_properties.push(element_properties);
-            self
-        }
-
-        pub fn build(self) -> gst_pbutils::EncodingContainerProfile {
-            let video_profile = {
-                let mut builder =
-                    gst_pbutils::EncodingVideoProfile::builder(&self.video_caps).presence(0);
-
-                if let Some(ref preset_name) = self.video_preset_name {
-                    builder = builder.preset_name(preset_name);
-                }
-
-                let profile = builder.build();
-
-                if !self.video_element_properties.is_empty() {
-                    profile.set_element_properties(&self.video_element_properties);
-                }
-
-                profile
-            };
-
-            let audio_profile = {
-                let mut builder =
-                    gst_pbutils::EncodingAudioProfile::builder(&self.audio_caps).presence(0);
-
-                if let Some(ref preset_name) = self.audio_preset_name {
-                    builder = builder.preset_name(preset_name);
-                }
-
-                let profile = builder.build();
-
-                if !self.audio_element_properties.is_empty() {
-                    profile.set_element_properties(&self.audio_element_properties);
-                }
-
-                profile
-            };
-
-            let container_profile = {
-                let mut builder =
-                    gst_pbutils::EncodingContainerProfile::builder(&self.container_caps)
-                        .add_profile(&video_profile)
-                        .add_profile(&audio_profile)
-                        .presence(0);
-
-                if let Some(ref preset_name) = self.container_preset_name {
-                    builder = builder.preset_name(preset_name);
-                }
-
-                let profile = builder.build();
-
-                if !self.container_element_properties.is_empty() {
-                    profile.set_element_properties(&self.container_element_properties);
-                }
-
-                profile
-            };
-
-            container_profile
-        }
-    }
-
-    trait EncodingProfileExt {
-        fn set_element_properties(&self, element_properties: &[gst::Structure]);
-    }
-
-    impl<T: IsA<gst_pbutils::EncodingProfile>> EncodingProfileExt for T {
-        fn set_element_properties(&self, element_properties: &[gst::Structure]) {
-            let actual_element_properties = gst::Structure::builder("element-properties-map")
-                .field(
-                    "map",
-                    element_properties
-                        .iter()
-                        .map(|ep| ep.to_send_value())
-                        .collect::<gst::List>(),
-                )
-                .build();
-
-            unsafe {
-                gst_pbutils::ffi::gst_encoding_profile_set_element_properties(
-                    self.as_ref().to_glib_none().0,
-                    actual_element_properties.to_glib_full(),
-                );
-            }
-        }
-    }
 }
 
 #[cfg(test)]
