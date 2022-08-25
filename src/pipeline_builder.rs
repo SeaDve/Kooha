@@ -195,18 +195,22 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
                 )
                 .build()
         }
-        VideoFormat::Mkv => {
-            ProfileBuilder::new_simple("video/x-matroska", "video/x-h264", "audio/x-opus")
-                .video_preset("x264enc")
-                .video_element_properties(
-                    ElementPropertiesBuilder::new("x264enc")
-                        .field("qp-max", 17)
-                        .field_from_str("speed-preset", "superfast")
-                        .field("threads", thread_count)
-                        .build(),
-                )
-                .build()
-        }
+        VideoFormat::Mkv => ProfileBuilder::new(
+            caps("video/x-matroska"),
+            gst::Caps::builder("video/x-h264")
+                .field("profile", "baseline")
+                .build(),
+            caps("audio/x-opus"),
+        )
+        .video_preset("x264enc")
+        .video_element_properties(
+            ElementPropertiesBuilder::new("x264enc")
+                .field("qp-max", 17)
+                .field_from_str("speed-preset", "superfast")
+                .field("threads", thread_count)
+                .build(),
+        )
+        .build(),
         VideoFormat::Mp4 => ProfileBuilder::new(
             caps("video/quicktime"),
             gst::Caps::builder("video/x-h264")
