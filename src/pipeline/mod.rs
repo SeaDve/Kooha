@@ -21,6 +21,16 @@ use self::{
 };
 use crate::{screencast_session::Stream, settings::VideoFormat};
 
+// TODO
+// Plugin preferences ui (Show summary on drop down):
+// * Bring back GIF support `gifenc repeat=-1 speed=30`
+// * Handle missing plugins (Hide profile if missing)
+// * Option for vaapi profiles
+//
+// * Do we need restrictions?
+// * Can we drop filter elements (videorate, videoconvert, videoscale, audioconvert) and let encodebin handle it?
+// * Add tests
+
 const MAX_THREAD_COUNT: u32 = 64;
 const GIF_FRAMERATE_OVERRIDE: u32 = 15;
 
@@ -178,8 +188,6 @@ impl PipelineBuilder {
 
 /// Create an encoding profile based on video format
 fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerProfile {
-    // TODO Option for vaapi
-
     let thread_count = ideal_thread_count();
 
     let container_profile = match video_format {
@@ -243,7 +251,7 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
                 .build(),
         )
         .build(),
-        VideoFormat::Gif => todo!("Unsupported video format"), // FIXME
+        VideoFormat::Gif => panic!("Unsupported video format"),
     };
 
     tracing::debug!(suggested_file_extension = ?container_profile.file_extension());
