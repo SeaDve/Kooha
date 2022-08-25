@@ -183,26 +183,28 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
     let thread_count = ideal_thread_count();
 
     let container_profile = match video_format {
-        VideoFormat::Webm => {
-            ProfileBuilder::new_simple("video/webm", "video/x-vp8", "audio/x-opus")
-                .video_preset("vp8enc")
-                .video_element_properties(
-                    ElementProperties::builder_map()
-                        .item(
-                            ElementFactoryPropertiesMap::new("vp8enc")
-                                .field("max-quantizer", 17)
-                                .field("cpu-used", 16)
-                                .field("cq-level", 13)
-                                .field("deadline", 1)
-                                .field("static-threshold", 100)
-                                .field_from_str("keyframe-mode", "disabled")
-                                .field("buffer-size", 20000)
-                                .field("threads", thread_count),
-                        )
-                        .build(),
+        VideoFormat::Webm => ProfileBuilder::new(
+            caps("video/webm"),
+            caps("video/x-vp8"),
+            caps("audio/x-opus"),
+        )
+        .video_preset("vp8enc")
+        .video_element_properties(
+            ElementProperties::builder_map()
+                .item(
+                    ElementFactoryPropertiesMap::new("vp8enc")
+                        .field("max-quantizer", 17)
+                        .field("cpu-used", 16)
+                        .field("cq-level", 13)
+                        .field("deadline", 1)
+                        .field("static-threshold", 100)
+                        .field_from_str("keyframe-mode", "disabled")
+                        .field("buffer-size", 20000)
+                        .field("threads", thread_count),
                 )
-                .build()
-        }
+                .build(),
+        )
+        .build(),
         VideoFormat::Mkv => ProfileBuilder::new(
             caps("video/x-matroska"),
             gst::Caps::builder("video/x-h264")

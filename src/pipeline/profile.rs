@@ -1,9 +1,6 @@
 use gst_pbutils::prelude::*;
 
-use super::{
-    caps,
-    element_properties::{ElementProperties, ElementPropertiesEncodingProfileExt},
-};
+use super::element_properties::{ElementProperties, ElementPropertiesEncodingProfileExt};
 
 pub struct Builder {
     container_caps: gst::Caps,
@@ -33,18 +30,6 @@ impl Builder {
             audio_preset_name: None,
             audio_element_properties: None,
         }
-    }
-
-    pub fn new_simple(
-        container_caps_name: &str,
-        video_caps_name: &str,
-        audio_caps_name: &str,
-    ) -> Self {
-        Self::new(
-            caps(container_caps_name),
-            caps(video_caps_name),
-            caps(audio_caps_name),
-        )
     }
 
     pub fn container_preset(mut self, preset_name: &str) -> Self {
