@@ -198,9 +198,9 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
         )
         .video_preset("vp8enc")
         .video_element_properties(
-            ElementProperties::builder_map()
+            ElementProperties::builder()
                 .item(
-                    ElementFactoryPropertiesMap::new("vp8enc")
+                    ElementFactoryPropertiesMap::builder("vp8enc")
                         .field("max-quantizer", 17)
                         .field("cpu-used", 16)
                         .field("cq-level", 13)
@@ -208,7 +208,8 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
                         .field("static-threshold", 100)
                         .field_from_str("keyframe-mode", "disabled")
                         .field("buffer-size", 20000)
-                        .field("threads", thread_count),
+                        .field("threads", thread_count)
+                        .build(),
                 )
                 .build(),
         )
@@ -222,12 +223,13 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
         )
         .video_preset("x264enc")
         .video_element_properties(
-            ElementProperties::builder_map()
+            ElementProperties::builder()
                 .item(
-                    ElementFactoryPropertiesMap::new("x264enc")
+                    ElementFactoryPropertiesMap::builder("x264enc")
                         .field("qp-max", 17)
                         .field_from_str("speed-preset", "superfast")
-                        .field("threads", thread_count),
+                        .field("threads", thread_count)
+                        .build(),
                 )
                 .build(),
         )
@@ -241,12 +243,13 @@ fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerPr
         )
         .video_preset("x264enc")
         .video_element_properties(
-            ElementProperties::builder_map()
+            ElementProperties::builder()
                 .item(
-                    ElementFactoryPropertiesMap::new("x264enc")
+                    ElementFactoryPropertiesMap::builder("x264enc")
                         .field("qp-max", 17)
                         .field_from_str("speed-preset", "superfast")
-                        .field("threads", thread_count),
+                        .field("threads", thread_count)
+                        .build(),
                 )
                 .build(),
         )
