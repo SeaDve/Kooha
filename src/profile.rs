@@ -464,6 +464,11 @@ mod tests {
                 .can_intersect(&gst::Caps::builder("video/x-matroska").build()),
         );
         assert!(
+            !profile_format_from_factory(&find_element_factory("matroskamux").unwrap())
+                .unwrap()
+                .can_intersect(&gst::Caps::builder("video/x-vp8").build()),
+        );
+        assert!(
             profile_format_from_factory(&find_element_factory("audioconvert").unwrap())
                 .err()
                 .unwrap()
