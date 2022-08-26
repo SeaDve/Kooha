@@ -8,13 +8,14 @@
 # Liu Tao <lyuutau@outlook.com>, 2021.
 # joe <ourmicroid@outlook.com>, 2022.
 # lumingzh <lumingzh@qq.com>, 2022.
+# Hugel <qihu@nfschina.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-07-31 03:16+0000\n"
-"Last-Translator: TheInterestingSoul <wangpy01@outlook.com>\n"
+"PO-Revision-Date: 2022-08-26 07:18+0000\n"
+"Last-Translator: Hugel <qihu@nfschina.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -135,7 +136,7 @@ msgstr "切换暂停状态"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "取消记录"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -191,7 +192,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "开始记录"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -203,7 +204,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "停止记录"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -239,7 +240,7 @@ msgstr "无"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3秒"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"

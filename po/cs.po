@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-23 12:15+0000\n"
+"PO-Revision-Date: 2022-08-26 07:18+0000\n"
 "Last-Translator: multiflexi <multi.flexi@seznam.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
 "\n"
@@ -367,16 +367,16 @@ msgstr "Ujistěte se, že místo pro uložení existuje a je dostupné."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Během nahrávání se vyskytla chyba"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Nezdařilo se otevření “{}” pro zápis"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Nezdařilo se otevřít soubor pro zápis"
 
 #: src/settings.rs:35
 msgid "Select Recordings Folder"
@@ -396,7 +396,7 @@ msgstr "Nebyla vybrána žádná složka"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Prosím, vyberte složku a zkuste to znovu."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
