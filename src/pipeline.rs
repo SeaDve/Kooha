@@ -1,25 +1,14 @@
-mod element_properties;
-mod profile;
-
 use anyhow::{bail, Context, Ok, Result};
 use gst::prelude::*;
 use gst_pbutils::prelude::*;
-use gtk::{
-    glib,
-    graphene::{Rect, Size},
-};
+use gtk::graphene::{Rect, Size};
 
 use std::{
-    cmp,
     os::unix::io::RawFd,
     path::{Path, PathBuf},
 };
 
-use self::{
-    element_properties::{ElementFactoryPropertiesMap, ElementProperties},
-    profile::Builder as ProfileBuilder,
-};
-use crate::{screencast_session::Stream, settings::VideoFormat};
+use crate::{profile::BuiltinProfiles, screencast_session::Stream, settings::VideoFormat, utils};
 
 // TODO
 // Plugin preferences ui (Show summary on drop down):
@@ -31,7 +20,6 @@ use crate::{screencast_session::Stream, settings::VideoFormat};
 // * Can we drop filter elements (videorate, videoconvert, videoscale, audioconvert) and let encodebin handle it?
 // * Add tests
 
-const MAX_THREAD_COUNT: u32 = 64;
 const GIF_FRAMERATE_OVERRIDE: u32 = 15;
 
 #[derive(Debug)]
@@ -188,83 +176,19 @@ impl PipelineBuilder {
 
 /// Create an encoding profile based on video format
 fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerProfile {
-    let thread_count = ideal_thread_count();
-
     let container_profile = match video_format {
-        VideoFormat::Webm => ProfileBuilder::new(
-            caps("video/webm"),
-            caps("video/x-vp8"),
-            caps("audio/x-opus"),
-        )
-        .video_preset("vp8enc")
-        .video_element_properties(
-            ElementProperties::builder()
-                .item(
-                    ElementFactoryPropertiesMap::builder("vp8enc")
-                        .field("max-quantizer", 17)
-                        .field("cpu-used", 16)
-                        .field("cq-level", 13)
-                        .field("deadline", 1)
-                        .field("static-threshold", 100)
-                        .field_from_str("keyframe-mode", "disabled")
-                        .field("buffer-size", 20000)
-                        .field("threads", thread_count)
-                        .build(),
-                )
-                .build(),
-        )
-        .build(),
-        VideoFormat::Mkv => ProfileBuilder::new(
-            caps("video/x-matroska"),
-            gst::Caps::builder("video/x-h264")
-                .field("profile", "baseline")
-                .build(),
-            caps("audio/x-opus"),
-        )
-        .video_preset("x264enc")
-        .video_element_properties(
-            ElementProperties::builder()
-                .item(
-                    ElementFactoryPropertiesMap::builder("x264enc")
-                        .field("qp-max", 17)
-                        .field_from_str("speed-preset", "superfast")
-                        .field("threads", thread_count)
-                        .build(),
-                )
-                .build(),
-        )
-        .build(),
-        VideoFormat::Mp4 => ProfileBuilder::new(
-            caps("video/quicktime"),
-            gst::Caps::builder("video/x-h264")
-                .field("profile", "baseline")
-                .build(),
-            caps("audio/mpeg"),
-        )
-        .video_preset("x264enc")
-        .video_element_properties(
-            ElementProperties::builder()
-                .item(
-                    ElementFactoryPropertiesMap::builder("x264enc")
-                        .field("qp-max", 17)
-                        .field_from_str("speed-preset", "superfast")
-                        .field("threads", thread_count)
-                        .build(),
-                )
-                .build(),
-        )
-        .build(),
+        VideoFormat::Webm => BuiltinProfiles::WebM.get().to_encoding_profile().unwrap(),
+        VideoFormat::Mkv => BuiltinProfiles::Matroska
+            .get()
+            .to_encoding_profile()
+            .unwrap(),
+        VideoFormat::Mp4 => BuiltinProfiles::Mp4.get().to_encoding_profile().unwrap(),
         VideoFormat::Gif => panic!("Unsupported video format"),
     };
 
     tracing::debug!(suggested_file_extension = ?container_profile.file_extension());
 
     container_profile
-}
-
-/// Helper function to create a caps with just a name.
-fn caps(name: &str) -> gst::Caps {
-    gst::Caps::new_simple(name, &[])
 }
 
 /// Helper function for more helpful error messages when failing
@@ -298,7 +222,7 @@ fn videoconvert_with_default() -> Result<gst::Element> {
     conv.set_property("chroma-mode", gst_video::VideoChromaMode::None);
     conv.set_property("dither", gst_video::VideoDitherMethod::None);
     conv.set_property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly);
-    conv.set_property("n-threads", ideal_thread_count());
+    conv.set_property("n-threads", utils::ideal_thread_count());
     Ok(conv)
 }
 
@@ -457,10 +381,6 @@ fn round_to_even(number: i32) -> i32 {
 
 fn round_to_even_f32(number: f32) -> i32 {
     number as i32 / 2 * 2
-}
-
-fn ideal_thread_count() -> u32 {
-    cmp::min(glib::num_processors(), MAX_THREAD_COUNT)
 }
 
 #[cfg(test)]

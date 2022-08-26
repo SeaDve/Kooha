@@ -5,11 +5,11 @@ use gtk::glib::{
     translate::{ToGlibPtr, UnsafeFrom},
 };
 
-pub trait ElementPropertiesEncodingProfileExt {
+pub trait EncodingProfileExtManual {
     fn set_element_properties(&self, element_properties: ElementProperties);
 }
 
-impl<P: IsA<gst_pbutils::EncodingProfile>> ElementPropertiesEncodingProfileExt for P {
+impl<P: IsA<gst_pbutils::EncodingProfile>> EncodingProfileExtManual for P {
     fn set_element_properties(&self, element_properties: ElementProperties) {
         unsafe {
             gst_pbutils::ffi::gst_encoding_profile_set_element_properties(
@@ -20,8 +20,19 @@ impl<P: IsA<gst_pbutils::EncodingProfile>> ElementPropertiesEncodingProfileExt f
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, glib::Boxed)]
+#[boxed_type(name = "KoohaElementProperties")]
 pub struct ElementProperties(gst::Structure);
+
+impl Default for ElementProperties {
+    fn default() -> Self {
+        Self(
+            gst::Structure::builder("element-properties-map")
+                .field("map", gst::List::from_values([]))
+                .build(),
+        )
+    }
+}
 
 impl ElementProperties {
     /// Creates an `ElementProperties` builder that build into
@@ -32,7 +43,7 @@ impl ElementProperties {
     ///     [x264enc, key-int-max=32, tune=zerolatency],
     /// }
     pub fn builder() -> ElementPropertiesBuilder {
-        ElementPropertiesBuilder::new()
+        ElementPropertiesBuilder { map: Vec::new() }
     }
 
     pub fn into_inner(self) -> gst::Structure {
@@ -47,10 +58,6 @@ pub struct ElementPropertiesBuilder {
 }
 
 impl ElementPropertiesBuilder {
-    pub fn new() -> Self {
-        Self { map: Vec::new() }
-    }
-
     /// Insert a new `element-properties-map` map item.
     pub fn item(mut self, structure: ElementFactoryPropertiesMap) -> Self {
         self.map.push(structure.into_inner().to_send_value());
