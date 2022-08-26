@@ -448,24 +448,27 @@ mod tests {
 
     #[test]
     fn test_profile_format_from_factory_name() {
-        assert_eq!(
-            profile_format_from_factory(&find_element_factory("vp8enc").unwrap()).unwrap(),
-            gst::Caps::builder("video/x-vp8").build(),
+        assert!(
+            profile_format_from_factory(&find_element_factory("vp8enc").unwrap())
+                .unwrap()
+                .can_intersect(&gst::Caps::builder("video/x-vp8").build()),
         );
-        assert_eq!(
-            profile_format_from_factory(&find_element_factory("opusenc").unwrap()).unwrap(),
-            gst::Caps::builder("audio/x-opus").build(),
+        assert!(
+            profile_format_from_factory(&find_element_factory("opusenc").unwrap())
+                .unwrap()
+                .can_intersect(&gst::Caps::builder("audio/x-opus").build())
         );
-        assert_eq!(
-            profile_format_from_factory(&find_element_factory("matroskamux").unwrap()).unwrap(),
-            gst::Caps::builder("video/x-matroska").build(),
+        assert!(
+            profile_format_from_factory(&find_element_factory("matroskamux").unwrap())
+                .unwrap()
+                .can_intersect(&gst::Caps::builder("video/x-matroska").build()),
         );
         assert!(
             profile_format_from_factory(&find_element_factory("audioconvert").unwrap())
                 .err()
                 .unwrap()
                 .to_string()
-                .contains("must be an encoder or muxer"),
+                .contains("must be an encoder or muxer")
         );
     }
 }
