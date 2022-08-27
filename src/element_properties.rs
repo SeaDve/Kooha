@@ -26,11 +26,7 @@ pub struct ElementProperties(gst::Structure);
 
 impl Default for ElementProperties {
     fn default() -> Self {
-        Self(
-            gst::Structure::builder("element-properties-map")
-                .field("map", gst::List::from_values([]))
-                .build(),
-        )
+        Self::builder().build()
     }
 }
 
