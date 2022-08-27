@@ -375,7 +375,7 @@ fn profile_format_from_factory(factory: &gst::ElementFactory) -> Result<gst::Cap
 
     ensure!(
         factory.has_type(gst::ElementFactoryType::ENCODER | gst::ElementFactoryType::MUXER),
-        "Factory`{}` must be an encoder or muxer to be used in a profile",
+        "Factory `{}` must be an encoder or muxer to be used in a profile",
         factory_name
     );
 
@@ -429,21 +429,17 @@ mod tests {
 
     #[test]
     fn incompatibles() {
-        let a = new_simple_profile("webmmux", "x264enc", "opusenc"); // webmmux does not support x264enc
-        assert!(a
-            .to_encoding_profile()
-            .err()
-            .unwrap()
-            .to_string()
-            .contains("`x264enc` src is incompatible on `webmmux` sink"));
+        let a = new_simple_profile("webmmux", "x264enc", "opusenc");
+        assert_eq!(
+            a.to_encoding_profile().unwrap_err().to_string(),
+            "`x264enc` src is incompatible on `webmmux` sink"
+        );
 
-        let b = new_simple_profile("webmmux", "vp8enc", "lamemp3enc"); // webmmux does not support lamemp3enc
-        assert!(b
-            .to_encoding_profile()
-            .err()
-            .unwrap()
-            .to_string()
-            .contains("`lamemp3enc` src is incompatible on `webmmux` sink"));
+        let b = new_simple_profile("webmmux", "vp8enc", "lamemp3enc");
+        assert_eq!(
+            b.to_encoding_profile().unwrap_err().to_string(),
+            "`lamemp3enc` src is incompatible on `webmmux` sink"
+        );
     }
 
     #[test]
@@ -468,12 +464,11 @@ mod tests {
                 .unwrap()
                 .can_intersect(&gst::Caps::builder("video/x-vp8").build()),
         );
-        assert!(
+        assert_eq!(
             profile_format_from_factory(&find_element_factory("audioconvert").unwrap())
-                .err()
-                .unwrap()
-                .to_string()
-                .contains("must be an encoder or muxer")
+                .unwrap_err()
+                .to_string(),
+            "Factory `audioconvert` must be an encoder or muxer to be used in a profile"
         );
     }
 }
