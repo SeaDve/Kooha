@@ -62,6 +62,7 @@
                                 <style>
                                   <class name="boxed-list"/>
                                 </style>
+                                <!-- TODO move these to a flap that has switcher between container, video, audio -->
                                 <child>
                                   <object class="AdwEntryRow" id="name_row">
                                     <property name="title" translatable="yes">Name</property>
