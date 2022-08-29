@@ -280,21 +280,21 @@ impl Profile {
         Ok(container_profile)
     }
 
-    /// Create deep copy of self
-    pub fn dup(&self) -> Self {
-        glib::Object::new(&[
-            ("name", &self.name()),
-            ("container-preset-name", &self.container_preset_name()),
-            (
-                "container-element-properties",
-                &self.container_element_properties(),
-            ),
-            ("video-preset-name", &self.video_preset_name()),
-            ("video-element-properties", &self.video_element_properties()),
-            ("audio-preset-name", &self.audio_preset_name()),
-            ("audio-element-properties", &self.audio_element_properties()),
-        ])
+    pub fn deep_clone(&self) -> Self {
+        glib::Object::with_values(
+            Self::static_type(),
+            &self
+                .list_properties()
+                .iter()
+                .map(|pspec| {
+                    let property_name = pspec.name();
+                    (property_name, self.property_value(property_name))
+                })
+                .collect::<Vec<_>>(),
+        )
         .expect("Failed to create Profile.")
+        .downcast()
+        .unwrap()
     }
 }
 
