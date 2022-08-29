@@ -1,26 +1,20 @@
-use anyhow::{bail, Context, Ok, Result};
+use anyhow::{anyhow, bail, Context, Ok, Result};
 use gst::prelude::*;
 use gst_pbutils::prelude::*;
 use gtk::graphene::{Rect, Size};
 
 use std::{
+    ffi::OsStr,
     os::unix::io::RawFd,
     path::{Path, PathBuf},
 };
 
-use crate::{profile::BuiltinProfiles, screencast_session::Stream, settings::VideoFormat, utils};
+use crate::{profile::Profile, screencast_session::Stream, utils};
 
 // TODO
-// Plugin preferences ui (Show summary on drop down):
-// * Bring back GIF support `gifenc repeat=-1 speed=30`
-// * Handle missing plugins (Hide profile if missing)
-// * Option for vaapi profiles
-//
 // * Do we need restrictions?
 // * Can we drop filter elements (videorate, videoconvert, videoscale, audioconvert) and let encodebin handle it?
 // * Add tests
-
-const GIF_FRAMERATE_OVERRIDE: u32 = 15;
 
 #[derive(Debug)]
 struct SelectAreaContext {
@@ -31,9 +25,9 @@ struct SelectAreaContext {
 #[derive(Debug)]
 #[must_use]
 pub struct PipelineBuilder {
-    file_path: PathBuf,
+    saving_location: PathBuf,
     framerate: u32,
-    format: VideoFormat,
+    profile: Profile,
     fd: RawFd,
     streams: Vec<Stream>,
     speaker_source: Option<String>,
@@ -43,16 +37,16 @@ pub struct PipelineBuilder {
 
 impl PipelineBuilder {
     pub fn new(
-        file_path: &Path,
+        saving_location: &Path,
         framerate: u32,
-        format: VideoFormat,
+        profile: Profile,
         fd: RawFd,
         streams: Vec<Stream>,
     ) -> Self {
         Self {
-            file_path: file_path.to_path_buf(),
+            saving_location: saving_location.to_path_buf(),
             framerate,
-            format,
+            profile,
             fd,
             streams,
             speaker_source: None,
@@ -80,31 +74,34 @@ impl PipelineBuilder {
     }
 
     pub fn build(&self) -> Result<gst::Pipeline> {
-        let pipeline = gst::Pipeline::new(None);
+        let encoding_profile = self.profile.to_encoding_profile()?;
+        let file_extension = encoding_profile.file_extension().ok_or_else(|| {
+            anyhow!(
+                "Found no file extension for profile with name `{}`",
+                self.profile.name()
+            )
+        })?;
+        let file_path = new_recording_path(&self.saving_location, file_extension);
 
         let encodebin = element_factory_make("encodebin")?;
-        encodebin.set_property("profile", &create_profile(self.format));
+        encodebin.set_property("profile", &encoding_profile);
         let queue = element_factory_make("queue")?;
         let filesink = element_factory_make_named("filesink", Some("filesink"))?;
         filesink.set_property(
             "location",
-            self.file_path
+            file_path
                 .to_str()
                 .context("Could not convert file path to string")?,
         );
 
+        let pipeline = gst::Pipeline::new(None);
         pipeline.add_many(&[&encodebin, &queue, &filesink])?;
         gst::Element::link_many(&[&encodebin, &queue, &filesink])?;
 
-        let framerate = match self.format {
-            VideoFormat::Gif => GIF_FRAMERATE_OVERRIDE,
-            _ => self.framerate,
-        };
-
         tracing::debug!(
-            file_path = ?self.file_path,
-            format = ?self.format,
-            framerate,
+            file_path = %file_path.display(),
+            profile_name = ?self.profile.name(),
+            framerate = self.framerate,
             stream_len = self.streams.len(),
             streams = ?self.streams,
             speaker_source = ?self.speaker_source,
@@ -116,7 +113,7 @@ impl PipelineBuilder {
             1 => single_stream_pipewiresrc_bin(
                 self.fd,
                 self.streams.get(0).unwrap(),
-                framerate,
+                self.framerate,
                 self.select_area_context.as_ref(),
             )?,
             _ => {
@@ -124,7 +121,7 @@ impl PipelineBuilder {
                     bail!("Select area is not supported for multiple streams");
                 }
 
-                multi_stream_pipewiresrc_bin(self.fd, &self.streams, framerate)?
+                multi_stream_pipewiresrc_bin(self.fd, &self.streams, self.framerate)?
             }
         };
 
@@ -172,23 +169,6 @@ impl PipelineBuilder {
 
         Ok(pipeline)
     }
-}
-
-/// Create an encoding profile based on video format
-fn create_profile(video_format: VideoFormat) -> gst_pbutils::EncodingContainerProfile {
-    let container_profile = match video_format {
-        VideoFormat::Webm => BuiltinProfiles::WebM.get().to_encoding_profile().unwrap(),
-        VideoFormat::Mkv => BuiltinProfiles::Matroska
-            .get()
-            .to_encoding_profile()
-            .unwrap(),
-        VideoFormat::Mp4 => BuiltinProfiles::Mp4.get().to_encoding_profile().unwrap(),
-        VideoFormat::Gif => panic!("Unsupported video format"),
-    };
-
-    tracing::debug!(suggested_file_extension = ?container_profile.file_extension());
-
-    container_profile
 }
 
 /// Helper function for more helpful error messages when failing
@@ -381,6 +361,18 @@ fn round_to_even(number: i32) -> i32 {
 
 fn round_to_even_f32(number: f32) -> i32 {
     number as i32 / 2 * 2
+}
+
+fn new_recording_path(saving_location: &Path, extension: impl AsRef<OsStr>) -> PathBuf {
+    let file_name = glib::DateTime::now_local()
+        .expect("You are somehow on year 9999")
+        .format("Kooha-%F-%H-%M-%S")
+        .expect("Invalid format string");
+
+    let mut path = saving_location.join(file_name);
+    path.set_extension(extension);
+
+    path
 }
 
 #[cfg(test)]

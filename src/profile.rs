@@ -4,93 +4,7 @@ use gtk::{glib, subclass::prelude::*};
 
 use std::cell::RefCell;
 
-use crate::{
-    element_properties::{
-        ElementFactoryPropertiesMap, ElementProperties, EncodingProfileExtManual,
-    },
-    utils,
-};
-
-pub enum BuiltinProfiles {
-    WebM,
-    Mp4,
-    Matroska,
-}
-
-impl BuiltinProfiles {
-    pub fn get(self) -> Profile {
-        match self {
-            Self::WebM => BUILTIN_PROFILES.with(|profiles| profiles[0].clone()),
-            Self::Mp4 => BUILTIN_PROFILES.with(|profiles| profiles[1].clone()),
-            Self::Matroska => BUILTIN_PROFILES.with(|profiles| profiles[2].clone()),
-        }
-    }
-}
-
-thread_local! {
-    static BUILTIN_PROFILES: Vec<Profile> = vec![
-        {
-            let profile = Profile::new("WebM");
-            profile.set_container_preset_name("webmmux");
-            profile.set_video_preset_name("vp8enc");
-            profile.set_video_element_properties(
-                ElementProperties::builder()
-                    .item(
-                        ElementFactoryPropertiesMap::builder("vp8enc")
-                            .field("max-quantizer", 17)
-                            .field("cpu-used", 16)
-                            .field("cq-level", 13)
-                            .field("deadline", 1)
-                            .field("static-threshold", 100)
-                            .field_from_str("keyframe-mode", "disabled")
-                            .field("buffer-size", 20000)
-                            .field("threads", utils::ideal_thread_count())
-                            .build(),
-                    )
-                    .build(),
-            );
-            profile.set_audio_preset_name("opusenc");
-            profile
-        },
-        {
-            // TODO support "profile" = baseline
-            let profile = Profile::new("MP4");
-            profile.set_container_preset_name("mp4mux");
-            profile.set_video_preset_name("x264enc");
-            profile.set_video_element_properties(
-                ElementProperties::builder()
-                    .item(
-                        ElementFactoryPropertiesMap::builder("x264enc")
-                            .field("qp-max", 17)
-                            .field_from_str("speed-preset", "superfast")
-                            .field("threads", utils::ideal_thread_count())
-                            .build(),
-                    )
-                    .build(),
-            );
-            profile.set_audio_preset_name("lamemp3enc");
-            profile
-        },
-        {
-            let profile = Profile::new("Matroska");
-            profile.set_container_preset_name("matroskamux");
-            profile.set_video_preset_name("x264enc");
-            profile.set_video_element_properties(
-                ElementProperties::builder()
-                    .item(
-                        ElementFactoryPropertiesMap::builder("x264enc")
-                            .field("qp-max", 17)
-                            .field_from_str("speed-preset", "superfast")
-                            .field("threads", utils::ideal_thread_count())
-                            .build(),
-                    )
-                    .build(),
-            );
-            profile.set_audio_preset_name("opusenc");
-            profile
-        },
-    ];
-}
+use crate::element_properties::{ElementProperties, EncodingProfileExtManual};
 
 mod imp {
     use super::*;
@@ -118,11 +32,7 @@ mod imp {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
                     glib::ParamSpecString::builder("name")
-                        .flags(
-                            glib::ParamFlags::READWRITE
-                                | glib::ParamFlags::EXPLICIT_NOTIFY
-                                | glib::ParamFlags::CONSTRUCT,
-                        )
+                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
                     glib::ParamSpecString::builder("container-preset-name")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
@@ -242,6 +152,8 @@ impl Profile {
             return;
         }
 
+        tracing::debug!("Profile `{}` container set to `{}`", self.name(), name);
+
         self.imp().container_preset_name.replace(name.to_string());
         self.notify("container-preset-name");
     }
@@ -268,6 +180,8 @@ impl Profile {
             return;
         }
 
+        tracing::debug!("Profile `{}` video set to `{}`", self.name(), name);
+
         self.imp().video_preset_name.replace(name.to_string());
         self.notify("video-preset-name");
     }
@@ -293,6 +207,8 @@ impl Profile {
         if name == self.audio_preset_name() {
             return;
         }
+
+        tracing::debug!("Profile `{}` audio set to `{}`", self.name(), name);
 
         self.imp().audio_preset_name.replace(name.to_string());
         self.notify("audio-preset-name");
@@ -363,6 +279,23 @@ impl Profile {
 
         Ok(container_profile)
     }
+
+    /// Create deep copy of self
+    pub fn dup(&self) -> Self {
+        glib::Object::new(&[
+            ("name", &self.name()),
+            ("container-preset-name", &self.container_preset_name()),
+            (
+                "container-element-properties",
+                &self.container_element_properties(),
+            ),
+            ("video-preset-name", &self.video_preset_name()),
+            ("video-element-properties", &self.video_element_properties()),
+            ("audio-preset-name", &self.audio_preset_name()),
+            ("audio-element-properties", &self.audio_element_properties()),
+        ])
+        .expect("Failed to create Profile.")
+    }
 }
 
 fn find_element_factory(factory_name: &str) -> Result<gst::ElementFactory> {
@@ -412,19 +345,6 @@ mod tests {
         profile.set_video_preset_name(video_preset_name);
         profile.set_audio_preset_name(audio_preset_name);
         profile
-    }
-
-    #[test]
-    fn builtins() {
-        assert_eq!(BuiltinProfiles::WebM.get().name(), "WebM");
-        assert_eq!(BuiltinProfiles::Mp4.get().name(), "MP4");
-        assert_eq!(BuiltinProfiles::Matroska.get().name(), "Matroska");
-
-        BUILTIN_PROFILES.with(|profiles| {
-            profiles
-                .iter()
-                .for_each(|profile| assert!(profile.to_encoding_profile().is_ok()));
-        });
     }
 
     #[test]

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="KoohaProfileTile" parent="GtkFlowBoxChild">
+    <style>
+      <class name="card"/>
+    </style>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkLabel" id="name_label">
+            <property name="xalign">0</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="column-spacing">12</property>
+            <property name="row-spacing">6</property>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">package-x-generic-symbolic</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="muxer_label">
+                <property name="xalign">0</property>
+                <property name="yalign">0.5</property>
+                <style>
+                  <class name="caption"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">video-x-generic-symbolic</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="video_encoder_label">
+                <property name="xalign">0</property>
+                <property name="yalign">0.5</property>
+                <style>
+                  <class name="caption"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">audio-speakers-symbolic</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="audio_encoder_label">
+                <property name="xalign">0</property>
+                <property name="yalign">0.5</property>
+                <style>
+                  <class name="caption"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="hexpand">True</property>
+            <child>
+              <object class="GtkButton">
+                <property name="halign">end</property>
+                <property name="icon-name">edit-copy-symbolic</property>
+                <property name="action-name">profile-tile.copy</property>
+                <style>
+                  <class name="flat"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="halign">end</property>
+                <property name="icon-name">user-trash-symbolic</property>
+                <property name="action-name">profile-tile.delete</property>
+                <style>
+                  <class name="flat"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

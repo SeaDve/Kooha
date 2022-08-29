@@ -14,6 +14,7 @@ gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gtk = { package = "gtk4", version = "0.4.5" }
 gdk-wayland = { package = "gdk4-wayland", version = "0.4.5" }
 gdk-x11 = { package = "gdk4-x11", version = "0.4.5" }
+glib = { version = "0.15.12", features = ["v2_72"]}
 adw = { package = "libadwaita", version = "0.2.0-alpha.2", features = ["v1_2"] }
 gst = { package = "gstreamer", version = "0.18.2" }
 gst_video = { package = "gstreamer-video", version = "0.18.2" }

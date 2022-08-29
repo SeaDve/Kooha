@@ -744,6 +744,7 @@ dependencies = [
  "gdk4-wayland",
  "gdk4-x11",
  "gettext-rs",
+ "glib",
  "gsettings-macro",
  "gst-plugin-gif",
  "gstreamer",

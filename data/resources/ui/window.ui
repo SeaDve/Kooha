@@ -292,6 +292,13 @@
     </child>
   </template>
   <menu id="menu">
+    <!-- TODO show summary -->
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Edit Profiles…</attribute>
+        <attribute name="action">win.edit-profiles</attribute>
+      </item>
+    </section>
     <section>
       <submenu>
         <attribute name="label" translatable="yes">_Delay</attribute>
@@ -314,29 +321,6 @@
           <attribute translatable="yes" name="label">10 seconds</attribute>
           <attribute name="action">win.record-delay</attribute>
           <attribute name="target" type="u">10</attribute>
-        </item>
-      </submenu>
-      <submenu>
-        <attribute name="label" translatable="yes">_Video Format</attribute>
-        <item>
-          <attribute translatable="yes" name="label">WebM</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">webm</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">MKV</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">mkv</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">MP4</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">mp4</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">GIF</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">gif</attribute>
         </item>
       </submenu>
       <item>

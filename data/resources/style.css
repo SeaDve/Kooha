@@ -28,3 +28,14 @@ button.copy-done {
     color: @window_fg_color;
   }
 }
+
+profiletile {
+  padding: 18px;
+}
+
+profiletile.selected {
+  padding: 15px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: @accent_color;
+}

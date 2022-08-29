@@ -12,8 +12,9 @@ use crate::{
     cancelled::Cancelled,
     config::PROFILE,
     help::Help,
+    profile_window::ProfileWindow,
     recording::{Recording, State as RecordingState},
-    settings::{CaptureMode, VideoFormat},
+    settings::CaptureMode,
     toggle_button::ToggleButton,
     utils, Application,
 };
@@ -87,6 +88,13 @@ mod imp {
                     .settings()
                     .set_screencast_restore_token("");
             });
+
+            klass.install_action("win.edit-profiles", None, |obj, _, _| {
+                let profile_window = ProfileWindow::new(Application::default().profile_manager());
+                profile_window.set_modal(true);
+                profile_window.set_transient_for(Some(obj));
+                profile_window.present();
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -105,7 +113,6 @@ mod imp {
             obj.setup_settings();
 
             obj.update_view();
-            obj.update_audio_toggles_sensitivity();
             obj.update_title_label();
         }
     }
@@ -244,8 +251,15 @@ impl Window {
         ];
         *imp.recording.lock().await = Some((recording.clone(), handler_ids));
 
-        let settings = Application::default().settings();
-        recording.start(Some(self), settings).await;
+        let application = Application::default();
+        recording
+            .start(
+                Some(self),
+                &application.settings(),
+                // TODO make record button insensitive when no profile
+                &application.profile_manager().active_profile().unwrap(),
+            )
+            .await;
     }
 
     async fn toggle_pause(&self) -> Result<()> {
@@ -385,14 +399,6 @@ impl Window {
         }
     }
 
-    fn update_audio_toggles_sensitivity(&self) {
-        let settings = Application::default().settings();
-        let is_enabled = settings.video_format() != VideoFormat::Gif;
-
-        self.action_set_enabled("win.record-speaker", is_enabled);
-        self.action_set_enabled("win.record-mic", is_enabled);
-    }
-
     fn update_forget_video_sources_action(&self) {
         let settings = Application::default().settings();
         let has_restore_token = !settings.screencast_restore_token().is_empty();
@@ -411,16 +417,11 @@ impl Window {
             obj.update_title_label();
         }));
 
-        settings.connect_video_format_changed(clone!(@weak self as obj => move |_| {
-            obj.update_audio_toggles_sensitivity();
-        }));
-
         settings.connect_screencast_restore_token_changed(clone!(@weak self as obj => move |_| {
             obj.update_forget_video_sources_action();
         }));
 
         self.update_title_label();
-        self.update_audio_toggles_sensitivity();
         self.update_forget_video_sources_action();
 
         self.add_action(&settings.create_record_speaker_action());
@@ -428,7 +429,6 @@ impl Window {
         self.add_action(&settings.create_show_pointer_action());
         self.add_action(&settings.create_capture_mode_action());
         self.add_action(&settings.create_record_delay_action());
-        self.add_action(&settings.create_video_format_action());
     }
 }
 

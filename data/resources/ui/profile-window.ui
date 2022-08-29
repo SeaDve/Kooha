@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="KoohaProfileWindow" parent="AdwWindow">
+    <property name="default-width">1000</property>
+    <property name="default-height">600</property>
+    <property name="content">
+      <object class="AdwToastOverlay" id="toast_overlay">
+        <property name="child">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="AdwHeaderBar">
+                <property name="title-widget">
+                  <object class="AdwWindowTitle">
+                    <property name="title">Edit Profiles</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="vexpand">True</property>
+                <property name="hscrollbar-policy">never</property>
+                <property name="child">
+                  <object class="AdwClamp">
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-top">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="valign">start</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <property name="title" translatable="yes">Profiles</property>
+                            <child type="header-suffix">
+                              <object class="GtkButton">
+                                <property name="icon-name">list-add-symbolic</property>
+                                <property name="action-name">profile-window.new-profile</property>
+                                <style>
+                                  <class name="flat"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkFlowBox" id="profiles_box">
+                                <property name="column-spacing">6</property>
+                                <property name="row-spacing">6</property>
+                                <property name="selection-mode">none</property>
+                                <property name="min-children-per-line">1</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup">
+                            <property name="title" translatable="yes">Selected Profile Information</property>
+                            <child>
+                              <object class="GtkListBox">
+                                <style>
+                                  <class name="boxed-list"/>
+                                </style>
+                                <child>
+                                  <object class="AdwEntryRow" id="name_row">
+                                    <property name="title" translatable="yes">Name</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwComboRow" id="muxer_row">
+                                    <property name="title" translatable="yes">Container Format</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwComboRow" id="video_encoder_row">
+                                    <property name="title" translatable="yes">Video Codec</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwComboRow" id="audio_encoder_row">
+                                    <property name="title" translatable="yes">Audio Codec</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>
