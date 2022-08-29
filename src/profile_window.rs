@@ -224,8 +224,14 @@ impl ProfileWindow {
         );
 
         imp.muxer_row
-            .set_model(model.map(|model| model.known_muxers()));
+            .block_signal(imp.muxer_row_handler_id.get().unwrap());
+        imp.video_encoder_row
+            .block_signal(imp.video_encoder_row_handler_id.get().unwrap());
+        imp.audio_encoder_row
+            .block_signal(imp.audio_encoder_row_handler_id.get().unwrap());
 
+        imp.muxer_row
+            .set_model(model.map(|model| model.known_muxers()));
         imp.video_encoder_row.set_model(
             model
                 .map(|model| {
@@ -246,6 +252,13 @@ impl ProfileWindow {
                 })
                 .as_ref(),
         );
+
+        imp.muxer_row
+            .unblock_signal(imp.muxer_row_handler_id.get().unwrap());
+        imp.video_encoder_row
+            .unblock_signal(imp.video_encoder_row_handler_id.get().unwrap());
+        imp.audio_encoder_row
+            .unblock_signal(imp.audio_encoder_row_handler_id.get().unwrap());
 
         if let Some(model) = model {
             self.add_model_signal(model.connect_active_profile_notify(
