@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # MartinIIOT <max_m@centrum.sk>, 2021.
 # Dušan Kazik <prescott66@gmail.com>, 2021.
+# Marek Ľach <graweeld@googlemail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2021-10-07 08:05+0000\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"PO-Revision-Date: 2022-08-29 09:18+0000\n"
+"Last-Translator: Marek Ľach <graweeld@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kooha/pot-file/sk/"
 ">\n"
 "Language: sk\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -134,7 +135,7 @@ msgstr "Prepnutie pozastavenia"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Zrušiť nahrávanie"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -174,11 +175,11 @@ msgstr ""
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Povoliť mikrofón"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Zakázať mikrofón"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -186,11 +187,11 @@ msgstr "Zobrazí ukazovateľa"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Skryť kurzor"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Začať nahrávanie"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -198,11 +199,11 @@ msgstr "Zaznamenať"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Zabudnúť na predošle vybrané zdroje pre video"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Zastaviť nahrávanie"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -210,7 +211,7 @@ msgstr "Zastaviť"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Pozastaviť nahrávanie"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -218,7 +219,7 @@ msgstr "Zaznamenáva sa…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Zrušiť nahrávanie"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
@@ -238,7 +239,7 @@ msgstr "Žiadne"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3 sekundy"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
@@ -293,11 +294,11 @@ msgstr ""
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Prispieť (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Prispieť (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -305,7 +306,7 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Prekladať"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
@@ -314,11 +315,11 @@ msgstr ""
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Kliknite sem pre zhliadnutie videá."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Ukázať v Súboroch"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."

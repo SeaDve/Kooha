@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-15 02:48+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2022-08-29 09:18+0000\n"
+"Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
 "Language: ja\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -105,7 +105,7 @@ msgstr "⌨️ 便利なキーボードショートカットもあります。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -137,7 +137,7 @@ msgstr "録画の一時停止／再開"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "録画をキャンセル"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -169,19 +169,19 @@ msgstr "スクリーンの選択範囲をキャプチャする"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "デスクトップでの音を有効"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "デスクトップでの音を無効"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "マイクを有効にする"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "マイクを無効にする"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -189,11 +189,11 @@ msgstr "ポインターを表示する"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "ポインターを隠す"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "録画を開始"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -201,11 +201,11 @@ msgstr "録画"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "以前に選択したビデオソースを忘れる"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "録画を停止"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -213,7 +213,7 @@ msgstr "停止"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "録画を一時停止"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -221,7 +221,7 @@ msgstr "録画開始まで…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "録画をキャンセル"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
@@ -241,7 +241,7 @@ msgstr "なし"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3秒"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
@@ -285,7 +285,7 @@ msgstr "Koohaについて(_A)"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -298,11 +298,11 @@ msgstr ""
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "寄付 (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "寄付 (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -310,51 +310,51 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "翻訳"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "スクリーンキャストを保存しました"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "ここをクリックして動画を確認できます。"
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "ファイル で表示"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "PulseAudioがシステムにインストールされていることを確認してください。"
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "デバイスモニタの開始に失敗しました"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "PulseAudioデーモンへの接続に失敗しました"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "録画の開始に失敗しました"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "{} でヘルプを確認できます。"
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "マイクソースが見つかりません"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "デスクトップスピーカーのソースが見つかりません"
 
 #: src/recording.rs:242
 msgid ""
@@ -368,20 +368,20 @@ msgstr ""
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "保存場所が存在し、アクセス可能であることを確認してください。"
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "録画中にエラーが発生しました"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "書き込みのために\"{}\"を開けませんでした"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "書き込むためにファイルを開けませんでした"
 
 #: src/settings.rs:35
 msgid "Select Recordings Folder"
@@ -396,12 +396,13 @@ msgid "_Select"
 msgstr "選択(_S)"
 
 #: src/settings.rs:62
+#, fuzzy
 msgid "No folder selected"
-msgstr ""
+msgstr "フォルダが選択されていない"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "フォルダを選択してやり直しください。"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
@@ -414,27 +415,27 @@ msgstr "アクセス可能な場所を選んで、もう一度お試しくださ
 
 #: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "一時停止の切り替えに失敗しました。"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "クリップボードにコピー"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "クリップボードにコピーしました"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "エラーの詳細を表示"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: src/window.rs:349
 msgid "Paused"

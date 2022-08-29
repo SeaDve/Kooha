@@ -7,338 +7,344 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-08-29 09:18+0000\n"
+"Last-Translator: Victor Keranov <vkeranov@gmail.com>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/kooha/pot-file/"
+"bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
 #: src/main.rs:57
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Лесно записвай своя екран"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Скрийнкаст;Рекордер;Екран;Видео;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "Записвай екрана си по интуитивен и ясен начин, без разсейване."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha е лесен скрийн рекордер с минималистичен интерфейс. Просто натискаш "
+"бутона за запис, без да са нужни много настройки."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Основните функции на Kooha включват следното:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
-msgstr ""
+msgstr "🎥 Записвай своя екран без никакви усложнения."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
 msgstr ""
+"🎙️ Записвай звука от твоя микрофон, компютърните звуци или и двете заедно."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr ""
+msgstr "📼 Поддръжка на WebM, MP4, GIF и MKV формати."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
-msgstr ""
+msgstr "🗔 Избор от различни източници."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Хардуерно ускорен енкодинг по избор"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
-msgstr ""
+msgstr "🖥️ Избор на монитор или прозорец за запис."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
+msgstr "🖼️ Възможност за избор на определен участък от твоя екран."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
-msgstr ""
+msgstr "⏲️ Задаване на закъснение за подготовка преди старт на записа."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
 msgid "🖱️ Hide or show mouse pointer."
-msgstr ""
+msgstr "🖱️ Показване или скриване на курсора на мишката."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
 msgid "💾 Choose a saving location for your recording."
-msgstr ""
+msgstr "💾 Избор на локация за запис на твоето видео."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
 msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr ""
+msgstr "⌨️ Използване на полезни клавишни комбинации."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Дейв Патрик Каберто"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "Основни"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Отвори меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Покажи клавишни комбинации"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Изход"
 
 #: data/resources/ui/shortcuts.ui:33 src/window.rs:341
 msgid "Recording"
-msgstr ""
+msgstr "Запис"
 
 #: data/resources/ui/shortcuts.ui:37
 msgid "Toggle Record"
-msgstr ""
+msgstr "Превключване на запис"
 
 #: data/resources/ui/shortcuts.ui:44
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Превключване на пауза"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Отказ на запис"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
-msgstr ""
+msgstr "Превключване звуците на компютъра"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Превключване на микрофона"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Превключване курсора на мишката"
 
 #: data/resources/ui/window.ui:29
 msgid "Main Menu"
-msgstr ""
+msgstr "Основно меню"
 
 #: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Запис на целия екран или на прозорец"
 
 #: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Запис на участък от екрана"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Разреши десктоп звуците"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Забрани десктоп звуците"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Разреши микрофона"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Забрани микрофона"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
-msgstr ""
+msgstr "Покажи курсора"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Скрий курсора"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Започни запис"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
-msgstr ""
+msgstr "Запис"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Забрави предишно избрани източници на запис"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Спри запис"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
-msgstr ""
+msgstr "Спри"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Пауза запис"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr ""
+msgstr "Запис след…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Откажи запис"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr ""
+msgstr "Откажи"
 
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
-msgstr ""
+msgstr "Изчистване…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Delay"
-msgstr ""
+msgstr "_Закъснение"
 
 #: data/resources/ui/window.ui:299
 msgid "None"
-msgstr ""
+msgstr "Без"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3 секунди"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
-msgstr ""
+msgstr "5 секунди"
 
 #: data/resources/ui/window.ui:314
 msgid "10 seconds"
-msgstr ""
+msgstr "10 секунди"
 
 #: data/resources/ui/window.ui:320
 msgid "_Video Format"
-msgstr ""
+msgstr "_Видео формат"
 
 #: data/resources/ui/window.ui:322
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: data/resources/ui/window.ui:327
 msgid "MKV"
-msgstr ""
+msgstr "MKV"
 
 #: data/resources/ui/window.ui:332
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: data/resources/ui/window.ui:337
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: data/resources/ui/window.ui:343
 msgid "_Save to…"
-msgstr ""
+msgstr "_Запиши в…"
 
 #: data/resources/ui/window.ui:349
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Клавишни комбинации"
 
 #: data/resources/ui/window.ui:353
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Относно Kooha"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Дейв Патрик Каберто"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
 msgid "translator-credits"
-msgstr ""
+msgstr "Victor Keranov"
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Дарение (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Дарение (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Преведи"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Клипът е записан"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Натисни тук за преглед на видеото."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Покажи във файлове"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Убеди се, че имаш инсталиран PulseAudio на твоята система."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Неуспех при стартиране на монитора"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Неуспех при свързване с PulseAudio демона"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Неуспех при старт на записа"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Провери {} за помощ."
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "Не бе открит микрофон"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Не бе открит десктоп говорител"
 
 #: src/recording.rs:242
 msgid ""
@@ -346,85 +352,88 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
+"Може би няма инсталиран GStreamer плъгин. Ако е инсталиран и все пак не "
+"работи, моля докладвай на <a href=\"https://github.com/SeaDve/Kooha/issues\""
+">страницата на Kooha</a>."
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Моля увери се, че локацията за запис съществува и е достъпна."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Възникна грешка по време на запис"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Неуспех при отваряне на “{}” за запис"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Неуспех при отваряне на файл за запис"
 
 #: src/settings.rs:35
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Избери директория за записи"
 
 #: src/settings.rs:45
 msgid "_Cancel"
-msgstr ""
+msgstr "_Отказ"
 
 #: src/settings.rs:46
 msgid "_Select"
-msgstr ""
+msgstr "_Избери"
 
 #: src/settings.rs:62
 msgid "No folder selected"
-msgstr ""
+msgstr "Не е избрана директория"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Моля избери директория и опитай отново."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "Няма достъп до “{}”"
 
 #: src/settings.rs:73
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "Моля избери достъпна локация и опитай отново."
 
 #: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Ок"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Неуспех при превключване на пауза"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Копирай в системния буфер"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Копирано в системния буфер"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Покажи подробна грешка"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Помощ"
 
 #: src/window.rs:349
 msgid "Paused"
-msgstr ""
+msgstr "На пауза"
 
 #: src/window.rs:383
 msgid "Normal"
-msgstr ""
+msgstr "Нормален"
 
 #: src/window.rs:384
 msgid "Selection"
-msgstr ""
+msgstr "Участък"
