@@ -26,7 +26,7 @@ mod area_selector;
 mod audio_device;
 mod cancelled;
 mod config;
-mod element_properties;
+mod element_factory_profile;
 mod help;
 mod pipeline;
 mod profile;

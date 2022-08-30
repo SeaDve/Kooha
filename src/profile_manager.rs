@@ -4,11 +4,7 @@ use once_cell::unsync::OnceCell;
 
 use std::cell::RefCell;
 
-use crate::{
-    element_properties::{ElementFactoryPropertiesMap, ElementProperties},
-    profile::Profile,
-    utils,
-};
+use crate::{element_factory_profile::ElementFactoryProfile, profile::Profile, utils};
 
 // TODO serialize
 
@@ -229,66 +225,48 @@ fn builtin_profiles() -> Vec<Profile> {
     vec![
         // TODO bring back gif support `gifenc repeat=-1 speed=30`. Disable `win.record-speaker` and `win.record-mic` actions. 15 fps override
         // TODO vaapi?
-        // TODO Handle missing plugins (Hide profile if missing)
+        // TODO Handle missing plugins add warning if missing
         {
-            let profile = Profile::new("WebM");
-            profile.set_container_preset_name("webmmux");
-            profile.set_video_preset_name("vp8enc");
-            profile.set_video_element_properties(
-                ElementProperties::builder()
-                    .item(
-                        ElementFactoryPropertiesMap::builder("vp8enc")
-                            .field("max-quantizer", 17)
-                            .field("cpu-used", 16)
-                            .field("cq-level", 13)
-                            .field("deadline", 1)
-                            .field("static-threshold", 100)
-                            .field_from_str("keyframe-mode", "disabled")
-                            .field("buffer-size", 20000)
-                            .field("threads", utils::ideal_thread_count())
-                            .build(),
-                    )
+            Profile::new(
+                "WebM",
+                &ElementFactoryProfile::new("webmmux"),
+                &ElementFactoryProfile::builder("vp8enc")
+                    .field("max-quantizer", 17)
+                    .field("cpu-used", 16)
+                    .field("cq-level", 13)
+                    .field("deadline", 1)
+                    .field("static-threshold", 100)
+                    .field_from_str("keyframe-mode", "disabled")
+                    .field("buffer-size", 20000)
+                    .field("threads", utils::ideal_thread_count())
                     .build(),
-            );
-            profile.set_audio_preset_name("opusenc");
-            profile
+                &ElementFactoryProfile::new("opusenc"),
+            )
         },
         {
             // TODO support "profile" = baseline
-            let profile = Profile::new("MP4");
-            profile.set_container_preset_name("mp4mux");
-            profile.set_video_preset_name("x264enc");
-            profile.set_video_element_properties(
-                ElementProperties::builder()
-                    .item(
-                        ElementFactoryPropertiesMap::builder("x264enc")
-                            .field("qp-max", 17)
-                            .field_from_str("speed-preset", "superfast")
-                            .field("threads", utils::ideal_thread_count())
-                            .build(),
-                    )
+            Profile::new(
+                "MP4",
+                &ElementFactoryProfile::new("mp4mux"),
+                &ElementFactoryProfile::builder("x264enc")
+                    .field("qp-max", 17)
+                    .field_from_str("speed-preset", "superfast")
+                    .field("threads", utils::ideal_thread_count())
                     .build(),
-            );
-            profile.set_audio_preset_name("lamemp3enc");
-            profile
+                &ElementFactoryProfile::new("lamemp3enc"),
+            )
         },
         {
-            let profile = Profile::new("Matroska");
-            profile.set_container_preset_name("matroskamux");
-            profile.set_video_preset_name("x264enc");
-            profile.set_video_element_properties(
-                ElementProperties::builder()
-                    .item(
-                        ElementFactoryPropertiesMap::builder("x264enc")
-                            .field("qp-max", 17)
-                            .field_from_str("speed-preset", "superfast")
-                            .field("threads", utils::ideal_thread_count())
-                            .build(),
-                    )
+            Profile::new(
+                "Matroska",
+                &ElementFactoryProfile::new("matroskamux"),
+                &ElementFactoryProfile::builder("x264enc")
+                    .field("qp-max", 17)
+                    .field_from_str("speed-preset", "superfast")
+                    .field("threads", utils::ideal_thread_count())
                     .build(),
-            );
-            profile.set_audio_preset_name("opusenc");
-            profile
+                &ElementFactoryProfile::new("opusenc"),
+            )
         },
     ]
 }

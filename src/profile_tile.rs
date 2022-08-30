@@ -1,3 +1,4 @@
+use gettextrs::gettext;
 use gtk::{
     glib::{self, closure_local},
     prelude::*,
@@ -6,7 +7,7 @@ use gtk::{
 
 use std::cell::{Cell, RefCell};
 
-use crate::profile::Profile;
+use crate::{element_factory_profile::ElementFactoryProfile, profile::Profile};
 
 mod imp {
     use super::*;
@@ -117,25 +118,35 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
+            let profile_to_label_func = |_: &glib::Binding, value: &glib::Value| {
+                let profile = value.get::<Option<ElementFactoryProfile>>().unwrap();
+                Some(profile.map_or_else(
+                    || format!("<i>{}</i>", gettext("None")).to_value(),
+                    |profile| profile.factory_name().to_value(),
+                ))
+            };
             self.binding_group
                 .bind("name", &self.name_label.get(), "label")
                 .build();
             self.binding_group
-                .bind("container-preset-name", &self.muxer_label.get(), "label")
+                .bind("muxer-profile", &self.muxer_label.get(), "label")
+                .transform_to(profile_to_label_func)
                 .build();
             self.binding_group
                 .bind(
-                    "video-preset-name",
+                    "video-encoder-profile",
                     &self.video_encoder_label.get(),
                     "label",
                 )
+                .transform_to(profile_to_label_func)
                 .build();
             self.binding_group
                 .bind(
-                    "audio-preset-name",
+                    "audio-encoder-profile",
                     &self.audio_encoder_label.get(),
                     "label",
                 )
+                .transform_to(profile_to_label_func)
                 .build();
         }
     }

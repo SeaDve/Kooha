@@ -4,7 +4,7 @@ use gtk::{glib, subclass::prelude::*};
 
 use std::cell::RefCell;
 
-use crate::element_properties::{ElementProperties, EncodingProfileExtManual};
+use crate::element_factory_profile::{ElementFactoryProfile, EncodingProfileExtManual};
 
 mod imp {
     use super::*;
@@ -13,12 +13,13 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct Profile {
         pub(super) name: RefCell<String>,
-        pub(super) container_preset_name: RefCell<String>,
-        pub(super) container_element_properties: RefCell<ElementProperties>,
-        pub(super) video_preset_name: RefCell<String>,
-        pub(super) video_element_properties: RefCell<ElementProperties>,
-        pub(super) audio_preset_name: RefCell<String>,
-        pub(super) audio_element_properties: RefCell<ElementProperties>,
+        pub(super) muxer_profile: RefCell<Option<ElementFactoryProfile>>,
+        pub(super) video_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
+        pub(super) audio_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
+
+        pub(super) muxer_factory: RefCell<Option<gst::ElementFactory>>,
+        pub(super) video_encoder_factory: RefCell<Option<gst::ElementFactory>>,
+        pub(super) audio_encoder_factory: RefCell<Option<gst::ElementFactory>>,
     }
 
     #[glib::object_subclass]
@@ -34,30 +35,21 @@ mod imp {
                     glib::ParamSpecString::builder("name")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
-                    glib::ParamSpecString::builder("container-preset-name")
-                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
-                        .build(),
                     glib::ParamSpecBoxed::builder(
-                        "container-element-properties",
-                        ElementProperties::static_type(),
+                        "muxer-profile",
+                        ElementFactoryProfile::static_type(),
                     )
                     .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                     .build(),
-                    glib::ParamSpecString::builder("video-preset-name")
-                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
-                        .build(),
                     glib::ParamSpecBoxed::builder(
-                        "video-element-properties",
-                        ElementProperties::static_type(),
+                        "video-encoder-profile",
+                        ElementFactoryProfile::static_type(),
                     )
                     .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                     .build(),
-                    glib::ParamSpecString::builder("audio-preset-name")
-                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
-                        .build(),
                     glib::ParamSpecBoxed::builder(
-                        "audio-element-properties",
-                        ElementProperties::static_type(),
+                        "audio-encoder-profile",
+                        ElementFactoryProfile::static_type(),
                     )
                     .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                     .build(),
@@ -79,29 +71,17 @@ mod imp {
                     let name = value.get().unwrap();
                     obj.set_name(name);
                 }
-                "container-preset-name" => {
-                    let container_preset_name = value.get().unwrap();
-                    obj.set_container_preset_name(container_preset_name);
+                "muxer-profile" => {
+                    let muxer_profile = value.get().unwrap();
+                    obj.set_muxer_profile(muxer_profile);
                 }
-                "container-element-properties" => {
-                    let container_element_properties = value.get().unwrap();
-                    obj.set_container_element_properties(container_element_properties);
+                "video-encoder-profile" => {
+                    let video_encoder_profile = value.get().unwrap();
+                    obj.set_video_encoder_profile(video_encoder_profile);
                 }
-                "video-preset-name" => {
-                    let video_preset_name = value.get().unwrap();
-                    obj.set_video_preset_name(video_preset_name);
-                }
-                "video-element-properties" => {
-                    let video_element_properties = value.get().unwrap();
-                    obj.set_video_element_properties(video_element_properties);
-                }
-                "audio-preset-name" => {
-                    let audio_preset_name = value.get().unwrap();
-                    obj.set_audio_preset_name(audio_preset_name);
-                }
-                "audio-element-properties" => {
-                    let audio_element_properties = value.get().unwrap();
-                    obj.set_audio_element_properties(audio_element_properties);
+                "audio-encoder-profile" => {
+                    let audio_encoder_profile = value.get().unwrap();
+                    obj.set_audio_encoder_profile(audio_encoder_profile);
                 }
                 _ => unimplemented!(),
             }
@@ -110,12 +90,9 @@ mod imp {
         fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
                 "name" => obj.name().to_value(),
-                "container-preset-name" => obj.container_preset_name().to_value(),
-                "container-element-properties" => obj.container_element_properties().to_value(),
-                "video-preset-name" => obj.video_preset_name().to_value(),
-                "video-element-properties" => obj.video_element_properties().to_value(),
-                "audio-preset-name" => obj.audio_preset_name().to_value(),
-                "audio-element-properties" => obj.audio_element_properties().to_value(),
+                "muxer-profile" => obj.muxer_profile().to_value(),
+                "video-encoder-profile" => obj.video_encoder_profile().to_value(),
+                "audio-encoder-profile" => obj.audio_encoder_profile().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -127,7 +104,22 @@ glib::wrapper! {
 }
 
 impl Profile {
-    pub fn new(name: &str) -> Self {
+    pub fn new(
+        name: &str,
+        muxer_profile: &ElementFactoryProfile,
+        video_encoder_profile: &ElementFactoryProfile,
+        audio_encoder_profile: &ElementFactoryProfile,
+    ) -> Self {
+        glib::Object::builder()
+            .property("name", name)
+            .property("muxer-profile", muxer_profile)
+            .property("video-encoder-profile", video_encoder_profile)
+            .property("audio-encoder-profile", audio_encoder_profile)
+            .build()
+            .expect("Failed to create Profile.")
+    }
+
+    pub fn new_empty(name: &str) -> Self {
         glib::Object::builder()
             .property("name", name)
             .build()
@@ -147,126 +139,138 @@ impl Profile {
         self.imp().name.borrow().clone()
     }
 
-    pub fn set_container_preset_name(&self, name: &str) {
-        if name == self.container_preset_name() {
+    pub fn set_muxer_profile(&self, profile: ElementFactoryProfile) {
+        if Some(&profile) == self.muxer_profile().as_ref() {
             return;
         }
 
-        tracing::debug!("Profile `{}` container set to `{}`", self.name(), name);
-
-        self.imp().container_preset_name.replace(name.to_string());
-        self.notify("container-preset-name");
+        let imp = self.imp();
+        imp.muxer_profile.replace(Some(profile));
+        imp.muxer_factory.replace(None);
+        self.notify("muxer-profile");
     }
 
-    pub fn container_preset_name(&self) -> String {
-        self.imp().container_preset_name.borrow().clone()
+    pub fn muxer_profile(&self) -> Option<ElementFactoryProfile> {
+        self.imp().muxer_profile.borrow().clone()
     }
 
-    pub fn set_container_element_properties(&self, properties: ElementProperties) {
-        if properties == self.container_element_properties() {
+    pub fn set_video_encoder_profile(&self, profile: ElementFactoryProfile) {
+        if Some(&profile) == self.video_encoder_profile().as_ref() {
             return;
         }
 
-        self.imp().container_element_properties.replace(properties);
-        self.notify("container-element-properties");
+        let imp = self.imp();
+        imp.video_encoder_profile.replace(Some(profile));
+        imp.video_encoder_factory.replace(None);
+        self.notify("video-encoder-profile");
     }
 
-    pub fn container_element_properties(&self) -> ElementProperties {
-        self.imp().container_element_properties.borrow().clone()
+    pub fn video_encoder_profile(&self) -> Option<ElementFactoryProfile> {
+        self.imp().video_encoder_profile.borrow().clone()
     }
 
-    pub fn set_video_preset_name(&self, name: &str) {
-        if name == self.video_preset_name() {
+    pub fn set_audio_encoder_profile(&self, profile: ElementFactoryProfile) {
+        if Some(&profile) == self.audio_encoder_profile().as_ref() {
             return;
         }
 
-        tracing::debug!("Profile `{}` video set to `{}`", self.name(), name);
-
-        self.imp().video_preset_name.replace(name.to_string());
-        self.notify("video-preset-name");
+        let imp = self.imp();
+        imp.audio_encoder_profile.replace(Some(profile));
+        imp.audio_encoder_factory.replace(None);
+        self.notify("audio-encoder-profile");
     }
 
-    pub fn video_preset_name(&self) -> String {
-        self.imp().video_preset_name.borrow().clone()
+    pub fn audio_encoder_profile(&self) -> Option<ElementFactoryProfile> {
+        self.imp().audio_encoder_profile.borrow().clone()
     }
 
-    pub fn set_video_element_properties(&self, properties: ElementProperties) {
-        if properties == self.video_element_properties() {
-            return;
+    pub fn muxer_factory(&self) -> Result<gst::ElementFactory> {
+        if let Some(ref factory) = *self.imp().muxer_factory.borrow() {
+            return Ok(factory.clone());
         }
 
-        self.imp().video_element_properties.replace(properties);
-        self.notify("video-element-properties");
+        let factory = find_element_factory(
+            self.muxer_profile()
+                .ok_or_else(|| anyhow!("Profile `{}` has no muxer profile", self.name()))?
+                .factory_name(),
+        )?;
+        self.imp().muxer_factory.replace(Some(factory.clone()));
+        Ok(factory)
     }
 
-    pub fn video_element_properties(&self) -> ElementProperties {
-        self.imp().video_element_properties.borrow().clone()
-    }
-
-    pub fn set_audio_preset_name(&self, name: &str) {
-        if name == self.audio_preset_name() {
-            return;
+    pub fn video_encoder_factory(&self) -> Result<gst::ElementFactory> {
+        if let Some(ref factory) = *self.imp().video_encoder_factory.borrow() {
+            return Ok(factory.clone());
         }
 
-        tracing::debug!("Profile `{}` audio set to `{}`", self.name(), name);
-
-        self.imp().audio_preset_name.replace(name.to_string());
-        self.notify("audio-preset-name");
+        let factory = find_element_factory(
+            self.video_encoder_profile()
+                .ok_or_else(|| anyhow!("Profile `{}` has no video encoder profile", self.name()))?
+                .factory_name(),
+        )?;
+        self.imp()
+            .video_encoder_factory
+            .replace(Some(factory.clone()));
+        Ok(factory)
     }
 
-    pub fn audio_preset_name(&self) -> String {
-        self.imp().audio_preset_name.borrow().clone()
-    }
-
-    pub fn set_audio_element_properties(&self, properties: ElementProperties) {
-        if properties == self.audio_element_properties() {
-            return;
+    pub fn audio_encoder_factory(&self) -> Result<gst::ElementFactory> {
+        if let Some(ref factory) = *self.imp().audio_encoder_factory.borrow() {
+            return Ok(factory.clone());
         }
 
-        self.imp().audio_element_properties.replace(properties);
-        self.notify("audio-element-properties");
-    }
-
-    pub fn audio_element_properties(&self) -> ElementProperties {
-        self.imp().audio_element_properties.borrow().clone()
+        let factory = find_element_factory(
+            self.audio_encoder_profile()
+                .ok_or_else(|| anyhow!("Profile `{}` has no audio encoder profile", self.name()))?
+                .factory_name(),
+        )?;
+        self.imp()
+            .audio_encoder_factory
+            .replace(Some(factory.clone()));
+        Ok(factory)
     }
 
     pub fn to_encoding_profile(&self) -> Result<gst_pbutils::EncodingContainerProfile> {
-        let container_preset_name = self.container_preset_name();
-        let container_element_factory = find_element_factory(&container_preset_name)?;
-        let container_format_caps = profile_format_from_factory(&container_element_factory)?;
+        let muxer_factory = self.muxer_factory()?;
+        let container_format_caps = profile_format_from_factory(&muxer_factory)?;
 
         // Video Encoder
-        let video_preset_name = self.video_preset_name();
-        let video_element_factory = find_element_factory(&video_preset_name)?;
-        let video_format_caps = profile_format_from_factory(&video_element_factory)?;
+        let video_encoder_factory = self.video_encoder_factory()?;
+        let video_format_caps = profile_format_from_factory(&video_encoder_factory)?;
         ensure!(
-            container_element_factory.can_sink_any_caps(&video_format_caps),
+            muxer_factory.can_sink_any_caps(&video_format_caps),
             "`{}` src is incompatible on `{}` sink",
-            video_preset_name,
-            container_preset_name
+            video_encoder_factory.name(),
+            muxer_factory.name()
         );
         let video_profile = gst_pbutils::EncodingVideoProfile::builder(&video_format_caps)
-            .preset_name(&self.video_preset_name())
+            .preset_name(&video_encoder_factory.name())
             .presence(0)
             .build();
-        video_profile.set_element_properties(self.video_element_properties());
+        video_profile.set_element_properties(
+            self.video_encoder_profile()
+                .ok_or_else(|| anyhow!("Profile `{}` has no video encoder profile", self.name()))?
+                .into_element_properties(),
+        );
 
         // Audio Encoder
-        let audio_preset_name = self.audio_preset_name();
-        let audio_element_factory = find_element_factory(&audio_preset_name)?;
-        let audio_format_caps = profile_format_from_factory(&audio_element_factory)?;
+        let audio_encoder_factory = self.audio_encoder_factory()?;
+        let audio_format_caps = profile_format_from_factory(&audio_encoder_factory)?;
         ensure!(
-            container_element_factory.can_sink_any_caps(&audio_format_caps),
+            muxer_factory.can_sink_any_caps(&audio_format_caps),
             "`{}` src is incompatible on `{}` sink",
-            audio_preset_name,
-            container_preset_name
+            audio_encoder_factory.name(),
+            muxer_factory.name()
         );
         let audio_profile = gst_pbutils::EncodingAudioProfile::builder(&audio_format_caps)
-            .preset_name(&self.audio_preset_name())
+            .preset_name(&audio_encoder_factory.name())
             .presence(0)
             .build();
-        audio_profile.set_element_properties(self.audio_element_properties());
+        audio_profile.set_element_properties(
+            self.audio_encoder_profile()
+                .ok_or_else(|| anyhow!("Profile `{}` has no audio encoder profile", self.name()))?
+                .into_element_properties(),
+        );
 
         // Muxer
         let container_profile =
@@ -275,7 +279,11 @@ impl Profile {
                 .add_profile(&audio_profile)
                 .presence(0)
                 .build();
-        container_profile.set_element_properties(self.container_element_properties());
+        container_profile.set_element_properties(
+            self.muxer_profile()
+                .ok_or_else(|| anyhow!("Profile `{}` has no muxer profile", self.name()))?
+                .into_element_properties(),
+        );
 
         Ok(container_profile)
     }
@@ -300,7 +308,7 @@ impl Profile {
 
 fn find_element_factory(factory_name: &str) -> Result<gst::ElementFactory> {
     gst::ElementFactory::find(factory_name)
-        .ok_or_else(|| anyhow!("Failed to find factory `{}`", factory_name))
+        .ok_or_else(|| anyhow!("`{}` factory not found", factory_name))
 }
 
 fn profile_format_from_factory(factory: &gst::ElementFactory) -> Result<gst::Caps> {
@@ -336,15 +344,16 @@ mod tests {
     use super::*;
 
     fn new_simple_profile(
-        container_preset_name: &str,
-        video_preset_name: &str,
-        audio_preset_name: &str,
+        muxer_factory_name: &str,
+        video_encoder_factory_name: &str,
+        audio_encoder_factory_name: &str,
     ) -> Profile {
-        let profile = Profile::new("");
-        profile.set_container_preset_name(container_preset_name);
-        profile.set_video_preset_name(video_preset_name);
-        profile.set_audio_preset_name(audio_preset_name);
-        profile
+        Profile::new(
+            "",
+            &ElementFactoryProfile::new(muxer_factory_name),
+            &ElementFactoryProfile::new(video_encoder_factory_name),
+            &ElementFactoryProfile::new(audio_encoder_factory_name),
+        )
     }
 
     #[test]

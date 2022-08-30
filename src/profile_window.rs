@@ -9,7 +9,10 @@ use once_cell::unsync::OnceCell;
 
 use std::cell::RefCell;
 
-use crate::{profile::Profile, profile_manager::ProfileManager, profile_tile::ProfileTile};
+use crate::{
+    element_factory_profile::ElementFactoryProfile, profile::Profile,
+    profile_manager::ProfileManager, profile_tile::ProfileTile,
+};
 
 mod imp {
     use super::*;
@@ -57,7 +60,7 @@ mod imp {
 
             klass.install_action("profile-window.new-profile", None, |obj, _, _| {
                 if let Some(model) = obj.model() {
-                    model.set_active_profile(Some(&Profile::new("New Profile")));
+                    model.set_active_profile(Some(&Profile::new_empty("New Profile")));
                 } else {
                     tracing::warn!("Found no model!");
                 }
@@ -154,7 +157,7 @@ mod imp {
                         if let Some(profile) = obj.model().and_then(|model| model.active_profile()) {
                             let element_factory = selected_item.downcast::<gst::ElementFactory>().unwrap();
                             let element_factory_name = element_factory.name();
-                            profile.set_container_preset_name(&element_factory_name);
+                            profile.set_muxer_profile(ElementFactoryProfile::new(&element_factory_name));
                         } else {
                             tracing::warn!("No model or active profile found but selected an element");
                         }
@@ -166,7 +169,7 @@ mod imp {
                         if let Some(profile) = obj.model().and_then(|model| model.active_profile()) {
                             let element_factory = selected_item.downcast::<gst::ElementFactory>().unwrap();
                             let element_factory_name = element_factory.name();
-                            profile.set_video_preset_name(&element_factory_name);
+                            profile.set_video_encoder_profile(ElementFactoryProfile::new(&element_factory_name));
                         } else {
                             tracing::warn!("No model or active profile found but selected an element");
                         }
@@ -178,7 +181,7 @@ mod imp {
                         if let Some(profile) = obj.model().and_then(|model| model.active_profile()) {
                             let element_factory = selected_item.downcast::<gst::ElementFactory>().unwrap();
                             let element_factory_name = element_factory.name();
-                            profile.set_audio_preset_name(&element_factory_name);
+                            profile.set_audio_encoder_profile(ElementFactoryProfile::new(&element_factory_name));
                         } else {
                             tracing::warn!("No model or active profile found but selected an element");
                         }
@@ -416,25 +419,21 @@ impl ProfileWindow {
         imp.audio_encoder_row
             .block_signal(imp.audio_encoder_row_handler_id.get().unwrap());
 
-        set_selected_item(
-            &imp.muxer_row.get(),
-            |element_factory: gst::ElementFactory| {
-                // TODO Comp with actual element
-                element_factory.name() == active_profile.container_preset_name()
-            },
-        );
-        set_selected_item(
-            &imp.video_encoder_row.get(),
-            |element_factory: gst::ElementFactory| {
-                element_factory.name() == active_profile.video_preset_name()
-            },
-        );
-        set_selected_item(
-            &imp.audio_encoder_row.get(),
-            |element_factory: gst::ElementFactory| {
-                element_factory.name() == active_profile.audio_preset_name()
-            },
-        );
+        set_selected_item(&imp.muxer_row.get(), |item: gst::ElementFactory| {
+            active_profile
+                .muxer_factory()
+                .map_or(false, |factory| factory == item)
+        });
+        set_selected_item(&imp.video_encoder_row.get(), |item: gst::ElementFactory| {
+            active_profile
+                .video_encoder_factory()
+                .map_or(false, |factory| factory == item)
+        });
+        set_selected_item(&imp.audio_encoder_row.get(), |item: gst::ElementFactory| {
+            active_profile
+                .audio_encoder_factory()
+                .map_or(false, |factory| factory == item)
+        });
 
         imp.muxer_row
             .unblock_signal(imp.muxer_row_handler_id.get().unwrap());

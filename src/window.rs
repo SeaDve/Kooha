@@ -256,7 +256,7 @@ impl Window {
             .start(
                 Some(self),
                 &application.settings(),
-                // TODO make record button insensitive when no profile
+                // TODO make record button insensitive when no or invalid profile
                 &application.profile_manager().active_profile().unwrap(),
             )
             .await;
