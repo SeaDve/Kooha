@@ -226,48 +226,42 @@ fn builtin_profiles() -> Vec<Profile> {
         // TODO bring back gif support `gifenc repeat=-1 speed=30`. Disable `win.record-speaker` and `win.record-mic` actions. 15 fps override
         // TODO vaapi?
         // TODO Handle missing plugins add warning if missing
-        {
-            Profile::new(
-                "WebM",
-                &ElementFactoryProfile::new("webmmux"),
-                &ElementFactoryProfile::builder("vp8enc")
-                    .field("max-quantizer", 17)
-                    .field("cpu-used", 16)
-                    .field("cq-level", 13)
-                    .field("deadline", 1)
-                    .field("static-threshold", 100)
-                    .field_from_str("keyframe-mode", "disabled")
-                    .field("buffer-size", 20000)
-                    .field("threads", utils::ideal_thread_count())
-                    .build(),
-                &ElementFactoryProfile::new("opusenc"),
-            )
-        },
-        {
-            // TODO support "profile" = baseline
-            Profile::new(
-                "MP4",
-                &ElementFactoryProfile::new("mp4mux"),
-                &ElementFactoryProfile::builder("x264enc")
-                    .field("qp-max", 17)
-                    .field_from_str("speed-preset", "superfast")
-                    .field("threads", utils::ideal_thread_count())
-                    .build(),
-                &ElementFactoryProfile::new("lamemp3enc"),
-            )
-        },
-        {
-            Profile::new(
-                "Matroska",
-                &ElementFactoryProfile::new("matroskamux"),
-                &ElementFactoryProfile::builder("x264enc")
-                    .field("qp-max", 17)
-                    .field_from_str("speed-preset", "superfast")
-                    .field("threads", utils::ideal_thread_count())
-                    .build(),
-                &ElementFactoryProfile::new("opusenc"),
-            )
-        },
+        Profile::new(
+            "WebM",
+            &ElementFactoryProfile::new("webmmux"),
+            &ElementFactoryProfile::builder("vp8enc")
+                .field("max-quantizer", 17)
+                .field("cpu-used", 16)
+                .field("cq-level", 13)
+                .field("deadline", 1)
+                .field("static-threshold", 100)
+                .field_from_str("keyframe-mode", "disabled")
+                .field("buffer-size", 20000)
+                .field("threads", utils::ideal_thread_count())
+                .build(),
+            &ElementFactoryProfile::new("opusenc"),
+        ),
+        // TODO support "profile" = baseline
+        Profile::new(
+            "MP4",
+            &ElementFactoryProfile::new("mp4mux"),
+            &ElementFactoryProfile::builder("x264enc")
+                .field("qp-max", 17)
+                .field_from_str("speed-preset", "superfast")
+                .field("threads", utils::ideal_thread_count())
+                .build(),
+            &ElementFactoryProfile::new("lamemp3enc"),
+        ),
+        Profile::new(
+            "Matroska",
+            &ElementFactoryProfile::new("matroskamux"),
+            &ElementFactoryProfile::builder("x264enc")
+                .field("qp-max", 17)
+                .field_from_str("speed-preset", "superfast")
+                .field("threads", utils::ideal_thread_count())
+                .build(),
+            &ElementFactoryProfile::new("opusenc"),
+        ),
     ]
 }
 
