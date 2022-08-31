@@ -438,17 +438,20 @@ impl ProfileWindow {
 
         set_selected_item(&imp.muxer_row.get(), |item: gst::ElementFactory| {
             active_profile
-                .muxer_factory()
+                .muxer_profile()
+                .and_then(|p| p.factory().ok().cloned())
                 .map_or(false, |factory| factory == item)
         });
         set_selected_item(&imp.video_encoder_row.get(), |item: gst::ElementFactory| {
             active_profile
-                .video_encoder_factory()
+                .video_encoder_profile()
+                .and_then(|p| p.factory().ok().cloned())
                 .map_or(false, |factory| factory == item)
         });
         set_selected_item(&imp.audio_encoder_row.get(), |item: gst::ElementFactory| {
             active_profile
-                .audio_encoder_factory()
+                .audio_encoder_profile()
+                .and_then(|p| p.factory().ok().cloned())
                 .map_or(false, |factory| factory == item)
         });
 

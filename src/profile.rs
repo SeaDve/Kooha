@@ -17,10 +17,6 @@ mod imp {
         pub(super) muxer_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) video_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) audio_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
-
-        pub(super) muxer_factory: RefCell<Option<gst::ElementFactory>>,
-        pub(super) video_encoder_factory: RefCell<Option<gst::ElementFactory>>,
-        pub(super) audio_encoder_factory: RefCell<Option<gst::ElementFactory>>,
     }
 
     #[glib::object_subclass]
@@ -155,7 +151,6 @@ impl Profile {
 
         let imp = self.imp();
         imp.muxer_profile.replace(Some(profile));
-        imp.muxer_factory.replace(None);
         self.notify("muxer-profile");
     }
 
@@ -170,7 +165,6 @@ impl Profile {
 
         let imp = self.imp();
         imp.video_encoder_profile.replace(Some(profile));
-        imp.video_encoder_factory.replace(None);
         self.notify("video-encoder-profile");
     }
 
@@ -185,7 +179,6 @@ impl Profile {
 
         let imp = self.imp();
         imp.audio_encoder_profile.replace(Some(profile));
-        imp.audio_encoder_factory.replace(None);
         self.notify("audio-encoder-profile");
     }
 
@@ -193,108 +186,56 @@ impl Profile {
         self.imp().audio_encoder_profile.borrow().clone()
     }
 
-    pub fn muxer_factory(&self) -> Result<gst::ElementFactory> {
-        if let Some(ref factory) = *self.imp().muxer_factory.borrow() {
-            return Ok(factory.clone());
-        }
-
-        let factory = find_element_factory(
-            self.muxer_profile()
-                .ok_or_else(|| anyhow!("Profile `{}` has no muxer profile", self.name()))?
-                .factory_name(),
-        )?;
-        self.imp().muxer_factory.replace(Some(factory.clone()));
-        Ok(factory)
-    }
-
-    pub fn video_encoder_factory(&self) -> Result<gst::ElementFactory> {
-        if let Some(ref factory) = *self.imp().video_encoder_factory.borrow() {
-            return Ok(factory.clone());
-        }
-
-        let factory = find_element_factory(
-            self.video_encoder_profile()
-                .ok_or_else(|| anyhow!("Profile `{}` has no video encoder profile", self.name()))?
-                .factory_name(),
-        )?;
-        self.imp()
-            .video_encoder_factory
-            .replace(Some(factory.clone()));
-        Ok(factory)
-    }
-
-    pub fn audio_encoder_factory(&self) -> Result<gst::ElementFactory> {
-        if let Some(ref factory) = *self.imp().audio_encoder_factory.borrow() {
-            return Ok(factory.clone());
-        }
-
-        let factory = find_element_factory(
-            self.audio_encoder_profile()
-                .ok_or_else(|| anyhow!("Profile `{}` has no audio encoder profile", self.name()))?
-                .factory_name(),
-        )?;
-        self.imp()
-            .audio_encoder_factory
-            .replace(Some(factory.clone()));
-        Ok(factory)
-    }
-
     pub fn to_encoding_profile(&self) -> Result<gst_pbutils::EncodingContainerProfile> {
-        let muxer_factory = self.muxer_factory()?;
-        let container_format_caps = profile_format_from_factory(&muxer_factory)?;
+        let muxer_profile = self
+            .muxer_profile()
+            .ok_or_else(|| anyhow!("Profile `{}` has no muxer profile", self.name()))?;
+        let muxer_factory = muxer_profile.factory()?;
 
         // Video Encoder
-        let video_encoder_factory = self.video_encoder_factory()?;
-        let video_format_caps = profile_format_from_factory(&video_encoder_factory)?;
+        let video_encoder_profile = self
+            .video_encoder_profile()
+            .ok_or_else(|| anyhow!("Profile `{}` has no video encoder profile", self.name()))?;
+        let video_profile_format = video_encoder_profile.format()?;
         ensure!(
-            muxer_factory.can_sink_any_caps(&video_format_caps),
+            muxer_factory.can_sink_any_caps(video_profile_format),
             "`{}` src is incompatible on `{}` sink",
-            video_encoder_factory.name(),
-            muxer_factory.name()
+            video_encoder_profile.factory_name(),
+            muxer_profile.factory_name()
         );
-        let video_profile = gst_pbutils::EncodingVideoProfile::builder(&video_format_caps)
-            .preset_name(&video_encoder_factory.name())
+        let gst_video_profile = gst_pbutils::EncodingVideoProfile::builder(video_profile_format)
+            .preset_name(video_encoder_profile.factory_name())
             .presence(0)
             .build();
-        video_profile.set_element_properties(
-            self.video_encoder_profile()
-                .ok_or_else(|| anyhow!("Profile `{}` has no video encoder profile", self.name()))?
-                .to_element_properties(),
-        );
+        gst_video_profile.set_element_properties(video_encoder_profile.element_properties());
 
         // Audio Encoder
-        let audio_encoder_factory = self.audio_encoder_factory()?;
-        let audio_format_caps = profile_format_from_factory(&audio_encoder_factory)?;
+        let audio_encoder_profile = self
+            .audio_encoder_profile()
+            .ok_or_else(|| anyhow!("Profile `{}` has no audio encoder profile", self.name()))?;
+        let audio_profile_format = audio_encoder_profile.format()?;
         ensure!(
-            muxer_factory.can_sink_any_caps(&audio_format_caps),
+            muxer_factory.can_sink_any_caps(audio_profile_format),
             "`{}` src is incompatible on `{}` sink",
-            audio_encoder_factory.name(),
-            muxer_factory.name()
+            audio_encoder_profile.factory_name(),
+            muxer_profile.factory_name()
         );
-        let audio_profile = gst_pbutils::EncodingAudioProfile::builder(&audio_format_caps)
-            .preset_name(&audio_encoder_factory.name())
+        let gst_audio_profile = gst_pbutils::EncodingAudioProfile::builder(audio_profile_format)
+            .preset_name(audio_encoder_profile.factory_name())
             .presence(0)
             .build();
-        audio_profile.set_element_properties(
-            self.audio_encoder_profile()
-                .ok_or_else(|| anyhow!("Profile `{}` has no audio encoder profile", self.name()))?
-                .to_element_properties(),
-        );
+        gst_audio_profile.set_element_properties(audio_encoder_profile.element_properties());
 
         // Muxer
-        let container_profile =
-            gst_pbutils::EncodingContainerProfile::builder(&container_format_caps)
-                .add_profile(&video_profile)
-                .add_profile(&audio_profile)
+        let gst_container_profile =
+            gst_pbutils::EncodingContainerProfile::builder(muxer_profile.format()?)
+                .add_profile(&gst_video_profile)
+                .add_profile(&gst_audio_profile)
                 .presence(0)
                 .build();
-        container_profile.set_element_properties(
-            self.muxer_profile()
-                .ok_or_else(|| anyhow!("Profile `{}` has no muxer profile", self.name()))?
-                .to_element_properties(),
-        );
+        gst_container_profile.set_element_properties(muxer_profile.element_properties());
 
-        Ok(container_profile)
+        Ok(gst_container_profile)
     }
 
     pub fn deep_clone(&self) -> Self {
@@ -313,39 +254,6 @@ impl Profile {
         .downcast()
         .unwrap()
     }
-}
-
-fn find_element_factory(factory_name: &str) -> Result<gst::ElementFactory> {
-    gst::ElementFactory::find(factory_name)
-        .ok_or_else(|| anyhow!("`{}` factory not found", factory_name))
-}
-
-fn profile_format_from_factory(factory: &gst::ElementFactory) -> Result<gst::Caps> {
-    let factory_name = factory.name();
-
-    ensure!(
-        factory.has_type(gst::ElementFactoryType::ENCODER | gst::ElementFactoryType::MUXER),
-        "Factory `{}` must be an encoder or muxer to be used in a profile",
-        factory_name
-    );
-
-    for template in factory.static_pad_templates() {
-        if template.direction() == gst::PadDirection::Src {
-            let template_caps = template.caps();
-            if let Some(structure) = template_caps.structure(0) {
-                let mut caps = gst::Caps::new_empty();
-                caps.get_mut()
-                    .unwrap()
-                    .append_structure(structure.to_owned());
-                return Ok(caps);
-            }
-        }
-    }
-
-    Err(anyhow!(
-        "Failed to find profile format for factory `{}`",
-        factory_name
-    ))
 }
 
 #[cfg(test)]
@@ -376,36 +284,6 @@ mod tests {
         assert_eq!(
             b.to_encoding_profile().unwrap_err().to_string(),
             "`lamemp3enc` src is incompatible on `webmmux` sink"
-        );
-    }
-
-    #[test]
-    fn test_profile_format_from_factory_name() {
-        assert!(
-            profile_format_from_factory(&find_element_factory("vp8enc").unwrap())
-                .unwrap()
-                .can_intersect(&gst::Caps::builder("video/x-vp8").build()),
-        );
-        assert!(
-            profile_format_from_factory(&find_element_factory("opusenc").unwrap())
-                .unwrap()
-                .can_intersect(&gst::Caps::builder("audio/x-opus").build())
-        );
-        assert!(
-            profile_format_from_factory(&find_element_factory("matroskamux").unwrap())
-                .unwrap()
-                .can_intersect(&gst::Caps::builder("video/x-matroska").build()),
-        );
-        assert!(
-            !profile_format_from_factory(&find_element_factory("matroskamux").unwrap())
-                .unwrap()
-                .can_intersect(&gst::Caps::builder("video/x-vp8").build()),
-        );
-        assert_eq!(
-            profile_format_from_factory(&find_element_factory("audioconvert").unwrap())
-                .unwrap_err()
-                .to_string(),
-            "Factory `audioconvert` must be an encoder or muxer to be used in a profile"
         );
     }
 }
