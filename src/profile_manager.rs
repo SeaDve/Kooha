@@ -20,6 +20,7 @@ mod imp {
     pub struct ProfileManager {
         pub(super) active_profile: RefCell<Option<Profile>>,
 
+        pub(super) last_active_profile: RefCell<Option<Profile>>,
         pub(super) profiles: RefCell<Vec<Profile>>,
 
         pub(super) known_muxers: OnceCell<gtk::SortListModel>,
@@ -113,9 +114,14 @@ impl ProfileManager {
     }
 
     pub fn set_active_profile(&self, profile: Option<&Profile>) {
-        if profile == self.active_profile().as_ref() {
+        let old_profile = self.active_profile();
+
+        if profile == old_profile.as_ref() {
             return;
         }
+
+        let imp = self.imp();
+        imp.last_active_profile.replace(old_profile);
 
         tracing::debug!(
             "Set active profile to {:?}",
@@ -128,7 +134,7 @@ impl ProfileManager {
             }
         }
 
-        self.imp().active_profile.replace(profile.cloned());
+        imp.active_profile.replace(profile.cloned());
         self.notify("active-profile");
     }
 
@@ -161,8 +167,10 @@ impl ProfileManager {
             self.items_changed(position as u32, 1, 0);
 
             if Some(removed) == self.active_profile() {
-                if let Some(first_item) = self.get_profile(0) {
-                    self.set_active_profile(Some(&first_item));
+                // Clone to prevent BorrowMutError
+                let last_active_profile = imp.last_active_profile.borrow().as_ref().cloned();
+                if let Some(ref last_active_profile) = last_active_profile {
+                    self.set_active_profile(Some(last_active_profile));
                 }
             }
         } else {

@@ -69,7 +69,7 @@ mod imp {
                 }
             });
 
-            klass.install_action("undo-delete-toast.dismiss", None, |obj, _, _| {
+            klass.install_action("undo-delete-toast.undo", None, |obj, _, _| {
                 if let Some(model) = obj.model() {
                     for profile in obj.imp().profile_purgatory.take() {
                         model.add_profile(profile);
@@ -312,7 +312,7 @@ impl ProfileWindow {
             let toast = adw::Toast::builder()
                 .priority(adw::ToastPriority::High)
                 .button_label(&gettext("_Undo"))
-                .action_name("undo-delete-toast.dismiss")
+                .action_name("undo-delete-toast.undo")
                 .build();
 
             toast.connect_dismissed(clone!(@weak self as obj => move |_| {
