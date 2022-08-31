@@ -29,6 +29,8 @@ mod imp {
         #[template_child]
         pub(super) name_row: TemplateChild<adw::EntryRow>,
         #[template_child]
+        pub(super) file_extension_row: TemplateChild<adw::EntryRow>,
+        #[template_child]
         pub(super) muxer_row: TemplateChild<adw::ComboRow>,
         #[template_child]
         pub(super) video_encoder_row: TemplateChild<adw::ComboRow>,
@@ -44,6 +46,7 @@ mod imp {
         pub(super) model_signal_handler_ids: RefCell<Vec<glib::SignalHandlerId>>,
 
         pub(super) name_row_binding: RefCell<Option<glib::Binding>>,
+        pub(super) file_extension_row_binding: RefCell<Option<glib::Binding>>,
         pub(super) muxer_row_handler_id: OnceCell<glib::SignalHandlerId>,
         pub(super) video_encoder_row_handler_id: OnceCell<glib::SignalHandlerId>,
         pub(super) audio_encoder_row_handler_id: OnceCell<glib::SignalHandlerId>,
@@ -60,7 +63,7 @@ mod imp {
 
             klass.install_action("profile-window.new-profile", None, |obj, _, _| {
                 if let Some(model) = obj.model() {
-                    model.set_active_profile(Some(&Profile::new_empty("New Profile")));
+                    model.set_active_profile(Some(&Profile::new("New Profile")));
                 } else {
                     tracing::warn!("Found no model!");
                 }
@@ -390,11 +393,15 @@ impl ProfileWindow {
         if let Some(binding) = imp.name_row_binding.take() {
             binding.unbind();
         }
+        if let Some(binding) = imp.file_extension_row_binding.take() {
+            binding.unbind();
+        }
 
         let active_profile = self.model().and_then(|model| model.active_profile());
         let has_active_profile = active_profile.is_some();
 
         imp.name_row.set_visible(has_active_profile);
+        imp.file_extension_row.set_visible(has_active_profile);
         imp.muxer_row.set_visible(has_active_profile);
         imp.video_encoder_row.set_visible(has_active_profile);
         imp.audio_encoder_row.set_visible(has_active_profile);
@@ -408,6 +415,12 @@ impl ProfileWindow {
         imp.name_row_binding.replace(Some(
             active_profile
                 .bind_property("name", &imp.name_row.get(), "text")
+                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+                .build(),
+        ));
+        imp.file_extension_row_binding.replace(Some(
+            active_profile
+                .bind_property("file-extension", &imp.file_extension_row.get(), "text")
                 .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .build(),
         ));

@@ -226,42 +226,54 @@ fn builtin_profiles() -> Vec<Profile> {
         // TODO bring back gif support `gifenc repeat=-1 speed=30`. Disable `win.record-speaker` and `win.record-mic` actions. 15 fps override
         // TODO vaapi?
         // TODO Handle missing plugins add warning if missing
-        Profile::new(
-            "WebM",
-            &ElementFactoryProfile::new("webmmux"),
-            &ElementFactoryProfile::builder("vp8enc")
-                .field("max-quantizer", 17)
-                .field("cpu-used", 16)
-                .field("cq-level", 13)
-                .field("deadline", 1)
-                .field("static-threshold", 100)
-                .field_from_str("keyframe-mode", "disabled")
-                .field("buffer-size", 20000)
-                .field("threads", utils::ideal_thread_count())
-                .build(),
-            &ElementFactoryProfile::new("opusenc"),
-        ),
-        // TODO support "profile" = baseline
-        Profile::new(
-            "MP4",
-            &ElementFactoryProfile::new("mp4mux"),
-            &ElementFactoryProfile::builder("x264enc")
-                .field("qp-max", 17)
-                .field_from_str("speed-preset", "superfast")
-                .field("threads", utils::ideal_thread_count())
-                .build(),
-            &ElementFactoryProfile::new("lamemp3enc"),
-        ),
-        Profile::new(
-            "Matroska",
-            &ElementFactoryProfile::new("matroskamux"),
-            &ElementFactoryProfile::builder("x264enc")
-                .field("qp-max", 17)
-                .field_from_str("speed-preset", "superfast")
-                .field("threads", utils::ideal_thread_count())
-                .build(),
-            &ElementFactoryProfile::new("opusenc"),
-        ),
+        {
+            let p = Profile::new("WebM");
+            p.set_file_extension("webm");
+            p.set_muxer_profile(ElementFactoryProfile::new("webmmux"));
+            p.set_video_encoder_profile(
+                ElementFactoryProfile::builder("vp8enc")
+                    .field("max-quantizer", 17)
+                    .field("cpu-used", 16)
+                    .field("cq-level", 13)
+                    .field("deadline", 1)
+                    .field("static-threshold", 100)
+                    .field_from_str("keyframe-mode", "disabled")
+                    .field("buffer-size", 20000)
+                    .field("threads", utils::ideal_thread_count())
+                    .build(),
+            );
+            p.set_audio_encoder_profile(ElementFactoryProfile::new("opusenc"));
+            p
+        },
+        {
+            // TODO support "profile" = baseline
+            let p = Profile::new("MP4");
+            p.set_file_extension("mp4");
+            p.set_muxer_profile(ElementFactoryProfile::new("mp4mux"));
+            p.set_video_encoder_profile(
+                ElementFactoryProfile::builder("x264enc")
+                    .field("qp-max", 17)
+                    .field_from_str("speed-preset", "superfast")
+                    .field("threads", utils::ideal_thread_count())
+                    .build(),
+            );
+            p.set_audio_encoder_profile(ElementFactoryProfile::new("lamemp3enc"));
+            p
+        },
+        {
+            let p = Profile::new("Matroska");
+            p.set_file_extension("mkv");
+            p.set_muxer_profile(ElementFactoryProfile::new("matroskamux"));
+            p.set_video_encoder_profile(
+                ElementFactoryProfile::builder("x264enc")
+                    .field("qp-max", 17)
+                    .field_from_str("speed-preset", "superfast")
+                    .field("threads", utils::ideal_thread_count())
+                    .build(),
+            );
+            p.set_audio_encoder_profile(ElementFactoryProfile::new("opusenc"));
+            p
+        },
     ]
 }
 
@@ -314,6 +326,7 @@ mod tests {
     fn builtin_profiles_work() {
         for profile in builtin_profiles() {
             assert!(profile.to_encoding_profile().is_ok());
+            assert!(profile.file_extension().is_some());
         }
     }
 }

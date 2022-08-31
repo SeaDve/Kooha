@@ -13,6 +13,7 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct Profile {
         pub(super) name: RefCell<String>,
+        pub(super) file_extension: RefCell<Option<String>>,
         pub(super) muxer_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) video_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) audio_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
@@ -33,6 +34,9 @@ mod imp {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
                     glib::ParamSpecString::builder("name")
+                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
+                        .build(),
+                    glib::ParamSpecString::builder("file-extension")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
                     glib::ParamSpecBoxed::builder(
@@ -71,6 +75,10 @@ mod imp {
                     let name = value.get().unwrap();
                     obj.set_name(name);
                 }
+                "file-extension" => {
+                    let file_extension = value.get().unwrap();
+                    obj.set_file_extension(file_extension);
+                }
                 "muxer-profile" => {
                     let muxer_profile = value.get().unwrap();
                     obj.set_muxer_profile(muxer_profile);
@@ -90,6 +98,7 @@ mod imp {
         fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
                 "name" => obj.name().to_value(),
+                "file-extension" => obj.file_extension().to_value(),
                 "muxer-profile" => obj.muxer_profile().to_value(),
                 "video-encoder-profile" => obj.video_encoder_profile().to_value(),
                 "audio-encoder-profile" => obj.audio_encoder_profile().to_value(),
@@ -104,22 +113,7 @@ glib::wrapper! {
 }
 
 impl Profile {
-    pub fn new(
-        name: &str,
-        muxer_profile: &ElementFactoryProfile,
-        video_encoder_profile: &ElementFactoryProfile,
-        audio_encoder_profile: &ElementFactoryProfile,
-    ) -> Self {
-        glib::Object::builder()
-            .property("name", name)
-            .property("muxer-profile", muxer_profile)
-            .property("video-encoder-profile", video_encoder_profile)
-            .property("audio-encoder-profile", audio_encoder_profile)
-            .build()
-            .expect("Failed to create Profile.")
-    }
-
-    pub fn new_empty(name: &str) -> Self {
+    pub fn new(name: &str) -> Self {
         glib::Object::builder()
             .property("name", name)
             .build()
@@ -137,6 +131,21 @@ impl Profile {
 
     pub fn name(&self) -> String {
         self.imp().name.borrow().clone()
+    }
+
+    pub fn set_file_extension(&self, file_extension: &str) {
+        if Some(file_extension) == self.file_extension().as_deref() {
+            return;
+        }
+
+        self.imp()
+            .file_extension
+            .replace(Some(file_extension.to_string()));
+        self.notify("file-extension");
+    }
+
+    pub fn file_extension(&self) -> Option<String> {
+        self.imp().file_extension.borrow().clone()
     }
 
     pub fn set_muxer_profile(&self, profile: ElementFactoryProfile) {
@@ -250,7 +259,7 @@ impl Profile {
         video_profile.set_element_properties(
             self.video_encoder_profile()
                 .ok_or_else(|| anyhow!("Profile `{}` has no video encoder profile", self.name()))?
-                .into_element_properties(),
+                .to_element_properties(),
         );
 
         // Audio Encoder
@@ -269,7 +278,7 @@ impl Profile {
         audio_profile.set_element_properties(
             self.audio_encoder_profile()
                 .ok_or_else(|| anyhow!("Profile `{}` has no audio encoder profile", self.name()))?
-                .into_element_properties(),
+                .to_element_properties(),
         );
 
         // Muxer
@@ -282,7 +291,7 @@ impl Profile {
         container_profile.set_element_properties(
             self.muxer_profile()
                 .ok_or_else(|| anyhow!("Profile `{}` has no muxer profile", self.name()))?
-                .into_element_properties(),
+                .to_element_properties(),
         );
 
         Ok(container_profile)
@@ -348,12 +357,11 @@ mod tests {
         video_encoder_factory_name: &str,
         audio_encoder_factory_name: &str,
     ) -> Profile {
-        Profile::new(
-            "",
-            &ElementFactoryProfile::new(muxer_factory_name),
-            &ElementFactoryProfile::new(video_encoder_factory_name),
-            &ElementFactoryProfile::new(audio_encoder_factory_name),
-        )
+        let p = Profile::new("");
+        p.set_muxer_profile(ElementFactoryProfile::new(muxer_factory_name));
+        p.set_video_encoder_profile(ElementFactoryProfile::new(video_encoder_factory_name));
+        p.set_audio_encoder_profile(ElementFactoryProfile::new(audio_encoder_factory_name));
+        p
     }
 
     #[test]

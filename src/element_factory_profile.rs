@@ -15,7 +15,7 @@ impl<P: IsA<gst_pbutils::EncodingProfile>> EncodingProfileExtManual for P {
         unsafe {
             gst_pbutils::ffi::gst_encoding_profile_set_element_properties(
                 self.as_ref().to_glib_none().0,
-                element_properties.to_glib_full(),
+                element_properties.into_ptr(),
             );
         }
     }
@@ -40,7 +40,7 @@ impl ElementFactoryProfile {
         self.0.name()
     }
 
-    pub fn into_element_properties(self) -> gst::Structure {
+    pub fn to_element_properties(&self) -> gst::Structure {
         gst::Structure::builder("element-properties-map")
             .field("map", gst::List::from(vec![self.0.to_send_value()]))
             .build()
@@ -123,7 +123,7 @@ mod tests {
     #[test]
     fn into_element_properties() {
         let profile = ElementFactoryProfile::new("vp8enc");
-        let element_properties = profile.clone().into_element_properties();
+        let element_properties = profile.to_element_properties();
         assert_eq!(element_properties.name(), "element-properties-map");
         assert_eq!(
             element_properties

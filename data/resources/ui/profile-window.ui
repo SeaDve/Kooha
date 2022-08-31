@@ -69,6 +69,11 @@
                                   </object>
                                 </child>
                                 <child>
+                                  <object class="AdwEntryRow" id="file_extension_row">
+                                    <property name="title" translatable="yes">File Extension</property>
+                                  </object>
+                                </child>
+                                <child>
                                   <object class="AdwComboRow" id="muxer_row">
                                     <property name="title" translatable="yes">Container Format</property>
                                   </object>
