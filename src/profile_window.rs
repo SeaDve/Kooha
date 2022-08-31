@@ -421,6 +421,10 @@ impl ProfileWindow {
         imp.file_extension_row_binding.replace(Some(
             active_profile
                 .bind_property("file-extension", &imp.file_extension_row.get(), "text")
+                .transform_to(|_: &glib::Binding, value: &glib::Value| {
+                    let file_extension = value.get::<Option<String>>().unwrap();
+                    Some(file_extension.unwrap_or_default().to_value())
+                })
                 .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .build(),
         ));
