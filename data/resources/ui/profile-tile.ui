@@ -117,6 +117,38 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkLabel" id="builtin_attribute">
+                    <property name="visible">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Built-In</property>
+                    <property name="xalign">0</property>
+                    <style>
+                      <class name="caption"/>
+                      <class name="attribute"/>
+                      <class name="builtin"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="unavailable_attribute">
+                    <property name="visible">False</property>
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Unavailable</property>
+                    <property name="xalign">0</property>
+                    <style>
+                      <class name="caption"/>
+                      <class name="attribute"/>
+                      <class name="unavailable"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
       </object>

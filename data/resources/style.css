@@ -39,3 +39,18 @@ profiletile.selected .inner-box {
   border-width: 3px;
   border-color: @accent_color;
 }
+
+profiletile .attribute {
+  padding: 3px 6px;
+  border-radius: 99999px;
+}
+
+profiletile .attribute.builtin {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+profiletile .attribute.unavailable {
+  background-color: @destructive_bg_color;
+  color: @destructive_fg_color;
+}

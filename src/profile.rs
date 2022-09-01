@@ -1,8 +1,9 @@
 use anyhow::{anyhow, ensure, Result};
 use gst_pbutils::prelude::*;
 use gtk::{glib, subclass::prelude::*};
+use once_cell::unsync::OnceCell;
 
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 
 use crate::element_factory_profile::{ElementFactoryProfile, EncodingProfileExtManual};
 
@@ -12,11 +13,13 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct Profile {
+        pub(super) is_builtin: OnceCell<bool>,
         pub(super) name: RefCell<String>,
         pub(super) file_extension: RefCell<Option<String>>,
         pub(super) muxer_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) video_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) audio_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
+        pub(super) is_available: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -29,6 +32,9 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
+                    glib::ParamSpecBoolean::builder("builtin")
+                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::CONSTRUCT_ONLY)
+                        .build(),
                     glib::ParamSpecString::builder("name")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
@@ -53,6 +59,9 @@ mod imp {
                     )
                     .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                     .build(),
+                    glib::ParamSpecBoolean::builder("available")
+                        .flags(glib::ParamFlags::READABLE)
+                        .build(),
                 ]
             });
 
@@ -67,6 +76,10 @@ mod imp {
             pspec: &glib::ParamSpec,
         ) {
             match pspec.name() {
+                "builtin" => {
+                    let is_builtin = value.get().unwrap();
+                    self.is_builtin.set(is_builtin).unwrap();
+                }
                 "name" => {
                     let name = value.get().unwrap();
                     obj.set_name(name);
@@ -93,11 +106,13 @@ mod imp {
 
         fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             match pspec.name() {
+                "builtin" => obj.is_builtin().to_value(),
                 "name" => obj.name().to_value(),
                 "file-extension" => obj.file_extension().to_value(),
                 "muxer-profile" => obj.muxer_profile().to_value(),
                 "video-encoder-profile" => obj.video_encoder_profile().to_value(),
                 "audio-encoder-profile" => obj.audio_encoder_profile().to_value(),
+                "available" => obj.is_available().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -114,6 +129,29 @@ impl Profile {
             .property("name", name)
             .build()
             .expect("Failed to create Profile.")
+    }
+
+    pub fn new_builtin(name: &str) -> Self {
+        glib::Object::builder()
+            .property("builtin", true)
+            .property("name", name)
+            .build()
+            .expect("Failed to create Profile.")
+    }
+
+    pub fn new_from(profile: &Self, name: &str) -> Self {
+        glib::Object::builder()
+            .property("name", name)
+            .property("file-extension", profile.file_extension())
+            .property("muxer-profile", profile.muxer_profile())
+            .property("video-encoder-profile", profile.video_encoder_profile())
+            .property("audio-encoder-profile", profile.audio_encoder_profile())
+            .build()
+            .expect("Failed to create Profile.")
+    }
+
+    pub fn is_builtin(&self) -> bool {
+        *self.imp().is_builtin.get().unwrap()
     }
 
     pub fn set_name(&self, name: &str) {
@@ -151,6 +189,7 @@ impl Profile {
 
         let imp = self.imp();
         imp.muxer_profile.replace(Some(profile));
+        self.update_available();
         self.notify("muxer-profile");
     }
 
@@ -165,6 +204,7 @@ impl Profile {
 
         let imp = self.imp();
         imp.video_encoder_profile.replace(Some(profile));
+        self.update_available();
         self.notify("video-encoder-profile");
     }
 
@@ -179,11 +219,16 @@ impl Profile {
 
         let imp = self.imp();
         imp.audio_encoder_profile.replace(Some(profile));
+        self.update_available();
         self.notify("audio-encoder-profile");
     }
 
     pub fn audio_encoder_profile(&self) -> Option<ElementFactoryProfile> {
         self.imp().audio_encoder_profile.borrow().clone()
+    }
+
+    pub fn is_available(&self) -> bool {
+        self.imp().is_available.get()
     }
 
     pub fn to_encoding_profile(&self) -> Result<gst_pbutils::EncodingContainerProfile> {
@@ -238,21 +283,23 @@ impl Profile {
         Ok(gst_container_profile)
     }
 
-    pub fn deep_clone(&self) -> Self {
-        glib::Object::with_values(
-            Self::static_type(),
-            &self
-                .list_properties()
-                .iter()
-                .map(|pspec| {
-                    let property_name = pspec.name();
-                    (property_name, self.property_value(property_name))
-                })
-                .collect::<Vec<_>>(),
-        )
-        .expect("Failed to create Profile.")
-        .downcast()
-        .unwrap()
+    fn update_available(&self) {
+        let is_available = self
+            .muxer_profile()
+            .map_or(true, |profile| profile.factory().is_ok())
+            && self
+                .video_encoder_profile()
+                .map_or(true, |profile| profile.factory().is_ok())
+            && self
+                .audio_encoder_profile()
+                .map_or(true, |profile| profile.factory().is_ok());
+
+        if is_available == self.is_available() {
+            return;
+        }
+
+        self.imp().is_available.set(is_available);
+        self.notify("available");
     }
 }
 

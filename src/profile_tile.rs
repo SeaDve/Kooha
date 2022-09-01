@@ -26,6 +26,10 @@ mod imp {
         pub(super) video_encoder_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub(super) audio_encoder_label: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub(super) builtin_attribute: TemplateChild<gtk::Label>,
+        #[template_child]
+        pub(super) unavailable_attribute: TemplateChild<gtk::Label>,
 
         pub(super) profile: RefCell<Option<Profile>>,
         pub(super) is_selected: Cell<bool>,
@@ -147,6 +151,13 @@ mod imp {
                     "label",
                 )
                 .transform_to(profile_to_label_func)
+                .build();
+            self.binding_group
+                .bind("builtin", &self.builtin_attribute.get(), "visible")
+                .build();
+            self.binding_group
+                .bind("available", &self.unavailable_attribute.get(), "visible")
+                .flags(glib::BindingFlags::INVERT_BOOLEAN)
                 .build();
         }
     }

@@ -239,7 +239,7 @@ fn builtin_profiles() -> Vec<Profile> {
         // TODO vaapi?
         // TODO Handle missing plugins add warning if missing
         {
-            let p = Profile::new("WebM");
+            let p = Profile::new_builtin("WebM");
             p.set_file_extension("webm");
             p.set_muxer_profile(ElementFactoryProfile::new("webmmux"));
             p.set_video_encoder_profile(
@@ -258,7 +258,7 @@ fn builtin_profiles() -> Vec<Profile> {
             p
         },
         {
-            let p = Profile::new("MP4");
+            let p = Profile::new_builtin("MP4");
             p.set_file_extension("mp4");
             p.set_muxer_profile(ElementFactoryProfile::new("mp4mux"));
             p.set_video_encoder_profile(
@@ -273,7 +273,7 @@ fn builtin_profiles() -> Vec<Profile> {
             p
         },
         {
-            let p = Profile::new("Matroska");
+            let p = Profile::new_builtin("Matroska");
             p.set_file_extension("mkv");
             p.set_muxer_profile(ElementFactoryProfile::new("matroskamux"));
             p.set_video_encoder_profile(
@@ -340,6 +340,7 @@ mod tests {
         for profile in builtin_profiles() {
             assert!(profile.to_encoding_profile().is_ok());
             assert!(profile.file_extension().is_some());
+            assert!(profile.is_builtin());
         }
     }
 }

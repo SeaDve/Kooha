@@ -362,9 +362,8 @@ impl ProfileWindow {
 
         profile_tile.connect_copy_request(clone!(@weak self as obj => move |profile_tile| {
             let original =  profile_tile.profile().unwrap();
-            let deep_clone = original.deep_clone();
-            deep_clone.set_name(&gettext!("{} (Copy)", original.name()));
-            obj.model().unwrap().set_active_profile(Some(&deep_clone));
+            let copy = Profile::new_from(&original, &gettext!("{} (Copy)", original.name()));
+            obj.model().unwrap().set_active_profile(Some(&copy));
         }));
 
         profile_tile
