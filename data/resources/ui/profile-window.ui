@@ -50,6 +50,7 @@
                                 <property name="row-spacing">6</property>
                                 <property name="selection-mode">none</property>
                                 <property name="min-children-per-line">1</property>
+                                <property name="homogeneous">True</property>
                               </object>
                             </child>
                           </object>
