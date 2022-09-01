@@ -15,7 +15,7 @@ mod imp {
     pub struct Profile {
         pub(super) is_builtin: OnceCell<bool>,
         pub(super) name: RefCell<String>,
-        pub(super) file_extension: RefCell<Option<String>>,
+        pub(super) file_extension: RefCell<String>,
         pub(super) muxer_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) video_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
         pub(super) audio_encoder_profile: RefCell<Option<ElementFactoryProfile>>,
@@ -168,27 +168,27 @@ impl Profile {
     }
 
     pub fn set_file_extension(&self, file_extension: &str) {
-        if Some(file_extension) == self.file_extension().as_deref() {
+        if file_extension == self.file_extension().as_str() {
             return;
         }
 
         self.imp()
             .file_extension
-            .replace(Some(file_extension.to_string()));
+            .replace(file_extension.to_string());
         self.notify("file-extension");
     }
 
-    pub fn file_extension(&self) -> Option<String> {
+    pub fn file_extension(&self) -> String {
         self.imp().file_extension.borrow().clone()
     }
 
-    pub fn set_muxer_profile(&self, profile: ElementFactoryProfile) {
-        if Some(&profile) == self.muxer_profile().as_ref() {
+    pub fn set_muxer_profile(&self, profile: Option<ElementFactoryProfile>) {
+        if profile == self.muxer_profile() {
             return;
         }
 
         let imp = self.imp();
-        imp.muxer_profile.replace(Some(profile));
+        imp.muxer_profile.replace(profile);
         self.update_available();
         self.notify("muxer-profile");
     }
@@ -197,13 +197,13 @@ impl Profile {
         self.imp().muxer_profile.borrow().clone()
     }
 
-    pub fn set_video_encoder_profile(&self, profile: ElementFactoryProfile) {
-        if Some(&profile) == self.video_encoder_profile().as_ref() {
+    pub fn set_video_encoder_profile(&self, profile: Option<ElementFactoryProfile>) {
+        if profile == self.video_encoder_profile() {
             return;
         }
 
         let imp = self.imp();
-        imp.video_encoder_profile.replace(Some(profile));
+        imp.video_encoder_profile.replace(profile);
         self.update_available();
         self.notify("video-encoder-profile");
     }
@@ -212,13 +212,13 @@ impl Profile {
         self.imp().video_encoder_profile.borrow().clone()
     }
 
-    pub fn set_audio_encoder_profile(&self, profile: ElementFactoryProfile) {
-        if Some(&profile) == self.audio_encoder_profile().as_ref() {
+    pub fn set_audio_encoder_profile(&self, profile: Option<ElementFactoryProfile>) {
+        if profile == self.audio_encoder_profile() {
             return;
         }
 
         let imp = self.imp();
-        imp.audio_encoder_profile.replace(Some(profile));
+        imp.audio_encoder_profile.replace(profile);
         self.update_available();
         self.notify("audio-encoder-profile");
     }
@@ -313,9 +313,9 @@ mod tests {
         audio_encoder_factory_name: &str,
     ) -> Profile {
         let p = Profile::new("");
-        p.set_muxer_profile(ElementFactoryProfile::new(muxer_factory_name));
-        p.set_video_encoder_profile(ElementFactoryProfile::new(video_encoder_factory_name));
-        p.set_audio_encoder_profile(ElementFactoryProfile::new(audio_encoder_factory_name));
+        p.set_muxer_profile(Some(ElementFactoryProfile::new(muxer_factory_name)));
+        p.set_video_encoder_profile(Some(ElementFactoryProfile::new(video_encoder_factory_name)));
+        p.set_audio_encoder_profile(Some(ElementFactoryProfile::new(audio_encoder_factory_name)));
         p
     }
 

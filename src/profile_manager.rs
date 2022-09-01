@@ -241,8 +241,8 @@ fn builtin_profiles() -> Vec<Profile> {
         {
             let p = Profile::new_builtin("WebM");
             p.set_file_extension("webm");
-            p.set_muxer_profile(ElementFactoryProfile::new("webmmux"));
-            p.set_video_encoder_profile(
+            p.set_muxer_profile(Some(ElementFactoryProfile::new("webmmux")));
+            p.set_video_encoder_profile(Some(
                 ElementFactoryProfile::builder("vp8enc")
                     .property("max-quantizer", 17)
                     .property("cpu-used", 16)
@@ -253,38 +253,38 @@ fn builtin_profiles() -> Vec<Profile> {
                     .property("buffer-size", 20000)
                     .property("threads", utils::ideal_thread_count())
                     .build(),
-            );
-            p.set_audio_encoder_profile(ElementFactoryProfile::new("opusenc"));
+            ));
+            p.set_audio_encoder_profile(Some(ElementFactoryProfile::new("opusenc")));
             p
         },
         {
             let p = Profile::new_builtin("MP4");
             p.set_file_extension("mp4");
-            p.set_muxer_profile(ElementFactoryProfile::new("mp4mux"));
-            p.set_video_encoder_profile(
+            p.set_muxer_profile(Some(ElementFactoryProfile::new("mp4mux")));
+            p.set_video_encoder_profile(Some(
                 ElementFactoryProfile::builder("x264enc")
                     .format_field("profile", "baseline")
                     .property("qp-max", 17)
                     .property_from_str("speed-preset", "superfast")
                     .property("threads", utils::ideal_thread_count())
                     .build(),
-            );
-            p.set_audio_encoder_profile(ElementFactoryProfile::new("lamemp3enc"));
+            ));
+            p.set_audio_encoder_profile(Some(ElementFactoryProfile::new("lamemp3enc")));
             p
         },
         {
             let p = Profile::new_builtin("Matroska");
             p.set_file_extension("mkv");
-            p.set_muxer_profile(ElementFactoryProfile::new("matroskamux"));
-            p.set_video_encoder_profile(
+            p.set_muxer_profile(Some(ElementFactoryProfile::new("matroskamux")));
+            p.set_video_encoder_profile(Some(
                 ElementFactoryProfile::builder("x264enc")
                     .format_field("profile", "baseline")
                     .property("qp-max", 17)
                     .property_from_str("speed-preset", "superfast")
                     .property("threads", utils::ideal_thread_count())
                     .build(),
-            );
-            p.set_audio_encoder_profile(ElementFactoryProfile::new("opusenc"));
+            ));
+            p.set_audio_encoder_profile(Some(ElementFactoryProfile::new("opusenc")));
             p
         },
     ]
@@ -339,7 +339,7 @@ mod tests {
     fn builtin_profiles_work() {
         for profile in builtin_profiles() {
             assert!(profile.to_encoding_profile().is_ok());
-            assert!(profile.file_extension().is_some());
+            assert!(!profile.file_extension().is_empty());
             assert!(profile.is_builtin());
         }
     }

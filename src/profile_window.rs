@@ -160,7 +160,7 @@ mod imp {
                         if let Some(profile) = obj.model().and_then(|model| model.active_profile()) {
                             let element_factory = selected_item.downcast::<gst::ElementFactory>().unwrap();
                             let element_factory_name = element_factory.name();
-                            profile.set_muxer_profile(ElementFactoryProfile::new(&element_factory_name));
+                            profile.set_muxer_profile(Some(ElementFactoryProfile::new(&element_factory_name)));
                         } else {
                             tracing::warn!("No model or active profile found but selected an element");
                         }
@@ -172,7 +172,7 @@ mod imp {
                         if let Some(profile) = obj.model().and_then(|model| model.active_profile()) {
                             let element_factory = selected_item.downcast::<gst::ElementFactory>().unwrap();
                             let element_factory_name = element_factory.name();
-                            profile.set_video_encoder_profile(ElementFactoryProfile::new(&element_factory_name));
+                            profile.set_video_encoder_profile(Some(ElementFactoryProfile::new(&element_factory_name)));
                         } else {
                             tracing::warn!("No model or active profile found but selected an element");
                         }
@@ -184,7 +184,7 @@ mod imp {
                         if let Some(profile) = obj.model().and_then(|model| model.active_profile()) {
                             let element_factory = selected_item.downcast::<gst::ElementFactory>().unwrap();
                             let element_factory_name = element_factory.name();
-                            profile.set_audio_encoder_profile(ElementFactoryProfile::new(&element_factory_name));
+                            profile.set_audio_encoder_profile(Some(ElementFactoryProfile::new(&element_factory_name)));
                         } else {
                             tracing::warn!("No model or active profile found but selected an element");
                         }

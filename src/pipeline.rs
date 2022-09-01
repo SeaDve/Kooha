@@ -1,4 +1,4 @@
-use anyhow::{anyhow, bail, Context, Ok, Result};
+use anyhow::{bail, Context, Ok, Result};
 use gst::prelude::*;
 use gtk::graphene::{Rect, Size};
 
@@ -73,13 +73,7 @@ impl PipelineBuilder {
     }
 
     pub fn build(&self) -> Result<gst::Pipeline> {
-        let file_extension = self.profile.file_extension().ok_or_else(|| {
-            anyhow!(
-                "Found no file extension for profile with name `{}`",
-                self.profile.name()
-            )
-        })?;
-        let file_path = new_recording_path(&self.saving_location, file_extension);
+        let file_path = new_recording_path(&self.saving_location, self.profile.file_extension());
 
         let encodebin = element_factory_make("encodebin")?;
         encodebin.set_property("profile", &self.profile.to_encoding_profile()?);
