@@ -166,12 +166,16 @@ impl ProfileManager {
             let removed = imp.profiles.borrow_mut().remove(position);
             self.items_changed(position as u32, 1, 0);
 
-            if Some(removed) == self.active_profile() {
+            if Some(&removed) == self.active_profile().as_ref() {
                 // Clone to prevent BorrowMutError
                 let last_active_profile = imp.last_active_profile.borrow().as_ref().cloned();
                 if let Some(ref last_active_profile) = last_active_profile {
                     self.set_active_profile(Some(last_active_profile));
                 }
+            }
+
+            if Some(&removed) == imp.last_active_profile.borrow().as_ref() {
+                imp.last_active_profile.replace(None);
             }
         } else {
             tracing::debug!(
