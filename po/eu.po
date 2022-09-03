@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-05-13 17:17+0000\n"
+"PO-Revision-Date: 2022-09-03 18:18+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/kooha/pot-file/eu/"
 ">\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -100,7 +100,7 @@ msgstr "⌨️ Teklatu-lasterbideak erabili."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -132,7 +132,7 @@ msgstr "Txandakatu etenaldia"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Bertan behera utzi grabazioa"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -164,19 +164,19 @@ msgstr "Pantaila-aukera bat atzeman"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Mahaigaineko soinuak aktibatu"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Mahaigaineko soinuak desaktibatu"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Aktibatu mikrofonoa"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Desaktibatu mikrofonoa"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -184,11 +184,11 @@ msgstr "Erakutsi punteroa"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Ezkutatu sagua"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Hasi grabatzen"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -196,11 +196,11 @@ msgstr "Grabatu"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Aurretik hautatutako bideo-iturriak ahaztu"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Gelditu grabazioa"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -208,7 +208,7 @@ msgstr "Gelditu"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Gelditu grabazioa"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -216,7 +216,7 @@ msgstr "Grabatzen…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Bertan behera utzi grabazioa"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
@@ -236,7 +236,7 @@ msgstr "Bat ere ez"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3 segundo"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
@@ -280,7 +280,7 @@ msgstr "_Koohari buruz"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -289,11 +289,11 @@ msgstr "Sergio Varela"
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Dohaintza (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Dohaintza (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -301,51 +301,51 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Itzuli"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Pantailaren grabazioa amaituta"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Egin klik hemen bideoa ikusteko."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Artxiboetan erakutsi"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Ziurtatu PulseAudio instalatuta duzula zure sisteman."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Ezin izan da sistemaren monitorea hasi"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Akatsa PulseAudio deabruarekiko konexioan"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Ezin izan da grabazioa hasi"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Kontsultatu {} laguntza lortzeko."
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "Mikrofonoaren iturria ez da aurkitu"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Ez da mahaigaineko bozgorailu-iturririk aurkitu"
 
 #: src/recording.rs:242
 msgid ""
@@ -359,20 +359,20 @@ msgstr ""
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Ziurtatu gordelekua existitzen dela eta irisgarria dela."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Errorea gertatu da grabatzean"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Errorea idazteko \"{}\" irekitzean"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Ezin izan da artxiboa ireki idazteko"
 
 #: src/settings.rs:35
 msgid "Select Recordings Folder"
@@ -388,11 +388,11 @@ msgstr "_Aukeratu"
 
 #: src/settings.rs:62
 msgid "No folder selected"
-msgstr ""
+msgstr "Ez da karpetarik hautatu"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Mesedez, aukeratu karpeta bat eta saiatu berriro."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
@@ -405,27 +405,27 @@ msgstr "Mesedez, aukeratu leku irisgarri bat eta saiatu berriro."
 
 #: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Ados"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Akatsa etenaldia kommutatzean"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopiatu paper-zorroan"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Paper-zorroan kopiatuta"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Errore zehatza erakutsi"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Laguntza"
 
 #: src/window.rs:349
 msgid "Paused"

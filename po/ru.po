@@ -11,13 +11,14 @@
 # Feodor Rusanov <f.rusanov@gmail.com>, 2022.
 # VBB <librusekus35790@gmail.com>, 2022.
 # Daudix UFO <ddaudix@gmail.com>, 2022.
+# Vik <xasertop@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-23 12:15+0000\n"
-"Last-Translator: Daudix UFO <ddaudix@gmail.com>\n"
+"PO-Revision-Date: 2022-09-03 18:18+0000\n"
+"Last-Translator: Vik <xasertop@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -55,8 +56,9 @@ msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha - это простой рекордер с минималистским интерфейсом. Вы можете просто "
-"нажать кнопку записи, не настраивая кучу настроек."
+"Kooha — это простая программа для записи экрана с минималистичным "
+"интерфейсом. Вы можете просто нажать кнопку записи без необходимости "
+"настройки кучи параметров."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
@@ -64,15 +66,17 @@ msgstr "Основные функции Kooha включают следующе�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Захватывайте свой экран без хлопот."
+msgstr "🎥 Захват экран без каких-либо хлопот."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Записывайте ваш микрофон, звуки компьютера, или оба одновременно."
+msgstr ""
+"🎙️ Запись звука вашего микрофона, звуков компьютера или и того, и другого "
+"одновременно."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Поддержка форматов WebM, MP4, GIF, и MKV."
+msgstr "📼 Поддержка форматов WebM, MP4, GIF и MKV."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection."
@@ -80,7 +84,7 @@ msgstr "🗔 Выбор нескольких источников."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Дополнительное кодирование с аппаратным ускорением"
+msgstr "🚀 Дополнительное кодирование с аппаратным ускорением."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🖥️ Select a monitor or window to record."
@@ -88,7 +92,7 @@ msgstr "🖥️ Выбор монитора или окна для записи.
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ Выделяйте область для записи определённой области вашего экрана."
+msgstr "🖼️ Создание выделения для записи определённой области вашего экрана."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -124,7 +128,7 @@ msgstr "Показать комбинации клавиш"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Quit"
-msgstr "Выход"
+msgstr "Выйти"
 
 #: data/resources/ui/shortcuts.ui:33 src/window.rs:341
 msgid "Recording"
@@ -144,7 +148,7 @@ msgstr "Отменить запись"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
-msgstr "Параметры"
+msgstr "Настройки"
 
 #: data/resources/ui/shortcuts.ui:61
 msgid "Toggle Computer Sounds"
@@ -232,7 +236,7 @@ msgstr "Отмена"
 
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
-msgstr "Промывание…"
+msgstr "Очистка…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Delay"
@@ -293,7 +297,8 @@ msgstr "© 2022 Дэйв Патрик Каберто"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
 msgid "translator-credits"
-msgstr "Ковалев Артем, Давид Лапшин"
+msgstr ""
+"Ковалев Артем, Давид Лапшин, ViktorOn &lt;https://github.com/viktoron&gt;"
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
@@ -322,11 +327,11 @@ msgstr "Нажмите здесь, чтобы посмотреть видео."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr "Показать в Файлах"
+msgstr "Показать в файлах"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr "Убедитесь что в вашей системе установлен PulseAudio."
+msgstr "Убедитесь, что в вашей системе установлен PulseAudio."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
@@ -353,7 +358,7 @@ msgstr "Источник микрофона не найден"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
-msgstr "Источник динамика рабочего стола не найден"
+msgstr "Источник динамика компьютера не найден"
 
 #: src/recording.rs:242
 msgid ""
@@ -361,13 +366,13 @@ msgid ""
 "not work properly, please report to <a href=\"https://github.com/SeaDve/"
 "Kooha/issues\">Kooha's issue page</a>."
 msgstr ""
-"Плагин GStreamer может быть не установлен. Если он установлен, но не "
-"работает, пожалуйста сообщите это на <a href=\"https://github.com/SeaDve/"
-"Kooha/issues\">странице \"Неполадки Kooha\"</a>."
+"Плагин GStreamer, возможно, не установлен. Если он установлен, но не "
+"работает, пожалуйста сообщите об этом на <a href=\"https://github.com/SeaDve/"
+"Kooha/issues\">странице \"Issues Kooha\"</a>."
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr "Убедитесь что место сохранения существует и доступно."
+msgstr "Убедитесь, что место сохранения существует и доступно."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
@@ -376,7 +381,7 @@ msgstr "Во время записи произошла ошибка"
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr "Не удалось открыть “{}” для записи"
+msgstr "Не удалось открыть \"{}\" для записи"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -405,7 +410,7 @@ msgstr "Пожалуйста, выберите папку и попробуйт�
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
 msgid "Cannot access “{}”"
-msgstr "Не удается получить доступ к “{}”"
+msgstr "Не удается получить доступ к \"{}\""
 
 #: src/settings.rs:73
 msgid "Please choose an accessible location and try again."
@@ -421,7 +426,7 @@ msgstr "Не удалось переключить паузу"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr "Копировать в буфер обмена"
+msgstr "Скопировать в буфер обмена"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"

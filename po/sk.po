@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-29 09:18+0000\n"
+"PO-Revision-Date: 2022-09-03 18:18+0000\n"
 "Last-Translator: Marek Ľach <graweeld@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kooha/pot-file/sk/"
 ">\n"
@@ -167,11 +167,11 @@ msgstr "Zachytí výber obrazovky"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Povoliť zvuky plochy"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Zakázať zvuky plochy"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -323,7 +323,7 @@ msgstr "Ukázať v Súboroch"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Uistite sa, že máte na vašom systéme nainštalované PulseAudio."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
@@ -337,7 +337,7 @@ msgstr ""
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Začatie nahrávania zlyhalo"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
@@ -346,7 +346,7 @@ msgstr ""
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "Zdroj mikrofónu nenájdený"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
@@ -361,20 +361,20 @@ msgstr ""
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Overte si, že miesto na ukladanie existuje a je dostupné."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Počas nahrávania nastala chýba"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť “{}” k zápisu"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť súbor na zápis"
 
 #: src/settings.rs:35
 msgid "Select Recordings Folder"
@@ -390,11 +390,11 @@ msgstr "V_ybrať"
 
 #: src/settings.rs:62
 msgid "No folder selected"
-msgstr ""
+msgstr "Žiadna zložka nevybraná"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Prosím vyberte zložku a skúste to znova."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
@@ -423,11 +423,11 @@ msgstr ""
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Ukázať podrobnosti chyby"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 #: src/window.rs:349
 msgid "Paused"
