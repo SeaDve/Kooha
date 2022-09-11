@@ -158,11 +158,11 @@ impl Application {
         }));
         self.add_action(&action_show_in_files);
 
-        let action_show_about = gio::SimpleAction::new("show-about", None);
-        action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
+        let action_about = gio::SimpleAction::new("about", None);
+        action_about.connect_activate(clone!(@weak self as obj => move |_, _| {
             about::present_window(obj.main_window().as_ref());
         }));
-        self.add_action(&action_show_about);
+        self.add_action(&action_about);
 
         let action_preferences = gio::SimpleAction::new("preferences", None);
         action_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
