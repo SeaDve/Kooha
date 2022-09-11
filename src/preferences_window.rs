@@ -17,6 +17,10 @@ mod imp {
     #[template(resource = "/io/github/seadve/Kooha/ui/preferences-window.ui")]
     pub struct PreferencesWindow {
         #[template_child]
+        pub(super) frame_rate_row: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        pub(super) frame_rate_button: TemplateChild<gtk::SpinButton>,
+        #[template_child]
         pub(super) profile_row: TemplateChild<adw::ComboRow>,
         #[template_child]
         pub(super) delay_button: TemplateChild<gtk::SpinButton>,
@@ -46,6 +50,9 @@ mod imp {
     impl ObjectImpl for PreferencesWindow {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
+
+            self.frame_rate_row
+                .set_visible(utils::is_experimental_mode());
 
             self.profile_row
                 .set_expression(Some(&gtk::ClosureExpression::new::<
@@ -81,6 +88,10 @@ mod imp {
 
             settings
                 .bind_record_delay(&self.delay_button.get(), "value")
+                .build();
+
+            settings
+                .bind_video_framerate(&self.frame_rate_button.get(), "value")
                 .build();
 
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
@@ -149,7 +160,10 @@ impl PreferencesWindow {
         if let Some(position) = position {
             imp.profile_row.set_selected(position as u32);
         } else {
-            tracing::error!("Active profile was not found on profile model");
+            tracing::error!(
+                "Active profile `{}` was not found on profile model",
+                active_profile.typetag_name()
+            );
         }
     }
 }
