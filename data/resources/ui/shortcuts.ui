@@ -16,6 +16,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="action-name">app.preferences</property>
+                <property name="title" translatable="yes">Show Preferences</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.show-help-overlay</property>
                 <property name="title" translatable="yes">Show Shortcuts</property>
               </object>
