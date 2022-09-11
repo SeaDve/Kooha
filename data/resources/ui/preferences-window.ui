@@ -35,6 +35,11 @@
                   <object class="GtkButton" id="file_chooser_button">
                     <property name="valign">center</property>
                     <property name="action-name">preferences.select-saving-location</property>
+                    <child>
+                      <object class="AdwButtonContent" id="file_chooser_button_content">
+                        <property name="icon-name">document-open-symbolic</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
