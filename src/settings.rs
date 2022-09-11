@@ -12,11 +12,18 @@ use std::{
     time::Duration,
 };
 
-use crate::{config::APP_ID, utils};
+use crate::{
+    config::APP_ID,
+    profile::{Profile, WebMProfile},
+    utils,
+};
+
+const DEFAULT_PROFILE: WebMProfile = WebMProfile;
 
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
 #[gen_settings_skip(key_name = "saving-location")]
 #[gen_settings_skip(key_name = "record-delay")]
+#[gen_settings_skip(key_name = "profile")]
 pub struct Settings;
 
 impl Default for Settings {
@@ -106,12 +113,61 @@ impl Settings {
         kooha_saving_location
     }
 
+    pub fn connect_saving_location_changed(
+        &self,
+        f: impl Fn(&Self) + 'static,
+    ) -> gio::glib::SignalHandlerId {
+        self.0
+            .connect_changed(Some("saving-location"), move |settings, _| {
+                f(&Self(settings.clone()));
+            })
+    }
+
     pub fn record_delay(&self) -> Duration {
         Duration::from_secs(self.0.get::<u32>("record-delay") as u64)
     }
 
     pub fn create_record_delay_action(&self) -> gio::Action {
         self.0.create_action("record-delay")
+    }
+
+    pub fn bind_record_delay<'a>(
+        &'a self,
+        object: &'a impl IsA<gio::glib::Object>,
+        property: &'a str,
+    ) -> gio::BindingBuilder<'a> {
+        self.0.bind("record-delay", object, property)
+    }
+
+    pub fn set_profile(&self, profile: &dyn Profile) {
+        self.0
+            .set("profile", &serde_json::to_string(profile).unwrap())
+            .unwrap();
+    }
+
+    pub fn profile(&self) -> Box<dyn Profile> {
+        let val = self.0.get::<String>("profile");
+
+        if val.is_empty() {
+            return Box::new(DEFAULT_PROFILE);
+        }
+
+        match serde_json::from_str(&val) {
+            Ok(profile) => profile,
+            Err(err) => {
+                tracing::warn!("Failed to load profile `{}`: {:?}", val, err);
+                Box::new(DEFAULT_PROFILE)
+            }
+        }
+    }
+
+    pub fn connect_profile_changed(
+        &self,
+        f: impl Fn(&Self) + 'static,
+    ) -> gio::glib::SignalHandlerId {
+        self.0.connect_changed(Some("profile"), move |settings, _| {
+            f(&Self(settings.clone()));
+        })
     }
 }
 

@@ -293,58 +293,10 @@
   </template>
   <menu id="menu">
     <section>
-      <submenu>
-        <attribute name="label" translatable="yes">_Delay</attribute>
-        <item>
-          <attribute translatable="yes" name="label">None</attribute>
-          <attribute name="action">win.record-delay</attribute>
-          <attribute name="target" type="u">0</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">3 seconds</attribute>
-          <attribute name="action">win.record-delay</attribute>
-          <attribute name="target" type="u">3</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">5 seconds</attribute>
-          <attribute name="action">win.record-delay</attribute>
-          <attribute name="target" type="u">5</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">10 seconds</attribute>
-          <attribute name="action">win.record-delay</attribute>
-          <attribute name="target" type="u">10</attribute>
-        </item>
-      </submenu>
-      <submenu>
-        <attribute name="label" translatable="yes">_Video Format</attribute>
-        <item>
-          <attribute translatable="yes" name="label">WebM</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">webm</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">MKV</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">mkv</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">MP4</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">mp4</attribute>
-        </item>
-        <item>
-          <attribute translatable="yes" name="label">GIF</attribute>
-          <attribute name="action">win.video-format</attribute>
-          <attribute name="target">gif</attribute>
-        </item>
-      </submenu>
       <item>
-        <attribute translatable="yes" name="label">_Save to…</attribute>
-        <attribute name="action">app.select-saving-location</attribute>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
       </item>
-    </section>
-    <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>

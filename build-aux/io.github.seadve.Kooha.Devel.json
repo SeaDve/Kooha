@@ -47,6 +47,29 @@
             ]
         },
         {
+            "name": "gstreamer",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dexamples=disabled",
+                "-Dtests=disabled",
+                "-Dbenchmarks=disabled",
+                "-Dtools=disabled",
+                "-Dintrospection=disabled",
+                "-Dnls=disabled",
+                "-Ddoc=disabled",
+                "-Dugly=enabled",
+                "--libdir=lib"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "tag": "1.20.3",
+                    "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+                    "commit": "ccf22e315cedf81e0075ab179ffb1b733da5206e"
+                }
+            ]
+        },
+        {
             "name": "gst-plugins-ugly",
             "buildsystem": "meson",
             "builddir": true,

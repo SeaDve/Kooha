@@ -13,7 +13,7 @@ use crate::{
     config::PROFILE,
     help::Help,
     recording::{Recording, State as RecordingState},
-    settings::{CaptureMode, VideoFormat},
+    settings::CaptureMode,
     toggle_button::ToggleButton,
     utils, Application,
 };
@@ -245,7 +245,7 @@ impl Window {
         *imp.recording.lock().await = Some((recording.clone(), handler_ids));
 
         let settings = Application::default().settings();
-        recording.start(Some(self), settings).await;
+        recording.start(Some(self), &settings).await;
     }
 
     async fn toggle_pause(&self) -> Result<()> {
@@ -387,7 +387,7 @@ impl Window {
 
     fn update_audio_toggles_sensitivity(&self) {
         let settings = Application::default().settings();
-        let is_enabled = settings.video_format() != VideoFormat::Gif;
+        let is_enabled = settings.profile().supports_audio();
 
         self.action_set_enabled("win.record-speaker", is_enabled);
         self.action_set_enabled("win.record-mic", is_enabled);
@@ -411,7 +411,7 @@ impl Window {
             obj.update_title_label();
         }));
 
-        settings.connect_video_format_changed(clone!(@weak self as obj => move |_| {
+        settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
             obj.update_audio_toggles_sensitivity();
         }));
 
@@ -427,8 +427,6 @@ impl Window {
         self.add_action(&settings.create_record_mic_action());
         self.add_action(&settings.create_show_pointer_action());
         self.add_action(&settings.create_capture_mode_action());
-        self.add_action(&settings.create_record_delay_action());
-        self.add_action(&settings.create_video_format_action());
     }
 }
 

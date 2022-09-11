@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
   <schema path="/io/github/seadve/Kooha/" id="@app-id@" gettext-domain="@gettext-package@">
-    <key type="s" name="video-format">
-      <choices>
-        <choice value="webm"/>
-        <choice value="mkv"/>
-        <choice value="mp4"/>
-        <choice value="gif"/>
-      </choices>
-      <default>"webm"</default>
-    </key>
     <key type="s" name="capture-mode">
       <choices>
         <choice value="monitor-window"/>
         <choice value="selection"/>
       </choices>
       <default>"monitor-window"</default>
+    </key>
+    <key type="s" name="profile">
+      <default>""</default>
     </key>
     <key type="u" name="record-delay">
       <default>0</default>

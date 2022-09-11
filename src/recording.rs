@@ -1,4 +1,4 @@
-use anyhow::{ensure, Context, Error, Result};
+use anyhow::{anyhow, ensure, Context, Error, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
@@ -10,7 +10,6 @@ use once_cell::{sync::Lazy, unsync::OnceCell};
 use std::{
     cell::{Cell, RefCell},
     os::unix::prelude::RawFd,
-    path::{Path, PathBuf},
     rc::Rc,
     time::Duration,
 };
@@ -20,9 +19,9 @@ use crate::{
     audio_device::{self, Class as AudioDeviceClass},
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
-    pipeline_builder::PipelineBuilder,
+    pipeline::PipelineBuilder,
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
-    settings::{CaptureMode, Settings, VideoFormat},
+    settings::{CaptureMode, Settings},
     timer::Timer,
     utils,
 };
@@ -139,7 +138,7 @@ impl Recording {
         glib::Object::new(&[]).expect("Failed to create Recording.")
     }
 
-    pub async fn start(&self, parent: Option<&impl IsA<gtk::Window>>, settings: Settings) {
+    pub async fn start(&self, parent: Option<&impl IsA<gtk::Window>>, settings: &Settings) {
         if !matches!(self.state(), State::Init) {
             tracing::error!("Trying to start recording on a non-init state");
             return;
@@ -154,7 +153,7 @@ impl Recording {
     async fn start_inner(
         &self,
         parent: Option<&impl IsA<gtk::Window>>,
-        settings: Settings,
+        settings: &Settings,
     ) -> Result<()> {
         let imp = self.imp();
 
@@ -186,25 +185,18 @@ impl Recording {
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
-        // setup path
-        let video_format = settings.video_format();
-        let recording_path = new_recording_path(&settings.saving_location(), video_format);
         let mut pipeline_builder = PipelineBuilder::new(
-            &recording_path,
+            &settings.saving_location(),
             settings.video_framerate(),
-            video_format,
+            settings.profile(),
             fd,
             streams,
         );
-        imp.file.set(gio::File::for_path(&recording_path)).unwrap();
 
         // select area
         if settings.capture_mode() == CaptureMode::Selection {
-            let (selection, screen) = AreaSelector::select_area().await?;
-
-            pipeline_builder
-                .coordinates(selection)
-                .actual_screen(screen);
+            let (coords, screen) = AreaSelector::select_area().await?;
+            pipeline_builder.select_area_context(coords, screen);
         }
 
         // setup timer
@@ -376,6 +368,20 @@ impl Recording {
         )
     }
 
+    fn file(&self) -> Result<&gio::File> {
+        let imp = self.imp();
+        self.imp().file.get_or_try_init(|| {
+            let location = imp
+                .pipeline
+                .get()
+                .ok_or_else(|| anyhow!("Pipeline not set"))?
+                .by_name("filesink")
+                .ok_or_else(|| anyhow!("Element filesink not found on pipeline"))?
+                .property::<String>("location");
+            Ok(gio::File::for_path(location))
+        })
+    }
+
     fn set_state(&self, state: State) {
         if state == self.state() {
             return;
@@ -412,12 +418,14 @@ impl Recording {
 
     /// Deletes recording file on background
     fn delete_file(&self) {
-        if let Some(file) = self.imp().file.get() {
+        if let Ok(file) = self.file() {
             file.delete_async(glib::PRIORITY_DEFAULT_IDLE, gio::Cancellable::NONE, |res| {
                 if let Err(err) = res {
                     tracing::warn!("Failed to delete recording file: {:?}", err);
                 }
             });
+        } else {
+            tracing::error!("Failed to delete recording file: Failed to get file");
         }
     }
 
@@ -465,9 +473,9 @@ impl Recording {
                 let error = if e.error().matches(gst::ResourceError::OpenWrite) {
                     error.help(
                         gettext("Make sure that the saving location exists and is accessible."),
-                        if let Some(ref path) = imp
-                            .file
-                            .get()
+                        if let Some(ref path) = self
+                            .file()
+                            .ok()
                             .and_then(|f| f.path())
                             .and_then(|path| path.parent().map(|p| p.to_owned()))
                         {
@@ -503,17 +511,7 @@ impl Recording {
                     source_id.remove();
                 }
 
-                let file = imp.file.get().unwrap();
-
-                debug_assert_eq!(
-                    self.pipeline()
-                        .by_name("filesink")
-                        .map(|fs| fs.property::<String>("location"))
-                        .map(|path| PathBuf::from(&path)),
-                    Some(file.path().unwrap())
-                );
-
-                self.set_finished(Ok(file.clone()));
+                self.set_finished(Ok(self.file().unwrap().clone()));
 
                 Continue(false)
             }
@@ -572,23 +570,6 @@ impl Default for Recording {
     fn default() -> Self {
         Self::new()
     }
-}
-
-fn new_recording_path(saving_location: &Path, video_format: VideoFormat) -> PathBuf {
-    let file_name = glib::DateTime::now_local()
-        .expect("You are somehow on year 9999")
-        .format("Kooha-%F-%H-%M-%S")
-        .expect("Invalid format string");
-
-    let mut path = saving_location.join(file_name);
-    path.set_extension(match video_format {
-        VideoFormat::Webm => "webm",
-        VideoFormat::Mkv => "mkv",
-        VideoFormat::Mp4 => "mp4",
-        VideoFormat::Gif => "gif",
-    });
-
-    path
 }
 
 async fn new_screencast_session(

@@ -11,6 +11,7 @@ use once_cell::unsync::OnceCell;
 use crate::{
     about,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
+    preferences_window::PreferencesWindow,
     settings::Settings,
     utils,
     window::Window,
@@ -157,17 +158,20 @@ impl Application {
         }));
         self.add_action(&action_show_in_files);
 
-        let action_select_saving_location = gio::SimpleAction::new("select-saving-location", None);
-        action_select_saving_location.connect_activate(clone!(@weak self as obj => move |_, _| {
-            obj.settings().select_saving_location(obj.main_window().as_ref());
-        }));
-        self.add_action(&action_select_saving_location);
-
         let action_show_about = gio::SimpleAction::new("show-about", None);
         action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
             about::present_window(obj.main_window().as_ref());
         }));
         self.add_action(&action_show_about);
+
+        let action_preferences = gio::SimpleAction::new("preferences", None);
+        action_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
+            let window = PreferencesWindow::new();
+            window.set_modal(true);
+            window.set_transient_for(obj.main_window().as_ref());
+            window.present();
+        }));
+        self.add_action(&action_preferences);
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
@@ -185,13 +189,14 @@ impl Application {
     }
 
     fn setup_accels(&self) {
-        self.set_accels_for_action("app.quit", &["<primary>q"]);
-        self.set_accels_for_action("win.record-speaker", &["<primary>a"]);
-        self.set_accels_for_action("win.record-mic", &["<primary>m"]);
-        self.set_accels_for_action("win.show-pointer", &["<primary>p"]);
-        self.set_accels_for_action("win.toggle-record", &["<primary>r"]);
-        // self.set_accels_for_action("win.toggle-pause", &["<primary>k"]); // See issue #112 in GitHub repo
-        self.set_accels_for_action("win.cancel-record", &["<primary>c"]);
+        self.set_accels_for_action("app.preferences", &["<Control>comma"]);
+        self.set_accels_for_action("app.quit", &["<Control>q"]);
+        self.set_accels_for_action("win.record-speaker", &["<Control>a"]);
+        self.set_accels_for_action("win.record-mic", &["<Control>m"]);
+        self.set_accels_for_action("win.show-pointer", &["<Control>p"]);
+        self.set_accels_for_action("win.toggle-record", &["<Control>r"]);
+        // self.set_accels_for_action("win.toggle-pause", &["<Control>k"]); // See issue #112 in GitHub repo
+        self.set_accels_for_action("win.cancel-record", &["<Control>c"]);
     }
 }
 
