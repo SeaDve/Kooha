@@ -346,9 +346,19 @@ fn new_encoding_profile(
 ) -> Result<gst_pbutils::EncodingContainerProfile> {
     let muxer_factory_name = muxer_element_properties.factory_name();
     let muxer_factory = find_element_factory(muxer_factory_name)?;
+    ensure!(
+        muxer_factory.has_type(gst::ElementFactoryType::MUXER),
+        "`{}` is not a muxer",
+        muxer_factory_name
+    );
 
     let video_encoder_factory_name = video_encoder_element_properties.factory_name();
     let video_encoder_factory = find_element_factory(video_encoder_factory_name)?;
+    ensure!(
+        video_encoder_factory.has_type(gst::ElementFactoryType::VIDEO_ENCODER),
+        "`{}` is not a video encoder",
+        video_encoder_factory_name
+    );
     let video_encoder_format =
         profile_format_from_factory(&video_encoder_factory, video_encoder_caps_fields)?;
     ensure!(
@@ -364,6 +374,11 @@ fn new_encoding_profile(
 
     let audio_encoder_factory_name = audio_encoder_element_properties.factory_name();
     let audio_encoder_factory = find_element_factory(audio_encoder_factory_name)?;
+    ensure!(
+        audio_encoder_factory.has_type(gst::ElementFactoryType::AUDIO_ENCODER),
+        "`{}` is not an audio encoder",
+        audio_encoder_factory_name
+    );
     let audio_encoder_format =
         profile_format_from_factory(&audio_encoder_factory, audio_encoder_caps_fields)?;
     ensure!(
@@ -430,6 +445,7 @@ mod tests {
     #[test]
     fn default_profiles() {
         gst::init().unwrap();
+        gstgif::plugin_register_static().unwrap();
 
         for profile in get_all() {
             let pipeline = gst::Pipeline::new(None);
@@ -468,13 +484,13 @@ mod tests {
             )
         }
 
-        let a = new_simple_encoding_profile("webmmux", "x264enc", "opusenc");
+        let a = new_simple_encoding_profile("x264enc", "opusenc", "webmmux");
         assert_eq!(
             a.unwrap_err().to_string(),
             "`x264enc` src is incompatible on `webmmux` sink"
         );
 
-        let b = new_simple_encoding_profile("webmmux", "vp8enc", "lamemp3enc");
+        let b = new_simple_encoding_profile("vp8enc", "lamemp3enc", "webmmux");
         assert_eq!(
             b.unwrap_err().to_string(),
             "`lamemp3enc` src is incompatible on `webmmux` sink"
