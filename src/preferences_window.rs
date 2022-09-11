@@ -6,7 +6,7 @@ use gtk::{
 
 use crate::{
     profile::{self, Profile},
-    Application,
+    utils,
 };
 
 mod imp {
@@ -34,9 +34,7 @@ mod imp {
             Self::bind_template(klass);
 
             klass.install_action("preferences.select-saving-location", None, |obj, _, _| {
-                Application::default()
-                    .settings()
-                    .select_saving_location(Some(obj));
+                utils::app_settings().select_saving_location(Some(obj));
             });
         }
 
@@ -75,11 +73,11 @@ mod imp {
                 if let Some(item) = row.selected_item() {
                     let obj = item.downcast::<BoxedAnyObject>().unwrap();
                     let profile = obj.borrow::<Box<dyn Profile>>();
-                    Application::default().settings().set_profile(&**profile);
+                    utils::app_settings().set_profile(&**profile);
                 }
             });
 
-            let settings = Application::default().settings();
+            let settings = utils::app_settings();
 
             settings
                 .bind_record_delay(&self.delay_button.get(), "value")
@@ -115,8 +113,7 @@ impl PreferencesWindow {
     }
 
     fn update_file_chooser_button(&self) {
-        let saving_location_display = Application::default()
-            .settings()
+        let saving_location_display = utils::app_settings()
             .saving_location()
             .display()
             .to_string();
@@ -135,7 +132,7 @@ impl PreferencesWindow {
     }
 
     fn update_profile_row(&self) {
-        let active_profile = Application::default().settings().profile();
+        let active_profile = utils::app_settings().profile();
 
         let imp = self.imp();
         let position = imp
