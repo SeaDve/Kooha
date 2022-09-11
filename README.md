@@ -93,18 +93,19 @@ or if installed locally, run
 GST_VAAPI_ALL_DRIVERS=1 KOOHA_EXPERIMENTAL=1 kooha
 ```
 
-### Change frames per second to 60fps
+### Change video frame rate
 
 Take note that using other frames per second may cause flickering, depending on
 the performance of your device.
 
-You can copy and paste this to the terminal if you installed Kooha as a flatpak:
-```shell
-flatpak run --command=gsettings io.github.seadve.Kooha set io.github.seadve.Kooha video-framerate 60
+To show the configuration in the preferences window, set `KOOHA_EXPERIMENTAL` to 1 using
+the following command:
+```
+KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha
 ```
 or if installed locally, run
 ```shell
-gsettings set io.github.seadve.Kooha video-framerate 60
+KOOHA_EXPERIMENTAL=1 kooha
 ```
 
 
