@@ -422,3 +422,27 @@ fn profile_format_from_factory(
         factory_name
     ))
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn default_profiles() {
+        gst::init().unwrap();
+
+        for profile in get_all() {
+            let pipeline = gst::Pipeline::new(None);
+            let dummy_video_src = gst::ElementFactory::make("fakesrc", None).unwrap();
+            let dummy_audio_src = gst::ElementFactory::make("fakesrc", None).unwrap();
+            let dummy_sink = gst::ElementFactory::make("fakesink", None).unwrap();
+            pipeline
+                .add_many(&[&dummy_video_src, &dummy_audio_src, &dummy_sink])
+                .unwrap();
+
+            assert!(profile
+                .attach(&pipeline, &dummy_video_src, &[dummy_audio_src], &dummy_sink)
+                .is_ok());
+        }
+    }
+}
