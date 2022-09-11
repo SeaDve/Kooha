@@ -81,16 +81,16 @@ First, you have to install `gstreamer-vaapi` on your system. If Kooha is install
 through Flatpak, it is as simple as running `flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi`.
 
 To enable all the supported drivers and force Kooha to use VAAPI elements, set
-`GST_VAAPI_ALL_DRIVERS` and `KOOHA_VAAPI` both to 1 respectively. These
+`GST_VAAPI_ALL_DRIVERS` and `KOOHA_EXPERIMENTAL` both to 1 respectively. These
 environment variables are needed for hardware accelerated encoding.
 
 To run Kooha with both set, run the following command:
 ```shell
-GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 flatpak run io.github.seadve.Kooha
+GST_VAAPI_ALL_DRIVERS=1 KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha
 ```
 or if installed locally, run
 ```shell
-GST_VAAPI_ALL_DRIVERS=1 KOOHA_VAAPI=1 kooha
+GST_VAAPI_ALL_DRIVERS=1 KOOHA_EXPERIMENTAL=1 kooha
 ```
 
 ### Change frames per second to 60fps

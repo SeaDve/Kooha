@@ -76,6 +76,7 @@ fn release_notes() -> &'static str {
 
 fn debug_info() -> String {
     let is_flatpak = utils::is_flatpak();
+    let is_experimental_mode = utils::is_experimental_mode();
     let distribution = distribution_info().unwrap_or_else(|| "<unknown>".into());
     let desktop_session = env::var("DESKTOP_SESSION").unwrap_or_else(|_| "<unknown>".into());
     let display_server = env::var("XDG_SESSION_TYPE").unwrap_or_else(|_| "<unknown>".into());
@@ -97,6 +98,7 @@ fn debug_info() -> String {
     format!(
         r#"- {APP_ID} {VERSION}
 - Flatpak: {is_flatpak}
+- Experimental: {is_experimental_mode}
 
 - Distribution: {distribution}
 - Desktop Session: {desktop_session}
