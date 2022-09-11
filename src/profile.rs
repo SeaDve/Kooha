@@ -440,9 +440,41 @@ mod tests {
                 .add_many(&[&dummy_video_src, &dummy_audio_src, &dummy_sink])
                 .unwrap();
 
+            assert!(!profile.name().is_empty());
+            assert!(!profile.file_extension().is_empty());
             assert!(profile
                 .attach(&pipeline, &dummy_video_src, &[dummy_audio_src], &dummy_sink)
                 .is_ok());
         }
+    }
+
+    #[test]
+    fn incompatibles() {
+        fn new_simple_encoding_profile(
+            video_encoder_factory_name: &str,
+            audio_encoder_factory_name: &str,
+            muxer_factory_name: &str,
+        ) -> Result<gst_pbutils::EncodingContainerProfile> {
+            new_encoding_profile(
+                ElementProperties::builder(video_encoder_factory_name).build(),
+                Vec::new(),
+                ElementProperties::builder(audio_encoder_factory_name).build(),
+                Vec::new(),
+                ElementProperties::builder(muxer_factory_name).build(),
+                Vec::new(),
+            )
+        }
+
+        let a = new_simple_encoding_profile("webmmux", "x264enc", "opusenc");
+        assert_eq!(
+            a.unwrap_err().to_string(),
+            "`x264enc` src is incompatible on `webmmux` sink"
+        );
+
+        let b = new_simple_encoding_profile("webmmux", "vp8enc", "lamemp3enc");
+        assert_eq!(
+            b.unwrap_err().to_string(),
+            "`lamemp3enc` src is incompatible on `webmmux` sink"
+        );
     }
 }
