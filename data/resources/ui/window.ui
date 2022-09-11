@@ -7,9 +7,9 @@
     <property name="default-width">210</property>
     <property name="default-height">230</property>
     <property name="focus-widget">start_record_button</property>
-    <child>
+    <property name="content">
       <object class="GtkWindowHandle">
-        <child>
+        <property name="child">
           <object class="GtkStack" id="stack">
             <property name="transition-type">crossfade</property>
             <child>
@@ -287,9 +287,9 @@
               </object>
             </child>
           </object>
-        </child>
+        </property>
       </object>
-    </child>
+    </property>
   </template>
   <menu id="menu">
     <section>
