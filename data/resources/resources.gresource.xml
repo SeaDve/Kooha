@@ -12,6 +12,7 @@
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/selection-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/source-pick-symbolic.svg</file>
     <file compressed="true">style.css</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/preferences-window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
   </gresource>

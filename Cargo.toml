@@ -15,6 +15,10 @@ gtk = { package = "gtk4", version = "0.4.5" }
 gdk-wayland = { package = "gdk4-wayland", version = "0.4.5" }
 gdk-x11 = { package = "gdk4-x11", version = "0.4.5" }
 adw = { package = "libadwaita", version = "0.2.0-alpha.2", features = ["v1_2"] }
+gst_video = { package = "gstreamer-video", version = "0.18.2" }
+gst_pbutils = { package = "gstreamer-pbutils", version = "0.18.2", features = [
+    "v1_20",
+] }
 gst = { package = "gstreamer", version = "0.18.2" }
 gst-plugin-gif = "0.8.0"
 futures-channel = "0.3.19"
@@ -22,3 +26,6 @@ futures-util = { version = "0.3", default-features = false }
 gsettings-macro = "0.1.11"
 pulse = { package = "libpulse-binding", version = "2.26.0" }
 pulse_glib = { package = "libpulse-glib-binding", version = "2.25.1" }
+typetag = "0.2.0"
+serde = { version = "1.0.137", features = ["derive"] }
+serde_json = "1.0.81"
