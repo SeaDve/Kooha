@@ -442,9 +442,12 @@ mod tests {
 
             assert!(!profile.name().is_empty());
             assert!(!profile.file_extension().is_empty());
-            assert!(profile
-                .attach(&pipeline, &dummy_video_src, &[dummy_audio_src], &dummy_sink)
-                .is_ok());
+
+            if let Err(err) =
+                profile.attach(&pipeline, &dummy_video_src, &[dummy_audio_src], &dummy_sink)
+            {
+                panic!("{:?}", err);
+            }
         }
     }
 
