@@ -228,12 +228,10 @@ impl Recording {
         }
 
         // build pipeline
-        let pipeline = pipeline_builder
-            .build()
-            .with_help(
-                || gettext("A GStreamer plugin may not be installed. If it is installed but still does not work properly, please report to <a href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."),
-                || gettext("Failed to start recording")
-            )?;
+        let pipeline = pipeline_builder.build().with_help(
+            || gettext("A GStreamer plugin may not be installed."),
+            || gettext("Failed to start recording"),
+        )?;
         imp.pipeline.set(pipeline.clone()).unwrap();
         pipeline
             .bus()

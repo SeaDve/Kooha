@@ -13,12 +13,22 @@ use crate::{
 };
 
 pub fn get_all() -> Vec<Box<dyn Profile>> {
-    vec![
+    let mut profiles: Vec<Box<dyn Profile>> = vec![
         Box::new(WebMProfile),
         Box::new(Mp4Profile),
         Box::new(MatroskaProfile),
         Box::new(GifProfile),
-    ]
+    ];
+
+    if utils::is_experimental_mode() {
+        profiles.push(Box::new(experimental::WebMVp9Profile));
+        profiles.push(Box::new(experimental::WebMAv1Profile));
+        profiles.push(Box::new(experimental::VaapiVp8Profile));
+        profiles.push(Box::new(experimental::VaapiVp9Profile));
+        profiles.push(Box::new(experimental::VaapiH264Profile));
+    }
+
+    profiles
 }
 
 #[typetag::serde]
@@ -226,6 +236,95 @@ encodebin_profile!(
         Vec::new()
     )?
 );
+
+mod experimental {
+    use super::*;
+
+    encodebin_profile!(
+        WebMVp9Profile,
+        gettext("WebM VP9"),
+        "webm",
+        new_encoding_profile(
+            ElementProperties::builder("vp9enc")
+                .field("max-quantizer", 17)
+                .field("cpu-used", 16)
+                .field("cq-level", 13)
+                .field("deadline", 1)
+                .field("static-threshold", 100)
+                .field_from_str("keyframe-mode", "disabled")
+                .field("buffer-size", 20000)
+                .field("threads", utils::ideal_thread_count())
+                .build(),
+            Vec::new(),
+            ElementProperties::builder("opusenc").build(),
+            Vec::new(),
+            ElementProperties::builder("webmmux").build(),
+            Vec::new()
+        )?
+    );
+
+    encodebin_profile!(
+        WebMAv1Profile,
+        gettext("WebM AV1"),
+        "webm",
+        new_encoding_profile(
+            ElementProperties::builder("av1enc")
+                .field("max-quantizer", 17)
+                .field("cpu-used", 16)
+                .field_from_str("end-usage", "cq")
+                .field("buf-sz", 20000)
+                .field("threads", utils::ideal_thread_count())
+                .build(),
+            Vec::new(),
+            ElementProperties::builder("opusenc").build(),
+            Vec::new(),
+            ElementProperties::builder("webmmux").build(),
+            Vec::new()
+        )?
+    );
+
+    encodebin_profile!(
+        VaapiVp8Profile,
+        gettext("WebM VAAPI VP8"),
+        "mkv",
+        new_encoding_profile(
+            ElementProperties::builder("vaapivp8enc").build(),
+            Vec::new(),
+            ElementProperties::builder("opusenc").build(),
+            Vec::new(),
+            ElementProperties::builder("webmmux").build(),
+            Vec::new()
+        )?
+    );
+
+    encodebin_profile!(
+        VaapiVp9Profile,
+        gettext("WebM VAAPI VP9"),
+        "mkv",
+        new_encoding_profile(
+            ElementProperties::builder("vaapivp9enc").build(),
+            Vec::new(),
+            ElementProperties::builder("opusenc").build(),
+            Vec::new(),
+            ElementProperties::builder("webmmux").build(),
+            Vec::new()
+        )?
+    );
+
+    encodebin_profile!(
+        VaapiH264Profile,
+        gettext("WebM VAAPI H264"),
+        "mkv",
+        new_encoding_profile(
+            ElementProperties::builder("vaapih264enc").build(),
+            Vec::new(),
+            ElementProperties::builder("lamemp3enc").build(),
+            Vec::new(),
+            ElementProperties::builder("mp4mux").build(),
+            Vec::new()
+        )?
+    );
+}
 
 fn element_factory_make(factory_name: &str) -> Result<gst::Element> {
     gst::ElementFactory::make(factory_name, None)

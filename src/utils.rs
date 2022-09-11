@@ -3,7 +3,7 @@ use gtk::{
     glib::{self, prelude::*},
 };
 
-use std::{cmp, path::Path};
+use std::{cmp, env, path::Path};
 
 use crate::{settings::Settings, Application};
 
@@ -46,4 +46,8 @@ pub fn is_flatpak() -> bool {
 /// Ideal thread count to use for `GStreamer` processing.
 pub fn ideal_thread_count() -> u32 {
     cmp::min(glib::num_processors(), MAX_THREAD_COUNT)
+}
+
+pub fn is_experimental_mode() -> bool {
+    env::var("KOOHA_EXPERIMENTAL").unwrap_or_default() == "1"
 }
