@@ -25,7 +25,7 @@ mod imp {
         #[template_child]
         pub(super) delay_button: TemplateChild<gtk::SpinButton>,
         #[template_child]
-        pub(super) file_chooser_button: TemplateChild<gtk::Button>,
+        pub(super) file_chooser_button_content: TemplateChild<adw::ButtonContent>,
     }
 
     #[glib::object_subclass]
@@ -133,11 +133,11 @@ impl PreferencesWindow {
             saving_location_display.strip_prefix(&glib::home_dir().display().to_string())
         {
             self.imp()
-                .file_chooser_button
+                .file_chooser_button_content
                 .set_label(&format!("~{}", stripped));
         } else {
             self.imp()
-                .file_chooser_button
+                .file_chooser_button_content
                 .set_label(&saving_location_display);
         }
     }
