@@ -20,6 +20,7 @@ impl<P: IsA<gst_pbutils::EncodingProfile>> EncodingProfileExtManual for P {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct ElementProperties {
     factory_name: String,
     raw: gst::Structure,
@@ -107,4 +108,65 @@ fn value_from_str(
         )
     };
     Ok(value)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[track_caller]
+    fn element_properties_inner_item(element_properties: ElementProperties) -> gst::Structure {
+        element_properties
+            .into_inner()
+            .get::<gst::List>("map")
+            .unwrap()
+            .get(0)
+            .unwrap()
+            .get::<gst::Structure>()
+            .unwrap()
+    }
+
+    #[test]
+    fn element_properties() {
+        let element_properties = ElementProperties::builder("vp8enc").build();
+        let inner_item = element_properties_inner_item(element_properties.clone());
+        assert_eq!(
+            element_properties.into_inner().name(),
+            "element-properties-map"
+        );
+        assert_eq!(inner_item.name(), "vp8enc");
+    }
+
+    #[test]
+    fn builder() {
+        gst::init().unwrap();
+
+        let element_properties = ElementProperties::builder("vp8enc")
+            .field("cq-level", 13)
+            .field("resize-allowed", false)
+            .build();
+        let inner_item = element_properties_inner_item(element_properties);
+
+        assert_eq!(inner_item.n_fields(), 2);
+        assert_eq!(inner_item.name(), "vp8enc");
+        assert_eq!(inner_item.get::<i32>("cq-level").unwrap(), 13);
+        assert!(!inner_item.get::<bool>("resize-allowed").unwrap());
+    }
+
+    #[test]
+    fn builder_field_from_str() {
+        gst::init().unwrap();
+
+        let element_properties = ElementProperties::builder("vp8enc")
+            .field("threads", 16)
+            .field_from_str("keyframe-mode", "disabled")
+            .build();
+        let inner_item = element_properties_inner_item(element_properties);
+        assert_eq!(inner_item.n_fields(), 2);
+        assert_eq!(inner_item.name(), "vp8enc");
+        assert_eq!(inner_item.get::<i32>("threads").unwrap(), 16);
+
+        let keyframe_mode_value = inner_item.value("keyframe-mode").unwrap();
+        assert!(format!("{:?}", keyframe_mode_value).starts_with("(GstVPXEncKfMode)"));
+    }
 }
