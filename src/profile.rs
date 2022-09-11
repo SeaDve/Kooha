@@ -270,7 +270,7 @@ mod experimental {
         new_encoding_profile(
             ElementProperties::builder("av1enc")
                 .field("max-quantizer", 17)
-                .field("cpu-used", 16)
+                .field("cpu-used", 5)
                 .field_from_str("end-usage", "cq")
                 .field("buf-sz", 20000)
                 .field("threads", utils::ideal_thread_count())
