@@ -16,6 +16,7 @@ use crate::{profile::Profile, screencast_session::Stream, utils};
 // TODO
 // * Do we need restrictions?
 // * Can we drop filter elements (videorate, videoconvert, videoscale, audioconvert) and let encodebin handle it?
+// * Can we set frame rate directly on profile format?
 // * Add tests
 
 #[derive(Debug)]
