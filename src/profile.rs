@@ -32,7 +32,7 @@ pub fn get_all() -> Vec<Box<dyn Profile>> {
 }
 
 #[typetag::serde]
-pub trait Profile: fmt::Debug + Send + Sync {
+pub trait Profile: fmt::Debug {
     fn name(&self) -> String;
 
     fn file_extension(&self) -> &str;
