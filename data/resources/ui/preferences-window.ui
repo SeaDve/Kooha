@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="KoohaPreferencesWindow" parent="AdwPreferencesWindow">
+    <property name="search-enabled">False</property>
     <child>
       <object class="AdwPreferencesPage">
         <child>
