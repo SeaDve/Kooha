@@ -49,5 +49,5 @@ pub fn ideal_thread_count() -> u32 {
 }
 
 pub fn is_experimental_mode() -> bool {
-    env::var("KOOHA_EXPERIMENTAL").unwrap_or_default() == "1"
+    env::var("KOOHA_EXPERIMENTAL").map_or(false, |value| value == "1")
 }
