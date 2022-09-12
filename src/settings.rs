@@ -33,6 +33,14 @@ impl Default for Settings {
 }
 
 impl Settings {
+    pub fn default_video_framerate(&self) -> u32 {
+        self.0
+            .default_value("video-framerate")
+            .unwrap()
+            .get()
+            .unwrap()
+    }
+
     /// Opens a `FileChooserDialog` to select a folder and updates
     /// the settings with the selected folder.
     pub fn select_saving_location(&self, transient_for: Option<&impl IsA<gtk::Window>>) {
