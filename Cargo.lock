@@ -4,18 +4,18 @@ version = 3
 
 [[package]]
 name = "aho-corasick"
-version = "0.7.18"
+version = "0.7.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e37cfd5e7657ada45f742d6e99ca5788580b5c529dc78faf11ece6dc702656f"
+checksum = "b4f55bd91a0978cbfd91c457a164bab8b4001c833b7f323132c0a4e1922dd44e"
 dependencies = [
  "memchr",
 ]
 
 [[package]]
 name = "android_system_properties"
-version = "0.1.4"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d7ed72e1635e121ca3e79420540282af22da58be50de153d36f81ddc6b83aa9e"
+checksum = "819e7219dbd41043ac279b19830f2efc897156490d7fd6ea916720117ee66311"
 dependencies = [
  "libc",
 ]
@@ -31,9 +31,9 @@ dependencies = [
 
 [[package]]
 name = "anyhow"
-version = "1.0.62"
+version = "1.0.64"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1485d4d2cc45e7b201ee3767015c96faa5904387c9d87c6efdd0fb511f12d305"
+checksum = "b9a8f622bcf6ff3df478e9deba3e03e4e04b300f8e6a139e192c05fa3490afc7"
 
 [[package]]
 name = "atomic_refcell"
@@ -165,24 +165,24 @@ dependencies = [
 
 [[package]]
 name = "futures-channel"
-version = "0.3.23"
+version = "0.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2bfc52cbddcfd745bf1740338492bb0bd83d76c67b445f91c5fb29fae29ecaa1"
+checksum = "30bdd20c28fadd505d0fd6712cdfcb0d4b5648baf45faef7f852afb2399bb050"
 dependencies = [
  "futures-core",
 ]
 
 [[package]]
 name = "futures-core"
-version = "0.3.23"
+version = "0.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d2acedae88d38235936c3922476b10fced7b2b68136f5e3c03c2d5be348a1115"
+checksum = "4e5aa3de05362c3fb88de6531e6296e85cde7739cccad4b9dfeeb7f6ebce56bf"
 
 [[package]]
 name = "futures-executor"
-version = "0.3.23"
+version = "0.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1d11aa21b5b587a64682c0094c2bdd4df0076c5324961a40cc3abd7f37930528"
+checksum = "9ff63c23854bee61b6e9cd331d523909f238fc7636290b96826e9cfa5faa00ab"
 dependencies = [
  "futures-core",
  "futures-task",
@@ -191,21 +191,21 @@ dependencies = [
 
 [[package]]
 name = "futures-io"
-version = "0.3.23"
+version = "0.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "93a66fc6d035a26a3ae255a6d2bca35eda63ae4c5512bef54449113f7a1228e5"
+checksum = "bbf4d2a7a308fd4578637c0b17c7e1c7ba127b8f6ba00b29f717e9655d85eb68"
 
 [[package]]
 name = "futures-task"
-version = "0.3.23"
+version = "0.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "842fc63b931f4056a24d59de13fb1272134ce261816e063e634ad0c15cdc5306"
+checksum = "a6508c467c73851293f390476d4491cf4d227dbabcd4170f3bb6044959b294f1"
 
 [[package]]
 name = "futures-util"
-version = "0.3.23"
+version = "0.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f0828a5471e340229c11c77ca80017937ce3c58cb788a17e5f1c2d5c485a9577"
+checksum = "44fb6cb1be61cc1d2e43b262516aafcf63b241cffdb1d3fa115f91d9c7b09c90"
 dependencies = [
  "futures-core",
  "futures-task",
@@ -474,14 +474,14 @@ dependencies = [
 
 [[package]]
 name = "gsettings-macro"
-version = "0.1.11"
+version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b9e966814fd3fbdbd49ff0fd47cd531f1632b2c5fb06cf25c674a14f146b253"
+checksum = "3e3f0afde8c145b1da124b78513ae062513e56f40e8144ad8233a362b7a29c2c"
 dependencies = [
  "heck",
  "proc-macro-error",
  "proc-macro2",
- "quick-xml 0.23.0",
+ "quick-xml 0.25.0",
  "quote",
  "serde",
  "syn",
@@ -744,13 +744,14 @@ checksum = "2540771e65fc8cb83cd6e8a237f70c319bd5c29f78ed1084ba5d50eeac86f7f9"
 
 [[package]]
 name = "iana-time-zone"
-version = "0.1.46"
+version = "0.1.47"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ad2bfd338099682614d3ee3fe0cd72e0b6a41ca6a87f6a74a3bd593c91650501"
+checksum = "4c495f162af0bf17656d0014a0eded5f3cd2f365fdd204548c2869db89359dc7"
 dependencies = [
  "android_system_properties",
  "core-foundation-sys",
  "js-sys",
+ "once_cell",
  "wasm-bindgen",
  "winapi",
 ]
@@ -1026,9 +1027,9 @@ dependencies = [
 
 [[package]]
 name = "once_cell"
-version = "1.13.1"
+version = "1.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "074864da206b4973b84eb91683020dbefd6a8c3f0f38e054d93954e891935e4e"
+checksum = "2f7254b99e31cad77da24b08ebf628882739a608578bb1bcdfc1f9c21260d7c0"
 
 [[package]]
 name = "option-operations"
@@ -1066,15 +1067,15 @@ dependencies = [
 
 [[package]]
 name = "paste"
-version = "1.0.8"
+version = "1.0.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9423e2b32f7a043629287a536f21951e8c6a82482d0acb1eeebfc90bc2225b22"
+checksum = "b1de2e551fb905ac83f73f7aedf2f0cb4a0da7e35efa24a202a936269f1f18e1"
 
 [[package]]
 name = "pest"
-version = "2.2.1"
+version = "2.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "69486e2b8c2d2aeb9762db7b4e00b0331156393555cff467f4163ff06821eef8"
+checksum = "cb779fcf4bb850fbbb0edc96ff6cf34fd90c4b1a112ce042653280d9a7364048"
 dependencies = [
  "thiserror",
  "ucd-trie",
@@ -1159,9 +1160,9 @@ dependencies = [
 
 [[package]]
 name = "quick-xml"
-version = "0.23.0"
+version = "0.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9279fbdacaad3baf559d8cabe0acc3d06e30ea14931af31af79578ac0946decc"
+checksum = "58e21a144a0ffb5fad7b464babcdab934a325ad69b7c0373bcfef5cbd9799ca9"
 dependencies = [
  "memchr",
  "serde",
@@ -1228,18 +1229,18 @@ dependencies = [
 
 [[package]]
 name = "serde"
-version = "1.0.143"
+version = "1.0.144"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "53e8e5d5b70924f74ff5c6d64d9a5acd91422117c60f48c4e07855238a254553"
+checksum = "0f747710de3dcd43b88c9168773254e809d8ddbdf9653b84e2554ab219f17860"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.143"
+version = "1.0.144"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d3d8e8de557aee63c26b85b947f5e59b690d0454c753f3adeb5cd7835ab88391"
+checksum = "94ed3a816fb1d101812f83e789f888322c34e291f894f19590dc310963e87a00"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1313,18 +1314,18 @@ checksum = "af547b166dd1ea4b472165569fc456cfb6818116f854690b0ff205e636523dab"
 
 [[package]]
 name = "thiserror"
-version = "1.0.32"
+version = "1.0.34"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f5f6586b7f764adc0231f4c79be7b920e766bb2f3e51b3661cdb263828f19994"
+checksum = "8c1b05ca9d106ba7d2e31a9dab4a64e7be2cce415321966ea3132c49a656e252"
 dependencies = [
  "thiserror-impl",
 ]
 
 [[package]]
 name = "thiserror-impl"
-version = "1.0.32"
+version = "1.0.34"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "12bafc5b54507e0149cdf1b145a5d80ab80a90bcd9275df43d4fff68460f6c21"
+checksum = "e8f2591983642de85c921015f3f070c665a197ed69e417af436115e3a1407487"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1433,9 +1434,9 @@ dependencies = [
 
 [[package]]
 name = "ucd-trie"
-version = "0.1.4"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "89570599c4fe5585de2b388aab47e99f7fa4e9238a1399f707a02e356058141c"
+checksum = "9e79c4d996edb816c91e4308506774452e55e95c3c9de07b6729e17e15a5ef81"
 
 [[package]]
 name = "unicode-ident"
