@@ -55,7 +55,7 @@ mod imp {
 
             self.frame_rate_row.set_visible(
                 utils::is_experimental_mode()
-                    || settings.video_framerate() != settings.default_video_framerate(),
+                    || settings.video_framerate() != settings.video_framerate_default_value(),
             );
 
             self.profile_row
