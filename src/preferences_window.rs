@@ -51,8 +51,12 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            self.frame_rate_row
-                .set_visible(utils::is_experimental_mode());
+            let settings = utils::app_settings();
+
+            self.frame_rate_row.set_visible(
+                utils::is_experimental_mode()
+                    || settings.video_framerate() != settings.default_video_framerate(),
+            );
 
             self.profile_row
                 .set_expression(Some(&gtk::ClosureExpression::new::<
@@ -83,8 +87,6 @@ mod imp {
                     utils::app_settings().set_profile(&**profile);
                 }
             });
-
-            let settings = utils::app_settings();
 
             settings
                 .bind_record_delay(&self.delay_button.get(), "value")
