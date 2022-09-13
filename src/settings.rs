@@ -14,16 +14,13 @@ use std::{
 
 use crate::{
     config::APP_ID,
-    profile::{Profile, WebMProfile},
+    profile::{self, Profile},
     utils,
 };
-
-const DEFAULT_PROFILE: WebMProfile = WebMProfile;
 
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
 #[gen_settings_skip(key_name = "saving-location")]
 #[gen_settings_skip(key_name = "record-delay")]
-#[gen_settings_skip(key_name = "profile")]
 pub struct Settings;
 
 impl Default for Settings {
@@ -140,34 +137,23 @@ impl Settings {
     }
 
     pub fn set_profile(&self, profile: &dyn Profile) {
-        self.0
-            .set("profile", &serde_json::to_string(profile).unwrap())
-            .unwrap();
+        self.set_profile_id(profile.id());
     }
 
     pub fn profile(&self) -> Box<dyn Profile> {
-        let val = self.0.get::<String>("profile");
+        let profile_id = self.profile_id();
 
-        if val.is_empty() {
-            return Box::new(DEFAULT_PROFILE);
+        if profile_id.is_empty() {
+            return profile::default();
         }
 
-        match serde_json::from_str(&val) {
-            Ok(profile) => profile,
-            Err(err) => {
-                tracing::warn!("Failed to load profile `{}`: {:?}", val, err);
-                Box::new(DEFAULT_PROFILE)
-            }
+        if let Some(profile) = profile::get(&profile_id) {
+            return profile;
         }
-    }
 
-    pub fn connect_profile_changed(
-        &self,
-        f: impl Fn(&Self) + 'static,
-    ) -> gio::glib::SignalHandlerId {
-        self.0.connect_changed(Some("profile"), move |settings, _| {
-            f(&Self(settings.clone()));
-        })
+        tracing::warn!("Profile with id `{}` not found", profile_id);
+
+        profile::default()
     }
 }
 

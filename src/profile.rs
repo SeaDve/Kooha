@@ -3,7 +3,6 @@ use gettextrs::gettext;
 use gst::prelude::*;
 use gst_pbutils::prelude::*;
 use gtk::glib;
-use serde::{Deserialize, Serialize};
 
 use std::fmt;
 
@@ -12,7 +11,7 @@ use crate::{
     utils,
 };
 
-pub fn get_all() -> Vec<Box<dyn Profile>> {
+pub fn all() -> Vec<Box<dyn Profile>> {
     let mut profiles: Vec<Box<dyn Profile>> = vec![
         Box::new(WebMProfile),
         Box::new(Mp4Profile),
@@ -21,18 +20,27 @@ pub fn get_all() -> Vec<Box<dyn Profile>> {
     ];
 
     if utils::is_experimental_mode() {
-        profiles.push(Box::new(experimental::WebMVp9Profile));
-        profiles.push(Box::new(experimental::WebMAv1Profile));
-        profiles.push(Box::new(experimental::VaapiVp8Profile));
-        profiles.push(Box::new(experimental::VaapiVp9Profile));
-        profiles.push(Box::new(experimental::VaapiH264Profile));
+        profiles.push(Box::new(WebMVp9Profile));
+        profiles.push(Box::new(WebMAv1Profile));
+        profiles.push(Box::new(VaapiVp8Profile));
+        profiles.push(Box::new(VaapiVp9Profile));
+        profiles.push(Box::new(VaapiH264Profile));
     }
 
     profiles
 }
 
-#[typetag::serde]
+pub fn get(id: &str) -> Option<Box<dyn Profile>> {
+    all().into_iter().find(|p| p.id() == id)
+}
+
+pub fn default() -> Box<dyn Profile> {
+    get("webm").unwrap()
+}
+
 pub trait Profile: fmt::Debug {
+    fn id(&self) -> &str;
+
     fn name(&self) -> String;
 
     fn file_extension(&self) -> &str;
@@ -50,11 +58,14 @@ pub trait Profile: fmt::Debug {
     ) -> Result<()>;
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct GifProfile;
+#[derive(Debug)]
+struct GifProfile;
 
-#[typetag::serde]
 impl Profile for GifProfile {
+    fn id(&self) -> &str {
+        "gif"
+    }
+
     fn name(&self) -> String {
         gettext("GIF")
     }
@@ -99,12 +110,15 @@ impl Profile for GifProfile {
 }
 
 macro_rules! encodebin_profile {
-    ($struct_name:ident, $name:expr, $file_extension:literal, $profile:expr) => {
-        #[derive(Debug, Serialize, Deserialize)]
-        pub struct $struct_name;
+    ($id:literal, $struct_name:ident, $name:expr, $file_extension:literal, $profile:expr) => {
+        #[derive(Debug)]
+        struct $struct_name;
 
-        #[typetag::serde]
         impl Profile for $struct_name {
+            fn id(&self) -> &str {
+                $id
+            }
+
             fn name(&self) -> String {
                 $name
             }
@@ -179,6 +193,7 @@ macro_rules! encodebin_profile {
 }
 
 encodebin_profile!(
+    "webm",
     WebMProfile,
     gettext("WebM"),
     "webm",
@@ -202,6 +217,7 @@ encodebin_profile!(
 );
 
 encodebin_profile!(
+    "mp4",
     Mp4Profile,
     gettext("MP4"),
     "mp4",
@@ -220,6 +236,7 @@ encodebin_profile!(
 );
 
 encodebin_profile!(
+    "matroska",
     MatroskaProfile,
     gettext("Matroska"),
     "mkv",
@@ -237,94 +254,95 @@ encodebin_profile!(
     )?
 );
 
-mod experimental {
-    use super::*;
+encodebin_profile!(
+    "webm-vp9",
+    WebMVp9Profile,
+    gettext("WebM VP9"),
+    "webm",
+    new_encoding_profile(
+        ElementProperties::builder("vp9enc")
+            .field("max-quantizer", 17)
+            .field("cpu-used", 16)
+            .field("cq-level", 13)
+            .field("deadline", 1)
+            .field("static-threshold", 100)
+            .field_from_str("keyframe-mode", "disabled")
+            .field("buffer-size", 20000)
+            .field("threads", utils::ideal_thread_count())
+            .build(),
+        Vec::new(),
+        ElementProperties::builder("opusenc").build(),
+        Vec::new(),
+        ElementProperties::builder("webmmux").build(),
+        Vec::new()
+    )?
+);
 
-    encodebin_profile!(
-        WebMVp9Profile,
-        gettext("WebM VP9"),
-        "webm",
-        new_encoding_profile(
-            ElementProperties::builder("vp9enc")
-                .field("max-quantizer", 17)
-                .field("cpu-used", 16)
-                .field("cq-level", 13)
-                .field("deadline", 1)
-                .field("static-threshold", 100)
-                .field_from_str("keyframe-mode", "disabled")
-                .field("buffer-size", 20000)
-                .field("threads", utils::ideal_thread_count())
-                .build(),
-            Vec::new(),
-            ElementProperties::builder("opusenc").build(),
-            Vec::new(),
-            ElementProperties::builder("webmmux").build(),
-            Vec::new()
-        )?
-    );
+encodebin_profile!(
+    "webm-av1",
+    WebMAv1Profile,
+    gettext("WebM AV1"),
+    "webm",
+    new_encoding_profile(
+        ElementProperties::builder("av1enc")
+            .field("max-quantizer", 17)
+            .field("cpu-used", 5)
+            .field_from_str("end-usage", "cq")
+            .field("buf-sz", 20000)
+            .field("threads", utils::ideal_thread_count())
+            .build(),
+        Vec::new(),
+        ElementProperties::builder("opusenc").build(),
+        Vec::new(),
+        ElementProperties::builder("webmmux").build(),
+        Vec::new()
+    )?
+);
 
-    encodebin_profile!(
-        WebMAv1Profile,
-        gettext("WebM AV1"),
-        "webm",
-        new_encoding_profile(
-            ElementProperties::builder("av1enc")
-                .field("max-quantizer", 17)
-                .field("cpu-used", 5)
-                .field_from_str("end-usage", "cq")
-                .field("buf-sz", 20000)
-                .field("threads", utils::ideal_thread_count())
-                .build(),
-            Vec::new(),
-            ElementProperties::builder("opusenc").build(),
-            Vec::new(),
-            ElementProperties::builder("webmmux").build(),
-            Vec::new()
-        )?
-    );
+encodebin_profile!(
+    "vaapi-vp8",
+    VaapiVp8Profile,
+    gettext("WebM VAAPI VP8"),
+    "mkv",
+    new_encoding_profile(
+        ElementProperties::builder("vaapivp8enc").build(),
+        Vec::new(),
+        ElementProperties::builder("opusenc").build(),
+        Vec::new(),
+        ElementProperties::builder("webmmux").build(),
+        Vec::new()
+    )?
+);
 
-    encodebin_profile!(
-        VaapiVp8Profile,
-        gettext("WebM VAAPI VP8"),
-        "mkv",
-        new_encoding_profile(
-            ElementProperties::builder("vaapivp8enc").build(),
-            Vec::new(),
-            ElementProperties::builder("opusenc").build(),
-            Vec::new(),
-            ElementProperties::builder("webmmux").build(),
-            Vec::new()
-        )?
-    );
+encodebin_profile!(
+    "vaapi-vp9",
+    VaapiVp9Profile,
+    gettext("WebM VAAPI VP9"),
+    "mkv",
+    new_encoding_profile(
+        ElementProperties::builder("vaapivp9enc").build(),
+        Vec::new(),
+        ElementProperties::builder("opusenc").build(),
+        Vec::new(),
+        ElementProperties::builder("webmmux").build(),
+        Vec::new()
+    )?
+);
 
-    encodebin_profile!(
-        VaapiVp9Profile,
-        gettext("WebM VAAPI VP9"),
-        "mkv",
-        new_encoding_profile(
-            ElementProperties::builder("vaapivp9enc").build(),
-            Vec::new(),
-            ElementProperties::builder("opusenc").build(),
-            Vec::new(),
-            ElementProperties::builder("webmmux").build(),
-            Vec::new()
-        )?
-    );
-
-    encodebin_profile!(
-        VaapiH264Profile,
-        gettext("WebM VAAPI H264"),
-        "mkv",
-        new_encoding_profile(
-            ElementProperties::builder("vaapih264enc").build(),
-            Vec::new(),
-            ElementProperties::builder("lamemp3enc").build(),
-            Vec::new(),
-            ElementProperties::builder("mp4mux").build(),
-            Vec::new()
-        )?
-    );
-}
+encodebin_profile!(
+    "vaapi-h264",
+    VaapiH264Profile,
+    gettext("WebM VAAPI H264"),
+    "mkv",
+    new_encoding_profile(
+        ElementProperties::builder("vaapih264enc").build(),
+        Vec::new(),
+        ElementProperties::builder("lamemp3enc").build(),
+        Vec::new(),
+        ElementProperties::builder("mp4mux").build(),
+        Vec::new()
+    )?
+);
 
 fn element_factory_make(factory_name: &str) -> Result<gst::Element> {
     gst::ElementFactory::make(factory_name, None)
@@ -334,6 +352,41 @@ fn element_factory_make(factory_name: &str) -> Result<gst::Element> {
 fn find_element_factory(factory_name: &str) -> Result<gst::ElementFactory> {
     gst::ElementFactory::find(factory_name)
         .ok_or_else(|| anyhow!("`{}` factory not found", factory_name))
+}
+
+fn profile_format_from_factory(
+    factory: &gst::ElementFactory,
+    values: Vec<(&str, glib::SendValue)>,
+) -> Result<gst::Caps> {
+    let factory_name = factory.name();
+
+    ensure!(
+        factory.has_type(gst::ElementFactoryType::ENCODER | gst::ElementFactoryType::MUXER),
+        "Factory `{}` must be an encoder or muxer to be used in a profile",
+        factory_name
+    );
+
+    for template in factory.static_pad_templates() {
+        if template.direction() == gst::PadDirection::Src {
+            let template_caps = template.caps();
+            if let Some(structure) = template_caps.structure(0) {
+                let mut structure = structure.to_owned();
+
+                for (f, v) in values {
+                    structure.set_value(f, v);
+                }
+
+                let mut caps = gst::Caps::new_empty();
+                caps.get_mut().unwrap().append_structure(structure);
+                return Ok(caps);
+            }
+        }
+    }
+
+    Err(anyhow!(
+        "Failed to find profile format for factory `{}`",
+        factory_name
+    ))
 }
 
 fn new_encoding_profile(
@@ -403,51 +456,31 @@ fn new_encoding_profile(
     Ok(container_profile)
 }
 
-fn profile_format_from_factory(
-    factory: &gst::ElementFactory,
-    values: Vec<(&str, glib::SendValue)>,
-) -> Result<gst::Caps> {
-    let factory_name = factory.name();
-
-    ensure!(
-        factory.has_type(gst::ElementFactoryType::ENCODER | gst::ElementFactoryType::MUXER),
-        "Factory `{}` must be an encoder or muxer to be used in a profile",
-        factory_name
-    );
-
-    for template in factory.static_pad_templates() {
-        if template.direction() == gst::PadDirection::Src {
-            let template_caps = template.caps();
-            if let Some(structure) = template_caps.structure(0) {
-                let mut structure = structure.to_owned();
-
-                for (f, v) in values {
-                    structure.set_value(f, v);
-                }
-
-                let mut caps = gst::Caps::new_empty();
-                caps.get_mut().unwrap().append_structure(structure);
-                return Ok(caps);
-            }
-        }
-    }
-
-    Err(anyhow!(
-        "Failed to find profile format for factory `{}`",
-        factory_name
-    ))
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    use std::collections::HashSet;
+
+    #[test]
+    fn unique_ids() {
+        let mut unique = HashSet::new();
+
+        for profile in all() {
+            assert!(
+                unique.insert(profile.id().to_string()),
+                "Duplicate id `{}`",
+                profile.id()
+            );
+        }
+    }
 
     #[test]
     fn default_profiles() {
         gst::init().unwrap();
         gstgif::plugin_register_static().unwrap();
 
-        for profile in get_all() {
+        for profile in all() {
             let pipeline = gst::Pipeline::new(None);
             let dummy_video_src = gst::ElementFactory::make("fakesrc", None).unwrap();
             let dummy_audio_src = gst::ElementFactory::make("fakesrc", None).unwrap();

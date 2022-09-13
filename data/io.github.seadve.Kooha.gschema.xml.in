@@ -8,7 +8,7 @@
       </choices>
       <default>"monitor-window"</default>
     </key>
-    <key type="s" name="profile">
+    <key type="s" name="profile-id">
       <default>""</default>
     </key>
     <key type="u" name="record-delay">
