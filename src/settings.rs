@@ -21,6 +21,7 @@ use crate::{
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
 #[gen_settings_skip(key_name = "saving-location")]
 #[gen_settings_skip(key_name = "record-delay")]
+#[gen_settings_skip(key_name = "profile-id")]
 pub struct Settings;
 
 impl Default for Settings {
@@ -137,11 +138,13 @@ impl Settings {
     }
 
     pub fn set_profile(&self, profile: &dyn Profile) {
-        self.set_profile_id(profile.id());
+        self.0
+            .set_value("profile-id", &profile.id().to_variant())
+            .unwrap();
     }
 
     pub fn profile(&self) -> Box<dyn Profile> {
-        let profile_id = self.profile_id();
+        let profile_id = self.0.get::<String>("profile-id");
 
         if profile_id.is_empty() {
             return profile::default();
@@ -154,6 +157,16 @@ impl Settings {
         tracing::warn!("Profile with id `{}` not found", profile_id);
 
         profile::default()
+    }
+
+    pub fn connect_profile_changed(
+        &self,
+        f: impl Fn(&Self) + 'static,
+    ) -> gio::glib::SignalHandlerId {
+        self.0
+            .connect_changed(Some("profile-id"), move |settings, _| {
+                f(&Self(settings.clone()));
+            })
     }
 }
 
