@@ -74,7 +74,7 @@ mod imp {
             profiles_model.splice(
                 0,
                 0,
-                &profile::get_all()
+                &profile::all()
                     .into_iter()
                     .map(BoxedAnyObject::new)
                     .collect::<Vec<_>>(),
@@ -100,7 +100,7 @@ mod imp {
                 obj.update_file_chooser_button();
             }));
 
-            settings.connect_profile_changed(clone!(@weak obj => move |_| {
+            settings.connect_profile_id_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row();
             }));
 
@@ -156,7 +156,7 @@ impl PreferencesWindow {
             .position(|item| {
                 let obj = item.downcast::<BoxedAnyObject>().unwrap();
                 let profile = obj.borrow::<Box<dyn Profile>>();
-                profile.typetag_name() == active_profile.typetag_name()
+                profile.id() == active_profile.id()
             });
 
         if let Some(position) = position {
@@ -164,7 +164,7 @@ impl PreferencesWindow {
         } else {
             tracing::error!(
                 "Active profile `{}` was not found on profile model",
-                active_profile.typetag_name()
+                active_profile.id()
             );
         }
     }
