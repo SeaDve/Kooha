@@ -404,7 +404,7 @@ impl Window {
             obj.update_title_label();
         }));
 
-        settings.connect_profile_id_changed(clone!(@weak self as obj => move |_| {
+        settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
             obj.update_audio_toggles_sensitivity();
         }));
 

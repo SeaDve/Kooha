@@ -100,7 +100,7 @@ mod imp {
                 obj.update_file_chooser_button();
             }));
 
-            settings.connect_profile_id_changed(clone!(@weak obj => move |_| {
+            settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row();
             }));
 
