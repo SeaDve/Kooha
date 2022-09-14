@@ -58,13 +58,12 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            self.disable_experimental_features_button.connect_clicked(
-                clone!(@weak obj => move |_| {
+            self.disable_experimental_features_button
+                .connect_clicked(|_| {
                     let settings = utils::app_settings();
                     settings.reset("video-framerate");
                     settings.reset_profile();
-                }),
-            );
+                });
 
             let settings = utils::app_settings();
 
