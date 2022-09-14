@@ -8,6 +8,7 @@ src/about.rs
 src/application.rs
 src/audio_device.rs
 src/main.rs
+src/preferences_window.rs
 src/profile.rs
 src/recording.rs
 src/settings.rs
