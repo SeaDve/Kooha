@@ -61,7 +61,7 @@ mod imp {
             self.disable_experimental_features_button
                 .connect_clicked(|_| {
                     let settings = utils::app_settings();
-                    settings.reset("video-framerate");
+                    settings.reset_video_framerate();
                     settings.reset_profile();
                 });
 
