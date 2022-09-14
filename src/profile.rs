@@ -509,7 +509,7 @@ mod tests {
 
         assert!(default().supports_audio());
 
-        for profile in all() {
+        for profile in builtins() {
             let pipeline = gst::Pipeline::new(None);
             let dummy_video_src = gst::ElementFactory::make("fakesrc", None).unwrap();
             let dummy_audio_src = gst::ElementFactory::make("fakesrc", None).unwrap();
