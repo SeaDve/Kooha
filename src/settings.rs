@@ -151,14 +151,6 @@ impl Settings {
         }
 
         if let Some(profile) = profile::get(&profile_id) {
-            if !utils::is_experimental_mode() && profile::is_experimental(profile.id()).unwrap() {
-                tracing::warn!(
-                    "Profile `{}` is experimental and cannot be used in non-experimental mode",
-                    profile.id()
-                );
-                return profile::default();
-            }
-
             return profile;
         }
 
@@ -175,6 +167,10 @@ impl Settings {
             .connect_changed(Some("profile-id"), move |settings, _| {
                 f(&Self(settings.clone()));
             })
+    }
+
+    pub fn reset_profile(&self) {
+        self.0.reset("profile-id");
     }
 }
 

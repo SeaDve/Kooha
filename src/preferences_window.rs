@@ -1,4 +1,5 @@
 use adw::{prelude::*, subclass::prelude::*};
+use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone, closure, BoxedAnyObject},
@@ -16,6 +17,12 @@ mod imp {
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/preferences-window.ui")]
     pub struct PreferencesWindow {
+        #[template_child]
+        pub(super) experimental_indicator_group: TemplateChild<adw::PreferencesGroup>,
+        #[template_child]
+        pub(super) experimental_indicator_row: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        pub(super) disable_experimental_features_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub(super) frame_rate_row: TemplateChild<adw::ActionRow>,
         #[template_child]
@@ -51,6 +58,14 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
+            self.disable_experimental_features_button.connect_clicked(
+                clone!(@weak obj => move |_| {
+                    let settings = utils::app_settings();
+                    settings.reset("video-framerate");
+                    settings.reset_profile();
+                }),
+            );
+
             let settings = utils::app_settings();
 
             self.frame_rate_row.set_visible(
@@ -70,7 +85,9 @@ mod imp {
                         profile.name()
                     }),
                 )));
-            let profiles = if utils::is_experimental_mode() {
+            let profiles = if utils::is_experimental_mode()
+                || profile::is_experimental(settings.profile().id()).unwrap()
+            {
                 profile::all()
             } else {
                 profile::builtins()
@@ -101,14 +118,20 @@ mod imp {
                 .bind_video_framerate(&self.frame_rate_button.get(), "value")
                 .build();
 
+            settings.connect_video_framerate_changed(clone!(@weak obj => move |_| {
+                obj.update_experimental_indicator();
+            }));
+
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
                 obj.update_file_chooser_button();
             }));
 
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row();
+                obj.update_experimental_indicator();
             }));
 
+            obj.update_experimental_indicator();
             obj.update_file_chooser_button();
             obj.update_profile_row();
         }
@@ -128,6 +151,32 @@ glib::wrapper! {
 impl PreferencesWindow {
     pub fn new() -> Self {
         glib::Object::new(&[]).expect("Failed to create PreferencesWindow.")
+    }
+
+    fn update_experimental_indicator(&self) {
+        let settings = utils::app_settings();
+        let imp = self.imp();
+
+        let is_experimental_mode = utils::is_experimental_mode();
+        let is_using_experimental_features = (settings.video_framerate()
+            != settings.video_framerate_default_value())
+            || profile::is_experimental(settings.profile().id()).unwrap();
+
+        imp.disable_experimental_features_button
+            .set_visible(!is_experimental_mode && is_using_experimental_features);
+
+        if is_experimental_mode {
+            imp.experimental_indicator_row
+                .set_title(&gettext("Experimental Mode Enabled"));
+            imp.experimental_indicator_group.set_visible(true);
+        } else if is_using_experimental_features {
+            imp.experimental_indicator_row
+                .set_title(&gettext("Using Experimental Features"));
+            imp.experimental_indicator_group.set_visible(true);
+        } else {
+            imp.experimental_indicator_row.set_title("");
+            imp.experimental_indicator_group.set_visible(false);
+        }
     }
 
     fn update_file_chooser_button(&self) {
