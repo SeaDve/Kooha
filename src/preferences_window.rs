@@ -70,11 +70,16 @@ mod imp {
                         profile.name()
                     }),
                 )));
+            let profiles = if utils::is_experimental_mode() {
+                profile::all()
+            } else {
+                profile::builtins()
+            };
             let profiles_model = gio::ListStore::new(BoxedAnyObject::static_type());
             profiles_model.splice(
                 0,
                 0,
-                &profile::all()
+                &profiles
                     .into_iter()
                     .map(BoxedAnyObject::new)
                     .collect::<Vec<_>>(),
