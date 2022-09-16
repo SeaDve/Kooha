@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-15 02:48+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2022-09-16 14:21+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "hr/>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -100,7 +100,7 @@ msgstr "⌨️ Koristi korisne tipkovne prečace."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -132,7 +132,7 @@ msgstr "Uključi/isključi pauzu"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Prekini snimanje"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -164,19 +164,19 @@ msgstr "Snimi odabrano područje ekrana"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Aktiviraj desktop zvukove"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Deaktiviraj desktop zvukove"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Aktiviraj mikrofon"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Deaktiviraj mikrofon"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -184,11 +184,11 @@ msgstr "Pokaži pokazivač"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Sakrij pokazivač"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Počni snimati"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -196,11 +196,11 @@ msgstr "Snimi"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Zaboravi prethodno odabrane izvore videa"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Prekini snimanje"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -208,7 +208,7 @@ msgstr "Prekini"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Zaustavi snimanje"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -216,7 +216,7 @@ msgstr "Snimanje za …"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Prekini snimanje"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
@@ -236,7 +236,7 @@ msgstr "Bez"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3 s"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
@@ -280,7 +280,7 @@ msgstr "_Kooha informacije"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022. Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -289,11 +289,11 @@ msgstr "Milo Ivir &lt;mail@milotype.de&gt;"
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Doniraj (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Doniraj (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -301,51 +301,51 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Prevodi"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Videosnimka ekrana snimljena"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Pritisni ovdje za gledanje videa."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Pokaži u „Datoteke”"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Osiguraj da je PulseAudio instaliran u tvom sustavu."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Neuspjelo pokretanje monitora uređaja"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Neuspjelo povezivanje na PulseAudio daemon"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Neuspjelo pokretanje snimanja"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Pogledaj {} za pomoć."
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "Nije pronađen nijedan izvor mikrofona"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Nije pronađen nijedan izvor zvučnika"
 
 #: src/recording.rs:242
 msgid ""
@@ -359,20 +359,20 @@ msgstr ""
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Osiguraj da mjesto za spremanje postoji i da je dostupno."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Dogodila se greška tijekom snimanja"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Neuspjelo otvaranje mape „{}” za pisanje"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Neuspjelo otvaranje datoteke za pisanje"
 
 #: src/settings.rs:35
 msgid "Select Recordings Folder"
@@ -388,11 +388,11 @@ msgstr "Oda_beri"
 
 #: src/settings.rs:62
 msgid "No folder selected"
-msgstr ""
+msgstr "Nije odabrana nijedna mapa"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Odaberi mapu i pokušaj ponovo."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
@@ -405,27 +405,27 @@ msgstr "Odaberi pristupačno mjesto i pokušaj ponovo."
 
 #: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "U redu"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Neuspjelo uključivanje/isključivanje pauze"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopiraj u međuspremnik"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopirano u međuspremnik"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Pokaži detaljnu grešku"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Pomoć"
 
 #: src/window.rs:349
 msgid "Paused"
