@@ -217,7 +217,7 @@ fn videocrop_compute(
 /// pipewiresrc1 -> videorate -> |
 ///                              | -> compositor -> videoconvert -> queue
 /// pipewiresrc2 -> videorate -> |
-fn multi_stream_pipewiresrc_bin(fd: i32, streams: &[Stream], framerate: u32) -> Result<gst::Bin> {
+fn multi_stream_pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
     let compositor = element_factory_make("compositor")?;
