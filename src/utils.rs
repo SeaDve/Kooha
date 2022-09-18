@@ -35,7 +35,7 @@ pub fn app_instance() -> Application {
 /// Panics if the application is not running or if this is
 /// called on a non-main thread.
 pub fn app_settings() -> Settings {
-    app_instance().settings()
+    app_instance().settings().clone()
 }
 
 /// Whether the application is running in a flatpak sandbox.
