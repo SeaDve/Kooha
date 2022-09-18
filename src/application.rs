@@ -23,7 +23,7 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct Application {
         pub(super) window: OnceCell<WeakRef<Window>>,
-        pub(super) settings: Settings,
+        pub(super) settings: OnceCell<Settings>,
     }
 
     #[glib::object_subclass]
@@ -74,8 +74,18 @@ impl Application {
         .expect("Failed to create Application.")
     }
 
-    pub fn settings(&self) -> Settings {
-        self.imp().settings.clone()
+    pub fn settings(&self) -> &Settings {
+        self.imp().settings.get_or_init(|| {
+            let settings = Settings::default();
+
+            if tracing::enabled!(tracing::Level::TRACE) {
+                settings.connect_changed(None, |settings, key| {
+                    tracing::trace!("Settings `{}` changed to `{}`", key, settings.value(key));
+                });
+            }
+
+            settings
+        })
     }
 
     pub fn main_window(&self) -> Option<Window> {
