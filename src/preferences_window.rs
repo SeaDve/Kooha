@@ -101,13 +101,6 @@ mod imp {
                     .collect::<Vec<_>>(),
             );
             self.profile_row.set_model(Some(&profiles_model));
-            self.profile_row.connect_selected_item_notify(|row| {
-                if let Some(item) = row.selected_item() {
-                    let obj = item.downcast::<BoxedAnyObject>().unwrap();
-                    let profile = obj.borrow::<Box<dyn Profile>>();
-                    utils::app_settings().set_profile(&**profile);
-                }
-            });
 
             settings
                 .bind_record_delay(&self.delay_button.get(), "value")
@@ -133,6 +126,16 @@ mod imp {
             obj.update_experimental_indicator();
             obj.update_file_chooser_button();
             obj.update_profile_row();
+
+            // Load last active profile first in `update_profile_row` before
+            // connecting to the signal to avoid unnecessary updates.
+            self.profile_row.connect_selected_item_notify(|row| {
+                if let Some(item) = row.selected_item() {
+                    let obj = item.downcast::<BoxedAnyObject>().unwrap();
+                    let profile = obj.borrow::<Box<dyn Profile>>();
+                    utils::app_settings().set_profile(&**profile);
+                }
+            });
         }
     }
 
