@@ -12,7 +12,7 @@ use crate::{
     cancelled::Cancelled,
     config::PROFILE,
     help::Help,
-    recording::{Recording, State as RecordingState},
+    recording::{NoProfileError, Recording, State as RecordingState},
     settings::CaptureMode,
     toggle_button::ToggleButton,
     utils, Application,
@@ -281,6 +281,23 @@ impl Window {
             Err(ref err) => {
                 if err.is::<Cancelled>() {
                     tracing::debug!("{:?}", err);
+                } else if err.is::<NoProfileError>() {
+                    let d = adw::MessageDialog::builder()
+                        .heading(&gettext("Select Video Format?"))
+                        .body(&gettext("Previous selected format may have been unavailable. Select a profile to continue recording."))
+                        .default_response("later")
+                        .transient_for(self)
+                        .modal(true)
+                        .build();
+                    d.add_response("later", &gettext("Later"));
+                    d.add_response("select", &gettext("Select"));
+                    d.set_response_appearance("select", adw::ResponseAppearance::Suggested);
+                    d.connect_response(Some("select"), |d, response| {
+                        assert_eq!(response, "select");
+                        d.close();
+                        utils::app_instance().present_preferences();
+                    });
+                    d.present();
                 } else {
                     tracing::error!("{:?}", err);
                     self.surface().beep();
@@ -381,7 +398,9 @@ impl Window {
     }
 
     fn update_audio_toggles_sensitivity(&self) {
-        let is_enabled = utils::app_settings().profile().supports_audio();
+        let is_enabled = utils::app_settings()
+            .profile()
+            .map_or(false, |profile| profile.supports_audio());
 
         self.action_set_enabled("win.record-speaker", is_enabled);
         self.action_set_enabled("win.record-mic", is_enabled);

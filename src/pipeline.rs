@@ -79,8 +79,8 @@ impl PipelineBuilder {
     pub fn build(&self) -> Result<gst::Pipeline> {
         let file_path = new_recording_path(&self.saving_location, self.profile.file_extension());
 
-        let queue = element_factory_make("queue")?;
-        let filesink = element_factory_make_named("filesink", Some("filesink"))?;
+        let queue = utils::make_element("queue")?;
+        let filesink = utils::make_named_element("filesink", "filesink")?;
         filesink.set_property(
             "location",
             file_path
@@ -149,24 +149,8 @@ impl PipelineBuilder {
     }
 }
 
-/// Helper function for more helpful error messages when failing
-/// to make an element.
-fn element_factory_make(factory_name: &str) -> Result<gst::Element> {
-    element_factory_make_named(factory_name, None)
-}
-
-/// Helper function for more helpful error messages when failing
-/// to make an element.
-fn element_factory_make_named(
-    factory_name: &str,
-    element_name: Option<&str>,
-) -> Result<gst::Element> {
-    gst::ElementFactory::make(factory_name, element_name)
-        .with_context(|| format!("Failed to make element `{}`", factory_name))
-}
-
 fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
-    let src = element_factory_make("pipewiresrc")?;
+    let src = utils::make_element("pipewiresrc")?;
     src.set_property("fd", &fd);
     src.set_property("path", path);
     src.set_property("do-timestamp", true);
@@ -176,7 +160,7 @@ fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
 }
 
 fn videoconvert_with_default() -> Result<gst::Element> {
-    let conv = element_factory_make("videoconvert")?;
+    let conv = utils::make_element("videoconvert")?;
     conv.set_property("chroma-mode", gst_video::VideoChromaMode::None);
     conv.set_property("dither", gst_video::VideoDitherMethod::None);
     conv.set_property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly);
@@ -204,7 +188,7 @@ fn videocrop_compute(
     tracing::debug!(top_crop, left_crop, right_crop, bottom_crop);
 
     // x264enc requires even resolution.
-    let crop = element_factory_make("videocrop")?;
+    let crop = utils::make_element("videocrop")?;
     crop.set_property("top", round_to_even_f32(top_crop));
     crop.set_property("left", round_to_even_f32(left_crop));
     crop.set_property("right", round_to_even_f32(right_crop));
@@ -220,9 +204,9 @@ fn videocrop_compute(
 fn multi_stream_pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let compositor = element_factory_make("compositor")?;
+    let compositor = utils::make_element("compositor")?;
     let videoconvert = videoconvert_with_default()?;
-    let queue = element_factory_make("queue")?;
+    let queue = utils::make_element("queue")?;
 
     bin.add_many(&[&compositor, &videoconvert, &queue])?;
     gst::Element::link_many(&[&compositor, &videoconvert, &queue])?;
@@ -234,8 +218,8 @@ fn multi_stream_pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -
     let mut last_pos = 0;
     for stream in streams {
         let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
-        let videorate = element_factory_make("videorate")?;
-        let videorate_capsfilter = element_factory_make("capsfilter")?;
+        let videorate = utils::make_element("videorate")?;
+        let videorate_capsfilter = utils::make_element("capsfilter")?;
         videorate_capsfilter.set_property("caps", &videorate_filter);
 
         bin.add_many(&[&pipewiresrc, &videorate, &videorate_capsfilter])?;
@@ -277,8 +261,8 @@ fn single_stream_pipewiresrc_bin(
 
     let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
     let videoconvert = videoconvert_with_default()?;
-    let videorate = element_factory_make("videorate")?;
-    let queue = element_factory_make("queue")?;
+    let videorate = utils::make_element("videorate")?;
+    let queue = utils::make_element("queue")?;
 
     bin.add_many(&[&pipewiresrc, &videoconvert, &videorate, &queue])?;
     gst::Element::link_many(&[&pipewiresrc, &videoconvert, &videorate])?;
@@ -290,7 +274,7 @@ fn single_stream_pipewiresrc_bin(
     if let Some(context) = select_area_context {
         let (stream_width, stream_height) = stream.size().context("Stream has no size")?;
 
-        let videoscale = element_factory_make("videoscale")?;
+        let videoscale = utils::make_element("videoscale")?;
         let videocrop = videocrop_compute(stream_width, stream_height, context)?;
 
         // x264enc requires even resolution.
@@ -319,10 +303,10 @@ fn single_stream_pipewiresrc_bin(
 fn pulsesrc_bin(device_name: &str) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let pulsesrc = element_factory_make("pulsesrc")?;
+    let pulsesrc = utils::make_element("pulsesrc")?;
     pulsesrc.set_property("device", device_name);
-    let audioconvert = element_factory_make("audioconvert")?;
-    let queue = element_factory_make("queue")?;
+    let audioconvert = utils::make_element("audioconvert")?;
+    let queue = utils::make_element("queue")?;
 
     bin.add_many(&[&pulsesrc, &audioconvert, &queue])?;
     gst::Element::link_many(&[&pulsesrc, &audioconvert, &queue])?;
