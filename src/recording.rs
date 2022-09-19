@@ -168,6 +168,7 @@ impl Recording {
         settings: &Settings,
     ) -> Result<()> {
         let imp = self.imp();
+        let profile = settings.profile().context(NoProfileError)?;
 
         // setup screencast session
         let restore_token = settings.screencast_restore_token();
@@ -200,7 +201,7 @@ impl Recording {
         let mut pipeline_builder = PipelineBuilder::new(
             &settings.saving_location(),
             settings.video_framerate(),
-            settings.profile().context(NoProfileError)?,
+            profile,
             fd,
             streams,
         );
