@@ -169,6 +169,7 @@ impl Recording {
     ) -> Result<()> {
         let imp = self.imp();
         let profile = settings.profile().context(NoProfileError)?;
+        let profile_supports_audio = profile.supports_audio();
 
         // setup screencast session
         let restore_token = settings.screencast_restore_token();
@@ -225,19 +226,21 @@ impl Recording {
         timer.await?;
 
         // setup audio sources
-        if settings.record_mic() {
-            pipeline_builder.mic_source(
-                audio_device::find_default_name(AudioDeviceClass::Source)
-                    .await
-                    .with_context(|| gettext("No microphone source found"))?,
-            );
-        }
-        if settings.record_speaker() {
-            pipeline_builder.speaker_source(
-                audio_device::find_default_name(AudioDeviceClass::Sink)
-                    .await
-                    .with_context(|| gettext("No desktop speaker source found"))?,
-            );
+        if profile_supports_audio {
+            if settings.record_mic() {
+                pipeline_builder.mic_source(
+                    audio_device::find_default_name(AudioDeviceClass::Source)
+                        .await
+                        .with_context(|| gettext("No microphone source found"))?,
+                );
+            }
+            if settings.record_speaker() {
+                pipeline_builder.speaker_source(
+                    audio_device::find_default_name(AudioDeviceClass::Sink)
+                        .await
+                        .with_context(|| gettext("No desktop speaker source found"))?,
+                );
+            }
         }
 
         // build pipeline

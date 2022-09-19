@@ -139,6 +139,10 @@ impl PipelineBuilder {
             }
             audio_srcs
         } else {
+            if self.speaker_source.is_some() || self.mic_source.is_some() {
+                tracing::warn!("Audio is not supported by the selected profile, but audio sources are provided");
+            }
+
             Vec::new()
         };
 
