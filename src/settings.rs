@@ -207,8 +207,42 @@ fn is_accessible(path: &Path) -> bool {
 mod tests {
     use super::*;
 
+    use std::{env, process::Command, sync::Once};
+
+    fn setup_schema() {
+        static INIT: Once = Once::new();
+
+        INIT.call_once(|| {
+            let schema_dir = concat!(env!("CARGO_MANIFEST_DIR"), "/data");
+
+            let output = Command::new("glib-compile-schemas")
+                .arg(schema_dir)
+                .output()
+                .unwrap();
+
+            if !output.status.success() {
+                println!("Failed to generate GSchema!");
+                println!(
+                    "glib-compile-schemas stdout: {}",
+                    String::from_utf8_lossy(&output.stdout)
+                );
+                println!(
+                    "glib-compile-schemas stderr: {}",
+                    String::from_utf8_lossy(&output.stderr)
+                );
+                panic!("Can't test without GSchemas!");
+            }
+
+            env::set_var("GSETTINGS_SCHEMA_DIR", schema_dir);
+            env::set_var("GSETTINGS_BACKEND", "memory");
+        });
+    }
+
     #[test]
     fn default_profile() {
+        setup_schema();
+
+        assert!(Settings::default().profile().is_some());
         assert!(Settings::default().profile().unwrap().supports_audio());
     }
 }
