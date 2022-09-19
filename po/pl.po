@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-15 02:48+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2022-09-19 21:15+0000\n"
+"Last-Translator: gnu-ewm <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kooha/pot-file/pl/"
 ">\n"
 "Language: pl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -108,7 +108,7 @@ msgstr "⌨️ Wykorzystuj pomocne skróty klawiszowe."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -140,7 +140,7 @@ msgstr "Przełącz pauzę"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Anuluj nagrywanie"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -172,19 +172,19 @@ msgstr "Przechwytuj zaznaczenie ekranu"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Nagrywaj dźwięki pulpitu"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Nie nagrywaj dźwięków pulpitu"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Włącz mikrofon"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Wyłącz mikrofon"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -192,11 +192,11 @@ msgstr "Pokaż wskaźnik"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Ukryj myszkę"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Rozpocznij nagrywanie"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -204,11 +204,11 @@ msgstr "Nagrywaj"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Zapomnij o wcześniej wybranych źródłach wideo"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Zatrzymaj nagrywanie"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -216,7 +216,7 @@ msgstr "Zatrzymaj"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Wstrzymaj nagrywanie"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -224,7 +224,7 @@ msgstr "Nagrywanie za…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Anuluj nagrywanie"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
@@ -244,7 +244,7 @@ msgstr "Brak"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3 sekundy"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
@@ -288,7 +288,7 @@ msgstr "_O Kooha"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -297,11 +297,11 @@ msgstr "Radek Raczkowski, Adam Hulewicz, Radosław Korotkiewicz"
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Przekaż darowiznę (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Przekaż darowiznę (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -309,7 +309,7 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Przetłumacz"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
@@ -318,15 +318,15 @@ msgstr ""
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Kliknij tutaj, aby obejrzeć film."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Pokaż w plikach"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Upewnij się, że w systemie jest zainstalowane PulseAudio."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
@@ -334,22 +334,22 @@ msgstr ""
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Nie udało się połączyć z usługą PulseAudio"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Nie udało się rozpocząć nagrywania"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Sprawdź {}, aby uzyskać pomoc."
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "Nie znaleziono źródła mikrofonu"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
@@ -367,16 +367,16 @@ msgstr ""
 
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Upewnij się, że lokalizacja zapisu istnieje i jest dostępna."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Wystąpił błąd podczas nagrywania"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Nie udało się otworzyć \"{}\" do zapisu"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -396,11 +396,11 @@ msgstr "_Wybierz"
 
 #: src/settings.rs:62
 msgid "No folder selected"
-msgstr ""
+msgstr "Nie wybrano żadnego folderu"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Proszę wybrać folder i spróbować ponownie."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
@@ -413,7 +413,7 @@ msgstr "Proszę wybrać dostępną lokalizację i spróbować ponownie."
 
 #: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
@@ -421,19 +421,19 @@ msgstr ""
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Skopiuj do schowka"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Skopiowano do schowka"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Pokaż szczegóły błędu"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 #: src/window.rs:349
 msgid "Paused"
