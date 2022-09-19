@@ -496,6 +496,7 @@ fn new_encoding_profile(
         muxer_factory_name
     );
     let video_profile = gst_pbutils::EncodingVideoProfile::builder(&video_encoder_format)
+        .preset_name(video_encoder_factory_name)
         .presence(0)
         .build();
     video_profile.set_element_properties(video_encoder_element_properties);
@@ -516,12 +517,14 @@ fn new_encoding_profile(
         muxer_factory_name
     );
     let audio_profile = gst_pbutils::EncodingAudioProfile::builder(&audio_encoder_format)
+        .preset_name(audio_encoder_factory_name)
         .presence(0)
         .build();
     audio_profile.set_element_properties(audio_encoder_element_properties);
 
     let muxer_format = profile_format_from_factory(&muxer_factory, muxer_caps_fields)?;
     let container_profile = gst_pbutils::EncodingContainerProfile::builder(&muxer_format)
+        .preset_name(muxer_factory_name)
         .add_profile(&video_profile)
         .add_profile(&audio_profile)
         .presence(0)
