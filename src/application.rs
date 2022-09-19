@@ -119,6 +119,13 @@ impl Application {
         self.send_notification(Some("record-success"), &notification);
     }
 
+    pub fn present_preferences(&self) {
+        let window = PreferencesWindow::new();
+        window.set_modal(true);
+        window.set_transient_for(self.main_window().as_ref());
+        window.present();
+    }
+
     pub fn run(&self) {
         tracing::info!("Kooha ({})", APP_ID);
         tracing::info!("Version: {} ({})", VERSION, PROFILE);
@@ -176,10 +183,7 @@ impl Application {
 
         let action_preferences = gio::SimpleAction::new("preferences", None);
         action_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
-            let window = PreferencesWindow::new();
-            window.set_modal(true);
-            window.set_transient_for(obj.main_window().as_ref());
-            window.present();
+            obj.present_preferences();
         }));
         self.add_action(&action_preferences);
 

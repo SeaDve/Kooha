@@ -2,7 +2,8 @@ use anyhow::{anyhow, ensure, Context, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gst_pbutils::prelude::*;
-use gtk::glib;
+use gtk::glib::{self, subclass::prelude::*};
+use once_cell::unsync::OnceCell;
 
 use std::fmt;
 
@@ -45,9 +46,43 @@ pub fn get(id: &str) -> Option<Box<dyn Profile>> {
     all().into_iter().find(|p| p.id() == id)
 }
 
-/// Returns the default profile.
-pub fn default() -> Box<dyn Profile> {
-    get("webm").unwrap()
+mod imp {
+    use super::*;
+
+    #[derive(Debug, Default)]
+    pub struct BoxedProfile(pub(super) OnceCell<Option<Box<dyn Profile>>>);
+
+    #[glib::object_subclass]
+    impl ObjectSubclass for BoxedProfile {
+        const NAME: &'static str = "KoohaBoxedProfile";
+        type Type = super::BoxedProfile;
+    }
+
+    impl ObjectImpl for BoxedProfile {}
+}
+
+glib::wrapper! {
+     pub struct BoxedProfile(ObjectSubclass<imp::BoxedProfile>);
+}
+
+impl BoxedProfile {
+    pub fn new_none() -> Self {
+        Self::new_inner(None)
+    }
+
+    pub fn new(profile: Box<dyn Profile>) -> Self {
+        Self::new_inner(Some(profile))
+    }
+
+    pub fn get(&self) -> Option<&dyn Profile> {
+        self.imp().0.get().unwrap().as_ref().map(|p| &**p)
+    }
+
+    fn new_inner(profile: Option<Box<dyn Profile>>) -> Self {
+        let this: Self = glib::Object::new(&[]).expect("Failed to create BoxedProfile.");
+        this.imp().0.set(profile).unwrap();
+        this
+    }
 }
 
 pub trait Profile: fmt::Debug {
@@ -60,6 +95,8 @@ pub trait Profile: fmt::Debug {
     fn framerate_override(&self) -> Option<u32>;
 
     fn supports_audio(&self) -> bool;
+
+    fn is_available(&self) -> bool;
 
     fn attach(
         &self,
@@ -94,6 +131,10 @@ impl Profile for GifProfile {
         false
     }
 
+    fn is_available(&self) -> bool {
+        utils::find_element_factory("gifenc").is_ok()
+    }
+
     fn attach(
         &self,
         pipeline: &gst::Pipeline,
@@ -105,7 +146,7 @@ impl Profile for GifProfile {
             tracing::error!("Audio is not supported for Gif profile");
         }
 
-        let gifenc = element_factory_make("gifenc")?;
+        let gifenc = utils::make_element("gifenc")?;
         gifenc.set_property("repeat", -1);
         gifenc.set_property("speed", 30);
 
@@ -147,6 +188,23 @@ macro_rules! encodebin_profile {
                 true
             }
 
+            fn is_available(&self) -> bool {
+                // FIXME Instead of trying to create an encoding profile,
+                // maybe we could simply just check if all elements exist.
+
+                match $profile {
+                    Ok(_) => true,
+                    Err(err) => {
+                        tracing::debug!(
+                            "Profile {} is unavailable. Caused by: {:?}",
+                            self.id(),
+                            err
+                        );
+                        false
+                    }
+                }
+            }
+
             fn attach(
                 &self,
                 pipeline: &gst::Pipeline,
@@ -154,8 +212,8 @@ macro_rules! encodebin_profile {
                 audio_srcs: &[gst::Element],
                 sink: &gst::Element,
             ) -> Result<()> {
-                let encodebin = element_factory_make("encodebin")?;
-                encodebin.set_property("profile", $profile);
+                let encodebin = utils::make_element("encodebin")?;
+                encodebin.set_property("profile", $profile?);
 
                 pipeline.add(&encodebin)?;
 
@@ -225,7 +283,7 @@ encodebin_profile!(
         Vec::new(),
         ElementProperties::builder("webmmux").build(),
         Vec::new()
-    )?
+    )
 );
 
 encodebin_profile!(
@@ -244,7 +302,7 @@ encodebin_profile!(
         Vec::new(),
         ElementProperties::builder("mp4mux").build(),
         Vec::new()
-    )?
+    )
 );
 
 encodebin_profile!(
@@ -263,7 +321,7 @@ encodebin_profile!(
         Vec::new(),
         ElementProperties::builder("matroskamux").build(),
         Vec::new()
-    )?
+    )
 );
 
 mod experimental {
@@ -301,7 +359,7 @@ mod experimental {
             Vec::new(),
             ElementProperties::builder("webmmux").build(),
             Vec::new()
-        )?
+        )
     );
 
     encodebin_profile!(
@@ -322,7 +380,7 @@ mod experimental {
             Vec::new(),
             ElementProperties::builder("webmmux").build(),
             Vec::new()
-        )?
+        )
     );
 
     encodebin_profile!(
@@ -337,7 +395,7 @@ mod experimental {
             Vec::new(),
             ElementProperties::builder("webmmux").build(),
             Vec::new()
-        )?
+        )
     );
 
     encodebin_profile!(
@@ -352,7 +410,7 @@ mod experimental {
             Vec::new(),
             ElementProperties::builder("webmmux").build(),
             Vec::new()
-        )?
+        )
     );
 
     encodebin_profile!(
@@ -367,18 +425,8 @@ mod experimental {
             Vec::new(),
             ElementProperties::builder("mp4mux").build(),
             Vec::new()
-        )?
+        )
     );
-}
-
-fn element_factory_make(factory_name: &str) -> Result<gst::Element> {
-    gst::ElementFactory::make(factory_name, None)
-        .with_context(|| format!("Failed to make element `{}`", factory_name))
-}
-
-fn find_element_factory(factory_name: &str) -> Result<gst::ElementFactory> {
-    gst::ElementFactory::find(factory_name)
-        .ok_or_else(|| anyhow!("`{}` factory not found", factory_name))
 }
 
 fn profile_format_from_factory(
@@ -425,7 +473,7 @@ fn new_encoding_profile(
     muxer_caps_fields: Vec<(&str, glib::SendValue)>,
 ) -> Result<gst_pbutils::EncodingContainerProfile> {
     let muxer_factory_name = muxer_element_properties.factory_name();
-    let muxer_factory = find_element_factory(muxer_factory_name)?;
+    let muxer_factory = utils::find_element_factory(muxer_factory_name)?;
     ensure!(
         muxer_factory.has_type(gst::ElementFactoryType::MUXER),
         "`{}` is not a muxer",
@@ -433,7 +481,7 @@ fn new_encoding_profile(
     );
 
     let video_encoder_factory_name = video_encoder_element_properties.factory_name();
-    let video_encoder_factory = find_element_factory(video_encoder_factory_name)?;
+    let video_encoder_factory = utils::find_element_factory(video_encoder_factory_name)?;
     ensure!(
         video_encoder_factory.has_type(gst::ElementFactoryType::VIDEO_ENCODER),
         "`{}` is not a video encoder",
@@ -453,7 +501,7 @@ fn new_encoding_profile(
     video_profile.set_element_properties(video_encoder_element_properties);
 
     let audio_encoder_factory_name = audio_encoder_element_properties.factory_name();
-    let audio_encoder_factory = find_element_factory(audio_encoder_factory_name)?;
+    let audio_encoder_factory = utils::find_element_factory(audio_encoder_factory_name)?;
     ensure!(
         audio_encoder_factory.has_type(gst::ElementFactoryType::AUDIO_ENCODER),
         "`{}` is not an audio encoder",
@@ -489,8 +537,10 @@ mod tests {
 
     use std::collections::HashSet;
 
+    use crate::settings::Settings;
+
     #[test]
-    fn unique_ids() {
+    fn id_validity() {
         let mut unique = HashSet::new();
 
         for profile in all() {
@@ -499,6 +549,7 @@ mod tests {
                 "Duplicate id `{}`",
                 profile.id()
             );
+            assert!(profile.id() != Settings::NONE_PROFILE_ID);
         }
     }
 
@@ -507,13 +558,11 @@ mod tests {
         gst::init().unwrap();
         gstgif::plugin_register_static().unwrap();
 
-        assert!(default().supports_audio());
-
         for profile in builtins() {
             let pipeline = gst::Pipeline::new(None);
-            let dummy_video_src = gst::ElementFactory::make("fakesrc", None).unwrap();
-            let dummy_audio_src = gst::ElementFactory::make("fakesrc", None).unwrap();
-            let dummy_sink = gst::ElementFactory::make("fakesink", None).unwrap();
+            let dummy_video_src = utils::make_element("fakesrc").unwrap();
+            let dummy_audio_src = utils::make_element("fakesrc").unwrap();
+            let dummy_sink = utils::make_element("fakesink").unwrap();
             pipeline
                 .add_many(&[&dummy_video_src, &dummy_audio_src, &dummy_sink])
                 .unwrap();

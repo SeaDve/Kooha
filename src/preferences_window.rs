@@ -2,11 +2,11 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
     gio,
-    glib::{self, clone, closure, BoxedAnyObject},
+    glib::{self, clone, closure},
 };
 
 use crate::{
-    profile::{self, Profile},
+    profile::{self, BoxedProfile},
     utils,
 };
 
@@ -79,28 +79,42 @@ mod imp {
                     _,
                 >(
                     &[],
-                    closure!(|obj: BoxedAnyObject| {
-                        let profile = obj.borrow::<Box<dyn Profile>>();
-                        profile.name()
+                    closure!(|profile: BoxedProfile| {
+                        profile
+                            .get()
+                            .map_or(gettext("None"), |profile| profile.name())
                     }),
                 )));
             let profiles = if utils::is_experimental_mode()
-                || profile::is_experimental(settings.profile().id()).unwrap()
-            {
+                || settings.profile().map_or(false, |profile| {
+                    profile::is_experimental(profile.id()).unwrap()
+                }) {
                 profile::all()
             } else {
                 profile::builtins()
             };
-            let profiles_model = gio::ListStore::new(BoxedAnyObject::static_type());
+            let profiles_model = gio::ListStore::new(BoxedProfile::static_type());
+            profiles_model.append(&BoxedProfile::new_none());
             profiles_model.splice(
-                0,
+                1,
                 0,
                 &profiles
                     .into_iter()
-                    .map(BoxedAnyObject::new)
+                    .map(BoxedProfile::new)
                     .collect::<Vec<_>>(),
             );
-            self.profile_row.set_model(Some(&profiles_model));
+            let filter = gtk::BoolFilter::new(Some(&gtk::ClosureExpression::new::<
+                bool,
+                &[gtk::Expression],
+                _,
+            >(
+                &[],
+                closure!(|profile: BoxedProfile| {
+                    profile.get().map_or(true, |profile| profile.is_available())
+                }),
+            )));
+            let filter_model = gtk::FilterListModel::new(Some(&profiles_model), Some(&filter));
+            self.profile_row.set_model(Some(&filter_model));
 
             settings
                 .bind_record_delay(&self.delay_button.get(), "value")
@@ -131,9 +145,8 @@ mod imp {
             // connecting to the signal to avoid unnecessary updates.
             self.profile_row.connect_selected_item_notify(|row| {
                 if let Some(item) = row.selected_item() {
-                    let obj = item.downcast::<BoxedAnyObject>().unwrap();
-                    let profile = obj.borrow::<Box<dyn Profile>>();
-                    utils::app_settings().set_profile(&**profile);
+                    let profile = item.downcast::<BoxedProfile>().unwrap();
+                    utils::app_settings().set_profile(profile.get());
                 }
             });
         }
@@ -162,7 +175,9 @@ impl PreferencesWindow {
         let is_experimental_mode = utils::is_experimental_mode();
         let is_using_experimental_features = (settings.video_framerate()
             != settings.video_framerate_default_value())
-            || profile::is_experimental(settings.profile().id()).unwrap();
+            || settings.profile().map_or(false, |profile| {
+                profile::is_experimental(profile.id()).unwrap()
+            });
 
         imp.disable_experimental_features_button
             .set_visible(!is_experimental_mode && is_using_experimental_features);
@@ -210,17 +225,21 @@ impl PreferencesWindow {
             .unwrap()
             .into_iter()
             .position(|item| {
-                let obj = item.downcast::<BoxedAnyObject>().unwrap();
-                let profile = obj.borrow::<Box<dyn Profile>>();
-                profile.id() == active_profile.id()
+                let profile = item.downcast::<BoxedProfile>().unwrap();
+
+                match (profile.get(), &active_profile) {
+                    (Some(profile), Some(active_profile)) => profile.id() == active_profile.id(),
+                    (None, None) => true,
+                    _ => false,
+                }
             });
 
         if let Some(position) = position {
             imp.profile_row.set_selected(position as u32);
         } else {
             tracing::error!(
-                "Active profile `{}` was not found on profile model",
-                active_profile.id()
+                "Active profile `{:?}` was not found on profile model",
+                active_profile.as_ref().map(|p| p.id())
             );
         }
     }

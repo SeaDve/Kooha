@@ -9,6 +9,7 @@ use once_cell::{sync::Lazy, unsync::OnceCell};
 
 use std::{
     cell::{Cell, RefCell},
+    error, fmt,
     os::unix::prelude::RawFd,
     rc::Rc,
     time::Duration,
@@ -27,6 +28,17 @@ use crate::{
 };
 
 const DEFAULT_DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
+
+#[derive(Debug)]
+pub struct NoProfileError;
+
+impl fmt::Display for NoProfileError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str(&gettext("No active profile"))
+    }
+}
+
+impl error::Error for NoProfileError {}
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
@@ -188,7 +200,7 @@ impl Recording {
         let mut pipeline_builder = PipelineBuilder::new(
             &settings.saving_location(),
             settings.video_framerate(),
-            settings.profile(),
+            settings.profile().context(NoProfileError)?,
             fd,
             streams,
         );

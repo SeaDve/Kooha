@@ -5,6 +5,8 @@ use gtk::glib::{
     translate::{ToGlibPtr, UnsafeFrom},
 };
 
+use crate::utils;
+
 pub trait EncodingProfileExtManual {
     fn set_element_properties(&self, element_properties: ElementProperties);
 }
@@ -87,8 +89,7 @@ fn value_from_str(
     property_name: &str,
     value_string: &str,
 ) -> Result<glib::SendValue> {
-    let element_type = gst::ElementFactory::find(factory_name)
-        .ok_or_else(|| anyhow!("Failed to find factory with name `{}`", factory_name))?
+    let element_type = utils::find_element_factory(factory_name)?
         .load()
         .with_context(|| anyhow!("Failed to load factory with name `{}`", factory_name))?
         .element_type();

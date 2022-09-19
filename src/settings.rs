@@ -31,6 +31,8 @@ impl Default for Settings {
 }
 
 impl Settings {
+    pub const NONE_PROFILE_ID: &'static str = "none";
+
     /// Opens a `FileChooserDialog` to select a folder and updates
     /// the settings with the selected folder.
     pub fn select_saving_location(&self, transient_for: Option<&impl IsA<gtk::Window>>) {
@@ -136,26 +138,32 @@ impl Settings {
         self.0.bind("record-delay", object, property)
     }
 
-    pub fn set_profile(&self, profile: &dyn Profile) {
+    pub fn set_profile(&self, profile: Option<&dyn Profile>) {
         self.0
-            .set_value("profile-id", &profile.id().to_variant())
+            .set_string(
+                "profile-id",
+                profile.map_or(Self::NONE_PROFILE_ID, |profile| profile.id()),
+            )
             .unwrap();
     }
 
-    pub fn profile(&self) -> Box<dyn Profile> {
+    pub fn profile(&self) -> Option<Box<dyn Profile>> {
         let profile_id = self.0.get::<String>("profile-id");
 
-        if profile_id.is_empty() {
-            return profile::default();
+        if profile_id.is_empty() || profile_id == Self::NONE_PROFILE_ID {
+            return None;
         }
 
         if let Some(profile) = profile::get(&profile_id) {
-            return profile;
+            if !profile.is_available() {
+                return None;
+            }
+
+            return Some(profile);
         }
 
         tracing::warn!("Profile with id `{}` not found", profile_id);
-
-        profile::default()
+        None
     }
 
     pub fn connect_profile_changed(
@@ -193,4 +201,14 @@ fn is_accessible(path: &Path) -> bool {
     let home_folder = glib::home_dir();
 
     path != home_folder && path.starts_with(&home_folder)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn default_profile() {
+        assert!(Settings::default().profile().unwrap().supports_audio());
+    }
 }
