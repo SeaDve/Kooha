@@ -221,7 +221,6 @@ mod tests {
                 .unwrap();
 
             if !output.status.success() {
-                println!("Failed to generate GSchema!");
                 panic!(
                     "Failed to compile GSchema for tests; stdout: {}; stderr: {}",
                     String::from_utf8_lossy(&output.stdout),
