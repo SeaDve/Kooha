@@ -342,7 +342,12 @@ impl Recording {
             source_id.remove();
         }
 
-        self.set_finished(Err(Error::from(Cancelled::new("recording"))));
+        // HACK we need to return before calling this to avoid a `BorrowMutError` when
+        // `Window` tried to take the `recording` on finished callback while `recording`
+        // is borrowed to call `cancel`.
+        glib::idle_add_local_once(clone!(@weak self as obj => move || {
+            obj.set_finished(Err(Error::from(Cancelled::new("recording"))));
+        }));
 
         self.delete_file();
     }
