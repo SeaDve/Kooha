@@ -24,9 +24,9 @@ mod imp {
         #[template_child]
         pub(super) disable_experimental_features_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub(super) frame_rate_row: TemplateChild<adw::ActionRow>,
+        pub(super) framerate_button: TemplateChild<gtk::SpinButton>,
         #[template_child]
-        pub(super) frame_rate_button: TemplateChild<gtk::SpinButton>,
+        pub(super) framerate_warning: TemplateChild<gtk::Image>,
         #[template_child]
         pub(super) profile_row: TemplateChild<adw::ComboRow>,
         #[template_child]
@@ -66,11 +66,6 @@ mod imp {
                 });
 
             let settings = utils::app_settings();
-
-            self.frame_rate_row.set_visible(
-                utils::is_experimental_mode()
-                    || settings.video_framerate() != settings.video_framerate_default_value(),
-            );
 
             self.profile_row
                 .set_expression(Some(&gtk::ClosureExpression::new::<
@@ -121,11 +116,12 @@ mod imp {
                 .build();
 
             settings
-                .bind_video_framerate(&self.frame_rate_button.get(), "value")
+                .bind_video_framerate(&self.framerate_button.get(), "value")
                 .build();
 
             settings.connect_video_framerate_changed(clone!(@weak obj => move |_| {
                 obj.update_experimental_indicator();
+                obj.update_framerate_warning();
             }));
 
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
@@ -135,10 +131,12 @@ mod imp {
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row();
                 obj.update_experimental_indicator();
+                obj.update_framerate_warning();
             }));
 
             obj.update_experimental_indicator();
             obj.update_file_chooser_button();
+            obj.update_framerate_warning();
             obj.update_profile_row();
 
             // Load last active profile first in `update_profile_row` before
@@ -173,11 +171,9 @@ impl PreferencesWindow {
         let imp = self.imp();
 
         let is_experimental_mode = utils::is_experimental_mode();
-        let is_using_experimental_features = (settings.video_framerate()
-            != settings.video_framerate_default_value())
-            || settings.profile().map_or(false, |profile| {
-                profile::is_experimental(profile.id()).unwrap()
-            });
+        let is_using_experimental_features = settings.profile().map_or(false, |profile| {
+            profile::is_experimental(profile.id()).unwrap()
+        });
 
         imp.disable_experimental_features_button
             .set_visible(!is_experimental_mode && is_using_experimental_features);
@@ -242,6 +238,20 @@ impl PreferencesWindow {
                 active_profile.as_ref().map(|p| p.id())
             );
         }
+    }
+
+    fn update_framerate_warning(&self) {
+        let imp = self.imp();
+        let settings = utils::app_settings();
+
+        imp.framerate_warning.set_visible(
+            settings
+                .profile()
+                .and_then(|profile| profile.suggested_max_framerate())
+                .map_or(false, |suggested_max_framerate| {
+                    settings.video_framerate() > suggested_max_framerate
+                }),
+        );
     }
 }
 

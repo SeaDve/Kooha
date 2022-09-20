@@ -92,7 +92,7 @@ pub trait Profile: fmt::Debug {
 
     fn file_extension(&self) -> &str;
 
-    fn framerate_override(&self) -> Option<u32>;
+    fn suggested_max_framerate(&self) -> Option<u32>;
 
     fn supports_audio(&self) -> bool;
 
@@ -123,8 +123,8 @@ impl Profile for GifProfile {
         "gif"
     }
 
-    fn framerate_override(&self) -> Option<u32> {
-        Some(15)
+    fn suggested_max_framerate(&self) -> Option<u32> {
+        Some(24)
     }
 
     fn supports_audio(&self) -> bool {
@@ -180,8 +180,8 @@ macro_rules! encodebin_profile {
                 $file_extension
             }
 
-            fn framerate_override(&self) -> Option<u32> {
-                None
+            fn suggested_max_framerate(&self) -> Option<u32> {
+                Some(60)
             }
 
             fn supports_audio(&self) -> bool {

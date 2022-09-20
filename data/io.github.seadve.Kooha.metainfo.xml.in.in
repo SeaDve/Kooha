@@ -44,6 +44,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.1.2" date="2022-08-21">
+      <description>
+        <p>This release contains new features and fixes:</p>
+        <ul>
+          <li>Ability to change the frame rate through the UI</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.1.1" date="2022-08-21">
       <description>
         <p>This release contains fixes:</p>

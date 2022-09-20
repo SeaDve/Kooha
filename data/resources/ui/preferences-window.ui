@@ -74,26 +74,40 @@
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">Video</property>
             <child>
-              <object class="AdwActionRow" id="frame_rate_row">
-                <property name="title" translatable="yes">Frame Rate</property>
-                <child type="suffix">
-                  <object class="GtkSpinButton" id="frame_rate_button">
-                    <property name="valign">center</property>
-                    <property name="adjustment">
-                      <object class="GtkAdjustment">
-                        <property name="lower">0</property>
-                        <property name="upper">120</property>
-                        <property name="step-increment">1</property>
-                        <property name="page-increment">5</property>
-                      </object>
-                    </property>
-                  </object>
-                </child>
+              <object class="AdwComboRow" id="profile_row">
+                <property name="title" translatable="yes">Format</property>
               </object>
             </child>
             <child>
-              <object class="AdwComboRow" id="profile_row">
-                <property name="title" translatable="yes">Format</property>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Frame Rate</property>
+                <child type="suffix">
+                  <object class="GtkBox">
+                    <property name="spacing">12</property>
+                    <child>
+                      <object class="GtkImage" id="framerate_warning">
+                        <property name="tooltip-text" translatable="yes">This framerate may cause performance issues.</property>
+                        <property name="icon-name">warning-symbolic</property>
+                        <style>
+                          <class name="warning"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="framerate_button">
+                        <property name="valign">center</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="lower">0</property>
+                            <property name="upper">120</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">5</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
