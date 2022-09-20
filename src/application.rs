@@ -190,11 +190,9 @@ impl Application {
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
             if let Some(window) = obj.main_window() {
-                utils::spawn(async move {
-                    if let Err(err) = window.close().await {
-                        tracing::warn!("Failed to close window: {:?}", err);
-                    }
-                });
+                if let Err(err) = window.close() {
+                    tracing::warn!("Failed to close window: {:?}", err);
+                }
             } else {
                 obj.quit();
             }

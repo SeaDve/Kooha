@@ -1,12 +1,13 @@
 use adw::{prelude::*, subclass::prelude::*};
 use anyhow::{ensure, Error, Result};
-use futures_util::lock::Mutex;
 use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone},
     CompositeTemplate,
 };
+
+use std::cell::RefCell;
 
 use crate::{
     cancelled::Cancelled,
@@ -47,7 +48,7 @@ mod imp {
         #[template_child]
         pub(super) flushing_page: TemplateChild<gtk::Box>,
 
-        pub(super) recording: Mutex<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
+        pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
 
     #[glib::object_subclass]
@@ -67,19 +68,15 @@ mod imp {
             });
 
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
-                utils::spawn(clone!(@weak obj => async move {
-                    if let Err(err) = obj.toggle_pause().await {
-                        let err = err.context(gettext("Failed to toggle pause"));
-                        tracing::error!("{:?}", err);
-                        obj.present_error(&err);
-                    }
-                }));
+                if let Err(err) = obj.toggle_pause() {
+                    let err = err.context(gettext("Failed to toggle pause"));
+                    tracing::error!("{:?}", err);
+                    obj.present_error(&err);
+                }
             });
 
             klass.install_action("win.cancel-record", None, move |obj, _, _| {
-                utils::spawn(clone!(@weak obj => async move {
-                    obj.cancel_record().await;
-                }));
+                obj.cancel_record();
             });
 
             klass.install_action("win.forget-video-sources", None, move |_obj, _, _| {
@@ -125,12 +122,11 @@ impl Window {
         glib::Object::new(&[("application", app)]).expect("Failed to create Window.")
     }
 
-    pub async fn close(&self) -> Result<()> {
+    pub fn close(&self) -> Result<()> {
         let is_safe_to_close =
             self.imp()
                 .recording
-                .lock()
-                .await
+                .borrow()
                 .as_ref()
                 .map_or(true, |(ref recording, _)| {
                     matches!(
@@ -222,7 +218,7 @@ impl Window {
     async fn toggle_record(&self) {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.lock().await {
+        if let Some((ref recording, _)) = *imp.recording.borrow() {
             recording.stop();
             return;
         }
@@ -240,15 +236,16 @@ impl Window {
                 obj.on_recording_finished(recording, res);
             })),
         ];
-        *imp.recording.lock().await = Some((recording.clone(), handler_ids));
+        imp.recording
+            .replace(Some((recording.clone(), handler_ids)));
 
         recording.start(Some(self), &utils::app_settings()).await;
     }
 
-    async fn toggle_pause(&self) -> Result<()> {
+    fn toggle_pause(&self) -> Result<()> {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.lock().await {
+        if let Some((ref recording, _)) = *imp.recording.borrow() {
             if matches!(recording.state(), RecordingState::Paused) {
                 recording.resume()?;
             } else {
@@ -259,10 +256,10 @@ impl Window {
         Ok(())
     }
 
-    async fn cancel_record(&self) {
+    fn cancel_record(&self) {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.lock().await {
+        if let Some((ref recording, _)) = *imp.recording.borrow() {
             recording.cancel();
         }
     }
@@ -306,34 +303,23 @@ impl Window {
             }
         }
 
-        utils::spawn(clone!(@weak self as obj => async move {
-            let recording = obj.imp().recording.lock().await.take();
-
-            if let Some((recording, handler_ids)) = recording {
-                for handler_id in handler_ids {
-                    recording.disconnect(handler_id);
-                }
-            } else {
-                tracing::warn!("Recording finished but no stored recording");
+        if let Some((recording, handler_ids)) = self.imp().recording.take() {
+            for handler_id in handler_ids {
+                recording.disconnect(handler_id);
             }
-        }));
+        } else {
+            tracing::warn!("Recording finished but no stored recording");
+        }
     }
 
     fn update_view(&self) {
-        utils::spawn(clone!(@weak self as obj => async move {
-            obj.update_view_inner().await;
-        }));
-    }
-
-    async fn update_view_inner(&self) {
         let imp = self.imp();
 
         // TODO disregard ms granularity recording state change
 
         let state = imp
             .recording
-            .lock()
-            .await
+            .borrow()
             .as_ref()
             .map_or(RecordingState::Init, |(recording, _)| recording.state());
 
