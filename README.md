@@ -70,7 +70,7 @@ can also check for the [troubleshooting checklist](https://github.com/emersion/x
 
 ## ⚙️ Hidden Configuration Options
 
-### Enable hardware accelerated encoding
+### Enable hardware accelerated encoding and other encoders
 
 Enabling hardware accelerated encoding allows the encoder to utilize GPU for
 more efficient or perhaps faster encoding. It is not guaranteed to work on all
@@ -91,21 +91,6 @@ GST_VAAPI_ALL_DRIVERS=1 KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha
 or if installed locally, run
 ```shell
 GST_VAAPI_ALL_DRIVERS=1 KOOHA_EXPERIMENTAL=1 kooha
-```
-
-### Change video frame rate
-
-Take note that using other frames per second may cause flickering, depending on
-the performance of your device.
-
-To show the configuration in the preferences window, set `KOOHA_EXPERIMENTAL` to 1 using
-the following command:
-```
-KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha
-```
-or if installed locally, run
-```shell
-KOOHA_EXPERIMENTAL=1 kooha
 ```
 
 

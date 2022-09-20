@@ -92,15 +92,9 @@ impl PipelineBuilder {
         pipeline.add_many(&[&queue, &filesink])?;
         gst::Element::link_many(&[&queue, &filesink])?;
 
-        let framerate = if let Some(framerate_override) = self.profile.framerate_override() {
-            framerate_override
-        } else {
-            self.framerate
-        };
-
         tracing::debug!(
             file_path = %file_path.display(),
-            framerate,
+            framerate = self.framerate,
             profile = ?self.profile,
             stream_len = self.streams.len(),
             streams = ?self.streams,
@@ -113,7 +107,7 @@ impl PipelineBuilder {
             1 => single_stream_pipewiresrc_bin(
                 self.fd,
                 self.streams.get(0).unwrap(),
-                framerate,
+                self.framerate,
                 self.select_area_context.as_ref(),
             )?,
             _ => {
@@ -121,7 +115,7 @@ impl PipelineBuilder {
                     bail!("Select area is not supported for multiple streams");
                 }
 
-                multi_stream_pipewiresrc_bin(self.fd, &self.streams, framerate)?
+                multi_stream_pipewiresrc_bin(self.fd, &self.streams, self.framerate)?
             }
         };
 
