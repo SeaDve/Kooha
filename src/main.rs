@@ -18,7 +18,8 @@
     clippy::unnecessary_wraps,
     clippy::unused_self,
     clippy::dbg_macro,
-    clippy::todo
+    clippy::todo,
+    clippy::print_stdout
 )]
 #![allow(clippy::format_push_string)] // TODO remove once gettext-rs fixes macro issues
 

@@ -222,15 +222,11 @@ mod tests {
 
             if !output.status.success() {
                 println!("Failed to generate GSchema!");
-                println!(
-                    "glib-compile-schemas stdout: {}",
-                    String::from_utf8_lossy(&output.stdout)
-                );
-                println!(
-                    "glib-compile-schemas stderr: {}",
+                panic!(
+                    "Failed to compile GSchema for tests; stdout: {}; stderr: {}",
+                    String::from_utf8_lossy(&output.stdout),
                     String::from_utf8_lossy(&output.stderr)
                 );
-                panic!("Can't test without GSchemas!");
             }
 
             env::set_var("GSETTINGS_SCHEMA_DIR", schema_dir);
