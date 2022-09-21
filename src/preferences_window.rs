@@ -3,6 +3,7 @@ use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone, closure},
+    pango,
 };
 
 use crate::{
@@ -17,12 +18,6 @@ mod imp {
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/preferences-window.ui")]
     pub struct PreferencesWindow {
-        #[template_child]
-        pub(super) experimental_indicator_group: TemplateChild<adw::PreferencesGroup>,
-        #[template_child]
-        pub(super) experimental_indicator_row: TemplateChild<adw::ActionRow>,
-        #[template_child]
-        pub(super) disable_experimental_features_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub(super) framerate_button: TemplateChild<gtk::SpinButton>,
         #[template_child]
@@ -58,32 +53,17 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            self.disable_experimental_features_button
-                .connect_clicked(|_| {
-                    let settings = utils::app_settings();
-                    settings.reset_video_framerate();
-                    settings.reset_profile();
-                });
-
             let settings = utils::app_settings();
 
             self.profile_row
-                .set_expression(Some(&gtk::ClosureExpression::new::<
-                    String,
-                    &[gtk::Expression],
-                    _,
-                >(
-                    &[],
-                    closure!(|profile: BoxedProfile| {
-                        profile
-                            .get()
-                            .map_or(gettext("None"), |profile| profile.name())
-                    }),
-                )));
+                .set_factory(Some(&profile_row_factory(&self.profile_row, false)));
+            self.profile_row
+                .set_list_factory(Some(&profile_row_factory(&self.profile_row, true)));
             let profiles = if utils::is_experimental_mode()
-                || settings.profile().map_or(false, |profile| {
-                    profile::is_experimental(profile.id()).unwrap()
-                }) {
+                || settings
+                    .profile()
+                    .map_or(false, |profile| profile.is_experimental())
+            {
                 profile::all()
             } else {
                 profile::builtins()
@@ -120,7 +100,6 @@ mod imp {
                 .build();
 
             settings.connect_video_framerate_changed(clone!(@weak obj => move |_| {
-                obj.update_experimental_indicator();
                 obj.update_framerate_warning();
             }));
 
@@ -130,11 +109,9 @@ mod imp {
 
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row();
-                obj.update_experimental_indicator();
                 obj.update_framerate_warning();
             }));
 
-            obj.update_experimental_indicator();
             obj.update_file_chooser_button();
             obj.update_framerate_warning();
             obj.update_profile_row();
@@ -164,32 +141,6 @@ glib::wrapper! {
 impl PreferencesWindow {
     pub fn new() -> Self {
         glib::Object::new(&[]).expect("Failed to create PreferencesWindow.")
-    }
-
-    fn update_experimental_indicator(&self) {
-        let settings = utils::app_settings();
-        let imp = self.imp();
-
-        let is_experimental_mode = utils::is_experimental_mode();
-        let is_using_experimental_features = settings.profile().map_or(false, |profile| {
-            profile::is_experimental(profile.id()).unwrap()
-        });
-
-        imp.disable_experimental_features_button
-            .set_visible(!is_experimental_mode && is_using_experimental_features);
-
-        if is_experimental_mode {
-            imp.experimental_indicator_row
-                .set_title(&gettext("Experimental Mode Enabled"));
-            imp.experimental_indicator_group.set_visible(true);
-        } else if is_using_experimental_features {
-            imp.experimental_indicator_row
-                .set_title(&gettext("Using Experimental Features"));
-            imp.experimental_indicator_group.set_visible(true);
-        } else {
-            imp.experimental_indicator_row.set_title("");
-            imp.experimental_indicator_group.set_visible(false);
-        }
     }
 
     fn update_file_chooser_button(&self) {
@@ -259,4 +210,76 @@ impl Default for PreferencesWindow {
     fn default() -> Self {
         Self::new()
     }
+}
+
+fn profile_row_factory(
+    profile_row: &adw::ComboRow,
+    show_selected_indicator: bool,
+) -> gtk::SignalListItemFactory {
+    let factory = gtk::SignalListItemFactory::new();
+    factory.connect_setup(clone!(@weak profile_row => move |_, list_item| {
+        let item_expression = list_item.property_expression("item");
+
+        let hbox = gtk::Box::builder().spacing(12).build();
+
+        let warning_indicator = gtk::Image::builder()
+            .tooltip_text(&gettext("This format is experimental and unsupported."))
+            .icon_name("warning-symbolic")
+            .build();
+        warning_indicator.add_css_class("warning");
+        hbox.append(&warning_indicator);
+
+        item_expression
+        .chain_closure::<bool>(closure!(
+            |_: Option<glib::Object>, obj: Option<glib::Object>| {
+                obj.as_ref()
+                    .and_then(|o| o.downcast_ref::<BoxedProfile>().unwrap().get())
+                    .map_or(false, |profile| profile.is_experimental())
+            }
+        ))
+        .bind(&warning_indicator, "visible", glib::Object::NONE);
+
+        let label = gtk::Label::builder()
+            .valign(gtk::Align::Center)
+            .xalign(0.0)
+            .ellipsize(pango::EllipsizeMode::End)
+            .max_width_chars(20)
+            .build();
+        hbox.append(&label);
+
+        item_expression
+            .chain_closure::<String>(closure!(
+                |_: Option<glib::Object>, obj: Option<glib::Object>| {
+                    obj.as_ref()
+                        .and_then(|o| o.downcast_ref::<BoxedProfile>().unwrap().get())
+                        .map_or(gettext("None"), |profile| profile.name())
+                }
+            ))
+            .bind(&label, "label", glib::Object::NONE);
+
+        if show_selected_indicator {
+            let selected_indicator = gtk::Image::from_icon_name("object-select-symbolic");
+            hbox.append(&selected_indicator);
+
+            gtk::ClosureExpression::new::<f64, _, _>(
+                &[
+                    profile_row.property_expression("selected-item"),
+                    item_expression,
+                ],
+                closure!(|_: Option<glib::Object>,
+                          selected_item: Option<glib::Object>,
+                          item: Option<glib::Object>| {
+                    if item == selected_item {
+                        1.0
+                    } else {
+                        0.0
+                    }
+                }),
+            )
+            .bind(&selected_indicator, "opacity", glib::Object::NONE);
+        }
+
+        list_item.set_child(Some(&hbox));
+    }));
+    factory
 }

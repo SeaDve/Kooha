@@ -7,30 +7,6 @@
     <child>
       <object class="AdwPreferencesPage">
         <child>
-          <object class="AdwPreferencesGroup" id="experimental_indicator_group">
-            <child>
-              <object class="AdwActionRow" id="experimental_indicator_row">
-                <property name="subtitle" translatable="yes">Experimental features may cause performance and stability issues.</property>
-                <child type="prefix">
-                  <object class="GtkImage">
-                    <property name="icon-name">warning-symbolic</property>
-                    <style>
-                      <class name="warning"/>
-                    </style>
-                  </object>
-                </child>
-                <child type="suffix">
-                  <object class="GtkButton" id="disable_experimental_features_button">
-                    <property name="valign">center</property>
-                    <property name="label" translatable="yes">Disable</property>
-                    <property name="tooltip-text" translatable="yes">Disable Experimental Features</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">General</property>
             <child>

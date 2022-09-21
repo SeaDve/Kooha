@@ -27,20 +27,6 @@ pub fn builtins() -> Vec<Box<dyn Profile>> {
     ]
 }
 
-/// Returns `None` if the profile is not found, or a `bool`
-/// whether the profile is experimental.
-pub fn is_experimental(id: &str) -> Option<bool> {
-    if experimental::all().into_iter().any(|p| p.id() == id) {
-        return Some(true);
-    }
-
-    if get(id).is_some() {
-        return Some(false);
-    }
-
-    None
-}
-
 /// Get profile by ID including experimental ones.
 pub fn get(id: &str) -> Option<Box<dyn Profile>> {
     all().into_iter().find(|p| p.id() == id)
@@ -97,6 +83,16 @@ pub trait Profile: fmt::Debug {
     fn supports_audio(&self) -> bool;
 
     fn is_available(&self) -> bool;
+
+    fn is_experimental(&self) -> bool {
+        if experimental::all().into_iter().any(|p| p.id() == self.id()) {
+            return true;
+        }
+
+        assert!(get(self.id()).is_some());
+
+        false
+    }
 
     fn attach(
         &self,
@@ -584,11 +580,11 @@ mod tests {
     #[test]
     fn is_experimental_test() {
         for profile in builtins() {
-            assert!(!is_experimental(profile.id()).unwrap());
+            assert!(!profile.is_experimental());
         }
 
         for profile in experimental::all() {
-            assert!(is_experimental(profile.id()).unwrap());
+            assert!(profile.is_experimental());
         }
     }
 
