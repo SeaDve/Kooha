@@ -230,14 +230,14 @@ fn profile_row_factory(
         hbox.append(&warning_indicator);
 
         item_expression
-        .chain_closure::<bool>(closure!(
-            |_: Option<glib::Object>, obj: Option<glib::Object>| {
-                obj.as_ref()
-                    .and_then(|o| o.downcast_ref::<BoxedProfile>().unwrap().get())
-                    .map_or(false, |profile| profile.is_experimental())
-            }
-        ))
-        .bind(&warning_indicator, "visible", glib::Object::NONE);
+            .chain_closure::<bool>(closure!(
+                |_: Option<glib::Object>, obj: Option<glib::Object>| {
+                    obj.as_ref()
+                        .and_then(|o| o.downcast_ref::<BoxedProfile>().unwrap().get())
+                        .map_or(false, |profile| profile.is_experimental())
+                }
+            ))
+            .bind(&warning_indicator, "visible", glib::Object::NONE);
 
         let label = gtk::Label::builder()
             .valign(gtk::Align::Center)
