@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2021.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2021, 2022.
 # Jan Kuparinen <copper_fin@hotmail.com>, 2021.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2022.
 msgid ""
@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-21 21:02+0800\n"
-"PO-Revision-Date: 2022-08-15 02:48+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2022-09-22 17:16+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fi/>\n"
 "Language: fi\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
@@ -104,7 +104,7 @@ msgstr "⌨️ Hyödynnä käteviä pikanäppäimiä."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -136,7 +136,7 @@ msgstr "Keskeytys päälle/pois"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Cancel Record"
-msgstr ""
+msgstr "Peru nauhoitus"
 
 #: data/resources/ui/shortcuts.ui:57
 msgid "Settings"
@@ -168,19 +168,19 @@ msgstr "Kaappaa valittu alue näytöltä"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Sounds"
-msgstr ""
+msgstr "Käytä työpöydän ääniä"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Sounds"
-msgstr ""
+msgstr "Poista käytöstä työpöydän äänet"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Käytä mikrofonia"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Poista käytöstä mikrofoni"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -188,11 +188,11 @@ msgstr "Näytä osoitin"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Piilota osoitin"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Aloita nauhoitus"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -200,11 +200,11 @@ msgstr "Nauhoita"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Unohda aiemmin valitut videolähteet"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Lopeta nauhoitus"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -212,7 +212,7 @@ msgstr "Pysäytä"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Keskeytä nauhoitus"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -220,7 +220,7 @@ msgstr "Nauhoitus alkaa…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Peru nauhoitus"
 
 #: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
 msgid "Cancel"
@@ -240,7 +240,7 @@ msgstr "Ei mitään"
 
 #: data/resources/ui/window.ui:304
 msgid "3 seconds"
-msgstr ""
+msgstr "3 sekuntia"
 
 #: data/resources/ui/window.ui:309
 msgid "5 seconds"
@@ -284,7 +284,7 @@ msgstr "_Tietoja - Kooha"
 
 #: src/about.rs:22
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:30
@@ -293,11 +293,11 @@ msgstr "Jiri Grönroos"
 
 #: src/about.rs:40
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Lahjoita (Liberapay)"
 
 #: src/about.rs:44
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Lahjoita (PayPal)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -305,51 +305,51 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Käännä"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:96
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Näyttötallenne nauhoitettu"
 
 #: src/application.rs:97
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Napsauta nähdäksesi videon."
 
 #: src/application.rs:103
 msgid "Show in Files"
-msgstr ""
+msgstr "Näytä tiedostonhallinnassa"
 
 #: src/audio_device.rs:54 src/audio_device.rs:182
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Varmista, että PulseAudio on asennettu järjestelmään."
 
 #: src/audio_device.rs:55
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Laitemonitorin käynnistäminen epäonnistui"
 
 #: src/audio_device.rs:183
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "PulseAudio-taustaosaan yhdistäminen epäonnistui"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Nauhoituksen aloitus epäonnistui"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:183
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Katso ohjeita {}."
 
 #: src/recording.rs:227
 msgid "No microphone source found"
-msgstr ""
+msgstr "Mikrofonilähdettä ei löydy"
 
 #: src/recording.rs:234
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Työpöydän kaiutinlähdettä ei löydy"
 
 #: src/recording.rs:242
 msgid ""
@@ -364,19 +364,20 @@ msgstr ""
 #: src/recording.rs:267 src/recording.rs:466
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
+"Varmista, että tallennuksen sijainti on olemassa ja se on käytettävissä."
 
 #: src/recording.rs:462
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Virhe nauhoituksen aikana"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:474
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Ei voitu avata “{}” kirjoitusta varten"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Tiedoston avaus kirjoitusta varten epäonnistui"
 
 #: src/settings.rs:35
 msgid "Select Recordings Folder"
@@ -392,11 +393,11 @@ msgstr "_Valitse"
 
 #: src/settings.rs:62
 msgid "No folder selected"
-msgstr ""
+msgstr "Kansiota ei ole valittu"
 
 #: src/settings.rs:63
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Valitse toinen kansio ja yritä uudelleen."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:72
@@ -409,27 +410,27 @@ msgstr "Valitse sijainti, johon käyttöoikeudet riittävät, ja yritä uudellee
 
 #: src/settings.rs:125 src/window.rs:220
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src/window.rs:72
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Keskeytys epäonnistui"
 
 #: src/window.rs:183
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopioi leikepöydälle"
 
 #: src/window.rs:189
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopioitu leikepöydälle"
 
 #: src/window.rs:195
 msgid "Show detailed error"
-msgstr ""
+msgstr "Näytä yksityiskohtainen virhe"
 
 #: src/window.rs:217
 msgid "Help"
-msgstr ""
+msgstr "Ohje"
 
 #: src/window.rs:349
 msgid "Paused"
