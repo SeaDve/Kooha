@@ -89,7 +89,7 @@ pub trait Profile: fmt::Debug {
             return true;
         }
 
-        assert!(get(self.id()).is_some());
+        debug_assert!(get(self.id()).is_some());
 
         false
     }
