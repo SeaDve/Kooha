@@ -279,18 +279,19 @@ impl Window {
                 if err.is::<Cancelled>() {
                     tracing::debug!("{:?}", err);
                 } else if err.is::<NoProfileError>() {
+                    const OPEN_RESPONSE: &str = "open";
+                    const LATER_RESPONSE: &str = "later";
                     let d = adw::MessageDialog::builder()
-                        .heading(&gettext("Select Video Format?"))
-                        .body(&gettext("Previous selected format may have been unavailable. Select a profile to continue recording."))
-                        .default_response("later")
+                        .heading(&gettext("Open Preferences?"))
+                        .body(&gettext("The previously selected format may have been unavailable. Open preferences and select a format to continue recording."))
+                        .default_response(OPEN_RESPONSE)
                         .transient_for(self)
                         .modal(true)
                         .build();
-                    d.add_response("later", &gettext("Later"));
-                    d.add_response("select", &gettext("Select"));
-                    d.set_response_appearance("select", adw::ResponseAppearance::Suggested);
-                    d.connect_response(Some("select"), |d, response| {
-                        assert_eq!(response, "select");
+                    d.add_response(LATER_RESPONSE, &gettext("Later"));
+                    d.add_response(OPEN_RESPONSE, &gettext("Open"));
+                    d.set_response_appearance(OPEN_RESPONSE, adw::ResponseAppearance::Suggested);
+                    d.connect_response(Some(OPEN_RESPONSE), |d, _| {
                         d.close();
                         utils::app_instance().present_preferences();
                     });
