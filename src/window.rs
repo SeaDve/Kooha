@@ -387,7 +387,7 @@ impl Window {
     fn update_audio_toggles_sensitivity(&self) {
         let is_enabled = utils::app_settings()
             .profile()
-            .map_or(false, |profile| profile.supports_audio());
+            .map_or(true, |profile| profile.supports_audio());
 
         self.action_set_enabled("win.record-speaker", is_enabled);
         self.action_set_enabled("win.record-mic", is_enabled);
