@@ -62,7 +62,7 @@
                     <property name="spacing">12</property>
                     <child>
                       <object class="GtkImage" id="framerate_warning">
-                        <property name="tooltip-text" translatable="yes">This framerate may cause performance issues.</property>
+                        <property name="tooltip-text" translatable="yes">This frame rate may cause performance issues.</property>
                         <property name="icon-name">warning-symbolic</property>
                         <style>
                           <class name="warning"/>
