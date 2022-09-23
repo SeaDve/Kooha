@@ -135,17 +135,17 @@ impl ScreencastSession {
         Ok(())
     }
 
-    pub async fn version(&self) -> Result<u32> {
+    pub fn version(&self) -> Result<u32> {
         self.property("version")
     }
 
-    pub async fn available_cursor_modes(&self) -> Result<CursorMode> {
+    pub fn available_cursor_modes(&self) -> Result<CursorMode> {
         let value = self.property::<u32>("AvailableCursorModes")?;
 
         CursorMode::from_bits(value).ok_or_else(|| anyhow!("Invalid cursor mode: {}", value))
     }
 
-    pub async fn available_source_types(&self) -> Result<SourceType> {
+    pub fn available_source_types(&self) -> Result<SourceType> {
         let value = self.property::<u32>("AvailableSourceTypes")?;
 
         SourceType::from_bits(value).ok_or_else(|| anyhow!("Invalid source type: {}", value))

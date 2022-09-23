@@ -1,10 +1,7 @@
 use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::{gettext, ngettext};
 use gst::prelude::*;
-use gtk::{
-    gio,
-    glib::{self, clone, closure},
-};
+use gtk::glib::{self, clone, closure};
 use once_cell::unsync::OnceCell;
 
 use std::cell::RefCell;
@@ -464,14 +461,10 @@ impl ProfileWindow {
 }
 
 fn set_selected_item<I: IsA<glib::Object>>(combo: &adw::ComboRow, func: impl Fn(I) -> bool) {
-    fn find<I: IsA<glib::Object>>(model: &gio::ListModel, func: impl Fn(I) -> bool) -> Option<u32> {
-        for i in 0..model.n_items() {
-            if func(model.item(i).unwrap().downcast().unwrap()) {
-                return Some(i);
-            }
-        }
-        None
-    }
-
-    combo.set_selected(find(&combo.model().unwrap(), func).unwrap_or(gtk::INVALID_LIST_POSITION));
+    let model = combo.model().unwrap();
+    combo.set_selected(
+        (0..model.n_items())
+            .find(|&i| func(model.item(i).unwrap().downcast().unwrap()))
+            .unwrap_or(gtk::INVALID_LIST_POSITION),
+    );
 }
