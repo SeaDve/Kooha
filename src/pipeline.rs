@@ -154,6 +154,11 @@ fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
     src.set_property("do-timestamp", true);
     src.set_property("keepalive-time", 1000);
     src.set_property("resend-last", true);
+
+    // Workaround copied from https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/d32c03488fcf6cdb0ca2e99b0ed6ade078460deb
+    let needs_copy = gst::Registry::get().check_feature_version("pipewiresrc", 0, 3, 57);
+    src.set_property("always-copy", needs_copy);
+
     Ok(src)
 }
 
