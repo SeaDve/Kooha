@@ -1,12 +1,16 @@
 data/io.github.seadve.Kooha.desktop.in.in
 data/io.github.seadve.Kooha.gschema.xml.in
 data/io.github.seadve.Kooha.metainfo.xml.in.in
+data/resources/ui/profile-tile.ui
+data/resources/ui/profile-window.ui
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
 src/about.rs
 src/application.rs
 src/audio_device.rs
 src/main.rs
+src/profile_tile.rs
+src/profile_window.rs
 src/recording.rs
 src/settings.rs
 src/window.rs

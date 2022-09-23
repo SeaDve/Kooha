@@ -11,6 +11,7 @@ use once_cell::unsync::OnceCell;
 use crate::{
     about,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
+    profile_manager::ProfileManager,
     settings::Settings,
     utils,
     window::Window,
@@ -22,6 +23,7 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct Application {
         pub(super) window: OnceCell<WeakRef<Window>>,
+        pub(super) profile_manager: OnceCell<ProfileManager>,
         pub(super) settings: Settings,
     }
 
@@ -89,6 +91,10 @@ impl Application {
         }
 
         main_window
+    }
+
+    pub fn profile_manager(&self) -> &ProfileManager {
+        self.imp().profile_manager.get_or_init(ProfileManager::new)
     }
 
     pub fn send_record_success_notification(&self, recording_file: &gio::File) {

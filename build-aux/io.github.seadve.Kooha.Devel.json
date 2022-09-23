@@ -18,7 +18,8 @@
         "--talk-name=org.freedesktop.FileManager1",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=kooha=debug",
-        "--env=G_MESSAGES_DEBUG=none"
+        "--env=G_MESSAGES_DEBUG=none",
+        "--env=GST_DEBUG=3"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/llvm14/bin:/usr/lib/sdk/rust-stable/bin",
@@ -47,6 +48,29 @@
             ]
         },
         {
+            "name": "gstreamer",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dexamples=disabled",
+                "-Dtests=disabled",
+                "-Dbenchmarks=disabled",
+                "-Dtools=disabled",
+                "-Dintrospection=disabled",
+                "-Dnls=disabled",
+                "-Ddoc=disabled",
+                "-Dugly=enabled",
+                "--libdir=lib"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "tag": "1.20.3",
+                    "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
+                    "commit": "ccf22e315cedf81e0075ab179ffb1b733da5206e"
+                }
+            ]
+        },
+        {
             "name": "gst-plugins-ugly",
             "buildsystem": "meson",
             "builddir": true,
@@ -54,10 +78,7 @@
                 "-Ddoc=disabled",
                 "-Dorc=disabled",
                 "-Dnls=disabled",
-                "-Dtests=disabled",
-                "-Dgobject-cast-checks=disabled",
-                "-Dglib-asserts=disabled",
-                "-Dglib-checks=disabled"
+                "-Dtests=disabled"
             ],
             "sources": [
                 {
