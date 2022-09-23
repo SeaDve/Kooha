@@ -1,7 +1,7 @@
 {
     "id": "io.github.seadve.Kooha.Devel",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "43",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
@@ -48,60 +48,20 @@
             ]
         },
         {
-            "name": "gstreamer",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dexamples=disabled",
-                "-Dtests=disabled",
-                "-Dbenchmarks=disabled",
-                "-Dtools=disabled",
-                "-Dintrospection=disabled",
-                "-Dnls=disabled",
-                "-Ddoc=disabled",
-                "-Dugly=enabled",
-                "--libdir=lib"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "tag": "1.20.3",
-                    "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer.git",
-                    "commit": "ccf22e315cedf81e0075ab179ffb1b733da5206e"
-                }
-            ]
-        },
-        {
             "name": "gst-plugins-ugly",
             "buildsystem": "meson",
             "builddir": true,
             "config-opts": [
                 "-Ddoc=disabled",
-                "-Dorc=disabled",
                 "-Dnls=disabled",
-                "-Dtests=disabled"
+                "-Dtests=disabled",
+                "-Dgpl=enabled"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.18.6.tar.xz",
-                    "sha256": "4969c409cb6a88317d2108b8577108e18623b2333d7b587ae3f39459c70e3a7f"
-                }
-            ]
-        },
-        {
-            "name": "libadwaita",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dtests=false",
-                "-Dexamples=false",
-                "-Dvapi=false",
-                "-Dintrospection=disabled"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "tag": "1.2.0"
+                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.20.3.tar.xz",
+                    "sha256": "8caa20789a09c304b49cf563d33cca9421b1875b84fcc187e4a385fa01d6aefd"
                 }
             ]
         },
