@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 21:02+0800\n"
+"POT-Creation-Date: 2022-09-22 19:26+0800\n"
 "PO-Revision-Date: 2022-08-23 12:15+0000\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
-"Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/>"
-"\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/"
+">\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
-#: src/main.rs:57
+#: src/main.rs:63
 msgid "Kooha"
 msgstr "கூஹா"
 
@@ -39,16 +39,15 @@ msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
-"கவனச்சிதறல்கள் இல்லாமல் உங்கள் திரையை உள்ளுணர்வு மற்றும் நேரடியான வழியில் "
-"படம்பிடிக்கவும்."
+"கவனச்சிதறல்கள் இல்லாமல் உங்கள் திரையை உள்ளுணர்வு மற்றும் நேரடியான வழியில் படம்பிடிக்கவும்."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"கூஹா என்பது குறைந்தபட்ச இடைமுகத்துடன் கூடிய எளிய ஸ்கிரீன் ரெக்கார்டர் ஆகும். "
-"நீங்கள் பல அமைப்புகளை உள்ளமைக்காமல் பதிவு பொத்தானைக் கிளிக் செய்யலாம்."
+"கூஹா என்பது குறைந்தபட்ச இடைமுகத்துடன் கூடிய எளிய ஸ்கிரீன் ரெக்கார்டர் ஆகும். நீங்கள் பல "
+"அமைப்புகளை உள்ளமைக்காமல் பதிவு பொத்தானைக் கிளிக் செய்யலாம்."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid "The main features of Kooha include the following:"
@@ -60,9 +59,7 @@ msgstr "🎥 எந்த தொந்தரவும் இல்லாமல�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr ""
-"🎙️ உங்கள் ஒலிவாங்கி, கணினி ஒலிகள் அல்லது இரண்டையும் ஒரே நேரத்தில் பதிவு "
-"செய்யவும்."
+msgstr "🎙️ உங்கள் ஒலிவாங்கி, கணினி ஒலிகள் அல்லது இரண்டையும் ஒரே நேரத்தில் பதிவு செய்யவும்."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
@@ -82,9 +79,7 @@ msgstr "🖥️ பதிவு செய்ய மானிட்டர் அ�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr ""
-"🖼️ உங்கள் திரையில் இருந்து குறிப்பிட்ட பகுதியைப் பிடிக்க ஒரு தேர்வை "
-"உருவாக்கவும்."
+msgstr "🖼️ உங்கள் திரையில் இருந்து குறிப்பிட்ட பகுதியைப் பிடிக்க ஒரு தேர்வை உருவாக்கவும்."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
 msgid "⏲️ Set delay to prepare before you start recording."
@@ -106,51 +101,79 @@ msgstr "⌨️ உதவிகரமான விசைப்பலகை கு
 msgid "Dave Patrick Caberto"
 msgstr "டேவ் பேட்ரிக் கேபர்டோ"
 
-#: data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "ஜெனரல்"
+
+#: data/resources/ui/preferences-window.ui:14
+msgid "Delay (Seconds)"
+msgstr ""
+
+#: data/resources/ui/preferences-window.ui:32
+msgid "Recordings Folder"
+msgstr ""
+
+#: data/resources/ui/preferences-window.ui:51
+msgid "Video"
+msgstr ""
+
+#: data/resources/ui/preferences-window.ui:54
+msgid "Format"
+msgstr ""
+
+#: data/resources/ui/preferences-window.ui:59
+msgid "Frame Rate"
+msgstr ""
+
+#: data/resources/ui/preferences-window.ui:65
+msgid "This framerate may cause performance issues."
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
 msgstr "மெனுவை திறக்கவும்"
 
 #: data/resources/ui/shortcuts.ui:20
+msgid "Show Preferences"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
 msgstr "குறுக்குவழிகளைக் காட்டு"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:32
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: data/resources/ui/shortcuts.ui:33 src/window.rs:341
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
 msgid "Recording"
 msgstr "பதிவு"
 
-#: data/resources/ui/shortcuts.ui:37
+#: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
 msgstr "பதிவை நிலைமாற்றவும்"
 
-#: data/resources/ui/shortcuts.ui:44
+#: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
 msgstr "இடைநிறுத்தத்தை நிலைமாற்று"
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
 msgstr "பதிவை ரத்துசெய்"
 
-#: data/resources/ui/shortcuts.ui:57
+#: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
 msgstr "செட்டிங்ஸ்"
 
-#: data/resources/ui/shortcuts.ui:61
+#: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Computer Sounds"
 msgstr "கணினி ஒலிகளை நிலைமாற்று"
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
 msgstr "ஒலிவாங்கியை நிலைமாற்று"
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
 msgstr "சுட்டியை நிலைமாற்றவும்"
 
@@ -231,54 +254,14 @@ msgid "Flushing…"
 msgstr "ஃப்ளஷிங்…"
 
 #: data/resources/ui/window.ui:297
-msgid "_Delay"
-msgstr "_தாமதம்"
+msgid "_Preferences"
+msgstr ""
 
-#: data/resources/ui/window.ui:299
-msgid "None"
-msgstr "எதுவும் இல்லை"
-
-#: data/resources/ui/window.ui:304
-msgid "3 seconds"
-msgstr "3 வினாடிகள்"
-
-#: data/resources/ui/window.ui:309
-msgid "5 seconds"
-msgstr "5 வினாடிகள்"
-
-#: data/resources/ui/window.ui:314
-msgid "10 seconds"
-msgstr "10 வினாடிகள்"
-
-#: data/resources/ui/window.ui:320
-msgid "_Video Format"
-msgstr "_வீடியோ வடிவம்"
-
-#: data/resources/ui/window.ui:322
-msgid "WebM"
-msgstr "வெப்எம்"
-
-#: data/resources/ui/window.ui:327
-msgid "MKV"
-msgstr "MKV"
-
-#: data/resources/ui/window.ui:332
-msgid "MP4"
-msgstr "MP4"
-
-#: data/resources/ui/window.ui:337
-msgid "GIF"
-msgstr "GIF"
-
-#: data/resources/ui/window.ui:343
-msgid "_Save to…"
-msgstr "_இதில் சேமிக்கவும்…"
-
-#: data/resources/ui/window.ui:349
+#: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
 msgstr "_விசைப்பலகை குறுக்குவழிகள்"
 
-#: data/resources/ui/window.ui:353
+#: data/resources/ui/window.ui:305
 msgid "_About Kooha"
 msgstr "_கூஹா பற்றி"
 
@@ -308,106 +291,148 @@ msgid "Translate"
 msgstr "மொழிபெயர்"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:96
+#: src/application.rs:107
 msgid "Screencast recorded"
 msgstr "ஸ்கிரீன்காஸ்ட் பதிவு செய்யப்பட்டது"
 
-#: src/application.rs:97
+#: src/application.rs:108
 msgid "Click here to view the video."
 msgstr "வீடியோவைப் பார்க்க இங்கே கிளிக் செய்யவும்."
 
-#: src/application.rs:103
+#: src/application.rs:114
 msgid "Show in Files"
 msgstr "கோப்புகளில் காட்டு"
 
-#: src/audio_device.rs:54 src/audio_device.rs:182
+#: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "பல்ஸ்ஆடியோ உங்கள் கணினியில் நிறுவப்பட்டுள்ளதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/audio_device.rs:55
+#: src/audio_device.rs:54
 msgid "Failed to start device monitor"
 msgstr "சாதன மானிட்டரைத் தொடங்குவதில் தோல்வி"
 
-#: src/audio_device.rs:183
+#: src/audio_device.rs:188
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "பல்ஸ்ஆடியோ டீமானுடன் இணைக்க முடியவில்லை"
 
+#: src/preferences_window.rs:226
+msgid "This format is experimental and unsupported."
+msgstr ""
+
+#: src/preferences_window.rs:255
+msgid "None"
+msgstr "எதுவும் இல்லை"
+
+#: src/profile.rs:115
+msgid "GIF"
+msgstr "GIF"
+
+#: src/profile.rs:264
+msgid "WebM"
+msgstr "வெப்எம்"
+
+#: src/profile.rs:288
+msgid "MP4"
+msgstr "MP4"
+
+#: src/profile.rs:307
+msgid "Matroska"
+msgstr ""
+
+#: src/profile.rs:340
+msgid "WebM VP9"
+msgstr ""
+
+#: src/profile.rs:364
+msgid "WebM AV1"
+msgstr ""
+
+#: src/profile.rs:385
+msgid "WebM VAAPI VP8"
+msgstr ""
+
+#: src/profile.rs:400
+msgid "WebM VAAPI VP9"
+msgstr ""
+
+#: src/profile.rs:415
+msgid "WebM VAAPI H264"
+msgstr ""
+
+#: src/recording.rs:37
+msgid "No active profile"
+msgstr ""
+
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:184 src/recording.rs:243 src/recording.rs:268
+#: src/recording.rs:197 src/recording.rs:249 src/recording.rs:273
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:183
+#: src/recording.rs:196
 msgid "Check out {} for help."
 msgstr "உதவிக்கு {}ஐப் பார்க்கவும்."
 
-#: src/recording.rs:227
+#: src/recording.rs:234
 msgid "No microphone source found"
 msgstr "மைக்ரோஃபோன் ஆதாரம் எதுவும் கிடைக்கவில்லை"
 
-#: src/recording.rs:234
+#: src/recording.rs:241
 msgid "No desktop speaker source found"
 msgstr "டெஸ்க்டாப் ஸ்பீக்கர் ஆதாரம் இல்லை"
 
-#: src/recording.rs:242
-msgid ""
-"A GStreamer plugin may not be installed. If it is installed but still does "
-"not work properly, please report to <a href=\"https://github.com/SeaDve/"
-"Kooha/issues\">Kooha's issue page</a>."
+#: src/recording.rs:248
+msgid "A GStreamer plugin may not be installed."
 msgstr ""
-"GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம். அது நிறுவப்பட்டும், இன்னும் "
-"சரியாக வேலை செய்யவில்லை என்றால், தயவுசெய்து <a href=\"https://github.com/"
-"SeaDve/Kooha/issues\">Kooha இன் வெளியீட்டுப் பக்கத்திற்கு</a> புகாரளிக்கவும்."
 
-#: src/recording.rs:267 src/recording.rs:466
+#: src/recording.rs:272 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:462
+#: src/recording.rs:490
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:474
+#: src/recording.rs:502
 msgid "Failed to open “{}” for writing"
 msgstr "எழுதுவதற்கு “{}” திறக்க முடியவில்லை"
 
-#: src/recording.rs:476
+#: src/recording.rs:504
 msgid "Failed to open file for writing"
 msgstr "எழுதுவதற்கான கோப்பைத் திறக்க முடியவில்லை"
 
-#: src/settings.rs:35
+#: src/settings.rs:42
 msgid "Select Recordings Folder"
 msgstr "பதிவுகள் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 
-#: src/settings.rs:45
+#: src/settings.rs:52
 msgid "_Cancel"
 msgstr "_ரத்துசெய்"
 
-#: src/settings.rs:46
+#: src/settings.rs:53
 msgid "_Select"
 msgstr "_தேர்ந்தெடு"
 
-#: src/settings.rs:62
+#: src/settings.rs:69
 msgid "No folder selected"
 msgstr "கோப்புறை எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
-#: src/settings.rs:63
+#: src/settings.rs:70
 msgid "Please choose a folder and try again."
 msgstr "கோப்புறையைத் தேர்ந்தெடுத்து மீண்டும் முயற்சிக்கவும்."
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:72
+#: src/settings.rs:79
 msgid "Cannot access “{}”"
 msgstr "“{}” ஐ அணுக முடியவில்லை"
 
-#: src/settings.rs:73
+#: src/settings.rs:80
 msgid "Please choose an accessible location and try again."
 msgstr "அணுகக்கூடிய இடத்தைத் தேர்ந்தெடுத்து மீண்டும் முயற்சிக்கவும்."
 
-#: src/settings.rs:125 src/window.rs:220
+#: src/settings.rs:191 src/window.rs:214
 msgid "Ok"
 msgstr "சரி"
 
@@ -415,30 +440,78 @@ msgstr "சரி"
 msgid "Failed to toggle pause"
 msgstr "இடைநிறுத்தத்தை மாற்றுவதில் தோல்வி"
 
-#: src/window.rs:183
+#: src/window.rs:177
 msgid "Copy to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
 
-#: src/window.rs:189
+#: src/window.rs:183
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: src/window.rs:195
+#: src/window.rs:189
 msgid "Show detailed error"
 msgstr "விரிவான பிழையைக் காட்டு"
 
-#: src/window.rs:217
+#: src/window.rs:211
 msgid "Help"
 msgstr "உதவி"
 
-#: src/window.rs:349
+#: src/window.rs:285
+msgid "Open Preferences?"
+msgstr ""
+
+#: src/window.rs:286
+msgid ""
+"The previously selected format may have been unavailable. Open preferences "
+"and select a format to continue recording."
+msgstr ""
+
+#: src/window.rs:291
+msgid "Later"
+msgstr ""
+
+#: src/window.rs:292
+msgid "Open"
+msgstr ""
+
+#: src/window.rs:350
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
-#: src/window.rs:383
+#: src/window.rs:382
 msgid "Normal"
 msgstr "இயல்பானது"
 
-#: src/window.rs:384
+#: src/window.rs:383
 msgid "Selection"
 msgstr "தேர்வு"
+
+#~ msgid "_Delay"
+#~ msgstr "_தாமதம்"
+
+#~ msgid "3 seconds"
+#~ msgstr "3 வினாடிகள்"
+
+#~ msgid "5 seconds"
+#~ msgstr "5 வினாடிகள்"
+
+#~ msgid "10 seconds"
+#~ msgstr "10 வினாடிகள்"
+
+#~ msgid "_Video Format"
+#~ msgstr "_வீடியோ வடிவம்"
+
+#~ msgid "MKV"
+#~ msgstr "MKV"
+
+#~ msgid "_Save to…"
+#~ msgstr "_இதில் சேமிக்கவும்…"
+
+#~ msgid ""
+#~ "A GStreamer plugin may not be installed. If it is installed but still "
+#~ "does not work properly, please report to <a href=\"https://github.com/"
+#~ "SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ msgstr ""
+#~ "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம். அது நிறுவப்பட்டும், இன்னும் சரியாக "
+#~ "வேலை செய்யவில்லை என்றால், தயவுசெய்து <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha இன் வெளியீட்டுப் பக்கத்திற்கு</a> புகாரளிக்கவும்."
