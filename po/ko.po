@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-22 19:26+0800\n"
+"POT-Creation-Date: 2022-09-23 19:32+0800\n"
 "PO-Revision-Date: 2021-08-31 12:34+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
@@ -127,7 +127,7 @@ msgid "Frame Rate"
 msgstr ""
 
 #: data/resources/ui/preferences-window.ui:65
-msgid "This framerate may cause performance issues."
+msgid "This frame rate may cause performance issues."
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:14

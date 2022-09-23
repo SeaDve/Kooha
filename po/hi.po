@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-22 19:26+0800\n"
+"POT-Creation-Date: 2022-09-23 19:32+0800\n"
 "PO-Revision-Date: 2021-09-04 18:34+0000\n"
 "Last-Translator: Hemish <hemish04082005@gmail.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/kooha/pot-file/hi/"
@@ -125,7 +125,7 @@ msgid "Frame Rate"
 msgstr ""
 
 #: data/resources/ui/preferences-window.ui:65
-msgid "This framerate may cause performance issues."
+msgid "This frame rate may cause performance issues."
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:14
