@@ -1,5 +1,6 @@
 use gettextrs::gettext;
-use gtk::{glib::IsA, prelude::*};
+use gst::prelude::*;
+use gtk::prelude::*;
 
 use std::{
     env,
@@ -94,6 +95,13 @@ fn debug_info() -> String {
         adw::micro_version()
     );
     let gst_version_string = gst::version_string();
+    let pipewire_version = gst::Registry::get()
+        .find_feature("pipewiresrc", gst::ElementFactory::static_type())
+        .map_or("<Feature Not Found>".into(), |feature| {
+            feature
+                .plugin()
+                .map_or("<Plugin Not Found>".into(), |plugin| plugin.version())
+        });
 
     format!(
         r#"- {APP_ID} {VERSION}
@@ -106,7 +114,8 @@ fn debug_info() -> String {
 
 - GTK {gtk_version}
 - Libadwaita {adw_version}
-- {gst_version_string}"#
+- {gst_version_string}
+- Pipewire {pipewire_version}"#
     )
 }
 
