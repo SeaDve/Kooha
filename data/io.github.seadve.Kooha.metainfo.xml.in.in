@@ -44,11 +44,17 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="2.1.2" date="2022-08-21">
+    <release version="2.2.0" date="2022-08-21">
       <description>
         <p>This release contains new features and fixes:</p>
         <ul>
-          <li>Ability to change the frame rate through the UI</li>
+          <li>Added option to change the frame rate through the UI</li>
+          <li>Improve delay settings flexibility</li>
+          <li>Added preferences window for easier configuration</li>
+          <li>Added `KOOHA_EXPERIMENTAL` env var to show experimental (unsupported) encoders like VAAPI-VP8 and VAAPI-H264</li>
+          <li>Added the following experimental (unsupported) encoders: VP9, AV1, and VAAPI-VP9</li>
+          <li>Unavailable formats/encoders are now hidden from the UI</li>
+          <li>Updated translations</li>
         </ul>
       </description>
     </release>
