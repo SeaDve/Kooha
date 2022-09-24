@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-24 08:23+0800\n"
+"POT-Creation-Date: 2022-09-24 10:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "The main features of Kooha include the following:"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎙️ Record microphone, computer sounds, or both at the same time"
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
@@ -143,7 +143,7 @@ msgid "Settings"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
+msgid "Toggle Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
