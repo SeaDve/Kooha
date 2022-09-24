@@ -10,17 +10,12 @@
     <p>Kooha is a simple screen recorder with a minimalist interface. You can just click the record button without having to configure a bunch of settings.</p>
     <p>The main features of Kooha include the following:</p>
     <ul>
-      <li>🎥 Capture your screen without any hassle.</li>
-      <li>🎙️ Record your microphone, computer sounds, or both at the same time.</li>
-      <li>📼 Support for WebM, MP4, GIF, and MKV formats.</li>
-      <li>🗔 Multiple sources selection.</li>
-      <li>🚀 Optional hardware accelerated encoding</li>
-      <li>🖥️ Select a monitor or window to record.</li>
-      <li>🖼️ Create a selection to capture certain area from your screen.</li>
-      <li>⏲️ Set delay to prepare before you start recording.</li>
-      <li>🖱️ Hide or show mouse pointer.</li>
-      <li>💾 Choose a saving location for your recording.</li>
-      <li>⌨️ Utilize helpful keyboard shortcuts.</li>
+      <li>🎙️ Record microphone, computer sounds, or both at the same time</li>
+      <li>📼 Support for WebM, MP4, GIF, and Matroska formats</li>
+      <li>🖥️ Select a monitor, a window, or a portion of the screen to record</li>
+      <li>🗔 Multiple sources selection</li>
+      <li>🛠️ Configurable saving location, pointer visibility, frame rate, and delay</li>
+      <li>🚀 Experimental hardware accelerated encoding</li>
     </ul>
   </description>
   <url type="homepage">https://github.com/SeaDve/Kooha</url>
