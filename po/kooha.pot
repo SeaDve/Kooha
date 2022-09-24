@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-24 10:13+0800\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,11 +167,11 @@ msgid "Capture a Selection of Screen"
 msgstr ""
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
+msgid "Enable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
+msgid "Disable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:100

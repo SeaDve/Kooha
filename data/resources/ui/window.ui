@@ -88,8 +88,8 @@
                             <property name="action-name">win.record-speaker</property>
                             <property name="default-icon-name">audio-volume-muted-symbolic</property>
                             <property name="toggled-icon-name">audio-volume-high-symbolic</property>
-                            <property name="default-tooltip-text" translatable="yes">Enable Desktop Sounds</property>
-                            <property name="toggled-tooltip-text" translatable="yes">Disable Desktop Sounds</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Desktop Audio</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Desktop Audio</property>
                           </object>
                         </child>
                         <child>
