@@ -45,7 +45,7 @@ Kooha is a simple screen recorder with a minimal interface. You can simply click
 the record button without having to configure a bunch of settings.
 
 The main features of Kooha include the following:
-* 🎙️ Record microphone, computer sounds, or both at the same time
+* 🎙️ Record microphone, desktop audio, or both at the same time
 * 📼 Support for WebM, MP4, GIF, and Matroska formats
 * 🖥️ Select a monitor, a window, or a portion of the screen to record
 * 🗔 Multiple sources selection

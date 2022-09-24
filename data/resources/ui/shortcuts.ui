@@ -64,7 +64,7 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.record-speaker</property>
-                <property name="title" translatable="yes">Toggle Computer Sounds</property>
+                <property name="title" translatable="yes">Toggle Desktop Audio</property>
               </object>
             </child>
             <child>
