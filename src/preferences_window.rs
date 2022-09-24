@@ -37,7 +37,7 @@ mod imp {
         type ParentType = adw::PreferencesWindow;
 
         fn class_init(klass: &mut Self::Class) {
-            Self::bind_template(klass);
+            klass.bind_template();
 
             klass.install_action("preferences.select-saving-location", None, |obj, _, _| {
                 utils::app_settings().select_saving_location(Some(obj));

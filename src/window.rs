@@ -59,7 +59,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             ToggleButton::static_type();
-            Self::bind_template(klass);
+            klass.bind_template();
 
             klass.install_action("win.toggle-record", None, move |obj, _, _| {
                 utils::spawn(clone!(@weak obj => async move {
