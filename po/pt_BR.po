@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 19:32+0800\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
 "PO-Revision-Date: 2022-04-29 23:12+0000\n"
 "Last-Translator: Vitor Sabino Cardoso da SIlva <vitorcsilva180396@gmail."
 "com>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: Weblate 4.12.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
 msgstr "Kooha"
@@ -57,50 +57,31 @@ msgid "The main features of Kooha include the following:"
 msgstr "Os principais recursos do Kooha incluem:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Captura da sua tela sem complicações."
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
-msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Gravação via microfone, sons do computador ou ambos ao mesmo tempo."
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Suporte aos formatos de WebM, MP4, GIF e MKV."
+msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🗔 Multiple sources selection."
-msgstr "🗔 Seleção de fontes múltiplas."
+msgid "🗔 Multiple sources selection"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Codificação acelerada via hardware opcional"
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Selecione um monitor ou janela para gravar."
+msgid "🚀 Experimental hardware accelerated encoding"
+msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
-msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ Escolha uma seção para capturar determinada área da sua tela."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
-msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Configure o delay para preparar-se antes de iniciar a gravação."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
-msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️Ocultar ou mostrar o ponteiro do mouse."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
-msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Escolha um local para salvar sua gravação."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
-msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Utilize atalhos de teclado úteis."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr ""
 
@@ -169,8 +150,8 @@ msgid "Settings"
 msgstr "Configurações"
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
-msgstr "Alternar sons do computador"
+msgid "Toggle Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -193,11 +174,11 @@ msgid "Capture a Selection of Screen"
 msgstr "Capturar uma área da tela"
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
+msgid "Enable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
+msgid "Disable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:100
@@ -268,28 +249,28 @@ msgstr "_Atalhos de teclado"
 msgid "_About Kooha"
 msgstr "_Sobre o Kooha"
 
-#: src/about.rs:22
+#: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:30
+#: src/about.rs:31
 msgid "translator-credits"
 msgstr "Vitor Cardoso, Tiago Lucas Flach, inkhorn"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Donate (Liberapay)"
 msgstr ""
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Donate (PayPal)"
 msgstr ""
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:50
+#: src/about.rs:51
 msgid "Translate"
 msgstr ""
 
@@ -488,6 +469,43 @@ msgstr "Normal"
 #: src/window.rs:383
 msgid "Selection"
 msgstr "Seleção"
+
+#~ msgid "🎥 Capture your screen without any hassle."
+#~ msgstr "🎥 Captura da sua tela sem complicações."
+
+#~ msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+#~ msgstr ""
+#~ "🎙️ Gravação via microfone, sons do computador ou ambos ao mesmo tempo."
+
+#~ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+#~ msgstr "📼 Suporte aos formatos de WebM, MP4, GIF e MKV."
+
+#~ msgid "🗔 Multiple sources selection."
+#~ msgstr "🗔 Seleção de fontes múltiplas."
+
+#~ msgid "🚀 Optional hardware accelerated encoding"
+#~ msgstr "🚀 Codificação acelerada via hardware opcional"
+
+#~ msgid "🖥️ Select a monitor or window to record."
+#~ msgstr "🖥️ Selecione um monitor ou janela para gravar."
+
+#~ msgid "🖼️ Create a selection to capture certain area from your screen."
+#~ msgstr "🖼️ Escolha uma seção para capturar determinada área da sua tela."
+
+#~ msgid "⏲️ Set delay to prepare before you start recording."
+#~ msgstr "⏲️ Configure o delay para preparar-se antes de iniciar a gravação."
+
+#~ msgid "🖱️ Hide or show mouse pointer."
+#~ msgstr "🖱️Ocultar ou mostrar o ponteiro do mouse."
+
+#~ msgid "💾 Choose a saving location for your recording."
+#~ msgstr "💾 Escolha um local para salvar sua gravação."
+
+#~ msgid "⌨️ Utilize helpful keyboard shortcuts."
+#~ msgstr "⌨️ Utilize atalhos de teclado úteis."
+
+#~ msgid "Toggle Computer Sounds"
+#~ msgstr "Alternar sons do computador"
 
 #~ msgid "_Delay"
 #~ msgstr "Adiamento"

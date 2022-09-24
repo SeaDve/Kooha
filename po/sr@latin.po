@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 19:32+0800\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
 "PO-Revision-Date: 2021-10-15 15:44+0200\n"
 "Last-Translator: Dušan Simić <dusan.simic1810@gmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Gtranslator 40.0\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
 msgstr "Kooha"
@@ -55,51 +55,31 @@ msgid "The main features of Kooha include the following:"
 msgstr "Glavne funkcionalnosti u Kooha su:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Snimi ekran bez muke."
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
-msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Snimi mikrofon, zvuk sa računara ili oba u isto vreme."
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Podrška za WebM, MP4, GIF, i MKV formate."
+msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🗔 Multiple sources selection."
-msgstr "🗔 Izbor više izvora."
+msgid "🗔 Multiple sources selection"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Opciono hardverski ubrzano kodiranje"
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Odaberi monitor ili prozor koji bi da snimaš."
+msgid "🚀 Experimental hardware accelerated encoding"
+msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
-msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ Izaberite prostor za snimanje određenog područja ekrana."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
-#, fuzzy
-msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Postavi kašnjenje da biste se pripremili pre početka snimanja."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
-msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Prikaži ili sakrij kursor."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
-msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Odaberi mesto za čuvanje snimka."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
-msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Koristite prečice na tastaturi."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr ""
 
@@ -168,8 +148,8 @@ msgid "Settings"
 msgstr "Podešavanja"
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
-msgstr "Uključi/isključi zvuke sa računara"
+msgid "Toggle Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -192,11 +172,11 @@ msgid "Capture a Selection of Screen"
 msgstr "Snimi područje ekrana"
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
+msgid "Enable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
+msgid "Disable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:100
@@ -267,28 +247,28 @@ msgstr "_Prečice na tastaturi"
 msgid "_About Kooha"
 msgstr "_O Kooha"
 
-#: src/about.rs:22
+#: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:30
+#: src/about.rs:31
 msgid "translator-credits"
 msgstr "  Dušan Simić <dusan.simic1810@gmail.com>"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Donate (Liberapay)"
 msgstr ""
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Donate (PayPal)"
 msgstr ""
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:50
+#: src/about.rs:51
 msgid "Translate"
 msgstr ""
 
@@ -487,6 +467,43 @@ msgstr "Normalno"
 #: src/window.rs:383
 msgid "Selection"
 msgstr "Izbor"
+
+#~ msgid "🎥 Capture your screen without any hassle."
+#~ msgstr "🎥 Snimi ekran bez muke."
+
+#~ msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+#~ msgstr "🎙️ Snimi mikrofon, zvuk sa računara ili oba u isto vreme."
+
+#~ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+#~ msgstr "📼 Podrška za WebM, MP4, GIF, i MKV formate."
+
+#~ msgid "🗔 Multiple sources selection."
+#~ msgstr "🗔 Izbor više izvora."
+
+#~ msgid "🚀 Optional hardware accelerated encoding"
+#~ msgstr "🚀 Opciono hardverski ubrzano kodiranje"
+
+#~ msgid "🖥️ Select a monitor or window to record."
+#~ msgstr "🖥️ Odaberi monitor ili prozor koji bi da snimaš."
+
+#~ msgid "🖼️ Create a selection to capture certain area from your screen."
+#~ msgstr "🖼️ Izaberite prostor za snimanje određenog područja ekrana."
+
+#, fuzzy
+#~ msgid "⏲️ Set delay to prepare before you start recording."
+#~ msgstr "⏲️ Postavi kašnjenje da biste se pripremili pre početka snimanja."
+
+#~ msgid "🖱️ Hide or show mouse pointer."
+#~ msgstr "🖱️ Prikaži ili sakrij kursor."
+
+#~ msgid "💾 Choose a saving location for your recording."
+#~ msgstr "💾 Odaberi mesto za čuvanje snimka."
+
+#~ msgid "⌨️ Utilize helpful keyboard shortcuts."
+#~ msgstr "⌨️ Koristite prečice na tastaturi."
+
+#~ msgid "Toggle Computer Sounds"
+#~ msgstr "Uključi/isključi zvuke sa računara"
 
 #~ msgid "_Delay"
 #~ msgstr "_Kašnjenje"

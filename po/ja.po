@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 19:32+0800\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
 "PO-Revision-Date: 2022-08-29 09:18+0000\n"
 "Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
 msgstr "Kooha"
@@ -60,50 +60,31 @@ msgid "The main features of Kooha include the following:"
 msgstr "Koohaの特徴は以下の通りです："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 手間をかけずに画面を記録。"
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
-msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ マイクの音声、コンピュータのサウンド、およびその両方を録音できます。"
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 WebM、MP4、GIF、MKV形式に対応。"
+msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🗔 Multiple sources selection."
-msgstr "🗔 複数のソースを選択。"
+msgid "🗔 Multiple sources selection"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 ハードウェアアクセラレーションを使ったエンコードにも対応"
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ モニターまたはウィンドウを選択して録画できます。"
+msgid "🚀 Experimental hardware accelerated encoding"
+msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
-msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ 選択した範囲を録画できます。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
-msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ 録画開始前にタイマーをセットすることもできます。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
-msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ カーソルを非表示にしての録画もできます。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
-msgid "💾 Choose a saving location for your recording."
-msgstr "💾 保存先を選択できます。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
-msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ 便利なキーボードショートカットもあります。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
@@ -172,8 +153,8 @@ msgid "Settings"
 msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
-msgstr "コンピューター内部音の録音を有効化／無効化"
+msgid "Toggle Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -196,12 +177,12 @@ msgid "Capture a Selection of Screen"
 msgstr "スクリーンの選択範囲をキャプチャする"
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
-msgstr "デスクトップでの音を有効"
+msgid "Enable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
-msgstr "デスクトップでの音を無効"
+msgid "Disable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -271,12 +252,12 @@ msgstr "キーボードショートカット(_K)"
 msgid "_About Kooha"
 msgstr "Koohaについて(_A)"
 
-#: src/about.rs:22
+#: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:30
+#: src/about.rs:31
 msgid "translator-credits"
 msgstr ""
 "小山田 純,\n"
@@ -284,19 +265,19 @@ msgstr ""
 "Kaz Sibuya,\n"
 "Kisaragi Hiu"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Donate (Liberapay)"
 msgstr "寄付 (Liberapay)"
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Donate (PayPal)"
 msgstr "寄付 (PayPal)"
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:50
+#: src/about.rs:51
 msgid "Translate"
 msgstr "翻訳"
 
@@ -496,6 +477,49 @@ msgstr "通常"
 #: src/window.rs:383
 msgid "Selection"
 msgstr "選択範囲"
+
+#~ msgid "Enable Desktop Sounds"
+#~ msgstr "デスクトップでの音を有効"
+
+#~ msgid "Disable Desktop Sounds"
+#~ msgstr "デスクトップでの音を無効"
+
+#~ msgid "🎥 Capture your screen without any hassle."
+#~ msgstr "🎥 手間をかけずに画面を記録。"
+
+#~ msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+#~ msgstr ""
+#~ "🎙️ マイクの音声、コンピュータのサウンド、およびその両方を録音できます。"
+
+#~ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+#~ msgstr "📼 WebM、MP4、GIF、MKV形式に対応。"
+
+#~ msgid "🗔 Multiple sources selection."
+#~ msgstr "🗔 複数のソースを選択。"
+
+#~ msgid "🚀 Optional hardware accelerated encoding"
+#~ msgstr "🚀 ハードウェアアクセラレーションを使ったエンコードにも対応"
+
+#~ msgid "🖥️ Select a monitor or window to record."
+#~ msgstr "🖥️ モニターまたはウィンドウを選択して録画できます。"
+
+#~ msgid "🖼️ Create a selection to capture certain area from your screen."
+#~ msgstr "🖼️ 選択した範囲を録画できます。"
+
+#~ msgid "⏲️ Set delay to prepare before you start recording."
+#~ msgstr "⏲️ 録画開始前にタイマーをセットすることもできます。"
+
+#~ msgid "🖱️ Hide or show mouse pointer."
+#~ msgstr "🖱️ カーソルを非表示にしての録画もできます。"
+
+#~ msgid "💾 Choose a saving location for your recording."
+#~ msgstr "💾 保存先を選択できます。"
+
+#~ msgid "⌨️ Utilize helpful keyboard shortcuts."
+#~ msgstr "⌨️ 便利なキーボードショートカットもあります。"
+
+#~ msgid "Toggle Computer Sounds"
+#~ msgstr "コンピューター内部音の録音を有効化／無効化"
 
 #~ msgid "_Delay"
 #~ msgstr "タイマー(_D)"

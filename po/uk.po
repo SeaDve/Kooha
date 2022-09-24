@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 19:32+0800\n"
-"PO-Revision-Date: 2022-08-23 12:15+0000\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
+"PO-Revision-Date: 2022-09-24 02:14+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -18,10 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
 msgstr "Kooha"
@@ -57,51 +57,31 @@ msgid "The main features of Kooha include the following:"
 msgstr "Основні можливості Kooha:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Записування екрана без зайвих рухів."
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
-msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr ""
-"🎙️ Запис звуків за допомогою мікрофона, звуків комп'ютера, або обох одночасно."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Підтримка форматів WebM, MP4, GIF та MKV."
+msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🗔 Multiple sources selection."
-msgstr "🗔 Вибір кількох джерел."
+msgid "🗔 Multiple sources selection"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Додаткове апаратне прискорене кодування"
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Вибір монітора або вікна для записування."
+msgid "🚀 Experimental hardware accelerated encoding"
+msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
-msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ Вибір ділянки екрана."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
-msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Налаштування затримки початку запису."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
-msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Показ або приховування вказівника миші."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
-msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Вибір місця збереження записів."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
-msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Можливість застосовувати комбінації клавіш."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
@@ -111,27 +91,27 @@ msgstr "Загальні"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Затримка (секунди)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Тека записів"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Відео"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Формат"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Частота кадрів"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Така частота кадрів може спричинити проблеми зі швидкодією."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -139,7 +119,7 @@ msgstr "Відкрити меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Показати налаштування"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -170,8 +150,8 @@ msgid "Settings"
 msgstr "Налаштування"
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
-msgstr "Увімкнути/вимкнути звуки комп’ютера"
+msgid "Toggle Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -194,12 +174,12 @@ msgid "Capture a Selection of Screen"
 msgstr "Захоплення ділянки екрана"
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
-msgstr "Увімкнути звуки комп'ютера"
+msgid "Enable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
-msgstr "Вимкнути звуки комп'ютера"
+msgid "Disable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -259,7 +239,7 @@ msgstr "Очищення…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Налаштування"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -269,28 +249,28 @@ msgstr "_Комбінації клавіш"
 msgid "_About Kooha"
 msgstr "_Про Kooha"
 
-#: src/about.rs:22
+#: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:30
+#: src/about.rs:31
 msgid "translator-credits"
 msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Donate (Liberapay)"
 msgstr "Допомогти (Liberapay)"
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Donate (PayPal)"
 msgstr "Допомогти (PayPal)"
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:50
+#: src/about.rs:51
 msgid "Translate"
 msgstr "Перекласти"
 
@@ -321,7 +301,7 @@ msgstr "Не вдалося під'єднатися до фонової служ
 
 #: src/preferences_window.rs:226
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Цей формат експериментальний і не підтримується."
 
 #: src/preferences_window.rs:255
 msgid "None"
@@ -341,31 +321,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Немає активного профілю"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -388,7 +368,7 @@ msgstr "Не знайдено динаміка настільного ПК"
 
 #: src/recording.rs:248
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Плагін GStreamer може бути не встановлений."
 
 #: src/recording.rs:272 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
@@ -462,21 +442,23 @@ msgstr "Довідка"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Відкрити налаштування?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Можливо, раніше вибраний формат недоступний. Відкрийте налаштування і "
+"виберіть формат для продовження запису."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Пізніше"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "Відкрити"
 
 #: src/window.rs:350
 msgid "Paused"
@@ -489,6 +471,50 @@ msgstr "Звичайний"
 #: src/window.rs:383
 msgid "Selection"
 msgstr "Вибір"
+
+#~ msgid "Enable Desktop Sounds"
+#~ msgstr "Увімкнути звуки комп'ютера"
+
+#~ msgid "Disable Desktop Sounds"
+#~ msgstr "Вимкнути звуки комп'ютера"
+
+#~ msgid "🎥 Capture your screen without any hassle."
+#~ msgstr "🎥 Записування екрана без зайвих рухів."
+
+#~ msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+#~ msgstr ""
+#~ "🎙️ Запис звуків за допомогою мікрофона, звуків комп'ютера, або обох "
+#~ "одночасно."
+
+#~ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+#~ msgstr "📼 Підтримка форматів WebM, MP4, GIF та MKV."
+
+#~ msgid "🗔 Multiple sources selection."
+#~ msgstr "🗔 Вибір кількох джерел."
+
+#~ msgid "🚀 Optional hardware accelerated encoding"
+#~ msgstr "🚀 Додаткове апаратне прискорене кодування"
+
+#~ msgid "🖥️ Select a monitor or window to record."
+#~ msgstr "🖥️ Вибір монітора або вікна для записування."
+
+#~ msgid "🖼️ Create a selection to capture certain area from your screen."
+#~ msgstr "🖼️ Вибір ділянки екрана."
+
+#~ msgid "⏲️ Set delay to prepare before you start recording."
+#~ msgstr "⏲️ Налаштування затримки початку запису."
+
+#~ msgid "🖱️ Hide or show mouse pointer."
+#~ msgstr "🖱️ Показ або приховування вказівника миші."
+
+#~ msgid "💾 Choose a saving location for your recording."
+#~ msgstr "💾 Вибір місця збереження записів."
+
+#~ msgid "⌨️ Utilize helpful keyboard shortcuts."
+#~ msgstr "⌨️ Можливість застосовувати комбінації клавіш."
+
+#~ msgid "Toggle Computer Sounds"
+#~ msgstr "Увімкнути/вимкнути звуки комп’ютера"
 
 #~ msgid "_Delay"
 #~ msgstr "_Затримка"

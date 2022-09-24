@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 19:32+0800\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
 "PO-Revision-Date: 2022-07-27 17:16+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
 msgstr "Kooha"
@@ -53,50 +53,31 @@ msgid "The main features of Kooha include the following:"
 msgstr "以下是 Kooha 的主要功能："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 一點麻煩都沒有地截取您的螢幕。"
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
-msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ 錄下您的麥克風、電腦內部音訊，或是兩個都錄。"
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 支援 WebM、MP4、GIF 及 MKV 格式。"
+msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🗔 Multiple sources selection."
-msgstr "🗔 選取多個來源。"
+msgid "🗔 Multiple sources selection"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 編碼可以選擇使用硬體加速"
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ 選取要錄影的螢幕或視窗。"
+msgid "🚀 Experimental hardware accelerated encoding"
+msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
-msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ 選取並截取螢幕的一部分。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
-msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ 設定開始錄影前的延遲，讓您進行準備。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
-msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ 隱藏或顯示滑鼠游標。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
-msgid "💾 Choose a saving location for your recording."
-msgstr "💾 選擇您的錄影要儲存的地方。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
-msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ 利用好用的鍵盤快捷鍵。"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr ""
 
@@ -165,8 +146,8 @@ msgid "Settings"
 msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
-msgstr "切換電腦內部音訊"
+msgid "Toggle Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -189,11 +170,11 @@ msgid "Capture a Selection of Screen"
 msgstr "選取畫面上的區域進行截取"
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
+msgid "Enable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
+msgid "Disable Desktop Audio"
 msgstr ""
 
 #: data/resources/ui/window.ui:100
@@ -265,28 +246,28 @@ msgstr "鍵盤快捷鍵(_K)"
 msgid "_About Kooha"
 msgstr "關於 Kooha(_A)"
 
-#: src/about.rs:22
+#: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
 msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:30
+#: src/about.rs:31
 msgid "translator-credits"
 msgstr "Kisaragi Hiu"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Donate (Liberapay)"
 msgstr ""
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Donate (PayPal)"
 msgstr ""
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:50
+#: src/about.rs:51
 msgid "Translate"
 msgstr ""
 
@@ -485,6 +466,42 @@ msgstr "一般"
 #: src/window.rs:383
 msgid "Selection"
 msgstr "選取區域"
+
+#~ msgid "🎥 Capture your screen without any hassle."
+#~ msgstr "🎥 一點麻煩都沒有地截取您的螢幕。"
+
+#~ msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+#~ msgstr "🎙️ 錄下您的麥克風、電腦內部音訊，或是兩個都錄。"
+
+#~ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+#~ msgstr "📼 支援 WebM、MP4、GIF 及 MKV 格式。"
+
+#~ msgid "🗔 Multiple sources selection."
+#~ msgstr "🗔 選取多個來源。"
+
+#~ msgid "🚀 Optional hardware accelerated encoding"
+#~ msgstr "🚀 編碼可以選擇使用硬體加速"
+
+#~ msgid "🖥️ Select a monitor or window to record."
+#~ msgstr "🖥️ 選取要錄影的螢幕或視窗。"
+
+#~ msgid "🖼️ Create a selection to capture certain area from your screen."
+#~ msgstr "🖼️ 選取並截取螢幕的一部分。"
+
+#~ msgid "⏲️ Set delay to prepare before you start recording."
+#~ msgstr "⏲️ 設定開始錄影前的延遲，讓您進行準備。"
+
+#~ msgid "🖱️ Hide or show mouse pointer."
+#~ msgstr "🖱️ 隱藏或顯示滑鼠游標。"
+
+#~ msgid "💾 Choose a saving location for your recording."
+#~ msgstr "💾 選擇您的錄影要儲存的地方。"
+
+#~ msgid "⌨️ Utilize helpful keyboard shortcuts."
+#~ msgstr "⌨️ 利用好用的鍵盤快捷鍵。"
+
+#~ msgid "Toggle Computer Sounds"
+#~ msgstr "切換電腦內部音訊"
 
 #~ msgid "_Delay"
 #~ msgstr "延遲(_D)"

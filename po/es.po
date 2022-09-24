@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 19:32+0800\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
 "PO-Revision-Date: 2022-08-23 12:15+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -25,7 +25,7 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
 msgstr "Kooha"
@@ -59,52 +59,31 @@ msgid "The main features of Kooha include the following:"
 msgstr "Las características principales de Kooha incluyen lo siguiente:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Grabar su pantalla sin ninguna molestia."
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
-msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr ""
-"🎙️ Grabar su micrófono, los sonidos del sistema, o ambos al mismo tiempo."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Soporte para formatos WebM, MP4, GIF, y MKV."
+msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🗔 Multiple sources selection."
-msgstr "🗔 Selección de múltiples fuentes."
+msgid "🗔 Multiple sources selection"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Codificación acelerada por hardware opcional"
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Seleccionar un monitor o ventana para grabar."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
-msgid "🖼️ Create a selection to capture certain area from your screen."
+msgid "🚀 Experimental hardware accelerated encoding"
 msgstr ""
-"🖼️ Crear una selección para capturar una área específica de su pantalla."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
-msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Seleccionar un retardo antes de empezar a grabar."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
-msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Ocultar o mostrar el puntero."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
-msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Seleccionar una ubicación para su grabación."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
-msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Usar los útiles atajos del teclado."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
@@ -173,8 +152,8 @@ msgid "Settings"
 msgstr "Ajustes"
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
-msgstr "Conmutar sonidos del ordenador"
+msgid "Toggle Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -197,12 +176,12 @@ msgid "Capture a Selection of Screen"
 msgstr "Capturar una selección de la pantalla"
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
-msgstr "Activar sonidos del escritorio"
+msgid "Enable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
-msgstr "Desactivar sonidos del escritorio"
+msgid "Disable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -272,28 +251,28 @@ msgstr "_Atajos del teclado"
 msgid "_About Kooha"
 msgstr "_Acerca de Kooha"
 
-#: src/about.rs:22
+#: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:30
+#: src/about.rs:31
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Donate (Liberapay)"
 msgstr "Donar (Liberapay)"
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Donate (PayPal)"
 msgstr "Donar (PayPal)"
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:50
+#: src/about.rs:51
 msgid "Translate"
 msgstr "Traducir"
 
@@ -492,6 +471,50 @@ msgstr "Normal"
 #: src/window.rs:383
 msgid "Selection"
 msgstr "Selección"
+
+#~ msgid "Enable Desktop Sounds"
+#~ msgstr "Activar sonidos del escritorio"
+
+#~ msgid "Disable Desktop Sounds"
+#~ msgstr "Desactivar sonidos del escritorio"
+
+#~ msgid "🎥 Capture your screen without any hassle."
+#~ msgstr "🎥 Grabar su pantalla sin ninguna molestia."
+
+#~ msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+#~ msgstr ""
+#~ "🎙️ Grabar su micrófono, los sonidos del sistema, o ambos al mismo tiempo."
+
+#~ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+#~ msgstr "📼 Soporte para formatos WebM, MP4, GIF, y MKV."
+
+#~ msgid "🗔 Multiple sources selection."
+#~ msgstr "🗔 Selección de múltiples fuentes."
+
+#~ msgid "🚀 Optional hardware accelerated encoding"
+#~ msgstr "🚀 Codificación acelerada por hardware opcional"
+
+#~ msgid "🖥️ Select a monitor or window to record."
+#~ msgstr "🖥️ Seleccionar un monitor o ventana para grabar."
+
+#~ msgid "🖼️ Create a selection to capture certain area from your screen."
+#~ msgstr ""
+#~ "🖼️ Crear una selección para capturar una área específica de su pantalla."
+
+#~ msgid "⏲️ Set delay to prepare before you start recording."
+#~ msgstr "⏲️ Seleccionar un retardo antes de empezar a grabar."
+
+#~ msgid "🖱️ Hide or show mouse pointer."
+#~ msgstr "🖱️ Ocultar o mostrar el puntero."
+
+#~ msgid "💾 Choose a saving location for your recording."
+#~ msgstr "💾 Seleccionar una ubicación para su grabación."
+
+#~ msgid "⌨️ Utilize helpful keyboard shortcuts."
+#~ msgstr "⌨️ Usar los útiles atajos del teclado."
+
+#~ msgid "Toggle Computer Sounds"
+#~ msgstr "Conmutar sonidos del ordenador"
 
 #~ msgid "_Delay"
 #~ msgstr "_Retardo"

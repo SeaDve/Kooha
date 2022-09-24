@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 19:32+0800\n"
-"PO-Revision-Date: 2022-08-23 12:15+0000\n"
+"POT-Creation-Date: 2022-09-24 10:17+0800\n"
+"PO-Revision-Date: 2022-09-24 02:14+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
 ">\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
 msgstr "Kooha"
@@ -57,50 +57,31 @@ msgid "The main features of Kooha include the following:"
 msgstr "Enkele kenmerken:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
-msgid "🎥 Capture your screen without any hassle."
-msgstr "🎥 Maak eenvoudig opnames van je scherm."
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
-msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
-msgstr "🎙️ Neem op van je microfoon, computergeluiden of beide tegelijk."
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
-msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
-msgstr "📼 Ondersteuning voor webm-, mp4-, gif- en mkv-formaten."
+msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🗔 Multiple sources selection."
-msgstr "🗔 Keuze uit meerdere bronnen."
+msgid "🗔 Multiple sources selection"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🚀 Optional hardware accelerated encoding"
-msgstr "🚀 Hardware-versnelde encodering (optioneel)"
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
-msgid "🖥️ Select a monitor or window to record."
-msgstr "🖥️ Kies het beeldscherm dat je wilt vastleggen."
+msgid "🚀 Experimental hardware accelerated encoding"
+msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
-msgid "🖼️ Create a selection to capture certain area from your screen."
-msgstr "🖼️ Selecteer een gebied op je scherm dat je wilt vastleggen."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:20
-msgid "⏲️ Set delay to prepare before you start recording."
-msgstr "⏲️ Stel een wachttijd in zodat de opname iets later start."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:21
-msgid "🖱️ Hide or show mouse pointer."
-msgstr "🖱️ Toon of verberg de cursor."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:22
-msgid "💾 Choose a saving location for your recording."
-msgstr "💾 Kies zelf waar de opname moet worden opgeslagen."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:23
-msgid "⌨️ Utilize helpful keyboard shortcuts."
-msgstr "⌨️ Maak gebruik van handige sneltoetsen."
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:30 src/about.rs:20
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
@@ -110,27 +91,27 @@ msgstr "Algemeen"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Wachttijd (in seconden)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Opnamemap"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Formaat"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Framesnelheid"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Let op: deze snelheid kan voor prestatieproblemen zorgen."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -138,7 +119,7 @@ msgstr "Menu openen"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Voorkeuren openen"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -169,8 +150,8 @@ msgid "Settings"
 msgstr "Instellingen"
 
 #: data/resources/ui/shortcuts.ui:67
-msgid "Toggle Computer Sounds"
-msgstr "Computergeluiden aan/uit"
+msgid "Toggle Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -193,12 +174,12 @@ msgid "Capture a Selection of Screen"
 msgstr "Schermselectie vastleggen"
 
 #: data/resources/ui/window.ui:91
-msgid "Enable Desktop Sounds"
-msgstr "Computergeluiden afspelen"
+msgid "Enable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:92
-msgid "Disable Desktop Sounds"
-msgstr "Geen computergeluiden afspelen"
+msgid "Disable Desktop Audio"
+msgstr ""
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -258,7 +239,7 @@ msgstr "Bezig met opruimen…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Voorkeuren"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -268,28 +249,28 @@ msgstr "Snel_toetsen"
 msgid "_About Kooha"
 msgstr "Over Kooh_a"
 
-#: src/about.rs:22
+#: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:30
+#: src/about.rs:31
 msgid "translator-credits"
 msgstr "Heimen Stoffels &lt;vistausss@fastmail.com&gt;"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Donate (Liberapay)"
 msgstr "Doneren (Liberapay)"
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Donate (PayPal)"
 msgstr "Doneren (PayPal)"
 
-#: src/about.rs:48
+#: src/about.rs:49
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:50
+#: src/about.rs:51
 msgid "Translate"
 msgstr "Vertalen"
 
@@ -322,6 +303,7 @@ msgstr ""
 #: src/preferences_window.rs:226
 msgid "This format is experimental and unsupported."
 msgstr ""
+"Let op: dit formaat is experimenteel en wordt niet officieel ondersteund."
 
 #: src/preferences_window.rs:255
 msgid "None"
@@ -341,31 +323,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Er is geen actief profiel"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -388,7 +370,7 @@ msgstr "Er is geen luidspreker aangetroffen"
 
 #: src/recording.rs:248
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Er ontbreekt mogelijk een GStreamer-plug-in."
 
 #: src/recording.rs:272 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
@@ -462,17 +444,19 @@ msgstr "Hulp"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Voorkeuren openen?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Het eerder gekozen formaat is mogelijk niet beschikbaar. Open de voorkeuren "
+"en kies een ander formaat."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Later"
 
 #: src/window.rs:292
 msgid "Open"
@@ -489,6 +473,48 @@ msgstr "Normaal"
 #: src/window.rs:383
 msgid "Selection"
 msgstr "Selectie"
+
+#~ msgid "Enable Desktop Sounds"
+#~ msgstr "Computergeluiden afspelen"
+
+#~ msgid "Disable Desktop Sounds"
+#~ msgstr "Geen computergeluiden afspelen"
+
+#~ msgid "🎥 Capture your screen without any hassle."
+#~ msgstr "🎥 Maak eenvoudig opnames van je scherm."
+
+#~ msgid "🎙️ Record your microphone, computer sounds, or both at the same time."
+#~ msgstr "🎙️ Neem op van je microfoon, computergeluiden of beide tegelijk."
+
+#~ msgid "📼 Support for WebM, MP4, GIF, and MKV formats."
+#~ msgstr "📼 Ondersteuning voor webm-, mp4-, gif- en mkv-formaten."
+
+#~ msgid "🗔 Multiple sources selection."
+#~ msgstr "🗔 Keuze uit meerdere bronnen."
+
+#~ msgid "🚀 Optional hardware accelerated encoding"
+#~ msgstr "🚀 Hardware-versnelde encodering (optioneel)"
+
+#~ msgid "🖥️ Select a monitor or window to record."
+#~ msgstr "🖥️ Kies het beeldscherm dat je wilt vastleggen."
+
+#~ msgid "🖼️ Create a selection to capture certain area from your screen."
+#~ msgstr "🖼️ Selecteer een gebied op je scherm dat je wilt vastleggen."
+
+#~ msgid "⏲️ Set delay to prepare before you start recording."
+#~ msgstr "⏲️ Stel een wachttijd in zodat de opname iets later start."
+
+#~ msgid "🖱️ Hide or show mouse pointer."
+#~ msgstr "🖱️ Toon of verberg de cursor."
+
+#~ msgid "💾 Choose a saving location for your recording."
+#~ msgstr "💾 Kies zelf waar de opname moet worden opgeslagen."
+
+#~ msgid "⌨️ Utilize helpful keyboard shortcuts."
+#~ msgstr "⌨️ Maak gebruik van handige sneltoetsen."
+
+#~ msgid "Toggle Computer Sounds"
+#~ msgstr "Computergeluiden aan/uit"
 
 #~ msgid "_Delay"
 #~ msgstr "Wachttij_d"
