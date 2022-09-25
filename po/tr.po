@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-24 10:17+0800\n"
-"PO-Revision-Date: 2022-08-23 12:15+0000\n"
+"PO-Revision-Date: 2022-09-25 07:16+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -59,28 +59,30 @@ msgstr "Kooha'nın temel özellikleri şunlardır:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Mikrofon, masaüstü sesi veya her ikisini aynı anda kaydedin"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 WebM, MP4, GIF ve Matroska biçimleri desteği"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Kaydetmek için bir ekran, pencere veya ekranın bir bölümünü seçin"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Çoklu kaynak seçimi"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Yapılandırılabilir kaydetme konumu, işaretçi görünürlüğü, kare hızı ve "
+"gecikme"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Deneysel donanım hızlandırmalı kodlama"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -92,27 +94,27 @@ msgstr "Genel"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Gecikme (Saniye)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Kayıtlar Klasörü"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Biçim"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Kare Hızı"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Bu kare hızı performans sorunlarına neden olabilir."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -120,7 +122,7 @@ msgstr "Menüyü Aç"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Tercihleri Göster"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -152,7 +154,7 @@ msgstr "Ayarlar"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Masaüstü Sesini Aç/Kapat"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -176,11 +178,11 @@ msgstr "Bir Ekranın Seçilmiş Kısmını Yakala"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Masaüstü Sesini Etkinleştir"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Masaüstü Sesini Devre Dışı Bırak"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -240,7 +242,7 @@ msgstr "Temizleniyor…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Tercihler"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -304,7 +306,7 @@ msgstr "PulseAudio programına bağlanılamadı"
 
 #: src/preferences_window.rs:226
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Bu biçim deneysel ve desteklenmemektedir."
 
 #: src/preferences_window.rs:255
 msgid "None"
@@ -324,31 +326,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Etkin profil yok"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -371,7 +373,7 @@ msgstr "Masaüstü hoparlör kaynağı bulunamadı"
 
 #: src/recording.rs:248
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Bir GStreamer eklentisi kurulmamış olabilir."
 
 #: src/recording.rs:272 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
@@ -446,17 +448,19 @@ msgstr "Yardım"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Tercihler Açılsın Mı?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Önceki seçilen biçim kullanılamıyor olabilir. Kayda devam etmek için "
+"tercihleri açın ve bir biçim seçin."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Daha sonra"
 
 #: src/window.rs:292
 msgid "Open"

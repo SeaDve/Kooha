@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-24 10:17+0800\n"
-"PO-Revision-Date: 2022-09-24 02:14+0000\n"
+"PO-Revision-Date: 2022-09-25 07:16+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -58,28 +58,30 @@ msgstr "Основні можливості Kooha:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Запис з мікрофона, звуків комп'ютера або з обох одночасно"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Підтримка форматів WebM, MP4, GIF і Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Вибір монітора, вікна або частини екрана для запису"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Вибір кількох джерел"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Налаштовуване розташування для збереження, видимість вказівника, частота "
+"кадрів і затримка"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Експериментальне кодування з апаратним прискоренням"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -135,7 +137,7 @@ msgstr "Запис"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr "Почати/зупинити записування"
+msgstr "Почати/зупинити запис"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
@@ -151,7 +153,7 @@ msgstr "Налаштування"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Перемкнути звук комп'ютера"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -175,11 +177,11 @@ msgstr "Захоплення ділянки екрана"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Увімкнути звук з комп'ютера"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Вимкнути звук з комп'ютера"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -191,7 +193,7 @@ msgstr "Вимкнути мікрофон"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
-msgstr "Показати вказівник миші"
+msgstr "Показати вказівник"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
@@ -256,15 +258,15 @@ msgstr "© 2022 Dave Patrick Caberto"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
 msgid "translator-credits"
-msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
+msgstr "Ihor Hordiichuk <igor_ck@outlook.com>"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
-msgstr "Допомогти (Liberapay)"
+msgstr "Підтримати (Liberapay)"
 
 #: src/about.rs:45
 msgid "Donate (PayPal)"
-msgstr "Допомогти (PayPal)"
+msgstr "Підтримати (PayPal)"
 
 #: src/about.rs:49
 msgid "GitHub"
@@ -470,7 +472,7 @@ msgstr "Звичайний"
 
 #: src/window.rs:383
 msgid "Selection"
-msgstr "Вибір"
+msgstr "Ділянка"
 
 #~ msgid "Enable Desktop Sounds"
 #~ msgstr "Увімкнути звуки комп'ютера"
