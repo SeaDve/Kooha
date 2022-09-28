@@ -186,7 +186,7 @@ mod imp {
             }));
             obj.add_controller(&motion_controller);
 
-            let gesture_drag = gtk::GestureDrag::new();
+            let gesture_drag = gtk::GestureDrag::builder().exclusive(true).build();
             gesture_drag.connect_drag_begin(clone!(@weak obj => move |controller, x, y| {
                 obj.on_drag_begin(controller, x, y);
             }));
