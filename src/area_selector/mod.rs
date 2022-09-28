@@ -77,6 +77,13 @@ mod imp {
             klass.install_action("area-selector.reset", None, move |obj, _, _| {
                 obj.imp().view_port.reset_selection();
             });
+
+            klass.add_binding_action(
+                gdk::Key::Escape,
+                gdk::ModifierType::empty(),
+                "area-selector.cancel",
+                None,
+            );
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
