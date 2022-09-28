@@ -277,7 +277,7 @@ mod imp {
             if let Some(selection) = obj.selection() {
                 let selection_rect = selection.rect();
 
-                if let Some(paintable_rect) = self.paintable_rect.get() {
+                if let Some(paintable_rect) = obj.paintable_rect() {
                     let shade_color = gdk::RGBA::new(0.0, 0.0, 0.0, 0.5);
                     snapshot.append_color(
                         &shade_color,
@@ -417,11 +417,7 @@ impl ViewPort {
     }
 
     pub fn reset_selection(&self) {
-        let imp = self.imp();
-
-        imp.selection_handles.set(None);
         self.set_selection(None);
-
         self.update_selection_handles();
         self.queue_draw();
     }
@@ -458,25 +454,31 @@ impl ViewPort {
         self.set_cursor(CursorType::Default);
     }
 
-    fn on_drag_begin(&self, gesture: &gtk::GestureDrag, x: f64, y: f64) {
+    fn on_drag_begin(&self, _gesture: &gtk::GestureDrag, x: f64, y: f64) {
         tracing::debug!("Drag begin at ({}, {})", x, y);
 
         let imp = self.imp();
         let cursor_type = self.compute_cursor_type(x as f32, y as f32);
 
-        if cursor_type == CursorType::Default {
-            gesture.set_state(gtk::EventSequenceState::Denied);
-        } else if cursor_type == CursorType::Crosshair {
+        if cursor_type == CursorType::Crosshair {
             imp.drag_cursor.set(CursorType::Crosshair);
             self.set_cursor(CursorType::Crosshair);
 
+            let paintable_rect = self.paintable_rect().unwrap();
+            let x = (x as f32).clamp(
+                paintable_rect.x(),
+                paintable_rect.x() + paintable_rect.width(),
+            );
+            let y = (y as f32).clamp(
+                paintable_rect.y(),
+                paintable_rect.y() + paintable_rect.height(),
+            );
             self.set_selection(Some(Selection {
-                start_x: x as f32,
-                start_y: y as f32,
-                end_x: x as f32,
-                end_y: y as f32,
+                start_x: x,
+                start_y: y,
+                end_x: x,
+                end_y: y,
             }));
-
             self.update_selection_handles();
         } else {
             imp.drag_cursor.set(cursor_type);
@@ -537,7 +539,7 @@ impl ViewPort {
             let Selection {
                 start_x, start_y, ..
             } = self.selection().unwrap();
-            let paintable_rect = imp.paintable_rect.get().unwrap();
+            let paintable_rect = self.paintable_rect().unwrap();
             self.set_selection(Some(Selection {
                 start_x,
                 start_y,
@@ -570,7 +572,7 @@ impl ViewPort {
                 let mut overshoot_x = 0.0;
                 let mut overshoot_y = 0.0;
 
-                let paintable_rect = imp.paintable_rect.get().unwrap();
+                let paintable_rect = self.paintable_rect().unwrap();
                 let selection_rect = self.selection().unwrap().rect();
 
                 // Keep the size intact if we bumped into the stage edge.
@@ -613,7 +615,7 @@ impl ViewPort {
                     dx = 0.0;
                 }
 
-                let paintable_rect = imp.paintable_rect.get().unwrap();
+                let paintable_rect = self.paintable_rect().unwrap();
                 let mut new_selection = self.selection().unwrap();
 
                 new_selection.end_x += dx;
@@ -696,7 +698,7 @@ impl ViewPort {
 
         // The user clicked without dragging. Make up a larger selection
         // to reduce confusion.
-        if let Some(mut selection) = imp.selection.get() {
+        if let Some(mut selection) = self.selection() {
             if imp.drag_cursor.get() == CursorType::Crosshair
                 && selection.end_x == selection.start_x
                 && selection.end_y == selection.start_y
@@ -707,7 +709,7 @@ impl ViewPort {
                 selection.end_x += offset;
                 selection.end_y += offset;
 
-                let paintable_rect = imp.paintable_rect.get().unwrap();
+                let paintable_rect = self.paintable_rect().unwrap();
                 let selection_rect = selection.rect();
 
                 // Keep the coordinates inside the stage.
@@ -746,14 +748,10 @@ impl ViewPort {
 
         let point = Point::new(x, y);
 
-        let is_paintable_contains_point = imp.paintable_rect.get().unwrap().contains_point(&point);
-
         let selection_rect = if let Some(selection) = self.selection() {
             selection.rect()
-        } else if is_paintable_contains_point {
-            return CursorType::Crosshair;
         } else {
-            return CursorType::Default;
+            return CursorType::Crosshair;
         };
 
         let [top_left_handle, top_right_handle, bottom_right_handle, bottom_left_handle] =
@@ -789,10 +787,8 @@ impl ViewPort {
             .contains_point(&point)
         {
             CursorType::WestResize
-        } else if is_paintable_contains_point {
-            CursorType::Crosshair
         } else {
-            CursorType::Default
+            CursorType::Crosshair
         }
     }
 
