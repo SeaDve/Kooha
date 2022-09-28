@@ -116,6 +116,8 @@ mod imp {
             let done_button = self.done_button.get();
             obj.set_default_widget(Some(&done_button));
             obj.set_focus_widget(Some(&done_button));
+
+            obj.update_selection_ui();
         }
 
         fn dispose(&self, _obj: &Self::Type) {
@@ -148,7 +150,6 @@ impl AreaSelector {
     ) -> Result<Data> {
         let this: Self = glib::Object::new(&[]).expect("Failed to create KoohaAreaSelector.");
         let imp = this.imp();
-        this.update_selection_ui();
 
         // Setup window size and transient for
         if let Some(transient_for) = transient_for {
