@@ -51,7 +51,7 @@ mod imp {
         pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) stream_size: OnceCell<(i32, i32)>,
         pub(super) result_tx: RefCell<Option<Sender<Result<(), Cancelled>>>>,
-        pub(super) async_done_tx: RefCell<Option<Sender<()>>>,
+        pub(super) async_done_tx: RefCell<Option<Sender<Result<(), Cancelled>>>>,
     }
 
     #[glib::object_subclass]
@@ -64,11 +64,17 @@ mod imp {
             klass.bind_template();
 
             klass.install_action("area-selector.cancel", None, move |obj, _, _| {
+                if let Some(sender) = obj.imp().async_done_tx.take() {
+                    let _ = sender.send(Err(Cancelled::new("area select loading")));
+                } else {
+                    tracing::error!("Sent async done twice");
+                }
+
                 if let Some(sender) = obj.imp().result_tx.take() {
                     let _ = sender.send(Err(Cancelled::new("area select")));
                     obj.close();
                 } else {
-                    tracing::error!("Sent response twice");
+                    tracing::error!("Sent result twice");
                 }
             });
 
@@ -197,7 +203,7 @@ impl AreaSelector {
         this.present();
 
         // Wait for pipeline to be on playing state
-        async_done_rx.await.unwrap();
+        async_done_rx.await.unwrap()?;
 
         imp.stack.set_visible_child(&imp.view_port.get());
 
@@ -233,7 +239,7 @@ impl AreaSelector {
         match message.view() {
             MessageView::AsyncDone(_) => {
                 if let Some(async_done_tx) = imp.async_done_tx.take() {
-                    let _ = async_done_tx.send(());
+                    let _ = async_done_tx.send(Ok(()));
                 }
 
                 Continue(true)
