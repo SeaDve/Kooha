@@ -21,6 +21,7 @@ gst_pbutils = { package = "gstreamer-pbutils", version = "0.18.2", features = [
 ] }
 gst = { package = "gstreamer", version = "0.18.2" }
 gst-plugin-gif = "0.8.0"
+gst-plugin-gtk4 = "0.1.0"
 futures-channel = "0.3.19"
 futures-util = { version = "0.3", default-features = false }
 gsettings-macro = "0.1.11"

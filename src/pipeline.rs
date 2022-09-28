@@ -1,9 +1,6 @@
-use anyhow::{bail, Context, Ok, Result};
+use anyhow::{ensure, Context, Ok, Result};
 use gst::prelude::*;
-use gtk::{
-    glib,
-    graphene::{Rect, Size},
-};
+use gtk::{glib, graphene::Rect};
 
 use std::{
     ffi::OsStr,
@@ -11,19 +8,15 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use crate::{profile::Profile, screencast_session::Stream, utils};
+use crate::{
+    area_selector::Data as SelectAreaData, profile::Profile, screencast_session::Stream, utils,
+};
 
 // TODO
 // * Do we need restrictions?
 // * Can we drop filter elements (videorate, videoconvert, videoscale, audioconvert) and let encodebin handle it?
 // * Can we set frame rate directly on profile format?
 // * Add tests
-
-#[derive(Debug)]
-struct SelectAreaContext {
-    pub coords: Rect,
-    pub screen_size: Size,
-}
 
 #[derive(Debug)]
 #[must_use]
@@ -35,7 +28,7 @@ pub struct PipelineBuilder {
     streams: Vec<Stream>,
     speaker_source: Option<String>,
     mic_source: Option<String>,
-    select_area_context: Option<SelectAreaContext>,
+    select_area_data: Option<SelectAreaData>,
 }
 
 impl PipelineBuilder {
@@ -54,7 +47,7 @@ impl PipelineBuilder {
             streams,
             speaker_source: None,
             mic_source: None,
-            select_area_context: None,
+            select_area_data: None,
         }
     }
 
@@ -68,18 +61,15 @@ impl PipelineBuilder {
         self
     }
 
-    pub fn select_area_context(&mut self, coords: Rect, screen_size: Size) -> &mut Self {
-        self.select_area_context = Some(SelectAreaContext {
-            coords,
-            screen_size,
-        });
+    pub fn select_area_data(&mut self, data: SelectAreaData) -> &mut Self {
+        self.select_area_data = Some(data);
         self
     }
 
     pub fn build(&self) -> Result<gst::Pipeline> {
         let file_path = new_recording_path(&self.saving_location, self.profile.file_extension());
 
-        let queue = utils::make_element("queue")?;
+        let queue = utils::make_named_element("queue", "sinkqueue")?;
         let filesink = utils::make_named_element("filesink", "filesink")?;
         filesink.set_property(
             "location",
@@ -100,24 +90,17 @@ impl PipelineBuilder {
             streams = ?self.streams,
             speaker_source = ?self.speaker_source,
             mic_source = ?self.mic_source,
+            select_area_data = ?self.select_area_data,
         );
 
-        let videosrc_bin = match self.streams.len() {
-            0 => bail!("Found no streams"),
-            1 => single_stream_pipewiresrc_bin(
-                self.fd,
-                self.streams.get(0).unwrap(),
-                self.framerate,
-                self.select_area_context.as_ref(),
-            )?,
-            _ => {
-                if self.select_area_context.is_some() {
-                    bail!("Select area is not supported for multiple streams");
-                }
+        ensure!(!self.streams.is_empty(), "No streams provided");
 
-                multi_stream_pipewiresrc_bin(self.fd, &self.streams, self.framerate)?
-            }
-        };
+        let videosrc_bin = pipewiresrc_bin(
+            self.fd,
+            &self.streams,
+            self.framerate,
+            self.select_area_data.as_ref(),
+        )?;
 
         pipeline.add(&videosrc_bin)?;
 
@@ -173,38 +156,67 @@ fn videoconvert_with_default() -> Result<gst::Element> {
 
 /// Create a videocrop element that computes the crop from the given coordinates
 /// and size.
-fn videocrop_compute(
-    stream_width: i32,
-    stream_height: i32,
-    context: &SelectAreaContext,
-) -> Result<gst::Element> {
-    let actual_screen = context.screen_size;
+fn videocrop_compute(data: &SelectAreaData) -> Result<gst::Element> {
+    let SelectAreaData {
+        selection,
+        paintable_rect,
+        stream_size,
+    } = data;
 
-    let scale_factor = stream_width as f32 / actual_screen.width();
-    let coords = context.coords.scale(scale_factor, scale_factor);
+    let (stream_width, stream_height) = stream_size;
+    let scale_factor_h = *stream_width as f32 / paintable_rect.width();
+    let scale_factor_v = *stream_height as f32 / paintable_rect.height();
 
-    let top_crop = coords.y();
-    let left_crop = coords.x();
-    let right_crop = stream_width as f32 - (coords.width() + coords.x());
-    let bottom_crop = stream_height as f32 - (coords.height() + coords.y());
+    if scale_factor_h != scale_factor_v {
+        tracing::warn!(
+            scale_factor_h,
+            scale_factor_v,
+            "Scale factors of horizontal and vertical are unequal"
+        );
+    }
+
+    // HACK We somehow need to subtract 1.0 from y
+    let old_selection_rect = selection.rect();
+    let selection_rect = Rect::new(
+        old_selection_rect.x(),
+        old_selection_rect.y() - 1.0,
+        old_selection_rect.width(),
+        old_selection_rect.height(),
+    );
+
+    let selection_rect_scaled = selection_rect.scale(scale_factor_h, scale_factor_v);
+
+    let top_crop = selection_rect_scaled.y();
+    let left_crop = selection_rect_scaled.x();
+    let right_crop =
+        *stream_width as f32 - (selection_rect_scaled.width() + selection_rect_scaled.x());
+    let bottom_crop =
+        *stream_height as f32 - (selection_rect_scaled.height() + selection_rect_scaled.y());
 
     tracing::debug!(top_crop, left_crop, right_crop, bottom_crop);
 
     // x264enc requires even resolution.
     let crop = utils::make_element("videocrop")?;
-    crop.set_property("top", round_to_even_f32(top_crop));
-    crop.set_property("left", round_to_even_f32(left_crop));
-    crop.set_property("right", round_to_even_f32(right_crop));
-    crop.set_property("bottom", round_to_even_f32(bottom_crop));
+    crop.set_property("top", round_to_even_f32(top_crop).max(0));
+    crop.set_property("left", round_to_even_f32(left_crop).max(0));
+    crop.set_property("right", round_to_even_f32(right_crop).max(0));
+    crop.set_property("bottom", round_to_even_f32(bottom_crop).max(0));
     Ok(crop)
 }
 
 /// Creates a bin with a src pad for multiple pipewire streams.
-///
-/// pipewiresrc1 -> videorate -> |
-///                              | -> compositor -> videoconvert -> queue
-/// pipewiresrc2 -> videorate -> |
-fn multi_stream_pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -> Result<gst::Bin> {
+///                                                                (If has select area data)
+/// pipewiresrc1 -> videorate -> |                                       |            |
+///                              |                                       V            V
+/// pipewiresrc2 -> videorate -> | -> compositor -> videoconvert -> videoscale -> videocrop -> queue
+///                              |
+/// pipewiresrcn -> videorate -> |
+pub fn pipewiresrc_bin(
+    fd: RawFd,
+    streams: &[Stream],
+    framerate: u32,
+    select_area_data: Option<&SelectAreaData>,
+) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
     let compositor = utils::make_element("compositor")?;
@@ -212,7 +224,26 @@ fn multi_stream_pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -
     let queue = utils::make_element("queue")?;
 
     bin.add_many(&[&compositor, &videoconvert, &queue])?;
-    gst::Element::link_many(&[&compositor, &videoconvert, &queue])?;
+    gst::Element::link_many(&[&compositor, &videoconvert])?;
+
+    if let Some(data) = select_area_data {
+        let videoscale = utils::make_element("videoscale")?;
+        let videocrop = videocrop_compute(data)?;
+
+        // x264enc requires even resolution.
+        let (stream_width, stream_height) = data.stream_size;
+        let videoscale_filter = gst::Caps::builder("video/x-raw")
+            .field("width", round_to_even(stream_width))
+            .field("height", round_to_even(stream_height))
+            .build();
+
+        bin.add_many(&[&videoscale, &videocrop])?;
+        videoconvert.link(&videoscale)?;
+        videoscale.link_filtered(&videocrop, &videoscale_filter)?;
+        videocrop.link(&queue)?;
+    } else {
+        videoconvert.link(&queue)?;
+    }
 
     let videorate_filter = gst::Caps::builder("video/x-raw")
         .field("framerate", gst::Fraction::new(framerate as i32, 1))
@@ -239,59 +270,6 @@ fn multi_stream_pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -
 
         let stream_width = stream.size().unwrap().0;
         last_pos += stream_width;
-    }
-
-    let queue_pad = queue.static_pad("src").unwrap();
-    bin.add_pad(&gst::GhostPad::with_target(Some("src"), &queue_pad)?)?;
-
-    Ok(bin)
-}
-
-/// Creates a bin with a src pad for a single pipewire stream.
-///
-/// No selection:
-/// pipewiresrc -> videconvert -> videorate -> queue
-///
-/// Has selection:
-/// pipewiresrc -> videconvert -> videorate -> videoscale -> videocrop -> queue
-fn single_stream_pipewiresrc_bin(
-    fd: RawFd,
-    stream: &Stream,
-    framerate: u32,
-    select_area_context: Option<&SelectAreaContext>,
-) -> Result<gst::Bin> {
-    let bin = gst::Bin::new(None);
-
-    let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
-    let videoconvert = videoconvert_with_default()?;
-    let videorate = utils::make_element("videorate")?;
-    let queue = utils::make_element("queue")?;
-
-    bin.add_many(&[&pipewiresrc, &videoconvert, &videorate, &queue])?;
-    gst::Element::link_many(&[&pipewiresrc, &videoconvert, &videorate])?;
-
-    let videorate_filter = gst::Caps::builder("video/x-raw")
-        .field("framerate", gst::Fraction::new(framerate as i32, 1))
-        .build();
-
-    if let Some(context) = select_area_context {
-        let (stream_width, stream_height) = stream.size().context("Stream has no size")?;
-
-        let videoscale = utils::make_element("videoscale")?;
-        let videocrop = videocrop_compute(stream_width, stream_height, context)?;
-
-        // x264enc requires even resolution.
-        let videoscale_filter = gst::Caps::builder("video/x-raw")
-            .field("width", round_to_even(stream_width))
-            .field("height", round_to_even(stream_height))
-            .build();
-
-        bin.add_many(&[&videoscale, &videocrop])?;
-        videorate.link_filtered(&videoscale, &videorate_filter)?;
-        videoscale.link_filtered(&videocrop, &videoscale_filter)?;
-        gst::Element::link_many(&[&videocrop, &queue])?;
-    } else {
-        videorate.link_filtered(&queue, &videorate_filter)?;
     }
 
     let queue_pad = queue.static_pad("src").unwrap();

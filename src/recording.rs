@@ -180,12 +180,8 @@ impl Recording {
             } else {
                 CursorMode::HIDDEN
             },
-            if settings.capture_mode() == CaptureMode::Selection {
-                SourceType::MONITOR
-            } else {
-                SourceType::MONITOR | SourceType::WINDOW
-            },
-            settings.capture_mode() == CaptureMode::MonitorWindow,
+            SourceType::MONITOR | SourceType::WINDOW,
+            true,
             Some(&restore_token),
             PersistMode::ExplicitlyRevoked,
             parent,
@@ -204,13 +200,15 @@ impl Recording {
             settings.video_framerate(),
             profile,
             fd,
-            streams,
+            streams.clone(),
         );
 
         // select area
         if settings.capture_mode() == CaptureMode::Selection {
-            let (coords, screen) = AreaSelector::select_area().await?;
-            pipeline_builder.select_area_context(coords, screen);
+            let data =
+                AreaSelector::present(utils::app_instance().main_window().as_ref(), fd, &streams)
+                    .await?;
+            pipeline_builder.select_area_data(data);
         }
 
         // setup timer

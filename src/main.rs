@@ -64,6 +64,7 @@ fn main() {
 
     gst::init().expect("Unable to start gstreamer.");
     gstgif::plugin_register_static().expect("Failed to register gif plugin.");
+    gstgtk4::plugin_register_static().expect("Failed to register gtk4 plugin.");
 
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file.");
     gio::resources_register(&res);

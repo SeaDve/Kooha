@@ -31,7 +31,7 @@ pub enum PersistMode {
 
 type StreamVariantType = (u32, VariantDict);
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Stream {
     node_id: u32,
     id: Option<String>,

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KoohaAreaSelector" parent="AdwWindow">
+    <property name="resizable">False</property>
+    <property name="content">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkHeaderBar">
+            <property name="show-title-buttons">False</property>
+            <property name="title-widget">
+              <object class="AdwWindowTitle" id="window_title">
+                <property name="title" translatable="yes">Select Area</property>
+              </object>
+            </property>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Cancel</property>
+                <property name="action-name">area-selector.cancel</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Done</property>
+                <property name="action-name">area-selector.done</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkButton">
+                <property name="icon-name">refresh-symbolic</property>
+                <property name="action-name">area-selector.reset</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="KoohaViewPort" id="view_port">
+            <property name="vexpand">True</property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>

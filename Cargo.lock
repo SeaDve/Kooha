@@ -145,6 +145,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "fragile"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "85dcb89d2b10c5f6133de2efd8c11959ce9dbb46a2f7a4cab208c4eeda6ce1ab"
+
+[[package]]
 name = "futures-channel"
 version = "0.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -504,6 +510,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "gst-plugin-gtk4"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e62e047edb1932887c20105c681203d138ebeb61b83b9e0b368cdec1d0fbc0cc"
+dependencies = [
+ "fragile",
+ "gst-plugin-version-helper",
+ "gstreamer",
+ "gstreamer-base",
+ "gstreamer-video",
+ "gtk4",
+ "once_cell",
+]
+
+[[package]]
 name = "gst-plugin-version-helper"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -747,6 +768,7 @@ dependencies = [
  "gettext-rs",
  "gsettings-macro",
  "gst-plugin-gif",
+ "gst-plugin-gtk4",
  "gstreamer",
  "gstreamer-pbutils",
  "gstreamer-video",

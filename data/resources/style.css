@@ -23,6 +23,10 @@ button.copy-done {
   color: @accent_bg_color;
 }
 
+viewport {
+  padding: 12px;
+}
+
 @keyframes blinking {
   0% {
     color: @window_fg_color;

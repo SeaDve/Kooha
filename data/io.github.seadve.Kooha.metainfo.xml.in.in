@@ -43,6 +43,7 @@
       <description>
         <p>This release contains new features and fixes:</p>
         <ul>
+          <li>New area selection UI</li>
           <li>Added option to change the frame rate through the UI</li>
           <li>Improve delay settings flexibility</li>
           <li>Added preferences window for easier configuration</li>
