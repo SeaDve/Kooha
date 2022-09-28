@@ -6,7 +6,7 @@ use futures_channel::oneshot::{self, Sender};
 use gst::prelude::*;
 use gtk::{
     gdk,
-    glib::{self, clone, WeakRef},
+    glib::{self, clone},
     graphene::Rect,
 };
 use once_cell::unsync::OnceCell;
@@ -41,8 +41,10 @@ mod imp {
         #[template_child]
         pub(super) window_title: TemplateChild<adw::WindowTitle>,
 
+        pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) stream_size: OnceCell<(i32, i32)>,
-        pub(super) sender: RefCell<Option<Sender<Result<(), Cancelled>>>>,
+        pub(super) result_tx: RefCell<Option<Sender<Result<(), Cancelled>>>>,
+        pub(super) async_done_tx: RefCell<Option<Sender<()>>>,
     }
 
     #[glib::object_subclass]
@@ -55,7 +57,7 @@ mod imp {
             klass.bind_template();
 
             klass.install_action("area-selector.cancel", None, move |obj, _, _| {
-                if let Some(sender) = obj.imp().sender.take() {
+                if let Some(sender) = obj.imp().result_tx.take() {
                     let _ = sender.send(Err(Cancelled::new("area select")));
                     obj.close();
                 } else {
@@ -64,7 +66,7 @@ mod imp {
             });
 
             klass.install_action("area-selector.done", None, move |obj, _, _| {
-                if let Some(sender) = obj.imp().sender.take() {
+                if let Some(sender) = obj.imp().result_tx.take() {
                     let _ = sender.send(Ok(()));
                     obj.close();
                 } else {
@@ -82,7 +84,27 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for AreaSelector {}
+    impl ObjectImpl for AreaSelector {
+        fn constructed(&self, obj: &Self::Type) {
+            self.parent_constructed(obj);
+
+            self.view_port
+                .connect_selection_notify(clone!(@weak obj => move |_| {
+                    obj.update_selection_ui();
+                }));
+        }
+
+        fn dispose(&self, _obj: &Self::Type) {
+            if let Some(pipeline) = self.pipeline.get() {
+                if let Err(err) = pipeline.set_state(gst::State::Null) {
+                    tracing::warn!("Failed to set pipeline to Null: {}", err);
+                }
+
+                let _ = pipeline.bus().unwrap().remove_watch();
+            }
+        }
+    }
+
     impl WidgetImpl for AreaSelector {}
     impl WindowImpl for AreaSelector {}
     impl AdwWindowImpl for AreaSelector {}
@@ -100,37 +122,10 @@ impl AreaSelector {
         fd: RawFd,
         streams: &[Stream],
     ) -> Result<Data> {
-        struct Finally {
-            weak: WeakRef<gst::Pipeline>,
-        }
-
-        impl Drop for Finally {
-            fn drop(&mut self) {
-                if let Some(pipeline) = self.weak.upgrade() {
-                    if let Err(err) = pipeline.set_state(gst::State::Null) {
-                        tracing::warn!("Failed to set pipeline to null: {}", err);
-                    }
-                    let _ = pipeline.bus().unwrap().remove_watch();
-                }
-            }
-        }
-
-        let pipeline = gst::Pipeline::new(None);
-
-        let videosrc_bin = pipeline::pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
-        let sink = utils::make_element("gtk4paintablesink")?;
-
-        pipeline.add_many(&[videosrc_bin.upcast_ref(), &sink])?;
-        gst::Element::link_many(&[videosrc_bin.upcast_ref(), &sink])?;
-
         let this: Self = glib::Object::new(&[]).expect("Failed to create KoohaAreaSelector.");
         let imp = this.imp();
 
-        imp.view_port
-            .connect_selection_notify(clone!(@weak this => move |_| {
-                this.update_selection_ui();
-            }));
-
+        // Setup window size and transient for
         if let Some(transient_for) = transient_for {
             let transient_for = transient_for.as_ref();
 
@@ -148,49 +143,42 @@ impl AreaSelector {
         }
 
         let (result_tx, result_rx) = oneshot::channel();
-        imp.sender.replace(Some(result_tx));
+        imp.result_tx.replace(Some(result_tx));
 
+        // Setup pipeline
+        let pipeline = gst::Pipeline::new(None);
+        let videosrc_bin = pipeline::pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
+        let sink = utils::make_element("gtk4paintablesink")?;
+        pipeline.add_many(&[videosrc_bin.upcast_ref(), &sink])?;
+        gst::Element::link_many(&[videosrc_bin.upcast_ref(), &sink])?;
+        imp.pipeline.set(pipeline.clone()).unwrap();
+
+        // Setup paintable
         let paintable = sink.property::<gdk::Paintable>("paintable");
         imp.view_port.set_paintable(Some(&paintable));
 
         pipeline.set_state(gst::State::Playing)?;
 
         let (async_done_tx, async_done_rx) = oneshot::channel();
-        let mut async_done_tx = Some(async_done_tx);
+        imp.async_done_tx.replace(Some(async_done_tx));
+
+        // Setup bus to receive async done message
         pipeline
             .bus()
             .unwrap()
-            .add_watch_local(move |_, message| {
-                match message.view() {
-                    // gst::MessageView::Eos(_) => {}
-                    // gst::MessageView::Error(_) => {}
-                    // gst::MessageView::Warning(_) => {}
-                    // gst::MessageView::Info(_) => {}
-                    gst::MessageView::AsyncDone(_) => {
-                        if let Some(tx) = async_done_tx.take() {
-                            let _ = tx.send(());
-                        }
-                    }
-                    _ => {
-                        tracing::debug!("Unhandled message: {:?}", message.view());
-                    }
-                }
-
-                glib::Continue(true)
-            })
+            .add_watch_local(
+                clone!(@weak this as obj => @default-return Continue(false), move |_, message| {
+                    obj.handle_bus_message(message)
+                }),
+            )
             .unwrap();
-
-        // Properly dispose pipeline on return
-        let _finally = Finally {
-            weak: pipeline.downgrade(),
-        };
 
         this.present();
 
-        // Wait for pipeline to be on playing state before getting
-        // stream size
+        // Wait for pipeline to be on playing state
         async_done_rx.await.unwrap();
 
+        // Get stream size
         let caps = videosrc_bin
             .static_pad("src")
             .context("Videosrc bin has no src pad")?
@@ -204,6 +192,7 @@ impl AreaSelector {
         imp.stream_size.set((stream_width, stream_height)).unwrap();
         this.update_selection_ui();
 
+        // Wait for user response
         result_rx.await.unwrap()?;
 
         Ok(Data {
@@ -211,6 +200,71 @@ impl AreaSelector {
             paintable_rect: imp.view_port.paintable_rect().unwrap(),
             stream_size: (stream_width, stream_height),
         })
+    }
+
+    fn handle_bus_message(&self, message: &gst::Message) -> glib::Continue {
+        use gst::MessageView;
+
+        let imp = self.imp();
+
+        match message.view() {
+            MessageView::AsyncDone(_) => {
+                if let Some(async_done_tx) = imp.async_done_tx.take() {
+                    let _ = async_done_tx.send(());
+                }
+
+                Continue(true)
+            }
+            MessageView::Eos(_) => {
+                tracing::debug!("Eos signal received from record bus");
+
+                Continue(false)
+            }
+            MessageView::StateChanged(sc) => {
+                let new_state = sc.current();
+
+                if message.src().as_ref()
+                    != imp
+                        .pipeline
+                        .get()
+                        .map(|pipeline| pipeline.upcast_ref::<gst::Object>())
+                {
+                    tracing::trace!(
+                        "`{}` changed state from `{:?}` -> `{:?}`",
+                        message
+                            .src()
+                            .map_or_else(|| "<unknown source>".into(), |e| e.name()),
+                        sc.old(),
+                        new_state,
+                    );
+                    return Continue(true);
+                }
+
+                tracing::debug!(
+                    "Pipeline changed state from `{:?}` -> `{:?}`",
+                    sc.old(),
+                    new_state,
+                );
+
+                Continue(true)
+            }
+            MessageView::Error(e) => {
+                tracing::error!("Received error message on bus: {:?}", e);
+                Continue(false)
+            }
+            MessageView::Warning(w) => {
+                tracing::warn!("Received warning message on bus: {:?}", w);
+                Continue(true)
+            }
+            MessageView::Info(i) => {
+                tracing::debug!("Received info message on bus: {:?}", i);
+                Continue(true)
+            }
+            other => {
+                tracing::trace!("Received other message on bus: {:?}", other);
+                Continue(true)
+            }
+        }
     }
 
     fn update_selection_ui(&self) {
