@@ -286,6 +286,7 @@ impl AreaSelector {
 
         let selection = view_port.selection();
 
+        self.action_set_enabled("area-selector.reset", selection.is_some());
         self.action_set_enabled("area-selector.done", selection.is_some());
 
         if let (Some(stream_size), Some(selection)) = (imp.stream_size.get(), selection) {
