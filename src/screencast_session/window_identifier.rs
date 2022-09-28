@@ -1,4 +1,5 @@
-// Based on https://github.com/bilelmoussaoui/ashpd/blob/49aca6ff0f20c68fc2ddb09763ed9937b002ded6/src/window_identifier/gtk4.rs
+// Based on ashpd (MIT)
+// Source: https://github.com/bilelmoussaoui/ashpd/blob/49aca6ff0f20c68fc2ddb09763ed9937b002ded6/src/window_identifier/gtk4.rs
 
 use futures_channel::oneshot;
 use gtk::{

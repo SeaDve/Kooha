@@ -1,3 +1,6 @@
+// Based on gnome-shell's screenshot ui (GPLv2).
+// Source: https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/a3c84ca7463ed92b5be6f013a12bce927223f7c5/js/ui/screenshot.js
+
 use gtk::{
     gdk,
     glib::{self, clone},
