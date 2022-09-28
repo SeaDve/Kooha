@@ -175,16 +175,17 @@ fn videocrop_compute(data: &SelectAreaData) -> Result<gst::Element> {
         );
     }
 
-    // HACK We somehow need to subtract 1.0 from y
+    // Both paintable and selection position are relative to the widget coordinates.
+    // To get the absolute position and so correct crop values, subtract the paintable
+    // rect's position from the selection rect.
     let old_selection_rect = selection.rect();
-    let selection_rect = Rect::new(
-        old_selection_rect.x(),
-        old_selection_rect.y() - 1.0,
+    let selection_rect_scaled = Rect::new(
+        old_selection_rect.x() - paintable_rect.x(),
+        old_selection_rect.y() - paintable_rect.y(),
         old_selection_rect.width(),
         old_selection_rect.height(),
-    );
-
-    let selection_rect_scaled = selection_rect.scale(scale_factor_h, scale_factor_v);
+    )
+    .scale(scale_factor_h, scale_factor_v);
 
     let top_crop = selection_rect_scaled.y();
     let left_crop = selection_rect_scaled.x();

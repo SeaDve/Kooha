@@ -41,9 +41,15 @@
         <child>
           <object class="KoohaViewPort" id="view_port">
             <property name="vexpand">True</property>
+            <style>
+              <class name="view-port"/>
+            </style>
           </object>
         </child>
       </object>
     </property>
+    <style>
+      <class name="area-selector"/>
+    </style>
   </template>
 </interface>

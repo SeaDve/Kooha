@@ -7,7 +7,10 @@ use gtk::{
     subclass::prelude::*,
 };
 
-use std::cell::{Cell, RefCell};
+use std::{
+    cell::{Cell, RefCell},
+    fmt,
+};
 
 const DEFAULT_SIZE: f64 = 100.0;
 
@@ -49,13 +52,25 @@ impl CursorType {
     }
 }
 
-#[derive(Debug, Default, Clone, Copy, glib::Boxed)]
+#[derive(Default, Clone, Copy, glib::Boxed)]
 #[boxed_type(name = "KoohaSelection", nullable)]
 pub struct Selection {
     start_x: f32,
     start_y: f32,
     end_x: f32,
     end_y: f32,
+}
+
+impl fmt::Debug for Selection {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let rect = self.rect();
+        f.debug_struct("Selection")
+            .field("x", &rect.x())
+            .field("y", &rect.y())
+            .field("width", &rect.width())
+            .field("height", &rect.height())
+            .finish()
+    }
 }
 
 impl Selection {
@@ -111,10 +126,6 @@ mod imp {
         const NAME: &'static str = "KoohaViewPort";
         type Type = super::ViewPort;
         type ParentType = gtk::Widget;
-
-        fn class_init(klass: &mut Self::Class) {
-            klass.set_css_name("viewport");
-        }
     }
 
     impl ObjectImpl for ViewPort {

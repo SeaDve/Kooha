@@ -23,7 +23,7 @@ button.copy-done {
   color: @accent_bg_color;
 }
 
-viewport {
+window.area-selector .view-port {
   padding: 12px;
 }
 
