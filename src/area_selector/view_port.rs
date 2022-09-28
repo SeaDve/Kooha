@@ -696,38 +696,39 @@ impl ViewPort {
 
         // The user clicked without dragging. Make up a larger selection
         // to reduce confusion.
-        let mut selection = imp.selection.get().unwrap();
-        if imp.drag_cursor.get() == CursorType::Crosshair
-            && selection.end_x == selection.start_x
-            && selection.end_y == selection.start_y
-        {
-            let offset = 20.0 * self.scale_factor() as f32;
-            selection.start_x -= offset;
-            selection.start_y -= offset;
-            selection.end_x += offset;
-            selection.end_y += offset;
+        if let Some(mut selection) = imp.selection.get() {
+            if imp.drag_cursor.get() == CursorType::Crosshair
+                && selection.end_x == selection.start_x
+                && selection.end_y == selection.start_y
+            {
+                let offset = 20.0 * self.scale_factor() as f32;
+                selection.start_x -= offset;
+                selection.start_y -= offset;
+                selection.end_x += offset;
+                selection.end_y += offset;
 
-            let paintable_rect = imp.paintable_rect.get().unwrap();
-            let selection_rect = selection.rect();
+                let paintable_rect = imp.paintable_rect.get().unwrap();
+                let selection_rect = selection.rect();
 
-            // Keep the coordinates inside the stage.
-            if selection.start_x < paintable_rect.x() {
-                selection.start_x = paintable_rect.x();
-                selection.end_x = selection.start_x + selection_rect.width();
-            } else if selection.end_x > paintable_rect.width() + paintable_rect.x() {
-                selection.end_x = paintable_rect.width() + paintable_rect.x();
-                selection.start_x = selection.end_x - selection_rect.width();
+                // Keep the coordinates inside the stage.
+                if selection.start_x < paintable_rect.x() {
+                    selection.start_x = paintable_rect.x();
+                    selection.end_x = selection.start_x + selection_rect.width();
+                } else if selection.end_x > paintable_rect.width() + paintable_rect.x() {
+                    selection.end_x = paintable_rect.width() + paintable_rect.x();
+                    selection.start_x = selection.end_x - selection_rect.width();
+                }
+                if selection.start_y < paintable_rect.y() {
+                    selection.start_y = paintable_rect.y();
+                    selection.end_y = selection.start_y + selection_rect.height();
+                } else if selection.end_y > paintable_rect.height() + paintable_rect.y() {
+                    selection.end_y = paintable_rect.height() + paintable_rect.y();
+                    selection.start_y = selection.end_y - selection_rect.height();
+                }
+
+                self.set_selection(Some(selection));
+                self.update_selection_handles();
             }
-            if selection.start_y < paintable_rect.y() {
-                selection.start_y = paintable_rect.y();
-                selection.end_y = selection.start_y + selection_rect.height();
-            } else if selection.end_y > paintable_rect.height() + paintable_rect.y() {
-                selection.end_y = paintable_rect.height() + paintable_rect.y();
-                selection.start_y = selection.end_y - selection_rect.height();
-            }
-
-            self.set_selection(Some(selection));
-            self.update_selection_handles();
         }
 
         if let Some(pointer_position) = imp.pointer_position.get() {
