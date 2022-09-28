@@ -40,9 +40,13 @@ mod imp {
         #[template_child]
         pub(super) window_title: TemplateChild<adw::WindowTitle>,
         #[template_child]
-        pub(super) view_port: TemplateChild<ViewPort>,
-        #[template_child]
         pub(super) done_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub(super) stack: TemplateChild<gtk::Stack>,
+        #[template_child]
+        pub(super) loading: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub(super) view_port: TemplateChild<ViewPort>,
 
         pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) stream_size: OnceCell<(i32, i32)>,
@@ -138,6 +142,7 @@ impl AreaSelector {
     ) -> Result<Data> {
         let this: Self = glib::Object::new(&[]).expect("Failed to create KoohaAreaSelector.");
         let imp = this.imp();
+        this.update_selection_ui();
 
         // Setup window size and transient for
         if let Some(transient_for) = transient_for {
@@ -155,6 +160,8 @@ impl AreaSelector {
             );
             this.set_default_height((monitor_geometry.height() as f64 * 0.4) as i32);
         }
+
+        imp.stack.set_visible_child(&imp.loading.get());
 
         let (result_tx, result_rx) = oneshot::channel();
         imp.result_tx.replace(Some(result_tx));
@@ -191,6 +198,8 @@ impl AreaSelector {
 
         // Wait for pipeline to be on playing state
         async_done_rx.await.unwrap();
+
+        imp.stack.set_visible_child(&imp.view_port.get());
 
         // Get stream size
         let caps = videosrc_bin

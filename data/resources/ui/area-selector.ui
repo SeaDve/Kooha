@@ -40,11 +40,41 @@
           </object>
         </child>
         <child>
-          <object class="KoohaViewPort" id="view_port">
-            <property name="vexpand">True</property>
-            <style>
-              <class name="view-port"/>
-            </style>
+          <object class="GtkStack" id="stack">
+            <property name="transition-type">crossfade</property>
+            <child>
+              <object class="GtkBox" id="loading">
+                <property name="valign">center</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">24</property>
+                <child>
+                  <object class="GtkSpinner">
+                    <property name="spinning">True</property>
+                    <property name="height-request">24</property>
+                    <property name="width-request">24</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="wrap">True</property>
+                    <property name="wrap-mode">word-char</property>
+                    <property name="justify">center</property>
+                    <property name="label">Loading…</property>
+                    <style>
+                      <class name="title-1"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="KoohaViewPort" id="view_port">
+                <property name="vexpand">True</property>
+                <style>
+                  <class name="view-port"/>
+                </style>
+              </object>
+            </child>
           </object>
         </child>
       </object>
