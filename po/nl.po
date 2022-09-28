@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-24 10:17+0800\n"
-"PO-Revision-Date: 2022-09-26 18:22+0000\n"
+"POT-Creation-Date: 2022-09-28 11:40+0800\n"
+"PO-Revision-Date: 2022-09-28 08:00+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
 "\n"
@@ -85,6 +85,23 @@ msgstr "🚀 Hardware-versnelde encodering (experimenteel)"
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
+
+#: data/resources/ui/area-selector.ui:15
+msgid "Select Area"
+msgstr "Selecteer een gebied"
+
+#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
+#: data/resources/ui/window.ui:280
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: data/resources/ui/area-selector.ui:26
+msgid "Done"
+msgstr "Afronden"
+
+#: data/resources/ui/area-selector.ui:35
+msgid "Reset Selection"
+msgstr "Selectie herstellen"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -230,10 +247,6 @@ msgstr "De opname wordt gestart over…"
 msgid "Cancel Recording"
 msgstr "Opname stoppen"
 
-#: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
-msgid "Cancel"
-msgstr "Annuleren"
-
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
 msgstr "Bezig met opruimen…"
@@ -287,6 +300,10 @@ msgstr "Klik hier om de video te bekijken."
 #: src/application.rs:114
 msgid "Show in Files"
 msgstr "Tonen in bestandsbeheer"
+
+#: src/area_selector/mod.rs:303
+msgid "approx."
+msgstr "ong."
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -352,41 +369,41 @@ msgstr "Er is geen actief profiel"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:197 src/recording.rs:249 src/recording.rs:273
+#: src/recording.rs:193 src/recording.rs:247 src/recording.rs:271
 msgid "Failed to start recording"
 msgstr "De opname kan niet worden gestart"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:196
+#: src/recording.rs:192
 msgid "Check out {} for help."
 msgstr "Ga naar {} om de documentatie te bekijken."
 
-#: src/recording.rs:234
+#: src/recording.rs:232
 msgid "No microphone source found"
 msgstr "Er is geen microfoon aangetroffen"
 
-#: src/recording.rs:241
+#: src/recording.rs:239
 msgid "No desktop speaker source found"
 msgstr "Er is geen luidspreker aangetroffen"
 
-#: src/recording.rs:248
+#: src/recording.rs:246
 msgid "A GStreamer plugin may not be installed."
 msgstr "Er ontbreekt mogelijk een GStreamer-plug-in."
 
-#: src/recording.rs:272 src/recording.rs:494
+#: src/recording.rs:270 src/recording.rs:492
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Zorg er voor dat de opslaglocatie bestaat en toegankelijk is."
 
-#: src/recording.rs:490
+#: src/recording.rs:488
 msgid "An error occurred while recording"
 msgstr "Er is een fout opgetreden tijdens de opname"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:502
+#: src/recording.rs:500
 msgid "Failed to open “{}” for writing"
 msgstr "Er kan niet worden weggeschreven naar “{}”"
 
-#: src/recording.rs:504
+#: src/recording.rs:502
 msgid "Failed to open file for writing"
 msgstr "Het bestand kan niet worden weggeschreven"
 

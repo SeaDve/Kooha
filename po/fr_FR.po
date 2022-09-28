@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-24 10:17+0800\n"
+"POT-Creation-Date: 2022-09-28 11:40+0800\n"
 "PO-Revision-Date: 2022-09-18 09:16+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
@@ -87,6 +87,23 @@ msgstr ""
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
+
+#: data/resources/ui/area-selector.ui:15
+msgid "Select Area"
+msgstr ""
+
+#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
+#: data/resources/ui/window.ui:280
+msgid "Cancel"
+msgstr "Annuler"
+
+#: data/resources/ui/area-selector.ui:26
+msgid "Done"
+msgstr ""
+
+#: data/resources/ui/area-selector.ui:35
+msgid "Reset Selection"
+msgstr ""
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -232,10 +249,6 @@ msgstr "Enregistrer dans…"
 msgid "Cancel Recording"
 msgstr "Annuler l’enregistrement"
 
-#: data/resources/ui/window.ui:238 data/resources/ui/window.ui:280
-msgid "Cancel"
-msgstr "Annuler"
-
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
 msgstr "Vidage…"
@@ -289,6 +302,10 @@ msgstr "Cliquez ici pour voir la vidéo."
 #: src/application.rs:114
 msgid "Show in Files"
 msgstr "Montrer dans Fichiers"
+
+#: src/area_selector/mod.rs:303
+msgid "approx."
+msgstr ""
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -352,42 +369,42 @@ msgstr ""
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:197 src/recording.rs:249 src/recording.rs:273
+#: src/recording.rs:193 src/recording.rs:247 src/recording.rs:271
 msgid "Failed to start recording"
 msgstr "Échec du démarrage de l’enregistrement"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:196
+#: src/recording.rs:192
 msgid "Check out {} for help."
 msgstr "Consultez {} pour de l’aide."
 
-#: src/recording.rs:234
+#: src/recording.rs:232
 msgid "No microphone source found"
 msgstr "Aucune source microphone trouvée"
 
-#: src/recording.rs:241
+#: src/recording.rs:239
 msgid "No desktop speaker source found"
 msgstr "Aucune source de haut-parleur trouvée"
 
-#: src/recording.rs:248
+#: src/recording.rs:246
 msgid "A GStreamer plugin may not be installed."
 msgstr ""
 
-#: src/recording.rs:272 src/recording.rs:494
+#: src/recording.rs:270 src/recording.rs:492
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 "Assurez-vous que l’emplacement d’enregistrement existe et est accessible."
 
-#: src/recording.rs:490
+#: src/recording.rs:488
 msgid "An error occurred while recording"
 msgstr "Une erreur s’est produite pendant l’enregistrement"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:502
+#: src/recording.rs:500
 msgid "Failed to open “{}” for writing"
 msgstr "Échec de l’ouverture de « {} » pour l’écriture"
 
-#: src/recording.rs:504
+#: src/recording.rs:502
 msgid "Failed to open file for writing"
 msgstr "Impossible d’ouvrir le fichier pour l’écriture"
 
