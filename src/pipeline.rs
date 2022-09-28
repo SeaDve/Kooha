@@ -80,7 +80,7 @@ impl PipelineBuilder {
 
         let pipeline = gst::Pipeline::new(None);
         pipeline.add_many(&[&queue, &filesink])?;
-        gst::Element::link_many(&[&queue, &filesink])?;
+        queue.link(&filesink)?;
 
         tracing::debug!(
             file_path = %file_path.display(),
@@ -225,7 +225,7 @@ pub fn pipewiresrc_bin(
     let queue = utils::make_element("queue")?;
 
     bin.add_many(&[&compositor, &videoconvert, &queue])?;
-    gst::Element::link_many(&[&compositor, &videoconvert])?;
+    compositor.link(&videoconvert)?;
 
     if let Some(data) = select_area_data {
         let videoscale = utils::make_element("videoscale")?;

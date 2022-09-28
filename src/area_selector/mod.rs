@@ -164,7 +164,7 @@ impl AreaSelector {
         let videosrc_bin = pipeline::pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
         let sink = utils::make_element("gtk4paintablesink")?;
         pipeline.add_many(&[videosrc_bin.upcast_ref(), &sink])?;
-        gst::Element::link_many(&[videosrc_bin.upcast_ref(), &sink])?;
+        videosrc_bin.link(&sink)?;
         imp.pipeline.set(pipeline.clone()).unwrap();
 
         // Setup paintable
