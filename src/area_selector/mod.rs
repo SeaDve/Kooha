@@ -37,9 +37,11 @@ mod imp {
     #[template(resource = "/io/github/seadve/Kooha/ui/area-selector.ui")]
     pub struct AreaSelector {
         #[template_child]
+        pub(super) window_title: TemplateChild<adw::WindowTitle>,
+        #[template_child]
         pub(super) view_port: TemplateChild<ViewPort>,
         #[template_child]
-        pub(super) window_title: TemplateChild<adw::WindowTitle>,
+        pub(super) done_button: TemplateChild<gtk::Button>,
 
         pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) stream_size: OnceCell<(i32, i32)>,
@@ -99,6 +101,10 @@ mod imp {
                 .connect_selection_notify(clone!(@weak obj => move |_| {
                     obj.update_selection_ui();
                 }));
+
+            let done_button = self.done_button.get();
+            obj.set_default_widget(Some(&done_button));
+            obj.set_focus_widget(Some(&done_button));
         }
 
         fn dispose(&self, _obj: &Self::Type) {

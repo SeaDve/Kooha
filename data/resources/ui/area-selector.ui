@@ -22,7 +22,7 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkButton">
+              <object class="GtkButton" id="done_button">
                 <property name="label" translatable="yes">Done</property>
                 <property name="action-name">area-selector.done</property>
                 <style>
