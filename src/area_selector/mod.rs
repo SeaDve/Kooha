@@ -66,8 +66,6 @@ mod imp {
             klass.install_action("area-selector.cancel", None, move |obj, _, _| {
                 if let Some(sender) = obj.imp().async_done_tx.take() {
                     let _ = sender.send(Err(Cancelled::new("area select loading")));
-                } else {
-                    tracing::error!("Sent async done twice");
                 }
 
                 if let Some(sender) = obj.imp().result_tx.take() {
