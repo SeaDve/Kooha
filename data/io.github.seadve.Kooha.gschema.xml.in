@@ -15,7 +15,7 @@
       <default>0</default>
     </key>
     <key type="b" name="record-speaker">
-      <default>false</default>
+      <default>true</default>
     </key>
     <key type="b" name="record-mic">
       <default>false</default>
