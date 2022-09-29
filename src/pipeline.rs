@@ -304,7 +304,7 @@ fn round_to_even(number: i32) -> i32 {
 }
 
 fn round_to_even_f32(number: f32) -> i32 {
-    number as i32 / 2 * 2
+    (number / 2.0).round() as i32 * 2
 }
 
 fn new_recording_path(saving_location: &Path, extension: impl AsRef<OsStr>) -> PathBuf {
