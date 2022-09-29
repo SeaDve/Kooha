@@ -100,7 +100,8 @@ impl PipelineBuilder {
             &self.streams,
             self.framerate,
             self.select_area_data.as_ref(),
-        )?;
+        )
+        .context("Failed to create pipewiresrc bin")?;
 
         pipeline.add(&videosrc_bin)?;
 
@@ -110,7 +111,8 @@ impl PipelineBuilder {
                 .into_iter()
                 .flatten()
             {
-                let audio_src_bin = pulsesrc_bin(audio_device_name)?;
+                let audio_src_bin =
+                    pulsesrc_bin(audio_device_name).context("Failed to create pulsesrc bin")?;
                 pipeline.add(&audio_src_bin)?;
                 audio_srcs.push(audio_src_bin.upcast());
             }
@@ -124,7 +126,8 @@ impl PipelineBuilder {
         };
 
         self.profile
-            .attach(&pipeline, videosrc_bin.upcast_ref(), &audio_srcs, &queue)?;
+            .attach(&pipeline, videosrc_bin.upcast_ref(), &audio_srcs, &queue)
+            .context("Failed to attach profile to pipeline")?;
 
         Ok(pipeline)
     }
