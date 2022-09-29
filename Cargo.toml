@@ -1,6 +1,6 @@
 [package]
 name = "kooha"
-version = "2.1.1"
+version = "2.2.0"
 authors = ["Dave Patrick Caberto <davecruz48@gmail.com>"]
 license = "GPL-3.0-or-later"
 edition = "2021"

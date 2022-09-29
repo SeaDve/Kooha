@@ -33,7 +33,7 @@ pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
         .support_url("https://github.com/SeaDve/Kooha/discussions")
         .debug_info(&debug_info())
         .debug_info_filename("kooha-debug-info")
-        .release_notes_version("2.1.0")
+        .release_notes_version("2.2.0")
         .release_notes(release_notes())
         .build();
 
@@ -59,18 +59,14 @@ pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
 fn release_notes() -> &'static str {
     r#"<p>This release contains new features and fixes:</p>
     <ul>
-      <li>Remember previously selected video sources</li>
-      <li>Added ability to cancel while flushing the recording</li>
-      <li>Use different icons for settings toggle button to discern state more clearly</li>
-      <li>Added 3 seconds delay option</li>
-      <li>Fixed x264 encoder failing to initialize on uneven resolutions</li>
-      <li>Fixed minutes stuck on 00 if time is equal or greater than an hour</li>
-      <li>Recordings are now stored by default in `~/Videos/Kooha` (This won't affect existing settings)</li>
-      <li>"Show in Files" button in notifications now highlights the file in the file manager</li>
-      <li>Improved tooltip text on settings toggle buttons</li>
-      <li>Improved support information in the new about window</li>
-      <li>Improved error handling</li>
-      <li>Improved codebase and stability</li>
+      <li>New area selection UI</li>
+      <li>Added option to change the frame rate through the UI</li>
+      <li>Improve delay settings flexibility</li>
+      <li>Added preferences window for easier configuration</li>
+      <li>Added `KOOHA_EXPERIMENTAL` env var to show experimental (unsupported) encoders like VAAPI-VP8 and VAAPI-H264</li>
+      <li>Added the following experimental (unsupported) encoders: VP9, AV1, and VAAPI-VP9</li>
+      <li>Unavailable formats/encoders are now hidden from the UI</li>
+      <li>Fixed broken audio on long recordings</li>
       <li>Updated translations</li>
     </ul>"#
 }
