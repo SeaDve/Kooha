@@ -69,9 +69,11 @@ mod imp {
                 profile::builtins()
             };
             let profiles_model = gio::ListStore::new(BoxedProfile::static_type());
-            profiles_model.append(&BoxedProfile::new_none());
+            if settings.profile().is_none() {
+                profiles_model.append(&BoxedProfile::new_none());
+            }
             profiles_model.splice(
-                1,
+                profiles_model.n_items(),
                 0,
                 &profiles
                     .into_iter()
