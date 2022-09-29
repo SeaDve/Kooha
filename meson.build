@@ -13,11 +13,11 @@ base_id = 'io.github.seadve.Kooha'
 
 dependency('glib-2.0', version: '>= 2.66')
 dependency('gio-2.0', version: '>= 2.66')
-dependency('gtk4', version: '>= 4.4.0')
+dependency('gtk4', version: '>= 4.6')
 dependency('libadwaita-1', version: '>= 1.2')
-dependency('gstreamer-1.0', version: '>= 1.18')
-dependency('gstreamer-pbutils-1.0', version: '>= 1.18')
-dependency('gstreamer-plugins-base-1.0', version: '>= 1.18')
+dependency('gstreamer-1.0', version: '>= 1.20')
+dependency('gstreamer-pbutils-1.0', version: '>= 1.20')
+dependency('gstreamer-plugins-base-1.0', version: '>= 1.20')
 dependency('libpulse-mainloop-glib', version: '>= 15.0')
 dependency('libpulse', version: '>= 15.0')
 
