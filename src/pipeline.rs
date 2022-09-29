@@ -18,6 +18,8 @@ use crate::{
 // * Can we set frame rate directly on profile format?
 // * Add tests
 
+const DEFAULT_AUDIO_SAMPLE_RATE: i32 = 44_100;
+
 #[derive(Debug)]
 #[must_use]
 pub struct PipelineBuilder {
@@ -101,32 +103,39 @@ impl PipelineBuilder {
             self.framerate,
             self.select_area_data.as_ref(),
         )
-        .context("Failed to create pipewiresrc bin")?;
+        .context("Failed to create videosrc bin")?;
 
         pipeline.add(&videosrc_bin)?;
 
-        let audio_srcs = if self.profile.supports_audio() {
-            let mut audio_srcs = Vec::new();
-            for audio_device_name in [&self.speaker_source, &self.mic_source]
-                .into_iter()
-                .flatten()
-            {
-                let audio_src_bin =
-                    pulsesrc_bin(audio_device_name).context("Failed to create pulsesrc bin")?;
-                pipeline.add(&audio_src_bin)?;
-                audio_srcs.push(audio_src_bin.upcast());
-            }
-            audio_srcs
+        let audiosrc_bin = if self.profile.supports_audio()
+            && (self.speaker_source.is_some() || self.mic_source.is_some())
+        {
+            let audiosrc_bin = pulsesrc_bin(
+                [&self.speaker_source, &self.mic_source]
+                    .into_iter()
+                    .filter_map(|s| s.as_deref()),
+            )
+            .context("Failed to create audiosrc bin")?;
+            pipeline.add(&audiosrc_bin)?;
+
+            Some(audiosrc_bin)
         } else {
             if self.speaker_source.is_some() || self.mic_source.is_some() {
-                tracing::warn!("Audio is not supported by the selected profile, but audio sources are provided");
+                tracing::warn!(
+                    "Selected profiles does not support audio, but audio sources are provided. Ignoring"
+                );
             }
 
-            Vec::new()
+            None
         };
 
         self.profile
-            .attach(&pipeline, videosrc_bin.upcast_ref(), &audio_srcs, &queue)
+            .attach(
+                &pipeline,
+                videosrc_bin.upcast_ref(),
+                audiosrc_bin.as_ref().map(|a| a.upcast_ref()),
+                &queue,
+            )
             .context("Failed to attach profile to pipeline")?;
 
         Ok(pipeline)
@@ -284,17 +293,44 @@ pub fn pipewiresrc_bin(
 
 /// Creates a bin with a src pad for a pulse audio device
 ///
-/// pulsesrc -> audioconvert -> queue
-fn pulsesrc_bin(device_name: &str) -> Result<gst::Bin> {
+/// pulsesrc1 -> audioresample -> audiorate -> |
+///                                            |
+/// pulsesrc2 -> audioresample -> audiorate -> | -> liveadder -> audioconvert -> queue
+///                                            |
+/// pulsesrcn -> audioresample -> audiorate -> |
+fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let pulsesrc = utils::make_element("pulsesrc")?;
-    pulsesrc.set_property("device", device_name);
+    let liveadder = utils::make_element("liveadder")?;
     let audioconvert = utils::make_element("audioconvert")?;
     let queue = utils::make_element("queue")?;
 
-    bin.add_many(&[&pulsesrc, &audioconvert, &queue])?;
-    gst::Element::link_many(&[&pulsesrc, &audioconvert, &queue])?;
+    let sample_rate_filter = gst::Caps::builder("audio/x-raw")
+        .field("rate", DEFAULT_AUDIO_SAMPLE_RATE)
+        .build();
+
+    bin.add_many(&[&liveadder, &audioconvert, &queue])?;
+    liveadder.link_filtered(&audioconvert, &sample_rate_filter)?;
+    audioconvert.link(&queue)?;
+
+    for device_name in device_names {
+        let pulsesrc = utils::make_element("pulsesrc")?;
+        pulsesrc.set_property("device", device_name);
+        let audioresample = utils::make_element("audioresample")?;
+        let audiorate = utils::make_element("audiorate")?;
+
+        bin.add_many(&[&pulsesrc, &audioresample, &audiorate])?;
+        pulsesrc.link(&audioresample)?;
+        audioresample.link_filtered(&audiorate, &sample_rate_filter)?;
+
+        let liveadder_sink_pad = liveadder
+            .request_pad_simple("sink_%u")
+            .context("Failed to request sink_%u pad from liveadder")?;
+        audiorate
+            .static_pad("src")
+            .unwrap()
+            .link(&liveadder_sink_pad)?;
+    }
 
     let queue_pad = queue.static_pad("src").unwrap();
     bin.add_pad(&gst::GhostPad::with_target(Some("src"), &queue_pad)?)?;

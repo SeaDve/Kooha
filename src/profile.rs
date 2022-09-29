@@ -98,7 +98,7 @@ pub trait Profile: fmt::Debug {
         &self,
         pipeline: &gst::Pipeline,
         video_src: &gst::Element,
-        audio_srcs: &[gst::Element],
+        audio_src: Option<&gst::Element>,
         sink: &gst::Element,
     ) -> Result<()>;
 }
@@ -135,10 +135,10 @@ impl Profile for GifProfile {
         &self,
         pipeline: &gst::Pipeline,
         video_src: &gst::Element,
-        audio_srcs: &[gst::Element],
+        audio_srcs: Option<&gst::Element>,
         sink: &gst::Element,
     ) -> Result<()> {
-        if !audio_srcs.is_empty() {
+        if audio_srcs.is_some() {
             tracing::error!("Audio is not supported for Gif profile");
         }
 
@@ -205,7 +205,7 @@ macro_rules! encodebin_profile {
                 &self,
                 pipeline: &gst::Pipeline,
                 video_src: &gst::Element,
-                audio_srcs: &[gst::Element],
+                audio_src: Option<&gst::Element>,
                 sink: &gst::Element,
             ) -> Result<()> {
                 let encodebin = utils::make_element("encodebin")?;
@@ -219,8 +219,8 @@ macro_rules! encodebin_profile {
                         .context("Failed to request video_%u pad from encodebin")?,
                 )?;
 
-                for src in audio_srcs {
-                    src.static_pad("src").unwrap().link(
+                if let Some(audio_src) = audio_src {
+                    audio_src.static_pad("src").unwrap().link(
                         &encodebin
                             .request_pad_simple("audio_%u")
                             .context("Failed to request audio_%u pad from encodebin")?,
@@ -569,9 +569,12 @@ mod tests {
             assert!(!profile.name().is_empty());
             assert!(!profile.file_extension().is_empty());
 
-            if let Err(err) =
-                profile.attach(&pipeline, &dummy_video_src, &[dummy_audio_src], &dummy_sink)
-            {
+            if let Err(err) = profile.attach(
+                &pipeline,
+                &dummy_video_src,
+                Some(&dummy_audio_src),
+                &dummy_sink,
+            ) {
                 panic!("{:?}", err);
             }
         }
