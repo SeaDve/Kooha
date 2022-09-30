@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
-"PO-Revision-Date: 2022-09-18 09:16+0000\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"PO-Revision-Date: 2022-09-29 11:28+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
@@ -62,27 +62,33 @@ msgstr "Les principales caractéristiques de Kooha sont les suivantes :"
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr ""
+"🎙️ Enregistrez votre micro, l’audio de votre ordinateur ou les deux en même "
+"temps"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Prise en charge des formats WebM, MP4, GIF, et Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 msgstr ""
+"🖥️ Sélectionnez un écran, une fenêtre, ou une portion de l’écran à "
+"enregistrer"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Sélection de plusieurs sources"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Configurez l’emplacement de sauvegarde, la visibilité du pointeur, la "
+"fréquence d’images et le délai"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Encodage expérimental avec accélération matérielle"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -90,7 +96,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Sélectionnez une zone"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -99,11 +105,11 @@ msgstr "Annuler"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Fait"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Réinitialiser la sélection"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -111,27 +117,27 @@ msgstr "Général"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Délai (en secondes)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Dossier des enregistrements"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Vidéo"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Fréquence d’images"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Cette fréquence d’images peut entraîner des problèmes de performance."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -139,7 +145,7 @@ msgstr "Ouvrir le menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Afficher les Préférences"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -155,11 +161,11 @@ msgstr "Enregistrement"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr "Activer/désactiver l’enregistrement"
+msgstr "Activer / Désactiver l’enregistrement"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr "Activer/Désactiver la pause"
+msgstr "Activer / Désactiver la pause"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
@@ -171,15 +177,15 @@ msgstr "Réglages"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Activer / Couper l’audio de l’ordinateur"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr "Activer le microphone"
+msgstr "Activer / Couper le microphone"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr "Activer le curseur"
+msgstr "Activer / Désactiver le curseur"
 
 #: data/resources/ui/window.ui:29
 msgid "Main Menu"
@@ -195,11 +201,11 @@ msgstr "Capturer une sélection de l’écran"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Activer l’audio de l’ordinateur"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Désactiver l’audio de l’ordinateur"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -255,7 +261,7 @@ msgstr "Vidage…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Préférences"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -303,9 +309,9 @@ msgstr "Cliquez ici pour voir la vidéo."
 msgid "Show in Files"
 msgstr "Montrer dans Fichiers"
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
-msgstr ""
+msgstr "approx."
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -321,7 +327,7 @@ msgstr "Échec de la connexion au daemon PulseAudio"
 
 #: src/preferences_window.rs:226
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Ce format est expérimental et n’est pas pris en charge."
 
 #: src/preferences_window.rs:255
 msgid "None"
@@ -341,31 +347,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Aucun profil actif"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -388,7 +394,7 @@ msgstr "Aucune source de haut-parleur trouvée"
 
 #: src/recording.rs:246
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Un greffon GStreamer n’est peut-être pas installé."
 
 #: src/recording.rs:270 src/recording.rs:492
 msgid "Make sure that the saving location exists and is accessible."
@@ -463,17 +469,19 @@ msgstr "Aide"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Ouvrir les Préférences ?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Le format sélectionné précédemment est peut-être indisponible. Ouvrez les "
+"préférences et sélectionnez un format pour continuer à enregistrer."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Plus tard"
 
 #: src/window.rs:292
 msgid "Open"

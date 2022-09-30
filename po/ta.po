@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
 "PO-Revision-Date: 2022-09-28 03:41+0000\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/"
@@ -297,7 +297,7 @@ msgstr "வீடியோவைப் பார்க்க இங்கே க
 msgid "Show in Files"
 msgstr "கோப்புகளில் காட்டு"
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
 msgstr ""
 

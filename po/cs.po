@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
 "PO-Revision-Date: 2022-08-26 07:18+0000\n"
 "Last-Translator: multiflexi <multi.flexi@seznam.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
@@ -302,7 +302,7 @@ msgstr "Klikněte zde pro zobrazení videa."
 msgid "Show in Files"
 msgstr "Zobrazit v Souborech"
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
 msgstr ""
 

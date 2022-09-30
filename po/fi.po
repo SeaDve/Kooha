@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
-"PO-Revision-Date: 2022-09-22 17:16+0000\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"PO-Revision-Date: 2022-09-30 08:04+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fi/>\n"
@@ -88,7 +88,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Valitse alue"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -97,11 +97,11 @@ msgstr "Peru"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Valmis"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Nollaa valinta"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -109,27 +109,27 @@ msgstr "Yleiset"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Viive (sekuntia)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Tallenteet-kansio"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Muoto"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Kuvataajuus"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Tämä kuvataajuus voi aiheuttaa suorituskykyongelmia."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -137,7 +137,7 @@ msgstr "Avaa valikko"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Näytä asetukset"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -169,7 +169,7 @@ msgstr "Asetukset"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Työpöydän ääni päälle/pois"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -193,11 +193,11 @@ msgstr "Kaappaa valittu alue näytöltä"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Käytä työpöydän ääntä"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Poista käytöstä työpöydän ääni"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -253,7 +253,7 @@ msgstr "Tyhjennetään…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Asetukset"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -301,7 +301,7 @@ msgstr "Napsauta nähdäksesi videon."
 msgid "Show in Files"
 msgstr "Näytä tiedostonhallinnassa"
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
 msgstr ""
 
@@ -319,7 +319,7 @@ msgstr "PulseAudio-taustaosaan yhdistäminen epäonnistui"
 
 #: src/preferences_window.rs:226
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Tämä muoto on kokeellinen eikä sille tarjota tukea."
 
 #: src/preferences_window.rs:255
 msgid "None"
@@ -339,31 +339,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Ei aktiivista profiilia"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -386,7 +386,7 @@ msgstr "Työpöydän kaiutinlähdettä ei löydy"
 
 #: src/recording.rs:246
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "GStreamer-liitännäistä ei välttämättä ole asennettu."
 
 #: src/recording.rs:270 src/recording.rs:492
 msgid "Make sure that the saving location exists and is accessible."
@@ -461,21 +461,23 @@ msgstr "Ohje"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Avataanko asetukset?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Aiemmin valittu muoto ei mahdollisesti ole käytettävissä. Avaa asetukset ja "
+"valitse muoto jatkaaksesi tallennusta."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Myöhemmin"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "Avaa"
 
 #: src/window.rs:350
 msgid "Paused"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
 "PO-Revision-Date: 2021-09-04 18:34+0000\n"
 "Last-Translator: Hemish <hemish04082005@gmail.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/kooha/pot-file/hi/"
@@ -296,7 +296,7 @@ msgstr ""
 msgid "Show in Files"
 msgstr ""
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
 msgstr ""
 

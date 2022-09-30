@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
 "PO-Revision-Date: 2022-09-03 18:18+0000\n"
 "Last-Translator: Marek Ľach <graweeld@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/kooha/pot-file/sk/"
@@ -303,7 +303,7 @@ msgstr "Kliknite sem pre zhliadnutie videá."
 msgid "Show in Files"
 msgstr "Ukázať v Súboroch"
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
 msgstr ""
 

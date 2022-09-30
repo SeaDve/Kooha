@@ -12,13 +12,14 @@
 # VBB <librusekus35790@gmail.com>, 2022.
 # Daudix UFO <ddaudix@gmail.com>, 2022.
 # Vik <xasertop@gmail.com>, 2022.
+# Vik <k3kelm4vw@mozmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
-"PO-Revision-Date: 2022-09-03 18:18+0000\n"
-"Last-Translator: Vik <xasertop@gmail.com>\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"PO-Revision-Date: 2022-09-30 08:04+0000\n"
+"Last-Translator: Daudix UFO <ddaudix@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
 "Language: ru\n"
@@ -27,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -67,27 +68,31 @@ msgstr "Основные функции Kooha включают следующе�
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr ""
+"🎙️ Записывайте звук с микрофона, звук рабочего стола или и то, и другое "
+"одновременно"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Поддержка форматов WebM, MP4, GIF и Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Выберите монитор, окно или часть экрана для записи"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Выбор нескольких источников"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Настраиваемое место сохранения, видимость указателя мыши, частота кадров "
+"и задержка"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Экспериментальное кодирование с аппаратным ускорением"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -95,20 +100,20 @@ msgstr "Дэйв Патрик Каберто"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Выберите область"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr "Отмена"
+msgstr "Отменить"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Сбросить выбор"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -116,27 +121,27 @@ msgstr "Основное"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Задержка (сек.)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Папка с записями"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Видео"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Формат"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Частота кадров"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Эта частота кадров может вызвать проблемы с производительностью."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -144,7 +149,7 @@ msgstr "Открыть меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Показать настройки"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -176,7 +181,7 @@ msgstr "Настройки"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Переключить звук компьютера"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -200,11 +205,11 @@ msgstr "Запись области экрана"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Включить звук компьютера"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Отключить звук компьютера"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -260,7 +265,7 @@ msgstr "Очистка…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Настройки"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -309,9 +314,9 @@ msgstr "Нажмите здесь, чтобы посмотреть видео."
 msgid "Show in Files"
 msgstr "Показать в файлах"
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
-msgstr ""
+msgstr "около."
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -327,7 +332,7 @@ msgstr "Не удалось подключиться к демону PulseAudio"
 
 #: src/preferences_window.rs:226
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Этот формат экспериментальный и не поддерживается."
 
 #: src/preferences_window.rs:255
 msgid "None"
@@ -347,31 +352,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Нет активного профиля"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -394,7 +399,7 @@ msgstr "Источник динамика компьютера не найден
 
 #: src/recording.rs:246
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Плагин GStreamer, возможно, не установлен."
 
 #: src/recording.rs:270 src/recording.rs:492
 msgid "Make sure that the saving location exists and is accessible."
@@ -468,21 +473,23 @@ msgstr "Справка"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Открыть настройки?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Выбранный ранее формат, возможно, недоступен. Откройте настройки и выберите "
+"формат для продолжения записи."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Позже"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "Открыть"
 
 #: src/window.rs:350
 msgid "Paused"

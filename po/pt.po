@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:40+0800\n"
+"POT-Creation-Date: 2022-09-29 15:16+0800\n"
 "PO-Revision-Date: 2022-07-26 14:24+0000\n"
 "Last-Translator: Laura Vasconcelos Pereira Felippe <lauravpf@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/pot-"
@@ -300,7 +300,7 @@ msgstr ""
 msgid "Show in Files"
 msgstr ""
 
-#: src/area_selector/mod.rs:303
+#: src/area_selector/mod.rs:317
 msgid "approx."
 msgstr ""
 
