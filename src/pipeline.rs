@@ -18,7 +18,7 @@ use crate::{
 // * Can we set frame rate directly on profile format?
 // * Add tests
 
-const DEFAULT_AUDIO_SAMPLE_RATE: i32 = 44_100;
+const DEFAULT_AUDIO_SAMPLE_RATE: i32 = 48_000;
 
 #[derive(Debug)]
 #[must_use]
