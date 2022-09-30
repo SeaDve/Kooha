@@ -4,7 +4,7 @@ use gtk::{
     glib::{self, prelude::*},
 };
 
-use std::{cmp, env, path::Path};
+use std::{env, path::Path};
 
 use crate::{settings::Settings, Application};
 
@@ -46,7 +46,7 @@ pub fn is_flatpak() -> bool {
 
 /// Ideal thread count to use for `GStreamer` processing.
 pub fn ideal_thread_count() -> u32 {
-    cmp::min(glib::num_processors(), MAX_THREAD_COUNT)
+    glib::num_processors().min(MAX_THREAD_COUNT)
 }
 
 pub fn is_experimental_mode() -> bool {
