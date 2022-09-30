@@ -61,7 +61,7 @@ fn release_notes() -> &'static str {
     <ul>
       <li>New area selection UI</li>
       <li>Added option to change the frame rate through the UI</li>
-      <li>Improve delay settings flexibility</li>
+      <li>Improved delay settings flexibility</li>
       <li>Added preferences window for easier configuration</li>
       <li>Added `KOOHA_EXPERIMENTAL` env var to show experimental (unsupported) encoders like VAAPI-VP8 and VAAPI-H264</li>
       <li>Added the following experimental (unsupported) encoders: VP9, AV1, and VAAPI-VP9</li>
