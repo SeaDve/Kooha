@@ -39,6 +39,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.2.1" date="2022-09-29">
+      <description>
+        <p>This release contains minor fixes:</p>
+        <ul>
+          <li>Only show None profile when it is active</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2.0" date="2022-09-29">
       <description>
         <p>This release contains new features and fixes:</p>
