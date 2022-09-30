@@ -199,21 +199,28 @@ fn videocrop_compute(data: &SelectAreaData) -> Result<gst::Element> {
     )
     .scale(scale_factor_h, scale_factor_v);
 
-    let top_crop = selection_rect_scaled.y();
-    let left_crop = selection_rect_scaled.x();
-    let right_crop =
+    let raw_top_crop = selection_rect_scaled.y();
+    let raw_left_crop = selection_rect_scaled.x();
+    let raw_right_crop =
         *stream_width as f32 - (selection_rect_scaled.width() + selection_rect_scaled.x());
-    let bottom_crop =
+    let raw_bottom_crop =
         *stream_height as f32 - (selection_rect_scaled.height() + selection_rect_scaled.y());
+
+    tracing::debug!(raw_top_crop, raw_left_crop, raw_right_crop, raw_bottom_crop);
+
+    let top_crop = round_to_even_f32(raw_top_crop).clamp(0, *stream_height);
+    let left_crop = round_to_even_f32(raw_left_crop).clamp(0, *stream_width);
+    let right_crop = round_to_even_f32(raw_right_crop).clamp(0, *stream_width);
+    let bottom_crop = round_to_even_f32(raw_bottom_crop).clamp(0, *stream_height);
 
     tracing::debug!(top_crop, left_crop, right_crop, bottom_crop);
 
     // x264enc requires even resolution.
     let crop = utils::make_element("videocrop")?;
-    crop.set_property("top", round_to_even_f32(top_crop).max(0));
-    crop.set_property("left", round_to_even_f32(left_crop).max(0));
-    crop.set_property("right", round_to_even_f32(right_crop).max(0));
-    crop.set_property("bottom", round_to_even_f32(bottom_crop).max(0));
+    crop.set_property("top", top_crop);
+    crop.set_property("left", left_crop);
+    crop.set_property("right", right_crop);
+    crop.set_property("bottom", bottom_crop);
     Ok(crop)
 }
 
