@@ -17,7 +17,7 @@ pub fn all() -> Vec<Box<dyn Profile>> {
     builtins().into_iter().chain(experimental::all()).collect()
 }
 
-/// Returns all builtin profiles.
+/// Returns only builtin (supported) profiles.
 pub fn builtins() -> Vec<Box<dyn Profile>> {
     vec![
         Box::new(WebMProfile),
