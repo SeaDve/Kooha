@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"POT-Creation-Date: 2022-10-01 12:27+0800\n"
 "PO-Revision-Date: 2022-09-28 08:00+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -321,11 +321,11 @@ msgstr "Aygıt monitörü başlatılamadı"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "PulseAudio programına bağlanılamadı"
 
-#: src/preferences_window.rs:226
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Bu biçim deneysel ve desteklenmemektedir."
 
-#: src/preferences_window.rs:255
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Yok"
 
@@ -371,42 +371,42 @@ msgstr "Etkin profil yok"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:193 src/recording.rs:247 src/recording.rs:271
+#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
 msgid "Failed to start recording"
 msgstr "Kayıt başlatılamadı"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:192
+#: src/recording.rs:196
 msgid "Check out {} for help."
 msgstr "Yardım için {} adresine göz atın."
 
-#: src/recording.rs:232
+#: src/recording.rs:236
 msgid "No microphone source found"
 msgstr "Mikrofon kaynağı bulunamadı"
 
-#: src/recording.rs:239
+#: src/recording.rs:243
 msgid "No desktop speaker source found"
 msgstr "Masaüstü hoparlör kaynağı bulunamadı"
 
-#: src/recording.rs:246
+#: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
 msgstr "Bir GStreamer eklentisi kurulmamış olabilir."
 
-#: src/recording.rs:270 src/recording.rs:492
+#: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 "Kaydetme konumunun var olduğundan ve erişilebilir olduğundan emin olun."
 
-#: src/recording.rs:488
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Kayıt sırasında bir hata oluştu"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:500
+#: src/recording.rs:504
 msgid "Failed to open “{}” for writing"
 msgstr "\"{}\" yazma için açılamadı"
 
-#: src/recording.rs:502
+#: src/recording.rs:506
 msgid "Failed to open file for writing"
 msgstr "Dosya yazma için açılamadı"
 

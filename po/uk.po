@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"POT-Creation-Date: 2022-10-01 12:27+0800\n"
 "PO-Revision-Date: 2022-09-29 07:17+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -318,11 +318,11 @@ msgstr "Не вдалося запустити монітор пристрою"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Не вдалося під'єднатися до фонової служби PulseAudio"
 
-#: src/preferences_window.rs:226
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Цей формат експериментальний і не підтримується."
 
-#: src/preferences_window.rs:255
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Немає"
 
@@ -368,41 +368,41 @@ msgstr "Немає активного профілю"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:193 src/recording.rs:247 src/recording.rs:271
+#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
 msgid "Failed to start recording"
 msgstr "Не вдалося розпочати запис"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:192
+#: src/recording.rs:196
 msgid "Check out {} for help."
 msgstr "Перегляньте {}, щоб отримати довідку."
 
-#: src/recording.rs:232
+#: src/recording.rs:236
 msgid "No microphone source found"
 msgstr "Не знайдено мікрофона"
 
-#: src/recording.rs:239
+#: src/recording.rs:243
 msgid "No desktop speaker source found"
 msgstr "Не знайдено динаміка настільного ПК"
 
-#: src/recording.rs:246
+#: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
 msgstr "Плагін GStreamer може бути не встановлений."
 
-#: src/recording.rs:270 src/recording.rs:492
+#: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Переконайтеся, що місце збереження існує та доступне."
 
-#: src/recording.rs:488
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Сталася помилка під час запису"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:500
+#: src/recording.rs:504
 msgid "Failed to open “{}” for writing"
 msgstr "Не вдалося відкрити «{}» для запису"
 
-#: src/recording.rs:502
+#: src/recording.rs:506
 msgid "Failed to open file for writing"
 msgstr "Не вдалося відкрити файл для запису"
 

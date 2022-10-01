@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"POT-Creation-Date: 2022-10-01 12:27+0800\n"
 "PO-Revision-Date: 2022-09-28 03:41+0000\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/"
@@ -313,11 +313,11 @@ msgstr "சாதன மானிட்டரைத் தொடங்குவ�
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "பல்ஸ்ஆடியோ டீமானுடன் இணைக்க முடியவில்லை"
 
-#: src/preferences_window.rs:226
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "இந்த வடிவம் சோதனைக்குரியது மற்றும் ஆதரிக்கப்படாது."
 
-#: src/preferences_window.rs:255
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
@@ -363,41 +363,41 @@ msgstr "செயலில் சுயவிவரம் இல்லை"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:193 src/recording.rs:247 src/recording.rs:271
+#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:192
+#: src/recording.rs:196
 msgid "Check out {} for help."
 msgstr "உதவிக்கு {}ஐப் பார்க்கவும்."
 
-#: src/recording.rs:232
+#: src/recording.rs:236
 msgid "No microphone source found"
 msgstr "மைக்ரோஃபோன் ஆதாரம் எதுவும் கிடைக்கவில்லை"
 
-#: src/recording.rs:239
+#: src/recording.rs:243
 msgid "No desktop speaker source found"
 msgstr "டெஸ்க்டாப் ஸ்பீக்கர் ஆதாரம் இல்லை"
 
-#: src/recording.rs:246
+#: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம்."
 
-#: src/recording.rs:270 src/recording.rs:492
+#: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:488
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:500
+#: src/recording.rs:504
 msgid "Failed to open “{}” for writing"
 msgstr "எழுதுவதற்கு “{}” திறக்க முடியவில்லை"
 
-#: src/recording.rs:502
+#: src/recording.rs:506
 msgid "Failed to open file for writing"
 msgstr "எழுதுவதற்கான கோப்பைத் திறக்க முடியவில்லை"
 

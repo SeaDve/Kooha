@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"POT-Creation-Date: 2022-10-01 12:27+0800\n"
 "PO-Revision-Date: 2022-09-30 08:04+0000\n"
 "Last-Translator: Daudix UFO <ddaudix@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -87,8 +87,8 @@ msgstr "🗔 Выбор нескольких источников"
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
-"🛠️ Настраиваемое место сохранения, видимость указателя мыши, частота кадров "
-"и задержка"
+"🛠️ Настраиваемое место сохранения, видимость указателя мыши, частота кадров и "
+"задержка"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
@@ -330,11 +330,11 @@ msgstr "Не удалось запустить монитор устройств
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Не удалось подключиться к демону PulseAudio"
 
-#: src/preferences_window.rs:226
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Этот формат экспериментальный и не поддерживается."
 
-#: src/preferences_window.rs:255
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Нет"
 
@@ -380,41 +380,41 @@ msgstr "Нет активного профиля"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:193 src/recording.rs:247 src/recording.rs:271
+#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
 msgid "Failed to start recording"
 msgstr "Не удалось начать запись"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:192
+#: src/recording.rs:196
 msgid "Check out {} for help."
 msgstr "Обратитесь к {} за помощью."
 
-#: src/recording.rs:232
+#: src/recording.rs:236
 msgid "No microphone source found"
 msgstr "Источник микрофона не найден"
 
-#: src/recording.rs:239
+#: src/recording.rs:243
 msgid "No desktop speaker source found"
 msgstr "Источник динамика компьютера не найден"
 
-#: src/recording.rs:246
+#: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
 msgstr "Плагин GStreamer, возможно, не установлен."
 
-#: src/recording.rs:270 src/recording.rs:492
+#: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Убедитесь, что место сохранения существует и доступно."
 
-#: src/recording.rs:488
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Во время записи произошла ошибка"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:500
+#: src/recording.rs:504
 msgid "Failed to open “{}” for writing"
 msgstr "Не удалось открыть \"{}\" для записи"
 
-#: src/recording.rs:502
+#: src/recording.rs:506
 msgid "Failed to open file for writing"
 msgstr "Не удалось открыть файл для записи"
 

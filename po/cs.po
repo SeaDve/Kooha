@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 15:16+0800\n"
+"POT-Creation-Date: 2022-10-01 12:27+0800\n"
 "PO-Revision-Date: 2022-08-26 07:18+0000\n"
 "Last-Translator: multiflexi <multi.flexi@seznam.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
@@ -318,11 +318,11 @@ msgstr "Odposlouchávání zařízení selhalo"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Připojení k PulseAudio daemonu selhalo"
 
-#: src/preferences_window.rs:226
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_window.rs:255
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Žádný"
 
@@ -368,41 +368,41 @@ msgstr ""
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:193 src/recording.rs:247 src/recording.rs:271
+#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
 msgid "Failed to start recording"
 msgstr "Nahrávání selhalo"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:192
+#: src/recording.rs:196
 msgid "Check out {} for help."
 msgstr "Pro pomoc navštivte {}."
 
-#: src/recording.rs:232
+#: src/recording.rs:236
 msgid "No microphone source found"
 msgstr "Nenalezen žádný mikrofonní zdroj"
 
-#: src/recording.rs:239
+#: src/recording.rs:243
 msgid "No desktop speaker source found"
 msgstr "Nenalezen žádný zdroj s reproduktory"
 
-#: src/recording.rs:246
+#: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
 msgstr ""
 
-#: src/recording.rs:270 src/recording.rs:492
+#: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Ujistěte se, že místo pro uložení existuje a je dostupné."
 
-#: src/recording.rs:488
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Během nahrávání se vyskytla chyba"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:500
+#: src/recording.rs:504
 msgid "Failed to open “{}” for writing"
 msgstr "Nezdařilo se otevření “{}” pro zápis"
 
-#: src/recording.rs:502
+#: src/recording.rs:506
 msgid "Failed to open file for writing"
 msgstr "Nezdařilo se otevřít soubor pro zápis"
 
