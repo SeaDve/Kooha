@@ -758,7 +758,7 @@ dependencies = [
 
 [[package]]
 name = "kooha"
-version = "2.2.0"
+version = "2.2.1"
 dependencies = [
  "anyhow",
  "futures-channel",
