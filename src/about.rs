@@ -68,7 +68,7 @@ fn release_notes() -> &'static str {
       <li>Unavailable formats/encoders are now hidden from the UI</li>
       <li>Fixed broken audio on long recordings</li>
       <li>Only show None profile when it is active</li>
-      <li>Guard window selection behind `KOOHA_EXPERIMENTAL` env arg</li>
+      <li>Guard window selection behind `KOOHA_EXPERIMENTAL` env var</li>
       <li>Updated translations</li>
     </ul>"#
 }
