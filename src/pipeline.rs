@@ -300,15 +300,16 @@ pub fn pipewiresrc_bin(
 
 /// Creates a bin with a src pad for a pulse audio device
 ///
-/// pulsesrc1 -> audioresample -> audiorate -> |
-///                                            |
-/// pulsesrc2 -> audioresample -> audiorate -> | -> liveadder -> audioconvert -> queue
-///                                            |
-/// pulsesrcn -> audioresample -> audiorate -> |
+/// pulsesrc1 -> audioresample -> |
+///                               |
+/// pulsesrc2 -> audioresample -> | -> audiomixer -> audiorate -> audioconvert -> queue
+///                               |
+/// pulsesrcn -> audioresample -> |
 fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let liveadder = utils::make_element("liveadder")?;
+    let audiomixer = utils::make_element("audiomixer")?;
+    let audiorate = utils::make_element("audiorate")?;
     let audioconvert = utils::make_element("audioconvert")?;
     let queue = utils::make_element("queue")?;
 
@@ -316,27 +317,28 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
         .field("rate", DEFAULT_AUDIO_SAMPLE_RATE)
         .build();
 
-    bin.add_many(&[&liveadder, &audioconvert, &queue])?;
-    liveadder.link_filtered(&audioconvert, &sample_rate_filter)?;
-    audioconvert.link(&queue)?;
+    bin.add_many(&[&audiomixer, &audiorate, &audioconvert, &queue])?;
+    audiomixer.link_filtered(&audiorate, &sample_rate_filter)?;
+    gst::Element::link_many(&[&audiorate, &audioconvert, &queue])?;
 
     for device_name in device_names {
         let pulsesrc = utils::make_element("pulsesrc")?;
         pulsesrc.set_property("device", device_name);
+        pulsesrc.set_property("provide-clock", false);
         let audioresample = utils::make_element("audioresample")?;
-        let audiorate = utils::make_element("audiorate")?;
+        let capsfilter = utils::make_element("capsfilter")?;
+        capsfilter.set_property("caps", &sample_rate_filter);
 
-        bin.add_many(&[&pulsesrc, &audioresample, &audiorate])?;
-        pulsesrc.link(&audioresample)?;
-        audioresample.link_filtered(&audiorate, &sample_rate_filter)?;
+        bin.add_many(&[&pulsesrc, &audioresample, &capsfilter])?;
+        gst::Element::link_many(&[&pulsesrc, &audioresample, &capsfilter])?;
 
-        let liveadder_sink_pad = liveadder
+        let audiomixer_sink_pad = audiomixer
             .request_pad_simple("sink_%u")
             .context("Failed to request sink_%u pad from liveadder")?;
-        audiorate
+        capsfilter
             .static_pad("src")
             .unwrap()
-            .link(&liveadder_sink_pad)?;
+            .link(&audiomixer_sink_pad)?;
     }
 
     let queue_pad = queue.static_pad("src").unwrap();
