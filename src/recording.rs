@@ -180,7 +180,11 @@ impl Recording {
             } else {
                 CursorMode::HIDDEN
             },
-            SourceType::MONITOR | SourceType::WINDOW,
+            if utils::is_experimental_mode() {
+                SourceType::MONITOR | SourceType::WINDOW
+            } else {
+                SourceType::MONITOR
+            },
             true,
             Some(&restore_token),
             PersistMode::ExplicitlyRevoked,

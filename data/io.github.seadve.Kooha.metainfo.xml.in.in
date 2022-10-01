@@ -44,6 +44,8 @@
         <p>This release contains minor fixes:</p>
         <ul>
           <li>Only show None profile when it is active</li>
+          <li>Guard window selection behind `KOOHA_EXPERIMENTAL` env arg</li>
+          <li>Updated translations</li>
         </ul>
       </description>
     </release>
