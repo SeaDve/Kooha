@@ -585,15 +585,15 @@ async fn new_screencast_session(
 
     tracing::debug!(
         "ScreenCast portal version: {:?}",
-        screencast_session.version().await
+        screencast_session.version()
     );
     tracing::debug!(
         "Available cursor modes: {:?}",
-        screencast_session.available_cursor_modes().await
+        screencast_session.available_cursor_modes()
     );
     tracing::debug!(
         "Available source types: {:?}",
-        screencast_session.available_source_types().await
+        screencast_session.available_source_types()
     );
 
     let (streams, restore_token, fd) = screencast_session
