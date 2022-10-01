@@ -63,30 +63,26 @@ has support for it out of the box. If it does, but it still doesn't work, you
 can also check for the [troubleshooting checklist](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist).
 
 
-## ⚙️ Hidden Configuration Options
+## ⚙️ Experimental Features
+
+These features are disabled default due to stability issues and possible
+performance degradation. However, they can be enabled manually by running Kooha
+with `KOOHA_EXPERIMENTAL` env var set to `1`. (e.g. `KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha`).
 
 ### Enable hardware accelerated encoding and other encoders
 
-Enabling hardware accelerated encoding allows the encoder to utilize GPU for
-more efficient or perhaps faster encoding. It is not guaranteed to work on all
-devices, so it may give errors such as `no element vaapivp8enc` depending on the
-features and capability of your hardware.
+Together with `KOOHA_EXPERIMENTAL` env var, it is also needed
+to set `GST_VAAPI_ALL_DRIVERS` to `1` to enable the needed drivers.
 
-First, you have to install `gstreamer-vaapi` on your system. If Kooha is installed
-through Flatpak, it is as simple as running `flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi`.
+Additionally, `gstreamer-vaapi`
+is required to be installed on your system. If Kooha is installed through Flatpak,
+it is as simple as running `flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi`
+to install the package.
 
-To enable all the supported drivers and force Kooha to use VAAPI elements, set
-`GST_VAAPI_ALL_DRIVERS` and `KOOHA_EXPERIMENTAL` both to 1 respectively. These
-environment variables are needed for hardware accelerated encoding.
+### Recording specific window
 
-To run Kooha with both set, run the following command:
-```shell
-GST_VAAPI_ALL_DRIVERS=1 KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha
-```
-or if installed locally, run
-```shell
-GST_VAAPI_ALL_DRIVERS=1 KOOHA_EXPERIMENTAL=1 kooha
-```
+Due to flickering, this has been disabled by default, but can be enabled through
+`KOOHA_EXPERIMENTAL` env var.
 
 
 ## 📋 Runtime Requirements
