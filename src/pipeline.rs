@@ -302,13 +302,13 @@ pub fn pipewiresrc_bin(
 ///
 /// pulsesrc1 -> audioresample -> |
 ///                               |
-/// pulsesrc2 -> audioresample -> | -> audiomixer -> audiorate -> audioconvert -> queue
+/// pulsesrc2 -> audioresample -> | -> liveadder -> audiorate -> audioconvert -> queue
 ///                               |
 /// pulsesrcn -> audioresample -> |
 fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let audiomixer = utils::make_element("audiomixer")?;
+    let liveadder = utils::make_element("liveadder")?;
     let audiorate = utils::make_element("audiorate")?;
     let audioconvert = utils::make_element("audioconvert")?;
     let queue = utils::make_element("queue")?;
@@ -317,14 +317,13 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
         .field("rate", DEFAULT_AUDIO_SAMPLE_RATE)
         .build();
 
-    bin.add_many(&[&audiomixer, &audiorate, &audioconvert, &queue])?;
-    audiomixer.link_filtered(&audiorate, &sample_rate_filter)?;
+    bin.add_many(&[&liveadder, &audiorate, &audioconvert, &queue])?;
+    liveadder.link_filtered(&audiorate, &sample_rate_filter)?;
     gst::Element::link_many(&[&audiorate, &audioconvert, &queue])?;
 
     for device_name in device_names {
         let pulsesrc = utils::make_element("pulsesrc")?;
         pulsesrc.set_property("device", device_name);
-        pulsesrc.set_property("provide-clock", false);
         let audioresample = utils::make_element("audioresample")?;
         let capsfilter = utils::make_element("capsfilter")?;
         capsfilter.set_property("caps", &sample_rate_filter);
@@ -332,13 +331,13 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
         bin.add_many(&[&pulsesrc, &audioresample, &capsfilter])?;
         gst::Element::link_many(&[&pulsesrc, &audioresample, &capsfilter])?;
 
-        let audiomixer_sink_pad = audiomixer
+        let liveadder_sink_pad = liveadder
             .request_pad_simple("sink_%u")
             .context("Failed to request sink_%u pad from liveadder")?;
         capsfilter
             .static_pad("src")
             .unwrap()
-            .link(&audiomixer_sink_pad)?;
+            .link(&liveadder_sink_pad)?;
     }
 
     let queue_pad = queue.static_pad("src").unwrap();
