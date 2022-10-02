@@ -39,6 +39,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.2.2" date="2022-10-01">
+      <description>
+        <p>This release contains minor fixes:</p>
+        <ul>
+          <li>Fixed error dialog showing when show uri is simply cancelled</li>
+          <li>Fixed more audio issues</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2.1" date="2022-10-01">
       <description>
         <p>This release contains minor fixes:</p>
