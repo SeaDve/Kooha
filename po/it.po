@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-09-30 08:04+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2022-10-02 02:33+0000\n"
+"Last-Translator: Andrea Brandi <git@andreabrandi.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -312,7 +312,7 @@ msgstr "Mostra in File"
 
 #: src/area_selector/mod.rs:317
 msgid "approx."
-msgstr "approx."
+msgstr "circa"
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
