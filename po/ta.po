@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-09-28 03:41+0000\n"
+"PO-Revision-Date: 2022-10-04 14:23+0000\n"
 "Last-Translator: K.B.Dharun Krishna <kbdharunkrishna@gmail.com>\n"
-"Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/"
-">\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/>"
+"\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,7 +84,7 @@ msgstr "டேவ் பேட்ரிக் கேபர்டோ"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "பகுதியைத் தேர்ந்தெடுக்கவும்"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -93,11 +93,11 @@ msgstr "ரத்துசெய்"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "முடிந்தது"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "தேர்வை மீட்டமைக்கவும்"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -299,7 +299,7 @@ msgstr "கோப்புகளில் காட்டு"
 
 #: src/area_selector/mod.rs:317
 msgid "approx."
-msgstr ""
+msgstr "தோராயமாக."
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
