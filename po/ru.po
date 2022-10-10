@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-09-30 08:04+0000\n"
+"PO-Revision-Date: 2022-10-10 18:06+0000\n"
 "Last-Translator: Daudix UFO <ddaudix@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
@@ -149,7 +149,7 @@ msgstr "Открыть меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr "Показать настройки"
+msgstr "Показать параметры"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
