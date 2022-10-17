@@ -7,24 +7,27 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-10-17 06:28+0000\n"
+"Last-Translator: cubells <vicent@vcubells.net>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/kooha/pot-file/"
+"ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Grava la pantalla elegantment"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -83,7 +86,7 @@ msgstr ""
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel·la"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
@@ -95,7 +98,7 @@ msgstr ""
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "Generals"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
@@ -131,11 +134,11 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Mostra les dreceres"
 
 #: data/resources/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr ""
+msgstr "Surt"
 
 #: data/resources/ui/shortcuts.ui:39 src/window.rs:342
 msgid "Recording"
@@ -223,7 +226,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
-msgstr ""
+msgstr "Atura"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
@@ -247,7 +250,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Dreceres de teclat"
 
 #: data/resources/ui/window.ui:305
 msgid "_About Kooha"
@@ -260,7 +263,7 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
 msgid "translator-credits"
-msgstr ""
+msgstr "Adolfo Jayme Barrientos &lt;fitojb@ubuntu.com&gt;, 2022"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
@@ -272,7 +275,7 @@ msgstr ""
 
 #: src/about.rs:49
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/about.rs:51
 msgid "Translate"
