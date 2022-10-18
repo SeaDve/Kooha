@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-10-17 06:28+0000\n"
+"PO-Revision-Date: 2022-10-18 11:07+0000\n"
 "Last-Translator: cubells <vicent@vcubells.net>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ca/>\n"
@@ -90,31 +90,31 @@ msgstr "Cancel·la"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Fet"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Reinicia la selecció"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "Generals"
+msgstr "General"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Retard (en segons)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Carpeta de gravacions"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Vídeo"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
@@ -202,15 +202,15 @@ msgstr ""
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
-msgstr ""
+msgstr "Mostra el punter"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Amaga el punter"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Comença la gravació"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -222,7 +222,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Atura la gravació"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -230,15 +230,15 @@ msgstr "Atura"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Pausa la gravació"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr ""
+msgstr "Inicia la gravació en …"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Canceŀla la gravació"
 
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
@@ -279,7 +279,7 @@ msgstr "GitHub"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr ""
+msgstr "Tradueix"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
