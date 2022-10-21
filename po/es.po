@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-08-23 12:15+0000\n"
+"PO-Revision-Date: 2022-10-21 12:03+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -60,11 +60,11 @@ msgstr "Las características principales de Kooha incluyen lo siguiente:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Graba el micrófono, el audio del escritorio o ambos a la vez"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Compatibilidad con los formatos WebM, MP4, GIF y Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
