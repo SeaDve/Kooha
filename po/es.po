@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-10-21 12:03+0000\n"
+"PO-Revision-Date: 2022-10-22 13:07+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -69,19 +69,22 @@ msgstr "📼 Compatibilidad con los formatos WebM, MP4, GIF y Matroska"
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 msgstr ""
+"🖥️ Selecciona un monitor, una ventana o una parte de la pantalla para grabar"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Selección de múltiples fuentes"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Ubicación de guardado, visibilidad del puntero, tasa de fotogramas y "
+"retardo configurables"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Codificación experimental acelerada por hardware"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -89,7 +92,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Seleccionar área"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -98,11 +101,11 @@ msgstr "Cancelar"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Reiniciar selección"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -110,27 +113,27 @@ msgstr "General"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Retardo (segundos)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Carpeta de grabaciones"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Vídeo"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Tasa de fotogramas"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Esta tasa de fotogramas puede causar problemas de rendimiento."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -138,7 +141,7 @@ msgstr "Abrir menú"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Mostrar preferencias"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -170,7 +173,7 @@ msgstr "Ajustes"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Conmutar el audio del escritorio"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -194,11 +197,11 @@ msgstr "Capturar una selección de la pantalla"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Activar el audio de escritorio"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Desactivar el audio del escritorio"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -254,7 +257,7 @@ msgstr "Purgando…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferencias"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -304,7 +307,7 @@ msgstr "Mostrar en Archivos"
 
 #: src/area_selector/mod.rs:317
 msgid "approx."
-msgstr ""
+msgstr "aprox."
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -320,7 +323,7 @@ msgstr "Fallo en la conexión con el demonio PulseAudio"
 
 #: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Este formato es experimental y no está soportado."
 
 #: src/preferences_window.rs:257
 msgid "None"
@@ -340,31 +343,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Ningún perfil activo"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -387,7 +390,7 @@ msgstr "No se ha encontrado ninguna fuente de altavoces de sobremesa"
 
 #: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Es posible que no esté instalado un plugin de GStreamer."
 
 #: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
@@ -461,17 +464,19 @@ msgstr "Ayuda"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "¿Abrir preferencias?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Es posible que el formato seleccionado anteriormente no esté disponible. "
+"Abra las preferencias y seleccione un formato para seguir grabando."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Más tarde"
 
 #: src/window.rs:292
 msgid "Open"

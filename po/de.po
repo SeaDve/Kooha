@@ -7,13 +7,14 @@
 # Nico <d3sox@protonmail.com>, 2021, 2022.
 # Milo Ivir <mail@milotype.de>, 2021.
 # sal0max <msal.coding@gmail.com>, 2022.
+# Schlömi <a.schloemi@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-08-29 09:18+0000\n"
-"Last-Translator: Nico <d3sox@protonmail.com>\n"
+"PO-Revision-Date: 2022-10-22 13:07+0000\n"
+"Last-Translator: Schlömi <a.schloemi@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -91,7 +92,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Bereich auswählen"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -100,11 +101,11 @@ msgstr "Abbrechen"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Fertig"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Auswahl zurücksetzen"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -112,27 +113,27 @@ msgstr "Allgemeines"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Verzögerung (Sekunden)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Aufnahmen Speicherort"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Bildrate"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Diese Bildrate könnte Leistungsprobleme verursachen."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -140,7 +141,7 @@ msgstr "Menü öffnen"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Zeige Einstellungen"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -172,7 +173,7 @@ msgstr "Einstellungen"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Desktop Audio umschalten"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -196,11 +197,11 @@ msgstr "Auswahl des Bildschirms aufnehmen"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Desktop Audio aktivieren"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Desktop Audio deaktivieren"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -256,7 +257,7 @@ msgstr "Abschließen…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Einstellungen"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -306,7 +307,7 @@ msgstr "In Dateien anzeigen"
 
 #: src/area_selector/mod.rs:317
 msgid "approx."
-msgstr ""
+msgstr "geschätzt"
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -322,7 +323,7 @@ msgstr "Verbindung zum PulseAudio-Daemon fehlgeschlagen"
 
 #: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Dieses Format ist experimentell und nicht unterstützt."
 
 #: src/preferences_window.rs:257
 msgid "None"
@@ -346,7 +347,7 @@ msgstr ""
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
@@ -366,7 +367,7 @@ msgstr ""
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Kein aktives Profil"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -389,7 +390,7 @@ msgstr "Keine Desktop-Lautsprecherquelle gefunden"
 
 #: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Eine GStreamer Erweiterung ist womöglich nicht installiert."
 
 #: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
@@ -463,7 +464,7 @@ msgstr "Hilfe"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Einstellungen öffnen?"
 
 #: src/window.rs:286
 msgid ""
@@ -473,11 +474,11 @@ msgstr ""
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Später"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 #: src/window.rs:350
 msgid "Paused"
