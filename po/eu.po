@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-09-03 18:18+0000\n"
+"PO-Revision-Date: 2022-10-26 20:07+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/kooha/pot-file/eu/"
 ">\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -56,28 +56,30 @@ msgstr "Kooharen ezaugarri nagusiak hauek dira:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Grabatu mikrofonoa, mahaigaineko audioa edo biak batera"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Bateragarritasuna WebM, MP4, GIF eta Matroska formatuekin"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Aukeratu monitore bat, leiho bat edo pantailaren zati bat grabatzeko"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Hainbat iturri hautatu"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Gordetzearen konfiguragarrien kokapena, punteroaren ikuspena, fotogramen "
+"tasa eta atzerapenak"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Hardware bidezko kodetze esperimental azeleratua"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -85,7 +87,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Aukeratu arloa"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -94,11 +96,11 @@ msgstr "Ezeztatu"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Eginda"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Berrabiarazi hautaketa"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -106,27 +108,27 @@ msgstr "Orokorra"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Atzerapena (segundoak)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Grabazioen karpeta"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Bideoa"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Formatua"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Fotogramen tasa"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Fotogramen tasa horrek errendimendu-arazoak eragin ditzake."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -134,7 +136,7 @@ msgstr "Ireki menua"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Erakutsi ezarpenak"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -166,7 +168,7 @@ msgstr "Doikuntzak"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Mahaigaineko audioa aldatu"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -190,11 +192,11 @@ msgstr "Pantaila-aukera bat atzeman"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Mahaigaineko audioa aktibatu"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Desaktibatu mahaigaineko audioa"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -250,7 +252,7 @@ msgstr "Purgatzen…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Ezarpenak"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -300,7 +302,7 @@ msgstr "Artxiboetan erakutsi"
 
 #: src/area_selector/mod.rs:317
 msgid "approx."
-msgstr ""
+msgstr "gutxi gorabehera"
 
 #: src/audio_device.rs:53 src/audio_device.rs:187
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -316,7 +318,7 @@ msgstr "Akatsa PulseAudio deabruarekiko konexioan"
 
 #: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Formatu hau esperimentala da eta ezin da jasan."
 
 #: src/preferences_window.rs:257
 msgid "None"
@@ -336,31 +338,31 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Ez dago profil aktiborik"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -383,7 +385,7 @@ msgstr "Ez da mahaigaineko bozgorailu-iturririk aurkitu"
 
 #: src/recording.rs:250
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Baliteke GStreamer plugin bat instalatuta ez egotea."
 
 #: src/recording.rs:274 src/recording.rs:496
 msgid "Make sure that the saving location exists and is accessible."
@@ -457,21 +459,23 @@ msgstr "Laguntza"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Ezarpenak ireki?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Baliteke aurretik hautatutako formatua eskuragarri ez egotea. Ireki "
+"ezarpenak eta aukeratu formatu bat grabatzen jarraitzeko."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Geroago"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "Ireki"
 
 #: src/window.rs:350
 msgid "Paused"

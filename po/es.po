@@ -8,13 +8,14 @@
 # Dave Patrick <davecruz48@gmail.com>, 2021.
 # Pointify Starrcat <pointify@e.email>, 2021.
 # Chardinson De la cruz Ventura <chardinsondelacruzventura@gmail.com>, 2021.
+# Sergio Varela <sergitroll9@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-10-22 13:07+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"PO-Revision-Date: 2022-10-26 20:07+0000\n"
+"Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -60,7 +61,7 @@ msgstr "Las características principales de Kooha incluyen lo siguiente:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙️ Graba el micrófono, el audio del escritorio o ambos a la vez"
+msgstr "🎙️ Graba el micrófono, el audio del escritorio, o ambos a la vez"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -173,7 +174,7 @@ msgstr "Ajustes"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr "Conmutar el audio del escritorio"
+msgstr "Cambiar el audio del escritorio"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
