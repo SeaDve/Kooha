@@ -8,13 +8,14 @@
 # Milo Ivir <mail@milotype.de>, 2021.
 # sal0max <msal.coding@gmail.com>, 2022.
 # Schlömi <a.schloemi@gmail.com>, 2022.
+# Nils Martel <nilsmartel@yahoo.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-10-22 13:07+0000\n"
-"Last-Translator: Schlömi <a.schloemi@gmail.com>\n"
+"PO-Revision-Date: 2022-11-06 19:04+0000\n"
+"Last-Translator: Nils Martel <nilsmartel@yahoo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -63,28 +64,31 @@ msgstr "Zu den Hauptmerkmalen von Kooha gehören:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "Nehme das Mikrofon, den Computer, oder beides gleichzeitig auf"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "Unterstützung für WebM, MP4, GIF und das Matroska Format"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 msgstr ""
+"Wähle einen Bildschirm, ein Fenster oder eine Ausschnitt zum Aufnehmen aus"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "Auswahl aus mehreren Quellen"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"Konfigurieren Sie den Speicherort, die Sichtbarkeit des Zeigers, die "
+"Bildrate und die Verzögerung"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "Experimentelles, hardwarebeschleunigtes Kodieren"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -343,7 +347,7 @@ msgstr "MP4"
 
 #: src/profile.rs:307
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:340
 msgid "WebM VP9"
@@ -351,19 +355,19 @@ msgstr "WebM VP9"
 
 #: src/profile.rs:364
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:385
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:400
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:415
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
@@ -471,6 +475,8 @@ msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Das vorher ausgewählte Format ist eventuelle nicht verfügbar. Öffnen Sie die "
+"Einstellungen (Strg+,) und wählen Sie ein Format um weiter aufzunehmen"
 
 #: src/window.rs:291
 msgid "Later"
