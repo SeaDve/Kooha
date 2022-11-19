@@ -150,36 +150,8 @@ impl Settings {
 mod tests {
     use super::*;
 
-    use std::{env, process::Command, sync::Once};
-
-    fn setup_schema() {
-        static INIT: Once = Once::new();
-
-        INIT.call_once(|| {
-            let schema_dir = concat!(env!("CARGO_MANIFEST_DIR"), "/data");
-
-            let output = Command::new("glib-compile-schemas")
-                .arg(schema_dir)
-                .output()
-                .unwrap();
-
-            if !output.status.success() {
-                panic!(
-                    "Failed to compile GSchema for tests; stdout: {}; stderr: {}",
-                    String::from_utf8_lossy(&output.stdout),
-                    String::from_utf8_lossy(&output.stderr)
-                );
-            }
-
-            env::set_var("GSETTINGS_SCHEMA_DIR", schema_dir);
-            env::set_var("GSETTINGS_BACKEND", "memory");
-        });
-    }
-
     #[test]
     fn default_profile() {
-        setup_schema();
-
         assert!(Settings::default().profile().is_some());
         assert!(Settings::default().profile().unwrap().supports_audio());
     }
