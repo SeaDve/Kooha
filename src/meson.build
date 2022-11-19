@@ -59,6 +59,7 @@ test(
     cargo_options,
     '--',
     '--nocapture',
+    '--test-threads=1',
   ],
   env: [
     'RUST_BACKTRACE=1',
