@@ -83,7 +83,8 @@ mod test {
     // Run once before tests are executed.
     #[ctor]
     fn setup_schema() {
-        let schema_dir = concat!(env!("CARGO_MANIFEST_DIR"), "/data");
+        let schema_dir = &env::var("GSETTINGS_SCHEMA_DIR")
+            .unwrap_or(concat!(env!("CARGO_MANIFEST_DIR"), "/data").into());
 
         let output = Command::new("glib-compile-schemas")
             .arg(schema_dir)

@@ -63,6 +63,7 @@ test(
   ],
   env: [
     'RUST_BACKTRACE=1',
+    'GSETTINGS_SCHEMA_DIR=@0@/data'.format(meson.project_build_root()),
     cargo_env
   ],
   timeout: 300, # give cargo more time
