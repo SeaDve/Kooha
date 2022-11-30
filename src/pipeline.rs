@@ -324,6 +324,7 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
     for device_name in device_names {
         let pulsesrc = utils::make_element("pulsesrc")?;
         pulsesrc.set_property("device", device_name);
+        pulsesrc.set_property("provide-clock", false);
         let audioresample = utils::make_element("audioresample")?;
         let capsfilter = utils::make_element("capsfilter")?;
         capsfilter.set_property("caps", &sample_rate_filter);
