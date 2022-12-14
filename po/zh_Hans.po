@@ -9,13 +9,14 @@
 # joe <ourmicroid@outlook.com>, 2022.
 # lumingzh <lumingzh@qq.com>, 2022.
 # Hugel <qihu@nfschina.com>, 2022.
+# Leedsgarden <lkw1411026824@outlook.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 12:27+0800\n"
-"PO-Revision-Date: 2022-08-26 07:18+0000\n"
-"Last-Translator: Hugel <qihu@nfschina.com>\n"
+"PO-Revision-Date: 2022-12-14 13:48+0000\n"
+"Last-Translator: Leedsgarden <lkw1411026824@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -60,32 +61,32 @@ msgstr "Kooha 的主要特性有："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ 可以同时录制麦克风，电脑音频"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 支持MP4、GIF、WebM、MKV、MKA和MKS格式"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ 你可以录制桌面，窗口或者屏幕的指定部分"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 你可以同时启用多个录制源"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr ""
+msgstr "🛠️ 你可以配置光标是否可见，帧率的大小和延迟的高低，将配置文件保存在本地"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 尝试使用硬件加速编码"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
@@ -98,7 +99,7 @@ msgstr "取消"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
