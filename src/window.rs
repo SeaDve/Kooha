@@ -61,10 +61,8 @@ mod imp {
             ToggleButton::static_type();
             klass.bind_template();
 
-            klass.install_action("win.toggle-record", None, move |obj, _, _| {
-                utils::spawn(clone!(@weak obj => async move {
-                    obj.toggle_record().await;
-                }));
+            klass.install_action_async("win.toggle-record", None, |obj, _, _| async move {
+                obj.toggle_record().await;
             });
 
             klass.install_action("win.toggle-pause", None, move |obj, _, _| {
