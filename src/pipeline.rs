@@ -302,13 +302,13 @@ pub fn pipewiresrc_bin(
 ///
 /// pulsesrc1 -> audioresample -> |
 ///                               |
-/// pulsesrc2 -> audioresample -> | -> liveadder -> audiorate -> audioconvert -> queue
+/// pulsesrc2 -> audioresample -> | -> audiomixer -> audiorate -> audioconvert -> queue
 ///                               |
 /// pulsesrcn -> audioresample -> |
 fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let liveadder = utils::make_element("liveadder")?;
+    let audiomixer = utils::make_element("audiomixer")?;
     let audiorate = utils::make_element("audiorate")?;
     let audioconvert = utils::make_element("audioconvert")?;
     let queue = utils::make_element("queue")?;
@@ -317,8 +317,8 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
         .field("rate", DEFAULT_AUDIO_SAMPLE_RATE)
         .build();
 
-    bin.add_many(&[&liveadder, &audiorate, &audioconvert, &queue])?;
-    liveadder.link_filtered(&audiorate, &sample_rate_filter)?;
+    bin.add_many(&[&audiomixer, &audiorate, &audioconvert, &queue])?;
+    audiomixer.link_filtered(&audiorate, &sample_rate_filter)?;
     gst::Element::link_many(&[&audiorate, &audioconvert, &queue])?;
 
     for device_name in device_names {
@@ -332,13 +332,13 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
         bin.add_many(&[&pulsesrc, &audioresample, &capsfilter])?;
         gst::Element::link_many(&[&pulsesrc, &audioresample, &capsfilter])?;
 
-        let liveadder_sink_pad = liveadder
+        let audiomixer_sink_pad = audiomixer
             .request_pad_simple("sink_%u")
-            .context("Failed to request sink_%u pad from liveadder")?;
+            .context("Failed to request sink_%u pad from audiomixer")?;
         capsfilter
             .static_pad("src")
             .unwrap()
-            .link(&liveadder_sink_pad)?;
+            .link(&audiomixer_sink_pad)?;
     }
 
     let queue_pad = queue.static_pad("src").unwrap();
