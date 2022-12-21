@@ -36,18 +36,20 @@ mod imp {
     impl ObjectImpl for Application {}
 
     impl ApplicationImpl for Application {
-        fn activate(&self, obj: &Self::Type) {
-            self.parent_activate(obj);
+        fn activate(&self) {
+            self.parent_activate();
 
-            if let Some(window) = obj.main_window() {
+            if let Some(window) = self.obj().main_window() {
                 window.present();
             }
         }
 
-        fn startup(&self, obj: &Self::Type) {
-            self.parent_startup(obj);
+        fn startup(&self) {
+            self.parent_startup();
 
             gtk::Window::set_default_icon_name(APP_ID);
+
+            let obj = self.obj();
 
             obj.setup_gactions();
             obj.setup_accels();
@@ -71,7 +73,6 @@ impl Application {
             ("flags", &gio::ApplicationFlags::empty()),
             ("resource-base-path", &Some("/io/github/seadve/Kooha/")),
         ])
-        .expect("Failed to create Application.")
     }
 
     pub fn settings(&self) -> &Settings {

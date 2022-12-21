@@ -135,10 +135,10 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecObject::builder("paintable", gdk::Paintable::static_type())
+                    glib::ParamSpecObject::builder::<gdk::Paintable>("paintable")
                         .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
                         .build(),
-                    glib::ParamSpecBoxed::builder("selection", Selection::static_type())
+                    glib::ParamSpecBoxed::builder::<Selection>("selection")
                         .flags(glib::ParamFlags::READABLE)
                         .build(),
                 ]
@@ -147,13 +147,9 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            let obj = self.obj();
+
             match pspec.name() {
                 "paintable" => {
                     let paintable: Option<gdk::Paintable> = value.get().unwrap();
@@ -163,7 +159,9 @@ mod imp {
             }
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.obj();
+
             match pspec.name() {
                 "paintable" => obj.paintable().to_value(),
                 "selection" => obj.selection().to_value(),
@@ -171,8 +169,10 @@ mod imp {
             }
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            let obj = self.obj();
 
             let motion_controller = gtk::EventControllerMotion::new();
             motion_controller.connect_enter(clone!(@weak obj => move |controller, x, y| {
@@ -201,21 +201,16 @@ mod imp {
     }
 
     impl WidgetImpl for ViewPort {
-        fn request_mode(&self, _obj: &Self::Type) -> gtk::SizeRequestMode {
+        fn request_mode(&self) -> gtk::SizeRequestMode {
             gtk::SizeRequestMode::HeightForWidth
         }
 
-        fn measure(
-            &self,
-            obj: &Self::Type,
-            orientation: gtk::Orientation,
-            for_size: i32,
-        ) -> (i32, i32, i32, i32) {
+        fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
             if for_size == 0 {
                 return (0, 0, 0, 0);
             }
 
-            let paintable = if let Some(paintable) = obj.paintable() {
+            let paintable = if let Some(paintable) = self.obj().paintable() {
                 paintable
             } else {
                 return (0, 0, -1, -1);
@@ -240,7 +235,9 @@ mod imp {
             }
         }
 
-        fn snapshot(&self, obj: &Self::Type, snapshot: &gtk::Snapshot) {
+        fn snapshot(&self, snapshot: &gtk::Snapshot) {
+            let obj = self.obj();
+
             if let Some(paintable) = obj.paintable() {
                 let widget_width = obj.width() as f64;
                 let widget_height = obj.height() as f64;
@@ -270,7 +267,7 @@ mod imp {
 
                 snapshot.save();
                 snapshot.translate(&Point::new(x as f32, y as f32));
-                paintable.snapshot(snapshot.as_ref(), width, height);
+                paintable.snapshot(snapshot, width, height);
                 snapshot.restore();
             }
 
@@ -358,7 +355,7 @@ glib::wrapper! {
 
 impl ViewPort {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create KoohaViewPort.")
+        glib::Object::new(&[])
     }
 
     pub fn set_paintable(&self, paintable: Option<&impl IsA<gdk::Paintable>>) {

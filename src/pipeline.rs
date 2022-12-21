@@ -71,14 +71,18 @@ impl PipelineBuilder {
     pub fn build(&self) -> Result<gst::Pipeline> {
         let file_path = new_recording_path(&self.saving_location, self.profile.file_extension());
 
-        let queue = utils::make_named_element("queue", "sinkqueue")?;
-        let filesink = utils::make_named_element("filesink", "filesink")?;
-        filesink.set_property(
-            "location",
-            file_path
-                .to_str()
-                .context("Could not convert file path to string")?,
-        );
+        let queue = gst::ElementFactory::make("queue")
+            .name("sinkqueue")
+            .build()?;
+        let filesink = gst::ElementFactory::make("filesink")
+            .name("filesink")
+            .property(
+                "location",
+                file_path
+                    .to_str()
+                    .context("Could not convert file path to string")?,
+            )
+            .build()?;
 
         let pipeline = gst::Pipeline::new(None);
         pipeline.add_many(&[&queue, &filesink])?;
@@ -143,26 +147,28 @@ impl PipelineBuilder {
 }
 
 fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
-    let src = utils::make_element("pipewiresrc")?;
-    src.set_property("fd", &fd);
-    src.set_property("path", path);
-    src.set_property("do-timestamp", true);
-    src.set_property("keepalive-time", 1000);
-    src.set_property("resend-last", true);
-
     // Workaround copied from https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/d32c03488fcf6cdb0ca2e99b0ed6ade078460deb
     let needs_copy = gst::Registry::get().check_feature_version("pipewiresrc", 0, 3, 57);
-    src.set_property("always-copy", needs_copy);
+
+    let src = gst::ElementFactory::make("pipewiresrc")
+        .property("fd", fd)
+        .property("path", path)
+        .property("do-timestamp", true)
+        .property("keepalive-time", 1000)
+        .property("resend-last", true)
+        .property("always-copy", needs_copy)
+        .build()?;
 
     Ok(src)
 }
 
 fn videoconvert_with_default() -> Result<gst::Element> {
-    let conv = utils::make_element("videoconvert")?;
-    conv.set_property("chroma-mode", gst_video::VideoChromaMode::None);
-    conv.set_property("dither", gst_video::VideoDitherMethod::None);
-    conv.set_property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly);
-    conv.set_property("n-threads", utils::ideal_thread_count());
+    let conv = gst::ElementFactory::make("videoconvert")
+        .property("chroma-mode", gst_video::VideoChromaMode::None)
+        .property("dither", gst_video::VideoDitherMethod::None)
+        .property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly)
+        .property("n-threads", utils::ideal_thread_count())
+        .build()?;
     Ok(conv)
 }
 
@@ -216,11 +222,12 @@ fn videocrop_compute(data: &SelectAreaData) -> Result<gst::Element> {
     tracing::debug!(top_crop, left_crop, right_crop, bottom_crop);
 
     // x264enc requires even resolution.
-    let crop = utils::make_element("videocrop")?;
-    crop.set_property("top", top_crop);
-    crop.set_property("left", left_crop);
-    crop.set_property("right", right_crop);
-    crop.set_property("bottom", bottom_crop);
+    let crop = gst::ElementFactory::make("videocrop")
+        .property("top", top_crop)
+        .property("left", left_crop)
+        .property("right", right_crop)
+        .property("bottom", bottom_crop)
+        .build()?;
     Ok(crop)
 }
 
@@ -239,15 +246,15 @@ pub fn pipewiresrc_bin(
 ) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let compositor = utils::make_element("compositor")?;
+    let compositor = gst::ElementFactory::make("compositor").build()?;
     let videoconvert = videoconvert_with_default()?;
-    let queue = utils::make_element("queue")?;
+    let queue = gst::ElementFactory::make("queue").build()?;
 
     bin.add_many(&[&compositor, &videoconvert, &queue])?;
     compositor.link(&videoconvert)?;
 
     if let Some(data) = select_area_data {
-        let videoscale = utils::make_element("videoscale")?;
+        let videoscale = gst::ElementFactory::make("videoscale").build()?;
         let videocrop = videocrop_compute(data)?;
 
         // x264enc requires even resolution.
@@ -272,9 +279,10 @@ pub fn pipewiresrc_bin(
     let mut last_pos = 0;
     for stream in streams {
         let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
-        let videorate = utils::make_element("videorate")?;
-        let videorate_capsfilter = utils::make_element("capsfilter")?;
-        videorate_capsfilter.set_property("caps", &videorate_filter);
+        let videorate = gst::ElementFactory::make("videorate").build()?;
+        let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
+            .property("caps", &videorate_filter)
+            .build()?;
 
         bin.add_many(&[&pipewiresrc, &videorate, &videorate_capsfilter])?;
         gst::Element::link_many(&[&pipewiresrc, &videorate, &videorate_capsfilter])?;
@@ -308,10 +316,10 @@ pub fn pipewiresrc_bin(
 fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::new(None);
 
-    let audiomixer = utils::make_element("audiomixer")?;
-    let audiorate = utils::make_element("audiorate")?;
-    let audioconvert = utils::make_element("audioconvert")?;
-    let queue = utils::make_element("queue")?;
+    let audiomixer = gst::ElementFactory::make("audiomixer").build()?;
+    let audiorate = gst::ElementFactory::make("audiorate").build()?;
+    let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
+    let queue = gst::ElementFactory::make("queue").build()?;
 
     let sample_rate_filter = gst::Caps::builder("audio/x-raw")
         .field("rate", DEFAULT_AUDIO_SAMPLE_RATE)
@@ -322,12 +330,14 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
     gst::Element::link_many(&[&audiorate, &audioconvert, &queue])?;
 
     for device_name in device_names {
-        let pulsesrc = utils::make_element("pulsesrc")?;
-        pulsesrc.set_property("device", device_name);
-        pulsesrc.set_property("provide-clock", false);
-        let audioresample = utils::make_element("audioresample")?;
-        let capsfilter = utils::make_element("capsfilter")?;
-        capsfilter.set_property("caps", &sample_rate_filter);
+        let pulsesrc = gst::ElementFactory::make("pulsesrc")
+            .property("device", device_name)
+            .property("provide-clock", false)
+            .build()?;
+        let audioresample = gst::ElementFactory::make("audioresample").build()?;
+        let capsfilter = gst::ElementFactory::make("capsfilter")
+            .property("caps", &sample_rate_filter)
+            .build()?;
 
         bin.add_many(&[&pulsesrc, &audioresample, &capsfilter])?;
         gst::Element::link_many(&[&pulsesrc, &audioresample, &capsfilter])?;

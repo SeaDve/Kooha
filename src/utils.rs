@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Context, Result};
+use anyhow::{anyhow, Result};
 use gtk::{
     gio,
     glib::{self, prelude::*},
@@ -51,22 +51,6 @@ pub fn ideal_thread_count() -> u32 {
 
 pub fn is_experimental_mode() -> bool {
     env::var("KOOHA_EXPERIMENTAL").map_or(false, |value| value == "1")
-}
-
-/// Helper function for more helpful error messages when failing
-/// to make an element.
-pub fn make_element(factory_name: &str) -> Result<gst::Element> {
-    find_element_factory(factory_name)?
-        .create(None)
-        .with_context(|| anyhow!("Failed to create element instance"))
-}
-
-/// Helper function for more helpful error messages when failing
-/// to make an element.
-pub fn make_named_element(factory_name: &str, name: &str) -> Result<gst::Element> {
-    find_element_factory(factory_name)?
-        .create(Some(name))
-        .with_context(|| anyhow!("Failed to create element instance"))
 }
 
 /// Helper function for more helpful error messages when failed to find

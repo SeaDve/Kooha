@@ -85,7 +85,7 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecBoxed::builder("state", State::static_type())
+                    glib::ParamSpecBoxed::builder::<State>("state")
                         .flags(glib::ParamFlags::READABLE)
                         .build(),
                     glib::ParamSpecUInt64::builder("duration")
@@ -98,7 +98,9 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.obj();
+
             match pspec.name() {
                 "state" => obj.state().to_value(),
                 "duration" => obj.duration().to_value(),
@@ -108,18 +110,15 @@ mod imp {
 
         fn signals() -> &'static [glib::subclass::Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder(
-                    "finished",
-                    &[BoxedResult::static_type().into()],
-                    <()>::static_type().into(),
-                )
-                .build()]
+                vec![Signal::builder("finished")
+                    .param_types([BoxedResult::static_type()])
+                    .build()]
             });
 
             SIGNALS.as_ref()
         }
 
-        fn dispose(&self, obj: &Self::Type) {
+        fn dispose(&self) {
             if let Some(timer) = self.timer.take() {
                 timer.cancel();
             }
@@ -132,7 +131,7 @@ mod imp {
                 let _ = pipeline.bus().unwrap().remove_watch();
             }
 
-            obj.close_session();
+            self.obj().close_session();
 
             if let Some(source_id) = self.duration_source_id.take() {
                 source_id.remove();
@@ -147,7 +146,7 @@ glib::wrapper! {
 
 impl Recording {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create Recording.")
+        glib::Object::new(&[])
     }
 
     pub async fn start(&self, parent: Option<&impl IsA<gtk::Window>>, settings: &Settings) {
@@ -472,7 +471,7 @@ impl Recording {
         let imp = self.imp();
 
         match message.view() {
-            MessageView::Error(ref e) => {
+            MessageView::Error(e) => {
                 tracing::debug!(state = ?self.state(), "Received error at bus");
 
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {

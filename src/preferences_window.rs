@@ -50,9 +50,10 @@ mod imp {
     }
 
     impl ObjectImpl for PreferencesWindow {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
 
+            let obj = self.obj();
             let settings = utils::app_settings();
 
             self.profile_row
@@ -80,12 +81,8 @@ mod imp {
                     .map(BoxedProfile::new)
                     .collect::<Vec<_>>(),
             );
-            let filter = gtk::BoolFilter::new(Some(&gtk::ClosureExpression::new::<
-                bool,
-                &[gtk::Expression],
-                _,
-            >(
-                &[],
+            let filter = gtk::BoolFilter::new(Some(&gtk::ClosureExpression::new::<bool>(
+                &[] as &[&gtk::Expression],
                 closure!(|profile: BoxedProfile| {
                     profile.get().map_or(true, |profile| profile.is_available())
                 }),
@@ -142,7 +139,7 @@ glib::wrapper! {
 
 impl PreferencesWindow {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create PreferencesWindow.")
+        glib::Object::new(&[])
     }
 
     fn update_file_chooser_button(&self) {
@@ -174,7 +171,7 @@ impl PreferencesWindow {
             .unwrap()
             .into_iter()
             .position(|item| {
-                let profile = item.downcast::<BoxedProfile>().unwrap();
+                let profile = item.unwrap().downcast::<BoxedProfile>().unwrap();
 
                 match (profile.get(), &active_profile) {
                     (Some(profile), Some(active_profile)) => profile.id() == active_profile.id(),
@@ -263,7 +260,7 @@ fn profile_row_factory(
             let selected_indicator = gtk::Image::from_icon_name("object-select-symbolic");
             hbox.append(&selected_indicator);
 
-            gtk::ClosureExpression::new::<f64, _, _>(
+            gtk::ClosureExpression::new::<f64>(
                 &[
                     profile_row.property_expression("selected-item"),
                     item_expression,

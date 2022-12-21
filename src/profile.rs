@@ -65,7 +65,7 @@ impl BoxedProfile {
     }
 
     fn new_inner(profile: Option<Box<dyn Profile>>) -> Self {
-        let this: Self = glib::Object::new(&[]).expect("Failed to create BoxedProfile.");
+        let this: Self = glib::Object::new(&[]);
         this.imp().0.set(profile).unwrap();
         this
     }
@@ -142,9 +142,10 @@ impl Profile for GifProfile {
             tracing::error!("Audio is not supported for Gif profile");
         }
 
-        let gifenc = utils::make_element("gifenc")?;
-        gifenc.set_property("repeat", -1);
-        gifenc.set_property("speed", 30);
+        let gifenc = gst::ElementFactory::make("gifenc")
+            .property("repeat", -1)
+            .property("speed", 30)
+            .build()?;
 
         pipeline.add(&gifenc)?;
 
@@ -208,8 +209,9 @@ macro_rules! encodebin_profile {
                 audio_src: Option<&gst::Element>,
                 sink: &gst::Element,
             ) -> Result<()> {
-                let encodebin = utils::make_element("encodebin")?;
-                encodebin.set_property("profile", $profile?);
+                let encodebin = gst::ElementFactory::make("encodebin")
+                    .property("profile", $profile?)
+                    .build()?;
 
                 pipeline.add(&encodebin)?;
 
@@ -559,9 +561,9 @@ mod tests {
 
         for profile in builtins() {
             let pipeline = gst::Pipeline::new(None);
-            let dummy_video_src = utils::make_element("fakesrc").unwrap();
-            let dummy_audio_src = utils::make_element("fakesrc").unwrap();
-            let dummy_sink = utils::make_element("fakesink").unwrap();
+            let dummy_video_src = gst::ElementFactory::make("fakesrc").build().unwrap();
+            let dummy_audio_src = gst::ElementFactory::make("fakesrc").build().unwrap();
+            let dummy_sink = gst::ElementFactory::make("fakesink").build().unwrap();
             pipeline
                 .add_many(&[&dummy_video_src, &dummy_audio_src, &dummy_sink])
                 .unwrap();

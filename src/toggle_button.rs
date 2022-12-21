@@ -49,13 +49,9 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            let obj = self.obj();
+
             match pspec.name() {
                 "default-icon-name" => {
                     let default_icon_name = value.get().unwrap();
@@ -83,7 +79,9 @@ mod imp {
             }
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.obj();
+
             match pspec.name() {
                 "default-icon-name" => obj.default_icon_name().to_value(),
                 "toggled-icon-name" => obj.toggled_icon_name().to_value(),
@@ -98,10 +96,13 @@ mod imp {
     impl ButtonImpl for ToggleButton {}
 
     impl ToggleButtonImpl for ToggleButton {
-        fn toggled(&self, obj: &Self::Type) {
+        fn toggled(&self) {
+            let obj = self.obj();
+
             obj.update_icon_name();
             obj.update_tooltip_text();
-            self.parent_toggled(obj);
+
+            self.parent_toggled();
         }
     }
 }
@@ -116,7 +117,7 @@ glib::wrapper! {
 
 impl ToggleButton {
     pub fn new() -> Self {
-        glib::Object::new(&[]).expect("Failed to create KoohaToggleButton.")
+        glib::Object::new(&[])
     }
 
     pub fn set_default_icon_name(&self, default_icon_name: &str) {

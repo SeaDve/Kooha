@@ -15,7 +15,7 @@ use once_cell::unsync::OnceCell;
 use std::{cell::RefCell, os::unix::prelude::RawFd};
 
 use self::view_port::{Selection, ViewPort};
-use crate::{cancelled::Cancelled, pipeline, screencast_session::Stream, utils};
+use crate::{cancelled::Cancelled, pipeline, screencast_session::Stream};
 
 const PREVIEW_FRAMERATE: u32 = 60;
 const ASSUMED_HEADER_BAR_HEIGHT: f64 = 47.0;
@@ -103,8 +103,10 @@ mod imp {
     }
 
     impl ObjectImpl for AreaSelector {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            let obj = self.obj();
 
             self.view_port
                 .connect_selection_notify(clone!(@weak obj => move |_| {
@@ -118,7 +120,7 @@ mod imp {
             obj.update_selection_ui();
         }
 
-        fn dispose(&self, _obj: &Self::Type) {
+        fn dispose(&self) {
             if let Some(pipeline) = self.pipeline.get() {
                 if let Err(err) = pipeline.set_state(gst::State::Null) {
                     tracing::warn!("Failed to set pipeline to Null: {}", err);
@@ -146,7 +148,7 @@ impl AreaSelector {
         fd: RawFd,
         streams: &[Stream],
     ) -> Result<Data> {
-        let this: Self = glib::Object::new(&[]).expect("Failed to create KoohaAreaSelector.");
+        let this: Self = glib::Object::new(&[]);
         let imp = this.imp();
 
         // Setup window size and transient for
@@ -156,8 +158,7 @@ impl AreaSelector {
             this.set_transient_for(Some(transient_for));
             this.set_modal(true);
 
-            let monitor_geometry = transient_for
-                .display()
+            let monitor_geometry = RootExt::display(transient_for)
                 .monitor_at_surface(&transient_for.surface())
                 .geometry();
             this.set_default_width(
@@ -174,7 +175,7 @@ impl AreaSelector {
         // Setup pipeline
         let pipeline = gst::Pipeline::new(None);
         let videosrc_bin = pipeline::pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
-        let sink = utils::make_element("gtk4paintablesink")?;
+        let sink = gst::ElementFactory::make("gtk4paintablesink").build()?;
         pipeline.add_many(&[videosrc_bin.upcast_ref(), &sink])?;
         videosrc_bin.link(&sink)?;
         imp.pipeline.set(pipeline.clone()).unwrap();

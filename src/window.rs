@@ -90,8 +90,10 @@ mod imp {
     }
 
     impl ObjectImpl for Window {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            let obj = self.obj();
 
             if PROFILE == "Devel" {
                 obj.add_css_class("devel");
@@ -119,7 +121,7 @@ glib::wrapper! {
 
 impl Window {
     pub fn new(app: &Application) -> Self {
-        glib::Object::new(&[("application", app)]).expect("Failed to create Window.")
+        glib::Object::new(&[("application", app)])
     }
 
     pub fn close(&self) -> Result<()> {

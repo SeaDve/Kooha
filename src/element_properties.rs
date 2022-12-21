@@ -2,7 +2,7 @@ use anyhow::{anyhow, Context, Result};
 use gst_pbutils::prelude::*;
 use gtk::glib::{
     self,
-    translate::{ToGlibPtr, UnsafeFrom},
+    translate::{IntoGlibPtr, ToGlibPtr, UnsafeFrom},
 };
 
 use crate::utils;
@@ -16,7 +16,7 @@ impl<P: IsA<gst_pbutils::EncodingProfile>> EncodingProfileExtManual for P {
         unsafe {
             gst_pbutils::ffi::gst_encoding_profile_set_element_properties(
                 self.as_ref().to_glib_none().0,
-                element_properties.into_inner().into_ptr(),
+                element_properties.into_inner().into_glib_ptr(),
             );
         }
     }
