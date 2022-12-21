@@ -210,9 +210,7 @@ mod imp {
                 return (0, 0, 0, 0);
             }
 
-            let paintable = if let Some(paintable) = self.obj().paintable() {
-                paintable
-            } else {
+            let Some(paintable) = self.obj().paintable() else {
                 return (0, 0, -1, -1);
             };
 
@@ -745,9 +743,7 @@ impl ViewPort {
 
         let point = Point::new(x, y);
 
-        let selection_rect = if let Some(selection) = self.selection() {
-            selection.rect()
-        } else {
+        let Some(selection) = self.selection() else {
             return CursorType::Crosshair;
         };
 
@@ -762,7 +758,7 @@ impl ViewPort {
             CursorType::SouthEastResize
         } else if bottom_left_handle.contains_point(&point) {
             CursorType::SouthWestResize
-        } else if selection_rect.contains_point(&point) {
+        } else if selection.rect().contains_point(&point) {
             CursorType::Move
         } else if top_left_handle
             .union(&top_right_handle)
@@ -792,9 +788,7 @@ impl ViewPort {
     fn update_selection_handles(&self) {
         let imp = self.imp();
 
-        let selection = if let Some(selection) = self.selection() {
-            selection
-        } else {
+        let Some(selection) = self.selection() else {
             imp.selection_handles.set(None);
             return;
         };

@@ -62,9 +62,7 @@ impl Settings {
                 return;
             }
 
-            let directory = if let Some(directory) = chooser.file().and_then(|file| file.path()) {
-                directory
-            } else {
+            let Some(directory) = chooser.file().and_then(|file| file.path()) else {
                 present_message(
                     &gettext("No folder selected"),
                     &gettext("Please choose a folder and try again."),

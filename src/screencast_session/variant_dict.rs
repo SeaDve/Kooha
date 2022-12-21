@@ -40,9 +40,8 @@ impl VariantDict {
     }
 
     pub fn get_optional<T: FromVariant>(&self, key: &str) -> Result<Option<T>> {
-        let variant = match self.0.get(key) {
-            Some(variant) => variant,
-            None => return Ok(None),
+        let Some(variant) = self.0.get(key) else {
+            return Ok(None);
         };
 
         let value = variant.get::<T>().ok_or_else(|| {
