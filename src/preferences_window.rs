@@ -139,7 +139,7 @@ glib::wrapper! {
 
 impl PreferencesWindow {
     pub fn new() -> Self {
-        glib::Object::new(&[])
+        glib::Object::builder().build()
     }
 
     fn update_file_chooser_button(&self) {

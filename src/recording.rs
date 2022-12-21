@@ -146,7 +146,7 @@ glib::wrapper! {
 
 impl Recording {
     pub fn new() -> Self {
-        glib::Object::new(&[])
+        glib::Object::builder().build()
     }
 
     pub async fn start(&self, parent: Option<&impl IsA<gtk::Window>>, settings: &Settings) {

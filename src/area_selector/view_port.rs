@@ -355,7 +355,7 @@ glib::wrapper! {
 
 impl ViewPort {
     pub fn new() -> Self {
-        glib::Object::new(&[])
+        glib::Object::builder().build()
     }
 
     pub fn set_paintable(&self, paintable: Option<&impl IsA<gdk::Paintable>>) {

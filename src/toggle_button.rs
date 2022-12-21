@@ -117,7 +117,7 @@ glib::wrapper! {
 
 impl ToggleButton {
     pub fn new() -> Self {
-        glib::Object::new(&[])
+        glib::Object::builder().build()
     }
 
     pub fn set_default_icon_name(&self, default_icon_name: &str) {

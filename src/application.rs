@@ -68,11 +68,10 @@ glib::wrapper! {
 
 impl Application {
     pub fn new() -> Self {
-        glib::Object::new(&[
-            ("application-id", &Some(APP_ID)),
-            ("flags", &gio::ApplicationFlags::empty()),
-            ("resource-base-path", &Some("/io/github/seadve/Kooha/")),
-        ])
+        glib::Object::builder()
+            .property("application-id", APP_ID)
+            .property("resource-base-path", "/io/github/seadve/Kooha/")
+            .build()
     }
 
     pub fn settings(&self) -> &Settings {
