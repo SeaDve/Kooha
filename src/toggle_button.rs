@@ -27,19 +27,19 @@ mod imp {
                 vec![
                     // Icon name to show on un-toggled state
                     glib::ParamSpecString::builder("default-icon-name")
-                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
+                        .explicit_notify()
                         .build(),
                     // Icon name to show on toggled state
                     glib::ParamSpecString::builder("toggled-icon-name")
-                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
+                        .explicit_notify()
                         .build(),
                     // Tooltip text to show on un-toggled state
                     glib::ParamSpecString::builder("default-tooltip-text")
-                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
+                        .explicit_notify()
                         .build(),
                     // Tooltip text to show on toggled state
                     glib::ParamSpecString::builder("toggled-tooltip-text")
-                        .flags(glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY)
+                        .explicit_notify()
                         .build(),
                     glib::ParamSpecOverride::for_class::<gtk::Button>("icon-name"),
                     glib::ParamSpecOverride::for_class::<gtk::Widget>("tooltip-text"),
