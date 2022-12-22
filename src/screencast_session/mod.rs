@@ -64,7 +64,7 @@ impl ScreencastSession {
         tracing::debug!(%response, "Created screencast session");
 
         // FIXME this must be an ObjectPath not a String
-        let session_handle = response.get::<String>("session_handle")?;
+        let session_handle = response.get_flatten::<String>("session_handle")?;
         debug_assert!(session_handle.ends_with(&session_handle_token.as_str()));
 
         Ok(Self {
@@ -177,9 +177,9 @@ impl ScreencastSession {
 
         tracing::debug!(%response, "Started screencast session");
 
-        let streams = response.get::<Vec<Stream>>("streams")?;
+        let streams = response.get_flatten::<Vec<Stream>>("streams")?;
 
-        if let Some(restore_token) = response.get_optional("restore_token")? {
+        if let Some(restore_token) = response.get("restore_token")? {
             return Ok((streams, Some(restore_token)));
         }
 

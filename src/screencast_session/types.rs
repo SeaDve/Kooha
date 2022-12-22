@@ -74,11 +74,11 @@ impl FromVariant for Stream {
         let (node_id, props) = variant.get::<StreamVariantType>()?;
         Some(Self {
             node_id,
-            id: props.get("id").ok(),
-            position: props.get("position").ok(),
-            size: props.get("size").ok(),
+            id: props.get_flatten("id").ok(),
+            position: props.get_flatten("position").ok(),
+            size: props.get_flatten("size").ok(),
             source_type: props
-                .get::<u32>("source_type")
+                .get_flatten::<u32>("source_type")
                 .ok()
                 .and_then(SourceType::from_bits),
         })

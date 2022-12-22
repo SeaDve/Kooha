@@ -22,7 +22,7 @@ impl VariantDict {
         self.0.is_empty()
     }
 
-    pub fn get<T: FromVariant>(&self, key: &str) -> Result<T> {
+    pub fn get_flatten<T: FromVariant>(&self, key: &str) -> Result<T> {
         let variant = self
             .0
             .get(key)
@@ -39,7 +39,7 @@ impl VariantDict {
         })
     }
 
-    pub fn get_optional<T: FromVariant>(&self, key: &str) -> Result<Option<T>> {
+    pub fn get<T: FromVariant>(&self, key: &str) -> Result<Option<T>> {
         let Some(variant) = self.0.get(key) else {
             return Ok(None);
         };
@@ -102,18 +102,45 @@ mod tests {
     }
 
     #[test]
+    fn get_flatten_ok() {
+        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        assert_eq!(var_dict.get_flatten::<String>("test").unwrap(), "value");
+    }
+
+    #[test]
+    fn get_flatten_missing() {
+        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        assert_eq!(
+            var_dict
+                .get_flatten::<String>("test2")
+                .unwrap_err()
+                .to_string(),
+            "Key `test2` not found"
+        );
+    }
+
+    #[test]
+    fn get_flatten_wrong_type() {
+        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        assert_eq!(
+            var_dict.get_flatten::<u32>("test").unwrap_err().to_string(),
+            "Expected key `test` of type `u`; got `s` with value `'value'`"
+        );
+    }
+
+    #[test]
     fn get_ok() {
         let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
-        assert_eq!(var_dict.get::<String>("test").unwrap(), "value");
+        assert_eq!(
+            var_dict.get::<String>("test").unwrap().as_deref(),
+            Some("value")
+        );
     }
 
     #[test]
     fn get_missing() {
         let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
-        assert_eq!(
-            var_dict.get::<String>("test2").unwrap_err().to_string(),
-            "Key `test2` not found"
-        );
+        assert_eq!(var_dict.get::<String>("test2").unwrap(), None);
     }
 
     #[test]
@@ -121,33 +148,6 @@ mod tests {
         let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
         assert_eq!(
             var_dict.get::<u32>("test").unwrap_err().to_string(),
-            "Expected key `test` of type `u`; got `s` with value `'value'`"
-        );
-    }
-
-    #[test]
-    fn get_optional_ok() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
-        assert_eq!(
-            var_dict.get_optional::<String>("test").unwrap().as_deref(),
-            Some("value")
-        );
-    }
-
-    #[test]
-    fn get_optional_missing() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
-        assert_eq!(var_dict.get_optional::<String>("test2").unwrap(), None);
-    }
-
-    #[test]
-    fn get_optional_wrong_type() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
-        assert_eq!(
-            var_dict
-                .get_optional::<u32>("test")
-                .unwrap_err()
-                .to_string(),
             "Expected key `test` of type `u`; got `s` with value `'value'`"
         );
     }
@@ -164,7 +164,7 @@ mod tests {
     fn from_variant() {
         let var = glib::Variant::parse(None, "{'test': <'value'>}").unwrap();
         let var_dict = VariantDict::from_variant(&var).unwrap();
-        assert_eq!(var_dict.get::<String>("test").unwrap(), "value");
+        assert_eq!(var_dict.get_flatten::<String>("test").unwrap(), "value");
     }
 
     #[test]
@@ -181,7 +181,7 @@ mod tests {
             ("test", "value".to_variant()),
             ("test2", "value2".to_variant()),
         ]);
-        assert_eq!(var_dict.get::<String>("test").unwrap(), "value");
-        assert_eq!(var_dict.get::<String>("test2").unwrap(), "value2");
+        assert_eq!(var_dict.get_flatten::<String>("test").unwrap(), "value");
+        assert_eq!(var_dict.get_flatten::<String>("test2").unwrap(), "value2");
     }
 }
