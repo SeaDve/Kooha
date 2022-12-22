@@ -3,13 +3,12 @@ use gtk::glib::{self, FromVariant, StaticVariantType, ToVariant};
 
 use std::{borrow::Cow, collections::HashMap, fmt};
 
-#[derive(Debug)]
 #[must_use]
 pub struct VariantDict(HashMap<String, glib::Variant>);
 
-impl fmt::Display for VariantDict {
+impl fmt::Debug for VariantDict {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        fmt::Display::fmt(&self.to_variant(), f)
+        fmt::Debug::fmt(&self.to_variant(), f)
     }
 }
 
@@ -172,7 +171,7 @@ mod tests {
         assert_eq!(VariantDict::static_variant_type(), glib::VariantTy::VARDICT);
 
         let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
-        assert_eq!(var_dict.to_string(), "{'test': <'value'>}");
+        assert_eq!(var_dict.to_variant().to_string(), "{'test': <'value'>}");
     }
 
     #[test]

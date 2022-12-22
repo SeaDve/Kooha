@@ -61,7 +61,7 @@ impl ScreencastSession {
         .await
         .context("Failed to create session")?;
 
-        tracing::debug!(%response, "Created screencast session");
+        tracing::debug!(?response, "Created screencast session");
 
         // FIXME this must be an ObjectPath not a String
         let session_handle = response.get_flatten::<String>("session_handle")?;
@@ -175,7 +175,7 @@ impl ScreencastSession {
         )
         .await?;
 
-        tracing::debug!(%response, "Started screencast session");
+        tracing::debug!(?response, "Started screencast session");
 
         let streams = response.get_flatten::<Vec<Stream>>("streams")?;
 
@@ -217,7 +217,7 @@ impl ScreencastSession {
         .await?;
         debug_assert!(response.is_empty());
 
-        tracing::debug!(%response, "Selected sources");
+        tracing::debug!(?response, "Selected sources");
 
         Ok(())
     }
