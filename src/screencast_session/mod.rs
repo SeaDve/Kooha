@@ -1,4 +1,3 @@
-mod handle;
 mod handle_token;
 mod types;
 mod variant_dict;
@@ -9,7 +8,11 @@ use futures_channel::oneshot;
 use futures_util::future::{self, Either};
 use gtk::{
     gio,
-    glib::{self, variant::ObjectPath, FromVariant},
+    glib::{
+        self,
+        variant::{Handle, ObjectPath},
+        FromVariant,
+    },
     prelude::*,
 };
 
@@ -17,8 +20,7 @@ use std::{cell::RefCell, os::unix::io::RawFd, time::Duration};
 
 pub use self::types::{CursorMode, PersistMode, SourceType, Stream};
 use self::{
-    handle::Handle, handle_token::HandleToken, variant_dict::VariantDict,
-    window_identifier::WindowIdentifier,
+    handle_token::HandleToken, variant_dict::VariantDict, window_identifier::WindowIdentifier,
 };
 use crate::cancelled::Cancelled;
 
@@ -239,8 +241,8 @@ impl ScreencastSession {
         debug_assert_eq!(fd_list.length(), 1);
 
         let fd = fd_list
-            .get(fd_index.inner())
-            .with_context(|| format!("Failed to get fd at index `{}`", fd_index.inner()))?;
+            .get(fd_index.0)
+            .with_context(|| format!("Failed to get fd at index `{}`", fd_index.0))?;
 
         Ok(fd)
     }
