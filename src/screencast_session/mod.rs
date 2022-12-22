@@ -1,6 +1,5 @@
 mod handle;
 mod handle_token;
-mod object_path;
 mod types;
 mod variant_dict;
 mod window_identifier;
@@ -10,7 +9,7 @@ use futures_channel::oneshot;
 use futures_util::future::{self, Either};
 use gtk::{
     gio,
-    glib::{self, FromVariant},
+    glib::{self, variant::ObjectPath, FromVariant},
     prelude::*,
 };
 
@@ -18,7 +17,7 @@ use std::{cell::RefCell, os::unix::io::RawFd, time::Duration};
 
 pub use self::types::{CursorMode, PersistMode, SourceType, Stream};
 use self::{
-    handle::Handle, handle_token::HandleToken, object_path::ObjectPath, variant_dict::VariantDict,
+    handle::Handle, handle_token::HandleToken, variant_dict::VariantDict,
     window_identifier::WindowIdentifier,
 };
 use crate::cancelled::Cancelled;
@@ -62,15 +61,13 @@ impl ScreencastSession {
 
         tracing::debug!(%response, "Created screencast session");
 
-        let session_handle = response.get::<ObjectPath>("session_handle")?;
-
-        debug_assert!(session_handle
-            .as_str()
-            .ends_with(&session_handle_token.as_str()));
+        // FIXME this must be an ObjectPath not a String
+        let session_handle = response.get::<String>("session_handle")?;
+        debug_assert!(session_handle.ends_with(&session_handle_token.as_str()));
 
         Ok(Self {
             proxy,
-            session_handle,
+            session_handle: ObjectPath::try_from(session_handle)?,
         })
     }
 
@@ -269,8 +266,8 @@ async fn screencast_request_call(
             unique_identifier,
             handle_token.as_str()
         );
-        ObjectPath::new(&path)
-            .ok_or_else(|| anyhow!("Failed to create object path from `{}`", path))?
+        ObjectPath::try_from(path.as_str())
+            .with_context(|| format!("Failed to create object path from `{}`", path))?
     };
 
     let request_proxy = gio::DBusProxy::for_bus_future(
