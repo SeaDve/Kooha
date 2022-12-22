@@ -3,7 +3,7 @@ use gtk::glib::{self, FromVariant, StaticVariantType, ToVariant};
 
 use std::{borrow::Cow, collections::HashMap, fmt};
 
-#[must_use]
+#[derive(Default)]
 pub struct VariantDict(HashMap<String, glib::Variant>);
 
 impl fmt::Debug for VariantDict {
@@ -13,12 +13,16 @@ impl fmt::Debug for VariantDict {
 }
 
 impl VariantDict {
-    pub fn new() -> Self {
-        Self(HashMap::new())
+    pub fn builder() -> VariantDictBuilder {
+        VariantDictBuilder { h: HashMap::new() }
     }
 
     pub fn is_empty(&self) -> bool {
         self.0.is_empty()
+    }
+
+    pub fn insert(&mut self, key: &str, value: impl ToVariant) {
+        self.0.insert(key.to_string(), value.to_variant());
     }
 
     pub fn get_flatten<T: FromVariant>(&self, key: &str) -> Result<T> {
@@ -75,15 +79,18 @@ impl ToVariant for VariantDict {
     }
 }
 
-impl<'a> FromIterator<(&'a str, glib::Variant)> for VariantDict {
-    fn from_iter<T>(iter: T) -> Self
-    where
-        T: IntoIterator<Item = (&'a str, glib::Variant)>,
-    {
-        Self(HashMap::from_iter(
-            iter.into_iter()
-                .map(|(key, variant)| (key.to_string(), variant)),
-        ))
+pub struct VariantDictBuilder {
+    h: HashMap<String, glib::Variant>,
+}
+
+impl VariantDictBuilder {
+    pub fn entry(mut self, key: &str, value: impl ToVariant) -> Self {
+        self.h.insert(key.into(), value.to_variant());
+        self
+    }
+
+    pub fn build(self) -> VariantDict {
+        VariantDict(self.h)
     }
 }
 
@@ -93,22 +100,22 @@ mod tests {
 
     #[test]
     fn empty() {
-        let var_dict_a = VariantDict::new();
+        let var_dict_a = VariantDict::default();
         assert!(var_dict_a.is_empty());
 
-        let var_dict_b = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict_b = VariantDict::builder().entry("test", "value").build();
         assert!(!var_dict_b.is_empty());
     }
 
     #[test]
     fn get_flatten_ok() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict = VariantDict::builder().entry("test", "value").build();
         assert_eq!(var_dict.get_flatten::<String>("test").unwrap(), "value");
     }
 
     #[test]
     fn get_flatten_missing() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict = VariantDict::builder().entry("test", "value").build();
         assert_eq!(
             var_dict
                 .get_flatten::<String>("test2")
@@ -120,7 +127,7 @@ mod tests {
 
     #[test]
     fn get_flatten_wrong_type() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict = VariantDict::builder().entry("test", "value").build();
         assert_eq!(
             var_dict.get_flatten::<u32>("test").unwrap_err().to_string(),
             "Expected key `test` of type `u`; got `s` with value `'value'`"
@@ -129,7 +136,7 @@ mod tests {
 
     #[test]
     fn get_ok() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict = VariantDict::builder().entry("test", "value").build();
         assert_eq!(
             var_dict.get::<String>("test").unwrap().as_deref(),
             Some("value")
@@ -138,13 +145,13 @@ mod tests {
 
     #[test]
     fn get_missing() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict = VariantDict::builder().entry("test", "value").build();
         assert_eq!(var_dict.get::<String>("test2").unwrap(), None);
     }
 
     #[test]
     fn get_wrong_type() {
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict = VariantDict::builder().entry("test", "value").build();
         assert_eq!(
             var_dict.get::<u32>("test").unwrap_err().to_string(),
             "Expected key `test` of type `u`; got `s` with value `'value'`"
@@ -154,7 +161,7 @@ mod tests {
     #[test]
     fn static_variant_type() {
         assert_eq!(
-            VariantDict::new().to_variant().type_(),
+            VariantDict::default().to_variant().type_(),
             glib::VariantTy::VARDICT
         );
     }
@@ -170,16 +177,16 @@ mod tests {
     fn to_variant() {
         assert_eq!(VariantDict::static_variant_type(), glib::VariantTy::VARDICT);
 
-        let var_dict = VariantDict::from_iter([("test", "value".to_variant())]);
+        let var_dict = VariantDict::builder().entry("test", "value").build();
         assert_eq!(var_dict.to_variant().to_string(), "{'test': <'value'>}");
     }
 
     #[test]
     fn from_iter() {
-        let var_dict = VariantDict::from_iter([
-            ("test", "value".to_variant()),
-            ("test2", "value2".to_variant()),
-        ]);
+        let var_dict = VariantDict::builder()
+            .entry("test", "value".to_variant())
+            .entry("test2", "value2".to_variant())
+            .build();
         assert_eq!(var_dict.get_flatten::<String>("test").unwrap(), "value");
         assert_eq!(var_dict.get_flatten::<String>("test2").unwrap(), "value2");
     }

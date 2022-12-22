@@ -48,10 +48,10 @@ impl ScreencastSession {
         let session_handle_token = HandleToken::new();
         let handle_token = HandleToken::new();
 
-        let session_options = VariantDict::from_iter([
-            ("handle_token", handle_token.to_variant()),
-            ("session_handle_token", session_handle_token.to_variant()),
-        ]);
+        let session_options = VariantDict::builder()
+            .entry("handle_token", &handle_token)
+            .entry("session_handle_token", &session_handle_token)
+            .build();
         let response = screencast_request_call(
             &proxy,
             &handle_token,
@@ -165,7 +165,9 @@ impl ScreencastSession {
     ) -> Result<(Vec<Stream>, Option<String>)> {
         let handle_token = HandleToken::new();
 
-        let options = VariantDict::from_iter([("handle_token", handle_token.to_variant())]);
+        let options = VariantDict::builder()
+            .entry("handle_token", &handle_token)
+            .build();
 
         let response = screencast_request_call(
             &self.proxy,
@@ -196,23 +198,23 @@ impl ScreencastSession {
     ) -> Result<()> {
         let handle_token = HandleToken::new();
 
-        let mut options = vec![
-            ("handle_token", handle_token.to_variant()),
-            ("types", source_type.bits().to_variant()),
-            ("multiple", multiple.to_variant()),
-            ("cursor_mode", cursor_mode.bits().to_variant()),
-            ("persist_mode", (persist_mode as u32).to_variant()),
-        ];
+        let mut options = VariantDict::builder()
+            .entry("handle_token", &handle_token)
+            .entry("types", source_type.bits())
+            .entry("multiple", multiple)
+            .entry("cursor_mode", cursor_mode.bits())
+            .entry("persist_mode", persist_mode as u32)
+            .build();
 
         if let Some(restore_token) = restore_token.filter(|t| !t.is_empty()) {
-            options.push(("restore_token", restore_token.to_variant()));
+            options.insert("restore_token", restore_token);
         }
 
         let response = screencast_request_call(
             &self.proxy,
             &handle_token,
             "SelectSources",
-            &(&self.session_handle, VariantDict::from_iter(options)).to_variant(),
+            &(&self.session_handle, options).to_variant(),
         )
         .await?;
         debug_assert!(response.is_empty());
@@ -227,7 +229,7 @@ impl ScreencastSession {
             .proxy
             .call_with_unix_fd_list_future(
                 "OpenPipeWireRemote",
-                Some(&(&self.session_handle, VariantDict::new()).to_variant()),
+                Some(&(&self.session_handle, VariantDict::default()).to_variant()),
                 gio::DBusCallFlags::NONE,
                 DEFAULT_TIMEOUT.as_millis() as i32,
                 gio::UnixFDList::NONE,
