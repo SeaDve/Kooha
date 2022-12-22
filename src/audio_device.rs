@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Context, Error, Result};
+use anyhow::{anyhow, Context, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 
@@ -49,7 +49,7 @@ fn find_default_name_gst(class: Class) -> Result<String> {
     let device_monitor = gst::DeviceMonitor::new();
     device_monitor.add_filter(Some(class.as_str()), None);
 
-    device_monitor.start().map_err(Error::from).with_help(
+    device_monitor.start().with_help(
         || gettext("Make sure that you have PulseAudio installed in your system."),
         || gettext("Failed to start device monitor"),
     )?;
@@ -123,7 +123,7 @@ fn find_default_name_gst(class: Class) -> Result<String> {
 }
 
 mod pa {
-    use anyhow::{bail, Context as ErrContext, Error, Result};
+    use anyhow::{bail, Context as ErrContext, Result};
     use futures_channel::{mpsc, oneshot};
     use futures_util::StreamExt;
     use gettextrs::gettext;
@@ -171,13 +171,10 @@ mod pa {
             let mut inner = ContextInner::new_with_proplist(&main_loop, APP_ID, &proplist)
                 .context("Failed to create pulse Context")?;
 
-            inner
-                .connect(None, FlagSet::NOFLAGS, None)
-                .map_err(Error::from)
-                .with_help(
-                    || gettext("Make sure that you have PulseAudio installed in your system."),
-                    || gettext("Failed to connect to PulseAudio daemon"),
-                )?;
+            inner.connect(None, FlagSet::NOFLAGS, None).with_help(
+                || gettext("Make sure that you have PulseAudio installed in your system."),
+                || gettext("Failed to connect to PulseAudio daemon"),
+            )?;
 
             let (mut tx, mut rx) = mpsc::channel(1);
 

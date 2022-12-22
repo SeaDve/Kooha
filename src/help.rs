@@ -35,7 +35,7 @@ impl ErrorExt for Error {
     }
 }
 
-pub trait ResultExt<T> {
+pub trait ResultExt<T, E> {
     fn help<M, C>(self, help_msg: M, context: C) -> Result<T>
     where
         M: Into<String>,
@@ -51,7 +51,10 @@ pub trait ResultExt<T> {
         C: fmt::Display + Send + Sync + 'static;
 }
 
-impl<T> ResultExt<T> for Result<T> {
+impl<T, E> ResultExt<T, E> for Result<T, E>
+where
+    Result<T, E>: Context<T, E>,
+{
     fn help<M, C>(self, help_msg: M, context: C) -> Result<T>
     where
         M: Into<String>,
