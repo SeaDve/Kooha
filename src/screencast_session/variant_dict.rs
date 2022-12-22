@@ -182,10 +182,10 @@ mod tests {
     }
 
     #[test]
-    fn from_iter() {
+    fn builder() {
         let var_dict = VariantDict::builder()
-            .entry("test", "value".to_variant())
-            .entry("test2", "value2".to_variant())
+            .entry("test", "value")
+            .entry("test2", "value2")
             .build();
         assert_eq!(var_dict.get_flatten::<String>("test").unwrap(), "value");
         assert_eq!(var_dict.get_flatten::<String>("test2").unwrap(), "value2");
