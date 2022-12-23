@@ -617,6 +617,7 @@ async fn new_screencast_session(
         screencast_session.available_source_types()
     );
 
+    // TODO handle Closed signal from service side
     let (streams, restore_token, fd) = screencast_session
         .begin(
             cursor_mode,
