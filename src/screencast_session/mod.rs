@@ -52,14 +52,10 @@ impl ScreencastSession {
             .entry("handle_token", &handle_token)
             .entry("session_handle_token", &session_handle_token)
             .build();
-        let response = screencast_request_call(
-            &proxy,
-            &handle_token,
-            "CreateSession",
-            &(session_options,).to_variant(),
-        )
-        .await
-        .context("Failed to create session")?;
+        let response =
+            screencast_request_call(&proxy, &handle_token, "CreateSession", &(session_options,))
+                .await
+                .context("Failed to create session")?;
 
         tracing::debug!(?response, "Created screencast session");
 
@@ -173,7 +169,7 @@ impl ScreencastSession {
             &self.proxy,
             &handle_token,
             "Start",
-            &(&self.session_handle, window_identifier, options).to_variant(),
+            &(&self.session_handle, window_identifier, options),
         )
         .await?;
 
@@ -211,7 +207,7 @@ impl ScreencastSession {
             &self.proxy,
             &handle_token,
             "SelectSources",
-            &(&self.session_handle, options).to_variant(),
+            &(&self.session_handle, options),
         )
         .await?;
         debug_assert!(response.is_empty());
@@ -251,7 +247,7 @@ async fn screencast_request_call(
     proxy: &gio::DBusProxy,
     handle_token: &HandleToken,
     method: &str,
-    parameters: &glib::Variant,
+    params: impl ToVariant,
 ) -> Result<VariantDict> {
     let connection = proxy.connection();
 
@@ -317,20 +313,16 @@ async fn screencast_request_call(
         },
     );
 
+    let params = params.to_variant();
     let path = proxy
         .call_future(
             method,
-            Some(parameters),
+            Some(&params),
             gio::DBusCallFlags::NONE,
             DEFAULT_TIMEOUT.as_millis() as i32,
         )
         .await
-        .with_context(|| {
-            format!(
-                "Failed to call `{}` with parameters: {:?}",
-                method, parameters
-            )
-        })?;
+        .with_context(|| format!("Failed to call `{}` with parameters: {:?}", method, params))?;
     debug_assert_eq!(variant_get::<(ObjectPath,)>(&path).unwrap().0, request_path);
 
     tracing::debug!("Waiting request response for method `{}`", method);
