@@ -54,7 +54,7 @@ impl ElementPropertiesBuilder {
     }
 
     #[allow(clippy::needless_pass_by_value)]
-    pub fn field<T: ToSendValue>(mut self, name: &str, value: T) -> Self {
+    pub fn field(mut self, name: &str, value: impl ToSendValue) -> Self {
         self.s.set_value(name, value.to_send_value());
         self
     }

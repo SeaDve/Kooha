@@ -40,7 +40,6 @@ pub struct Stream {
     source_type: Option<SourceType>,
 }
 
-#[allow(dead_code)]
 impl Stream {
     pub fn node_id(&self) -> u32 {
         self.node_id
