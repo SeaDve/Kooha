@@ -179,13 +179,10 @@ impl ScreencastSession {
 
         tracing::debug!(?response, "Started screencast session");
 
-        let streams = response.get_flatten::<Vec<Stream>>("streams")?;
+        let streams = response.get_flatten("streams")?;
+        let restore_token = response.get("restore_token")?;
 
-        if let Some(restore_token) = response.get("restore_token")? {
-            return Ok((streams, Some(restore_token)));
-        }
-
-        Ok((streams, None))
+        Ok((streams, restore_token))
     }
 
     async fn select_sources(
