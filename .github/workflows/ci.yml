@@ -10,7 +10,7 @@ jobs:
     name: Checks
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # FIXME uncomment when we don't --skip ui_files anymore
       # - name: Download dependencies
       #   run: sudo apt -y install libgtk-4-dev
@@ -21,7 +21,7 @@ jobs:
     name: Rustfmt
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
@@ -37,7 +37,7 @@ jobs:
     name: Typos
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Check for typos
         uses: crate-ci/typos@master
 
@@ -45,11 +45,11 @@ jobs:
     name: Flatpak
     runs-on: ubuntu-22.04
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-42
+      image: bilelmoussaoui/flatpak-github-actions:gnome-43
       options: --privileged
     steps:
-      - uses: actions/checkout@v2
-      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+      - uses: actions/checkout@v3
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v5
         with:
           bundle: kooha.flatpak
           manifest-path: build-aux/io.github.seadve.Kooha.Devel.json
