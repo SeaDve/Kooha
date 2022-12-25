@@ -205,6 +205,7 @@ impl Application {
     fn setup_accels(&self) {
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>q"]);
+        self.set_accels_for_action("window.close", &["<Control>w"]);
         self.set_accels_for_action("win.record-speaker", &["<Control>a"]);
         self.set_accels_for_action("win.record-mic", &["<Control>m"]);
         self.set_accels_for_action("win.show-pointer", &["<Control>p"]);
