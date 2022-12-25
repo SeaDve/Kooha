@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-01 12:27+0800\n"
+"POT-Creation-Date: 2022-12-25 09:25+0800\n"
 "PO-Revision-Date: 2022-12-16 10:48+0000\n"
 "Last-Translator: Leedsgarden <lkw1411026824@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -55,36 +55,36 @@ msgid ""
 msgstr ""
 "Kooha 是一个界面极简的录屏软件。无需一系列的配置，只需轻点一下即可开始录制。"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
 msgstr "Kooha 的主要特性有："
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr "🎙️ 可以同时录制麦克风，电脑音频"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 支持MP4、GIF、WebM、MKV、MKA和MKS格式"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 msgstr "🖥️ 你可以录制桌面，窗口或者屏幕的指定部分"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
 msgstr "🗔 你可以同时启用多个录制源"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr "🛠️ 你可以配置光标是否可见，帧率的大小和延迟的高低，将配置文件保存在本地"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 尝试使用硬件加速编码"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
@@ -308,11 +308,11 @@ msgstr "点击此处查看视频。"
 msgid "Show in Files"
 msgstr "在文件中显示"
 
-#: src/area_selector/mod.rs:317
+#: src/area_selector/mod.rs:318
 msgid "approx."
 msgstr ""
 
-#: src/audio_device.rs:53 src/audio_device.rs:187
+#: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "确保你已在系统安装PulseAudio。"
 
@@ -320,15 +320,15 @@ msgstr "确保你已在系统安装PulseAudio。"
 msgid "Failed to start device monitor"
 msgstr "启动设备监视器失败"
 
-#: src/audio_device.rs:188
+#: src/audio_device.rs:176
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "连接到PulseAudio守护进程失败"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
 msgstr "此格式是实验性的，不受支持。"
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:254
 msgid "None"
 msgstr "无"
 
@@ -336,35 +336,35 @@ msgstr "无"
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:264
+#: src/profile.rs:266
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:288
+#: src/profile.rs:290
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:307
+#: src/profile.rs:309
 msgid "Matroska"
 msgstr ""
 
-#: src/profile.rs:340
+#: src/profile.rs:342
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:364
+#: src/profile.rs:366
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:385
+#: src/profile.rs:387
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:400
+#: src/profile.rs:402
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:415
+#: src/profile.rs:417
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -374,41 +374,41 @@ msgstr "配置无效"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
+#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
 msgid "Failed to start recording"
 msgstr "开始录制失败"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:196
+#: src/recording.rs:195
 msgid "Check out {} for help."
 msgstr "查看{}以获取帮助。"
 
-#: src/recording.rs:236
+#: src/recording.rs:235
 msgid "No microphone source found"
 msgstr "没有找到麦克风源"
 
-#: src/recording.rs:243
+#: src/recording.rs:242
 msgid "No desktop speaker source found"
 msgstr "没有找到桌面音频源"
 
-#: src/recording.rs:250
+#: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer plugin可能没有安装。"
 
-#: src/recording.rs:274 src/recording.rs:496
+#: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "确保保存路径存在并可以访问。"
 
-#: src/recording.rs:492
+#: src/recording.rs:491
 msgid "An error occurred while recording"
 msgstr "录制时产生错误"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:504
+#: src/recording.rs:503
 msgid "Failed to open “{}” for writing"
 msgstr "打开“{}”写入失败"
 
-#: src/recording.rs:506
+#: src/recording.rs:505
 msgid "Failed to open file for writing"
 msgstr "打开文件写入失败"
 
@@ -424,28 +424,28 @@ msgstr "取消(_C)"
 msgid "_Select"
 msgstr "选择(_S)"
 
-#: src/settings.rs:69
+#: src/settings.rs:67
 msgid "No folder selected"
 msgstr "没有选中文件夹"
 
-#: src/settings.rs:70
+#: src/settings.rs:68
 msgid "Please choose a folder and try again."
 msgstr "请选择一个文件夹，然后重试。"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:79
+#: src/settings.rs:77
 msgid "Cannot access “{}”"
 msgstr "无法访问“{}”"
 
-#: src/settings.rs:80
+#: src/settings.rs:78
 msgid "Please choose an accessible location and try again."
 msgstr "请选择一个可以访问的位置并重试。"
 
-#: src/settings.rs:191 src/window.rs:214
+#: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
 msgstr "Ok"
 
-#: src/window.rs:72
+#: src/window.rs:70
 msgid "Failed to toggle pause"
 msgstr "切换暂停状态失败"
 

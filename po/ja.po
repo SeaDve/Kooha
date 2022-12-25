@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-01 12:27+0800\n"
+"POT-Creation-Date: 2022-12-25 09:25+0800\n"
 "PO-Revision-Date: 2022-08-29 09:18+0000\n"
 "Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -55,36 +55,36 @@ msgstr ""
 "Koohaはシンプルでミニマルなインターフェイスを備えたスクリーンレコーダーです。"
 "複雑な設定をせず、ボタン一つで録画することができます。"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
 msgstr "Koohaの特徴は以下の通りです："
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
@@ -307,11 +307,11 @@ msgstr "ここをクリックして動画を確認できます。"
 msgid "Show in Files"
 msgstr "ファイル で表示"
 
-#: src/area_selector/mod.rs:317
+#: src/area_selector/mod.rs:318
 msgid "approx."
 msgstr ""
 
-#: src/audio_device.rs:53 src/audio_device.rs:187
+#: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "PulseAudioがシステムにインストールされていることを確認してください。"
 
@@ -319,15 +319,15 @@ msgstr "PulseAudioがシステムにインストールされていることを�
 msgid "Failed to start device monitor"
 msgstr "デバイスモニタの開始に失敗しました"
 
-#: src/audio_device.rs:188
+#: src/audio_device.rs:176
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "PulseAudioデーモンへの接続に失敗しました"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:254
 msgid "None"
 msgstr "なし"
 
@@ -335,35 +335,35 @@ msgstr "なし"
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:264
+#: src/profile.rs:266
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:288
+#: src/profile.rs:290
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:307
+#: src/profile.rs:309
 msgid "Matroska"
 msgstr ""
 
-#: src/profile.rs:340
+#: src/profile.rs:342
 msgid "WebM VP9"
 msgstr ""
 
-#: src/profile.rs:364
+#: src/profile.rs:366
 msgid "WebM AV1"
 msgstr ""
 
-#: src/profile.rs:385
+#: src/profile.rs:387
 msgid "WebM VAAPI VP8"
 msgstr ""
 
-#: src/profile.rs:400
+#: src/profile.rs:402
 msgid "WebM VAAPI VP9"
 msgstr ""
 
-#: src/profile.rs:415
+#: src/profile.rs:417
 msgid "WebM VAAPI H264"
 msgstr ""
 
@@ -373,41 +373,41 @@ msgstr ""
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
+#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
 msgid "Failed to start recording"
 msgstr "録画の開始に失敗しました"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:196
+#: src/recording.rs:195
 msgid "Check out {} for help."
 msgstr "{} でヘルプを確認できます。"
 
-#: src/recording.rs:236
+#: src/recording.rs:235
 msgid "No microphone source found"
 msgstr "マイクソースが見つかりません"
 
-#: src/recording.rs:243
+#: src/recording.rs:242
 msgid "No desktop speaker source found"
 msgstr "デスクトップスピーカーのソースが見つかりません"
 
-#: src/recording.rs:250
+#: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
 msgstr ""
 
-#: src/recording.rs:274 src/recording.rs:496
+#: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "保存場所が存在し、アクセス可能であることを確認してください。"
 
-#: src/recording.rs:492
+#: src/recording.rs:491
 msgid "An error occurred while recording"
 msgstr "録画中にエラーが発生しました"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:504
+#: src/recording.rs:503
 msgid "Failed to open “{}” for writing"
 msgstr "書き込みのために\"{}\"を開けませんでした"
 
-#: src/recording.rs:506
+#: src/recording.rs:505
 msgid "Failed to open file for writing"
 msgstr "書き込むためにファイルを開けませんでした"
 
@@ -423,29 +423,29 @@ msgstr "キャンセル(_C)"
 msgid "_Select"
 msgstr "選択(_S)"
 
-#: src/settings.rs:69
+#: src/settings.rs:67
 #, fuzzy
 msgid "No folder selected"
 msgstr "フォルダが選択されていない"
 
-#: src/settings.rs:70
+#: src/settings.rs:68
 msgid "Please choose a folder and try again."
 msgstr "フォルダを選択してやり直しください。"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:79
+#: src/settings.rs:77
 msgid "Cannot access “{}”"
 msgstr "“{}”にアクセスできません"
 
-#: src/settings.rs:80
+#: src/settings.rs:78
 msgid "Please choose an accessible location and try again."
 msgstr "アクセス可能な場所を選んで、もう一度お試しください。"
 
-#: src/settings.rs:191 src/window.rs:214
+#: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
 msgstr "OK"
 
-#: src/window.rs:72
+#: src/window.rs:70
 msgid "Failed to toggle pause"
 msgstr "一時停止の切り替えに失敗しました。"
 

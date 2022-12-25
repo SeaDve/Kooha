@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-01 12:27+0800\n"
+"POT-Creation-Date: 2022-12-25 09:25+0800\n"
 "PO-Revision-Date: 2022-09-28 08:00+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -53,38 +53,38 @@ msgstr ""
 "Kooha, sade bir arayüze sahip basit bir ekran kaydedicidir. Bir dizi ayarı "
 "yapılandırmanıza gerek kalmadan sadece kayıt düğmesine tıklayabilirsiniz."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
 msgstr "Kooha'nın temel özellikleri şunlardır:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr "🎙️ Mikrofon, masaüstü sesi veya her ikisini aynı anda kaydedin"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 WebM, MP4, GIF ve Matroska biçimleri desteği"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 msgstr "🖥️ Kaydetmek için bir ekran, pencere veya ekranın bir bölümünü seçin"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
 msgstr "🗔 Çoklu kaynak seçimi"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Yapılandırılabilir kaydetme konumu, işaretçi görünürlüğü, kare hızı ve "
 "gecikme"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Deneysel donanım hızlandırmalı kodlama"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
@@ -305,11 +305,11 @@ msgstr "Videoyu görüntülemek için tıklayınız."
 msgid "Show in Files"
 msgstr "Dosyalarda Göster"
 
-#: src/area_selector/mod.rs:317
+#: src/area_selector/mod.rs:318
 msgid "approx."
 msgstr "yaklaşık"
 
-#: src/audio_device.rs:53 src/audio_device.rs:187
+#: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Sisteminizde PulseAudio'nun kurulu olduğundan emin olun."
 
@@ -317,15 +317,15 @@ msgstr "Sisteminizde PulseAudio'nun kurulu olduğundan emin olun."
 msgid "Failed to start device monitor"
 msgstr "Aygıt monitörü başlatılamadı"
 
-#: src/audio_device.rs:188
+#: src/audio_device.rs:176
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "PulseAudio programına bağlanılamadı"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
 msgstr "Bu biçim deneysel ve desteklenmemektedir."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:254
 msgid "None"
 msgstr "Yok"
 
@@ -333,35 +333,35 @@ msgstr "Yok"
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:264
+#: src/profile.rs:266
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:288
+#: src/profile.rs:290
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:307
+#: src/profile.rs:309
 msgid "Matroska"
 msgstr "Matroska"
 
-#: src/profile.rs:340
+#: src/profile.rs:342
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:364
+#: src/profile.rs:366
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:385
+#: src/profile.rs:387
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:400
+#: src/profile.rs:402
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:415
+#: src/profile.rs:417
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -371,42 +371,42 @@ msgstr "Etkin profil yok"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:197 src/recording.rs:251 src/recording.rs:275
+#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
 msgid "Failed to start recording"
 msgstr "Kayıt başlatılamadı"
 
 #. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:196
+#: src/recording.rs:195
 msgid "Check out {} for help."
 msgstr "Yardım için {} adresine göz atın."
 
-#: src/recording.rs:236
+#: src/recording.rs:235
 msgid "No microphone source found"
 msgstr "Mikrofon kaynağı bulunamadı"
 
-#: src/recording.rs:243
+#: src/recording.rs:242
 msgid "No desktop speaker source found"
 msgstr "Masaüstü hoparlör kaynağı bulunamadı"
 
-#: src/recording.rs:250
+#: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
 msgstr "Bir GStreamer eklentisi kurulmamış olabilir."
 
-#: src/recording.rs:274 src/recording.rs:496
+#: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 "Kaydetme konumunun var olduğundan ve erişilebilir olduğundan emin olun."
 
-#: src/recording.rs:492
+#: src/recording.rs:491
 msgid "An error occurred while recording"
 msgstr "Kayıt sırasında bir hata oluştu"
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:504
+#: src/recording.rs:503
 msgid "Failed to open “{}” for writing"
 msgstr "\"{}\" yazma için açılamadı"
 
-#: src/recording.rs:506
+#: src/recording.rs:505
 msgid "Failed to open file for writing"
 msgstr "Dosya yazma için açılamadı"
 
@@ -422,28 +422,28 @@ msgstr "_İptal"
 msgid "_Select"
 msgstr "_Seç"
 
-#: src/settings.rs:69
+#: src/settings.rs:67
 msgid "No folder selected"
 msgstr "Klasör seçilmedi"
 
-#: src/settings.rs:70
+#: src/settings.rs:68
 msgid "Please choose a folder and try again."
 msgstr "Lütfen bir klasör seçin ve tekrar deneyin."
 
 #. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:79
+#: src/settings.rs:77
 msgid "Cannot access “{}”"
 msgstr "“{}” dizinine erişilemiyor"
 
-#: src/settings.rs:80
+#: src/settings.rs:78
 msgid "Please choose an accessible location and try again."
 msgstr "Lütfen erişilebilir bir konum seçin ve tekrar deneyin."
 
-#: src/settings.rs:191 src/window.rs:214
+#: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
 msgstr "Tamam"
 
-#: src/window.rs:72
+#: src/window.rs:70
 msgid "Failed to toggle pause"
 msgstr "Duraklatma değiştirilemedi"
 
