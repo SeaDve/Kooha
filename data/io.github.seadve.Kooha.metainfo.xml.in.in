@@ -7,7 +7,8 @@
   <summary>Elegantly record your screen</summary>
   <description>
     <p>Capture your screen in a intuitive and straightforward way without distractions.</p>
-    <p>Kooha is a simple screen recorder with a minimalist interface. You can just click the record button without having to configure a bunch of settings.</p>
+    <p>Kooha is a simple screen recorder with a minimalist interface. You can just click the record
+      button without having to configure a bunch of settings.</p>
     <p>The main features of Kooha include the following:</p>
     <ul>
       <li>🎙️ Record microphone, desktop audio, or both at the same time</li>
@@ -39,6 +40,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.2.3" date="2022-12-25">
+      <description>
+        <p>This release contains minor fixes:</p>
+        <ul>
+          <li>Fixed indefinite flushing time on certain distros</li>
+          <li>Slightly improved performance on certain configurations</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2.2" date="2022-10-02">
       <description>
         <p>This release contains minor fixes:</p>
@@ -67,7 +78,8 @@
           <li>Added option to change the frame rate through the UI</li>
           <li>Improved delay settings flexibility</li>
           <li>Added preferences window for easier configuration</li>
-          <li>Added `KOOHA_EXPERIMENTAL` env var to show experimental (unsupported) encoders like VAAPI-VP8 and VAAPI-H264</li>
+          <li>Added `KOOHA_EXPERIMENTAL` env var to show experimental (unsupported) encoders like
+            VAAPI-VP8 and VAAPI-H264</li>
           <li>Added the following experimental (unsupported) encoders: VP9, AV1, and VAAPI-VP9</li>
           <li>Unavailable formats/encoders are now hidden from the UI</li>
           <li>Fixed broken audio on long recordings</li>
@@ -80,7 +92,8 @@
         <p>This release contains fixes:</p>
         <ul>
           <li>Improved tooltip text on settings toggle buttons</li>
-          <li>Fallback to manual mode when failed to get default device name through GStreamer device monitor</li>
+          <li>Fallback to manual mode when failed to get default device name through GStreamer
+            device monitor</li>
         </ul>
       </description>
     </release>
@@ -94,7 +107,8 @@
           <li>Added 3 seconds delay option</li>
           <li>Fixed x264 encoder failing to initialize on uneven resolutions</li>
           <li>Fixed minutes stuck on 00 if time is equal or greater than an hour</li>
-          <li>Recordings are now stored by default in `~/Videos/Kooha` (This won't affect existing settings)</li>
+          <li>Recordings are now stored by default in `~/Videos/Kooha` (This won't affect existing
+            settings)</li>
           <li>"Show in Files" button in notifications now highlights the file in the file manager</li>
           <li>Improved support information in the new about window</li>
           <li>Improved error handling</li>
