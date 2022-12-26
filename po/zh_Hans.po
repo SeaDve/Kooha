@@ -10,13 +10,15 @@
 # lumingzh <lumingzh@qq.com>, 2022.
 # Hugel <qihu@nfschina.com>, 2022.
 # Leedsgarden <lkw1411026824@outlook.com>, 2022.
+# Deleted User <hamburger1024@users.noreply.hosted.weblate.org>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-12-16 10:48+0000\n"
-"Last-Translator: Leedsgarden <lkw1411026824@outlook.com>\n"
+"PO-Revision-Date: 2022-12-26 04:49+0000\n"
+"Last-Translator: Deleted User <hamburger1024@users.noreply.hosted.weblate."
+"org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -24,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -119,7 +121,7 @@ msgstr "录制文件夹"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "视频"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
@@ -346,7 +348,7 @@ msgstr "MP4"
 
 #: src/profile.rs:309
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:342
 msgid "WebM VP9"
@@ -455,7 +457,7 @@ msgstr "复制到剪贴板"
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "已复制到剪贴板"
 
 #: src/window.rs:189
 msgid "Show detailed error"
@@ -477,7 +479,7 @@ msgstr "先前选择的格式可能不可用。打开首选项并选择一种格
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "稍后"
 
 #: src/window.rs:292
 msgid "Open"
