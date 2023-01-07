@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # kodchofshi <kodchofshi@gmail.com>, 2021.
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2021.
+# guymii <guy.minsky@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2021-12-06 21:51+0000\n"
-"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
+"PO-Revision-Date: 2023-01-07 19:50+0000\n"
+"Last-Translator: guymii <guy.minsky@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/kooha/pot-file/he/"
 ">\n"
 "Language: he\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -29,7 +30,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
-msgstr "הקלטת המסך בעדינות"
+msgstr "הקלט את המסך באלגנטיות"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -40,42 +41,46 @@ msgstr "צילום מסך;הקלטה;מסך;וידאו;"
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "הקלט את המסך בדרך פשוטה ואינטואיטיבית ללא הסחות דעת."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha הוא מקליט מסך פשוט עם ממשק מינימליסטי. ניתן פשוט ללחוץ על כפתור ההקלטה "
+"מבלי שצריך להגדיר הגדרות מסובכות."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "היכולות העיקריות של Kooha הן:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ הקלטת קול מהמיקרופון, מהשמע, או משניהם בו זמנית"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 תמיכה בפורמטי הוידאו: WebM, MP4, GIF, ו-Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ בחר האם להקליט מסך, חלון או חלק מוגדר של המסך"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 בחר מבין מספר מקורות"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ ניתן להגדיר את מקום שמירת הקבצים, האם יופיע הסמן בזמן ההקלטה, מספר "
+"הפריימים לשניה, והשהייה לפני תחילת ההקלטה"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 קידוד באמצעות חומרה (ניסיוני)"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -83,16 +88,16 @@ msgstr ""
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "בחר אזור"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr ""
+msgstr "בטל"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "אשר"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
