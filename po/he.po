@@ -4,13 +4,14 @@
 # kodchofshi <kodchofshi@gmail.com>, 2021.
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2021.
 # guymii <guy.minsky@gmail.com>, 2023.
+# Araxeus <oaeben@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-01-09 17:49+0000\n"
-"Last-Translator: guymii <guy.minsky@gmail.com>\n"
+"PO-Revision-Date: 2023-01-14 19:48+0000\n"
+"Last-Translator: Araxeus <oaeben@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/kooha/pot-file/he/"
 ">\n"
 "Language: he\n"
@@ -307,7 +308,7 @@ msgstr "בקירוב"
 
 #: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "וודאו שPulseAudio מותקן על המחשב שלכם."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
