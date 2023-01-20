@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-01-20 10:59+0000\n"
+"PO-Revision-Date: 2023-01-20 13:09+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
 "\n"
@@ -34,7 +34,7 @@ msgstr "Maak elegante schermopnames"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Screencast;Opname;Scherm;Video;"
+msgstr "Screencast;Recorder;Screen;Video;Opname;Scherm;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
@@ -49,13 +49,13 @@ msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha is een eenvoudige schermopnametoepassing met een minimalistische "
-"vormgeving. Klik gewoon op de opnameknop zonder allerlei instellingen te "
-"moeten doorlopen."
+"Kooha is een eenvoudige schermopname-app met een minimalistische vormgeving. "
+"Klik gewoon op de opnameknop zonder allerlei instellingen te moeten "
+"doorlopen."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Enkele kenmerken:"
+msgstr "Belangrijkste kenmerken van Kooha:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
@@ -178,7 +178,7 @@ msgstr "Microfoon aan/uit"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr "Cursor tonen/verbergen"
+msgstr "Aanwijzer tonen/verbergen"
 
 #: data/resources/ui/window.ui:29
 msgid "Main Menu"
