@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Jan Novák <novak@silen.org>, 2021, 2022.
-# Vojtěch Perník <translations@pervoj.cz>, 2021, 2022.
+# Vojtěch Perník <translations@pervoj.cz>, 2021, 2022, 2023.
 # Petr Šimáček <petr.simacek@gmail.com>, 2021.
 # multiflexi <multi.flexi@seznam.cz>, 2022.
 msgid ""
@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-08-26 07:18+0000\n"
-"Last-Translator: multiflexi <multi.flexi@seznam.cz>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
-">\n"
+"PO-Revision-Date: 2023-01-30 17:43+0000\n"
+"Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
+"\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -57,28 +57,30 @@ msgstr "Hlavní funkce Kooha jsou:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Zaznamenávejte mikrofon, zvuk plochy, nebo klidně obojí najednou"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Podpora pro formáty WebM, MP4, GIF a Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Nahrávat můžete monitor, okno nebo výřez obrazovky"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Výběr více zdrojů"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Konfigurovatelné umístění pro ukládání, viditelnost kurzoru, počet snímků "
+"za sekundu a pozdržení"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Experimentální hardwarově akcelerované kódování"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -86,7 +88,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Vyberte oblast"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -95,11 +97,11 @@ msgstr "Zrušit"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Resetovat výběr"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -107,27 +109,27 @@ msgstr "Obecné"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Pozdržení (sekundy)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Složka nahrávek"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Formát"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Počet snímků za sekundu"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Tento počet snímků za sekundu může způsobit problémy s výkonem."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -135,7 +137,7 @@ msgstr "Otevřít menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Zobrazit předvolby"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -167,7 +169,7 @@ msgstr "Nastavení"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Zapnout/vypnout zvuk plochy"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -191,11 +193,11 @@ msgstr "Zachytávat výběr obrazovky"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Zapnout zvuk plochy"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Vypnout zvuk plochy"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -251,7 +253,7 @@ msgstr "Čištění…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Předvolby"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -304,7 +306,7 @@ msgstr "Zobrazit v Souborech"
 
 #: src/area_selector/mod.rs:318
 msgid "approx."
-msgstr ""
+msgstr "cca."
 
 #: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -320,7 +322,7 @@ msgstr "Připojení k PulseAudio daemonu selhalo"
 
 #: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Tento formát je experimentální a není podporovaný."
 
 #: src/preferences_window.rs:254
 msgid "None"
@@ -340,31 +342,31 @@ msgstr "MP4"
 
 #: src/profile.rs:309
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:342
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:366
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:387
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:402
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:417
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Žádný aktivní profil"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -387,7 +389,7 @@ msgstr "Nenalezen žádný zdroj s reproduktory"
 
 #: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Plugin GStreameru nemusí být nainstalován."
 
 #: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
@@ -461,21 +463,23 @@ msgstr "Nápověda"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Otevřít předvolby?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Dříve zvolený formát mohl být nedostupný. Otevřete předvolby a vyberte "
+"formát pro pokračování v nahrávání."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Později"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "Otevřít"
 
 #: src/window.rs:350
 msgid "Paused"
