@@ -6,7 +6,7 @@
 # Heinrich Heinzer <heinrich.heinzer@gmail.com>, 2021.
 # Nico <d3sox@protonmail.com>, 2021, 2022.
 # Milo Ivir <mail@milotype.de>, 2021.
-# sal0max <msal.coding@gmail.com>, 2022.
+# sal0max <msal.coding@gmail.com>, 2022, 2023.
 # Schlömi <a.schloemi@gmail.com>, 2022.
 # Nils Martel <nilsmartel@yahoo.de>, 2022.
 msgid ""
@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-11-06 19:04+0000\n"
-"Last-Translator: Nils Martel <nilsmartel@yahoo.de>\n"
+"PO-Revision-Date: 2023-02-08 21:37+0000\n"
+"Last-Translator: sal0max <msal.coding@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -475,8 +475,8 @@ msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
-"Das vorher ausgewählte Format ist eventuelle nicht verfügbar. Öffnen Sie die "
-"Einstellungen (Strg+,) und wählen Sie ein Format um weiter aufzunehmen"
+"Das vorher ausgewählte Format ist eventuelle nicht verfügbar. Öffne die "
+"Einstellungen und wähle ein Format um weiter aufzunehmen."
 
 #: src/window.rs:291
 msgid "Later"
