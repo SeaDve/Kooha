@@ -7,13 +7,14 @@
 # Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022.
 # Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021, 2022.
 # Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
+# kj7kt <yyhuton@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-08-29 09:18+0000\n"
-"Last-Translator: Kaz Sibuya <sibuyakazokuu@gmail.com>\n"
+"PO-Revision-Date: 2023-02-13 15:39+0000\n"
+"Last-Translator: kj7kt <yyhuton@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ja/>\n"
 "Language: ja\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -57,32 +58,32 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Koohaの特徴は以下の通りです："
+msgstr "Koohaの主な機能は以下の通りです："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙マイクやデスクトップオーディオ、またはその両方を同時に記録"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 WebM、MP4、GIF、Matroshka形式をサポート"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥 モニター、ウィンドウ、または画面の一部選択して録画"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 複数のソースから選択"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr ""
+msgstr "🛠 設定可能な保存先、カーソルの可視性、フレームレート、遅延"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 実験的なハードウェア強化エンコーディング"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -90,7 +91,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "範囲選択"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -99,11 +100,11 @@ msgstr "キャンセル"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "完了"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "選択をリセット"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -111,27 +112,27 @@ msgstr "一般"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "遅延（秒）"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "録画フォルダ"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "動画"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "フォーマット"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "フレームレート"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "このフレームレートはパフォーマンスに問題を起こす可能性があります。"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -139,7 +140,7 @@ msgstr "メニューを開く"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "設定を表示"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -171,7 +172,7 @@ msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "デスクトップ音声の切り替え"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -195,11 +196,11 @@ msgstr "スクリーンの選択範囲をキャプチャする"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "デスクトップ音声を有効化"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "デスクトップ音声を無効化"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
@@ -255,7 +256,7 @@ msgstr "フラッシング…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_設定"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -276,7 +277,8 @@ msgstr ""
 "小山田 純,\n"
 "Ryo Nakano,\n"
 "Kaz Sibuya,\n"
-"Kisaragi Hiu"
+"Kisaragi Hiu,\n"
+"kj7kt"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
@@ -309,7 +311,7 @@ msgstr "ファイル で表示"
 
 #: src/area_selector/mod.rs:318
 msgid "approx."
-msgstr ""
+msgstr "約"
 
 #: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -325,7 +327,7 @@ msgstr "PulseAudioデーモンへの接続に失敗しました"
 
 #: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "このフォーマットは実験的でありサポートされていません。"
 
 #: src/preferences_window.rs:254
 msgid "None"
@@ -345,31 +347,31 @@ msgstr "MP4"
 
 #: src/profile.rs:309
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:342
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:366
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:387
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:402
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:417
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "有効なプロファイルなし"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
@@ -392,7 +394,7 @@ msgstr "デスクトップスピーカーのソースが見つかりません"
 
 #: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "GStreamerプラグインがインストールされていない可能性があります。"
 
 #: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
@@ -424,9 +426,8 @@ msgid "_Select"
 msgstr "選択(_S)"
 
 #: src/settings.rs:67
-#, fuzzy
 msgid "No folder selected"
-msgstr "フォルダが選択されていない"
+msgstr "フォルダが選択されていません"
 
 #: src/settings.rs:68
 msgid "Please choose a folder and try again."
@@ -447,7 +448,7 @@ msgstr "OK"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr "一時停止の切り替えに失敗しました。"
+msgstr "一時停止の切り替えに失敗しました"
 
 #: src/window.rs:177
 msgid "Copy to clipboard"
@@ -467,21 +468,22 @@ msgstr "ヘルプ"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "設定を開きますか？"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
-msgstr ""
+msgstr "前回選択したフォーマットが利用できません。設定を開いてフォーマットを選択し録"
+"画を継続してください。"
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "後で"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "開く"
 
 #: src/window.rs:350
 msgid "Paused"
