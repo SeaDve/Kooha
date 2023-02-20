@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-02-19 10:37+0000\n"
+"PO-Revision-Date: 2023-02-20 11:37+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
@@ -70,24 +70,25 @@ msgstr "🖥️ Välj en skärm, fönster eller en del av skärmen för inspelni
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Val av flera källor"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Konfigurerbar sparplats, pekarens synlighet, bildfrekvens och fördröjning"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Experimentell hårdvaruaccelererad avkodning"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Välj område"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -96,11 +97,11 @@ msgstr "Avbryt"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Klart"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Återställ val"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -108,27 +109,27 @@ msgstr "Allmänt"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Fördröjning (sekunder)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Inspelningsmapp"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Bildhastighet"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Denna bildhastighet kan orsaka prestandaproblem."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -136,7 +137,7 @@ msgstr "Öppna meny"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Visa inställningar"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -160,7 +161,7 @@ msgstr "Paus på/av"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "Avbryt inspelning"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -168,7 +169,7 @@ msgstr "Inställningar"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Växla skrivbordsljud"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -192,19 +193,19 @@ msgstr "Spela in en del av skärmen"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Aktivera skrivbordsljud"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Inaktivera skrivbordsljud"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Aktivera mikrofon"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Inaktivera mikrofon"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
@@ -212,11 +213,11 @@ msgstr "Visa muspekare"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Dölj pekare"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "Börja inspelning"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -224,11 +225,11 @@ msgstr "Spela in"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Glöm tidigare valda videokällor"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "Sluta spela in"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -236,7 +237,7 @@ msgstr "Stopp"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "Pausa inspelning"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -244,7 +245,7 @@ msgstr "Spelar in om…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Avbryt inspelning"
 
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
@@ -252,7 +253,7 @@ msgstr "Rensar…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_Inställningar"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -264,7 +265,7 @@ msgstr "_Om Kooha"
 
 #: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
@@ -275,11 +276,11 @@ msgstr ""
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Donera (Liberapay)"
 
 #: src/about.rs:45
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Donera (Paypal)"
 
 #: src/about.rs:49
 msgid "GitHub"
@@ -287,40 +288,40 @@ msgstr "GitHub"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr ""
+msgstr "Översätt"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Screencast inspelad"
 
 #: src/application.rs:108
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Klicka här för att se videon."
 
 #: src/application.rs:114
 msgid "Show in Files"
-msgstr ""
+msgstr "Visa i Filer"
 
 #: src/area_selector/mod.rs:318
 msgid "approx."
-msgstr ""
+msgstr "cirka."
 
 #: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Se till att du har PulseAudio installerat i ditt system."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Misslyckades att starta enhetsövervakning"
 
 #: src/audio_device.rs:176
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Misslyckades att ansluta till PulseAudio-demonen"
 
 #: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Det här formatet är experimentellt och stöds inte."
 
 #: src/preferences_window.rs:254
 msgid "None"
@@ -340,71 +341,71 @@ msgstr "MP4"
 
 #: src/profile.rs:309
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:342
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:366
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:387
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:402
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:417
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Ingen aktiv profil"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Misslyckades att starta inspelningen"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:195
 msgid "Check out {} for help."
-msgstr ""
+msgstr "Kolla in {} för hjälp."
 
 #: src/recording.rs:235
 msgid "No microphone source found"
-msgstr ""
+msgstr "Ingen mikrofonkälla hittades"
 
 #: src/recording.rs:242
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Ingen skrivbords högtalarkälla hittades"
 
 #: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "En GStreamer-plugin kanske inte är installerad."
 
 #: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Se till att sparplatsen finns och är tillgänglig."
 
 #: src/recording.rs:491
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Ett fel uppstod under inspelningen"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:503
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "Misslyckades att öppna \"{}\" för skrivning"
 
 #: src/recording.rs:505
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Misslyckades att öppna fil för skrivning"
 
 #: src/settings.rs:42
 msgid "Select Recordings Folder"
@@ -420,11 +421,11 @@ msgstr "_Markera"
 
 #: src/settings.rs:67
 msgid "No folder selected"
-msgstr ""
+msgstr "Ingen mapp vald"
 
 #: src/settings.rs:68
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "Välj en mapp och försök igen."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:77
@@ -437,41 +438,43 @@ msgstr "Välj en tillgänglig plats och försök igen."
 
 #: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Misslyckades att växla paus"
 
 #: src/window.rs:177
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopiera till urklipp"
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopierades till urklipp"
 
 #: src/window.rs:189
 msgid "Show detailed error"
-msgstr ""
+msgstr "Visa detaljerat fel"
 
 #: src/window.rs:211
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Öppna inställningar?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Det tidigare valda formatet kan ha varit otillgängligt. Öppna "
+"inställningarna och välj ett format för att fortsätta inspelningen."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "Senare"
 
 #: src/window.rs:292
 msgid "Open"
