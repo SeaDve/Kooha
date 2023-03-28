@@ -6,13 +6,14 @@
 # عبدالرئوف عابدی <abdolraoofabedi@gmail.com>, 2021.
 # MSKF <walkingdeadstudio@outlook.com>, 2021, 2022.
 # MohammadSaleh Kamyab <mskf1383@protonmail.com>, 2022.
+# MohammadSaleh Kamyab <mskf1383@envs.net>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-03-15 09:54+0000\n"
-"Last-Translator: MohammadSaleh Kamyab <mskf1383@protonmail.com>\n"
+"PO-Revision-Date: 2023-03-28 11:06+0000\n"
+"Last-Translator: MohammadSaleh Kamyab <mskf1383@envs.net>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fa/>\n"
 "Language: fa\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -94,7 +95,7 @@ msgstr ""
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
