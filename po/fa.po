@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-03-28 11:06+0000\n"
+"PO-Revision-Date: 2023-03-29 12:40+0000\n"
 "Last-Translator: MohammadSaleh Kamyab <mskf1383@envs.net>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fa/>\n"
@@ -38,8 +38,8 @@ msgstr "صفحه‌نمایش خود را با ظرافت ضبط کنید"
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
-"kooha;Screencast;Recorder;Screen;Video;اسکرین‌شات;اسکرین‌کست;ضبط;صفحه‌نمایش;"
-"ویدیو;ویدئو;"
+"kooha;Screencast;Recorder;Screen;Video;اسکرین‌شات;اسکرین‌کست;ضبط;صفحه‌نمایش;و"
+"یدیو;ویدئو;نماگرفت;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
@@ -61,36 +61,36 @@ msgstr "قابلیت‌های اصلی کوها عبارتند از:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ ضبط صدابَر، صداهای میزکار، یا هر دو در یک زمان"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 پشتیبانی از قالب‌های WebM، ‏MP4، ‏GIF، و Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ گزینش یک نمایشگر، پنجره یا بخشی از صفحه‌نمایش برای ضبط"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 گزینش چندین منبع"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr ""
+msgstr "🛠️ قابلیت پیکربندی مکان ذخیره، پدیداری اشاره‌گر، نرخ قاب، و تأخیر"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 کدبندی شتاب‌یافتهٔ سخت‌افزاری آزمایشی"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "دِیو پاتریک کابِرتو"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "گزینش ناحیه"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -99,11 +99,11 @@ msgstr "لغو"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "انجام شد"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "بازنشانی گزینش"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -111,27 +111,27 @@ msgstr "عمومی"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "تأخیر (ثانیه)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "پوشهٔ ضبط‌ها"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "ویدیو"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "قالب"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "نرخ قاب"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "این نرخ قاب ممکن است باعث مشکلات کارایی شود."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -139,7 +139,7 @@ msgstr "گشودن فهرست"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "نمایش ترجیحات"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -155,15 +155,15 @@ msgstr "در حال ضبط"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr "تغییر حالت دکمهٔ ضبط"
+msgstr "تغییر حالت ضبط"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr "تغییر حالت دکمهٔ مکث"
+msgstr "تغییر حالت مکث"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "لغو ظبط"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -171,15 +171,15 @@ msgstr "تنظیمات"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "تغییر حالت صدای میزکار"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr "تغییر حالت دکمهٔ میکروفن"
+msgstr "تغییر حالت صدابَر"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr "تغییر حالت دکمهٔ نشانگر"
+msgstr "تغییر حالت اشاره‌گر"
 
 #: data/resources/ui/window.ui:29
 msgid "Main Menu"
@@ -187,7 +187,7 @@ msgstr "فهرست اصلی"
 
 #: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
-msgstr "ضبط یک صفحه‌نمایش یا پنجره"
+msgstr "ضبط یک نمایشگر یا پنجره"
 
 #: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
@@ -195,31 +195,31 @@ msgstr "ضبط یک گزیده از صفحه‌نمایش"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "به کار انداختن صدای میزکار"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "از کار انداختن صدای میزکار"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "به کار انداختن صدابَر"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "از کار انداختن صدابَر"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
-msgstr "نمایش نشانگر"
+msgstr "نمایش اشاره‌گر"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "نهفتن اشاره‌گر"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "شروع ضبط"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
@@ -227,11 +227,11 @@ msgstr "ضبط"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "فراموشی منابع ویدیوی قبلاً گزیده شده"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "توقّف ضبط"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
@@ -239,7 +239,7 @@ msgstr "توقف"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "مکث ضبط"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
@@ -247,15 +247,15 @@ msgstr "ضبط در…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "لغو ضبط"
 
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
-msgstr "فلاش کردن…"
+msgstr "تراز کردن…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_ترجیحات"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -267,7 +267,7 @@ msgstr "_دربارهٔ کوها"
 
 #: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© ۲۰۲۲ دِیو پاتریک کابِرتو"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
@@ -276,11 +276,11 @@ msgstr "محمدصالح کامیاب"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "اعانه (لیبراپی)"
 
 #: src/about.rs:45
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "اعانه (پی‌پال)"
 
 #: src/about.rs:49
 msgid "GitHub"
@@ -288,40 +288,40 @@ msgstr "گیت‌هاب"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr ""
+msgstr "ترجمه"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
 msgid "Screencast recorded"
-msgstr ""
+msgstr "صفحه ضبط شد"
 
 #: src/application.rs:108
 msgid "Click here to view the video."
-msgstr ""
+msgstr "برای دیدن ویدیو این‌جا بزنید."
 
 #: src/application.rs:114
 msgid "Show in Files"
-msgstr ""
+msgstr "نمایش در پرونده‌ها"
 
 #: src/area_selector/mod.rs:318
 msgid "approx."
-msgstr ""
+msgstr "تقریباً."
 
 #: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "مطمئن شوید که پالس‌اودیو (PulseAudio) روی سامانه‌تان نصب است."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "شکست در شروع پایشگر افزاره"
 
 #: src/audio_device.rs:176
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "شکست در اتصال به شبح پالس‌اودیو"
 
 #: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "این قالب آزمایشی و پشتیبانی نشده است."
 
 #: src/preferences_window.rs:254
 msgid "None"
@@ -341,142 +341,144 @@ msgstr "MP4"
 
 #: src/profile.rs:309
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:342
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:366
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:387
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:402
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:417
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "بدون نمایهٔ فعال"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
 msgid "Failed to start recording"
-msgstr ""
+msgstr "شکست در شروع ضبط"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:195
 msgid "Check out {} for help."
-msgstr ""
+msgstr "برای راهنمایی {} را بررسی کنید."
 
 #: src/recording.rs:235
 msgid "No microphone source found"
-msgstr ""
+msgstr "منبع صدابَری پیدا نشد"
 
 #: src/recording.rs:242
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "هیچ منبع بلندگوی میزکاری پیدا نشد"
 
 #: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "شاید افزایهٔ جی‌استریمری نصب نباشد."
 
 #: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "مطمئن شوید مکان ذخیره وجود دارد و دستری‌پذیر است."
 
 #: src/recording.rs:491
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "هنگام ضبط خطایی رخ داد"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:503
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "شکست در گشودن «{}» برای نوشتن"
 
 #: src/recording.rs:505
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "شکست در گشودن پرونده برای نوشتن"
 
 #: src/settings.rs:42
 msgid "Select Recordings Folder"
-msgstr "گزیدن پوشهٔ ضبط‌ها"
+msgstr "گزینش پوشهٔ ضبط‌ها"
 
 #: src/settings.rs:52
 msgid "_Cancel"
-msgstr ""
+msgstr "_لغو"
 
 #: src/settings.rs:53
 msgid "_Select"
-msgstr ""
+msgstr "_گزینش"
 
 #: src/settings.rs:67
 msgid "No folder selected"
-msgstr ""
+msgstr "پوشه‌ای گزیده نشده"
 
 #: src/settings.rs:68
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "لطفاً پوشه‌ای انتخاب، و دوباره تلاش کنید."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:77
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "نمی‌توان به «{}» دست یافت"
 
 #: src/settings.rs:78
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "لطفاً مکانی دسترسی‌پذیر انتخاب، و دوباره تلاش کنید."
 
 #: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
-msgstr ""
+msgstr "تأیید"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "شکست در تغییر حالت مکث"
 
 #: src/window.rs:177
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "رونوشت به تخته‌گیره"
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "به تخته‌گیره رونوشت شد"
 
 #: src/window.rs:189
 msgid "Show detailed error"
-msgstr ""
+msgstr "نمایش خطای باجزئیات"
 
 #: src/window.rs:211
 msgid "Help"
-msgstr ""
+msgstr "راهنما"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "گشودن ترجیحات؟"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"قالب قبلاً گزیده شده شاید موجود نباشد. برای ادامه، ترجیحات را باز کنید و یک "
+"قالب برگزینید."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "جدیدتر"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "گشودن"
 
 #: src/window.rs:350
 msgid "Paused"
@@ -488,7 +490,7 @@ msgstr "معمولی"
 
 #: src/window.rs:383
 msgid "Selection"
-msgstr "گزیده"
+msgstr "گزینش"
 
 #~ msgid "🎥 Capture your screen without any hassle."
 #~ msgstr "🎥 ضبط صفحه‌نمایش‌تان بدون هیچ عذابی."
