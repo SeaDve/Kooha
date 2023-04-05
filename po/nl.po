@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-01-20 13:09+0000\n"
+"PO-Revision-Date: 2023-04-05 19:48+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
 "\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -273,7 +273,7 @@ msgstr "© 2022 Dave Patrick Caberto"
 msgid "translator-credits"
 msgstr ""
 "Heimen Stoffels &lt;vistausss@fastmail.com&gt;\n"
-"Philip Goto &lt;philip.goto@gmail.com&gt;"
+"Philip Goto https://flipflop97.github.io/"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
