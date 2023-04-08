@@ -7,13 +7,13 @@
 # Maxime Leroy <lisacintosh@gmail.com>, 2021, 2022.
 # Magik Leo <magikleo.yopmail@gmail.com>, 2022.
 # matb <perso@mathieu-bousquet.fr>, 2022.
-# rene-coty <irenee.thirion@e.email>, 2022.
+# rene-coty <irenee.thirion@e.email>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-09-29 11:28+0000\n"
+"PO-Revision-Date: 2023-04-08 06:47+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -277,7 +277,7 @@ msgstr "© 2022 Dave Patrick Caberto"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
 msgid "translator-credits"
-msgstr "J. Lavoie, M. Bousquet"
+msgstr "J. Lavoie, M. Bousquet, Irénée Thirion"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-04-05 19:48+0000\n"
+"PO-Revision-Date: 2023-04-08 06:47+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
 "\n"
@@ -289,7 +289,7 @@ msgstr "GitHub"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr "Vertalen"
+msgstr "Meehelpen vertalen"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
@@ -441,7 +441,7 @@ msgstr "Kies een toegankelijke locatie en probeer het opnieuw."
 
 #: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
-msgstr "Oké"
+msgstr "OK"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -453,7 +453,7 @@ msgstr "Kopiëren naar klembord"
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr "De tekst is gekopieerd naar het klembord"
+msgstr "Gekopieerd naar klembord"
 
 #: src/window.rs:189
 msgid "Show detailed error"
