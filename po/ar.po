@@ -5,13 +5,14 @@
 # احمد النهاري <alna7ari@gmail.com>, 2021.
 # Mehdi Essalehi <messalehi2001@outlook.com>, 2021.
 # Muhammad Yasser <iamrokt@gmail.com>, 2021.
+# Ali Aljishi <ahj696@hotmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2021-09-17 09:34+0000\n"
-"Last-Translator: Muhammad Yasser <iamrokt@gmail.com>\n"
+"PO-Revision-Date: 2023-04-09 11:49+0000\n"
+"Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
 ">\n"
 "Language: ar\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -83,7 +84,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "ديف باترك كابرتو"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
@@ -92,7 +93,7 @@ msgstr ""
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr "الغاء"
+msgstr "ألغِ"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
@@ -232,7 +233,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
-msgstr "أوقف"
+msgstr "توقَّف"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
@@ -252,11 +253,11 @@ msgstr "جارِِ التفريغ…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "ال_تفضيلات"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
-msgstr "_إختصارات لوحة المفاتيح"
+msgstr "إ_ختصارات لوحة المفاتيح"
 
 #: data/resources/ui/window.ui:305
 msgid "_About Kooha"
@@ -269,23 +270,26 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
 msgid "translator-credits"
-msgstr "Mehdi Essalehi,Muhammad Yasser"
+msgstr ""
+"Mehdi Essalehi\n"
+"Muhammad Yasser\n"
+"علي الجشي &lt;ahj696@hotmail.com&gt;"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "تبرَّع (ليبر‌بَي)"
 
 #: src/about.rs:45
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "تبرَّع (بي‌بال)"
 
 #: src/about.rs:49
 msgid "GitHub"
-msgstr "GitHub"
+msgstr "جب‌هب"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr ""
+msgstr "ترجم"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
@@ -435,7 +439,7 @@ msgstr "الرجاء اختيار مسار للحفظ موجود بالفعل و
 
 #: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
-msgstr ""
+msgstr "حسنًا"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -447,7 +451,7 @@ msgstr ""
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "نُسخ للحافظة"
 
 #: src/window.rs:189
 msgid "Show detailed error"
