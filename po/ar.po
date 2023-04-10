@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-04-09 11:49+0000\n"
+"PO-Revision-Date: 2023-04-10 13:47+0000\n"
 "Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
 ">\n"
@@ -133,7 +133,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr "فتح القائمة"
+msgstr "افتح القائمة"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
@@ -145,7 +145,7 @@ msgstr "إظهار الإختصارات"
 
 #: data/resources/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr "خروج"
+msgstr "أنهِ"
 
 #: data/resources/ui/shortcuts.ui:39 src/window.rs:342
 msgid "Recording"
@@ -181,7 +181,7 @@ msgstr "تمكين/تعطيل مؤشر الفأرة"
 
 #: data/resources/ui/window.ui:29
 msgid "Main Menu"
-msgstr "القائمة الرئيسية"
+msgstr "القائمة الرئيسة"
 
 #: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
@@ -257,7 +257,7 @@ msgstr "ال_تفضيلات"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
-msgstr "إ_ختصارات لوحة المفاتيح"
+msgstr "ا_ختصارات لوحة المفاتيح"
 
 #: data/resources/ui/window.ui:305
 msgid "_About Kooha"
@@ -273,7 +273,7 @@ msgid "translator-credits"
 msgstr ""
 "Mehdi Essalehi\n"
 "Muhammad Yasser\n"
-"علي الجشي &lt;ahj696@hotmail.com&gt;"
+"علي الجشي https://github.com/Ali-x98"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
@@ -285,7 +285,7 @@ msgstr "تبرَّع (بي‌بال)"
 
 #: src/about.rs:49
 msgid "GitHub"
-msgstr "جب‌هب"
+msgstr "جت‌هب"
 
 #: src/about.rs:51
 msgid "Translate"
