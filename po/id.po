@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# liimee <alt3753.7@gmail.com>, 2021, 2022.
+# liimee <alt3753.7@gmail.com>, 2021, 2022, 2023.
 # Reza Almanda <rezaalmanda27@gmail.com>, 2021.
 # Sucipto <show.cheap@gmail.com>, 2021.
 # Sucipto <sucipto@pm.me>, 2021.
@@ -11,16 +11,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-06-20 00:19+0000\n"
+"PO-Revision-Date: 2023-04-17 07:47+0000\n"
 "Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
-"file/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
+"pot-file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -84,7 +84,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
@@ -253,7 +253,7 @@ msgstr "Membersihkan…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "Pre_ferensi"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
@@ -277,11 +277,11 @@ msgstr ""
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "Berdonasi (Liberapay)"
 
 #: src/about.rs:45
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "Berdonasi (PayPal)"
 
 #: src/about.rs:49
 msgid "GitHub"
@@ -289,7 +289,7 @@ msgstr "GitHub"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr ""
+msgstr "Terjemahkan"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
@@ -451,7 +451,7 @@ msgstr ""
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Disalin ke papan klip"
 
 #: src/window.rs:189
 msgid "Show detailed error"

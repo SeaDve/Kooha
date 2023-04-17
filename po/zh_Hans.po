@@ -11,14 +11,14 @@
 # Hugel <qihu@nfschina.com>, 2022.
 # Leedsgarden <lkw1411026824@outlook.com>, 2022.
 # Deleted User <hamburger1024@users.noreply.hosted.weblate.org>, 2022.
+# yangyangdaji <1504305527@qq.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-12-26 04:49+0000\n"
-"Last-Translator: Deleted User <hamburger1024@users.noreply.hosted.weblate."
-"org>\n"
+"PO-Revision-Date: 2023-04-17 07:47+0000\n"
+"Last-Translator: yangyangdaji <1504305527@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -312,7 +312,7 @@ msgstr "在文件中显示"
 
 #: src/area_selector/mod.rs:318
 msgid "approx."
-msgstr ""
+msgstr "大约。"
 
 #: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
