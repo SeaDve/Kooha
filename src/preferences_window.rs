@@ -87,7 +87,7 @@ mod imp {
                     profile.get().map_or(true, |profile| profile.is_available())
                 }),
             )));
-            let filter_model = gtk::FilterListModel::new(Some(&profiles_model), Some(&filter));
+            let filter_model = gtk::FilterListModel::new(Some(profiles_model), Some(filter));
             self.profile_row.set_model(Some(&filter_model));
 
             settings

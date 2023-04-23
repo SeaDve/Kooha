@@ -1,8 +1,9 @@
-use anyhow::{anyhow, Context, Result};
+use anyhow::{anyhow, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
+use gtk::gio;
 
-use crate::{help::ResultExt, THREAD_POOL};
+use crate::help::ResultExt;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Class {
@@ -29,10 +30,9 @@ impl Class {
 }
 
 pub async fn find_default_name(class: Class) -> Result<String> {
-    match THREAD_POOL
-        .push_future(move || find_default_name_gst(class))
-        .context("Failed to push future to main thread pool")?
+    match gio::spawn_blocking(move || find_default_name_gst(class))
         .await
+        .map_err(|err| anyhow!("Failed to spawn blocking task: {:?}", err))?
     {
         Ok(res) => Ok(res),
         Err(err) => {

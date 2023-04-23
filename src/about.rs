@@ -23,9 +23,9 @@ pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
         .copyright(&gettext("© 2022 Dave Patrick Caberto"))
         .license_type(gtk::License::Gpl30)
         .developers(vec![
-            "Dave Patrick Caberto".into(),
-            "Mathiascode".into(),
-            "Felix Weilbach".into(),
+            "Dave Patrick Caberto",
+            "Mathiascode",
+            "Felix Weilbach",
         ])
         // Translators: Replace "translator-credits" with your names. Put a comma between.
         .translator_credits(&gettext("translator-credits"))
