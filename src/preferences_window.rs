@@ -40,7 +40,7 @@ mod imp {
             klass.bind_template();
 
             klass.install_action("preferences.select-saving-location", None, |obj, _, _| {
-                utils::app_settings().select_saving_location(Some(obj));
+                utils::app_settings().select_saving_location(obj);
             });
         }
 
@@ -217,6 +217,7 @@ fn profile_row_factory(
 ) -> gtk::SignalListItemFactory {
     let factory = gtk::SignalListItemFactory::new();
     factory.connect_setup(clone!(@weak profile_row => move |_, list_item| {
+        let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
         let item_expression = list_item.property_expression("item");
 
         let hbox = gtk::Box::builder().spacing(12).build();

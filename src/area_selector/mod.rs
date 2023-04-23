@@ -160,7 +160,7 @@ impl AreaSelector {
 
             let monitor_geometry = RootExt::display(transient_for)
                 .monitor_at_surface(&transient_for.surface())
-                .expect("No monitor found")
+                .context("No monitor found")?
                 .geometry();
             this.set_default_width(
                 (monitor_geometry.width() as f64 * 0.4 - ASSUMED_HEADER_BAR_HEIGHT * 2.0) as i32,

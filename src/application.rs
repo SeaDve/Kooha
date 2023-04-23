@@ -2,7 +2,7 @@ use adw::subclass::prelude::*;
 use anyhow::{Context, Result};
 use gettextrs::gettext;
 use gtk::{
-    gdk, gio,
+    gio,
     glib::{self, clone, WeakRef},
     prelude::*,
 };
@@ -135,8 +135,9 @@ impl Application {
     }
 
     async fn try_show_uri(&self, uri: &str) {
-        if let Err(err) =
-            gtk::show_uri_full_future(self.main_window().as_ref(), uri, gdk::CURRENT_TIME).await
+        if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(uri)))
+            .launch_future(self.main_window().as_ref())
+            .await
         {
             if !err.matches(gio::IOErrorEnum::Cancelled) {
                 tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
