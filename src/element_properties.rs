@@ -78,7 +78,7 @@ impl ElementPropertiesBuilder {
         ElementProperties {
             factory_name: self.s.name().to_string(),
             raw: gst::Structure::builder("element-properties-map")
-                .field("map", gst::List::from(vec![self.s.to_send_value()]))
+                .field("map", gst::List::from_values(vec![self.s.to_send_value()]))
                 .build(),
         }
     }

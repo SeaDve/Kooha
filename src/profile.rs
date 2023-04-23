@@ -523,8 +523,8 @@ fn new_encoding_profile(
     let muxer_format = profile_format_from_factory(&muxer_factory, muxer_caps_fields)?;
     let container_profile = gst_pbutils::EncodingContainerProfile::builder(&muxer_format)
         .preset_name(muxer_factory_name)
-        .add_profile(&video_profile)
-        .add_profile(&audio_profile)
+        .add_profile(video_profile)
+        .add_profile(audio_profile)
         .presence(0)
         .build();
     container_profile.set_element_properties(muxer_element_properties);

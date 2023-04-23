@@ -487,7 +487,7 @@ impl Recording {
                 // TODO print error quarks for all glib::Error
 
                 let error = Error::from(e.error())
-                    .context(e.debug().unwrap_or_else(|| "<no debug>".to_string()))
+                    .context(e.debug().unwrap_or_else(|| "<no debug>".into()))
                     .context(gettext("An error occurred while recording"));
 
                 let error = if e.error().matches(gst::ResourceError::OpenWrite) {
@@ -538,7 +538,7 @@ impl Recording {
             MessageView::StateChanged(sc) => {
                 let new_state = sc.current();
 
-                if message.src().as_ref()
+                if message.src()
                     != imp
                         .pipeline
                         .get()

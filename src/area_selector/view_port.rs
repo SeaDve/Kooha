@@ -184,7 +184,7 @@ mod imp {
             motion_controller.connect_leave(clone!(@weak obj => move |controller| {
                 obj.on_leave(controller);
             }));
-            obj.add_controller(&motion_controller);
+            obj.add_controller(motion_controller);
 
             let gesture_drag = gtk::GestureDrag::builder().exclusive(true).build();
             gesture_drag.connect_drag_begin(clone!(@weak obj => move |controller, x, y| {
@@ -196,7 +196,7 @@ mod imp {
             gesture_drag.connect_drag_end(clone!(@weak obj => move |controller, dx, dy| {
                 obj.on_drag_end(controller, dx, dy);
             }));
-            obj.add_controller(&gesture_drag);
+            obj.add_controller(gesture_drag);
         }
     }
 
