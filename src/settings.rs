@@ -6,16 +6,11 @@ use gtk::{
     glib::{self, clone},
 };
 
-use std::{
-    fs,
-    path::{Path, PathBuf},
-    time::Duration,
-};
+use std::{fs, path::PathBuf, time::Duration};
 
 use crate::{
     config::APP_ID,
     profile::{self, Profile},
-    utils,
 };
 
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
@@ -33,57 +28,39 @@ impl Default for Settings {
 impl Settings {
     pub const NONE_PROFILE_ID: &'static str = "none";
 
-    /// Opens a `FileChooserDialog` to select a folder and updates
+    /// Opens a `FileDialog` to select a folder and updates
     /// the settings with the selected folder.
-    pub fn select_saving_location(&self, transient_for: Option<&impl IsA<gtk::Window>>) {
-        let chooser = gtk::FileChooserDialog::builder()
+    pub fn select_saving_location(&self, transient_for: &impl IsA<gtk::Window>) {
+        let dialog = gtk::FileDialog::builder()
             .modal(true)
-            .action(gtk::FileChooserAction::SelectFolder)
             .title(&gettext("Select Recordings Folder"))
+            .initial_folder(&gio::File::for_path(self.saving_location()))
             .build();
-        chooser.set_transient_for(transient_for);
 
-        if let Err(err) =
-            chooser.set_current_folder(Some(&gio::File::for_path(self.saving_location())))
-        {
-            tracing::warn!("Failed to set current folder: {:?}", err);
-        }
-
-        chooser.add_button(&gettext("_Cancel"), gtk::ResponseType::Cancel);
-        chooser.add_button(&gettext("_Select"), gtk::ResponseType::Accept);
-        chooser.set_default_response(gtk::ResponseType::Accept);
-
-        chooser.present();
-
+        let transient_for = transient_for.upcast_ref::<gtk::Window>();
         let inner = &self.0;
-        chooser.connect_response(clone!(@weak inner => move |chooser, response| {
-            if response != gtk::ResponseType::Accept {
-                chooser.close();
-                return;
-            }
+        dialog.select_folder(
+            Some(transient_for),
+            gio::Cancellable::NONE,
+            clone!(@weak inner, @weak transient_for => move |response| {
+                match response {
+                    Ok(folder) => {
+                        inner.set("saving-location", folder.path().unwrap()).unwrap();
+                    }
+                    Err(err) => {
+                        if err.matches(gtk::DialogError::Dismissed) || err.matches(gtk::DialogError::Cancelled) {
+                            return;
+                        }
 
-            let Some(directory) = chooser.file().and_then(|file| file.path()) else {
-                present_message(
-                    &gettext("No folder selected"),
-                    &gettext("Please choose a folder and try again."),
-                    Some(chooser),
-                );
-                return;
-            };
-
-            if !is_accessible(&directory) {
-                present_message(
-                    // Translators: {} will be replaced with a path to the folder.
-                    &gettext!("Cannot access “{}”", directory.display()),
-                    &gettext("Please choose an accessible location and try again."),
-                    Some(chooser),
-                );
-                return;
-            }
-
-            inner.set("saving-location", &directory).unwrap();
-            chooser.close();
-        }));
+                        present_message(
+                            &gettext("Failed to select folder"),
+                            &err.to_string(),
+                            Some(&transient_for),
+                        );
+                    }
+                }
+            }),
+        );
     }
 
     pub fn saving_location(&self) -> PathBuf {
@@ -189,16 +166,6 @@ fn present_message(heading: &str, body: &str, transient_for: Option<&impl IsA<gt
     dialog.add_response("ok", &gettext("Ok"));
     dialog.set_transient_for(transient_for);
     dialog.present();
-}
-
-fn is_accessible(path: &Path) -> bool {
-    if !utils::is_flatpak() {
-        return true;
-    }
-
-    let home_folder = glib::home_dir();
-
-    path != home_folder && path.starts_with(&home_folder)
 }
 
 #[cfg(test)]
