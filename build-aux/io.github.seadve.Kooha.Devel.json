@@ -5,7 +5,7 @@
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm14"
+        "org.freedesktop.Sdk.Extension.llvm15"
     ],
     "command": "kooha",
     "finish-args": [
@@ -22,7 +22,7 @@
         "--env=GST_DEBUG=3"
     ],
     "build-options": {
-        "append-path": "/usr/lib/sdk/llvm14/bin:/usr/lib/sdk/rust-stable/bin",
+        "append-path": "/usr/lib/sdk/llvm15/bin:/usr/lib/sdk/rust-stable/bin",
         "build-args": [
             "--share=network"
         ],
