@@ -12,13 +12,14 @@
 # Leedsgarden <lkw1411026824@outlook.com>, 2022.
 # Deleted User <hamburger1024@users.noreply.hosted.weblate.org>, 2022.
 # yangyangdaji <1504305527@qq.com>, 2023.
+# CrackTC <chenrke369@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-04-17 07:47+0000\n"
-"Last-Translator: yangyangdaji <1504305527@qq.com>\n"
+"PO-Revision-Date: 2023-05-18 12:48+0000\n"
+"Last-Translator: CrackTC <chenrke369@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -257,7 +258,7 @@ msgstr "冲制中…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr "设置"
+msgstr "设置 (_P)"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
