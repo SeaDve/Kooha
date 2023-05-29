@@ -7,14 +7,14 @@
 # albanobattistella <albano_battistella@hotmail.com>, 2021, 2022.
 # Ruggero Turra <giurrero@gmail.com>, 2021.
 # Michael Moroni <michaelmoroni@disroot.org>, 2021, 2023.
-# Andrea Brandi <git@andreabrandi.com>, 2022.
+# Andrea Brandi <git@andreabrandi.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-04-13 07:50+0000\n"
-"Last-Translator: Michael Moroni <michaelmoroni@disroot.org>\n"
+"PO-Revision-Date: 2023-05-29 21:51+0000\n"
+"Last-Translator: Andrea Brandi <git@andreabrandi.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
 "Language: it\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
