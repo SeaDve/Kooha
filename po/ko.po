@@ -2,21 +2,22 @@
 # Copyright (C) Kooha authors and many contributors.
 # This file is distributed under the same license as the kooha package.
 # Seong-ho Cho <shcho@gnome.org>, 2021.
-#
+# 정지우 <jgw1010@ajou.ac.kr>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2021-08-31 12:34+0900\n"
-"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
-"Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
+"PO-Revision-Date: 2023-06-24 14:51+0000\n"
+"Last-Translator: 정지우 <jgw1010@ajou.ac.kr>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/kooha/pot-file/ko/"
+">\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -80,8 +81,9 @@ msgid "🚀 Experimental hardware accelerated encoding"
 msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#, fuzzy
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
@@ -90,7 +92,7 @@ msgstr ""
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
@@ -102,7 +104,7 @@ msgstr ""
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "일반"
+msgstr "일반적인"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
@@ -178,7 +180,7 @@ msgstr "포인터 상태 전환"
 
 #: data/resources/ui/window.ui:29
 msgid "Main Menu"
-msgstr "주 메뉴"
+msgstr "메인 메뉴"
 
 #: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
@@ -229,6 +231,7 @@ msgid "Stop Recording"
 msgstr ""
 
 #: data/resources/ui/window.ui:186
+#, fuzzy
 msgid "Stop"
 msgstr "정지"
 
@@ -250,11 +253,11 @@ msgstr "지우는 중…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "_환경설정"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
-msgstr "키보드 바로 가기 키(_K)"
+msgstr "_키보드 단축키"
 
 #: data/resources/ui/window.ui:305
 msgid "_About Kooha"
@@ -267,23 +270,24 @@ msgstr ""
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
 msgid "translator-credits"
-msgstr "조성호 <shcho@gnome.org>"
+msgstr "번역자-크레딧"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "기부하기(Liberapay)"
 
 #: src/about.rs:45
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "기부하기(PayPal)"
 
 #: src/about.rs:49
+#, fuzzy
 msgid "GitHub"
 msgstr "GitHub"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr ""
+msgstr "번역"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
@@ -445,7 +449,7 @@ msgstr ""
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "클립보드에 복사되었습니다"
 
 #: src/window.rs:189
 msgid "Show detailed error"
@@ -467,7 +471,7 @@ msgstr ""
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "나중에"
 
 #: src/window.rs:292
 msgid "Open"
