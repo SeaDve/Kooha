@@ -2,21 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Hemish <hemish04082005@gmail.com>, 2021, 2022.
+# Th3 A6add0n <th3.a6add0n@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-11-16 15:48+0000\n"
-"Last-Translator: Hemish <hemish04082005@gmail.com>\n"
-"Language-Team: Hindi <https://hosted.weblate.org/projects/kooha/pot-file/hi/"
-">\n"
+"PO-Revision-Date: 2023-07-12 10:51+0000\n"
+"Last-Translator: Th3 A6add0n <th3.a6add0n@gmail.com>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/kooha/pot-file/hi/>"
+"\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -248,11 +249,11 @@ msgstr ""
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr "सेटिंग्स (_P)"
+msgstr "_वरीयता"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
-msgstr "कूंजीपटल शॉर्टकट"
+msgstr "_कीबोर्ड शॉर्टकट्स"
 
 #: data/resources/ui/window.ui:305
 msgid "_About Kooha"
