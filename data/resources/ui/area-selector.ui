@@ -5,9 +5,8 @@
   <template class="KoohaAreaSelector" parent="AdwWindow">
     <property name="resizable">False</property>
     <property name="content">
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
+      <object class="AdwToolbarView">
+        <child type="top">
           <object class="GtkHeaderBar">
             <property name="show-title-buttons">False</property>
             <property name="title-widget">
@@ -39,7 +38,7 @@
             </child>
           </object>
         </child>
-        <child>
+        <property name="content">
           <object class="GtkStack" id="stack">
             <property name="transition-type">crossfade</property>
             <child>
@@ -76,7 +75,7 @@
               </object>
             </child>
           </object>
-        </child>
+        </property>
       </object>
     </property>
     <style>
