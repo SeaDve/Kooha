@@ -1,12 +1,8 @@
 use gettextrs::gettext;
 use gst::prelude::*;
-use gtk::prelude::*;
+use gtk::{glib, prelude::*};
 
-use std::{
-    env,
-    fs::File,
-    io::{prelude::*, BufReader},
-};
+use std::env;
 
 use crate::{
     config::{APP_ID, VERSION},
@@ -76,7 +72,10 @@ fn release_notes() -> &'static str {
 fn debug_info() -> String {
     let is_flatpak = utils::is_flatpak();
     let is_experimental_mode = utils::is_experimental_mode();
-    let distribution = distribution_info().unwrap_or_else(|| "<unknown>".into());
+
+    let language_names = glib::language_names().join(", ");
+
+    let distribution = glib::os_info("PRETTY_NAME").unwrap_or_else(|| "<unknown>".into());
     let desktop_session = env::var("DESKTOP_SESSION").unwrap_or_else(|_| "<unknown>".into());
     let display_server = env::var("XDG_SESSION_TYPE").unwrap_or_else(|_| "<unknown>".into());
 
@@ -106,6 +105,8 @@ fn debug_info() -> String {
 - Flatpak: {is_flatpak}
 - Experimental: {is_experimental_mode}
 
+- Language: {language_names}
+
 - Distribution: {distribution}
 - Desktop Session: {desktop_session}
 - Display Server: {display_server}
@@ -115,18 +116,4 @@ fn debug_info() -> String {
 - {gst_version_string}
 - Pipewire {pipewire_version}"#
     )
-}
-
-fn distribution_info() -> Option<String> {
-    let file = File::open("/etc/os-release").ok()?;
-
-    BufReader::new(file).lines().find_map(|line| {
-        let line = line.ok()?;
-        let (key, value) = line.split_once('=')?;
-        if key == "PRETTY_NAME" {
-            Some(value.trim_matches('\"').to_string())
-        } else {
-            None
-        }
-    })
 }
