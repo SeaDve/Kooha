@@ -20,6 +20,7 @@ use crate::{
     audio_device::{self, Class as AudioDeviceClass},
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
+    i18n::gettext_f,
     pipeline::PipelineBuilder,
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
     settings::{CaptureMode, Settings},
@@ -191,8 +192,13 @@ impl Recording {
         )
         .await
         .with_help(
-            // Translators: {} will be replaced with a link to a webpage.
-            || gettext!("Check out {} for help.", r#"<a href="https://github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
+            || {
+                gettext_f(
+                    // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+                    "Check out {link} for help.",
+                    &[("link", r#"<a href="https://github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#)],
+                )
+            },
             || gettext("Failed to start recording"),
         )?;
         imp.session.replace(Some(screencast_session));
@@ -499,8 +505,11 @@ impl Recording {
                             .and_then(|f| f.path())
                             .and_then(|path| path.parent().map(|p| p.to_owned()))
                         {
-                            // Translators: {} will be replaced with a path to the folder.
-                            gettext!("Failed to open “{}” for writing", path.display())
+                            gettext_f(
+                                // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+                                "Failed to open “{path}” for writing",
+                                &[("path", &path.display().to_string())],
+                            )
                         } else {
                             gettext("Failed to open file for writing")
                         },
