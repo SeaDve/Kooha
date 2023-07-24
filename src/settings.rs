@@ -33,7 +33,7 @@ impl Settings {
     pub fn select_saving_location(&self, transient_for: &impl IsA<gtk::Window>) {
         let dialog = gtk::FileDialog::builder()
             .modal(true)
-            .title(&gettext("Select Recordings Folder"))
+            .title(gettext("Select Recordings Folder"))
             .initial_folder(&gio::File::for_path(self.saving_location()))
             .build();
 

@@ -174,7 +174,7 @@ impl Window {
         scrolled_window_row.add_css_class("error-view");
 
         let copy_button = gtk::Button::builder()
-            .tooltip_text(&gettext("Copy to clipboard"))
+            .tooltip_text(gettext("Copy to clipboard"))
             .icon_name("edit-copy-symbolic")
             .valign(gtk::Align::Center)
             .build();
@@ -186,7 +186,7 @@ impl Window {
         });
 
         let expander = adw::ExpanderRow::builder()
-            .title(&gettext("Show detailed error"))
+            .title(gettext("Show detailed error"))
             .activatable(false)
             .build();
         expander.add_row(&scrolled_window_row);
@@ -199,7 +199,7 @@ impl Window {
         list_box.append(&expander);
 
         let err_dialog = adw::MessageDialog::builder()
-            .heading(&err.to_string())
+            .heading(err.to_string())
             .body_use_markup(true)
             .default_response("ok")
             .transient_for(self)

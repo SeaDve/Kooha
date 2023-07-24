@@ -223,7 +223,7 @@ fn profile_row_factory(
         let hbox = gtk::Box::builder().spacing(12).build();
 
         let warning_indicator = gtk::Image::builder()
-            .tooltip_text(&gettext("This format is experimental and unsupported."))
+            .tooltip_text(gettext("This format is experimental and unsupported."))
             .icon_name("warning-symbolic")
             .build();
         warning_indicator.add_css_class("warning");
