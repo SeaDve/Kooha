@@ -16,7 +16,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="action-name">app.preferences</property>
+                <property name="action-name">app.show-preferences</property>
                 <property name="title" translatable="yes">Show Preferences</property>
               </object>
             </child>

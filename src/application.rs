@@ -181,17 +181,17 @@ impl Application {
         }));
         self.add_action(&action_show_in_files);
 
-        let action_about = gio::SimpleAction::new("about", None);
-        action_about.connect_activate(clone!(@weak self as obj => move |_, _| {
+        let action_show_about = gio::SimpleAction::new("show-about", None);
+        action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
             about::present_window(Some(&obj.window()));
         }));
-        self.add_action(&action_about);
+        self.add_action(&action_show_about);
 
-        let action_preferences = gio::SimpleAction::new("preferences", None);
-        action_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
+        let action_show_preferences = gio::SimpleAction::new("show-preferences", None);
+        action_show_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
             obj.present_preferences();
         }));
-        self.add_action(&action_preferences);
+        self.add_action(&action_show_preferences);
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
@@ -206,7 +206,7 @@ impl Application {
     }
 
     fn setup_accels(&self) {
-        self.set_accels_for_action("app.preferences", &["<Control>comma"]);
+        self.set_accels_for_action("app.show-preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>q"]);
         self.set_accels_for_action("window.close", &["<Control>w"]);
         self.set_accels_for_action("win.record-speaker", &["<Control>a"]);
