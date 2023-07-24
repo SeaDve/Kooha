@@ -6,9 +6,31 @@ use gtk::{
 
 use std::{env, path::Path};
 
-use crate::{settings::Settings, Application};
+use crate::Application;
 
 const MAX_THREAD_COUNT: u32 = 64;
+
+/// Generates the boilerplate for setting `glib::Properties`'s generated functions
+/// to the implementation of the following methods of `ObjectImpl`:
+/// * `properties()`
+/// * `property()`
+/// * `set_property()`
+#[macro_export]
+macro_rules! derived_properties {
+    () => {
+        fn properties() -> &'static [glib::ParamSpec] {
+            Self::derived_properties()
+        }
+
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
+        }
+
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec);
+        }
+    };
+}
 
 /// Spawns a future in the default [`glib::MainContext`]
 pub fn spawn<F: std::future::Future<Output = ()> + 'static>(fut: F) {
@@ -28,15 +50,6 @@ pub fn app_instance() -> Application {
     );
 
     gio::Application::default().unwrap().downcast().unwrap()
-}
-
-/// Get the global instance of `Settings`.
-///
-/// # Panics
-/// Panics if the application is not running or if this is
-/// called on a non-main thread.
-pub fn app_settings() -> Settings {
-    app_instance().settings().clone()
 }
 
 /// Whether the application is running in a flatpak sandbox.

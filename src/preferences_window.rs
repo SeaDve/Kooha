@@ -5,9 +5,11 @@ use gtk::{
     glib::{self, clone, closure},
     pango,
 };
+use once_cell::unsync::OnceCell;
 
 use crate::{
     profile::{self, BoxedProfile},
+    settings::Settings,
     utils,
 };
 
@@ -15,9 +17,13 @@ mod imp {
     use super::*;
     use gtk::CompositeTemplate;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Debug, Default, glib::Properties, CompositeTemplate)]
+    #[properties(wrapper_type = super::PreferencesWindow)]
     #[template(resource = "/io/github/seadve/Kooha/ui/preferences-window.ui")]
     pub struct PreferencesWindow {
+        #[property(get, set, construct_only)]
+        pub(super) settings: OnceCell<Settings>,
+
         #[template_child]
         pub(super) framerate_button: TemplateChild<gtk::SpinButton>,
         #[template_child]
@@ -40,7 +46,7 @@ mod imp {
             klass.bind_template();
 
             klass.install_action("preferences.select-saving-location", None, |obj, _, _| {
-                utils::app_settings().select_saving_location(obj);
+                obj.settings().select_saving_location(obj);
             });
         }
 
@@ -50,11 +56,13 @@ mod imp {
     }
 
     impl ObjectImpl for PreferencesWindow {
+        crate::derived_properties!();
+
         fn constructed(&self) {
             self.parent_constructed();
 
             let obj = self.obj();
-            let settings = utils::app_settings();
+            let settings = obj.settings();
 
             self.profile_row
                 .set_factory(Some(&profile_row_factory(&self.profile_row, false)));
@@ -117,12 +125,13 @@ mod imp {
 
             // Load last active profile first in `update_profile_row` before
             // connecting to the signal to avoid unnecessary updates.
-            self.profile_row.connect_selected_item_notify(|row| {
-                if let Some(item) = row.selected_item() {
-                    let profile = item.downcast::<BoxedProfile>().unwrap();
-                    utils::app_settings().set_profile(profile.get());
-                }
-            });
+            self.profile_row
+                .connect_selected_item_notify(clone!(@weak obj => move |row| {
+                    if let Some(item) = row.selected_item() {
+                        let profile = item.downcast::<BoxedProfile>().unwrap();
+                        obj.settings().set_profile(profile.get());
+                    }
+                }));
         }
     }
 
@@ -138,15 +147,14 @@ glib::wrapper! {
 }
 
 impl PreferencesWindow {
-    pub fn new() -> Self {
-        glib::Object::builder().build()
+    pub fn new(settings: &Settings) -> Self {
+        glib::Object::builder()
+            .property("settings", settings)
+            .build()
     }
 
     fn update_file_chooser_button(&self) {
-        let saving_location_display = utils::app_settings()
-            .saving_location()
-            .display()
-            .to_string();
+        let saving_location_display = self.settings().saving_location().display().to_string();
 
         if let Some(stripped) =
             saving_location_display.strip_prefix(&glib::home_dir().display().to_string())
@@ -162,7 +170,7 @@ impl PreferencesWindow {
     }
 
     fn update_profile_row(&self) {
-        let active_profile = utils::app_settings().profile();
+        let active_profile = self.settings().profile();
 
         let imp = self.imp();
         let position = imp
@@ -192,7 +200,7 @@ impl PreferencesWindow {
 
     fn update_framerate_warning(&self) {
         let imp = self.imp();
-        let settings = utils::app_settings();
+        let settings = self.settings();
 
         imp.framerate_warning.set_visible(
             settings
@@ -202,12 +210,6 @@ impl PreferencesWindow {
                     settings.video_framerate() > suggested_max_framerate
                 }),
         );
-    }
-}
-
-impl Default for PreferencesWindow {
-    fn default() -> Self {
-        Self::new()
     }
 }
 

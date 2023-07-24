@@ -38,9 +38,17 @@ mod imp {
         fn activate(&self) {
             self.parent_activate();
 
-            if let Some(window) = self.obj().main_window() {
+            let obj = self.obj();
+
+            if let Some(window) = self.window.get() {
+                let window = window.upgrade().unwrap();
                 window.present();
+                return;
             }
+
+            let window = Window::new(&obj);
+            self.window.set(window.downgrade()).unwrap();
+            window.present();
         }
 
         fn startup(&self) {
@@ -87,18 +95,13 @@ impl Application {
         })
     }
 
-    pub fn main_window(&self) -> Option<Window> {
-        let main_window = self
-            .imp()
+    pub fn window(&self) -> Window {
+        self.imp()
             .window
-            .get_or_init(|| Window::new(self).downgrade())
-            .upgrade();
-
-        if main_window.is_none() {
-            tracing::warn!("Failed to upgrade WeakRef<Window>");
-        }
-
-        main_window
+            .get()
+            .expect("window must be initialized on activate")
+            .upgrade()
+            .unwrap()
     }
 
     pub fn send_record_success_notification(&self, recording_file: &gio::File) {
@@ -119,9 +122,9 @@ impl Application {
     }
 
     pub fn present_preferences(&self) {
-        let window = PreferencesWindow::new();
+        let window = PreferencesWindow::new(self.settings());
         window.set_modal(true);
-        window.set_transient_for(self.main_window().as_ref());
+        window.set_transient_for(Some(&self.window()));
         window.present();
     }
 
@@ -135,15 +138,13 @@ impl Application {
 
     async fn try_show_uri(&self, uri: &str) {
         if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(uri)))
-            .launch_future(self.main_window().as_ref())
+            .launch_future(Some(&self.window()))
             .await
         {
             if !err.matches(gio::IOErrorEnum::Cancelled) {
                 tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
 
-                if let Some(window) = self.main_window() {
-                    window.present_error(&err.into());
-                }
+                self.window().present_error(&err.into());
             }
         }
     }
@@ -169,7 +170,7 @@ impl Application {
 
             utils::spawn(async move {
                 if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
-                    .open_containing_folder_future(obj.main_window().as_ref())
+                    .open_containing_folder_future(Some(&obj.window()))
                     .await
                 {
                     tracing::warn!("Failed to show items: {:?}", err);
@@ -182,7 +183,7 @@ impl Application {
 
         let action_about = gio::SimpleAction::new("about", None);
         action_about.connect_activate(clone!(@weak self as obj => move |_, _| {
-            about::present_window(obj.main_window().as_ref());
+            about::present_window(Some(&obj.window()));
         }));
         self.add_action(&action_about);
 
@@ -194,13 +195,12 @@ impl Application {
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
-            if let Some(window) = obj.main_window() {
+            if let Some(window) = obj.imp().window.get().and_then(|window| window.upgrade()) {
                 if let Err(err) = window.close() {
                     tracing::warn!("Failed to close window: {:?}", err);
                 }
-            } else {
-                obj.quit();
             }
+            obj.quit();
         }));
         self.add_action(&action_quit);
     }

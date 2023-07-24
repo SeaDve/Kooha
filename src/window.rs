@@ -78,7 +78,9 @@ mod imp {
             });
 
             klass.install_action("win.forget-video-sources", None, move |_obj, _, _| {
-                utils::app_settings().set_screencast_restore_token("");
+                utils::app_instance()
+                    .settings()
+                    .set_screencast_restore_token("");
             });
         }
 
@@ -239,7 +241,9 @@ impl Window {
         imp.recording
             .replace(Some((recording.clone(), handler_ids)));
 
-        recording.start(Some(self), &utils::app_settings()).await;
+        recording
+            .start(Some(self), utils::app_instance().settings())
+            .await;
     }
 
     fn toggle_pause(&self) -> Result<()> {
@@ -378,14 +382,15 @@ impl Window {
     fn update_title_label(&self) {
         let imp = self.imp();
 
-        match utils::app_settings().capture_mode() {
+        match utils::app_instance().settings().capture_mode() {
             CaptureMode::MonitorWindow => imp.title.set_title(&gettext("Normal")),
             CaptureMode::Selection => imp.title.set_title(&gettext("Selection")),
         }
     }
 
     fn update_audio_toggles_sensitivity(&self) {
-        let is_enabled = utils::app_settings()
+        let is_enabled = utils::app_instance()
+            .settings()
             .profile()
             .map_or(true, |profile| profile.supports_audio());
 
@@ -394,7 +399,10 @@ impl Window {
     }
 
     fn update_forget_video_sources_action(&self) {
-        let has_restore_token = !utils::app_settings().screencast_restore_token().is_empty();
+        let has_restore_token = !utils::app_instance()
+            .settings()
+            .screencast_restore_token()
+            .is_empty();
 
         self.imp()
             .forget_video_sources_revealer
@@ -404,7 +412,8 @@ impl Window {
     }
 
     fn setup_settings(&self) {
-        let settings = utils::app_settings();
+        let app = utils::app_instance();
+        let settings = app.settings();
 
         settings.connect_capture_mode_changed(clone!(@weak self as obj => move |_| {
             obj.update_title_label();
