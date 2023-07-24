@@ -51,7 +51,7 @@ use self::{
     config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE},
 };
 
-fn main() {
+fn main() -> glib::ExitCode {
     tracing_subscriber::fmt::init();
 
     gettextrs::setlocale(LocaleCategory::LcAll, "");
@@ -68,5 +68,5 @@ fn main() {
     gio::resources_register(&res);
 
     let app = Application::new();
-    app.run();
+    app.run()
 }
