@@ -1,11 +1,11 @@
 {
     "id": "io.github.seadve.Kooha.Devel",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm15"
+        "org.freedesktop.Sdk.Extension.llvm16"
     ],
     "command": "kooha",
     "finish-args": [
@@ -22,7 +22,7 @@
         "--env=GST_DEBUG=3"
     ],
     "build-options": {
-        "append-path": "/usr/lib/sdk/llvm15/bin:/usr/lib/sdk/rust-stable/bin",
+        "append-path": "/usr/lib/sdk/llvm16/bin:/usr/lib/sdk/rust-stable/bin",
         "build-args": [
             "--share=network"
         ],
@@ -60,8 +60,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.20.3.tar.xz",
-                    "sha256": "8caa20789a09c304b49cf563d33cca9421b1875b84fcc187e4a385fa01d6aefd"
+                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.22.5.tar.xz",
+                    "sha256": "2680473b218158f18467cac3e1c50291b7ff4e0710dd350a59eaacbc29c09a54"
                 }
             ]
         },

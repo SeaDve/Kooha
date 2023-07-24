@@ -68,7 +68,7 @@ test(
   env: [
     'RUST_BACKTRACE=1',
     'CARGO_HOME=@0@'.format(cargo_home),
-    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm15/bin:/usr/lib/sdk/rust-stable/bin',  # TODO Remove llvm15 once removed in manifest
+    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm16/bin:/usr/lib/sdk/rust-stable/bin',  # TODO Remove llvm16 once removed in manifest
   ],
   timeout: 300, # give cargo more time
 )
@@ -83,7 +83,7 @@ test(
   ],
   env: [
     'CARGO_HOME=@0@'.format(cargo_home),
-    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm15/bin:/usr/lib/sdk/rust-stable/bin',  # TODO Remove llvm15 once removed in manifest
+    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm16/bin:/usr/lib/sdk/rust-stable/bin',  # TODO Remove llvm16 once removed in manifest
   ],
   timeout: 300, # give cargo more time
 )
