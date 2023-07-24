@@ -18,12 +18,8 @@ run_command(
   check: true
 )
 
-manifest_path = meson.project_source_root() / 'Cargo.toml'
-cargo_home = meson.project_build_root() / 'cargo-home'
-cargo_target_dir = meson.project_build_root() / 'src'
-
-cargo_options = [ '--manifest-path', manifest_path ]
-cargo_options += [ '--target-dir', cargo_target_dir ]
+cargo_options = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
+cargo_options += [ '--target-dir', meson.project_build_root() / 'src' ]
 
 if get_option('profile') == 'default'
   cargo_options += [ '--release' ]
@@ -34,7 +30,7 @@ else
   message('Building in debug mode')
 endif
 
-cargo_env = [ 'CARGO_HOME=' + cargo_home ]
+cargo_env = [ 'CARGO_HOME=' + meson.project_build_root() / 'cargo-home' ]
 
 cargo_build = custom_target(
   'cargo-build',
@@ -60,15 +56,13 @@ test(
   cargo,
   args: [
     'test',
-    '--manifest-path=@0@'.format(manifest_path),
-    '--target-dir=@0@'.format(cargo_target_dir),
+    cargo_options,
     '--',
     '--nocapture',
   ],
   env: [
     'RUST_BACKTRACE=1',
-    'CARGO_HOME=@0@'.format(cargo_home),
-    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm16/bin:/usr/lib/sdk/rust-stable/bin',  # TODO Remove llvm16 once removed in manifest
+    cargo_env
   ],
   timeout: 300, # give cargo more time
 )
@@ -78,12 +72,13 @@ test(
   cargo,
   args: [
     'clippy',
-    '--manifest-path=@0@'.format(manifest_path),
-    '--target-dir=@0@'.format(cargo_target_dir),
+    cargo_options,
+    '--',
+    '-D',
+    'warnings'
   ],
   env: [
-    'CARGO_HOME=@0@'.format(cargo_home),
-    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm16/bin:/usr/lib/sdk/rust-stable/bin',  # TODO Remove llvm16 once removed in manifest
+    cargo_env
   ],
   timeout: 300, # give cargo more time
 )
