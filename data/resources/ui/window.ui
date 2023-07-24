@@ -13,13 +13,9 @@
           <object class="GtkStack" id="stack">
             <property name="transition-type">crossfade</property>
             <child>
-              <object class="GtkBox" id="main_page">
-                <property name="orientation">vertical</property>
-                <child>
+              <object class="AdwToolbarView" id="main_page">
+                <child type="top">
                   <object class="GtkHeaderBar">
-                    <style>
-                      <class name="flat"/>
-                    </style>
                     <child>
                       <object class="GtkMenuButton">
                         <property name="menu-model">menu</property>
@@ -37,7 +33,7 @@
                     </child>
                   </object>
                 </child>
-                <child>
+                <property name="content">
                   <object class="GtkBox">
                     <property name="margin-start">18</property>
                     <property name="margin-end">18</property>
@@ -141,7 +137,7 @@
                       </object>
                     </child>
                   </object>
-                </child>
+                </property>
               </object>
             </child>
             <child>

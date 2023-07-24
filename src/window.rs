@@ -30,7 +30,7 @@ mod imp {
         #[template_child]
         pub(super) stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub(super) main_page: TemplateChild<gtk::Box>,
+        pub(super) main_page: TemplateChild<adw::ToolbarView>,
         #[template_child]
         pub(super) forget_video_sources_revealer: TemplateChild<gtk::Revealer>,
         #[template_child]
@@ -192,7 +192,7 @@ impl Window {
             .activatable(false)
             .build();
         expander.add_row(&scrolled_window_row);
-        expander.add_action(&copy_button);
+        expander.add_suffix(&copy_button);
 
         let list_box = gtk::ListBox::builder()
             .selection_mode(gtk::SelectionMode::None)
