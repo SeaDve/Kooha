@@ -3,7 +3,7 @@ use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
     gio::{self, prelude::*},
-    glib::{self, clone, closure_local, subclass::prelude::*, translate::IntoGlib},
+    glib::{self, clone, closure_local, subclass::prelude::*},
 };
 use once_cell::{sync::Lazy, unsync::OnceCell};
 
@@ -63,17 +63,20 @@ mod imp {
     use super::*;
     use glib::subclass::Signal;
 
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, glib::Properties)]
+    #[properties(wrapper_type = super::Recording)]
     pub struct Recording {
+        #[property(get)]
+        pub(super) state: Cell<State>,
+        #[property(get)]
+        pub(super) duration: Cell<gst::ClockTime>,
+
         pub(super) file: OnceCell<gio::File>,
 
         pub(super) timer: RefCell<Option<Timer>>,
         pub(super) session: RefCell<Option<ScreencastSession>>,
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
         pub(super) pipeline: OnceCell<gst::Pipeline>,
-
-        pub(super) state: Cell<State>,
-        pub(super) duration: Cell<gst::ClockTime>,
     }
 
     #[glib::object_subclass]
@@ -83,42 +86,6 @@ mod imp {
     }
 
     impl ObjectImpl for Recording {
-        fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecBoxed::builder::<State>("state")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecUInt64::builder("duration")
-                        .maximum(gst::ClockTime::MAX.into_glib())
-                        .read_only()
-                        .build(),
-                ]
-            });
-
-            PROPERTIES.as_ref()
-        }
-
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-
-            match pspec.name() {
-                "state" => obj.state().to_value(),
-                "duration" => obj.duration().to_value(),
-                _ => unimplemented!(),
-            }
-        }
-
-        fn signals() -> &'static [glib::subclass::Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder("finished")
-                    .param_types([BoxedResult::static_type()])
-                    .build()]
-            });
-
-            SIGNALS.as_ref()
-        }
-
         fn dispose(&self) {
             if let Some(timer) = self.timer.take() {
                 timer.cancel();
@@ -137,6 +104,18 @@ mod imp {
             if let Some(source_id) = self.duration_source_id.take() {
                 source_id.remove();
             }
+        }
+
+        crate::derived_properties!();
+
+        fn signals() -> &'static [glib::subclass::Signal] {
+            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
+                vec![Signal::builder("finished")
+                    .param_types([BoxedResult::static_type()])
+                    .build()]
+            });
+
+            SIGNALS.as_ref()
         }
     }
 }
@@ -358,28 +337,6 @@ impl Recording {
         self.delete_file();
     }
 
-    pub fn state(&self) -> State {
-        self.imp().state.get()
-    }
-
-    pub fn connect_state_notify<F>(&self, f: F) -> glib::SignalHandlerId
-    where
-        F: Fn(&Self) + 'static,
-    {
-        self.connect_notify_local(Some("state"), move |obj, _| f(obj))
-    }
-
-    pub fn duration(&self) -> gst::ClockTime {
-        self.imp().duration.get()
-    }
-
-    pub fn connect_duration_notify<F>(&self, f: F) -> glib::SignalHandlerId
-    where
-        F: Fn(&Self) + 'static,
-    {
-        self.connect_notify_local(Some("duration"), move |obj, _| f(obj))
-    }
-
     pub fn connect_finished<F>(&self, f: F) -> glib::SignalHandlerId
     where
         F: Fn(&Self, &Result<gio::File>) + 'static,
@@ -413,7 +370,7 @@ impl Recording {
         }
 
         self.imp().state.replace(state);
-        self.notify("state");
+        self.notify_state();
     }
 
     fn pipeline(&self) -> &gst::Pipeline {
@@ -467,7 +424,7 @@ impl Recording {
         }
 
         self.imp().duration.set(clock_time);
-        self.notify("duration");
+        self.notify_duration();
     }
 
     fn handle_bus_message(&self, message: &gst::Message) -> glib::Continue {
@@ -639,37 +596,4 @@ async fn new_screencast_session(
         .context("Failed to begin ScreencastSession")?;
 
     Ok((screencast_session, streams, restore_token, fd))
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn duration() {
-        let recording = Recording::new();
-        assert_eq!(recording.duration(), gst::ClockTime::ZERO);
-        assert_eq!(
-            recording.property::<gst::ClockTime>("duration"),
-            gst::ClockTime::ZERO
-        );
-        assert_eq!(
-            recording.property::<u64>("duration"),
-            gst::ClockTime::ZERO.into_glib()
-        );
-
-        recording
-            .imp()
-            .duration
-            .set(gst::ClockTime::from_seconds(3));
-        assert_eq!(recording.duration(), gst::ClockTime::from_seconds(3));
-        assert_eq!(
-            recording.property::<gst::ClockTime>("duration"),
-            gst::ClockTime::from_seconds(3)
-        );
-        assert_eq!(
-            recording.property::<u64>("duration"),
-            gst::ClockTime::from_seconds(3).into_glib()
-        );
-    }
 }

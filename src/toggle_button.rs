@@ -4,13 +4,21 @@ use std::cell::RefCell;
 
 mod imp {
     use super::*;
-    use once_cell::sync::Lazy;
 
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, glib::Properties)]
+    #[properties(wrapper_type = super::ToggleButton)]
     pub struct ToggleButton {
+        /// Icon name to show on un-toggled state
+        #[property(get, set = Self::set_default_icon_name, explicit_notify)]
         pub(super) default_icon_name: RefCell<String>,
+        /// Icon name to show on toggled state
+        #[property(get, set = Self::set_toggled_icon_name, explicit_notify)]
         pub(super) toggled_icon_name: RefCell<String>,
+        /// Tooltip text to show on un-toggled state
+        #[property(get, set = Self::set_default_tooltip_text, explicit_notify)]
         pub(super) default_tooltip_text: RefCell<String>,
+        /// Tooltip text to show on toggled state
+        #[property(get, set = Self::set_toggled_tooltip_text, explicit_notify)]
         pub(super) toggled_tooltip_text: RefCell<String>,
     }
 
@@ -22,74 +30,7 @@ mod imp {
     }
 
     impl ObjectImpl for ToggleButton {
-        fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    // Icon name to show on un-toggled state
-                    glib::ParamSpecString::builder("default-icon-name")
-                        .explicit_notify()
-                        .build(),
-                    // Icon name to show on toggled state
-                    glib::ParamSpecString::builder("toggled-icon-name")
-                        .explicit_notify()
-                        .build(),
-                    // Tooltip text to show on un-toggled state
-                    glib::ParamSpecString::builder("default-tooltip-text")
-                        .explicit_notify()
-                        .build(),
-                    // Tooltip text to show on toggled state
-                    glib::ParamSpecString::builder("toggled-tooltip-text")
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecOverride::for_class::<gtk::Button>("icon-name"),
-                    glib::ParamSpecOverride::for_class::<gtk::Widget>("tooltip-text"),
-                ]
-            });
-
-            PROPERTIES.as_ref()
-        }
-
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.obj();
-
-            match pspec.name() {
-                "default-icon-name" => {
-                    let default_icon_name = value.get().unwrap();
-                    obj.set_default_icon_name(default_icon_name);
-                }
-                "toggled-icon-name" => {
-                    let toggled_icon_name = value.get().unwrap();
-                    obj.set_toggled_icon_name(toggled_icon_name);
-                }
-                "default-tooltip-text" => {
-                    let default_tooltip_text = value.get().unwrap();
-                    obj.set_default_tooltip_text(default_tooltip_text);
-                }
-                "toggled-tooltip-text" => {
-                    let toggled_tooltip_text = value.get().unwrap();
-                    obj.set_toggled_tooltip_text(toggled_tooltip_text);
-                }
-                "icon-name" | "tooltip-text" => {
-                    panic!(
-                        "KoohaToggleButton does not support `{}` property",
-                        pspec.name()
-                    );
-                }
-                _ => unimplemented!(),
-            }
-        }
-
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-
-            match pspec.name() {
-                "default-icon-name" => obj.default_icon_name().to_value(),
-                "toggled-icon-name" => obj.toggled_icon_name().to_value(),
-                "default-tooltip-text" => obj.default_tooltip_text().to_value(),
-                "toggled-tooltip-text" => obj.toggled_tooltip_text().to_value(),
-                _ => unimplemented!(),
-            }
-        }
+        crate::derived_properties!();
     }
 
     impl WidgetImpl for ToggleButton {}
@@ -105,6 +46,60 @@ mod imp {
             self.parent_toggled();
         }
     }
+
+    impl ToggleButton {
+        fn set_default_icon_name(&self, default_icon_name: &str) {
+            let obj = self.obj();
+
+            if default_icon_name == obj.default_icon_name().as_str() {
+                return;
+            }
+
+            self.default_icon_name
+                .replace(default_icon_name.to_string());
+            obj.update_icon_name();
+            obj.notify_default_icon_name();
+        }
+
+        fn set_toggled_icon_name(&self, toggled_icon_name: &str) {
+            let obj = self.obj();
+
+            if toggled_icon_name == obj.toggled_icon_name().as_str() {
+                return;
+            }
+
+            self.toggled_icon_name
+                .replace(toggled_icon_name.to_string());
+            obj.update_icon_name();
+            obj.notify_toggled_icon_name();
+        }
+
+        fn set_default_tooltip_text(&self, default_tooltip_text: &str) {
+            let obj = self.obj();
+
+            if default_tooltip_text == obj.default_tooltip_text().as_str() {
+                return;
+            }
+
+            self.default_tooltip_text
+                .replace(default_tooltip_text.to_string());
+            obj.update_tooltip_text();
+            obj.notify_default_tooltip_text();
+        }
+
+        fn set_toggled_tooltip_text(&self, toggled_tooltip_text: &str) {
+            let obj = self.obj();
+
+            if toggled_tooltip_text == obj.toggled_tooltip_text().as_str() {
+                return;
+            }
+
+            self.toggled_tooltip_text
+                .replace(toggled_tooltip_text.to_string());
+            obj.update_tooltip_text();
+            obj.notify_toggled_tooltip_text();
+        }
+    }
 }
 
 glib::wrapper! {
@@ -118,70 +113,6 @@ glib::wrapper! {
 impl ToggleButton {
     pub fn new() -> Self {
         glib::Object::builder().build()
-    }
-
-    pub fn set_default_icon_name(&self, default_icon_name: &str) {
-        if default_icon_name == self.default_icon_name().as_str() {
-            return;
-        }
-
-        self.imp()
-            .default_icon_name
-            .replace(default_icon_name.to_string());
-        self.update_icon_name();
-        self.notify("default-icon-name");
-    }
-
-    pub fn default_icon_name(&self) -> String {
-        self.imp().default_icon_name.borrow().clone()
-    }
-
-    pub fn set_toggled_icon_name(&self, toggled_icon_name: &str) {
-        if toggled_icon_name == self.toggled_icon_name().as_str() {
-            return;
-        }
-
-        self.imp()
-            .toggled_icon_name
-            .replace(toggled_icon_name.to_string());
-        self.update_icon_name();
-        self.notify("toggled-icon-name");
-    }
-
-    pub fn toggled_icon_name(&self) -> String {
-        self.imp().toggled_icon_name.borrow().clone()
-    }
-
-    pub fn set_default_tooltip_text(&self, default_tooltip_text: &str) {
-        if default_tooltip_text == self.default_tooltip_text().as_str() {
-            return;
-        }
-
-        self.imp()
-            .default_tooltip_text
-            .replace(default_tooltip_text.to_string());
-        self.update_tooltip_text();
-        self.notify("default-tooltip-text");
-    }
-
-    pub fn default_tooltip_text(&self) -> String {
-        self.imp().default_tooltip_text.borrow().clone()
-    }
-
-    pub fn set_toggled_tooltip_text(&self, toggled_tooltip_text: &str) {
-        if toggled_tooltip_text == self.toggled_tooltip_text().as_str() {
-            return;
-        }
-
-        self.imp()
-            .toggled_tooltip_text
-            .replace(toggled_tooltip_text.to_string());
-        self.update_tooltip_text();
-        self.notify("toggled-tooltip-text");
-    }
-
-    pub fn toggled_tooltip_text(&self) -> String {
-        self.imp().toggled_tooltip_text.borrow().clone()
     }
 
     fn update_icon_name(&self) {

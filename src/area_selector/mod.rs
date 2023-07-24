@@ -183,7 +183,7 @@ impl AreaSelector {
 
         // Setup paintable
         let paintable = sink.property::<gdk::Paintable>("paintable");
-        imp.view_port.set_paintable(Some(&paintable));
+        imp.view_port.set_paintable(Some(paintable));
 
         pipeline.set_state(gst::State::Playing)?;
 

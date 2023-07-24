@@ -105,15 +105,16 @@ impl Selection {
 
 mod imp {
     use super::*;
-    use once_cell::sync::Lazy;
 
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, glib::Properties)]
+    #[properties(wrapper_type = super::ViewPort)]
     pub struct ViewPort {
+        #[property(get, set = Self::set_paintable, explicit_notify, nullable)]
         pub(super) paintable: RefCell<Option<gdk::Paintable>>,
+        #[property(get)]
+        pub(super) selection: Cell<Option<Selection>>,
 
         pub(super) paintable_rect: Cell<Option<Rect>>,
-
-        pub(super) selection: Cell<Option<Selection>>,
         pub(super) selection_handles: Cell<Option<[Rect; 4]>>, // [top-left, top-right, bottom-right, bottom-left]
 
         pub(super) drag_start: Cell<Option<Point>>,
@@ -132,43 +133,6 @@ mod imp {
     }
 
     impl ObjectImpl for ViewPort {
-        fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<gdk::Paintable>("paintable")
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecBoxed::builder::<Selection>("selection")
-                        .read_only()
-                        .build(),
-                ]
-            });
-
-            PROPERTIES.as_ref()
-        }
-
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.obj();
-
-            match pspec.name() {
-                "paintable" => {
-                    let paintable: Option<gdk::Paintable> = value.get().unwrap();
-                    obj.set_paintable(paintable.as_ref());
-                }
-                _ => unimplemented!(),
-            }
-        }
-
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-
-            match pspec.name() {
-                "paintable" => obj.paintable().to_value(),
-                "selection" => obj.selection().to_value(),
-                _ => unimplemented!(),
-            }
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -198,6 +162,8 @@ mod imp {
             }));
             obj.add_controller(gesture_drag);
         }
+
+        crate::derived_properties!();
     }
 
     impl WidgetImpl for ViewPort {
@@ -344,6 +310,42 @@ mod imp {
             }
         }
     }
+
+    impl ViewPort {
+        fn set_paintable(&self, paintable: Option<gdk::Paintable>) {
+            let obj = self.obj();
+
+            if paintable == obj.paintable() {
+                return;
+            }
+
+            let _freeze_guard = obj.freeze_notify();
+
+            let mut handler_ids = self.handler_ids.borrow_mut();
+
+            if let Some(previous_paintable) = self.paintable.replace(paintable.clone()) {
+                for handler_id in handler_ids.drain(..) {
+                    previous_paintable.disconnect(handler_id);
+                }
+            }
+
+            if let Some(paintable) = paintable {
+                handler_ids.push(paintable.connect_invalidate_contents(
+                    clone!(@weak obj => move |_| {
+                        obj.queue_draw();
+                    }),
+                ));
+                handler_ids.push(
+                    paintable.connect_invalidate_size(clone!(@weak obj => move |_| {
+                        obj.queue_resize();
+                    })),
+                );
+            }
+
+            obj.queue_resize();
+            obj.notify_paintable();
+        }
+    }
 }
 
 glib::wrapper! {
@@ -354,57 +356,6 @@ glib::wrapper! {
 impl ViewPort {
     pub fn new() -> Self {
         glib::Object::builder().build()
-    }
-
-    pub fn set_paintable(&self, paintable: Option<&impl IsA<gdk::Paintable>>) {
-        let paintable = paintable.map(|p| p.as_ref());
-
-        if paintable == self.paintable().as_ref() {
-            return;
-        }
-
-        let _freeze_guard = self.freeze_notify();
-
-        let imp = self.imp();
-
-        let mut handler_ids = imp.handler_ids.borrow_mut();
-
-        if let Some(previous_paintable) = imp.paintable.replace(paintable.cloned()) {
-            for handler_id in handler_ids.drain(..) {
-                previous_paintable.disconnect(handler_id);
-            }
-        }
-
-        if let Some(paintable) = paintable {
-            handler_ids.push(paintable.connect_invalidate_contents(
-                clone!(@weak self as obj => move |_| {
-                    obj.queue_draw();
-                }),
-            ));
-            handler_ids.push(paintable.connect_invalidate_size(
-                clone!(@weak self as obj => move |_| {
-                    obj.queue_resize();
-                }),
-            ));
-        }
-
-        self.queue_resize();
-        self.notify("paintable");
-    }
-
-    pub fn paintable(&self) -> Option<gdk::Paintable> {
-        self.imp().paintable.borrow().clone()
-    }
-
-    pub fn selection(&self) -> Option<Selection> {
-        self.imp().selection.get()
-    }
-
-    pub fn connect_selection_notify<F>(&self, f: F) -> glib::SignalHandlerId
-    where
-        F: Fn(&Self) + 'static,
-    {
-        self.connect_notify_local(Some("selection"), move |obj, _| f(obj))
     }
 
     pub fn paintable_rect(&self) -> Option<Rect> {
@@ -419,7 +370,7 @@ impl ViewPort {
 
     fn set_selection(&self, selection: Option<Selection>) {
         self.imp().selection.set(selection);
-        self.notify("selection");
+        self.notify_selection();
     }
 
     fn on_enter(&self, _controller: &gtk::EventControllerMotion, x: f64, y: f64) {
