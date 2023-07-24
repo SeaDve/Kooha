@@ -1,5 +1,4 @@
 use adw::subclass::prelude::*;
-use anyhow::{Context, Result};
 use gettextrs::gettext;
 use gtk::{
     gio,
@@ -169,7 +168,10 @@ impl Application {
             let uri = param.unwrap().get::<String>().unwrap();
 
             utils::spawn(async move {
-                if let Err(err) = show_items(&[&uri], "").await {
+                if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
+                    .open_containing_folder_future(obj.main_window().as_ref())
+                    .await
+                {
                     tracing::warn!("Failed to show items: {:?}", err);
 
                     obj.try_show_uri(&uri).await;
@@ -220,32 +222,4 @@ impl Default for Application {
     fn default() -> Self {
         Self::new()
     }
-}
-
-/// Shows items in the default file manager.
-async fn show_items(uris: &[&str], startup_id: &str) -> Result<()> {
-    let connection = gio::bus_get_future(gio::BusType::Session)
-        .await
-        .context("Failed to get session bus")?;
-
-    connection
-        .call_future(
-            Some("org.freedesktop.FileManager1"),
-            "/org/freedesktop/FileManager1",
-            "org.freedesktop.FileManager1",
-            "ShowItems",
-            Some(&(uris, startup_id).to_variant()),
-            None,
-            gio::DBusCallFlags::NONE,
-            -1,
-        )
-        .await
-        .with_context(|| {
-            format!(
-                "Failed to invoke org.freedesktop.FileManager1.ShowItems with uris: {:?}",
-                &uris
-            )
-        })?;
-
-    Ok(())
 }

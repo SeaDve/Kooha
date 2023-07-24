@@ -14,7 +14,6 @@
         "--socket=fallback-x11",
         "--socket=pulseaudio",
         "--socket=wayland",
-        "--talk-name=org.freedesktop.FileManager1",
         "--env=RUST_BACKTRACE=1",
         "--env=RUST_LOG=kooha=debug",
         "--env=G_MESSAGES_DEBUG=none",
