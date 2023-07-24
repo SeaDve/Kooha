@@ -13,7 +13,7 @@ pub enum Class {
 }
 
 impl Class {
-    fn for_str(string: &str) -> Option<Self> {
+    fn from_str(string: &str) -> Option<Self> {
         match string {
             "Audio/Source" => Some(Self::Source),
             "Audio/Sink" => Some(Self::Sink),
@@ -59,7 +59,7 @@ fn find_default_name_gst(class: Class) -> Result<String> {
     tracing::debug!("Finding device name for class `{:?}`", class);
 
     for device in devices {
-        let Some(device_class) = Class::for_str(&device.device_class()) else {
+        let Some(device_class) = Class::from_str(&device.device_class()) else {
             tracing::debug!(
                 "Skipping device `{}` as it has unknown device class `{}`",
                 device.name(),
@@ -133,7 +133,7 @@ mod pa {
         proplist::{properties, Proplist},
     };
 
-    use std::{fmt, time::Duration};
+    use std::time::Duration;
 
     use super::Class;
     use crate::{config::APP_ID, help::ResultExt};
@@ -147,12 +147,6 @@ mod pa {
         // to be freed and cause error after `Context::connect`.
         #[allow(dead_code)]
         main_loop: pulse_glib::Mainloop,
-    }
-
-    impl fmt::Debug for Context {
-        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-            f.write_str("Context")
-        }
     }
 
     impl Context {
