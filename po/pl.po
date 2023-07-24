@@ -7,13 +7,14 @@
 # Carlod <carlod@disroot.org>, 2022.
 # gnu-ewm <gnu.ewm@protonmail.com>, 2022.
 # David <troianovskyidavid@gmail.com>, 2023.
+# Eryk Michalak <gnu.ewm@protonmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-01-07 19:50+0000\n"
-"Last-Translator: David <troianovskyidavid@gmail.com>\n"
+"PO-Revision-Date: 2023-07-24 09:06+0000\n"
+"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/kooha/pot-file/pl/"
 ">\n"
 "Language: pl\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -85,7 +86,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Eksperymentalne kodowanie z akceleracją sprzętową"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
@@ -345,27 +346,22 @@ msgid "MP4"
 msgstr "MP4"
 
 #: src/profile.rs:309
-#, fuzzy
 msgid "Matroska"
 msgstr "Matroska"
 
 #: src/profile.rs:342
-#, fuzzy
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
 #: src/profile.rs:366
-#, fuzzy
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
 #: src/profile.rs:387
-#, fuzzy
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:402
-#, fuzzy
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 

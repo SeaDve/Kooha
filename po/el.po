@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-04-17 07:47+0000\n"
+"PO-Revision-Date: 2023-07-24 09:06+0000\n"
 "Last-Translator: greek anon <rnation@bbq59.xyz>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/kooha/pot-file/el/>"
 "\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
@@ -181,6 +181,7 @@ msgid "Toggle Pointer"
 msgstr "Μεταβολή Δείκτη"
 
 #: data/resources/ui/window.ui:29
+#, fuzzy
 msgid "Main Menu"
 msgstr "Κυρίως Μενού"
 
