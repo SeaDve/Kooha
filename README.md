@@ -13,8 +13,8 @@
     <img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-i-en.svg"/>
   </a>
   <br>
-  <a href="https://liberapay.com/SeaDve/donate">
-    <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">
+  <a href="https://www.buymeacoffee.com/seadve">
+    <img alt="Buy Me a Coffee" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=seadve&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" width="150"/>
   </a>
 </p>
 
@@ -143,7 +143,7 @@ or think you can improve a translation, you can use the [Weblate](https://hosted
 ## ☕ Support me and the project
 
 Kooha is free and will always be for everyone to use. If you like the project and
-would like to support and fund it, you may donate through [Liberapay](https://liberapay.com/SeaDve/).
+would like to support it, you may [buy me a coffee](https://www.buymeacoffee.com/seadve).
 
 
 ## 💝 Acknowledgment
