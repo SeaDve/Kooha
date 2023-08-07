@@ -6,13 +6,14 @@
 # Dave Patrick <davecruz48@gmail.com>, 2021.
 # inkhorn <inkhorn@hostux.ninja>, 2021.
 # André L. Alvares <andrluiz.alvares.alvares84@gmail.com>, 2022.
+# Império Linux <kevendoria86@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2022-12-22 14:51+0000\n"
-"Last-Translator: André L. Alvares <andrluiz.alvares.alvares84@gmail.com>\n"
+"PO-Revision-Date: 2023-08-07 03:46+0000\n"
+"Last-Translator: Império Linux <kevendoria86@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
