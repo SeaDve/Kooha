@@ -7,19 +7,23 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-08-12 14:52+0000\n"
+"Last-Translator: \"HelaBasa Group (හෙළබස සමූහය)\" <weblate-helabasa@yalu.lk>"
+"\n"
+"Language-Team: Sinhala <https://hosted.weblate.org/projects/kooha/pot-file/"
+"si/>\n"
 "Language: si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
 #: src/main.rs:63
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
@@ -83,11 +87,11 @@ msgstr ""
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
 msgid "Cancel"
-msgstr ""
+msgstr "අවලංගු"
 
 #: data/resources/ui/area-selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "අහවරයි"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
@@ -95,15 +99,15 @@ msgstr ""
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "සාමාන්‍ය"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "ප්‍රමාදය (තත්පර)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "පටිගත බහාලුම"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
@@ -111,11 +115,11 @@ msgstr ""
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "ආකෘතිය"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "රාමු අනුපාතය"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
@@ -135,7 +139,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr ""
+msgstr "ඉවත් වන්න"
 
 #: data/resources/ui/shortcuts.ui:39 src/window.rs:342
 msgid "Recording"
@@ -243,11 +247,11 @@ msgstr ""
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr ""
+msgstr "අභිප්‍රේත"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "යතුරුපුවරුවේ කෙටිමං"
 
 #: data/resources/ui/window.ui:305
 msgid "_About Kooha"
