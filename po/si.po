@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 09:25+0800\n"
-"PO-Revision-Date: 2023-08-12 14:52+0000\n"
+"PO-Revision-Date: 2023-08-14 18:51+0000\n"
 "Last-Translator: \"HelaBasa Group (හෙළබස සමූහය)\" <weblate-helabasa@yalu.lk>"
 "\n"
 "Language-Team: Sinhala <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -28,61 +28,64 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "හොඳින් තිරය පටිගත කරන්න"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;පටිගත;දෘශ්‍යක;තිරය;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "වික්ෂිප්ත නොවී ඔබගේ තිරය පහසුවෙන් සහ සරලව පටිගත කර ගන්න."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha යනු ඉතාමත් සරල අතුරු මුහුණතක් සහිත තිර පටිගතයකි. ඔබට සැකසුම් බොහොමයක් "
+"සීරු මාරුවකින් තොරව තනි එබීමකින් පටිගත කිරීමට හැකිය."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Kooha යෙදුමේ පහත විශේෂාංග ඇතුළත්ය:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ ශබ්දවාහිනිය, වැඩතලයේ හඬ හෝ දෙකම එකවර පටිගත කරන්න"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 WebM, MP4, GIF සහ මාට්‍රොස්කා ආකෘති සඳහා සහාය දක්වයි"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ පටිගත කිරීමට තිරයක්, කවුළුවක් හෝ තිරයේ කොටසක් තෝරන්න"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 මූලාශ්‍ර කිහිපයක් තෝරාගන්න"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ සුරැකෙන ස්ථානය, ඊතලයේ දෘශ්‍යතාව, රාමු අනුපාතය සහ ප්‍රමාදය සැකසීමට හැකිය"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 පරීක්‍ෂාත්මක දෘඩාංග ත්වරණිත ආකේතනය ඇත"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "ඩේව් පැට්‍රික් කැබර්ටෝ"
 
 #: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "පෙදෙසක් තෝරන්න"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
 #: data/resources/ui/window.ui:280
@@ -95,11 +98,11 @@ msgstr "අහවරයි"
 
 #: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "තේරීම යළි සකසන්න"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "සාමාන්‍ය"
+msgstr "ප්‍රධාන"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
@@ -111,7 +114,7 @@ msgstr "පටිගත බහාලුම"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "දෘශ්‍යකය"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
@@ -123,19 +126,19 @@ msgstr "රාමු අනුපාතය"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "මෙම රාමු අනුපාතය කාර්ය සාධනයට බලපෑ හැකිය."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "වට්ටෝරුව අරින්න"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "අභිප්‍රේත පෙන්වන්න"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "කෙටිමං පෙන්වන්න"
 
 #: data/resources/ui/shortcuts.ui:32
 msgid "Quit"
@@ -143,341 +146,343 @@ msgstr "ඉවත් වන්න"
 
 #: data/resources/ui/shortcuts.ui:39 src/window.rs:342
 msgid "Recording"
-msgstr ""
+msgstr "පටිගත වෙමින්"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr ""
+msgstr "පටිගත කරන්න"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr ""
+msgstr "විරාමයක් තබන්න"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "අවලංගු කරන්න"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
-msgstr ""
+msgstr "සැකසුම්"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "වැඩතලයේ හඬ සක්‍රිය කරන්න"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "ශබ්දවාහිනිය සක්‍රිය කරන්න"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "ඊතලය සබල කරන්න"
 
 #: data/resources/ui/window.ui:29
 msgid "Main Menu"
-msgstr ""
+msgstr "ප්‍රධාන වට්ටෝරුව"
 
 #: data/resources/ui/window.ui:58
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "තිරයක් හෝ කවුළුවක් ග්‍රහණය"
 
 #: data/resources/ui/window.ui:71
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "තිරයේ කොටසක් ග්‍රහණය"
 
 #: data/resources/ui/window.ui:91
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "වැඩතලයේ හඬ සබල කරන්න"
 
 #: data/resources/ui/window.ui:92
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "වැඩතලයේ හඬ අබල කරන්න"
 
 #: data/resources/ui/window.ui:100
 msgid "Enable Microphone"
-msgstr ""
+msgstr "ශබ්දවාහිනිය සබල කරන්න"
 
 #: data/resources/ui/window.ui:101
 msgid "Disable Microphone"
-msgstr ""
+msgstr "ශබ්දවාහිනිය අබල කරන්න"
 
 #: data/resources/ui/window.ui:109
 msgid "Show Pointer"
-msgstr ""
+msgstr "ඊතලය පෙන්වන්න"
 
 #: data/resources/ui/window.ui:110
 msgid "Hide Pointer"
-msgstr ""
+msgstr "ඊතලය සඟවන්න"
 
 #: data/resources/ui/window.ui:120
 msgid "Start Recording"
-msgstr ""
+msgstr "පටිගතය අරඹන්න"
 
 #: data/resources/ui/window.ui:121
 msgid "Record"
-msgstr ""
+msgstr "පටිගත කරන්න"
 
 #: data/resources/ui/window.ui:134
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "කලින් තේරූ දෘශ්‍ය මූලාශ්‍රය අමතක කරන්න"
 
 #: data/resources/ui/window.ui:185
 msgid "Stop Recording"
-msgstr ""
+msgstr "පටිගතය නවතන්න"
 
 #: data/resources/ui/window.ui:186
 msgid "Stop"
-msgstr ""
+msgstr "නවතන්න"
 
 #: data/resources/ui/window.ui:196
 msgid "Pause Recording"
-msgstr ""
+msgstr "විරාමයක්"
 
 #: data/resources/ui/window.ui:219
 msgid "Recording in…"
-msgstr ""
+msgstr "මෙහි පටිගත වේ…"
 
 #: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
 msgid "Cancel Recording"
-msgstr ""
+msgstr "අවලංගු කරන්න"
 
 #: data/resources/ui/window.ui:262
 msgid "Flushing…"
-msgstr ""
+msgstr "ද්‍යෝර හැරෙමින්…"
 
 #: data/resources/ui/window.ui:297
 msgid "_Preferences"
-msgstr "අභිප්‍රේත"
+msgstr "අභිප්‍රේත (_P)"
 
 #: data/resources/ui/window.ui:301
 msgid "_Keyboard Shortcuts"
-msgstr "යතුරුපුවරුවේ කෙටිමං"
+msgstr "යතුරුපුවරුවේ කෙටිමං (_K)"
 
 #: data/resources/ui/window.ui:305
 msgid "_About Kooha"
-msgstr ""
+msgstr "Kooha ගැන (_A)"
 
 #: src/about.rs:23
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2023 ඩේව් පැට්‍රික් කැබර්ටෝ"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:31
 msgid "translator-credits"
-msgstr ""
+msgstr "පරිවර්තනයට ස්තූතිය"
 
 #: src/about.rs:41
 msgid "Donate (Liberapay)"
-msgstr ""
+msgstr "පරිත්‍යාග (ලිබෙරාපේ)"
 
 #: src/about.rs:45
 msgid "Donate (PayPal)"
-msgstr ""
+msgstr "පරිත්‍යාග (පේපෑල්)"
 
 #: src/about.rs:49
 msgid "GitHub"
-msgstr ""
+msgstr "ගිට්හබ්"
 
 #: src/about.rs:51
 msgid "Translate"
-msgstr ""
+msgstr "පරිවර්තනය"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:107
 msgid "Screencast recorded"
-msgstr ""
+msgstr "තිරය විකාශනය පටිගත විය"
 
 #: src/application.rs:108
 msgid "Click here to view the video."
-msgstr ""
+msgstr "දෘශ්‍යකය බැලීමට මෙතැන ඔබන්න."
 
 #: src/application.rs:114
 msgid "Show in Files"
-msgstr ""
+msgstr "ගොනුවල පෙන්වන්න"
 
 #: src/area_selector/mod.rs:318
 msgid "approx."
-msgstr ""
+msgstr "දළ."
 
 #: src/audio_device.rs:53 src/audio_device.rs:175
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "ඔබගේ පද්ධතියේ පල්ස්ඕඩියෝ ස්ථාපනය කර තිබෙන බවට වග බලා ගන්න."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "උපාංග නිරීක්‍ෂකය ඇරඹීමට අසමත් විය"
 
 #: src/audio_device.rs:176
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "පල්ස්ඕඩියෝ වැඩසටහනට සැබැඳීමට අසමත් විය"
 
 #: src/preferences_window.rs:225
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "මෙම ආකෘතිය පරීක්‍ෂාත්මකයි හා සහාය නොදක්වයි."
 
 #: src/preferences_window.rs:254
 msgid "None"
-msgstr ""
+msgstr "කිසිවක් නැත"
 
 #: src/profile.rs:115
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: src/profile.rs:266
 msgid "WebM"
-msgstr ""
+msgstr "WebM"
 
 #: src/profile.rs:290
 msgid "MP4"
-msgstr ""
+msgstr "MP4"
 
 #: src/profile.rs:309
 msgid "Matroska"
-msgstr ""
+msgstr "මැට්‍රොස්කා"
 
 #: src/profile.rs:342
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:366
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:387
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:402
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:417
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "සක්‍රිය පැතිකඩක් නැත"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
 #: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
 msgid "Failed to start recording"
-msgstr ""
+msgstr "පටිගතය ඇරඹීමට අසමත් විය"
 
 #. Translators: {} will be replaced with a link to a webpage.
 #: src/recording.rs:195
 msgid "Check out {} for help."
-msgstr ""
+msgstr "උදව් සඳහා {} බලන්න."
 
 #: src/recording.rs:235
 msgid "No microphone source found"
-msgstr ""
+msgstr "ශබ්දවාහිනියක් හමු නොවිණි"
 
 #: src/recording.rs:242
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "වැඩතල විකාශකයක් හමු නොවිණි"
 
 #: src/recording.rs:249
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "GStreamer පේනුවක් ස්ථාපනය කර නැති බව පෙනෙයි."
 
 #: src/recording.rs:273 src/recording.rs:495
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "සුරැකෙන ස්ථානය තිබෙන හා ප්‍රවේශ විය හැකි බවට වග බලා ගන්න."
 
 #: src/recording.rs:491
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "පටිගතය අතරතුර දෝෂයක් සිදු විය"
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/recording.rs:503
 msgid "Failed to open “{}” for writing"
-msgstr ""
+msgstr "ලිවීම සඳහා “{}” ඇරීමට අසමත් විය"
 
 #: src/recording.rs:505
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "ලිවීම සඳහා ගොනුව ඇරීමට අසමත් විය"
 
 #: src/settings.rs:42
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "පටිගත බහාලුම තෝරන්න"
 
 #: src/settings.rs:52
 msgid "_Cancel"
-msgstr ""
+msgstr "අවලංගු (_C)"
 
 #: src/settings.rs:53
 msgid "_Select"
-msgstr ""
+msgstr "තෝරන්න (_S)"
 
 #: src/settings.rs:67
 msgid "No folder selected"
-msgstr ""
+msgstr "බහාලුමක් තෝරා නැත"
 
 #: src/settings.rs:68
 msgid "Please choose a folder and try again."
-msgstr ""
+msgstr "බහාලුමක් තෝරා නැවත උත්සාහ කරන්න."
 
 #. Translators: {} will be replaced with a path to the folder.
 #: src/settings.rs:77
 msgid "Cannot access “{}”"
-msgstr ""
+msgstr "“{}” වෙත ප්‍රවේශයට නොහැකිය"
 
 #: src/settings.rs:78
 msgid "Please choose an accessible location and try again."
-msgstr ""
+msgstr "ප්‍රවේශ විය හැකි ස්ථානයක් තෝරා නැවත උත්සාහ කරන්න."
 
 #: src/settings.rs:189 src/window.rs:214
 msgid "Ok"
-msgstr ""
+msgstr "හරි"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "විරාමයක් තැබීමට නොහැකි විය"
 
 #: src/window.rs:177
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "පසුරුපුවරුවට පිටපතක්"
 
 #: src/window.rs:183
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "පසුරුපුවරුවට පිටපත් විය"
 
 #: src/window.rs:189
 msgid "Show detailed error"
-msgstr ""
+msgstr "දෝෂය පැහැදිලිව පෙන්වන්න"
 
 #: src/window.rs:211
 msgid "Help"
-msgstr ""
+msgstr "උදව්"
 
 #: src/window.rs:285
 msgid "Open Preferences?"
-msgstr ""
+msgstr "අභිප්‍රේත අරින්නද?"
 
 #: src/window.rs:286
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"කලින් තේරූ ආකෘතිය නොතිබිය හැකිය. දිගටම පටිගත කිරීමට අභිප්‍රේත විවෘත කර "
+"ආකෘතියක් තෝරන්න."
 
 #: src/window.rs:291
 msgid "Later"
-msgstr ""
+msgstr "පසුව"
 
 #: src/window.rs:292
 msgid "Open"
-msgstr ""
+msgstr "අරින්න"
 
 #: src/window.rs:350
 msgid "Paused"
-msgstr ""
+msgstr "විරාමයකි"
 
 #: src/window.rs:382
 msgid "Normal"
-msgstr ""
+msgstr "සාමාන්‍ය"
 
 #: src/window.rs:383
 msgid "Selection"
-msgstr ""
+msgstr "තේරීම"
