@@ -10,28 +10,6 @@ use crate::Application;
 
 const MAX_THREAD_COUNT: u32 = 64;
 
-/// Generates the boilerplate for setting `glib::Properties`'s generated functions
-/// to the implementation of the following methods of `ObjectImpl`:
-/// * `properties()`
-/// * `property()`
-/// * `set_property()`
-#[macro_export]
-macro_rules! derived_properties {
-    () => {
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            self.derived_property(id, pspec)
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            self.derived_set_property(id, value, pspec);
-        }
-    };
-}
-
 /// Spawns a future in the default [`glib::MainContext`]
 pub fn spawn<F: std::future::Future<Output = ()> + 'static>(fut: F) {
     let ctx = glib::MainContext::default();

@@ -87,6 +87,7 @@ mod imp {
         type Type = super::Recording;
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for Recording {
         fn dispose(&self) {
             if let Some(timer) = self.timer.take() {
@@ -105,8 +106,6 @@ mod imp {
                 source_id.remove();
             }
         }
-
-        crate::derived_properties!();
 
         fn signals() -> &'static [glib::subclass::Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {

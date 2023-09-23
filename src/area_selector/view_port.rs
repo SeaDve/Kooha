@@ -132,6 +132,7 @@ mod imp {
         type ParentType = gtk::Widget;
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for ViewPort {
         fn constructed(&self) {
             self.parent_constructed();
@@ -162,8 +163,6 @@ mod imp {
             }));
             obj.add_controller(gesture_drag);
         }
-
-        crate::derived_properties!();
     }
 
     impl WidgetImpl for ViewPort {

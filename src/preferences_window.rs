@@ -55,6 +55,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for PreferencesWindow {
         fn constructed(&self) {
             self.parent_constructed();
@@ -131,8 +132,6 @@ mod imp {
                     }
                 }));
         }
-
-        crate::derived_properties!();
     }
 
     impl WidgetImpl for PreferencesWindow {}

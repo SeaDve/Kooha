@@ -29,9 +29,8 @@ mod imp {
         type ParentType = gtk::ToggleButton;
     }
 
-    impl ObjectImpl for ToggleButton {
-        crate::derived_properties!();
-    }
+    #[glib::derived_properties]
+    impl ObjectImpl for ToggleButton {}
 
     impl WidgetImpl for ToggleButton {}
     impl ButtonImpl for ToggleButton {}
