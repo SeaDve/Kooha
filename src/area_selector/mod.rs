@@ -159,14 +159,16 @@ impl AreaSelector {
             this.set_transient_for(Some(transient_for));
             this.set_modal(true);
 
+            let scale_factor = 0.4 / transient_for.scale_factor() as f64;
             let monitor_geometry = RootExt::display(transient_for)
                 .monitor_at_surface(&transient_for.surface())
                 .context("No monitor found")?
                 .geometry();
             this.set_default_width(
-                (monitor_geometry.width() as f64 * 0.4 - ASSUMED_HEADER_BAR_HEIGHT * 2.0) as i32,
+                (monitor_geometry.width() as f64 * scale_factor - ASSUMED_HEADER_BAR_HEIGHT * 2.0)
+                    as i32,
             );
-            this.set_default_height((monitor_geometry.height() as f64 * 0.4) as i32);
+            this.set_default_height((monitor_geometry.height() as f64 * scale_factor) as i32);
         }
 
         imp.stack.set_visible_child(&imp.loading.get());
