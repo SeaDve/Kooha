@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2023-04-13 07:50+0000\n"
 "Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
@@ -24,8 +24,8 @@ msgstr ""
 "X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "كوها"
 
@@ -82,24 +82,24 @@ msgstr "🛠️ لك تغيير موضع الحفظ ورؤية المؤشِّر 
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 ترميز تجريبيٌّ مسرَّع بمساعدة العتاد"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "ديف باترك كابرتو"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "حدِّد مساحةً"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "ألغِ"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "تمَّ"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "صفِّر التحديد"
 
@@ -147,7 +147,7 @@ msgstr "أظهر الاختصارات"
 msgid "Quit"
 msgstr "أنهِ"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "يسجَّل"
 
@@ -179,136 +179,132 @@ msgstr "بدِّل الميكروفون"
 msgid "Toggle Pointer"
 msgstr "بدِّل المؤشِّر"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "القائمة الرئيسة"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "التقط شاشةً أو نافذةً"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "التقط موضعًا من الشاشة"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
 msgstr "مكِّن صوت سطح المكتب"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
 msgstr "عطِّل صوت سطح المكتب"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
 msgstr "بدِّل الميكروفون"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
 msgstr "عطِّل الميكروفون"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "أظهر المؤشِّر"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "أخفِ المؤشِّر"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "ابدأ التسجيل"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "سجِّل"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
 msgstr "انسَ ما حُدِّد من مصادر مقاطع"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "أوقف التسجيل"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "توقَّف"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "ألبث التسجيل"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "يبدأ التسجيل خلال …"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "ألغِ التسجيل"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "يفرَّغ…"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "ال_تفضيلات"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "ا_ختصارات لوحة المفاتيح"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_عن كوها"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© ٢٠٢٢ ديف باترك كابرتو"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr ""
 "Mehdi Essalehi\n"
 "Muhammad Yasser\n"
 "علي الجشي https://github.com/Ali-x98"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "تبرَّع (ليبر‌بَي)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "تبرَّع (بي‌بال)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "جت‌هب"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "ترجم"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "سُجِّلت الشاشة"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "انقر هنا لترى المقطع."
 
-#: src/application.rs:114
+#: src/application.rs:117
 msgid "Show in Files"
 msgstr "أظهره في الملفَّات"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "تقريبًا"
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "تأكَّد من تثبيتك بُلس‌أوديو في جهازك."
 
@@ -316,51 +312,51 @@ msgstr "تأكَّد من تثبيتك بُلس‌أوديو في جهازك."
 msgid "Failed to start device monitor"
 msgstr "فشل بدء مرقاب الجهاز"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "فشل الاتصال بالبرنامج الخفيِّ لبُلس‌أوديو"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "هذا التنسيق تجريبيٌّ وليس مدعومًا."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "لا شيء"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "جِف"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "وِب‌إم"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "إم‌بي‌٤"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "متروسكا"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "وِب‌إم في‌بي٩"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "وِب‌إم أي‌في١"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 msgid "WebM VAAPI VP8"
 msgstr "وِب‌إم فابي في‌بي٨"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 msgid "WebM VAAPI VP9"
 msgstr "وِب‌إم فابي في‌بي٩"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 msgid "WebM VAAPI H264"
 msgstr "وِب‌إم فابي إتش٢٦٤"
 
@@ -368,76 +364,53 @@ msgstr "وِب‌إم فابي إتش٢٦٤"
 msgid "No active profile"
 msgstr "لا يوجد ملفٌّ تعريف فعَّال"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
 msgstr "فشل بدء التسجيل"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "طالع {} لتُساعد."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 msgid "No microphone source found"
 msgstr "لم يعثر على مصدر ميكروفون"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "لم يعثر على مصدر سمَّاعة سطح مكتب"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "إحدى إضافات جي‌ستريم قد لا تكون مثبَّتةً."
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "تأكَّد من وجود موضع الحفظ وإمكانية الوصول إليه."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "حصل خطأ أثناء التسجيل"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-msgid "Failed to open “{}” for writing"
-msgstr "فشل فتح «{}» ليُكتب فيه"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr "فشل فتح الملفِّ ليُكتب فيه"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 msgid "Select Recordings Folder"
 msgstr "اختر مجلَّد حفظ التسجيلات"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "_ألغِ"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "_حدِّد"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "لم يحدَّد مجلَّد"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "حدِّد مجلَّدًا فجرِّب ثانيةً."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "لا يمكن الوصول ل‍ «{}»"
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "اختر موضعًا يمكن الوصول إليه فجرِّب ثانيةً."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
 msgstr "حسنًا"
 
@@ -445,53 +418,82 @@ msgstr "حسنًا"
 msgid "Failed to toggle pause"
 msgstr "فشل الإيقاف"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "انسخ للحافظة"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "نُسخ للحافظة"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "أظهر تفاصيل الخطأ"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "مساعدة"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "أأفتح التفضيلات؟"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
-"التنسيق المحدَّد قد لا يكون متاحًا. افتح التفضيلات واختر تنسيقًا لتستأنف "
-"التسجيل."
+"التنسيق المحدَّد قد لا يكون متاحًا. افتح التفضيلات واختر تنسيقًا لتستأنف التسجيل."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "لاحقًا"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "افتح"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "مُلبث"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "عادي"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "المحدَّد"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "تبرَّع (ليبر‌بَي)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "تبرَّع (بي‌بال)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "طالع {} لتُساعد."
+
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "فشل فتح «{}» ليُكتب فيه"
+
+#~ msgid "_Cancel"
+#~ msgstr "_ألغِ"
+
+#~ msgid "_Select"
+#~ msgstr "_حدِّد"
+
+#~ msgid "No folder selected"
+#~ msgstr "لم يحدَّد مجلَّد"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "حدِّد مجلَّدًا فجرِّب ثانيةً."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "لا يمكن الوصول ل‍ «{}»"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "اختر موضعًا يمكن الوصول إليه فجرِّب ثانيةً."
 
 #~ msgid "🎥 Capture your screen without any hassle."
 #~ msgstr "🎥 التقط شاشتك دون أي متاعب."
@@ -588,8 +590,8 @@ msgstr "المحدَّد"
 #~ "SeaDve/Kooha#-it-doesnt-work\">صفحة الأعطال</a>."
 
 #~ msgid ""
-#~ "A GStreamer plugin may not be installed. If not, please report to <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ "A GStreamer plugin may not be installed. If not, please report to <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "قد يكون لم يتم تثبيت ملحق GStreamer. في حال قمت بتثبيته، الرجاء الإبلاغ "
 #~ "في <a href=\"https://github.com/SeaDve/Kooha/issues\">صفحة مشاكل كووها</"
@@ -597,8 +599,8 @@ msgstr "المحدَّد"
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If not, something went wrong "
-#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha's issue page</a>."
+#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "الرجاء التأكد من أن مسار حفظ التسجيل موجود بالفعل. إذا كان موجودًا بالفعل، "
 #~ "قم بالإبلاغ في <a href=\"https://github.com/SeaDve/Kooha/issues\">صفحة "

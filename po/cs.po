@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2023-01-30 17:43+0000\n"
 "Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
-"\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
+">\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,8 +22,8 @@ msgstr ""
 "X-Generator: Weblate 4.16-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -82,24 +82,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Experimentální hardwarově akcelerované kódování"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "Vyberte oblast"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "Hotovo"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "Resetovat výběr"
 
@@ -147,7 +147,7 @@ msgstr "Zobrazit zkratky"
 msgid "Quit"
 msgstr "Ukončit"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "Nahrávání"
 
@@ -179,136 +179,132 @@ msgstr "Zapnout/vypnout mikrofon"
 msgid "Toggle Pointer"
 msgstr "Zapnout/vypnout kurzor"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "Hlavní Menu"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "Zachytávat monitor nebo okno"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "Zachytávat výběr obrazovky"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
 msgstr "Zapnout zvuk plochy"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
 msgstr "Vypnout zvuk plochy"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
 msgstr "Zapnout mikrofon"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
 msgstr "Vypnout mikrofon"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "Zobrazit kurzor"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "Skrýt ukazatel myši"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "Začít nahrávat"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "Nahrát"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
 msgstr "Zapomenout předchozí zdroje videa"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "Zastavit nahrávání"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Zastavit"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "Pozastavit nahrávání"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "Nahrávání za…"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Zrušit nahrávání"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Čištění…"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "_Předvolby"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_O aplikaci Kooha"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr ""
 "Jan Novák <jan.novak@silen.org>\n"
 "Vojtěch Perník <translations@pervoj.cz>\n"
 "Jaroslav Svoboda <jaroslav.svoboda@vse.cz>"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "Podpořit (Liberapay)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "Podpořit (PayPal)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "Překládat"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "Záznam obrazovky ukončen"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "Klikněte zde pro zobrazení videa."
 
-#: src/application.rs:114
+#: src/application.rs:117
 msgid "Show in Files"
 msgstr "Zobrazit v Souborech"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "cca."
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Ujistěte se, že máte nainstalováno PulseAudio."
 
@@ -316,51 +312,51 @@ msgstr "Ujistěte se, že máte nainstalováno PulseAudio."
 msgid "Failed to start device monitor"
 msgstr "Odposlouchávání zařízení selhalo"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Připojení k PulseAudio daemonu selhalo"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Tento formát je experimentální a není podporovaný."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Žádný"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "Matroska"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -368,76 +364,53 @@ msgstr "WebM VAAPI H264"
 msgid "No active profile"
 msgstr "Žádný aktivní profil"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
 msgstr "Nahrávání selhalo"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "Pro pomoc navštivte {}."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 msgid "No microphone source found"
 msgstr "Nenalezen žádný mikrofonní zdroj"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "Nenalezen žádný zdroj s reproduktory"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "Plugin GStreameru nemusí být nainstalován."
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Ujistěte se, že místo pro uložení existuje a je dostupné."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "Během nahrávání se vyskytla chyba"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-msgid "Failed to open “{}” for writing"
-msgstr "Nezdařilo se otevření “{}” pro zápis"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr "Nezdařilo se otevřít soubor pro zápis"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 msgid "Select Recordings Folder"
 msgstr "Vybrat adresář pro nahrávky"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "_Zrušit"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "_Vybrat"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "Nebyla vybrána žádná složka"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "Prosím, vyberte složku a zkuste to znovu."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "Nelze získat přístup k \"{}\""
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "Prosím, vyberte přístupné místo a zkuste to znovu."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
 msgstr "Ok"
 
@@ -445,27 +418,27 @@ msgstr "Ok"
 msgid "Failed to toggle pause"
 msgstr "Pozastavení se nezdařilo"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "Kopírovat do schránky"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "Zkopírováno do schránky"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "Zobrazit podrobnosti chyby"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "Nápověda"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "Otevřít předvolby?"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -473,25 +446,55 @@ msgstr ""
 "Dříve zvolený formát mohl být nedostupný. Otevřete předvolby a vyberte "
 "formát pro pokračování v nahrávání."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "Později"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "Pozastaveno"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "Normální"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "Výběr"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "Podpořit (Liberapay)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "Podpořit (PayPal)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "Pro pomoc navštivte {}."
+
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "Nezdařilo se otevření “{}” pro zápis"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Zrušit"
+
+#~ msgid "_Select"
+#~ msgstr "_Vybrat"
+
+#~ msgid "No folder selected"
+#~ msgstr "Nebyla vybrána žádná složka"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "Prosím, vyberte složku a zkuste to znovu."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Nelze získat přístup k \"{}\""
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Prosím, vyberte přístupné místo a zkuste to znovu."
 
 #~ msgid "Enable Desktop Sounds"
 #~ msgstr "Zapnout systémové zvuky"
@@ -617,17 +620,17 @@ msgstr "Výběr"
 #~ "chybami kooha</a>."
 
 #~ msgid ""
-#~ "A GStreamer plugin may not be installed. If not, please report to <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ "A GStreamer plugin may not be installed. If not, please report to <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Plugin GStreamer nejspíše nebude nainstalovaný, pokud není prosíme o "
-#~ "vyplnění reportu na <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha's issue page</a>."
+#~ "vyplnění reportu na <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha's issue page</a>."
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If not, something went wrong "
-#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha's issue page</a>."
+#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Ujisti se že existuje umístění kam chceš ukládat, pokud ne něco se "
 #~ "pokazilo, můžeš vyplnit report na <a href=\"https://github.com/SeaDve/"

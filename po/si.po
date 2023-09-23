@@ -6,10 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2023-08-14 18:51+0000\n"
-"Last-Translator: \"HelaBasa Group (හෙළබස සමූහය)\" <weblate-helabasa@yalu.lk>"
-"\n"
+"Last-Translator: \"HelaBasa Group (හෙළබස සමූහය)\" <weblate-helabasa@yalu.lk>\n"
 "Language-Team: Sinhala <https://hosted.weblate.org/projects/kooha/pot-file/"
 "si/>\n"
 "Language: si\n"
@@ -20,8 +19,8 @@ msgstr ""
 "X-Generator: Weblate 5.0-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -46,8 +45,8 @@ msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha යනු ඉතාමත් සරල අතුරු මුහුණතක් සහිත තිර පටිගතයකි. ඔබට සැකසුම් බොහොමයක් "
-"සීරු මාරුවකින් තොරව තනි එබීමකින් පටිගත කිරීමට හැකිය."
+"Kooha යනු ඉතාමත් සරල අතුරු මුහුණතක් සහිත තිර පටිගතයකි. ඔබට සැකසුම් බොහොමයක් සීරු මාරුවකින් තොරව "
+"තනි එබීමකින් පටිගත කිරීමට හැකිය."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
@@ -72,31 +71,30 @@ msgstr "🗔 මූලාශ්‍ර කිහිපයක් තෝරාග�
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr ""
-"🛠️ සුරැකෙන ස්ථානය, ඊතලයේ දෘශ්‍යතාව, රාමු අනුපාතය සහ ප්‍රමාදය සැකසීමට හැකිය"
+msgstr "🛠️ සුරැකෙන ස්ථානය, ඊතලයේ දෘශ්‍යතාව, රාමු අනුපාතය සහ ප්‍රමාදය සැකසීමට හැකිය"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 පරීක්‍ෂාත්මක දෘඩාංග ත්වරණිත ආකේතනය ඇත"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "ඩේව් පැට්‍රික් කැබර්ටෝ"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "පෙදෙසක් තෝරන්න"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "අවලංගු"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "අහවරයි"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "තේරීම යළි සකසන්න"
 
@@ -144,7 +142,7 @@ msgstr "කෙටිමං පෙන්වන්න"
 msgid "Quit"
 msgstr "ඉවත් වන්න"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "පටිගත වෙමින්"
 
@@ -176,133 +174,129 @@ msgstr "ශබ්දවාහිනිය සක්‍රිය කරන්න"
 msgid "Toggle Pointer"
 msgstr "ඊතලය සබල කරන්න"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "ප්‍රධාන වට්ටෝරුව"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "තිරයක් හෝ කවුළුවක් ග්‍රහණය"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "තිරයේ කොටසක් ග්‍රහණය"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
 msgstr "වැඩතලයේ හඬ සබල කරන්න"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
 msgstr "වැඩතලයේ හඬ අබල කරන්න"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
 msgstr "ශබ්දවාහිනිය සබල කරන්න"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
 msgstr "ශබ්දවාහිනිය අබල කරන්න"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "ඊතලය පෙන්වන්න"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "ඊතලය සඟවන්න"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "පටිගතය අරඹන්න"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "පටිගත කරන්න"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
 msgstr "කලින් තේරූ දෘශ්‍ය මූලාශ්‍රය අමතක කරන්න"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "පටිගතය නවතන්න"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "නවතන්න"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "විරාමයක්"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "මෙහි පටිගත වේ…"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "අවලංගු කරන්න"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "ද්‍යෝර හැරෙමින්…"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "අභිප්‍රේත (_P)"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "යතුරුපුවරුවේ කෙටිමං (_K)"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "Kooha ගැන (_A)"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2023 ඩේව් පැට්‍රික් කැබර්ටෝ"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr "පරිවර්තනයට ස්තූතිය"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "පරිත්‍යාග (ලිබෙරාපේ)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "පරිත්‍යාග (පේපෑල්)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "ගිට්හබ්"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "පරිවර්තනය"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "තිරය විකාශනය පටිගත විය"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "දෘශ්‍යකය බැලීමට මෙතැන ඔබන්න."
 
-#: src/application.rs:114
+#: src/application.rs:117
 msgid "Show in Files"
 msgstr "ගොනුවල පෙන්වන්න"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "දළ."
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "ඔබගේ පද්ධතියේ පල්ස්ඕඩියෝ ස්ථාපනය කර තිබෙන බවට වග බලා ගන්න."
 
@@ -310,51 +304,51 @@ msgstr "ඔබගේ පද්ධතියේ පල්ස්ඕඩියෝ ස
 msgid "Failed to start device monitor"
 msgstr "උපාංග නිරීක්‍ෂකය ඇරඹීමට අසමත් විය"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "පල්ස්ඕඩියෝ වැඩසටහනට සැබැඳීමට අසමත් විය"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "මෙම ආකෘතිය පරීක්‍ෂාත්මකයි හා සහාය නොදක්වයි."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "කිසිවක් නැත"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "මැට්‍රොස්කා"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -362,76 +356,53 @@ msgstr "WebM VAAPI H264"
 msgid "No active profile"
 msgstr "සක්‍රිය පැතිකඩක් නැත"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
 msgstr "පටිගතය ඇරඹීමට අසමත් විය"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "උදව් සඳහා {} බලන්න."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 msgid "No microphone source found"
 msgstr "ශබ්දවාහිනියක් හමු නොවිණි"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "වැඩතල විකාශකයක් හමු නොවිණි"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer පේනුවක් ස්ථාපනය කර නැති බව පෙනෙයි."
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "සුරැකෙන ස්ථානය තිබෙන හා ප්‍රවේශ විය හැකි බවට වග බලා ගන්න."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "පටිගතය අතරතුර දෝෂයක් සිදු විය"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-msgid "Failed to open “{}” for writing"
-msgstr "ලිවීම සඳහා “{}” ඇරීමට අසමත් විය"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr "ලිවීම සඳහා ගොනුව ඇරීමට අසමත් විය"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 msgid "Select Recordings Folder"
 msgstr "පටිගත බහාලුම තෝරන්න"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "අවලංගු (_C)"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "තෝරන්න (_S)"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "බහාලුමක් තෝරා නැත"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "බහාලුමක් තෝරා නැවත උත්සාහ කරන්න."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "“{}” වෙත ප්‍රවේශයට නොහැකිය"
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "ප්‍රවේශ විය හැකි ස්ථානයක් තෝරා නැවත උත්සාහ කරන්න."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
 msgstr "හරි"
 
@@ -439,50 +410,78 @@ msgstr "හරි"
 msgid "Failed to toggle pause"
 msgstr "විරාමයක් තැබීමට නොහැකි විය"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "පසුරුපුවරුවට පිටපතක්"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "පසුරුපුවරුවට පිටපත් විය"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "දෝෂය පැහැදිලිව පෙන්වන්න"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "උදව්"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "අභිප්‍රේත අරින්නද?"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
-msgstr ""
-"කලින් තේරූ ආකෘතිය නොතිබිය හැකිය. දිගටම පටිගත කිරීමට අභිප්‍රේත විවෘත කර "
-"ආකෘතියක් තෝරන්න."
+msgstr "කලින් තේරූ ආකෘතිය නොතිබිය හැකිය. දිගටම පටිගත කිරීමට අභිප්‍රේත විවෘත කර ආකෘතියක් තෝරන්න."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "පසුව"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "අරින්න"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "විරාමයකි"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "සාමාන්‍ය"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "තේරීම"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "පරිත්‍යාග (ලිබෙරාපේ)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "පරිත්‍යාග (පේපෑල්)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "උදව් සඳහා {} බලන්න."
+
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "ලිවීම සඳහා “{}” ඇරීමට අසමත් විය"
+
+#~ msgid "_Cancel"
+#~ msgstr "අවලංගු (_C)"
+
+#~ msgid "_Select"
+#~ msgstr "තෝරන්න (_S)"
+
+#~ msgid "No folder selected"
+#~ msgstr "බහාලුමක් තෝරා නැත"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "බහාලුමක් තෝරා නැවත උත්සාහ කරන්න."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "“{}” වෙත ප්‍රවේශයට නොහැකිය"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "ප්‍රවේශ විය හැකි ස්ථානයක් තෝරා නැවත උත්සාහ කරන්න."

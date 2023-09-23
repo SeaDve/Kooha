@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2023-04-06 12:43+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -21,8 +21,8 @@ msgstr ""
 "X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -83,24 +83,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Експериментальне кодування з апаратним прискоренням"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "Вибрати ділянку"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "Готово"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "Скинути вибір"
 
@@ -148,7 +148,7 @@ msgstr "Показати комбінації клавіш"
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "Запис"
 
@@ -180,133 +180,129 @@ msgstr "Увімкнути/вимкнути мікрофон"
 msgid "Toggle Pointer"
 msgstr "Показати/сховати вказівник"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "Захоплення монітора або вікна"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "Захоплення ділянки екрана"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
 msgstr "Увімкнути звук з комп'ютера"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
 msgstr "Вимкнути звук з комп'ютера"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
 msgstr "Увімкнути мікрофон"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
 msgstr "Вимкнути мікрофон"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "Показати вказівник"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "Сховати вказівник"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "Розпочати запис"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "Записати"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
 msgstr "Забути раніше вибрані джерела відео"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "Зупинити запис"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Зупинити"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "Призупинити запис"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "Запис через…"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Скасувати запис"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Очищення…"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "_Комбінації клавіш"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_Про Kooha"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "Підтримати (Liberapay)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "Підтримати (PayPal)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "Перекласти"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "Скрінкаст записаний"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "Клацніть тут, щоб переглянути відео."
 
-#: src/application.rs:114
+#: src/application.rs:117
 msgid "Show in Files"
 msgstr "Показати у файлах"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "приблизно."
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Переконайтеся, що у вашій системі встановлено PulseAudio."
 
@@ -314,51 +310,51 @@ msgstr "Переконайтеся, що у вашій системі встан
 msgid "Failed to start device monitor"
 msgstr "Не вдалося запустити монітор пристрою"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Не вдалося під'єднатися до фонової служби PulseAudio"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Цей формат експериментальний і не підтримується."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Немає"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "Matroska"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -366,76 +362,53 @@ msgstr "WebM VAAPI H264"
 msgid "No active profile"
 msgstr "Немає активного профілю"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
 msgstr "Не вдалося розпочати запис"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "Перегляньте {}, щоб отримати довідку."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 msgid "No microphone source found"
 msgstr "Не знайдено мікрофона"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "Не знайдено динаміка настільного ПК"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "Плагін GStreamer може бути не встановлений."
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Переконайтеся, що місце збереження існує та доступне."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "Сталася помилка під час запису"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-msgid "Failed to open “{}” for writing"
-msgstr "Не вдалося відкрити «{}» для запису"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr "Не вдалося відкрити файл для запису"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 msgid "Select Recordings Folder"
 msgstr "Вибрати теку для записів"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "_Скасувати"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "_Вибрати"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "Тека не вибрана"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "Виберіть теку та повторіть спробу."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "Не вдалося отримати доступ до «{}»"
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "Виберіть доступне розташування та повторіть спробу."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
 msgstr "Гаразд"
 
@@ -443,27 +416,27 @@ msgstr "Гаразд"
 msgid "Failed to toggle pause"
 msgstr "Не вдалося перемкнути паузу"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "Копіювання до буфера обміну"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "Скопійовано до буфера обміну"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "Показати подробиці помилки"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "Довідка"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "Відкрити налаштування?"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -471,25 +444,55 @@ msgstr ""
 "Можливо, раніше вибраний формат недоступний. Відкрийте налаштування і "
 "виберіть формат для продовження запису."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "Пізніше"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "Зупинено"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "Звичайний"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "Ділянка"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "Підтримати (Liberapay)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "Підтримати (PayPal)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "Перегляньте {}, щоб отримати довідку."
+
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "Не вдалося відкрити «{}» для запису"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Скасувати"
+
+#~ msgid "_Select"
+#~ msgstr "_Вибрати"
+
+#~ msgid "No folder selected"
+#~ msgstr "Тека не вибрана"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "Виберіть теку та повторіть спробу."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Не вдалося отримати доступ до «{}»"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Виберіть доступне розташування та повторіть спробу."
 
 #~ msgid "Enable Desktop Sounds"
 #~ msgstr "Увімкнути звуки комп'ютера"
@@ -562,8 +565,8 @@ msgstr "Ділянка"
 #~ "SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Можливо не встановлено плагін GStreamer. Якщо він встановлений, але не "
-#~ "працює належним чином, повідомте про це на сторінці проблем <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha</a>."
+#~ "працює належним чином, повідомте про це на сторінці проблем <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha</a>."
 
 #~ msgid "Record Computer Sounds"
 #~ msgstr "Записувати звуки комп'ютера"
@@ -602,9 +605,9 @@ msgstr "Ділянка"
 #~ "Make sure to check for the runtime dependencies and <a href=\"https://"
 #~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 #~ msgstr ""
-#~ "Обов’язково перевірте наявність залежностей виконання та <a href="
-#~ "\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">Не працює сторінка</"
-#~ "a>."
+#~ "Обов’язково перевірте наявність залежностей виконання та <a "
+#~ "href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">Не працює "
+#~ "сторінка</a>."
 
 #~ msgid ""
 #~ "Make sure that the saving location exists or is accessible. If it "
@@ -627,17 +630,17 @@ msgstr "Ділянка"
 #~ "github.com/SeaDve/Kooha/issues\">Kooha</a>."
 
 #~ msgid ""
-#~ "A GStreamer plugin may not be installed. If not, please report to <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ "A GStreamer plugin may not be installed. If not, please report to <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Можливо, не встановлено плагін GStreamer. Якщо встановлено, тоді "
-#~ "надішліть звіт на <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">сторінці проблем Kooha</a>."
+#~ "надішліть звіт на <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">сторінці проблем Kooha</a>."
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If not, something went wrong "
-#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha's issue page</a>."
+#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Переконайтеся, що розташування для збереження існує. Якщо ні, тоді щось "
 #~ "пішло не так, тоді можете повідомити про це на <a href=\"https://github."

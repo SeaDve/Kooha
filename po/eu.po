@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2022-10-26 20:07+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/kooha/pot-file/eu/"
@@ -19,8 +19,8 @@ msgstr ""
 "X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -81,24 +81,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Hardware bidezko kodetze esperimental azeleratua"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "Aukeratu arloa"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "Ezeztatu"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "Eginda"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "Berrabiarazi hautaketa"
 
@@ -146,7 +146,7 @@ msgstr "Erakutsi sarbide zuzenak"
 msgid "Quit"
 msgstr "Utzi"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "Grabatzen"
 
@@ -178,133 +178,129 @@ msgstr "Mikrofonoa txandakatu"
 msgid "Toggle Pointer"
 msgstr "Txandakatu punteroa"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "Menu nagusia"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "Monitore bat edo leiho bat harrapatu"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "Pantaila-aukera bat atzeman"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
 msgstr "Mahaigaineko audioa aktibatu"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
 msgstr "Desaktibatu mahaigaineko audioa"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
 msgstr "Aktibatu mikrofonoa"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
 msgstr "Desaktibatu mikrofonoa"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "Erakutsi punteroa"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "Ezkutatu sagua"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "Hasi grabatzen"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "Grabatu"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
 msgstr "Aurretik hautatutako bideo-iturriak ahaztu"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "Gelditu grabazioa"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Gelditu"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "Gelditu grabazioa"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "Grabatzen…"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Bertan behera utzi grabazioa"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Purgatzen…"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "_Ezarpenak"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "_Teklatu-lasterbideak"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_Koohari buruz"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr "Sergio Varela"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "Dohaintza (Liberapay)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "Dohaintza (PayPal)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "Itzuli"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "Pantailaren grabazioa amaituta"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "Egin klik hemen bideoa ikusteko."
 
-#: src/application.rs:114
+#: src/application.rs:117
 msgid "Show in Files"
 msgstr "Artxiboetan erakutsi"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "gutxi gorabehera"
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Ziurtatu PulseAudio instalatuta duzula zure sisteman."
 
@@ -312,51 +308,51 @@ msgstr "Ziurtatu PulseAudio instalatuta duzula zure sisteman."
 msgid "Failed to start device monitor"
 msgstr "Ezin izan da sistemaren monitorea hasi"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Akatsa PulseAudio deabruarekiko konexioan"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Formatu hau esperimentala da eta ezin da jasan."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Bat ere ez"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "Matroska"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -364,76 +360,53 @@ msgstr "WebM VAAPI H264"
 msgid "No active profile"
 msgstr "Ez dago profil aktiborik"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
 msgstr "Ezin izan da grabazioa hasi"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "Kontsultatu {} laguntza lortzeko."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 msgid "No microphone source found"
 msgstr "Mikrofonoaren iturria ez da aurkitu"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "Ez da mahaigaineko bozgorailu-iturririk aurkitu"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "Baliteke GStreamer plugin bat instalatuta ez egotea."
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Ziurtatu gordelekua existitzen dela eta irisgarria dela."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "Errorea gertatu da grabatzean"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-msgid "Failed to open “{}” for writing"
-msgstr "Errorea idazteko \"{}\" irekitzean"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr "Ezin izan da artxiboa ireki idazteko"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 msgid "Select Recordings Folder"
 msgstr "Aukeratu grabazioen karpeta"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "_Ezeztatu"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "_Aukeratu"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "Ez da karpetarik hautatu"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "Mesedez, aukeratu karpeta bat eta saiatu berriro."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "Ezin da “{}”-ra sartu"
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "Mesedez, aukeratu leku irisgarri bat eta saiatu berriro."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
 msgstr "Ados"
 
@@ -441,27 +414,27 @@ msgstr "Ados"
 msgid "Failed to toggle pause"
 msgstr "Akatsa etenaldia kommutatzean"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "Kopiatu paper-zorroan"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "Paper-zorroan kopiatuta"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "Errore zehatza erakutsi"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "Laguntza"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "Ezarpenak ireki?"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -469,25 +442,55 @@ msgstr ""
 "Baliteke aurretik hautatutako formatua eskuragarri ez egotea. Ireki "
 "ezarpenak eta aukeratu formatu bat grabatzen jarraitzeko."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "Geroago"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "Ireki"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "Pausatua"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "Normala"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "Selekzio-eremua"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "Dohaintza (Liberapay)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "Dohaintza (PayPal)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "Kontsultatu {} laguntza lortzeko."
+
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "Errorea idazteko \"{}\" irekitzean"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Ezeztatu"
+
+#~ msgid "_Select"
+#~ msgstr "_Aukeratu"
+
+#~ msgid "No folder selected"
+#~ msgstr "Ez da karpetarik hautatu"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "Mesedez, aukeratu karpeta bat eta saiatu berriro."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Ezin da “{}”-ra sartu"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Mesedez, aukeratu leku irisgarri bat eta saiatu berriro."
 
 #~ msgid "Enable Desktop Sounds"
 #~ msgstr "Mahaigaineko soinuak aktibatu"
@@ -618,12 +621,13 @@ msgstr "Selekzio-eremua"
 #~ "SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Ziurtatu gordetzearen kokalekua existitzen dela. Benetan existitzen bada, "
-#~ "zerbait gaizki joan da eta, mesedez, jakinarazi helbide honetara: <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha intzidentzien orria</a>."
+#~ "zerbait gaizki joan da eta, mesedez, jakinarazi helbide honetara: <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha intzidentzien "
+#~ "orria</a>."
 
 #~ msgid ""
-#~ "A GStreamer plugin may not be installed. If not, please report to <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ "A GStreamer plugin may not be installed. If not, please report to <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Baliteke GStreamer-en plugin bat instalatuta ez egotea. Hala ez bada, "
 #~ "jakinarazi, mesedez, <a href=\"https://github.com/SeaDve/Kooha/issues\"> "
@@ -631,8 +635,8 @@ msgstr "Selekzio-eremua"
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If not, something went wrong "
-#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha's issue page</a>."
+#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Ziurtatu gordetzearen kokalekua existitzen dela. Hala ez bada, zerbait "
 #~ "gaizki joan da, eta, mesedez, jakinarazi honi: <a href=\"https://github."

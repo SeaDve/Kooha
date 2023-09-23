@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2022-09-28 08:00+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -23,8 +23,8 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -84,24 +84,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Deneysel donanım hızlandırmalı kodlama"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "Alan Seç"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "İptal"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "Bitti"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "Seçimi Sıfırla"
 
@@ -149,7 +149,7 @@ msgstr "Kısayolları Göster"
 msgid "Quit"
 msgstr "Çıkış"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "Kaydediliyor"
 
@@ -181,135 +181,131 @@ msgstr "Mikrofonu Aç/Kapat"
 msgid "Toggle Pointer"
 msgstr "İşaretçiyi Aç/Kapat"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "Ekran ya da Pencere Yakala"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "Bir Ekranın Seçilmiş Kısmını Yakala"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
 msgstr "Masaüstü Sesini Etkinleştir"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
 msgstr "Masaüstü Sesini Devre Dışı Bırak"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
 msgstr "Mikrofonu Etkinleştir"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
 msgstr "Mikrofonu Devre Dışı Bırak"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "İşaretçiyi Göster"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "İşaretçiyi Gizle"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "Kayıt Başlat"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "Kayıt"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
 msgstr "Önceden Seçilen Video Kaynaklarını Unut"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "Kaydı Durdur"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Durdur"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "Kaydı Duraklat"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "Kaydediliyor…"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Kaydı İptal Et"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Temizleniyor…"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "Kooha _Hakkında"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr ""
 "Ümit Solmaz\n"
 "Oğuz Ersen"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "Bağış Yap (Liberapay)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "Bağış Yap (PayPal)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "Çevir"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "Ekran kaydı kaydedildi"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "Videoyu görüntülemek için tıklayınız."
 
-#: src/application.rs:114
+#: src/application.rs:117
 msgid "Show in Files"
 msgstr "Dosyalarda Göster"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "yaklaşık"
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Sisteminizde PulseAudio'nun kurulu olduğundan emin olun."
 
@@ -317,51 +313,51 @@ msgstr "Sisteminizde PulseAudio'nun kurulu olduğundan emin olun."
 msgid "Failed to start device monitor"
 msgstr "Aygıt monitörü başlatılamadı"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "PulseAudio programına bağlanılamadı"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Bu biçim deneysel ve desteklenmemektedir."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Yok"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "Matroska"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -369,77 +365,54 @@ msgstr "WebM VAAPI H264"
 msgid "No active profile"
 msgstr "Etkin profil yok"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
 msgstr "Kayıt başlatılamadı"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "Yardım için {} adresine göz atın."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 msgid "No microphone source found"
 msgstr "Mikrofon kaynağı bulunamadı"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "Masaüstü hoparlör kaynağı bulunamadı"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "Bir GStreamer eklentisi kurulmamış olabilir."
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 "Kaydetme konumunun var olduğundan ve erişilebilir olduğundan emin olun."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "Kayıt sırasında bir hata oluştu"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-msgid "Failed to open “{}” for writing"
-msgstr "\"{}\" yazma için açılamadı"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr "Dosya yazma için açılamadı"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 msgid "Select Recordings Folder"
 msgstr "Kayıtlar Klasörünü Seç"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "_İptal"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "_Seç"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "Klasör seçilmedi"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "Lütfen bir klasör seçin ve tekrar deneyin."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "“{}” dizinine erişilemiyor"
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "Lütfen erişilebilir bir konum seçin ve tekrar deneyin."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
 msgstr "Tamam"
 
@@ -447,27 +420,27 @@ msgstr "Tamam"
 msgid "Failed to toggle pause"
 msgstr "Duraklatma değiştirilemedi"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "Panoya kopyala"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "Panoya kopyalandı"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "Ayrıntılı hata göster"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "Yardım"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "Tercihler Açılsın Mı?"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -475,25 +448,55 @@ msgstr ""
 "Önceki seçilen biçim kullanılamıyor olabilir. Kayda devam etmek için "
 "tercihleri açın ve bir biçim seçin."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "Daha sonra"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "Aç"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "Duraklatıldı"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "Seçim"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "Bağış Yap (Liberapay)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "Bağış Yap (PayPal)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "Yardım için {} adresine göz atın."
+
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "\"{}\" yazma için açılamadı"
+
+#~ msgid "_Cancel"
+#~ msgstr "_İptal"
+
+#~ msgid "_Select"
+#~ msgstr "_Seç"
+
+#~ msgid "No folder selected"
+#~ msgstr "Klasör seçilmedi"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "Lütfen bir klasör seçin ve tekrar deneyin."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "“{}” dizinine erişilemiyor"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Lütfen erişilebilir bir konum seçin ve tekrar deneyin."
 
 #~ msgid "Enable Desktop Sounds"
 #~ msgstr "Masaüstü Seslerini Etkinleştir"
@@ -618,8 +621,8 @@ msgstr "Seçim"
 #~ msgstr ""
 #~ "Kaydetme konumunun var olduğundan veya erişilebilir olduğundan emin olun. "
 #~ "Gerçekten varsa veya erişilebilir durumdaysa, bir şeyler ters gitmiştir "
-#~ "ve lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha'nın sorun sayfasında</a> bildirin."
+#~ "ve lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha'nın sorun sayfasında</a> bildirin."
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If it actually exists, "
@@ -631,21 +634,21 @@ msgstr "Seçim"
 #~ "issues\">Kooha'nın sorun sayfasına</a> bildirin."
 
 #~ msgid ""
-#~ "A GStreamer plugin may not be installed. If not, please report to <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ "A GStreamer plugin may not be installed. If not, please report to <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
-#~ "Bir GStreamer eklentisi kurulmamış olabilir. Değilse, lütfen <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha'nın sorun sayfasına</a> "
-#~ "bildirin."
+#~ "Bir GStreamer eklentisi kurulmamış olabilir. Değilse, lütfen <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha'nın sorun "
+#~ "sayfasına</a> bildirin."
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If not, something went wrong "
-#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha's issue page</a>."
+#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Kaydetme konumunun var olduğundan emin olun. Değilse, bir şeyler ters "
-#~ "gitmiştir ve lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha'nın sorun sayfasına</a> bildirin."
+#~ "gitmiştir ve lütfen bunu <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha'nın sorun sayfasına</a> bildirin."
 
 #~ msgid ""
 #~ "Capture your screen in a straightforward and painless way without "

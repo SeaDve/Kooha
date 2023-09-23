@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2023-04-08 06:47+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
@@ -25,8 +25,8 @@ msgstr ""
 "X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -89,24 +89,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Encodage expérimental avec accélération matérielle"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "Sélectionnez une zone"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "Annuler"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "Fait"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "Réinitialiser la sélection"
 
@@ -154,7 +154,7 @@ msgstr "Afficher les raccourcis"
 msgid "Quit"
 msgstr "Quitter"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "Enregistrement"
 
@@ -186,133 +186,129 @@ msgstr "Activer / Couper le microphone"
 msgid "Toggle Pointer"
 msgstr "Activer / Désactiver le curseur"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "Capturer un écran ou une fenêtre"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "Capturer une sélection de l’écran"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
 msgstr "Activer l’audio de l’ordinateur"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
 msgstr "Désactiver l’audio de l’ordinateur"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
 msgstr "Activer le microphone"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
 msgstr "Désactiver le microphone"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "Afficher le curseur"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "Masquer le pointeur"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "Commencer l’enregistrement"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "Enregistrer"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
 msgstr "Oublier les sources vidéo précédemment sélectionnées"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "Arrêter l’enregistrement"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Arrêter"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "Mettre l’enregistrement en pause"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "Enregistrer dans…"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Annuler l’enregistrement"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Vidage…"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "_Préférences"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "_Raccourcis Clavier"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_À propos de Kooha"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr "J. Lavoie, M. Bousquet, Irénée Thirion"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "Faire un don (Liberapay)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "Faire un don (PayPal)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "Traduire"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "Écran enregistré"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "Cliquez ici pour voir la vidéo."
 
-#: src/application.rs:114
+#: src/application.rs:117
 msgid "Show in Files"
 msgstr "Montrer dans Fichiers"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "approx."
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Assurez-vous que PulseAudio est installé sur votre système."
 
@@ -320,51 +316,51 @@ msgstr "Assurez-vous que PulseAudio est installé sur votre système."
 msgid "Failed to start device monitor"
 msgstr "Échec du démarrage du moniteur de périphérique"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Échec de la connexion au daemon PulseAudio"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Ce format est expérimental et n’est pas pris en charge."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Aucun"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "Matroska"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 msgid "WebM VAAPI VP8"
 msgstr "WebM VAAPI VP8"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 msgid "WebM VAAPI VP9"
 msgstr "WebM VAAPI VP9"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 msgid "WebM VAAPI H264"
 msgstr "WebM VAAPI H264"
 
@@ -372,77 +368,54 @@ msgstr "WebM VAAPI H264"
 msgid "No active profile"
 msgstr "Aucun profil actif"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
 msgstr "Échec du démarrage de l’enregistrement"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "Consultez {} pour de l’aide."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 msgid "No microphone source found"
 msgstr "Aucune source microphone trouvée"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "Aucune source de haut-parleur trouvée"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "Un greffon GStreamer n’est peut-être pas installé."
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 "Assurez-vous que l’emplacement d’enregistrement existe et est accessible."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "Une erreur s’est produite pendant l’enregistrement"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-msgid "Failed to open “{}” for writing"
-msgstr "Échec de l’ouverture de « {} » pour l’écriture"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 msgid "Failed to open file for writing"
 msgstr "Impossible d’ouvrir le fichier pour l’écriture"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 msgid "Select Recordings Folder"
 msgstr "Sélectionner le dossier des enregistrements"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "_Annuler"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "_Sélectionner"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "Aucun dossier sélectionné"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "Veuillez choisir un dossier et réessayer."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "Ne peut accéder à « {} »"
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "Veuillez choisir une localisation accessible puis réessayez."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
 msgstr "OK"
 
@@ -450,27 +423,27 @@ msgstr "OK"
 msgid "Failed to toggle pause"
 msgstr "Échec du basculement en pause"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "Copier dans le presse-papiers"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "Copié dans le presse-papiers"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "Afficher l’erreur détaillée"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "Aide"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "Ouvrir les Préférences ?"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -478,25 +451,55 @@ msgstr ""
 "Le format sélectionné précédemment est peut-être indisponible. Ouvrez les "
 "préférences et sélectionnez un format pour continuer à enregistrer."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "Plus tard"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "En pause"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "Sélection"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "Faire un don (Liberapay)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "Faire un don (PayPal)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "Consultez {} pour de l’aide."
+
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "Échec de l’ouverture de « {} » pour l’écriture"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Annuler"
+
+#~ msgid "_Select"
+#~ msgstr "_Sélectionner"
+
+#~ msgid "No folder selected"
+#~ msgstr "Aucun dossier sélectionné"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "Veuillez choisir un dossier et réessayer."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Ne peut accéder à « {} »"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Veuillez choisir une localisation accessible puis réessayez."
 
 #~ msgid "Enable Desktop Sounds"
 #~ msgstr "Activer les sons de bureau"
@@ -613,8 +616,9 @@ msgstr "Sélection"
 #~ "Make sure to check for the runtime dependencies and <a href=\"https://"
 #~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 #~ msgstr ""
-#~ "Veuillez vérifier les dépendances d'exécution et la page <a href="
-#~ "\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">Ça ne marche pas</a>."
+#~ "Veuillez vérifier les dépendances d'exécution et la page <a "
+#~ "href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">Ça ne marche "
+#~ "pas</a>."
 
 #~ msgid ""
 #~ "Make sure that the saving location exists or is accessible. If it "

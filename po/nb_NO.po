@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 09:25+0800\n"
+"POT-Creation-Date: 2023-09-23 09:54+0800\n"
 "PO-Revision-Date: 2023-04-13 07:50+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/kooha/"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Generator: Weblate 4.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:20
-#: src/main.rs:63
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -79,24 +79,24 @@ msgstr "🛠️ Sett opp lagringssted, pekersynlighet, rammetakt, og forsinkelse
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Eksperimentell maskinvarebasert koding"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:21
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
 msgstr "Dave Patrick Caberto"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
 msgstr "Velg område"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:238
-#: data/resources/ui/window.ui:280
+#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
+#: data/resources/ui/window.ui:276
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area-selector.ui:25
 msgid "Done"
 msgstr "Ferdig"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
 msgstr "Tilbakestill utvalg"
 
@@ -148,7 +148,7 @@ msgstr "Vis snarveier"
 msgid "Quit"
 msgstr "Avslutt"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:342
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
 msgstr "Tar opp …"
 
@@ -181,139 +181,135 @@ msgstr "Veksle mikrofon"
 msgid "Toggle Pointer"
 msgstr "Veksle peker"
 
-#: data/resources/ui/window.ui:29
+#: data/resources/ui/window.ui:25
 msgid "Main Menu"
 msgstr "Hovedmeny"
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:54
 msgid "Capture a Monitor or Window"
 msgstr "Ta opp en skjerm eller et vindu"
 
-#: data/resources/ui/window.ui:71
+#: data/resources/ui/window.ui:67
 msgid "Capture a Selection of Screen"
 msgstr "Ta opp et opptak eller en skjerm"
 
-#: data/resources/ui/window.ui:91
+#: data/resources/ui/window.ui:87
 #, fuzzy
 msgid "Enable Desktop Audio"
 msgstr "Skru på skrivebordslyd"
 
-#: data/resources/ui/window.ui:92
+#: data/resources/ui/window.ui:88
 #, fuzzy
 msgid "Disable Desktop Audio"
 msgstr "Skru av skrivebordslyd"
 
-#: data/resources/ui/window.ui:100
+#: data/resources/ui/window.ui:96
 #, fuzzy
 msgid "Enable Microphone"
 msgstr "Skru på mikrofonlyd"
 
-#: data/resources/ui/window.ui:101
+#: data/resources/ui/window.ui:97
 #, fuzzy
 msgid "Disable Microphone"
 msgstr "Skru av mikrofonlyd"
 
-#: data/resources/ui/window.ui:109
+#: data/resources/ui/window.ui:105
 msgid "Show Pointer"
 msgstr "Vis peker"
 
-#: data/resources/ui/window.ui:110
+#: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
 msgstr "Skjul peker"
 
-#: data/resources/ui/window.ui:120
+#: data/resources/ui/window.ui:116
 msgid "Start Recording"
 msgstr "Start opptak"
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:117
 msgid "Record"
 msgstr "Ta opp"
 
-#: data/resources/ui/window.ui:134
+#: data/resources/ui/window.ui:130
 #, fuzzy
 msgid "Forget Previously Selected Video Sources"
 msgstr "Glem tidligere valgte videokilder"
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:181
 msgid "Stop Recording"
 msgstr "Stopp opptak"
 
-#: data/resources/ui/window.ui:186
+#: data/resources/ui/window.ui:182
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/resources/ui/window.ui:196
+#: data/resources/ui/window.ui:192
 msgid "Pause Recording"
 msgstr "Ta pause i opptak"
 
-#: data/resources/ui/window.ui:219
+#: data/resources/ui/window.ui:215
 msgid "Recording in…"
 msgstr "Tar opp om…"
 
-#: data/resources/ui/window.ui:237 data/resources/ui/window.ui:279
+#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Avbryt opptak"
 
-#: data/resources/ui/window.ui:262
+#: data/resources/ui/window.ui:258
 msgid "Flushing…"
 msgstr "Renser …"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:293
 msgid "_Preferences"
 msgstr "_Innstillinger"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: data/resources/ui/window.ui:305
+#: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_Om Kooha"
 
-#: src/about.rs:23
+#: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
 msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:31
+#: src/about.rs:27
 msgid "translator-credits"
 msgstr "Allan Nordhøy"
 
-#: src/about.rs:41
-msgid "Donate (Liberapay)"
-msgstr "Doner (Liberapay)"
+#: src/about.rs:37
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
 
-#: src/about.rs:45
-msgid "Donate (PayPal)"
-msgstr "Doner (PayPal)"
-
-#: src/about.rs:49
+#: src/about.rs:40
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:51
+#: src/about.rs:42
 msgid "Translate"
 msgstr "Oversett"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:107
+#: src/application.rs:110
 msgid "Screencast recorded"
 msgstr "Skjermdeling innspilt"
 
-#: src/application.rs:108
+#: src/application.rs:111
 msgid "Click here to view the video."
 msgstr "Klikk her for å vise videoen."
 
-#: src/application.rs:114
+#: src/application.rs:117
 #, fuzzy
 msgid "Show in Files"
 msgstr "Vis i filbehandler"
 
-#: src/area_selector/mod.rs:318
+#: src/area_selector/mod.rs:323
 msgid "approx."
 msgstr "ca."
 
-#: src/audio_device.rs:53 src/audio_device.rs:175
+#: src/audio_device.rs:53 src/audio_device.rs:169
 #, fuzzy
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Forsikre deg om at du har PulseAudio installert på systemet ditt."
@@ -323,54 +319,54 @@ msgstr "Forsikre deg om at du har PulseAudio installert på systemet ditt."
 msgid "Failed to start device monitor"
 msgstr "Klarte ikke å starte enhetsmonitor"
 
-#: src/audio_device.rs:176
+#: src/audio_device.rs:170
 #, fuzzy
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Klarte ikke å koble til PulseAudio-nisse"
 
-#: src/preferences_window.rs:225
+#: src/preferences_window.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Dette formatet er eksperimentelt og ustøttet."
 
-#: src/preferences_window.rs:254
+#: src/preferences_window.rs:257
 msgid "None"
 msgstr "Ingen"
 
-#: src/profile.rs:115
+#: src/profile.rs:116
 msgid "GIF"
 msgstr "GIF"
 
-#: src/profile.rs:266
+#: src/profile.rs:267
 msgid "WebM"
 msgstr "WebM"
 
-#: src/profile.rs:290
+#: src/profile.rs:291
 msgid "MP4"
 msgstr "MP4"
 
-#: src/profile.rs:309
+#: src/profile.rs:310
 msgid "Matroska"
 msgstr "Matroska"
 
-#: src/profile.rs:342
+#: src/profile.rs:343
 msgid "WebM VP9"
 msgstr "WebM VP9"
 
-#: src/profile.rs:366
+#: src/profile.rs:367
 msgid "WebM AV1"
 msgstr "WebM AV1"
 
-#: src/profile.rs:387
+#: src/profile.rs:388
 #, fuzzy
 msgid "WebM VAAPI VP8"
 msgstr "WebM VA-API VP8"
 
-#: src/profile.rs:402
+#: src/profile.rs:403
 #, fuzzy
 msgid "WebM VAAPI VP9"
 msgstr "WebM VA-API VP9"
 
-#: src/profile.rs:417
+#: src/profile.rs:418
 #, fuzzy
 msgid "WebM VAAPI H264"
 msgstr "WebM VA-API H264"
@@ -379,81 +375,57 @@ msgstr "WebM VA-API H264"
 msgid "No active profile"
 msgstr "Ingen aktiv profil"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#. github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#),
-#: src/recording.rs:196 src/recording.rs:250 src/recording.rs:274
+#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 #, fuzzy
 msgid "Failed to start recording"
 msgstr "Klarte ikke å starte opptak"
 
-#. Translators: {} will be replaced with a link to a webpage.
-#: src/recording.rs:195
-msgid "Check out {} for help."
-msgstr "Sjekk ut {} for hjelp."
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:178
+msgid "Check out {link} for help."
+msgstr ""
 
-#: src/recording.rs:235
+#: src/recording.rs:220
 #, fuzzy
 msgid "No microphone source found"
 msgstr "Fant ingen mikrofonkilde"
 
-#: src/recording.rs:242
+#: src/recording.rs:227
 msgid "No desktop speaker source found"
 msgstr "Fant ingen skrivebordshøyttalerkilde"
 
-#: src/recording.rs:249
+#: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
 msgstr "Kanskje et GStreamer-programtillegg ikke er installert?"
 
-#: src/recording.rs:273 src/recording.rs:495
+#: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Forsikre deg om at lagringsstedet finnes og kan brukes."
 
-#: src/recording.rs:491
+#: src/recording.rs:459
 msgid "An error occurred while recording"
 msgstr "En feil oppstod under opptak"
 
-#. Translators: {} will be replaced with a path to the folder.
-#: src/recording.rs:503
-#, fuzzy
-msgid "Failed to open “{}” for writing"
-msgstr "Klarte ikke å åpne «{}» for skriving"
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:472
+msgid "Failed to open “{path}” for writing"
+msgstr ""
 
-#: src/recording.rs:505
+#: src/recording.rs:476
 #, fuzzy
 msgid "Failed to open file for writing"
 msgstr "Klarte ikke å åpne fil for skriving"
 
-#: src/settings.rs:42
+#: src/settings.rs:36
 #, fuzzy
 msgid "Select Recordings Folder"
 msgstr "Velg opptaksmappe"
 
-#: src/settings.rs:52
-msgid "_Cancel"
-msgstr "_Avbryt"
+#: src/settings.rs:56
+msgid "Failed to select folder"
+msgstr ""
 
-#: src/settings.rs:53
-msgid "_Select"
-msgstr "_Velg"
-
-#: src/settings.rs:67
-msgid "No folder selected"
-msgstr "Ingen mappe valgt"
-
-#: src/settings.rs:68
-msgid "Please choose a folder and try again."
-msgstr "Velg en mappe og prøv igjen."
-
-#. Translators: {} will be replaced with a path to the folder.
-#: src/settings.rs:77
-msgid "Cannot access “{}”"
-msgstr "Får ikke tilgang til «{}»"
-
-#: src/settings.rs:78
-msgid "Please choose an accessible location and try again."
-msgstr "Velg en tilgjengelig mappe og prøv igjen."
-
-#: src/settings.rs:189 src/window.rs:214
+#: src/settings.rs:166 src/window.rs:216
 #, fuzzy
 msgid "Ok"
 msgstr "OK"
@@ -463,27 +435,27 @@ msgstr "OK"
 msgid "Failed to toggle pause"
 msgstr "Klarte ikke å skru av/på pause"
 
-#: src/window.rs:177
+#: src/window.rs:179
 msgid "Copy to clipboard"
 msgstr "Kopier til utklippstavlen"
 
-#: src/window.rs:183
+#: src/window.rs:185
 msgid "Copied to clipboard"
 msgstr "Kopiert til utklippstavlen"
 
-#: src/window.rs:189
+#: src/window.rs:191
 msgid "Show detailed error"
 msgstr "Vis detaljert feilmelding"
 
-#: src/window.rs:211
+#: src/window.rs:213
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/window.rs:285
+#: src/window.rs:289
 msgid "Open Preferences?"
 msgstr "Åpne innstillingene?"
 
-#: src/window.rs:286
+#: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -491,25 +463,56 @@ msgstr ""
 "Tidligere valgt format kan ha vært utilgjengelig. Åpne innstillingene og "
 "velg et format for å fortsette opptak."
 
-#: src/window.rs:291
+#: src/window.rs:295
 msgid "Later"
 msgstr "Senere"
 
-#: src/window.rs:292
+#: src/window.rs:296
 msgid "Open"
 msgstr "Åpne"
 
-#: src/window.rs:350
+#: src/window.rs:354
 msgid "Paused"
 msgstr "På pause"
 
-#: src/window.rs:382
+#: src/window.rs:386
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window.rs:383
+#: src/window.rs:387
 msgid "Selection"
 msgstr "Utvalg"
+
+#~ msgid "Donate (Liberapay)"
+#~ msgstr "Doner (Liberapay)"
+
+#~ msgid "Donate (PayPal)"
+#~ msgstr "Doner (PayPal)"
+
+#~ msgid "Check out {} for help."
+#~ msgstr "Sjekk ut {} for hjelp."
+
+#, fuzzy
+#~ msgid "Failed to open “{}” for writing"
+#~ msgstr "Klarte ikke å åpne «{}» for skriving"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Avbryt"
+
+#~ msgid "_Select"
+#~ msgstr "_Velg"
+
+#~ msgid "No folder selected"
+#~ msgstr "Ingen mappe valgt"
+
+#~ msgid "Please choose a folder and try again."
+#~ msgstr "Velg en mappe og prøv igjen."
+
+#~ msgid "Cannot access “{}”"
+#~ msgstr "Får ikke tilgang til «{}»"
+
+#~ msgid "Please choose an accessible location and try again."
+#~ msgstr "Velg en tilgjengelig mappe og prøv igjen."
 
 #~ msgid "🎥 Capture your screen without any hassle."
 #~ msgstr "🎥 Ta opp skjermen uten stress."
@@ -596,13 +599,13 @@ msgstr "Utvalg"
 #~ "Make sure to check for the runtime dependencies and <a href=\"https://"
 #~ "github.com/SeaDve/Kooha#-it-doesnt-work\">It Doesn't Work page</a>."
 #~ msgstr ""
-#~ "Forsikre deg om at du sjekker kjøretidsavhengighetene og <a href="
-#~ "\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">Det virker ikke</a>-"
-#~ "siden."
+#~ "Forsikre deg om at du sjekker kjøretidsavhengighetene og <a "
+#~ "href=\"https://github.com/SeaDve/Kooha#-it-doesnt-work\">Det virker ikke</"
+#~ "a>-siden."
 
 #~ msgid ""
-#~ "A GStreamer plugin may not be installed. If not, please report to <a href="
-#~ "\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
+#~ "A GStreamer plugin may not be installed. If not, please report to <a "
+#~ "href=\"https://github.com/SeaDve/Kooha/issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Et GStreamer-programtillegg er kanskje ikke installert. Hvis dette ikke "
 #~ "er tilfelle kan du rapportere det på <a href=\"https://github.com/SeaDve/"
@@ -610,8 +613,8 @@ msgstr "Utvalg"
 
 #~ msgid ""
 #~ "Make sure that the saving location exists. If not, something went wrong "
-#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/issues"
-#~ "\">Kooha's issue page</a>."
+#~ "and please report to <a href=\"https://github.com/SeaDve/Kooha/"
+#~ "issues\">Kooha's issue page</a>."
 #~ msgstr ""
 #~ "Forsikre deg om at lagringsstedet finnes. Hvis det ikke gjør det og noe "
 #~ "gikk galt kan du rapportere det på <a href=\"https://github.com/SeaDve/"
