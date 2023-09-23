@@ -5,7 +5,6 @@ use gtk::{
     glib::{self, clone, closure},
     pango,
 };
-use once_cell::unsync::OnceCell;
 
 use crate::{
     profile::{self, BoxedProfile},
@@ -14,6 +13,8 @@ use crate::{
 };
 
 mod imp {
+    use std::cell::OnceCell;
+
     use super::*;
     use gtk::CompositeTemplate;
 

@@ -5,7 +5,6 @@ use gtk::{
     glib::{self, clone, WeakRef},
     prelude::*,
 };
-use once_cell::unsync::OnceCell;
 
 use crate::{
     about,
@@ -17,6 +16,8 @@ use crate::{
 };
 
 mod imp {
+    use std::cell::OnceCell;
+
     use super::*;
 
     #[derive(Debug, Default)]

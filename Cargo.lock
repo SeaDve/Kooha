@@ -959,7 +959,6 @@ dependencies = [
  "libadwaita",
  "libpulse-binding",
  "libpulse-glib-binding",
- "once_cell",
  "tracing",
  "tracing-subscriber",
 ]

@@ -3,7 +3,6 @@ use gettextrs::gettext;
 use gst::prelude::*;
 use gst_pbutils::prelude::*;
 use gtk::glib::{self, subclass::prelude::*};
-use once_cell::unsync::OnceCell;
 
 use std::fmt;
 
@@ -33,6 +32,8 @@ pub fn get(id: &str) -> Option<Box<dyn Profile>> {
 }
 
 mod imp {
+    use std::cell::OnceCell;
+
     use super::*;
 
     #[derive(Debug, Default)]

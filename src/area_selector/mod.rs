@@ -10,7 +10,6 @@ use gtk::{
     glib::{self, clone},
     graphene::Rect,
 };
-use once_cell::unsync::OnceCell;
 
 use std::{cell::RefCell, os::unix::prelude::RawFd};
 
@@ -31,6 +30,8 @@ pub struct Data {
 }
 
 mod imp {
+    use std::cell::OnceCell;
+
     use super::*;
     use gst::bus::BusWatchGuard;
     use gtk::CompositeTemplate;

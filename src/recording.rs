@@ -5,7 +5,6 @@ use gtk::{
     gio::{self, prelude::*},
     glib::{self, clone, closure_local, subclass::prelude::*},
 };
-use once_cell::{sync::Lazy, unsync::OnceCell};
 
 use std::{
     cell::{Cell, RefCell},
@@ -61,7 +60,10 @@ struct BoxedResult(Rc<Result<gio::File>>);
 
 mod imp {
     use super::*;
-    use glib::subclass::Signal;
+    use glib::{
+        once_cell::{sync::Lazy, unsync::OnceCell},
+        subclass::Signal,
+    };
     use gst::bus::BusWatchGuard;
 
     #[derive(Debug, Default, glib::Properties)]
