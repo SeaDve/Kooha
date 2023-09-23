@@ -1,6 +1,6 @@
 [package]
 name = "kooha"
-version = "2.2.3"
+version = "2.2.4"
 authors = ["Dave Patrick Caberto <davecruz48@gmail.com>"]
 license = "GPL-3.0-or-later"
 edition = "2021"
@@ -13,7 +13,7 @@ anyhow = "1.0.59"
 tracing = "0.1.36"
 tracing-subscriber = "0.3.15"
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
-gtk = { package = "gtk4", version = "0.7", features = ["gnome_44"] }
+gtk = { package = "gtk4", version = "0.7", features = ["gnome_45"] }
 gdk-wayland = { package = "gdk4-wayland", version = "0.7" }
 gdk-x11 = { package = "gdk4-x11", version = "0.7" }
 adw = { package = "libadwaita", version = "0.5", features = ["v1_4"] }

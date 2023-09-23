@@ -40,6 +40,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.2.4" date="2023-09-23">
+      <description>
+        <p>This release contains minor fixes:</p>
+        <ul>
+          <li>Added window close shortcut</li>
+          <li>Improve file saving handling (thanks to @DaPigGuy)</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.2.3" date="2022-12-25">
       <description>
         <p>This release contains minor fixes:</p>
