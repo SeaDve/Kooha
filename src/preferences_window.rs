@@ -75,7 +75,7 @@ mod imp {
             } else {
                 profile::builtins()
             };
-            let profiles_model = gio::ListStore::new(BoxedProfile::static_type());
+            let profiles_model = gio::ListStore::new::<BoxedProfile>();
             if settings.profile().is_none() {
                 profiles_model.append(&BoxedProfile::new_none());
             }

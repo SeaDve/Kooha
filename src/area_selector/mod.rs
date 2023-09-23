@@ -32,6 +32,7 @@ pub struct Data {
 
 mod imp {
     use super::*;
+    use gst::bus::BusWatchGuard;
     use gtk::CompositeTemplate;
 
     #[derive(Debug, Default, CompositeTemplate)]
@@ -52,6 +53,7 @@ mod imp {
         pub(super) stream_size: OnceCell<(i32, i32)>,
         pub(super) result_tx: RefCell<Option<Sender<Result<(), Cancelled>>>>,
         pub(super) async_done_tx: RefCell<Option<Sender<Result<(), Cancelled>>>>,
+        pub(super) bus_watch_guard: OnceCell<BusWatchGuard>,
     }
 
     #[glib::object_subclass]
@@ -125,8 +127,6 @@ mod imp {
                 if let Err(err) = pipeline.set_state(gst::State::Null) {
                     tracing::warn!("Failed to set pipeline to Null: {}", err);
                 }
-
-                let _ = pipeline.bus().unwrap().remove_watch();
             }
         }
     }
@@ -174,10 +174,10 @@ impl AreaSelector {
         imp.result_tx.replace(Some(result_tx));
 
         // Setup pipeline
-        let pipeline = gst::Pipeline::new(None);
+        let pipeline = gst::Pipeline::new();
         let videosrc_bin = pipeline::pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
         let sink = gst::ElementFactory::make("gtk4paintablesink").build()?;
-        pipeline.add_many(&[videosrc_bin.upcast_ref(), &sink])?;
+        pipeline.add_many([videosrc_bin.upcast_ref(), &sink])?;
         videosrc_bin.link(&sink)?;
         imp.pipeline.set(pipeline.clone()).unwrap();
 
@@ -191,15 +191,16 @@ impl AreaSelector {
         imp.async_done_tx.replace(Some(async_done_tx));
 
         // Setup bus to receive async done message
-        pipeline
+        let bus_watch_guard = pipeline
             .bus()
             .unwrap()
             .add_watch_local(
-                clone!(@weak this as obj => @default-return Continue(false), move |_, message| {
+                clone!(@weak this as obj => @default-return glib::ControlFlow::Break, move |_, message| {
                     obj.handle_bus_message(message)
                 }),
             )
             .unwrap();
+        imp.bus_watch_guard.set(bus_watch_guard).unwrap();
 
         this.present();
 
@@ -232,7 +233,7 @@ impl AreaSelector {
         })
     }
 
-    fn handle_bus_message(&self, message: &gst::Message) -> glib::Continue {
+    fn handle_bus_message(&self, message: &gst::Message) -> glib::ControlFlow {
         use gst::MessageView;
 
         let imp = self.imp();
@@ -243,12 +244,12 @@ impl AreaSelector {
                     let _ = async_done_tx.send(Ok(()));
                 }
 
-                Continue(true)
+                glib::ControlFlow::Continue
             }
             MessageView::Eos(_) => {
                 tracing::debug!("Eos signal received from record bus");
 
-                Continue(false)
+                glib::ControlFlow::Break
             }
             MessageView::StateChanged(sc) => {
                 let new_state = sc.current();
@@ -267,7 +268,7 @@ impl AreaSelector {
                         sc.old(),
                         new_state,
                     );
-                    return Continue(true);
+                    return glib::ControlFlow::Continue;
                 }
 
                 tracing::debug!(
@@ -276,23 +277,23 @@ impl AreaSelector {
                     new_state,
                 );
 
-                Continue(true)
+                glib::ControlFlow::Continue
             }
             MessageView::Error(e) => {
                 tracing::error!("Received error message on bus: {:?}", e);
-                Continue(false)
+                glib::ControlFlow::Break
             }
             MessageView::Warning(w) => {
                 tracing::warn!("Received warning message on bus: {:?}", w);
-                Continue(true)
+                glib::ControlFlow::Continue
             }
             MessageView::Info(i) => {
                 tracing::debug!("Received info message on bus: {:?}", i);
-                Continue(true)
+                glib::ControlFlow::Continue
             }
             other => {
                 tracing::trace!("Received other message on bus: {:?}", other);
-                Continue(true)
+                glib::ControlFlow::Continue
             }
         }
     }

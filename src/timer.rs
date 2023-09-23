@@ -1,5 +1,5 @@
 use futures_util::future::FusedFuture;
-use gtk::glib::{self, clone, Continue};
+use gtk::glib::{self, clone};
 
 use std::{
     cell::{Cell, RefCell},
@@ -139,9 +139,9 @@ impl Future for Timer {
             .secs_left_changed_source_id
             .replace(Some(glib::timeout_add_local(
                 DEFAULT_SECS_LEFT_UPDATE_INTERVAL,
-                clone!(@weak self.inner as inner => @default-return Continue(false), move || {
+                clone!(@weak self.inner as inner => @default-return glib::ControlFlow::Break, move || {
                     (inner.secs_left_changed_cb)(inner.secs_left());
-                    Continue(true)
+                    glib::ControlFlow::Continue
                 }),
             )));
 

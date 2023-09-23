@@ -560,12 +560,12 @@ mod tests {
         gstgif::plugin_register_static().unwrap();
 
         for profile in builtins() {
-            let pipeline = gst::Pipeline::new(None);
+            let pipeline = gst::Pipeline::new();
             let dummy_video_src = gst::ElementFactory::make("fakesrc").build().unwrap();
             let dummy_audio_src = gst::ElementFactory::make("fakesrc").build().unwrap();
             let dummy_sink = gst::ElementFactory::make("fakesink").build().unwrap();
             pipeline
-                .add_many(&[&dummy_video_src, &dummy_audio_src, &dummy_sink])
+                .add_many([&dummy_video_src, &dummy_audio_src, &dummy_sink])
                 .unwrap();
 
             assert!(!profile.name().is_empty());

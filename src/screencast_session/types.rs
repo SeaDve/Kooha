@@ -5,6 +5,7 @@ use std::borrow::Cow;
 use super::VariantDict;
 
 bitflags! {
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub struct CursorMode: u32 {
         const HIDDEN = 1;
         const EMBEDDED = 2;
@@ -13,6 +14,7 @@ bitflags! {
 }
 
 bitflags! {
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub struct SourceType: u32 {
         const MONITOR = 1;
         const WINDOW = 2;

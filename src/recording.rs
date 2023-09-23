@@ -62,6 +62,7 @@ struct BoxedResult(Rc<Result<gio::File>>);
 mod imp {
     use super::*;
     use glib::subclass::Signal;
+    use gst::bus::BusWatchGuard;
 
     #[derive(Debug, Default, glib::Properties)]
     #[properties(wrapper_type = super::Recording)]
@@ -77,6 +78,7 @@ mod imp {
         pub(super) session: RefCell<Option<ScreencastSession>>,
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
         pub(super) pipeline: OnceCell<gst::Pipeline>,
+        pub(super) bus_watch_guard: RefCell<Option<BusWatchGuard>>,
     }
 
     #[glib::object_subclass]
@@ -95,8 +97,6 @@ mod imp {
                 if let Err(err) = pipeline.set_state(gst::State::Null) {
                     tracing::warn!("Failed to stop pipeline on dispose: {:?}", err);
                 }
-
-                let _ = pipeline.bus().unwrap().remove_watch();
             }
 
             self.obj().close_session();
@@ -234,20 +234,21 @@ impl Recording {
             || gettext("Failed to start recording"),
         )?;
         imp.pipeline.set(pipeline.clone()).unwrap();
-        pipeline
+        let bus_watch_guard = pipeline
             .bus()
             .unwrap()
             .add_watch_local(
-                clone!(@weak self as obj => @default-return Continue(false), move |_, message|  {
+                clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move |_, message|  {
                     obj.handle_bus_message(message)
                 }),
             )
             .unwrap();
+        imp.bus_watch_guard.replace(Some(bus_watch_guard));
         imp.duration_source_id.replace(Some(glib::timeout_add_local(
             DEFAULT_DURATION_UPDATE_INTERVAL,
-            clone!(@weak self as obj => @default-return Continue(false), move || {
+            clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move || {
                 obj.update_duration();
-                Continue(true)
+                glib::ControlFlow::Continue
             }),
         )));
         pipeline
@@ -317,9 +318,9 @@ impl Recording {
             if let Err(err) = pipeline.set_state(gst::State::Null) {
                 tracing::warn!("Failed to stop pipeline on cancel: {:?}", err);
             }
-
-            let _ = pipeline.bus().unwrap().remove_watch();
         }
+
+        let _ = imp.bus_watch_guard.take();
 
         self.close_session();
 
@@ -401,11 +402,15 @@ impl Recording {
     /// Deletes recording file on background
     fn delete_file(&self) {
         if let Ok(file) = self.file() {
-            file.delete_async(glib::PRIORITY_DEFAULT_IDLE, gio::Cancellable::NONE, |res| {
-                if let Err(err) = res {
-                    tracing::warn!("Failed to delete recording file: {:?}", err);
-                }
-            });
+            file.delete_async(
+                glib::Priority::DEFAULT_IDLE,
+                gio::Cancellable::NONE,
+                |res| {
+                    if let Err(err) = res {
+                        tracing::warn!("Failed to delete recording file: {:?}", err);
+                    }
+                },
+            );
         } else {
             tracing::error!("Failed to delete recording file: Failed to get file");
         }
@@ -427,7 +432,7 @@ impl Recording {
         self.notify_duration();
     }
 
-    fn handle_bus_message(&self, message: &gst::Message) -> glib::Continue {
+    fn handle_bus_message(&self, message: &gst::Message) -> glib::ControlFlow {
         use gst::MessageView;
 
         let imp = self.imp();
@@ -477,7 +482,7 @@ impl Recording {
                 self.set_finished(Err(error));
                 self.delete_file();
 
-                Continue(false)
+                glib::ControlFlow::Break
             }
             MessageView::Eos(..) => {
                 tracing::debug!("Eos signal received from record bus");
@@ -498,7 +503,7 @@ impl Recording {
 
                 self.set_finished(Ok(self.file().unwrap().clone()));
 
-                Continue(false)
+                glib::ControlFlow::Break
             }
             MessageView::StateChanged(sc) => {
                 let new_state = sc.current();
@@ -517,7 +522,7 @@ impl Recording {
                         sc.old(),
                         new_state,
                     );
-                    return Continue(true);
+                    return glib::ControlFlow::Continue;
                 }
 
                 tracing::debug!(
@@ -529,23 +534,23 @@ impl Recording {
                 let state = match new_state {
                     gst::State::Paused => State::Paused,
                     gst::State::Playing => State::Recording,
-                    _ => return Continue(true),
+                    _ => return glib::ControlFlow::Continue,
                 };
                 self.set_state(state);
 
-                Continue(true)
+                glib::ControlFlow::Continue
             }
             MessageView::Warning(w) => {
                 tracing::warn!("Received warning message on bus: {:?}", w);
-                Continue(true)
+                glib::ControlFlow::Continue
             }
             MessageView::Info(i) => {
                 tracing::debug!("Received info message on bus: {:?}", i);
-                Continue(true)
+                glib::ControlFlow::Continue
             }
             other => {
                 tracing::trace!("Received other message on bus: {:?}", other);
-                Continue(true)
+                glib::ControlFlow::Continue
             }
         }
     }
