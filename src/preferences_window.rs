@@ -46,9 +46,24 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
 
-            klass.install_action("preferences.select-saving-location", None, |obj, _, _| {
-                obj.settings().select_saving_location(obj);
-            });
+            klass.install_action_async(
+                "preferences.select-saving-location",
+                None,
+                |obj, _, _| async move {
+                    if let Err(err) = obj.settings().select_saving_location(&obj).await {
+                        tracing::error!("Failed to select saving location: {:?}", err);
+                        let dialog = adw::MessageDialog::builder()
+                            .heading(gettext("Failed to select saving location"))
+                            .body(err.to_string())
+                            .default_response("ok")
+                            .modal(true)
+                            .build();
+                        dialog.add_response("ok", &gettext("Ok"));
+                        dialog.set_transient_for(Some(&obj));
+                        dialog.present();
+                    }
+                },
+            );
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
