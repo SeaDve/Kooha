@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-23 09:54+0800\n"
-"PO-Revision-Date: 2023-09-04 01:54+0000\n"
+"PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: Сергей <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -288,7 +288,7 @@ msgstr ""
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Пожертвовать (Купите мне кофе)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -382,7 +382,7 @@ msgstr "Не удалось начать запись"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Для получения помощи посетите {link}."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -407,7 +407,7 @@ msgstr "Во время записи произошла ошибка"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Не удалось открыть «{path}» для записи"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -419,7 +419,7 @@ msgstr "Выберите папку для записей"
 
 #: src/settings.rs:56
 msgid "Failed to select folder"
-msgstr ""
+msgstr "Не удалось выбрать папку"
 
 #: src/settings.rs:166 src/window.rs:216
 msgid "Ok"

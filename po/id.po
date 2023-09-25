@@ -6,21 +6,23 @@
 # Sucipto <show.cheap@gmail.com>, 2021.
 # Sucipto <sucipto@pm.me>, 2021.
 # Hervy Qurrotul Ainur Rozi <hervyqa@proton.me>, 2022.
+# Muhammad Akbar Yanuar Mantari <mantarimay@users.noreply.hosted.weblate.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-23 09:54+0800\n"
-"PO-Revision-Date: 2023-04-18 22:47+0000\n"
-"Last-Translator: liimee <alt3753.7@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/pot-"
-"file/id/>\n"
+"PO-Revision-Date: 2023-09-25 07:01+0000\n"
+"Last-Translator: Muhammad Akbar Yanuar Mantari <mantarimay@users.noreply."
+"hosted.weblate.org>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/kooha/"
+"pot-file/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -49,8 +51,8 @@ msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Konoha adalah perekam layar yang sederhana dengan antarmuka minimalis. Anda "
-"hanya perlu mengklik tombol rekam tanpa harus mengkonfigurasi beberapa "
+"Kooha adalah perekam layar yang sederhana dengan antarmuka yang minimalis. "
+"Anda hanya perlu menekan tombol rekam tanpa harus mengkonfigurasi beberapa "
 "pengaturan."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
@@ -71,18 +73,18 @@ msgstr "🖥️ Pilih monitor, jendela, atau sebagian dari layar yang ingin dire
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Pilih beberapa sumber"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
-"🛠️ Lokasi penyimpanan, apakah kursor ditampilkan, frame rate, dan penundaan "
-"dapat diatur"
+"🛠️ Lokasi penyimpanan, apakah kursor ditampilkan, laju bingkai, dan "
+"penundaan dapat diatur"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Uji coba pengodean menggunakan akselarasi perangkat keras"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
@@ -90,7 +92,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
-msgstr ""
+msgstr "Pilih Area"
 
 #: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
 #: data/resources/ui/window.ui:276
@@ -103,7 +105,7 @@ msgstr "Selesai"
 
 #: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
-msgstr ""
+msgstr "Atur Ulang Pilihan"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -127,7 +129,7 @@ msgstr "Format"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr "Frame Rate"
+msgstr "Laju Bingkai"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
@@ -155,11 +157,11 @@ msgstr "Merekam"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr "Toggle Perekaman"
+msgstr "Tombol Perekaman"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr "Toggle Jeda"
+msgstr "Tombol Jeda"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
@@ -171,15 +173,15 @@ msgstr "Pengaturan"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Tombol Audio Desktop"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr "Toggle Mikrofon"
+msgstr "Tombol Mikrofon"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr "Toggle Penunjuk"
+msgstr "Tombol Penunjuk"
 
 #: data/resources/ui/window.ui:25
 msgid "Main Menu"
@@ -227,7 +229,7 @@ msgstr "Rekam"
 
 #: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Lupakan Sumber Video yang Dipilih Sebelumnya"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop Recording"
@@ -239,7 +241,7 @@ msgstr "Berhenti"
 
 #: data/resources/ui/window.ui:192
 msgid "Pause Recording"
-msgstr ""
+msgstr "Jeda Perekaman"
 
 #: data/resources/ui/window.ui:215
 msgid "Recording in…"
@@ -275,11 +277,12 @@ msgid "translator-credits"
 msgstr ""
 "@liimee\n"
 "Hervy Qurrotul Ainur Rozi\n"
-"Reza Almanda"
+"Reza Almanda\n"
+"@mantarimay"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Donasi (Traktir Saya Kopi)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -304,7 +307,7 @@ msgstr "Tampilkan di Berkas"
 
 #: src/area_selector/mod.rs:323
 msgid "approx."
-msgstr "kira-kira"
+msgstr "perkiraan"
 
 #: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -312,7 +315,7 @@ msgstr "Pastikan Anda telah memasang PulseAudio pada sistem Anda."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Gagal memulai perangkat monitor"
 
 #: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
@@ -364,7 +367,7 @@ msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Tidak ada profil yang aktif"
 
 #: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
@@ -373,7 +376,7 @@ msgstr "Gagal memulai perekaman"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Rujukan {link} untuk bantuan."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -381,7 +384,7 @@ msgstr "Tak ditemukan sumber mikrofon"
 
 #: src/recording.rs:227
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Sumber pengeras suara desktop tidak ditemukan"
 
 #: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
@@ -398,11 +401,11 @@ msgstr "Kesalahan terjadi ketika merekam"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Gagal membuka “{path}” untuk bekerja"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Gagal membuka berkas untuk bekerja"
 
 #: src/settings.rs:36
 msgid "Select Recordings Folder"
@@ -410,7 +413,7 @@ msgstr "Pilih Folder Rekaman"
 
 #: src/settings.rs:56
 msgid "Failed to select folder"
-msgstr ""
+msgstr "Gagal memilih folder"
 
 #: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
@@ -418,7 +421,7 @@ msgstr "OK"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Galat menekan tombol jeda"
 
 #: src/window.rs:179
 msgid "Copy to clipboard"

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-23 09:54+0800\n"
-"PO-Revision-Date: 2023-06-07 21:51+0000\n"
+"PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -167,7 +167,7 @@ msgstr "Conmutar pausa"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Cancelar grabación"
+msgstr "Cancelar el registro"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -251,7 +251,7 @@ msgstr "Grabando en…"
 
 #: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr "Cancelar grabación"
+msgstr "Cancelar la grabación"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
@@ -280,7 +280,7 @@ msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Donar (Invítame a un café)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -374,7 +374,7 @@ msgstr "No se ha podido iniciar la grabación"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Consulta {link} para obtener ayuda."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -399,7 +399,7 @@ msgstr "Se ha producido un error al grabar"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Error al abrir \"{path}\" para modificarlo"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -411,7 +411,7 @@ msgstr "Elegir carpeta de grabaciones"
 
 #: src/settings.rs:56
 msgid "Failed to select folder"
-msgstr ""
+msgstr "Error al seleccionar la carpeta"
 
 #: src/settings.rs:166 src/window.rs:216
 msgid "Ok"

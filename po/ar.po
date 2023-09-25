@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-23 09:54+0800\n"
-"PO-Revision-Date: 2023-04-13 07:50+0000\n"
+"PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
 ">\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -277,7 +277,7 @@ msgstr ""
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "تبرَّع (اشترِ لي كوب قهوة)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -371,7 +371,7 @@ msgstr "فشل بدء التسجيل"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "طالع {link} تجد المساعدة."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -396,7 +396,7 @@ msgstr "حصل خطأ أثناء التسجيل"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "فشل فتح «{path}» للكتابة فيه"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -408,7 +408,7 @@ msgstr "اختر مجلَّد حفظ التسجيلات"
 
 #: src/settings.rs:56
 msgid "Failed to select folder"
-msgstr ""
+msgstr "فشل تحديد المجلد"
 
 #: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
