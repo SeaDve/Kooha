@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-23 09:54+0800\n"
-"PO-Revision-Date: 2023-04-08 06:47+0000\n"
+"PO-Revision-Date: 2023-09-29 11:59+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
-">\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -277,7 +277,7 @@ msgstr ""
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Doneren (trakteer me op een kopje koffie)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -373,7 +373,7 @@ msgstr "De opname kan niet worden gestart"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Bekijk {link} voor hulp."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -398,7 +398,7 @@ msgstr "Er is een fout opgetreden tijdens de opname"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Kan niet schrijven naar ‘{path}’"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -410,7 +410,7 @@ msgstr "Kies de opnamemap"
 
 #: src/settings.rs:56
 msgid "Failed to select folder"
-msgstr ""
+msgstr "Map selecteren mislukt"
 
 #: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
