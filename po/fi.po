@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-23 09:54+0800\n"
-"PO-Revision-Date: 2023-05-24 23:49+0000\n"
-"Last-Translator: Jiri Nakola <github@nakola.fi>\n"
+"PO-Revision-Date: 2023-09-30 15:59+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fi/>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -279,7 +279,7 @@ msgstr "Jiri Grönroos"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Lahjoita (Buy Me a Coffee)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -373,7 +373,7 @@ msgstr "Nauhoituksen aloitus epäonnistui"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Lue {link} saadaksesi tukea."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -399,7 +399,7 @@ msgstr "Virhe nauhoituksen aikana"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Polun “{path}” avaaminen kirjoitusta varten epäonnistui"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -411,7 +411,7 @@ msgstr "Valitse nauhoitusten kansio"
 
 #: src/settings.rs:56
 msgid "Failed to select folder"
-msgstr ""
+msgstr "Kansion valitseminen epäonnistui"
 
 #: src/settings.rs:166 src/window.rs:216
 msgid "Ok"
