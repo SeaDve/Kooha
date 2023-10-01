@@ -41,7 +41,7 @@
   </screenshots>
   <releases>
     <release version="2.2.4" date="2023-09-23">
-      <description>
+      <description translatable="no">
         <p>This release contains minor fixes:</p>
         <ul>
           <li>Added window close shortcut</li>
@@ -51,7 +51,7 @@
       </description>
     </release>
     <release version="2.2.3" date="2022-12-25">
-      <description>
+      <description translatable="no">
         <p>This release contains minor fixes:</p>
         <ul>
           <li>Fixed indefinite flushing time on certain distros</li>
@@ -61,7 +61,7 @@
       </description>
     </release>
     <release version="2.2.2" date="2022-10-02">
-      <description>
+      <description translatable="no">
         <p>This release contains minor fixes:</p>
         <ul>
           <li>Fixed error dialog showing when show uri is simply cancelled</li>
@@ -71,7 +71,7 @@
       </description>
     </release>
     <release version="2.2.1" date="2022-10-01">
-      <description>
+      <description translatable="no">
         <p>This release contains minor fixes:</p>
         <ul>
           <li>Only show None profile when it is active</li>
@@ -81,7 +81,7 @@
       </description>
     </release>
     <release version="2.2.0" date="2022-09-29">
-      <description>
+      <description translatable="no">
         <p>This release contains new features and fixes:</p>
         <ul>
           <li>New area selection UI</li>
@@ -98,7 +98,7 @@
       </description>
     </release>
     <release version="2.1.1" date="2022-08-21">
-      <description>
+      <description translatable="no">
         <p>This release contains fixes:</p>
         <ul>
           <li>Improved tooltip text on settings toggle buttons</li>
@@ -108,7 +108,7 @@
       </description>
     </release>
     <release version="2.1.0" date="2022-08-19">
-      <description>
+      <description translatable="no">
         <p>This release contains new features and fixes:</p>
         <ul>
           <li>Remember previously selected video sources</li>
@@ -128,7 +128,7 @@
       </description>
     </release>
     <release version="2.0.1" date="2021-10-20">
-      <description>
+      <description translatable="no">
         <p>This is a minor release:</p>
         <ul>
           <li>GIF recordings now loops infinitely</li>
@@ -149,7 +149,7 @@
       </description>
     </release>
     <release version="2.0.0" date="2021-09-23">
-      <description>
+      <description translatable="no">
         <p>This is a big release containing a lot of fixes and new features!</p>
         <ul>
           <li>Added MP4 and GIF formats</li>
@@ -169,7 +169,7 @@
       </description>
     </release>
     <release version="1.2.1" date="2021-05-23">
-      <description>
+      <description translatable="no">
         <p>This release contains small fixes and improvements:</p>
         <ul>
           <li>Focus start record button on startup</li>
@@ -187,7 +187,7 @@
       </description>
     </release>
     <release version="1.2.0" date="2021-05-17">
-      <description>
+      <description translatable="no">
         <p>This release brings the new GTK4 and an important fix for GNOME 40.</p>
         <ul>
           <li>Recording performance improvements</li>
@@ -205,7 +205,7 @@
       </description>
     </release>
     <release version="1.1.3" date="2021-05-04">
-      <description>
+      <description translatable="no">
         <p>New fixes and translations update coming this release:</p>
         <ul>
           <li>More responsive shortcuts</li>
@@ -218,7 +218,7 @@
       </description>
     </release>
     <release version="1.1.2" date="2021-04-25">
-      <description>
+      <description translatable="no">
         <p>This is a minor release composing of fixes and improvements:</p>
         <ul>
           <li>Minor performance optimizations</li>
@@ -236,7 +236,7 @@
       </description>
     </release>
     <release version="1.1.1" date="2021-04-09">
-      <description>
+      <description translatable="no">
         <p>This release is composing of minor changes:</p>
         <ul>
           <li>Minor UI improvements</li>
@@ -249,7 +249,7 @@
       </description>
     </release>
     <release version="1.1.0" date="2021-03-25">
-      <description>
+      <description translatable="no">
         <p>This update brings new features and few bug fixes:</p>
         <ul>
           <li>Added a processing view to avoid recording corruption</li>
@@ -260,7 +260,7 @@
       </description>
     </release>
     <release version="1.0.5" date="2021-03-24">
-      <description>
+      <description translatable="no">
         <p>This is a small update composing of bug fixes:</p>
         <ul>
           <li>Fix audio recording in other locales</li>
@@ -271,7 +271,7 @@
       </description>
     </release>
     <release version="1.0.4" date="2021-03-23">
-      <description>
+      <description translatable="no">
         <p>This release brings a couple of improvements:</p>
         <ul>
           <li>New! Ability to select audio devices through GNOME Settings</li>
@@ -285,7 +285,7 @@
       </description>
     </release>
     <release version="1.0.3" date="2021-03-17">
-      <description>
+      <description translatable="no">
         <p>A couple of bug fixes here and improvements there:</p>
         <ul>
           <li>Minor performance improvements</li>
@@ -297,7 +297,7 @@
       </description>
     </release>
     <release version="1.0.2" date="2021-03-15">
-      <description>
+      <description translatable="no">
         <p>This release brings a couple of small changes:</p>
         <ul>
           <li>set WebM as default format</li>
@@ -307,7 +307,7 @@
       </description>
     </release>
     <release version="1.0.1" date="2021-03-14">
-      <description>
+      <description translatable="no">
         <p>Version 1.0.1 brings fixes to a couple of bugs:</p>
         <ul>
           <li>Catch the error when the path of the directory no longer exists</li>
@@ -319,7 +319,7 @@
       </description>
     </release>
     <release version="1.0.0" date="2021-03-13">
-      <description>
+      <description translatable="no">
         <p>This is the 1.0 release of Kooha. The features of this release include the following:</p>
         <ul>
           <li>Record your screen and also audio from your microphone or desktop</li>
@@ -333,7 +333,7 @@
       </description>
     </release>
     <release version="0.1.0" date="2021-03-06">
-      <description>
+      <description translatable="no">
         <p>Initial release.</p>
       </description>
     </release>
