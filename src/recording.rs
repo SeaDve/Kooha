@@ -1,4 +1,4 @@
-use anyhow::{anyhow, ensure, Context, Error, Result};
+use anyhow::{ensure, Context, Error, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
@@ -7,7 +7,7 @@ use gtk::{
 };
 
 use std::{
-    cell::{Cell, RefCell},
+    cell::{Cell, OnceCell, RefCell},
     error, fmt,
     os::unix::prelude::RawFd,
     rc::Rc,
@@ -60,10 +60,7 @@ struct BoxedResult(Rc<Result<gio::File>>);
 
 mod imp {
     use super::*;
-    use glib::{
-        once_cell::{sync::Lazy, unsync::OnceCell},
-        subclass::Signal,
-    };
+    use glib::{once_cell::sync::Lazy, subclass::Signal};
     use gst::bus::BusWatchGuard;
 
     #[derive(Debug, Default, glib::Properties)]
@@ -235,6 +232,11 @@ impl Recording {
             || gettext("Failed to start recording"),
         )?;
         imp.pipeline.set(pipeline.clone()).unwrap();
+        let location = pipeline
+            .by_name("filesink")
+            .context("Element filesink not found on pipeline")?
+            .property::<String>("location");
+        imp.file.set(gio::File::for_path(location)).unwrap();
         let bus_watch_guard = pipeline
             .bus()
             .unwrap()
@@ -352,20 +354,6 @@ impl Recording {
         )
     }
 
-    fn file(&self) -> Result<&gio::File> {
-        let imp = self.imp();
-        self.imp().file.get_or_try_init(|| {
-            let location = imp
-                .pipeline
-                .get()
-                .ok_or_else(|| anyhow!("Pipeline not set"))?
-                .by_name("filesink")
-                .ok_or_else(|| anyhow!("Element filesink not found on pipeline"))?
-                .property::<String>("location");
-            Ok(gio::File::for_path(location))
-        })
-    }
-
     fn set_state(&self, state: State) {
         if state == self.state() {
             return;
@@ -373,6 +361,13 @@ impl Recording {
 
         self.imp().state.replace(state);
         self.notify_state();
+    }
+
+    fn file(&self) -> &gio::File {
+        self.imp()
+            .file
+            .get()
+            .expect("file not set, make sure to start recording first")
     }
 
     fn pipeline(&self) -> &gst::Pipeline {
@@ -402,19 +397,15 @@ impl Recording {
 
     /// Deletes recording file on background
     fn delete_file(&self) {
-        if let Ok(file) = self.file() {
-            file.delete_async(
-                glib::Priority::DEFAULT_IDLE,
-                gio::Cancellable::NONE,
-                |res| {
-                    if let Err(err) = res {
-                        tracing::warn!("Failed to delete recording file: {:?}", err);
-                    }
-                },
-            );
-        } else {
-            tracing::error!("Failed to delete recording file: Failed to get file");
-        }
+        self.file().delete_async(
+            glib::Priority::DEFAULT_IDLE,
+            gio::Cancellable::NONE,
+            |res| {
+                if let Err(err) = res {
+                    tracing::warn!("Failed to delete recording file: {:?}", err);
+                }
+            },
+        );
     }
 
     fn update_duration(&self) {
@@ -461,20 +452,11 @@ impl Recording {
                 let error = if e.error().matches(gst::ResourceError::OpenWrite) {
                     error.help(
                         gettext("Make sure that the saving location exists and is accessible."),
-                        if let Some(ref path) = self
-                            .file()
-                            .ok()
-                            .and_then(|f| f.path())
-                            .and_then(|path| path.parent().map(|p| p.to_owned()))
-                        {
-                            gettext_f(
-                                // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-                                "Failed to open “{path}” for writing",
-                                &[("path", &path.display().to_string())],
-                            )
-                        } else {
-                            gettext("Failed to open file for writing")
-                        },
+                        gettext_f(
+                            // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+                            "Failed to open “{path}” for writing",
+                            &[("path", &self.file().uri())],
+                        ),
                     )
                 } else {
                     error
@@ -502,7 +484,7 @@ impl Recording {
                     source_id.remove();
                 }
 
-                self.set_finished(Ok(self.file().unwrap().clone()));
+                self.set_finished(Ok(self.file().clone()));
 
                 glib::ControlFlow::Break
             }
