@@ -1,5 +1,5 @@
 use adw::prelude::*;
-use anyhow::{anyhow, Result};
+use anyhow::{Context, Result};
 use gettextrs::gettext;
 use gsettings_macro::gen_settings;
 use gtk::{gio, glib};
@@ -40,9 +40,7 @@ impl Settings {
 
         match dialog.select_folder_future(Some(transient_for)).await {
             Ok(folder) => {
-                let path = folder
-                    .path()
-                    .ok_or_else(|| anyhow!("Folder does not have a path"))?;
+                let path = folder.path().context("Folder does not have a path")?;
                 self.0.set("saving-location", path).unwrap();
             }
             Err(err) => {
