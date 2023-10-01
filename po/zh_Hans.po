@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-05-18 12:48+0000\n"
 "Last-Translator: CrackTC <chenrke369@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -323,11 +323,19 @@ msgstr "启动设备监视器失败"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "连接到PulseAudio守护进程失败"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "Ok"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "此格式是实验性的，不受支持。"
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "无"
 
@@ -409,17 +417,9 @@ msgstr ""
 msgid "Failed to open file for writing"
 msgstr "打开文件写入失败"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "选择录制保存文件夹"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr ""
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "Ok"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"

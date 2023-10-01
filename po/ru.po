@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: Сергей <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -327,11 +327,19 @@ msgstr "Не удалось запустить монитор устройств
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Не удалось подключиться к демону PulseAudio"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "Ок"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "Этот формат экспериментальный и не поддерживается."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Нет"
 
@@ -413,17 +421,9 @@ msgstr "Не удалось открыть «{path}» для записи"
 msgid "Failed to open file for writing"
 msgstr "Не удалось открыть файл для записи"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Выберите папку для записей"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr "Не удалось выбрать папку"
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "Ок"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -476,6 +476,9 @@ msgstr "Обычный"
 #: src/window.rs:387
 msgid "Selection"
 msgstr "Область"
+
+#~ msgid "Failed to select folder"
+#~ msgstr "Не удалось выбрать папку"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "Пожертвовать (Liberapay)"

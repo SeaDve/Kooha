@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-04-18 22:47+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -312,11 +312,19 @@ msgstr "Neuspjelo pokretanje monitora uređaja"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Neuspjelo povezivanje na PulseAudio daemon"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "U redu"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Bez"
 
@@ -398,17 +406,9 @@ msgstr ""
 msgid "Failed to open file for writing"
 msgstr "Neuspjelo otvaranje datoteke za pisanje"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Odaberi mapu za snimke"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr ""
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "U redu"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"

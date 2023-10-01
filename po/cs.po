@@ -10,11 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/>"
-"\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/kooha/pot-file/cs/"
+">\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -317,11 +317,19 @@ msgstr "Odposlouchávání zařízení selhalo"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Připojení k PulseAudio daemonu selhalo"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "Ok"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "Tento formát je experimentální a není podporovaný."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Žádný"
 
@@ -403,17 +411,9 @@ msgstr "Neppodařilo se otevřít „{path}“ pro zápis"
 msgid "Failed to open file for writing"
 msgstr "Nezdařilo se otevřít soubor pro zápis"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Vybrat adresář pro nahrávky"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr "Nepodařilo se vybrat složku"
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "Ok"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -466,6 +466,9 @@ msgstr "Normální"
 #: src/window.rs:387
 msgid "Selection"
 msgstr "Výběr"
+
+#~ msgid "Failed to select folder"
+#~ msgstr "Nepodařilo se vybrat složku"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "Podpořit (Liberapay)"

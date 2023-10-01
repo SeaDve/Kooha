@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2022-08-23 12:15+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -310,11 +310,19 @@ msgstr "Hindi masimulan ang device monitor"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Hindi maka-connect sa PulseAudio daemon"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "Ok"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Wala"
 
@@ -396,17 +404,9 @@ msgstr ""
 msgid "Failed to open file for writing"
 msgstr "Hindi mai-open ang file"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Pumili ng Paglalagyan ng mga Recordings"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr ""
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "Ok"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"

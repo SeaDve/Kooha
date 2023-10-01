@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-05-27 20:50+0000\n"
 "Last-Translator: Cimbora <domonkos.sebestyen@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -311,11 +311,19 @@ msgstr ""
 msgid "Failed to connect to PulseAudio daemon"
 msgstr ""
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr ""
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Nincs"
 
@@ -397,17 +405,9 @@ msgstr ""
 msgid "Failed to open file for writing"
 msgstr ""
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Felvételek mappájának kiválasztása"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr ""
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr ""
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"

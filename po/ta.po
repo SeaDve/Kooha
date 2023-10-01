@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-05-04 10:50+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/"
@@ -310,11 +310,19 @@ msgstr "சாதன மானிட்டரைத் தொடங்குவ�
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "பல்ஸ்ஆடியோ டீமானுடன் இணைக்க முடியவில்லை"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "சரி"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "இந்த வடிவம் சோதனைக்குரியது மற்றும் ஆதரிக்கப்படாது."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
@@ -396,17 +404,9 @@ msgstr ""
 msgid "Failed to open file for writing"
 msgstr "எழுதுவதற்கான கோப்பைத் திறக்க முடியவில்லை"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "பதிவுகள் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr ""
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "சரி"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"

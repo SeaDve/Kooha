@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -321,11 +321,19 @@ msgstr "デバイスモニタの開始に失敗しました"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "PulseAudioデーモンへの接続に失敗しました"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "OK"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "このフォーマットは実験的でありサポートされていません。"
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "なし"
 
@@ -407,17 +415,9 @@ msgstr "“{path}” を書き込み用に開けませんでした"
 msgid "Failed to open file for writing"
 msgstr "ファイルを書き込み用に開けませんでした"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "動画の保存先のフォルダを選択"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr "フォルダーを選択できませんでした"
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "OK"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -470,6 +470,9 @@ msgstr "通常"
 #: src/window.rs:387
 msgid "Selection"
 msgstr "選択範囲"
+
+#~ msgid "Failed to select folder"
+#~ msgstr "フォルダーを選択できませんでした"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "寄付 (Liberapay)"

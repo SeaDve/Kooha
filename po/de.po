@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-02-08 21:37+0000\n"
 "Last-Translator: sal0max <msal.coding@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
@@ -321,11 +321,19 @@ msgstr "Gerätemonitor konnte nicht gestartet werden"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Verbindung zum PulseAudio-Daemon fehlgeschlagen"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "Ok"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "Dieses Format ist experimentell und nicht unterstützt."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Kein"
 
@@ -407,17 +415,9 @@ msgstr ""
 msgid "Failed to open file for writing"
 msgstr "Datei konnte nicht zum Schreiben geöffnet werden"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Aufnahmeordner auswählen"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr ""
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "Ok"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"

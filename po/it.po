@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
@@ -318,11 +318,19 @@ msgstr "Impossibile avviare il monitoraggio del dispositivo"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Impossibile connettersi al demone PulseAudio"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "Ok"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "Questo formato è sperimentale e non supportato."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Nessuno"
 
@@ -404,17 +412,9 @@ msgstr "Impossibile aprire \"{percorso}\" per la scrittura"
 msgid "Failed to open file for writing"
 msgstr "Impossibile aprire il file per la scrittura"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Seleziona la cartella di registrazione"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr "Impossibile selezionare la cartella"
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "Ok"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -467,6 +467,9 @@ msgstr "Normale"
 #: src/window.rs:387
 msgid "Selection"
 msgstr "Sezione"
+
+#~ msgid "Failed to select folder"
+#~ msgstr "Impossibile selezionare la cartella"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "Dona (Liberapay)"

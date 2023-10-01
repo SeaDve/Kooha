@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
@@ -316,11 +316,19 @@ msgstr "فشل بدء مرقاب الجهاز"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "فشل الاتصال بالبرنامج الخفيِّ لبُلس‌أوديو"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "حسنًا"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr "هذا التنسيق تجريبيٌّ وليس مدعومًا."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "لا شيء"
 
@@ -402,17 +410,9 @@ msgstr "فشل فتح «{path}» للكتابة فيه"
 msgid "Failed to open file for writing"
 msgstr "فشل فتح الملفِّ ليُكتب فيه"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "اختر مجلَّد حفظ التسجيلات"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr "فشل تحديد المجلد"
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "حسنًا"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -464,6 +464,9 @@ msgstr "عادي"
 #: src/window.rs:387
 msgid "Selection"
 msgstr "المحدَّد"
+
+#~ msgid "Failed to select folder"
+#~ msgstr "فشل تحديد المجلد"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "تبرَّع (ليبر‌بَي)"

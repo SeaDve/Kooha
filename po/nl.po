@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-23 09:54+0800\n"
+"POT-Creation-Date: 2023-10-01 09:20+0800\n"
 "PO-Revision-Date: 2023-09-29 11:59+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
-"\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
+">\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -317,12 +317,20 @@ msgid "Failed to connect to PulseAudio daemon"
 msgstr ""
 "Er kan geen verbinding worden gemaakt met de PulseAudio-achtergronddienst"
 
-#: src/preferences_window.rs:228
+#: src/preferences_window.rs:56
+msgid "Failed to select saving location"
+msgstr ""
+
+#: src/preferences_window.rs:61 src/window.rs:216
+msgid "Ok"
+msgstr "OK"
+
+#: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
 msgstr ""
 "Let op: dit formaat is experimenteel en wordt niet officieel ondersteund."
 
-#: src/preferences_window.rs:257
+#: src/preferences_window.rs:272
 msgid "None"
 msgstr "Geen"
 
@@ -404,17 +412,9 @@ msgstr "Kan niet schrijven naar ‘{path}’"
 msgid "Failed to open file for writing"
 msgstr "Het bestand kan niet worden weggeschreven"
 
-#: src/settings.rs:36
+#: src/settings.rs:37
 msgid "Select Recordings Folder"
 msgstr "Kies de opnamemap"
-
-#: src/settings.rs:56
-msgid "Failed to select folder"
-msgstr "Map selecteren mislukt"
-
-#: src/settings.rs:166 src/window.rs:216
-msgid "Ok"
-msgstr "OK"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
@@ -467,6 +467,9 @@ msgstr "Normaal"
 #: src/window.rs:387
 msgid "Selection"
 msgstr "Selectie"
+
+#~ msgid "Failed to select folder"
+#~ msgstr "Map selecteren mislukt"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "Doneren (Liberapay)"
