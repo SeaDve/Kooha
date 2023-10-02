@@ -24,14 +24,11 @@
   <a href="https://hosted.weblate.org/engage/kooha/">
     <img alt="Translation status" src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg"/>
   </a>
-  <a href="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml">
-    <img alt="CI status" src="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml/badge.svg"/>
-  </a>
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha">
     <img alt="Flathub downloads" src="https://img.shields.io/badge/dynamic/json?color=informational&label=downloads&logo=flathub&logoColor=white&query=%24.installs_total&url=https%3A%2F%2Fflathub.org%2Fapi%2Fv2%2Fstats%2Fio.github.seadve.Kooha"/>
   </a>
-  <a href="https://repology.org/project/kooha/versions">
-    <img alt="Packaging status" src="https://repology.org/badge/tiny-repos/kooha.svg">
+  <a href="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml">
+    <img alt="CI status" src="https://github.com/SeaDve/Kooha/actions/workflows/ci.yml/badge.svg"/>
   </a>
 </p>
 
@@ -52,7 +49,6 @@ The main features of Kooha include the following:
 * 🛠️ Configurable saving location, pointer visibility, frame rate, and delay
 * 🚀 Experimental hardware-accelerated encoding
 
-
 ## 😕 It Doesn't Work
 
 There are many possibilities on why it may not be working. You may not have
@@ -61,7 +57,6 @@ support it. For troubleshooting purposes the [screen cast compatibility page](ht
 of `xdg-desktop-portal-wlr` wiki may be helpful in determining if your distro
 has support for it out of the box. If it does, but it still doesn't work, you
 can also check for the [troubleshooting checklist](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist).
-
 
 ## ⚙️ Experimental Features
 
@@ -84,14 +79,12 @@ to install the package.
 Due to flickering, this has been disabled by default, but can be enabled through
 `KOOHA_EXPERIMENTAL` env var.
 
-
 ## 📋 Runtime Requirements
 
 * pipewire
 * gstreamer-plugin-pipewire
 * xdg-desktop-portal
 * xdg-desktop-portal-(e.g., gtk, kde, wlr)
-
 
 ## 🏗️ Building from source
 
@@ -133,18 +126,23 @@ meson _build --prefix=/usr/local
 ninja -C _build install
 ```
 
+## 📦 Third-Party Packages
+
+Unlike Flatpak, take note that these packages are not officially supported by the developer.
+
+### Repology
+
+You can also check out other third-party packages on [Repology](https://repology.org/project/kooha/versions).
 
 ## 🙌 Help translate Kooha
 
 You can help Kooha translate into your native language. If you found any typos
 or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/kooha/) platform.
 
-
 ## ☕ Support me and the project
 
 Kooha is free and will always be for everyone to use. If you like the project and
 would like to support it, you may [buy me a coffee](https://www.buymeacoffee.com/seadve).
-
 
 ## 💝 Acknowledgment
 
