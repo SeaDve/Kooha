@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-29 11:59+0000\n"
+"PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/"
-">\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/kooha/pot-file/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -319,7 +319,7 @@ msgstr ""
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Opslag­locatie selecteren mislukt"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"

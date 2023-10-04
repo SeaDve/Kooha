@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-26 20:00+0000\n"
+"PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
@@ -319,7 +319,7 @@ msgstr "PulseAudio programına bağlanılamadı"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Kaydetme konumu seçilemedi"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
@@ -396,8 +396,7 @@ msgstr "Bir GStreamer eklentisi kurulmamış olabilir."
 
 #: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
-"Kaydetme konumunun var olduğundan ve erişilebilir olduğundan emin olun."
+msgstr "Kaydetme konumunun var ve erişilebilir olduğundan emin olun."
 
 #: src/recording.rs:459
 msgid "An error occurred while recording"

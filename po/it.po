@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-25 07:01+0000\n"
+"PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "it/>\n"
@@ -279,7 +279,7 @@ msgstr "Albano Battistella, Andrea Brandi, Michael Moroni, Nicolas Mariniello"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Donazione (Offrimi un caffè)"
+msgstr "Fai una donazione (offrimi un caffè)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -320,7 +320,7 @@ msgstr "Impossibile connettersi al demone PulseAudio"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Impossibile selezionare la posizione di salvataggio"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"

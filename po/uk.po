@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-25 07:01+0000\n"
+"PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "uk/>\n"
@@ -316,7 +316,7 @@ msgstr "Не вдалося під'єднатися до фонової служ
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Не вдалося вибрати місце збереження"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"

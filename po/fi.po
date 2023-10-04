@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-30 15:59+0000\n"
+"PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "fi/>\n"
@@ -320,7 +320,7 @@ msgstr "PulseAudio-taustaosaan yhdistäminen epäonnistui"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Tallennuskohteen valitseminen epäonnistui"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"

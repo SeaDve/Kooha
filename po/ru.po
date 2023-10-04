@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-25 07:01+0000\n"
+"PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: Сергей <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
@@ -158,7 +158,7 @@ msgstr "Показать комбинации клавиш"
 
 #: data/resources/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr "Выйти"
+msgstr "Выход"
 
 #: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
@@ -329,7 +329,7 @@ msgstr "Не удалось подключиться к демону PulseAudio"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Не удалось выбрать место сохранения"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"

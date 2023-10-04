@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-25 07:01+0000\n"
+"PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
@@ -280,7 +280,7 @@ msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Donar (Invítame a un café)"
+msgstr "Donar (Cómprame un café)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -321,7 +321,7 @@ msgstr "Fallo en la conexión con el demonio PulseAudio"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "No se ha podido seleccionar la ubicación para el almacenamiento"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
