@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-10-04 22:10+0000\n"
+"PO-Revision-Date: 2023-10-08 13:00+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "hr/>\n"
@@ -52,11 +52,11 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Glavne karakteristike Koohe uključuju:"
+msgstr "Glavne Kooha funkcije uključuju:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙️ Snimanje mikrofona, zvuka radne površine ili oboje istovremeno"
+msgstr "🎙️ Snimanje mikrofona, zvukova računala ili oboje istovremeno"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -68,7 +68,7 @@ msgstr "🖥️ Biranje monitora, prozora ili dio ekrana za snimanje"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr "🗔 Odabir višestrukih izvora"
+msgstr "🗔 Biranje višestrukih izvora"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -79,7 +79,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr "🚀 Eksperimentalno kodiranje hardverskog ubrzanja"
+msgstr "🚀 Eksperimentalno hardverski ubrzano kodiranje"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
@@ -100,7 +100,7 @@ msgstr "Gotovo"
 
 #: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
-msgstr "Ponovo postavi odabir"
+msgstr "Resetiraj odabir"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -112,7 +112,7 @@ msgstr "Kašnjenje (sekunde)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr "Mapa snimanja"
+msgstr "Mapa sa snimkama"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
@@ -144,7 +144,7 @@ msgstr "Pokaži prečace"
 
 #: data/resources/ui/shortcuts.ui:32
 msgid "Quit"
-msgstr "Zatvori program"
+msgstr "Zatvori"
 
 #: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
@@ -168,7 +168,7 @@ msgstr "Postavke"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Uključi/isključi zvukove računala"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -192,19 +192,19 @@ msgstr "Snimi odabrano područje ekrana"
 
 #: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Uključi zvukove računala"
 
 #: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Isključi zvukove računala"
 
 #: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
-msgstr "Aktiviraj mikrofon"
+msgstr "Uključi mikrofon"
 
 #: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
-msgstr "Deaktiviraj mikrofon"
+msgstr "Isključi mikrofon"
 
 #: data/resources/ui/window.ui:105
 msgid "Show Pointer"
@@ -252,7 +252,7 @@ msgstr "Završavanje …"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr ""
+msgstr "_Postavke"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
@@ -273,7 +273,7 @@ msgstr "Milo Ivir &lt;mail@milotype.de&gt;"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Doniraj (kupi mi kavu)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -281,7 +281,7 @@ msgstr "GitHub"
 
 #: src/about.rs:42
 msgid "Translate"
-msgstr "Prevodi"
+msgstr "Prevedi"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:110
@@ -298,7 +298,7 @@ msgstr "Pokaži u „Datoteke”"
 
 #: src/area_selector/mod.rs:323
 msgid "approx."
-msgstr ""
+msgstr "približno"
 
 #: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -306,15 +306,15 @@ msgstr "Osiguraj da je PulseAudio instaliran u tvom sustavu."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
-msgstr "Neuspjelo pokretanje monitora uređaja"
+msgstr "Pokretanje monitora uređaja nije uspjelo"
 
 #: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
-msgstr "Neuspjelo povezivanje na PulseAudio daemon"
+msgstr "Povezivanje na PulseAudio daemon nije uspjelo"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Biranje mjesta za spremanje nije uspjelo"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
@@ -322,7 +322,7 @@ msgstr "U redu"
 
 #: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Ovo je eksperimentalan i nepodržan format."
 
 #: src/preferences_window.rs:272
 msgid "None"
@@ -342,40 +342,40 @@ msgstr "MP4"
 
 #: src/profile.rs:310
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:343
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:367
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:388
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:403
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:418
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Nema aktivnog profila"
 
 #: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
-msgstr "Neuspjelo pokretanje snimanja"
+msgstr "Pokretanje snimanja nije uspjelo"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Pogledaj {link} za pomoć."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -387,7 +387,7 @@ msgstr "Nije pronađen nijedan izvor zvučnika"
 
 #: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Jedan GStreamer dodatak možda nije instaliran."
 
 #: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
@@ -400,11 +400,11 @@ msgstr "Dogodila se greška tijekom snimanja"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Otvaranje putanje „{path}” za zapisivanje nije uspjelo"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr "Neuspjelo otvaranje datoteke za pisanje"
+msgstr "Otvaranje datoteke za zapisivanje nije uspjelo"
 
 #: src/settings.rs:37
 msgid "Select Recordings Folder"
@@ -412,7 +412,7 @@ msgstr "Odaberi mapu za snimke"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr "Neuspjelo uključivanje/isključivanje pauze"
+msgstr "Uključivanje/Isključivanje pauze nije uspjelo"
 
 #: src/window.rs:179
 msgid "Copy to clipboard"
@@ -432,21 +432,23 @@ msgstr "Pomoć"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Otvoriti postavke?"
 
 #: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Prethodno odabrani format možda nije bio dostupan. Otvori postavke i odaberi "
+"format za nastavljanje snimanja."
 
 #: src/window.rs:295
 msgid "Later"
-msgstr ""
+msgstr "Kasnije"
 
 #: src/window.rs:296
 msgid "Open"
-msgstr ""
+msgstr "Otvori"
 
 #: src/window.rs:354
 msgid "Paused"

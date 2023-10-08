@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-25 07:01+0000\n"
+"PO-Revision-Date: 2023-10-08 13:00+0000\n"
 "Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/kooha/pot-file/ar/"
 ">\n"
@@ -318,7 +318,7 @@ msgstr "فشل الاتصال بالبرنامج الخفيِّ لبُلس‌أ�
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "فشل اختيار موضع الحفظ"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
