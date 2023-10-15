@@ -338,7 +338,15 @@ impl Recording {
             obj.set_finished(Err(Error::from(Cancelled::new("recording"))));
         }));
 
-        self.delete_file();
+        self.file().delete_async(
+            glib::Priority::DEFAULT_IDLE,
+            gio::Cancellable::NONE,
+            |res| {
+                if let Err(err) = res {
+                    tracing::warn!("Failed to delete recording file: {:?}", err);
+                }
+            },
+        );
     }
 
     pub fn connect_finished<F>(&self, f: F) -> glib::SignalHandlerId
@@ -393,19 +401,6 @@ impl Recording {
                 }
             });
         }
-    }
-
-    /// Deletes recording file on background
-    fn delete_file(&self) {
-        self.file().delete_async(
-            glib::Priority::DEFAULT_IDLE,
-            gio::Cancellable::NONE,
-            |res| {
-                if let Err(err) = res {
-                    tracing::warn!("Failed to delete recording file: {:?}", err);
-                }
-            },
-        );
     }
 
     fn update_duration(&self) {
@@ -463,7 +458,6 @@ impl Recording {
                 };
 
                 self.set_finished(Err(error));
-                self.delete_file();
 
                 glib::ControlFlow::Break
             }
