@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-10-21 17:31+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2023-10-22 18:03+0000\n"
+"Last-Translator: C0sM1n <bordeic4@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ro/>\n"
 "Language: ro\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
 #: src/main.rs:61
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
@@ -86,7 +86,6 @@ msgstr ""
 
 #: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
 #: data/resources/ui/window.ui:276
-#, fuzzy
 msgid "Cancel"
 msgstr "Renunță"
 
@@ -139,7 +138,6 @@ msgid "Show Shortcuts"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:32
-#, fuzzy
 msgid "Quit"
 msgstr "Închide programul"
 
@@ -176,7 +174,6 @@ msgid "Toggle Pointer"
 msgstr ""
 
 #: data/resources/ui/window.ui:25
-#, fuzzy
 msgid "Main Menu"
 msgstr "Meniul principal"
 
@@ -250,10 +247,9 @@ msgstr ""
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferințe"
 
 #: data/resources/ui/window.ui:297
-#, fuzzy
 msgid "_Keyboard Shortcuts"
 msgstr "Scurtături _tastatură"
 
