@@ -13,13 +13,14 @@
 # Deleted User <hamburger1024@users.noreply.hosted.weblate.org>, 2022.
 # yangyangdaji <1504305527@qq.com>, 2023.
 # CrackTC <chenrke369@gmail.com>, 2023.
+# Carter Zhang <mcut17198@autistici.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-05-18 12:48+0000\n"
-"Last-Translator: CrackTC <chenrke369@gmail.com>\n"
+"PO-Revision-Date: 2023-10-30 05:16+0000\n"
+"Last-Translator: Carter Zhang <mcut17198@autistici.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -27,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -284,7 +285,7 @@ msgstr ""
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "捐赠（买我一杯咖啡！）"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -325,7 +326,7 @@ msgstr "连接到PulseAudio守护进程失败"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "选择保存位置失败"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
@@ -386,7 +387,7 @@ msgstr "开始录制失败"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "查看 “{link}” 以获取帮助。"
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -411,7 +412,7 @@ msgstr "录制时产生错误"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "无法打开并写入 “{path}”"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
