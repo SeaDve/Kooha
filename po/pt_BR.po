@@ -7,13 +7,14 @@
 # inkhorn <inkhorn@hostux.ninja>, 2021.
 # André L. Alvares <andrluiz.alvares.alvares84@gmail.com>, 2022.
 # Império Linux <kevendoria86@gmail.com>, 2023.
+# Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-08-07 03:46+0000\n"
-"Last-Translator: Império Linux <kevendoria86@gmail.com>\n"
+"PO-Revision-Date: 2023-11-09 02:36+0000\n"
+"Last-Translator: Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "kooha/pot-file/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -90,7 +91,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
-msgstr "Selecionar área"
+msgstr "Selecionar Área"
 
 #: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
 #: data/resources/ui/window.ui:276
@@ -163,7 +164,7 @@ msgstr "Alternar o botão de pausar"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Cancelar gravação"
+msgstr "Cancelar Gravação"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -247,7 +248,7 @@ msgstr "Gravando em…"
 
 #: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr "Cancelar gravação"
+msgstr "Cancelar Gravação"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
@@ -276,7 +277,7 @@ msgstr "Vitor Cardoso, Tiago Lucas Flach, inkhorn"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Doe (Me Compre Um Café)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -317,7 +318,7 @@ msgstr "Falha ao conectar-se com o daemon do PulseAudio"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Falha ao selecionar o local para salvar"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
@@ -378,7 +379,7 @@ msgstr "Falha ao iniciar gravação"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Confira {link} para obter ajuda."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -403,7 +404,7 @@ msgstr "Um erro ocorreu durante a gravação"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Falha ao abrir “{path}” para escrita"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
