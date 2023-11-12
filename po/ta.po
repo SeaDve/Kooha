@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-10-08 13:00+0000\n"
+"PO-Revision-Date: 2023-11-12 14:03+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/kooha/pot-file/ta/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -146,7 +146,7 @@ msgstr "வெளியேறு"
 
 #: data/resources/ui/shortcuts.ui:39 src/window.rs:346
 msgid "Recording"
-msgstr "பதிவு"
+msgstr "ஒலியை பதிவு செய்கிறது"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
@@ -218,7 +218,7 @@ msgstr "பதிவைத் தொடங்கவும்"
 
 #: data/resources/ui/window.ui:117
 msgid "Record"
-msgstr "பதிவு"
+msgstr "ஒலிப்பதிவு"
 
 #: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
