@@ -611,6 +611,8 @@ mod tests {
             )
         }
 
+        gst::init().unwrap();
+
         let a = new_simple_encoding_profile("x264enc", "opusenc", "webmmux");
         assert_eq!(
             a.unwrap_err().to_string(),

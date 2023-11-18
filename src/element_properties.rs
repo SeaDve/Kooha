@@ -129,6 +129,8 @@ mod tests {
 
     #[test]
     fn element_properties() {
+        gst::init().unwrap();
+
         let element_properties = ElementProperties::builder("vp8enc").build();
         let inner_item = element_properties_inner_item(element_properties.clone());
         assert_eq!(
