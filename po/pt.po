@@ -6,21 +6,22 @@
 # Boud Knight <doubzarref@gmail.com>, 2021.
 # Juliano de Souza Camargo <julianosc@protonmail.com>, 2021.
 # Laura Vasconcelos Pereira Felippe <lauravpf@gmail.com>, 2022.
+# Danilo Alfredo Vieira <danilovieira978@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-02-06 22:39+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/pot-"
-"file/pt/>\n"
+"PO-Revision-Date: 2023-11-18 04:06+0000\n"
+"Last-Translator: Danilo Alfredo Vieira <danilovieira978@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/kooha/"
+"pot-file/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.2\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -85,7 +86,7 @@ msgstr "🚀 Codificação de aceleração de hardware experimental"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
-msgstr "Dave Patrick Caberto"
+msgstr "Danilo alfredo vieira"
 
 #: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
@@ -162,11 +163,11 @@ msgstr "Alternar o botão de pausar"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Cancelar gravação"
+msgstr "Cancelar a gravação"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
-msgstr "Ajustes"
+msgstr "Configurações"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
@@ -230,7 +231,7 @@ msgstr "Esquecer fontes de vídeo selecionadas anteriormente"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop Recording"
-msgstr "Parar gravação"
+msgstr "Parar a gravação"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
@@ -238,7 +239,7 @@ msgstr "Parar"
 
 #: data/resources/ui/window.ui:192
 msgid "Pause Recording"
-msgstr "Pausar gravação"
+msgstr "Pausar a gravação"
 
 #: data/resources/ui/window.ui:215
 msgid "Recording in…"
@@ -254,28 +255,28 @@ msgstr "Em andamento…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr "_Preferências"
+msgstr "Preferências"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr "_Atalhos do teclado"
+msgstr "Atalhos do teclado"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
-msgstr "_Acerca do Kooha"
+msgstr "Acerca do Kooha"
 
 #: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
-msgstr "© 2022 Dave Patrick Caberto"
+msgstr "© 2023 Danilo Alfredo Vieira"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
 msgid "translator-credits"
-msgstr "Vitor Cardoso"
+msgstr "Danilo Alfredo Vieira"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Doe (compre um café para mim)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -316,7 +317,7 @@ msgstr "Falha ao conectar-se com o daemon do PulseAudio"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Falha ao selecionar o local para salvar"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
@@ -377,7 +378,7 @@ msgstr "Falha ao iniciar gravação"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Confira {link} para obter ajuda."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -402,7 +403,7 @@ msgstr "Um erro ocorreu durante a gravação"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Falha ao abrir “{path}” para escrita"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
