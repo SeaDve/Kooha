@@ -286,8 +286,8 @@ impl Window {
                     const OPEN_RESPONSE: &str = "open";
                     const LATER_RESPONSE: &str = "later";
                     let d = adw::MessageDialog::builder()
-                        .heading(&gettext("Open Preferences?"))
-                        .body(&gettext("The previously selected format may have been unavailable. Open preferences and select a format to continue recording."))
+                        .heading(gettext("Open Preferences?"))
+                        .body(gettext("The previously selected format may have been unavailable. Open preferences and select a format to continue recording."))
                         .default_response(OPEN_RESPONSE)
                         .transient_for(self)
                         .modal(true)
