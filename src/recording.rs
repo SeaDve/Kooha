@@ -395,7 +395,7 @@ impl Recording {
     /// Closes session on the background
     fn close_session(&self) {
         if let Some(session) = self.imp().session.take() {
-            utils::spawn(async move {
+            glib::spawn_future_local(async move {
                 if let Err(err) = session.close().await {
                     tracing::warn!("Failed to close screencast session: {:?}", err);
                 }

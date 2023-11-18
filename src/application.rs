@@ -11,7 +11,6 @@ use crate::{
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     preferences_window::PreferencesWindow,
     settings::Settings,
-    utils,
     window::Window,
 };
 
@@ -157,7 +156,7 @@ impl Application {
             clone!(@weak self as obj => move |_, param| {
                 let file_uri = param.unwrap().get::<String>().unwrap();
 
-                utils::spawn(async move {
+                glib::spawn_future_local(async move {
                     obj.try_show_uri(&file_uri).await;
                 });
             }),
@@ -169,7 +168,7 @@ impl Application {
         action_show_in_files.connect_activate(clone!(@weak self as obj => move |_, param| {
             let uri = param.unwrap().get::<String>().unwrap();
 
-            utils::spawn(async move {
+            glib::spawn_future_local(async move {
                 if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
                     .open_containing_folder_future(Some(&obj.window()))
                     .await
