@@ -4,13 +4,14 @@
 # cubells <vicent@vcubells.net>, 2022.
 # Joan Aymà <joanayma@gmail.com>, 2023.
 # victor dargallo <victordargallo@disroot.org>, 2023.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-10-25 23:06+0000\n"
-"Last-Translator: victor dargallo <victordargallo@disroot.org>\n"
+"PO-Revision-Date: 2023-11-20 21:03+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ca/>\n"
 "Language: ca\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1.1\n"
+"X-Generator: Weblate 5.2\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -279,7 +280,7 @@ msgstr "Adolfo Jayme Barrientos , Víctor Dargallo "
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Feu una donació (compreu-me un cafè)"
+msgstr "Feu una donació (Buy Me a Coffee)"
 
 #: src/about.rs:40
 msgid "GitHub"

@@ -10,13 +10,14 @@
 # Chardinson De la cruz Ventura <chardinsondelacruzventura@gmail.com>, 2021.
 # Sergio Varela <sergitroll9@gmail.com>, 2022.
 # gallegonovato <fran-carro@hotmail.es>, 2023.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-10-04 18:11+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2023-11-20 21:03+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "es/>\n"
 "Language: es\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -276,11 +277,13 @@ msgstr "© 2022 Dave Patrick Caberto"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
 msgid "translator-credits"
-msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
+msgstr ""
+"Óscar Fernández Díaz (oscfdezdz@tuta.io)\n"
+"Adolfo Jayme Barrientos (fitojb@ubuntu.com), 2023"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Donar (Cómprame un café)"
+msgstr "Donar (Buy Me a Coffee)"
 
 #: src/about.rs:40
 msgid "GitHub"

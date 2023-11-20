@@ -9,13 +9,14 @@
 # sal0max <msal.coding@gmail.com>, 2022, 2023.
 # Schlömi <a.schloemi@gmail.com>, 2022.
 # Nils Martel <nilsmartel@yahoo.de>, 2022.
+# Justin Nogossek <justmegaliga10000@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-02-08 21:37+0000\n"
-"Last-Translator: sal0max <msal.coding@gmail.com>\n"
+"PO-Revision-Date: 2023-11-20 21:03+0000\n"
+"Last-Translator: Justin Nogossek <justmegaliga10000@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/kooha/pot-file/de/"
 ">\n"
 "Language: de\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.2\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -278,11 +279,13 @@ msgstr "© 2022 Dave Patrick Caberto"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
 msgid "translator-credits"
-msgstr "Jonathan Haas,Milo Ivir,D3SOX,Maximilian Salomon"
+msgstr ""
+"J. Lavoie, Andy Pillip, Heinrich Heinzer, Nico, Milo Ivir, sal0max, Marlon, "
+"Jörn Weigend, Florian Schaupp, Justin Nogossek"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Spenden (Kauf mir einen Kaffee)"
 
 #: src/about.rs:40
 msgid "GitHub"
