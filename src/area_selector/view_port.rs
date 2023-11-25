@@ -396,7 +396,7 @@ impl ViewPort {
     }
 
     fn on_drag_begin(&self, _gesture: &gtk::GestureDrag, x: f64, y: f64) {
-        tracing::debug!("Drag begin at ({}, {})", x, y);
+        tracing::trace!("Drag begin at ({}, {})", x, y);
 
         let imp = self.imp();
         let cursor_type = self.compute_cursor_type(x as f32, y as f32);
@@ -626,7 +626,7 @@ impl ViewPort {
     }
 
     fn on_drag_end(&self, _gesture: &gtk::GestureDrag, dx: f64, dy: f64) {
-        tracing::debug!("Drag end offset ({}, {})", dx, dy);
+        tracing::trace!("Drag end offset ({}, {})", dx, dy);
 
         let imp = self.imp();
         imp.drag_start.set(None);
