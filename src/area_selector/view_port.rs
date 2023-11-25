@@ -361,14 +361,10 @@ impl ViewPort {
         self.imp().paintable_rect.get()
     }
 
-    pub fn reset_selection(&self) {
-        self.set_selection(None);
+    pub fn set_selection(&self, selection: Option<Selection>) {
+        self.imp().selection.set(selection);
         self.update_selection_handles();
         self.queue_draw();
-    }
-
-    fn set_selection(&self, selection: Option<Selection>) {
-        self.imp().selection.set(selection);
         self.notify_selection();
     }
 
@@ -424,7 +420,6 @@ impl ViewPort {
                 end_x: x,
                 end_y: y,
             }));
-            self.update_selection_handles();
         } else {
             imp.drag_cursor.set(cursor_type);
             imp.drag_start.set(Some(Point::new(x as f32, y as f32)));
@@ -469,8 +464,6 @@ impl ViewPort {
 
             self.set_selection(Some(new_selection));
         }
-
-        self.queue_draw();
     }
 
     fn on_drag_update(&self, _gesture: &gtk::GestureDrag, _: f64, _: f64) {
@@ -630,9 +623,6 @@ impl ViewPort {
             imp.drag_start
                 .set(Some(Point::new(drag_start.x() + dx, drag_start.y() + dy)));
         }
-
-        self.update_selection_handles();
-        self.queue_draw();
     }
 
     fn on_drag_end(&self, _gesture: &gtk::GestureDrag, dx: f64, dy: f64) {
@@ -674,7 +664,6 @@ impl ViewPort {
                 }
 
                 self.set_selection(Some(selection));
-                self.update_selection_handles();
             }
         }
 

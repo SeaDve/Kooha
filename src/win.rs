@@ -1,5 +1,6 @@
 use adw::{prelude::*, subclass::prelude::*};
 use anyhow::{Context, Result};
+use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
     gdk, gio,
@@ -8,7 +9,7 @@ use gtk::{
 
 use crate::{
     application::Application,
-    area_selector::ViewPort,
+    area_selector::{Selection, ViewPort},
     audio_device::{self, Class as AudioDeviceClass},
     config::PROFILE,
     pipeline,
@@ -18,7 +19,7 @@ use crate::{
 };
 
 mod imp {
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
 
     use gst::bus::BusWatchGuard;
 
@@ -30,14 +31,21 @@ mod imp {
         #[template_child]
         pub(super) view_port: TemplateChild<ViewPort>,
         #[template_child]
+        pub(super) selection_toggle: TemplateChild<gtk::ToggleButton>,
+        #[template_child]
         pub(super) desktop_audio_level: TemplateChild<gtk::LevelBar>,
         #[template_child]
         pub(super) microphone_level: TemplateChild<gtk::LevelBar>,
+        #[template_child]
+        pub(super) info_label: TemplateChild<gtk::Label>,
+
+        pub(super) session: RefCell<Option<(ScreencastSession, gst::Pipeline, BusWatchGuard)>>,
+        pub(super) stream_size: Cell<Option<(i32, i32)>>,
+
+        pub(super) previous_selection: RefCell<Option<Selection>>,
 
         pub(super) desktop_audio_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
         pub(super) microphone_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
-
-        pub(super) session: RefCell<Option<ScreencastSession>>,
     }
 
     #[glib::object_subclass]
@@ -75,6 +83,24 @@ mod imp {
 
             obj.setup_settings();
 
+            self.selection_toggle
+                .connect_active_notify(clone!(@weak obj => move |toggle| {
+                    if toggle.is_active() {
+                        let prev_selection = *obj.imp().previous_selection.borrow();
+                        obj.imp().view_port.set_selection(prev_selection);
+                    } else {
+                        obj.imp().view_port.set_selection(None);
+                    }
+                }));
+            self.view_port
+                .connect_selection_notify(clone!(@weak obj => move |view_port| {
+                    if let Some(selection) = view_port.selection() {
+                        obj.imp().previous_selection.replace(Some(selection));
+                    }
+                    obj.update_selection_ui();
+                    obj.update_info_label();
+                }));
+
             obj.load_window_size();
 
             glib::spawn_future_local(clone!(@weak obj => async move {
@@ -83,11 +109,17 @@ mod imp {
                 }
             }));
 
+            obj.update_selection_ui();
+            obj.update_info_label();
             obj.update_desktop_audio_pipeline();
             obj.update_microphone_pipeline();
         }
 
         fn dispose(&self) {
+            if let Some((_, pipeline, _)) = self.session.take() {
+                let _ = pipeline.set_state(gst::State::Null);
+            }
+
             if let Some((pipeline, _)) = self.desktop_audio_pipeline.take() {
                 let _ = pipeline.set_state(gst::State::Null);
             }
@@ -137,6 +169,9 @@ impl Win {
         let app = utils::app_instance();
         let settings = app.settings();
 
+        imp.stream_size.set(None);
+        self.update_info_label();
+
         let session = ScreencastSession::new()
             .await
             .context("Failed to create ScreencastSession")?;
@@ -167,20 +202,34 @@ impl Win {
             )
             .await
             .context("Failed to begin ScreencastSession")?;
-        imp.session.replace(Some(session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
         let pipeline = gst::Pipeline::new();
         let videosrc_bin = pipeline::pipewiresrc_bin(fd, &streams, 30, None)?;
-        let audioconvert = gst::ElementFactory::make("videoconvert").build()?;
+        let audioconvert = gst::ElementFactory::make("videoconvert")
+            .name("sink-videoconvert")
+            .build()?;
         let sink = gst::ElementFactory::make("gtk4paintablesink").build()?;
         pipeline.add_many([videosrc_bin.upcast_ref(), &audioconvert, &sink])?;
         gst::Element::link_many([videosrc_bin.upcast_ref(), &audioconvert, &sink])?;
 
+        let bus_watch_guard = pipeline.bus().unwrap().add_watch_local(
+            clone!(@weak self as obj => @default-panic, move |_, message| {
+                obj.handle_video_bus_message(message)
+            }),
+        )?;
+        imp.session
+            .replace(Some((session, pipeline, bus_watch_guard)));
+
+        imp.session
+            .borrow()
+            .as_ref()
+            .map(|(_, pipeline, _)| pipeline)
+            .unwrap()
+            .set_state(gst::State::Playing)?;
+
         let paintable = sink.property::<gdk::Paintable>("paintable");
         imp.view_port.set_paintable(Some(paintable));
-
-        pipeline.set_state(gst::State::Playing)?;
 
         Ok(())
     }
@@ -222,15 +271,21 @@ impl Win {
         let bus = pipeline.bus().unwrap();
         let bus_watch_guard = bus.add_watch_local(
             clone!(@weak self as obj => @default-panic, move |_, message| {
-                handle_level_message(message, |peak| {
+                handle_audio_bus_message(message, |peak| {
                     obj.imp().desktop_audio_level.set_value(peak);
                 })
             }),
         )?;
 
-        pipeline.set_state(gst::State::Playing)?;
         imp.desktop_audio_pipeline
             .replace(Some((pipeline, bus_watch_guard)));
+
+        imp.desktop_audio_pipeline
+            .borrow()
+            .as_ref()
+            .map(|(pipeline, _)| pipeline)
+            .unwrap()
+            .set_state(gst::State::Playing)?;
 
         Ok(())
     }
@@ -259,15 +314,21 @@ impl Win {
         let bus = pipeline.bus().unwrap();
         let bus_watch_guard = bus.add_watch_local(
             clone!(@weak self as obj => @default-panic, move |_, message| {
-                handle_level_message(message, |peak| {
+                handle_audio_bus_message(message, |peak| {
                     obj.imp().microphone_level.set_value(peak);
                 })
             }),
         )?;
 
-        pipeline.set_state(gst::State::Playing)?;
         imp.microphone_pipeline
             .replace(Some((pipeline, bus_watch_guard)));
+
+        imp.microphone_pipeline
+            .borrow()
+            .as_ref()
+            .map(|(pipeline, _)| pipeline)
+            .unwrap()
+            .set_state(gst::State::Playing)?;
 
         Ok(())
     }
@@ -295,6 +356,45 @@ impl Win {
         settings.try_set_window_maximized(self.is_maximized())?;
 
         Ok(())
+    }
+
+    fn handle_video_bus_message(&self, message: &gst::Message) -> glib::ControlFlow {
+        let imp = self.imp();
+
+        match message.view() {
+            gst::MessageView::AsyncDone(_) => {
+                let videoconvert = imp
+                    .session
+                    .borrow()
+                    .as_ref()
+                    .map(|(_, pipeline, _)| pipeline)
+                    .unwrap()
+                    .by_name("sink-videoconvert")
+                    .unwrap();
+                let caps = videoconvert
+                    .static_pad("src")
+                    .unwrap()
+                    .current_caps()
+                    .unwrap();
+                let caps_struct = caps.structure(0).unwrap();
+                let stream_width = caps_struct.get::<i32>("width").unwrap();
+                let stream_height = caps_struct.get::<i32>("height").unwrap();
+                imp.stream_size.set(Some((stream_width, stream_height)));
+                self.update_info_label();
+
+                glib::ControlFlow::Continue
+            }
+            gst::MessageView::Error(e) => {
+                tracing::error!(src = ?e.src(), error = ?e.error(), debug = ?e.debug(), "Error from video bus");
+
+                glib::ControlFlow::Break
+            }
+            _ => {
+                tracing::trace!(?message, "Message from video bus");
+
+                glib::ControlFlow::Continue
+            }
+        }
     }
 
     fn update_desktop_audio_pipeline(&self) {
@@ -331,6 +431,43 @@ impl Win {
             let _ = pipeline.set_state(gst::State::Null);
             imp.microphone_level.set_value(0.0);
         }
+    }
+
+    fn update_selection_ui(&self) {
+        let imp = self.imp();
+
+        imp.selection_toggle
+            .set_active(imp.view_port.selection().is_some());
+    }
+
+    fn update_info_label(&self) {
+        let imp = self.imp();
+
+        let mut info_list = vec!["WebM".to_string(), "30 FPS".to_string()];
+
+        match (imp.stream_size.get(), imp.view_port.selection()) {
+            (Some(stream_size), Some(selection)) => {
+                let paintable_rect = imp.view_port.paintable_rect().unwrap();
+
+                let (stream_width, stream_height) = stream_size;
+                let scale_factor_h = stream_width as f32 / paintable_rect.width();
+                let scale_factor_v = stream_height as f32 / paintable_rect.height();
+
+                let selection_rect_scaled = selection.rect().scale(scale_factor_h, scale_factor_v);
+                info_list.push(format!(
+                    "{} {}×{}",
+                    gettext("approx."),
+                    selection_rect_scaled.width().round() as i32,
+                    selection_rect_scaled.height().round() as i32,
+                ));
+            }
+            (Some(stream_size), None) => {
+                info_list.push(format!("{}×{}", stream_size.0, stream_size.1));
+            }
+            _ => {}
+        }
+
+        imp.info_label.set_label(&info_list.join(" • "));
     }
 
     fn update_desktop_audio_level_sensitivity(&self) {
@@ -374,7 +511,7 @@ impl Win {
     }
 }
 
-fn handle_level_message(message: &gst::Message, callback: impl Fn(f64)) -> glib::ControlFlow {
+fn handle_audio_bus_message(message: &gst::Message, callback: impl Fn(f64)) -> glib::ControlFlow {
     match message.view() {
         gst::MessageView::Element(e) => {
             if let Some(structure) = e.structure() {

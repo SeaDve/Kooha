@@ -70,12 +70,13 @@
                         <child>
                           <object class="GtkButton">
                             <property name="halign">start</property>
-                            <property name="label">Select Source</property>
+                            <property name="label" translatable="yes">Select Source</property>
                             <property name="action-name">win.select-video-source</property>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkToggleButton">
+                          <object class="GtkToggleButton" id="selection_toggle">
+                            <property name="tooltip-text" translatable="yes">Toggle Selection</property>
                             <property name="icon-name">crop-symbolic</property>
                             <style>
                               <class name="flat"/>
@@ -190,9 +191,8 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="info_label">
                 <property name="xalign">1</property>
-                <property name="label">WebM • 30 FPS • 1680×1050</property>
                 <style>
                   <class name="caption-heading"/>
                   <class name="dim-label"/>
@@ -203,6 +203,7 @@
               <object class="GtkImage">
                 <property name="icon-name">info-symbolic</property>
                 <style>
+                  <class name="numeric"/>
                   <class name="dim-label"/>
                 </style>
               </object>
