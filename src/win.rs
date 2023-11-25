@@ -262,16 +262,17 @@ impl Win {
             .await
             .context("No desktop audio source found")?;
 
-        let pulsesrc = gst::ElementFactory::make("pulsesrc").build()?;
+        let pulsesrc = gst::ElementFactory::make("pulsesrc")
+            .property("device", device_name)
+            .build()?;
         let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
         let level = gst::ElementFactory::make("level")
             .property("interval", gst::ClockTime::from_mseconds(80))
             .property("peak-ttl", gst::ClockTime::from_mseconds(80))
             .build()?;
-        let fakesink = gst::ElementFactory::make("fakesink").build()?;
-
-        pulsesrc.set_property("device", device_name);
-        fakesink.set_property("sync", false);
+        let fakesink = gst::ElementFactory::make("fakesink")
+            .property("sync", true)
+            .build()?;
 
         let pipeline = gst::Pipeline::new();
         pipeline.add_many([&pulsesrc, &audioconvert, &level, &fakesink])?;
@@ -306,15 +307,17 @@ impl Win {
             .await
             .context("No microphone source found")?;
 
-        let pulsesrc = gst::ElementFactory::make("pulsesrc").build()?;
+        let pulsesrc = gst::ElementFactory::make("pulsesrc")
+            .property("device", device_name)
+            .build()?;
         let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
         let level = gst::ElementFactory::make("level")
             .property("interval", gst::ClockTime::from_mseconds(80))
             .property("peak-ttl", gst::ClockTime::from_mseconds(80))
             .build()?;
-        let fakesink = gst::ElementFactory::make("fakesink").build()?;
-
-        pulsesrc.set_property("device", device_name);
+        let fakesink = gst::ElementFactory::make("fakesink")
+            .property("sync", true)
+            .build()?;
 
         let pipeline = gst::Pipeline::new();
         pipeline.add_many([&pulsesrc, &audioconvert, &level, &fakesink])?;
