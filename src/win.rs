@@ -370,6 +370,10 @@ impl Win {
 
         match message.view() {
             gst::MessageView::AsyncDone(_) => {
+                if imp.stream_size.get().is_some() {
+                    return glib::ControlFlow::Continue;
+                }
+
                 let videoconvert = imp
                     .session
                     .borrow()
