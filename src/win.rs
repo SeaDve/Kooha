@@ -443,26 +443,28 @@ impl Win {
     fn update_info_label(&self) {
         let imp = self.imp();
 
-        let mut info_list = vec!["WebM".to_string(), "30 FPS".to_string()];
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        let mut info_list = vec![
+            "WebM".to_string(),
+            format!("{} FPS", settings.video_framerate()),
+        ];
 
         match (imp.stream_size.get(), imp.view_port.selection()) {
-            (Some(stream_size), Some(selection)) => {
+            (Some((stream_width, stream_height)), Some(selection)) => {
                 let paintable_rect = imp.view_port.paintable_rect().unwrap();
-
-                let (stream_width, stream_height) = stream_size;
                 let scale_factor_h = stream_width as f32 / paintable_rect.width();
                 let scale_factor_v = stream_height as f32 / paintable_rect.height();
-
                 let selection_rect_scaled = selection.rect().scale(scale_factor_h, scale_factor_v);
                 info_list.push(format!(
-                    "{} {}×{}",
-                    gettext("approx."),
+                    "{}×{}",
                     selection_rect_scaled.width().round() as i32,
                     selection_rect_scaled.height().round() as i32,
                 ));
             }
-            (Some(stream_size), None) => {
-                info_list.push(format!("{}×{}", stream_size.0, stream_size.1));
+            (Some((stream_width, stream_height)), None) => {
+                info_list.push(format!("{}×{}", stream_width, stream_height));
             }
             _ => {}
         }
@@ -504,6 +506,10 @@ impl Win {
         settings.connect_record_mic_changed(clone!(@weak self as obj => move |_| {
             obj.update_microphone_level_sensitivity();
             obj.update_microphone_pipeline();
+        }));
+
+        settings.connect_video_framerate_changed(clone!(@weak self as obj => move |_| {
+            obj.update_info_label();
         }));
 
         self.update_desktop_audio_level_sensitivity();
