@@ -207,12 +207,12 @@ impl Win {
 
         let pipeline = gst::Pipeline::new();
         let videosrc_bin = pipeline::pipewiresrc_bin(fd, &streams, PREVIEW_FPS, None)?;
-        let audioconvert = gst::ElementFactory::make("videoconvert")
+        let videoconvert = gst::ElementFactory::make("videoconvert")
             .name("sink-videoconvert")
             .build()?;
         let sink = gst::ElementFactory::make("gtk4paintablesink").build()?;
-        pipeline.add_many([videosrc_bin.upcast_ref(), &audioconvert, &sink])?;
-        gst::Element::link_many([videosrc_bin.upcast_ref(), &audioconvert, &sink])?;
+        pipeline.add_many([videosrc_bin.upcast_ref(), &videoconvert, &sink])?;
+        gst::Element::link_many([videosrc_bin.upcast_ref(), &videoconvert, &sink])?;
 
         let bus_watch_guard = pipeline.bus().unwrap().add_watch_local(
             clone!(@weak self as obj => @default-panic, move |_, message| {
