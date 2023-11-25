@@ -42,7 +42,7 @@ mod imp {
         pub(super) session: RefCell<Option<(ScreencastSession, gst::Pipeline, BusWatchGuard)>>,
         pub(super) stream_size: Cell<Option<(i32, i32)>>,
 
-        pub(super) previous_selection: RefCell<Option<Selection>>,
+        pub(super) previous_selection: Cell<Option<Selection>>,
 
         pub(super) desktop_audio_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
         pub(super) microphone_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
@@ -86,7 +86,7 @@ mod imp {
             self.selection_toggle
                 .connect_active_notify(clone!(@weak obj => move |toggle| {
                     if toggle.is_active() {
-                        let prev_selection = *obj.imp().previous_selection.borrow();
+                        let prev_selection = obj.imp().previous_selection.get();
                         obj.imp().view_port.set_selection(prev_selection);
                     } else {
                         obj.imp().view_port.set_selection(None);
@@ -96,8 +96,9 @@ mod imp {
                 .connect_selection_notify(clone!(@weak obj => move |view_port| {
                     if let Some(selection) = view_port.selection() {
                         obj.imp().previous_selection.replace(Some(selection));
+                        obj.update_selection_toggle_sensitivity();
                     }
-                    obj.update_selection_ui();
+                    obj.update_selection_toggle();
                     obj.update_info_label();
                 }));
 
@@ -109,7 +110,8 @@ mod imp {
                 }
             }));
 
-            obj.update_selection_ui();
+            obj.update_selection_toggle_sensitivity();
+            obj.update_selection_toggle();
             obj.update_info_label();
             obj.update_desktop_audio_pipeline();
             obj.update_microphone_pipeline();
@@ -438,7 +440,14 @@ impl Win {
         }
     }
 
-    fn update_selection_ui(&self) {
+    fn update_selection_toggle_sensitivity(&self) {
+        let imp = self.imp();
+
+        imp.selection_toggle
+            .set_sensitive(imp.previous_selection.get().is_some());
+    }
+
+    fn update_selection_toggle(&self) {
         let imp = self.imp();
 
         imp.selection_toggle
