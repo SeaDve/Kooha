@@ -87,18 +87,33 @@ mod imp {
 
             self.selection_toggle
                 .connect_active_notify(clone!(@weak obj => move |toggle| {
+                    let imp = obj.imp();
                     if toggle.is_active() {
-                        let prev_selection = obj.imp().previous_selection.get();
-                        obj.imp().view_port.set_selection(prev_selection);
+                        let selection = obj.imp().previous_selection.get().unwrap_or_else(|| {
+                            let mid_x = imp.view_port.width() as f32 / 2.0;
+                            let mid_y = imp.view_port.height() as f32 / 2.0;
+                            let offset = 20.0 * imp.view_port.scale_factor() as f32;
+                            Selection::new(
+                                mid_x - offset,
+                                mid_y - offset,
+                                mid_x + offset,
+                                mid_y + offset,
+                            )
+                        });
+                        imp.view_port.set_selection(Some(selection));
                     } else {
-                        obj.imp().view_port.set_selection(None);
+                        imp.view_port.set_selection(None);
                     }
+                }));
+            self.view_port
+                .connect_paintable_notify(clone!(@weak obj => move |_| {
+                    obj.update_selection_toggle_sensitivity();
+                    obj.update_info_label();
                 }));
             self.view_port
                 .connect_selection_notify(clone!(@weak obj => move |view_port| {
                     if let Some(selection) = view_port.selection() {
                         obj.imp().previous_selection.replace(Some(selection));
-                        obj.update_selection_toggle_sensitivity();
                     }
                     obj.update_selection_toggle();
                     obj.update_info_label();
@@ -453,7 +468,7 @@ impl Win {
         let imp = self.imp();
 
         imp.selection_toggle
-            .set_sensitive(imp.previous_selection.get().is_some());
+            .set_sensitive(imp.view_port.paintable().is_some());
     }
 
     fn update_selection_toggle(&self) {

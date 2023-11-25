@@ -77,6 +77,15 @@ impl fmt::Debug for Selection {
 }
 
 impl Selection {
+    pub fn new(start_x: f32, start_y: f32, end_x: f32, end_y: f32) -> Self {
+        Self {
+            start_x,
+            start_y,
+            end_x,
+            end_y,
+        }
+    }
+
     pub fn left_x(&self) -> f32 {
         self.start_x.min(self.end_x)
     }
