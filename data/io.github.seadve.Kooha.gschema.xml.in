@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
   <schema path="/io/github/seadve/Kooha/" id="@app-id@" gettext-domain="@gettext-package@">
+    <key name="window-width" type="i">
+      <default>1000</default>
+      <summary>Window width</summary>
+      <description></description>
+    </key>
+    <key name="window-height" type="i">
+      <default>600</default>
+      <summary>Window height</summary>
+      <description></description>
+    </key>
+    <key name="window-maximized" type="b">
+      <default>false</default>
+      <summary>Whether the window is maximized</summary>
+      <description></description>
+    </key>
     <key type="s" name="capture-mode">
       <choices>
         <choice value="monitor-window"/>

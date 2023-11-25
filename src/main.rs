@@ -41,6 +41,7 @@ mod settings;
 mod timer;
 mod toggle_button;
 mod utils;
+mod win;
 mod window;
 
 use gettextrs::{gettext, LocaleCategory};

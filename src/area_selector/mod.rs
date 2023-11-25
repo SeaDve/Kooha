@@ -13,11 +13,13 @@ use gtk::{
 
 use std::{cell::RefCell, os::unix::prelude::RawFd};
 
-use self::view_port::{Selection, ViewPort};
+use self::view_port::Selection;
 use crate::{cancelled::Cancelled, pipeline, screencast_session::Stream};
 
 const PREVIEW_FRAMERATE: u32 = 60;
 const ASSUMED_HEADER_BAR_HEIGHT: f64 = 47.0;
+
+pub use self::view_port::ViewPort;
 
 #[derive(Debug)]
 pub struct Data {

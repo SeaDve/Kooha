@@ -172,7 +172,7 @@ mod imp {
 
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
             if for_size == 0 {
-                return (0, 0, 0, 0);
+                return (0, 0, -1, -1);
             }
 
             let Some(paintable) = self.obj().paintable() else {

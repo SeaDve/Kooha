@@ -11,7 +11,7 @@ use crate::{
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     preferences_window::PreferencesWindow,
     settings::Settings,
-    window::Window,
+    win::Win,
 };
 
 mod imp {
@@ -21,7 +21,7 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct Application {
-        pub(super) window: OnceCell<WeakRef<Window>>,
+        pub(super) window: OnceCell<WeakRef<Win>>,
         pub(super) settings: OnceCell<Settings>,
     }
 
@@ -46,7 +46,7 @@ mod imp {
                 return;
             }
 
-            let window = Window::new(&obj);
+            let window = Win::new(&obj);
             self.window.set(window.downgrade()).unwrap();
             window.present();
         }
@@ -95,7 +95,7 @@ impl Application {
         })
     }
 
-    pub fn window(&self) -> Window {
+    pub fn window(&self) -> Win {
         self.imp()
             .window
             .get()
@@ -144,7 +144,7 @@ impl Application {
             if !err.matches(gio::IOErrorEnum::Cancelled) {
                 tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
 
-                self.window().present_error(&err.into());
+                // self.window().present_error(&err.into());
             }
         }
     }
@@ -196,9 +196,7 @@ impl Application {
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
             if let Some(window) = obj.imp().window.get().and_then(|window| window.upgrade()) {
-                if let Err(err) = window.close() {
-                    tracing::warn!("Failed to close window: {:?}", err);
-                }
+                window.close();
             }
             obj.quit();
         }));

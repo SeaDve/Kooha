@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.show-preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Kooha</attribute>
+        <attribute name="action">app.show-about</attribute>
+      </item>
+    </section>
+  </menu>
+  <template class="KoohaWin" parent="AdwApplicationWindow">
+    <property name="width-request">360</property>
+    <property name="height-request">294</property>
+    <property name="content">
+      <object class="AdwToolbarView">
+        <property name="bottom-bar-style">raised</property>
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Record</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="menu-model">primary_menu</property>
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="primary">True</property>
+                <property name="tooltip-text" translatable="yes">Main Menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <property name="content">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="KoohaViewPort" id="view_port">
+                <style>
+                  <class name="view-port"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkSeparator"/>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <property name="spacing">12</property>
+                <child>
+                  <object class="GtkBox" id="left_box">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="halign">start</property>
+                            <property name="label">Select Source</property>
+                            <property name="action-name">win.select-video-source</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="icon-name">crop-symbolic</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="KoohaToggleButton">
+                            <property name="action-name">win.show-pointer</property>
+                            <property name="default-icon-name">mouse-wireless-disabled-symbolic</property>
+                            <property name="toggled-icon-name">mouse-wireless-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Show Pointer</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Hide Pointer</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSeparator"/>
+                </child>
+                <child>
+                  <object class="GtkBox" id="right_box">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="KoohaToggleButton">
+                            <property name="action-name">win.record-speaker</property>
+                            <property name="default-icon-name">audio-volume-muted-symbolic</property>
+                            <property name="toggled-icon-name">audio-volume-high-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Desktop Audio</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Desktop Audio</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLevelBar" id="desktop_audio_level">
+                            <property name="hexpand">True</property>
+                            <property name="valign">center</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="KoohaToggleButton">
+                            <property name="action-name">win.record-mic</property>
+                            <property name="default-icon-name">microphone-disabled-symbolic</property>
+                            <property name="toggled-icon-name">microphone2-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Microphone</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Microphone</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLevelBar" id="microphone_level">
+                            <property name="hexpand">True</property>
+                            <property name="valign">center</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
+        <child type="bottom">
+          <object class="GtkBox">
+            <property name="margin-start">12</property>
+            <property name="margin-end">12</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">circle-filled-symbolic</property>
+                <style>
+                  <class name="red"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="hexpand">True</property>
+                <property name="label">00:00:00</property>
+                <property name="halign">start</property>
+                <style>
+                  <class name="numeric"/>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="xalign">1</property>
+                <property name="label">WebM • 30 FPS • 1680×1050</property>
+                <style>
+                  <class name="caption-heading"/>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">info-symbolic</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="left_box"/>
+      <widget name="right_box"/>
+    </widgets>
+  </object>
+</interface>
