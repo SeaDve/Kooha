@@ -447,7 +447,9 @@ impl Win {
         let settings = app.settings();
 
         let mut info_list = vec![
-            "WebM".to_string(),
+            settings
+                .profile()
+                .map_or_else(|| gettext("No Profile"), |profile| profile.name()),
             format!("{} FPS", settings.video_framerate()),
         ];
 
@@ -502,13 +504,15 @@ impl Win {
             obj.update_desktop_audio_level_sensitivity();
             obj.update_desktop_audio_pipeline();
         }));
-
         settings.connect_record_mic_changed(clone!(@weak self as obj => move |_| {
             obj.update_microphone_level_sensitivity();
             obj.update_microphone_pipeline();
         }));
 
         settings.connect_video_framerate_changed(clone!(@weak self as obj => move |_| {
+            obj.update_info_label();
+        }));
+        settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
             obj.update_info_label();
         }));
 
