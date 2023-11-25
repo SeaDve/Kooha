@@ -169,9 +169,6 @@ impl Win {
         let app = utils::app_instance();
         let settings = app.settings();
 
-        imp.stream_size.set(None);
-        self.update_info_label();
-
         let session = ScreencastSession::new()
             .await
             .context("Failed to create ScreencastSession")?;
@@ -218,6 +215,14 @@ impl Win {
                 obj.handle_video_bus_message(message)
             }),
         )?;
+
+        imp.stream_size.set(None);
+        self.update_info_label();
+
+        if let Some((_, pipeline, _)) = imp.session.take() {
+            let _ = pipeline.set_state(gst::State::Null);
+        }
+
         imp.session
             .replace(Some((session, pipeline, bus_watch_guard)));
 
