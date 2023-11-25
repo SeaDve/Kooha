@@ -18,6 +18,8 @@ use crate::{
     utils,
 };
 
+const PREVIEW_FPS: u32 = 60;
+
 mod imp {
     use std::cell::{Cell, RefCell};
 
@@ -204,7 +206,7 @@ impl Win {
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
         let pipeline = gst::Pipeline::new();
-        let videosrc_bin = pipeline::pipewiresrc_bin(fd, &streams, 30, None)?;
+        let videosrc_bin = pipeline::pipewiresrc_bin(fd, &streams, PREVIEW_FPS, None)?;
         let audioconvert = gst::ElementFactory::make("videoconvert")
             .name("sink-videoconvert")
             .build()?;
