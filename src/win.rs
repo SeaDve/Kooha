@@ -379,15 +379,12 @@ fn handle_level_message(message: &gst::Message, callback: impl Fn(f64)) -> glib:
         gst::MessageView::Element(e) => {
             if let Some(structure) = e.structure() {
                 if structure.has_name("level") {
-                    let peak = structure
-                        .get::<&glib::ValueArray>("peak")
-                        .unwrap()
-                        .first()
-                        .unwrap()
-                        .get::<f64>()
-                        .unwrap();
-                    let normalized_peak = 10_f64.powf(peak / 20.0);
-                    callback(normalized_peak);
+                    let peaks = structure.get::<&glib::ValueArray>("rms").unwrap();
+                    let left_peak = peaks.nth(0).unwrap().get::<f64>().unwrap();
+                    let right_peak = peaks.nth(1).unwrap().get::<f64>().unwrap();
+                    let max_peak = left_peak.max(right_peak);
+                    let normalized_max_peak = 10_f64.powf(max_peak / 20.0);
+                    callback(normalized_max_peak);
                 }
             }
 
