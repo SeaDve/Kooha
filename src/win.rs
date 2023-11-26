@@ -136,9 +136,7 @@ mod imp {
         }
 
         fn dispose(&self) {
-            if let Some((_, pipeline, _)) = self.session.take() {
-                let _ = pipeline.set_state(gst::State::Null);
-            }
+            self.obj().dispose_session();
 
             if let Some((pipeline, _)) = self.desktop_audio_pipeline.take() {
                 let _ = pipeline.set_state(gst::State::Null);
@@ -181,6 +179,18 @@ impl Win {
         glib::Object::builder()
             .property("application", application)
             .build()
+    }
+
+    fn dispose_session(&self) {
+        if let Some((session, pipeline, _)) = self.imp().session.take() {
+            let _ = pipeline.set_state(gst::State::Null);
+
+            glib::spawn_future_local(async move {
+                if let Err(err) = session.close().await {
+                    tracing::error!("Failed to end ScreencastSession: {:?}", err);
+                }
+            });
+        }
     }
 
     async fn replace_session(&self, restore_token: Option<&str>) -> Result<()> {
@@ -239,9 +249,7 @@ impl Win {
         imp.stream_size.set(None);
         self.update_info_label();
 
-        if let Some((_, pipeline, _)) = imp.session.take() {
-            let _ = pipeline.set_state(gst::State::Null);
-        }
+        self.dispose_session();
 
         imp.session
             .replace(Some((session, pipeline, bus_watch_guard)));
