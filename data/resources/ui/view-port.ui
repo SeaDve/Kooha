@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="KoohaViewPort">
+    <child>
+      <object class="GtkEventControllerMotion">
+        <signal name="enter" handler="enter" swapped="yes"/>
+        <signal name="motion" handler="motion" swapped="yes"/>
+        <signal name="leave" handler="leave" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGestureDrag">
+        <signal name="drag-begin" handler="drag_begin" swapped="yes"/>
+        <signal name="drag-update" handler="drag_update" swapped="yes"/>
+        <signal name="drag-end" handler="drag_end" swapped="yes"/>
+      </object>
+    </child>
+  </template>
+</interface>

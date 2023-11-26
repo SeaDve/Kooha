@@ -127,7 +127,8 @@ impl Selection {
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default, glib::Properties)]
+    #[derive(Debug, Default, glib::Properties, gtk::CompositeTemplate)]
+    #[template(resource = "/io/github/seadve/Kooha/ui/view-port.ui")]
     #[properties(wrapper_type = super::ViewPort)]
     pub struct ViewPort {
         #[property(get, set = Self::set_paintable, explicit_notify, nullable)]
@@ -151,40 +152,19 @@ mod imp {
         const NAME: &'static str = "KoohaViewPort";
         type Type = super::ViewPort;
         type ParentType = gtk::Widget;
+
+        fn class_init(klass: &mut Self::Class) {
+            klass.bind_template();
+            klass.bind_template_instance_callbacks();
+        }
+
+        fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
+            obj.init_template();
+        }
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for ViewPort {
-        fn constructed(&self) {
-            self.parent_constructed();
-
-            let obj = self.obj();
-
-            let motion_controller = gtk::EventControllerMotion::new();
-            motion_controller.connect_enter(clone!(@weak obj => move |controller, x, y| {
-                obj.on_enter(controller, x, y);
-            }));
-            motion_controller.connect_motion(clone!(@weak obj => move |controller, x, y| {
-                obj.on_motion(controller, x, y);
-            }));
-            motion_controller.connect_leave(clone!(@weak obj => move |controller| {
-                obj.on_leave(controller);
-            }));
-            obj.add_controller(motion_controller);
-
-            let gesture_drag = gtk::GestureDrag::builder().exclusive(true).build();
-            gesture_drag.connect_drag_begin(clone!(@weak obj => move |controller, x, y| {
-                obj.on_drag_begin(controller, x, y);
-            }));
-            gesture_drag.connect_drag_update(clone!(@weak obj => move |controller, dx, dy| {
-                obj.on_drag_update(controller, dx, dy);
-            }));
-            gesture_drag.connect_drag_end(clone!(@weak obj => move |controller, dx, dy| {
-                obj.on_drag_end(controller, dx, dy);
-            }));
-            obj.add_controller(gesture_drag);
-        }
-    }
+    impl ObjectImpl for ViewPort {}
 
     impl WidgetImpl for ViewPort {
         fn request_mode(&self) -> gtk::SizeRequestMode {
@@ -201,7 +181,7 @@ mod imp {
             };
 
             if orientation == gtk::Orientation::Horizontal {
-                let (natural_width, _natural_height) = paintable.compute_concrete_size(
+                let (natural_width, _) = paintable.compute_concrete_size(
                     0.0,
                     if for_size < 0 { 0.0 } else { for_size as f64 },
                     DEFAULT_SIZE,
@@ -209,7 +189,7 @@ mod imp {
                 );
                 (0, natural_width.ceil() as i32, -1, -1)
             } else {
-                let (_natural_width, natural_height) = paintable.compute_concrete_size(
+                let (_, natural_height) = paintable.compute_concrete_size(
                     if for_size < 0 { 0.0 } else { for_size as f64 },
                     0.0,
                     DEFAULT_SIZE,
@@ -401,14 +381,108 @@ impl ViewPort {
         self.imp().paintable_rect.get()
     }
 
-    fn on_enter(&self, _controller: &gtk::EventControllerMotion, x: f64, y: f64) {
+    fn set_cursor(&self, cursor_type: CursorType) {
+        self.set_cursor_from_name(Some(cursor_type.name()));
+    }
+
+    fn compute_cursor_type(&self, x: f32, y: f32) -> CursorType {
+        let imp = self.imp();
+
+        let point = Point::new(x, y);
+
+        let Some(selection) = self.selection() else {
+            return CursorType::Crosshair;
+        };
+
+        let [top_left_handle, top_right_handle, bottom_right_handle, bottom_left_handle] =
+            imp.selection_handles.get().unwrap();
+
+        if top_left_handle.contains_point(&point) {
+            CursorType::NorthWestResize
+        } else if top_right_handle.contains_point(&point) {
+            CursorType::NorthEastResize
+        } else if bottom_right_handle.contains_point(&point) {
+            CursorType::SouthEastResize
+        } else if bottom_left_handle.contains_point(&point) {
+            CursorType::SouthWestResize
+        } else if selection.rect().contains_point(&point) {
+            CursorType::Move
+        } else if top_left_handle
+            .union(&top_right_handle)
+            .contains_point(&point)
+        {
+            CursorType::NorthResize
+        } else if top_right_handle
+            .union(&bottom_right_handle)
+            .contains_point(&point)
+        {
+            CursorType::EastResize
+        } else if bottom_right_handle
+            .union(&bottom_left_handle)
+            .contains_point(&point)
+        {
+            CursorType::SouthResize
+        } else if bottom_left_handle
+            .union(&top_left_handle)
+            .contains_point(&point)
+        {
+            CursorType::WestResize
+        } else {
+            CursorType::Crosshair
+        }
+    }
+
+    fn update_selection_handles(&self) {
+        let imp = self.imp();
+
+        let Some(selection) = self.selection() else {
+            imp.selection_handles.set(None);
+            return;
+        };
+
+        let selection_handle_diameter = SELECTION_HANDLE_RADIUS * 2.0;
+        let top_left = Rect::new(
+            selection.left_x() - SELECTION_HANDLE_RADIUS,
+            selection.top_y() - SELECTION_HANDLE_RADIUS,
+            selection_handle_diameter,
+            selection_handle_diameter,
+        );
+        let top_right = Rect::new(
+            selection.right_x() - SELECTION_HANDLE_RADIUS,
+            selection.top_y() - SELECTION_HANDLE_RADIUS,
+            selection_handle_diameter,
+            selection_handle_diameter,
+        );
+        let bottom_right = Rect::new(
+            selection.right_x() - SELECTION_HANDLE_RADIUS,
+            selection.bottom_y() - SELECTION_HANDLE_RADIUS,
+            selection_handle_diameter,
+            selection_handle_diameter,
+        );
+        let bottom_left = Rect::new(
+            selection.left_x() - SELECTION_HANDLE_RADIUS,
+            selection.bottom_y() - SELECTION_HANDLE_RADIUS,
+            selection_handle_diameter,
+            selection_handle_diameter,
+        );
+
+        imp.selection_handles
+            .set(Some([top_left, top_right, bottom_right, bottom_left]));
+    }
+}
+
+#[gtk::template_callbacks]
+impl ViewPort {
+    #[template_callback]
+    fn enter(&self, x: f64, y: f64) {
         let imp = self.imp();
 
         imp.pointer_position
             .set(Some(Point::new(x as f32, y as f32)));
     }
 
-    fn on_motion(&self, _controller: &gtk::EventControllerMotion, x: f64, y: f64) {
+    #[template_callback]
+    fn motion(&self, x: f64, y: f64) {
         let imp = self.imp();
 
         imp.pointer_position
@@ -420,7 +494,8 @@ impl ViewPort {
         }
     }
 
-    fn on_leave(&self, _controller: &gtk::EventControllerMotion) {
+    #[template_callback]
+    fn leave(&self) {
         let imp = self.imp();
 
         imp.pointer_position.set(None);
@@ -428,7 +503,8 @@ impl ViewPort {
         self.set_cursor(CursorType::Default);
     }
 
-    fn on_drag_begin(&self, _gesture: &gtk::GestureDrag, x: f64, y: f64) {
+    #[template_callback]
+    fn drag_begin(&self, x: f64, y: f64) {
         tracing::trace!("Drag begin at ({}, {})", x, y);
 
         let imp = self.imp();
@@ -499,7 +575,8 @@ impl ViewPort {
         }
     }
 
-    fn on_drag_update(&self, _gesture: &gtk::GestureDrag, _: f64, _: f64) {
+    #[template_callback]
+    fn drag_update(&self, _dx: f64, _dy: f64) {
         let imp = self.imp();
 
         let pointer_position = imp.pointer_position.get().unwrap();
@@ -658,7 +735,8 @@ impl ViewPort {
         }
     }
 
-    fn on_drag_end(&self, _gesture: &gtk::GestureDrag, dx: f64, dy: f64) {
+    #[template_callback]
+    fn drag_end(&self, dx: f64, dy: f64) {
         tracing::trace!("Drag end offset ({}, {})", dx, dy);
 
         let imp = self.imp();
@@ -704,95 +782,6 @@ impl ViewPort {
             let cursor_type = self.compute_cursor_type(pointer_position.x(), pointer_position.y());
             self.set_cursor(cursor_type);
         }
-    }
-
-    fn set_cursor(&self, cursor_type: CursorType) {
-        self.set_cursor_from_name(Some(cursor_type.name()));
-    }
-
-    fn compute_cursor_type(&self, x: f32, y: f32) -> CursorType {
-        let imp = self.imp();
-
-        let point = Point::new(x, y);
-
-        let Some(selection) = self.selection() else {
-            return CursorType::Crosshair;
-        };
-
-        let [top_left_handle, top_right_handle, bottom_right_handle, bottom_left_handle] =
-            imp.selection_handles.get().unwrap();
-
-        if top_left_handle.contains_point(&point) {
-            CursorType::NorthWestResize
-        } else if top_right_handle.contains_point(&point) {
-            CursorType::NorthEastResize
-        } else if bottom_right_handle.contains_point(&point) {
-            CursorType::SouthEastResize
-        } else if bottom_left_handle.contains_point(&point) {
-            CursorType::SouthWestResize
-        } else if selection.rect().contains_point(&point) {
-            CursorType::Move
-        } else if top_left_handle
-            .union(&top_right_handle)
-            .contains_point(&point)
-        {
-            CursorType::NorthResize
-        } else if top_right_handle
-            .union(&bottom_right_handle)
-            .contains_point(&point)
-        {
-            CursorType::EastResize
-        } else if bottom_right_handle
-            .union(&bottom_left_handle)
-            .contains_point(&point)
-        {
-            CursorType::SouthResize
-        } else if bottom_left_handle
-            .union(&top_left_handle)
-            .contains_point(&point)
-        {
-            CursorType::WestResize
-        } else {
-            CursorType::Crosshair
-        }
-    }
-
-    fn update_selection_handles(&self) {
-        let imp = self.imp();
-
-        let Some(selection) = self.selection() else {
-            imp.selection_handles.set(None);
-            return;
-        };
-
-        let selection_handle_diameter = SELECTION_HANDLE_RADIUS * 2.0;
-        let top_left = Rect::new(
-            selection.left_x() - SELECTION_HANDLE_RADIUS,
-            selection.top_y() - SELECTION_HANDLE_RADIUS,
-            selection_handle_diameter,
-            selection_handle_diameter,
-        );
-        let top_right = Rect::new(
-            selection.right_x() - SELECTION_HANDLE_RADIUS,
-            selection.top_y() - SELECTION_HANDLE_RADIUS,
-            selection_handle_diameter,
-            selection_handle_diameter,
-        );
-        let bottom_right = Rect::new(
-            selection.right_x() - SELECTION_HANDLE_RADIUS,
-            selection.bottom_y() - SELECTION_HANDLE_RADIUS,
-            selection_handle_diameter,
-            selection_handle_diameter,
-        );
-        let bottom_left = Rect::new(
-            selection.left_x() - SELECTION_HANDLE_RADIUS,
-            selection.bottom_y() - SELECTION_HANDLE_RADIUS,
-            selection_handle_diameter,
-            selection_handle_diameter,
-        );
-
-        imp.selection_handles
-            .set(Some([top_left, top_right, bottom_right, bottom_left]));
     }
 }
 
