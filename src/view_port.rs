@@ -390,6 +390,10 @@ impl ViewPort {
 
         let point = Point::new(x, y);
 
+        if self.paintable().is_none() {
+            return CursorType::Default;
+        };
+
         let Some(selection) = self.selection() else {
             return CursorType::Crosshair;
         };
@@ -507,6 +511,10 @@ impl ViewPort {
     fn drag_begin(&self, x: f64, y: f64) {
         tracing::trace!("Drag begin at ({}, {})", x, y);
 
+        let Some(paintable_rect) = self.paintable_rect() else {
+            return;
+        };
+
         let imp = self.imp();
         let cursor_type = self.compute_cursor_type(x as f32, y as f32);
 
@@ -514,7 +522,6 @@ impl ViewPort {
             imp.drag_cursor.set(CursorType::Crosshair);
             self.set_cursor(CursorType::Crosshair);
 
-            let paintable_rect = self.paintable_rect().unwrap();
             let x = (x as f32).clamp(
                 paintable_rect.x(),
                 paintable_rect.x() + paintable_rect.width(),
@@ -577,6 +584,10 @@ impl ViewPort {
 
     #[template_callback]
     fn drag_update(&self, _dx: f64, _dy: f64) {
+        let Some(paintable_rect) = self.paintable_rect() else {
+            return;
+        };
+
         let imp = self.imp();
 
         let pointer_position = imp.pointer_position.get().unwrap();
@@ -587,7 +598,6 @@ impl ViewPort {
             let Selection {
                 start_x, start_y, ..
             } = self.selection().unwrap();
-            let paintable_rect = self.paintable_rect().unwrap();
             self.set_selection(Some(Selection {
                 start_x,
                 start_y,
@@ -620,7 +630,6 @@ impl ViewPort {
                 let mut overshoot_x = 0.0;
                 let mut overshoot_y = 0.0;
 
-                let paintable_rect = self.paintable_rect().unwrap();
                 let selection_rect = self.selection().unwrap().rect();
 
                 // Keep the size intact if we bumped to the paintable rect.
@@ -663,7 +672,6 @@ impl ViewPort {
                     dx = 0.0;
                 }
 
-                let paintable_rect = self.paintable_rect().unwrap();
                 let mut new_selection = self.selection().unwrap();
 
                 new_selection.end_x += dx;
@@ -739,6 +747,10 @@ impl ViewPort {
     fn drag_end(&self, dx: f64, dy: f64) {
         tracing::trace!("Drag end offset ({}, {})", dx, dy);
 
+        let Some(paintable_rect) = self.paintable_rect() else {
+            return;
+        };
+
         let imp = self.imp();
         imp.drag_start.set(None);
 
@@ -755,7 +767,6 @@ impl ViewPort {
                 selection.end_x += offset;
                 selection.end_y += offset;
 
-                let paintable_rect = self.paintable_rect().unwrap();
                 let selection_rect = selection.rect();
 
                 // Keep the coordinates inside the paintable rect.
