@@ -220,7 +220,9 @@ mod imp {
         }
 
         fn size_allocate(&self, widget_width: i32, widget_height: i32, _baseline: i32) {
-            let Some(paintable) = self.obj().paintable() else {
+            let obj = self.obj();
+
+            let Some(paintable) = obj.paintable() else {
                 self.paintable_rect.set(None);
                 return;
             };
@@ -247,12 +249,33 @@ mod imp {
             let x = (widget_width - width) / 2.0;
             let y = (widget_height - height).floor() / 2.0;
 
+            let prev_paintable_rect = self.paintable_rect.get();
             self.paintable_rect.set(Some(Rect::new(
                 x as f32,
                 y as f32,
                 width as f32,
                 height as f32,
             )));
+
+            // Update selection if paintable rect changed
+            if let Some(prev_paintable_rect) = prev_paintable_rect {
+                if let Some(selection) = obj.selection() {
+                    let selection_rect = selection.rect();
+
+                    let scale_x = width as f32 / prev_paintable_rect.width();
+                    let scale_y = height as f32 / prev_paintable_rect.height();
+
+                    let rel_x = selection_rect.x() - prev_paintable_rect.x();
+                    let rel_y = selection_rect.y() - prev_paintable_rect.y();
+
+                    obj.set_selection(Some(Selection::from_rect(
+                        x as f32 + rel_x * scale_x,
+                        y as f32 + rel_y * scale_y,
+                        selection_rect.width() * scale_x,
+                        selection_rect.height() * scale_y,
+                    )));
+                }
+            }
         }
 
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
