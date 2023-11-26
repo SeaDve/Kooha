@@ -219,42 +219,57 @@ mod imp {
             }
         }
 
+        fn size_allocate(&self, widget_width: i32, widget_height: i32, _baseline: i32) {
+            let Some(paintable) = self.obj().paintable() else {
+                self.paintable_rect.set(None);
+                return;
+            };
+
+            let widget_width = widget_width as f64;
+            let widget_height = widget_height as f64;
+            let widget_ratio = widget_width / widget_height;
+
+            let paintable_width = paintable.intrinsic_width() as f64;
+            let paintable_height = paintable.intrinsic_height() as f64;
+            let paintable_ratio = paintable.intrinsic_aspect_ratio();
+
+            let (width, height) =
+                if widget_width >= paintable_width && widget_height >= paintable_height {
+                    (paintable_width, paintable_height)
+                } else if paintable_ratio > widget_ratio {
+                    (widget_width, widget_width / paintable_ratio)
+                } else {
+                    (widget_height * paintable_ratio, widget_height)
+                };
+            let width = width.ceil();
+            let height = height.ceil();
+
+            let x = (widget_width - width) / 2.0;
+            let y = (widget_height - height).floor() / 2.0;
+
+            self.paintable_rect.set(Some(Rect::new(
+                x as f32,
+                y as f32,
+                width as f32,
+                height as f32,
+            )));
+        }
+
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
             let obj = self.obj();
 
-            if let Some(paintable) = obj.paintable() {
-                let widget_width = obj.width() as f64;
-                let widget_height = obj.height() as f64;
-                let widget_ratio = widget_width / widget_height;
-
-                let paintable_width = paintable.intrinsic_width() as f64;
-                let paintable_height = paintable.intrinsic_height() as f64;
-                let paintable_ratio = paintable.intrinsic_aspect_ratio();
-
-                let (width, height) =
-                    if widget_width >= paintable_width && widget_height >= paintable_height {
-                        (paintable_width, paintable_height)
-                    } else if paintable_ratio > widget_ratio {
-                        (widget_width, widget_width / paintable_ratio)
-                    } else {
-                        (widget_height * paintable_ratio, widget_height)
-                    };
-                let width = width.ceil();
-                let height = height.ceil();
-
-                let x = (widget_width - width) / 2.0;
-                let y = (widget_height - height).floor() / 2.0;
-
-                self.paintable_rect.set(Some(Rect::new(
-                    x as f32,
-                    y as f32,
-                    width as f32,
-                    height as f32,
-                )));
-
+            if let Some(paintable_rect) = obj.paintable_rect() {
                 snapshot.save();
-                snapshot.translate(&Point::new(x as f32, y as f32));
-                paintable.snapshot(snapshot, width, height);
+
+                snapshot.translate(&Point::new(paintable_rect.x(), paintable_rect.y()));
+
+                let paintable = obj.paintable().unwrap();
+                paintable.snapshot(
+                    snapshot,
+                    paintable_rect.width() as f64,
+                    paintable_rect.height() as f64,
+                );
+
                 snapshot.restore();
             }
 
@@ -335,6 +350,8 @@ mod imp {
                     })),
                 );
             }
+
+            self.paintable_rect.set(None);
 
             obj.queue_resize();
             obj.notify_paintable();
