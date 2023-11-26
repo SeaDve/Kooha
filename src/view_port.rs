@@ -249,6 +249,7 @@ mod imp {
             if let Some(selection) = obj.selection() {
                 let selection_rect = selection.rect();
 
+                // Shades the area outside the selection.
                 if let Some(paintable_rect) = obj.paintable_rect() {
                     snapshot.append_color(
                         &SHADE_COLOR,
@@ -284,8 +285,7 @@ mod imp {
                             selection.bottom_y(),
                             selection_rect.width(),
                             paintable_rect.height() + paintable_rect.y() - selection.bottom_y(),
-                        )
-                        .normalize_r(),
+                        ),
                     );
                 }
 
