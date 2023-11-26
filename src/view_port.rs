@@ -5,7 +5,7 @@ use gtk::{
     gdk,
     glib::{self, clone},
     graphene::{Point, Rect},
-    gsk::RoundedRect,
+    gsk::{self, RoundedRect},
     prelude::*,
     subclass::prelude::*,
 };
@@ -251,42 +251,13 @@ mod imp {
 
                 // Shades the area outside the selection.
                 if let Some(paintable_rect) = obj.paintable_rect() {
-                    snapshot.append_color(
-                        &SHADE_COLOR,
-                        &Rect::new(
-                            paintable_rect.x(),
-                            paintable_rect.y(),
-                            selection.left_x() - paintable_rect.x(),
-                            paintable_rect.height(),
-                        ),
-                    );
-                    snapshot.append_color(
-                        &SHADE_COLOR,
-                        &Rect::new(
-                            selection.right_x(),
-                            paintable_rect.y(),
-                            paintable_rect.width() + paintable_rect.x() - selection.right_x(),
-                            paintable_rect.height(),
-                        ),
-                    );
-                    snapshot.append_color(
-                        &SHADE_COLOR,
-                        &Rect::new(
-                            selection.left_x(),
-                            paintable_rect.y(),
-                            selection_rect.width(),
-                            selection.top_y() - paintable_rect.y(),
-                        ),
-                    );
-                    snapshot.append_color(
-                        &SHADE_COLOR,
-                        &Rect::new(
-                            selection.left_x(),
-                            selection.bottom_y(),
-                            selection_rect.width(),
-                            paintable_rect.height() + paintable_rect.y() - selection.bottom_y(),
-                        ),
-                    );
+                    snapshot.push_mask(gsk::MaskMode::InvertedAlpha);
+
+                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect);
+                    snapshot.pop();
+
+                    snapshot.append_color(&SHADE_COLOR, &paintable_rect);
+                    snapshot.pop();
                 }
 
                 snapshot.append_border(
