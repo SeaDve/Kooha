@@ -1,3 +1,5 @@
+use std::os::fd::RawFd;
+
 use adw::{prelude::*, subclass::prelude::*};
 use anyhow::{Context, Result};
 use gettextrs::gettext;
@@ -12,8 +14,7 @@ use crate::{
     area_selector::{Selection, ViewPort},
     audio_device::{self, Class as AudioDeviceClass},
     config::PROFILE,
-    pipeline,
-    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
+    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
     toggle_button::ToggleButton,
     utils,
 };
@@ -221,7 +222,7 @@ impl Win {
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
         let pipeline = gst::Pipeline::new();
-        let videosrc_bin = pipeline::pipewiresrc_bin(fd, &streams, PREVIEW_FPS, None)?;
+        let videosrc_bin = pipewiresrc_bin(fd, &streams, PREVIEW_FPS)?;
         let videoconvert = gst::ElementFactory::make("videoconvert")
             .name("sink-videoconvert")
             .build()?;
@@ -586,4 +587,75 @@ fn handle_audio_bus_message(message: &gst::Message, callback: impl Fn(f64)) -> g
             glib::ControlFlow::Continue
         }
     }
+}
+
+fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
+    let src = gst::ElementFactory::make("pipewiresrc")
+        .property("fd", fd)
+        .property("path", path)
+        .property("do-timestamp", true)
+        .property("keepalive-time", 1000)
+        .property("resend-last", true)
+        .build()?;
+    Ok(src)
+}
+
+fn videoconvert_with_default() -> Result<gst::Element> {
+    let conv = gst::ElementFactory::make("videoconvert")
+        .property("chroma-mode", gst_video::VideoChromaMode::None)
+        .property("dither", gst_video::VideoDitherMethod::None)
+        .property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly)
+        .property("n-threads", utils::ideal_thread_count())
+        .build()?;
+    Ok(conv)
+}
+
+/// Creates a bin with a src pad for multiple pipewire streams.
+///
+/// pipewiresrc1 -> videorate -> |
+///                              |
+/// pipewiresrc2 -> videorate -> | -> compositor -> videoconvert
+///                              |
+/// pipewiresrcn -> videorate -> |
+fn pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -> Result<gst::Bin> {
+    let bin = gst::Bin::new();
+
+    let compositor = gst::ElementFactory::make("compositor").build()?;
+    let videoconvert = videoconvert_with_default()?;
+
+    bin.add_many([&compositor, &videoconvert])?;
+    compositor.link(&videoconvert)?;
+
+    let videorate_caps = gst::Caps::builder("video/x-raw")
+        .field("framerate", gst::Fraction::new(framerate as i32, 1))
+        .build();
+
+    let mut last_pos = 0;
+    for stream in streams {
+        let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
+        let videorate = gst::ElementFactory::make("videorate").build()?;
+        let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
+            .property("caps", &videorate_caps)
+            .build()?;
+
+        bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+        gst::Element::link_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+
+        let compositor_sink_pad = compositor
+            .request_pad_simple("sink_%u")
+            .context("Failed to request sink_%u pad from compositor")?;
+        compositor_sink_pad.set_property("xpos", last_pos);
+        videorate_capsfilter
+            .static_pad("src")
+            .unwrap()
+            .link(&compositor_sink_pad)?;
+
+        let (stream_width, _) = stream.size().context("stream is missing size")?;
+        last_pos += stream_width;
+    }
+
+    let videoconvert_src_pad = videoconvert.static_pad("src").unwrap();
+    bin.add_pad(&gst::GhostPad::with_target(&videoconvert_src_pad)?)?;
+
+    Ok(bin)
 }

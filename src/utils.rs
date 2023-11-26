@@ -8,6 +8,7 @@ use std::{env, path::Path};
 
 use crate::Application;
 
+const MIN_THREAD_COUNT: u32 = 1;
 const MAX_THREAD_COUNT: u32 = 64;
 
 /// Get the global instance of `Application`.
@@ -31,7 +32,7 @@ pub fn is_flatpak() -> bool {
 
 /// Ideal thread count to use for `GStreamer` processing.
 pub fn ideal_thread_count() -> u32 {
-    glib::num_processors().min(MAX_THREAD_COUNT)
+    glib::num_processors().clamp(MIN_THREAD_COUNT, MAX_THREAD_COUNT)
 }
 
 pub fn is_experimental_mode() -> bool {
