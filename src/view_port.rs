@@ -233,7 +233,7 @@ mod imp {
                 let x = (widget_width - width.ceil()) / 2.0;
                 let y = (widget_height - height.ceil()).floor() / 2.0;
 
-                obj.imp().paintable_rect.set(Some(Rect::new(
+                self.paintable_rect.set(Some(Rect::new(
                     x as f32,
                     y as f32,
                     width as f32,
