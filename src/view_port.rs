@@ -345,8 +345,6 @@ mod imp {
                 return;
             }
 
-            let _freeze_guard = obj.freeze_notify();
-
             let mut handler_ids = self.handler_ids.borrow_mut();
 
             if let Some(previous_paintable) = self.paintable.replace(paintable.clone()) {
