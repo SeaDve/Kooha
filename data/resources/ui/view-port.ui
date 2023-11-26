@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="KoohaViewPort">
+    <style>
+      <class name="view"/>
+    </style>
     <child>
       <object class="GtkEventControllerMotion">
         <signal name="enter" handler="enter" swapped="yes"/>
