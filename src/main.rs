@@ -41,6 +41,7 @@ mod settings;
 mod timer;
 mod toggle_button;
 mod utils;
+mod view_port;
 mod win;
 mod window;
 

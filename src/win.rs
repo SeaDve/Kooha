@@ -11,12 +11,12 @@ use gtk::{
 
 use crate::{
     application::Application,
-    area_selector::{Selection, ViewPort},
     audio_device::{self, Class as AudioDeviceClass},
     config::PROFILE,
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
     toggle_button::ToggleButton,
     utils,
+    view_port::{Selection, ViewPort},
 };
 
 const PREVIEW_FPS: u32 = 60;
