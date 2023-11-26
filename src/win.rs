@@ -45,7 +45,7 @@ mod imp {
         pub(super) session: RefCell<Option<(ScreencastSession, gst::Pipeline, BusWatchGuard)>>,
         pub(super) stream_size: Cell<Option<(i32, i32)>>,
 
-        pub(super) previous_selection: Cell<Option<Selection>>,
+        pub(super) prev_selection: Cell<Option<Selection>>,
 
         pub(super) desktop_audio_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
         pub(super) microphone_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
@@ -90,7 +90,7 @@ mod imp {
                 .connect_active_notify(clone!(@weak obj => move |toggle| {
                     let imp = obj.imp();
                     if toggle.is_active() {
-                        let selection = obj.imp().previous_selection.get().unwrap_or_else(|| {
+                        let selection = obj.imp().prev_selection.get().unwrap_or_else(|| {
                             let mid_x = imp.view_port.width() as f32 / 2.0;
                             let mid_y = imp.view_port.height() as f32 / 2.0;
                             let offset = 20.0 * imp.view_port.scale_factor() as f32;
@@ -114,7 +114,7 @@ mod imp {
             self.view_port
                 .connect_selection_notify(clone!(@weak obj => move |view_port| {
                     if let Some(selection) = view_port.selection() {
-                        obj.imp().previous_selection.replace(Some(selection));
+                        obj.imp().prev_selection.replace(Some(selection));
                     }
                     obj.update_selection_toggle();
                     obj.update_info_label();
