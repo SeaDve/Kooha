@@ -89,6 +89,15 @@ impl Selection {
         }
     }
 
+    pub fn from_rect(x: f32, y: f32, width: f32, height: f32) -> Self {
+        Self {
+            start_x: x,
+            start_y: y,
+            end_x: x + width,
+            end_y: y + height,
+        }
+    }
+
     pub fn left_x(&self) -> f32 {
         self.start_x.min(self.end_x)
     }
@@ -253,7 +262,8 @@ mod imp {
                 if let Some(paintable_rect) = obj.paintable_rect() {
                     snapshot.push_mask(gsk::MaskMode::InvertedAlpha);
 
-                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect);
+                    // Outset so selection rect is never zero sized, avoiding flickering.
+                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect.inset_r(-0.1, -0.1));
                     snapshot.pop();
 
                     snapshot.append_color(&SHADE_COLOR, &paintable_rect);
