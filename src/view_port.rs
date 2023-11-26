@@ -239,8 +239,11 @@ mod imp {
                     } else {
                         (widget_height * paintable_ratio, widget_height)
                     };
-                let x = (widget_width - width.ceil()) / 2.0;
-                let y = (widget_height - height.ceil()).floor() / 2.0;
+                let width = width.ceil();
+                let height = height.ceil();
+
+                let x = (widget_width - width) / 2.0;
+                let y = (widget_height - height).floor() / 2.0;
 
                 self.paintable_rect.set(Some(Rect::new(
                     x as f32,
