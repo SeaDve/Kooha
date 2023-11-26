@@ -15,6 +15,10 @@ use std::{
     fmt,
 };
 
+// TODO
+// * Handle selection outside paintable rect, when setting selection.
+// * Add animation when entering/leaving selection mode.
+
 const DEFAULT_SIZE: f64 = 100.0;
 
 const SHADE_COLOR: gdk::RGBA = gdk::RGBA::new(0.0, 0.0, 0.0, 0.5);
