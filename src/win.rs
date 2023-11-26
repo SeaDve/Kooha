@@ -103,7 +103,7 @@ mod imp {
                         });
                         imp.view_port.set_selection(Some(selection));
                     } else {
-                        imp.view_port.set_selection(None);
+                        imp.view_port.set_selection(None::<Selection>);
                     }
                 }));
             self.view_port

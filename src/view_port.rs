@@ -58,7 +58,7 @@ impl CursorType {
     }
 }
 
-#[derive(Default, Clone, Copy, glib::Boxed)]
+#[derive(Default, Clone, Copy, PartialEq, glib::Boxed)]
 #[boxed_type(name = "KoohaSelection", nullable)]
 pub struct Selection {
     start_x: f32,
@@ -132,7 +132,7 @@ mod imp {
     pub struct ViewPort {
         #[property(get, set = Self::set_paintable, explicit_notify, nullable)]
         pub(super) paintable: RefCell<Option<gdk::Paintable>>,
-        #[property(get)]
+        #[property(get, set = Self::set_selection, explicit_notify, nullable)]
         pub(super) selection: Cell<Option<Selection>>,
 
         pub(super) paintable_rect: Cell<Option<Rect>>,
@@ -373,6 +373,19 @@ mod imp {
             obj.queue_resize();
             obj.notify_paintable();
         }
+
+        fn set_selection(&self, selection: Option<Selection>) {
+            let obj = self.obj();
+
+            if selection == obj.selection() {
+                return;
+            }
+
+            self.selection.set(selection);
+            obj.update_selection_handles();
+            obj.queue_draw();
+            obj.notify_selection();
+        }
     }
 }
 
@@ -388,13 +401,6 @@ impl ViewPort {
 
     pub fn paintable_rect(&self) -> Option<Rect> {
         self.imp().paintable_rect.get()
-    }
-
-    pub fn set_selection(&self, selection: Option<Selection>) {
-        self.imp().selection.set(selection);
-        self.update_selection_handles();
-        self.queue_draw();
-        self.notify_selection();
     }
 
     fn on_enter(&self, _controller: &gtk::EventControllerMotion, x: f64, y: f64) {
