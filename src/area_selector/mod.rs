@@ -150,7 +150,7 @@ impl AreaSelector {
         fd: RawFd,
         streams: &[Stream],
     ) -> Result<Data> {
-        let this: Self = glib::Object::builder().build();
+        let this: Self = glib::Object::new();
         let imp = this.imp();
 
         // Setup window size and transient for
