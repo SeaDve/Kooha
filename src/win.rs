@@ -36,9 +36,13 @@ mod imp {
         #[template_child]
         pub(super) selection_toggle: TemplateChild<gtk::ToggleButton>,
         #[template_child]
-        pub(super) desktop_audio_level: TemplateChild<gtk::LevelBar>,
+        pub(super) desktop_audio_level_left: TemplateChild<gtk::LevelBar>,
         #[template_child]
-        pub(super) microphone_level: TemplateChild<gtk::LevelBar>,
+        pub(super) desktop_audio_level_right: TemplateChild<gtk::LevelBar>,
+        #[template_child]
+        pub(super) microphone_level_left: TemplateChild<gtk::LevelBar>,
+        #[template_child]
+        pub(super) microphone_level_right: TemplateChild<gtk::LevelBar>,
         #[template_child]
         pub(super) info_label: TemplateChild<gtk::Label>,
 
@@ -305,8 +309,10 @@ impl Win {
         let bus = pipeline.bus().unwrap();
         let bus_watch_guard = bus.add_watch_local(
             clone!(@weak self as obj => @default-panic, move |_, message| {
-                handle_audio_bus_message(message, |peak| {
-                    obj.imp().desktop_audio_level.set_value(peak);
+                handle_audio_bus_message(message, |left_peak, right_peak| {
+                    let imp = obj.imp();
+                    imp.desktop_audio_level_left.set_value(left_peak);
+                    imp.desktop_audio_level_right.set_value(right_peak);
                 })
             }),
         )?;
@@ -350,8 +356,10 @@ impl Win {
         let bus = pipeline.bus().unwrap();
         let bus_watch_guard = bus.add_watch_local(
             clone!(@weak self as obj => @default-panic, move |_, message| {
-                handle_audio_bus_message(message, |peak| {
-                    obj.imp().microphone_level.set_value(peak);
+                handle_audio_bus_message(message, |left_peak, right_peak| {
+                    let imp = obj.imp();
+                    imp.microphone_level_left.set_value(left_peak);
+                    imp.microphone_level_right.set_value(right_peak);
                 })
             }),
         )?;
@@ -451,7 +459,8 @@ impl Win {
             }));
         } else if let Some((pipeline, _)) = imp.desktop_audio_pipeline.take() {
             let _ = pipeline.set_state(gst::State::Null);
-            imp.desktop_audio_level.set_value(0.0);
+            imp.desktop_audio_level_left.set_value(0.0);
+            imp.desktop_audio_level_right.set_value(0.0);
         }
     }
 
@@ -469,7 +478,8 @@ impl Win {
             }));
         } else if let Some((pipeline, _)) = imp.microphone_pipeline.take() {
             let _ = pipeline.set_state(gst::State::Null);
-            imp.microphone_level.set_value(0.0);
+            imp.microphone_level_left.set_value(0.0);
+            imp.microphone_level_right.set_value(0.0);
         }
     }
 
@@ -522,21 +532,29 @@ impl Win {
     }
 
     fn update_desktop_audio_level_sensitivity(&self) {
+        let imp = self.imp();
+
         let app = utils::app_instance();
         let settings = app.settings();
 
-        self.imp()
-            .desktop_audio_level
-            .set_sensitive(settings.record_speaker());
+        let is_record_desktop_audio = settings.record_speaker();
+        imp.desktop_audio_level_left
+            .set_sensitive(is_record_desktop_audio);
+        imp.desktop_audio_level_right
+            .set_sensitive(is_record_desktop_audio);
     }
 
     fn update_microphone_level_sensitivity(&self) {
+        let imp = self.imp();
+
         let app = utils::app_instance();
         let settings = app.settings();
 
-        self.imp()
-            .microphone_level
-            .set_sensitive(settings.record_mic());
+        let is_record_microphone = settings.record_mic();
+        imp.microphone_level_left
+            .set_sensitive(is_record_microphone);
+        imp.microphone_level_right
+            .set_sensitive(is_record_microphone);
     }
 
     fn setup_settings(&self) {
@@ -568,7 +586,10 @@ impl Win {
     }
 }
 
-fn handle_audio_bus_message(message: &gst::Message, callback: impl Fn(f64)) -> glib::ControlFlow {
+fn handle_audio_bus_message(
+    message: &gst::Message,
+    callback: impl Fn(f64, f64),
+) -> glib::ControlFlow {
     match message.view() {
         gst::MessageView::Element(e) => {
             if let Some(structure) = e.structure() {
@@ -576,9 +597,10 @@ fn handle_audio_bus_message(message: &gst::Message, callback: impl Fn(f64)) -> g
                     let peaks = structure.get::<&glib::ValueArray>("rms").unwrap();
                     let left_peak = peaks.nth(0).unwrap().get::<f64>().unwrap();
                     let right_peak = peaks.nth(1).unwrap().get::<f64>().unwrap();
-                    let max_peak = left_peak.max(right_peak);
-                    let normalized_max_peak = 10_f64.powf(max_peak / 20.0);
-                    callback(normalized_max_peak);
+
+                    let normalized_left_peak = 10_f64.powf(left_peak / 20.0);
+                    let normalized_right_peak = 10_f64.powf(right_peak / 20.0);
+                    callback(normalized_left_peak, normalized_right_peak);
                 }
             }
 

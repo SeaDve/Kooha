@@ -130,9 +130,17 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLevelBar" id="desktop_audio_level">
+                          <object class="GtkBox">
                             <property name="hexpand">True</property>
                             <property name="valign">center</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">3</property>
+                            <child>
+                              <object class="GtkLevelBar" id="desktop_audio_level_left"/>
+                            </child>
+                            <child>
+                              <object class="GtkLevelBar" id="desktop_audio_level_right"/>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -153,9 +161,17 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLevelBar" id="microphone_level">
+                          <object class="GtkBox">
                             <property name="hexpand">True</property>
                             <property name="valign">center</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">3</property>
+                            <child>
+                              <object class="GtkLevelBar" id="microphone_level_left"/>
+                            </child>
+                            <child>
+                              <object class="GtkLevelBar" id="microphone_level_right"/>
+                            </child>
                           </object>
                         </child>
                       </object>
