@@ -47,6 +47,7 @@
             <property name="orientation">vertical</property>
             <child>
               <object class="KoohaViewPort" id="view_port">
+                <property name="vexpand">True</property>
                 <style>
                   <class name="view-port"/>
                 </style>
