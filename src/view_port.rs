@@ -534,7 +534,7 @@ impl ViewPort {
             imp.drag_start.set(Some(Point::new(x as f32, y as f32)));
 
             let selection = self.selection().unwrap();
-            let mut new_selection = self.selection().unwrap();
+            let mut new_selection = selection;
 
             if cursor_type == CursorType::Move {
                 new_selection.start_x = selection.left_x();
