@@ -257,7 +257,7 @@ mod imp {
                 height as f32,
             )));
 
-            // Update selection if paintable rect changed
+            // Update selection if paintable rect changed.
             if let Some(prev_paintable_rect) = prev_paintable_rect {
                 if let Some(selection) = obj.selection() {
                     let selection_rect = selection.rect();
@@ -548,7 +548,7 @@ impl ViewPort {
                 let paintable_rect = self.paintable_rect().unwrap();
                 let selection_rect = self.selection().unwrap().rect();
 
-                // Keep the size intact if we bumped into the stage edge.
+                // Keep the size intact if we bumped to the paintable rect.
                 if new_start_x < paintable_rect.x() {
                     overshoot_x = paintable_rect.x() - new_start_x;
                     new_start_x = paintable_rect.x();
@@ -682,7 +682,7 @@ impl ViewPort {
                 let paintable_rect = self.paintable_rect().unwrap();
                 let selection_rect = selection.rect();
 
-                // Keep the coordinates inside the stage.
+                // Keep the coordinates inside the paintable rect.
                 if selection.start_x < paintable_rect.x() {
                     selection.start_x = paintable_rect.x();
                     selection.end_x = selection.start_x + selection_rect.width();
