@@ -299,12 +299,14 @@ mod imp {
             if let Some(selection) = obj.selection() {
                 let selection_rect = selection.rect();
 
+                // Outset so the displayed selection is never zero sized, avoiding flickering.
+                let selection_rect_display = selection_rect.inset_r(-1.0, -1.0);
+
                 // Shades the area outside the selection.
                 if let Some(paintable_rect) = obj.paintable_rect() {
                     snapshot.push_mask(gsk::MaskMode::InvertedAlpha);
 
-                    // Outset so selection rect is never zero sized, avoiding flickering.
-                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect.inset_r(-0.1, -0.1));
+                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect_display);
                     snapshot.pop();
 
                     snapshot.append_color(&SHADE_COLOR, &paintable_rect);
@@ -312,15 +314,7 @@ mod imp {
                 }
 
                 snapshot.append_border(
-                    &RoundedRect::from_rect(
-                        Rect::new(
-                            selection_rect.x(),
-                            selection_rect.y(),
-                            selection_rect.width().max(1.0),
-                            selection_rect.height().max(1.0),
-                        ),
-                        0.0,
-                    ),
+                    &RoundedRect::from_rect(selection_rect_display, 0.0),
                     &[SELECTION_LINE_WIDTH; 4],
                     &[SELECTION_COLOR; 4],
                 );
