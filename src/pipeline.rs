@@ -116,10 +116,10 @@ mod imp {
         pub(super) inner: gst::Pipeline,
         pub(super) bus_watch_guard: RefCell<Option<BusWatchGuard>>,
 
-        pub(super) recording_elements: RefCell<Vec<gst::Element>>,
         pub(super) video_elements: RefCell<Vec<gst::Element>>,
         pub(super) desktop_audio_elements: RefCell<Vec<gst::Element>>,
         pub(super) microphone_elements: RefCell<Vec<gst::Element>>,
+        pub(super) recording_elements: RefCell<Vec<gst::Element>>,
 
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
     }
@@ -140,22 +140,6 @@ mod imp {
             if let Err(err) = obj.setup_elements() {
                 tracing::error!("Failed to setup pipeline: {:?}", err);
             }
-
-            self.duration_source_id
-                .replace(Some(glib::timeout_add_local(
-                    DURATION_UPDATE_INTERVAL,
-                    clone!(@weak obj => @default-panic, move || {
-                        let imp = obj.imp();
-                        if imp.recording_state.get().is_started() {
-                            let position = imp
-                                .inner
-                                .query_position::<gst::ClockTime>()
-                                .unwrap_or(gst::ClockTime::ZERO);
-                            obj.set_recording_state(RecordingState::started(position));
-                        }
-                        glib::ControlFlow::Continue
-                    }),
-                )));
         }
 
         fn dispose(&self) {
@@ -303,6 +287,19 @@ impl Pipeline {
 
         imp.recording_elements.replace(elements);
 
+        imp.duration_source_id.replace(Some(glib::timeout_add_local(
+            DURATION_UPDATE_INTERVAL,
+            clone!(@weak self as obj => @default-panic, move || {
+                let position = obj
+                    .imp()
+                    .inner
+                    .query_position::<gst::ClockTime>()
+                    .unwrap_or(gst::ClockTime::ZERO);
+                obj.set_recording_state(RecordingState::started(position));
+                glib::ControlFlow::Continue
+            }),
+        )));
+
         self.set_recording_state(RecordingState::started(gst::ClockTime::ZERO));
 
         tracing::debug!("Started recording");
@@ -323,6 +320,8 @@ impl Pipeline {
             element.set_state(gst::State::Null)?;
             imp.inner.remove(&element)?;
         }
+
+        imp.duration_source_id.take().unwrap().remove();
 
         self.set_recording_state(RecordingState::Idle);
 
