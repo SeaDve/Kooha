@@ -2,7 +2,7 @@ use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{glib, prelude::*};
 
-use std::env;
+use std::{env, path::Path};
 
 use crate::{
     config::{APP_ID, VERSION},
@@ -65,7 +65,7 @@ fn release_notes() -> &'static str {
 }
 
 fn debug_info() -> String {
-    let is_flatpak = utils::is_flatpak();
+    let is_flatpak = Path::new("/.flatpak-info").exists();
     let is_experimental_mode = utils::is_experimental_mode();
 
     let language_names = glib::language_names().join(", ");

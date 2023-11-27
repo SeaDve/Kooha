@@ -4,7 +4,7 @@ use gtk::{
     glib::{self, prelude::*},
 };
 
-use std::{env, path::Path};
+use std::env;
 
 use crate::Application;
 
@@ -23,11 +23,6 @@ pub fn app_instance() -> Application {
     );
 
     gio::Application::default().unwrap().downcast().unwrap()
-}
-
-/// Whether the application is running in a flatpak sandbox.
-pub fn is_flatpak() -> bool {
-    Path::new("/.flatpak-info").exists()
 }
 
 /// Ideal thread count to use for `GStreamer` processing.
