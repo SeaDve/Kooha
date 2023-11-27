@@ -569,7 +569,7 @@ impl Pipeline {
 
         match message.view() {
             gst::MessageView::AsyncDone(_) => {
-                tracing::debug!("Async done");
+                tracing::debug!("Async done message from bus");
 
                 if imp.stream_size.get().is_none() {
                     self.update_stream_size();
@@ -578,6 +578,8 @@ impl Pipeline {
                 glib::ControlFlow::Continue
             }
             gst::MessageView::Element(e) => {
+                tracing::trace!(?message, "Element message from bus");
+
                 if let Some(src) = e.src() {
                     if let Some(structure) = e.structure() {
                         if structure.has_name("level") {
@@ -624,12 +626,22 @@ impl Pipeline {
                 glib::ControlFlow::Continue
             }
             gst::MessageView::Error(e) => {
-                tracing::error!(src = ?e.src(), error = ?e.error(), debug = ?e.debug(), "Error from video bus");
+                tracing::error!(src = ?e.src(), error = ?e.error(), debug = ?e.debug(), "Error from bus");
 
                 glib::ControlFlow::Break
             }
+            gst::MessageView::Warning(w) => {
+                tracing::warn!("Warning from bus: {:?}", w);
+
+                glib::ControlFlow::Continue
+            }
+            gst::MessageView::Info(i) => {
+                tracing::debug!("Info from bus: {:?}", i);
+
+                glib::ControlFlow::Continue
+            }
             _ => {
-                tracing::trace!(?message, "Message from video bus");
+                tracing::trace!(?message, "Message from bus");
 
                 glib::ControlFlow::Continue
             }
