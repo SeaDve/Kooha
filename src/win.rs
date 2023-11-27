@@ -9,7 +9,7 @@ use gtk::{
 use crate::{
     application::Application,
     config::PROFILE,
-    pipeline::{Pipeline, RecordingState},
+    pipeline::{CropData, Pipeline, RecordingState},
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
     toggle_button::ToggleButton,
     utils,
@@ -218,7 +218,11 @@ impl Win {
     fn start_recording(&self) -> Result<()> {
         let imp = self.imp();
 
-        imp.pipeline.start_recording()?;
+        let crop_data = imp.view_port.selection().map(|selection| CropData {
+            full_rect: imp.view_port.paintable_rect().unwrap(),
+            selection_rect: selection.rect(),
+        });
+        imp.pipeline.start_recording(crop_data)?;
 
         Ok(())
     }
