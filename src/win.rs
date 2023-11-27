@@ -9,7 +9,7 @@ use gtk::{
 use crate::{
     application::Application,
     config::PROFILE,
-    pipeline::Pipeline,
+    pipeline::{Pipeline, RecordingState},
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
     toggle_button::ToggleButton,
     utils,
@@ -25,6 +25,8 @@ mod imp {
     #[template(resource = "/io/github/seadve/Kooha/ui/win.ui")]
     pub struct Win {
         #[template_child]
+        pub(super) record_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub(super) view_port: TemplateChild<ViewPort>,
         #[template_child]
         pub(super) selection_toggle: TemplateChild<gtk::ToggleButton>,
@@ -36,6 +38,10 @@ mod imp {
         pub(super) microphone_level_left: TemplateChild<gtk::LevelBar>,
         #[template_child]
         pub(super) microphone_level_right: TemplateChild<gtk::LevelBar>,
+        #[template_child]
+        pub(super) recording_indicator: TemplateChild<gtk::Image>,
+        #[template_child]
+        pub(super) recording_time_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub(super) info_label: TemplateChild<gtk::Label>,
 
@@ -61,15 +67,20 @@ mod imp {
                 }
             });
 
-            klass.install_action("win.start-recording", None, |obj, _, _| {
-                if let Err(err) = obj.start_recording() {
-                    tracing::error!("Failed to start recording: {:?}", err);
-                }
-            });
+            klass.install_action("win.toggle-record", None, |obj, _, _| {
+                let imp = obj.imp();
 
-            klass.install_action("win.stop-recording", None, |obj, _, _| {
-                if let Err(err) = obj.stop_recording() {
-                    tracing::error!("Failed to stop recording: {:?}", err);
+                match imp.pipeline.recording_state() {
+                    RecordingState::Idle => {
+                        if let Err(err) = obj.start_recording() {
+                            tracing::error!("Failed to start recording: {:?}", err);
+                        }
+                    }
+                    RecordingState::Started { .. } => {
+                        if let Err(err) = obj.stop_recording() {
+                            tracing::error!("Failed to stop recording: {:?}", err);
+                        }
+                    }
                 }
             });
         }
@@ -126,6 +137,14 @@ mod imp {
                 }));
 
             self.pipeline
+                .connect_stream_size_notify(clone!(@weak obj => move |_| {
+                    obj.update_info_label();
+                }));
+            self.pipeline
+                .connect_recording_state_notify(clone!(@weak obj => move |_| {
+                    obj.update_recording_ui();
+                }));
+            self.pipeline
                 .connect_desktop_audio_peak(clone!(@weak obj => move |_, peaks| {
                     let imp = obj.imp();
                     imp.desktop_audio_level_left.set_value(peaks.left());
@@ -136,10 +155,6 @@ mod imp {
                     let imp = obj.imp();
                     imp.microphone_level_left.set_value(peaks.left());
                     imp.microphone_level_right.set_value(peaks.right());
-                }));
-            self.pipeline
-                .connect_stream_size_notify(clone!(@weak obj => move |_| {
-                    obj.update_info_label();
                 }));
             self.view_port
                 .set_paintable(Some(self.pipeline.paintable()));
@@ -155,6 +170,7 @@ mod imp {
             obj.update_selection_toggle_sensitivity();
             obj.update_selection_toggle();
             obj.update_info_label();
+            obj.update_recording_ui();
             obj.update_desktop_audio_pipeline();
             obj.update_microphone_pipeline();
         }
@@ -400,6 +416,40 @@ impl Win {
         }
 
         imp.info_label.set_label(&info_list.join(" • "));
+    }
+
+    fn update_recording_ui(&self) {
+        let imp = self.imp();
+
+        match imp.pipeline.recording_state() {
+            RecordingState::Idle => {
+                imp.record_button.set_label(&gettext("Record"));
+                imp.record_button.remove_css_class("destructive-action");
+                imp.record_button.add_css_class("suggested-action");
+
+                imp.recording_indicator.remove_css_class("red");
+                imp.recording_indicator.add_css_class("dim-label");
+
+                imp.recording_time_label.set_label("00∶00∶00");
+            }
+            RecordingState::Started { duration } => {
+                imp.record_button.set_label(&gettext("Stop"));
+                imp.record_button.add_css_class("destructive-action");
+                imp.record_button.remove_css_class("suggested-action");
+
+                imp.recording_indicator.remove_css_class("dim-label");
+                imp.recording_indicator.add_css_class("red");
+
+                let secs = duration.seconds();
+                let hours_display = secs / 3600;
+                let minutes_display = (secs / 60) % 60;
+                let seconds_display = secs % 60;
+                imp.recording_time_label.set_label(&format!(
+                    "{:02}∶{:02}∶{:02}",
+                    hours_display, minutes_display, seconds_display
+                ));
+            }
+        }
     }
 
     fn update_desktop_audio_level_sensitivity(&self) {

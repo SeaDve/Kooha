@@ -1,4 +1,4 @@
-use std::os::fd::RawFd;
+use std::{os::fd::RawFd, time::Duration};
 
 use anyhow::{ensure, Context, Result};
 use gst::prelude::*;
@@ -15,6 +15,7 @@ use crate::{
     utils,
 };
 
+const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
 const PREVIEW_FRAME_RATE: i32 = 30;
 
 const COMPOSITOR_NAME: &str = "compositor";
@@ -23,7 +24,7 @@ const PAINTABLE_SINK_NAME: &str = "paintablesink";
 const DESKTOP_AUDIO_LEVEL_NAME: &str = "desktop-audio-level";
 const MICROPHONE_LEVEL_NAME: &str = "microphone-level";
 
-#[derive(Debug, Clone, Copy, glib::Boxed)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaStreamSize", nullable)]
 pub struct StreamSize {
     width: i32,
@@ -65,6 +66,30 @@ impl Peaks {
     }
 }
 
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
+#[boxed_type(name = "KoohaRecordingState")]
+pub enum RecordingState {
+    #[default]
+    Idle,
+    Started {
+        duration: gst::ClockTime,
+    },
+}
+
+impl RecordingState {
+    pub fn started(duration: gst::ClockTime) -> Self {
+        Self::Started { duration }
+    }
+
+    pub fn is_started(self) -> bool {
+        matches!(self, Self::Started { .. })
+    }
+
+    pub fn is_idle(self) -> bool {
+        matches!(self, Self::Idle)
+    }
+}
+
 mod imp {
     use std::cell::{Cell, RefCell};
 
@@ -78,15 +103,18 @@ mod imp {
     pub struct Pipeline {
         #[property(get)]
         pub(super) stream_size: Cell<Option<StreamSize>>,
+        #[property(get)]
+        pub(super) recording_state: Cell<RecordingState>,
 
         pub(super) inner: gst::Pipeline,
         pub(super) bus_watch_guard: RefCell<Option<BusWatchGuard>>,
 
         pub(super) recording_elements: RefCell<Vec<gst::Element>>,
         pub(super) video_elements: RefCell<Vec<gst::Element>>,
-
         pub(super) desktop_audio_elements: RefCell<Vec<gst::Element>>,
         pub(super) microphone_elements: RefCell<Vec<gst::Element>>,
+
+        pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
     }
 
     #[glib::object_subclass]
@@ -102,9 +130,25 @@ mod imp {
 
             let obj = self.obj();
 
-            if let Err(err) = obj.setup() {
+            if let Err(err) = obj.setup_elements() {
                 tracing::error!("Failed to setup pipeline: {:?}", err);
             }
+
+            self.duration_source_id
+                .replace(Some(glib::timeout_add_local(
+                    DURATION_UPDATE_INTERVAL,
+                    clone!(@weak obj => @default-panic, move || {
+                        let imp = obj.imp();
+                        if imp.recording_state.get().is_started() {
+                            let position = imp
+                                .inner
+                                .query_position::<gst::ClockTime>()
+                                .unwrap_or(gst::ClockTime::ZERO);
+                            obj.set_recording_state(RecordingState::started(position));
+                        }
+                        glib::ControlFlow::Continue
+                    }),
+                )));
         }
 
         fn dispose(&self) {
@@ -178,10 +222,9 @@ impl Pipeline {
     pub fn start_recording(&self) -> Result<()> {
         let imp = self.imp();
 
-        ensure!(
-            imp.recording_elements.borrow().is_empty(),
-            "Already recording"
-        );
+        ensure!(imp.recording_state.get().is_idle(), "Already recording");
+
+        assert!(imp.recording_elements.borrow().is_empty());
 
         let tee = imp.inner.by_name(TEE_NAME).unwrap();
 
@@ -207,6 +250,7 @@ impl Pipeline {
             .property("profile", profile)
             .build()?;
         let filesink = gst::ElementFactory::make("filesink")
+            .property("async", false) // FIXME ?
             .property("location", "/var/home/dave/test.webm")
             .build()?;
 
@@ -222,6 +266,8 @@ impl Pipeline {
 
         imp.recording_elements.replace(elements);
 
+        self.set_recording_state(RecordingState::started(gst::ClockTime::ZERO));
+
         tracing::debug!("Started recording");
 
         Ok(())
@@ -232,12 +278,16 @@ impl Pipeline {
 
         let recording_elements = imp.recording_elements.take();
 
-        ensure!(!recording_elements.is_empty(), "Not recording");
+        ensure!(imp.recording_state.get().is_started(), "Not recording");
+
+        assert!(!recording_elements.is_empty());
 
         for element in recording_elements {
             element.set_state(gst::State::Null)?;
             imp.inner.remove(&element)?;
         }
+
+        self.set_recording_state(RecordingState::Idle);
 
         tracing::debug!("Stopped recording");
 
@@ -294,8 +344,7 @@ impl Pipeline {
             element.sync_state_with_parent()?;
         }
 
-        imp.stream_size.set(None);
-        self.notify_stream_size();
+        self.set_stream_size(None);
 
         tracing::debug!("Loaded {} streams", streams.len());
 
@@ -408,6 +457,28 @@ impl Pipeline {
         Ok(())
     }
 
+    fn set_stream_size(&self, stream_size: Option<StreamSize>) {
+        let imp = self.imp();
+
+        if stream_size == imp.stream_size.get() {
+            return;
+        }
+
+        imp.stream_size.set(stream_size);
+        self.notify_stream_size();
+    }
+
+    fn set_recording_state(&self, recording_state: RecordingState) {
+        let imp = self.imp();
+
+        if recording_state == imp.recording_state.get() {
+            return;
+        }
+
+        imp.recording_state.set(recording_state);
+        self.notify_recording_state();
+    }
+
     fn handle_bus_message(&self, message: &gst::Message) -> glib::ControlFlow {
         let imp = self.imp();
 
@@ -427,9 +498,7 @@ impl Pipeline {
                 let stream_width = caps_struct.get::<i32>("width").unwrap();
                 let stream_height = caps_struct.get::<i32>("height").unwrap();
 
-                imp.stream_size
-                    .set(Some(StreamSize::new(stream_width, stream_height)));
-                self.notify_stream_size();
+                self.set_stream_size(Some(StreamSize::new(stream_width, stream_height)));
 
                 glib::ControlFlow::Continue
             }
@@ -465,6 +534,20 @@ impl Pipeline {
 
                 glib::ControlFlow::Continue
             }
+            gst::MessageView::StateChanged(sc) => {
+                if message
+                    .src()
+                    .is_some_and(|src| src == imp.inner.upcast_ref::<gst::Object>())
+                {
+                    tracing::debug!(
+                        "Pipeline changed state from `{:?}` -> `{:?}`",
+                        sc.old(),
+                        sc.current(),
+                    );
+                }
+
+                glib::ControlFlow::Continue
+            }
             gst::MessageView::Error(e) => {
                 tracing::error!(src = ?e.src(), error = ?e.error(), debug = ?e.debug(), "Error from video bus");
 
@@ -478,7 +561,7 @@ impl Pipeline {
         }
     }
 
-    fn setup(&self) -> Result<()> {
+    fn setup_elements(&self) -> Result<()> {
         let imp = self.imp();
 
         let compositor = gst::ElementFactory::make("compositor")

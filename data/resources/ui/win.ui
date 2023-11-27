@@ -26,12 +26,8 @@
         <child type="top">
           <object class="AdwHeaderBar">
             <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">Record</property>
-                <property name="action-name">win.start-recording</property>
-                <style>
-                  <class name="suggested-action"/>
-                </style>
+              <object class="GtkButton" id="record_button">
+                <property name="action-name">win.toggle-record</property>
               </object>
             </child>
             <child type="end">
@@ -191,17 +187,13 @@
             <property name="margin-bottom">6</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkImage">
+              <object class="GtkImage" id="recording_indicator">
                 <property name="icon-name">circle-filled-symbolic</property>
-                <style>
-                  <class name="red"/>
-                </style>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="recording_time_label">
                 <property name="hexpand">True</property>
-                <property name="label">00:00:00</property>
                 <property name="halign">start</property>
                 <style>
                   <class name="numeric"/>
