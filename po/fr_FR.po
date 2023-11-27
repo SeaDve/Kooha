@@ -8,13 +8,14 @@
 # Magik Leo <magikleo.yopmail@gmail.com>, 2022.
 # matb <perso@mathieu-bousquet.fr>, 2022.
 # rene-coty <irenee.thirion@e.email>, 2022, 2023.
+# "Mathieu B." <mathieu.bousquet2@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-11-20 21:03+0000\n"
-"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
+"PO-Revision-Date: 2023-11-27 14:04+0000\n"
+"Last-Translator: \"Mathieu B.\" <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/kooha/pot-file/fr/"
 ">\n"
 "Language: fr_FR\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.2\n"
+"X-Generator: Weblate 5.3-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -322,7 +323,7 @@ msgstr "Échec de la connexion au daemon PulseAudio"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "La sélection de l’emplacement de sauvegarde a échoué"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
@@ -383,7 +384,7 @@ msgstr "Échec du démarrage de l’enregistrement"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Visitez {link} pour obtenir de l'aide."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -409,7 +410,7 @@ msgstr "Une erreur s’est produite pendant l’enregistrement"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Échec de l'ouverture de « {path} » pour écrire"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
