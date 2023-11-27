@@ -71,6 +71,9 @@ impl Peaks {
 pub enum RecordingState {
     #[default]
     Idle,
+    // Delayed {
+    //     secs_left: u32,
+    // },
     Started {
         duration: gst::ClockTime,
     },
@@ -154,6 +157,10 @@ mod imp {
         fn dispose(&self) {
             if let Err(err) = self.inner.set_state(gst::State::Null) {
                 tracing::error!("Failed to set state to Null {:?}", err);
+            }
+
+            if let Some(source_id) = self.duration_source_id.take() {
+                source_id.remove();
             }
 
             let _ = self.bus_watch_guard.take();
