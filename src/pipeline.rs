@@ -571,11 +571,9 @@ impl Pipeline {
             gst::MessageView::AsyncDone(_) => {
                 tracing::debug!("Async done");
 
-                if imp.stream_size.get().is_some() {
-                    return glib::ControlFlow::Continue;
+                if imp.stream_size.get().is_none() {
+                    self.update_stream_size();
                 }
-
-                self.update_stream_size();
 
                 glib::ControlFlow::Continue
             }
