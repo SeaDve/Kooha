@@ -19,10 +19,14 @@ const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
 const PREVIEW_FRAME_RATE: i32 = 30;
 
 const COMPOSITOR_NAME: &str = "compositor";
-const TEE_NAME: &str = "tee";
+const VIDEO_TEE_NAME: &str = "tee";
 const PAINTABLE_SINK_NAME: &str = "paintablesink";
+
 const DESKTOP_AUDIO_LEVEL_NAME: &str = "desktop-audio-level";
+const DESKTOP_AUDIO_TEE: &str = "desktop-audio-tee";
+
 const MICROPHONE_LEVEL_NAME: &str = "microphone-level";
+const MICROPHONE_TEE: &str = "microphone-tee";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaStreamSize", nullable)]
@@ -233,8 +237,6 @@ impl Pipeline {
 
         assert!(imp.recording_elements.borrow().is_empty());
 
-        let tee = imp.inner.by_name(TEE_NAME).unwrap();
-
         let video_profile =
             gst_pbutils::EncodingVideoProfile::builder(&gst::Caps::builder("video/x-vp8").build())
                 .preset("Profile Realtime")
@@ -264,7 +266,35 @@ impl Pipeline {
         let elements = vec![encodebin.clone(), filesink.clone()];
         imp.inner.add_many(&elements)?;
 
-        tee.link(&encodebin)?;
+        let video_tee = imp.inner.by_name(VIDEO_TEE_NAME).unwrap();
+        let video_tee_src_pad = video_tee
+            .request_pad_simple("src_%u")
+            .context("Failed to request src_%u pad from video tee")?;
+        let encodebin_sink_pad = encodebin
+            .request_pad_simple("video_%u")
+            .context("Failed to request video_%u pad from encodebin")?;
+        video_tee_src_pad.link(&encodebin_sink_pad)?;
+
+        if let Some(desktop_audio_tee) = imp.inner.by_name(DESKTOP_AUDIO_TEE) {
+            let desktop_audio_tee_src_pad = desktop_audio_tee
+                .request_pad_simple("src_%u")
+                .context("Failed to request src_%u pad from desktop audio tee")?;
+            let encodebin_sink_pad = encodebin
+                .request_pad_simple("audio_%u")
+                .context("Failed to request audio_%u pad from encodebin")?;
+            desktop_audio_tee_src_pad.link(&encodebin_sink_pad)?;
+        }
+
+        if let Some(microphone_tee) = imp.inner.by_name(MICROPHONE_TEE) {
+            let microphone_tee_src_pad = microphone_tee
+                .request_pad_simple("src_%u")
+                .context("Failed to request src_%u pad from microphone tee")?;
+            let encodebin_sink_pad = encodebin
+                .request_pad_simple("audio_%u")
+                .context("Failed to request audio_%u pad from encodebin")?;
+            microphone_tee_src_pad.link(&encodebin_sink_pad)?;
+        }
+
         encodebin.link(&filesink)?;
 
         for element in &elements {
@@ -380,11 +410,14 @@ impl Pipeline {
             .property("interval", gst::ClockTime::from_mseconds(80))
             .property("peak-ttl", gst::ClockTime::from_mseconds(80))
             .build()?;
+        let tee = gst::ElementFactory::make("tee")
+            .name(DESKTOP_AUDIO_TEE)
+            .build()?;
         let fakesink = gst::ElementFactory::make("fakesink")
             .property("sync", true)
             .build()?;
 
-        let elements = vec![pulsesrc, audioconvert, level, fakesink];
+        let elements = vec![pulsesrc, audioconvert, level, tee, fakesink];
         imp.inner.add_many(&elements)?;
         gst::Element::link_many(&elements)?;
 
@@ -432,11 +465,14 @@ impl Pipeline {
             .property("interval", gst::ClockTime::from_mseconds(80))
             .property("peak-ttl", gst::ClockTime::from_mseconds(80))
             .build()?;
+        let tee = gst::ElementFactory::make("tee")
+            .name(MICROPHONE_TEE)
+            .build()?;
         let fakesink = gst::ElementFactory::make("fakesink")
             .property("sync", true)
             .build()?;
 
-        let elements = vec![pulsesrc, audioconvert, level, fakesink];
+        let elements = vec![pulsesrc, audioconvert, level, tee, fakesink];
         imp.inner.add_many(&elements)?;
         gst::Element::link_many(&elements)?;
 
@@ -580,7 +616,9 @@ impl Pipeline {
             .property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly)
             .property("n-threads", utils::ideal_thread_count())
             .build()?;
-        let tee = gst::ElementFactory::make("tee").name(TEE_NAME).build()?;
+        let tee = gst::ElementFactory::make("tee")
+            .name(VIDEO_TEE_NAME)
+            .build()?;
         let sink = gst::ElementFactory::make("gtk4paintablesink")
             .name(PAINTABLE_SINK_NAME)
             .build()?;
