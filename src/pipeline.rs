@@ -20,7 +20,7 @@ const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
 const PREVIEW_FRAME_RATE: i32 = 30;
 
 const COMPOSITOR_NAME: &str = "compositor";
-const VIDEO_TEE_NAME: &str = "tee";
+const VIDEO_TEE_NAME: &str = "video-tee";
 const PAINTABLE_SINK_NAME: &str = "paintablesink";
 
 const DESKTOP_AUDIO_LEVEL_NAME: &str = "desktop-audio-level";
