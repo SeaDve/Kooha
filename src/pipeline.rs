@@ -374,6 +374,10 @@ impl Pipeline {
 
         let compositor = imp.inner.by_name(COMPOSITOR_NAME).unwrap();
 
+        for pad in compositor.sink_pads() {
+            compositor.release_request_pad(&pad);
+        }
+
         let videorate_caps = gst::Caps::builder("video/x-raw")
             .field("framerate", gst::Fraction::new(PREVIEW_FRAME_RATE, 1))
             .build();
