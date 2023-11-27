@@ -17,7 +17,7 @@ use crate::{
 };
 
 const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
-const PREVIEW_FRAME_RATE: i32 = 30;
+const PREVIEW_FRAME_RATE: i32 = 60;
 
 const COMPOSITOR_NAME: &str = "compositor";
 const VIDEO_TEE_NAME: &str = "video-tee";
