@@ -418,7 +418,12 @@ impl Pipeline {
 
         tracing::debug!("Loaded {} streams", streams.len());
 
-        imp.inner.set_state(gst::State::Playing)?;
+        match imp.inner.set_state(gst::State::Playing)? {
+            gst::StateChangeSuccess::Success | gst::StateChangeSuccess::NoPreroll => {
+                self.update_stream_size();
+            }
+            gst::StateChangeSuccess::Async => {}
+        }
 
         Ok(())
     }
@@ -560,21 +565,13 @@ impl Pipeline {
 
         match message.view() {
             gst::MessageView::AsyncDone(_) => {
+                tracing::debug!("Async done");
+
                 if imp.stream_size.get().is_some() {
                     return glib::ControlFlow::Continue;
                 }
 
-                let compositor = imp.inner.by_name(COMPOSITOR_NAME).unwrap();
-                let caps = compositor
-                    .static_pad("src")
-                    .unwrap()
-                    .current_caps()
-                    .unwrap();
-                let caps_struct = caps.structure(0).unwrap();
-                let stream_width = caps_struct.get::<i32>("width").unwrap();
-                let stream_height = caps_struct.get::<i32>("height").unwrap();
-
-                self.set_stream_size(Some(StreamSize::new(stream_width, stream_height)));
+                self.update_stream_size();
 
                 glib::ControlFlow::Continue
             }
@@ -635,6 +632,22 @@ impl Pipeline {
                 glib::ControlFlow::Continue
             }
         }
+    }
+
+    fn update_stream_size(&self) {
+        let imp = self.imp();
+
+        let compositor = imp.inner.by_name(COMPOSITOR_NAME).unwrap();
+        let caps = compositor
+            .static_pad("src")
+            .unwrap()
+            .current_caps()
+            .unwrap();
+        let caps_struct = caps.structure(0).unwrap();
+        let stream_width = caps_struct.get::<i32>("width").unwrap();
+        let stream_height = caps_struct.get::<i32>("height").unwrap();
+
+        self.set_stream_size(Some(StreamSize::new(stream_width, stream_height)));
     }
 
     fn setup_elements(&self) -> Result<()> {
