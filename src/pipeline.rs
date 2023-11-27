@@ -30,7 +30,9 @@ const MICROPHONE_LEVEL_NAME: &str = "microphone-level";
 const MICROPHONE_TEE: &str = "microphone-tee";
 
 pub struct CropData {
+    /// Full rect where the selection is made.
     pub full_rect: Rect,
+    /// Selection made from the full rect.
     pub selection_rect: Rect,
 }
 
@@ -712,50 +714,40 @@ impl Default for Pipeline {
 /// Create a videocrop element that computes the crop from the given coordinates
 /// and size.
 fn videocrop_compute(data: &CropData, stream_size: StreamSize) -> Result<gst::Element> {
-    let scale_factor_h = stream_size.width() as f32 / data.full_rect.width();
-    let scale_factor_v = stream_size.height() as f32 / data.full_rect.height();
+    let scale_h = stream_size.width() as f32 / data.full_rect.width();
+    let scale_v = stream_size.height() as f32 / data.full_rect.height();
 
-    if scale_factor_h != scale_factor_v {
+    if scale_h != scale_v {
         tracing::warn!(
-            scale_factor_h,
-            scale_factor_v,
+            scale_h,
+            scale_v,
             "Scale factors of horizontal and vertical are unequal"
         );
     }
 
-    // Both paintable and selection position are relative to the widget coordinates.
-    // To get the absolute position and so correct crop values, subtract the paintable
+    // Both selection and full rect position are relative to the widget coordinates.
+    // To get the absolute position and so correct crop values, subtract the full
     // rect's position from the selection rect.
-    let selection_rect_scaled = Rect::new(
-        data.selection_rect.x() - data.full_rect.x(),
-        data.selection_rect.y() - data.full_rect.y(),
-        data.selection_rect.width(),
-        data.selection_rect.height(),
-    )
-    .scale(scale_factor_h, scale_factor_v);
+    let x = (data.selection_rect.x() - data.full_rect.x()) * scale_h;
+    let y = (data.selection_rect.y() - data.full_rect.y()) * scale_v;
+    let width = data.selection_rect.width() * scale_h;
+    let height = data.selection_rect.height() * scale_v;
 
-    let raw_top_crop = selection_rect_scaled.y();
-    let raw_left_crop = selection_rect_scaled.x();
-    let raw_right_crop =
-        stream_size.width() as f32 - (selection_rect_scaled.width() + selection_rect_scaled.x());
-    let raw_bottom_crop =
-        stream_size.height() as f32 - (selection_rect_scaled.height() + selection_rect_scaled.y());
-
-    tracing::trace!(raw_top_crop, raw_left_crop, raw_right_crop, raw_bottom_crop);
+    tracing::trace!(x, y, width, height);
 
     // x264enc requires even resolution.
-    let top_crop = round_to_even_f32(raw_top_crop).clamp(0, stream_size.height());
-    let left_crop = round_to_even_f32(raw_left_crop).clamp(0, stream_size.width());
-    let right_crop = round_to_even_f32(raw_right_crop).clamp(0, stream_size.width());
-    let bottom_crop = round_to_even_f32(raw_bottom_crop).clamp(0, stream_size.height());
+    let top_crop = round_to_even_f32(x);
+    let left_crop = round_to_even_f32(y);
+    let right_crop = round_to_even_f32(stream_size.width() as f32 - (x + width));
+    let bottom_crop = round_to_even_f32(stream_size.height() as f32 - (y + height));
 
     tracing::trace!(top_crop, left_crop, right_crop, bottom_crop);
 
     let crop = gst::ElementFactory::make("videocrop")
-        .property("top", top_crop)
-        .property("left", left_crop)
-        .property("right", right_crop)
-        .property("bottom", bottom_crop)
+        .property("top", top_crop.clamp(0, stream_size.height()))
+        .property("left", left_crop.clamp(0, stream_size.width()))
+        .property("right", right_crop.clamp(0, stream_size.width()))
+        .property("bottom", bottom_crop.clamp(0, stream_size.height()))
         .build()?;
     Ok(crop)
 }
