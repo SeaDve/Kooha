@@ -1,30 +1,23 @@
-use std::os::fd::RawFd;
-
 use adw::{prelude::*, subclass::prelude::*};
 use anyhow::{Context, Result};
 use gettextrs::gettext;
-use gst::prelude::*;
 use gtk::{
-    gdk, gio,
+    gio,
     glib::{self, clone},
 };
 
 use crate::{
     application::Application,
-    audio_device::{self, Class as AudioDeviceClass},
     config::PROFILE,
-    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
+    pipeline::Pipeline,
+    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
     toggle_button::ToggleButton,
     utils,
     view_port::{Selection, ViewPort},
 };
 
-const PREVIEW_FPS: u32 = 60;
-
 mod imp {
     use std::cell::{Cell, RefCell};
-
-    use gst::bus::BusWatchGuard;
 
     use super::*;
 
@@ -46,13 +39,9 @@ mod imp {
         #[template_child]
         pub(super) info_label: TemplateChild<gtk::Label>,
 
-        pub(super) session: RefCell<Option<(ScreencastSession, gst::Pipeline, BusWatchGuard)>>,
-        pub(super) stream_size: Cell<Option<(i32, i32)>>,
-
+        pub(super) pipeline: Pipeline,
+        pub(super) session: RefCell<Option<ScreencastSession>>,
         pub(super) prev_selection: Cell<Option<Selection>>,
-
-        pub(super) desktop_audio_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
-        pub(super) microphone_pipeline: RefCell<Option<(gst::Pipeline, BusWatchGuard)>>,
     }
 
     #[glib::object_subclass]
@@ -69,6 +58,18 @@ mod imp {
             klass.install_action_async("win.select-video-source", None, |obj, _, _| async move {
                 if let Err(err) = obj.replace_session(None).await {
                     tracing::error!("Failed to replace session: {:?}", err);
+                }
+            });
+
+            klass.install_action("win.start-recording", None, |obj, _, _| {
+                if let Err(err) = obj.start_recording() {
+                    tracing::error!("Failed to start recording: {:?}", err);
+                }
+            });
+
+            klass.install_action("win.stop-recording", None, |obj, _, _| {
+                if let Err(err) = obj.stop_recording() {
+                    tracing::error!("Failed to stop recording: {:?}", err);
                 }
             });
         }
@@ -124,6 +125,25 @@ mod imp {
                     obj.update_info_label();
                 }));
 
+            self.pipeline
+                .connect_desktop_audio_peak(clone!(@weak obj => move |_, peaks| {
+                    let imp = obj.imp();
+                    imp.desktop_audio_level_left.set_value(peaks.left());
+                    imp.desktop_audio_level_right.set_value(peaks.right());
+                }));
+            self.pipeline
+                .connect_microphone_peak(clone!(@weak obj => move |_, peaks| {
+                    let imp = obj.imp();
+                    imp.microphone_level_left.set_value(peaks.left());
+                    imp.microphone_level_right.set_value(peaks.right());
+                }));
+            self.pipeline
+                .connect_stream_size_notify(clone!(@weak obj => move |_| {
+                    obj.update_info_label();
+                }));
+            self.view_port
+                .set_paintable(Some(self.pipeline.paintable()));
+
             obj.load_window_size();
 
             glib::spawn_future_local(clone!(@weak obj => async move {
@@ -140,15 +160,9 @@ mod imp {
         }
 
         fn dispose(&self) {
-            self.obj().dispose_session();
+            let obj = self.obj();
 
-            if let Some((pipeline, _)) = self.desktop_audio_pipeline.take() {
-                let _ = pipeline.set_state(gst::State::Null);
-            }
-
-            if let Some((pipeline, _)) = self.microphone_pipeline.take() {
-                let _ = pipeline.set_state(gst::State::Null);
-            }
+            obj.close_session();
 
             self.dispose_template();
         }
@@ -185,10 +199,26 @@ impl Win {
             .build()
     }
 
-    fn dispose_session(&self) {
-        if let Some((session, pipeline, _)) = self.imp().session.take() {
-            let _ = pipeline.set_state(gst::State::Null);
+    fn start_recording(&self) -> Result<()> {
+        let imp = self.imp();
 
+        imp.pipeline.start_recording()?;
+
+        Ok(())
+    }
+
+    fn stop_recording(&self) -> Result<()> {
+        let imp = self.imp();
+
+        imp.pipeline.stop_recording()?;
+
+        Ok(())
+    }
+
+    fn close_session(&self) {
+        let imp = self.imp();
+
+        if let Some(session) = imp.session.take() {
             glib::spawn_future_local(async move {
                 if let Err(err) = session.close().await {
                     tracing::error!("Failed to end ScreencastSession: {:?}", err);
@@ -235,38 +265,10 @@ impl Win {
             .context("Failed to begin ScreencastSession")?;
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
-        let pipeline = gst::Pipeline::new();
-        let videosrc_bin = pipewiresrc_bin(fd, &streams, PREVIEW_FPS)?;
-        let videoconvert = gst::ElementFactory::make("videoconvert")
-            .name("sink-videoconvert")
-            .build()?;
-        let sink = gst::ElementFactory::make("gtk4paintablesink").build()?;
-        pipeline.add_many([videosrc_bin.upcast_ref(), &videoconvert, &sink])?;
-        gst::Element::link_many([videosrc_bin.upcast_ref(), &videoconvert, &sink])?;
+        self.close_session();
 
-        let bus_watch_guard = pipeline.bus().unwrap().add_watch_local(
-            clone!(@weak self as obj => @default-panic, move |_, message| {
-                obj.handle_video_bus_message(message)
-            }),
-        )?;
-
-        imp.stream_size.set(None);
-        self.update_info_label();
-
-        self.dispose_session();
-
-        imp.session
-            .replace(Some((session, pipeline, bus_watch_guard)));
-
-        imp.session
-            .borrow()
-            .as_ref()
-            .map(|(_, pipeline, _)| pipeline)
-            .unwrap()
-            .set_state(gst::State::Playing)?;
-
-        let paintable = sink.property::<gdk::Paintable>("paintable");
-        imp.view_port.set_paintable(Some(paintable));
+        imp.pipeline.set_streams(&streams, fd)?;
+        imp.session.replace(Some(session));
 
         Ok(())
     }
@@ -279,100 +281,6 @@ impl Win {
         settings.set_screencast_restore_token("");
 
         self.replace_session(Some(&restore_token)).await?;
-
-        Ok(())
-    }
-
-    async fn load_desktop_audio(&self) -> Result<()> {
-        let imp = self.imp();
-
-        let device_name = audio_device::find_default_name(AudioDeviceClass::Sink)
-            .await
-            .context("No desktop audio source found")?;
-
-        let pulsesrc = gst::ElementFactory::make("pulsesrc")
-            .property("device", device_name)
-            .build()?;
-        let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
-        let level = gst::ElementFactory::make("level")
-            .property("interval", gst::ClockTime::from_mseconds(80))
-            .property("peak-ttl", gst::ClockTime::from_mseconds(80))
-            .build()?;
-        let fakesink = gst::ElementFactory::make("fakesink")
-            .property("sync", true)
-            .build()?;
-
-        let pipeline = gst::Pipeline::new();
-        pipeline.add_many([&pulsesrc, &audioconvert, &level, &fakesink])?;
-        gst::Element::link_many([&pulsesrc, &audioconvert, &level, &fakesink])?;
-
-        let bus = pipeline.bus().unwrap();
-        let bus_watch_guard = bus.add_watch_local(
-            clone!(@weak self as obj => @default-panic, move |_, message| {
-                handle_audio_bus_message(message, |left_peak, right_peak| {
-                    let imp = obj.imp();
-                    imp.desktop_audio_level_left.set_value(left_peak);
-                    imp.desktop_audio_level_right.set_value(right_peak);
-                })
-            }),
-        )?;
-
-        imp.desktop_audio_pipeline
-            .replace(Some((pipeline, bus_watch_guard)));
-
-        imp.desktop_audio_pipeline
-            .borrow()
-            .as_ref()
-            .map(|(pipeline, _)| pipeline)
-            .unwrap()
-            .set_state(gst::State::Playing)?;
-
-        Ok(())
-    }
-
-    async fn load_microphone(&self) -> Result<()> {
-        let imp = self.imp();
-
-        let device_name = audio_device::find_default_name(AudioDeviceClass::Source)
-            .await
-            .context("No microphone source found")?;
-
-        let pulsesrc = gst::ElementFactory::make("pulsesrc")
-            .property("device", device_name)
-            .build()?;
-        let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
-        let level = gst::ElementFactory::make("level")
-            .property("interval", gst::ClockTime::from_mseconds(80))
-            .property("peak-ttl", gst::ClockTime::from_mseconds(80))
-            .build()?;
-        let fakesink = gst::ElementFactory::make("fakesink")
-            .property("sync", true)
-            .build()?;
-
-        let pipeline = gst::Pipeline::new();
-        pipeline.add_many([&pulsesrc, &audioconvert, &level, &fakesink])?;
-        gst::Element::link_many([&pulsesrc, &audioconvert, &level, &fakesink])?;
-
-        let bus = pipeline.bus().unwrap();
-        let bus_watch_guard = bus.add_watch_local(
-            clone!(@weak self as obj => @default-panic, move |_, message| {
-                handle_audio_bus_message(message, |left_peak, right_peak| {
-                    let imp = obj.imp();
-                    imp.microphone_level_left.set_value(left_peak);
-                    imp.microphone_level_right.set_value(right_peak);
-                })
-            }),
-        )?;
-
-        imp.microphone_pipeline
-            .replace(Some((pipeline, bus_watch_guard)));
-
-        imp.microphone_pipeline
-            .borrow()
-            .as_ref()
-            .map(|(pipeline, _)| pipeline)
-            .unwrap()
-            .set_state(gst::State::Playing)?;
 
         Ok(())
     }
@@ -402,63 +310,23 @@ impl Win {
         Ok(())
     }
 
-    fn handle_video_bus_message(&self, message: &gst::Message) -> glib::ControlFlow {
-        let imp = self.imp();
-
-        match message.view() {
-            gst::MessageView::AsyncDone(_) => {
-                if imp.stream_size.get().is_some() {
-                    return glib::ControlFlow::Continue;
-                }
-
-                let videoconvert = imp
-                    .session
-                    .borrow()
-                    .as_ref()
-                    .map(|(_, pipeline, _)| pipeline)
-                    .unwrap()
-                    .by_name("sink-videoconvert")
-                    .unwrap();
-                let caps = videoconvert
-                    .static_pad("src")
-                    .unwrap()
-                    .current_caps()
-                    .unwrap();
-                let caps_struct = caps.structure(0).unwrap();
-                let stream_width = caps_struct.get::<i32>("width").unwrap();
-                let stream_height = caps_struct.get::<i32>("height").unwrap();
-                imp.stream_size.set(Some((stream_width, stream_height)));
-                self.update_info_label();
-
-                glib::ControlFlow::Continue
-            }
-            gst::MessageView::Error(e) => {
-                tracing::error!(src = ?e.src(), error = ?e.error(), debug = ?e.debug(), "Error from video bus");
-
-                glib::ControlFlow::Break
-            }
-            _ => {
-                tracing::trace!(?message, "Message from video bus");
-
-                glib::ControlFlow::Continue
-            }
-        }
-    }
-
     fn update_desktop_audio_pipeline(&self) {
         let imp = self.imp();
 
         let app = utils::app_instance();
         let settings = app.settings();
 
-        if settings.record_speaker() && imp.desktop_audio_pipeline.borrow().is_none() {
+        if settings.record_speaker() {
             glib::spawn_future_local(clone!(@weak self as obj => async move {
-                if let Err(err) = obj.load_desktop_audio().await {
+                if let Err(err) = obj.imp().pipeline.load_desktop_audio().await {
                     tracing::error!("Failed to load desktop audio: {:?}", err);
                 }
             }));
-        } else if let Some((pipeline, _)) = imp.desktop_audio_pipeline.take() {
-            let _ = pipeline.set_state(gst::State::Null);
+        } else {
+            if let Err(err) = imp.pipeline.unload_desktop_audio() {
+                tracing::error!("Failed to unload desktop audio: {:?}", err);
+            }
+
             imp.desktop_audio_level_left.set_value(0.0);
             imp.desktop_audio_level_right.set_value(0.0);
         }
@@ -470,14 +338,17 @@ impl Win {
         let app = utils::app_instance();
         let settings = app.settings();
 
-        if settings.record_mic() && imp.microphone_pipeline.borrow().is_none() {
+        if settings.record_mic() {
             glib::spawn_future_local(clone!(@weak self as obj => async move {
-                if let Err(err) = obj.load_microphone().await {
+                if let Err(err) = obj.imp().pipeline.load_microphone().await {
                     tracing::error!("Failed to load microphone: {:?}", err);
                 }
             }));
-        } else if let Some((pipeline, _)) = imp.microphone_pipeline.take() {
-            let _ = pipeline.set_state(gst::State::Null);
+        } else {
+            if let Err(err) = imp.pipeline.unload_microphone() {
+                tracing::error!("Failed to unload microphone: {:?}", err);
+            }
+
             imp.microphone_level_left.set_value(0.0);
             imp.microphone_level_right.set_value(0.0);
         }
@@ -510,11 +381,11 @@ impl Win {
             format!("{} FPS", settings.video_framerate()),
         ];
 
-        match (imp.stream_size.get(), imp.view_port.selection()) {
-            (Some((stream_width, stream_height)), Some(selection)) => {
+        match (imp.pipeline.stream_size(), imp.view_port.selection()) {
+            (Some(stream_size), Some(selection)) => {
                 let paintable_rect = imp.view_port.paintable_rect().unwrap();
-                let scale_factor_h = stream_width as f32 / paintable_rect.width();
-                let scale_factor_v = stream_height as f32 / paintable_rect.height();
+                let scale_factor_h = stream_size.width() as f32 / paintable_rect.width();
+                let scale_factor_v = stream_size.height() as f32 / paintable_rect.height();
                 let selection_rect_scaled = selection.rect().scale(scale_factor_h, scale_factor_v);
                 info_list.push(format!(
                     "{}×{}",
@@ -522,8 +393,8 @@ impl Win {
                     selection_rect_scaled.height().round() as i32,
                 ));
             }
-            (Some((stream_width, stream_height)), None) => {
-                info_list.push(format!("{}×{}", stream_width, stream_height));
+            (Some(stream_size), None) => {
+                info_list.push(format!("{}×{}", stream_size.width(), stream_size.height()));
             }
             _ => {}
         }
@@ -584,108 +455,4 @@ impl Win {
         self.update_desktop_audio_level_sensitivity();
         self.update_microphone_level_sensitivity();
     }
-}
-
-fn handle_audio_bus_message(
-    message: &gst::Message,
-    callback: impl Fn(f64, f64),
-) -> glib::ControlFlow {
-    match message.view() {
-        gst::MessageView::Element(e) => {
-            if let Some(structure) = e.structure() {
-                if structure.has_name("level") {
-                    let peaks = structure.get::<&glib::ValueArray>("rms").unwrap();
-                    let left_peak = peaks.nth(0).unwrap().get::<f64>().unwrap();
-                    let right_peak = peaks.nth(1).unwrap().get::<f64>().unwrap();
-
-                    let normalized_left_peak = 10_f64.powf(left_peak / 20.0);
-                    let normalized_right_peak = 10_f64.powf(right_peak / 20.0);
-                    callback(normalized_left_peak, normalized_right_peak);
-                }
-            }
-
-            glib::ControlFlow::Continue
-        }
-        gst::MessageView::Error(e) => {
-            tracing::error!(src = ?e.src(), error = ?e.error(), debug = ?e.debug(), "Error from audio bus");
-
-            glib::ControlFlow::Break
-        }
-        _ => {
-            tracing::trace!(?message, "Message from audio bus");
-
-            glib::ControlFlow::Continue
-        }
-    }
-}
-
-fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
-    let src = gst::ElementFactory::make("pipewiresrc")
-        .property("fd", fd)
-        .property("path", path)
-        .property("do-timestamp", true)
-        .property("keepalive-time", 1000)
-        .property("resend-last", true)
-        .build()?;
-    Ok(src)
-}
-
-fn videoconvert_with_default() -> Result<gst::Element> {
-    let conv = gst::ElementFactory::make("videoconvert")
-        .property("chroma-mode", gst_video::VideoChromaMode::None)
-        .property("dither", gst_video::VideoDitherMethod::None)
-        .property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly)
-        .property("n-threads", utils::ideal_thread_count())
-        .build()?;
-    Ok(conv)
-}
-
-/// Creates a bin with a src pad for multiple pipewire streams.
-///
-/// pipewiresrc1 -> videorate -> |
-///                              |
-/// pipewiresrc2 -> videorate -> | -> compositor -> videoconvert
-///                              |
-/// pipewiresrcn -> videorate -> |
-fn pipewiresrc_bin(fd: RawFd, streams: &[Stream], framerate: u32) -> Result<gst::Bin> {
-    let bin = gst::Bin::new();
-
-    let compositor = gst::ElementFactory::make("compositor").build()?;
-    let videoconvert = videoconvert_with_default()?;
-
-    bin.add_many([&compositor, &videoconvert])?;
-    compositor.link(&videoconvert)?;
-
-    let videorate_caps = gst::Caps::builder("video/x-raw")
-        .field("framerate", gst::Fraction::new(framerate as i32, 1))
-        .build();
-
-    let mut last_pos = 0;
-    for stream in streams {
-        let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
-        let videorate = gst::ElementFactory::make("videorate").build()?;
-        let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
-            .property("caps", &videorate_caps)
-            .build()?;
-
-        bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
-        gst::Element::link_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
-
-        let compositor_sink_pad = compositor
-            .request_pad_simple("sink_%u")
-            .context("Failed to request sink_%u pad from compositor")?;
-        compositor_sink_pad.set_property("xpos", last_pos);
-        videorate_capsfilter
-            .static_pad("src")
-            .unwrap()
-            .link(&compositor_sink_pad)?;
-
-        let (stream_width, _) = stream.size().context("stream is missing size")?;
-        last_pos += stream_width;
-    }
-
-    let videoconvert_src_pad = videoconvert.static_pad("src").unwrap();
-    bin.add_pad(&gst::GhostPad::with_target(&videoconvert_src_pad)?)?;
-
-    Ok(bin)
 }

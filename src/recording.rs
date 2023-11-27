@@ -20,7 +20,7 @@ use crate::{
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
-    pipeline::PipelineBuilder,
+    pipe::PipelineBuilder,
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
     settings::{CaptureMode, Settings},
     timer::Timer,

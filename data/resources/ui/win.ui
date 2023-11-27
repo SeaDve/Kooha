@@ -28,6 +28,7 @@
             <child>
               <object class="GtkButton">
                 <property name="label" translatable="yes">Record</property>
+                <property name="action-name">win.start-recording</property>
                 <style>
                   <class name="suggested-action"/>
                 </style>
