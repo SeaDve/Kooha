@@ -204,7 +204,7 @@ mod imp {
             }
         }
 
-        fn size_allocate(&self, widget_width: i32, widget_height: i32, _baseline: i32) {
+        fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
             let obj = self.obj();
 
             let Some(paintable) = obj.paintable() else {
@@ -212,28 +212,28 @@ mod imp {
                 return;
             };
 
-            let widget_width = widget_width as f64;
-            let widget_height = widget_height as f64;
-            let widget_ratio = widget_width / widget_height;
+            let width = width as f64;
+            let height = height as f64;
+            let ratio = width / height;
 
             let paintable_width = paintable.intrinsic_width() as f64;
             let paintable_height = paintable.intrinsic_height() as f64;
             let paintable_ratio = paintable.intrinsic_aspect_ratio();
 
-            let (width, height) =
-                if widget_width >= paintable_width && widget_height >= paintable_height {
+            let (rel_paintable_width, rel_paintable_height) =
+                if width >= paintable_width && height >= paintable_height {
                     (paintable_width, paintable_height)
-                } else if paintable_ratio > widget_ratio {
-                    (widget_width, widget_width / paintable_ratio)
+                } else if paintable_ratio > ratio {
+                    (width, width / paintable_ratio)
                 } else {
-                    (widget_height * paintable_ratio, widget_height)
+                    (height * paintable_ratio, height)
                 };
 
             let new_paintable_rect = Rect::new(
-                ((widget_width - width) / 2.0).floor() as f32,
-                ((widget_height - height) / 2.0).floor() as f32,
-                width.ceil() as f32,
-                height.ceil() as f32,
+                ((width - rel_paintable_width) / 2.0).floor() as f32,
+                ((height - rel_paintable_height) / 2.0).floor() as f32,
+                rel_paintable_width.ceil() as f32,
+                rel_paintable_height.ceil() as f32,
             );
             let prev_paintable_rect = self.paintable_rect.replace(Some(new_paintable_rect));
 
