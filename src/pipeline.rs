@@ -191,7 +191,7 @@ impl Pipeline {
     {
         self.connect_closure(
             "desktop-audio-peak",
-            true,
+            false,
             closure_local!(|obj: &Self, peaks: &Peaks| {
                 f(obj, peaks);
             }),
@@ -204,7 +204,7 @@ impl Pipeline {
     {
         self.connect_closure(
             "microphone-peak",
-            true,
+            false,
             closure_local!(|obj: &Self, peaks: &Peaks| {
                 f(obj, peaks);
             }),
