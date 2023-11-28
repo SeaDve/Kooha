@@ -1,293 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0"/>
-  <requires lib="libadwaita" version="1.0"/>
-  <template class="KoohaWindow" parent="AdwApplicationWindow">
-    <property name="resizable">False</property>
-    <property name="default-width">210</property>
-    <property name="default-height">230</property>
-    <property name="focus-widget">start_record_button</property>
-    <property name="content">
-      <object class="GtkWindowHandle">
-        <property name="child">
-          <object class="GtkStack" id="stack">
-            <property name="transition-type">crossfade</property>
-            <child>
-              <object class="AdwToolbarView" id="main_page">
-                <child type="top">
-                  <object class="GtkHeaderBar">
-                    <child>
-                      <object class="GtkMenuButton">
-                        <property name="menu-model">menu</property>
-                        <property name="icon-name">open-menu-symbolic</property>
-                        <property name="has-frame">False</property>
-                        <property name="primary">True</property>
-                        <property name="tooltip-text" translatable="yes">Main Menu</property>
-                        <style>
-                          <class name="circular"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="title">
-                      <object class="AdwWindowTitle" id="title"/>
-                    </child>
-                  </object>
-                </child>
-                <property name="content">
-                  <object class="GtkBox">
-                    <property name="margin-start">18</property>
-                    <property name="margin-end">18</property>
-                    <property name="margin-bottom">18</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">12</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="homogeneous">True</property>
-                        <property name="vexpand">True</property>
-                        <style>
-                          <class name="linked"/>
-                        </style>
-                        <child>
-                          <object class="GtkToggleButton">
-                            <property name="action-name">win.capture-mode</property>
-                            <property name="action-target">"monitor-window"</property>
-                            <property name="tooltip-text" translatable="yes">Capture a Monitor or Window</property>
-                            <property name="child">
-                              <object class="GtkImage">
-                                <property name="icon-name">source-pick-symbolic</property>
-                                <property name="pixel-size">32</property>
-                              </object>
-                            </property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkToggleButton">
-                            <property name="action-name">win.capture-mode</property>
-                            <property name="action-target">"selection"</property>
-                            <property name="tooltip-text" translatable="yes">Capture a Selection of Screen</property>
-                            <property name="child">
-                              <object class="GtkImage">
-                                <property name="icon-name">selection-symbolic</property>
-                                <property name="pixel-size">32</property>
-                              </object>
-                            </property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="spacing">12</property>
-                        <property name="homogeneous">True</property>
-                        <child>
-                          <object class="KoohaToggleButton">
-                            <property name="action-name">win.record-speaker</property>
-                            <property name="default-icon-name">audio-volume-muted-symbolic</property>
-                            <property name="toggled-icon-name">audio-volume-high-symbolic</property>
-                            <property name="default-tooltip-text" translatable="yes">Enable Desktop Audio</property>
-                            <property name="toggled-tooltip-text" translatable="yes">Disable Desktop Audio</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="KoohaToggleButton">
-                            <property name="action-name">win.record-mic</property>
-                            <property name="default-icon-name">microphone-disabled-symbolic</property>
-                            <property name="toggled-icon-name">microphone2-symbolic</property>
-                            <property name="default-tooltip-text" translatable="yes">Enable Microphone</property>
-                            <property name="toggled-tooltip-text" translatable="yes">Disable Microphone</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="KoohaToggleButton">
-                            <property name="action-name">win.show-pointer</property>
-                            <property name="default-icon-name">mouse-wireless-disabled-symbolic</property>
-                            <property name="toggled-icon-name">mouse-wireless-symbolic</property>
-                            <property name="default-tooltip-text" translatable="yes">Show Pointer</property>
-                            <property name="toggled-tooltip-text" translatable="yes">Hide Pointer</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <child>
-                          <object class="GtkButton" id="start_record_button">
-                            <property name="hexpand">True</property>
-                            <property name="tooltip-text" translatable="yes">Start Recording</property>
-                            <property name="label" translatable="yes">Record</property>
-                            <property name="action-name">win.toggle-record</property>
-                            <style>
-                              <class name="suggested-action"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkRevealer" id="forget_video_sources_revealer">
-                            <property name="transition-type">slide-left</property>
-                            <property name="child">
-                              <object class="GtkButton">
-                                <property name="margin-start">12</property>
-                                <property name="tooltip-text" translatable="yes">Forget Previously Selected Video Sources</property>
-                                <property name="icon-name">refresh-symbolic</property>
-                                <property name="action-name">win.forget-video-sources</property>
-                              </object>
-                            </property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox" id="recording_page">
-                <property name="margin-start">18</property>
-                <property name="margin-end">18</property>
-                <property name="margin-top">18</property>
-                <property name="margin-bottom">18</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="valign">center</property>
-                    <property name="vexpand">True</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel" id="recording_label">
-                        <property name="single-line-mode">True</property>
-                        <style>
-                          <class name="title-4"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="recording_time_label">
-                        <style>
-                          <class name="large-time"/>
-                          <class name="recording"/>
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <style>
-                      <class name="linked"/>
-                    </style>
-                    <child>
-                      <object class="GtkButton">
-                        <property name="hexpand">True</property>
-                        <property name="tooltip-text" translatable="yes">Stop Recording</property>
-                        <property name="label" translatable="yes">Stop</property>
-                        <property name="action-name">win.toggle-record</property>
-                        <style>
-                          <class name="destructive-action"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="pause_record_button">
-                        <property name="visible">False</property>
-                        <property name="tooltip-text" translatable="yes">Pause Recording</property>
-                        <property name="icon-name">media-playback-pause-symbolic</property>
-                        <property name="action-name">win.toggle-pause</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox" id="delay_page">
-                <property name="margin-start">18</property>
-                <property name="margin-end">18</property>
-                <property name="margin-top">18</property>
-                <property name="margin-bottom">18</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="valign">center</property>
-                    <property name="vexpand">True</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Recording in…</property>
-                        <property name="single-line-mode">True</property>
-                        <style>
-                          <class name="title-4"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="delay_label">
-                        <style>
-                          <class name="large-time"/>
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="tooltip-text" translatable="yes">Cancel Recording</property>
-                    <property name="label" translatable="yes">Cancel</property>
-                    <property name="action-name">win.cancel-record</property>
-                    <style>
-                      <class name="destructive-action"/>
-                    </style>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox" id="flushing_page">
-                <property name="margin-start">18</property>
-                <property name="margin-end">18</property>
-                <property name="margin-top">18</property>
-                <property name="margin-bottom">18</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="valign">center</property>
-                    <property name="vexpand">True</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">18</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Flushing…</property>
-                        <property name="single-line-mode">True</property>
-                        <style>
-                          <class name="title-4"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSpinner">
-                        <property name="spinning">True</property>
-                        <property name="height-request">18</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="tooltip-text" translatable="yes">Cancel Recording</property>
-                    <property name="label" translatable="yes">Cancel</property>
-                    <property name="action-name">win.cancel-record</property>
-                    <style>
-                      <class name="destructive-action"/>
-                    </style>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </property>
-      </object>
-    </property>
-  </template>
-  <menu id="menu">
+  <menu id="primary_menu">
     <section>
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
@@ -303,4 +16,218 @@
       </item>
     </section>
   </menu>
+  <template class="KoohaWindow" parent="AdwApplicationWindow">
+    <property name="width-request">360</property>
+    <property name="height-request">294</property>
+    <property name="content">
+      <object class="AdwToolbarView">
+        <property name="top-bar-style">raised</property>
+        <property name="bottom-bar-style">raised</property>
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child>
+              <object class="GtkButton" id="record_button">
+                <property name="action-name">win.toggle-record</property>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="menu-model">primary_menu</property>
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="primary">True</property>
+                <property name="tooltip-text" translatable="yes">Main Menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <property name="content">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="KoohaViewPort" id="view_port">
+                <property name="vexpand">True</property>
+                <style>
+                  <class name="view-port"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="margin-top">12</property>
+                <property name="margin-bottom">12</property>
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <property name="spacing">12</property>
+                <child>
+                  <object class="GtkBox" id="left_box">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Select Source</property>
+                            <property name="action-name">win.select-video-source</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkToggleButton" id="selection_toggle">
+                            <property name="tooltip-text" translatable="yes">Toggle Selection</property>
+                            <property name="icon-name">crop-symbolic</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="KoohaToggleButton">
+                            <property name="action-name">win.show-pointer</property>
+                            <property name="default-icon-name">mouse-wireless-disabled-symbolic</property>
+                            <property name="toggled-icon-name">mouse-wireless-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Show Pointer</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Hide Pointer</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSeparator"/>
+                </child>
+                <child>
+                  <object class="GtkBox" id="right_box">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="KoohaToggleButton">
+                            <property name="action-name">win.record-speaker</property>
+                            <property name="default-icon-name">audio-volume-muted-symbolic</property>
+                            <property name="toggled-icon-name">audio-volume-high-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Desktop Audio</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Desktop Audio</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="hexpand">True</property>
+                            <property name="valign">center</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">3</property>
+                            <child>
+                              <object class="GtkLevelBar" id="desktop_audio_level_left"/>
+                            </child>
+                            <child>
+                              <object class="GtkLevelBar" id="desktop_audio_level_right"/>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="KoohaToggleButton">
+                            <property name="action-name">win.record-mic</property>
+                            <property name="default-icon-name">microphone-disabled-symbolic</property>
+                            <property name="toggled-icon-name">microphone2-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Microphone</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Microphone</property>
+                            <style>
+                              <class name="flat"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="hexpand">True</property>
+                            <property name="valign">center</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">3</property>
+                            <child>
+                              <object class="GtkLevelBar" id="microphone_level_left"/>
+                            </child>
+                            <child>
+                              <object class="GtkLevelBar" id="microphone_level_right"/>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
+        <child type="bottom">
+          <object class="GtkBox">
+            <property name="margin-start">12</property>
+            <property name="margin-end">12</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkImage" id="recording_indicator">
+                <property name="icon-name">circle-filled-symbolic</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="recording_time_label">
+                <property name="hexpand">True</property>
+                <property name="halign">start</property>
+                <style>
+                  <class name="numeric"/>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="info_label">
+                <property name="xalign">1</property>
+                <style>
+                  <class name="caption-heading"/>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">info-symbolic</property>
+                <style>
+                  <class name="numeric"/>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="left_box"/>
+      <widget name="right_box"/>
+    </widgets>
+  </object>
 </interface>

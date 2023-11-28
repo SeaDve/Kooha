@@ -1,54 +1,53 @@
 use adw::{prelude::*, subclass::prelude::*};
-use anyhow::{ensure, Error, Result};
+use anyhow::{Context, Result};
 use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone},
-    CompositeTemplate,
 };
 
-use std::cell::RefCell;
-
 use crate::{
-    cancelled::Cancelled,
+    application::Application,
     config::PROFILE,
-    help::Help,
-    recording::{NoProfileError, Recording, State as RecordingState},
-    settings::CaptureMode,
+    pipeline::{CropData, Pipeline, RecordingState},
+    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
     toggle_button::ToggleButton,
-    utils, Application,
+    utils,
+    view_port::{Selection, ViewPort},
 };
 
 mod imp {
+    use std::cell::{Cell, RefCell};
+
     use super::*;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Default, gtk::CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct Window {
         #[template_child]
-        pub(super) title: TemplateChild<adw::WindowTitle>,
+        pub(super) record_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub(super) stack: TemplateChild<gtk::Stack>,
+        pub(super) view_port: TemplateChild<ViewPort>,
         #[template_child]
-        pub(super) main_page: TemplateChild<adw::ToolbarView>,
+        pub(super) selection_toggle: TemplateChild<gtk::ToggleButton>,
         #[template_child]
-        pub(super) forget_video_sources_revealer: TemplateChild<gtk::Revealer>,
+        pub(super) desktop_audio_level_left: TemplateChild<gtk::LevelBar>,
         #[template_child]
-        pub(super) recording_page: TemplateChild<gtk::Box>,
+        pub(super) desktop_audio_level_right: TemplateChild<gtk::LevelBar>,
         #[template_child]
-        pub(super) recording_label: TemplateChild<gtk::Label>,
+        pub(super) microphone_level_left: TemplateChild<gtk::LevelBar>,
+        #[template_child]
+        pub(super) microphone_level_right: TemplateChild<gtk::LevelBar>,
+        #[template_child]
+        pub(super) recording_indicator: TemplateChild<gtk::Image>,
         #[template_child]
         pub(super) recording_time_label: TemplateChild<gtk::Label>,
         #[template_child]
-        pub(super) pause_record_button: TemplateChild<gtk::Button>,
-        #[template_child]
-        pub(super) delay_page: TemplateChild<gtk::Box>,
-        #[template_child]
-        pub(super) delay_label: TemplateChild<gtk::Label>,
-        #[template_child]
-        pub(super) flushing_page: TemplateChild<gtk::Box>,
+        pub(super) info_label: TemplateChild<gtk::Label>,
 
-        pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
+        pub(super) pipeline: Pipeline,
+        pub(super) session: RefCell<Option<ScreencastSession>>,
+        pub(super) prev_selection: Cell<Option<Selection>>,
     }
 
     #[glib::object_subclass]
@@ -58,29 +57,31 @@ mod imp {
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
-            ToggleButton::static_type();
+            ToggleButton::ensure_type();
+
             klass.bind_template();
 
-            klass.install_action_async("win.toggle-record", None, |obj, _, _| async move {
-                obj.toggle_record().await;
-            });
-
-            klass.install_action("win.toggle-pause", None, move |obj, _, _| {
-                if let Err(err) = obj.toggle_pause() {
-                    let err = err.context(gettext("Failed to toggle pause"));
-                    tracing::error!("{:?}", err);
-                    obj.present_error(&err);
+            klass.install_action_async("win.select-video-source", None, |obj, _, _| async move {
+                if let Err(err) = obj.replace_session(None).await {
+                    tracing::error!("Failed to replace session: {:?}", err);
                 }
             });
 
-            klass.install_action("win.cancel-record", None, move |obj, _, _| {
-                obj.cancel_record();
-            });
+            klass.install_action("win.toggle-record", None, |obj, _, _| {
+                let imp = obj.imp();
 
-            klass.install_action("win.forget-video-sources", None, move |_obj, _, _| {
-                utils::app_instance()
-                    .settings()
-                    .set_screencast_restore_token("");
+                match imp.pipeline.recording_state() {
+                    RecordingState::Idle => {
+                        if let Err(err) = obj.start_recording() {
+                            tracing::error!("Failed to start recording: {:?}", err);
+                        }
+                    }
+                    RecordingState::Started { .. } => {
+                        if let Err(err) = obj.stop_recording() {
+                            tracing::error!("Failed to stop recording: {:?}", err);
+                        }
+                    }
+                }
             });
         }
 
@@ -101,14 +102,102 @@ mod imp {
 
             obj.setup_settings();
 
-            obj.update_view();
-            obj.update_audio_toggles_sensitivity();
-            obj.update_title_label();
+            self.selection_toggle
+                .connect_active_notify(clone!(@weak obj => move |toggle| {
+                    let imp = obj.imp();
+                    if toggle.is_active() {
+                        let selection = obj.imp().prev_selection.get().unwrap_or_else(|| {
+                            let mid_x = imp.view_port.width() as f32 / 2.0;
+                            let mid_y = imp.view_port.height() as f32 / 2.0;
+                            let offset = 20.0 * imp.view_port.scale_factor() as f32;
+                            Selection::new(
+                                mid_x - offset,
+                                mid_y - offset,
+                                mid_x + offset,
+                                mid_y + offset,
+                            )
+                        });
+                        imp.view_port.set_selection(Some(selection));
+                    } else {
+                        imp.view_port.set_selection(None::<Selection>);
+                    }
+                }));
+            self.view_port
+                .connect_paintable_notify(clone!(@weak obj => move |_| {
+                    obj.update_selection_toggle_sensitivity();
+                    obj.update_info_label();
+                }));
+            self.view_port
+                .connect_selection_notify(clone!(@weak obj => move |view_port| {
+                    if let Some(selection) = view_port.selection() {
+                        obj.imp().prev_selection.replace(Some(selection));
+                    }
+                    obj.update_selection_toggle();
+                    obj.update_info_label();
+                }));
+
+            self.pipeline
+                .connect_stream_size_notify(clone!(@weak obj => move |_| {
+                    obj.update_info_label();
+                }));
+            self.pipeline
+                .connect_recording_state_notify(clone!(@weak obj => move |_| {
+                    obj.update_recording_ui();
+                }));
+            self.pipeline
+                .connect_desktop_audio_peak(clone!(@weak obj => move |_, peaks| {
+                    let imp = obj.imp();
+                    imp.desktop_audio_level_left.set_value(peaks.left());
+                    imp.desktop_audio_level_right.set_value(peaks.right());
+                }));
+            self.pipeline
+                .connect_microphone_peak(clone!(@weak obj => move |_, peaks| {
+                    let imp = obj.imp();
+                    imp.microphone_level_left.set_value(peaks.left());
+                    imp.microphone_level_right.set_value(peaks.right());
+                }));
+            self.view_port
+                .set_paintable(Some(self.pipeline.paintable()));
+
+            obj.load_window_size();
+
+            glib::spawn_future_local(clone!(@weak obj => async move {
+                if let Err(err) = obj.load_session().await {
+                    tracing::error!("Failed to load session: {:?}", err);
+                }
+            }));
+
+            obj.update_selection_toggle_sensitivity();
+            obj.update_selection_toggle();
+            obj.update_info_label();
+            obj.update_recording_ui();
+            obj.update_desktop_audio_pipeline();
+            obj.update_microphone_pipeline();
+        }
+
+        fn dispose(&self) {
+            let obj = self.obj();
+
+            obj.close_session();
+
+            self.dispose_template();
         }
     }
 
     impl WidgetImpl for Window {}
-    impl WindowImpl for Window {}
+
+    impl WindowImpl for Window {
+        fn close_request(&self) -> glib::Propagation {
+            let obj = self.obj();
+
+            if let Err(err) = obj.save_window_size() {
+                tracing::warn!("Failed to save window state, {:?}", &err);
+            }
+
+            self.parent_close_request()
+        }
+    }
+
     impl ApplicationWindowImpl for Window {}
     impl AdwApplicationWindowImpl for Window {}
 }
@@ -120,370 +209,308 @@ glib::wrapper! {
 }
 
 impl Window {
-    pub fn new(app: &Application) -> Self {
-        glib::Object::builder().property("application", app).build()
+    pub fn new(application: &Application) -> Self {
+        glib::Object::builder()
+            .property("application", application)
+            .build()
     }
 
-    pub fn close(&self) -> Result<()> {
-        let is_safe_to_close =
-            self.imp()
-                .recording
-                .borrow()
-                .as_ref()
-                .map_or(true, |(ref recording, _)| {
-                    matches!(
-                        recording.state(),
-                        RecordingState::Init
-                            | RecordingState::Delayed { .. }
-                            | RecordingState::Finished
-                    )
-                });
+    fn start_recording(&self) -> Result<()> {
+        let imp = self.imp();
 
-        ensure!(
-            is_safe_to_close,
-            "Cannot close window while recording is in progress"
-        );
+        let app = utils::app_instance();
+        let settings = app.settings();
 
-        GtkWindowExt::close(self);
-        Ok(())
-    }
-
-    pub fn present_error(&self, err: &Error) {
-        let err_text = format!("{:?}", err);
-
-        let err_view = gtk::TextView::builder()
-            .buffer(&gtk::TextBuffer::builder().text(&err_text).build())
-            .editable(false)
-            .monospace(true)
-            .top_margin(6)
-            .bottom_margin(6)
-            .left_margin(6)
-            .right_margin(6)
-            .build();
-
-        let scrolled_window = gtk::ScrolledWindow::builder()
-            .child(&err_view)
-            .min_content_height(120)
-            .min_content_width(360)
-            .build();
-
-        let scrolled_window_row = gtk::ListBoxRow::builder()
-            .child(&scrolled_window)
-            .overflow(gtk::Overflow::Hidden)
-            .activatable(false)
-            .selectable(false)
-            .build();
-        scrolled_window_row.add_css_class("error-view");
-
-        let copy_button = gtk::Button::builder()
-            .tooltip_text(gettext("Copy to clipboard"))
-            .icon_name("edit-copy-symbolic")
-            .valign(gtk::Align::Center)
-            .build();
-        copy_button.connect_clicked(move |button| {
-            button.display().clipboard().set_text(&err_text);
-            button.set_tooltip_text(Some(&gettext("Copied to clipboard")));
-            button.set_icon_name("checkmark-symbolic");
-            button.add_css_class("copy-done");
+        let crop_data = imp.view_port.selection().map(|selection| CropData {
+            full_rect: imp.view_port.paintable_rect().unwrap(),
+            selection_rect: selection.rect(),
         });
-
-        let expander = adw::ExpanderRow::builder()
-            .title(gettext("Show detailed error"))
-            .activatable(false)
-            .build();
-        expander.add_row(&scrolled_window_row);
-        expander.add_suffix(&copy_button);
-
-        let list_box = gtk::ListBox::builder()
-            .selection_mode(gtk::SelectionMode::None)
-            .build();
-        list_box.add_css_class("boxed-list");
-        list_box.append(&expander);
-
-        let err_dialog = adw::MessageDialog::builder()
-            .heading(err.to_string())
-            .body_use_markup(true)
-            .default_response("ok")
-            .transient_for(self)
-            .modal(true)
-            .extra_child(&list_box)
-            .build();
-
-        if let Some(ref help) = err.downcast_ref::<Help>() {
-            err_dialog.set_body(&format!("<b>{}</b>: {}", gettext("Help"), help));
-        }
-
-        err_dialog.add_response("ok", &gettext("Ok"));
-        err_dialog.present();
-    }
-
-    async fn toggle_record(&self) {
-        let imp = self.imp();
-
-        if let Some((ref recording, _)) = *imp.recording.borrow() {
-            recording.stop();
-            return;
-        }
-
-        let recording = Recording::new();
-        let handler_ids = vec![
-            recording.connect_state_notify(clone!(@weak self as obj => move |_| {
-                obj.update_view();
-            })),
-            recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
-                let formatted_time = format_time(recording.duration());
-                obj.imp().recording_time_label.set_label(&formatted_time);
-            })),
-            recording.connect_finished(clone!(@weak self as obj => move |recording, res| {
-                obj.on_recording_finished(recording, res);
-            })),
-        ];
-        imp.recording
-            .replace(Some((recording.clone(), handler_ids)));
-
-        recording
-            .start(Some(self), utils::app_instance().settings())
-            .await;
-    }
-
-    fn toggle_pause(&self) -> Result<()> {
-        let imp = self.imp();
-
-        if let Some((ref recording, _)) = *imp.recording.borrow() {
-            if matches!(recording.state(), RecordingState::Paused) {
-                recording.resume()?;
-            } else {
-                recording.pause()?;
-            };
-        }
+        imp.pipeline
+            .start_recording(&settings.saving_location(), crop_data)?;
 
         Ok(())
     }
 
-    fn cancel_record(&self) {
+    fn stop_recording(&self) -> Result<()> {
         let imp = self.imp();
 
-        if let Some((ref recording, _)) = *imp.recording.borrow() {
-            recording.cancel();
-        }
+        imp.pipeline.stop_recording()?;
+
+        Ok(())
     }
 
-    fn on_recording_finished(&self, recording: &Recording, res: &Result<gio::File>) {
-        debug_assert_eq!(recording.state(), RecordingState::Finished);
+    fn close_session(&self) {
+        let imp = self.imp();
 
-        match res {
-            Ok(ref recording_file) => {
-                let application = utils::app_instance();
-                application.send_record_success_notification(recording_file);
-
-                let recent_manager = gtk::RecentManager::default();
-                recent_manager.add_item(&recording_file.uri());
-            }
-            Err(ref err) => {
-                if err.is::<Cancelled>() {
-                    tracing::debug!("{:?}", err);
-                } else if err.is::<NoProfileError>() {
-                    const OPEN_RESPONSE: &str = "open";
-                    const LATER_RESPONSE: &str = "later";
-                    let d = adw::MessageDialog::builder()
-                        .heading(gettext("Open Preferences?"))
-                        .body(gettext("The previously selected format may have been unavailable. Open preferences and select a format to continue recording."))
-                        .default_response(OPEN_RESPONSE)
-                        .transient_for(self)
-                        .modal(true)
-                        .build();
-                    d.add_response(LATER_RESPONSE, &gettext("Later"));
-                    d.add_response(OPEN_RESPONSE, &gettext("Open"));
-                    d.set_response_appearance(OPEN_RESPONSE, adw::ResponseAppearance::Suggested);
-                    d.connect_response(Some(OPEN_RESPONSE), |d, _| {
-                        d.close();
-                        utils::app_instance().present_preferences();
-                    });
-                    d.present();
-                } else {
-                    tracing::error!("{:?}", err);
-                    self.surface().beep();
-                    self.present_error(err);
+        if let Some(session) = imp.session.take() {
+            glib::spawn_future_local(async move {
+                if let Err(err) = session.close().await {
+                    tracing::error!("Failed to end ScreencastSession: {:?}", err);
                 }
-            }
+            });
         }
+    }
 
-        if let Some((recording, handler_ids)) = self.imp().recording.take() {
-            for handler_id in handler_ids {
-                recording.disconnect(handler_id);
-            }
+    async fn replace_session(&self, restore_token: Option<&str>) -> Result<()> {
+        let imp = self.imp();
+
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        let session = ScreencastSession::new()
+            .await
+            .context("Failed to create ScreencastSession")?;
+
+        tracing::debug!(
+            version = ?session.version(),
+            available_cursor_modes = ?session.available_cursor_modes(),
+            available_source_types = ?session.available_source_types(),
+            "Screencast session created"
+        );
+
+        let (streams, restore_token, fd) = session
+            .begin(
+                if settings.show_pointer() {
+                    CursorMode::EMBEDDED
+                } else {
+                    CursorMode::HIDDEN
+                },
+                if utils::is_experimental_mode() {
+                    SourceType::MONITOR | SourceType::WINDOW
+                } else {
+                    SourceType::MONITOR
+                },
+                true,
+                restore_token,
+                PersistMode::ExplicitlyRevoked,
+                Some(self),
+            )
+            .await
+            .context("Failed to begin ScreencastSession")?;
+        settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
+
+        self.close_session();
+
+        imp.pipeline.set_streams(&streams, fd)?;
+        imp.session.replace(Some(session));
+
+        Ok(())
+    }
+
+    async fn load_session(&self) -> Result<()> {
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        let restore_token = settings.screencast_restore_token();
+        settings.set_screencast_restore_token("");
+
+        self.replace_session(Some(&restore_token)).await?;
+
+        Ok(())
+    }
+
+    fn load_window_size(&self) {
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        self.set_default_size(settings.window_width(), settings.window_height());
+
+        if settings.window_maximized() {
+            self.maximize();
+        }
+    }
+
+    fn save_window_size(&self) -> Result<()> {
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        let (width, height) = self.default_size();
+
+        settings.try_set_window_width(width)?;
+        settings.try_set_window_height(height)?;
+
+        settings.try_set_window_maximized(self.is_maximized())?;
+
+        Ok(())
+    }
+
+    fn update_desktop_audio_pipeline(&self) {
+        let imp = self.imp();
+
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        if settings.record_speaker() {
+            glib::spawn_future_local(clone!(@weak self as obj => async move {
+                if let Err(err) = obj.imp().pipeline.load_desktop_audio().await {
+                    tracing::error!("Failed to load desktop audio: {:?}", err);
+                }
+            }));
         } else {
-            tracing::warn!("Recording finished but no stored recording");
+            if let Err(err) = imp.pipeline.unload_desktop_audio() {
+                tracing::error!("Failed to unload desktop audio: {:?}", err);
+            }
+
+            imp.desktop_audio_level_left.set_value(0.0);
+            imp.desktop_audio_level_right.set_value(0.0);
         }
     }
 
-    fn update_view(&self) {
+    fn update_microphone_pipeline(&self) {
         let imp = self.imp();
 
-        // TODO disregard ms granularity recording state change
+        let app = utils::app_instance();
+        let settings = app.settings();
 
-        let state = imp
-            .recording
-            .borrow()
-            .as_ref()
-            .map_or(RecordingState::Init, |(recording, _)| recording.state());
-
-        match state {
-            RecordingState::Init | RecordingState::Finished => {
-                imp.stack.set_visible_child(&*imp.main_page);
-
-                imp.recording_time_label
-                    .set_label(&format_time(gst::ClockTime::ZERO));
+        if settings.record_mic() {
+            glib::spawn_future_local(clone!(@weak self as obj => async move {
+                if let Err(err) = obj.imp().pipeline.load_microphone().await {
+                    tracing::error!("Failed to load microphone: {:?}", err);
+                }
+            }));
+        } else {
+            if let Err(err) = imp.pipeline.unload_microphone() {
+                tracing::error!("Failed to unload microphone: {:?}", err);
             }
-            RecordingState::Delayed { secs_left } => {
-                imp.delay_label.set_label(&secs_left.to_string());
 
-                imp.stack.set_visible_child(&*imp.delay_page);
-            }
-            RecordingState::Recording => {
-                imp.pause_record_button
-                    .set_icon_name("media-playback-pause-symbolic");
-                imp.recording_label.set_label(&gettext("Recording"));
-                imp.recording_time_label.remove_css_class("paused");
-
-                imp.stack.set_visible_child(&*imp.recording_page);
-            }
-            RecordingState::Paused => {
-                imp.pause_record_button
-                    .set_icon_name("media-playback-start-symbolic");
-                imp.recording_label.set_label(&gettext("Paused"));
-                imp.recording_time_label.add_css_class("paused");
-
-                imp.stack.set_visible_child(&*imp.recording_page);
-            }
-            RecordingState::Flushing => imp.stack.set_visible_child(&*imp.flushing_page),
+            imp.microphone_level_left.set_value(0.0);
+            imp.microphone_level_right.set_value(0.0);
         }
-
-        self.action_set_enabled(
-            "win.toggle-record",
-            !matches!(
-                state,
-                RecordingState::Delayed { .. } | RecordingState::Flushing
-            ),
-        );
-        self.action_set_enabled(
-            "win.toggle-pause",
-            matches!(state, RecordingState::Recording | RecordingState::Paused),
-        );
-        self.action_set_enabled(
-            "win.cancel-record",
-            matches!(
-                state,
-                RecordingState::Delayed { .. } | RecordingState::Flushing
-            ),
-        );
     }
 
-    fn update_title_label(&self) {
+    fn update_selection_toggle_sensitivity(&self) {
         let imp = self.imp();
 
-        match utils::app_instance().settings().capture_mode() {
-            CaptureMode::MonitorWindow => imp.title.set_title(&gettext("Normal")),
-            CaptureMode::Selection => imp.title.set_title(&gettext("Selection")),
+        imp.selection_toggle
+            .set_sensitive(imp.view_port.paintable().is_some());
+    }
+
+    fn update_selection_toggle(&self) {
+        let imp = self.imp();
+
+        imp.selection_toggle
+            .set_active(imp.view_port.selection().is_some());
+    }
+
+    fn update_info_label(&self) {
+        let imp = self.imp();
+
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        let mut info_list = vec![
+            settings
+                .profile()
+                .map_or_else(|| gettext("No Profile"), |profile| profile.name()),
+            format!("{} FPS", settings.video_framerate()),
+        ];
+
+        match (imp.pipeline.stream_size(), imp.view_port.selection()) {
+            (Some(stream_size), Some(selection)) => {
+                let paintable_rect = imp.view_port.paintable_rect().unwrap();
+                let scale_factor_h = stream_size.width() as f32 / paintable_rect.width();
+                let scale_factor_v = stream_size.height() as f32 / paintable_rect.height();
+                let selection_rect_scaled = selection.rect().scale(scale_factor_h, scale_factor_v);
+                info_list.push(format!(
+                    "{}×{}",
+                    selection_rect_scaled.width().round() as i32,
+                    selection_rect_scaled.height().round() as i32,
+                ));
+            }
+            (Some(stream_size), None) => {
+                info_list.push(format!("{}×{}", stream_size.width(), stream_size.height()));
+            }
+            _ => {}
+        }
+
+        imp.info_label.set_label(&info_list.join(" • "));
+    }
+
+    fn update_recording_ui(&self) {
+        let imp = self.imp();
+
+        match imp.pipeline.recording_state() {
+            RecordingState::Idle => {
+                imp.record_button.set_label(&gettext("Record"));
+                imp.record_button.remove_css_class("destructive-action");
+                imp.record_button.add_css_class("suggested-action");
+
+                imp.recording_indicator.remove_css_class("red");
+                imp.recording_indicator.add_css_class("dim-label");
+
+                imp.recording_time_label.set_label("00∶00∶00");
+            }
+            RecordingState::Started { duration } => {
+                imp.record_button.set_label(&gettext("Stop"));
+                imp.record_button.add_css_class("destructive-action");
+                imp.record_button.remove_css_class("suggested-action");
+
+                imp.recording_indicator.remove_css_class("dim-label");
+                imp.recording_indicator.add_css_class("red");
+
+                let secs = duration.seconds();
+                let hours_display = secs / 3600;
+                let minutes_display = (secs / 60) % 60;
+                let seconds_display = secs % 60;
+                imp.recording_time_label.set_label(&format!(
+                    "{:02}∶{:02}∶{:02}",
+                    hours_display, minutes_display, seconds_display
+                ));
+            }
         }
     }
 
-    fn update_audio_toggles_sensitivity(&self) {
-        let is_enabled = utils::app_instance()
-            .settings()
-            .profile()
-            .map_or(true, |profile| profile.supports_audio());
+    fn update_desktop_audio_level_sensitivity(&self) {
+        let imp = self.imp();
 
-        self.action_set_enabled("win.record-speaker", is_enabled);
-        self.action_set_enabled("win.record-mic", is_enabled);
+        let app = utils::app_instance();
+        let settings = app.settings();
+
+        let is_record_desktop_audio = settings.record_speaker();
+        imp.desktop_audio_level_left
+            .set_sensitive(is_record_desktop_audio);
+        imp.desktop_audio_level_right
+            .set_sensitive(is_record_desktop_audio);
     }
 
-    fn update_forget_video_sources_action(&self) {
-        let has_restore_token = !utils::app_instance()
-            .settings()
-            .screencast_restore_token()
-            .is_empty();
+    fn update_microphone_level_sensitivity(&self) {
+        let imp = self.imp();
 
-        self.imp()
-            .forget_video_sources_revealer
-            .set_reveal_child(has_restore_token);
+        let app = utils::app_instance();
+        let settings = app.settings();
 
-        self.action_set_enabled("win.forget-video-sources", has_restore_token);
+        let is_record_microphone = settings.record_mic();
+        imp.microphone_level_left
+            .set_sensitive(is_record_microphone);
+        imp.microphone_level_right
+            .set_sensitive(is_record_microphone);
     }
 
     fn setup_settings(&self) {
         let app = utils::app_instance();
         let settings = app.settings();
 
-        settings.connect_capture_mode_changed(clone!(@weak self as obj => move |_| {
-            obj.update_title_label();
-        }));
-
-        settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
-            obj.update_audio_toggles_sensitivity();
-        }));
-
-        settings.connect_screencast_restore_token_changed(clone!(@weak self as obj => move |_| {
-            obj.update_forget_video_sources_action();
-        }));
-
-        self.update_title_label();
-        self.update_audio_toggles_sensitivity();
-        self.update_forget_video_sources_action();
-
         self.add_action(&settings.create_record_speaker_action());
         self.add_action(&settings.create_record_mic_action());
         self.add_action(&settings.create_show_pointer_action());
-        self.add_action(&settings.create_capture_mode_action());
-    }
-}
 
-/// Format time in MM:SS. The MM part will be more than 2 digits
-/// if the time is >= 1 hour.
-fn format_time(clock_time: gst::ClockTime) -> String {
-    let secs = clock_time.seconds();
+        settings.connect_record_speaker_changed(clone!(@weak self as obj => move |_| {
+            obj.update_desktop_audio_level_sensitivity();
+            obj.update_desktop_audio_pipeline();
+        }));
+        settings.connect_record_mic_changed(clone!(@weak self as obj => move |_| {
+            obj.update_microphone_level_sensitivity();
+            obj.update_microphone_pipeline();
+        }));
 
-    let seconds_display = secs % 60;
-    let minutes_display = secs / 60;
-    format!("{:02}∶{:02}", minutes_display, seconds_display)
-}
+        settings.connect_video_framerate_changed(clone!(@weak self as obj => move |_| {
+            obj.update_info_label();
+        }));
+        settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
+            obj.update_info_label();
+        }));
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn format_time_less_than_1_hour() {
-        assert_eq!(format_time(gst::ClockTime::ZERO), "00∶00");
-        assert_eq!(format_time(gst::ClockTime::from_seconds(31)), "00∶31");
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(8 * 60 + 1)),
-            "08∶01"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(33 * 60 + 3)),
-            "33∶03"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(59 * 60 + 59)),
-            "59∶59"
-        );
-    }
-
-    #[test]
-    fn format_time_more_than_1_hour() {
-        assert_eq!(format_time(gst::ClockTime::from_seconds(60 * 60)), "60∶00");
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(60 * 60 + 9)),
-            "60∶09"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(60 * 60 + 31)),
-            "60∶31"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(100 * 60 + 20)),
-            "100∶20"
-        );
+        self.update_desktop_audio_level_sensitivity();
+        self.update_microphone_level_sensitivity();
     }
 }

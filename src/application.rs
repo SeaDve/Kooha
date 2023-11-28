@@ -11,7 +11,7 @@ use crate::{
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
     preferences_window::PreferencesWindow,
     settings::Settings,
-    win::Win,
+    window::Window,
 };
 
 mod imp {
@@ -21,7 +21,7 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct Application {
-        pub(super) window: OnceCell<WeakRef<Win>>,
+        pub(super) window: OnceCell<WeakRef<Window>>,
         pub(super) settings: OnceCell<Settings>,
     }
 
@@ -46,7 +46,7 @@ mod imp {
                 return;
             }
 
-            let window = Win::new(&obj);
+            let window = Window::new(&obj);
             self.window.set(window.downgrade()).unwrap();
             window.present();
         }
@@ -95,7 +95,7 @@ impl Application {
         })
     }
 
-    pub fn window(&self) -> Win {
+    pub fn window(&self) -> Window {
         self.imp()
             .window
             .get()

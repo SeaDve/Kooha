@@ -3,7 +3,6 @@
   <gresource prefix="/io/github/seadve/Kooha/">
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/audio-volume-high-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/audio-volume-muted-symbolic.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/checkmark-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/circle-filled-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/crop-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/info-symbolic.svg</file>
@@ -11,16 +10,11 @@
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/microphone2-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/mouse-wireless-disabled-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/mouse-wireless-symbolic.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/refresh-symbolic.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/selection-symbolic.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/source-pick-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/warning-symbolic.svg</file>
     <file compressed="true">style.css</file>
-    <file compressed="true" preprocess="xml-stripblanks">ui/area-selector.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences-window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/view-port.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks">ui/win.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
   </gresource>
 </gresources>

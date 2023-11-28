@@ -25,25 +25,19 @@
 
 mod about;
 mod application;
-mod area_selector;
 mod audio_device;
 mod cancelled;
 mod config;
 mod element_properties;
 mod help;
-mod i18n;
-mod pipe;
 mod pipeline;
 mod preferences_window;
 mod profile;
-mod recording;
 mod screencast_session;
 mod settings;
-mod timer;
 mod toggle_button;
 mod utils;
 mod view_port;
-mod win;
 mod window;
 
 use gettextrs::{gettext, LocaleCategory};
