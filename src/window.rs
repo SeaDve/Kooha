@@ -50,7 +50,7 @@ mod imp {
         pub(super) info_label: TemplateChild<gtk::Label>,
 
         pub(super) pipeline: Pipeline,
-        pub(super) timer: RefCell<Option<Timer>>,
+        pub(super) delay_timer: RefCell<Option<Timer>>,
         pub(super) session: RefCell<Option<ScreencastSession>>,
         pub(super) prev_selection: Cell<Option<Selection>>,
     }
@@ -253,8 +253,8 @@ impl Window {
 
         match imp.pipeline.recording_state() {
             RecordingState::Idle => {
-                if let Some(timer) = imp.timer.take() {
-                    timer.cancel();
+                if let Some(delay_timer) = imp.delay_timer.take() {
+                    delay_timer.cancel();
                     self.update_recording_ui();
                     return Ok(());
                 }
@@ -262,16 +262,16 @@ impl Window {
                 let app = utils::app_instance();
                 let settings = app.settings();
 
-                let timer = Timer::new(settings.record_delay(), |secs_left| {
+                let delay_timer = Timer::new(settings.record_delay(), |secs_left| {
                     // TODO wire up to the UI
                     tracing::debug!("secs_left: {}", secs_left);
                 });
-                imp.timer.replace(Some(timer.clone()));
+                imp.delay_timer.replace(Some(delay_timer.clone()));
                 self.update_recording_ui();
 
-                timer.await?;
+                delay_timer.await?;
 
-                let _ = imp.timer.take();
+                let _ = imp.delay_timer.take();
                 self.update_recording_ui();
 
                 self.start_recording()
@@ -477,7 +477,7 @@ impl Window {
 
         match imp.pipeline.recording_state() {
             RecordingState::Idle => {
-                if imp.timer.borrow().is_some() {
+                if imp.delay_timer.borrow().is_some() {
                     imp.record_button.set_label(&gettext("Cancel"));
 
                     imp.record_button.remove_css_class("suggested-action");
