@@ -16,7 +16,7 @@ pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
         .application_name(gettext("Kooha"))
         .developer_name(gettext("Dave Patrick Caberto"))
         .version(VERSION)
-        .copyright(gettext("© 2022 Dave Patrick Caberto"))
+        .copyright(gettext("© 2023 Dave Patrick Caberto"))
         .license_type(gtk::License::Gpl30)
         .developers(vec![
             "Dave Patrick Caberto",
