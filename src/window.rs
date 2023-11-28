@@ -27,6 +27,8 @@ mod imp {
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct Window {
         #[template_child]
+        pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
         pub(super) record_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub(super) view_port: TemplateChild<ViewPort>,
@@ -69,6 +71,7 @@ mod imp {
                     if err.is::<Cancelled>() {
                         tracing::debug!("Select video source cancelled: {:?}", err);
                     } else {
+                        obj.add_message_toast(&gettext("Failed to select video source"));
                         tracing::error!("Failed to select video source: {:?}", err);
                     }
                 }
@@ -79,6 +82,7 @@ mod imp {
                     if err.is::<Cancelled>() {
                         tracing::debug!("Recording cancelled: {:?}", err);
                     } else {
+                        obj.add_message_toast(&gettext("Failed to toggle record"));
                         tracing::error!("Failed to toggle record: {:?}", err);
                     }
                 }
@@ -213,6 +217,11 @@ impl Window {
         glib::Object::builder()
             .property("application", application)
             .build()
+    }
+
+    fn add_message_toast(&self, message: &str) {
+        let toast = adw::Toast::new(message);
+        self.imp().toast_overlay.add_toast(toast);
     }
 
     fn start_recording(&self) -> Result<()> {
