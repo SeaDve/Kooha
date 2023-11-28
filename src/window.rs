@@ -263,7 +263,8 @@ impl Window {
                 let settings = app.settings();
 
                 let timer = Timer::new(settings.record_delay(), |secs_left| {
-                    println!("secs_left: {}", secs_left);
+                    // TODO wire up to the UI
+                    tracing::debug!("secs_left: {}", secs_left);
                 });
                 imp.timer.replace(Some(timer.clone()));
                 self.update_recording_ui();
