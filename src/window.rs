@@ -77,8 +77,8 @@ mod imp {
                 }
             });
 
-            klass.install_action_async("win.toggle-record", None, |obj, _, _| async move {
-                if let Err(err) = obj.toggle_record().await {
+            klass.install_action_async("win.toggle-recording", None, |obj, _, _| async move {
+                if let Err(err) = obj.toggle_recording().await {
                     if err.is::<Cancelled>() {
                         tracing::debug!("Recording cancelled: {:?}", err);
                     } else {
@@ -248,7 +248,7 @@ impl Window {
         Ok(())
     }
 
-    async fn toggle_record(&self) -> Result<()> {
+    async fn toggle_recording(&self) -> Result<()> {
         let imp = self.imp();
 
         match imp.pipeline.recording_state() {

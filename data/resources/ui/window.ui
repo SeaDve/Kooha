@@ -29,7 +29,7 @@
               <object class="AdwHeaderBar">
                 <child>
                   <object class="GtkButton" id="record_button">
-                    <property name="action-name">win.toggle-record</property>
+                    <property name="action-name">win.toggle-recording</property>
                   </object>
                 </child>
                 <child type="end">
