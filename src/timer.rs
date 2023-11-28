@@ -15,7 +15,9 @@ use crate::cancelled::Cancelled;
 
 const DEFAULT_SECS_LEFT_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
 
-/// Reference counted cancellable timer future
+/// A reference counted cancellable timed future
+///
+/// The timer will only start when it gets polled.
 #[derive(Clone)]
 pub struct Timer {
     inner: Rc<Inner>,
