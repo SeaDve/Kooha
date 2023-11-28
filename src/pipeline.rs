@@ -1,4 +1,4 @@
-use std::{os::fd::RawFd, time::Duration};
+use std::{os::fd::RawFd, path::Path, time::Duration};
 
 use anyhow::{ensure, Context, Result};
 use gst::prelude::*;
@@ -222,7 +222,7 @@ impl Pipeline {
             .property("paintable")
     }
 
-    pub fn start_recording(&self, crop_data: Option<CropData>) -> Result<()> {
+    pub fn start_recording(&self, dir: &Path, crop_data: Option<CropData>) -> Result<()> {
         let imp = self.imp();
 
         ensure!(imp.recording_state.get().is_idle(), "Already recording");
@@ -247,12 +247,27 @@ impl Pipeline {
         .add_profile(audio_profile)
         .build();
 
+        let recording_path = {
+            let file_name = glib::DateTime::now_local()
+                .context("Failed to get current time")?
+                .format("Kooha-%F-%H-%M-%S")
+                .unwrap();
+            let mut path = dir.join(file_name);
+            path.set_extension("webm");
+            path
+        };
+
         let encodebin = gst::ElementFactory::make("encodebin")
             .property("profile", profile)
             .build()?;
         let filesink = gst::ElementFactory::make("filesink")
             .property("async", false) // FIXME ?
-            .property("location", "/var/home/dave/test.webm")
+            .property(
+                "location",
+                recording_path
+                    .to_str()
+                    .context("Cannot convert path to str")?,
+            )
             .build()?;
 
         let elements = vec![encodebin.clone(), filesink.clone()];

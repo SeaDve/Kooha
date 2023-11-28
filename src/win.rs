@@ -218,11 +218,15 @@ impl Win {
     fn start_recording(&self) -> Result<()> {
         let imp = self.imp();
 
+        let app = utils::app_instance();
+        let settings = app.settings();
+
         let crop_data = imp.view_port.selection().map(|selection| CropData {
             full_rect: imp.view_port.paintable_rect().unwrap(),
             selection_rect: selection.rect(),
         });
-        imp.pipeline.start_recording(crop_data)?;
+        imp.pipeline
+            .start_recording(&settings.saving_location(), crop_data)?;
 
         Ok(())
     }
