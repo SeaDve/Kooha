@@ -8,9 +8,11 @@ use gtk::{
 
 use crate::{
     application::Application,
+    cancelled::Cancelled,
     config::PROFILE,
     pipeline::{CropData, Pipeline, RecordingState},
     screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType},
+    timer::Timer,
     toggle_button::ToggleButton,
     utils,
     view_port::{Selection, ViewPort},
@@ -46,6 +48,7 @@ mod imp {
         pub(super) info_label: TemplateChild<gtk::Label>,
 
         pub(super) pipeline: Pipeline,
+        pub(super) timer: RefCell<Option<Timer>>,
         pub(super) session: RefCell<Option<ScreencastSession>>,
         pub(super) prev_selection: Cell<Option<Selection>>,
     }
@@ -63,23 +66,20 @@ mod imp {
 
             klass.install_action_async("win.select-video-source", None, |obj, _, _| async move {
                 if let Err(err) = obj.replace_session(None).await {
-                    tracing::error!("Failed to replace session: {:?}", err);
+                    if err.is::<Cancelled>() {
+                        tracing::debug!("Select video source cancelled: {:?}", err);
+                    } else {
+                        tracing::error!("Failed to select video source: {:?}", err);
+                    }
                 }
             });
 
-            klass.install_action("win.toggle-record", None, |obj, _, _| {
-                let imp = obj.imp();
-
-                match imp.pipeline.recording_state() {
-                    RecordingState::Idle => {
-                        if let Err(err) = obj.start_recording() {
-                            tracing::error!("Failed to start recording: {:?}", err);
-                        }
-                    }
-                    RecordingState::Started { .. } => {
-                        if let Err(err) = obj.stop_recording() {
-                            tracing::error!("Failed to stop recording: {:?}", err);
-                        }
+            klass.install_action_async("win.toggle-record", None, |obj, _, _| async move {
+                if let Err(err) = obj.toggle_record().await {
+                    if err.is::<Cancelled>() {
+                        tracing::debug!("Recording cancelled: {:?}", err);
+                    } else {
+                        tracing::error!("Failed to toggle record: {:?}", err);
                     }
                 }
             });
@@ -235,6 +235,42 @@ impl Window {
         let imp = self.imp();
 
         imp.pipeline.stop_recording()?;
+
+        Ok(())
+    }
+
+    async fn toggle_record(&self) -> Result<()> {
+        let imp = self.imp();
+
+        match imp.pipeline.recording_state() {
+            RecordingState::Idle => {
+                if let Some(timer) = imp.timer.take() {
+                    timer.cancel();
+                    self.update_recording_ui();
+                    return Ok(());
+                }
+
+                let app = utils::app_instance();
+                let settings = app.settings();
+
+                let timer = Timer::new(settings.record_delay(), |secs_left| {
+                    println!("secs_left: {}", secs_left);
+                });
+                imp.timer.replace(Some(timer.clone()));
+                self.update_recording_ui();
+
+                timer.await?;
+
+                let _ = imp.timer.take();
+                self.update_recording_ui();
+
+                self.start_recording()
+                    .context("Failed to start recording")?;
+            }
+            RecordingState::Started { .. } => {
+                self.stop_recording().context("Failed to stop recording")?;
+            }
+        }
 
         Ok(())
     }
@@ -431,9 +467,17 @@ impl Window {
 
         match imp.pipeline.recording_state() {
             RecordingState::Idle => {
-                imp.record_button.set_label(&gettext("Record"));
-                imp.record_button.remove_css_class("destructive-action");
-                imp.record_button.add_css_class("suggested-action");
+                if imp.timer.borrow().is_some() {
+                    imp.record_button.set_label(&gettext("Cancel"));
+
+                    imp.record_button.remove_css_class("suggested-action");
+                    imp.record_button.add_css_class("destructive-action");
+                } else {
+                    imp.record_button.set_label(&gettext("Record"));
+
+                    imp.record_button.remove_css_class("destructive-action");
+                    imp.record_button.add_css_class("suggested-action");
+                }
 
                 imp.recording_indicator.remove_css_class("red");
                 imp.recording_indicator.add_css_class("dim-label");
@@ -442,8 +486,9 @@ impl Window {
             }
             RecordingState::Started { duration } => {
                 imp.record_button.set_label(&gettext("Stop"));
-                imp.record_button.add_css_class("destructive-action");
+
                 imp.record_button.remove_css_class("suggested-action");
+                imp.record_button.add_css_class("destructive-action");
 
                 imp.recording_indicator.remove_css_class("dim-label");
                 imp.recording_indicator.add_css_class("red");

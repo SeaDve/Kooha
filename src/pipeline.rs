@@ -83,9 +83,6 @@ impl Peaks {
 pub enum RecordingState {
     #[default]
     Idle,
-    // Delayed {
-    //     secs_left: u32,
-    // },
     Started {
         duration: gst::ClockTime,
     },

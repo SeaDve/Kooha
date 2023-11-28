@@ -35,6 +35,7 @@ mod preferences_window;
 mod profile;
 mod screencast_session;
 mod settings;
+mod timer;
 mod toggle_button;
 mod utils;
 mod view_port;
