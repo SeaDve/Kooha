@@ -748,8 +748,8 @@ fn videocrop_compute(data: &CropData, stream_size: StreamSize) -> Result<gst::El
     tracing::trace!(x, y, width, height);
 
     // x264enc requires even resolution.
-    let top_crop = round_to_even_f32(x);
-    let left_crop = round_to_even_f32(y);
+    let top_crop = round_to_even_f32(y);
+    let left_crop = round_to_even_f32(x);
     let right_crop = round_to_even_f32(stream_size.width() as f32 - (x + width));
     let bottom_crop = round_to_even_f32(stream_size.height() as f32 - (y + height));
 
