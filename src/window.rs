@@ -110,7 +110,7 @@ mod imp {
                 .connect_active_notify(clone!(@weak obj => move |toggle| {
                     let imp = obj.imp();
                     if toggle.is_active() {
-                        let selection = obj.imp().prev_selection.get().unwrap_or_else(|| {
+                        let selection = imp.prev_selection.get().unwrap_or_else(|| {
                             let mid_x = imp.view_port.width() as f32 / 2.0;
                             let mid_y = imp.view_port.height() as f32 / 2.0;
                             let offset = 20.0 * imp.view_port.scale_factor() as f32;
