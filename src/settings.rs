@@ -38,17 +38,9 @@ impl Settings {
             .initial_folder(&gio::File::for_path(self.saving_location()))
             .build();
 
-        match dialog.select_folder_future(Some(transient_for)).await {
-            Ok(folder) => {
-                let path = folder.path().context("Folder does not have a path")?;
-                self.0.set("saving-location", path).unwrap();
-            }
-            Err(err) => {
-                if !err.matches(gtk::DialogError::Dismissed) {
-                    return Err(err.into());
-                }
-            }
-        }
+        let folder = dialog.select_folder_future(Some(transient_for)).await?;
+        let path = folder.path().context("Folder does not have a path")?;
+        self.0.set("saving-location", path).unwrap();
 
         Ok(())
     }
