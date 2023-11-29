@@ -311,6 +311,7 @@ mod imp {
                         2.0,
                         3.0,
                     );
+
                     snapshot.push_rounded_clip(&bounds);
                     snapshot.append_color(&SELECTION_HANDLE_COLOR, &handle);
                     snapshot.pop();
@@ -472,8 +473,12 @@ impl ViewPort {
             selection_handle_diameter,
         );
 
-        imp.selection_handles
-            .set(Some([top_left, top_right, bottom_right, bottom_left]));
+        imp.selection_handles.set(Some([
+            top_left.round_extents(),
+            top_right.round_extents(),
+            bottom_right.round_extents(),
+            bottom_left.round_extents(),
+        ]));
     }
 }
 
