@@ -24,10 +24,11 @@ const DEFAULT_SIZE: f64 = 100.0;
 
 const SHADE_COLOR: gdk::RGBA = gdk::RGBA::new(0.0, 0.0, 0.0, 0.5);
 
-const SELECTION_COLOR: gdk::RGBA = gdk::RGBA::WHITE;
+const SELECTION_LINE_WIDTH: f32 = 2.0;
+const SELECTION_LINE_COLOR: gdk::RGBA = gdk::RGBA::WHITE.with_alpha(0.6);
+const SELECTION_HANDLE_COLOR: gdk::RGBA = gdk::RGBA::WHITE;
 const SELECTION_HANDLE_SHADOW_COLOR: gdk::RGBA = gdk::RGBA::new(0.0, 0.0, 0.0, 0.2);
 const SELECTION_HANDLE_RADIUS: f32 = 12.0;
-const SELECTION_LINE_WIDTH: f32 = 2.0;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 enum CursorType {
@@ -277,26 +278,27 @@ mod imp {
             }
 
             if let Some(selection) = obj.selection() {
-                let selection_rect = selection.rect();
-
-                // Outset so the displayed selection is never zero sized, avoiding flickering.
-                let selection_rect_display = selection_rect.inset_r(-1.0, -1.0);
+                let selection_rect = selection.rect().round_extents();
 
                 // Shades the area outside the selection.
                 if let Some(paintable_rect) = obj.paintable_rect() {
                     snapshot.push_mask(gsk::MaskMode::InvertedAlpha);
 
-                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect_display);
+                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect.inset_r(3.0, 3.0));
                     snapshot.pop();
 
                     snapshot.append_color(&SHADE_COLOR, &paintable_rect);
                     snapshot.pop();
                 }
 
-                snapshot.append_border(
-                    &RoundedRect::from_rect(selection_rect_display, 0.0),
-                    &[SELECTION_LINE_WIDTH; 4],
-                    &[SELECTION_COLOR; 4],
+                let path_builder = gsk::PathBuilder::new();
+                path_builder.add_rect(&selection_rect);
+                snapshot.append_stroke(
+                    &path_builder.to_path(),
+                    &gsk::Stroke::builder(SELECTION_LINE_WIDTH)
+                        .dash(&[10.0, 6.0])
+                        .build(),
+                    &SELECTION_LINE_COLOR,
                 );
 
                 for handle in self.selection_handles.get().unwrap() {
@@ -310,7 +312,7 @@ mod imp {
                         3.0,
                     );
                     snapshot.push_rounded_clip(&bounds);
-                    snapshot.append_color(&SELECTION_COLOR, &handle);
+                    snapshot.append_color(&SELECTION_HANDLE_COLOR, &handle);
                     snapshot.pop();
                 }
             }
