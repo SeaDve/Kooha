@@ -127,6 +127,7 @@ mod imp {
         pub(super) recording_elements: RefCell<Vec<gst::Element>>,
 
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
+        pub(super) caps_notify_source_id: RefCell<Option<glib::SourceId>>,
     }
 
     #[glib::object_subclass]
@@ -153,6 +154,10 @@ mod imp {
             }
 
             if let Some(source_id) = self.duration_source_id.take() {
+                source_id.remove();
+            }
+
+            if let Some(source_id) = self.caps_notify_source_id.take() {
                 source_id.remove();
             }
 
@@ -432,8 +437,6 @@ impl Pipeline {
             element.sync_state_with_parent()?;
         }
 
-        self.set_stream_size(None);
-
         tracing::debug!("Loaded {} streams", streams.len());
 
         match imp.inner.set_state(gst::State::Playing)? {
@@ -556,17 +559,6 @@ impl Pipeline {
         Ok(())
     }
 
-    fn set_stream_size(&self, stream_size: Option<StreamSize>) {
-        let imp = self.imp();
-
-        if stream_size == imp.stream_size.get() {
-            return;
-        }
-
-        imp.stream_size.set(stream_size);
-        self.notify_stream_size();
-    }
-
     fn set_recording_state(&self, recording_state: RecordingState) {
         let imp = self.imp();
 
@@ -582,15 +574,6 @@ impl Pipeline {
         let imp = self.imp();
 
         match message.view() {
-            gst::MessageView::AsyncDone(_) => {
-                tracing::debug!("Async done message from bus");
-
-                if imp.stream_size.get().is_none() {
-                    self.update_stream_size();
-                }
-
-                glib::ControlFlow::Continue
-            }
             gst::MessageView::Element(e) => {
                 tracing::trace!(?message, "Element message from bus");
 
@@ -666,16 +649,15 @@ impl Pipeline {
         let imp = self.imp();
 
         let compositor = imp.inner.by_name(COMPOSITOR_NAME).unwrap();
-        let caps = compositor
-            .static_pad("src")
-            .unwrap()
-            .current_caps()
-            .unwrap();
-        let caps_struct = caps.structure(0).unwrap();
-        let stream_width = caps_struct.get::<i32>("width").unwrap();
-        let stream_height = caps_struct.get::<i32>("height").unwrap();
+        let stream_size = compositor.static_pad("src").unwrap().caps().map(|caps| {
+            let caps_struct = caps.structure(0).unwrap();
+            let stream_width = caps_struct.get::<i32>("width").unwrap();
+            let stream_height = caps_struct.get::<i32>("height").unwrap();
+            StreamSize::new(stream_width, stream_height)
+        });
 
-        self.set_stream_size(Some(StreamSize::new(stream_width, stream_height)));
+        imp.stream_size.set(stream_size);
+        self.notify_stream_size();
     }
 
     fn setup_elements(&self) -> Result<()> {
@@ -710,8 +692,23 @@ impl Pipeline {
                 obj.handle_bus_message(message)
             }),
         )?;
-
         imp.bus_watch_guard.replace(Some(bus_watch_guard));
+
+        let (tx, rx) = glib::MainContext::channel(glib::Priority::DEFAULT);
+        compositor
+            .static_pad("src")
+            .unwrap()
+            .connect_caps_notify(move |_| {
+                tx.send(()).unwrap();
+            });
+        let source_id = rx.attach(
+            None,
+            clone!(@weak self as obj => @default-panic, move |_| {
+                obj.update_stream_size();
+                glib::ControlFlow::Continue
+            }),
+        );
+        imp.caps_notify_source_id.replace(Some(source_id));
 
         Ok(())
     }
