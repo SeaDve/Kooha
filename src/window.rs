@@ -127,11 +127,6 @@ mod imp {
                     }
                 }));
             self.view_port
-                .connect_paintable_notify(clone!(@weak obj => move |_| {
-                    obj.update_selection_toggle_sensitivity();
-                    obj.update_info_label();
-                }));
-            self.view_port
                 .connect_selection_notify(clone!(@weak obj => move |view_port| {
                     if let Some(selection) = view_port.selection() {
                         obj.imp().prev_selection.replace(Some(selection));
@@ -142,6 +137,7 @@ mod imp {
 
             self.pipeline
                 .connect_stream_size_notify(clone!(@weak obj => move |_| {
+                    obj.update_selection_toggle_sensitivity();
                     obj.update_info_label();
                 }));
             self.pipeline
@@ -428,7 +424,7 @@ impl Window {
         let imp = self.imp();
 
         imp.selection_toggle
-            .set_sensitive(imp.view_port.paintable().is_some());
+            .set_sensitive(imp.pipeline.stream_size().is_some());
     }
 
     fn update_selection_toggle(&self) {
