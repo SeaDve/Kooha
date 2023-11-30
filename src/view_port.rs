@@ -19,6 +19,7 @@ use std::{
 // * Handle selection outside paintable rect, when setting selection.
 // * Add animation when entering/leaving selection mode.
 // * Add undo and redo.
+// * Add minimum selection size.
 
 const DEFAULT_SIZE: f64 = 100.0;
 
