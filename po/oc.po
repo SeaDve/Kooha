@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-12-02 12:30+0000\n"
+"PO-Revision-Date: 2023-12-02 16:09+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://hosted.weblate.org/projects/kooha/pot-file/"
 "oc/>\n"
@@ -56,28 +56,31 @@ msgstr "Las caracteristicas principalas de Kooha son las seguentas :"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Enregistratz lo microfòn, l’àudio del burèu o los dos a l’encòp"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Compatibilitat amb los formats WebM, MP4, GIF, eMatroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 msgstr ""
+"🖥️ Seleccionatz un ecran, una fenèstra o una part de l'ecran d’enregistrar"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Seleccion multipla d’entradas"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Configuratz l’emplaçament d’enregistrament, la visibilitat del puntador, "
+"la frequéncia d’imatge e lo relambi"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Encodatge (experimental) amb acceleracion materiala"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
@@ -85,7 +88,7 @@ msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
-msgstr ""
+msgstr "Seleccionar la zòna"
 
 #: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
 #: data/resources/ui/window.ui:276
@@ -94,11 +97,11 @@ msgstr "Anullar"
 
 #: data/resources/ui/area-selector.ui:25
 msgid "Done"
-msgstr ""
+msgstr "Acabat"
 
 #: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
-msgstr ""
+msgstr "Desfar la seleccion"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -106,27 +109,27 @@ msgstr "General"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Relambi (en segondas)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Dossièr d'enregistrament"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Vidèo"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Frequéncia d'imatge"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Aquesta velocitat d’imatge pòt causar problèmas de performança."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -134,7 +137,7 @@ msgstr "Dobrir lo menú"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Afichar las preferéncias"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -158,7 +161,7 @@ msgstr "Alternar pausa"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "Anullar l'enregistrament"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -166,7 +169,7 @@ msgstr "Paramètres"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Alternar l’àudio del burèu"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -190,19 +193,19 @@ msgstr "Capturar una seleccion de l’ecran"
 
 #: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Activar l’àudio del burèu"
 
 #: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Desactivar l’àudio del burèu"
 
 #: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Activar lo microfòn"
 
 #: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Desactivar lo microfòn"
 
 #: data/resources/ui/window.ui:105
 msgid "Show Pointer"
@@ -210,11 +213,11 @@ msgstr "Mostrar lo puntaire"
 
 #: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Rescondre lo puntador"
 
 #: data/resources/ui/window.ui:116
 msgid "Start Recording"
-msgstr ""
+msgstr "Aviar l'enregistrament"
 
 #: data/resources/ui/window.ui:117
 msgid "Record"
@@ -222,11 +225,11 @@ msgstr "Enregistrar"
 
 #: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Oblidar las fonts d’entradas de las vidèos precedentas"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop Recording"
-msgstr ""
+msgstr "Arrestar l'enregistrament"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
@@ -234,7 +237,7 @@ msgstr "Arrestar"
 
 #: data/resources/ui/window.ui:192
 msgid "Pause Recording"
-msgstr ""
+msgstr "Metre en pausa l'enregistrament"
 
 #: data/resources/ui/window.ui:215
 msgid "Recording in…"
@@ -242,7 +245,7 @@ msgstr "Enregistrament d’aquí…"
 
 #: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Anullar l'enregistrament"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
@@ -262,7 +265,7 @@ msgstr "_A prepaus de Kooha"
 
 #: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
@@ -271,7 +274,7 @@ msgstr "Quentin PAGÈS"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Far un don (Buy Me a Coffee)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -279,48 +282,48 @@ msgstr "GitHub"
 
 #: src/about.rs:42
 msgid "Translate"
-msgstr ""
+msgstr "Traduire"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:110
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Captura vidèo salvada"
 
 #: src/application.rs:111
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Clicatz aicí per veire la vidèo."
 
 #: src/application.rs:117
 msgid "Show in Files"
-msgstr ""
+msgstr "Mostrar dins los fichièrs"
 
 #: src/area_selector/mod.rs:323
 msgid "approx."
-msgstr ""
+msgstr "aprox."
 
 #: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Asseguratz-vos que PulseAudio es installat sul sistèma."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Fracàs de l’aviada del monitor de periferic"
 
 #: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Fracàs de la connexion al demòni PulseAudio"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Fracàs de la seleccion de l’emplaçament d’enregistrament"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
-msgstr ""
+msgstr "D'acòrdi"
 
 #: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Aqueste format es experimental e pas pres en carga."
 
 #: src/preferences_window.rs:272
 msgid "None"
@@ -340,69 +343,69 @@ msgstr "MP4"
 
 #: src/profile.rs:310
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:343
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:367
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:388
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:403
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:418
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Cap de perfil pas activat"
 
 #: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Fracàs de l’aviada de l’enregistrament"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Consultatz {link} per obténer d’ajuda."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
-msgstr ""
+msgstr "Cap de font pel microfòn pas trobada"
 
 #: src/recording.rs:227
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Cap de font pel nautparlaire del burèu pas trobada"
 
 #: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Un empeuton GStreamer es benlèu pas installat."
 
 #: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Asseguratz-vos que l’emplaçament existís e es accessible."
 
 #: src/recording.rs:459
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Una error se’s producha pendent l’enregistrament"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Fracàs de la dubertura de « {path} » per escritura"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Dubertura impossibla del fichièr per escriure"
 
 #: src/settings.rs:37
 msgid "Select Recordings Folder"
@@ -410,41 +413,43 @@ msgstr "Seleccionar dossièr pels enregistraments"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Fracàs de la bascula en pausa"
 
 #: src/window.rs:179
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Copiar al quichapapièrs"
 
 #: src/window.rs:185
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Copiat al quichapapièrs"
 
 #: src/window.rs:191
 msgid "Show detailed error"
-msgstr ""
+msgstr "Mostrar las errors detalhadas"
 
 #: src/window.rs:213
 msgid "Help"
-msgstr ""
+msgstr "Ajuda"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Dobrir las preferéncias ?"
 
 #: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Lo format precedentament seleccionat es benlèu indisponible. Dorbissètz las "
+"preferéncias e seleccionatz un format per contunhar d’enregistrar."
 
 #: src/window.rs:295
 msgid "Later"
-msgstr ""
+msgstr "Mai tard"
 
 #: src/window.rs:296
 msgid "Open"
-msgstr ""
+msgstr "Dobrir"
 
 #: src/window.rs:354
 msgid "Paused"
