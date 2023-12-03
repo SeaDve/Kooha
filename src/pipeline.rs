@@ -355,6 +355,17 @@ impl Pipeline {
 
         self.set_recording_state(RecordingState::started(gst::ClockTime::ZERO));
 
+        if tracing::enabled!(tracing::Level::DEBUG) {
+            std::fs::write(
+                glib::DateTime::now_local()
+                    .unwrap()
+                    .format("kooha-%F-%H-%M-%S.dot")
+                    .unwrap(),
+                gst::debug_bin_to_dot_data(&imp.inner, gst::DebugGraphDetails::VERBOSE),
+            )
+            .unwrap();
+        }
+
         tracing::debug!("Started recording");
 
         Ok(())
