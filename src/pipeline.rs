@@ -13,7 +13,6 @@ use gtk::{
 use crate::{
     audio_device::{self, Class as AudioDeviceClass},
     screencast_session::Stream,
-    utils,
 };
 
 const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
@@ -677,26 +676,16 @@ impl Pipeline {
         let compositor = gst::ElementFactory::make("compositor")
             .name(COMPOSITOR_NAME)
             .build()?;
-        let convert = gst::ElementFactory::make("videoconvert")
-            .property("chroma-mode", gst_video::VideoChromaMode::None)
-            .property("dither", gst_video::VideoDitherMethod::None)
-            .property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly)
-            .property("n-threads", utils::ideal_thread_count())
-            .build()?;
         let tee = gst::ElementFactory::make("tee")
             .name(VIDEO_TEE_NAME)
             .build()?;
+        let convert = gst::ElementFactory::make("videoconvert").build()?;
         let sink = gst::ElementFactory::make("gtk4paintablesink")
             .name(PAINTABLE_SINK_NAME)
             .build()?;
 
-        imp.inner.add_many([&compositor, &convert, &tee, &sink])?;
-        gst::Element::link_many([&compositor, &convert, &tee])?;
-
-        let tee_src_pad = tee
-            .request_pad_simple("src_%u")
-            .context("Failed to request sink_%u pad from compositor")?;
-        tee_src_pad.link(&sink.static_pad("sink").unwrap())?;
+        imp.inner.add_many([&compositor, &tee, &convert, &sink])?;
+        gst::Element::link_many([&compositor, &tee, &convert, &sink])?;
 
         let bus_watch_guard = imp.inner.bus().unwrap().add_watch_local(
             clone!(@weak self as obj => @default-panic, move |_, message| {
