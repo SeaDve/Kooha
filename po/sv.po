@@ -4,13 +4,14 @@
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
 # Luna Jernberg <droidbittin@gmail.com>, 2021, 2022, 2023.
 # Kristoffer Grundström <swedishsailfishosuser@tutanota.com>, 2021.
+# bittin1ddc447d824349b2 <bittin@reimu.nl>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-02-20 11:37+0000\n"
-"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"PO-Revision-Date: 2023-12-05 09:05+0000\n"
+"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "sv/>\n"
 "Language: sv\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.3-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -276,7 +277,7 @@ msgstr ""
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Donera (köp mig en kaffe)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -317,7 +318,7 @@ msgstr "Misslyckades att ansluta till PulseAudio-demonen"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Misslyckades att välja plats för att spara"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
@@ -378,7 +379,7 @@ msgstr "Misslyckades att starta inspelningen"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Kolla in {link} för hjälp."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
@@ -403,7 +404,7 @@ msgstr "Ett fel uppstod under inspelningen"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Misslyckades att öppna \"{path}\" för skrivning"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
@@ -423,7 +424,7 @@ msgstr "Kopiera till urklipp"
 
 #: src/window.rs:185
 msgid "Copied to clipboard"
-msgstr "Kopierades till urklipp"
+msgstr "Kopierad till urklipp"
 
 #: src/window.rs:191
 msgid "Show detailed error"
