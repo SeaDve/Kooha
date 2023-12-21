@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Rantyrant <diseasemonger@gmail.com>, 2022.
+# Johan Fagerberg <johanringmann@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2022-02-07 12:55+0000\n"
-"Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
+"PO-Revision-Date: 2023-12-21 17:09+0000\n"
+"Last-Translator: Johan Fagerberg <johanringmann@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/kooha/pot-file/da/"
 ">\n"
 "Language: da\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -55,49 +56,51 @@ msgstr "De vigtigste funktioner i Kooha omfatter følgende:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Optag mikrofon, skrivebordslyd, eller begge på samme tid"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Understøttelse af WebM, MP4, GIF og Matroska formater"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Vælg en skærm, et vindue, eller en del af skærmen til at optage"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
-msgstr ""
+msgstr "🗔 Valg af flere kilder"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Konfigurerbar lagringssted, markør synlighed, billedhastighed, og "
+"forsinkelse"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Eksperimentel hardwarebaseret indkodning"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
 msgid "Dave Patrick Caberto"
-msgstr ""
+msgstr "Dave Patrick Caberto"
 
 #: data/resources/ui/area-selector.ui:14
 msgid "Select Area"
-msgstr ""
+msgstr "Vælg område"
 
 #: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
 #: data/resources/ui/window.ui:276
 msgid "Cancel"
-msgstr ""
+msgstr "Annuller"
 
 #: data/resources/ui/area-selector.ui:25
 msgid "Done"
-msgstr ""
+msgstr "Færdig"
 
 #: data/resources/ui/area-selector.ui:34
 msgid "Reset Selection"
-msgstr ""
+msgstr "Nulstil valg"
 
 #: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -105,27 +108,27 @@ msgstr "Generelt"
 
 #: data/resources/ui/preferences-window.ui:14
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Forsinkelse (sekunder)"
 
 #: data/resources/ui/preferences-window.ui:32
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Optagelsesmappe"
 
 #: data/resources/ui/preferences-window.ui:51
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences-window.ui:54
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/resources/ui/preferences-window.ui:59
 msgid "Frame Rate"
-msgstr ""
+msgstr "Billedhastighed"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr ""
+msgstr "Denne billedhastighed kan forårsage problemer med ydeevnen."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -133,7 +136,7 @@ msgstr "Åbn menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Vis indstillinger"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -157,7 +160,7 @@ msgstr "Slå pause til/fra"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "Annuller optagelse"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -165,7 +168,7 @@ msgstr "Instillinger"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Slå skrivebordslyd til/fra"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -189,19 +192,19 @@ msgstr "Optag et udvalg af skærmen"
 
 #: data/resources/ui/window.ui:87
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Slå skrivebordslyd til"
 
 #: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Slå skrivebordslyd fra"
 
 #: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Slå mikrofon til"
 
 #: data/resources/ui/window.ui:97
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Slå mikrofon fra"
 
 #: data/resources/ui/window.ui:105
 msgid "Show Pointer"
@@ -209,11 +212,11 @@ msgstr "Vis markør"
 
 #: data/resources/ui/window.ui:106
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Skjul markør"
 
 #: data/resources/ui/window.ui:116
 msgid "Start Recording"
-msgstr ""
+msgstr "Start optagelse"
 
 #: data/resources/ui/window.ui:117
 msgid "Record"
@@ -221,11 +224,11 @@ msgstr "Optag"
 
 #: data/resources/ui/window.ui:130
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Glem tidligere valgte videokilder"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop Recording"
-msgstr ""
+msgstr "Stop optagelse"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop"
@@ -233,7 +236,7 @@ msgstr "Stop"
 
 #: data/resources/ui/window.ui:192
 msgid "Pause Recording"
-msgstr ""
+msgstr "Pause optagelse"
 
 #: data/resources/ui/window.ui:215
 msgid "Recording in…"
@@ -241,7 +244,7 @@ msgstr "Optager om…"
 
 #: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Annuller optagelse"
 
 #: data/resources/ui/window.ui:258
 msgid "Flushing…"
@@ -249,7 +252,7 @@ msgstr "Renser…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr ""
+msgstr "_Indstillinger"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
@@ -261,7 +264,7 @@ msgstr "_Om Kooha"
 
 #: src/about.rs:19
 msgid "© 2022 Dave Patrick Caberto"
-msgstr ""
+msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
@@ -270,7 +273,7 @@ msgstr "Marc Eckert"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Donere (Buy Me a Coffee)"
 
 #: src/about.rs:40
 msgid "GitHub"
@@ -278,48 +281,48 @@ msgstr "GitHub"
 
 #: src/about.rs:42
 msgid "Translate"
-msgstr ""
+msgstr "Oversæt"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:110
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Optagelse færdig"
 
 #: src/application.rs:111
 msgid "Click here to view the video."
-msgstr ""
+msgstr "Klik her for at se video."
 
 #: src/application.rs:117
 msgid "Show in Files"
-msgstr ""
+msgstr "Vis i Filer"
 
 #: src/area_selector/mod.rs:323
 msgid "approx."
-msgstr ""
+msgstr "ca."
 
 #: src/audio_device.rs:53 src/audio_device.rs:169
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Sørg for, at du har PulseAudio installeret på dit system."
 
 #: src/audio_device.rs:54
 msgid "Failed to start device monitor"
-msgstr ""
+msgstr "Kunne ikke starte enhedsmonitor"
 
 #: src/audio_device.rs:170
 msgid "Failed to connect to PulseAudio daemon"
-msgstr ""
+msgstr "Kunne ikke forbinde til PulseAudio daemon"
 
 #: src/preferences_window.rs:56
 msgid "Failed to select saving location"
-msgstr ""
+msgstr "Kunne ikke vælge lagringslokation"
 
 #: src/preferences_window.rs:61 src/window.rs:216
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Dette format er eksperimentelt og usupporteret."
 
 #: src/preferences_window.rs:272
 msgid "None"
@@ -339,69 +342,69 @@ msgstr "MP4"
 
 #: src/profile.rs:310
 msgid "Matroska"
-msgstr ""
+msgstr "Matroska"
 
 #: src/profile.rs:343
 msgid "WebM VP9"
-msgstr ""
+msgstr "WebM VP9"
 
 #: src/profile.rs:367
 msgid "WebM AV1"
-msgstr ""
+msgstr "WebM AV1"
 
 #: src/profile.rs:388
 msgid "WebM VAAPI VP8"
-msgstr ""
+msgstr "WebM VAAPI VP8"
 
 #: src/profile.rs:403
 msgid "WebM VAAPI VP9"
-msgstr ""
+msgstr "WebM VAAPI VP9"
 
 #: src/profile.rs:418
 msgid "WebM VAAPI H264"
-msgstr ""
+msgstr "WebM VAAPI H264"
 
 #: src/recording.rs:37
 msgid "No active profile"
-msgstr ""
+msgstr "Ingen aktiv profil"
 
 #: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Kunne ikke starte optagelse"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:178
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Se {link} for hjælp."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
-msgstr ""
+msgstr "Ingen mikrofonkilde fundet"
 
 #: src/recording.rs:227
 msgid "No desktop speaker source found"
-msgstr ""
+msgstr "Ingen skrivebords højtalerkilde fundet"
 
 #: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Et GStreamer plugin er muligvis ikke installeret."
 
 #: src/recording.rs:259 src/recording.rs:463
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Tjek at lagrinsstedet eksisterer og er tilgængeligt."
 
 #: src/recording.rs:459
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Der opstod en fejl under optagelsen"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:472
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Kunne ikke åbne “{path}” til skrivning"
 
 #: src/recording.rs:476
 msgid "Failed to open file for writing"
-msgstr ""
+msgstr "Kunne ikke åbne fil til skrivning"
 
 #: src/settings.rs:37
 msgid "Select Recordings Folder"
@@ -409,41 +412,43 @@ msgstr "Vælg Optagelsesmappe"
 
 #: src/window.rs:70
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Kunne ikke slå pause til/fra"
 
 #: src/window.rs:179
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopier til udklipsholder"
 
 #: src/window.rs:185
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopieret til udklipsholder"
 
 #: src/window.rs:191
 msgid "Show detailed error"
-msgstr ""
+msgstr "Vis detaljeret fejl"
 
 #: src/window.rs:213
 msgid "Help"
-msgstr ""
+msgstr "Hjælp"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Åben Indstillinger?"
 
 #: src/window.rs:290
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Det tidligere valgte format kan have været utilgængeligt. Åben indstillinger "
+"og vælg et format for at fortsætte optagelse."
 
 #: src/window.rs:295
 msgid "Later"
-msgstr ""
+msgstr "Senere"
 
 #: src/window.rs:296
 msgid "Open"
-msgstr ""
+msgstr "Åben"
 
 #: src/window.rs:354
 msgid "Paused"
