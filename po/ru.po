@@ -13,13 +13,13 @@
 # Daudix UFO <ddaudix@gmail.com>, 2022.
 # Vik <xasertop@gmail.com>, 2022.
 # Vik <k3kelm4vw@mozmail.com>, 2022.
-# Сергей <asvmail.as@gmail.com>, 2023.
+# Сергей <asvmail.as@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-10-04 18:11+0000\n"
+"PO-Revision-Date: 2024-01-02 14:49+0000\n"
 "Last-Translator: Сергей <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -40,7 +40,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
-msgstr "Записывайте ваш экран элегантно"
+msgstr "Записывайте экран элегантно"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -60,17 +60,15 @@ msgid ""
 msgstr ""
 "Kooha — это простая программа для записи экрана с минималистичным "
 "интерфейсом. Вы можете просто нажать кнопку записи без необходимости "
-"настройки кучи параметров."
+"настраивать кучу параметров."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "Основные функции Kooha включают следующее:"
+msgstr "Основные функции Kooha включают:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
-"🎙️ Записывайте звук с микрофона, звук рабочего стола или и то, и другое "
-"одновременно"
+msgstr "🎙️ Запись с микрофона, компьютера или все сразу"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -78,7 +76,7 @@ msgstr "📼 Поддержка форматов WebM, MP4, GIF и Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr "🖥️ Выберите монитор, окно или часть экрана для записи"
+msgstr "🖥️ Выбор монитора, окна или части экрана для записи"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🗔 Multiple sources selection"
@@ -88,8 +86,7 @@ msgstr "🗔 Выбор нескольких источников"
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
-"🛠️ Настраиваемое место сохранения, видимость указателя мыши, частота кадров и "
-"задержка"
+"🛠️ Настройка места сохранения, видимости курсора, частоты кадров и задержки"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
@@ -142,7 +139,7 @@ msgstr "Частота кадров"
 
 #: data/resources/ui/preferences-window.ui:65
 msgid "This frame rate may cause performance issues."
-msgstr "Эта частота кадров может вызвать проблемы с производительностью."
+msgstr "Такая частота кадров может вызвать проблемы с производительностью."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -337,7 +334,7 @@ msgstr "Ок"
 
 #: src/preferences_window.rs:243
 msgid "This format is experimental and unsupported."
-msgstr "Этот формат экспериментальный и не поддерживается."
+msgstr "Этот формат является экспериментальным и не поддерживается."
 
 #: src/preferences_window.rs:272
 msgid "None"
@@ -394,11 +391,11 @@ msgstr "Для получения помощи посетите {link}."
 
 #: src/recording.rs:220
 msgid "No microphone source found"
-msgstr "Источник микрофона не найден"
+msgstr "Микрофон не найден"
 
 #: src/recording.rs:227
 msgid "No desktop speaker source found"
-msgstr "Источник динамика компьютера не найден"
+msgstr "Динамик компьютера не найден"
 
 #: src/recording.rs:234
 msgid "A GStreamer plugin may not be installed."
@@ -439,7 +436,7 @@ msgstr "Скопировано в буфер обмена"
 
 #: src/window.rs:191
 msgid "Show detailed error"
-msgstr "Показать подробную ошибку"
+msgstr "Показать подробности ошибки"
 
 #: src/window.rs:213
 msgid "Help"
