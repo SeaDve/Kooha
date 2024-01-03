@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2024-01-02 14:49+0000\n"
+"PO-Revision-Date: 2024-01-03 10:21+0000\n"
 "Last-Translator: Сергей <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/kooha/pot-file/"
 "ru/>\n"
@@ -163,7 +163,7 @@ msgstr "Запись"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr "Переключить запись"
+msgstr "Вкл./Выкл. запись"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
@@ -179,15 +179,15 @@ msgstr "Настройки"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr "Переключить звук компьютера"
+msgstr "Вкл./Выкл. звук компьютера"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr "Переключить микрофон"
+msgstr "Вкл./Выкл. микрофон"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr "Переключить курсор"
+msgstr "Вкл./Выкл. курсор"
 
 #: data/resources/ui/window.ui:25
 msgid "Main Menu"
@@ -207,7 +207,7 @@ msgstr "Включить звук компьютера"
 
 #: data/resources/ui/window.ui:88
 msgid "Disable Desktop Audio"
-msgstr "Отключить звук компьютера"
+msgstr "Выключить звук компьютера"
 
 #: data/resources/ui/window.ui:96
 msgid "Enable Microphone"
