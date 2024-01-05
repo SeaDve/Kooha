@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021, 2022.
 # ToldYouThat <itoldyouthat@protonmail.com>, 2021.
-# Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2023, 2024.
 # Oğuz Ersen <oguz@ersen.moe>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-10-04 18:11+0000\n"
+"PO-Revision-Date: 2024-01-05 08:08+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/kooha/pot-file/"
 "tr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -274,7 +274,8 @@ msgstr "© 2022 Dave Patrick Caberto"
 msgid "translator-credits"
 msgstr ""
 "Ümit Solmaz\n"
-"Oğuz Ersen"
+"Oğuz Ersen\n"
+"Sabri Ünal"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
