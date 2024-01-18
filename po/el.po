@@ -3,22 +3,22 @@
 # This file is distributed under the same license as the kooha package.
 # Nikos <dizars1776@yahoo.gr>, 2022.
 # Nikolaos Georgiou <dizars1776@yahoo.gr>, 2022.
-# greek anon <rnation@bbq59.xyz>, 2023.
+# greek anon <rnation@bbq59.xyz>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2023-09-02 10:51+0000\n"
+"PO-Revision-Date: 2024-01-18 07:31+0000\n"
 "Last-Translator: greek anon <rnation@bbq59.xyz>\n"
-"Language-Team: Greek <https://hosted.weblate.org/projects/kooha/pot-file/el/"
-">\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/kooha/pot-file/el/>"
+"\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -275,7 +275,7 @@ msgstr "συντελεστές-μετάφρασης"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Δωρεά (Αγόρασέ μου έναν καφέ)"
 
 #: src/about.rs:40
 msgid "GitHub"
