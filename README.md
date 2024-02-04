@@ -21,8 +21,8 @@
 <br>
 
 <p align="center">
-  <a href="https://hosted.weblate.org/engage/kooha/">
-    <img alt="Translation status" src="https://hosted.weblate.org/widgets/kooha/-/pot-file/svg-badge.svg"/>
+  <a href="https://hosted.weblate.org/engage/seadve/">
+    <img alt="Translation status" src="https://hosted.weblate.org/widgets/seadve/-/kooha/svg-badge.svg"/>
   </a>
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha">
     <img alt="Flathub downloads" src="https://img.shields.io/badge/dynamic/json?color=informational&label=downloads&logo=flathub&logoColor=white&query=%24.installs_total&url=https%3A%2F%2Fflathub.org%2Fapi%2Fv2%2Fstats%2Fio.github.seadve.Kooha"/>
@@ -137,7 +137,7 @@ You can also check out other third-party packages on [Repology](https://repology
 ## 🙌 Help translate Kooha
 
 You can help Kooha translate into your native language. If you found any typos
-or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/kooha/) platform.
+or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/seadve/) platform.
 
 ## ☕ Support me and the project
 
@@ -148,4 +148,4 @@ would like to support it, you may [buy me a coffee](https://www.buymeacoffee.com
 
 [RecApp](https://github.com/amikha1lov/RecApp) greatly inspired the creation of Kooha.
 And also, a warm thank you to all the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors)
-and [translators](https://hosted.weblate.org/engage/kooha/) from Weblate.
+and [translators](https://hosted.weblate.org/engage/seadve/) from Weblate.

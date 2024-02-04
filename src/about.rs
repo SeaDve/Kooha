@@ -40,7 +40,7 @@ pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
     win.add_link(&gettext("GitHub"), "https://github.com/SeaDve/Kooha");
     win.add_link(
         &gettext("Translate"),
-        "https://hosted.weblate.org/projects/kooha/pot-file",
+        "https://hosted.weblate.org/projects/seadve/kooha",
     );
 
     win.set_transient_for(transient_for);
