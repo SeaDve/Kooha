@@ -10,10 +10,10 @@ msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-01 09:20+0800\n"
-"PO-Revision-Date: 2024-01-05 08:08+0000\n"
+"PO-Revision-Date: 2024-02-05 20:01+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/"
-"tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -272,10 +272,7 @@ msgstr "© 2022 Dave Patrick Caberto"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
 msgid "translator-credits"
-msgstr ""
-"Ümit Solmaz\n"
-"Oğuz Ersen\n"
-"Sabri Ünal"
+msgstr "Sabri Ünal <libreajans@gmail.com>"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
@@ -300,7 +297,7 @@ msgstr "Videoyu görüntülemek için tıklayınız."
 
 #: src/application.rs:117
 msgid "Show in Files"
-msgstr "Dosyalarda Göster"
+msgstr "Dosyalarʼda Göster"
 
 #: src/area_selector/mod.rs:323
 msgid "approx."
