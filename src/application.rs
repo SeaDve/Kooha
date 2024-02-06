@@ -144,7 +144,7 @@ impl Application {
             if !err.matches(gio::IOErrorEnum::Cancelled) {
                 tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
 
-                self.window().present_error(&err.into());
+                // self.window().present_error(&err.into());
             }
         }
     }
@@ -196,9 +196,7 @@ impl Application {
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
             if let Some(window) = obj.imp().window.get().and_then(|window| window.upgrade()) {
-                if let Err(err) = window.close() {
-                    tracing::warn!("Failed to close window: {:?}", err);
-                }
+                window.close();
             }
             obj.quit();
         }));
@@ -212,9 +210,9 @@ impl Application {
         self.set_accels_for_action("win.record-speaker", &["<Control>a"]);
         self.set_accels_for_action("win.record-mic", &["<Control>m"]);
         self.set_accels_for_action("win.show-pointer", &["<Control>p"]);
-        self.set_accels_for_action("win.toggle-record", &["<Control>r"]);
+        self.set_accels_for_action("win.toggle-recording", &["<Control>r"]);
         // self.set_accels_for_action("win.toggle-pause", &["<Control>k"]); // See issue #112 in GitHub repo
-        self.set_accels_for_action("win.cancel-record", &["<Control>c"]);
+        self.set_accels_for_action("win.cancel-recording", &["<Control>c"]);
     }
 }
 

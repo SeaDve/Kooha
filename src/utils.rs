@@ -4,10 +4,11 @@ use gtk::{
     glib::{self, prelude::*},
 };
 
-use std::{env, path::Path};
+use std::env;
 
 use crate::Application;
 
+const MIN_THREAD_COUNT: u32 = 1;
 const MAX_THREAD_COUNT: u32 = 64;
 
 /// Get the global instance of `Application`.
@@ -24,14 +25,9 @@ pub fn app_instance() -> Application {
     gio::Application::default().unwrap().downcast().unwrap()
 }
 
-/// Whether the application is running in a flatpak sandbox.
-pub fn is_flatpak() -> bool {
-    Path::new("/.flatpak-info").exists()
-}
-
 /// Ideal thread count to use for `GStreamer` processing.
 pub fn ideal_thread_count() -> u32 {
-    glib::num_processors().min(MAX_THREAD_COUNT)
+    glib::num_processors().clamp(MIN_THREAD_COUNT, MAX_THREAD_COUNT)
 }
 
 pub fn is_experimental_mode() -> bool {

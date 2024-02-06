@@ -1,3 +1,11 @@
+.view-port {
+  padding: 6px;
+}
+
+.red {
+  color: #e01b24;
+}
+
 row.error-view {
   padding: 0px;
 }
