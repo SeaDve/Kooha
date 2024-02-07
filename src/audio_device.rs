@@ -6,13 +6,13 @@ use gtk::gio;
 use crate::help::ResultExt;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
-pub enum Class {
+pub enum AudioDeviceClass {
     #[default]
     Source,
     Sink,
 }
 
-impl Class {
+impl AudioDeviceClass {
     fn from_str(string: &str) -> Option<Self> {
         match string {
             "Audio/Source" => Some(Self::Source),
@@ -29,7 +29,7 @@ impl Class {
     }
 }
 
-pub async fn find_default_name(class: Class) -> Result<String> {
+pub async fn find_default_name(class: AudioDeviceClass) -> Result<String> {
     match gio::spawn_blocking(move || find_default_name_gst(class))
         .await
         .map_err(|err| anyhow!("Failed to spawn blocking task: {:?}", err))?
@@ -45,7 +45,7 @@ pub async fn find_default_name(class: Class) -> Result<String> {
     }
 }
 
-fn find_default_name_gst(class: Class) -> Result<String> {
+fn find_default_name_gst(class: AudioDeviceClass) -> Result<String> {
     let device_monitor = gst::DeviceMonitor::new();
     device_monitor.add_filter(Some(class.as_str()), None);
 
@@ -59,7 +59,7 @@ fn find_default_name_gst(class: Class) -> Result<String> {
     tracing::debug!("Finding device name for class `{:?}`", class);
 
     for device in devices {
-        let Some(device_class) = Class::from_str(&device.device_class()) else {
+        let Some(device_class) = AudioDeviceClass::from_str(&device.device_class()) else {
             tracing::debug!(
                 "Skipping device `{}` as it has unknown device class `{}`",
                 device.name(),
@@ -112,7 +112,7 @@ fn find_default_name_gst(class: Class) -> Result<String> {
             }
         };
 
-        if device_class == Class::Sink {
+        if device_class == AudioDeviceClass::Sink {
             node_name.push_str(".monitor");
         }
 
@@ -135,7 +135,7 @@ mod pa {
 
     use std::time::Duration;
 
-    use super::Class;
+    use super::AudioDeviceClass;
     use crate::{config::APP_ID, help::ResultExt};
 
     const DEFAULT_TIMEOUT: Duration = Duration::from_secs(2);
@@ -194,7 +194,7 @@ mod pa {
             Ok(Self { inner, main_loop })
         }
 
-        pub async fn find_default_device_name(&self, class: Class) -> Result<String> {
+        pub async fn find_default_device_name(&self, class: AudioDeviceClass) -> Result<String> {
             let (tx, rx) = oneshot::channel();
             let mut tx = Some(tx);
 
@@ -205,7 +205,7 @@ mod pa {
                 };
 
                 match class {
-                    Class::Source => {
+                    AudioDeviceClass::Source => {
                         let _ = tx.send(
                             server_info
                                 .default_source_name
@@ -213,7 +213,7 @@ mod pa {
                                 .map(|s| s.to_string()),
                         );
                     }
-                    Class::Sink => {
+                    AudioDeviceClass::Sink => {
                         let _ = tx.send(
                             server_info
                                 .default_sink_name

@@ -16,7 +16,7 @@ use std::{
 
 use crate::{
     area_selector::AreaSelector,
-    audio_device::{self, Class as AudioDeviceClass},
+    audio_device::{self, AudioDeviceClass},
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
@@ -42,7 +42,7 @@ impl error::Error for NoProfileError {}
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, glib::Boxed)]
 #[boxed_type(name = "KoohaRecordingState")]
-pub enum State {
+pub enum RecordingState {
     #[default]
     Init,
     Delayed {
@@ -67,7 +67,7 @@ mod imp {
     #[properties(wrapper_type = super::Recording)]
     pub struct Recording {
         #[property(get)]
-        pub(super) state: Cell<State>,
+        pub(super) state: Cell<RecordingState>,
         #[property(get)]
         pub(super) duration: Cell<gst::ClockTime>,
 
@@ -128,7 +128,7 @@ impl Recording {
     }
 
     pub async fn start(&self, parent: Option<&impl IsA<gtk::Window>>, settings: &Settings) {
-        if !matches!(self.state(), State::Init) {
+        if !matches!(self.state(), RecordingState::Init) {
             tracing::error!("Trying to start recording on a non-init state");
             return;
         }
@@ -200,7 +200,7 @@ impl Recording {
         let timer = Timer::new(
             settings.record_delay(),
             clone!(@weak self as obj => move |secs_left| {
-                obj.set_state(State::Delayed {
+                obj.set_state(RecordingState::Delayed {
                     secs_left
                 });
             }),
@@ -268,7 +268,7 @@ impl Recording {
 
     pub fn pause(&self) -> Result<()> {
         ensure!(
-            matches!(self.state(), State::Recording),
+            matches!(self.state(), RecordingState::Recording),
             "Recording can only be paused from recording state"
         );
 
@@ -281,7 +281,7 @@ impl Recording {
 
     pub fn resume(&self) -> Result<()> {
         ensure!(
-            matches!(self.state(), State::Paused),
+            matches!(self.state(), RecordingState::Paused),
             "Recording can only be resumed from paused state"
         );
 
@@ -295,12 +295,15 @@ impl Recording {
     pub fn stop(&self) {
         let state = self.state();
 
-        if matches!(state, State::Init | State::Flushing | State::Finished) {
+        if matches!(
+            state,
+            RecordingState::Init | RecordingState::Flushing | RecordingState::Finished
+        ) {
             tracing::error!("Trying to stop recording on a `{:?}` state", state);
             return;
         }
 
-        self.set_state(State::Flushing);
+        self.set_state(RecordingState::Flushing);
 
         tracing::debug!("Sending eos event to pipeline");
         // FIXME Maybe it is needed to verify if we received the same
@@ -362,7 +365,7 @@ impl Recording {
         )
     }
 
-    fn set_state(&self, state: State) {
+    fn set_state(&self, state: RecordingState) {
         if state == self.state() {
             return;
         }
@@ -386,7 +389,7 @@ impl Recording {
     }
 
     fn set_finished(&self, res: Result<gio::File>) {
-        self.set_state(State::Finished);
+        self.set_state(RecordingState::Finished);
 
         let result = BoxedResult(Rc::new(res));
         self.emit_by_name::<()>("finished", &[&result]);
@@ -464,7 +467,7 @@ impl Recording {
             MessageView::Eos(..) => {
                 tracing::debug!("Eos signal received from record bus");
 
-                if self.state() != State::Flushing {
+                if self.state() != RecordingState::Flushing {
                     tracing::error!("Received an Eos signal on a {:?} state", self.state());
                 }
 
@@ -509,8 +512,8 @@ impl Recording {
                 );
 
                 let state = match new_state {
-                    gst::State::Paused => State::Paused,
-                    gst::State::Playing => State::Recording,
+                    gst::State::Paused => RecordingState::Paused,
+                    gst::State::Playing => RecordingState::Recording,
                     _ => return glib::ControlFlow::Continue,
                 };
                 self.set_state(state);

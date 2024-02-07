@@ -13,7 +13,7 @@ use crate::{
     cancelled::Cancelled,
     config::PROFILE,
     help::Help,
-    recording::{NoProfileError, Recording, State as RecordingState},
+    recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
     toggle_button::ToggleButton,
     utils, Application,

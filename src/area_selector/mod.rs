@@ -20,7 +20,7 @@ const PREVIEW_FRAMERATE: u32 = 60;
 const ASSUMED_HEADER_BAR_HEIGHT: f64 = 47.0;
 
 #[derive(Debug)]
-pub struct Data {
+pub struct SelectAreaData {
     /// Selection relative to paintable_rect
     pub selection: Selection,
     /// The geometry of paintable where the stream is displayed
@@ -148,7 +148,7 @@ impl AreaSelector {
         transient_for: Option<&impl IsA<gtk::Window>>,
         fd: RawFd,
         streams: &[Stream],
-    ) -> Result<Data> {
+    ) -> Result<SelectAreaData> {
         let this: Self = glib::Object::new();
         let imp = this.imp();
 
@@ -229,7 +229,7 @@ impl AreaSelector {
         // Wait for user response
         result_rx.await.unwrap()?;
 
-        Ok(Data {
+        Ok(SelectAreaData {
             selection: imp.view_port.selection().unwrap(),
             paintable_rect: imp.view_port.paintable_rect().unwrap(),
             stream_size: (stream_width, stream_height),

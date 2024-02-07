@@ -8,9 +8,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use crate::{
-    area_selector::Data as SelectAreaData, profile::Profile, screencast_session::Stream, utils,
-};
+use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session::Stream, utils};
 
 // TODO
 // * Do we need restrictions?
