@@ -15,6 +15,7 @@ use std::{
 };
 
 use crate::{
+    application::Application,
     area_selector::AreaSelector,
     audio_device::{self, AudioDeviceClass},
     cancelled::Cancelled,
@@ -192,7 +193,7 @@ impl Recording {
         // select area
         if settings.capture_mode() == CaptureMode::Selection {
             let data =
-                AreaSelector::present(Some(&utils::app_instance().window()), fd, &streams).await?;
+                AreaSelector::present(Some(&Application::get().window()), fd, &streams).await?;
             pipeline_builder.select_area_data(data);
         }
 

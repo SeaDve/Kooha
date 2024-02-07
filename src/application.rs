@@ -81,6 +81,20 @@ impl Application {
             .build()
     }
 
+    /// Returns the global instance of `Application`.
+    ///
+    /// # Panics
+    ///
+    /// Panics if the app is not running or if this is called on a non-main thread.
+    pub fn get() -> Self {
+        debug_assert!(
+            gtk::is_initialized_main_thread(),
+            "application must only be accessed in the main thread"
+        );
+
+        gio::Application::default().unwrap().downcast().unwrap()
+    }
+
     pub fn settings(&self) -> &Settings {
         self.imp().settings.get_or_init(|| {
             let settings = Settings::default();

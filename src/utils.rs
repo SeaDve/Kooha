@@ -1,28 +1,9 @@
 use anyhow::{anyhow, Result};
-use gtk::{
-    gio,
-    glib::{self, prelude::*},
-};
+use gtk::glib;
 
 use std::env;
 
-use crate::Application;
-
 const MAX_THREAD_COUNT: u32 = 64;
-
-/// Get the global instance of `Application`.
-///
-/// # Panics
-/// Panics if the application is not running or if this is
-/// called on a non-main thread.
-pub fn app_instance() -> Application {
-    debug_assert!(
-        gtk::is_initialized_main_thread(),
-        "Application can only be accessed in the main thread"
-    );
-
-    gio::Application::default().unwrap().downcast().unwrap()
-}
 
 /// Ideal thread count to use for `GStreamer` processing.
 pub fn ideal_thread_count() -> u32 {

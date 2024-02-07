@@ -16,7 +16,7 @@ use crate::{
     recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
     toggle_button::ToggleButton,
-    utils, Application,
+    Application,
 };
 
 mod imp {
@@ -79,7 +79,7 @@ mod imp {
             });
 
             klass.install_action("win.forget-video-sources", None, move |_obj, _, _| {
-                utils::app_instance()
+                Application::get()
                     .settings()
                     .set_screencast_restore_token("");
             });
@@ -243,7 +243,7 @@ impl Window {
             .replace(Some((recording.clone(), handler_ids)));
 
         recording
-            .start(Some(self), utils::app_instance().settings())
+            .start(Some(self), Application::get().settings())
             .await;
     }
 
@@ -274,7 +274,7 @@ impl Window {
 
         match res {
             Ok(ref recording_file) => {
-                let application = utils::app_instance();
+                let application = Application::get();
                 application.send_record_success_notification(recording_file);
 
                 let recent_manager = gtk::RecentManager::default();
@@ -298,7 +298,7 @@ impl Window {
                     d.set_response_appearance(OPEN_RESPONSE, adw::ResponseAppearance::Suggested);
                     d.connect_response(Some(OPEN_RESPONSE), |d, _| {
                         d.close();
-                        utils::app_instance().present_preferences();
+                        Application::get().present_preferences();
                     });
                     d.present();
                 } else {
@@ -383,14 +383,14 @@ impl Window {
     fn update_title_label(&self) {
         let imp = self.imp();
 
-        match utils::app_instance().settings().capture_mode() {
+        match Application::get().settings().capture_mode() {
             CaptureMode::MonitorWindow => imp.title.set_title(&gettext("Normal")),
             CaptureMode::Selection => imp.title.set_title(&gettext("Selection")),
         }
     }
 
     fn update_audio_toggles_sensitivity(&self) {
-        let is_enabled = utils::app_instance()
+        let is_enabled = Application::get()
             .settings()
             .profile()
             .map_or(true, |profile| profile.supports_audio());
@@ -400,7 +400,7 @@ impl Window {
     }
 
     fn update_forget_video_sources_action(&self) {
-        let has_restore_token = !utils::app_instance()
+        let has_restore_token = !Application::get()
             .settings()
             .screencast_restore_token()
             .is_empty();
@@ -413,7 +413,7 @@ impl Window {
     }
 
     fn setup_settings(&self) {
-        let app = utils::app_instance();
+        let app = Application::get();
         let settings = app.settings();
 
         settings.connect_capture_mode_changed(clone!(@weak self as obj => move |_| {
