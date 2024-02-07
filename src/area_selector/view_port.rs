@@ -19,6 +19,7 @@ use std::{
 // * Add animation when entering/leaving selection mode.
 // * Add undo and redo.
 // * Add minimum selection size.
+// * Save size and selection to settings.
 
 const DEFAULT_SIZE: f64 = 100.0;
 
