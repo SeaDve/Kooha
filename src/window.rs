@@ -58,7 +58,8 @@ mod imp {
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
-            ToggleButton::static_type();
+            ToggleButton::ensure_type();
+
             klass.bind_template();
 
             klass.install_action_async("win.toggle-record", None, |obj, _, _| async move {
