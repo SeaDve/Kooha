@@ -1,0 +1,93 @@
+formats:
+  - id: "webm"
+    name: "WebM"
+    file_extension: "webm"
+    video_encoder:
+      vp8enc:
+        max-quantizer: 17
+        cpu-used: 16
+        cq-level: 13
+        deadline: 1
+        static-threshold: 100
+        keyframe-mode: "disabled"
+        buffer-size: 20000
+        threads: ${N_THREADS}
+    audio_encoder: "opusenc"
+    container: "webmmux"
+
+  - id: "mp4"
+    name: "MP4"
+    file_extension: "mp4"
+    video_encoder:
+      x264enc:
+        qp-max: 17
+        speed-preset: "superfast"
+        threads: ${N_THREADS}
+      caps_fields:
+        profile: "baseline"
+    audio_encoder: "lamemp3enc"
+    container: "mp4mux"
+
+  - id: "matroska-x264"
+    name: "Matroska (x264)"
+    file_extension: "mkv"
+    video_encoder:
+      x264enc:
+        qp-max: 17
+        speed-preset: "superfast"
+        threads: ${N_THREADS}
+      caps_fields:
+        profile: "baseline"
+    audio_encoder: "opusenc"
+    container: "matroskamux"
+
+experimental_formats:
+  - id: "webm-vp9"
+    name: "WebM (VP9)"
+    file_extension: "webm"
+    video_encoder:
+      vp9enc:
+        max-quantizer: 17
+        cpu-used: 16
+        cq-level: 13
+        deadline: 1
+        static-threshold:
+        keyframe-mode: "disabled"
+        buffer-size: 20000
+        threads: ${N_THREADS}
+    audio_encoder: "opusenc"
+    container: "webmmux"
+
+  - id: "webm-av1"
+    name: "WebM (AV1)"
+    file_extension: "webm"
+    video_encoder:
+      av1enc:
+        max-quantizer: 17
+        cpu-used: 5
+        end-usage: "cq"
+        buf-sz: 20000
+        threads: ${N_THREADS}
+    audio_encoder: "opusenc"
+    container: "webmmux"
+
+  - id: "vaapi-vp8"
+    name: "WebM VAAPI VP8"
+    file_extension: "mkv"
+    video_encoder: "vaapivp8enc"
+    audio_encoder: "opusenc"
+    container: "webmmux"
+
+  - id: "vaapi-vp9"
+    name: "WebM VAAPI VP9"
+    file_extension: "mkv"
+    video_encoder: "vaapivp9enc"
+    audio_encoder: "opusenc"
+    container: "webmmux"
+
+  - id: "vaapi-h264"
+    name: "WebM VAAPI H264"
+    file_extension: "mkv"
+    video_encoder: "vaapih264enc"
+    audio_encoder: "lamemp3enc"
+    container: "mp4mux"
