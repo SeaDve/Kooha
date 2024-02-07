@@ -13,7 +13,7 @@ anyhow = "1.0.59"
 tracing = "0.1.36"
 tracing-subscriber = "0.3.15"
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
-gtk = { package = "gtk4", version = "0.7", features = ["gnome_45"] }
+gtk = { package = "gtk4", version = "0.7", features = ["v4_14"] }
 gdk-wayland = { package = "gdk4-wayland", version = "0.7" }
 gdk-x11 = { package = "gdk4-x11", version = "0.7" }
 adw = { package = "libadwaita", version = "0.5", features = ["v1_4"] }

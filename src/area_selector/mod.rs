@@ -89,7 +89,7 @@ mod imp {
             });
 
             klass.install_action("area-selector.reset", None, move |obj, _, _| {
-                obj.imp().view_port.reset_selection();
+                obj.imp().view_port.set_selection(None::<Selection>);
             });
 
             klass.add_binding_action(
