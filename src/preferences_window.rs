@@ -52,15 +52,9 @@ mod imp {
                 |obj, _, _| async move {
                     if let Err(err) = obj.settings().select_saving_location(&obj).await {
                         tracing::error!("Failed to select saving location: {:?}", err);
-                        let dialog = adw::MessageDialog::builder()
-                            .heading(gettext("Failed to select saving location"))
-                            .body(err.to_string())
-                            .default_response("ok")
-                            .modal(true)
-                            .build();
-                        dialog.add_response("ok", &gettext("Ok"));
-                        dialog.set_transient_for(Some(&obj));
-                        dialog.present();
+
+                        let toast = adw::Toast::new(&gettext("Failed to set recordings folder"));
+                        obj.add_toast(toast);
                     }
                 },
             );
