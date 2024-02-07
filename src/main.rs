@@ -30,6 +30,7 @@ mod audio_device;
 mod cancelled;
 mod config;
 mod element_properties;
+mod formats;
 mod help;
 mod i18n;
 mod pipeline;
@@ -66,6 +67,8 @@ fn main() -> glib::ExitCode {
 
     let res = gio::Resource::load(RESOURCES_FILE).expect("Could not load gresource file.");
     gio::resources_register(&res);
+
+    formats::get().unwrap();
 
     let app = Application::new();
     app.run()

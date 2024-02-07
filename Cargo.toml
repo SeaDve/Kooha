@@ -29,3 +29,5 @@ futures-util = { version = "0.3", default-features = false }
 gsettings-macro = "0.1.15"
 pulse = { package = "libpulse-binding", version = "2.26.0" }
 pulse_glib = { package = "libpulse-glib-binding", version = "2.25.1" }
+serde_yaml = "0.9.31"
+serde = { version = "1.0.196", features = ["derive"] }
