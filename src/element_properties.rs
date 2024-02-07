@@ -121,7 +121,7 @@ mod tests {
             .into_inner()
             .get::<gst::List>("map")
             .unwrap()
-            .get(0)
+            .first()
             .unwrap()
             .get::<gst::Structure>()
             .unwrap()
