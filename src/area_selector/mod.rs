@@ -145,7 +145,7 @@ glib::wrapper! {
 
 impl AreaSelector {
     pub async fn present(
-        transient_for: Option<&impl IsA<gtk::Window>>,
+        parent: Option<&impl IsA<gtk::Window>>,
         fd: RawFd,
         streams: &[Stream],
     ) -> Result<SelectAreaData> {
@@ -153,15 +153,15 @@ impl AreaSelector {
         let imp = this.imp();
 
         // Setup window size and transient for
-        if let Some(transient_for) = transient_for {
-            let transient_for = transient_for.as_ref();
+        if let Some(parent) = parent {
+            let parent = parent.as_ref();
 
-            this.set_transient_for(Some(transient_for));
+            this.set_transient_for(Some(parent));
             this.set_modal(true);
 
-            let scale_factor = 0.4 / transient_for.scale_factor() as f64;
-            let monitor_geometry = RootExt::display(transient_for)
-                .monitor_at_surface(&transient_for.surface())
+            let scale_factor = 0.4 / parent.scale_factor() as f64;
+            let monitor_geometry = RootExt::display(parent)
+                .monitor_at_surface(&parent.surface())
                 .context("No monitor found")?
                 .geometry();
             this.set_default_width(

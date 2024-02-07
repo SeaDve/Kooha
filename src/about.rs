@@ -9,7 +9,7 @@ use crate::{
     utils,
 };
 
-pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
+pub fn present_window(parent: Option<&impl IsA<gtk::Window>>) {
     let win = adw::AboutWindow::builder()
         .modal(true)
         .application_icon(APP_ID)
@@ -43,7 +43,7 @@ pub fn present_window(transient_for: Option<&impl IsA<gtk::Window>>) {
         "https://hosted.weblate.org/projects/seadve/kooha",
     );
 
-    win.set_transient_for(transient_for);
+    win.set_transient_for(parent);
     win.present();
 }
 
