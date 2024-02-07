@@ -298,7 +298,7 @@ impl Window {
                     d.set_response_appearance(OPEN_RESPONSE, adw::ResponseAppearance::Suggested);
                     d.connect_response(Some(OPEN_RESPONSE), |d, _| {
                         d.close();
-                        Application::get().present_preferences();
+                        Application::get().present_preferences_window();
                     });
                     d.present();
                 } else {

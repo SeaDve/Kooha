@@ -2,7 +2,7 @@ use adw::subclass::prelude::*;
 use gettextrs::gettext;
 use gtk::{
     gio,
-    glib::{self, clone, WeakRef},
+    glib::{self, clone},
     prelude::*,
 };
 
@@ -21,7 +21,6 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct Application {
-        pub(super) window: OnceCell<WeakRef<Window>>,
         pub(super) settings: OnceCell<Settings>,
     }
 
@@ -40,14 +39,12 @@ mod imp {
 
             let obj = self.obj();
 
-            if let Some(window) = self.window.get() {
-                let window = window.upgrade().unwrap();
+            if let Some(window) = obj.windows().first() {
                 window.present();
                 return;
             }
 
             let window = Window::new(&obj);
-            self.window.set(window.downgrade()).unwrap();
             window.present();
         }
 
@@ -109,13 +106,8 @@ impl Application {
         })
     }
 
-    pub fn window(&self) -> Window {
-        self.imp()
-            .window
-            .get()
-            .expect("window must be initialized on activate")
-            .upgrade()
-            .unwrap()
+    pub fn window(&self) -> Option<Window> {
+        self.active_window().map(|w| w.downcast().unwrap())
     }
 
     pub fn send_record_success_notification(&self, recording_file: &gio::File) {
@@ -135,10 +127,10 @@ impl Application {
         self.send_notification(Some("record-success"), &notification);
     }
 
-    pub fn present_preferences(&self) {
+    pub fn present_preferences_window(&self) {
         let window = PreferencesWindow::new(self.settings());
         window.set_modal(true);
-        window.set_transient_for(Some(&self.window()));
+        window.set_transient_for(self.window().as_ref());
         window.present();
     }
 
@@ -152,13 +144,17 @@ impl Application {
 
     async fn try_show_uri(&self, uri: &str) {
         if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(uri)))
-            .launch_future(Some(&self.window()))
+            .launch_future(self.window().as_ref())
             .await
         {
             if !err.matches(gio::IOErrorEnum::Cancelled) {
                 tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
 
-                self.window().present_error(&err.into());
+                if let Some(window) = self.window() {
+                    window.present_error(&err.into());
+                } else {
+                    tracing::error!("No window to present error");
+                }
             }
         }
     }
@@ -184,7 +180,7 @@ impl Application {
 
             glib::spawn_future_local(async move {
                 if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
-                    .open_containing_folder_future(Some(&obj.window()))
+                    .open_containing_folder_future(obj.window().as_ref())
                     .await
                 {
                     tracing::warn!("Failed to show items: {:?}", err);
@@ -197,19 +193,19 @@ impl Application {
 
         let action_show_about = gio::SimpleAction::new("show-about", None);
         action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
-            about::present_window(Some(&obj.window()));
+            about::present_window(obj.window().as_ref());
         }));
         self.add_action(&action_show_about);
 
         let action_show_preferences = gio::SimpleAction::new("show-preferences", None);
         action_show_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
-            obj.present_preferences();
+            obj.present_preferences_window();
         }));
         self.add_action(&action_show_preferences);
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
-            if let Some(window) = obj.imp().window.get().and_then(|window| window.upgrade()) {
+            if let Some(window) = obj.window() {
                 if let Err(err) = window.close() {
                     tracing::warn!("Failed to close window: {:?}", err);
                 }
