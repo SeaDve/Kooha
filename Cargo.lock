@@ -177,6 +177,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "248e3bacc7dc6baa3b21e405ee045c3047101a49145e7e9eca583ab4c2ca5345"
 
 [[package]]
+name = "ctor"
+version = "0.2.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "37e366bff8cd32dd8754b0991fb66b279dc48f598c3a18914852a6673deef583"
+dependencies = [
+ "quote",
+ "syn 2.0.37",
+]
+
+[[package]]
 name = "deluxe"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -997,6 +1007,7 @@ name = "kooha"
 version = "2.2.4"
 dependencies = [
  "anyhow",
+ "ctor",
  "futures-channel",
  "futures-util",
  "gdk4-wayland",

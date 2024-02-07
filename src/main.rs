@@ -51,6 +51,10 @@ use self::{
     config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE},
 };
 
+#[cfg(test)]
+#[macro_use]
+extern crate ctor;
+
 fn main() -> glib::ExitCode {
     tracing_subscriber::fmt::init();
 
@@ -69,4 +73,33 @@ fn main() -> glib::ExitCode {
 
     let app = Application::new();
     app.run()
+}
+
+#[cfg(test)]
+mod test {
+    use ctor;
+    use std::{env, process::Command};
+
+    // Run once before tests are executed.
+    #[ctor]
+    fn setup_schema() {
+        let schema_dir = &env::var("GSETTINGS_SCHEMA_DIR")
+            .unwrap_or(concat!(env!("CARGO_MANIFEST_DIR"), "/data").into());
+
+        let output = Command::new("glib-compile-schemas")
+            .arg(schema_dir)
+            .output()
+            .unwrap();
+
+        if !output.status.success() {
+            panic!(
+                "Failed to compile GSchema for tests; stdout: {}; stderr: {}",
+                String::from_utf8_lossy(&output.stdout),
+                String::from_utf8_lossy(&output.stderr)
+            );
+        }
+
+        env::set_var("GSETTINGS_SCHEMA_DIR", schema_dir);
+        env::set_var("GSETTINGS_BACKEND", "memory");
+    }
 }
