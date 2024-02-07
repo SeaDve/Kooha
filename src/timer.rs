@@ -129,7 +129,7 @@ impl Future for Timer {
             Poll::Pending => {}
         }
 
-        if self.inner.duration == Duration::ZERO {
+        if self.inner.duration.is_zero() {
             self.inner.state.set(State::Done);
             return Poll::Ready(Ok(()));
         }
