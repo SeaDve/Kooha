@@ -66,7 +66,7 @@ impl BoxedProfile {
     }
 
     fn new_inner(profile: Option<Box<dyn Profile>>) -> Self {
-        let this: Self = glib::Object::builder().build();
+        let this: Self = glib::Object::new();
         this.imp().0.set(profile).unwrap();
         this
     }

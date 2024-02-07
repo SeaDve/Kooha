@@ -354,7 +354,7 @@ glib::wrapper! {
 
 impl ViewPort {
     pub fn new() -> Self {
-        glib::Object::builder().build()
+        glib::Object::new()
     }
 
     pub fn paintable_rect(&self) -> Option<Rect> {
