@@ -6,8 +6,9 @@
     <property name="content">
       <object class="AdwToolbarView">
         <child type="top">
-          <object class="GtkHeaderBar">
-            <property name="show-title-buttons">False</property>
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <property name="title-widget">
               <object class="AdwWindowTitle" id="window_title">
                 <property name="title" translatable="yes">Select Area</property>
