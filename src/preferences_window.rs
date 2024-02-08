@@ -9,7 +9,7 @@ use gtk::{
 use crate::{
     profile::{self, BoxedProfile},
     settings::Settings,
-    utils,
+    utils::IS_EXPERIMENTAL_MODE,
 };
 
 mod imp {
@@ -77,7 +77,7 @@ mod imp {
                 .set_factory(Some(&profile_row_factory(&self.profile_row, false)));
             self.profile_row
                 .set_list_factory(Some(&profile_row_factory(&self.profile_row, true)));
-            let profiles = if utils::is_experimental_mode()
+            let profiles = if *IS_EXPERIMENTAL_MODE
                 || settings
                     .profile()
                     .map_or(false, |profile| profile.is_experimental())

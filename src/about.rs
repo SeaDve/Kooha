@@ -6,7 +6,7 @@ use std::{env, path::Path};
 
 use crate::{
     config::{APP_ID, VERSION},
-    utils,
+    utils::IS_EXPERIMENTAL_MODE,
 };
 
 pub fn present_window(parent: Option<&impl IsA<gtk::Window>>) {
@@ -66,7 +66,7 @@ fn release_notes() -> &'static str {
 
 fn debug_info() -> String {
     let is_flatpak = Path::new("/.flatpak-info").exists();
-    let is_experimental_mode = utils::is_experimental_mode();
+    let is_experimental_mode = *IS_EXPERIMENTAL_MODE;
 
     let language_names = glib::language_names().join(", ");
 

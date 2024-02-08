@@ -32,7 +32,7 @@ use crate::{
     pipeline::PipelineBuilder,
     settings::{CaptureMode, Settings},
     timer::Timer,
-    utils,
+    utils::IS_EXPERIMENTAL_MODE,
 };
 
 const DEFAULT_DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
@@ -165,7 +165,7 @@ impl Recording {
             } else {
                 CursorMode::Hidden
             },
-            if utils::is_experimental_mode() {
+            if *IS_EXPERIMENTAL_MODE {
                 SourceType::Monitor | SourceType::Window
             } else {
                 SourceType::Monitor.into()
