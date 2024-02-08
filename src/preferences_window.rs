@@ -80,7 +80,7 @@ mod imp {
             let profiles = if *IS_EXPERIMENTAL_MODE
                 || settings
                     .profile()
-                    .map_or(false, |profile| profile.is_experimental())
+                    .is_some_and(|profile| profile.is_experimental())
             {
                 profile::all()
             } else {
@@ -215,7 +215,7 @@ impl PreferencesWindow {
             settings
                 .profile()
                 .and_then(|profile| profile.suggested_max_framerate())
-                .map_or(false, |suggested_max_framerate| {
+                .is_some_and(|suggested_max_framerate| {
                     settings.video_framerate() > suggested_max_framerate
                 }),
         );
@@ -245,7 +245,7 @@ fn profile_row_factory(
                 |_: Option<glib::Object>, obj: Option<glib::Object>| {
                     obj.as_ref()
                         .and_then(|o| o.downcast_ref::<BoxedProfile>().unwrap().get())
-                        .map_or(false, |profile| profile.is_experimental())
+                        .is_some_and(|profile| profile.is_experimental())
                 }
             ))
             .bind(&warning_indicator, "visible", glib::Object::NONE);

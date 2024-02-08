@@ -6,7 +6,7 @@ use std::env;
 const MAX_THREAD_COUNT: u32 = 64;
 
 pub static IS_EXPERIMENTAL_MODE: Lazy<bool> =
-    Lazy::new(|| env::var("KOOHA_EXPERIMENTAL").map_or(false, |value| value == "1"));
+    Lazy::new(|| env::var("KOOHA_EXPERIMENTAL").is_ok_and(|value| value == "1"));
 
 /// Ideal thread count to use for `GStreamer` processing.
 pub fn ideal_thread_count() -> u32 {
