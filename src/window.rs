@@ -142,6 +142,7 @@ impl Window {
         glib::Object::builder().property("application", app).build()
     }
 
+    /// Returns `true` if the window is busy with a recording.
     pub fn is_busy(&self) -> bool {
         self.imp()
             .recording
