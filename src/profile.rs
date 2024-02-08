@@ -9,11 +9,11 @@ use crate::{element_properties::ElementConfig, utils};
 
 /// Returns all profiles including experimental ones.
 pub fn all() -> Vec<Box<dyn Profile>> {
-    builtins().into_iter().chain(experimental::all()).collect()
+    supported().into_iter().chain(experimental::all()).collect()
 }
 
-/// Returns only builtin (supported) profiles.
-pub fn builtins() -> Vec<Box<dyn Profile>> {
+/// Returns only supported profiles.
+pub fn supported() -> Vec<Box<dyn Profile>> {
     vec![
         Box::new(WebMProfile),
         Box::new(Mp4Profile),
@@ -552,11 +552,11 @@ mod tests {
     }
 
     #[test]
-    fn builtin_profiles() {
+    fn supported_profiles() {
         gst::init().unwrap();
         gstgif::plugin_register_static().unwrap();
 
-        for profile in builtins() {
+        for profile in supported() {
             let pipeline = gst::Pipeline::new();
             let dummy_video_src = gst::ElementFactory::make("fakesrc").build().unwrap();
             let dummy_audio_src = gst::ElementFactory::make("fakesrc").build().unwrap();
@@ -581,7 +581,7 @@ mod tests {
 
     #[test]
     fn is_experimental_test() {
-        for profile in builtins() {
+        for profile in supported() {
             assert!(!profile.is_experimental());
         }
 

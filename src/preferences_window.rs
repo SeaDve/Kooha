@@ -84,7 +84,7 @@ mod imp {
             {
                 profile::all()
             } else {
-                profile::builtins()
+                profile::supported()
             };
             let profiles_model = gio::ListStore::new::<BoxedProfile>();
             if settings.profile().is_none() {
