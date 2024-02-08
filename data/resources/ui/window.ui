@@ -15,7 +15,7 @@
             <child>
               <object class="AdwToolbarView" id="main_page">
                 <child type="top">
-                  <object class="GtkHeaderBar">
+                  <object class="AdwHeaderBar">
                     <child>
                       <object class="GtkMenuButton">
                         <property name="menu-model">menu</property>
