@@ -1,84 +1,75 @@
 use anyhow::{anyhow, Context, Result};
-use gst_pbutils::prelude::*;
-use gtk::glib::{
-    self,
-    translate::{IntoGlibPtr, ToGlibPtr, UnsafeFrom},
+use gst_pbutils::{
+    element_properties::ElementPropertiesMapItemBuilder, prelude::*, ElementProperties,
+    ElementPropertiesMapItem,
 };
+use gtk::glib::{self, translate::UnsafeFrom};
 
 use crate::utils;
 
-pub trait EncodingProfileExtManual {
-    fn set_element_properties(&self, element_properties: ElementProperties);
-}
-
-impl<P: IsA<gst_pbutils::EncodingProfile>> EncodingProfileExtManual for P {
-    fn set_element_properties(&self, element_properties: ElementProperties) {
-        unsafe {
-            gst_pbutils::ffi::gst_encoding_profile_set_element_properties(
-                self.as_ref().to_glib_none().0,
-                element_properties.into_inner().into_glib_ptr(),
-            );
-        }
-    }
-}
-
-#[derive(Debug, Clone)]
-pub struct ElementProperties {
+pub struct ElementConfig {
     factory_name: String,
-    raw: gst::Structure,
+    properties: ElementProperties,
 }
 
-impl ElementProperties {
-    pub fn builder(factory_name: &str) -> ElementPropertiesBuilder {
-        ElementPropertiesBuilder::new(factory_name)
+impl ElementConfig {
+    pub fn builder(factory_name: &str) -> ElementConfigBuilder {
+        ElementConfigBuilder::new(factory_name)
     }
 
     pub fn factory_name(&self) -> &str {
         &self.factory_name
     }
 
-    pub fn into_inner(self) -> gst::Structure {
-        self.raw
+    pub fn properties(&self) -> &ElementProperties {
+        &self.properties
     }
 }
 
-pub struct ElementPropertiesBuilder {
-    s: gst::Structure,
+pub struct ElementConfigBuilder {
+    factory_name: String,
+    inner: ElementPropertiesMapItemBuilder,
 }
 
-impl ElementPropertiesBuilder {
-    pub fn new(factory_name: &str) -> Self {
+impl ElementConfigBuilder {
+    fn new(factory_name: &str) -> Self {
         Self {
-            s: gst::Structure::new_empty(factory_name),
+            factory_name: factory_name.to_string(),
+            inner: ElementPropertiesMapItem::builder(factory_name),
         }
     }
 
     #[allow(clippy::needless_pass_by_value)]
-    pub fn field(mut self, name: &str, value: impl ToSendValue) -> Self {
-        self.s.set_value(name, value.to_send_value());
-        self
-    }
-
-    pub fn field_from_str(mut self, property_name: &str, value_string: &str) -> Self {
-        let factory_name = self.s.name();
-        match value_from_str(factory_name, property_name, value_string) {
-            Ok(value) => self.s.set_value(property_name, value),
-            Err(err) => tracing::warn!(
-                "Failed to set property `{}` to `{}`: {:?}",
-                property_name,
-                value_string,
-                err
-            ),
+    pub fn field(self, name: &str, value: impl ToSendValue) -> Self {
+        Self {
+            inner: self.inner.field(name, value.to_send_value()),
+            ..self
         }
-
-        self
     }
 
-    pub fn build(self) -> ElementProperties {
-        ElementProperties {
-            factory_name: self.s.name().to_string(),
-            raw: gst::Structure::builder("element-properties-map")
-                .field("map", gst::List::from_values(vec![self.s.to_send_value()]))
+    pub fn field_from_str(self, property_name: &str, value_string: &str) -> Self {
+        match value_from_str(&self.factory_name, property_name, value_string) {
+            Ok(value) => Self {
+                inner: self.inner.field_value(property_name, value),
+                ..self
+            },
+            Err(err) => {
+                tracing::warn!(
+                    "Failed to set property `{}` to `{}`: {:?}",
+                    property_name,
+                    value_string,
+                    err
+                );
+                self
+            }
+        }
+    }
+
+    pub fn build(self) -> ElementConfig {
+        ElementConfig {
+            factory_name: self.factory_name,
+            properties: ElementProperties::builder_map()
+                .item(self.inner.build())
                 .build(),
         }
     }
@@ -131,7 +122,10 @@ mod tests {
     fn element_properties() {
         gst::init().unwrap();
 
-        let element_properties = ElementProperties::builder("vp8enc").build();
+        let element_properties = ElementConfigBuilder::new("vp8enc")
+            .build()
+            .properties()
+            .clone();
         let inner_item = element_properties_inner_item(element_properties.clone());
         assert_eq!(
             element_properties.into_inner().name(),
@@ -144,10 +138,12 @@ mod tests {
     fn builder() {
         gst::init().unwrap();
 
-        let element_properties = ElementProperties::builder("vp8enc")
+        let element_properties = ElementConfigBuilder::new("vp8enc")
             .field("cq-level", 13)
             .field("resize-allowed", false)
-            .build();
+            .build()
+            .properties()
+            .clone();
         let inner_item = element_properties_inner_item(element_properties);
 
         assert_eq!(inner_item.n_fields(), 2);
@@ -160,10 +156,12 @@ mod tests {
     fn builder_field_from_str() {
         gst::init().unwrap();
 
-        let element_properties = ElementProperties::builder("vp8enc")
+        let element_properties = ElementConfigBuilder::new("vp8enc")
             .field("threads", 16)
             .field_from_str("keyframe-mode", "disabled")
-            .build();
+            .build()
+            .properties()
+            .clone();
         let inner_item = element_properties_inner_item(element_properties);
         assert_eq!(inner_item.n_fields(), 2);
         assert_eq!(inner_item.name(), "vp8enc");

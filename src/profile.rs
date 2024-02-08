@@ -1,15 +1,11 @@
 use anyhow::{anyhow, ensure, Context, Result};
 use gettextrs::gettext;
-use gst::prelude::*;
 use gst_pbutils::prelude::*;
 use gtk::glib::{self, subclass::prelude::*};
 
 use std::fmt;
 
-use crate::{
-    element_properties::{ElementProperties, EncodingProfileExtManual},
-    utils,
-};
+use crate::{element_properties::ElementConfig, utils};
 
 /// Returns all profiles including experimental ones.
 pub fn all() -> Vec<Box<dyn Profile>> {
@@ -267,7 +263,7 @@ encodebin_profile!(
     gettext("WebM"),
     "webm",
     new_encoding_profile(
-        ElementProperties::builder("vp8enc")
+        &ElementConfig::builder("vp8enc")
             .field("max-quantizer", 17)
             .field("cpu-used", 16)
             .field("cq-level", 13)
@@ -278,9 +274,9 @@ encodebin_profile!(
             .field("threads", utils::ideal_thread_count())
             .build(),
         Vec::new(),
-        ElementProperties::builder("opusenc").build(),
+        &ElementConfig::builder("opusenc").build(),
         Vec::new(),
-        ElementProperties::builder("webmmux").build(),
+        &ElementConfig::builder("webmmux").build(),
         Vec::new()
     )
 );
@@ -291,15 +287,15 @@ encodebin_profile!(
     gettext("MP4"),
     "mp4",
     new_encoding_profile(
-        ElementProperties::builder("x264enc")
+        &ElementConfig::builder("x264enc")
             .field("qp-max", 17)
             .field_from_str("speed-preset", "superfast")
             .field("threads", utils::ideal_thread_count())
             .build(),
         vec![("profile", "baseline".to_send_value())],
-        ElementProperties::builder("lamemp3enc").build(),
+        &ElementConfig::builder("lamemp3enc").build(),
         Vec::new(),
-        ElementProperties::builder("mp4mux").build(),
+        &ElementConfig::builder("mp4mux").build(),
         Vec::new()
     )
 );
@@ -310,15 +306,15 @@ encodebin_profile!(
     gettext("Matroska"),
     "mkv",
     new_encoding_profile(
-        ElementProperties::builder("x264enc")
+        &ElementConfig::builder("x264enc")
             .field("qp-max", 17)
             .field_from_str("speed-preset", "superfast")
             .field("threads", utils::ideal_thread_count())
             .build(),
         vec![("profile", "baseline".to_send_value())],
-        ElementProperties::builder("opusenc").build(),
+        &ElementConfig::builder("opusenc").build(),
         Vec::new(),
-        ElementProperties::builder("matroskamux").build(),
+        &ElementConfig::builder("matroskamux").build(),
         Vec::new()
     )
 );
@@ -343,7 +339,7 @@ mod experimental {
         gettext("WebM VP9"),
         "webm",
         new_encoding_profile(
-            ElementProperties::builder("vp9enc")
+            &ElementConfig::builder("vp9enc")
                 .field("max-quantizer", 17)
                 .field("cpu-used", 16)
                 .field("cq-level", 13)
@@ -354,9 +350,9 @@ mod experimental {
                 .field("threads", utils::ideal_thread_count())
                 .build(),
             Vec::new(),
-            ElementProperties::builder("opusenc").build(),
+            &ElementConfig::builder("opusenc").build(),
             Vec::new(),
-            ElementProperties::builder("webmmux").build(),
+            &ElementConfig::builder("webmmux").build(),
             Vec::new()
         )
     );
@@ -367,7 +363,7 @@ mod experimental {
         gettext("WebM AV1"),
         "webm",
         new_encoding_profile(
-            ElementProperties::builder("av1enc")
+            &ElementConfig::builder("av1enc")
                 .field("max-quantizer", 17)
                 .field("cpu-used", 5)
                 .field_from_str("end-usage", "cq")
@@ -375,9 +371,9 @@ mod experimental {
                 .field("threads", utils::ideal_thread_count())
                 .build(),
             Vec::new(),
-            ElementProperties::builder("opusenc").build(),
+            &ElementConfig::builder("opusenc").build(),
             Vec::new(),
-            ElementProperties::builder("webmmux").build(),
+            &ElementConfig::builder("webmmux").build(),
             Vec::new()
         )
     );
@@ -388,11 +384,11 @@ mod experimental {
         gettext("WebM VAAPI VP8"),
         "mkv",
         new_encoding_profile(
-            ElementProperties::builder("vaapivp8enc").build(),
+            &ElementConfig::builder("vaapivp8enc").build(),
             Vec::new(),
-            ElementProperties::builder("opusenc").build(),
+            &ElementConfig::builder("opusenc").build(),
             Vec::new(),
-            ElementProperties::builder("webmmux").build(),
+            &ElementConfig::builder("webmmux").build(),
             Vec::new()
         )
     );
@@ -403,11 +399,11 @@ mod experimental {
         gettext("WebM VAAPI VP9"),
         "mkv",
         new_encoding_profile(
-            ElementProperties::builder("vaapivp9enc").build(),
+            &ElementConfig::builder("vaapivp9enc").build(),
             Vec::new(),
-            ElementProperties::builder("opusenc").build(),
+            &ElementConfig::builder("opusenc").build(),
             Vec::new(),
-            ElementProperties::builder("webmmux").build(),
+            &ElementConfig::builder("webmmux").build(),
             Vec::new()
         )
     );
@@ -418,11 +414,11 @@ mod experimental {
         gettext("WebM VAAPI H264"),
         "mkv",
         new_encoding_profile(
-            ElementProperties::builder("vaapih264enc").build(),
+            &ElementConfig::builder("vaapih264enc").build(),
             Vec::new(),
-            ElementProperties::builder("lamemp3enc").build(),
+            &ElementConfig::builder("lamemp3enc").build(),
             Vec::new(),
-            ElementProperties::builder("mp4mux").build(),
+            &ElementConfig::builder("mp4mux").build(),
             Vec::new()
         )
     );
@@ -464,14 +460,14 @@ fn profile_format_from_factory(
 }
 
 fn new_encoding_profile(
-    video_encoder_element_properties: ElementProperties,
+    video_encoder_element_config: &ElementConfig,
     video_encoder_caps_fields: Vec<(&str, glib::SendValue)>,
-    audio_encoder_element_properties: ElementProperties,
+    audio_encoder_element_config: &ElementConfig,
     audio_encoder_caps_fields: Vec<(&str, glib::SendValue)>,
-    muxer_element_properties: ElementProperties,
+    muxer_element_config: &ElementConfig,
     muxer_caps_fields: Vec<(&str, glib::SendValue)>,
 ) -> Result<gst_pbutils::EncodingContainerProfile> {
-    let muxer_factory_name = muxer_element_properties.factory_name();
+    let muxer_factory_name = muxer_element_config.factory_name();
     let muxer_factory = utils::find_element_factory(muxer_factory_name)?;
     ensure!(
         muxer_factory.has_type(gst::ElementFactoryType::MUXER),
@@ -479,7 +475,7 @@ fn new_encoding_profile(
         muxer_factory_name
     );
 
-    let video_encoder_factory_name = video_encoder_element_properties.factory_name();
+    let video_encoder_factory_name = video_encoder_element_config.factory_name();
     let video_encoder_factory = utils::find_element_factory(video_encoder_factory_name)?;
     ensure!(
         video_encoder_factory.has_type(gst::ElementFactoryType::VIDEO_ENCODER),
@@ -496,11 +492,11 @@ fn new_encoding_profile(
     );
     let video_profile = gst_pbutils::EncodingVideoProfile::builder(&video_encoder_format)
         .preset_name(video_encoder_factory_name)
+        .element_properties(video_encoder_element_config.properties().clone())
         .presence(0)
         .build();
-    video_profile.set_element_properties(video_encoder_element_properties);
 
-    let audio_encoder_factory_name = audio_encoder_element_properties.factory_name();
+    let audio_encoder_factory_name = audio_encoder_element_config.factory_name();
     let audio_encoder_factory = utils::find_element_factory(audio_encoder_factory_name)?;
     ensure!(
         audio_encoder_factory.has_type(gst::ElementFactoryType::AUDIO_ENCODER),
@@ -517,18 +513,18 @@ fn new_encoding_profile(
     );
     let audio_profile = gst_pbutils::EncodingAudioProfile::builder(&audio_encoder_format)
         .preset_name(audio_encoder_factory_name)
+        .element_properties(audio_encoder_element_config.properties().clone())
         .presence(0)
         .build();
-    audio_profile.set_element_properties(audio_encoder_element_properties);
 
     let muxer_format = profile_format_from_factory(&muxer_factory, muxer_caps_fields)?;
     let container_profile = gst_pbutils::EncodingContainerProfile::builder(&muxer_format)
         .preset_name(muxer_factory_name)
+        .element_properties(muxer_element_config.properties().clone())
         .add_profile(video_profile)
         .add_profile(audio_profile)
         .presence(0)
         .build();
-    container_profile.set_element_properties(muxer_element_properties);
 
     Ok(container_profile)
 }
@@ -602,11 +598,11 @@ mod tests {
             muxer_factory_name: &str,
         ) -> Result<gst_pbutils::EncodingContainerProfile> {
             new_encoding_profile(
-                ElementProperties::builder(video_encoder_factory_name).build(),
+                &ElementConfig::builder(video_encoder_factory_name).build(),
                 Vec::new(),
-                ElementProperties::builder(audio_encoder_factory_name).build(),
+                &ElementConfig::builder(audio_encoder_factory_name).build(),
                 Vec::new(),
-                ElementProperties::builder(muxer_factory_name).build(),
+                &ElementConfig::builder(muxer_factory_name).build(),
                 Vec::new(),
             )
         }
