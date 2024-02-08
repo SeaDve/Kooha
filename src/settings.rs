@@ -116,16 +116,7 @@ impl Settings {
             return None;
         }
 
-        if let Some(profile) = profile::get(&profile_id) {
-            if !profile.is_available() {
-                return None;
-            }
-
-            return Some(profile);
-        }
-
-        tracing::warn!("Profile with id `{}` not found", profile_id);
-        None
+        profile::get(&profile_id).filter(|profile| profile.is_available())
     }
 
     pub fn connect_profile_changed(
