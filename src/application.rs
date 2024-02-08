@@ -142,6 +142,24 @@ impl Application {
         ApplicationExtManual::run(self)
     }
 
+    pub fn quit(&self) {
+        glib::spawn_future_local(clone!(@weak self as obj => async move {
+            if obj.quit_request().await.is_proceed() {
+                ApplicationExt::quit(&obj);
+            }
+        }));
+    }
+
+    async fn quit_request(&self) -> glib::Propagation {
+        if let Some(window) = self.window() {
+            if window.is_busy() {
+                return window.run_quit_confirmation_dialog().await;
+            }
+        }
+
+        glib::Propagation::Proceed
+    }
+
     async fn try_show_uri(&self, uri: &str) {
         if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(uri)))
             .launch_future(self.window().as_ref())
@@ -151,7 +169,7 @@ impl Application {
                 tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
 
                 if let Some(window) = self.window() {
-                    window.present_error(&err.into());
+                    window.present_error_dialog(&err.into());
                 } else {
                     tracing::error!("No window to present error");
                 }
@@ -205,11 +223,6 @@ impl Application {
 
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
-            if let Some(window) = obj.window() {
-                if let Err(err) = window.close() {
-                    tracing::warn!("Failed to close window: {:?}", err);
-                }
-            }
             obj.quit();
         }));
         self.add_action(&action_quit);

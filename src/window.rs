@@ -1,5 +1,5 @@
 use adw::{prelude::*, subclass::prelude::*};
-use anyhow::{ensure, Error, Result};
+use anyhow::{Error, Result};
 use gettextrs::gettext;
 use gtk::{
     gio,
@@ -70,7 +70,7 @@ mod imp {
                 if let Err(err) = obj.toggle_pause() {
                     let err = err.context(gettext("Failed to toggle pause"));
                     tracing::error!("{:?}", err);
-                    obj.present_error(&err);
+                    obj.present_error_dialog(&err);
                 }
             });
 
@@ -109,7 +109,24 @@ mod imp {
     }
 
     impl WidgetImpl for Window {}
-    impl WindowImpl for Window {}
+
+    impl WindowImpl for Window {
+        fn close_request(&self) -> glib::Propagation {
+            let obj = self.obj();
+
+            if obj.is_busy() {
+                glib::spawn_future_local(clone!(@weak obj => async move {
+                    if obj.run_quit_confirmation_dialog().await.is_proceed() {
+                        obj.destroy();
+                    }
+                }));
+                return glib::Propagation::Stop;
+            }
+
+            self.parent_close_request()
+        }
+    }
+
     impl ApplicationWindowImpl for Window {}
     impl AdwApplicationWindowImpl for Window {}
 }
@@ -125,31 +142,66 @@ impl Window {
         glib::Object::builder().property("application", app).build()
     }
 
-    pub fn close(&self) -> Result<()> {
-        let is_safe_to_close =
-            self.imp()
-                .recording
-                .borrow()
-                .as_ref()
-                .map_or(true, |(ref recording, _)| {
-                    matches!(
-                        recording.state(),
-                        RecordingState::Init
-                            | RecordingState::Delayed { .. }
-                            | RecordingState::Finished
-                    )
-                });
-
-        ensure!(
-            is_safe_to_close,
-            "Cannot close window while recording is in progress"
-        );
-
-        GtkWindowExt::close(self);
-        Ok(())
+    pub fn is_busy(&self) -> bool {
+        self.imp()
+            .recording
+            .borrow()
+            .as_ref()
+            .is_some_and(|(recording, _)| {
+                matches!(
+                    recording.state(),
+                    RecordingState::Recording | RecordingState::Paused | RecordingState::Flushing
+                )
+            })
     }
 
-    pub fn present_error(&self, err: &Error) {
+    /// Returns `Proceed` if the user wants to proceed with the quit operation.
+    pub async fn run_quit_confirmation_dialog(&self) -> glib::Propagation {
+        const CANCEL_RESPONSE_ID: &str = "cancel";
+        const QUIT_RESPONSE_ID: &str = "quit";
+
+        debug_assert!(
+            self.is_busy(),
+            "quit confirmation dialog must only be presented when busy"
+        );
+
+        let body_text = match self
+            .imp()
+            .recording
+            .borrow()
+            .as_ref()
+            .map(|(recording, _)| recording.state())
+        {
+            Some(RecordingState::Recording) | Some(RecordingState::Paused) => gettext(
+                "A recording is currently in progress. Quitting immediately will cause the recording to be permanently lost. Please stop the recording before quitting.",
+            ),
+            Some(RecordingState::Flushing) => gettext(
+                "Quitting will cancel the processing and cause the recording to be permanently lost.",
+            ),
+            state => unreachable!("unexpected recording state: {:?}", state),
+        };
+
+        let dialog = adw::MessageDialog::builder()
+            .heading(gettext("Discard Recording and Quit?"))
+            .body(body_text)
+            .close_response(CANCEL_RESPONSE_ID)
+            .default_response(CANCEL_RESPONSE_ID)
+            .transient_for(self)
+            .modal(true)
+            .build();
+        dialog.add_response(CANCEL_RESPONSE_ID, &gettext("Cancel"));
+
+        dialog.add_response(QUIT_RESPONSE_ID, &gettext("Discard and Quit"));
+        dialog.set_response_appearance(QUIT_RESPONSE_ID, adw::ResponseAppearance::Destructive);
+
+        match dialog.choose_future().await.as_str() {
+            CANCEL_RESPONSE_ID => glib::Propagation::Stop,
+            QUIT_RESPONSE_ID => glib::Propagation::Proceed,
+            _ => unreachable!(),
+        }
+    }
+
+    pub fn present_error_dialog(&self, err: &Error) {
         let err_text = format!("{:?}", err);
 
         let err_view = gtk::TextView::builder()
@@ -304,7 +356,7 @@ impl Window {
                 } else {
                     tracing::error!("{:?}", err);
                     self.surface().beep();
-                    self.present_error(err);
+                    self.present_error_dialog(err);
                 }
             }
         }
