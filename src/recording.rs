@@ -359,16 +359,6 @@ impl Recording {
         glib::idle_add_local_once(clone!(@weak self as obj => move || {
             obj.set_finished(Err(Error::from(Cancelled::new("recording"))));
         }));
-
-        self.file().delete_async(
-            glib::Priority::DEFAULT_IDLE,
-            gio::Cancellable::NONE,
-            |res| {
-                if let Err(err) = res {
-                    tracing::warn!("Failed to delete recording file: {:?}", err);
-                }
-            },
-        );
     }
 
     pub fn connect_finished<F>(&self, f: F) -> glib::SignalHandlerId
