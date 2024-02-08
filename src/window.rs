@@ -253,7 +253,7 @@ impl Window {
         list_box.add_css_class("boxed-list");
         list_box.append(&expander);
 
-        let err_dialog = adw::MessageDialog::builder()
+        let dialog = adw::MessageDialog::builder()
             .heading(err.to_string())
             .body_use_markup(true)
             .default_response("ok")
@@ -263,11 +263,36 @@ impl Window {
             .build();
 
         if let Some(ref help) = err.downcast_ref::<Help>() {
-            err_dialog.set_body(&format!("<b>{}</b>: {}", gettext("Help"), help));
+            dialog.set_body(&format!("<b>{}</b>: {}", gettext("Help"), help));
         }
 
-        err_dialog.add_response("ok", &gettext("Ok"));
-        err_dialog.present();
+        dialog.add_response("ok", &gettext("Ok"));
+        dialog.present();
+    }
+
+    fn present_no_profile_error_dialog(&self) {
+        const OPEN_RESPONSE_ID: &str = "open";
+        const LATER_RESPONSE_ID: &str = "later";
+
+        let dialog = adw::MessageDialog::builder()
+            .heading(gettext("Open Preferences?"))
+            .body(gettext("The previously selected format may have been unavailable. Open preferences and select a format to continue recording."))
+            .default_response(OPEN_RESPONSE_ID)
+            .transient_for(self)
+            .modal(true)
+            .build();
+
+        dialog.add_response(LATER_RESPONSE_ID, &gettext("Later"));
+
+        dialog.add_response(OPEN_RESPONSE_ID, &gettext("Open"));
+        dialog.set_response_appearance(OPEN_RESPONSE_ID, adw::ResponseAppearance::Suggested);
+
+        dialog.connect_response(Some(OPEN_RESPONSE_ID), |dialog, _| {
+            dialog.close();
+            Application::get().present_preferences_window();
+        });
+
+        dialog.present();
     }
 
     async fn toggle_record(&self) {
@@ -336,23 +361,7 @@ impl Window {
                 if err.is::<Cancelled>() {
                     tracing::debug!("{:?}", err);
                 } else if err.is::<NoProfileError>() {
-                    const OPEN_RESPONSE: &str = "open";
-                    const LATER_RESPONSE: &str = "later";
-                    let d = adw::MessageDialog::builder()
-                        .heading(gettext("Open Preferences?"))
-                        .body(gettext("The previously selected format may have been unavailable. Open preferences and select a format to continue recording."))
-                        .default_response(OPEN_RESPONSE)
-                        .transient_for(self)
-                        .modal(true)
-                        .build();
-                    d.add_response(LATER_RESPONSE, &gettext("Later"));
-                    d.add_response(OPEN_RESPONSE, &gettext("Open"));
-                    d.set_response_appearance(OPEN_RESPONSE, adw::ResponseAppearance::Suggested);
-                    d.connect_response(Some(OPEN_RESPONSE), |d, _| {
-                        d.close();
-                        Application::get().present_preferences_window();
-                    });
-                    d.present();
+                    self.present_no_profile_error_dialog();
                 } else {
                     tracing::error!("{:?}", err);
                     self.surface().beep();
