@@ -4,7 +4,7 @@
   <requires lib="libadwaita" version="1.0"/>
   <template class="KoohaWindow" parent="AdwApplicationWindow">
     <property name="resizable">False</property>
-    <property name="default-width">210</property>
+    <property name="default-width">220</property>
     <property name="default-height">230</property>
     <property name="focus-widget">start_record_button</property>
     <property name="content">

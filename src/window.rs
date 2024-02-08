@@ -105,6 +105,7 @@ mod imp {
             obj.update_view();
             obj.update_audio_toggles_sensitivity();
             obj.update_title_label();
+            obj.update_subtitle_label();
         }
     }
 
@@ -451,6 +452,21 @@ impl Window {
         }
     }
 
+    fn update_subtitle_label(&self) {
+        let imp = self.imp();
+
+        let app = Application::get();
+        let settings = app.settings();
+
+        let profile_text = settings
+            .profile()
+            .map_or_else(|| gettext("No Profile"), |profile| profile.name());
+        let fps_text = settings.video_framerate().to_string();
+
+        imp.title
+            .set_subtitle(&format!("{} • {} FPS", profile_text, fps_text));
+    }
+
     fn update_audio_toggles_sensitivity(&self) {
         let is_enabled = Application::get()
             .settings()
@@ -484,6 +500,11 @@ impl Window {
 
         settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
             obj.update_audio_toggles_sensitivity();
+            obj.update_subtitle_label();
+        }));
+
+        settings.connect_video_framerate_changed(clone!(@weak self as obj => move |_| {
+            obj.update_subtitle_label();
         }));
 
         settings.connect_screencast_restore_token_changed(clone!(@weak self as obj => move |_| {
