@@ -1,4 +1,12 @@
 use anyhow::{ensure, Context, Error, Result};
+use ashpd::{
+    desktop::{
+        screencast::{CursorMode, PersistMode, Screencast, SourceType, Streams},
+        ResponseError, Session,
+    },
+    enumflags2::BitFlags,
+    WindowIdentifier,
+};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
@@ -22,7 +30,6 @@ use crate::{
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
     pipeline::PipelineBuilder,
-    screencast_session::{CursorMode, PersistMode, ScreencastSession, SourceType, Stream},
     settings::{CaptureMode, Settings},
     timer::Timer,
     utils,
@@ -75,7 +82,7 @@ mod imp {
         pub(super) file: OnceCell<gio::File>,
 
         pub(super) timer: RefCell<Option<Timer>>,
-        pub(super) session: RefCell<Option<ScreencastSession>>,
+        pub(super) session: RefCell<Option<Session<'static>>>,
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
         pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) bus_watch_guard: RefCell<Option<BusWatchGuard>>,
@@ -152,23 +159,33 @@ impl Recording {
         // setup screencast session
         let restore_token = settings.screencast_restore_token();
         settings.set_screencast_restore_token("");
-        let (screencast_session, streams, restore_token, fd) = new_screencast_session(
+        let (screencast_session, response, fd) = new_screencast_session(
             if settings.show_pointer() {
-                CursorMode::EMBEDDED
+                CursorMode::Embedded
             } else {
-                CursorMode::HIDDEN
+                CursorMode::Hidden
             },
             if utils::is_experimental_mode() {
-                SourceType::MONITOR | SourceType::WINDOW
+                SourceType::Monitor | SourceType::Window
             } else {
-                SourceType::MONITOR
+                SourceType::Monitor.into()
             },
             true,
-            Some(&restore_token),
+            Some(restore_token).filter(|t| !t.is_empty()).as_deref(),
             PersistMode::ExplicitlyRevoked,
             parent,
         )
         .await
+        .map_err(|err| {
+            if err
+                .downcast_ref::<ashpd::Error>()
+                .is_some_and(|err| matches!(err, ashpd::Error::Response(ResponseError::Cancelled)))
+            {
+                return Cancelled::new("screencast").into();
+            }
+
+            err
+        })
         .with_help(
             || {
                 gettext_f(
@@ -180,20 +197,21 @@ impl Recording {
             || gettext("Failed to start recording"),
         )?;
         imp.session.replace(Some(screencast_session));
-        settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
+        settings.set_screencast_restore_token(response.restore_token().unwrap_or_default());
 
         let mut pipeline_builder = PipelineBuilder::new(
             &settings.saving_location(),
             settings.video_framerate(),
             profile,
             fd,
-            streams.clone(),
+            response.streams().to_owned(),
         );
 
         // select area
         if settings.capture_mode() == CaptureMode::Selection {
             let data =
-                AreaSelector::present(Application::get().window().as_ref(), fd, &streams).await?;
+                AreaSelector::present(Application::get().window().as_ref(), fd, response.streams())
+                    .await?;
             pipeline_builder.select_area_data(data);
         }
 
@@ -545,41 +563,65 @@ impl Default for Recording {
 
 async fn new_screencast_session(
     cursor_mode: CursorMode,
-    source_type: SourceType,
+    source_type: BitFlags<SourceType>,
     is_multiple_sources: bool,
     restore_token: Option<&str>,
     persist_mode: PersistMode,
     parent_window: Option<&impl IsA<gtk::Window>>,
-) -> Result<(ScreencastSession, Vec<Stream>, Option<String>, RawFd)> {
-    let screencast_session = ScreencastSession::new()
+) -> Result<(Session<'static>, Streams, RawFd)> {
+    let proxy = Screencast::new().await.context("Failed to create proxy")?;
+
+    tracing::debug!(
+        available_cursor_modes = ?proxy.available_cursor_modes().await,
+        available_source_types = ?proxy.available_source_types().await,
+        "Created screencast proxy"
+    );
+
+    let session = proxy
+        .create_session()
         .await
-        .context("Failed to create ScreencastSession")?;
+        .context("Failed to create session")?;
 
     tracing::debug!(
-        "ScreenCast portal version: {:?}",
-        screencast_session.version()
-    );
-    tracing::debug!(
-        "Available cursor modes: {:?}",
-        screencast_session.available_cursor_modes()
-    );
-    tracing::debug!(
-        "Available source types: {:?}",
-        screencast_session.available_source_types()
+        ?cursor_mode,
+        ?source_type,
+        is_multiple_sources,
+        restore_token,
+        ?persist_mode,
+        "Selecting sources"
     );
 
-    // TODO handle Closed signal from service side
-    let (streams, restore_token, fd) = screencast_session
-        .begin(
+    proxy
+        .select_sources(
+            &session,
             cursor_mode,
             source_type,
             is_multiple_sources,
             restore_token,
             persist_mode,
-            parent_window,
         )
         .await
-        .context("Failed to begin ScreencastSession")?;
+        .context("Failed to select sources")?;
 
-    Ok((screencast_session, streams, restore_token, fd))
+    let window_identifier = if let Some(window) = parent_window {
+        WindowIdentifier::from_native(window.as_ref()).await
+    } else {
+        WindowIdentifier::None
+    };
+
+    tracing::debug!(?window_identifier, "Starting session");
+
+    let response = proxy
+        .start(&session, &window_identifier)
+        .await
+        .context("Failed to start session")?
+        .response()
+        .context("Failed to get response")?;
+
+    let fd = proxy
+        .open_pipe_wire_remote(&session)
+        .await
+        .context("Failed to open pipewire remote")?;
+
+    Ok((session, response, fd))
 }
