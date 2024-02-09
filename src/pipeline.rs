@@ -284,7 +284,9 @@ pub fn pipewiresrc_bin(
     let mut last_pos = 0;
     for stream in streams {
         let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
-        let videorate = gst::ElementFactory::make("videorate").build()?;
+        let videorate = gst::ElementFactory::make("videorate")
+            .property("skip-to-first", true)
+            .build()?;
         let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
             .property("caps", &videorate_filter)
             .build()?;
