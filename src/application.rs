@@ -205,23 +205,22 @@ impl Application {
         }));
         self.add_action(&action_show_in_files);
 
-        let action_show_about = gio::SimpleAction::new("show-about", None);
-        action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
-            about::present_dialog(&obj.window());
-        }));
-        self.add_action(&action_show_about);
-
-        let action_show_preferences = gio::SimpleAction::new("show-preferences", None);
-        action_show_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
-            obj.present_preferences_dialog();
-        }));
-        self.add_action(&action_show_preferences);
-
-        let action_quit = gio::SimpleAction::new("quit", None);
-        action_quit.connect_activate(clone!(@weak self as obj => move |_, _| {
-            obj.quit();
-        }));
-        self.add_action(&action_quit);
+        let quit_action = gio::ActionEntry::builder("quit")
+            .activate(|obj: &Self, _, _| {
+                obj.quit();
+            })
+            .build();
+        let show_preferences_action = gio::ActionEntry::builder("show-preferences")
+            .activate(|obj: &Self, _, _| {
+                obj.present_preferences_dialog();
+            })
+            .build();
+        let show_about_action = gio::ActionEntry::builder("show-about")
+            .activate(|obj: &Self, _, _| {
+                about::present_dialog(&obj.window());
+            })
+            .build();
+        self.add_action_entries([quit_action, show_preferences_action, show_about_action]);
     }
 
     fn setup_accels(&self) {
