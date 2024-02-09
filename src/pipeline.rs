@@ -16,6 +16,8 @@ use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session:
 // * Can we set frame rate directly on profile format?
 // * Add tests
 
+pub const FILESINK_ELEMENT_NAME: &str = "kooha-filesink";
+
 const DEFAULT_AUDIO_SAMPLE_RATE: i32 = 48_000;
 
 #[derive(Debug)]
@@ -69,11 +71,9 @@ impl PipelineBuilder {
     pub fn build(&self) -> Result<gst::Pipeline> {
         let file_path = new_recording_path(&self.saving_location, self.profile.file_extension());
 
-        let queue = gst::ElementFactory::make("queue")
-            .name("sinkqueue")
-            .build()?;
+        let queue = gst::ElementFactory::make("queue").build()?;
         let filesink = gst::ElementFactory::make("filesink")
-            .name("filesink")
+            .name(FILESINK_ELEMENT_NAME)
             .property(
                 "location",
                 file_path

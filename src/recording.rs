@@ -21,7 +21,7 @@ use crate::{
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
-    pipeline::PipelineBuilder,
+    pipeline::{PipelineBuilder, FILESINK_ELEMENT_NAME},
     screencast_session::{
         CursorMode, PersistMode, ScreencastSession, SourceType, Stream, WindowIdentifier,
     },
@@ -238,7 +238,7 @@ impl Recording {
         )?;
         imp.pipeline.set(pipeline.clone()).unwrap();
         let location = pipeline
-            .by_name("filesink")
+            .by_name(FILESINK_ELEMENT_NAME)
             .context("Element filesink not found on pipeline")?
             .property::<String>("location");
         imp.file.set(gio::File::for_path(location)).unwrap();
