@@ -43,6 +43,7 @@
         <ul>
           <li>Area selector is now resizable</li>
           <li>Video format and FPS are now shown in the main view</li>
+          <li>Fixed focus on area selector</li>
           <li>Updated translations</li>
         </ul>
       </description>
