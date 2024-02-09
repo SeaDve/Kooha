@@ -311,7 +311,7 @@ pub fn pipewiresrc_bin(
 ///
 /// pulsesrc1 -> audioresample -> |
 ///                               |
-/// pulsesrc2 -> audioresample -> | -> audiomixer -> audiorate -> audioconvert -> queue
+/// pulsesrc2 -> audioresample -> | -> audiomixer -> audiorate -> audioconvert
 ///                               |
 /// pulsesrcn -> audioresample -> |
 fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
@@ -320,15 +320,14 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
     let audiomixer = gst::ElementFactory::make("audiomixer").build()?;
     let audiorate = gst::ElementFactory::make("audiorate").build()?;
     let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
-    let queue = gst::ElementFactory::make("queue").build()?;
 
     let sample_rate_filter = gst::Caps::builder("audio/x-raw")
         .field("rate", DEFAULT_AUDIO_SAMPLE_RATE)
         .build();
 
-    bin.add_many([&audiomixer, &audiorate, &audioconvert, &queue])?;
+    bin.add_many([&audiomixer, &audiorate, &audioconvert])?;
     audiomixer.link_filtered(&audiorate, &sample_rate_filter)?;
-    gst::Element::link_many([&audiorate, &audioconvert, &queue])?;
+    gst::Element::link_many([&audiorate, &audioconvert])?;
 
     for device_name in device_names {
         let pulsesrc = gst::ElementFactory::make("pulsesrc")
@@ -352,9 +351,9 @@ fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<g
             .link(&audiomixer_sink_pad)?;
     }
 
-    let queue_pad = queue.static_pad("src").unwrap();
+    let src_pad = audioconvert.static_pad("src").unwrap();
     bin.add_pad(
-        &gst::GhostPad::builder_with_target(&queue_pad)?
+        &gst::GhostPad::builder_with_target(&src_pad)?
             .name("src")
             .build(),
     )?;
