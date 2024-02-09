@@ -377,6 +377,8 @@ impl Recording {
     }
 
     fn set_state(&self, state: RecordingState) {
+        tracing::debug!("Recording state changed to {:?}", state);
+
         if state == self.state() {
             return;
         }
