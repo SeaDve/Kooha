@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="KoohaAreaSelector" parent="AdwWindow">
+    <property name="default-widget">done_button</property>
     <property name="content">
       <object class="AdwToolbarView">
         <child type="top">

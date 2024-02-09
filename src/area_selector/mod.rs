@@ -116,10 +116,6 @@ mod imp {
                     obj.update_selection_ui();
                 }));
 
-            let done_button = self.done_button.get();
-            obj.set_default_widget(Some(&done_button));
-            obj.set_focus_widget(Some(&done_button));
-
             obj.update_selection_ui();
         }
 
@@ -310,6 +306,10 @@ impl AreaSelector {
 
         self.action_set_enabled("area-selector.reset", selection.is_some());
         self.action_set_enabled("area-selector.done", selection.is_some());
+
+        if selection.is_some() {
+            imp.done_button.grab_focus();
+        }
 
         if let (Some(stream_size), Some(selection)) = (imp.stream_size.get(), selection) {
             let paintable_rect = view_port.paintable_rect().unwrap();
