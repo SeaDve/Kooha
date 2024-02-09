@@ -230,27 +230,6 @@ macro_rules! encodebin_profile {
                     .link(sink)
                     .context("Failed to link encodebin to sink")?;
 
-                if tracing::enabled!(tracing::Level::DEBUG) {
-                    let encodebin_elements = encodebin
-                        .downcast::<gst::Bin>()
-                        .unwrap()
-                        .iterate_recurse()
-                        .into_iter()
-                        .map(|element| {
-                            let element = element.unwrap();
-                            let name = element
-                                .factory()
-                                .map_or_else(|| element.name(), |f| f.name());
-                            if name == "capsfilter" {
-                                element.property::<gst::Caps>("caps").to_string()
-                            } else {
-                                name.to_string()
-                            }
-                        })
-                        .collect::<Vec<_>>();
-                    tracing::debug!(?encodebin_elements);
-                }
-
                 Ok(())
             }
         }
