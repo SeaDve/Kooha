@@ -229,7 +229,7 @@ fn videocrop_compute(data: &SelectAreaData) -> Result<gst::Element> {
 ///                                                                (If has select area data)
 /// pipewiresrc1 -> videorate -> |                                       |            |
 ///                              |                                       V            V
-/// pipewiresrc2 -> videorate -> | -> compositor -> videoconvert -> videoscale -> videocrop -> queue
+/// pipewiresrc2 -> videorate -> | -> compositor -> videoconvert -> videoscale -> videocrop
 ///                              |
 /// pipewiresrcn -> videorate -> |
 pub fn pipewiresrc_bin(
@@ -242,9 +242,8 @@ pub fn pipewiresrc_bin(
 
     let compositor = gst::ElementFactory::make("compositor").build()?;
     let videoconvert = videoconvert_with_default()?;
-    let queue = gst::ElementFactory::make("queue").build()?;
 
-    bin.add_many([&compositor, &videoconvert, &queue])?;
+    bin.add_many([&compositor, &videoconvert])?;
     compositor.link(&videoconvert)?;
 
     if let Some(data) = select_area_data {
@@ -261,9 +260,20 @@ pub fn pipewiresrc_bin(
         bin.add_many([&videoscale, &videocrop])?;
         videoconvert.link(&videoscale)?;
         videoscale.link_filtered(&videocrop, &videoscale_filter)?;
-        videocrop.link(&queue)?;
+
+        let src_pad = videocrop.static_pad("src").unwrap();
+        bin.add_pad(
+            &gst::GhostPad::builder_with_target(&src_pad)?
+                .name("src")
+                .build(),
+        )?;
     } else {
-        videoconvert.link(&queue)?;
+        let src_pad = videoconvert.static_pad("src").unwrap();
+        bin.add_pad(
+            &gst::GhostPad::builder_with_target(&src_pad)?
+                .name("src")
+                .build(),
+        )?;
     }
 
     let videorate_filter = gst::Caps::builder("video/x-raw")
@@ -293,13 +303,6 @@ pub fn pipewiresrc_bin(
         let stream_width = stream.size().unwrap().0;
         last_pos += stream_width;
     }
-
-    let queue_pad = queue.static_pad("src").unwrap();
-    bin.add_pad(
-        &gst::GhostPad::builder_with_target(&queue_pad)?
-            .name("src")
-            .build(),
-    )?;
 
     Ok(bin)
 }
