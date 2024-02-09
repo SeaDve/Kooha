@@ -2,7 +2,7 @@ data/io.github.seadve.Kooha.desktop.in.in
 data/io.github.seadve.Kooha.gschema.xml.in
 data/io.github.seadve.Kooha.metainfo.xml.in.in
 data/resources/ui/area-selector.ui
-data/resources/ui/preferences-window.ui
+data/resources/ui/preferences-dialog.ui
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
 src/about.rs
@@ -10,7 +10,7 @@ src/application.rs
 src/area_selector/mod.rs
 src/audio_device.rs
 src/main.rs
-src/preferences_window.rs
+src/preferences_dialog.rs
 src/profile.rs
 src/recording.rs
 src/settings.rs

@@ -1,5 +1,6 @@
 use anyhow::{anyhow, Result};
-use gtk::glib::{self, once_cell::sync::Lazy};
+use gtk::glib;
+use once_cell::sync::Lazy;
 
 use std::env;
 

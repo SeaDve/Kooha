@@ -183,20 +183,18 @@ impl Window {
             state => unreachable!("unexpected recording state: {:?}", state),
         };
 
-        let dialog = adw::MessageDialog::builder()
+        let dialog = adw::AlertDialog::builder()
             .heading(gettext("Discard Recording and Quit?"))
             .body(body_text)
             .close_response(CANCEL_RESPONSE_ID)
             .default_response(CANCEL_RESPONSE_ID)
-            .transient_for(self)
-            .modal(true)
             .build();
         dialog.add_response(CANCEL_RESPONSE_ID, &gettext("Cancel"));
 
         dialog.add_response(QUIT_RESPONSE_ID, &gettext("Discard and Quit"));
         dialog.set_response_appearance(QUIT_RESPONSE_ID, adw::ResponseAppearance::Destructive);
 
-        match dialog.choose_future().await.as_str() {
+        match dialog.choose_future(self).await.as_str() {
             CANCEL_RESPONSE_ID => glib::Propagation::Stop,
             QUIT_RESPONSE_ID => glib::Propagation::Proceed,
             _ => unreachable!(),
@@ -255,12 +253,10 @@ impl Window {
         list_box.add_css_class("boxed-list");
         list_box.append(&expander);
 
-        let dialog = adw::MessageDialog::builder()
+        let dialog = adw::AlertDialog::builder()
             .heading(err.to_string())
             .body_use_markup(true)
             .default_response("ok")
-            .transient_for(self)
-            .modal(true)
             .extra_child(&list_box)
             .build();
 
@@ -269,19 +265,17 @@ impl Window {
         }
 
         dialog.add_response("ok", &gettext("Ok"));
-        dialog.present();
+        dialog.present(self);
     }
 
     fn present_no_profile_error_dialog(&self) {
         const OPEN_RESPONSE_ID: &str = "open";
         const LATER_RESPONSE_ID: &str = "later";
 
-        let dialog = adw::MessageDialog::builder()
+        let dialog = adw::AlertDialog::builder()
             .heading(gettext("Open Preferences?"))
             .body(gettext("The previously selected format may have been unavailable. Open preferences and select a format to continue recording."))
             .default_response(OPEN_RESPONSE_ID)
-            .transient_for(self)
-            .modal(true)
             .build();
 
         dialog.add_response(LATER_RESPONSE_ID, &gettext("Later"));
@@ -291,10 +285,10 @@ impl Window {
 
         dialog.connect_response(Some(OPEN_RESPONSE_ID), |dialog, _| {
             dialog.close();
-            Application::get().present_preferences_window();
+            Application::get().present_preferences_dialog();
         });
 
-        dialog.present();
+        dialog.present(self);
     }
 
     async fn toggle_record(&self) {
@@ -366,8 +360,12 @@ impl Window {
                     self.present_no_profile_error_dialog();
                 } else {
                     tracing::error!("{:?}", err);
-                    self.surface().beep();
+
                     self.present_error_dialog(err);
+
+                    if let Some(surface) = self.surface() {
+                        surface.beep();
+                    }
                 }
             }
         }

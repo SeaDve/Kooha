@@ -28,14 +28,17 @@ impl Settings {
 
     /// Opens a `FileDialog` to select a folder and updates
     /// the settings with the selected folder.
-    pub async fn select_saving_location(&self, parent: &impl IsA<gtk::Window>) -> Result<()> {
+    pub async fn select_saving_location(
+        &self,
+        parent: Option<&impl IsA<gtk::Window>>,
+    ) -> Result<()> {
         let dialog = gtk::FileDialog::builder()
             .modal(true)
             .title(gettext("Select Recordings Folder"))
             .initial_folder(&gio::File::for_path(self.saving_location()))
             .build();
 
-        match dialog.select_folder_future(Some(parent)).await {
+        match dialog.select_folder_future(parent).await {
             Ok(folder) => {
                 let path = folder.path().context("Folder does not have a path")?;
                 self.0.set("saving-location", path).unwrap();

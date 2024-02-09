@@ -19,9 +19,9 @@ mod imp {
     use gtk::CompositeTemplate;
 
     #[derive(Debug, Default, glib::Properties, CompositeTemplate)]
-    #[properties(wrapper_type = super::PreferencesWindow)]
-    #[template(resource = "/io/github/seadve/Kooha/ui/preferences-window.ui")]
-    pub struct PreferencesWindow {
+    #[properties(wrapper_type = super::PreferencesDialog)]
+    #[template(resource = "/io/github/seadve/Kooha/ui/preferences-dialog.ui")]
+    pub struct PreferencesDialog {
         #[property(get, set, construct_only)]
         pub(super) settings: OnceCell<Settings>,
 
@@ -38,10 +38,10 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for PreferencesWindow {
-        const NAME: &'static str = "KoohaPreferencesWindow";
-        type Type = super::PreferencesWindow;
-        type ParentType = adw::PreferencesWindow;
+    impl ObjectSubclass for PreferencesDialog {
+        const NAME: &'static str = "KoohaPreferencesDialog";
+        type Type = super::PreferencesDialog;
+        type ParentType = adw::PreferencesDialog;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -50,7 +50,15 @@ mod imp {
                 "preferences.select-saving-location",
                 None,
                 |obj, _, _| async move {
-                    if let Err(err) = obj.settings().select_saving_location(&obj).await {
+                    if let Err(err) = obj
+                        .settings()
+                        .select_saving_location(
+                            obj.root()
+                                .map(|r| r.downcast::<gtk::Window>().unwrap())
+                                .as_ref(),
+                        )
+                        .await
+                    {
                         tracing::error!("Failed to select saving location: {:?}", err);
 
                         let toast = adw::Toast::new(&gettext("Failed to set recordings folder"));
@@ -66,7 +74,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for PreferencesWindow {
+    impl ObjectImpl for PreferencesDialog {
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -144,18 +152,17 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for PreferencesWindow {}
-    impl WindowImpl for PreferencesWindow {}
-    impl AdwWindowImpl for PreferencesWindow {}
-    impl PreferencesWindowImpl for PreferencesWindow {}
+    impl WidgetImpl for PreferencesDialog {}
+    impl AdwDialogImpl for PreferencesDialog {}
+    impl PreferencesDialogImpl for PreferencesDialog {}
 }
 
 glib::wrapper! {
-     pub struct PreferencesWindow(ObjectSubclass<imp::PreferencesWindow>)
-        @extends gtk::Widget, gtk::Window, adw::Window, adw::PreferencesWindow;
+    pub struct PreferencesDialog(ObjectSubclass<imp::PreferencesDialog>)
+        @extends gtk::Widget, adw::Dialog, adw::PreferencesDialog;
 }
 
-impl PreferencesWindow {
+impl PreferencesDialog {
     pub fn new(settings: &Settings) -> Self {
         glib::Object::builder()
             .property("settings", settings)

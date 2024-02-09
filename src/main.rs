@@ -33,7 +33,7 @@ mod element_properties;
 mod help;
 mod i18n;
 mod pipeline;
-mod preferences_window;
+mod preferences_dialog;
 mod profile;
 mod recording;
 mod settings;

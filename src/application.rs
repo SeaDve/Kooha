@@ -1,15 +1,14 @@
-use adw::subclass::prelude::*;
+use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone},
-    prelude::*,
 };
 
 use crate::{
     about,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
-    preferences_window::PreferencesWindow,
+    preferences_dialog::PreferencesDialog,
     settings::Settings,
     window::Window,
 };
@@ -107,7 +106,11 @@ impl Application {
     }
 
     pub fn window(&self) -> Option<Window> {
-        self.active_window().map(|w| w.downcast().unwrap())
+        self.active_window().and_downcast().or_else(|| {
+            self.windows()
+                .into_iter()
+                .find_map(|w| w.downcast::<Window>().ok())
+        })
     }
 
     pub fn send_record_success_notification(&self, recording_file: &gio::File) {
@@ -127,11 +130,13 @@ impl Application {
         self.send_notification(Some("record-success"), &notification);
     }
 
-    pub fn present_preferences_window(&self) {
-        let window = PreferencesWindow::new(self.settings());
-        window.set_modal(true);
-        window.set_transient_for(self.window().as_ref());
-        window.present();
+    pub fn present_preferences_dialog(&self) {
+        if let Some(window) = self.window() {
+            let dialog = PreferencesDialog::new(self.settings());
+            dialog.present(&window);
+        } else {
+            tracing::warn!("Can't present preferences dialog without an active window");
+        }
     }
 
     pub fn run(&self) -> glib::ExitCode {
@@ -211,13 +216,17 @@ impl Application {
 
         let action_show_about = gio::SimpleAction::new("show-about", None);
         action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
-            about::present_window(obj.window().as_ref());
+            if let Some(window) = obj.window() {
+                about::present_dialog(&window);
+            } else {
+                tracing::warn!("Can't present about dialog without an active window");
+            }
         }));
         self.add_action(&action_show_about);
 
         let action_show_preferences = gio::SimpleAction::new("show-preferences", None);
         action_show_preferences.connect_activate(clone!(@weak self as obj => move |_, _| {
-            obj.present_preferences_window();
+            obj.present_preferences_dialog();
         }));
         self.add_action(&action_show_preferences);
 

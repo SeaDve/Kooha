@@ -1,17 +1,17 @@
+use std::{env, path::Path};
+
+use adw::prelude::*;
 use gettextrs::gettext;
 use gst::prelude::*;
-use gtk::{glib, prelude::*};
-
-use std::{env, path::Path};
+use gtk::glib;
 
 use crate::{
     config::{APP_ID, VERSION},
     utils::IS_EXPERIMENTAL_MODE,
 };
 
-pub fn present_window(parent: Option<&impl IsA<gtk::Window>>) {
-    let win = adw::AboutWindow::builder()
-        .modal(true)
+pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {
+    let dialog = adw::AboutDialog::builder()
         .application_icon(APP_ID)
         .application_name(gettext("Kooha"))
         .developer_name(gettext("Dave Patrick Caberto"))
@@ -33,18 +33,17 @@ pub fn present_window(parent: Option<&impl IsA<gtk::Window>>) {
         .release_notes(release_notes())
         .build();
 
-    win.add_link(
+    dialog.add_link(
         &gettext("Donate (Buy Me a Coffee)"),
         "https://www.buymeacoffee.com/seadve",
     );
-    win.add_link(&gettext("GitHub"), "https://github.com/SeaDve/Kooha");
-    win.add_link(
+    dialog.add_link(&gettext("GitHub"), "https://github.com/SeaDve/Kooha");
+    dialog.add_link(
         &gettext("Translate"),
         "https://hosted.weblate.org/projects/seadve/kooha",
     );
 
-    win.set_transient_for(parent);
-    win.present();
+    dialog.present(parent);
 }
 
 fn release_notes() -> &'static str {

@@ -97,7 +97,6 @@ mod imp {
                 gdk::Key::Escape,
                 gdk::ModifierType::empty(),
                 "area-selector.cancel",
-                None,
             );
         }
 
@@ -161,8 +160,9 @@ impl AreaSelector {
             this.set_modal(true);
 
             let scale_factor = 0.4 / parent.scale_factor() as f64;
+            let surface = parent.surface().context("Parent has no surface")?;
             let monitor_geometry = RootExt::display(parent)
-                .monitor_at_surface(&parent.surface())
+                .monitor_at_surface(&surface)
                 .context("No monitor found")?
                 .geometry();
             this.set_default_width(

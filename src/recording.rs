@@ -67,9 +67,11 @@ pub enum RecordingState {
 struct BoxedResult(Rc<Result<gio::File>>);
 
 mod imp {
-    use super::*;
-    use glib::{once_cell::sync::Lazy, subclass::Signal};
+    use glib::subclass::Signal;
     use gst::bus::BusWatchGuard;
+    use once_cell::sync::Lazy;
+
+    use super::*;
 
     #[derive(Debug, Default, glib::Properties)]
     #[properties(wrapper_type = super::Recording)]
