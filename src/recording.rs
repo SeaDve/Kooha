@@ -236,7 +236,9 @@ impl Recording {
             || gettext("A GStreamer plugin may not be installed."),
             || gettext("Failed to start recording"),
         )?;
+        pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
         imp.pipeline.set(pipeline.clone()).unwrap();
+
         let location = pipeline
             .by_name(FILESINK_ELEMENT_NAME)
             .context("Element filesink not found on pipeline")?
