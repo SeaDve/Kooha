@@ -36,6 +36,7 @@ mod pipeline;
 mod preferences_dialog;
 mod profile;
 mod recording;
+mod screencast_session;
 mod settings;
 mod timer;
 mod toggle_button;

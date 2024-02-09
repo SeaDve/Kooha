@@ -8,9 +8,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use ashpd::desktop::screencast::Stream;
-
-use crate::{area_selector::SelectAreaData, profile::Profile, utils};
+use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session::Stream, utils};
 
 // TODO
 // * Do we need restrictions?
@@ -282,7 +280,7 @@ pub fn pipewiresrc_bin(
 
     let mut last_pos = 0;
     for stream in streams {
-        let pipewiresrc = pipewiresrc_with_default(fd, &stream.pipe_wire_node_id().to_string())?;
+        let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
         let videorate = gst::ElementFactory::make("videorate").build()?;
         let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
             .property("caps", &videorate_filter)

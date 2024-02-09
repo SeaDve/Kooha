@@ -11,9 +11,10 @@ lto = true
 [dependencies]
 adw = { package = "libadwaita", version = "0.6", features = ["v1_5"] }
 anyhow = "1.0.59"
-ashpd = { version = "0.7.0", features = ["gtk4"] }
 futures-channel = "0.3.19"
 futures-util = { version = "0.3", default-features = false }
+gdk-wayland = { package = "gdk4-wayland", version = "0.8" }
+gdk-x11 = { package = "gdk4-x11", version = "0.8" }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gsettings-macro = "0.2"
 gst = { package = "gstreamer", version = "0.22" }
