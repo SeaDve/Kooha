@@ -105,12 +105,9 @@ impl Application {
         })
     }
 
-    pub fn window(&self) -> Option<Window> {
-        self.active_window().and_downcast().or_else(|| {
-            self.windows()
-                .into_iter()
-                .find_map(|w| w.downcast::<Window>().ok())
-        })
+    pub fn window(&self) -> Window {
+        self.active_window()
+            .map_or_else(|| Window::new(self), |w| w.downcast().unwrap())
     }
 
     pub fn send_record_success_notification(&self, recording_file: &gio::File) {
@@ -131,12 +128,8 @@ impl Application {
     }
 
     pub fn present_preferences_dialog(&self) {
-        if let Some(window) = self.window() {
-            let dialog = PreferencesDialog::new(self.settings());
-            dialog.present(&window);
-        } else {
-            tracing::warn!("Can't present preferences dialog without an active window");
-        }
+        let dialog = PreferencesDialog::new(self.settings());
+        dialog.present(&self.window());
     }
 
     pub fn run(&self) -> glib::ExitCode {
@@ -156,7 +149,9 @@ impl Application {
     }
 
     async fn quit_request(&self) -> glib::Propagation {
-        if let Some(window) = self.window() {
+        if let Some(window) = self.active_window() {
+            let window = window.downcast::<Window>().unwrap();
+
             if window.is_busy() {
                 return window.run_quit_confirmation_dialog().await;
             }
@@ -166,18 +161,14 @@ impl Application {
     }
 
     async fn try_show_uri(&self, uri: &str) {
+        let window = self.window();
         if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(uri)))
-            .launch_future(self.window().as_ref())
+            .launch_future(Some(&window))
             .await
         {
             if !err.matches(gio::IOErrorEnum::Cancelled) {
                 tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
-
-                if let Some(window) = self.window() {
-                    window.present_error_dialog(&err.into());
-                } else {
-                    tracing::error!("No window to present error");
-                }
+                window.present_error_dialog(&err.into());
             }
         }
     }
@@ -203,7 +194,7 @@ impl Application {
 
             glib::spawn_future_local(async move {
                 if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
-                    .open_containing_folder_future(obj.window().as_ref())
+                    .open_containing_folder_future(Some(&obj.window()))
                     .await
                 {
                     tracing::warn!("Failed to show items: {:?}", err);
@@ -216,11 +207,7 @@ impl Application {
 
         let action_show_about = gio::SimpleAction::new("show-about", None);
         action_show_about.connect_activate(clone!(@weak self as obj => move |_, _| {
-            if let Some(window) = obj.window() {
-                about::present_dialog(&window);
-            } else {
-                tracing::warn!("Can't present about dialog without an active window");
-            }
+            about::present_dialog(&obj.window());
         }));
         self.add_action(&action_show_about);
 
