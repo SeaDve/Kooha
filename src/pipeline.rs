@@ -18,7 +18,8 @@ use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session:
 
 pub const FILESINK_ELEMENT_NAME: &str = "kooha-filesink";
 
-const DEFAULT_AUDIO_SAMPLE_RATE: i32 = 48_000;
+const AUDIO_SAMPLE_RATE: i32 = 48_000;
+const AUDIO_N_CHANNELS: i32 = 1;
 
 #[derive(Debug)]
 #[must_use]
@@ -309,53 +310,46 @@ pub fn pipewiresrc_bin(
 
 /// Creates a bin with a src pad for a pulse audio device
 ///
-/// pulsesrc1 -> audioresample -> |
-///                               |
-/// pulsesrc2 -> audioresample -> | -> audiomixer -> audiorate -> audioconvert
-///                               |
-/// pulsesrcn -> audioresample -> |
+/// pulsesrc1 -> audiorate -> |
+///                           |
+/// pulsesrc2 -> audiorate -> | -> audiomixer
+///                           |
+/// pulsesrcn -> audiorate -> |
 fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::new();
 
     let audiomixer = gst::ElementFactory::make("audiomixer").build()?;
-    let audiorate = gst::ElementFactory::make("audiorate").build()?;
-    let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
+    bin.add(&audiomixer)?;
 
-    let sample_rate_filter = gst::Caps::builder("audio/x-raw")
-        .field("rate", DEFAULT_AUDIO_SAMPLE_RATE)
-        .build();
-
-    bin.add_many([&audiomixer, &audiorate, &audioconvert])?;
-    audiomixer.link_filtered(&audiorate, &sample_rate_filter)?;
-    gst::Element::link_many([&audiorate, &audioconvert])?;
-
-    for device_name in device_names {
-        let pulsesrc = gst::ElementFactory::make("pulsesrc")
-            .property("device", device_name)
-            .build()?;
-        let audioresample = gst::ElementFactory::make("audioresample").build()?;
-        let capsfilter = gst::ElementFactory::make("capsfilter")
-            .property("caps", &sample_rate_filter)
-            .build()?;
-
-        bin.add_many([&pulsesrc, &audioresample, &capsfilter])?;
-        gst::Element::link_many([&pulsesrc, &audioresample, &capsfilter])?;
-
-        let audiomixer_sink_pad = audiomixer
-            .request_pad_simple("sink_%u")
-            .context("Failed to request sink_%u pad from audiomixer")?;
-        capsfilter
-            .static_pad("src")
-            .unwrap()
-            .link(&audiomixer_sink_pad)?;
-    }
-
-    let src_pad = audioconvert.static_pad("src").unwrap();
+    let src_pad = audiomixer.static_pad("src").unwrap();
     bin.add_pad(
         &gst::GhostPad::builder_with_target(&src_pad)?
             .name("src")
             .build(),
     )?;
+
+    let pulsesrc_caps = gst::Caps::builder("audio/x-raw")
+        .field("rate", AUDIO_SAMPLE_RATE)
+        .field("channels", AUDIO_N_CHANNELS)
+        .build();
+    for device_name in device_names {
+        let pulsesrc = gst::ElementFactory::make("pulsesrc")
+            .property("device", device_name)
+            .property("do-timestamp", true)
+            .build()?;
+        let audiorate = gst::ElementFactory::make("audiorate").build()?;
+
+        bin.add_many([&pulsesrc, &audiorate])?;
+        pulsesrc.link_filtered(&audiorate, &pulsesrc_caps)?;
+
+        let audiomixer_sink_pad = audiomixer
+            .request_pad_simple("sink_%u")
+            .context("Failed to request sink_%u pad from audiomixer")?;
+        audiorate
+            .static_pad("src")
+            .unwrap()
+            .link(&audiomixer_sink_pad)?;
+    }
 
     Ok(bin)
 }
