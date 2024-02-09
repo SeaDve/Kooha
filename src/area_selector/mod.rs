@@ -67,12 +67,12 @@ mod imp {
             klass.bind_template();
 
             klass.install_action("area-selector.cancel", None, move |obj, _, _| {
-                if let Some(sender) = obj.imp().async_done_tx.take() {
-                    let _ = sender.send(Err(Cancelled::new("area select loading")));
+                if let Some(tx) = obj.imp().async_done_tx.take() {
+                    let _ = tx.send(Err(Cancelled::new("area select loading")));
                 }
 
-                if let Some(sender) = obj.imp().result_tx.take() {
-                    let _ = sender.send(Err(Cancelled::new("area select")));
+                if let Some(tx) = obj.imp().result_tx.take() {
+                    let _ = tx.send(Err(Cancelled::new("area select")));
                     obj.close();
                 } else {
                     tracing::error!("Sent result twice");
@@ -80,8 +80,8 @@ mod imp {
             });
 
             klass.install_action("area-selector.done", None, move |obj, _, _| {
-                if let Some(sender) = obj.imp().result_tx.take() {
-                    let _ = sender.send(Ok(()));
+                if let Some(tx) = obj.imp().result_tx.take() {
+                    let _ = tx.send(Ok(()));
                     obj.close();
                 } else {
                     tracing::error!("Sent response twice");
