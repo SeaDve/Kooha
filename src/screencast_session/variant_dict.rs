@@ -63,7 +63,7 @@ impl VariantDict {
 
 impl StaticVariantType for VariantDict {
     fn static_variant_type() -> Cow<'static, glib::VariantTy> {
-        Cow::Borrowed(glib::VariantTy::VARDICT)
+        glib::VariantDict::static_variant_type()
     }
 }
 
@@ -162,7 +162,7 @@ mod tests {
     fn static_variant_type() {
         assert_eq!(
             VariantDict::default().to_variant().type_(),
-            glib::VariantTy::VARDICT
+            glib::VariantDict::static_variant_type()
         );
     }
 

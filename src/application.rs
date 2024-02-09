@@ -174,8 +174,10 @@ impl Application {
     }
 
     fn setup_gactions(&self) {
-        let action_launch_default_for_uri =
-            gio::SimpleAction::new("launch-default-for-uri", Some(glib::VariantTy::STRING));
+        let action_launch_default_for_uri = gio::SimpleAction::new(
+            "launch-default-for-uri",
+            Some(&String::static_variant_type()),
+        );
         action_launch_default_for_uri.connect_activate(
             clone!(@weak self as obj => move |_, param| {
                 let file_uri = param.unwrap().get::<String>().unwrap();
@@ -188,7 +190,7 @@ impl Application {
         self.add_action(&action_launch_default_for_uri);
 
         let action_show_in_files =
-            gio::SimpleAction::new("show-in-files", Some(glib::VariantTy::STRING));
+            gio::SimpleAction::new("show-in-files", Some(&String::static_variant_type()));
         action_show_in_files.connect_activate(clone!(@weak self as obj => move |_, param| {
             let uri = param.unwrap().get::<String>().unwrap();
 

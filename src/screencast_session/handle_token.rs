@@ -41,6 +41,6 @@ mod tests {
     #[test]
     fn to_variant() {
         let ht = HandleToken::new();
-        assert_eq!(ht.to_variant().type_(), glib::VariantTy::STRING);
+        assert_eq!(ht.to_variant().type_(), String::static_variant_type());
     }
 }
