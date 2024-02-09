@@ -145,20 +145,12 @@ impl PipelineBuilder {
 }
 
 fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
-    // Workaround copied from https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/d32c03488fcf6cdb0ca2e99b0ed6ade078460deb
-    let registry = gst::Registry::get();
-    let needs_copy = registry.check_feature_version("pipewiresrc", 0, 3, 57)
-        && !registry.check_feature_version("videoconvert", 1, 20, 4);
-
-    tracing::debug!("pipewiresrc needs copy: {}", needs_copy);
-
     let src = gst::ElementFactory::make("pipewiresrc")
         .property("fd", fd)
         .property("path", path)
         .property("do-timestamp", true)
         .property("keepalive-time", 1000)
         .property("resend-last", true)
-        .property("always-copy", needs_copy)
         .build()?;
 
     Ok(src)
