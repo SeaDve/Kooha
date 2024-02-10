@@ -100,7 +100,7 @@ impl PipelineBuilder {
 
         ensure!(!self.streams.is_empty(), "No streams provided");
 
-        let videosrc_bin = pipewiresrc_bin(
+        let videosrc_bin = make_pipewiresrc_bin(
             self.fd,
             &self.streams,
             self.framerate,
@@ -113,7 +113,7 @@ impl PipelineBuilder {
         let audiosrc_bin = if self.profile.supports_audio()
             && (self.speaker_source.is_some() || self.mic_source.is_some())
         {
-            let audiosrc_bin = pulsesrc_bin(
+            let audiosrc_bin = make_pulsesrc_bin(
                 [&self.speaker_source, &self.mic_source]
                     .into_iter()
                     .filter_map(|s| s.as_deref()),
@@ -145,7 +145,7 @@ impl PipelineBuilder {
     }
 }
 
-fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
+fn make_pipewiresrc(fd: RawFd, path: &str) -> Result<gst::Element> {
     let src = gst::ElementFactory::make("pipewiresrc")
         .property("fd", fd)
         .property("path", path)
@@ -157,7 +157,7 @@ fn pipewiresrc_with_default(fd: RawFd, path: &str) -> Result<gst::Element> {
     Ok(src)
 }
 
-fn videoconvert_with_default() -> Result<gst::Element> {
+fn make_videoconvert() -> Result<gst::Element> {
     let conv = gst::ElementFactory::make("videoconvert")
         .property("chroma-mode", gst_video::VideoChromaMode::None)
         .property("dither", gst_video::VideoDitherMethod::None)
@@ -169,7 +169,7 @@ fn videoconvert_with_default() -> Result<gst::Element> {
 
 /// Create a videocrop element that computes the crop from the given coordinates
 /// and size.
-fn videocrop_compute(data: &SelectAreaData) -> Result<gst::Element> {
+fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
     let SelectAreaData {
         selection,
         paintable_rect,
@@ -233,7 +233,7 @@ fn videocrop_compute(data: &SelectAreaData) -> Result<gst::Element> {
 /// pipewiresrc2 -> videorate -> | -> compositor -> videoconvert -> videoscale -> videocrop
 ///                              |
 /// pipewiresrcn -> videorate -> |
-pub fn pipewiresrc_bin(
+pub fn make_pipewiresrc_bin(
     fd: RawFd,
     streams: &[Stream],
     framerate: u32,
@@ -242,25 +242,25 @@ pub fn pipewiresrc_bin(
     let bin = gst::Bin::new();
 
     let compositor = gst::ElementFactory::make("compositor").build()?;
-    let videoconvert = videoconvert_with_default()?;
+    let videoconvert = make_videoconvert()?;
 
     bin.add_many([&compositor, &videoconvert])?;
     compositor.link(&videoconvert)?;
 
     if let Some(data) = select_area_data {
         let videoscale = gst::ElementFactory::make("videoscale").build()?;
-        let videocrop = videocrop_compute(data)?;
+        let videocrop = make_videocrop(data)?;
 
         // x264enc requires even resolution.
         let (stream_width, stream_height) = data.stream_size;
-        let videoscale_filter = gst::Caps::builder("video/x-raw")
+        let videoscale_caps = gst::Caps::builder("video/x-raw")
             .field("width", round_to_even(stream_width))
             .field("height", round_to_even(stream_height))
             .build();
 
         bin.add_many([&videoscale, &videocrop])?;
         videoconvert.link(&videoscale)?;
-        videoscale.link_filtered(&videocrop, &videoscale_filter)?;
+        videoscale.link_filtered(&videocrop, &videoscale_caps)?;
 
         let src_pad = videocrop.static_pad("src").unwrap();
         bin.add_pad(
@@ -277,18 +277,17 @@ pub fn pipewiresrc_bin(
         )?;
     }
 
-    let videorate_filter = gst::Caps::builder("video/x-raw")
+    let videorate_caps = gst::Caps::builder("video/x-raw")
         .field("framerate", gst::Fraction::new(framerate as i32, 1))
         .build();
-
     let mut last_pos = 0;
     for stream in streams {
-        let pipewiresrc = pipewiresrc_with_default(fd, &stream.node_id().to_string())?;
+        let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
         let videorate = gst::ElementFactory::make("videorate")
             .property("skip-to-first", true)
             .build()?;
         let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
-            .property("caps", &videorate_filter)
+            .property("caps", &videorate_caps)
             .build()?;
 
         bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
@@ -317,7 +316,7 @@ pub fn pipewiresrc_bin(
 /// pulsesrc2 -> audiorate -> | -> audiomixer
 ///                           |
 /// pulsesrcn -> audiorate -> |
-fn pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
+fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::new();
 
     let audiomixer = gst::ElementFactory::make("audiomixer").build()?;
