@@ -35,6 +35,7 @@ mod i18n;
 mod pipeline;
 mod preferences_dialog;
 mod profile;
+mod progress_icon;
 mod recording;
 mod screencast_session;
 mod settings;

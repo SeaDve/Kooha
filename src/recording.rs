@@ -1,17 +1,17 @@
+use std::{
+    cell::{Cell, OnceCell, RefCell},
+    error, fmt,
+    os::unix::prelude::RawFd,
+    rc::Rc,
+    time::{Duration, Instant},
+};
+
 use anyhow::{ensure, Context, Error, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
     gio::{self, prelude::*},
     glib::{self, clone, closure_local, subclass::prelude::*},
-};
-
-use std::{
-    cell::{Cell, OnceCell, RefCell},
-    error, fmt,
-    os::unix::prelude::RawFd,
-    rc::Rc,
-    time::Duration,
 };
 
 use crate::{
@@ -53,7 +53,10 @@ pub enum RecordingState {
     },
     Recording,
     Paused,
-    Flushing,
+    Flushing {
+        /// Progress in percentage with range 0..=100
+        progress: u8,
+    },
     Finished,
 }
 
@@ -77,6 +80,9 @@ mod imp {
         pub(super) duration: Cell<gst::ClockTime>,
 
         pub(super) file: OnceCell<gio::File>,
+
+        pub(super) starting_time: Cell<Option<Instant>>,
+        pub(super) expected_duration: Cell<Option<Duration>>,
 
         pub(super) timer: RefCell<Option<Timer>>,
         pub(super) session: RefCell<Option<ScreencastSession>>,
@@ -258,10 +264,12 @@ impl Recording {
             DEFAULT_DURATION_UPDATE_INTERVAL,
             clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move || {
                 obj.update_duration();
+                obj.update_flushing_progress();
                 glib::ControlFlow::Continue
             }),
         )));
-        pipeline
+
+        let state_change = pipeline
             .set_state(gst::State::Playing)
             .context("Failed to initialize pipeline state to playing")
             .with_help(
@@ -269,6 +277,11 @@ impl Recording {
                 || gettext("Failed to start recording"),
             )?;
         self.update_duration();
+
+        tracing::debug!(?state_change, "Pipeline state change");
+        if state_change != gst::StateChangeSuccess::Async {
+            imp.starting_time.set(Some(Instant::now()));
+        }
 
         Ok(())
     }
@@ -300,17 +313,25 @@ impl Recording {
     }
 
     pub fn stop(&self) {
-        let state = self.state();
+        let imp = self.imp();
 
+        let state = self.state();
         if matches!(
             state,
-            RecordingState::Init | RecordingState::Flushing | RecordingState::Finished
+            RecordingState::Init | RecordingState::Flushing { .. } | RecordingState::Finished
         ) {
             tracing::error!("Trying to stop recording on a `{:?}` state", state);
             return;
         }
 
-        self.set_state(RecordingState::Flushing);
+        self.set_state(RecordingState::Flushing { progress: 0 });
+        imp.expected_duration.set(Some(
+            imp.starting_time
+                .get()
+                .expect("starting time must have set on start or async done")
+                .elapsed(),
+        ));
+        self.update_flushing_progress();
 
         tracing::debug!("Sending eos event to pipeline");
         // FIXME Maybe it is needed to verify if we received the same
@@ -406,8 +427,9 @@ impl Recording {
     }
 
     fn update_duration(&self) {
-        let clock_time = self
-            .imp()
+        let imp = self.imp();
+
+        let clock_time = imp
             .pipeline
             .get()
             .and_then(|pipeline| pipeline.query_position::<gst::ClockTime>())
@@ -417,8 +439,31 @@ impl Recording {
             return;
         }
 
-        self.imp().duration.set(clock_time);
+        imp.duration.set(clock_time);
         self.notify_duration();
+    }
+
+    fn update_flushing_progress(&self) {
+        let imp = self.imp();
+
+        let RecordingState::Flushing {
+            progress: prev_progress,
+        } = self.state()
+        else {
+            return;
+        };
+
+        let progress = imp.expected_duration.get().map_or(0, |expected_duration| {
+            let progress_percent =
+                self.duration().nseconds() as f64 / expected_duration.as_nanos() as f64 * 100.0;
+            (progress_percent.round() as u8).clamp(0, 100)
+        });
+
+        if prev_progress == progress {
+            return;
+        }
+
+        self.set_state(RecordingState::Flushing { progress });
     }
 
     fn handle_bus_message(&self, message: &gst::Message) -> glib::ControlFlow {
@@ -427,6 +472,19 @@ impl Recording {
         let imp = self.imp();
 
         match message.view() {
+            MessageView::AsyncDone(ad) => {
+                tracing::debug!(
+                    state = ?self.state(),
+                    running_time = ?ad.running_time(),
+                    "Received async done message on bus"
+                );
+
+                if imp.starting_time.get().is_none() {
+                    imp.starting_time.set(Some(Instant::now()));
+                }
+
+                glib::ControlFlow::Continue
+            }
             MessageView::Error(e) => {
                 tracing::debug!(state = ?self.state(), "Received error at bus");
 
@@ -466,9 +524,13 @@ impl Recording {
             MessageView::Eos(..) => {
                 tracing::debug!("Eos signal received from record bus");
 
-                if self.state() != RecordingState::Flushing {
-                    tracing::error!("Received an Eos signal on a {:?} state", self.state());
-                }
+                debug_assert!(
+                    matches!(self.state(), RecordingState::Flushing { .. }),
+                    "received eos signal on {:?}",
+                    self.state()
+                );
+
+                self.set_state(RecordingState::Flushing { progress: 100 });
 
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
                     tracing::error!("Failed to stop pipeline on eos: {:?}", err);

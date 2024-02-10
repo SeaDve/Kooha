@@ -262,9 +262,10 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSpinner">
-                        <property name="spinning">True</property>
-                        <property name="height-request">18</property>
+                      <object class="KoohaProgressIcon" id="flushing_progress_icon">
+                        <property name="width-request">24</property>
+                        <property name="height-request">24</property>
+                        <property name="halign">center</property>
                       </object>
                     </child>
                   </object>

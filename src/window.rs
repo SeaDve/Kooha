@@ -13,6 +13,7 @@ use crate::{
     cancelled::Cancelled,
     config::PROFILE,
     help::Help,
+    progress_icon::ProgressIcon,
     recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
     toggle_button::ToggleButton,
@@ -47,6 +48,8 @@ mod imp {
         pub(super) delay_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub(super) flushing_page: TemplateChild<gtk::Box>,
+        #[template_child]
+        pub(super) flushing_progress_icon: TemplateChild<ProgressIcon>,
 
         pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
@@ -152,7 +155,9 @@ impl Window {
             .is_some_and(|(recording, _)| {
                 matches!(
                     recording.state(),
-                    RecordingState::Recording | RecordingState::Paused | RecordingState::Flushing
+                    RecordingState::Recording
+                        | RecordingState::Paused
+                        | RecordingState::Flushing { .. }
                 )
             })
     }
@@ -177,7 +182,7 @@ impl Window {
             Some(RecordingState::Recording) | Some(RecordingState::Paused) => gettext(
                 "A recording is currently in progress. Quitting immediately will cause the recording to be permanently lost. Please stop the recording before quitting.",
             ),
-            Some(RecordingState::Flushing) => gettext(
+            Some(RecordingState::Flushing { .. }) => gettext(
                 "Quitting will cancel the processing and cause the recording to be permanently lost.",
             ),
             state => unreachable!("unexpected recording state: {:?}", state),
@@ -418,14 +423,19 @@ impl Window {
 
                 imp.stack.set_visible_child(&*imp.recording_page);
             }
-            RecordingState::Flushing => imp.stack.set_visible_child(&*imp.flushing_page),
+            RecordingState::Flushing { progress } => {
+                imp.flushing_progress_icon
+                    .set_progress(progress as f64 / 100.0);
+
+                imp.stack.set_visible_child(&*imp.flushing_page);
+            }
         }
 
         self.action_set_enabled(
             "win.toggle-record",
             !matches!(
                 state,
-                RecordingState::Delayed { .. } | RecordingState::Flushing
+                RecordingState::Delayed { .. } | RecordingState::Flushing { .. }
             ),
         );
         self.action_set_enabled(
@@ -436,7 +446,7 @@ impl Window {
             "win.cancel-record",
             matches!(
                 state,
-                RecordingState::Delayed { .. } | RecordingState::Flushing
+                RecordingState::Delayed { .. } | RecordingState::Flushing { .. }
             ),
         );
     }
