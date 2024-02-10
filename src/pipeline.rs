@@ -336,6 +336,7 @@ fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Res
     for device_name in device_names {
         let pulsesrc = gst::ElementFactory::make("pulsesrc")
             .property("device", device_name)
+            .property("provide-clock", false)
             .property("do-timestamp", true)
             .build()?;
         let audiorate = gst::ElementFactory::make("audiorate").build()?;
