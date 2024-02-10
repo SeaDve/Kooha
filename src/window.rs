@@ -106,13 +106,20 @@ mod imp {
             obj.setup_settings();
 
             obj.update_view();
-            obj.update_audio_toggles_sensitivity();
             obj.update_title_label();
             obj.update_subtitle_label();
         }
     }
 
-    impl WidgetImpl for Window {}
+    impl WidgetImpl for Window {
+        fn map(&self) {
+            self.parent_map();
+
+            let obj = self.obj();
+
+            obj.update_audio_toggles_sensitivity();
+        }
+    }
 
     impl WindowImpl for Window {
         fn close_request(&self) -> glib::Propagation {
