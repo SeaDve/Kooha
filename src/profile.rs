@@ -139,18 +139,14 @@ impl Profile for GifProfile {
             tracing::error!("Audio is not supported for Gif profile");
         }
 
+        let queue = gst::ElementFactory::make("queue").build()?;
         let gifenc = gst::ElementFactory::make("gifenc")
             .property("repeat", -1)
             .property("speed", 30)
             .build()?;
 
-        pipeline.add(&gifenc)?;
-
-        video_src
-            .link(&gifenc)
-            .context("Failed to link video src to gifenc")?;
-
-        gifenc.link(sink).context("Failed to link gifenc to sink")?;
+        pipeline.add_many([&queue, &gifenc])?;
+        gst::Element::link_many([video_src, &queue, &gifenc, sink])?;
 
         Ok(())
     }
