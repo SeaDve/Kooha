@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 09:20+0800\n"
+"POT-Creation-Date: 2024-02-11 19:52+0800\n"
 "PO-Revision-Date: 2023-10-08 13:00+0000\n"
 "Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/seadve/kooha/ar/"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
-#: src/main.rs:61
+#: src/main.rs:67
 msgid "Kooha"
 msgstr "كوها"
 
@@ -82,52 +82,48 @@ msgstr "🛠️ لك تغيير موضع الحفظ ورؤية المؤشِّر 
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 ترميز تجريبيٌّ مسرَّع بمساعدة العتاد"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
-msgid "Dave Patrick Caberto"
-msgstr "ديف باترك كابرتو"
-
-#: data/resources/ui/area-selector.ui:14
+#: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
 msgstr "حدِّد مساحةً"
 
-#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
-#: data/resources/ui/window.ui:276
+#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window.rs:205
 msgid "Cancel"
 msgstr "ألغِ"
 
-#: data/resources/ui/area-selector.ui:25
+#: data/resources/ui/area-selector.ui:26
 msgid "Done"
 msgstr "تمَّ"
 
-#: data/resources/ui/area-selector.ui:34
+#: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
 msgstr "صفِّر التحديد"
 
-#: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "عام"
 
-#: data/resources/ui/preferences-window.ui:14
+#: data/resources/ui/preferences-dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr "التأخير (بالثواني)"
 
-#: data/resources/ui/preferences-window.ui:32
+#: data/resources/ui/preferences-dialog.ui:31
 msgid "Recordings Folder"
 msgstr "مجلَّد التسجيلات"
 
-#: data/resources/ui/preferences-window.ui:51
+#: data/resources/ui/preferences-dialog.ui:50
 msgid "Video"
 msgstr "مقطع"
 
-#: data/resources/ui/preferences-window.ui:54
+#: data/resources/ui/preferences-dialog.ui:53
 msgid "Format"
 msgstr "التنسيق"
 
-#: data/resources/ui/preferences-window.ui:59
+#: data/resources/ui/preferences-dialog.ui:58
 msgid "Frame Rate"
 msgstr "معدَّل الإطارات"
 
-#: data/resources/ui/preferences-window.ui:65
+#: data/resources/ui/preferences-dialog.ui:64
 msgid "This frame rate may cause performance issues."
 msgstr "قد يسبِّب معدَّل الإطارات هذا مشكلات أداء."
 
@@ -143,11 +139,11 @@ msgstr "أظهر التفضيلات"
 msgid "Show Shortcuts"
 msgstr "أظهر الاختصارات"
 
-#: data/resources/ui/shortcuts.ui:32
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
 msgid "Quit"
 msgstr "أنهِ"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
 msgid "Recording"
 msgstr "يسجَّل"
 
@@ -179,75 +175,75 @@ msgstr "بدِّل الميكروفون"
 msgid "Toggle Pointer"
 msgstr "بدِّل المؤشِّر"
 
-#: data/resources/ui/window.ui:25
+#: data/resources/ui/window.ui:24
 msgid "Main Menu"
 msgstr "القائمة الرئيسة"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
 msgstr "التقط شاشةً أو نافذةً"
 
-#: data/resources/ui/window.ui:67
+#: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
 msgstr "التقط موضعًا من الشاشة"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
 msgstr "مكِّن صوت سطح المكتب"
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
 msgstr "عطِّل صوت سطح المكتب"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
 msgstr "بدِّل الميكروفون"
 
-#: data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
 msgstr "عطِّل الميكروفون"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "أظهر المؤشِّر"
 
-#: data/resources/ui/window.ui:106
+#: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
 msgstr "أخفِ المؤشِّر"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:115
 msgid "Start Recording"
 msgstr "ابدأ التسجيل"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:116
 msgid "Record"
 msgstr "سجِّل"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
 msgstr "انسَ ما حُدِّد من مصادر مقاطع"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:180
 msgid "Stop Recording"
 msgstr "أوقف التسجيل"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:181
 msgid "Stop"
 msgstr "توقَّف"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:191
 msgid "Pause Recording"
 msgstr "ألبث التسجيل"
 
-#: data/resources/ui/window.ui:215
+#: data/resources/ui/window.ui:214
 msgid "Recording in…"
 msgstr "يبدأ التسجيل خلال …"
 
-#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "ألغِ التسجيل"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:257
 msgid "Flushing…"
 msgstr "يفرَّغ…"
 
@@ -262,10 +258,6 @@ msgstr "ا_ختصارات لوحة المفاتيح"
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_عن كوها"
-
-#: src/about.rs:19
-msgid "© 2022 Dave Patrick Caberto"
-msgstr "© ٢٠٢٢ ديف باترك كابرتو"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
@@ -288,19 +280,15 @@ msgid "Translate"
 msgstr "ترجم"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:110
+#: src/application.rs:137
 msgid "Screencast recorded"
 msgstr "سُجِّلت الشاشة"
 
-#: src/application.rs:111
-msgid "Click here to view the video."
-msgstr "انقر هنا لترى المقطع."
-
-#: src/application.rs:117
+#: src/application.rs:144
 msgid "Show in Files"
 msgstr "أظهره في الملفَّات"
 
-#: src/area_selector/mod.rs:323
+#: src/area_selector/mod.rs:324
 msgid "approx."
 msgstr "تقريبًا"
 
@@ -316,123 +304,99 @@ msgstr "فشل بدء مرقاب الجهاز"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "فشل الاتصال بالبرنامج الخفيِّ لبُلس‌أوديو"
 
-#: src/preferences_window.rs:56
-msgid "Failed to select saving location"
-msgstr "فشل اختيار موضع الحفظ"
+#: src/preferences_dialog.rs:63
+msgid "Failed to set recordings folder"
+msgstr ""
 
-#: src/preferences_window.rs:61 src/window.rs:216
-msgid "Ok"
-msgstr "حسنًا"
-
-#: src/preferences_window.rs:243
+#: src/preferences_dialog.rs:235
 msgid "This format is experimental and unsupported."
 msgstr "هذا التنسيق تجريبيٌّ وليس مدعومًا."
 
-#: src/preferences_window.rs:272
+#: src/preferences_dialog.rs:264
 msgid "None"
 msgstr "لا شيء"
 
-#: src/profile.rs:116
-msgid "GIF"
-msgstr "جِف"
-
-#: src/profile.rs:267
-msgid "WebM"
-msgstr "وِب‌إم"
-
-#: src/profile.rs:291
-msgid "MP4"
-msgstr "إم‌بي‌٤"
-
-#: src/profile.rs:310
-msgid "Matroska"
-msgstr "متروسكا"
-
-#: src/profile.rs:343
-msgid "WebM VP9"
-msgstr "وِب‌إم في‌بي٩"
-
-#: src/profile.rs:367
-msgid "WebM AV1"
-msgstr "وِب‌إم أي‌في١"
-
-#: src/profile.rs:388
-msgid "WebM VAAPI VP8"
-msgstr "وِب‌إم فابي في‌بي٨"
-
-#: src/profile.rs:403
-msgid "WebM VAAPI VP9"
-msgstr "وِب‌إم فابي في‌بي٩"
-
-#: src/profile.rs:418
-msgid "WebM VAAPI H264"
-msgstr "وِب‌إم فابي إتش٢٦٤"
-
-#: src/recording.rs:37
+#: src/recording.rs:40
 msgid "No active profile"
 msgstr "لا يوجد ملفٌّ تعريف فعَّال"
 
-#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
+#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
 msgid "Failed to start recording"
 msgstr "فشل بدء التسجيل"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:178
+#: src/recording.rs:186
 msgid "Check out {link} for help."
 msgstr "طالع {link} تجد المساعدة."
 
-#: src/recording.rs:220
+#: src/recording.rs:228
 msgid "No microphone source found"
 msgstr "لم يعثر على مصدر ميكروفون"
 
-#: src/recording.rs:227
+#: src/recording.rs:235
 msgid "No desktop speaker source found"
 msgstr "لم يعثر على مصدر سمَّاعة سطح مكتب"
 
-#: src/recording.rs:234
+#: src/recording.rs:242
 msgid "A GStreamer plugin may not be installed."
 msgstr "إحدى إضافات جي‌ستريم قد لا تكون مثبَّتةً."
 
-#: src/recording.rs:259 src/recording.rs:463
+#: src/recording.rs:276 src/recording.rs:508
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "تأكَّد من وجود موضع الحفظ وإمكانية الوصول إليه."
 
-#: src/recording.rs:459
+#: src/recording.rs:504
 msgid "An error occurred while recording"
 msgstr "حصل خطأ أثناء التسجيل"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:472
+#: src/recording.rs:511
 msgid "Failed to open “{path}” for writing"
 msgstr "فشل فتح «{path}» للكتابة فيه"
 
-#: src/recording.rs:476
-msgid "Failed to open file for writing"
-msgstr "فشل فتح الملفِّ ليُكتب فيه"
-
-#: src/settings.rs:37
+#: src/settings.rs:32
 msgid "Select Recordings Folder"
 msgstr "اختر مجلَّد حفظ التسجيلات"
 
-#: src/window.rs:70
+#: src/window.rs:75
 msgid "Failed to toggle pause"
 msgstr "فشل الإيقاف"
 
-#: src/window.rs:179
+#: src/window.rs:191
+msgid ""
+"A recording is currently in progress. Quitting immediately may cause the "
+"recording to be unplayable. Please stop the recording before quitting."
+msgstr ""
+
+#: src/window.rs:194
+msgid ""
+"Quitting will cancel the processing and may cause the recording to be "
+"unplayable."
+msgstr ""
+
+#: src/window.rs:200
+msgid "Quit the Application?"
+msgstr ""
+
+#: src/window.rs:245
 msgid "Copy to clipboard"
 msgstr "انسخ للحافظة"
 
-#: src/window.rs:185
+#: src/window.rs:251
 msgid "Copied to clipboard"
 msgstr "نُسخ للحافظة"
 
-#: src/window.rs:191
+#: src/window.rs:257
 msgid "Show detailed error"
 msgstr "أظهر تفاصيل الخطأ"
 
-#: src/window.rs:213
+#: src/window.rs:277
 msgid "Help"
 msgstr "مساعدة"
+
+#: src/window.rs:280
+msgid "Ok"
+msgstr "حسنًا"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
@@ -445,7 +409,7 @@ msgid ""
 msgstr ""
 "التنسيق المحدَّد قد لا يكون متاحًا. افتح التفضيلات واختر تنسيقًا لتستأنف التسجيل."
 
-#: src/window.rs:295
+#: src/window.rs:294
 msgid "Later"
 msgstr "لاحقًا"
 
@@ -453,17 +417,63 @@ msgstr "لاحقًا"
 msgid "Open"
 msgstr "افتح"
 
-#: src/window.rs:354
+#: src/window.rs:436
 msgid "Paused"
 msgstr "مُلبث"
 
-#: src/window.rs:386
+#: src/window.rs:473
 msgid "Normal"
 msgstr "عادي"
 
-#: src/window.rs:387
+#: src/window.rs:474
 msgid "Selection"
 msgstr "المحدَّد"
+
+#: src/window.rs:485
+msgid "No Profile"
+msgstr ""
+
+#~ msgid "Dave Patrick Caberto"
+#~ msgstr "ديف باترك كابرتو"
+
+#~ msgid "© 2022 Dave Patrick Caberto"
+#~ msgstr "© ٢٠٢٢ ديف باترك كابرتو"
+
+#~ msgid "Click here to view the video."
+#~ msgstr "انقر هنا لترى المقطع."
+
+#~ msgid "Failed to select saving location"
+#~ msgstr "فشل اختيار موضع الحفظ"
+
+#~ msgid "GIF"
+#~ msgstr "جِف"
+
+#~ msgid "WebM"
+#~ msgstr "وِب‌إم"
+
+#~ msgid "MP4"
+#~ msgstr "إم‌بي‌٤"
+
+#~ msgid "Matroska"
+#~ msgstr "متروسكا"
+
+#~ msgid "WebM VP9"
+#~ msgstr "وِب‌إم في‌بي٩"
+
+#~ msgid "WebM AV1"
+#~ msgstr "وِب‌إم أي‌في١"
+
+#~ msgid "WebM VAAPI VP8"
+#~ msgstr "وِب‌إم فابي في‌بي٨"
+
+#~ msgid "WebM VAAPI VP9"
+#~ msgstr "وِب‌إم فابي في‌بي٩"
+
+#~ msgid "WebM VAAPI H264"
+#~ msgstr "وِب‌إم فابي إتش٢٦٤"
+
+#~ msgid "Failed to open file for writing"
+#~ msgstr "فشل فتح الملفِّ ليُكتب فيه"
 
 #~ msgid "Failed to select folder"
 #~ msgstr "فشل تحديد المجلد"

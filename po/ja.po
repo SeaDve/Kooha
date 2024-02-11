@@ -12,11 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 09:20+0800\n"
+"POT-Creation-Date: 2024-02-11 19:52+0800\n"
 "PO-Revision-Date: 2023-09-25 07:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/"
-"ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
-#: src/main.rs:61
+#: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -85,52 +85,48 @@ msgstr "🛠 設定可能な保存先、カーソルの可視性、フレーム�
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 実験的なハードウェア強化エンコーディング"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
-msgid "Dave Patrick Caberto"
-msgstr "Dave Patrick Caberto"
-
-#: data/resources/ui/area-selector.ui:14
+#: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
 msgstr "範囲選択"
 
-#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
-#: data/resources/ui/window.ui:276
+#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window.rs:205
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: data/resources/ui/area-selector.ui:25
+#: data/resources/ui/area-selector.ui:26
 msgid "Done"
 msgstr "完了"
 
-#: data/resources/ui/area-selector.ui:34
+#: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
 msgstr "選択をリセット"
 
-#: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "一般"
 
-#: data/resources/ui/preferences-window.ui:14
+#: data/resources/ui/preferences-dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr "遅延（秒）"
 
-#: data/resources/ui/preferences-window.ui:32
+#: data/resources/ui/preferences-dialog.ui:31
 msgid "Recordings Folder"
 msgstr "録画フォルダ"
 
-#: data/resources/ui/preferences-window.ui:51
+#: data/resources/ui/preferences-dialog.ui:50
 msgid "Video"
 msgstr "動画"
 
-#: data/resources/ui/preferences-window.ui:54
+#: data/resources/ui/preferences-dialog.ui:53
 msgid "Format"
 msgstr "フォーマット"
 
-#: data/resources/ui/preferences-window.ui:59
+#: data/resources/ui/preferences-dialog.ui:58
 msgid "Frame Rate"
 msgstr "フレームレート"
 
-#: data/resources/ui/preferences-window.ui:65
+#: data/resources/ui/preferences-dialog.ui:64
 msgid "This frame rate may cause performance issues."
 msgstr "このフレームレートはパフォーマンスに問題を起こす可能性があります。"
 
@@ -146,11 +142,11 @@ msgstr "設定を表示"
 msgid "Show Shortcuts"
 msgstr "ショートカット一覧を表示"
 
-#: data/resources/ui/shortcuts.ui:32
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
 msgid "Quit"
 msgstr "終了"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
 msgid "Recording"
 msgstr "録画中"
 
@@ -182,75 +178,75 @@ msgstr "マイクからの録音を有効化／無効化"
 msgid "Toggle Pointer"
 msgstr "ポインターの表示／非表示"
 
-#: data/resources/ui/window.ui:25
+#: data/resources/ui/window.ui:24
 msgid "Main Menu"
 msgstr "メニュー"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
 msgstr "モニタまたはウィンドウをキャプチャする"
 
-#: data/resources/ui/window.ui:67
+#: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
 msgstr "スクリーンの選択範囲をキャプチャする"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
 msgstr "デスクトップ音声を有効化"
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
 msgstr "デスクトップ音声を無効化"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
 msgstr "マイクを有効にする"
 
-#: data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
 msgstr "マイクを無効にする"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "ポインターを表示する"
 
-#: data/resources/ui/window.ui:106
+#: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
 msgstr "ポインターを隠す"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:115
 msgid "Start Recording"
 msgstr "録画を開始"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:116
 msgid "Record"
 msgstr "録画"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
 msgstr "以前に選択したビデオソースを忘れる"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:180
 msgid "Stop Recording"
 msgstr "録画を停止"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:181
 msgid "Stop"
 msgstr "停止"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:191
 msgid "Pause Recording"
 msgstr "録画を一時停止"
 
-#: data/resources/ui/window.ui:215
+#: data/resources/ui/window.ui:214
 msgid "Recording in…"
 msgstr "録画開始まで…"
 
-#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "録画をキャンセル"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:257
 msgid "Flushing…"
 msgstr "書き込んでいます…"
 
@@ -265,10 +261,6 @@ msgstr "キーボードショートカット(_K)"
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "Koohaについて(_A)"
-
-#: src/about.rs:19
-msgid "© 2022 Dave Patrick Caberto"
-msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
@@ -293,19 +285,15 @@ msgid "Translate"
 msgstr "翻訳"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:110
+#: src/application.rs:137
 msgid "Screencast recorded"
 msgstr "スクリーンキャストを保存しました"
 
-#: src/application.rs:111
-msgid "Click here to view the video."
-msgstr "ここをクリックして動画を確認できます。"
-
-#: src/application.rs:117
+#: src/application.rs:144
 msgid "Show in Files"
 msgstr "ファイル で表示"
 
-#: src/area_selector/mod.rs:323
+#: src/area_selector/mod.rs:324
 msgid "approx."
 msgstr "約"
 
@@ -321,123 +309,99 @@ msgstr "デバイスモニタの開始に失敗しました"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "PulseAudioデーモンへの接続に失敗しました"
 
-#: src/preferences_window.rs:56
-msgid "Failed to select saving location"
+#: src/preferences_dialog.rs:63
+msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_window.rs:61 src/window.rs:216
-msgid "Ok"
-msgstr "OK"
-
-#: src/preferences_window.rs:243
+#: src/preferences_dialog.rs:235
 msgid "This format is experimental and unsupported."
 msgstr "このフォーマットは実験的でありサポートされていません。"
 
-#: src/preferences_window.rs:272
+#: src/preferences_dialog.rs:264
 msgid "None"
 msgstr "なし"
 
-#: src/profile.rs:116
-msgid "GIF"
-msgstr "GIF"
-
-#: src/profile.rs:267
-msgid "WebM"
-msgstr "WebM"
-
-#: src/profile.rs:291
-msgid "MP4"
-msgstr "MP4"
-
-#: src/profile.rs:310
-msgid "Matroska"
-msgstr "Matroska"
-
-#: src/profile.rs:343
-msgid "WebM VP9"
-msgstr "WebM VP9"
-
-#: src/profile.rs:367
-msgid "WebM AV1"
-msgstr "WebM AV1"
-
-#: src/profile.rs:388
-msgid "WebM VAAPI VP8"
-msgstr "WebM VAAPI VP8"
-
-#: src/profile.rs:403
-msgid "WebM VAAPI VP9"
-msgstr "WebM VAAPI VP9"
-
-#: src/profile.rs:418
-msgid "WebM VAAPI H264"
-msgstr "WebM VAAPI H264"
-
-#: src/recording.rs:37
+#: src/recording.rs:40
 msgid "No active profile"
 msgstr "有効なプロファイルなし"
 
-#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
+#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
 msgid "Failed to start recording"
 msgstr "録画の開始に失敗しました"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:178
+#: src/recording.rs:186
 msgid "Check out {link} for help."
 msgstr "ヘルプは {link} をご確認ください。"
 
-#: src/recording.rs:220
+#: src/recording.rs:228
 msgid "No microphone source found"
 msgstr "マイクソースが見つかりません"
 
-#: src/recording.rs:227
+#: src/recording.rs:235
 msgid "No desktop speaker source found"
 msgstr "デスクトップスピーカーのソースが見つかりません"
 
-#: src/recording.rs:234
+#: src/recording.rs:242
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamerプラグインがインストールされていない可能性があります。"
 
-#: src/recording.rs:259 src/recording.rs:463
+#: src/recording.rs:276 src/recording.rs:508
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "保存場所が存在し、アクセス可能であることを確認してください。"
 
-#: src/recording.rs:459
+#: src/recording.rs:504
 msgid "An error occurred while recording"
 msgstr "録画中にエラーが発生しました"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:472
+#: src/recording.rs:511
 msgid "Failed to open “{path}” for writing"
 msgstr "“{path}” を書き込み用に開けませんでした"
 
-#: src/recording.rs:476
-msgid "Failed to open file for writing"
-msgstr "ファイルを書き込み用に開けませんでした"
-
-#: src/settings.rs:37
+#: src/settings.rs:32
 msgid "Select Recordings Folder"
 msgstr "動画の保存先のフォルダを選択"
 
-#: src/window.rs:70
+#: src/window.rs:75
 msgid "Failed to toggle pause"
 msgstr "一時停止の切り替えに失敗しました"
 
-#: src/window.rs:179
+#: src/window.rs:191
+msgid ""
+"A recording is currently in progress. Quitting immediately may cause the "
+"recording to be unplayable. Please stop the recording before quitting."
+msgstr ""
+
+#: src/window.rs:194
+msgid ""
+"Quitting will cancel the processing and may cause the recording to be "
+"unplayable."
+msgstr ""
+
+#: src/window.rs:200
+msgid "Quit the Application?"
+msgstr ""
+
+#: src/window.rs:245
 msgid "Copy to clipboard"
 msgstr "クリップボードにコピー"
 
-#: src/window.rs:185
+#: src/window.rs:251
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーしました"
 
-#: src/window.rs:191
+#: src/window.rs:257
 msgid "Show detailed error"
 msgstr "エラーの詳細を表示"
 
-#: src/window.rs:213
+#: src/window.rs:277
 msgid "Help"
 msgstr "ヘルプ"
+
+#: src/window.rs:280
+msgid "Ok"
+msgstr "OK"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
@@ -451,7 +415,7 @@ msgstr ""
 "前回選択したフォーマットが利用できません。設定を開いてフォーマットを選択し録"
 "画を継続してください。"
 
-#: src/window.rs:295
+#: src/window.rs:294
 msgid "Later"
 msgstr "後で"
 
@@ -459,17 +423,60 @@ msgstr "後で"
 msgid "Open"
 msgstr "開く"
 
-#: src/window.rs:354
+#: src/window.rs:436
 msgid "Paused"
 msgstr "一時停止"
 
-#: src/window.rs:386
+#: src/window.rs:473
 msgid "Normal"
 msgstr "通常"
 
-#: src/window.rs:387
+#: src/window.rs:474
 msgid "Selection"
 msgstr "選択範囲"
+
+#: src/window.rs:485
+msgid "No Profile"
+msgstr ""
+
+#~ msgid "Dave Patrick Caberto"
+#~ msgstr "Dave Patrick Caberto"
+
+#~ msgid "© 2022 Dave Patrick Caberto"
+#~ msgstr "© 2022 Dave Patrick Caberto"
+
+#~ msgid "Click here to view the video."
+#~ msgstr "ここをクリックして動画を確認できます。"
+
+#~ msgid "GIF"
+#~ msgstr "GIF"
+
+#~ msgid "WebM"
+#~ msgstr "WebM"
+
+#~ msgid "MP4"
+#~ msgstr "MP4"
+
+#~ msgid "Matroska"
+#~ msgstr "Matroska"
+
+#~ msgid "WebM VP9"
+#~ msgstr "WebM VP9"
+
+#~ msgid "WebM AV1"
+#~ msgstr "WebM AV1"
+
+#~ msgid "WebM VAAPI VP8"
+#~ msgstr "WebM VAAPI VP8"
+
+#~ msgid "WebM VAAPI VP9"
+#~ msgstr "WebM VAAPI VP9"
+
+#~ msgid "WebM VAAPI H264"
+#~ msgstr "WebM VAAPI H264"
+
+#~ msgid "Failed to open file for writing"
+#~ msgstr "ファイルを書き込み用に開けませんでした"
 
 #~ msgid "Failed to select folder"
 #~ msgstr "フォルダーを選択できませんでした"

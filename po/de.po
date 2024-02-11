@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 09:20+0800\n"
+"POT-Creation-Date: 2024-02-11 19:52+0800\n"
 "PO-Revision-Date: 2023-11-20 21:03+0000\n"
 "Last-Translator: Justin Nogossek <justmegaliga10000@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/seadve/kooha/de/"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
-#: src/main.rs:61
+#: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -91,52 +91,48 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "Experimentelles, hardwarebeschleunigtes Kodieren"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
-msgid "Dave Patrick Caberto"
-msgstr "Dave Patrick Caberto"
-
-#: data/resources/ui/area-selector.ui:14
+#: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
 msgstr "Bereich auswählen"
 
-#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
-#: data/resources/ui/window.ui:276
+#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window.rs:205
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: data/resources/ui/area-selector.ui:25
+#: data/resources/ui/area-selector.ui:26
 msgid "Done"
 msgstr "Fertig"
 
-#: data/resources/ui/area-selector.ui:34
+#: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
 msgstr "Auswahl zurücksetzen"
 
-#: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "Allgemeines"
 
-#: data/resources/ui/preferences-window.ui:14
+#: data/resources/ui/preferences-dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr "Verzögerung (Sekunden)"
 
-#: data/resources/ui/preferences-window.ui:32
+#: data/resources/ui/preferences-dialog.ui:31
 msgid "Recordings Folder"
 msgstr "Aufnahmen Speicherort"
 
-#: data/resources/ui/preferences-window.ui:51
+#: data/resources/ui/preferences-dialog.ui:50
 msgid "Video"
 msgstr "Video"
 
-#: data/resources/ui/preferences-window.ui:54
+#: data/resources/ui/preferences-dialog.ui:53
 msgid "Format"
 msgstr "Format"
 
-#: data/resources/ui/preferences-window.ui:59
+#: data/resources/ui/preferences-dialog.ui:58
 msgid "Frame Rate"
 msgstr "Bildrate"
 
-#: data/resources/ui/preferences-window.ui:65
+#: data/resources/ui/preferences-dialog.ui:64
 msgid "This frame rate may cause performance issues."
 msgstr "Diese Bildrate könnte Leistungsprobleme verursachen."
 
@@ -152,11 +148,11 @@ msgstr "Zeige Einstellungen"
 msgid "Show Shortcuts"
 msgstr "Tastaturkürzel anzeigen"
 
-#: data/resources/ui/shortcuts.ui:32
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
 msgid "Quit"
 msgstr "Schließen"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
 msgid "Recording"
 msgstr "Aufnahme"
 
@@ -188,75 +184,75 @@ msgstr "Mikrofon umschalten"
 msgid "Toggle Pointer"
 msgstr "Cursor umschalten"
 
-#: data/resources/ui/window.ui:25
+#: data/resources/ui/window.ui:24
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
 msgstr "Bildschirm oder Fenster aufnehmen"
 
-#: data/resources/ui/window.ui:67
+#: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
 msgstr "Auswahl des Bildschirms aufnehmen"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
 msgstr "Desktop Audio aktivieren"
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
 msgstr "Desktop Audio deaktivieren"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
 msgstr "Mikrofon aktivieren"
 
-#: data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
 msgstr "Mikrofon deaktivieren"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "Mauszeiger anzeigen"
 
-#: data/resources/ui/window.ui:106
+#: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
 msgstr "Mauszeiger ausblenden"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:115
 msgid "Start Recording"
 msgstr "Aufnahme starten"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:116
 msgid "Record"
 msgstr "Aufnehmen"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
 msgstr "Zuvor ausgewählte Videoquellen vergessen"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:180
 msgid "Stop Recording"
 msgstr "Aufnahme stoppen"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:181
 msgid "Stop"
 msgstr "Stopp"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:191
 msgid "Pause Recording"
 msgstr "Aufnahme pausieren"
 
-#: data/resources/ui/window.ui:215
+#: data/resources/ui/window.ui:214
 msgid "Recording in…"
 msgstr "Aufnahme in …"
 
-#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Aufnahme abbrechen"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:257
 msgid "Flushing…"
 msgstr "Abschließen…"
 
@@ -271,10 +267,6 @@ msgstr "_Tastaturkürzel"
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_Über Kooha"
-
-#: src/about.rs:19
-msgid "© 2022 Dave Patrick Caberto"
-msgstr "© 2022 Dave Patrick Caberto"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
@@ -296,19 +288,15 @@ msgid "Translate"
 msgstr "Übersetzen"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:110
+#: src/application.rs:137
 msgid "Screencast recorded"
 msgstr "Screencast aufgezeichnet"
 
-#: src/application.rs:111
-msgid "Click here to view the video."
-msgstr "Klicke hier, um das Video anzusehen."
-
-#: src/application.rs:117
+#: src/application.rs:144
 msgid "Show in Files"
 msgstr "In Dateien anzeigen"
 
-#: src/area_selector/mod.rs:323
+#: src/area_selector/mod.rs:324
 msgid "approx."
 msgstr "geschätzt"
 
@@ -324,123 +312,99 @@ msgstr "Gerätemonitor konnte nicht gestartet werden"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Verbindung zum PulseAudio-Daemon fehlgeschlagen"
 
-#: src/preferences_window.rs:56
-msgid "Failed to select saving location"
+#: src/preferences_dialog.rs:63
+msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_window.rs:61 src/window.rs:216
-msgid "Ok"
-msgstr "Ok"
-
-#: src/preferences_window.rs:243
+#: src/preferences_dialog.rs:235
 msgid "This format is experimental and unsupported."
 msgstr "Dieses Format ist experimentell und nicht unterstützt."
 
-#: src/preferences_window.rs:272
+#: src/preferences_dialog.rs:264
 msgid "None"
 msgstr "Kein"
 
-#: src/profile.rs:116
-msgid "GIF"
-msgstr "GIF"
-
-#: src/profile.rs:267
-msgid "WebM"
-msgstr "WebM"
-
-#: src/profile.rs:291
-msgid "MP4"
-msgstr "MP4"
-
-#: src/profile.rs:310
-msgid "Matroska"
-msgstr "Matroska"
-
-#: src/profile.rs:343
-msgid "WebM VP9"
-msgstr "WebM VP9"
-
-#: src/profile.rs:367
-msgid "WebM AV1"
-msgstr "WebM AV1"
-
-#: src/profile.rs:388
-msgid "WebM VAAPI VP8"
-msgstr "WebM VAAPI VP8"
-
-#: src/profile.rs:403
-msgid "WebM VAAPI VP9"
-msgstr "WebM VAAPI VP9"
-
-#: src/profile.rs:418
-msgid "WebM VAAPI H264"
-msgstr "WebM VAAPI H264"
-
-#: src/recording.rs:37
+#: src/recording.rs:40
 msgid "No active profile"
 msgstr "Kein aktives Profil"
 
-#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
+#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
 msgid "Failed to start recording"
 msgstr "Aufnahme konnte nicht gestartet werden"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:178
+#: src/recording.rs:186
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:220
+#: src/recording.rs:228
 msgid "No microphone source found"
 msgstr "Keine Mikrofonquelle gefunden"
 
-#: src/recording.rs:227
+#: src/recording.rs:235
 msgid "No desktop speaker source found"
 msgstr "Keine Desktop-Lautsprecherquelle gefunden"
 
-#: src/recording.rs:234
+#: src/recording.rs:242
 msgid "A GStreamer plugin may not be installed."
 msgstr "Eine GStreamer Erweiterung ist womöglich nicht installiert."
 
-#: src/recording.rs:259 src/recording.rs:463
+#: src/recording.rs:276 src/recording.rs:508
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Stelle sicher, dass der Speicherort existiert und zugänglich ist."
 
-#: src/recording.rs:459
+#: src/recording.rs:504
 msgid "An error occurred while recording"
 msgstr "Bei der Aufzeichnung ist ein Fehler aufgetreten"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:472
+#: src/recording.rs:511
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
-#: src/recording.rs:476
-msgid "Failed to open file for writing"
-msgstr "Datei konnte nicht zum Schreiben geöffnet werden"
-
-#: src/settings.rs:37
+#: src/settings.rs:32
 msgid "Select Recordings Folder"
 msgstr "Aufnahmeordner auswählen"
 
-#: src/window.rs:70
+#: src/window.rs:75
 msgid "Failed to toggle pause"
 msgstr "Pause konnte nicht umgeschaltet werden"
 
-#: src/window.rs:179
+#: src/window.rs:191
+msgid ""
+"A recording is currently in progress. Quitting immediately may cause the "
+"recording to be unplayable. Please stop the recording before quitting."
+msgstr ""
+
+#: src/window.rs:194
+msgid ""
+"Quitting will cancel the processing and may cause the recording to be "
+"unplayable."
+msgstr ""
+
+#: src/window.rs:200
+msgid "Quit the Application?"
+msgstr ""
+
+#: src/window.rs:245
 msgid "Copy to clipboard"
 msgstr "In die Zwischenablage kopieren"
 
-#: src/window.rs:185
+#: src/window.rs:251
 msgid "Copied to clipboard"
 msgstr "In die Zwischenablage kopiert"
 
-#: src/window.rs:191
+#: src/window.rs:257
 msgid "Show detailed error"
 msgstr "Detaillierten Fehler anzeigen"
 
-#: src/window.rs:213
+#: src/window.rs:277
 msgid "Help"
 msgstr "Hilfe"
+
+#: src/window.rs:280
+msgid "Ok"
+msgstr "Ok"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
@@ -454,7 +418,7 @@ msgstr ""
 "Das vorher ausgewählte Format ist eventuelle nicht verfügbar. Öffne die "
 "Einstellungen und wähle ein Format um weiter aufzunehmen."
 
-#: src/window.rs:295
+#: src/window.rs:294
 msgid "Later"
 msgstr "Später"
 
@@ -462,17 +426,60 @@ msgstr "Später"
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/window.rs:354
+#: src/window.rs:436
 msgid "Paused"
 msgstr "Pausiert"
 
-#: src/window.rs:386
+#: src/window.rs:473
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window.rs:387
+#: src/window.rs:474
 msgid "Selection"
 msgstr "Auswahl"
+
+#: src/window.rs:485
+msgid "No Profile"
+msgstr ""
+
+#~ msgid "Dave Patrick Caberto"
+#~ msgstr "Dave Patrick Caberto"
+
+#~ msgid "© 2022 Dave Patrick Caberto"
+#~ msgstr "© 2022 Dave Patrick Caberto"
+
+#~ msgid "Click here to view the video."
+#~ msgstr "Klicke hier, um das Video anzusehen."
+
+#~ msgid "GIF"
+#~ msgstr "GIF"
+
+#~ msgid "WebM"
+#~ msgstr "WebM"
+
+#~ msgid "MP4"
+#~ msgstr "MP4"
+
+#~ msgid "Matroska"
+#~ msgstr "Matroska"
+
+#~ msgid "WebM VP9"
+#~ msgstr "WebM VP9"
+
+#~ msgid "WebM AV1"
+#~ msgstr "WebM AV1"
+
+#~ msgid "WebM VAAPI VP8"
+#~ msgstr "WebM VAAPI VP8"
+
+#~ msgid "WebM VAAPI VP9"
+#~ msgstr "WebM VAAPI VP9"
+
+#~ msgid "WebM VAAPI H264"
+#~ msgstr "WebM VAAPI H264"
+
+#~ msgid "Failed to open file for writing"
+#~ msgstr "Datei konnte nicht zum Schreiben geöffnet werden"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "Spenden (Liberapay)"

@@ -7,11 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 09:20+0800\n"
+"POT-Creation-Date: 2024-02-11 19:52+0800\n"
 "PO-Revision-Date: 2023-11-12 14:03+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
-"Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>"
-"\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +20,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
-#: src/main.rs:61
+#: src/main.rs:67
 msgid "Kooha"
 msgstr "கூஹா"
 
@@ -79,52 +78,48 @@ msgstr "🛠️ உள்ளமைக்கக்கூடிய சேமிப
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 பரிசோதனை வன்பொருள் முடுக்கப்பட்ட குறியாக்கம்"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
-msgid "Dave Patrick Caberto"
-msgstr "டேவ் பேட்ரிக் கேபர்டோ"
-
-#: data/resources/ui/area-selector.ui:14
+#: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
 msgstr "பகுதியைத் தேர்ந்தெடுக்கவும்"
 
-#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
-#: data/resources/ui/window.ui:276
+#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window.rs:205
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
-#: data/resources/ui/area-selector.ui:25
+#: data/resources/ui/area-selector.ui:26
 msgid "Done"
 msgstr "முடிந்தது"
 
-#: data/resources/ui/area-selector.ui:34
+#: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
 msgstr "தேர்வை மீட்டமைக்கவும்"
 
-#: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "பொது"
 
-#: data/resources/ui/preferences-window.ui:14
+#: data/resources/ui/preferences-dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr "தாமதம் (வினாடிகள்)"
 
-#: data/resources/ui/preferences-window.ui:32
+#: data/resources/ui/preferences-dialog.ui:31
 msgid "Recordings Folder"
 msgstr "பதிவுகள் கோப்புறை"
 
-#: data/resources/ui/preferences-window.ui:51
+#: data/resources/ui/preferences-dialog.ui:50
 msgid "Video"
 msgstr "காணொளி"
 
-#: data/resources/ui/preferences-window.ui:54
+#: data/resources/ui/preferences-dialog.ui:53
 msgid "Format"
 msgstr "வடிவம்"
 
-#: data/resources/ui/preferences-window.ui:59
+#: data/resources/ui/preferences-dialog.ui:58
 msgid "Frame Rate"
 msgstr "பிரேம் வீதம்"
 
-#: data/resources/ui/preferences-window.ui:65
+#: data/resources/ui/preferences-dialog.ui:64
 msgid "This frame rate may cause performance issues."
 msgstr "இந்த பிரேம் வீதம் செயல்திறன் சிக்கல்களை ஏற்படுத்தலாம்."
 
@@ -140,11 +135,11 @@ msgstr "விருப்பங்களைக் காட்டு"
 msgid "Show Shortcuts"
 msgstr "குறுக்குவழிகளைக் காட்டு"
 
-#: data/resources/ui/shortcuts.ui:32
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
 msgid "Recording"
 msgstr "ஒலியை பதிவு செய்கிறது"
 
@@ -176,75 +171,75 @@ msgstr "ஒலிவாங்கியை நிலைமாற்று"
 msgid "Toggle Pointer"
 msgstr "சுட்டியை நிலைமாற்றவும்"
 
-#: data/resources/ui/window.ui:25
+#: data/resources/ui/window.ui:24
 msgid "Main Menu"
 msgstr "முதன்மை பட்டியல்"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
 msgstr "ஒரு மானிட்டர் அல்லது விண்டோவைப் பிடிக்கவும்"
 
-#: data/resources/ui/window.ui:67
+#: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
 msgstr "திரையின் தேர்வைப் பிடிக்கவும்"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
 msgstr "டெஸ்க்டாப் ஆடியோவை இயக்கு"
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
 msgstr "டெஸ்க்டாப் ஆடியோவை முடக்கு"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
 msgstr "ஒலிவாங்கியை இயக்கு"
 
-#: data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
 msgstr "ஒலிவாங்கியை முடக்கு"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "சுட்டியைக் காட்டு"
 
-#: data/resources/ui/window.ui:106
+#: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
 msgstr "சுட்டியை மறை"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:115
 msgid "Start Recording"
 msgstr "பதிவைத் தொடங்கவும்"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:116
 msgid "Record"
 msgstr "ஒலிப்பதிவு"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
 msgstr "முன்பு தேர்ந்தெடுத்த வீடியோ ஆதாரங்களை மறந்து விடுங்கள்"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:180
 msgid "Stop Recording"
 msgstr "பதிவு செய்வதை நிறுத்து"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:181
 msgid "Stop"
 msgstr "நிறுத்து"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:191
 msgid "Pause Recording"
 msgstr "பதிவு செய்வதை இடைநிறுத்தவும்"
 
-#: data/resources/ui/window.ui:215
+#: data/resources/ui/window.ui:214
 msgid "Recording in…"
 msgstr "இதில் பதிவு செய்கிறது…"
 
-#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "ரெக்கார்டிங்கை ரத்து செய்"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:257
 msgid "Flushing…"
 msgstr "ஃப்ளஷிங்…"
 
@@ -259,10 +254,6 @@ msgstr "_விசைப்பலகை குறுக்குவழிகள�
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_கூஹா பற்றி"
-
-#: src/about.rs:19
-msgid "© 2022 Dave Patrick Caberto"
-msgstr "© 2022 டேவ் பேட்ரிக் கேபர்டோ"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
@@ -282,19 +273,15 @@ msgid "Translate"
 msgstr "மொழிபெயர்"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:110
+#: src/application.rs:137
 msgid "Screencast recorded"
 msgstr "ஸ்கிரீன்காஸ்ட் பதிவு செய்யப்பட்டது"
 
-#: src/application.rs:111
-msgid "Click here to view the video."
-msgstr "வீடியோவைப் பார்க்க இங்கே கிளிக் செய்யவும்."
-
-#: src/application.rs:117
+#: src/application.rs:144
 msgid "Show in Files"
 msgstr "கோப்புகளில் காட்டு"
 
-#: src/area_selector/mod.rs:323
+#: src/area_selector/mod.rs:324
 msgid "approx."
 msgstr "தோராயமாக."
 
@@ -310,123 +297,99 @@ msgstr "சாதன மானிட்டரைத் தொடங்குவ�
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "பல்ஸ்ஆடியோ டீமானுடன் இணைக்க முடியவில்லை"
 
-#: src/preferences_window.rs:56
-msgid "Failed to select saving location"
-msgstr "சேமிக்கும் இடத்தைத் தேர்ந்தெடுக்க முடியவில்லை"
+#: src/preferences_dialog.rs:63
+msgid "Failed to set recordings folder"
+msgstr ""
 
-#: src/preferences_window.rs:61 src/window.rs:216
-msgid "Ok"
-msgstr "சரி"
-
-#: src/preferences_window.rs:243
+#: src/preferences_dialog.rs:235
 msgid "This format is experimental and unsupported."
 msgstr "இந்த வடிவம் சோதனைக்குரியது மற்றும் ஆதரிக்கப்படாது."
 
-#: src/preferences_window.rs:272
+#: src/preferences_dialog.rs:264
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
-#: src/profile.rs:116
-msgid "GIF"
-msgstr "GIF"
-
-#: src/profile.rs:267
-msgid "WebM"
-msgstr "வெப்எம்"
-
-#: src/profile.rs:291
-msgid "MP4"
-msgstr "MP4"
-
-#: src/profile.rs:310
-msgid "Matroska"
-msgstr "மெட்ரோஸ்கா"
-
-#: src/profile.rs:343
-msgid "WebM VP9"
-msgstr "வெப்எம் விபி9"
-
-#: src/profile.rs:367
-msgid "WebM AV1"
-msgstr "வெப்எம் ஏவி 1"
-
-#: src/profile.rs:388
-msgid "WebM VAAPI VP8"
-msgstr "வெப்எம் VAAPI விபி8"
-
-#: src/profile.rs:403
-msgid "WebM VAAPI VP9"
-msgstr "வெப்எம் VAAPI விபி9"
-
-#: src/profile.rs:418
-msgid "WebM VAAPI H264"
-msgstr "வெப்எம் VAAPI H264"
-
-#: src/recording.rs:37
+#: src/recording.rs:40
 msgid "No active profile"
 msgstr "செயலில் சுயவிவரம் இல்லை"
 
-#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
+#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:178
+#: src/recording.rs:186
 msgid "Check out {link} for help."
 msgstr "உதவிக்கு {link} ஐப் பார்க்கவும்."
 
-#: src/recording.rs:220
+#: src/recording.rs:228
 msgid "No microphone source found"
 msgstr "மைக்ரோஃபோன் ஆதாரம் எதுவும் கிடைக்கவில்லை"
 
-#: src/recording.rs:227
+#: src/recording.rs:235
 msgid "No desktop speaker source found"
 msgstr "டெஸ்க்டாப் ஸ்பீக்கர் ஆதாரம் இல்லை"
 
-#: src/recording.rs:234
+#: src/recording.rs:242
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம்."
 
-#: src/recording.rs:259 src/recording.rs:463
+#: src/recording.rs:276 src/recording.rs:508
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:459
+#: src/recording.rs:504
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:472
+#: src/recording.rs:511
 msgid "Failed to open “{path}” for writing"
 msgstr "எழுதுவதற்கு “{path}” திறக்க முடியவில்லை"
 
-#: src/recording.rs:476
-msgid "Failed to open file for writing"
-msgstr "எழுதுவதற்கான கோப்பைத் திறக்க முடியவில்லை"
-
-#: src/settings.rs:37
+#: src/settings.rs:32
 msgid "Select Recordings Folder"
 msgstr "பதிவுகள் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 
-#: src/window.rs:70
+#: src/window.rs:75
 msgid "Failed to toggle pause"
 msgstr "இடைநிறுத்தத்தை மாற்றுவதில் தோல்வி"
 
-#: src/window.rs:179
+#: src/window.rs:191
+msgid ""
+"A recording is currently in progress. Quitting immediately may cause the "
+"recording to be unplayable. Please stop the recording before quitting."
+msgstr ""
+
+#: src/window.rs:194
+msgid ""
+"Quitting will cancel the processing and may cause the recording to be "
+"unplayable."
+msgstr ""
+
+#: src/window.rs:200
+msgid "Quit the Application?"
+msgstr ""
+
+#: src/window.rs:245
 msgid "Copy to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
 
-#: src/window.rs:185
+#: src/window.rs:251
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: src/window.rs:191
+#: src/window.rs:257
 msgid "Show detailed error"
 msgstr "விரிவான பிழையைக் காட்டு"
 
-#: src/window.rs:213
+#: src/window.rs:277
 msgid "Help"
 msgstr "உதவி"
+
+#: src/window.rs:280
+msgid "Ok"
+msgstr "சரி"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
@@ -440,7 +403,7 @@ msgstr ""
 "முன்பு தேர்ந்தெடுக்கப்பட்ட வடிவம் கிடைக்காமல் இருக்கலாம். பதிவுகளைத் தொடர "
 "விருப்பத்தேர்வுகளைத் திறந்து வடிவமைப்பைத் தேர்ந்தெடுக்கவும்."
 
-#: src/window.rs:295
+#: src/window.rs:294
 msgid "Later"
 msgstr "பின்னர்"
 
@@ -448,17 +411,63 @@ msgstr "பின்னர்"
 msgid "Open"
 msgstr "திறக்கவும்"
 
-#: src/window.rs:354
+#: src/window.rs:436
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
-#: src/window.rs:386
+#: src/window.rs:473
 msgid "Normal"
 msgstr "இயல்பானது"
 
-#: src/window.rs:387
+#: src/window.rs:474
 msgid "Selection"
 msgstr "தேர்வு"
+
+#: src/window.rs:485
+msgid "No Profile"
+msgstr ""
+
+#~ msgid "Dave Patrick Caberto"
+#~ msgstr "டேவ் பேட்ரிக் கேபர்டோ"
+
+#~ msgid "© 2022 Dave Patrick Caberto"
+#~ msgstr "© 2022 டேவ் பேட்ரிக் கேபர்டோ"
+
+#~ msgid "Click here to view the video."
+#~ msgstr "வீடியோவைப் பார்க்க இங்கே கிளிக் செய்யவும்."
+
+#~ msgid "Failed to select saving location"
+#~ msgstr "சேமிக்கும் இடத்தைத் தேர்ந்தெடுக்க முடியவில்லை"
+
+#~ msgid "GIF"
+#~ msgstr "GIF"
+
+#~ msgid "WebM"
+#~ msgstr "வெப்எம்"
+
+#~ msgid "MP4"
+#~ msgstr "MP4"
+
+#~ msgid "Matroska"
+#~ msgstr "மெட்ரோஸ்கா"
+
+#~ msgid "WebM VP9"
+#~ msgstr "வெப்எம் விபி9"
+
+#~ msgid "WebM AV1"
+#~ msgstr "வெப்எம் ஏவி 1"
+
+#~ msgid "WebM VAAPI VP8"
+#~ msgstr "வெப்எம் VAAPI விபி8"
+
+#~ msgid "WebM VAAPI VP9"
+#~ msgstr "வெப்எம் VAAPI விபி9"
+
+#~ msgid "WebM VAAPI H264"
+#~ msgstr "வெப்எம் VAAPI H264"
+
+#~ msgid "Failed to open file for writing"
+#~ msgstr "எழுதுவதற்கான கோப்பைத் திறக்க முடியவில்லை"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "நன்கொடை (லிபராபே)"

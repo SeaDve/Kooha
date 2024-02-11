@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 09:20+0800\n"
+"POT-Creation-Date: 2024-02-11 19:52+0800\n"
 "PO-Revision-Date: 2022-08-29 09:18+0000\n"
 "Last-Translator: Victor Keranov <vkeranov@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/seadve/kooha/"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
-#: src/main.rs:61
+#: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -77,52 +77,48 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:26 src/about.rs:17
-msgid "Dave Patrick Caberto"
-msgstr "Дейв Патрик Каберто"
-
-#: data/resources/ui/area-selector.ui:14
+#: data/resources/ui/area-selector.ui:15
 msgid "Select Area"
 msgstr ""
 
-#: data/resources/ui/area-selector.ui:19 data/resources/ui/window.ui:234
-#: data/resources/ui/window.ui:276
+#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window.rs:205
 msgid "Cancel"
 msgstr "Откажи"
 
-#: data/resources/ui/area-selector.ui:25
+#: data/resources/ui/area-selector.ui:26
 msgid "Done"
 msgstr ""
 
-#: data/resources/ui/area-selector.ui:34
+#: data/resources/ui/area-selector.ui:35
 msgid "Reset Selection"
 msgstr ""
 
-#: data/resources/ui/preferences-window.ui:11 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "Основни"
 
-#: data/resources/ui/preferences-window.ui:14
+#: data/resources/ui/preferences-dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr ""
 
-#: data/resources/ui/preferences-window.ui:32
+#: data/resources/ui/preferences-dialog.ui:31
 msgid "Recordings Folder"
 msgstr ""
 
-#: data/resources/ui/preferences-window.ui:51
+#: data/resources/ui/preferences-dialog.ui:50
 msgid "Video"
 msgstr ""
 
-#: data/resources/ui/preferences-window.ui:54
+#: data/resources/ui/preferences-dialog.ui:53
 msgid "Format"
 msgstr ""
 
-#: data/resources/ui/preferences-window.ui:59
+#: data/resources/ui/preferences-dialog.ui:58
 msgid "Frame Rate"
 msgstr ""
 
-#: data/resources/ui/preferences-window.ui:65
+#: data/resources/ui/preferences-dialog.ui:64
 msgid "This frame rate may cause performance issues."
 msgstr ""
 
@@ -138,11 +134,11 @@ msgstr ""
 msgid "Show Shortcuts"
 msgstr "Покажи клавишни комбинации"
 
-#: data/resources/ui/shortcuts.ui:32
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
 msgid "Quit"
 msgstr "Изход"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:346
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
 msgid "Recording"
 msgstr "Запис"
 
@@ -174,75 +170,75 @@ msgstr "Превключване на микрофона"
 msgid "Toggle Pointer"
 msgstr "Превключване курсора на мишката"
 
-#: data/resources/ui/window.ui:25
+#: data/resources/ui/window.ui:24
 msgid "Main Menu"
 msgstr "Основно меню"
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
 msgstr "Запис на целия екран или на прозорец"
 
-#: data/resources/ui/window.ui:67
+#: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
 msgstr "Запис на участък от екрана"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
 msgstr ""
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
 msgstr ""
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
 msgstr "Разреши микрофона"
 
-#: data/resources/ui/window.ui:97
+#: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
 msgstr "Забрани микрофона"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:104
 msgid "Show Pointer"
 msgstr "Покажи курсора"
 
-#: data/resources/ui/window.ui:106
+#: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
 msgstr "Скрий курсора"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:115
 msgid "Start Recording"
 msgstr "Започни запис"
 
-#: data/resources/ui/window.ui:117
+#: data/resources/ui/window.ui:116
 msgid "Record"
 msgstr "Запис"
 
-#: data/resources/ui/window.ui:130
+#: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
 msgstr "Забрави предишно избрани източници на запис"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:180
 msgid "Stop Recording"
 msgstr "Спри запис"
 
-#: data/resources/ui/window.ui:182
+#: data/resources/ui/window.ui:181
 msgid "Stop"
 msgstr "Спри"
 
-#: data/resources/ui/window.ui:192
+#: data/resources/ui/window.ui:191
 msgid "Pause Recording"
 msgstr "Пауза запис"
 
-#: data/resources/ui/window.ui:215
+#: data/resources/ui/window.ui:214
 msgid "Recording in…"
 msgstr "Запис след…"
 
-#: data/resources/ui/window.ui:233 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
 msgstr "Откажи запис"
 
-#: data/resources/ui/window.ui:258
+#: data/resources/ui/window.ui:257
 msgid "Flushing…"
 msgstr "Изчистване…"
 
@@ -257,10 +253,6 @@ msgstr "_Клавишни комбинации"
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
 msgstr "_Относно Kooha"
-
-#: src/about.rs:19
-msgid "© 2022 Dave Patrick Caberto"
-msgstr "© 2022 Дейв Патрик Каберто"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
@@ -280,19 +272,15 @@ msgid "Translate"
 msgstr "Преведи"
 
 #. Translators: This is a message that the user will see when the recording is finished.
-#: src/application.rs:110
+#: src/application.rs:137
 msgid "Screencast recorded"
 msgstr "Клипът е записан"
 
-#: src/application.rs:111
-msgid "Click here to view the video."
-msgstr "Натисни тук за преглед на видеото."
-
-#: src/application.rs:117
+#: src/application.rs:144
 msgid "Show in Files"
 msgstr "Покажи във файлове"
 
-#: src/area_selector/mod.rs:323
+#: src/area_selector/mod.rs:324
 msgid "approx."
 msgstr ""
 
@@ -308,123 +296,99 @@ msgstr "Неуспех при стартиране на монитора"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Неуспех при свързване с PulseAudio демона"
 
-#: src/preferences_window.rs:56
-msgid "Failed to select saving location"
+#: src/preferences_dialog.rs:63
+msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_window.rs:61 src/window.rs:216
-msgid "Ok"
-msgstr "Ок"
-
-#: src/preferences_window.rs:243
+#: src/preferences_dialog.rs:235
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_window.rs:272
+#: src/preferences_dialog.rs:264
 msgid "None"
 msgstr "Без"
 
-#: src/profile.rs:116
-msgid "GIF"
-msgstr "GIF"
-
-#: src/profile.rs:267
-msgid "WebM"
-msgstr "WebM"
-
-#: src/profile.rs:291
-msgid "MP4"
-msgstr "MP4"
-
-#: src/profile.rs:310
-msgid "Matroska"
-msgstr ""
-
-#: src/profile.rs:343
-msgid "WebM VP9"
-msgstr ""
-
-#: src/profile.rs:367
-msgid "WebM AV1"
-msgstr ""
-
-#: src/profile.rs:388
-msgid "WebM VAAPI VP8"
-msgstr ""
-
-#: src/profile.rs:403
-msgid "WebM VAAPI VP9"
-msgstr ""
-
-#: src/profile.rs:418
-msgid "WebM VAAPI H264"
-msgstr ""
-
-#: src/recording.rs:37
+#: src/recording.rs:40
 msgid "No active profile"
 msgstr ""
 
-#: src/recording.rs:182 src/recording.rs:235 src/recording.rs:260
+#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
 msgid "Failed to start recording"
 msgstr "Неуспех при старт на записа"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:178
+#: src/recording.rs:186
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:220
+#: src/recording.rs:228
 msgid "No microphone source found"
 msgstr "Не бе открит микрофон"
 
-#: src/recording.rs:227
+#: src/recording.rs:235
 msgid "No desktop speaker source found"
 msgstr "Не бе открит десктоп говорител"
 
-#: src/recording.rs:234
+#: src/recording.rs:242
 msgid "A GStreamer plugin may not be installed."
 msgstr ""
 
-#: src/recording.rs:259 src/recording.rs:463
+#: src/recording.rs:276 src/recording.rs:508
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Моля увери се, че локацията за запис съществува и е достъпна."
 
-#: src/recording.rs:459
+#: src/recording.rs:504
 msgid "An error occurred while recording"
 msgstr "Възникна грешка по време на запис"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:472
+#: src/recording.rs:511
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
-#: src/recording.rs:476
-msgid "Failed to open file for writing"
-msgstr "Неуспех при отваряне на файл за запис"
-
-#: src/settings.rs:37
+#: src/settings.rs:32
 msgid "Select Recordings Folder"
 msgstr "Избери директория за записи"
 
-#: src/window.rs:70
+#: src/window.rs:75
 msgid "Failed to toggle pause"
 msgstr "Неуспех при превключване на пауза"
 
-#: src/window.rs:179
+#: src/window.rs:191
+msgid ""
+"A recording is currently in progress. Quitting immediately may cause the "
+"recording to be unplayable. Please stop the recording before quitting."
+msgstr ""
+
+#: src/window.rs:194
+msgid ""
+"Quitting will cancel the processing and may cause the recording to be "
+"unplayable."
+msgstr ""
+
+#: src/window.rs:200
+msgid "Quit the Application?"
+msgstr ""
+
+#: src/window.rs:245
 msgid "Copy to clipboard"
 msgstr "Копирай в системния буфер"
 
-#: src/window.rs:185
+#: src/window.rs:251
 msgid "Copied to clipboard"
 msgstr "Копирано в системния буфер"
 
-#: src/window.rs:191
+#: src/window.rs:257
 msgid "Show detailed error"
 msgstr "Покажи подробна грешка"
 
-#: src/window.rs:213
+#: src/window.rs:277
 msgid "Help"
 msgstr "Помощ"
+
+#: src/window.rs:280
+msgid "Ok"
+msgstr "Ок"
 
 #: src/window.rs:289
 msgid "Open Preferences?"
@@ -436,7 +400,7 @@ msgid ""
 "and select a format to continue recording."
 msgstr ""
 
-#: src/window.rs:295
+#: src/window.rs:294
 msgid "Later"
 msgstr ""
 
@@ -444,17 +408,42 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-#: src/window.rs:354
+#: src/window.rs:436
 msgid "Paused"
 msgstr "На пауза"
 
-#: src/window.rs:386
+#: src/window.rs:473
 msgid "Normal"
 msgstr "Нормален"
 
-#: src/window.rs:387
+#: src/window.rs:474
 msgid "Selection"
 msgstr "Участък"
+
+#: src/window.rs:485
+msgid "No Profile"
+msgstr ""
+
+#~ msgid "Dave Patrick Caberto"
+#~ msgstr "Дейв Патрик Каберто"
+
+#~ msgid "© 2022 Dave Patrick Caberto"
+#~ msgstr "© 2022 Дейв Патрик Каберто"
+
+#~ msgid "Click here to view the video."
+#~ msgstr "Натисни тук за преглед на видеото."
+
+#~ msgid "GIF"
+#~ msgstr "GIF"
+
+#~ msgid "WebM"
+#~ msgstr "WebM"
+
+#~ msgid "MP4"
+#~ msgstr "MP4"
+
+#~ msgid "Failed to open file for writing"
+#~ msgstr "Неуспех при отваряне на файл за запис"
 
 #~ msgid "Donate (Liberapay)"
 #~ msgstr "Дарение (Liberapay)"
