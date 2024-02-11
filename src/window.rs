@@ -188,23 +188,23 @@ impl Window {
             .map(|(recording, _)| recording.state())
         {
             Some(RecordingState::Recording) | Some(RecordingState::Paused) => gettext(
-                "A recording is currently in progress. Quitting immediately will cause the recording to be permanently lost. Please stop the recording before quitting.",
+                "A recording is currently in progress. Quitting immediately may cause the recording to be unplayable. Please stop the recording before quitting.",
             ),
             Some(RecordingState::Flushing { .. }) => gettext(
-                "Quitting will cancel the processing and cause the recording to be permanently lost.",
+                "Quitting will cancel the processing and may cause the recording to be unplayable.",
             ),
             state => unreachable!("unexpected recording state: {:?}", state),
         };
 
         let dialog = adw::AlertDialog::builder()
-            .heading(gettext("Discard Recording and Quit?"))
+            .heading(gettext("Quit the Application?"))
             .body(body_text)
             .close_response(CANCEL_RESPONSE_ID)
             .default_response(CANCEL_RESPONSE_ID)
             .build();
         dialog.add_response(CANCEL_RESPONSE_ID, &gettext("Cancel"));
 
-        dialog.add_response(QUIT_RESPONSE_ID, &gettext("Discard and Quit"));
+        dialog.add_response(QUIT_RESPONSE_ID, &gettext("Quit"));
         dialog.set_response_appearance(QUIT_RESPONSE_ID, adw::ResponseAppearance::Destructive);
 
         match dialog.choose_future(self).await.as_str() {
