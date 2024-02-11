@@ -44,7 +44,7 @@ experimental:
   - id: "webm-av1"
     name: "WebM (AV1)"
     extension: "webm"
-    videoenc: "av1enc max-quantizer=17 cpu-used=5 end-usage=cq buf-sz=20000 threads=${N_THREADS} ! queue"
+    videoenc: "av1enc usage-profile=realtime max-quantizer=17 cpu-used=5 end-usage=cq buf-sz=20000 threads=${N_THREADS} ! queue"
     audioenc: "opusenc ! queue"
     muxer: "webmmux"
 
