@@ -138,15 +138,14 @@ impl Profile {
     }
 
     fn is_available_inner(&self) -> Result<()> {
-        parse_bin_inner("", &self.data().videoenc_bin_str, false)
-            .context("Failed to parse videoenc bin")?;
+        parse_bin_test(&self.data().videoenc_bin_str).context("Failed to parse videoenc bin")?;
 
         if let Some(audioenc_bin_str) = &self.data().audioenc_bin_str {
-            parse_bin_inner("", audioenc_bin_str, false).context("Failed to parse audioenc bin")?;
+            parse_bin_test(audioenc_bin_str).context("Failed to parse audioenc bin")?;
         }
 
         if let Some(muxer_bin_str) = &self.data().muxer_bin_str {
-            parse_bin_inner("", muxer_bin_str, false).context("Failed to parse muxer bin")?;
+            parse_bin_test(muxer_bin_str).context("Failed to parse muxer bin")?;
         }
 
         Ok(())
@@ -220,6 +219,13 @@ impl Profile {
 
         Ok(())
     }
+}
+
+fn parse_bin_test(description: &str) -> Result<(), glib::Error> {
+    // Empty names are ignored in implementation details of `gst::parse::bin_from_description_with_name_full`
+    parse_bin_inner("", description, false)?;
+
+    Ok(())
 }
 
 fn parse_bin(name: &str, description: &str) -> Result<gst::Bin, glib::Error> {
