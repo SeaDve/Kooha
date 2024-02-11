@@ -9,6 +9,7 @@ src/about.rs
 src/application.rs
 src/area_selector/mod.rs
 src/audio_device.rs
+src/format_time.rs
 src/main.rs
 src/preferences_dialog.rs
 src/recording.rs
