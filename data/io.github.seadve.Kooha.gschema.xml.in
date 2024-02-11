@@ -9,7 +9,7 @@
       <default>"monitor-window"</default>
     </key>
     <key type="s" name="profile-id">
-      <default>"webm"</default>
+      <default>"webm-vp8"</default>
     </key>
     <key type="u" name="record-delay">
       <default>0</default>
