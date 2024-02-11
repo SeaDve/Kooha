@@ -18,15 +18,8 @@ use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session:
 
 pub const FILESINK_ELEMENT_NAME: &str = "kooha-filesink";
 
-const MAX_THREAD_COUNT: u32 = 64;
-
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
 const AUDIO_N_CHANNELS: i32 = 1;
-
-/// Ideal thread count to use for processing.
-pub fn ideal_thread_count() -> u32 {
-    glib::num_processors().min(MAX_THREAD_COUNT)
-}
 
 #[derive(Debug)]
 #[must_use]
@@ -165,16 +158,6 @@ fn make_pipewiresrc(fd: RawFd, path: &str) -> Result<gst::Element> {
     Ok(src)
 }
 
-fn make_videoconvert() -> Result<gst::Element> {
-    let conv = gst::ElementFactory::make("videoconvert")
-        .property("chroma-mode", gst_video::VideoChromaMode::None)
-        .property("dither", gst_video::VideoDitherMethod::None)
-        .property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly)
-        .property("n-threads", ideal_thread_count())
-        .build()?;
-    Ok(conv)
-}
-
 /// Create a videocrop element that computes the crop from the given coordinates
 /// and size.
 fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
@@ -235,10 +218,10 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 }
 
 /// Creates a bin with a src pad for multiple pipewire streams.
-///                                                                (If has select area data)
-/// pipewiresrc1 -> videorate -> |                                       |            |
-///                              |                                       V            V
-/// pipewiresrc2 -> videorate -> | -> compositor -> videoconvert -> videoscale -> videocrop
+///                                                (If has select area data)
+/// pipewiresrc1 -> videorate -> |                       |            |
+///                              |                       V            V
+/// pipewiresrc2 -> videorate -> | -> compositor -> videoscale -> videocrop
 ///                              |
 /// pipewiresrcn -> videorate -> |
 pub fn make_pipewiresrc_bin(
@@ -250,10 +233,7 @@ pub fn make_pipewiresrc_bin(
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
     let compositor = gst::ElementFactory::make("compositor").build()?;
-    let videoconvert = make_videoconvert()?;
-
-    bin.add_many([&compositor, &videoconvert])?;
-    compositor.link(&videoconvert)?;
+    bin.add(&compositor)?;
 
     if let Some(data) = select_area_data {
         let videoscale = gst::ElementFactory::make("videoscale").build()?;
@@ -267,7 +247,7 @@ pub fn make_pipewiresrc_bin(
             .build();
 
         bin.add_many([&videoscale, &videocrop])?;
-        videoconvert.link(&videoscale)?;
+        compositor.link(&videoscale)?;
         videoscale.link_filtered(&videocrop, &videoscale_caps)?;
 
         let src_pad = videocrop.static_pad("src").unwrap();
@@ -277,7 +257,7 @@ pub fn make_pipewiresrc_bin(
                 .build(),
         )?;
     } else {
-        let src_pad = videoconvert.static_pad("src").unwrap();
+        let src_pad = compositor.static_pad("src").unwrap();
         bin.add_pad(
             &gst::GhostPad::builder_with_target(&src_pad)?
                 .name("src")

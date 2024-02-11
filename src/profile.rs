@@ -7,9 +7,13 @@ use gtk::{
 use once_cell::sync::OnceCell as OnceLock;
 use serde::Deserialize;
 
-use crate::pipeline;
-
 const DEFAULT_SUGGESTED_MAX_FRAMERATE: u32 = 60;
+const MAX_THREAD_COUNT: u32 = 64;
+
+/// Ideal thread count to use for processing.
+fn ideal_thread_count() -> u32 {
+    glib::num_processors().min(MAX_THREAD_COUNT)
+}
 
 #[derive(Debug, Deserialize)]
 struct Profiles {
@@ -238,7 +242,7 @@ fn parse_bin_inner(
     add_ghost_pads: bool,
 ) -> Result<gst::Bin, glib::Error> {
     let formatted_description =
-        description.replace("${N_THREADS}", &pipeline::ideal_thread_count().to_string());
+        description.replace("${N_THREADS}", &ideal_thread_count().to_string());
     let bin = gst::parse::bin_from_description_with_name_full(
         &formatted_description,
         add_ghost_pads,
