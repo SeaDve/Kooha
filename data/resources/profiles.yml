@@ -16,7 +16,7 @@ supported:
   - id: "mp4"
     name: "MP4"
     extension: "mp4"
-    videoenc: "x264enc qp-max=17 speed-preset=superfast threads=${N_THREADS} ! capsfilter caps=video/x-h264,profile=baseline ! queue ! h264parse"
+    videoenc: "videorate skip-to-first=true ! x264enc qp-max=17 speed-preset=superfast threads=${N_THREADS} ! capsfilter caps=video/x-h264,profile=baseline ! queue ! h264parse"
     audioenc: "lamemp3enc ! queue ! mpegaudioparse"
     muxer: "mp4mux"
 
