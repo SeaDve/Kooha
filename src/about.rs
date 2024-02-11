@@ -14,9 +14,9 @@ pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {
     let dialog = adw::AboutDialog::builder()
         .application_icon(APP_ID)
         .application_name(gettext("Kooha"))
-        .developer_name(gettext("Dave Patrick Caberto"))
+        .developer_name("Dave Patrick Caberto")
         .version(VERSION)
-        .copyright(gettext("© 2024 Dave Patrick Caberto"))
+        .copyright("© 2024 Dave Patrick Caberto")
         .license_type(gtk::License::Gpl30)
         .developers(vec![
             "Dave Patrick Caberto",
