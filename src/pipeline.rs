@@ -350,7 +350,9 @@ fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Res
             .property("provide-clock", false)
             .property("do-timestamp", true)
             .build()?;
-        let audiorate = gst::ElementFactory::make("audiorate").build()?;
+        let audiorate = gst::ElementFactory::make("audiorate")
+            .property("skip-to-first", true)
+            .build()?;
 
         bin.add_many([&pulsesrc, &audiorate])?;
         pulsesrc.link_filtered(&audiorate, &pulsesrc_caps)?;
