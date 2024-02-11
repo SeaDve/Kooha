@@ -130,23 +130,26 @@ impl Profile {
     }
 
     pub fn is_available(&self) -> bool {
-        if !all_elements_exist_on_bin(&self.data().videoenc_bin_str) {
-            return false;
-        }
+        self.is_available_inner()
+            .inspect_err(|err| {
+                tracing::debug!("Profile `{}` is not available: {:?}", self.id(), err);
+            })
+            .is_ok()
+    }
+
+    fn is_available_inner(&self) -> Result<()> {
+        parse_bin_inner("", &self.data().videoenc_bin_str, false)
+            .context("Failed to parse videoenc bin")?;
 
         if let Some(audioenc_bin_str) = &self.data().audioenc_bin_str {
-            if !all_elements_exist_on_bin(audioenc_bin_str) {
-                return false;
-            }
+            parse_bin_inner("", audioenc_bin_str, false).context("Failed to parse audioenc bin")?;
         }
 
         if let Some(muxer_bin_str) = &self.data().muxer_bin_str {
-            if !all_elements_exist_on_bin(muxer_bin_str) {
-                return false;
-            }
+            parse_bin_inner("", muxer_bin_str, false).context("Failed to parse muxer bin")?;
         }
 
-        true
+        Ok(())
     }
 
     pub fn attach(
@@ -217,19 +220,6 @@ impl Profile {
 
         Ok(())
     }
-}
-
-fn all_elements_exist_on_bin(description: &str) -> bool {
-    // Empty names are ignored in implementation details of `gst::parse::bin_from_description_with_name_full`
-    parse_bin_inner("", description, false)
-        .inspect_err(|err| {
-            debug_assert!(
-                err.matches(gst::ParseError::NoSuchElement),
-                "parse failed with different error: {:?}",
-                err
-            );
-        })
-        .is_ok()
 }
 
 fn parse_bin(name: &str, description: &str) -> Result<gst::Bin, glib::Error> {
