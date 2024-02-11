@@ -29,6 +29,7 @@ mod area_selector;
 mod audio_device;
 mod cancelled;
 mod config;
+mod format_time;
 mod help;
 mod i18n;
 mod pipeline;

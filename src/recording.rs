@@ -62,7 +62,7 @@ pub enum RecordingState {
 
 #[derive(Debug, Clone, glib::SharedBoxed)]
 #[shared_boxed_type(name = "KoohaRecordingResult")]
-struct BoxedResult(Rc<Result<gio::File>>);
+struct BoxedResult(Rc<Result<(gio::File, gst::ClockTime)>>);
 
 mod imp {
     use glib::subclass::Signal;
@@ -371,7 +371,7 @@ impl Recording {
 
     pub fn connect_finished<F>(&self, f: F) -> glib::SignalHandlerId
     where
-        F: Fn(&Self, &Result<gio::File>) + 'static,
+        F: Fn(&Self, &Result<(gio::File, gst::ClockTime)>) + 'static,
     {
         self.connect_closure(
             "finished",
@@ -407,7 +407,7 @@ impl Recording {
             .expect("pipeline not set, make sure to start recording first")
     }
 
-    fn set_finished(&self, res: Result<gio::File>) {
+    fn set_finished(&self, res: Result<(gio::File, gst::ClockTime)>) {
         self.set_state(RecordingState::Finished);
 
         let result = BoxedResult(Rc::new(res));
@@ -531,6 +531,9 @@ impl Recording {
 
                 self.set_state(RecordingState::Flushing { progress: 100 });
 
+                self.update_duration();
+                let duration = self.duration();
+
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
                     tracing::error!("Failed to stop pipeline on eos: {:?}", err);
                 }
@@ -541,7 +544,7 @@ impl Recording {
                     source_id.remove();
                 }
 
-                self.set_finished(Ok(self.file().clone()));
+                self.set_finished(Ok((self.file().clone(), duration)));
 
                 glib::ControlFlow::Break
             }

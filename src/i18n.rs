@@ -1,7 +1,7 @@
 // Copied from Fractal GPLv3
 // See https://gitlab.gnome.org/GNOME/fractal/-/blob/c0bc4078bb2cdd511c89fdf41a51275db90bb7ab/src/i18n.rs
 
-use gettextrs::gettext;
+use gettextrs::{gettext, ngettext};
 
 /// Like `gettext`, but replaces named variables using the given key-value tuples.
 ///
@@ -9,6 +9,15 @@ use gettextrs::gettext;
 /// in a key-value tuple.
 pub fn gettext_f(msgid: &str, args: &[(&str, &str)]) -> String {
     let s = gettext(msgid);
+    freplace(s, args)
+}
+
+/// Like `ngettext`, but replaces named variables using the given key-value tuples.
+///
+/// The expected format to replace is `{name}`, where `name` is the first string
+/// in a key-value tuple.
+pub fn ngettext_f(msgid: &str, msgid_plural: &str, n: u32, args: &[(&str, &str)]) -> String {
+    let s = ngettext(msgid, msgid_plural, n);
     freplace(s, args)
 }
 
@@ -80,6 +89,72 @@ mod tests {
         assert_eq!(
             gettext_f("multiple {one} and {one}", &[("one", "1"), ("two", "2")]),
             "multiple 1 and 1"
+        );
+    }
+
+    #[test]
+    fn ngettext_f_multiple() {
+        assert_eq!(
+            ngettext_f(
+                "singular {one} and {two}",
+                "plural {one} and {two}",
+                1,
+                &[("one", "1"), ("two", "two")],
+            ),
+            "singular 1 and two"
+        );
+        assert_eq!(
+            ngettext_f(
+                "singular {one} and {two}",
+                "plural {one} and {two}",
+                2,
+                &[("one", "1"), ("two", "two")],
+            ),
+            "plural 1 and two"
+        );
+    }
+
+    #[test]
+    fn ngettext_f_unused_on_singular() {
+        assert_eq!(
+            ngettext_f(
+                "singular {one}",
+                "plural {one} and {two}",
+                1,
+                &[("one", "1"), ("two", "2")],
+            ),
+            "singular 1"
+        );
+        assert_eq!(
+            ngettext_f(
+                "singular {one}",
+                "plural {one} and {two}",
+                2,
+                &[("one", "1"), ("two", "2")],
+            ),
+            "plural 1 and 2"
+        );
+    }
+
+    #[test]
+    fn ngettext_f_unused_on_plural() {
+        assert_eq!(
+            ngettext_f(
+                "singular {one} and {two}",
+                "plural {one}",
+                1,
+                &[("one", "1"), ("two", "2")],
+            ),
+            "singular 1 and 2"
+        );
+        assert_eq!(
+            ngettext_f(
+                "singular {one} and {two}",
+                "plural {one}",
+                2,
+                &[("one", "1"), ("two", "2")],
+            ),
+            "plural 1"
         );
     }
 }

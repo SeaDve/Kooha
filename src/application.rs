@@ -8,6 +8,7 @@ use gtk::{
 use crate::{
     about,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
+    format_time,
     preferences_dialog::PreferencesDialog,
     settings::Settings,
     window::Window,
@@ -110,10 +111,31 @@ impl Application {
             .map_or_else(|| Window::new(self), |w| w.downcast().unwrap())
     }
 
-    pub fn send_record_success_notification(&self, recording_file: &gio::File) {
+    pub async fn send_record_success_notification(
+        &self,
+        recording_file: &gio::File,
+        duration: gst::ClockTime,
+    ) {
+        let mut body_fragments = vec![format_time::duration(duration)];
+
+        match recording_file
+            .query_info_future(
+                gio::FILE_ATTRIBUTE_STANDARD_SIZE,
+                gio::FileQueryInfoFlags::NONE,
+                glib::Priority::DEFAULT_IDLE,
+            )
+            .await
+        {
+            Ok(file_info) => {
+                let formatted_size = glib::format_size(file_info.size() as u64);
+                body_fragments.push(formatted_size.to_string());
+            }
+            Err(err) => tracing::warn!("Failed to get file size: {:?}", err),
+        }
+
         // Translators: This is a message that the user will see when the recording is finished.
         let notification = gio::Notification::new(&gettext("Screencast recorded"));
-        notification.set_body(Some(&gettext("Click here to view the video.")));
+        notification.set_body(Some(&body_fragments.join(", ")));
         notification.set_default_action_and_target_value(
             "app.launch-default-for-uri",
             Some(&recording_file.uri().to_variant()),

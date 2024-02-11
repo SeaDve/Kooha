@@ -12,6 +12,7 @@ use std::cell::RefCell;
 use crate::{
     cancelled::Cancelled,
     config::PROFILE,
+    format_time,
     help::Help,
     progress_icon::ProgressIcon,
     recording::{NoProfileError, Recording, RecordingState},
@@ -317,11 +318,11 @@ impl Window {
                 obj.update_view();
             })),
             recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
-                let formatted_time = format_time(recording.duration());
+                let formatted_time = format_time::digital_clock(recording.duration());
                 obj.imp().recording_time_label.set_label(&formatted_time);
             })),
             recording.connect_finished(clone!(@weak self as obj => move |recording, res| {
-                obj.on_recording_finished(recording, res);
+                obj.handle_recording_finished(recording, res);
             })),
         ];
         imp.recording
@@ -354,13 +355,20 @@ impl Window {
         }
     }
 
-    fn on_recording_finished(&self, recording: &Recording, res: &Result<gio::File>) {
+    fn handle_recording_finished(
+        &self,
+        recording: &Recording,
+        res: &Result<(gio::File, gst::ClockTime)>,
+    ) {
         debug_assert_eq!(recording.state(), RecordingState::Finished);
 
         match res {
-            Ok(ref recording_file) => {
-                let application = Application::get();
-                application.send_record_success_notification(recording_file);
+            Ok((recording_file, duration)) => {
+                let duration = *duration;
+                glib::spawn_future_local(clone!(@strong recording_file => async move {
+                    let app = Application::get();
+                    app.send_record_success_notification(&recording_file, duration).await;
+                }));
 
                 let recent_manager = gtk::RecentManager::default();
                 recent_manager.add_item(&recording_file.uri());
@@ -407,7 +415,7 @@ impl Window {
                 imp.stack.set_visible_child(&*imp.main_page);
 
                 imp.recording_time_label
-                    .set_label(&format_time(gst::ClockTime::ZERO));
+                    .set_label(&format_time::digital_clock(gst::ClockTime::ZERO));
             }
             RecordingState::Delayed { secs_left } => {
                 imp.delay_label.set_label(&secs_left.to_string());
@@ -535,55 +543,5 @@ impl Window {
         self.add_action(&settings.create_record_mic_action());
         self.add_action(&settings.create_show_pointer_action());
         self.add_action(&settings.create_capture_mode_action());
-    }
-}
-
-/// Format time in MM:SS. The MM part will be more than 2 digits
-/// if the time is >= 1 hour.
-fn format_time(clock_time: gst::ClockTime) -> String {
-    let secs = clock_time.seconds();
-
-    let seconds_display = secs % 60;
-    let minutes_display = secs / 60;
-    format!("{:02}∶{:02}", minutes_display, seconds_display)
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn format_time_less_than_1_hour() {
-        assert_eq!(format_time(gst::ClockTime::ZERO), "00∶00");
-        assert_eq!(format_time(gst::ClockTime::from_seconds(31)), "00∶31");
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(8 * 60 + 1)),
-            "08∶01"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(33 * 60 + 3)),
-            "33∶03"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(59 * 60 + 59)),
-            "59∶59"
-        );
-    }
-
-    #[test]
-    fn format_time_more_than_1_hour() {
-        assert_eq!(format_time(gst::ClockTime::from_seconds(60 * 60)), "60∶00");
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(60 * 60 + 9)),
-            "60∶09"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(60 * 60 + 31)),
-            "60∶31"
-        );
-        assert_eq!(
-            format_time(gst::ClockTime::from_seconds(100 * 60 + 20)),
-            "100∶20"
-        );
     }
 }
