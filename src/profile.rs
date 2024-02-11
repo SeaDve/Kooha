@@ -296,8 +296,8 @@ mod tests {
         gstgif::plugin_register_static().unwrap();
 
         for profile in Profile::all().unwrap() {
-            // These profiles are not included in the runtime.
-            if matches!(profile.id(), "vaapi-vp8" | "vaapi-vp9") {
+            // These profiles are not supported by the CI runner.
+            if matches!(profile.id(), "vaapi-vp8" | "vaapi-vp9" | "va-h264") {
                 continue;
             }
 
