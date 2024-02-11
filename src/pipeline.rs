@@ -69,7 +69,7 @@ impl PipelineBuilder {
         tracing::debug!(
             file_path = %file_path.display(),
             framerate = self.framerate,
-            profile = ?self.profile,
+            profile = ?self.profile.id(),
             stream_len = self.streams.len(),
             streams = ?self.streams,
             speaker_source = ?self.speaker_source,
