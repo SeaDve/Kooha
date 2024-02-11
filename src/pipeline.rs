@@ -356,14 +356,7 @@ fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Res
 
         bin.add_many([&pulsesrc, &audiorate])?;
         pulsesrc.link_filtered(&audiorate, &pulsesrc_caps)?;
-
-        let audiomixer_sink_pad = audiomixer
-            .request_pad_simple("sink_%u")
-            .context("Failed to request sink_%u pad from audiomixer")?;
-        audiorate
-            .static_pad("src")
-            .unwrap()
-            .link(&audiomixer_sink_pad)?;
+        audiorate.link_pads(None, &audiomixer, Some("sink_%u"))?;
     }
 
     Ok(bin)
