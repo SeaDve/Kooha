@@ -21,7 +21,7 @@ supported:
     muxer: "mp4mux"
 
   - id: "matroska-h264"
-    name: "Matroska (x264)"
+    name: "Matroska"
     extension: "mkv"
     videoenc: "x264enc qp-max=17 speed-preset=superfast threads=${N_THREADS} ! capsfilter caps=video/x-h264,profile=baseline ! queue ! h264parse"
     audioenc: "opusenc ! queue"
