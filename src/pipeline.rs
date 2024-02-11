@@ -79,21 +79,6 @@ impl PipelineBuilder {
     pub fn build(&self) -> Result<gst::Pipeline> {
         let file_path = new_recording_path(&self.saving_location, self.profile.file_extension());
 
-        let queue = gst::ElementFactory::make("queue").build()?;
-        let filesink = gst::ElementFactory::make("filesink")
-            .name(FILESINK_ELEMENT_NAME)
-            .property(
-                "location",
-                file_path
-                    .to_str()
-                    .context("Could not convert file path to string")?,
-            )
-            .build()?;
-
-        let pipeline = gst::Pipeline::new();
-        pipeline.add_many([&queue, &filesink])?;
-        queue.link(&filesink)?;
-
         tracing::debug!(
             file_path = %file_path.display(),
             framerate = self.framerate,
@@ -106,7 +91,6 @@ impl PipelineBuilder {
         );
 
         ensure!(!self.streams.is_empty(), "No streams provided");
-
         let videosrc_bin = make_pipewiresrc_bin(
             self.fd,
             &self.streams,
@@ -115,9 +99,23 @@ impl PipelineBuilder {
         )
         .context("Failed to create videosrc bin")?;
 
-        pipeline.add(&videosrc_bin)?;
+        let videoenc_queue = gst::ElementFactory::make("queue").build()?;
+        let filesink = gst::ElementFactory::make("filesink")
+            .name(FILESINK_ELEMENT_NAME)
+            .property(
+                "location",
+                file_path
+                    .to_str()
+                    .context("Could not convert file path to string")?,
+            )
+            .build()?;
 
-        let audiosrc_bin = if self.profile.supports_audio()
+        let pipeline = gst::Pipeline::new();
+
+        pipeline.add_many([videosrc_bin.upcast_ref(), &videoenc_queue, &filesink])?;
+        videosrc_bin.link(&videoenc_queue)?;
+
+        let audioenc_queue = if self.profile.supports_audio()
             && (self.speaker_source.is_some() || self.mic_source.is_some())
         {
             let audiosrc_bin = make_pulsesrc_bin(
@@ -126,9 +124,12 @@ impl PipelineBuilder {
                     .filter_map(|s| s.as_deref()),
             )
             .context("Failed to create audiosrc bin")?;
-            pipeline.add(&audiosrc_bin)?;
+            let audioenc_queue = gst::ElementFactory::make("queue").build()?;
 
-            Some(audiosrc_bin)
+            pipeline.add_many([audiosrc_bin.upcast_ref(), &audioenc_queue])?;
+            audiosrc_bin.link(&audioenc_queue)?;
+
+            Some(audioenc_queue)
         } else {
             if self.speaker_source.is_some() || self.mic_source.is_some() {
                 tracing::warn!(
@@ -142,9 +143,9 @@ impl PipelineBuilder {
         self.profile
             .attach(
                 &pipeline,
-                videosrc_bin.upcast_ref(),
-                audiosrc_bin.as_ref().map(|a| a.upcast_ref()),
-                &queue,
+                &videoenc_queue,
+                audioenc_queue.as_ref(),
+                &filesink,
             )
             .context("Failed to attach profile to pipeline")?;
 
