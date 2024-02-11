@@ -167,6 +167,7 @@ mod tests {
     #[test]
     fn default_profile() {
         setup_schema();
+        gst::init().unwrap();
 
         assert!(Settings::default().profile().is_some());
         assert!(Settings::default().profile().unwrap().supports_audio());
