@@ -269,7 +269,7 @@ mod tests {
     }
 
     #[test]
-    fn fields_validity() {
+    fn profiles_fields_validity() {
         init_gresources();
 
         let mut unique = HashSet::new();
@@ -290,13 +290,14 @@ mod tests {
     }
 
     #[test]
-    fn supported_profiles_compatibility() {
+    fn profiles_validity() {
         init_gresources();
         gst::init().unwrap();
         gstgif::plugin_register_static().unwrap();
 
         for profile in Profile::all().unwrap() {
-            if profile.is_experimental() {
+            // These profiles are not included in the runtime.
+            if matches!(profile.id(), "vaapi-vp8" | "vaapi-vp9") {
                 continue;
             }
 
