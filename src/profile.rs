@@ -32,7 +32,7 @@ struct ProfileData {
     #[serde(rename = "audioenc")]
     audioenc_bin_str: Option<String>,
     #[serde(rename = "muxer")]
-    muxer_name: Option<String>,
+    muxer_bin_str: Option<String>,
 }
 
 mod imp {
@@ -126,18 +126,18 @@ impl Profile {
     }
 
     pub fn is_available(&self) -> bool {
-        if let Some(muxer_name) = &self.data().muxer_name {
-            if gst::ElementFactory::find(muxer_name).is_none() {
+        if !all_elements_exist_on_bin(&self.data().videoenc_bin_str) {
+            return false;
+        }
+
+        if let Some(audioenc_bin_str) = &self.data().audioenc_bin_str {
+            if !all_elements_exist_on_bin(audioenc_bin_str) {
                 return false;
             }
         }
 
-        if !all_elements_exist_on_encoder_bin(&self.data().videoenc_bin_str) {
-            return false;
-        }
-
-        if let Some(audioenc_str) = &self.data().audioenc_bin_str {
-            if !all_elements_exist_on_encoder_bin(audioenc_str) {
+        if let Some(muxer_bin_str) = &self.data().muxer_bin_str {
+            if !all_elements_exist_on_bin(muxer_bin_str) {
                 return false;
             }
         }
@@ -152,12 +152,12 @@ impl Profile {
         audio_srcs: Option<&gst::Element>,
         sink: &gst::Element,
     ) -> Result<()> {
-        let videoenc = parse_encoder_bin("kooha-videoenc-bin", &self.data().videoenc_bin_str)?;
+        let videoenc_bin = parse_bin("kooha-videoenc-bin", &self.data().videoenc_bin_str)?;
 
-        pipeline.add(&videoenc)?;
-        video_src.link(&videoenc)?;
+        pipeline.add(&videoenc_bin)?;
+        video_src.link(&videoenc_bin)?;
 
-        match (&self.data().audioenc_bin_str, &self.data().muxer_name) {
+        match (&self.data().audioenc_bin_str, &self.data().muxer_bin_str) {
             (None, None) => {
                 // Special case for gifenc
 
@@ -168,14 +168,28 @@ impl Profile {
                     );
                 }
 
-                videoenc.link(sink)?;
+                videoenc_bin.link(sink)?;
             }
-            (audioenc_str, Some(muxer_name)) => {
-                let muxer = gst::ElementFactory::make(muxer_name).build()?;
+            (audioenc_str, Some(muxer_bin_str)) => {
+                let muxer_bin = parse_bin("kooha-muxer-bin", muxer_bin_str)?;
 
-                pipeline.add(&muxer)?;
-                videoenc.link_pads(None, &muxer, Some("video_%u"))?;
-                muxer.link(sink)?;
+                let muxer = muxer_bin
+                    .iterate_elements()
+                    .find(|element| {
+                        element
+                            .factory()
+                            .is_some_and(|f| f.has_type(gst::ElementFactoryType::MUXER))
+                    })
+                    .with_context(|| {
+                        format!(
+                            "Can't find the muxer in muxer bin of Profile `{}`",
+                            self.id()
+                        )
+                    })?;
+
+                pipeline.add(&muxer_bin)?;
+                videoenc_bin.link_pads(None, &muxer, Some("video_%u"))?;
+                muxer_bin.link(sink)?;
 
                 if let Some(audio_srcs) = audio_srcs {
                     let audioenc_str = audioenc_str.as_ref().with_context(|| {
@@ -185,11 +199,11 @@ impl Profile {
                         )
                     })?;
 
-                    let audioenc = parse_encoder_bin("kooha-audioenc-bin", audioenc_str)?;
+                    let audioenc_bin = parse_bin("kooha-audioenc-bin", audioenc_str)?;
 
-                    pipeline.add(&audioenc)?;
-                    audio_srcs.link(&audioenc)?;
-                    audioenc.link_pads(None, &muxer, Some("audio_%u"))?;
+                    pipeline.add(&audioenc_bin)?;
+                    audio_srcs.link(&audioenc_bin)?;
+                    audioenc_bin.link_pads(None, &muxer, Some("audio_%u"))?;
                 }
             }
             (Some(_), None) => {
@@ -201,9 +215,9 @@ impl Profile {
     }
 }
 
-fn all_elements_exist_on_encoder_bin(description: &str) -> bool {
+fn all_elements_exist_on_bin(description: &str) -> bool {
     // Empty names are ignored in implementation details of `gst::parse::bin_from_description_with_name_full`
-    parse_encoder_bin_inner("", description, false)
+    parse_bin_inner("", description, false)
         .inspect_err(|err| {
             debug_assert!(
                 err.matches(gst::ParseError::NoSuchElement),
@@ -214,11 +228,11 @@ fn all_elements_exist_on_encoder_bin(description: &str) -> bool {
         .is_ok()
 }
 
-fn parse_encoder_bin(name: &str, description: &str) -> Result<gst::Bin, glib::Error> {
-    parse_encoder_bin_inner(name, description, true)
+fn parse_bin(name: &str, description: &str) -> Result<gst::Bin, glib::Error> {
+    parse_bin_inner(name, description, true)
 }
 
-fn parse_encoder_bin_inner(
+fn parse_bin_inner(
     name: &str,
     description: &str,
     add_ghost_pads: bool,

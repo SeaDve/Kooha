@@ -1,5 +1,4 @@
 # Note:
-# - muxer must be a single element, but videoenc and audioenc can be a bin description
 # - videoenc and audioenc will be connected directly to the muxer
 # - audioenc and muxer are optional, but if audioenc is set, muxer must also be set
 # - ${N_THREADS} will be replaced with ideal thread count
@@ -18,7 +17,7 @@ supported:
     extension: "mp4"
     videoenc: "videorate skip-to-first=true ! x264enc qp-max=17 speed-preset=superfast threads=${N_THREADS} ! capsfilter caps=video/x-h264,profile=baseline ! queue ! h264parse"
     audioenc: "lamemp3enc ! queue ! mpegaudioparse"
-    muxer: "mp4mux"
+    muxer: "mp4mux fragment-duration=500 fragment-mode=first-moov-then-finalise"
 
   - id: "matroska-h264"
     name: "Matroska"
@@ -67,4 +66,4 @@ experimental:
     extension: "mkv"
     videoenc: "vaapih264enc"
     audioenc: "lamemp3enc ! queue ! mpegaudioparse"
-    muxer: "mp4mux"
+    muxer: "mp4mux fragment-duration=500 fragment-mode=first-moov-then-finalise"
