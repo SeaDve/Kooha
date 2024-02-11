@@ -325,12 +325,11 @@ impl Recording {
         }
 
         self.set_state(RecordingState::Flushing { progress: 0 });
-        imp.expected_duration.set(Some(
+        imp.expected_duration.set(
             imp.starting_time
                 .get()
-                .expect("starting time must have set on start or async done")
-                .elapsed(),
-        ));
+                .map(|starting_time| starting_time.elapsed()),
+        );
         self.update_flushing_progress();
 
         tracing::debug!("Sending eos event to pipeline");
