@@ -246,7 +246,7 @@ pub fn make_pipewiresrc_bin(
     framerate: u32,
     select_area_data: Option<&SelectAreaData>,
 ) -> Result<gst::Bin> {
-    let bin = gst::Bin::new();
+    let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
     let compositor = gst::ElementFactory::make("compositor").build()?;
     let videoconvert = make_videoconvert()?;
@@ -324,7 +324,7 @@ pub fn make_pipewiresrc_bin(
 ///                           |
 /// pulsesrcn -> audiorate -> |
 fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
-    let bin = gst::Bin::new();
+    let bin = gst::Bin::builder().name("kooha-pulsesrc-bin").build();
 
     let audiomixer = gst::ElementFactory::make("audiomixer").build()?;
     bin.add(&audiomixer)?;
