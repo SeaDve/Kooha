@@ -10,12 +10,6 @@ use std::{
 
 use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session::Stream};
 
-// TODO
-// * Do we need restrictions?
-// * Can we drop filter elements (videorate, videoconvert, videoscale, audioconvert) and let encodebin handle it?
-// * Can we set frame rate directly on profile format?
-// * Add tests
-
 pub const FILESINK_ELEMENT_NAME: &str = "kooha-filesink";
 
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
