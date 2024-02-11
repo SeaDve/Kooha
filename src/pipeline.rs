@@ -320,16 +320,19 @@ pub fn make_pipewiresrc_bin(
 ///
 /// pulsesrc1 -> audiorate -> |
 ///                           |
-/// pulsesrc2 -> audiorate -> | -> audiomixer
+/// pulsesrc2 -> audiorate -> | -> audiomixer -> audioconvert
 ///                           |
 /// pulsesrcn -> audiorate -> |
 fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pulsesrc-bin").build();
 
     let audiomixer = gst::ElementFactory::make("audiomixer").build()?;
-    bin.add(&audiomixer)?;
+    let audioconvert = gst::ElementFactory::make("audioconvert").build()?;
 
-    let src_pad = audiomixer.static_pad("src").unwrap();
+    bin.add_many([&audiomixer, &audioconvert])?;
+    audiomixer.link(&audioconvert)?;
+
+    let src_pad = audioconvert.static_pad("src").unwrap();
     bin.add_pad(
         &gst::GhostPad::builder_with_target(&src_pad)?
             .name("src")
