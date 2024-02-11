@@ -31,7 +31,7 @@ supported:
     name: "GIF"
     extension: "gif"
     suggested-max-fps: 24
-    videoenc: "gifenc"
+    videoenc: "gifenc repeat=-1 speed=30"
 
 experimental:
   - id: "webm-vp9"
