@@ -488,7 +488,7 @@ impl Window {
         let fps_text = settings.video_framerate().to_string();
 
         imp.title
-            .set_subtitle(&format!("{} • {} FPS", profile_text, fps_text));
+            .set_subtitle(&format!("{} • {} FPS", profile_text, fps_text));
     }
 
     fn update_audio_toggles_sensitivity(&self) {

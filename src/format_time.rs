@@ -18,20 +18,20 @@ pub fn duration(clock_time: gst::ClockTime) -> String {
     let seconds_display = secs % 60;
 
     let hours_display_str = ngettext_f(
-        "{time} hour",
-        "{time} hours",
+        "{time} hour",
+        "{time} hours",
         hours_display as u32,
         &[("time", &hours_display.to_string())],
     );
     let minutes_display_str = ngettext_f(
-        "{time} minute",
-        "{time} minutes",
+        "{time} minute",
+        "{time} minutes",
         minutes_display as u32,
         &[("time", &minutes_display.to_string())],
     );
     let seconds_display_str = ngettext_f(
-        "{time} second",
-        "{time} seconds",
+        "{time} second",
+        "{time} seconds",
         seconds_display as u32,
         &[("time", &seconds_display.to_string())],
     );
@@ -57,19 +57,19 @@ mod tests {
 
     #[test]
     fn test_duration() {
-        assert_eq!(duration(gst::ClockTime::ZERO), "0 seconds");
-        assert_eq!(duration(gst::ClockTime::from_seconds(1)), "1 second");
+        assert_eq!(duration(gst::ClockTime::ZERO), "0 seconds");
+        assert_eq!(duration(gst::ClockTime::from_seconds(1)), "1 second");
         assert_eq!(
             duration(gst::ClockTime::from_seconds(3 * 60 + 4)),
-            "3 minutes 4 seconds"
+            "3 minutes 4 seconds"
         );
         assert_eq!(
             duration(gst::ClockTime::from_seconds(60 * 60 + 6)),
-            "1 hour 0 minutes 6 seconds"
+            "1 hour 0 minutes 6 seconds"
         );
         assert_eq!(
             duration(gst::ClockTime::from_seconds(2 * 60 * 60)),
-            "2 hours 0 minutes 0 seconds"
+            "2 hours 0 minutes 0 seconds"
         );
     }
 
