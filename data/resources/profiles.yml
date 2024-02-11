@@ -6,7 +6,7 @@
 # - default suggested-max-fps is 60
 
 supported:
-  - id: "webm"
+  - id: "webm-vp8"
     name: "WebM"
     extension: "webm"
     videoenc: "vp8enc max-quantizer=17 cpu-used=16 cq-level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=${N_THREADS} ! queue"
