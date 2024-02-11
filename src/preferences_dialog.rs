@@ -2,15 +2,14 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
     gio,
-    glib::{self, clone, closure},
+    glib::{self, clone, closure, BoxedAnyObject},
     pango,
 };
 
-use crate::{
-    profile::{self, BoxedProfile},
-    settings::Settings,
-    utils::IS_EXPERIMENTAL_MODE,
-};
+use crate::{profile::Profile, settings::Settings, IS_EXPERIMENTAL_MODE};
+
+/// Used to represent "none" profile in the profiles model
+type NoneProfile = BoxedAnyObject;
 
 mod imp {
     use std::cell::OnceCell;
@@ -79,40 +78,36 @@ mod imp {
             self.parent_constructed();
 
             let obj = self.obj();
+
             let settings = obj.settings();
+            let active_profile = settings.profile();
 
             self.profile_row
                 .set_factory(Some(&profile_row_factory(&self.profile_row, false)));
             self.profile_row
                 .set_list_factory(Some(&profile_row_factory(&self.profile_row, true)));
-            let profiles = if *IS_EXPERIMENTAL_MODE
-                || settings
-                    .profile()
-                    .is_some_and(|profile| profile.is_experimental())
-            {
-                profile::all()
-            } else {
-                profile::supported()
-            };
-            let profiles_model = gio::ListStore::new::<BoxedProfile>();
-            if settings.profile().is_none() {
-                profiles_model.append(&BoxedProfile::new_none());
+            let profiles = Profile::all()
+                .inspect_err(|err| tracing::error!("Failed to load profiles: {:?}", err))
+                .unwrap_or_default();
+            let profiles_model = gio::ListStore::new::<glib::Object>();
+            if active_profile.is_none() {
+                profiles_model.append(&NoneProfile::new(()));
             }
-            profiles_model.splice(
-                profiles_model.n_items(),
-                0,
-                &profiles
-                    .into_iter()
-                    .map(BoxedProfile::new)
-                    .collect::<Vec<_>>(),
-            );
+            profiles_model.splice(profiles_model.n_items(), 0, profiles);
+
+            let is_using_experimental =
+                *IS_EXPERIMENTAL_MODE || active_profile.is_some_and(|p| p.is_experimental());
             let filter = gtk::BoolFilter::new(Some(&gtk::ClosureExpression::new::<bool>(
                 &[] as &[&gtk::Expression],
-                closure!(|profile: BoxedProfile| {
-                    profile.get().map_or(true, |profile| profile.is_available())
+                closure!(|obj: glib::Object| {
+                    profile_from_obj(&obj).map_or(true, |profile| {
+                        profile.is_available()
+                            && (!profile.is_experimental() || is_using_experimental)
+                    })
                 }),
             )));
             let filter_model = gtk::FilterListModel::new(Some(profiles_model), Some(filter));
+
             self.profile_row.set_model(Some(&filter_model));
 
             settings
@@ -145,8 +140,8 @@ mod imp {
             self.profile_row
                 .connect_selected_item_notify(clone!(@weak obj => move |row| {
                     if let Some(item) = row.selected_item() {
-                        let profile = item.downcast::<BoxedProfile>().unwrap();
-                        obj.settings().set_profile(profile.get());
+                        let profile = profile_from_obj(&item);
+                        obj.settings().set_profile(profile);
                     }
                 }));
         }
@@ -186,7 +181,8 @@ impl PreferencesDialog {
     }
 
     fn update_profile_row(&self) {
-        let active_profile = self.settings().profile();
+        let settings = self.settings();
+        let active_profile = settings.profile();
 
         let imp = self.imp();
         let position = imp
@@ -194,15 +190,13 @@ impl PreferencesDialog {
             .model()
             .unwrap()
             .into_iter()
-            .position(|item| {
-                let profile = item.unwrap().downcast::<BoxedProfile>().unwrap();
-
-                match (profile.get(), &active_profile) {
+            .position(
+                |item| match (profile_from_obj(&item.unwrap()), &active_profile) {
                     (Some(profile), Some(active_profile)) => profile.id() == active_profile.id(),
                     (None, None) => true,
                     _ => false,
-                }
-            });
+                },
+            );
 
         if let Some(position) = position {
             imp.profile_row.set_selected(position as u32);
@@ -219,12 +213,9 @@ impl PreferencesDialog {
         let settings = self.settings();
 
         imp.framerate_warning.set_visible(
-            settings
-                .profile()
-                .and_then(|profile| profile.suggested_max_framerate())
-                .is_some_and(|suggested_max_framerate| {
-                    settings.video_framerate() > suggested_max_framerate
-                }),
+            settings.profile().is_some_and(|profile| {
+                settings.video_framerate() > profile.suggested_max_framerate()
+            }),
         );
     }
 }
@@ -251,7 +242,7 @@ fn profile_row_factory(
             .chain_closure::<bool>(closure!(
                 |_: Option<glib::Object>, obj: Option<glib::Object>| {
                     obj.as_ref()
-                        .and_then(|o| o.downcast_ref::<BoxedProfile>().unwrap().get())
+                        .and_then(|obj| profile_from_obj(obj))
                         .is_some_and(|profile| profile.is_experimental())
                 }
             ))
@@ -269,8 +260,8 @@ fn profile_row_factory(
             .chain_closure::<String>(closure!(
                 |_: Option<glib::Object>, obj: Option<glib::Object>| {
                     obj.as_ref()
-                        .and_then(|o| o.downcast_ref::<BoxedProfile>().unwrap().get())
-                        .map_or(gettext("None"), |profile| profile.name())
+                        .and_then(|o| profile_from_obj(o))
+                        .map_or(gettext("None"), |profile| profile.name().to_string())
                 }
             ))
             .bind(&label, "label", glib::Object::NONE);
@@ -300,4 +291,16 @@ fn profile_row_factory(
         list_item.set_child(Some(&hbox));
     }));
     factory
+}
+
+/// Returns `Some` if the object is a `Profile`, otherwise `None`, if the object is a `NoneProfile`.
+fn profile_from_obj(obj: &glib::Object) -> Option<&Profile> {
+    if let Some(profile) = obj.downcast_ref::<Profile>() {
+        Some(profile)
+    } else if obj.downcast_ref::<NoneProfile>().is_some() {
+        None
+    } else {
+        tracing::warn!("Unexpected object type `{}`", obj.type_());
+        None
+    }
 }

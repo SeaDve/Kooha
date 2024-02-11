@@ -29,7 +29,6 @@ mod area_selector;
 mod audio_device;
 mod cancelled;
 mod config;
-mod element_properties;
 mod help;
 mod i18n;
 mod pipeline;
@@ -41,16 +40,21 @@ mod screencast_session;
 mod settings;
 mod timer;
 mod toggle_button;
-mod utils;
 mod window;
+
+use std::env;
 
 use gettextrs::{gettext, LocaleCategory};
 use gtk::{gio, glib};
+use once_cell::sync::Lazy;
 
 use self::{
     application::Application,
     config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE},
 };
+
+pub static IS_EXPERIMENTAL_MODE: Lazy<bool> =
+    Lazy::new(|| env::var("KOOHA_EXPERIMENTAL").is_ok_and(|value| value == "1"));
 
 fn main() -> glib::ExitCode {
     tracing_subscriber::fmt::init();

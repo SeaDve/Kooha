@@ -6,10 +6,7 @@ use gtk::{gio, glib};
 
 use std::{fs, path::PathBuf, time::Duration};
 
-use crate::{
-    config::APP_ID,
-    profile::{self, Profile},
-};
+use crate::{config::APP_ID, profile::Profile};
 
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
 #[gen_settings_skip(key_name = "saving-location")]
@@ -24,8 +21,6 @@ impl Default for Settings {
 }
 
 impl Settings {
-    pub const NONE_PROFILE_ID: &'static str = "none";
-
     /// Opens a `FileDialog` to select a folder and updates
     /// the settings with the selected folder.
     pub async fn select_saving_location(
@@ -103,23 +98,25 @@ impl Settings {
         self.0.bind("record-delay", object, property)
     }
 
-    pub fn set_profile(&self, profile: Option<&dyn Profile>) {
+    pub fn set_profile(&self, profile: Option<&Profile>) {
         self.0
-            .set_string(
-                "profile-id",
-                profile.map_or(Self::NONE_PROFILE_ID, |profile| profile.id()),
-            )
+            .set_string("profile-id", profile.map_or("", |profile| profile.id()))
             .unwrap();
     }
 
-    pub fn profile(&self) -> Option<Box<dyn Profile>> {
+    pub fn profile(&self) -> Option<&Profile> {
         let profile_id = self.0.get::<String>("profile-id");
 
-        if profile_id.is_empty() || profile_id == Self::NONE_PROFILE_ID {
+        if profile_id.is_empty() {
             return None;
         }
 
-        profile::get(&profile_id).filter(|profile| profile.is_available())
+        Profile::from_id(&profile_id)
+            .inspect_err(|err| {
+                tracing::warn!("Failed to get profile with id `{}`: {:?}", profile_id, err);
+            })
+            .ok()
+            .filter(|profile| profile.is_available())
     }
 
     pub fn connect_profile_changed(

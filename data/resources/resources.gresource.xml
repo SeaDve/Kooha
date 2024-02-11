@@ -12,6 +12,7 @@
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/selection-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/source-pick-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">icons/scalable/actions/warning-symbolic.svg</file>
+    <file compressed="true">profiles.yml</file>
     <file compressed="true">style.css</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/area-selector.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences-dialog.ui</file>

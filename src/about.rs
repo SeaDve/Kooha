@@ -7,7 +7,7 @@ use gtk::glib;
 
 use crate::{
     config::{APP_ID, VERSION},
-    utils::IS_EXPERIMENTAL_MODE,
+    IS_EXPERIMENTAL_MODE,
 };
 
 pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {

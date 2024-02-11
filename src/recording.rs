@@ -27,7 +27,7 @@ use crate::{
     },
     settings::{CaptureMode, Settings},
     timer::Timer,
-    utils::IS_EXPERIMENTAL_MODE,
+    IS_EXPERIMENTAL_MODE,
 };
 
 const DEFAULT_DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
@@ -195,7 +195,7 @@ impl Recording {
         let mut pipeline_builder = PipelineBuilder::new(
             &settings.saving_location(),
             settings.video_framerate(),
-            profile,
+            profile.clone(),
             fd,
             streams.clone(),
         );

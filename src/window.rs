@@ -473,9 +473,10 @@ impl Window {
         let app = Application::get();
         let settings = app.settings();
 
-        let profile_text = settings
-            .profile()
-            .map_or_else(|| gettext("No Profile"), |profile| profile.name());
+        let profile_text = settings.profile().map_or_else(
+            || gettext("No Profile"),
+            |profile| profile.name().to_string(),
+        );
         let fps_text = settings.video_framerate().to_string();
 
         imp.title

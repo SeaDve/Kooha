@@ -1,0 +1,70 @@
+# Note:
+# - muxer must be a single element, but videoenc and audioenc can be a bin description
+# - videoenc and audioenc will be connected directly to the muxer
+# - audioenc and muxer are optional, but if audioenc is set, muxer must also be set
+# - ${N_THREADS} will be replaced with ideal thread count
+# - default suggested-max-fps is 60
+
+supported:
+  - id: "webm"
+    name: "WebM"
+    extension: "webm"
+    videoenc: "vp8enc max-quantizer=17 cpu-used=16 cq-level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=${N_THREADS} ! queue"
+    audioenc: "opusenc ! queue"
+    muxer: "webmmux"
+
+  - id: "mp4"
+    name: "MP4"
+    extension: "mp4"
+    videoenc: "x264enc qp-max=17 speed-preset=superfast threads=${N_THREADS} ! capsfilter caps=video/x-h264,profile=baseline ! queue ! h264parse"
+    audioenc: "lamemp3enc ! queue ! mpegaudioparse"
+    muxer: "mp4mux"
+
+  - id: "matroska-h264"
+    name: "Matroska (x264)"
+    extension: "mkv"
+    videoenc: "x264enc qp-max=17 speed-preset=superfast threads=${N_THREADS} ! capsfilter caps=video/x-h264,profile=baseline ! queue ! h264parse"
+    audioenc: "opusenc ! queue"
+    muxer: "matroskamux"
+
+  - id: "gif"
+    name: "GIF"
+    extension: "gif"
+    suggested-max-fps: 24
+    videoenc: "gifenc"
+
+experimental:
+  - id: "webm-vp9"
+    name: "WebM (VP9)"
+    extension: "webm"
+    videoenc: "vp9enc max-quantizer=17 cpu-used=16 cq-level=13 deadline=1 static-threshold=100 keyframe-mode=disabled buffer-size=20000 threads=${N_THREADS} ! queue"
+    audioenc: "opusenc ! queue"
+    muxer: "webmmux"
+
+  - id: "webm-av1"
+    name: "WebM (AV1)"
+    extension: "webm"
+    videoenc: "av1enc max-quantizer=17 cpu-used=5 end-usage=cq buf-sz=20000 threads=${N_THREADS} ! queue"
+    audioenc: "opusenc ! queue"
+    muxer: "webmmux"
+
+  - id: "vaapi-vp8"
+    name: "WebM VAAPI VP8"
+    extension: "mkv"
+    videoenc: "vaapivp8enc"
+    audioenc: "opusenc ! queue"
+    muxer: "webmmux"
+
+  - id: "vaapi-vp9"
+    name: "WebM VAAPI VP9"
+    extension: "mkv"
+    videoenc: "vaapivp9enc"
+    audioenc: "opusenc ! queue"
+    muxer: "webmmux"
+
+  - id: "vaapi-h264"
+    name: "WebM VAAPI H264"
+    extension: "mkv"
+    videoenc: "vaapih264enc"
+    audioenc: "lamemp3enc ! queue ! mpegaudioparse"
+    muxer: "mp4mux"

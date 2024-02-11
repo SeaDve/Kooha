@@ -8,7 +8,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session::Stream, utils};
+use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session::Stream};
 
 // TODO
 // * Do we need restrictions?
@@ -18,15 +18,22 @@ use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session:
 
 pub const FILESINK_ELEMENT_NAME: &str = "kooha-filesink";
 
+const MAX_THREAD_COUNT: u32 = 64;
+
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
 const AUDIO_N_CHANNELS: i32 = 1;
+
+/// Ideal thread count to use for processing.
+pub fn ideal_thread_count() -> u32 {
+    glib::num_processors().min(MAX_THREAD_COUNT)
+}
 
 #[derive(Debug)]
 #[must_use]
 pub struct PipelineBuilder {
     saving_location: PathBuf,
     framerate: u32,
-    profile: Box<dyn Profile>,
+    profile: Profile,
     fd: RawFd,
     streams: Vec<Stream>,
     speaker_source: Option<String>,
@@ -38,7 +45,7 @@ impl PipelineBuilder {
     pub fn new(
         saving_location: &Path,
         framerate: u32,
-        profile: Box<dyn Profile>,
+        profile: Profile,
         fd: RawFd,
         streams: Vec<Stream>,
     ) -> Self {
@@ -162,7 +169,7 @@ fn make_videoconvert() -> Result<gst::Element> {
         .property("chroma-mode", gst_video::VideoChromaMode::None)
         .property("dither", gst_video::VideoDitherMethod::None)
         .property("matrix-mode", gst_video::VideoMatrixMode::OutputOnly)
-        .property("n-threads", utils::ideal_thread_count())
+        .property("n-threads", ideal_thread_count())
         .build()?;
     Ok(conv)
 }
