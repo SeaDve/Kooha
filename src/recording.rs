@@ -173,7 +173,7 @@ impl Recording {
             } else {
                 SourceType::MONITOR
             },
-            true,
+            *IS_EXPERIMENTAL_MODE,
             Some(&restore_token),
             PersistMode::ExplicitlyRevoked,
             parent,

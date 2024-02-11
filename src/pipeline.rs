@@ -1,4 +1,4 @@
-use anyhow::{ensure, Context, Ok, Result};
+use anyhow::{bail, Context, Ok, Result};
 use gst::prelude::*;
 use gtk::{glib, graphene::Rect};
 
@@ -77,7 +77,6 @@ impl PipelineBuilder {
             select_area_data = ?self.select_area_data,
         );
 
-        ensure!(!self.streams.is_empty(), "No streams provided");
         let videosrc_bin = make_pipewiresrc_bin(
             self.fd,
             &self.streams,
@@ -212,6 +211,14 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 }
 
 /// Creates a bin with a src pad for multiple pipewire streams.
+///
+/// Single stream:
+///                           (If has select area data)
+///                                 |            |
+///                                 V            V
+/// pipewiresrc -> videorate -> videoscale -> videocrop
+///
+/// Multiple streams:
 ///                                                (If has select area data)
 /// pipewiresrc1 -> videorate -> |                       |            |
 ///                              |                       V            V
@@ -226,8 +233,59 @@ pub fn make_pipewiresrc_bin(
 ) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
-    let compositor = gst::ElementFactory::make("compositor").build()?;
-    bin.add(&compositor)?;
+    let videorate_caps = gst::Caps::builder("video/x-raw")
+        .field("framerate", gst::Fraction::new(framerate as i32, 1))
+        .build();
+
+    let src_element = match streams {
+        [] => bail!("No streams provided"),
+        [stream] => {
+            let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
+            let videorate = gst::ElementFactory::make("videorate")
+                .property("skip-to-first", true)
+                .build()?;
+            let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
+                .property("caps", &videorate_caps)
+                .build()?;
+
+            bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+            gst::Element::link_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+
+            videorate_capsfilter
+        }
+        streams => {
+            let compositor = gst::ElementFactory::make("compositor").build()?;
+            bin.add(&compositor)?;
+
+            let mut last_pos = 0;
+            for stream in streams {
+                let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
+                let videorate = gst::ElementFactory::make("videorate")
+                    .property("skip-to-first", true)
+                    .build()?;
+                let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
+                    .property("caps", &videorate_caps)
+                    .build()?;
+
+                bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+                gst::Element::link_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+
+                let compositor_sink_pad = compositor
+                    .request_pad_simple("sink_%u")
+                    .context("Failed to request sink_%u pad from compositor")?;
+                compositor_sink_pad.set_property("xpos", last_pos);
+                videorate_capsfilter
+                    .static_pad("src")
+                    .unwrap()
+                    .link(&compositor_sink_pad)?;
+
+                let stream_width = stream.size().unwrap().0;
+                last_pos += stream_width;
+            }
+
+            compositor
+        }
+    };
 
     if let Some(data) = select_area_data {
         let videoscale = gst::ElementFactory::make("videoscale").build()?;
@@ -241,7 +299,7 @@ pub fn make_pipewiresrc_bin(
             .build();
 
         bin.add_many([&videoscale, &videocrop])?;
-        compositor.link(&videoscale)?;
+        src_element.link(&videoscale)?;
         videoscale.link_filtered(&videocrop, &videoscale_caps)?;
 
         let src_pad = videocrop.static_pad("src").unwrap();
@@ -251,41 +309,12 @@ pub fn make_pipewiresrc_bin(
                 .build(),
         )?;
     } else {
-        let src_pad = compositor.static_pad("src").unwrap();
+        let src_pad = src_element.static_pad("src").unwrap();
         bin.add_pad(
             &gst::GhostPad::builder_with_target(&src_pad)?
                 .name("src")
                 .build(),
         )?;
-    }
-
-    let videorate_caps = gst::Caps::builder("video/x-raw")
-        .field("framerate", gst::Fraction::new(framerate as i32, 1))
-        .build();
-    let mut last_pos = 0;
-    for stream in streams {
-        let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
-        let videorate = gst::ElementFactory::make("videorate")
-            .property("skip-to-first", true)
-            .build()?;
-        let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
-            .property("caps", &videorate_caps)
-            .build()?;
-
-        bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
-        gst::Element::link_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
-
-        let compositor_sink_pad = compositor
-            .request_pad_simple("sink_%u")
-            .context("Failed to request sink_%u pad from compositor")?;
-        compositor_sink_pad.set_property("xpos", last_pos);
-        videorate_capsfilter
-            .static_pad("src")
-            .unwrap()
-            .link(&compositor_sink_pad)?;
-
-        let stream_width = stream.size().unwrap().0;
-        last_pos += stream_width;
     }
 
     Ok(bin)

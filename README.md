@@ -76,8 +76,11 @@ to install the package.
 
 ### Recording specific window
 
-Due to flickering, this has been disabled by default, but can be enabled through
-`KOOHA_EXPERIMENTAL` env var.
+Due to flickering, this has been disabled by default.
+
+### Recording multiple sources
+
+Due to performance degradation, this has been disabled by default.
 
 ## 📋 Runtime Requirements
 
