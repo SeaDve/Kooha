@@ -44,6 +44,7 @@
           <li>Area selector is now resizable</li>
           <li>Video format and FPS are now shown in the main view</li>
           <li>Added progress bar while flushing</li>
+          <li>Improved recording performance</li>
           <li>Fixed focus on area selector</li>
           <li>Updated translations</li>
         </ul>
