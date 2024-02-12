@@ -1,7 +1,10 @@
 use std::{
     cell::{Cell, OnceCell, RefCell},
-    error, fmt,
+    error,
+    ffi::OsStr,
+    fmt,
     os::unix::prelude::RawFd,
+    path::{Path, PathBuf},
     rc::Rc,
     time::{Duration, Instant},
 };
@@ -21,7 +24,7 @@ use crate::{
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
-    pipeline::{PipelineBuilder, FILESINK_ELEMENT_NAME},
+    pipeline::PipelineBuilder,
     screencast_session::{
         CursorMode, PersistMode, ScreencastSession, SourceType, Stream, WindowIdentifier,
     },
@@ -192,8 +195,9 @@ impl Recording {
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
+        let file_path = new_recording_path(&settings.saving_location(), profile.file_extension());
         let mut pipeline_builder = PipelineBuilder::new(
-            &settings.saving_location(),
+            &file_path,
             settings.video_framerate(),
             profile.clone(),
             fd,
@@ -245,11 +249,7 @@ impl Recording {
         pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
         imp.pipeline.set(pipeline.clone()).unwrap();
 
-        let location = pipeline
-            .by_name(FILESINK_ELEMENT_NAME)
-            .context("Element filesink not found on pipeline")?
-            .property::<String>("location");
-        imp.file.set(gio::File::for_path(location)).unwrap();
+        imp.file.set(gio::File::for_path(file_path)).unwrap();
         let bus_watch_guard = pipeline
             .bus()
             .unwrap()
@@ -663,4 +663,16 @@ async fn new_screencast_session(
         .context("Failed to open pipewire remote")?;
 
     Ok((session, streams, restore_token, fd))
+}
+
+fn new_recording_path(saving_location: &Path, extension: impl AsRef<OsStr>) -> PathBuf {
+    let file_name = glib::DateTime::now_local()
+        .expect("You are somehow on year 9999")
+        .format("Kooha-%F-%H-%M-%S")
+        .expect("Invalid format string");
+
+    let mut path = saving_location.join(file_name);
+    path.set_extension(extension);
+
+    path
 }

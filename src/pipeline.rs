@@ -1,16 +1,13 @@
 use anyhow::{bail, Context, Ok, Result};
 use gst::prelude::*;
-use gtk::{glib, graphene::Rect};
+use gtk::graphene::Rect;
 
 use std::{
-    ffi::OsStr,
     os::unix::io::RawFd,
     path::{Path, PathBuf},
 };
 
 use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session::Stream};
-
-pub const FILESINK_ELEMENT_NAME: &str = "kooha-filesink";
 
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
 const AUDIO_N_CHANNELS: i32 = 1;
@@ -18,7 +15,7 @@ const AUDIO_N_CHANNELS: i32 = 1;
 #[derive(Debug)]
 #[must_use]
 pub struct PipelineBuilder {
-    saving_location: PathBuf,
+    file_path: PathBuf,
     framerate: u32,
     profile: Profile,
     fd: RawFd,
@@ -30,14 +27,14 @@ pub struct PipelineBuilder {
 
 impl PipelineBuilder {
     pub fn new(
-        saving_location: &Path,
+        file_path: &Path,
         framerate: u32,
         profile: Profile,
         fd: RawFd,
         streams: Vec<Stream>,
     ) -> Self {
         Self {
-            saving_location: saving_location.to_path_buf(),
+            file_path: file_path.to_path_buf(),
             framerate,
             profile,
             fd,
@@ -64,10 +61,8 @@ impl PipelineBuilder {
     }
 
     pub fn build(&self) -> Result<gst::Pipeline> {
-        let file_path = new_recording_path(&self.saving_location, self.profile.file_extension());
-
         tracing::debug!(
-            file_path = %file_path.display(),
+            file_path = %self.file_path.display(),
             framerate = self.framerate,
             profile = ?self.profile.id(),
             stream_len = self.streams.len(),
@@ -87,10 +82,9 @@ impl PipelineBuilder {
 
         let videoenc_queue = gst::ElementFactory::make("queue").build()?;
         let filesink = gst::ElementFactory::make("filesink")
-            .name(FILESINK_ELEMENT_NAME)
             .property(
                 "location",
-                file_path
+                self.file_path
                     .to_str()
                     .context("Could not convert file path to string")?,
             )
@@ -368,18 +362,6 @@ fn round_to_even(number: i32) -> i32 {
 
 fn round_to_even_f32(number: f32) -> i32 {
     (number / 2.0).round() as i32 * 2
-}
-
-fn new_recording_path(saving_location: &Path, extension: impl AsRef<OsStr>) -> PathBuf {
-    let file_name = glib::DateTime::now_local()
-        .expect("You are somehow on year 9999")
-        .format("Kooha-%F-%H-%M-%S")
-        .expect("Invalid format string");
-
-    let mut path = saving_location.join(file_name);
-    path.set_extension(extension);
-
-    path
 }
 
 #[cfg(test)]
