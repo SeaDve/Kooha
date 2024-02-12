@@ -3,7 +3,6 @@ mod view_port;
 use adw::{prelude::*, subclass::prelude::*};
 use anyhow::{Context, Result};
 use futures_channel::oneshot::{self, Sender};
-use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
     gdk,
@@ -453,8 +452,7 @@ impl AreaSelector {
 
         let selection_rect_scaled = selection.rect().scale(scale_factor_h, scale_factor_v);
         imp.window_title.set_subtitle(&format!(
-            "{} {}×{}",
-            gettext("approx."),
+            "{}×{} px",
             selection_rect_scaled.width().round() as i32,
             selection_rect_scaled.height().round() as i32,
         ));
