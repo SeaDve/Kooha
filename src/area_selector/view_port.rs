@@ -797,7 +797,7 @@ impl ViewPort {
                 && selection.end_x == selection.start_x
                 && selection.end_y == selection.start_y
             {
-                let offset = 20.0 * self.scale_factor() as f32;
+                let offset = 20.0;
                 selection.start_x -= offset;
                 selection.start_y -= offset;
                 selection.end_x += offset;
