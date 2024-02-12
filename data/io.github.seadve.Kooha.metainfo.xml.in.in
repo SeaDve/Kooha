@@ -45,8 +45,9 @@
           <li>Video format and FPS are now shown in the main view</li>
           <li>Added progress bar while flushing</li>
           <li>Added recording duration and size on done notification</li>
-          <li>Improved recording performance</li>
           <li>Fixed focus on area selector</li>
+          <li>Fixed area selector sizing</li>
+          <li>Improved recording performance</li>
           <li>Updated translations</li>
         </ul>
       </description>
