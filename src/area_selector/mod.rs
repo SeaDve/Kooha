@@ -304,7 +304,16 @@ impl AreaSelector {
         if let (Some(stream_size), Some(paintable_rect)) =
             (imp.stream_size.get(), imp.view_port.paintable_rect())
         {
-            Some(SelectionContext::new(paintable_rect, *stream_size))
+            let selection_context = SelectionContext::new(paintable_rect, *stream_size);
+
+            debug_assert_ne!(
+                selection_context,
+                Application::get()
+                    .settings()
+                    .selection_context_default_value()
+            );
+
+            Some(selection_context)
         } else {
             None
         }
