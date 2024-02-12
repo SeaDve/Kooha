@@ -18,18 +18,21 @@ pub fn duration(clock_time: gst::ClockTime) -> String {
     let seconds_display = secs % 60;
 
     let hours_display_str = ngettext_f(
+        // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
         "{time} hour",
         "{time} hours",
         hours_display as u32,
         &[("time", &hours_display.to_string())],
     );
     let minutes_display_str = ngettext_f(
+        // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
         "{time} minute",
         "{time} minutes",
         minutes_display as u32,
         &[("time", &minutes_display.to_string())],
     );
     let seconds_display_str = ngettext_f(
+        // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
         "{time} second",
         "{time} seconds",
         seconds_display as u32,
