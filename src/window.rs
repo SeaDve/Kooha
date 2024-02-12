@@ -109,6 +109,7 @@ mod imp {
             obj.update_view();
             obj.update_title_label();
             obj.update_subtitle_label();
+            obj.update_forget_video_sources_action();
         }
     }
 
@@ -118,7 +119,7 @@ mod imp {
 
             let obj = self.obj();
 
-            obj.update_audio_toggles_sensitivity();
+            obj.update_audio_actions();
         }
     }
 
@@ -490,7 +491,7 @@ impl Window {
             .set_subtitle(&format!("{} • {} FPS", profile_text, fps_text));
     }
 
-    fn update_audio_toggles_sensitivity(&self) {
+    fn update_audio_actions(&self) {
         let is_enabled = Application::get()
             .settings()
             .profile()
@@ -522,7 +523,7 @@ impl Window {
         }));
 
         settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
-            obj.update_audio_toggles_sensitivity();
+            obj.update_audio_actions();
             obj.update_subtitle_label();
         }));
 
@@ -533,10 +534,6 @@ impl Window {
         settings.connect_screencast_restore_token_changed(clone!(@weak self as obj => move |_| {
             obj.update_forget_video_sources_action();
         }));
-
-        self.update_title_label();
-        self.update_audio_toggles_sensitivity();
-        self.update_forget_video_sources_action();
 
         self.add_action(&settings.create_record_speaker_action());
         self.add_action(&settings.create_record_mic_action());
