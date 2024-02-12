@@ -68,6 +68,7 @@ impl FromVariant for SelectionContext {
         ))
     }
 }
+
 impl ToVariant for SelectionContext {
     fn to_variant(&self) -> glib::Variant {
         (

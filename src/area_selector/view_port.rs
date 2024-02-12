@@ -140,6 +140,7 @@ impl FromVariant for Selection {
         })
     }
 }
+
 impl ToVariant for Selection {
     fn to_variant(&self) -> glib::Variant {
         (
