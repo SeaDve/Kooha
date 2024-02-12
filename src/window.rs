@@ -85,7 +85,7 @@ mod imp {
             klass.install_action("win.forget-video-sources", None, move |_obj, _, _| {
                 Application::get()
                     .settings()
-                    .set_screencast_restore_token("");
+                    .reset_screencast_restore_token();
             });
         }
 

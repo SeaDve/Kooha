@@ -1,14 +1,15 @@
+use std::{fs, path::PathBuf, time::Duration};
+
 use adw::prelude::*;
 use anyhow::{Context, Result};
 use gettextrs::gettext;
 use gsettings_macro::gen_settings;
 use gtk::{gio, glib};
 
-use std::{fs, path::PathBuf, time::Duration};
-
-use crate::{config::APP_ID, profile::Profile};
+use crate::{area_selector::Selection, config::APP_ID, profile::Profile};
 
 #[gen_settings(file = "./data/io.github.seadve.Kooha.gschema.xml.in")]
+#[gen_settings_define(key_name = "selection", arg_type = "Selection", ret_type = "Selection")]
 #[gen_settings_skip(key_name = "saving-location")]
 #[gen_settings_skip(key_name = "record-delay")]
 #[gen_settings_skip(key_name = "profile-id")]

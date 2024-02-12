@@ -11,6 +11,7 @@ use gtk::{
 };
 
 use std::{
+    borrow::Cow,
     cell::{Cell, RefCell},
     fmt,
 };
@@ -65,7 +66,7 @@ impl CursorType {
     }
 }
 
-#[derive(Default, Clone, Copy, PartialEq, glib::Boxed)]
+#[derive(Clone, Copy, PartialEq, glib::Boxed)]
 #[boxed_type(name = "KoohaSelection", nullable)]
 pub struct Selection {
     start_x: f32,
@@ -122,6 +123,42 @@ impl Selection {
     }
 }
 
+impl StaticVariantType for Selection {
+    fn static_variant_type() -> Cow<'static, glib::VariantTy> {
+        <(f64, f64, f64, f64)>::static_variant_type()
+    }
+}
+
+impl FromVariant for Selection {
+    fn from_variant(variant: &glib::Variant) -> Option<Self> {
+        let (start_x, start_y, end_x, end_y) = variant.get::<(f64, f64, f64, f64)>()?;
+
+        Some(Self {
+            start_x: start_x as f32,
+            start_y: start_y as f32,
+            end_x: end_x as f32,
+            end_y: end_y as f32,
+        })
+    }
+}
+impl ToVariant for Selection {
+    fn to_variant(&self) -> glib::Variant {
+        (
+            self.start_x as f64,
+            self.start_y as f64,
+            self.end_x as f64,
+            self.end_y as f64,
+        )
+            .to_variant()
+    }
+}
+
+impl From<Selection> for glib::Variant {
+    fn from(selection: Selection) -> glib::Variant {
+        selection.to_variant()
+    }
+}
+
 mod imp {
     use super::*;
 
@@ -133,8 +170,9 @@ mod imp {
         pub(super) paintable: RefCell<Option<gdk::Paintable>>,
         #[property(get, set = Self::set_selection, explicit_notify, nullable)]
         pub(super) selection: Cell<Option<Selection>>,
-
+        #[property(get, nullable)]
         pub(super) paintable_rect: Cell<Option<Rect>>,
+
         pub(super) selection_handles: Cell<Option<[Rect; 4]>>, // [top-left, top-right, bottom-right, bottom-left]
 
         pub(super) drag_start: Cell<Option<Point>>,
@@ -202,6 +240,7 @@ mod imp {
 
             let Some(paintable) = obj.paintable() else {
                 self.paintable_rect.set(None);
+                obj.notify_paintable_rect();
                 return;
             };
 
@@ -229,6 +268,7 @@ mod imp {
                 rel_paintable_height.ceil() as f32,
             );
             let prev_paintable_rect = self.paintable_rect.replace(Some(new_paintable_rect));
+            obj.notify_paintable_rect();
 
             // Update selection if paintable rect changed.
             if let Some(prev_paintable_rect) = prev_paintable_rect {
@@ -344,6 +384,7 @@ mod imp {
             self.paintable_rect.set(None);
 
             obj.queue_resize();
+            obj.notify_paintable_rect();
             obj.notify_paintable();
         }
 
@@ -370,10 +411,6 @@ glib::wrapper! {
 impl ViewPort {
     pub fn new() -> Self {
         glib::Object::new()
-    }
-
-    pub fn paintable_rect(&self) -> Option<Rect> {
-        self.imp().paintable_rect.get()
     }
 
     fn set_cursor(&self, cursor_type: CursorType) {
@@ -798,5 +835,17 @@ impl ViewPort {
 impl Default for ViewPort {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn selection_variant() {
+        let original = Selection::from_rect(1.0, 2.0, 3.0, 4.0);
+        let converted = original.to_variant().get::<Selection>().unwrap();
+        assert_eq!(original, converted);
     }
 }

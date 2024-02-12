@@ -164,7 +164,7 @@ impl Recording {
 
         // setup screencast session
         let restore_token = settings.screencast_restore_token();
-        settings.set_screencast_restore_token("");
+        settings.reset_screencast_restore_token();
         let (screencast_session, streams, restore_token, fd) = new_screencast_session(
             if settings.show_pointer() {
                 CursorMode::EMBEDDED
@@ -206,8 +206,10 @@ impl Recording {
 
         // select area
         if settings.capture_mode() == CaptureMode::Selection {
+            // TODO only restore selection if stream size didn't change
             let data =
-                AreaSelector::present(Some(&Application::get().window()), fd, &streams).await?;
+                AreaSelector::present(fd, &streams, true, Some(&Application::get().window()))
+                    .await?;
             pipeline_builder.select_area_data(data);
         }
 

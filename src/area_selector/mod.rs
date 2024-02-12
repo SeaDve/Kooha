@@ -13,8 +13,9 @@ use gtk::{
 
 use std::{cell::RefCell, os::unix::prelude::RawFd};
 
-use self::view_port::{Selection, ViewPort};
-use crate::{cancelled::Cancelled, pipeline, screencast_session::Stream};
+pub use self::view_port::Selection;
+use self::view_port::ViewPort;
+use crate::{application::Application, cancelled::Cancelled, pipeline, screencast_session::Stream};
 
 const PREVIEW_FRAMERATE: u32 = 60;
 const ASSUMED_HEADER_BAR_HEIGHT: f64 = 47.0;
@@ -115,6 +116,11 @@ mod imp {
                     obj.update_selection_ui();
                 }));
 
+            self.view_port
+                .connect_paintable_rect_notify(clone!(@weak obj => move |_| {
+                    obj.update_selection_ui();
+                }));
+
             obj.update_selection_ui();
         }
 
@@ -128,7 +134,17 @@ mod imp {
     }
 
     impl WidgetImpl for AreaSelector {}
-    impl WindowImpl for AreaSelector {}
+
+    impl WindowImpl for AreaSelector {
+        fn close_request(&self) -> glib::Propagation {
+            let obj = self.obj();
+
+            obj.save_selection();
+
+            self.parent_close_request()
+        }
+    }
+
     impl AdwWindowImpl for AreaSelector {}
 }
 
@@ -140,9 +156,10 @@ glib::wrapper! {
 
 impl AreaSelector {
     pub async fn present(
-        parent: Option<&impl IsA<gtk::Window>>,
         fd: RawFd,
         streams: &[Stream],
+        restore_selection: bool,
+        parent: Option<&impl IsA<gtk::Window>>,
     ) -> Result<SelectAreaData> {
         let this: Self = glib::Object::new();
         let imp = this.imp();
@@ -184,6 +201,10 @@ impl AreaSelector {
         // Setup paintable
         let paintable = sink.property::<gdk::Paintable>("paintable");
         imp.view_port.set_paintable(Some(paintable));
+
+        if restore_selection {
+            this.restore_selection();
+        }
 
         pipeline.set_state(gst::State::Playing)?;
 
@@ -231,6 +252,31 @@ impl AreaSelector {
             paintable_rect: imp.view_port.paintable_rect().unwrap(),
             stream_size: (stream_width, stream_height),
         })
+    }
+
+    fn restore_selection(&self) {
+        let imp = self.imp();
+
+        let app = Application::get();
+        let settings = app.settings();
+
+        let selection = settings.selection();
+        if selection != settings.selection_default_value() {
+            imp.view_port.set_selection(Some(selection));
+        }
+    }
+
+    fn save_selection(&self) {
+        let imp = self.imp();
+
+        let app = Application::get();
+        let settings = app.settings();
+
+        if let Some(selection) = imp.view_port.selection() {
+            settings.set_selection(selection);
+        } else {
+            settings.reset_selection();
+        }
     }
 
     fn handle_bus_message(&self, message: &gst::Message) -> glib::ControlFlow {
@@ -311,22 +357,26 @@ impl AreaSelector {
             imp.done_button.grab_focus();
         }
 
-        if let (Some(stream_size), Some(selection)) = (imp.stream_size.get(), selection) {
-            let paintable_rect = view_port.paintable_rect().unwrap();
-
-            let (stream_width, stream_height) = stream_size;
-            let scale_factor_h = *stream_width as f32 / paintable_rect.width();
-            let scale_factor_v = *stream_height as f32 / paintable_rect.height();
-
-            let selection_rect_scaled = selection.rect().scale(scale_factor_h, scale_factor_v);
-            imp.window_title.set_subtitle(&format!(
-                "{} {}×{}",
-                gettext("approx."),
-                selection_rect_scaled.width().round() as i32,
-                selection_rect_scaled.height().round() as i32,
-            ));
-        } else {
+        let (Some(stream_size), Some(selection)) = (imp.stream_size.get(), selection) else {
             imp.window_title.set_subtitle("");
-        }
+            return;
+        };
+
+        let Some(paintable_rect) = view_port.paintable_rect() else {
+            imp.window_title.set_subtitle("");
+            return;
+        };
+
+        let (stream_width, stream_height) = stream_size;
+        let scale_factor_h = *stream_width as f32 / paintable_rect.width();
+        let scale_factor_v = *stream_height as f32 / paintable_rect.height();
+
+        let selection_rect_scaled = selection.rect().scale(scale_factor_h, scale_factor_v);
+        imp.window_title.set_subtitle(&format!(
+            "{} {}×{}",
+            gettext("approx."),
+            selection_rect_scaled.width().round() as i32,
+            selection_rect_scaled.height().round() as i32,
+        ));
     }
 }

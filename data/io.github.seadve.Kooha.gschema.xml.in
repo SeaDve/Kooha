@@ -32,5 +32,8 @@
     <key type="s" name="screencast-restore-token">
       <default>""</default>
     </key>
+    <key type="(dddd)" name="selection">
+      <default>(-1, -1, -1, -1)</default>
+    </key>
   </schema>
 </schemalist>
