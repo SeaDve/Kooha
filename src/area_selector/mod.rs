@@ -11,7 +11,7 @@ use gtk::{
     graphene::Rect,
 };
 
-use std::{borrow::Cow, cell::RefCell, os::unix::prelude::RawFd};
+use std::{cell::RefCell, os::unix::prelude::RawFd};
 
 pub use self::view_port::Selection;
 use self::view_port::ViewPort;
@@ -36,57 +36,23 @@ pub struct SelectAreaData {
 }
 
 /// Context to identify if the selection is still valid.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, glib::Variant)]
 pub struct SelectionContext {
-    paintable_rect: Rect,
+    paintable_rect: (f64, f64, f64, f64),
     stream_size: (i32, i32),
 }
 
 impl SelectionContext {
     fn new(paintable_rect: Rect, stream_size: (i32, i32)) -> Self {
         Self {
-            paintable_rect,
+            paintable_rect: (
+                paintable_rect.x() as f64,
+                paintable_rect.y() as f64,
+                paintable_rect.width() as f64,
+                paintable_rect.height() as f64,
+            ),
             stream_size,
         }
-    }
-}
-
-impl StaticVariantType for SelectionContext {
-    fn static_variant_type() -> Cow<'static, glib::VariantTy> {
-        <((f64, f64, f64, f64), (i32, i32))>::static_variant_type()
-    }
-}
-
-impl FromVariant for SelectionContext {
-    fn from_variant(variant: &glib::Variant) -> Option<Self> {
-        let ((x, y, width, height), stream_size) =
-            variant.get::<((f64, f64, f64, f64), (i32, i32))>()?;
-
-        Some(SelectionContext::new(
-            Rect::new(x as f32, y as f32, width as f32, height as f32),
-            stream_size,
-        ))
-    }
-}
-
-impl ToVariant for SelectionContext {
-    fn to_variant(&self) -> glib::Variant {
-        (
-            (
-                self.paintable_rect.x() as f64,
-                self.paintable_rect.y() as f64,
-                self.paintable_rect.width() as f64,
-                self.paintable_rect.height() as f64,
-            ),
-            self.stream_size,
-        )
-            .to_variant()
-    }
-}
-
-impl From<SelectionContext> for glib::Variant {
-    fn from(context: SelectionContext) -> glib::Variant {
-        context.to_variant()
     }
 }
 
@@ -491,6 +457,11 @@ mod tests {
 
     #[test]
     fn selection_context_variant() {
+        assert_eq!(
+            SelectionContext::static_variant_type().as_str(),
+            "((dddd)(ii))"
+        );
+
         let original = SelectionContext::new(Rect::new(1.0, 2.0, 3.0, 4.0), (5, 6));
         let converted = original.to_variant().get::<SelectionContext>().unwrap();
         assert_eq!(original, converted);
