@@ -160,30 +160,27 @@ impl AreaSelector {
         fd: RawFd,
         streams: &[Stream],
         restore_selection: bool,
-        parent: Option<&impl IsA<gtk::Window>>,
+        parent: &impl IsA<gtk::Window>,
     ) -> Result<SelectAreaData> {
         let this: Self = glib::Object::new();
         let imp = this.imp();
 
-        // Setup window size and transient for
-        if let Some(parent) = parent {
-            let parent = parent.as_ref();
+        this.set_transient_for(Some(parent));
+        this.set_modal(true);
 
-            this.set_transient_for(Some(parent));
-            this.set_modal(true);
-
-            let scale_factor = WINDOW_TO_MONITOR_SCALE_FACTOR / parent.scale_factor() as f64;
-            let surface = parent.surface().context("Parent has no surface")?;
-            let monitor_geometry = RootExt::display(parent)
-                .monitor_at_surface(&surface)
-                .context("No monitor found")?
-                .geometry();
-            this.set_default_width(
-                (monitor_geometry.width() as f64 * scale_factor - ASSUMED_HEADER_BAR_HEIGHT * 2.0)
-                    as i32,
-            );
-            this.set_default_height((monitor_geometry.height() as f64 * scale_factor) as i32);
-        }
+        // Setup window size
+        let parent = parent.as_ref();
+        let scale_factor = WINDOW_TO_MONITOR_SCALE_FACTOR / parent.scale_factor() as f64;
+        let surface = parent.surface().context("Parent has no surface")?;
+        let monitor_geometry = RootExt::display(parent)
+            .monitor_at_surface(&surface)
+            .context("No monitor found")?
+            .geometry();
+        this.set_default_width(
+            (monitor_geometry.width() as f64 * scale_factor - ASSUMED_HEADER_BAR_HEIGHT * 2.0)
+                as i32,
+        );
+        this.set_default_height((monitor_geometry.height() as f64 * scale_factor) as i32);
 
         imp.stack.set_visible_child(&imp.loading.get());
 

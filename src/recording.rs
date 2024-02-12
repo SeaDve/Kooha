@@ -208,8 +208,7 @@ impl Recording {
         if settings.capture_mode() == CaptureMode::Selection {
             // TODO only restore selection if stream size didn't change
             let data =
-                AreaSelector::present(fd, &streams, true, Some(&Application::get().window()))
-                    .await?;
+                AreaSelector::present(fd, &streams, true, &Application::get().window()).await?;
             pipeline_builder.select_area_data(data);
         }
 
