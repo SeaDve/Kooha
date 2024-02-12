@@ -11,7 +11,7 @@ use gtk::{
     graphene::Rect,
 };
 
-use std::{cell::RefCell, os::unix::prelude::RawFd};
+use std::{borrow::Cow, cell::RefCell, os::unix::prelude::RawFd};
 
 pub use self::view_port::Selection;
 use self::view_port::ViewPort;
@@ -33,6 +33,60 @@ pub struct SelectAreaData {
     pub paintable_rect: Rect,
     /// Actual stream size
     pub stream_size: (i32, i32),
+}
+
+/// Context to identify if the selection is still valid.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SelectionContext {
+    paintable_rect: Rect,
+    stream_size: (i32, i32),
+}
+
+impl SelectionContext {
+    fn new(paintable_rect: Rect, stream_size: (i32, i32)) -> Self {
+        Self {
+            paintable_rect,
+            stream_size,
+        }
+    }
+}
+
+impl StaticVariantType for SelectionContext {
+    fn static_variant_type() -> Cow<'static, glib::VariantTy> {
+        <((f64, f64, f64, f64), (i32, i32))>::static_variant_type()
+    }
+}
+
+impl FromVariant for SelectionContext {
+    fn from_variant(variant: &glib::Variant) -> Option<Self> {
+        let ((x, y, width, height), stream_size) =
+            variant.get::<((f64, f64, f64, f64), (i32, i32))>()?;
+
+        Some(SelectionContext::new(
+            Rect::new(x as f32, y as f32, width as f32, height as f32),
+            stream_size,
+        ))
+    }
+}
+impl ToVariant for SelectionContext {
+    fn to_variant(&self) -> glib::Variant {
+        (
+            (
+                self.paintable_rect.x() as f64,
+                self.paintable_rect.y() as f64,
+                self.paintable_rect.width() as f64,
+                self.paintable_rect.height() as f64,
+            ),
+            self.stream_size,
+        )
+            .to_variant()
+    }
+}
+
+impl From<SelectionContext> for glib::Variant {
+    fn from(context: SelectionContext) -> glib::Variant {
+        context.to_variant()
+    }
 }
 
 mod imp {
@@ -163,7 +217,6 @@ impl AreaSelector {
     pub async fn present(
         fd: RawFd,
         streams: &[Stream],
-        restore_selection: bool,
         parent: &impl IsA<gtk::Window>,
     ) -> Result<SelectAreaData> {
         let this: Self = glib::Object::new();
@@ -204,10 +257,6 @@ impl AreaSelector {
         let paintable = sink.property::<gdk::Paintable>("paintable");
         imp.view_port.set_paintable(Some(paintable));
 
-        if restore_selection {
-            this.restore_selection();
-        }
-
         pipeline.set_state(gst::State::Playing)?;
 
         let (async_done_tx, async_done_rx) = oneshot::channel();
@@ -230,8 +279,6 @@ impl AreaSelector {
         // Wait for pipeline to be on playing state
         async_done_rx.await.unwrap()?;
 
-        imp.stack.set_visible_child(&imp.view_port.get());
-
         // Get stream size
         let caps = videosrc_bin
             .static_pad("src")
@@ -246,6 +293,28 @@ impl AreaSelector {
         imp.stream_size.set((stream_width, stream_height)).unwrap();
         this.update_selection_ui();
 
+        let (paintable_rect_set_tx, paintable_rect_set_rx) = oneshot::channel();
+        let paintable_rect_set_tx = RefCell::new(Some(paintable_rect_set_tx));
+
+        let handler_id = imp
+            .view_port
+            .connect_paintable_rect_notify(move |view_port| {
+                if view_port.paintable_rect().is_some() {
+                    if let Some(selection_context_set_tx) = paintable_rect_set_tx.take() {
+                        let _ = selection_context_set_tx.send(());
+                    }
+                }
+            });
+
+        imp.stack.set_visible_child(&imp.view_port.get());
+
+        // Wait for view port size to be allocated and paintable_rect to be set
+        paintable_rect_set_rx.await.unwrap();
+        imp.view_port.disconnect(handler_id);
+
+        // At this point, the paintable rect and stream size and, thus, the selection context is now set.
+        this.restore_selection();
+
         // Wait for user response
         result_rx.await.unwrap()?;
 
@@ -256,6 +325,18 @@ impl AreaSelector {
         })
     }
 
+    fn selection_context(&self) -> Option<SelectionContext> {
+        let imp = self.imp();
+
+        if let (Some(stream_size), Some(paintable_rect)) =
+            (imp.stream_size.get(), imp.view_port.paintable_rect())
+        {
+            Some(SelectionContext::new(paintable_rect, *stream_size))
+        } else {
+            None
+        }
+    }
+
     fn restore_selection(&self) {
         let imp = self.imp();
 
@@ -263,7 +344,11 @@ impl AreaSelector {
         let settings = app.settings();
 
         let selection = settings.selection();
-        if selection != settings.selection_default_value() {
+        if selection != settings.selection_default_value()
+            && self
+                .selection_context()
+                .is_some_and(|selection_context| selection_context == settings.selection_context())
+        {
             imp.view_port.set_selection(Some(selection));
         }
     }
@@ -276,8 +361,13 @@ impl AreaSelector {
 
         if let Some(selection) = imp.view_port.selection() {
             settings.set_selection(selection);
+            settings.set_selection_context(
+                self.selection_context()
+                    .unwrap_or_else(|| settings.selection_context_default_value()),
+            );
         } else {
             settings.reset_selection();
+            settings.reset_selection_context();
         }
     }
 
@@ -380,5 +470,17 @@ impl AreaSelector {
             selection_rect_scaled.width().round() as i32,
             selection_rect_scaled.height().round() as i32,
         ));
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn selection_context_variant() {
+        let original = SelectionContext::new(Rect::new(1.0, 2.0, 3.0, 4.0), (5, 6));
+        let converted = original.to_variant().get::<SelectionContext>().unwrap();
+        assert_eq!(original, converted);
     }
 }

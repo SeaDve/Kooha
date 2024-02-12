@@ -35,5 +35,8 @@
     <key type="(dddd)" name="selection">
       <default>(-1, -1, -1, -1)</default>
     </key>
+    <key type="((dddd)(ii))" name="selection-context">
+      <default>((-1, -1, -1, -1), (-1, -1))</default>
+    </key>
   </schema>
 </schemalist>
