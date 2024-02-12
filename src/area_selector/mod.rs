@@ -200,11 +200,11 @@ impl AreaSelector {
             .context("No monitor found")?
             .geometry();
         this.set_default_width(
-            (monitor_geometry.width() as f64 * WINDOW_TO_MONITOR_SCALE_FACTOR
-                - ASSUMED_HEADER_BAR_HEIGHT * 2.0) as i32,
+            (monitor_geometry.width() as f64 * WINDOW_TO_MONITOR_SCALE_FACTOR) as i32,
         );
         this.set_default_height(
-            (monitor_geometry.height() as f64 * WINDOW_TO_MONITOR_SCALE_FACTOR) as i32,
+            (monitor_geometry.height() as f64 * WINDOW_TO_MONITOR_SCALE_FACTOR
+                + ASSUMED_HEADER_BAR_HEIGHT) as i32,
         );
 
         imp.stack.set_visible_child(&imp.loading.get());
