@@ -18,8 +18,12 @@ use self::view_port::ViewPort;
 use crate::{application::Application, cancelled::Cancelled, pipeline, screencast_session::Stream};
 
 const PREVIEW_FRAMERATE: u32 = 60;
-const ASSUMED_HEADER_BAR_HEIGHT: f64 = 47.0;
 const WINDOW_TO_MONITOR_SCALE_FACTOR: f64 = 0.4;
+
+// We can't get header bar height before the window is presented, so we assume "46" as the default.
+// It is not much of a problem if we get this wrong since the header bar height is not used for
+// anything important aside from the window size calculation.
+const ASSUMED_HEADER_BAR_HEIGHT: f64 = 46.0;
 
 #[derive(Debug)]
 pub struct SelectAreaData {
