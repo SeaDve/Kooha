@@ -19,6 +19,7 @@ use crate::{application::Application, cancelled::Cancelled, pipeline, screencast
 
 const PREVIEW_FRAMERATE: u32 = 60;
 const ASSUMED_HEADER_BAR_HEIGHT: f64 = 47.0;
+const WINDOW_TO_MONITOR_SCALE_FACTOR: f64 = 0.4;
 
 #[derive(Debug)]
 pub struct SelectAreaData {
@@ -171,7 +172,7 @@ impl AreaSelector {
             this.set_transient_for(Some(parent));
             this.set_modal(true);
 
-            let scale_factor = 0.4 / parent.scale_factor() as f64;
+            let scale_factor = WINDOW_TO_MONITOR_SCALE_FACTOR / parent.scale_factor() as f64;
             let surface = parent.surface().context("Parent has no surface")?;
             let monitor_geometry = RootExt::display(parent)
                 .monitor_at_surface(&surface)
