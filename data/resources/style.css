@@ -25,6 +25,7 @@ button.copy-done {
 
 window.area-selector .view-port {
   padding: 12px;
+  padding-top: 0px;
 }
 
 @keyframes blinking {
