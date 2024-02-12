@@ -22,6 +22,7 @@ use std::{
 // * Add minimum selection size.
 
 const DEFAULT_SIZE: f64 = 100.0;
+const DEFAULT_SELECTION_SIZE: f32 = 40.0;
 
 const SHADE_COLOR: gdk::RGBA = gdk::RGBA::new(0.0, 0.0, 0.0, 0.5);
 
@@ -797,7 +798,7 @@ impl ViewPort {
                 && selection.end_x == selection.start_x
                 && selection.end_y == selection.start_y
             {
-                let offset = 20.0;
+                let offset = DEFAULT_SELECTION_SIZE / 2.0;
                 selection.start_x -= offset;
                 selection.start_y -= offset;
                 selection.end_x += offset;
