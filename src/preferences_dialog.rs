@@ -1,3 +1,5 @@
+use std::path::Path;
+
 use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
@@ -164,19 +166,11 @@ impl PreferencesDialog {
     }
 
     fn update_file_chooser_button(&self) {
-        let saving_location_display = self.settings().saving_location().display().to_string();
+        let imp = self.imp();
 
-        if let Some(stripped) =
-            saving_location_display.strip_prefix(&glib::home_dir().display().to_string())
-        {
-            self.imp()
-                .file_chooser_button_content
-                .set_label(&format!("~{}", stripped));
-        } else {
-            self.imp()
-                .file_chooser_button_content
-                .set_label(&saving_location_display);
-        }
+        let saving_location = self.settings().saving_location();
+        imp.file_chooser_button_content
+            .set_label(&display_path(&saving_location));
     }
 
     fn update_profile_row(&self) {
@@ -302,4 +296,24 @@ fn profile_from_obj(obj: &glib::Object) -> Option<&Profile> {
         tracing::warn!("Unexpected object type `{}`", obj.type_());
         None
     }
+}
+
+// Copied from Delineate
+// See https://github.com/SeaDve/Delineate/blob/e5f57835133a85c002961e681dc8935249458ef7/src/utils.rs#L71
+/// Returns a human-readable representation of the path.
+fn display_path(path: &Path) -> String {
+    let home_dir = glib::home_dir();
+
+    if path == home_dir {
+        return "~/".to_string();
+    }
+
+    let path_display = path.display().to_string();
+
+    if path.starts_with(&home_dir) {
+        let home_dir_display = home_dir.display().to_string();
+        return format!("~{}", &path_display[home_dir_display.len()..]);
+    }
+
+    path_display
 }
