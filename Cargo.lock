@@ -950,7 +950,6 @@ dependencies = [
  "gst-plugin-gif",
  "gst-plugin-gtk4",
  "gstreamer",
- "gstreamer-video",
  "gtk4",
  "libadwaita",
  "libpulse-binding",
