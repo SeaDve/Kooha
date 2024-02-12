@@ -272,7 +272,13 @@ impl AreaSelector {
             .unwrap();
         imp.bus_watch_guard.set(bus_watch_guard).unwrap();
 
-        pipeline.set_state(gst::State::Playing)?;
+        let state_change = pipeline.set_state(gst::State::Playing)?;
+
+        if state_change != gst::StateChangeSuccess::Async {
+            if let Some(async_done_tx) = imp.async_done_tx.take() {
+                let _ = async_done_tx.send(Ok(()));
+            }
+        }
 
         this.present();
 
