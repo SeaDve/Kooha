@@ -113,7 +113,7 @@ mod imp {
         pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) stream_size: OnceCell<(i32, i32)>,
         pub(super) result_tx: RefCell<Option<Sender<Result<(), Cancelled>>>>,
-        pub(super) async_done_tx: RefCell<Option<Sender<Result<(), Cancelled>>>>,
+        pub(super) async_done_tx: RefCell<Option<Sender<Result<()>>>>,
         pub(super) bus_watch_guard: OnceCell<BusWatchGuard>,
     }
 
@@ -128,7 +128,7 @@ mod imp {
 
             klass.install_action("area-selector.cancel", None, move |obj, _, _| {
                 if let Some(tx) = obj.imp().async_done_tx.take() {
-                    let _ = tx.send(Err(Cancelled::new("area select loading")));
+                    let _ = tx.send(Err(Cancelled::new("area select loading").into()));
                 }
 
                 if let Some(tx) = obj.imp().result_tx.take() {
@@ -419,6 +419,11 @@ impl AreaSelector {
             }
             MessageView::Error(e) => {
                 tracing::error!("Received error message on bus: {:?}", e);
+
+                if let Some(async_done_tx) = imp.async_done_tx.take() {
+                    let _ = async_done_tx.send(Err(e.error().into()));
+                }
+
                 glib::ControlFlow::Break
             }
             MessageView::Warning(w) => {
