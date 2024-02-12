@@ -13,8 +13,7 @@
     <ul>
       <li>🎙️ Record microphone, desktop audio, or both at the same time</li>
       <li>📼 Support for WebM, MP4, GIF, and Matroska formats</li>
-      <li>🖥️ Select a monitor, a window, or a portion of the screen to record</li>
-      <li>🗔 Multiple sources selection</li>
+      <li>🖥️ Select a monitor or a portion of the screen to record</li>
       <li>🛠️ Configurable saving location, pointer visibility, frame rate, and delay</li>
       <li>🚀 Experimental hardware accelerated encoding</li>
     </ul>

@@ -36,7 +36,7 @@
   <img src="data/screenshots/preview.png" alt="Preview"/>
 </p>
 
-Capture your screen in a intuitive and straightforward way without distractions.
+Capture your screen in an intuitive and straightforward way without distractions.
 
 Kooha is a simple screen recorder with a minimal interface. You can simply click
 the record button without having to configure a bunch of settings.
@@ -44,8 +44,7 @@ the record button without having to configure a bunch of settings.
 The main features of Kooha include the following:
 * 🎙️ Record microphone, desktop audio, or both at the same time
 * 📼 Support for WebM, MP4, GIF, and Matroska formats
-* 🖥️ Select a monitor, a window, or a portion of the screen to record
-* 🗔 Multiple sources selection
+* 🖥️ Select a monitor or a portion of the screen to record
 * 🛠️ Configurable saving location, pointer visibility, frame rate, and delay
 * 🚀 Experimental hardware-accelerated encoding
 
@@ -53,18 +52,18 @@ The main features of Kooha include the following:
 
 There are many possibilities on why it may not be working. You may not have
 the runtime requirements mentioned below installed, or your distro doesn't
-support it. For troubleshooting purposes the [screen cast compatibility page](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/Screencast-Compatibility)
-of `xdg-desktop-portal-wlr` wiki may be helpful in determining if your distro
+support it. For troubleshooting purposes, the [screencast compatibility page](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/Screencast-Compatibility)
+of `xdg-desktop-portal-wlr` wiki may help determine if your distro
 has support for it out of the box. If it does, but it still doesn't work, you
 can also check for the [troubleshooting checklist](https://github.com/emersion/xdg-desktop-portal-wlr/wiki/%22It-doesn't-work%22-Troubleshooting-Checklist).
 
 ## ⚙️ Experimental Features
 
-These features are disabled default due to stability issues and possible
+These features are disabled by default due to stability issues and possible
 performance degradation. However, they can be enabled manually by running Kooha
 with `KOOHA_EXPERIMENTAL` env var set to `1`. (e.g. `KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha`).
 
-### Enable hardware accelerated encoding and other encoders
+### Enable hardware-accelerated encoding and other encoders
 
 Together with `KOOHA_EXPERIMENTAL` env var, it is also needed
 to set `GST_VAAPI_ALL_DRIVERS` to `1` to enable the needed drivers.
@@ -139,7 +138,7 @@ You can also check out other third-party packages on [Repology](https://repology
 
 ## 🙌 Help translate Kooha
 
-You can help Kooha translate into your native language. If you found any typos
+You can help Kooha translate into your native language. If you find any typos
 or think you can improve a translation, you can use the [Weblate](https://hosted.weblate.org/engage/seadve/) platform.
 
 ## ☕ Support me and the project
