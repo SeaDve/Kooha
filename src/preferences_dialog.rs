@@ -49,19 +49,18 @@ mod imp {
                 "preferences.select-saving-location",
                 None,
                 |obj, _, _| async move {
-                    if let Err(err) = obj
-                        .settings()
-                        .select_saving_location(
-                            obj.root()
-                                .map(|r| r.downcast::<gtk::Window>().unwrap())
-                                .as_ref(),
-                        )
-                        .await
-                    {
-                        tracing::error!("Failed to select saving location: {:?}", err);
+                    let parent = obj.root().map(|r| r.downcast::<gtk::Window>().unwrap());
+                    if let Err(err) = obj.settings().select_saving_location(parent.as_ref()).await {
+                        if !err
+                            .downcast_ref::<glib::Error>()
+                            .is_some_and(|error| error.matches(gtk::DialogError::Dismissed))
+                        {
+                            tracing::error!("Failed to select saving location: {:?}", err);
 
-                        let toast = adw::Toast::new(&gettext("Failed to set recordings folder"));
-                        obj.add_toast(toast);
+                            let toast =
+                                adw::Toast::new(&gettext("Failed to set recordings folder"));
+                            obj.add_toast(toast);
+                        }
                     }
                 },
             );
