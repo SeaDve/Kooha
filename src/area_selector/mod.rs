@@ -257,8 +257,6 @@ impl AreaSelector {
         let paintable = sink.property::<gdk::Paintable>("paintable");
         imp.view_port.set_paintable(Some(paintable));
 
-        pipeline.set_state(gst::State::Playing)?;
-
         let (async_done_tx, async_done_rx) = oneshot::channel();
         imp.async_done_tx.replace(Some(async_done_tx));
 
@@ -273,6 +271,8 @@ impl AreaSelector {
             )
             .unwrap();
         imp.bus_watch_guard.set(bus_watch_guard).unwrap();
+
+        pipeline.set_state(gst::State::Playing)?;
 
         this.present();
 
