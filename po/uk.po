@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Mykola <mykola.lev@gmail.com>, 2021.
-# Ihor Hordiichuk <igor_ck@outlook.com>, 2021, 2022, 2023.
+# Ihor Hordiichuk <igor_ck@outlook.com>, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-11 19:52+0800\n"
-"PO-Revision-Date: 2023-10-04 18:11+0000\n"
+"POT-Creation-Date: 2024-02-12 14:39+0800\n"
+"PO-Revision-Date: 2024-02-12 06:40+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
 "uk/>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -65,21 +65,17 @@ msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 Підтримка форматів WebM, MP4, GIF і Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr "🖥️ Вибір монітора, вікна або частини екрана для запису"
+msgid "🖥️ Select a monitor or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🗔 Multiple sources selection"
-msgstr "🗔 Вибір кількох джерел"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Налаштовуване розташування для збереження, видимість вказівника, частота "
 "кадрів і затримка"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Експериментальне кодування з апаратним прискоренням"
 
@@ -88,7 +84,7 @@ msgid "Select Area"
 msgstr "Вибрати ділянку"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window.rs:205
+#: data/resources/ui/window.ui:276 src/window.rs:206
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -140,11 +136,11 @@ msgstr "Показати налаштування"
 msgid "Show Shortcuts"
 msgstr "Показати комбінації клавіш"
 
-#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:208
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:429
 msgid "Recording"
 msgstr "Запис"
 
@@ -286,7 +282,7 @@ msgstr "Скрінкаст записаний"
 msgid "Show in Files"
 msgstr "Показати у файлах"
 
-#: src/area_selector/mod.rs:324
+#: src/area_selector/mod.rs:456
 msgid "approx."
 msgstr "приблизно."
 
@@ -302,57 +298,81 @@ msgstr "Не вдалося запустити монітор пристрою"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Не вдалося під'єднатися до фонової служби PulseAudio"
 
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:22
+msgid "{time} hour"
+msgid_plural "{time} hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:29
+msgid "{time} minute"
+msgid_plural "{time} minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:36
+msgid "{time} second"
+msgid_plural "{time} seconds"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
 #: src/preferences_dialog.rs:63
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Не вдалося встановити теку для записів"
 
-#: src/preferences_dialog.rs:235
+#: src/preferences_dialog.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Цей формат експериментальний і не підтримується."
 
-#: src/preferences_dialog.rs:264
+#: src/preferences_dialog.rs:257 src/window.rs:487
 msgid "None"
 msgstr "Немає"
 
-#: src/recording.rs:40
+#: src/recording.rs:43
 msgid "No active profile"
 msgstr "Немає активного профілю"
 
-#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
+#: src/recording.rs:193 src/recording.rs:246 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "Не вдалося розпочати запис"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:186
+#: src/recording.rs:189
 msgid "Check out {link} for help."
 msgstr "Довідка: {link}."
 
-#: src/recording.rs:228
+#: src/recording.rs:231
 msgid "No microphone source found"
 msgstr "Не знайдено мікрофона"
 
-#: src/recording.rs:235
+#: src/recording.rs:238
 msgid "No desktop speaker source found"
 msgstr "Не знайдено динаміка настільного ПК"
 
-#: src/recording.rs:242
+#: src/recording.rs:245
 msgid "A GStreamer plugin may not be installed."
 msgstr "Плагін GStreamer може бути не встановлений."
 
-#: src/recording.rs:276 src/recording.rs:508
+#: src/recording.rs:275 src/recording.rs:507
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Переконайтеся, що місце збереження існує та доступне."
 
-#: src/recording.rs:504
+#: src/recording.rs:503
 msgid "An error occurred while recording"
 msgstr "Сталася помилка під час запису"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:511
+#: src/recording.rs:510
 msgid "Failed to open “{path}” for writing"
 msgstr "Не вдалося відкрити “{path}” для запису"
 
-#: src/settings.rs:32
+#: src/settings.rs:42
 msgid "Select Recordings Folder"
 msgstr "Вибрати теку для записів"
 
@@ -360,47 +380,50 @@ msgstr "Вибрати теку для записів"
 msgid "Failed to toggle pause"
 msgstr "Не вдалося перемкнути паузу"
 
-#: src/window.rs:191
+#: src/window.rs:192
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Наразі триває запис. Негайний вихід може призвести до неможливості "
+"відтворення запису. Зупиніть запис перед виходом."
 
-#: src/window.rs:194
+#: src/window.rs:195
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Вихід скасує обробку і може призвести до неможливості відтворення запису."
 
-#: src/window.rs:200
+#: src/window.rs:201
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Вийти з застосунку?"
 
-#: src/window.rs:245
+#: src/window.rs:246
 msgid "Copy to clipboard"
 msgstr "Копіювання до буфера обміну"
 
-#: src/window.rs:251
+#: src/window.rs:252
 msgid "Copied to clipboard"
 msgstr "Скопійовано до буфера обміну"
 
-#: src/window.rs:257
+#: src/window.rs:258
 msgid "Show detailed error"
 msgstr "Показати подробиці помилки"
 
-#: src/window.rs:277
+#: src/window.rs:278
 msgid "Help"
 msgstr "Довідка"
 
-#: src/window.rs:280
+#: src/window.rs:281
 msgid "Ok"
 msgstr "Гаразд"
 
-#: src/window.rs:289
+#: src/window.rs:290
 msgid "Open Preferences?"
 msgstr "Відкрити налаштування?"
 
-#: src/window.rs:290
+#: src/window.rs:291
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -408,29 +431,34 @@ msgstr ""
 "Можливо, раніше вибраний формат недоступний. Відкрийте налаштування і "
 "виберіть формат для продовження запису."
 
-#: src/window.rs:294
+#: src/window.rs:295
 msgid "Later"
 msgstr "Пізніше"
 
-#: src/window.rs:296
+#: src/window.rs:297
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/window.rs:436
+#: src/window.rs:437
 msgid "Paused"
 msgstr "Зупинено"
 
-#: src/window.rs:473
+#: src/window.rs:474
 msgid "Normal"
 msgstr "Звичайний"
 
-#: src/window.rs:474
+#: src/window.rs:475
 msgid "Selection"
 msgstr "Ділянка"
 
-#: src/window.rs:485
-msgid "No Profile"
-msgstr ""
+#~ msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+#~ msgstr "🖥️ Вибір монітора, вікна або частини екрана для запису"
+
+#~ msgid "🗔 Multiple sources selection"
+#~ msgstr "🗔 Вибір кількох джерел"
+
+#~ msgid "No Profile"
+#~ msgstr "Немає профілю"
 
 #~ msgid "Dave Patrick Caberto"
 #~ msgstr "Dave Patrick Caberto"

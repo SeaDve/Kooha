@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-11 19:52+0800\n"
+"POT-Creation-Date: 2024-02-12 14:39+0800\n"
 "PO-Revision-Date: 2022-10-26 20:07+0000\n"
 "Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/seadve/kooha/eu/"
@@ -63,21 +63,17 @@ msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 Bateragarritasuna WebM, MP4, GIF eta Matroska formatuekin"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr "🖥️ Aukeratu monitore bat, leiho bat edo pantailaren zati bat grabatzeko"
+msgid "🖥️ Select a monitor or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🗔 Multiple sources selection"
-msgstr "🗔 Hainbat iturri hautatu"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Gordetzearen konfiguragarrien kokapena, punteroaren ikuspena, fotogramen "
 "tasa eta atzerapenak"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Hardware bidezko kodetze esperimental azeleratua"
 
@@ -86,7 +82,7 @@ msgid "Select Area"
 msgstr "Aukeratu arloa"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window.rs:205
+#: data/resources/ui/window.ui:276 src/window.rs:206
 msgid "Cancel"
 msgstr "Ezeztatu"
 
@@ -138,11 +134,11 @@ msgstr "Erakutsi ezarpenak"
 msgid "Show Shortcuts"
 msgstr "Erakutsi sarbide zuzenak"
 
-#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:208
 msgid "Quit"
 msgstr "Utzi"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:429
 msgid "Recording"
 msgstr "Grabatzen"
 
@@ -284,7 +280,7 @@ msgstr "Pantailaren grabazioa amaituta"
 msgid "Show in Files"
 msgstr "Artxiboetan erakutsi"
 
-#: src/area_selector/mod.rs:324
+#: src/area_selector/mod.rs:456
 msgid "approx."
 msgstr "gutxi gorabehera"
 
@@ -300,57 +296,78 @@ msgstr "Ezin izan da sistemaren monitorea hasi"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Akatsa PulseAudio deabruarekiko konexioan"
 
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:22
+msgid "{time} hour"
+msgid_plural "{time} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:29
+msgid "{time} minute"
+msgid_plural "{time} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:36
+msgid "{time} second"
+msgid_plural "{time} seconds"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/preferences_dialog.rs:63
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:235
+#: src/preferences_dialog.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Formatu hau esperimentala da eta ezin da jasan."
 
-#: src/preferences_dialog.rs:264
+#: src/preferences_dialog.rs:257 src/window.rs:487
 msgid "None"
 msgstr "Bat ere ez"
 
-#: src/recording.rs:40
+#: src/recording.rs:43
 msgid "No active profile"
 msgstr "Ez dago profil aktiborik"
 
-#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
+#: src/recording.rs:193 src/recording.rs:246 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "Ezin izan da grabazioa hasi"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:186
+#: src/recording.rs:189
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:228
+#: src/recording.rs:231
 msgid "No microphone source found"
 msgstr "Mikrofonoaren iturria ez da aurkitu"
 
-#: src/recording.rs:235
+#: src/recording.rs:238
 msgid "No desktop speaker source found"
 msgstr "Ez da mahaigaineko bozgorailu-iturririk aurkitu"
 
-#: src/recording.rs:242
+#: src/recording.rs:245
 msgid "A GStreamer plugin may not be installed."
 msgstr "Baliteke GStreamer plugin bat instalatuta ez egotea."
 
-#: src/recording.rs:276 src/recording.rs:508
+#: src/recording.rs:275 src/recording.rs:507
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Ziurtatu gordelekua existitzen dela eta irisgarria dela."
 
-#: src/recording.rs:504
+#: src/recording.rs:503
 msgid "An error occurred while recording"
 msgstr "Errorea gertatu da grabatzean"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:511
+#: src/recording.rs:510
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
-#: src/settings.rs:32
+#: src/settings.rs:42
 msgid "Select Recordings Folder"
 msgstr "Aukeratu grabazioen karpeta"
 
@@ -358,47 +375,47 @@ msgstr "Aukeratu grabazioen karpeta"
 msgid "Failed to toggle pause"
 msgstr "Akatsa etenaldia kommutatzean"
 
-#: src/window.rs:191
+#: src/window.rs:192
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window.rs:194
+#: src/window.rs:195
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window.rs:200
+#: src/window.rs:201
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window.rs:245
+#: src/window.rs:246
 msgid "Copy to clipboard"
 msgstr "Kopiatu paper-zorroan"
 
-#: src/window.rs:251
+#: src/window.rs:252
 msgid "Copied to clipboard"
 msgstr "Paper-zorroan kopiatuta"
 
-#: src/window.rs:257
+#: src/window.rs:258
 msgid "Show detailed error"
 msgstr "Errore zehatza erakutsi"
 
-#: src/window.rs:277
+#: src/window.rs:278
 msgid "Help"
 msgstr "Laguntza"
 
-#: src/window.rs:280
+#: src/window.rs:281
 msgid "Ok"
 msgstr "Ados"
 
-#: src/window.rs:289
+#: src/window.rs:290
 msgid "Open Preferences?"
 msgstr "Ezarpenak ireki?"
 
-#: src/window.rs:290
+#: src/window.rs:291
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -406,29 +423,32 @@ msgstr ""
 "Baliteke aurretik hautatutako formatua eskuragarri ez egotea. Ireki "
 "ezarpenak eta aukeratu formatu bat grabatzen jarraitzeko."
 
-#: src/window.rs:294
+#: src/window.rs:295
 msgid "Later"
 msgstr "Geroago"
 
-#: src/window.rs:296
+#: src/window.rs:297
 msgid "Open"
 msgstr "Ireki"
 
-#: src/window.rs:436
+#: src/window.rs:437
 msgid "Paused"
 msgstr "Pausatua"
 
-#: src/window.rs:473
+#: src/window.rs:474
 msgid "Normal"
 msgstr "Normala"
 
-#: src/window.rs:474
+#: src/window.rs:475
 msgid "Selection"
 msgstr "Selekzio-eremua"
 
-#: src/window.rs:485
-msgid "No Profile"
-msgstr ""
+#~ msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+#~ msgstr ""
+#~ "🖥️ Aukeratu monitore bat, leiho bat edo pantailaren zati bat grabatzeko"
+
+#~ msgid "🗔 Multiple sources selection"
+#~ msgstr "🗔 Hainbat iturri hautatu"
 
 #~ msgid "Dave Patrick Caberto"
 #~ msgstr "Dave Patrick Caberto"

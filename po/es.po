@@ -9,23 +9,23 @@
 # Pointify Starrcat <pointify@e.email>, 2021.
 # Chardinson De la cruz Ventura <chardinsondelacruzventura@gmail.com>, 2021.
 # Sergio Varela <sergitroll9@gmail.com>, 2022.
-# gallegonovato <fran-carro@hotmail.es>, 2023.
+# gallegonovato <fran-carro@hotmail.es>, 2023, 2024.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-11 19:52+0800\n"
-"PO-Revision-Date: 2023-11-20 21:03+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/seadve/kooha/es/"
-">\n"
+"POT-Creation-Date: 2024-02-12 14:39+0800\n"
+"PO-Revision-Date: 2024-02-13 11:02+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/seadve/kooha/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -70,22 +70,17 @@ msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 Compatibilidad con los formatos WebM, MP4, GIF y Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr ""
-"🖥️ Selecciona un monitor, una ventana o una parte de la pantalla para grabar"
+msgid "🖥️ Select a monitor or a portion of the screen to record"
+msgstr "🖥️ Seleccione un monitor o una parte de la pantalla para grabar"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🗔 Multiple sources selection"
-msgstr "🗔 Selección de múltiples fuentes"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Ubicación de guardado, visibilidad del puntero, tasa de fotogramas y "
 "retardo configurables"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Codificación experimental acelerada por hardware"
 
@@ -94,7 +89,7 @@ msgid "Select Area"
 msgstr "Seleccionar área"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window.rs:205
+#: data/resources/ui/window.ui:276 src/window.rs:206
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -146,11 +141,11 @@ msgstr "Mostrar preferencias"
 msgid "Show Shortcuts"
 msgstr "Mostrar atajos"
 
-#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:208
 msgid "Quit"
 msgstr "Salir"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:429
 msgid "Recording"
 msgstr "Grabando"
 
@@ -292,9 +287,9 @@ msgstr "Grabación de pantalla finalizada"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Mostrar en Archivos"
+msgstr "Mostrar en archivos"
 
-#: src/area_selector/mod.rs:324
+#: src/area_selector/mod.rs:456
 msgid "approx."
 msgstr "aprox."
 
@@ -310,57 +305,78 @@ msgstr "No se ha podido iniciar el seguimiento del dispositivo"
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "Fallo en la conexión con el demonio PulseAudio"
 
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:22
+msgid "{time} hour"
+msgid_plural "{time} hours"
+msgstr[0] "{time} hora"
+msgstr[1] "{time} horas"
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:29
+msgid "{time} minute"
+msgid_plural "{time} minutes"
+msgstr[0] "{time} minuto"
+msgstr[1] "{time} minutos"
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:36
+msgid "{time} second"
+msgid_plural "{time} seconds"
+msgstr[0] "{time} segundo"
+msgstr[1] "{time} segundos"
+
 #: src/preferences_dialog.rs:63
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Error al configurar la carpeta de grabaciones"
 
-#: src/preferences_dialog.rs:235
+#: src/preferences_dialog.rs:228
 msgid "This format is experimental and unsupported."
 msgstr "Este formato es experimental y no está soportado."
 
-#: src/preferences_dialog.rs:264
+#: src/preferences_dialog.rs:257 src/window.rs:487
 msgid "None"
 msgstr "Ninguno"
 
-#: src/recording.rs:40
+#: src/recording.rs:43
 msgid "No active profile"
 msgstr "Ningún perfil activo"
 
-#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
+#: src/recording.rs:193 src/recording.rs:246 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "No se ha podido iniciar la grabación"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:186
+#: src/recording.rs:189
 msgid "Check out {link} for help."
 msgstr "Consulta {link} para obtener ayuda."
 
-#: src/recording.rs:228
+#: src/recording.rs:231
 msgid "No microphone source found"
 msgstr "No se ha encontrado la fuente del micrófono"
 
-#: src/recording.rs:235
+#: src/recording.rs:238
 msgid "No desktop speaker source found"
 msgstr "No se ha encontrado ninguna fuente de altavoces de sobremesa"
 
-#: src/recording.rs:242
+#: src/recording.rs:245
 msgid "A GStreamer plugin may not be installed."
 msgstr "Es posible que no esté instalado un plugin de GStreamer."
 
-#: src/recording.rs:276 src/recording.rs:508
+#: src/recording.rs:275 src/recording.rs:507
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Asegúrese de que la ubicación de guardado existe y es accesible."
 
-#: src/recording.rs:504
+#: src/recording.rs:503
 msgid "An error occurred while recording"
 msgstr "Se ha producido un error al grabar"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:511
+#: src/recording.rs:510
 msgid "Failed to open “{path}” for writing"
 msgstr "Error al abrir \"{path}\" para modificarlo"
 
-#: src/settings.rs:32
+#: src/settings.rs:42
 msgid "Select Recordings Folder"
 msgstr "Elegir carpeta de grabaciones"
 
@@ -368,47 +384,52 @@ msgstr "Elegir carpeta de grabaciones"
 msgid "Failed to toggle pause"
 msgstr "Fallo al conmutar la pausa"
 
-#: src/window.rs:191
+#: src/window.rs:192
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Hay una grabación en curso. Salir inmediatamente puede hacer que la "
+"grabación no se pueda reproducir. Por favor, detenga la grabación antes de "
+"salir."
 
-#: src/window.rs:194
+#: src/window.rs:195
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Al salir se cancelará el procesamiento y puede que la grabación no se pueda "
+"reproducir."
 
-#: src/window.rs:200
+#: src/window.rs:201
 msgid "Quit the Application?"
-msgstr ""
+msgstr "¿Salir de la aplicación?"
 
-#: src/window.rs:245
+#: src/window.rs:246
 msgid "Copy to clipboard"
 msgstr "Copiar al portapapeles"
 
-#: src/window.rs:251
+#: src/window.rs:252
 msgid "Copied to clipboard"
 msgstr "Copiado al portapapeles"
 
-#: src/window.rs:257
+#: src/window.rs:258
 msgid "Show detailed error"
 msgstr "Mostrar error detallado"
 
-#: src/window.rs:277
+#: src/window.rs:278
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/window.rs:280
+#: src/window.rs:281
 msgid "Ok"
 msgstr "Vale"
 
-#: src/window.rs:289
+#: src/window.rs:290
 msgid "Open Preferences?"
 msgstr "¿Abrir preferencias?"
 
-#: src/window.rs:290
+#: src/window.rs:291
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -416,29 +437,36 @@ msgstr ""
 "Es posible que el formato seleccionado anteriormente no esté disponible. "
 "Abra las preferencias y seleccione un formato para seguir grabando."
 
-#: src/window.rs:294
+#: src/window.rs:295
 msgid "Later"
 msgstr "Después"
 
-#: src/window.rs:296
+#: src/window.rs:297
 msgid "Open"
 msgstr "Abrir"
 
-#: src/window.rs:436
+#: src/window.rs:437
 msgid "Paused"
 msgstr "En pausa"
 
-#: src/window.rs:473
+#: src/window.rs:474
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window.rs:474
+#: src/window.rs:475
 msgid "Selection"
 msgstr "Selección"
 
-#: src/window.rs:485
-msgid "No Profile"
-msgstr ""
+#~ msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+#~ msgstr ""
+#~ "🖥️ Selecciona un monitor, una ventana o una parte de la pantalla para "
+#~ "grabar"
+
+#~ msgid "🗔 Multiple sources selection"
+#~ msgstr "🗔 Selección de múltiples fuentes"
+
+#~ msgid "No Profile"
+#~ msgstr "Sin perfil"
 
 #~ msgid "Dave Patrick Caberto"
 #~ msgstr "Dave Patrick Caberto"

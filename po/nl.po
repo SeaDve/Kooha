@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-11 19:52+0800\n"
+"POT-Creation-Date: 2024-02-12 14:39+0800\n"
 "PO-Revision-Date: 2023-10-04 18:11+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/seadve/kooha/nl/>\n"
@@ -65,20 +65,16 @@ msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 Ondersteuning voor webm-, mp4-, gif- en mkv-formaten"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
-msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
-msgstr "🖥️ Kies het beeldscherm, venster of schermgebied dat je wilt vastleggen"
+msgid "🖥️ Select a monitor or a portion of the screen to record"
+msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-msgid "🗔 Multiple sources selection"
-msgstr "🗔 Keuze uit meerdere bronnen"
-
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Stel de opslaglocatie, cursorzichtbaarheid, framesnelheid en vertraging in"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Hardware-versnelde encodering (experimenteel)"
 
@@ -87,7 +83,7 @@ msgid "Select Area"
 msgstr "Selecteer een gebied"
 
 #: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window.rs:205
+#: data/resources/ui/window.ui:276 src/window.rs:206
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -139,11 +135,11 @@ msgstr "Voorkeuren openen"
 msgid "Show Shortcuts"
 msgstr "Sneltoetsen tonen"
 
-#: data/resources/ui/shortcuts.ui:32 src/window.rs:207
+#: data/resources/ui/shortcuts.ui:32 src/window.rs:208
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:428
+#: data/resources/ui/shortcuts.ui:39 src/window.rs:429
 msgid "Recording"
 msgstr "Opname"
 
@@ -287,7 +283,7 @@ msgstr "De opname is afgerond"
 msgid "Show in Files"
 msgstr "Tonen in bestandsbeheer"
 
-#: src/area_selector/mod.rs:324
+#: src/area_selector/mod.rs:456
 msgid "approx."
 msgstr "ong."
 
@@ -304,58 +300,79 @@ msgid "Failed to connect to PulseAudio daemon"
 msgstr ""
 "Er kan geen verbinding worden gemaakt met de PulseAudio-achtergronddienst"
 
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:22
+msgid "{time} hour"
+msgid_plural "{time} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:29
+msgid "{time} minute"
+msgid_plural "{time} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format_time.rs:36
+msgid "{time} second"
+msgid_plural "{time} seconds"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/preferences_dialog.rs:63
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:235
+#: src/preferences_dialog.rs:228
 msgid "This format is experimental and unsupported."
 msgstr ""
 "Let op: dit formaat is experimenteel en wordt niet officieel ondersteund."
 
-#: src/preferences_dialog.rs:264
+#: src/preferences_dialog.rs:257 src/window.rs:487
 msgid "None"
 msgstr "Geen"
 
-#: src/recording.rs:40
+#: src/recording.rs:43
 msgid "No active profile"
 msgstr "Er is geen actief profiel"
 
-#: src/recording.rs:190 src/recording.rs:243 src/recording.rs:277
+#: src/recording.rs:193 src/recording.rs:246 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "De opname kan niet worden gestart"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:186
+#: src/recording.rs:189
 msgid "Check out {link} for help."
 msgstr "Bekijk {link} voor hulp."
 
-#: src/recording.rs:228
+#: src/recording.rs:231
 msgid "No microphone source found"
 msgstr "Er is geen microfoon aangetroffen"
 
-#: src/recording.rs:235
+#: src/recording.rs:238
 msgid "No desktop speaker source found"
 msgstr "Er is geen luidspreker aangetroffen"
 
-#: src/recording.rs:242
+#: src/recording.rs:245
 msgid "A GStreamer plugin may not be installed."
 msgstr "Er ontbreekt mogelijk een GStreamer-plug-in."
 
-#: src/recording.rs:276 src/recording.rs:508
+#: src/recording.rs:275 src/recording.rs:507
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Zorg er voor dat de opslaglocatie bestaat en toegankelijk is."
 
-#: src/recording.rs:504
+#: src/recording.rs:503
 msgid "An error occurred while recording"
 msgstr "Er is een fout opgetreden tijdens de opname"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:511
+#: src/recording.rs:510
 msgid "Failed to open “{path}” for writing"
 msgstr "Kan niet schrijven naar ‘{path}’"
 
-#: src/settings.rs:32
+#: src/settings.rs:42
 msgid "Select Recordings Folder"
 msgstr "Kies de opnamemap"
 
@@ -363,47 +380,47 @@ msgstr "Kies de opnamemap"
 msgid "Failed to toggle pause"
 msgstr "Het onderbreken/hervatten is mislukt"
 
-#: src/window.rs:191
+#: src/window.rs:192
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window.rs:194
+#: src/window.rs:195
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window.rs:200
+#: src/window.rs:201
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window.rs:245
+#: src/window.rs:246
 msgid "Copy to clipboard"
 msgstr "Kopiëren naar klembord"
 
-#: src/window.rs:251
+#: src/window.rs:252
 msgid "Copied to clipboard"
 msgstr "Gekopieerd naar klembord"
 
-#: src/window.rs:257
+#: src/window.rs:258
 msgid "Show detailed error"
 msgstr "Uitgebreide foutmelding tonen"
 
-#: src/window.rs:277
+#: src/window.rs:278
 msgid "Help"
 msgstr "Hulp"
 
-#: src/window.rs:280
+#: src/window.rs:281
 msgid "Ok"
 msgstr "OK"
 
-#: src/window.rs:289
+#: src/window.rs:290
 msgid "Open Preferences?"
 msgstr "Voorkeuren openen?"
 
-#: src/window.rs:290
+#: src/window.rs:291
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -411,29 +428,32 @@ msgstr ""
 "Het eerder gekozen formaat is mogelijk niet beschikbaar. Open de voorkeuren "
 "en kies een ander formaat."
 
-#: src/window.rs:294
+#: src/window.rs:295
 msgid "Later"
 msgstr "Later"
 
-#: src/window.rs:296
+#: src/window.rs:297
 msgid "Open"
 msgstr "Openen"
 
-#: src/window.rs:436
+#: src/window.rs:437
 msgid "Paused"
 msgstr "Onderbroken"
 
-#: src/window.rs:473
+#: src/window.rs:474
 msgid "Normal"
 msgstr "Normaal"
 
-#: src/window.rs:474
+#: src/window.rs:475
 msgid "Selection"
 msgstr "Selectie"
 
-#: src/window.rs:485
-msgid "No Profile"
-msgstr ""
+#~ msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
+#~ msgstr ""
+#~ "🖥️ Kies het beeldscherm, venster of schermgebied dat je wilt vastleggen"
+
+#~ msgid "🗔 Multiple sources selection"
+#~ msgstr "🗔 Keuze uit meerdere bronnen"
 
 #~ msgid "Dave Patrick Caberto"
 #~ msgstr "Dave Patrick Caberto"
