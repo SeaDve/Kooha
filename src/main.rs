@@ -35,12 +35,10 @@ mod i18n;
 mod pipeline;
 mod preferences_dialog;
 mod profile;
-mod progress_icon;
 mod recording;
 mod screencast_session;
 mod settings;
 mod timer;
-mod toggle_button;
 mod window;
 
 use std::env;

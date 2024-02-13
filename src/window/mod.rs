@@ -1,3 +1,6 @@
+mod progress_icon;
+mod toggle_button;
+
 use adw::{prelude::*, subclass::prelude::*};
 use anyhow::{Error, Result};
 use gettextrs::gettext;
@@ -9,15 +12,14 @@ use gtk::{
 
 use std::cell::RefCell;
 
+use self::{progress_icon::ProgressIcon, toggle_button::ToggleButton};
 use crate::{
     cancelled::Cancelled,
     config::PROFILE,
     format_time,
     help::Help,
-    progress_icon::ProgressIcon,
     recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
-    toggle_button::ToggleButton,
     Application,
 };
 
