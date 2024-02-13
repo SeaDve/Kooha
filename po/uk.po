@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Mykola <mykola.lev@gmail.com>, 2021.
 # Ihor Hordiichuk <igor_ck@outlook.com>, 2021, 2022, 2023, 2024.
+# Сергій <sergiy.goncharuk.1@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-12 14:39+0800\n"
-"PO-Revision-Date: 2024-02-12 06:40+0000\n"
-"Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
+"PO-Revision-Date: 2024-02-13 13:55+0000\n"
+"Last-Translator: Сергій <sergiy.goncharuk.1@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
 "uk/>\n"
 "Language: uk\n"
@@ -66,7 +67,7 @@ msgstr "📼 Підтримка форматів WebM, MP4, GIF і Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Виберіть монітор або область екрана для запису"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -302,25 +303,25 @@ msgstr "Не вдалося під'єднатися до фонової служ
 #: src/format_time.rs:22
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} година"
+msgstr[1] "{time} години"
+msgstr[2] "{time} годин"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:29
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} хвилина"
+msgstr[1] "{time} хвилини"
+msgstr[2] "{time} хвилин"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:36
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} секунда"
+msgstr[1] "{time} секунди"
+msgstr[2] "{time} секунд"
 
 #: src/preferences_dialog.rs:63
 msgid "Failed to set recordings folder"
