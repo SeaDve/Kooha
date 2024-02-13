@@ -226,7 +226,7 @@ mod pa {
 
             let Ok(name) = glib::future_with_timeout(DEFAULT_TIMEOUT, rx).await else {
                 operation.cancel();
-                bail!("get_server_info operation timeout reached");
+                bail!("Timeout reached when getting server info");
             };
 
             name.unwrap().context("Found no default device")

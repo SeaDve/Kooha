@@ -202,7 +202,7 @@ impl Profile {
                 }
             }
             (Some(_), None) => {
-                bail!("unexpected audioenc without muxer")
+                bail!("Unexpected audioenc without muxer")
             }
         }
 
