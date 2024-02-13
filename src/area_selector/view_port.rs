@@ -23,12 +23,12 @@ use std::{
 
 const SIZE: f64 = 100.0;
 const DEFAULT_SELECTION_SIZE: f32 = 40.0;
-const SHADE_COLOR: gdk::RGBA = gdk::RGBA::new(0.0, 0.0, 0.0, 0.5);
+const SHADE_COLOR: gdk::RGBA = gdk::RGBA::BLACK.with_alpha(0.5);
 
 const SELECTION_LINE_WIDTH: f32 = 2.0;
 const SELECTION_LINE_COLOR: gdk::RGBA = gdk::RGBA::WHITE.with_alpha(0.6);
 const SELECTION_HANDLE_COLOR: gdk::RGBA = gdk::RGBA::WHITE;
-const SELECTION_HANDLE_SHADOW_COLOR: gdk::RGBA = gdk::RGBA::new(0.0, 0.0, 0.0, 0.2);
+const SELECTION_HANDLE_SHADOW_COLOR: gdk::RGBA = gdk::RGBA::BLACK.with_alpha(0.2);
 const SELECTION_HANDLE_RADIUS: f32 = 12.0;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
