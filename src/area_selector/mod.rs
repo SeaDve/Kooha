@@ -180,7 +180,7 @@ glib::wrapper! {
 }
 
 impl AreaSelector {
-    pub async fn present(
+    pub async fn select(
         fd: RawFd,
         streams: &[Stream],
         parent: &impl IsA<gtk::Window>,

@@ -206,7 +206,7 @@ impl Recording {
 
         // select area
         if settings.capture_mode() == CaptureMode::Selection {
-            let data = AreaSelector::present(fd, &streams, &Application::get().window()).await?;
+            let data = AreaSelector::select(fd, &streams, &Application::get().window()).await?;
             pipeline_builder.select_area_data(data);
         }
 
