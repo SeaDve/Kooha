@@ -21,7 +21,7 @@ struct Profiles {
     experimental: Vec<ProfileData>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Deserialize)]
 struct ProfileData {
     id: String,
     #[serde(default)]
