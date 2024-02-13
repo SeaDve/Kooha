@@ -95,9 +95,8 @@ impl PipelineBuilder {
         pipeline.add_many([videosrc_bin.upcast_ref(), &videoenc_queue, &filesink])?;
         videosrc_bin.link(&videoenc_queue)?;
 
-        let audioenc_queue = if self.profile.supports_audio()
-            && (self.speaker_source.is_some() || self.mic_source.is_some())
-        {
+        let has_audio_source = self.speaker_source.is_some() || self.mic_source.is_some();
+        let audioenc_queue = if self.profile.supports_audio() && has_audio_source {
             let audiosrc_bin = make_pulsesrc_bin(
                 [&self.speaker_source, &self.mic_source]
                     .into_iter()
@@ -111,7 +110,7 @@ impl PipelineBuilder {
 
             Some(audioenc_queue)
         } else {
-            if self.speaker_source.is_some() || self.mic_source.is_some() {
+            if has_audio_source {
                 tracing::warn!(
                     "Selected profile does not support audio, but audio sources are provided. Ignoring audio sources"
                 );
