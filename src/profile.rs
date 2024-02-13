@@ -80,13 +80,13 @@ impl Profile {
                 "/io/github/seadve/Kooha/profiles.yml",
                 gio::ResourceLookupFlags::NONE,
             )?;
-            let data = serde_yaml::from_slice::<Profiles>(&bytes)?;
+            let profiles = serde_yaml::from_slice::<Profiles>(&bytes)?;
 
-            let supported = data.supported.into_iter().map(|mut data| {
+            let supported = profiles.supported.into_iter().map(|mut data| {
                 data.is_experimental = false;
                 Self::from_data(data)
             });
-            let experimental = data.experimental.into_iter().map(|mut data| {
+            let experimental = profiles.experimental.into_iter().map(|mut data| {
                 data.is_experimental = true;
                 Self::from_data(data)
             });
