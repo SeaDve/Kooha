@@ -185,11 +185,11 @@ impl AreaSelector {
         streams: &[Stream],
         parent: &impl IsA<gtk::Window>,
     ) -> Result<SelectAreaData> {
-        let this: Self = glib::Object::new();
+        let this: Self = glib::Object::builder()
+            .property("transient-for", parent)
+            .property("modal", true)
+            .build();
         let imp = this.imp();
-
-        this.set_transient_for(Some(parent));
-        this.set_modal(true);
 
         // Setup window size
         let parent = parent.as_ref();
