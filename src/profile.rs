@@ -10,11 +10,6 @@ use serde::Deserialize;
 const DEFAULT_SUGGESTED_MAX_FRAMERATE: u32 = 60;
 const MAX_THREAD_COUNT: u32 = 64;
 
-/// Ideal thread count to use for processing.
-fn ideal_thread_count() -> u32 {
-    glib::num_processors().min(MAX_THREAD_COUNT)
-}
-
 #[derive(Debug, Deserialize)]
 struct Profiles {
     supported: Vec<ProfileData>,
@@ -225,8 +220,8 @@ fn parse_bin_inner(
     description: &str,
     add_ghost_pads: bool,
 ) -> Result<gst::Bin, glib::Error> {
-    let formatted_description =
-        description.replace("${N_THREADS}", &ideal_thread_count().to_string());
+    let ideal_n_threads = glib::num_processors().min(MAX_THREAD_COUNT);
+    let formatted_description = description.replace("${N_THREADS}", &ideal_n_threads.to_string());
     let bin = gst::parse::bin_from_description_with_name_full(
         &formatted_description,
         add_ghost_pads,
