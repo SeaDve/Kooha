@@ -96,13 +96,14 @@ mod imp {
             }
             profiles_model.splice(profiles_model.n_items(), 0, profiles);
 
-            let is_using_experimental =
-                *IS_EXPERIMENTAL_MODE || active_profile.is_some_and(|p| p.is_experimental());
             let filter = gtk::BoolFilter::new(Some(&gtk::ClosureExpression::new::<bool>(
                 &[] as &[&gtk::Expression],
                 closure!(|obj: glib::Object| {
                     profile_from_obj(&obj).map_or(true, |profile| {
-                        (!profile.is_experimental() || is_using_experimental)
+                        (*IS_EXPERIMENTAL_MODE
+                            || !profile.is_experimental()
+                            || active_profile
+                                .is_some_and(|active_profile| active_profile == profile))
                             && profile.is_available()
                     })
                 }),

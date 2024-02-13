@@ -106,7 +106,7 @@ impl Settings {
             .unwrap();
     }
 
-    pub fn profile(&self) -> Option<&Profile> {
+    pub fn profile(&self) -> Option<&'static Profile> {
         let profile_id = self.0.get::<String>("profile-id");
 
         if profile_id.is_empty() {
