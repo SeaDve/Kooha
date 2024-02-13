@@ -127,7 +127,12 @@ impl PipelineBuilder {
                 audioenc_queue.as_ref(),
                 &filesink,
             )
-            .context("Failed to attach profile to pipeline")?;
+            .with_context(|| {
+                format!(
+                    "Failed to attach profile `{}` to pipeline",
+                    self.profile.id()
+                )
+            })?;
 
         Ok(pipeline)
     }

@@ -168,10 +168,7 @@ impl Profile {
                 // Special case for gifenc
 
                 if audio_srcs.is_some() {
-                    tracing::error!(
-                        "Audio srcs ignored: Profile `{}` does not support audio",
-                        self.id()
-                    );
+                    tracing::error!("Audio srcs ignored: Profile does not support audio");
                 }
 
                 videoenc_bin.link(sink)?;
@@ -186,24 +183,16 @@ impl Profile {
                             .factory()
                             .is_some_and(|f| f.has_type(gst::ElementFactoryType::MUXER))
                     })
-                    .with_context(|| {
-                        format!(
-                            "Can't find the muxer in muxer bin of Profile `{}`",
-                            self.id()
-                        )
-                    })?;
+                    .context("Can't find the muxer in muxer bin")?;
 
                 pipeline.add(&muxer_bin)?;
                 videoenc_bin.link_pads(None, &muxer, Some("video_%u"))?;
                 muxer_bin.link(sink)?;
 
                 if let Some(audio_srcs) = audio_srcs {
-                    let audioenc_str = audioenc_str.as_ref().with_context(|| {
-                        format!(
-                            "Failed to handle audio srcs: Profile `{}` has no encoder",
-                            self.id()
-                        )
-                    })?;
+                    let audioenc_str = audioenc_str
+                        .as_ref()
+                        .context("Failed to handle audio srcs: Profile has no audio encoder")?;
 
                     let audioenc_bin = parse_bin("kooha-audioenc-bin", audioenc_str)?;
 
@@ -321,7 +310,7 @@ mod tests {
                 dummy_audio_src.as_ref(),
                 &dummy_sink,
             ) {
-                panic!("{:?}", err);
+                panic!("can't attach profile `{}`: {:?}", profile.id(), err);
             }
 
             assert!(pipeline
