@@ -113,7 +113,7 @@ impl PipelineBuilder {
         } else {
             if self.speaker_source.is_some() || self.mic_source.is_some() {
                 tracing::warn!(
-                    "Selected profiles does not support audio, but audio sources are provided. Ignoring"
+                    "Selected profile does not support audio, but audio sources are provided. Ignoring audio sources"
                 );
             }
 
