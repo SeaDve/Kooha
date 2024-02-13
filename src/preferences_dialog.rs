@@ -102,8 +102,8 @@ mod imp {
                 &[] as &[&gtk::Expression],
                 closure!(|obj: glib::Object| {
                     profile_from_obj(&obj).map_or(true, |profile| {
-                        profile.is_available()
-                            && (!profile.is_experimental() || is_using_experimental)
+                        (!profile.is_experimental() || is_using_experimental)
+                            && profile.is_available()
                     })
                 }),
             )));
