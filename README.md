@@ -148,6 +148,12 @@ would like to support it, you may [buy me a coffee](https://www.buymeacoffee.com
 
 ## 💝 Acknowledgment
 
-[RecApp](https://github.com/amikha1lov/RecApp) greatly inspired the creation of Kooha.
-And also, a warm thank you to all the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors)
-and [translators](https://hosted.weblate.org/engage/seadve/) from Weblate.
+I would like to express my gratitude to the [contributors](https://github.com/SeaDve/Kooha/graphs/contributors)
+and [translators](https://hosted.weblate.org/engage/seadve/) of the project.
+
+I would also like to thank the open-source software projects, libraries, and APIs that were
+used in developing this app, such as GStreamer, GTK, LibAdwaita, and many others, for making Kooha possible.
+
+I would also like to acknowledge [RecApp](https://github.com/amikha1lov/RecApp), which greatly inspired the creation of Kooha,
+as well as [GNOME Screenshot](https://gitlab.gnome.org/GNOME/gnome-screenshot), which served as a reference for Kooha's icon
+design.
