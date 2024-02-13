@@ -40,7 +40,6 @@ struct ProfileData {
 }
 
 mod imp {
-
     use super::*;
 
     #[derive(Debug, Default)]
