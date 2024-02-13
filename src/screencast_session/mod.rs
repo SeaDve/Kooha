@@ -24,7 +24,7 @@ pub use self::{
 };
 use crate::cancelled::Cancelled;
 
-const DEFAULT_TIMEOUT: Duration = Duration::from_secs(5);
+const PROXY_CALL_TIMEOUT: Duration = Duration::from_secs(5);
 
 #[derive(Debug)]
 pub struct ScreencastSession {
@@ -138,7 +138,7 @@ impl ScreencastSession {
                 "OpenPipeWireRemote",
                 Some(&(&self.session_handle, VariantDict::default()).to_variant()),
                 gio::DBusCallFlags::NONE,
-                DEFAULT_TIMEOUT.as_millis() as i32,
+                PROXY_CALL_TIMEOUT.as_millis() as i32,
                 gio::UnixFDList::NONE,
             )
             .await?;
@@ -168,7 +168,7 @@ impl ScreencastSession {
                 None,
                 None,
                 gio::DBusCallFlags::NONE,
-                DEFAULT_TIMEOUT.as_millis() as i32,
+                PROXY_CALL_TIMEOUT.as_millis() as i32,
             )
             .await
             .context("Failed to invoke Close on the session")?;
@@ -281,7 +281,7 @@ async fn screencast_request_call(
             method,
             Some(&params),
             gio::DBusCallFlags::NONE,
-            DEFAULT_TIMEOUT.as_millis() as i32,
+            PROXY_CALL_TIMEOUT.as_millis() as i32,
         )
         .await
         .with_context(|| format!("Failed to call `{}` with parameters: {:?}", method, params))?;

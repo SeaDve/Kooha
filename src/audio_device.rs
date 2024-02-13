@@ -138,7 +138,7 @@ mod pa {
     use super::AudioDeviceClass;
     use crate::{config::APP_ID, help::ResultExt};
 
-    const DEFAULT_TIMEOUT: Duration = Duration::from_secs(2);
+    const INTROSPECT_TIMEOUT: Duration = Duration::from_secs(2);
 
     pub struct Context {
         inner: ContextInner,
@@ -224,7 +224,7 @@ mod pa {
                 }
             });
 
-            let Ok(name) = glib::future_with_timeout(DEFAULT_TIMEOUT, rx).await else {
+            let Ok(name) = glib::future_with_timeout(INTROSPECT_TIMEOUT, rx).await else {
                 operation.cancel();
                 bail!("Timeout reached when getting server info");
             };

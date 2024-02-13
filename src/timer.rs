@@ -13,7 +13,7 @@ use std::{
 
 use crate::cancelled::Cancelled;
 
-const DEFAULT_SECS_LEFT_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
+const SECS_LEFT_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
 
 /// A reference counted cancellable timed future
 ///
@@ -140,7 +140,7 @@ impl Future for Timer {
         self.inner
             .secs_left_changed_source_id
             .replace(Some(glib::timeout_add_local(
-                DEFAULT_SECS_LEFT_UPDATE_INTERVAL,
+                SECS_LEFT_UPDATE_INTERVAL,
                 clone!(@weak self.inner as inner => @default-return glib::ControlFlow::Break, move || {
                     (inner.secs_left_changed_cb)(inner.secs_left());
                     glib::ControlFlow::Continue

@@ -33,7 +33,7 @@ use crate::{
     IS_EXPERIMENTAL_MODE,
 };
 
-const DEFAULT_DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
+const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
 
 #[derive(Debug)]
 pub struct NoProfileError;
@@ -260,7 +260,7 @@ impl Recording {
             .unwrap();
         imp.bus_watch_guard.replace(Some(bus_watch_guard));
         imp.duration_source_id.replace(Some(glib::timeout_add_local(
-            DEFAULT_DURATION_UPDATE_INTERVAL,
+            DURATION_UPDATE_INTERVAL,
             clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move || {
                 obj.update_duration();
                 obj.update_flushing_progress();

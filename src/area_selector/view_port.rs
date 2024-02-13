@@ -21,9 +21,8 @@ use std::{
 // * Add undo and redo.
 // * Add minimum selection size.
 
-const DEFAULT_SIZE: f64 = 100.0;
+const SIZE: f64 = 100.0;
 const DEFAULT_SELECTION_SIZE: f32 = 40.0;
-
 const SHADE_COLOR: gdk::RGBA = gdk::RGBA::new(0.0, 0.0, 0.0, 0.5);
 
 const SELECTION_LINE_WIDTH: f32 = 2.0;
@@ -221,16 +220,16 @@ mod imp {
                 let (natural_width, _) = paintable.compute_concrete_size(
                     0.0,
                     if for_size < 0 { 0.0 } else { for_size as f64 },
-                    DEFAULT_SIZE,
-                    DEFAULT_SIZE,
+                    SIZE,
+                    SIZE,
                 );
                 (0, natural_width.ceil() as i32, -1, -1)
             } else {
                 let (_, natural_height) = paintable.compute_concrete_size(
                     if for_size < 0 { 0.0 } else { for_size as f64 },
                     0.0,
-                    DEFAULT_SIZE,
-                    DEFAULT_SIZE,
+                    SIZE,
+                    SIZE,
                 );
                 (0, natural_height.ceil() as i32, -1, -1)
             }
