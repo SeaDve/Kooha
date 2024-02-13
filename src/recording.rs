@@ -245,8 +245,10 @@ impl Recording {
             || gettext("A GStreamer plugin may not be installed."),
             || gettext("Failed to start recording"),
         )?;
-        pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
         imp.pipeline.set(pipeline.clone()).unwrap();
+
+        // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
+        pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
 
         imp.file.set(gio::File::for_path(file_path)).unwrap();
         let bus_watch_guard = pipeline
