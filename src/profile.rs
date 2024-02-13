@@ -153,6 +153,10 @@ impl Profile {
         sink: &gst::Element,
     ) -> Result<()> {
         let videoenc_bin = parse_bin("kooha-videoenc-bin", &self.data().videoenc_bin_str)?;
+        debug_assert!(videoenc_bin.iterate_elements().into_iter().any(|element| {
+            let factory = element.unwrap().factory().unwrap();
+            factory.has_type(gst::ElementFactoryType::VIDEO_ENCODER)
+        }));
 
         pipeline.add(&videoenc_bin)?;
         video_src.link(&videoenc_bin)?;
@@ -169,7 +173,6 @@ impl Profile {
             }
             (audioenc_str, Some(muxer_bin_str)) => {
                 let muxer_bin = parse_bin("kooha-muxer-bin", muxer_bin_str)?;
-
                 let muxer = muxer_bin
                     .iterate_elements()
                     .find(|element| {
@@ -187,8 +190,11 @@ impl Profile {
                     let audioenc_str = audioenc_str
                         .as_ref()
                         .context("Failed to handle audio srcs: Profile has no audio encoder")?;
-
                     let audioenc_bin = parse_bin("kooha-audioenc-bin", audioenc_str)?;
+                    debug_assert!(audioenc_bin.iterate_elements().into_iter().any(|element| {
+                        let factory = element.unwrap().factory().unwrap();
+                        factory.has_type(gst::ElementFactoryType::AUDIO_ENCODER)
+                    }));
 
                     pipeline.add(&audioenc_bin)?;
                     audio_srcs.link(&audioenc_bin)?;
