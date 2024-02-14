@@ -54,6 +54,7 @@ mod imp {
         #[template_child]
         pub(super) flushing_progress_icon: TemplateChild<ProgressIcon>,
 
+        pub(super) inhibit_cookie: RefCell<Option<u32>>,
         pub(super) recording: RefCell<Option<(Recording, Vec<glib::SignalHandlerId>)>>,
     }
 
@@ -319,6 +320,7 @@ impl Window {
         let handler_ids = vec![
             recording.connect_state_notify(clone!(@weak self as obj => move |_| {
                 obj.update_view();
+                obj.update_inhibit();
             })),
             recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
                 let formatted_time = format_time::digital_clock(recording.duration());
@@ -330,6 +332,8 @@ impl Window {
         ];
         imp.recording
             .replace(Some((recording.clone(), handler_ids)));
+
+        self.update_inhibit();
 
         recording
             .start(Some(self), Application::get().settings())
@@ -397,8 +401,34 @@ impl Window {
             for handler_id in handler_ids {
                 recording.disconnect(handler_id);
             }
+
+            self.update_inhibit();
         } else {
             tracing::warn!("Recording finished but no stored recording");
+        }
+    }
+
+    fn update_inhibit(&self) {
+        let imp = self.imp();
+
+        let app = Application::get();
+        let is_busy = self.is_busy();
+
+        if is_busy && imp.inhibit_cookie.borrow().is_none() {
+            let inhibit_cookie = app.inhibit(
+                Some(self),
+                gtk::ApplicationInhibitFlags::LOGOUT | gtk::ApplicationInhibitFlags::IDLE,
+                Some(&gettext("A recording is in progress")),
+            );
+            imp.inhibit_cookie.replace(Some(inhibit_cookie));
+
+            tracing::debug!("Inhibited logout and idle");
+        } else if !is_busy {
+            if let Some(inhibit_cookie) = imp.inhibit_cookie.take() {
+                app.uninhibit(inhibit_cookie);
+
+                tracing::debug!("Uninhibited logout and idle");
+            }
         }
     }
 

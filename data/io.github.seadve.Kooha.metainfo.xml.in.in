@@ -41,7 +41,8 @@
         <p>This release contains new features and fixes:</p>
         <ul>
           <li>Area selector is now resizable</li>
-          <li>Area selection is now restored</li>
+          <li>Previous selected area is now remembered</li>
+          <li>Logout and idle are now inhibited while recording</li>
           <li>Video format and FPS are now shown in the main view</li>
           <li>Added progress bar while flushing</li>
           <li>Added recording duration and size on done notification</li>
