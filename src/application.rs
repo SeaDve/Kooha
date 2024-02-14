@@ -137,7 +137,7 @@ impl Application {
         let notification = gio::Notification::new(&gettext("Screencast recorded"));
         notification.set_body(Some(&body_fragments.join(", ")));
         notification.set_default_action_and_target_value(
-            "app.launch-default-for-uri",
+            "app.launch-uri",
             Some(&recording_file.uri().to_variant()),
         );
         notification.add_button_with_target_value(
@@ -182,53 +182,35 @@ impl Application {
         glib::Propagation::Proceed
     }
 
-    async fn try_show_uri(&self, uri: &str) {
-        let window = self.window();
-        if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(uri)))
-            .launch_future(Some(&window))
-            .await
-        {
-            if !err.matches(gio::IOErrorEnum::Cancelled) {
-                tracing::error!("Failed to launch default for uri `{}`: {:?}", uri, err);
-                window.present_error_dialog(&err.into());
-            }
-        }
-    }
-
     fn setup_gactions(&self) {
-        let action_launch_default_for_uri = gio::SimpleAction::new(
-            "launch-default-for-uri",
-            Some(&String::static_variant_type()),
-        );
-        action_launch_default_for_uri.connect_activate(
-            clone!(@weak self as obj => move |_, param| {
-                let file_uri = param.unwrap().get::<String>().unwrap();
-
-                glib::spawn_future_local(async move {
-                    obj.try_show_uri(&file_uri).await;
-                });
-            }),
-        );
-        self.add_action(&action_launch_default_for_uri);
-
-        let action_show_in_files =
-            gio::SimpleAction::new("show-in-files", Some(&String::static_variant_type()));
-        action_show_in_files.connect_activate(clone!(@weak self as obj => move |_, param| {
-            let uri = param.unwrap().get::<String>().unwrap();
-
-            glib::spawn_future_local(async move {
-                if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
-                    .open_containing_folder_future(Some(&obj.window()))
-                    .await
-                {
-                    tracing::warn!("Failed to show items: {:?}", err);
-
-                    obj.try_show_uri(&uri).await;
-                }
-            });
-        }));
-        self.add_action(&action_show_in_files);
-
+        let launch_uri_action = gio::ActionEntry::builder("launch-uri")
+            .parameter_type(Some(&String::static_variant_type()))
+            .activate(|obj: &Self, _, param| {
+                let uri = param.unwrap().get::<String>().unwrap();
+                glib::spawn_future_local(clone!(@strong obj => async move {
+                    if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
+                        .launch_future(obj.active_window().as_ref())
+                        .await
+                    {
+                        tracing::error!("Failed to launch uri `{}`: {:?}", uri, err);
+                    }
+                }));
+            })
+            .build();
+        let show_in_files_action = gio::ActionEntry::builder("show-in-files")
+            .parameter_type(Some(&String::static_variant_type()))
+            .activate(|obj: &Self, _, param| {
+                let uri = param.unwrap().get::<String>().unwrap();
+                glib::spawn_future_local(clone!(@strong obj => async move {
+                    if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
+                        .open_containing_folder_future(obj.active_window().as_ref())
+                        .await
+                    {
+                        tracing::warn!("Failed to show `{}` in files: {:?}", uri, err);
+                    }
+                }));
+            })
+            .build();
         let quit_action = gio::ActionEntry::builder("quit")
             .activate(|obj: &Self, _, _| {
                 obj.quit();
@@ -244,7 +226,13 @@ impl Application {
                 about::present_dialog(&obj.window());
             })
             .build();
-        self.add_action_entries([quit_action, show_preferences_action, show_about_action]);
+        self.add_action_entries([
+            launch_uri_action,
+            show_in_files_action,
+            quit_action,
+            show_preferences_action,
+            show_about_action,
+        ]);
     }
 
     fn setup_accels(&self) {
