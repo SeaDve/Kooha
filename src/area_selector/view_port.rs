@@ -835,12 +835,6 @@ impl ViewPort {
     }
 }
 
-impl Default for ViewPort {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;

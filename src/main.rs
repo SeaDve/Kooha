@@ -1,3 +1,4 @@
+#![allow(clippy::new_without_default)]
 #![warn(
     rust_2018_idioms,
     clippy::items_after_statements,
@@ -21,7 +22,6 @@
     clippy::todo,
     clippy::print_stdout
 )]
-#![allow(clippy::format_push_string)] // TODO remove once gettext-rs fixes macro issues
 
 mod about;
 mod application;

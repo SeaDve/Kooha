@@ -259,9 +259,3 @@ impl Application {
         self.set_accels_for_action("win.cancel-record", &["<Control>c"]);
     }
 }
-
-impl Default for Application {
-    fn default() -> Self {
-        Self::new()
-    }
-}

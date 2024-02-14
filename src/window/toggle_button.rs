@@ -136,9 +136,3 @@ impl ToggleButton {
         });
     }
 }
-
-impl Default for ToggleButton {
-    fn default() -> Self {
-        Self::new()
-    }
-}
