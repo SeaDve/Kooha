@@ -40,14 +40,14 @@
       <description translatable="no">
         <p>This release contains new features and fixes:</p>
         <ul>
-          <li>Area selector is now resizable</li>
+          <li>Area selector window is now resizable</li>
           <li>Previous selected area is now remembered</li>
           <li>Logout and idle are now inhibited while recording</li>
           <li>Video format and FPS are now shown in the main view</li>
-          <li>Added progress bar while flushing</li>
-          <li>Added recording duration and size on done notification</li>
+          <li>Notifications now show the duration and size of the recording</li>
+          <li>Progress is now shown when flushing the recording</li>
           <li>Fixed focus on area selector</li>
-          <li>Fixed area selector sizing</li>
+          <li>Fixed too small area selector window on HiDPI</li>
           <li>Improved recording performance</li>
           <li>Updated translations</li>
         </ul>
