@@ -1,5 +1,6 @@
 subdir('icons')
 subdir('resources')
+
 # Desktop file
 desktop_conf = configuration_data()
 desktop_conf.set('icon', application_id)
@@ -64,7 +65,6 @@ configure_file(
   install: true,
   install_dir: datadir / 'glib-2.0' / 'schemas'
 )
-
 # Validate GSchema
 if glib_compile_schemas.found()
   test(
