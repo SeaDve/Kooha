@@ -45,6 +45,7 @@
           <li>Logout and idle are now inhibited while recording</li>
           <li>Video format and FPS are now shown in the main view</li>
           <li>Notifications now show the duration and size of the recording</li>
+          <li>Notification actions now work even when the application is closed</li>
           <li>Progress is now shown when flushing the recording</li>
           <li>Fixed focus on area selector</li>
           <li>Fixed too small area selector window on HiDPI</li>

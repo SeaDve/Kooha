@@ -9,3 +9,5 @@ Categories=GTK;GNOME;Utility;Recorder;
 Keywords=Screencast;Recorder;Screen;Video;
 Icon=@icon@
 StartupNotify=true
+DBusActivatable=true
+X-GNOME-UsesNotifications=true
