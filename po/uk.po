@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-12 14:39+0800\n"
-"PO-Revision-Date: 2024-02-13 13:55+0000\n"
-"Last-Translator: Сергій <sergiy.goncharuk.1@gmail.com>\n"
+"PO-Revision-Date: 2024-02-14 21:01+0000\n"
+"Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
 "uk/>\n"
 "Language: uk\n"
@@ -67,7 +67,7 @@ msgstr "📼 Підтримка форматів WebM, MP4, GIF і Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr "🖥️ Виберіть монітор або область екрана для запису"
+msgstr "🖥️ Виберіть монітор або ділянку екрана для запису"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
