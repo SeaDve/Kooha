@@ -13,4 +13,4 @@ src/main.rs
 src/preferences_dialog.rs
 src/recording.rs
 src/settings.rs
-src/window.rs
+src/window/mod.rs
