@@ -32,6 +32,7 @@ mod config;
 mod format_time;
 mod help;
 mod i18n;
+mod item_row;
 mod pipeline;
 mod preferences_dialog;
 mod profile;
