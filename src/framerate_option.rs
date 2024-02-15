@@ -65,23 +65,45 @@ impl FramerateOption {
         };
         Framerate::new(numer, denom)
     }
+
+    /// Returns the long name of the option.
+    pub fn long_name(self) -> String {
+        let suffix = match self {
+            Self::_10 => None,
+            Self::_20 => None,
+            Self::_23_976 => None,
+            Self::_24 => Some("NTSC"),
+            Self::_25 => Some("PAL"),
+            Self::_29_97 => None,
+            Self::_30 => None,
+            Self::_48 => None,
+            Self::_50 => Some("PAL"),
+            Self::_59_94 => None,
+            Self::_60 => None,
+        };
+
+        if let Some(suffix) = suffix {
+            format!("{} {}", self, suffix)
+        } else {
+            self.to_string()
+        }
+    }
 }
 
 impl fmt::Display for FramerateOption {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        let name = match self {
+        f.write_str(match self {
             Self::_10 => "10",
             Self::_20 => "20",
             Self::_23_976 => "23.976",
-            Self::_24 => "24 NTSC",
-            Self::_25 => "25 PAL",
+            Self::_24 => "24",
+            Self::_25 => "25",
             Self::_29_97 => "29.97",
             Self::_30 => "30",
             Self::_48 => "48",
-            Self::_50 => "50 PAL",
+            Self::_50 => "50",
             Self::_59_94 => "59.94",
             Self::_60 => "60",
-        };
-        f.write_str(name)
+        })
     }
 }

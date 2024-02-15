@@ -94,7 +94,7 @@ mod imp {
 
                     let enum_list_item = item.downcast_ref::<adw::EnumListItem>().unwrap();
                     let framerate_option = unsafe { FramerateOption::from_glib(enum_list_item.value()) };
-                    item_row.set_title(framerate_option.to_string());
+                    item_row.set_title(framerate_option.long_name());
 
                     unsafe {
                         list_item.set_data(

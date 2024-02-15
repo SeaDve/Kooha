@@ -521,7 +521,7 @@ impl Window {
         let framerate_option = FramerateOption::from_framerate(settings.framerate());
 
         imp.title
-            .set_subtitle(&format!("{} • {}", profile_text, framerate_option));
+            .set_subtitle(&format!("{} • {} FPS", profile_text, framerate_option));
     }
 
     fn update_audio_actions(&self) {
