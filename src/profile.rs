@@ -9,7 +9,7 @@ use serde::Deserialize;
 
 use crate::pipeline::Framerate;
 
-const DEFAULT_SUGGESTED_MAX_FRAMERATE: Framerate = Framerate::new_raw(30, 1);
+const DEFAULT_SUGGESTED_MAX_FRAMERATE: Framerate = Framerate::new_raw(60, 1);
 const MAX_THREAD_COUNT: u32 = 64;
 
 #[derive(Debug, Deserialize)]
