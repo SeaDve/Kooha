@@ -5,6 +5,7 @@ use num_traits::Signed;
 
 use crate::pipeline::Framerate;
 
+/// The available options for the framerate.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, glib::Enum)]
 #[enum_type(name = "KoohaFramerateOption")]
 pub enum FramerateOption {
