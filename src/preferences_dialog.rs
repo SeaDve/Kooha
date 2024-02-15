@@ -5,13 +5,15 @@ use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone, closure, BoxedAnyObject},
-    pango,
 };
 
-use crate::{profile::Profile, settings::Settings, IS_EXPERIMENTAL_MODE};
+use crate::{item_row::ItemRow, profile::Profile, settings::Settings, IS_EXPERIMENTAL_MODE};
 
 /// Used to represent "none" profile in the profiles model
 type NoneProfile = BoxedAnyObject;
+
+const PROFILE_ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY: &str =
+    "kooha-profile-row-selected-item-notify-handler-id";
 
 mod imp {
     use std::cell::OnceCell;
@@ -84,9 +86,7 @@ mod imp {
             let active_profile = settings.profile();
 
             self.profile_row
-                .set_factory(Some(&profile_row_factory(&self.profile_row, false)));
-            self.profile_row
-                .set_list_factory(Some(&profile_row_factory(&self.profile_row, true)));
+                .set_factory(Some(&profile_row_factory(&self.profile_row)));
             let profiles = Profile::all()
                 .inspect_err(|err| tracing::error!("Failed to load profiles: {:?}", err))
                 .unwrap_or_default();
@@ -214,77 +214,74 @@ impl PreferencesDialog {
     }
 }
 
-fn profile_row_factory(
-    profile_row: &adw::ComboRow,
-    show_selected_indicator: bool,
-) -> gtk::SignalListItemFactory {
+fn profile_row_factory(profile_row: &adw::ComboRow) -> gtk::SignalListItemFactory {
     let factory = gtk::SignalListItemFactory::new();
+
     factory.connect_setup(clone!(@weak profile_row => move |_, list_item| {
         let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
-        let item_expression = list_item.property_expression("item");
 
-        let hbox = gtk::Box::builder().spacing(12).build();
+        let item_row = ItemRow::new();
+        item_row.set_warning_tooltip_text(gettext("This format is experimental and unsupported."));
 
-        let warning_indicator = gtk::Image::builder()
-            .tooltip_text(gettext("This format is experimental and unsupported."))
-            .icon_name("warning-symbolic")
-            .build();
-        warning_indicator.add_css_class("warning");
-        hbox.append(&warning_indicator);
-
-        item_expression
-            .chain_closure::<bool>(closure!(
-                |_: Option<glib::Object>, obj: Option<glib::Object>| {
-                    obj.as_ref()
-                        .and_then(|obj| profile_from_obj(obj))
-                        .is_some_and(|profile| profile.is_experimental())
-                }
-            ))
-            .bind(&warning_indicator, "visible", glib::Object::NONE);
-
-        let label = gtk::Label::builder()
-            .valign(gtk::Align::Center)
-            .xalign(0.0)
-            .ellipsize(pango::EllipsizeMode::End)
-            .max_width_chars(20)
-            .build();
-        hbox.append(&label);
-
-        item_expression
-            .chain_closure::<String>(closure!(
-                |_: Option<glib::Object>, obj: Option<glib::Object>| {
-                    obj.as_ref()
-                        .and_then(|o| profile_from_obj(o))
-                        .map_or(gettext("None"), |profile| profile.name().to_string())
-                }
-            ))
-            .bind(&label, "label", glib::Object::NONE);
-
-        if show_selected_indicator {
-            let selected_indicator = gtk::Image::from_icon_name("object-select-symbolic");
-            hbox.append(&selected_indicator);
-
-            gtk::ClosureExpression::new::<f64>(
-                &[
-                    profile_row.property_expression("selected-item"),
-                    item_expression,
-                ],
-                closure!(|_: Option<glib::Object>,
-                          selected_item: Option<glib::Object>,
-                          item: Option<glib::Object>| {
-                    if item == selected_item {
-                        1.0
-                    } else {
-                        0.0
-                    }
-                }),
-            )
-            .bind(&selected_indicator, "opacity", glib::Object::NONE);
-        }
-
-        list_item.set_child(Some(&hbox));
+        list_item.set_child(Some(&item_row));
     }));
+
+    factory.connect_bind(clone!(@weak profile_row => move |_, list_item| {
+        let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
+
+        let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
+
+        let item = list_item.item().unwrap();
+        let profile = profile_from_obj(&item);
+
+        item_row.set_shows_warning_icon(profile.is_some_and(|profile| profile.is_experimental()));
+        item_row.set_title(
+            profile.map_or_else(|| gettext("None"), |profile| profile.name().to_string()),
+        );
+
+        // Only show the selected icon when it is inside the given row's popover. This assumes that
+        // the parent of the given row is not a popover, so we can tell which is which.
+        if item_row.ancestor(gtk::Popover::static_type()).is_some() {
+            debug_assert!(profile_row.ancestor(gtk::Popover::static_type()).is_none());
+
+            item_row.set_shows_selected_icon(true);
+
+            unsafe {
+                list_item.set_data(
+                    PROFILE_ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY,
+                    profile_row.connect_selected_item_notify(
+                        clone!(@weak list_item => move |profile_row| {
+                            update_item_row_is_selected(profile_row, &list_item);
+                        }),
+                    ),
+                );
+            }
+
+            update_item_row_is_selected(&profile_row, list_item);
+        } else {
+            item_row.set_shows_selected_icon(false);
+        }
+    }));
+
+    factory.connect_unbind(clone!(@weak profile_row => move |_, list_item| {
+        let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
+
+        unsafe {
+            if let Some(handler_id) =
+                list_item.steal_data(PROFILE_ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY)
+            {
+                profile_row.disconnect(handler_id);
+            }
+        }
+    }));
+
     factory
+}
+
+fn update_item_row_is_selected(row: &adw::ComboRow, list_item: &gtk::ListItem) {
+    let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
+
+    item_row.set_is_selected(row.selected_item() == list_item.item());
 }
 
 /// Returns `Some` if the object is a `Profile`, otherwise `None`, if the object is a `NoneProfile`.

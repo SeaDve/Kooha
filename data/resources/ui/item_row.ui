@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="KoohaItemRow">
+    <property name="layout-manager">
+      <object class="GtkBoxLayout">
+        <property name="spacing">12</property>
+      </object>
+    </property>
+    <child>
+      <object class="GtkImage" id="warning_icon">
+        <property name="icon-name">warning-symbolic</property>
+        <style>
+          <class name="warning"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="title_label">
+        <property name="valign">center</property>
+        <property name="xalign">0.0</property>
+        <property name="ellipsize">end</property>
+        <property name="max-width-chars">20</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImage" id="selected_icon">
+        <property name="icon-name">object-select-symbolic</property>
+      </object>
+    </child>
+  </template>
+</interface>

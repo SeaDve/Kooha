@@ -15,6 +15,7 @@
     <file compressed="true">profiles.yml</file>
     <file compressed="true">style.css</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/area-selector.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/item_row.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences-dialog.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/view-port.ui</file>
