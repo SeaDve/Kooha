@@ -23,7 +23,7 @@ dependency('libpulse', version: '>= 16.0')
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
 desktop_file_validate = find_program('desktop-file-validate', required: false)
-appstream_util = find_program('appstream-util', required: false)
+appstreamcli = find_program('appstreamcli', required: false)
 cargo = find_program('cargo', required: true)
 
 version = meson.project_version()
