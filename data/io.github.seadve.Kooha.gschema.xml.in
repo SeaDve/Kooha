@@ -26,8 +26,8 @@
     <key type="ay" name="saving-location">
       <default>b""</default>
     </key>
-    <key type="u" name="video-framerate">
-      <default>30</default>
+    <key type="(ii)" name="framerate">
+      <default>(30, 1)</default>
     </key>
     <key type="s" name="screencast-restore-token">
       <default>""</default>

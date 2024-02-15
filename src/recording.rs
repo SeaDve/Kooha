@@ -198,7 +198,7 @@ impl Recording {
         let file_path = new_recording_path(&settings.saving_location(), profile.file_extension());
         let mut pipeline_builder = PipelineBuilder::new(
             &file_path,
-            settings.video_framerate(),
+            settings.framerate(),
             profile.clone(),
             fd,
             streams.clone(),
