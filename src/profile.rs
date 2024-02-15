@@ -7,7 +7,9 @@ use gtk::{
 use once_cell::sync::OnceCell as OnceLock;
 use serde::Deserialize;
 
-const DEFAULT_SUGGESTED_MAX_FRAMERATE: u32 = 60;
+use crate::pipeline::Framerate;
+
+const DEFAULT_SUGGESTED_MAX_FRAMERATE: Framerate = Framerate::new_raw(30, 1);
 const MAX_THREAD_COUNT: u32 = 64;
 
 #[derive(Debug, Deserialize)]
@@ -23,7 +25,7 @@ struct ProfileData {
     is_experimental: bool,
     name: String,
     #[serde(rename = "suggested-max-fps")]
-    suggested_max_framerate: Option<u32>,
+    suggested_max_framerate: Option<f64>,
     #[serde(rename = "extension")]
     file_extension: String,
     #[serde(rename = "videoenc")]
@@ -113,10 +115,11 @@ impl Profile {
         self.data().audioenc_bin_str.is_some()
     }
 
-    pub fn suggested_max_framerate(&self) -> u32 {
-        self.data()
-            .suggested_max_framerate
-            .unwrap_or(DEFAULT_SUGGESTED_MAX_FRAMERATE)
+    pub fn suggested_max_framerate(&self) -> Framerate {
+        self.data().suggested_max_framerate.map_or_else(
+            || DEFAULT_SUGGESTED_MAX_FRAMERATE,
+            |raw| Framerate::approximate_float(raw).unwrap(),
+        )
     }
 
     pub fn is_experimental(&self) -> bool {
@@ -268,7 +271,10 @@ mod tests {
 
             assert!(!profile.name().is_empty());
             assert!(!profile.file_extension().is_empty());
-            assert_ne!(profile.suggested_max_framerate(), 0);
+            assert_ne!(
+                profile.suggested_max_framerate(),
+                Framerate::from_integer(0)
+            );
 
             assert!(
                 unique.insert(profile.id().to_string()),

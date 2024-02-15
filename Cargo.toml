@@ -21,6 +21,8 @@ gst = { package = "gstreamer", version = "0.22" }
 gst-plugin-gif = "0.12"
 gst-plugin-gtk4 = { version = "0.12", features = ["gtk_v4_14"] }
 gtk = { package = "gtk4", version = "0.8", features = ["v4_14"] }
+num-rational = "0.4"
+num-traits = "0.2"
 once_cell = "1.19.0"
 pulse = { package = "libpulse-binding", version = "2.26.0" }
 pulse_glib = { package = "libpulse-glib-binding", version = "2.25.1" }

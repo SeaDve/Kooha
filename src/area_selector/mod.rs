@@ -14,9 +14,14 @@ use std::{cell::RefCell, os::unix::prelude::RawFd};
 
 pub use self::view_port::Selection;
 use self::view_port::ViewPort;
-use crate::{application::Application, cancelled::Cancelled, pipeline, screencast_session::Stream};
+use crate::{
+    application::Application,
+    cancelled::Cancelled,
+    pipeline::{self, Framerate},
+    screencast_session::Stream,
+};
 
-const PREVIEW_FRAMERATE: u32 = 60;
+const PREVIEW_FRAMERATE: Framerate = Framerate::new_raw(60, 1);
 const WINDOW_TO_MONITOR_SCALE_FACTOR: f64 = 0.4;
 
 // We can't get header bar height before the window is presented, so we assume "46" as the default.

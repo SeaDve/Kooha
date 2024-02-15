@@ -18,6 +18,7 @@ use crate::{
     config::PROFILE,
     format_time,
     help::Help,
+    preferences_dialog::FramerateOption,
     recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
     Application,
@@ -517,10 +518,10 @@ impl Window {
         let profile_text = settings
             .profile()
             .map_or_else(|| gettext("None"), |profile| profile.name().to_string());
-        let fps_text = settings.video_framerate().to_string();
+        let framerate_option = FramerateOption::from_framerate(settings.framerate());
 
         imp.title
-            .set_subtitle(&format!("{} • {} FPS", profile_text, fps_text));
+            .set_subtitle(&format!("{} • {}", profile_text, framerate_option));
     }
 
     fn update_audio_actions(&self) {
@@ -559,7 +560,7 @@ impl Window {
             obj.update_subtitle_label();
         }));
 
-        settings.connect_video_framerate_changed(clone!(@weak self as obj => move |_| {
+        settings.connect_framerate_changed(clone!(@weak self as obj => move |_| {
             obj.update_subtitle_label();
         }));
 

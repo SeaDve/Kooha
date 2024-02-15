@@ -9,6 +9,7 @@ use gtk::{gio, glib};
 use crate::{
     area_selector::{Selection, SelectionContext},
     config::APP_ID,
+    pipeline::Framerate,
     profile::Profile,
 };
 
@@ -20,6 +21,7 @@ use crate::{
     ret_type = "SelectionContext"
 )]
 #[gen_settings_skip(key_name = "saving-location")]
+#[gen_settings_skip(key_name = "framerate")]
 #[gen_settings_skip(key_name = "record-delay")]
 #[gen_settings_skip(key_name = "profile-id")]
 pub struct Settings;
@@ -80,6 +82,26 @@ impl Settings {
     ) -> gio::glib::SignalHandlerId {
         self.0
             .connect_changed(Some("saving-location"), move |settings, _| {
+                f(&Self(settings.clone()));
+            })
+    }
+
+    pub fn framerate(&self) -> Framerate {
+        self.0.get::<(i32, i32)>("framerate").into()
+    }
+
+    pub fn set_framerate(&self, framerate: Framerate) {
+        self.0
+            .set("framerate", (framerate.numer(), framerate.denom()))
+            .unwrap();
+    }
+
+    pub fn connect_framerate_changed(
+        &self,
+        f: impl Fn(&Self) + 'static,
+    ) -> gio::glib::SignalHandlerId {
+        self.0
+            .connect_changed(Some("framerate"), move |settings, _| {
                 f(&Self(settings.clone()));
             })
     }

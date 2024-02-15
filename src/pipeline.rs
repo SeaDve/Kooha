@@ -1,6 +1,7 @@
 use anyhow::{bail, Context, Ok, Result};
 use gst::prelude::*;
 use gtk::graphene::Rect;
+use num_rational::Rational32;
 
 use std::{
     os::unix::io::RawFd,
@@ -12,11 +13,13 @@ use crate::{area_selector::SelectAreaData, profile::Profile, screencast_session:
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
 const AUDIO_N_CHANNELS: i32 = 1;
 
+pub type Framerate = Rational32;
+
 #[derive(Debug)]
 #[must_use]
 pub struct PipelineBuilder {
     file_path: PathBuf,
-    framerate: u32,
+    framerate: Framerate,
     profile: Profile,
     fd: RawFd,
     streams: Vec<Stream>,
@@ -28,7 +31,7 @@ pub struct PipelineBuilder {
 impl PipelineBuilder {
     pub fn new(
         file_path: &Path,
-        framerate: u32,
+        framerate: Framerate,
         profile: Profile,
         fd: RawFd,
         streams: Vec<Stream>,
@@ -63,7 +66,7 @@ impl PipelineBuilder {
     pub fn build(&self) -> Result<gst::Pipeline> {
         tracing::debug!(
             file_path = %self.file_path.display(),
-            framerate = self.framerate,
+            framerate = ?self.framerate,
             profile = ?self.profile.id(),
             stream_len = self.streams.len(),
             streams = ?self.streams,
@@ -226,13 +229,13 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 pub fn make_pipewiresrc_bin(
     fd: RawFd,
     streams: &[Stream],
-    framerate: u32,
+    framerate: Framerate,
     select_area_data: Option<&SelectAreaData>,
 ) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
     let videorate_caps = gst::Caps::builder("video/x-raw")
-        .field("framerate", gst::Fraction::new(framerate as i32, 1))
+        .field("framerate", gst::Fraction::from(framerate))
         .build();
 
     let src_element = match streams {
