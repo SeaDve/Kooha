@@ -11,7 +11,6 @@ use crate::pipeline::Framerate;
 pub enum FramerateOption {
     _10,
     _20,
-    _23_976,
     _24,
     _25,
     _29_97,
@@ -28,7 +27,6 @@ impl FramerateOption {
         let all = [
             Self::_10,
             Self::_20,
-            Self::_23_976,
             Self::_24,
             Self::_25,
             Self::_29_97,
@@ -53,7 +51,6 @@ impl FramerateOption {
         let (numer, denom) = match self {
             Self::_10 => (10, 1),
             Self::_20 => (20, 1),
-            Self::_23_976 => (24_000, 1001),
             Self::_24 => (24, 1),
             Self::_25 => (25, 1),
             Self::_29_97 => (30_000, 1001),
@@ -65,29 +62,6 @@ impl FramerateOption {
         };
         Framerate::new(numer, denom)
     }
-
-    /// Returns the long name of the option.
-    pub fn long_name(self) -> String {
-        let suffix = match self {
-            Self::_10 => None,
-            Self::_20 => None,
-            Self::_23_976 => None,
-            Self::_24 => Some("NTSC"),
-            Self::_25 => Some("PAL"),
-            Self::_29_97 => None,
-            Self::_30 => None,
-            Self::_48 => None,
-            Self::_50 => Some("PAL"),
-            Self::_59_94 => None,
-            Self::_60 => None,
-        };
-
-        if let Some(suffix) = suffix {
-            format!("{} {}", self, suffix)
-        } else {
-            self.to_string()
-        }
-    }
 }
 
 impl fmt::Display for FramerateOption {
@@ -95,7 +69,6 @@ impl fmt::Display for FramerateOption {
         f.write_str(match self {
             Self::_10 => "10",
             Self::_20 => "20",
-            Self::_23_976 => "23.976",
             Self::_24 => "24",
             Self::_25 => "25",
             Self::_29_97 => "29.97",

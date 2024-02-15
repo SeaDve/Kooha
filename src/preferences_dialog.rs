@@ -94,7 +94,7 @@ mod imp {
 
                     let enum_list_item = item.downcast_ref::<adw::EnumListItem>().unwrap();
                     let framerate_option = unsafe { FramerateOption::from_glib(enum_list_item.value()) };
-                    item_row.set_title(framerate_option.long_name());
+                    item_row.set_title(framerate_option.to_string());
 
                     unsafe {
                         list_item.set_data(
@@ -419,10 +419,6 @@ mod tests {
         assert_eq!(
             FramerateOption::from_framerate(Framerate::from_integer(20)),
             FramerateOption::_20
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::approximate_float(23.976).unwrap()),
-            FramerateOption::_23_976
         );
         assert_eq!(
             FramerateOption::from_framerate(Framerate::from_integer(24)),
