@@ -30,6 +30,7 @@ mod audio_device;
 mod cancelled;
 mod config;
 mod format_time;
+mod framerate_option;
 mod help;
 mod i18n;
 mod item_row;
