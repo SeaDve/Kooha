@@ -166,7 +166,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default, glib::Properties, gtk::CompositeTemplate)]
-    #[template(resource = "/io/github/seadve/Kooha/ui/view-port.ui")]
+    #[template(resource = "/io/github/seadve/Kooha/ui/view_port.ui")]
     #[properties(wrapper_type = super::ViewPort)]
     pub struct ViewPort {
         #[property(get, set = Self::set_paintable, explicit_notify, nullable)]

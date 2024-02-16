@@ -68,7 +68,7 @@ mod imp {
     use gtk::CompositeTemplate;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/io/github/seadve/Kooha/ui/area-selector.ui")]
+    #[template(resource = "/io/github/seadve/Kooha/ui/area_selector.ui")]
     pub struct AreaSelector {
         #[template_child]
         pub(super) window_title: TemplateChild<adw::WindowTitle>,

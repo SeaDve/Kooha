@@ -26,7 +26,7 @@ mod imp {
 
     #[derive(Debug, Default, glib::Properties, CompositeTemplate)]
     #[properties(wrapper_type = super::PreferencesDialog)]
-    #[template(resource = "/io/github/seadve/Kooha/ui/preferences-dialog.ui")]
+    #[template(resource = "/io/github/seadve/Kooha/ui/preferences_dialog.ui")]
     pub struct PreferencesDialog {
         #[property(get, set, construct_only)]
         pub(super) settings: OnceCell<Settings>,
