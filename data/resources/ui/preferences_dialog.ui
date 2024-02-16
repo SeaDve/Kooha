@@ -9,21 +9,16 @@
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">General</property>
             <child>
-              <object class="AdwActionRow">
+              <object class="AdwSpinRow" id="delay_row">
                 <property name="title" translatable="yes">Delay (Seconds)</property>
-                <child type="suffix">
-                  <object class="GtkSpinButton" id="delay_button">
-                    <property name="valign">center</property>
-                    <property name="adjustment">
-                      <object class="GtkAdjustment">
-                        <property name="lower">0</property>
-                        <property name="upper">10</property>
-                        <property name="step-increment">1</property>
-                        <property name="page-increment">5</property>
-                      </object>
-                    </property>
+                <property name="adjustment">
+                  <object class="GtkAdjustment">
+                    <property name="lower">0</property>
+                    <property name="upper">10</property>
+                    <property name="step-increment">1</property>
+                    <property name="page-increment">5</property>
                   </object>
-                </child>
+                </property>
               </object>
             </child>
             <child>

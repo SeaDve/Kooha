@@ -32,7 +32,7 @@ mod imp {
         pub(super) settings: OnceCell<Settings>,
 
         #[template_child]
-        pub(super) delay_button: TemplateChild<gtk::SpinButton>,
+        pub(super) delay_row: TemplateChild<adw::SpinRow>,
         #[template_child]
         pub(super) file_chooser_button_content: TemplateChild<adw::ButtonContent>,
         #[template_child]
@@ -168,7 +168,7 @@ mod imp {
             self.profile_row.set_model(Some(&filter_model));
 
             settings
-                .bind_record_delay(&self.delay_button.get(), "value")
+                .bind_record_delay(&self.delay_row.get(), "value")
                 .build();
 
             settings.connect_framerate_changed(clone!(@weak obj => move |_| {
