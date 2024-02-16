@@ -79,7 +79,7 @@ impl Settings {
     pub fn connect_saving_location_changed(
         &self,
         f: impl Fn(&Self) + 'static,
-    ) -> gio::glib::SignalHandlerId {
+    ) -> glib::SignalHandlerId {
         self.0
             .connect_changed(Some("saving-location"), move |settings, _| {
                 f(&Self(settings.clone()));
@@ -95,10 +95,7 @@ impl Settings {
         self.0.set("framerate", raw).unwrap();
     }
 
-    pub fn connect_framerate_changed(
-        &self,
-        f: impl Fn(&Self) + 'static,
-    ) -> gio::glib::SignalHandlerId {
+    pub fn connect_framerate_changed(&self, f: impl Fn(&Self) + 'static) -> glib::SignalHandlerId {
         self.0
             .connect_changed(Some("framerate"), move |settings, _| {
                 f(&Self(settings.clone()));
@@ -115,7 +112,7 @@ impl Settings {
 
     pub fn bind_record_delay<'a>(
         &'a self,
-        object: &'a impl IsA<gio::glib::Object>,
+        object: &'a impl IsA<glib::Object>,
         property: &'a str,
     ) -> gio::BindingBuilder<'a> {
         self.0.bind("record-delay", object, property)
@@ -142,10 +139,7 @@ impl Settings {
             .filter(|profile| profile.is_available())
     }
 
-    pub fn connect_profile_changed(
-        &self,
-        f: impl Fn(&Self) + 'static,
-    ) -> gio::glib::SignalHandlerId {
+    pub fn connect_profile_changed(&self, f: impl Fn(&Self) + 'static) -> glib::SignalHandlerId {
         self.0
             .connect_changed(Some("profile-id"), move |settings, _| {
                 f(&Self(settings.clone()));
