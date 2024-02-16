@@ -241,18 +241,13 @@ impl PreferencesDialog {
         let settings = self.settings();
         let active_profile = settings.profile();
 
-        let position = imp
-            .profile_row
-            .model()
-            .unwrap()
-            .into_iter()
-            .position(
-                |item| match (profile_from_obj(&item.unwrap()), &active_profile) {
-                    (Some(profile), Some(active_profile)) => profile.id() == active_profile.id(),
-                    (None, None) => true,
-                    _ => false,
-                },
-            );
+        let position = imp.profile_row.model().unwrap().iter().position(|item| {
+            match (profile_from_obj(&item.unwrap()), &active_profile) {
+                (Some(profile), Some(active_profile)) => profile.id() == active_profile.id(),
+                (None, None) => true,
+                _ => false,
+            }
+        });
         if let Some(position) = position {
             imp.profile_row.set_selected(position as u32);
         } else {
@@ -273,13 +268,10 @@ impl PreferencesDialog {
             .framerate_row
             .model()
             .unwrap()
-            .into_iter()
+            .iter::<BoxedAnyObject>()
             .position(|item| {
                 let item = item.unwrap();
-                let o = item
-                    .downcast_ref::<BoxedAnyObject>()
-                    .unwrap()
-                    .borrow::<FramerateOption>();
+                let o = item.borrow::<FramerateOption>();
                 *o == framerate_option
             });
         if let Some(position) = position {
