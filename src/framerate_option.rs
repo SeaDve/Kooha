@@ -1,13 +1,12 @@
 use std::fmt;
 
-use gtk::glib;
+use gtk::{gio, glib::BoxedAnyObject};
 use num_traits::Signed;
 
-use crate::pipeline::Framerate;
+use crate::{pipeline::Framerate, settings::Settings};
 
 /// The available options for the framerate.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, glib::Enum)]
-#[enum_type(name = "KoohaFramerateOption")]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum FramerateOption {
     _10,
     _20,
@@ -19,10 +18,11 @@ pub enum FramerateOption {
     _50,
     _59_94,
     _60,
+    Other(Framerate),
 }
 
 impl FramerateOption {
-    fn all() -> [Self; 10] {
+    fn all_except_other() -> [Self; 10] {
         [
             Self::_10,
             Self::_20,
@@ -37,30 +37,34 @@ impl FramerateOption {
         ]
     }
 
+    /// Returns a model of type `BoxedAnyObject`. This contains `Other` if the current settings framerate
+    /// does not match any of the predefined options.
+    pub fn model(settings: &Settings) -> gio::ListStore {
+        let list_store = gio::ListStore::new::<BoxedAnyObject>();
+
+        let items = Self::all_except_other()
+            .into_iter()
+            .map(BoxedAnyObject::new)
+            .collect::<Vec<_>>();
+        list_store.splice(0, 0, &items);
+
+        if let other @ Self::Other(_) = Self::from_framerate(settings.framerate()) {
+            list_store.append(&BoxedAnyObject::new(other));
+        }
+
+        list_store
+    }
+
     /// Returns the corresponding `FramerateOption` for the given framerate.
-    pub fn from_framerate(framerate: Framerate) -> Option<Self> {
+    pub fn from_framerate(framerate: Framerate) -> Self {
         // This must be updated if an option is added or removed.
         let epsilon = Framerate::new_raw(1, 100);
 
-        Self::all()
+        Self::all_except_other()
             .iter()
             .find(|o| (o.as_framerate() - framerate).abs() < epsilon)
             .copied()
-    }
-
-    /// Returns the closest `FramerateOption` for the given framerate.
-    pub fn from_framerate_closest(framerate: Framerate) -> Self {
-        if let Some(option) = Self::from_framerate(framerate) {
-            return option;
-        }
-
-        tracing::error!("No match for {framerate}. Using closest instead.");
-
-        Self::all()
-            .iter()
-            .min_by_key(|o| (o.as_framerate() - framerate).abs())
-            .copied()
-            .unwrap()
+            .unwrap_or(Self::Other(framerate))
     }
 
     /// Converts a `FramerateOption` to a framerate.
@@ -76,6 +80,7 @@ impl FramerateOption {
             Self::_50 => (50, 1),
             Self::_59_94 => (60_000, 1001),
             Self::_60 => (60, 1),
+            Self::Other(framerate) => return framerate,
         };
         Framerate::new_raw(numer, denom)
     }
@@ -94,6 +99,7 @@ impl fmt::Display for FramerateOption {
             Self::_50 => "50",
             Self::_59_94 => "59.94",
             Self::_60 => "60",
+            Self::Other(framerate) => return write!(f, "{}", framerate),
         })
     }
 }
@@ -105,76 +111,35 @@ mod tests {
     use super::*;
 
     #[track_caller]
-    fn test_framerate(
-        framerate: Framerate,
-        expected: Option<FramerateOption>,
-        expected_closest: FramerateOption,
-    ) {
-        assert_eq!(
-            FramerateOption::from_framerate(framerate),
-            expected,
-            "wrong expected"
-        );
-        assert_eq!(
-            FramerateOption::from_framerate_closest(framerate),
-            expected_closest,
-            "wrong closest expected"
-        );
+    fn test_framerate(framerate: Framerate, expected: FramerateOption) {
+        assert_eq!(FramerateOption::from_framerate(framerate), expected);
     }
 
     #[test]
     fn framerate_option() {
-        test_framerate(Framerate::from_integer(5), None, FramerateOption::_10);
         test_framerate(
-            Framerate::from_integer(10),
-            Some(FramerateOption::_10),
-            FramerateOption::_10,
+            Framerate::from_integer(5),
+            FramerateOption::Other(Framerate::from_integer(5)),
         );
-        test_framerate(
-            Framerate::from_integer(20),
-            Some(FramerateOption::_20),
-            FramerateOption::_20,
-        );
-        test_framerate(
-            Framerate::from_integer(24),
-            Some(FramerateOption::_24),
-            FramerateOption::_24,
-        );
-        test_framerate(
-            Framerate::from_integer(25),
-            Some(FramerateOption::_25),
-            FramerateOption::_25,
-        );
+        test_framerate(Framerate::from_integer(10), FramerateOption::_10);
+        test_framerate(Framerate::from_integer(20), FramerateOption::_20);
+        test_framerate(Framerate::from_integer(24), FramerateOption::_24);
+        test_framerate(Framerate::from_integer(25), FramerateOption::_25);
         test_framerate(
             Framerate::approximate_float(29.97).unwrap(),
-            Some(FramerateOption::_29_97),
             FramerateOption::_29_97,
         );
-        test_framerate(
-            Framerate::from_integer(30),
-            Some(FramerateOption::_30),
-            FramerateOption::_30,
-        );
-        test_framerate(
-            Framerate::from_integer(48),
-            Some(FramerateOption::_48),
-            FramerateOption::_48,
-        );
-        test_framerate(
-            Framerate::from_integer(50),
-            Some(FramerateOption::_50),
-            FramerateOption::_50,
-        );
+        test_framerate(Framerate::from_integer(30), FramerateOption::_30);
+        test_framerate(Framerate::from_integer(48), FramerateOption::_48);
+        test_framerate(Framerate::from_integer(50), FramerateOption::_50);
         test_framerate(
             Framerate::approximate_float(59.94).unwrap(),
-            Some(FramerateOption::_59_94),
             FramerateOption::_59_94,
         );
+        test_framerate(Framerate::from_integer(60), FramerateOption::_60);
         test_framerate(
-            Framerate::from_integer(60),
-            Some(FramerateOption::_60),
-            FramerateOption::_60,
+            Framerate::from_integer(120),
+            FramerateOption::Other(Framerate::from_integer(120)),
         );
-        test_framerate(Framerate::from_integer(120), None, FramerateOption::_60);
     }
 }

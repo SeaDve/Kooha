@@ -4,7 +4,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
     gio,
-    glib::{self, clone, closure, translate::FromGlib, BoxedAnyObject},
+    glib::{self, clone, closure, BoxedAnyObject},
 };
 
 use crate::{
@@ -92,8 +92,10 @@ mod imp {
                     let item = list_item.item().unwrap();
                     let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
 
-                    let enum_list_item = item.downcast_ref::<adw::EnumListItem>().unwrap();
-                    let framerate_option = unsafe { FramerateOption::from_glib(enum_list_item.value()) };
+                    let framerate_option = item
+                        .downcast_ref::<BoxedAnyObject>()
+                        .unwrap()
+                        .borrow::<FramerateOption>();
                     item_row.set_title(framerate_option.to_string());
 
                     unsafe {
@@ -118,9 +120,8 @@ mod imp {
                     }
                 }),
             )));
-            self.framerate_row.set_model(Some(&adw::EnumListModel::new(
-                FramerateOption::static_type(),
-            )));
+            self.framerate_row
+                .set_model(Some(&FramerateOption::model(&settings)));
 
             self.profile_row.set_factory(Some(&row_factory(
                 &self.profile_row,
@@ -198,9 +199,12 @@ mod imp {
             self.framerate_row
                 .connect_selected_item_notify(clone!(@weak obj => move |row| {
                     if let Some(item) = row.selected_item() {
-                        let enum_list_item = item.downcast_ref::<adw::EnumListItem>().unwrap();
-                        let framerate_option = unsafe { FramerateOption::from_glib(enum_list_item.value()) };
-                        obj.settings().set_framerate(framerate_option.as_framerate());
+                        let framerate_option = item
+                            .downcast_ref::<BoxedAnyObject>()
+                            .unwrap()
+                            .borrow::<FramerateOption>();
+                        obj.settings()
+                            .set_framerate(framerate_option.as_framerate());
                     }
                 }));
         }
@@ -263,7 +267,7 @@ impl PreferencesDialog {
         let imp = self.imp();
 
         let settings = self.settings();
-        let framerate_option = FramerateOption::from_framerate_closest(settings.framerate());
+        let framerate_option = FramerateOption::from_framerate(settings.framerate());
 
         let position = imp
             .framerate_row
@@ -272,8 +276,11 @@ impl PreferencesDialog {
             .into_iter()
             .position(|item| {
                 let item = item.unwrap();
-                let enum_list_item = item.downcast::<adw::EnumListItem>().unwrap();
-                enum_list_item.value() == framerate_option as i32
+                let o = item
+                    .downcast_ref::<BoxedAnyObject>()
+                    .unwrap()
+                    .borrow::<FramerateOption>();
+                *o == framerate_option
             });
         if let Some(position) = position {
             imp.framerate_row.set_selected(position as u32);
@@ -359,9 +366,10 @@ fn update_item_row_shows_warning_icon(settings: &Settings, list_item: &gtk::List
     let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
     let item = list_item.item().unwrap();
 
-    let enum_list_item = item.downcast_ref::<adw::EnumListItem>().unwrap();
-
-    let framerate_option = unsafe { FramerateOption::from_glib(enum_list_item.value()) };
+    let framerate_option = item
+        .downcast_ref::<BoxedAnyObject>()
+        .unwrap()
+        .borrow::<FramerateOption>();
 
     item_row.set_shows_warning_icon(settings.profile().is_some_and(|profile| {
         framerate_option.as_framerate() > profile.suggested_max_framerate()
