@@ -1,8 +1,8 @@
 data/io.github.seadve.Kooha.desktop.in.in
 data/io.github.seadve.Kooha.gschema.xml.in
 data/io.github.seadve.Kooha.metainfo.xml.in.in
-data/resources/ui/area-selector.ui
-data/resources/ui/preferences-dialog.ui
+data/resources/ui/area_selector.ui
+data/resources/ui/preferences_dialog.ui
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
 src/about.rs
