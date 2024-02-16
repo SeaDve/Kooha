@@ -68,7 +68,7 @@ impl FramerateOption {
 
     /// Converts a `FramerateOption` to a framerate.
     pub const fn as_framerate(self) -> Framerate {
-        let (numer, denom) = match self {
+        let (numerator, denominator) = match self {
             Self::_10 => (10, 1),
             Self::_20 => (20, 1),
             Self::_24 => (24, 1),
@@ -81,7 +81,7 @@ impl FramerateOption {
             Self::_60 => (60, 1),
             Self::Other(framerate) => return framerate,
         };
-        Framerate::new_raw(numer, denom)
+        Framerate::new_raw(numerator, denominator)
     }
 }
 
