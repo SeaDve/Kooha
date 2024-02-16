@@ -592,6 +592,10 @@ impl Recording {
                 tracing::debug!("Received info message on bus: {:?}", i);
                 glib::ControlFlow::Continue
             }
+            MessageView::Qos(q) => {
+                tracing::warn!("Received qos message on bus: {:?}", q);
+                glib::ControlFlow::Continue
+            }
             other => {
                 tracing::trace!("Received other message on bus: {:?}", other);
                 glib::ControlFlow::Continue
