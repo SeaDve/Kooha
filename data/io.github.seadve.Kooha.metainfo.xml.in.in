@@ -47,8 +47,9 @@
           <li>Notifications now show the duration and size of the recording</li>
           <li>Notification actions now work even when the application is closed</li>
           <li>Progress is now shown when flushing the recording</li>
+          <li>It is now much easier to pick from frame rate options</li>
           <li>Fixed focus on area selector</li>
-          <li>Fixed too small area selector window on HiDPI</li>
+          <li>Fixed too small area selector window on HiDPI monitors</li>
           <li>Improved recording performance</li>
           <li>Updated translations</li>
         </ul>
