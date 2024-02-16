@@ -61,9 +61,8 @@ impl FramerateOption {
         let epsilon = Framerate::new_raw(1, 100);
 
         Self::all_except_other()
-            .iter()
+            .into_iter()
             .find(|o| (o.as_framerate() - framerate).abs() < epsilon)
-            .copied()
             .unwrap_or(Self::Other(framerate))
     }
 
