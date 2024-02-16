@@ -32,13 +32,13 @@ mod imp {
         pub(super) settings: OnceCell<Settings>,
 
         #[template_child]
-        pub(super) profile_row: TemplateChild<adw::ComboRow>,
-        #[template_child]
-        pub(super) framerate_row: TemplateChild<adw::ComboRow>,
-        #[template_child]
         pub(super) delay_button: TemplateChild<gtk::SpinButton>,
         #[template_child]
         pub(super) file_chooser_button_content: TemplateChild<adw::ButtonContent>,
+        #[template_child]
+        pub(super) profile_row: TemplateChild<adw::ComboRow>,
+        #[template_child]
+        pub(super) framerate_row: TemplateChild<adw::ComboRow>,
     }
 
     #[glib::object_subclass]
