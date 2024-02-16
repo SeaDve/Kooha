@@ -5,21 +5,21 @@
 # Vojtěch Perník <translations@pervoj.cz>, 2021, 2022, 2023.
 # Petr Šimáček <petr.simacek@gmail.com>, 2021.
 # multiflexi <multi.flexi@seznam.cz>, 2022.
-# Fjuro <ifjuro@proton.me>, 2023.
+# Fjuro <ifjuro@proton.me>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-12 14:39+0800\n"
-"PO-Revision-Date: 2023-10-04 18:11+0000\n"
+"PO-Revision-Date: 2024-02-16 14:02+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/seadve/kooha/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.4\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -65,7 +65,7 @@ msgstr "📼 Podpora pro formáty WebM, MP4, GIF a Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Zvolte monitor nebo část obrazovky k nahrávání"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -304,29 +304,29 @@ msgstr "Připojení k PulseAudio daemonu selhalo"
 #: src/format_time.rs:22
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} hodina"
+msgstr[1] "{time} hodiny"
+msgstr[2] "{time} hodin"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:29
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} minuta"
+msgstr[1] "{time} minuty"
+msgstr[2] "{time} minut"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:36
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} sekunda"
+msgstr[1] "{time} sekundy"
+msgstr[2] "{time} sekund"
 
 #: src/preferences_dialog.rs:63
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Nepodařilo se nastavit složku pro nahrávky"
 
 #: src/preferences_dialog.rs:228
 msgid "This format is experimental and unsupported."
@@ -387,16 +387,18 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Momentálně probíhá nahrávání. Okamžité ukončení aplikace může způsobit, že "
+"nahrávka bude poškozená. Před ukončením prosím nejprve zastavte nahrávání."
 
 #: src/window.rs:195
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
+msgstr "Ukončením přerušíte zpracování a nahrávku nemusí být možné přehrát."
 
 #: src/window.rs:201
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Ukončit aplikaci?"
 
 #: src/window.rs:246
 msgid "Copy to clipboard"

@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the kooha package.
 # Heimen Stoffels <vistausss@outlook.com>, 2021.
 # Heimen Stoffels <vistausss@fastmail.com>, 2021, 2022.
-# Philip Goto <philip.goto@gmail.com>, 2023.
+# Philip Goto <philip.goto@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-12 14:39+0800\n"
-"PO-Revision-Date: 2023-10-04 18:11+0000\n"
+"PO-Revision-Date: 2024-02-16 14:02+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/seadve/kooha/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.4\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -66,7 +66,7 @@ msgstr "📼 Ondersteuning voor webm-, mp4-, gif- en mkv-formaten"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Selecteer een monitor of een deel van het scherm om op te nemen"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -304,26 +304,26 @@ msgstr ""
 #: src/format_time.rs:22
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} uur"
+msgstr[1] "{time} uur"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:29
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} minuut"
+msgstr[1] "{time} minuten"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:36
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} seconde"
+msgstr[1] "{time} seconden"
 
 #: src/preferences_dialog.rs:63
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Opname­map instellen mislukt"
 
 #: src/preferences_dialog.rs:228
 msgid "This format is experimental and unsupported."
@@ -385,16 +385,20 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Er is momenteel een opname bezig. Als u onmiddellijk stopt, kan de opname "
+"mogelijk niet meer worden afgespeeld. Stop de opname voordat u stopt."
 
 #: src/window.rs:195
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Als u stopt, wordt de verwerking geannuleerd en kan de opname mogelijk niet "
+"meer worden afgespeeld."
 
 #: src/window.rs:201
 msgid "Quit the Application?"
-msgstr ""
+msgstr "App afsluiten?"
 
 #: src/window.rs:246
 msgid "Copy to clipboard"
