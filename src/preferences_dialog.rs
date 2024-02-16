@@ -103,13 +103,13 @@ mod imp {
                             SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY,
                             settings.connect_profile_changed(
                                 clone!(@weak list_item => move |settings| {
-                                    update_item_row_shows_warning_icon(settings, &list_item);
+                                    update_framerate_row_shows_warning_icon(settings, &list_item);
                                 }),
                             ),
                         );
                     }
 
-                    update_item_row_shows_warning_icon(&settings, list_item);
+                    update_framerate_row_shows_warning_icon(&settings, list_item);
                 }),
                 clone!(@strong settings => move |list_item| {
                     unsafe {
@@ -354,7 +354,7 @@ fn update_item_row_is_selected(row: &adw::ComboRow, list_item: &gtk::ListItem) {
     item_row.set_is_selected(row.selected_item() == list_item.item());
 }
 
-fn update_item_row_shows_warning_icon(settings: &Settings, list_item: &gtk::ListItem) {
+fn update_framerate_row_shows_warning_icon(settings: &Settings, list_item: &gtk::ListItem) {
     let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
     let item = list_item.item().unwrap();
 
