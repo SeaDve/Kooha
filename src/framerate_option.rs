@@ -22,9 +22,8 @@ pub enum FramerateOption {
 }
 
 impl FramerateOption {
-    /// Returns the closest `FramerateOption` to the given `Framerate`.
-    pub fn from_framerate(framerate: Framerate) -> Self {
-        let all = [
+    fn all() -> [Self; 10] {
+        [
             Self::_10,
             Self::_20,
             Self::_24,
@@ -35,19 +34,37 @@ impl FramerateOption {
             Self::_50,
             Self::_59_94,
             Self::_60,
-        ];
+        ]
+    }
 
-        *all.iter()
-            .min_by(|a, b| {
-                (a.to_framerate() - framerate)
-                    .abs()
-                    .cmp(&(b.to_framerate() - framerate).abs())
-            })
+    /// Returns the corresponding `FramerateOption` for the given framerate.
+    pub fn from_framerate(framerate: Framerate) -> Option<Self> {
+        // This must be updated if an option is added or removed.
+        let epsilon = Framerate::new_raw(1, 100);
+
+        Self::all()
+            .iter()
+            .find(|o| (o.as_framerate() - framerate).abs() < epsilon)
+            .copied()
+    }
+
+    /// Returns the closest `FramerateOption` for the given framerate.
+    pub fn from_framerate_closest(framerate: Framerate) -> Self {
+        if let Some(option) = Self::from_framerate(framerate) {
+            return option;
+        }
+
+        tracing::error!("No match for {framerate}. Using closest instead.");
+
+        Self::all()
+            .iter()
+            .min_by_key(|o| (o.as_framerate() - framerate).abs())
+            .copied()
             .unwrap()
     }
 
-    /// Converts a `FramerateOption` to a `Framerate`.
-    pub fn to_framerate(self) -> Framerate {
+    /// Converts a `FramerateOption` to a framerate.
+    pub const fn as_framerate(self) -> Framerate {
         let (numer, denom) = match self {
             Self::_10 => (10, 1),
             Self::_20 => (20, 1),
@@ -60,7 +77,7 @@ impl FramerateOption {
             Self::_59_94 => (60_000, 1001),
             Self::_60 => (60, 1),
         };
-        Framerate::new(numer, denom)
+        Framerate::new_raw(numer, denom)
     }
 }
 
@@ -78,5 +95,86 @@ impl fmt::Display for FramerateOption {
             Self::_59_94 => "59.94",
             Self::_60 => "60",
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::pipeline::Framerate;
+
+    use super::*;
+
+    #[track_caller]
+    fn test_framerate(
+        framerate: Framerate,
+        expected: Option<FramerateOption>,
+        expected_closest: FramerateOption,
+    ) {
+        assert_eq!(
+            FramerateOption::from_framerate(framerate),
+            expected,
+            "wrong expected"
+        );
+        assert_eq!(
+            FramerateOption::from_framerate_closest(framerate),
+            expected_closest,
+            "wrong closest expected"
+        );
+    }
+
+    #[test]
+    fn framerate_option() {
+        test_framerate(Framerate::from_integer(5), None, FramerateOption::_10);
+        test_framerate(
+            Framerate::from_integer(10),
+            Some(FramerateOption::_10),
+            FramerateOption::_10,
+        );
+        test_framerate(
+            Framerate::from_integer(20),
+            Some(FramerateOption::_20),
+            FramerateOption::_20,
+        );
+        test_framerate(
+            Framerate::from_integer(24),
+            Some(FramerateOption::_24),
+            FramerateOption::_24,
+        );
+        test_framerate(
+            Framerate::from_integer(25),
+            Some(FramerateOption::_25),
+            FramerateOption::_25,
+        );
+        test_framerate(
+            Framerate::approximate_float(29.97).unwrap(),
+            Some(FramerateOption::_29_97),
+            FramerateOption::_29_97,
+        );
+        test_framerate(
+            Framerate::from_integer(30),
+            Some(FramerateOption::_30),
+            FramerateOption::_30,
+        );
+        test_framerate(
+            Framerate::from_integer(48),
+            Some(FramerateOption::_48),
+            FramerateOption::_48,
+        );
+        test_framerate(
+            Framerate::from_integer(50),
+            Some(FramerateOption::_50),
+            FramerateOption::_50,
+        );
+        test_framerate(
+            Framerate::approximate_float(59.94).unwrap(),
+            Some(FramerateOption::_59_94),
+            FramerateOption::_59_94,
+        );
+        test_framerate(
+            Framerate::from_integer(60),
+            Some(FramerateOption::_60),
+            FramerateOption::_60,
+        );
+        test_framerate(Framerate::from_integer(120), None, FramerateOption::_60);
     }
 }

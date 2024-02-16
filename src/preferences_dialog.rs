@@ -200,7 +200,7 @@ mod imp {
                     if let Some(item) = row.selected_item() {
                         let enum_list_item = item.downcast_ref::<adw::EnumListItem>().unwrap();
                         let framerate_option = unsafe { FramerateOption::from_glib(enum_list_item.value()) };
-                        obj.settings().set_framerate(framerate_option.to_framerate());
+                        obj.settings().set_framerate(framerate_option.as_framerate());
                     }
                 }));
         }
@@ -263,7 +263,7 @@ impl PreferencesDialog {
         let imp = self.imp();
 
         let settings = self.settings();
-        let framerate_option = FramerateOption::from_framerate(settings.framerate());
+        let framerate_option = FramerateOption::from_framerate_closest(settings.framerate());
 
         let position = imp
             .framerate_row
@@ -364,7 +364,7 @@ fn update_item_row_shows_warning_icon(settings: &Settings, list_item: &gtk::List
     let framerate_option = unsafe { FramerateOption::from_glib(enum_list_item.value()) };
 
     item_row.set_shows_warning_icon(settings.profile().is_some_and(|profile| {
-        framerate_option.to_framerate() > profile.suggested_max_framerate()
+        framerate_option.as_framerate() > profile.suggested_max_framerate()
     }));
 }
 
@@ -398,63 +398,4 @@ fn display_path(path: &Path) -> String {
     }
 
     path_display
-}
-
-#[cfg(test)]
-mod tests {
-    use crate::pipeline::Framerate;
-
-    use super::*;
-
-    #[test]
-    fn framerate_option() {
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(5)),
-            FramerateOption::_10
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(10)),
-            FramerateOption::_10
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(20)),
-            FramerateOption::_20
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(24)),
-            FramerateOption::_24
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(25)),
-            FramerateOption::_25
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::approximate_float(29.97).unwrap()),
-            FramerateOption::_29_97
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(30)),
-            FramerateOption::_30
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(48)),
-            FramerateOption::_48
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(50)),
-            FramerateOption::_50
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::approximate_float(59.94).unwrap()),
-            FramerateOption::_59_94
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(60)),
-            FramerateOption::_60
-        );
-        assert_eq!(
-            FramerateOption::from_framerate(Framerate::from_integer(120)),
-            FramerateOption::_60
-        );
-    }
 }

@@ -518,7 +518,7 @@ impl Window {
         let profile_text = settings
             .profile()
             .map_or_else(|| gettext("None"), |profile| profile.name().to_string());
-        let framerate_option = FramerateOption::from_framerate(settings.framerate());
+        let framerate_option = FramerateOption::from_framerate_closest(settings.framerate());
 
         imp.title
             .set_subtitle(&format!("{} • {} FPS", profile_text, framerate_option));
