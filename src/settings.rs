@@ -91,9 +91,8 @@ impl Settings {
     }
 
     pub fn set_framerate(&self, framerate: Framerate) {
-        self.0
-            .set("framerate", (framerate.numer(), framerate.denom()))
-            .unwrap();
+        let raw: (i32, i32) = framerate.into();
+        self.0.set("framerate", raw).unwrap();
     }
 
     pub fn connect_framerate_changed(
