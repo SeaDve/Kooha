@@ -313,7 +313,7 @@ fn row_factory(
         if item_row.ancestor(gtk::Popover::static_type()).is_some() {
             debug_assert!(row.ancestor(gtk::Popover::static_type()).is_none());
 
-            item_row.set_shows_selected_icon(true);
+            item_row.set_is_on_popover(true);
 
             unsafe {
                 list_item.set_data(
@@ -326,7 +326,7 @@ fn row_factory(
 
             update_item_row_is_selected(&row, list_item);
         } else {
-            item_row.set_shows_selected_icon(false);
+            item_row.set_is_on_popover(false);
         }
 
         bind_cb(list_item);

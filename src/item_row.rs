@@ -15,17 +15,19 @@ mod imp {
         pub(super) warning_tooltip_text: RefCell<String>,
         #[property(get, set = Self::set_shows_warning_icon, explicit_notify)]
         pub(super) shows_warning_icon: Cell<bool>,
-        #[property(get, set = Self::set_shows_selected_icon, explicit_notify)]
-        pub(super) shows_selected_icon: Cell<bool>,
+        #[property(get, set = Self::set_is_on_popover, explicit_notify)]
+        pub(super) is_on_popover: Cell<bool>,
         #[property(get, set = Self::set_is_selected, explicit_notify)]
         pub(super) is_selected: Cell<bool>,
 
         #[template_child]
-        pub(super) warning_icon: TemplateChild<gtk::Image>,
+        pub(super) start_warning_icon: TemplateChild<gtk::Image>,
         #[template_child]
         pub(super) title_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub(super) selected_icon: TemplateChild<gtk::Image>,
+        #[template_child]
+        pub(super) end_warning_icon: TemplateChild<gtk::Image>,
     }
 
     #[glib::object_subclass]
@@ -52,7 +54,7 @@ mod imp {
 
             obj.update_title_label();
             obj.update_warning_icon_tooltip_text();
-            obj.update_warning_icon_visibility();
+            obj.update_warning_icons_visibility();
             obj.update_selected_icon_visibility();
             obj.update_selected_icon_opacity();
         }
@@ -97,20 +99,21 @@ mod imp {
             }
 
             self.shows_warning_icon.set(shows_warning_icon);
-            obj.update_warning_icon_visibility();
+            obj.update_warning_icons_visibility();
             obj.notify_shows_warning_icon();
         }
 
-        fn set_shows_selected_icon(&self, shows_selected_icon: bool) {
+        fn set_is_on_popover(&self, is_on_popover: bool) {
             let obj = self.obj();
 
-            if shows_selected_icon == obj.shows_selected_icon() {
+            if is_on_popover == obj.is_on_popover() {
                 return;
             }
 
-            self.shows_selected_icon.set(shows_selected_icon);
+            self.is_on_popover.set(is_on_popover);
             obj.update_selected_icon_visibility();
-            obj.notify_shows_selected_icon();
+            obj.update_warning_icons_visibility();
+            obj.notify_is_on_popover();
         }
 
         fn set_is_selected(&self, is_selected: bool) {
@@ -144,18 +147,28 @@ impl ItemRow {
 
     fn update_warning_icon_tooltip_text(&self) {
         let imp = self.imp();
-        imp.warning_icon
-            .set_tooltip_text(Some(&self.warning_tooltip_text()));
+
+        let warning_tooltip_text = Some(self.warning_tooltip_text()).filter(|s| !s.is_empty());
+        imp.start_warning_icon
+            .set_tooltip_text(warning_tooltip_text.as_deref());
+        imp.end_warning_icon
+            .set_tooltip_text(warning_tooltip_text.as_deref());
     }
 
-    fn update_warning_icon_visibility(&self) {
+    fn update_warning_icons_visibility(&self) {
         let imp = self.imp();
-        imp.warning_icon.set_visible(self.shows_warning_icon());
+
+        let is_on_popover = self.is_on_popover();
+        let shows_warning_icon = self.shows_warning_icon();
+        imp.start_warning_icon
+            .set_visible(shows_warning_icon && !is_on_popover);
+        imp.end_warning_icon
+            .set_visible(shows_warning_icon && is_on_popover);
     }
 
     fn update_selected_icon_visibility(&self) {
         let imp = self.imp();
-        imp.selected_icon.set_visible(self.shows_selected_icon());
+        imp.selected_icon.set_visible(self.is_on_popover());
     }
 
     fn update_selected_icon_opacity(&self) {
