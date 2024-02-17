@@ -1,6 +1,8 @@
 use crate::i18n::ngettext_f;
 
-/// Formats time in MM:SS. The MM part will be more than 2 digits if the time is >= 1 hour.
+/// Formats time in MM:SS.
+///
+/// The MM part will be more than 2 digits if the time is >= 100 minutes.
 pub fn digital_clock(clock_time: gst::ClockTime) -> String {
     let secs = clock_time.seconds();
 
