@@ -65,12 +65,6 @@ checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
 name = "bitflags"
-version = "1.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
-
-[[package]]
-name = "bitflags"
 version = "2.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ed570934406eb16438a4e976b1b4500774099c13b8cb96eec99f620f05090ddf"
@@ -93,7 +87,7 @@ version = "0.19.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bc1c415b7088381c53c575420899c34c9e6312df5ac5defd05614210e9fd6e1b"
 dependencies = [
- "bitflags 2.4.2",
+ "bitflags",
  "cairo-sys-rs",
  "glib",
  "libc",
@@ -520,7 +514,7 @@ version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "170ee82b9b44b3b5fd1cf4971d6cf0eadec38303bb84c7bcc4e6b95a18934e71"
 dependencies = [
- "bitflags 2.4.2",
+ "bitflags",
  "futures-channel",
  "futures-core",
  "futures-executor",
@@ -951,9 +945,8 @@ dependencies = [
  "gst-plugin-gtk4",
  "gstreamer",
  "gtk4",
+ "indexmap",
  "libadwaita",
- "libpulse-binding",
- "libpulse-glib-binding",
  "num-rational",
  "num-traits",
  "once_cell",
@@ -1006,56 +999,6 @@ name = "libc"
 version = "0.2.153"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9c198f91728a82281a64e1f4f9eeb25d82cb32a5de251c6bd1b5154d63a8e7bd"
-
-[[package]]
-name = "libpulse-binding"
-version = "2.28.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ed3557a2dfc380c8f061189a01c6ae7348354e0c9886038dc6c171219c08eaff"
-dependencies = [
- "bitflags 1.3.2",
- "libc",
- "libpulse-sys",
- "num-derive",
- "num-traits",
- "winapi",
-]
-
-[[package]]
-name = "libpulse-glib-binding"
-version = "2.28.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "72bb604d4f32d4c60e02581a67f9d9fd7500cb963ad984cee032013edeaf6bee"
-dependencies = [
- "glib",
- "glib-sys",
- "libpulse-binding",
- "libpulse-mainloop-glib-sys",
-]
-
-[[package]]
-name = "libpulse-mainloop-glib-sys"
-version = "1.21.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "00f9e6fbee0a60ac3f5751e3cc68eeaf9bff9d2687502df17b5c726220217531"
-dependencies = [
- "glib-sys",
- "libpulse-sys",
- "pkg-config",
-]
-
-[[package]]
-name = "libpulse-sys"
-version = "1.21.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc19e110fbf42c17260d30f6d3dc545f58491c7830d38ecb9aaca96e26067a9b"
-dependencies = [
- "libc",
- "num-derive",
- "num-traits",
- "pkg-config",
- "winapi",
-]
 
 [[package]]
 name = "locale_config"
@@ -1114,17 +1057,6 @@ checksum = "77a8165726e8236064dbb45459242600304b42a5ea24ee2948e18e023bf7ba84"
 dependencies = [
  "overload",
  "winapi",
-]
-
-[[package]]
-name = "num-derive"
-version = "0.3.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "876a53fff98e03a936a674b29568b0e605f06b29372c2489ff4de23f1949743d"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 1.0.109",
 ]
 
 [[package]]

@@ -17,8 +17,6 @@ dependency('gtk4', version: '>= 4.13')
 dependency('libadwaita-1', version: '>= 1.5')
 dependency('gstreamer-1.0', version: '>= 1.22')
 dependency('gstreamer-plugins-base-1.0', version: '>= 1.22')
-dependency('libpulse-mainloop-glib', version: '>= 16.0')
-dependency('libpulse', version: '>= 16.0')
 
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)

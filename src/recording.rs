@@ -20,8 +20,8 @@ use gtk::{
 use crate::{
     application::Application,
     area_selector::AreaSelector,
-    audio_device::{self, AudioDeviceClass},
     cancelled::Cancelled,
+    device_manager::KoohaDeviceExt,
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
     pipeline::PipelineBuilder,
@@ -224,19 +224,27 @@ impl Recording {
 
         // setup audio sources
         if profile_supports_audio {
+            let application = Application::get();
+
             if settings.record_mic() {
-                pipeline_builder.mic_source(
-                    audio_device::find_default_name(AudioDeviceClass::Source)
-                        .await
-                        .with_context(|| gettext("No microphone source found"))?,
-                );
+                let device = application
+                    .microphone_manager()
+                    .selected_device()
+                    .context("No selected microphone")?;
+                let audiosrc = device
+                    .create_audiosrc()
+                    .context("Failed to create microphone audiosrc")?;
+                pipeline_builder.microphone_src(audiosrc);
             }
             if settings.record_speaker() {
-                pipeline_builder.speaker_source(
-                    audio_device::find_default_name(AudioDeviceClass::Sink)
-                        .await
-                        .with_context(|| gettext("No desktop speaker source found"))?,
-                );
+                let device = application
+                    .desktop_audio_manager()
+                    .selected_device()
+                    .context("No selected desktop speaker")?;
+                let audiosrc = device
+                    .create_audiosrc()
+                    .context("Failed to create desktop speaker audiosrc")?;
+                pipeline_builder.desktop_audio_src(audiosrc);
             }
         }
 

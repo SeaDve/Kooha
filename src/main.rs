@@ -26,9 +26,9 @@
 mod about;
 mod application;
 mod area_selector;
-mod audio_device;
 mod cancelled;
 mod config;
+mod device_manager;
 mod format_time;
 mod framerate_option;
 mod help;
