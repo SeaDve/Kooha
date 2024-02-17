@@ -196,6 +196,8 @@ impl Recording {
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
         let file_path = new_recording_path(&settings.saving_location(), profile.file_extension());
+        imp.file.set(gio::File::for_path(&file_path)).unwrap();
+
         let mut pipeline_builder = PipelineBuilder::new(
             &file_path,
             settings.framerate(),
@@ -209,18 +211,6 @@ impl Recording {
             let data = AreaSelector::select(fd, &streams, &Application::get().window()).await?;
             pipeline_builder.select_area_data(data);
         }
-
-        // setup timer
-        let timer = Timer::new(
-            settings.record_delay(),
-            clone!(@weak self as obj => move |secs_left| {
-                obj.set_state(RecordingState::Delayed {
-                    secs_left
-                });
-            }),
-        );
-        imp.timer.replace(Some(Timer::clone(&timer)));
-        timer.await?;
 
         // setup audio sources
         if profile_supports_audio {
@@ -258,7 +248,18 @@ impl Recording {
         // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
         pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
 
-        imp.file.set(gio::File::for_path(file_path)).unwrap();
+        // setup timer
+        let timer = Timer::new(
+            settings.record_delay(),
+            clone!(@weak self as obj => move |secs_left| {
+                obj.set_state(RecordingState::Delayed {
+                    secs_left
+                });
+            }),
+        );
+        imp.timer.replace(Some(Timer::clone(&timer)));
+        timer.await?;
+
         let bus_watch_guard = pipeline
             .bus()
             .unwrap()
