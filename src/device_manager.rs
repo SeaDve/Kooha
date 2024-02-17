@@ -196,7 +196,7 @@ impl DeviceManager {
             self.items_changed(position as u32, 1, 1);
         }
 
-        if device.is_default() {
+        if self.selected_device().is_none() && device.is_default() {
             self.set_selected_device(Some(device.clone()));
         }
     }
