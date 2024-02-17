@@ -8,6 +8,7 @@ use gtk::{
 use crate::{
     about,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
+    device_manager::{DeviceClass, DeviceManager},
     format_time,
     preferences_dialog::PreferencesDialog,
     settings::Settings,
@@ -22,6 +23,9 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct Application {
         pub(super) settings: OnceCell<Settings>,
+
+        pub(super) desktop_audio_manager: OnceCell<DeviceManager>,
+        pub(super) microphone_manger: OnceCell<DeviceManager>,
     }
 
     #[glib::object_subclass]
@@ -52,6 +56,13 @@ mod imp {
             self.parent_startup();
 
             gtk::Window::set_default_icon_name(APP_ID);
+
+            self.desktop_audio_manager
+                .set(DeviceManager::new(DeviceClass::Sink))
+                .unwrap();
+            self.microphone_manger
+                .set(DeviceManager::new(DeviceClass::Source))
+                .unwrap();
 
             let obj = self.obj();
 
@@ -106,6 +117,14 @@ impl Application {
         })
     }
 
+    pub fn desktop_audio_manager(&self) -> &DeviceManager {
+        self.imp().desktop_audio_manager.get().unwrap()
+    }
+
+    pub fn microphone_manager(&self) -> &DeviceManager {
+        self.imp().microphone_manger.get().unwrap()
+    }
+
     pub fn window(&self) -> Window {
         self.active_window()
             .map_or_else(|| Window::new(self), |w| w.downcast().unwrap())
@@ -150,7 +169,11 @@ impl Application {
     }
 
     pub fn present_preferences_dialog(&self) {
-        let dialog = PreferencesDialog::new(self.settings());
+        let dialog = PreferencesDialog::new(
+            self.settings(),
+            self.desktop_audio_manager(),
+            self.microphone_manager(),
+        );
         dialog.present(&self.window());
     }
 

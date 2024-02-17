@@ -8,7 +8,11 @@ use gtk::{
 };
 
 use crate::{
-    framerate_option::FramerateOption, item_row::ItemRow, profile::Profile, settings::Settings,
+    device_manager::{DeviceManager, KoohaDeviceExt},
+    framerate_option::FramerateOption,
+    item_row::ItemRow,
+    profile::Profile,
+    settings::Settings,
     IS_EXPERIMENTAL_MODE,
 };
 
@@ -17,6 +21,9 @@ const SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY: &str = "kooha-settings-profile-ch
 
 /// Used to represent "none" profile in the profiles model
 type NoneProfile = BoxedAnyObject;
+
+/// Used to represent `None` device in the device model
+type NoneDevice = BoxedAnyObject;
 
 mod imp {
     use std::cell::OnceCell;
@@ -30,6 +37,10 @@ mod imp {
     pub struct PreferencesDialog {
         #[property(get, set, construct_only)]
         pub(super) settings: OnceCell<Settings>,
+        #[property(get, set, construct_only)]
+        pub(super) desktop_audio_manager: OnceCell<DeviceManager>,
+        #[property(get, set, construct_only)]
+        pub(super) microphone_manager: OnceCell<DeviceManager>,
 
         #[template_child]
         pub(super) delay_row: TemplateChild<adw::SpinRow>,
@@ -39,6 +50,10 @@ mod imp {
         pub(super) profile_row: TemplateChild<adw::ComboRow>,
         #[template_child]
         pub(super) framerate_row: TemplateChild<adw::ComboRow>,
+        #[template_child]
+        pub(super) microphone_row: TemplateChild<adw::ComboRow>,
+        #[template_child]
+        pub(super) desktop_audio_row: TemplateChild<adw::ComboRow>,
     }
 
     #[glib::object_subclass]
@@ -167,25 +182,51 @@ mod imp {
 
             self.profile_row.set_model(Some(&filter_model));
 
+            let device_name_expression = gtk::ClosureExpression::new::<String>(
+                &[] as &[&gtk::Expression],
+                closure!(|obj: glib::Object| {
+                    device_from_obj(&obj)
+                        .map_or_else(|| gettext("None"), |device| device.display_name())
+                }),
+            );
+
+            let desktop_audio_manager = obj.desktop_audio_manager();
+            let microphone_manager = obj.microphone_manager();
+
+            self.desktop_audio_row
+                .set_expression(Some(&device_name_expression));
+            self.desktop_audio_row
+                .set_model(Some(&device_model_with_none(&desktop_audio_manager)));
+
+            self.microphone_row
+                .set_expression(Some(&device_name_expression));
+            self.microphone_row
+                .set_model(Some(&device_model_with_none(&microphone_manager)));
+
             settings
                 .bind_record_delay(&self.delay_row.get(), "value")
                 .build();
-
-            settings.connect_framerate_changed(clone!(@weak obj => move |_| {
-                obj.update_framerate_row();
-            }));
-
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
                 obj.update_file_chooser_button();
             }));
-
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row();
+            }));
+            settings.connect_framerate_changed(clone!(@weak obj => move |_| {
+                obj.update_framerate_row();
+            }));
+            desktop_audio_manager.connect_selected_device_notify(clone!(@weak obj => move |_| {
+                obj.update_desktop_audio_row();
+            }));
+            microphone_manager.connect_selected_device_notify(clone!(@weak obj => move |_| {
+                obj.update_microphone_row();
             }));
 
             obj.update_file_chooser_button();
             obj.update_profile_row();
             obj.update_framerate_row();
+            obj.update_desktop_audio_row();
+            obj.update_microphone_row();
 
             // Load last active value first in `update_*_row` before connecting to
             // the signal to avoid unnecessary updates.
@@ -207,6 +248,20 @@ mod imp {
                             .set_framerate(framerate_option.as_framerate());
                     }
                 }));
+            self.desktop_audio_row
+                .connect_selected_item_notify(clone!(@weak obj => move |row| {
+                    if let Some(item) = row.selected_item() {
+                        let device = device_from_obj(&item);
+                        obj.desktop_audio_manager().set_selected_device(device);
+                    }
+                }));
+            self.microphone_row
+                .connect_selected_item_notify(clone!(@weak obj => move |row| {
+                    if let Some(item) = row.selected_item() {
+                        let device = device_from_obj(&item);
+                        obj.microphone_manager().set_selected_device(device);
+                    }
+                }));
         }
     }
 
@@ -221,9 +276,15 @@ glib::wrapper! {
 }
 
 impl PreferencesDialog {
-    pub fn new(settings: &Settings) -> Self {
+    pub fn new(
+        settings: &Settings,
+        desktop_audio_manager: &DeviceManager,
+        microphone_manager: &DeviceManager,
+    ) -> Self {
         glib::Object::builder()
             .property("settings", settings)
+            .property("desktop-audio-manager", desktop_audio_manager)
+            .property("microphone-manager", microphone_manager)
             .build()
     }
 
@@ -280,6 +341,57 @@ impl PreferencesDialog {
             tracing::error!(
                 "Active framerate `{:?}` was not found on framerate model",
                 framerate_option
+            );
+        }
+    }
+
+    fn update_desktop_audio_row(&self) {
+        let imp = self.imp();
+
+        let desktop_audio_manager = self.desktop_audio_manager();
+        let selected_device = desktop_audio_manager.selected_device();
+
+        let position = imp
+            .desktop_audio_row
+            .model()
+            .unwrap()
+            .iter()
+            .position(
+                |item| match (device_from_obj(&item.unwrap()), &selected_device) {
+                    (Some(device), Some(selected_device)) => device == selected_device,
+                    (None, None) => true,
+                    _ => false,
+                },
+            );
+        if let Some(position) = position {
+            imp.desktop_audio_row.set_selected(position as u32);
+        } else {
+            tracing::error!(
+                "Active desktop audio device `{:?}` was not found on desktop audio model",
+                selected_device.as_ref().map(|d| d.display_name())
+            );
+        }
+    }
+
+    fn update_microphone_row(&self) {
+        let imp = self.imp();
+
+        let microphone_manager = self.microphone_manager();
+        let selected_device = microphone_manager.selected_device();
+
+        let position = imp.microphone_row.model().unwrap().iter().position(|item| {
+            match (device_from_obj(&item.unwrap()), &selected_device) {
+                (Some(device), Some(selected_device)) => device == selected_device,
+                (None, None) => true,
+                _ => false,
+            }
+        });
+        if let Some(position) = position {
+            imp.microphone_row.set_selected(position as u32);
+        } else {
+            tracing::error!(
+                "Active microphone device `{:?}` was not found on microphone model",
+                selected_device.as_ref().map(|d| d.display_name())
             );
         }
     }
@@ -378,6 +490,30 @@ fn profile_from_obj(obj: &glib::Object) -> Option<&Profile> {
         tracing::warn!("Unexpected object type `{}`", obj.type_());
         None
     }
+}
+
+/// Returns `Some` if the object is a `gst::Device`, otherwise `None`, if the object is a `NoneDevice`.
+fn device_from_obj(obj: &glib::Object) -> Option<&gst::Device> {
+    if let Some(device) = obj.downcast_ref::<gst::Device>() {
+        Some(device)
+    } else if obj.downcast_ref::<NoneDevice>().is_some() {
+        None
+    } else {
+        tracing::warn!("Unexpected object type `{}`", obj.type_());
+        None
+    }
+}
+
+fn device_model_with_none(device_manager: &DeviceManager) -> gtk::FlattenListModel {
+    let top_model = gio::ListStore::new::<gio::ListModel>();
+
+    let none_model = gio::ListStore::new::<NoneDevice>();
+    none_model.append(&NoneDevice::new(()));
+
+    top_model.append(&none_model);
+    top_model.append(device_manager);
+
+    gtk::FlattenListModel::new(Some(top_model))
 }
 
 // Copied from Delineate

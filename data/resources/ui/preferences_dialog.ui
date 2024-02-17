@@ -55,6 +55,21 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Audio</property>
+            <child>
+              <object class="AdwComboRow" id="desktop_audio_row">
+                <property name="title" translatable="yes">Desktop Audio Device</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwComboRow" id="microphone_row">
+                <property name="title" translatable="yes">Microphone Device</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>

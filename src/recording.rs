@@ -20,8 +20,8 @@ use gtk::{
 use crate::{
     application::Application,
     area_selector::AreaSelector,
-    audio_device::{self, AudioDeviceClass},
     cancelled::Cancelled,
+    device_manager::KoohaDeviceExt,
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
     pipeline::PipelineBuilder,
@@ -196,6 +196,8 @@ impl Recording {
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
         let file_path = new_recording_path(&settings.saving_location(), profile.file_extension());
+        imp.file.set(gio::File::for_path(&file_path)).unwrap();
+
         let mut pipeline_builder = PipelineBuilder::new(
             &file_path,
             settings.framerate(),
@@ -210,33 +212,29 @@ impl Recording {
             pipeline_builder.select_area_data(data);
         }
 
-        // setup timer
-        let timer = Timer::new(
-            settings.record_delay(),
-            clone!(@weak self as obj => move |secs_left| {
-                obj.set_state(RecordingState::Delayed {
-                    secs_left
-                });
-            }),
-        );
-        imp.timer.replace(Some(Timer::clone(&timer)));
-        timer.await?;
-
         // setup audio sources
         if profile_supports_audio {
+            let application = Application::get();
+
             if settings.record_mic() {
-                pipeline_builder.mic_source(
-                    audio_device::find_default_name(AudioDeviceClass::Source)
-                        .await
-                        .with_context(|| gettext("No microphone source found"))?,
-                );
+                let device = application
+                    .microphone_manager()
+                    .selected_device()
+                    .context("No selected microphone")?;
+                let audiosrc = device
+                    .create_audiosrc()
+                    .context("Failed to create microphone audiosrc")?;
+                pipeline_builder.microphone_src(audiosrc);
             }
             if settings.record_speaker() {
-                pipeline_builder.speaker_source(
-                    audio_device::find_default_name(AudioDeviceClass::Sink)
-                        .await
-                        .with_context(|| gettext("No desktop speaker source found"))?,
-                );
+                let device = application
+                    .desktop_audio_manager()
+                    .selected_device()
+                    .context("No selected desktop speaker")?;
+                let audiosrc = device
+                    .create_audiosrc()
+                    .context("Failed to create desktop speaker audiosrc")?;
+                pipeline_builder.desktop_audio_src(audiosrc);
             }
         }
 
@@ -250,7 +248,18 @@ impl Recording {
         // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
         pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
 
-        imp.file.set(gio::File::for_path(file_path)).unwrap();
+        // setup timer
+        let timer = Timer::new(
+            settings.record_delay(),
+            clone!(@weak self as obj => move |secs_left| {
+                obj.set_state(RecordingState::Delayed {
+                    secs_left
+                });
+            }),
+        );
+        imp.timer.replace(Some(Timer::clone(&timer)));
+        timer.await?;
+
         let bus_watch_guard = pipeline
             .bus()
             .unwrap()

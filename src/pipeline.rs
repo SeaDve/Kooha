@@ -1,4 +1,4 @@
-use anyhow::{bail, Context, Ok, Result};
+use anyhow::{bail, ensure, Context, Ok, Result};
 use gst::prelude::*;
 use gtk::graphene::Rect;
 use num_rational::Rational32;
@@ -23,8 +23,8 @@ pub struct PipelineBuilder {
     profile: Profile,
     fd: RawFd,
     streams: Vec<Stream>,
-    speaker_source: Option<String>,
-    mic_source: Option<String>,
+    desktop_audio_src: Option<gst::Element>,
+    microphone_src: Option<gst::Element>,
     select_area_data: Option<SelectAreaData>,
 }
 
@@ -42,19 +42,19 @@ impl PipelineBuilder {
             profile,
             fd,
             streams,
-            speaker_source: None,
-            mic_source: None,
+            desktop_audio_src: None,
+            microphone_src: None,
             select_area_data: None,
         }
     }
 
-    pub fn speaker_source(&mut self, speaker_source: String) -> &mut Self {
-        self.speaker_source = Some(speaker_source);
+    pub fn desktop_audio_src(&mut self, desktop_audio_src: gst::Element) -> &mut Self {
+        self.desktop_audio_src = Some(desktop_audio_src);
         self
     }
 
-    pub fn mic_source(&mut self, mic_source: String) -> &mut Self {
-        self.mic_source = Some(mic_source);
+    pub fn microphone_src(&mut self, microphone_src: gst::Element) -> &mut Self {
+        self.microphone_src = Some(microphone_src);
         self
     }
 
@@ -70,8 +70,6 @@ impl PipelineBuilder {
             profile = ?self.profile.id(),
             stream_len = self.streams.len(),
             streams = ?self.streams,
-            speaker_source = ?self.speaker_source,
-            mic_source = ?self.mic_source,
             select_area_data = ?self.select_area_data,
         );
 
@@ -98,12 +96,12 @@ impl PipelineBuilder {
         pipeline.add_many([videosrc_bin.upcast_ref(), &videoenc_queue, &filesink])?;
         videosrc_bin.link(&videoenc_queue)?;
 
-        let has_audio_source = self.speaker_source.is_some() || self.mic_source.is_some();
+        let has_audio_source = self.desktop_audio_src.is_some() || self.microphone_src.is_some();
         let audioenc_queue = if self.profile.supports_audio() && has_audio_source {
             let audiosrc_bin = make_pulsesrc_bin(
-                [&self.speaker_source, &self.mic_source]
+                [&self.desktop_audio_src, &self.microphone_src]
                     .into_iter()
-                    .filter_map(|s| s.as_deref()),
+                    .flatten(),
             )
             .context("Failed to create audiosrc bin")?;
             let audioenc_queue = gst::ElementFactory::make("queue").build()?;
@@ -328,7 +326,9 @@ pub fn make_pipewiresrc_bin(
 /// pulsesrc2 -> audiorate -> | -> audiomixer
 ///                           |
 /// pulsesrcn -> audiorate -> |
-fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Result<gst::Bin> {
+fn make_pulsesrc_bin<'a>(
+    src_elements: impl IntoIterator<Item = &'a gst::Element>,
+) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pulsesrc-bin").build();
 
     let audiomixer = gst::ElementFactory::make("audiomixer")
@@ -347,18 +347,30 @@ fn make_pulsesrc_bin<'a>(device_names: impl IntoIterator<Item = &'a str>) -> Res
         .field("rate", AUDIO_SAMPLE_RATE)
         .field("channels", AUDIO_N_CHANNELS)
         .build();
-    for device_name in device_names {
-        let pulsesrc = gst::ElementFactory::make("pulsesrc")
-            .property("device", device_name)
-            .property("provide-clock", false)
-            .property("do-timestamp", true)
-            .build()?;
+    for audiosrc in src_elements {
+        let factory_name = audiosrc.factory().map(|f| f.name());
+        ensure!(
+            factory_name.as_ref().is_some_and(|n| n == "pulsesrc"),
+            "Unexpected source element factory `{:?}`",
+            factory_name
+        );
+
+        let device_name = audiosrc
+            .property::<Option<String>>("device")
+            .context("No device name")?;
+        ensure!(!device_name.is_empty(), "Empty device name");
+
+        tracing::debug!("Found pulsesrc with device name `{:?}`", device_name);
+
+        audiosrc.set_property("provide-clock", false);
+        audiosrc.set_property("do-timestamp", true);
+
         let audiorate = gst::ElementFactory::make("audiorate")
             .property("skip-to-first", true)
             .build()?;
 
-        bin.add_many([&pulsesrc, &audiorate])?;
-        pulsesrc.link_filtered(&audiorate, &pulsesrc_caps)?;
+        bin.add_many([&audiosrc, &audiorate])?;
+        audiosrc.link_filtered(&audiorate, &pulsesrc_caps)?;
         audiorate.link_pads(None, &audiomixer, Some("sink_%u"))?;
     }
 

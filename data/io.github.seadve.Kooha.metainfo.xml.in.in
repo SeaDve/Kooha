@@ -40,6 +40,7 @@
       <description translatable="no">
         <p>This release contains new features and fixes:</p>
         <ul>
+          <li>Audio device can now be changed from the preferences</li>
           <li>Area selector window is now resizable</li>
           <li>Previous selected area is now remembered</li>
           <li>Logout and idle are now inhibited while recording</li>
