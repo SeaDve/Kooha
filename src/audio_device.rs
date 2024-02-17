@@ -13,14 +13,6 @@ pub enum AudioDeviceClass {
 }
 
 impl AudioDeviceClass {
-    fn from_str(string: &str) -> Option<Self> {
-        match string {
-            "Audio/Source" => Some(Self::Source),
-            "Audio/Sink" => Some(Self::Sink),
-            _ => None,
-        }
-    }
-
     fn as_str(self) -> &'static str {
         match self {
             Self::Source => "Audio/Source",
@@ -59,16 +51,12 @@ fn find_default_name_gst(class: AudioDeviceClass) -> Result<String> {
     tracing::debug!("Finding device name for class `{:?}`", class);
 
     for device in devices {
-        let Some(device_class) = AudioDeviceClass::from_str(&device.device_class()) else {
+        if !device.has_classes(class.as_str()) {
             tracing::debug!(
                 "Skipping device `{}` as it has unknown device class `{}`",
                 device.name(),
                 device.device_class()
             );
-            continue;
-        };
-
-        if device_class != class {
             continue;
         }
 
@@ -112,7 +100,7 @@ fn find_default_name_gst(class: AudioDeviceClass) -> Result<String> {
             }
         };
 
-        if device_class == AudioDeviceClass::Sink {
+        if device.has_classes(AudioDeviceClass::Sink.as_str()) {
             node_name.push_str(".monitor");
         }
 
