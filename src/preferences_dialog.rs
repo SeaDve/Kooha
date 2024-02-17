@@ -190,33 +190,36 @@ mod imp {
                 }),
             );
 
+            let desktop_audio_manager = obj.desktop_audio_manager();
+            let microphone_manager = obj.microphone_manager();
+
             self.desktop_audio_row
                 .set_expression(Some(&device_name_expression));
             self.desktop_audio_row
-                .set_model(Some(&device_model_with_none(
-                    self.desktop_audio_manager.get().unwrap(),
-                )));
+                .set_model(Some(&device_model_with_none(&desktop_audio_manager)));
 
             self.microphone_row
                 .set_expression(Some(&device_name_expression));
-            self.microphone_row.set_model(Some(&device_model_with_none(
-                self.microphone_manager.get().unwrap(),
-            )));
+            self.microphone_row
+                .set_model(Some(&device_model_with_none(&microphone_manager)));
 
             settings
                 .bind_record_delay(&self.delay_row.get(), "value")
                 .build();
-
-            settings.connect_framerate_changed(clone!(@weak obj => move |_| {
-                obj.update_framerate_row();
-            }));
-
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
                 obj.update_file_chooser_button();
             }));
-
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row();
+            }));
+            settings.connect_framerate_changed(clone!(@weak obj => move |_| {
+                obj.update_framerate_row();
+            }));
+            desktop_audio_manager.connect_selected_device_notify(clone!(@weak obj => move |_| {
+                obj.update_desktop_audio_row();
+            }));
+            microphone_manager.connect_selected_device_notify(clone!(@weak obj => move |_| {
+                obj.update_microphone_row();
             }));
 
             obj.update_file_chooser_button();
