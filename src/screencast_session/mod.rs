@@ -57,7 +57,7 @@ impl ScreencastSession {
                 .await
                 .context("Failed to create session")?;
 
-        tracing::debug!(?response, "Created screencast session");
+        tracing::trace!(?response, "Created screencast session");
 
         // FIXME this must be an ObjectPath not a String
         let session_handle = response.get_flatten::<String>("session_handle")?;
@@ -100,7 +100,7 @@ impl ScreencastSession {
         .await?;
         debug_assert!(response.is_empty());
 
-        tracing::debug!(?response, "Selected sources");
+        tracing::trace!(?response, "Selected sources");
 
         Ok(())
     }
@@ -123,7 +123,7 @@ impl ScreencastSession {
         )
         .await?;
 
-        tracing::debug!(?response, "Started screencast session");
+        tracing::trace!(?response, "Started screencast session");
 
         let streams = response.get_flatten("streams")?;
         let restore_token = response.get("restore_token")?;
@@ -143,7 +143,7 @@ impl ScreencastSession {
             )
             .await?;
 
-        tracing::debug!(%response, fd_list = ?fd_list.peek_fds(), "Opened pipe wire remote");
+        tracing::trace!(%response, fd_list = ?fd_list.peek_fds(), "Opened pipe wire remote");
 
         let (fd_index,) = variant_get::<(Handle,)>(&response)?;
 
@@ -174,7 +174,7 @@ impl ScreencastSession {
             .context("Failed to invoke Close on the session")?;
         debug_assert!(variant_get::<()>(&response).is_ok());
 
-        tracing::debug!(%response, "Closed screencast session");
+        tracing::trace!(%response, "Closed screencast session");
 
         Ok(())
     }
@@ -287,7 +287,7 @@ async fn screencast_request_call(
         .with_context(|| format!("Failed to call `{}` with parameters: {:?}", method, params))?;
     debug_assert_eq!(variant_get::<(ObjectPath,)>(&path).unwrap().0, request_path);
 
-    tracing::debug!("Waiting request response for method `{}`", method);
+    tracing::trace!("Waiting request response for method `{}`", method);
 
     let response = match future::select(response_rx, name_owner_lost_rx).await {
         Either::Left((res, _)) => res
@@ -298,7 +298,7 @@ async fn screencast_request_call(
     request_proxy.disconnect(handler_id);
     connection.signal_unsubscribe(subscription_id);
 
-    tracing::debug!("Request response received for method `{}`", method);
+    tracing::trace!("Request response received for method `{}`", method);
 
     let (response_no, response) = variant_get::<(u32, VariantDict)>(&response)?;
 

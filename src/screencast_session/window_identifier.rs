@@ -117,7 +117,7 @@ impl Drop for WindowIdentifier {
                     }
 
                     top_level.unexport_handle();
-                    tracing::debug!("Unexported handle: {:?}", handle);
+                    tracing::trace!("Unexported handle: {:?}", handle);
 
                     let _ = top_level.steal_data::<WindowHandleData>(WINDOW_HANDLE_KEY);
                 }
