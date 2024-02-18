@@ -63,11 +63,11 @@ impl SelectionContext {
 mod imp {
     use std::cell::OnceCell;
 
-    use super::*;
     use gst::bus::BusWatchGuard;
-    use gtk::CompositeTemplate;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    use super::*;
+
+    #[derive(Debug, Default, gtk::CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/area_selector.ui")]
     pub struct AreaSelector {
         #[template_child]

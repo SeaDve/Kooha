@@ -22,9 +22,8 @@ mod imp {
     use std::cell::OnceCell;
 
     use super::*;
-    use gtk::CompositeTemplate;
 
-    #[derive(Debug, Default, glib::Properties, CompositeTemplate)]
+    #[derive(Debug, Default, glib::Properties, gtk::CompositeTemplate)]
     #[properties(wrapper_type = super::PreferencesDialog)]
     #[template(resource = "/io/github/seadve/Kooha/ui/preferences_dialog.ui")]
     pub struct PreferencesDialog {

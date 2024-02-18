@@ -7,7 +7,6 @@ use gettextrs::gettext;
 use gtk::{
     gio,
     glib::{self, clone},
-    CompositeTemplate,
 };
 
 use std::cell::RefCell;
@@ -28,7 +27,7 @@ use crate::{
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Debug, Default, gtk::CompositeTemplate)]
     #[template(resource = "/io/github/seadve/Kooha/ui/window.ui")]
     pub struct Window {
         #[template_child]
