@@ -310,6 +310,9 @@ impl Window {
                 let app = Application::get();
                 let preferences_dialog = PreferencesDialog::new(app.settings());
                 preferences_dialog.present(&obj);
+
+                let was_focused = preferences_dialog.profile_row_grab_focus();
+                debug_assert!(was_focused);
             }),
         );
 

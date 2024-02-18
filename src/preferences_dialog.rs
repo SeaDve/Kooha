@@ -143,6 +143,10 @@ impl PreferencesDialog {
             .build()
     }
 
+    pub fn profile_row_grab_focus(&self) -> bool {
+        self.imp().profile_row.grab_focus()
+    }
+
     fn update_file_chooser_label(&self) {
         let imp = self.imp();
 
