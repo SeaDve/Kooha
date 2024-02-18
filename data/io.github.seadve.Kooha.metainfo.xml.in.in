@@ -49,6 +49,7 @@
           <li>Progress is now shown when flushing the recording</li>
           <li>It is now much easier to pick from frame rate options</li>
           <li>Actually fixed audio from stuttering and being cut on long recordings</li>
+          <li>Recordings are no longer deleted when flushing is cancelled</li>
           <li>Fixed focus on area selector</li>
           <li>Fixed too small area selector window on HiDPI monitors</li>
           <li>Improved recording performance</li>
