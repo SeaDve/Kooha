@@ -214,18 +214,18 @@ impl Recording {
 
         // setup audio sources
         if profile_supports_audio {
-            if settings.record_mic() {
-                pipeline_builder.mic_source(
+            if settings.record_microphone() {
+                pipeline_builder.microphone_name(
                     audio_device::find_default_name(AudioDeviceClass::Source)
                         .await
                         .with_context(|| gettext("No microphone source found"))?,
                 );
             }
-            if settings.record_speaker() {
-                pipeline_builder.speaker_source(
+            if settings.record_desktop_audio() {
+                pipeline_builder.desktop_audio_name(
                     audio_device::find_default_name(AudioDeviceClass::Sink)
                         .await
-                        .with_context(|| gettext("No desktop speaker source found"))?,
+                        .with_context(|| gettext("No desktop audio source found"))?,
                 );
             }
         }

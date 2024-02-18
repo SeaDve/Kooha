@@ -235,8 +235,8 @@ impl Application {
         self.set_accels_for_action("app.show-preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>q"]);
         self.set_accels_for_action("window.close", &["<Control>w"]);
-        self.set_accels_for_action("win.record-speaker", &["<Control>a"]);
-        self.set_accels_for_action("win.record-mic", &["<Control>m"]);
+        self.set_accels_for_action("win.record-desktop-audio", &["<Control>a"]);
+        self.set_accels_for_action("win.record-microphone", &["<Control>m"]);
         self.set_accels_for_action("win.show-pointer", &["<Control>p"]);
         self.set_accels_for_action("win.toggle-record", &["<Control>r"]);
         // self.set_accels_for_action("win.toggle-pause", &["<Control>k"]); // See issue #112 in GitHub repo

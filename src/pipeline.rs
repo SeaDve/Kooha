@@ -23,8 +23,8 @@ pub struct PipelineBuilder {
     profile: Profile,
     fd: RawFd,
     streams: Vec<Stream>,
-    speaker_source: Option<String>,
-    mic_source: Option<String>,
+    desktop_audio_name: Option<String>,
+    microphone_name: Option<String>,
     select_area_data: Option<SelectAreaData>,
 }
 
@@ -42,19 +42,19 @@ impl PipelineBuilder {
             profile,
             fd,
             streams,
-            speaker_source: None,
-            mic_source: None,
+            desktop_audio_name: None,
+            microphone_name: None,
             select_area_data: None,
         }
     }
 
-    pub fn speaker_source(&mut self, speaker_source: String) -> &mut Self {
-        self.speaker_source = Some(speaker_source);
+    pub fn desktop_audio_name(&mut self, desktop_audio_name: String) -> &mut Self {
+        self.desktop_audio_name = Some(desktop_audio_name);
         self
     }
 
-    pub fn mic_source(&mut self, mic_source: String) -> &mut Self {
-        self.mic_source = Some(mic_source);
+    pub fn microphone_name(&mut self, microphone_name: String) -> &mut Self {
+        self.microphone_name = Some(microphone_name);
         self
     }
 
@@ -70,8 +70,8 @@ impl PipelineBuilder {
             profile = ?self.profile.id(),
             stream_len = self.streams.len(),
             streams = ?self.streams,
-            speaker_source = ?self.speaker_source,
-            mic_source = ?self.mic_source,
+            desktop_audio_name = ?self.desktop_audio_name,
+            microphone_name = ?self.microphone_name,
             select_area_data = ?self.select_area_data,
         );
 
@@ -98,10 +98,10 @@ impl PipelineBuilder {
         pipeline.add_many([videosrc_bin.upcast_ref(), &videoenc_queue, &filesink])?;
         videosrc_bin.link(&videoenc_queue)?;
 
-        let has_audio_source = self.speaker_source.is_some() || self.mic_source.is_some();
+        let has_audio_source = self.desktop_audio_name.is_some() || self.microphone_name.is_some();
         let audioenc_queue = if self.profile.supports_audio() && has_audio_source {
             let audiosrc_bin = make_pulsesrc_bin(
-                [&self.speaker_source, &self.mic_source]
+                [&self.desktop_audio_name, &self.microphone_name]
                     .into_iter()
                     .filter_map(|s| s.as_deref()),
             )

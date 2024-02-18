@@ -14,10 +14,10 @@
     <key type="u" name="record-delay">
       <default>0</default>
     </key>
-    <key type="b" name="record-speaker">
+    <key type="b" name="record-desktop-audio">
       <default>true</default>
     </key>
-    <key type="b" name="record-mic">
+    <key type="b" name="record-microphone">
       <default>false</default>
     </key>
     <key type="b" name="show-pointer">

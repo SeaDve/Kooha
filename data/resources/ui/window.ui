@@ -80,7 +80,7 @@
                         <property name="homogeneous">True</property>
                         <child>
                           <object class="KoohaToggleButton">
-                            <property name="action-name">win.record-speaker</property>
+                            <property name="action-name">win.record-desktop-audio</property>
                             <property name="default-icon-name">audio-volume-muted-symbolic</property>
                             <property name="toggled-icon-name">audio-volume-high-symbolic</property>
                             <property name="default-tooltip-text" translatable="yes">Enable Desktop Audio</property>
@@ -89,7 +89,7 @@
                         </child>
                         <child>
                           <object class="KoohaToggleButton">
-                            <property name="action-name">win.record-mic</property>
+                            <property name="action-name">win.record-microphone</property>
                             <property name="default-icon-name">microphone-disabled-symbolic</property>
                             <property name="toggled-icon-name">microphone2-symbolic</property>
                             <property name="default-tooltip-text" translatable="yes">Enable Microphone</property>

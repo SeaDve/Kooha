@@ -63,13 +63,13 @@
             <property name="title" translatable="yes">Settings</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="action-name">win.record-speaker</property>
+                <property name="action-name">win.record-desktop-audio</property>
                 <property name="title" translatable="yes">Toggle Desktop Audio</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="action-name">win.record-mic</property>
+                <property name="action-name">win.record-microphone</property>
                 <property name="title" translatable="yes">Toggle Microphone</property>
               </object>
             </child>

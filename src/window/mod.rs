@@ -539,8 +539,8 @@ impl Window {
             .profile()
             .map_or(true, |profile| profile.supports_audio());
 
-        self.action_set_enabled("win.record-speaker", is_enabled);
-        self.action_set_enabled("win.record-mic", is_enabled);
+        self.action_set_enabled("win.record-desktop-audio", is_enabled);
+        self.action_set_enabled("win.record-microphone", is_enabled);
     }
 
     fn update_forget_video_sources_action(&self) {
@@ -577,8 +577,8 @@ impl Window {
             obj.update_forget_video_sources_action();
         }));
 
-        self.add_action(&settings.create_record_speaker_action());
-        self.add_action(&settings.create_record_mic_action());
+        self.add_action(&settings.create_record_desktop_audio_action());
+        self.add_action(&settings.create_record_microphone_action());
         self.add_action(&settings.create_show_pointer_action());
         self.add_action(&settings.create_capture_mode_action());
     }
