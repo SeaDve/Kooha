@@ -11,6 +11,7 @@
             <child>
               <object class="AdwSpinRow" id="delay_row">
                 <property name="title" translatable="yes">Delay (Seconds)</property>
+                <property name="subtitle" translatable="yes">Time interval before recording begins</property>
                 <property name="adjustment">
                   <object class="GtkAdjustment">
                     <property name="lower">0</property>
@@ -24,6 +25,7 @@
             <child>
               <object class="AdwActionRow">
                 <property name="title" translatable="yes">Recordings Folder</property>
+                <property name="subtitle" translatable="yes">Destination folder for the recordings</property>
                 <property name="action-name">preferences.select-saving-location</property>
                 <property name="activatable">True</property>
                 <child type="suffix">
