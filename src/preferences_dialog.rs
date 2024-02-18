@@ -237,7 +237,8 @@ impl PreferencesDialog {
         let settings = self.settings();
         let active_profile = settings.profile();
 
-        let position = imp.profile_row.model().unwrap().iter().position(|item| {
+        let model = imp.profile_row.model().unwrap();
+        let position = model.iter().position(|item| {
             match (profile_from_obj(&item.unwrap()), &active_profile) {
                 (Some(profile), Some(active_profile)) => profile.id() == active_profile.id(),
                 (None, None) => true,
@@ -260,16 +261,10 @@ impl PreferencesDialog {
         let settings = self.settings();
         let framerate_option = FramerateOption::from_framerate(settings.framerate());
 
-        let position = imp
-            .framerate_row
-            .model()
-            .unwrap()
+        let model = imp.framerate_row.model().unwrap();
+        let position = model
             .iter::<BoxedAnyObject>()
-            .position(|item| {
-                let item = item.unwrap();
-                let o = item.borrow::<FramerateOption>();
-                *o == framerate_option
-            });
+            .position(|item| *item.unwrap().borrow::<FramerateOption>() == framerate_option);
         if let Some(position) = position {
             imp.framerate_row.set_selected(position as u32);
         } else {
