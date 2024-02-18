@@ -19,6 +19,7 @@ use crate::{
     format_time,
     framerate_option::FramerateOption,
     help::Help,
+    preferences_dialog::PreferencesDialog,
     recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
     Application,
@@ -301,10 +302,16 @@ impl Window {
         dialog.add_response(OPEN_RESPONSE_ID, &gettext("Open"));
         dialog.set_response_appearance(OPEN_RESPONSE_ID, adw::ResponseAppearance::Suggested);
 
-        dialog.connect_response(Some(OPEN_RESPONSE_ID), |dialog, _| {
-            dialog.close();
-            Application::get().present_preferences_dialog();
-        });
+        dialog.connect_response(
+            Some(OPEN_RESPONSE_ID),
+            clone!(@weak self as obj => move |dialog, _| {
+                dialog.close();
+
+                let app = Application::get();
+                let preferences_dialog = PreferencesDialog::new(app.settings());
+                preferences_dialog.present(&obj);
+            }),
+        );
 
         dialog.present(self);
     }

@@ -149,11 +149,6 @@ impl Application {
         self.send_notification(Some("record-success"), &notification);
     }
 
-    pub fn present_preferences_dialog(&self) {
-        let dialog = PreferencesDialog::new(self.settings());
-        dialog.present(&self.window());
-    }
-
     pub fn run(&self) -> glib::ExitCode {
         tracing::info!("Kooha ({})", APP_ID);
         tracing::info!("Version: {} ({})", VERSION, PROFILE);
@@ -218,7 +213,8 @@ impl Application {
             .build();
         let show_preferences_action = gio::ActionEntry::builder("show-preferences")
             .activate(|obj: &Self, _, _| {
-                obj.present_preferences_dialog();
+                let dialog = PreferencesDialog::new(obj.settings());
+                dialog.present(&obj.window());
             })
             .build();
         let show_about_action = gio::ActionEntry::builder("show-about")
