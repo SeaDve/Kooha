@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-12 14:39+0800\n"
+"POT-Creation-Date: 2024-02-18 11:37+0800\n"
 "PO-Revision-Date: 2023-11-12 14:03+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
@@ -74,50 +74,54 @@ msgstr "🛠️ உள்ளமைக்கக்கூடிய சேமிப
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 பரிசோதனை வன்பொருள் முடுக்கப்பட்ட குறியாக்கம்"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "பகுதியைத் தேர்ந்தெடுக்கவும்"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window.rs:206
+#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window/mod.rs:211
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area_selector.ui:26
 msgid "Done"
 msgstr "முடிந்தது"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
 msgstr "தேர்வை மீட்டமைக்கவும்"
 
-#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "பொது"
 
-#: data/resources/ui/preferences-dialog.ui:13
+#: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr "தாமதம் (வினாடிகள்)"
 
-#: data/resources/ui/preferences-dialog.ui:31
+#: data/resources/ui/preferences_dialog.ui:14
+msgid "Time interval before recording begins"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
 msgstr "பதிவுகள் கோப்புறை"
 
-#: data/resources/ui/preferences-dialog.ui:50
+#: data/resources/ui/preferences_dialog.ui:28
+msgid "Destination folder for the recordings"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
 msgstr "காணொளி"
 
-#: data/resources/ui/preferences-dialog.ui:53
+#: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
 msgstr "வடிவம்"
 
-#: data/resources/ui/preferences-dialog.ui:58
+#: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
 msgstr "பிரேம் வீதம்"
-
-#: data/resources/ui/preferences-dialog.ui:64
-msgid "This frame rate may cause performance issues."
-msgstr "இந்த பிரேம் வீதம் செயல்திறன் சிக்கல்களை ஏற்படுத்தலாம்."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -131,11 +135,11 @@ msgstr "விருப்பங்களைக் காட்டு"
 msgid "Show Shortcuts"
 msgstr "குறுக்குவழிகளைக் காட்டு"
 
-#: data/resources/ui/shortcuts.ui:32 src/window.rs:208
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:429
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
 msgid "Recording"
 msgstr "ஒலியை பதிவு செய்கிறது"
 
@@ -277,52 +281,52 @@ msgstr "ஸ்கிரீன்காஸ்ட் பதிவு செய்�
 msgid "Show in Files"
 msgstr "கோப்புகளில் காட்டு"
 
-#: src/area_selector/mod.rs:456
-msgid "approx."
-msgstr "தோராயமாக."
-
-#: src/audio_device.rs:53 src/audio_device.rs:169
+#: src/audio_device.rs:45 src/audio_device.rs:157
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "பல்ஸ்ஆடியோ உங்கள் கணினியில் நிறுவப்பட்டுள்ளதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/audio_device.rs:54
+#: src/audio_device.rs:46
 msgid "Failed to start device monitor"
 msgstr "சாதன மானிட்டரைத் தொடங்குவதில் தோல்வி"
 
-#: src/audio_device.rs:170
+#: src/audio_device.rs:158
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "பல்ஸ்ஆடியோ டீமானுடன் இணைக்க முடியவில்லை"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:22
+#: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:29
+#: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:36
+#: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:63
+#: src/preferences_dialog.rs:66
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:228
+#: src/preferences_dialog.rs:207
+msgid "This frame rate may cause performance issues on the selected format."
+msgstr ""
+
+#: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
 msgstr "இந்த வடிவம் சோதனைக்குரியது மற்றும் ஆதரிக்கப்படாது."
 
-#: src/preferences_dialog.rs:257 src/window.rs:487
+#: src/preferences_dialog.rs:253 src/window/mod.rs:530
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
@@ -330,7 +334,7 @@ msgstr "எதுவும் இல்லை"
 msgid "No active profile"
 msgstr "செயலில் சுயவிவரம் இல்லை"
 
-#: src/recording.rs:193 src/recording.rs:246 src/recording.rs:276
+#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
@@ -339,80 +343,80 @@ msgstr "பதிவைத் தொடங்குவதில் தோல்�
 msgid "Check out {link} for help."
 msgstr "உதவிக்கு {link} ஐப் பார்க்கவும்."
 
-#: src/recording.rs:231
+#: src/recording.rs:221
 msgid "No microphone source found"
 msgstr "மைக்ரோஃபோன் ஆதாரம் எதுவும் கிடைக்கவில்லை"
 
-#: src/recording.rs:238
+#: src/recording.rs:228
 msgid "No desktop speaker source found"
 msgstr "டெஸ்க்டாப் ஸ்பீக்கர் ஆதாரம் இல்லை"
 
-#: src/recording.rs:245
+#: src/recording.rs:235
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம்."
 
-#: src/recording.rs:275 src/recording.rs:507
+#: src/recording.rs:278 src/recording.rs:510
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:503
+#: src/recording.rs:506
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:510
+#: src/recording.rs:513
 msgid "Failed to open “{path}” for writing"
 msgstr "எழுதுவதற்கு “{path}” திறக்க முடியவில்லை"
 
-#: src/settings.rs:42
+#: src/settings.rs:44
 msgid "Select Recordings Folder"
 msgstr "பதிவுகள் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 
-#: src/window.rs:75
+#: src/window/mod.rs:80
 msgid "Failed to toggle pause"
 msgstr "இடைநிறுத்தத்தை மாற்றுவதில் தோல்வி"
 
-#: src/window.rs:192
+#: src/window/mod.rs:197
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window.rs:195
+#: src/window/mod.rs:200
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window.rs:201
+#: src/window/mod.rs:206
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window.rs:246
+#: src/window/mod.rs:251
 msgid "Copy to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
 
-#: src/window.rs:252
+#: src/window/mod.rs:257
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: src/window.rs:258
+#: src/window/mod.rs:263
 msgid "Show detailed error"
 msgstr "விரிவான பிழையைக் காட்டு"
 
-#: src/window.rs:278
+#: src/window/mod.rs:283
 msgid "Help"
 msgstr "உதவி"
 
-#: src/window.rs:281
+#: src/window/mod.rs:286
 msgid "Ok"
 msgstr "சரி"
 
-#: src/window.rs:290
+#: src/window/mod.rs:295
 msgid "Open Preferences?"
 msgstr "விருப்பத்தேர்வுகளை திறக்கவா?"
 
-#: src/window.rs:291
+#: src/window/mod.rs:296
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -420,25 +424,35 @@ msgstr ""
 "முன்பு தேர்ந்தெடுக்கப்பட்ட வடிவம் கிடைக்காமல் இருக்கலாம். பதிவுகளைத் தொடர "
 "விருப்பத்தேர்வுகளைத் திறந்து வடிவமைப்பைத் தேர்ந்தெடுக்கவும்."
 
-#: src/window.rs:295
+#: src/window/mod.rs:300
 msgid "Later"
 msgstr "பின்னர்"
 
-#: src/window.rs:297
+#: src/window/mod.rs:302
 msgid "Open"
 msgstr "திறக்கவும்"
 
-#: src/window.rs:437
+#: src/window/mod.rs:432
+msgid "A recording is in progress"
+msgstr ""
+
+#: src/window/mod.rs:480
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
-#: src/window.rs:474
+#: src/window/mod.rs:517
 msgid "Normal"
 msgstr "இயல்பானது"
 
-#: src/window.rs:475
+#: src/window/mod.rs:518
 msgid "Selection"
 msgstr "தேர்வு"
+
+#~ msgid "This frame rate may cause performance issues."
+#~ msgstr "இந்த பிரேம் வீதம் செயல்திறன் சிக்கல்களை ஏற்படுத்தலாம்."
+
+#~ msgid "approx."
+#~ msgstr "தோராயமாக."
 
 #~ msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 #~ msgstr ""

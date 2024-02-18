@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-12 14:39+0800\n"
+"POT-Creation-Date: 2024-02-18 11:37+0800\n"
 "PO-Revision-Date: 2023-08-14 18:51+0000\n"
 "Last-Translator: \"HelaBasa Group (හෙළබස සමූහය)\" <weblate-helabasa@yalu.lk>\n"
 "Language-Team: Sinhala <https://hosted.weblate.org/projects/seadve/kooha/si/"
@@ -73,50 +73,54 @@ msgstr "🛠️ සුරැකෙන ස්ථානය, ඊතලයේ දෘ
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 පරීක්‍ෂාත්මක දෘඩාංග ත්වරණිත ආකේතනය ඇත"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "පෙදෙසක් තෝරන්න"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window.rs:206
+#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window/mod.rs:211
 msgid "Cancel"
 msgstr "අවලංගු"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area_selector.ui:26
 msgid "Done"
 msgstr "අහවරයි"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
 msgstr "තේරීම යළි සකසන්න"
 
-#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "ප්‍රධාන"
 
-#: data/resources/ui/preferences-dialog.ui:13
+#: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr "ප්‍රමාදය (තත්පර)"
 
-#: data/resources/ui/preferences-dialog.ui:31
+#: data/resources/ui/preferences_dialog.ui:14
+msgid "Time interval before recording begins"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
 msgstr "පටිගත බහාලුම"
 
-#: data/resources/ui/preferences-dialog.ui:50
+#: data/resources/ui/preferences_dialog.ui:28
+msgid "Destination folder for the recordings"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
 msgstr "දෘශ්‍යකය"
 
-#: data/resources/ui/preferences-dialog.ui:53
+#: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
 msgstr "ආකෘතිය"
 
-#: data/resources/ui/preferences-dialog.ui:58
+#: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
 msgstr "රාමු අනුපාතය"
-
-#: data/resources/ui/preferences-dialog.ui:64
-msgid "This frame rate may cause performance issues."
-msgstr "මෙම රාමු අනුපාතය කාර්ය සාධනයට බලපෑ හැකිය."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -130,11 +134,11 @@ msgstr "අභිප්‍රේත පෙන්වන්න"
 msgid "Show Shortcuts"
 msgstr "කෙටිමං පෙන්වන්න"
 
-#: data/resources/ui/shortcuts.ui:32 src/window.rs:208
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
 msgid "Quit"
 msgstr "ඉවත් වන්න"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:429
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
 msgid "Recording"
 msgstr "පටිගත වෙමින්"
 
@@ -276,52 +280,52 @@ msgstr "තිරය විකාශනය පටිගත විය"
 msgid "Show in Files"
 msgstr "ගොනුවල පෙන්වන්න"
 
-#: src/area_selector/mod.rs:456
-msgid "approx."
-msgstr "දළ."
-
-#: src/audio_device.rs:53 src/audio_device.rs:169
+#: src/audio_device.rs:45 src/audio_device.rs:157
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "ඔබගේ පද්ධතියේ පල්ස්ඕඩියෝ ස්ථාපනය කර තිබෙන බවට වග බලා ගන්න."
 
-#: src/audio_device.rs:54
+#: src/audio_device.rs:46
 msgid "Failed to start device monitor"
 msgstr "උපාංග නිරීක්‍ෂකය ඇරඹීමට අසමත් විය"
 
-#: src/audio_device.rs:170
+#: src/audio_device.rs:158
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "පල්ස්ඕඩියෝ වැඩසටහනට සැබැඳීමට අසමත් විය"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:22
+#: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:29
+#: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:36
+#: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:63
+#: src/preferences_dialog.rs:66
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:228
+#: src/preferences_dialog.rs:207
+msgid "This frame rate may cause performance issues on the selected format."
+msgstr ""
+
+#: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
 msgstr "මෙම ආකෘතිය පරීක්‍ෂාත්මකයි හා සහාය නොදක්වයි."
 
-#: src/preferences_dialog.rs:257 src/window.rs:487
+#: src/preferences_dialog.rs:253 src/window/mod.rs:530
 msgid "None"
 msgstr "කිසිවක් නැත"
 
@@ -329,7 +333,7 @@ msgstr "කිසිවක් නැත"
 msgid "No active profile"
 msgstr "සක්‍රිය පැතිකඩක් නැත"
 
-#: src/recording.rs:193 src/recording.rs:246 src/recording.rs:276
+#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
 msgid "Failed to start recording"
 msgstr "පටිගතය ඇරඹීමට අසමත් විය"
 
@@ -338,104 +342,114 @@ msgstr "පටිගතය ඇරඹීමට අසමත් විය"
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:231
+#: src/recording.rs:221
 msgid "No microphone source found"
 msgstr "ශබ්දවාහිනියක් හමු නොවිණි"
 
-#: src/recording.rs:238
+#: src/recording.rs:228
 msgid "No desktop speaker source found"
 msgstr "වැඩතල විකාශකයක් හමු නොවිණි"
 
-#: src/recording.rs:245
+#: src/recording.rs:235
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer පේනුවක් ස්ථාපනය කර නැති බව පෙනෙයි."
 
-#: src/recording.rs:275 src/recording.rs:507
+#: src/recording.rs:278 src/recording.rs:510
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "සුරැකෙන ස්ථානය තිබෙන හා ප්‍රවේශ විය හැකි බවට වග බලා ගන්න."
 
-#: src/recording.rs:503
+#: src/recording.rs:506
 msgid "An error occurred while recording"
 msgstr "පටිගතය අතරතුර දෝෂයක් සිදු විය"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:510
+#: src/recording.rs:513
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
-#: src/settings.rs:42
+#: src/settings.rs:44
 msgid "Select Recordings Folder"
 msgstr "පටිගත බහාලුම තෝරන්න"
 
-#: src/window.rs:75
+#: src/window/mod.rs:80
 msgid "Failed to toggle pause"
 msgstr "විරාමයක් තැබීමට නොහැකි විය"
 
-#: src/window.rs:192
+#: src/window/mod.rs:197
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window.rs:195
+#: src/window/mod.rs:200
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window.rs:201
+#: src/window/mod.rs:206
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window.rs:246
+#: src/window/mod.rs:251
 msgid "Copy to clipboard"
 msgstr "පසුරුපුවරුවට පිටපතක්"
 
-#: src/window.rs:252
+#: src/window/mod.rs:257
 msgid "Copied to clipboard"
 msgstr "පසුරුපුවරුවට පිටපත් විය"
 
-#: src/window.rs:258
+#: src/window/mod.rs:263
 msgid "Show detailed error"
 msgstr "දෝෂය පැහැදිලිව පෙන්වන්න"
 
-#: src/window.rs:278
+#: src/window/mod.rs:283
 msgid "Help"
 msgstr "උදව්"
 
-#: src/window.rs:281
+#: src/window/mod.rs:286
 msgid "Ok"
 msgstr "හරි"
 
-#: src/window.rs:290
+#: src/window/mod.rs:295
 msgid "Open Preferences?"
 msgstr "අභිප්‍රේත අරින්නද?"
 
-#: src/window.rs:291
+#: src/window/mod.rs:296
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr "කලින් තේරූ ආකෘතිය නොතිබිය හැකිය. දිගටම පටිගත කිරීමට අභිප්‍රේත විවෘත කර ආකෘතියක් තෝරන්න."
 
-#: src/window.rs:295
+#: src/window/mod.rs:300
 msgid "Later"
 msgstr "පසුව"
 
-#: src/window.rs:297
+#: src/window/mod.rs:302
 msgid "Open"
 msgstr "අරින්න"
 
-#: src/window.rs:437
+#: src/window/mod.rs:432
+msgid "A recording is in progress"
+msgstr ""
+
+#: src/window/mod.rs:480
 msgid "Paused"
 msgstr "විරාමයකි"
 
-#: src/window.rs:474
+#: src/window/mod.rs:517
 msgid "Normal"
 msgstr "සාමාන්‍ය"
 
-#: src/window.rs:475
+#: src/window/mod.rs:518
 msgid "Selection"
 msgstr "තේරීම"
+
+#~ msgid "This frame rate may cause performance issues."
+#~ msgstr "මෙම රාමු අනුපාතය කාර්ය සාධනයට බලපෑ හැකිය."
+
+#~ msgid "approx."
+#~ msgstr "දළ."
 
 #~ msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 #~ msgstr "🖥️ පටිගත කිරීමට තිරයක්, කවුළුවක් හෝ තිරයේ කොටසක් තෝරන්න"

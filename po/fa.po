@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-12 14:39+0800\n"
+"POT-Creation-Date: 2024-02-18 11:37+0800\n"
 "PO-Revision-Date: 2023-07-28 17:02+0000\n"
 "Last-Translator: Sadjad Abedi <abedisadjad@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/seadve/kooha/fa/"
@@ -80,50 +80,54 @@ msgstr "🛠️ قابلیت پیکربندی مکان ذخیره، پدیدار
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 کدبندی شتاب‌یافتهٔ سخت‌افزاری آزمایشی"
 
-#: data/resources/ui/area-selector.ui:15
+#: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "انتخاب ناحیه"
 
-#: data/resources/ui/area-selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window.rs:206
+#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
+#: data/resources/ui/window.ui:276 src/window/mod.rs:211
 msgid "Cancel"
 msgstr "لغو"
 
-#: data/resources/ui/area-selector.ui:26
+#: data/resources/ui/area_selector.ui:26
 msgid "Done"
 msgstr "انجام شد"
 
-#: data/resources/ui/area-selector.ui:35
+#: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
 msgstr "بازنشانی انتخاب"
 
-#: data/resources/ui/preferences-dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
 msgstr "اصلی"
 
-#: data/resources/ui/preferences-dialog.ui:13
+#: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
 msgstr "تأخیر (ثانیه)"
 
-#: data/resources/ui/preferences-dialog.ui:31
+#: data/resources/ui/preferences_dialog.ui:14
+msgid "Time interval before recording begins"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
 msgstr "پوشهٔ ضبط‌ها"
 
-#: data/resources/ui/preferences-dialog.ui:50
+#: data/resources/ui/preferences_dialog.ui:28
+msgid "Destination folder for the recordings"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
 msgstr "ویدیو"
 
-#: data/resources/ui/preferences-dialog.ui:53
+#: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
 msgstr "قالب"
 
-#: data/resources/ui/preferences-dialog.ui:58
+#: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
 msgstr "نرخ فریم"
-
-#: data/resources/ui/preferences-dialog.ui:64
-msgid "This frame rate may cause performance issues."
-msgstr "این نرخ فریم ممکن است باعث مشکل پردازش شود."
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -137,11 +141,11 @@ msgstr "نمایش تنظیمات"
 msgid "Show Shortcuts"
 msgstr "نمایش میان‌برها"
 
-#: data/resources/ui/shortcuts.ui:32 src/window.rs:208
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
 msgid "Quit"
 msgstr "خروج"
 
-#: data/resources/ui/shortcuts.ui:39 src/window.rs:429
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
 msgid "Recording"
 msgstr "در حال ضبط"
 
@@ -283,52 +287,52 @@ msgstr "صفحه ضبط شد"
 msgid "Show in Files"
 msgstr "نمایش در فایل‌ها"
 
-#: src/area_selector/mod.rs:456
-msgid "approx."
-msgstr "تقریباً."
-
-#: src/audio_device.rs:53 src/audio_device.rs:169
+#: src/audio_device.rs:45 src/audio_device.rs:157
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "مطمئن شوید PulseAudio روی سیستم شما نصب شده است."
 
-#: src/audio_device.rs:54
+#: src/audio_device.rs:46
 msgid "Failed to start device monitor"
 msgstr "شروع ضبط مانیتور ناموفق بود"
 
-#: src/audio_device.rs:170
+#: src/audio_device.rs:158
 msgid "Failed to connect to PulseAudio daemon"
 msgstr "اتصال به PulseAudio ناموفق بود"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:22
+#: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:29
+#: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] ""
 msgstr[1] ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:36
+#: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:63
+#: src/preferences_dialog.rs:66
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:228
+#: src/preferences_dialog.rs:207
+msgid "This frame rate may cause performance issues on the selected format."
+msgstr ""
+
+#: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
 msgstr "این فرمت آزمایشی است و پشتیبانی نمیشود."
 
-#: src/preferences_dialog.rs:257 src/window.rs:487
+#: src/preferences_dialog.rs:253 src/window/mod.rs:530
 msgid "None"
 msgstr "هیچ‌کدام"
 
@@ -336,7 +340,7 @@ msgstr "هیچ‌کدام"
 msgid "No active profile"
 msgstr "بدون نمایهٔ فعال"
 
-#: src/recording.rs:193 src/recording.rs:246 src/recording.rs:276
+#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
 msgid "Failed to start recording"
 msgstr "شروع ضبط ناموفق بود"
 
@@ -345,80 +349,80 @@ msgstr "شروع ضبط ناموفق بود"
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:231
+#: src/recording.rs:221
 msgid "No microphone source found"
 msgstr "هیچ میکروفنی پیدا نشد"
 
-#: src/recording.rs:238
+#: src/recording.rs:228
 msgid "No desktop speaker source found"
 msgstr "هیچ منبع بلندگوی میزکاری پیدا نشد"
 
-#: src/recording.rs:245
+#: src/recording.rs:235
 msgid "A GStreamer plugin may not be installed."
 msgstr "احتمالا افزونه GStreamer نصب نشده است."
 
-#: src/recording.rs:275 src/recording.rs:507
+#: src/recording.rs:278 src/recording.rs:510
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "مطمئن شوید مکان ذخیره وجود دارد و دستری‌پذیر است."
 
-#: src/recording.rs:503
+#: src/recording.rs:506
 msgid "An error occurred while recording"
 msgstr "هنگام ضبط خطایی رخ داد"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:510
+#: src/recording.rs:513
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
-#: src/settings.rs:42
+#: src/settings.rs:44
 msgid "Select Recordings Folder"
 msgstr "انتخاب پوشهٔ ضبط"
 
-#: src/window.rs:75
+#: src/window/mod.rs:80
 msgid "Failed to toggle pause"
 msgstr "خطا در تغییر حالت مکث"
 
-#: src/window.rs:192
+#: src/window/mod.rs:197
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window.rs:195
+#: src/window/mod.rs:200
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window.rs:201
+#: src/window/mod.rs:206
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window.rs:246
+#: src/window/mod.rs:251
 msgid "Copy to clipboard"
 msgstr "کپی به کلیپ‌بورد"
 
-#: src/window.rs:252
+#: src/window/mod.rs:257
 msgid "Copied to clipboard"
 msgstr "در حافظه کپی شد"
 
-#: src/window.rs:258
+#: src/window/mod.rs:263
 msgid "Show detailed error"
 msgstr "نمایش خطای باجزئیات"
 
-#: src/window.rs:278
+#: src/window/mod.rs:283
 msgid "Help"
 msgstr "راهنما"
 
-#: src/window.rs:281
+#: src/window/mod.rs:286
 msgid "Ok"
 msgstr "تایید"
 
-#: src/window.rs:290
+#: src/window/mod.rs:295
 msgid "Open Preferences?"
 msgstr "بازکردن تنظیمات؟"
 
-#: src/window.rs:291
+#: src/window/mod.rs:296
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -426,25 +430,35 @@ msgstr ""
 "قالب قبلاً گزیده شده شاید موجود نباشد. برای ادامه، ترجیحات را باز کنید و یک "
 "قالب برگزینید."
 
-#: src/window.rs:295
+#: src/window/mod.rs:300
 msgid "Later"
 msgstr "بعدا"
 
-#: src/window.rs:297
+#: src/window/mod.rs:302
 msgid "Open"
 msgstr "بازکردن"
 
-#: src/window.rs:437
+#: src/window/mod.rs:432
+msgid "A recording is in progress"
+msgstr ""
+
+#: src/window/mod.rs:480
 msgid "Paused"
 msgstr "مکث شده"
 
-#: src/window.rs:474
+#: src/window/mod.rs:517
 msgid "Normal"
 msgstr "معمولی"
 
-#: src/window.rs:475
+#: src/window/mod.rs:518
 msgid "Selection"
 msgstr "انتخاب"
+
+#~ msgid "This frame rate may cause performance issues."
+#~ msgstr "این نرخ فریم ممکن است باعث مشکل پردازش شود."
+
+#~ msgid "approx."
+#~ msgstr "تقریباً."
 
 #~ msgid "🖥️ Select a monitor, a window, or a portion of the screen to record"
 #~ msgstr "🖥️ گزینش یک نمایشگر، پنجره یا بخشی از صفحه‌نمایش برای ضبط"
