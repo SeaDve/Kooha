@@ -239,11 +239,9 @@ impl PreferencesDialog {
 
         let model = imp.profile_row.model().unwrap();
         let position = model.iter().position(|item| {
-            match (profile_from_obj(&item.unwrap()), &active_profile) {
-                (Some(profile), Some(active_profile)) => profile.id() == active_profile.id(),
-                (None, None) => true,
-                _ => false,
-            }
+            let item = item.unwrap();
+            let profile = profile_from_obj(&item);
+            profile.map(|p| p.id()) == active_profile.map(|p| p.id())
         });
         if let Some(position) = position {
             imp.profile_row.set_selected(position as u32);
