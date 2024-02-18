@@ -83,100 +83,20 @@ mod imp {
 
             let obj = self.obj();
 
+            obj.setup_rows();
+
             let settings = obj.settings();
-
-            self.framerate_row.set_factory(Some(&row_factory(
-                &self.framerate_row,
-                &gettext("This frame rate may cause performance issues on the selected format."),
-                clone!(@strong settings => move |list_item| {
-                    let item = list_item.item().unwrap();
-                    let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
-
-                    let framerate_option = item
-                        .downcast_ref::<BoxedAnyObject>()
-                        .unwrap()
-                        .borrow::<FramerateOption>();
-                    item_row.set_title(framerate_option.to_string());
-
-                    unsafe {
-                        list_item.set_data(
-                            SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY,
-                            settings.connect_profile_changed(
-                                clone!(@weak list_item => move |settings| {
-                                    update_framerate_row_shows_warning_icon(settings, &list_item);
-                                }),
-                            ),
-                        );
-                    }
-
-                    update_framerate_row_shows_warning_icon(&settings, list_item);
-                }),
-                clone!(@strong settings => move |list_item| {
-                    unsafe {
-                        let handler_id = list_item
-                            .steal_data(SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY)
-                            .unwrap();
-                        settings.disconnect(handler_id);
-                    }
-                }),
-            )));
-            self.framerate_row
-                .set_model(Some(&FramerateOption::model(&settings)));
-
-            self.profile_row.set_factory(Some(&row_factory(
-                &self.profile_row,
-                &gettext(gettext("This format is experimental and unsupported.")),
-                |list_item| {
-                    let item = list_item.item().unwrap();
-                    let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
-
-                    let profile = profile_from_obj(&item);
-                    item_row.set_title(
-                        profile
-                            .map_or_else(|| gettext("None"), |profile| profile.name().to_string()),
-                    );
-                    item_row.set_shows_warning_icon(
-                        profile.is_some_and(|profile| profile.is_experimental()),
-                    );
-                },
-                |_| {},
-            )));
-            let profiles = Profile::all()
-                .inspect_err(|err| tracing::error!("Failed to load profiles: {:?}", err))
-                .unwrap_or_default();
-            let profiles_model = gio::ListStore::new::<glib::Object>();
-            let active_profile = settings.profile();
-            if active_profile.is_none() {
-                profiles_model.append(&NoneProfile::new(()));
-            }
-            profiles_model.splice(profiles_model.n_items(), 0, profiles);
-
-            let filter = gtk::CustomFilter::new(move |obj| {
-                profile_from_obj(obj).map_or(true, |profile| {
-                    (*IS_EXPERIMENTAL_MODE
-                        || !profile.is_experimental()
-                        || active_profile.is_some_and(|active_profile| active_profile == profile))
-                        && profile.is_available()
-                })
-            });
-            let filter_model = gtk::FilterListModel::new(Some(profiles_model), Some(filter));
-
-            self.profile_row.set_model(Some(&filter_model));
-
             settings
                 .bind_record_delay(&self.delay_row.get(), "value")
                 .build();
-
-            settings.connect_framerate_changed(clone!(@weak obj => move |_| {
-                obj.update_framerate_row_selected();
-            }));
-
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
                 obj.update_file_chooser_button_label();
             }));
-
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row_selected();
+            }));
+            settings.connect_framerate_changed(clone!(@weak obj => move |_| {
+                obj.update_framerate_row_selected();
             }));
 
             obj.update_file_chooser_button_label();
@@ -271,6 +191,95 @@ impl PreferencesDialog {
                 framerate_option
             );
         }
+    }
+
+    fn setup_rows(&self) {
+        let imp = self.imp();
+
+        let settings = self.settings();
+
+        imp.framerate_row.set_factory(Some(&row_factory(
+            &imp.framerate_row,
+            &gettext("This frame rate may cause performance issues on the selected format."),
+            clone!(@strong settings => move |list_item| {
+                let item = list_item.item().unwrap();
+                let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
+
+                let framerate_option = item
+                    .downcast_ref::<BoxedAnyObject>()
+                    .unwrap()
+                    .borrow::<FramerateOption>();
+                item_row.set_title(framerate_option.to_string());
+
+                unsafe {
+                    list_item.set_data(
+                        SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY,
+                        settings.connect_profile_changed(
+                            clone!(@weak list_item => move |settings| {
+                                update_framerate_row_shows_warning_icon(settings, &list_item);
+                            }),
+                        ),
+                    );
+                }
+
+                update_framerate_row_shows_warning_icon(&settings, list_item);
+            }),
+            clone!(@strong settings => move |list_item| {
+                unsafe {
+                    let handler_id = list_item
+                        .steal_data(SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY)
+                        .unwrap();
+                    settings.disconnect(handler_id);
+                }
+            }),
+        )));
+
+        let framerate_model = FramerateOption::model(&settings);
+        imp.framerate_row.set_model(Some(&framerate_model));
+
+        imp.profile_row.set_factory(Some(&row_factory(
+            &imp.profile_row,
+            &gettext("This format is experimental and unsupported."),
+            |list_item| {
+                let item = list_item.item().unwrap();
+                let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
+
+                let profile = profile_from_obj(&item);
+                item_row.set_title(
+                    profile.map_or_else(|| gettext("None"), |profile| profile.name().to_string()),
+                );
+                item_row.set_shows_warning_icon(
+                    profile.is_some_and(|profile| profile.is_experimental()),
+                );
+            },
+            |_| {},
+        )));
+
+        let active_profile = settings.profile();
+        let profile_model = {
+            let profiles = Profile::all()
+                .inspect_err(|err| tracing::error!("Failed to load profiles: {:?}", err))
+                .unwrap_or_default();
+
+            let model = gio::ListStore::new::<glib::Object>();
+            model.splice(0, 0, profiles);
+
+            if active_profile.is_none() {
+                model.insert(0, &NoneProfile::new(()));
+            }
+
+            model
+        };
+        let filter = gtk::CustomFilter::new(move |obj| {
+            profile_from_obj(obj).map_or(true, |profile| {
+                (*IS_EXPERIMENTAL_MODE
+                    || !profile.is_experimental()
+                    || active_profile.is_some_and(|active_profile| active_profile == profile))
+                    && profile.is_available()
+            })
+        });
+        let profile_filter_model = gtk::FilterListModel::new(Some(profile_model), Some(filter));
+        imp.profile_row.set_model(Some(&profile_filter_model));
     }
 }
 
