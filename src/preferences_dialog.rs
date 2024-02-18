@@ -34,7 +34,7 @@ mod imp {
         #[template_child]
         pub(super) delay_row: TemplateChild<adw::SpinRow>,
         #[template_child]
-        pub(super) file_chooser_button_content: TemplateChild<adw::ButtonContent>,
+        pub(super) file_chooser_label: TemplateChild<gtk::Label>,
         #[template_child]
         pub(super) profile_row: TemplateChild<adw::ComboRow>,
         #[template_child]
@@ -90,7 +90,7 @@ mod imp {
                 .bind_record_delay(&self.delay_row.get(), "value")
                 .build();
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
-                obj.update_file_chooser_button_label();
+                obj.update_file_chooser_label();
             }));
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
                 obj.update_profile_row_selected();
@@ -99,7 +99,7 @@ mod imp {
                 obj.update_framerate_row_selected();
             }));
 
-            obj.update_file_chooser_button_label();
+            obj.update_file_chooser_label();
             obj.update_profile_row_selected();
             obj.update_framerate_row_selected();
 
@@ -143,11 +143,11 @@ impl PreferencesDialog {
             .build()
     }
 
-    fn update_file_chooser_button_label(&self) {
+    fn update_file_chooser_label(&self) {
         let imp = self.imp();
 
         let saving_location = self.settings().saving_location();
-        imp.file_chooser_button_content
+        imp.file_chooser_label
             .set_label(&display_path(&saving_location));
     }
 
