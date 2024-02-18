@@ -168,20 +168,20 @@ mod imp {
                 .build();
 
             settings.connect_framerate_changed(clone!(@weak obj => move |_| {
-                obj.update_framerate_row();
+                obj.update_framerate_row_selected();
             }));
 
             settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
-                obj.update_file_chooser_button();
+                obj.update_file_chooser_button_label();
             }));
 
             settings.connect_profile_changed(clone!(@weak obj => move |_| {
-                obj.update_profile_row();
+                obj.update_profile_row_selected();
             }));
 
-            obj.update_file_chooser_button();
-            obj.update_profile_row();
-            obj.update_framerate_row();
+            obj.update_file_chooser_button_label();
+            obj.update_profile_row_selected();
+            obj.update_framerate_row_selected();
 
             // Load last active value first in `update_*_row` before connecting to
             // the signal to avoid unnecessary updates.
@@ -223,7 +223,7 @@ impl PreferencesDialog {
             .build()
     }
 
-    fn update_file_chooser_button(&self) {
+    fn update_file_chooser_button_label(&self) {
         let imp = self.imp();
 
         let saving_location = self.settings().saving_location();
@@ -231,7 +231,7 @@ impl PreferencesDialog {
             .set_label(&display_path(&saving_location));
     }
 
-    fn update_profile_row(&self) {
+    fn update_profile_row_selected(&self) {
         let imp = self.imp();
 
         let settings = self.settings();
@@ -254,7 +254,7 @@ impl PreferencesDialog {
         }
     }
 
-    fn update_framerate_row(&self) {
+    fn update_framerate_row_selected(&self) {
         let imp = self.imp();
 
         let settings = self.settings();
