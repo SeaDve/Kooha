@@ -4,7 +4,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
     gio,
-    glib::{self, clone, closure, BoxedAnyObject},
+    glib::{self, clone, BoxedAnyObject},
 };
 
 use crate::{
@@ -151,18 +151,14 @@ mod imp {
             }
             profiles_model.splice(profiles_model.n_items(), 0, profiles);
 
-            let filter = gtk::BoolFilter::new(Some(&gtk::ClosureExpression::new::<bool>(
-                &[] as &[&gtk::Expression],
-                closure!(|obj: glib::Object| {
-                    profile_from_obj(&obj).map_or(true, |profile| {
-                        (*IS_EXPERIMENTAL_MODE
-                            || !profile.is_experimental()
-                            || active_profile
-                                .is_some_and(|active_profile| active_profile == profile))
-                            && profile.is_available()
-                    })
-                }),
-            )));
+            let filter = gtk::CustomFilter::new(move |obj| {
+                profile_from_obj(obj).map_or(true, |profile| {
+                    (*IS_EXPERIMENTAL_MODE
+                        || !profile.is_experimental()
+                        || active_profile.is_some_and(|active_profile| active_profile == profile))
+                        && profile.is_available()
+                })
+            });
             let filter_model = gtk::FilterListModel::new(Some(profiles_model), Some(filter));
 
             self.profile_row.set_model(Some(&filter_model));
