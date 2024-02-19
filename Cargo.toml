@@ -8,6 +8,12 @@ edition = "2021"
 [profile.release]
 lto = true
 
+# Don't compile and link debug info; these reduce build times at the
+# cost of not having line numbers in backtraces.
+[profile.dev]
+debug = 0
+strip = "debuginfo"
+
 [dependencies]
 adw = { package = "libadwaita", version = "0.6", features = ["v1_5"] }
 anyhow = "1.0.59"
