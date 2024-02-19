@@ -6,13 +6,14 @@
 # Petr Šimáček <petr.simacek@gmail.com>, 2021.
 # multiflexi <multi.flexi@seznam.cz>, 2022.
 # Fjuro <ifjuro@proton.me>, 2023, 2024.
+# Fjuro <fjuro@alius.cz>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-16 14:02+0000\n"
-"Last-Translator: Fjuro <ifjuro@proton.me>\n"
+"PO-Revision-Date: 2024-02-19 01:03+0000\n"
+"Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/seadve/kooha/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -105,7 +106,7 @@ msgstr "Pozdržení (sekundy)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Časový interval před začátkem nahrávání"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -113,7 +114,7 @@ msgstr "Složka nahrávek"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Cílová složka pro nahrávky"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -331,6 +332,7 @@ msgstr "Nepodařilo se nastavit složku pro nahrávky"
 #: src/preferences_dialog.rs:207
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Tato snímková frekvence může u vybraného formátu způsobit problémy s výkonem."
 
 #: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
@@ -446,7 +448,7 @@ msgstr "Otevřít"
 
 #: src/window/mod.rs:432
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Probíhá nahrávání"
 
 #: src/window/mod.rs:480
 msgid "Paused"

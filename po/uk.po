@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-14 21:01+0000\n"
+"PO-Revision-Date: 2024-02-19 01:05+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
 "uk/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.4\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -107,7 +107,7 @@ msgstr "Затримка (секунди)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Інтервал часу перед початком запису"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -115,7 +115,7 @@ msgstr "Тека записів"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Папка для зберігання записів"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -255,7 +255,7 @@ msgstr "_Налаштування"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr "_Комбінації клавіш"
+msgstr "_Сполучення клавіш"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
@@ -264,7 +264,7 @@ msgstr "_Про Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
 msgid "translator-credits"
-msgstr "Ihor Hordiichuk &lt;igor_ck@outlook.com&gt;"
+msgstr "Ihor Hordiichuk, Serhii Honcharuk"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
@@ -285,7 +285,7 @@ msgstr "Скрінкаст записаний"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Показати у файлах"
+msgstr "Показати у Файлах"
 
 #: src/audio_device.rs:45 src/audio_device.rs:157
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -330,6 +330,8 @@ msgstr "Не вдалося встановити теку для записів"
 #: src/preferences_dialog.rs:207
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Така частота кадрів може спричинити проблеми зі швидкодією у вибраному "
+"форматі."
 
 #: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
@@ -446,7 +448,7 @@ msgstr "Відкрити"
 
 #: src/window/mod.rs:432
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Триває запис"
 
 #: src/window/mod.rs:480
 msgid "Paused"

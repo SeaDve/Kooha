@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-13 11:02+0000\n"
+"PO-Revision-Date: 2024-02-19 01:03+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/"
-">\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -107,7 +107,7 @@ msgstr "Gecikme (Saniye)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Kayıt başlamadan önceki zaman aralığı"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -115,7 +115,7 @@ msgstr "Kayıtlar Klasörü"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Kayıtlar için hedef klasör"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -326,7 +326,7 @@ msgstr "Kayıt klasörü ayarlanamadı"
 
 #: src/preferences_dialog.rs:207
 msgid "This frame rate may cause performance issues on the selected format."
-msgstr ""
+msgstr "Bu kare hızı, seçilen biçimde performans sorunlarına neden olabilir."
 
 #: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
@@ -444,7 +444,7 @@ msgstr "Aç"
 
 #: src/window/mod.rs:432
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Bir kayıt devam ediyor"
 
 #: src/window/mod.rs:480
 msgid "Paused"
