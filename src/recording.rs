@@ -20,7 +20,6 @@ use gtk::{
 use crate::{
     application::Application,
     area_selector::AreaSelector,
-    audio_device::{self, AudioDeviceClass},
     cancelled::Cancelled,
     help::{ErrorExt, ResultExt},
     i18n::gettext_f,
@@ -214,20 +213,8 @@ impl Recording {
 
         // setup audio sources
         if profile_supports_audio {
-            if settings.record_microphone() {
-                pipeline_builder.microphone_name(
-                    audio_device::find_default_name(AudioDeviceClass::Source)
-                        .await
-                        .with_context(|| gettext("No microphone source found"))?,
-                );
-            }
-            if settings.record_desktop_audio() {
-                pipeline_builder.desktop_audio_name(
-                    audio_device::find_default_name(AudioDeviceClass::Sink)
-                        .await
-                        .with_context(|| gettext("No desktop audio source found"))?,
-                );
-            }
+            pipeline_builder.record_desktop_audio(settings.record_desktop_audio());
+            pipeline_builder.record_microphone(settings.record_microphone());
         }
 
         // build pipeline

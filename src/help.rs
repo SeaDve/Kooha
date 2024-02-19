@@ -1,6 +1,6 @@
 use anyhow::{Context, Error, Result};
 
-use std::fmt;
+use std::{convert::Infallible, fmt};
 
 #[derive(Debug)]
 pub struct Help(String);
@@ -43,7 +43,7 @@ pub trait ResultExt<T, E> {
 
     fn with_help<M, C>(
         self,
-        help_msg: impl FnOnce() -> M,
+        help_msg_fn: impl FnOnce() -> M,
         context_fn: impl FnOnce() -> C,
     ) -> Result<T>
     where
@@ -55,6 +55,29 @@ impl<T, E> ResultExt<T, E> for Result<T, E>
 where
     Result<T, E>: Context<T, E>,
 {
+    fn help<M, C>(self, help_msg: M, context: C) -> Result<T>
+    where
+        M: Into<String>,
+        C: fmt::Display + Send + Sync + 'static,
+    {
+        self.context(Help::new(help_msg)).context(context)
+    }
+
+    fn with_help<M, C>(
+        self,
+        help_msg_fn: impl FnOnce() -> M,
+        context_fn: impl FnOnce() -> C,
+    ) -> Result<T>
+    where
+        M: Into<String>,
+        C: fmt::Display + Send + Sync + 'static,
+    {
+        self.with_context(|| Help::new(help_msg_fn()))
+            .with_context(context_fn)
+    }
+}
+
+impl<T> ResultExt<T, Infallible> for Option<T> {
     fn help<M, C>(self, help_msg: M, context: C) -> Result<T>
     where
         M: Into<String>,
