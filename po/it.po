@@ -4,7 +4,7 @@
 # Nicolas Mariniello <seldon1000@tutanota.com>, 2021.
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
 # Dave Patrick <davecruz48@gmail.com>, 2021.
-# albanobattistella <albano_battistella@hotmail.com>, 2021, 2022, 2023.
+# albanobattistella <albano_battistella@hotmail.com>, 2021, 2022, 2023, 2024.
 # Ruggero Turra <giurrero@gmail.com>, 2021.
 # Michael Moroni <michaelmoroni@disroot.org>, 2021, 2023.
 # Andrea Brandi <git@andreabrandi.com>, 2022, 2023.
@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2023-10-04 18:11+0000\n"
+"PO-Revision-Date: 2024-02-20 02:02+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/seadve/kooha/it/"
-">\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/seadve/kooha/it/>"
+"\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -69,7 +69,7 @@ msgstr "📼 Supporto per i formati WebM, MP4, GIF e Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Seleziona un monitor o una porzione dello schermo da registrare"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -109,7 +109,7 @@ msgstr "Ritardo (secondi)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Intervallo di tempo prima dell'inizio della registrazione"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -117,7 +117,7 @@ msgstr "Cartella registrazioni"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Cartella di destinazione per le registrazioni"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -305,30 +305,32 @@ msgstr "Impossibile connettersi al demone PulseAudio"
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} ora"
+msgstr[1] "{time} ore"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} minuto"
+msgstr[1] "{time} minuti"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} secondo"
+msgstr[1] "{time} secondi"
 
 #: src/preferences_dialog.rs:66
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Impossibile impostare la cartella delle registrazioni"
 
 #: src/preferences_dialog.rs:207
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Questa frequenza fotogrammi potrebbe causare problemi di prestazioni nel "
+"formato selezionato."
 
 #: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
@@ -389,16 +391,21 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Una registrazione è attualmente in corso. L'uscita immediata potrebbe "
+"rendere la registrazione non riproducibile. Si prega di interrompere la "
+"registrazione prima di uscire."
 
 #: src/window/mod.rs:200
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"L'uscita annullerà l'elaborazione e potrebbe rendere la registrazione non "
+"riproducibile."
 
 #: src/window/mod.rs:206
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Uscire dall'applicazione?"
 
 #: src/window/mod.rs:251
 msgid "Copy to clipboard"
@@ -442,7 +449,7 @@ msgstr "Apri"
 
 #: src/window/mod.rs:432
 msgid "A recording is in progress"
-msgstr ""
+msgstr "È in corso una registrazione"
 
 #: src/window/mod.rs:480
 msgid "Paused"

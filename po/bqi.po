@@ -1,35 +1,38 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# hosseinabaspanah <hosseinabaspanah@gmail.com>, 2023.
+# hosseinabaspanah <hosseinabaspanah@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-02-20 02:02+0000\n"
+"Last-Translator: hosseinabaspanah <hosseinabaspanah@gmail.com>\n"
+"Language-Team: Luri (Bakhtiari) <https://hosted.weblate.org/projects/seadve/"
+"kooha/bqi/>\n"
 "Language: bqi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
 #: src/main.rs:67
 msgid "Kooha"
-msgstr ""
+msgstr "kohā"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "balge nemāyeš xote be xuvi zaft koň"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "eskerin kast;zaft;balge nemāyeš;film"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
 msgid ""
@@ -45,7 +48,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "qābeliyatā asli kohā yonowên:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
