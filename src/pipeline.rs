@@ -379,7 +379,7 @@ fn make_pulsesrc_bin<'a>(
     let bin = gst::Bin::builder().name("kooha-pulsesrc-bin").build();
 
     let audiomixer = gst::ElementFactory::make("audiomixer")
-        .property("latency", gst::ClockTime::from_seconds(1))
+        .property("latency", gst::ClockTime::from_seconds(2))
         .build()?;
     bin.add(&audiomixer)?;
 
