@@ -336,7 +336,6 @@ fn make_pulsesrc(class: DeviceClass, element_name: &str) -> Result<gst::Element>
     let pulsesrc = gst::ElementFactory::make("pulsesrc")
         .name(element_name)
         .property("provide-clock", false)
-        .property("do-timestamp", true)
         .build()?;
 
     match class {
