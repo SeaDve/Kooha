@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-16 14:02+0000\n"
+"PO-Revision-Date: 2024-02-21 10:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/seadve/kooha/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -105,7 +105,7 @@ msgstr "Wachttijd (in seconden)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Tijds­interval voordat de opname begint"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -113,7 +113,7 @@ msgstr "Opnamemap"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Bestemmings­map voor de opnamen"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -253,7 +253,7 @@ msgstr "_Voorkeuren"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr "Snel_toetsen"
+msgstr "_Snel­toetsen"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
@@ -262,9 +262,7 @@ msgstr "Over Kooh_a"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
 msgid "translator-credits"
-msgstr ""
-"Heimen Stoffels &lt;vistausss@fastmail.com&gt;\n"
-"Philip Goto https://flipflop97.github.io/"
+msgstr "Philip Goto https://flipflop97.github.io/"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
@@ -285,7 +283,7 @@ msgstr "De opname is afgerond"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Tonen in bestandsbeheer"
+msgstr "Tonen in bestanden"
 
 #: src/audio_device.rs:45 src/audio_device.rs:157
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -328,6 +326,8 @@ msgstr "Opname­map instellen mislukt"
 #: src/preferences_dialog.rs:207
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Deze beeld­snelheid kan prestatie­problemen veroorzaken bij het "
+"geselecteerde formaat."
 
 #: src/preferences_dialog.rs:246
 msgid "This format is experimental and unsupported."
@@ -446,7 +446,7 @@ msgstr "Openen"
 
 #: src/window/mod.rs:432
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Er is een opname bezig"
 
 #: src/window/mod.rs:480
 msgid "Paused"
