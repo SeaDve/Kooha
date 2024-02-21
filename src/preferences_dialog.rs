@@ -152,6 +152,8 @@ impl PreferencesDialog {
         let saving_location = self.settings().saving_location();
         imp.file_chooser_label
             .set_label(&display_path(&saving_location));
+        imp.file_chooser_label
+            .set_tooltip_text(Some(&saving_location.display().to_string()));
     }
 
     fn update_profile_row_selected(&self) {
@@ -383,7 +385,7 @@ fn profile_from_obj(obj: &glib::Object) -> Option<&Profile> {
 
 // Copied from Delineate
 // See https://github.com/SeaDve/Delineate/blob/e5f57835133a85c002961e681dc8935249458ef7/src/utils.rs#L71
-/// Returns a human-readable representation of the path.
+/// Returns a shortened human-readable representation of the path.
 fn display_path(path: &Path) -> String {
     let home_dir = glib::home_dir();
 
