@@ -81,7 +81,7 @@ mod imp {
             ctx.arc(cx, cy, radius, -FRAC_PI_2, arc_end);
             ctx.stroke().unwrap();
 
-            ctx.set_source_color(&color.with_alpha(0.15));
+            ctx.set_source_color(&color.with_alpha(color.alpha() * 0.15));
             ctx.move_to(cx + radius * arc_end.cos(), cy + radius * arc_end.sin());
             ctx.arc(cx, cy, radius, arc_end, 3.0 * FRAC_PI_2);
             ctx.stroke().unwrap();
