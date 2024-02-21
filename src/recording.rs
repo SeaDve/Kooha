@@ -6,7 +6,7 @@ use std::{
     os::unix::prelude::RawFd,
     path::{Path, PathBuf},
     rc::Rc,
-    time::{Duration, Instant},
+    time::Duration,
 };
 
 use anyhow::{ensure, Context, Error, Result};
@@ -83,8 +83,7 @@ mod imp {
 
         pub(super) file: OnceCell<gio::File>,
 
-        pub(super) starting_time: Cell<Option<Instant>>,
-        pub(super) expected_duration: Cell<Option<Duration>>,
+        pub(super) estimated_final_duration: Cell<Option<gst::ClockTime>>,
 
         pub(super) timer: RefCell<Option<Timer>>,
         pub(super) session: RefCell<Option<ScreencastSession>>,
@@ -258,7 +257,7 @@ impl Recording {
             }),
         )));
 
-        let state_change = pipeline
+        pipeline
             .set_state(gst::State::Playing)
             .context("Failed to initialize pipeline state to playing")
             .with_help(
@@ -266,11 +265,6 @@ impl Recording {
                 || gettext("Failed to start recording"),
             )?;
         self.update_duration();
-
-        tracing::debug!(?state_change, "Pipeline state change");
-        if state_change != gst::StateChangeSuccess::Async {
-            imp.starting_time.set(Some(Instant::now()));
-        }
 
         Ok(())
     }
@@ -284,6 +278,8 @@ impl Recording {
         self.pipeline()
             .set_state(gst::State::Paused)
             .context("Failed to set pipeline state to paused")?;
+
+        // TODO Handle effect on estimated final duration
 
         Ok(())
     }
@@ -313,18 +309,17 @@ impl Recording {
             return;
         }
 
+        let pipeline = self.pipeline();
+
         self.set_state(RecordingState::Flushing { progress: 0 });
-        imp.expected_duration.set(
-            imp.starting_time
-                .get()
-                .map(|starting_time| starting_time.elapsed()),
-        );
+        imp.estimated_final_duration
+            .set(pipeline.current_running_time());
         self.update_flushing_progress();
 
         tracing::debug!("Sending eos event to pipeline");
         // FIXME Maybe it is needed to verify if we received the same
         // eos event by checking its seqnum in the bus?
-        self.pipeline().send_event(gst::event::Eos::new());
+        pipeline.send_event(gst::event::Eos::new());
     }
 
     pub fn cancel(&self) {
@@ -441,11 +436,15 @@ impl Recording {
             return;
         };
 
-        let progress = imp.expected_duration.get().map_or(0, |expected_duration| {
-            let progress_percent =
-                self.duration().nseconds() as f64 / expected_duration.as_nanos() as f64 * 100.0;
-            (progress_percent.round() as u8).clamp(0, 100)
-        });
+        let progress = imp
+            .estimated_final_duration
+            .get()
+            .map_or(0, |estimated_final_duration| {
+                let progress_percent = self.duration().nseconds() as f64
+                    / estimated_final_duration.nseconds() as f64
+                    * 100.0;
+                (progress_percent.round() as u8).clamp(0, 100)
+            });
 
         if prev_progress == progress {
             return;
@@ -460,19 +459,6 @@ impl Recording {
         let imp = self.imp();
 
         match message.view() {
-            MessageView::AsyncDone(ad) => {
-                tracing::debug!(
-                    state = ?self.state(),
-                    running_time = ?ad.running_time(),
-                    "Received async done message on bus"
-                );
-
-                if imp.starting_time.get().is_none() {
-                    imp.starting_time.set(Some(Instant::now()));
-                }
-
-                glib::ControlFlow::Continue
-            }
             MessageView::Error(e) => {
                 tracing::debug!(state = ?self.state(), "Received error at bus");
 
