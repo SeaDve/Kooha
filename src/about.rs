@@ -1,6 +1,12 @@
-use std::{env, path::Path};
+use std::{
+    env,
+    io::BufRead,
+    path::Path,
+    process::{Command, Stdio},
+};
 
 use adw::prelude::*;
+use anyhow::Result;
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::glib;
@@ -63,11 +69,52 @@ fn release_notes() -> &'static str {
     </ul>"#
 }
 
+fn cpu_model() -> Result<String> {
+    let output = Command::new("lscpu")
+        .stdout(Stdio::piped())
+        .spawn()?
+        .wait_with_output()?;
+
+    for res in output.stdout.lines() {
+        let line = res?;
+
+        if line.contains("Model name:") {
+            if let Some((_, value)) = line.split_once(':') {
+                return Ok(value.trim().to_string());
+            }
+        }
+    }
+
+    Ok("<unknown>".into())
+}
+
+fn gpu_model() -> Result<String> {
+    let output = Command::new("lspci")
+        .stdout(Stdio::piped())
+        .spawn()?
+        .wait_with_output()?;
+
+    for res in output.stdout.lines() {
+        let line = res?;
+
+        if line.contains("VGA") {
+            if let Some(value) = line.splitn(3, ':').last() {
+                return Ok(value.trim().to_string());
+            }
+        }
+    }
+
+    Ok("<unknown>".into())
+}
+
 fn debug_info() -> String {
     let is_flatpak = Path::new("/.flatpak-info").exists();
     let is_experimental_mode = *IS_EXPERIMENTAL_MODE;
 
     let language_names = glib::language_names().join(", ");
+
+    let cpu_model = cpu_model().unwrap_or_else(|e| format!("<{}>", e));
+    let gpu_model = gpu_model().unwrap_or_else(|e| format!("<{}>", e));
 
     let distribution = glib::os_info("PRETTY_NAME").unwrap_or_else(|| "<unknown>".into());
     let desktop_session = env::var("DESKTOP_SESSION").unwrap_or_else(|_| "<unknown>".into());
@@ -100,6 +147,9 @@ fn debug_info() -> String {
 - Experimental: {is_experimental_mode}
 
 - Language: {language_names}
+
+- CPU: {cpu_model}
+- GPU: {gpu_model}
 
 - Distribution: {distribution}
 - Desktop Session: {desktop_session}
