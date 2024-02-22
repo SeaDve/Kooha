@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-19 01:03+0000\n"
+"PO-Revision-Date: 2024-02-22 21:02+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/>"
 "\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
@@ -264,7 +264,9 @@ msgstr "Kooha _Hakkında"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:27
 msgid "translator-credits"
-msgstr "Sabri Ünal <libreajans@gmail.com>"
+msgstr ""
+"Sabri Ünal \n"
+"Oğuz Ersen"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"

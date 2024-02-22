@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-19 01:03+0000\n"
-"Last-Translator: Sergio Varela <sergitroll9@gmail.com>\n"
+"PO-Revision-Date: 2024-02-22 21:02+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/seadve/kooha/es/>"
 "\n"
 "Language: es\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -269,8 +269,8 @@ msgstr "_Acerca de Kooha"
 #: src/about.rs:27
 msgid "translator-credits"
 msgstr ""
-"Óscar Fernández Díaz (oscfdezdz@tuta.io)\n"
-"Adolfo Jayme Barrientos (fitojb@ubuntu.com), 2023"
+"Óscar Fernández Díaz (oscfdezdz@tuta.io), Adolfo Jayme Barrientos "
+"(fitojb@ubuntu.com)"
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-19 01:03+0000\n"
+"PO-Revision-Date: 2024-02-22 21:02+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/seadve/kooha/cs/>\n"
 "Language: cs\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
@@ -264,9 +264,10 @@ msgstr "_O aplikaci Kooha"
 #: src/about.rs:27
 msgid "translator-credits"
 msgstr ""
-"Jan Novák <jan.novak@silen.org>\n"
-"Vojtěch Perník <translations@pervoj.cz>\n"
-"Jaroslav Svoboda <jaroslav.svoboda@vse.cz>"
+"Jan Novák \n"
+"Vojtěch Perník \n"
+"Jaroslav Svoboda \n"
+"Jonáš Loskot "
 
 #: src/about.rs:37
 msgid "Donate (Buy Me a Coffee)"
