@@ -220,6 +220,8 @@ impl Window {
     }
 
     pub fn present_error_dialog(&self, err: &Error) {
+        const OK_RESPONSE_ID: &str = "ok";
+
         let err_text = format!("{:?}", err);
 
         let err_view = gtk::TextView::builder()
@@ -233,26 +235,26 @@ impl Window {
             .build();
 
         let scrolled_window = gtk::ScrolledWindow::builder()
-            .child(&err_view)
-            .min_content_height(120)
             .min_content_width(360)
+            .min_content_height(120)
+            .child(&err_view)
             .build();
 
         let scrolled_window_row = gtk::ListBoxRow::builder()
-            .child(&scrolled_window)
             .overflow(gtk::Overflow::Hidden)
             .activatable(false)
             .selectable(false)
+            .child(&scrolled_window)
             .build();
         scrolled_window_row.add_css_class("error-view");
 
         let copy_button = gtk::Button::builder()
+            .valign(gtk::Align::Center)
             .tooltip_text(gettext("Copy to clipboard"))
             .icon_name("edit-copy-symbolic")
-            .valign(gtk::Align::Center)
             .build();
         copy_button.connect_clicked(move |button| {
-            button.display().clipboard().set_text(&err_text);
+            button.clipboard().set_text(&err_text);
             button.set_tooltip_text(Some(&gettext("Copied to clipboard")));
             button.set_icon_name("checkmark-symbolic");
             button.add_css_class("copy-done");
@@ -274,7 +276,7 @@ impl Window {
         let dialog = adw::AlertDialog::builder()
             .heading(err.to_string())
             .body_use_markup(true)
-            .default_response("ok")
+            .default_response(OK_RESPONSE_ID)
             .extra_child(&list_box)
             .build();
 
@@ -286,7 +288,7 @@ impl Window {
             ));
         }
 
-        dialog.add_response("ok", &gettext("Ok"));
+        dialog.add_response(OK_RESPONSE_ID, &gettext("Ok, Got It"));
         dialog.present(self);
     }
 
