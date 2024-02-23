@@ -21,7 +21,7 @@ use crate::{
     application::Application,
     area_selector::AreaSelector,
     cancelled::Cancelled,
-    help::{ErrorExt, ResultExt},
+    help::ContextWithHelp,
     i18n::gettext_f,
     pipeline::PipelineBuilder,
     screencast_session::{
@@ -180,16 +180,17 @@ impl Recording {
             parent,
         )
         .await
-        .with_help(
-            || {
+        .with_context(|| {
+            ContextWithHelp::new(
+                gettext("Failed to start recording"),
                 gettext_f(
                     // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
                     "Check out {link} for help.",
                     &[("link", r#"<a href="https://github.com/SeaDve/Kooha#-it-doesnt-work">It Doesn't Work page</a>"#)],
-                )
-            },
-            || gettext("Failed to start recording"),
-        )?;
+                ),
+            )
+        })?;
+
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
@@ -217,10 +218,12 @@ impl Recording {
         }
 
         // build pipeline
-        let pipeline = pipeline_builder.build().with_help(
-            || gettext("A GStreamer plugin may not be installed."),
-            || gettext("Failed to start recording"),
-        )?;
+        let pipeline = pipeline_builder.build().with_context(|| {
+            ContextWithHelp::new(
+                gettext("Failed to start recording"),
+                gettext("A GStreamer plugin may not be installed."),
+            )
+        })?;
         imp.pipeline.set(pipeline.clone()).unwrap();
 
         // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
@@ -260,10 +263,13 @@ impl Recording {
         pipeline
             .set_state(gst::State::Playing)
             .context("Failed to initialize pipeline state to playing")
-            .with_help(
-                || gettext("Make sure that the saving location exists and is accessible."),
-                || gettext("Failed to start recording"),
-            )?;
+            .with_context(|| {
+                ContextWithHelp::new(
+                    gettext("Failed to start recording"),
+                    gettext("Make sure that the saving location exists and is accessible."),
+                )
+            })?;
+
         self.update_duration();
 
         Ok(())
@@ -479,14 +485,14 @@ impl Recording {
                     .context(gettext("An error occurred while recording"));
 
                 let error = if e.error().matches(gst::ResourceError::OpenWrite) {
-                    error.help(
-                        gettext("Make sure that the saving location exists and is accessible."),
+                    error.context(ContextWithHelp::new(
                         gettext_f(
                             // Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
                             "Failed to open “{path}” for writing",
                             &[("path", &self.file().uri())],
                         ),
-                    )
+                        gettext("Make sure that the saving location exists and is accessible."),
+                    ))
                 } else {
                     error
                 };

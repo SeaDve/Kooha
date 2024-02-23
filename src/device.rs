@@ -1,8 +1,8 @@
-use anyhow::{anyhow, Result};
+use anyhow::{anyhow, Context, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 
-use crate::help::ResultExt;
+use crate::help::ContextWithHelp;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum DeviceClass {
@@ -20,10 +20,13 @@ impl DeviceClass {
 }
 
 pub fn find_default(class: DeviceClass) -> Result<gst::Device> {
-    let provider = gst::DeviceProviderFactory::by_name("pulsedeviceprovider").with_help(
-        || gettext("Make sure that you have PulseAudio installed in your system."),
-        || gettext("No pulseaudio device provider found"),
-    )?;
+    let provider =
+        gst::DeviceProviderFactory::by_name("pulsedeviceprovider").with_context(|| {
+            ContextWithHelp::new(
+                gettext("Failed to find the default audio device"),
+                gettext("Make sure that you have PulseAudio installed in your system."),
+            )
+        })?;
 
     provider.start()?;
     let devices = provider.devices();

@@ -1,101 +1,26 @@
-use anyhow::{Context, Error, Result};
-
-use std::{convert::Infallible, fmt};
+use std::fmt;
 
 #[derive(Debug)]
-pub struct Help(String);
+pub struct ContextWithHelp {
+    context: String,
+    help_message: String,
+}
 
-impl Help {
-    fn new(msg: impl Into<String>) -> Self {
-        Help(msg.into())
+impl ContextWithHelp {
+    pub fn new(context: impl Into<String>, help_message: impl Into<String>) -> Self {
+        ContextWithHelp {
+            context: context.into(),
+            help_message: help_message.into(),
+        }
+    }
+
+    pub fn help_message(&self) -> &str {
+        &self.help_message
     }
 }
 
-impl fmt::Display for Help {
+impl fmt::Display for ContextWithHelp {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str(&self.0)
-    }
-}
-
-pub trait ErrorExt {
-    fn help(
-        self,
-        help_msg: impl Into<String>,
-        context: impl fmt::Display + Send + Sync + 'static,
-    ) -> Self;
-}
-
-impl ErrorExt for Error {
-    fn help(
-        self,
-        help_msg: impl Into<String>,
-        context: impl fmt::Display + Send + Sync + 'static,
-    ) -> Self {
-        self.context(Help::new(help_msg)).context(context)
-    }
-}
-
-pub trait ResultExt<T, E> {
-    fn help<M, C>(self, help_msg: M, context: C) -> Result<T>
-    where
-        M: Into<String>,
-        C: fmt::Display + Send + Sync + 'static;
-
-    fn with_help<M, C>(
-        self,
-        help_msg_fn: impl FnOnce() -> M,
-        context_fn: impl FnOnce() -> C,
-    ) -> Result<T>
-    where
-        M: Into<String>,
-        C: fmt::Display + Send + Sync + 'static;
-}
-
-impl<T, E> ResultExt<T, E> for Result<T, E>
-where
-    Result<T, E>: Context<T, E>,
-{
-    fn help<M, C>(self, help_msg: M, context: C) -> Result<T>
-    where
-        M: Into<String>,
-        C: fmt::Display + Send + Sync + 'static,
-    {
-        self.context(Help::new(help_msg)).context(context)
-    }
-
-    fn with_help<M, C>(
-        self,
-        help_msg_fn: impl FnOnce() -> M,
-        context_fn: impl FnOnce() -> C,
-    ) -> Result<T>
-    where
-        M: Into<String>,
-        C: fmt::Display + Send + Sync + 'static,
-    {
-        self.with_context(|| Help::new(help_msg_fn()))
-            .with_context(context_fn)
-    }
-}
-
-impl<T> ResultExt<T, Infallible> for Option<T> {
-    fn help<M, C>(self, help_msg: M, context: C) -> Result<T>
-    where
-        M: Into<String>,
-        C: fmt::Display + Send + Sync + 'static,
-    {
-        self.context(Help::new(help_msg)).context(context)
-    }
-
-    fn with_help<M, C>(
-        self,
-        help_msg_fn: impl FnOnce() -> M,
-        context_fn: impl FnOnce() -> C,
-    ) -> Result<T>
-    where
-        M: Into<String>,
-        C: fmt::Display + Send + Sync + 'static,
-    {
-        self.with_context(|| Help::new(help_msg_fn()))
-            .with_context(context_fn)
+        f.write_str(&self.context)
     }
 }

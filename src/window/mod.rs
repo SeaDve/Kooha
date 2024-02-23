@@ -17,7 +17,7 @@ use crate::{
     config::PROFILE,
     format_time,
     framerate_option::FramerateOption,
-    help::Help,
+    help::ContextWithHelp,
     preferences_dialog::PreferencesDialog,
     recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
@@ -278,8 +278,12 @@ impl Window {
             .extra_child(&list_box)
             .build();
 
-        if let Some(ref help) = err.downcast_ref::<Help>() {
-            dialog.set_body(&format!("<b>{}</b>: {}", gettext("Help"), help));
+        if let Some(context) = err.downcast_ref::<ContextWithHelp>() {
+            dialog.set_body(&format!(
+                "<b>{}</b>: {}",
+                gettext("Help"),
+                context.help_message()
+            ));
         }
 
         dialog.add_response("ok", &gettext("Ok"));
