@@ -75,6 +75,8 @@ impl PipelineBuilder {
             profile = ?self.profile.id(),
             stream_len = self.streams.len(),
             streams = ?self.streams,
+            record_desktop_audio = ?self.record_desktop_audio,
+            record_microphone = ?self.record_microphone,
             select_area_data = ?self.select_area_data,
         );
 
