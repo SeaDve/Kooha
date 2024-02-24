@@ -4,7 +4,7 @@
 # tinaxd <systemd.tinaxd@gmail.com>, 2021.
 # tinaxd <tinaxd@protonmail.com>, 2021.
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
-# Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022, 2023.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022, 2023, 2024.
 # Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021, 2022.
 # Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 # kj7kt <yyhuton@gmail.com>, 2023.
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2023-09-25 07:01+0000\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"PO-Revision-Date: 2024-02-24 02:28+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
 ">\n"
@@ -22,10 +22,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
@@ -70,7 +70,7 @@ msgstr "📼 WebM、MP4、GIF、Matroshka形式をサポート"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ モニター、あるいは画面の一部を選択して録画"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -79,14 +79,14 @@ msgstr "🛠 設定可能な保存先、カーソルの可視性、フレーム�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr "🚀 実験的なハードウェア強化エンコーディング"
+msgstr "🚀 実験的なハードウェアアクセラレーションによるエンコーディング"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "範囲選択"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -104,11 +104,11 @@ msgstr "一般"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr "遅延（秒）"
+msgstr "遅延 (秒)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "録画を開始するまでの時間"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -116,7 +116,7 @@ msgstr "録画フォルダ"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "録画の保存先フォルダー"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -142,11 +142,11 @@ msgstr "設定を表示"
 msgid "Show Shortcuts"
 msgstr "ショートカット一覧を表示"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "終了"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "録画中"
 
@@ -168,11 +168,11 @@ msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr "デスクトップ音声の切り替え"
+msgstr "デスクトップ音声の有効化／無効化"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr "マイクからの録音を有効化／無効化"
+msgstr "マイクの有効化／無効化"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
@@ -200,11 +200,11 @@ msgstr "デスクトップ音声を無効化"
 
 #: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
-msgstr "マイクを有効にする"
+msgstr "マイクを有効化"
 
 #: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
-msgstr "マイクを無効にする"
+msgstr "マイクを無効化"
 
 #: data/resources/ui/window.ui:104
 msgid "Show Pointer"
@@ -224,7 +224,7 @@ msgstr "録画"
 
 #: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
-msgstr "以前に選択したビデオソースを忘れる"
+msgstr "以前に選択した録画元の記録を消去"
 
 #: data/resources/ui/window.ui:180
 msgid "Stop Recording"
@@ -263,24 +263,24 @@ msgid "_About Kooha"
 msgstr "Koohaについて(_A)"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr ""
-"小山田 純,\n"
-"Ryo Nakano,\n"
-"Kaz Sibuya,\n"
-"Kisaragi Hiu,\n"
+"小山田 純\n"
+"Ryo Nakano\n"
+"Kaz Sibuya\n"
+"Kisaragi Hiu\n"
 "kj7kt"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr "寄付 (Buy Me a Coffee)"
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "翻訳"
 
@@ -293,87 +293,77 @@ msgstr "スクリーンキャストを保存しました"
 msgid "Show in Files"
 msgstr "ファイル で表示"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "PulseAudioがシステムにインストールされていることを確認してください。"
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "デバイスモニタの開始に失敗しました"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "PulseAudioデーモンへの接続に失敗しました"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
+msgstr[0] "{time} 時間"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
+msgstr[0] "{time} 分"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
+msgstr[0] "{time} 秒"
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "録画フォルダーを設定できませんでした"
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"選択したフォーマットの場合、このフレームレートではパフォーマンス上の問題が発"
+"生する可能性があります。"
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr "このフォーマットは実験的でありサポートされていません。"
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "なし"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr "有効なプロファイルなし"
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "録画の開始に失敗しました"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "ヘルプは {link} をご確認ください。"
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "マイクソースが見つかりません"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "デスクトップスピーカーのソースが見つかりません"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamerプラグインがインストールされていない可能性があります。"
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "保存場所が存在し、アクセス可能であることを確認してください。"
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "録画中にエラーが発生しました"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr "“{path}” を書き込み用に開けませんでした"
 
@@ -381,51 +371,53 @@ msgstr "“{path}” を書き込み用に開けませんでした"
 msgid "Select Recordings Folder"
 msgstr "動画の保存先のフォルダを選択"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
-msgstr "一時停止の切り替えに失敗しました"
+msgstr "一時停止または再開に失敗しました"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"現在録画中です。直ちに終了すると、録画が再生不能になる可能性があります。終了"
+"前に録画を停止してください。"
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
+msgstr "終了すると処理がキャンセルされ、録画が再生不能になる可能性があります。"
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "アプリケーションを終了しますか?"
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "クリップボードにコピー"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーしました"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "エラーの詳細を表示"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "ヘルプ"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "OK"
+#: src/window/mod.rs:291
+msgid "Ok, Got It"
+msgstr ""
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
-msgstr "設定を開きますか？"
+msgstr "設定を開きますか?"
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -433,29 +425,44 @@ msgstr ""
 "前回選択したフォーマットが利用できません。設定を開いてフォーマットを選択し録"
 "画を継続してください。"
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr "後で"
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr "開く"
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "録画中"
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "一時停止"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "通常"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "選択範囲"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "デバイスモニタの開始に失敗しました"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "PulseAudioデーモンへの接続に失敗しました"
+
+#~ msgid "No microphone source found"
+#~ msgstr "マイクソースが見つかりません"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "デスクトップスピーカーのソースが見つかりません"
+
+#~ msgid "Ok"
+#~ msgstr "OK"
 
 #~ msgid "This frame rate may cause performance issues."
 #~ msgstr "このフレームレートはパフォーマンスに問題を起こす可能性があります。"

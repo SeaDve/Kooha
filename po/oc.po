@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
 "PO-Revision-Date: 2023-12-02 16:09+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://hosted.weblate.org/projects/seadve/kooha/oc/"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Weblate 5.3-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
@@ -82,7 +82,7 @@ msgid "Select Area"
 msgstr "Seleccionar la zòna"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "Anullar"
 
@@ -138,11 +138,11 @@ msgstr "Afichar las preferéncias"
 msgid "Show Shortcuts"
 msgstr "Afichar los acorchis"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "Sortir"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "Enregistrament"
 
@@ -259,19 +259,19 @@ msgid "_About Kooha"
 msgstr "_A prepaus de Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Far un don (Buy Me a Coffee)"
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "Traduire"
 
@@ -284,17 +284,13 @@ msgstr "Captura vidèo salvada"
 msgid "Show in Files"
 msgstr "Mostrar dins los fichièrs"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Asseguratz-vos que PulseAudio es installat sul sistèma."
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "Fracàs de l’aviada del monitor de periferic"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "Fracàs de la connexion al demòni PulseAudio"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -317,57 +313,49 @@ msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr "Aqueste format es experimental e pas pres en carga."
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "Cap"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr "Cap de perfil pas activat"
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "Fracàs de l’aviada de l’enregistrament"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "Consultatz {link} per obténer d’ajuda."
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "Cap de font pel microfòn pas trobada"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "Cap de font pel nautparlaire del burèu pas trobada"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr "Un empeuton GStreamer es benlèu pas installat."
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Asseguratz-vos que l’emplaçament existís e es accessible."
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "Una error se’s producha pendent l’enregistrament"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr "Fracàs de la dubertura de « {path} » per escritura"
 
@@ -375,51 +363,51 @@ msgstr "Fracàs de la dubertura de « {path} » per escritura"
 msgid "Select Recordings Folder"
 msgstr "Seleccionar dossièr pels enregistraments"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
 msgstr "Fracàs de la bascula en pausa"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "Copiar al quichapapièrs"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "Copiat al quichapapièrs"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "Mostrar las errors detalhadas"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "D'acòrdi"
+#: src/window/mod.rs:291
+msgid "Ok, Got It"
+msgstr ""
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
 msgstr "Dobrir las preferéncias ?"
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -427,29 +415,44 @@ msgstr ""
 "Lo format precedentament seleccionat es benlèu indisponible. Dorbissètz las "
 "preferéncias e seleccionatz un format per contunhar d’enregistrar."
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr "Mai tard"
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr "Dobrir"
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
 msgstr ""
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "En pausa"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "Seleccion"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "Fracàs de l’aviada del monitor de periferic"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "Fracàs de la connexion al demòni PulseAudio"
+
+#~ msgid "No microphone source found"
+#~ msgstr "Cap de font pel microfòn pas trobada"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "Cap de font pel nautparlaire del burèu pas trobada"
+
+#~ msgid "Ok"
+#~ msgstr "D'acòrdi"
 
 #~ msgid "This frame rate may cause performance issues."
 #~ msgstr "Aquesta velocitat d’imatge pòt causar problèmas de performança."

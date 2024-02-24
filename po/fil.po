@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
 "PO-Revision-Date: 2022-08-23 12:15+0000\n"
 "Last-Translator: Dave Patrick <davecruz48@gmail.com>\n"
 "Language-Team: Filipino <https://hosted.weblate.org/projects/seadve/kooha/"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
@@ -80,7 +80,7 @@ msgid "Select Area"
 msgstr ""
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "Ikansela"
 
@@ -136,11 +136,11 @@ msgstr ""
 msgid "Show Shortcuts"
 msgstr "Ipakita ang mga Shortcuts"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "Isara"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "Nagrerekord"
 
@@ -257,19 +257,19 @@ msgid "_About Kooha"
 msgstr "_Tungkol sa Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr "Dave Patrick"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr ""
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "Mag-translate"
 
@@ -282,17 +282,13 @@ msgstr "Tapos na magrekord"
 msgid "Show in Files"
 msgstr "Ipakita sa Files"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Siguraduhin na may PulseAudio sa iyong kompyuter."
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "Hindi masimulan ang device monitor"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "Hindi maka-connect sa PulseAudio daemon"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -315,57 +311,49 @@ msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "Wala"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr ""
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "Hindi masimulan ang pagrekord"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "Walang makitang mikropono"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "Walang mapagkunan ng tunog mula sa desktop"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr ""
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Siguraduhin na ang paglalagyan ng rekording ay naa-access."
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "Nagkaroon ng problema habang nagrerekord"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
@@ -373,79 +361,94 @@ msgstr ""
 msgid "Select Recordings Folder"
 msgstr "Pumili ng Paglalagyan ng mga Recordings"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
 msgstr "Hindi ma-toggle ang pag-pause"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "I-copy sa clipboard"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "Na-copy na sa clipboard"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "Ipakita ang detalyadong error"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "Tulong"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "Ok"
+#: src/window/mod.rs:291
+msgid "Ok, Got It"
+msgstr ""
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
 msgstr ""
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr ""
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr ""
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
 msgstr ""
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "Naka-pause"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "Seleksyon"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "Hindi masimulan ang device monitor"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "Hindi maka-connect sa PulseAudio daemon"
+
+#~ msgid "No microphone source found"
+#~ msgstr "Walang makitang mikropono"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "Walang mapagkunan ng tunog mula sa desktop"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
 
 #~ msgid "Dave Patrick Caberto"
 #~ msgstr "Dave Patrick Caberto"

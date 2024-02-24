@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2023-10-30 05:16+0000\n"
-"Last-Translator: Carter Zhang <mcut17198@autistici.org>\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"PO-Revision-Date: 2024-02-24 02:33+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "seadve/kooha/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -28,10 +28,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
@@ -89,7 +89,7 @@ msgid "Select Area"
 msgstr "选择区域"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "取消"
 
@@ -145,11 +145,11 @@ msgstr "显示设置"
 msgid "Show Shortcuts"
 msgstr "显示快捷键"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "退出"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "录制中"
 
@@ -266,7 +266,7 @@ msgid "_About Kooha"
 msgstr "关于 Kooha (_A)"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr ""
 "有趣的灵魂 (@TheInterestingSoul)\n"
@@ -275,15 +275,15 @@ msgstr ""
 "WhiredPlanck &lt;wplanck@aosc.io&gt;\n"
 "lumingzh &lt;lumingzh@qq.com&gt;"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr "捐赠（买我一杯咖啡！）"
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "翻译"
 
@@ -296,17 +296,13 @@ msgstr "截屏记录"
 msgid "Show in Files"
 msgstr "在文件中显示"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "确保你已在系统安装PulseAudio。"
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "启动设备监视器失败"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "连接到PulseAudio守护进程失败"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -326,57 +322,49 @@ msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] ""
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr "此格式是实验性的，不受支持。"
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "无"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr "配置无效"
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "开始录制失败"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "查看 “{link}” 以获取帮助。"
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "没有找到麦克风源"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "没有找到桌面音频源"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer plugin可能没有安装。"
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "确保保存路径存在并可以访问。"
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "录制时产生错误"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr "无法打开并写入 “{path}”"
 
@@ -384,79 +372,95 @@ msgstr "无法打开并写入 “{path}”"
 msgid "Select Recordings Folder"
 msgstr "选择录制保存文件夹"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
 msgstr "切换暂停状态失败"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "复制到剪贴板"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "已复制到剪贴板"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "显示错误详情"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "帮助"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "Ok"
+#: src/window/mod.rs:291
+#, fuzzy
+msgid "Ok, Got It"
+msgstr "好的，我知道了"
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
 msgstr "是否要打开设置？"
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr "先前选择的格式可能不可用。打开首选项并选择一种格式以继续录制。"
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr "稍后"
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr "打开"
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
 msgstr ""
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "已暂停"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "一般"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "选区录制"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "启动设备监视器失败"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "连接到PulseAudio守护进程失败"
+
+#~ msgid "No microphone source found"
+#~ msgstr "没有找到麦克风源"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "没有找到桌面音频源"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
 
 #~ msgid "This frame rate may cause performance issues."
 #~ msgstr "此帧率可能会导致性能问题。"

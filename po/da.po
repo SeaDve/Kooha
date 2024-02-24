@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
 "PO-Revision-Date: 2023-12-21 17:09+0000\n"
 "Last-Translator: Johan Fagerberg <johanringmann@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/seadve/kooha/da/"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 5.4-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
@@ -82,7 +82,7 @@ msgid "Select Area"
 msgstr "Vælg område"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "Annuller"
 
@@ -138,11 +138,11 @@ msgstr "Vis indstillinger"
 msgid "Show Shortcuts"
 msgstr "Vis genveje"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "Afslut"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "Optagelse"
 
@@ -259,19 +259,19 @@ msgid "_About Kooha"
 msgstr "_Om Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr "Marc Eckert"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Donere (Buy Me a Coffee)"
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "Oversæt"
 
@@ -284,17 +284,13 @@ msgstr "Optagelse færdig"
 msgid "Show in Files"
 msgstr "Vis i Filer"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Sørg for, at du har PulseAudio installeret på dit system."
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "Kunne ikke starte enhedsmonitor"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "Kunne ikke forbinde til PulseAudio daemon"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -317,57 +313,49 @@ msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr "Dette format er eksperimentelt og usupporteret."
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "Ingen"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr "Ingen aktiv profil"
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "Kunne ikke starte optagelse"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "Se {link} for hjælp."
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "Ingen mikrofonkilde fundet"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "Ingen skrivebords højtalerkilde fundet"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr "Et GStreamer plugin er muligvis ikke installeret."
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Tjek at lagrinsstedet eksisterer og er tilgængeligt."
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "Der opstod en fejl under optagelsen"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr "Kunne ikke åbne “{path}” til skrivning"
 
@@ -375,51 +363,51 @@ msgstr "Kunne ikke åbne “{path}” til skrivning"
 msgid "Select Recordings Folder"
 msgstr "Vælg Optagelsesmappe"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
 msgstr "Kunne ikke slå pause til/fra"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "Kopier til udklipsholder"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "Kopieret til udklipsholder"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "Vis detaljeret fejl"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "Hjælp"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "Ok"
+#: src/window/mod.rs:291
+msgid "Ok, Got It"
+msgstr ""
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
 msgstr "Åben Indstillinger?"
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -427,29 +415,44 @@ msgstr ""
 "Det tidligere valgte format kan have været utilgængeligt. Åben indstillinger "
 "og vælg et format for at fortsætte optagelse."
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr "Senere"
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr "Åben"
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
 msgstr ""
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "På pause"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "Udvælgelse"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "Kunne ikke starte enhedsmonitor"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "Kunne ikke forbinde til PulseAudio daemon"
+
+#~ msgid "No microphone source found"
+#~ msgstr "Ingen mikrofonkilde fundet"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "Ingen skrivebords højtalerkilde fundet"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
 
 #~ msgid "This frame rate may cause performance issues."
 #~ msgstr "Denne billedhastighed kan forårsage problemer med ydeevnen."

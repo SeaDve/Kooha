@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2023-11-12 14:03+0000\n"
-"Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"PO-Revision-Date: 2024-02-24 02:33+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "கூஹா"
@@ -79,7 +79,7 @@ msgid "Select Area"
 msgstr "பகுதியைத் தேர்ந்தெடுக்கவும்"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
@@ -135,11 +135,11 @@ msgstr "விருப்பங்களைக் காட்டு"
 msgid "Show Shortcuts"
 msgstr "குறுக்குவழிகளைக் காட்டு"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "ஒலியை பதிவு செய்கிறது"
 
@@ -256,19 +256,19 @@ msgid "_About Kooha"
 msgstr "_கூஹா பற்றி"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr "தருண் கிருஷ்ணா.க.பா"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr "நன்கொடை (எனக்கு ஒரு காபி வாங்கிக் கொடு)"
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "கிட்ஹப்"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "மொழிபெயர்"
 
@@ -281,17 +281,13 @@ msgstr "ஸ்கிரீன்காஸ்ட் பதிவு செய்�
 msgid "Show in Files"
 msgstr "கோப்புகளில் காட்டு"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "பல்ஸ்ஆடியோ உங்கள் கணினியில் நிறுவப்பட்டுள்ளதா என்பதை உறுதிப்படுத்தவும்."
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "சாதன மானிட்டரைத் தொடங்குவதில் தோல்வி"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "பல்ஸ்ஆடியோ டீமானுடன் இணைக்க முடியவில்லை"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -314,57 +310,49 @@ msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr "இந்த வடிவம் சோதனைக்குரியது மற்றும் ஆதரிக்கப்படாது."
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr "செயலில் சுயவிவரம் இல்லை"
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "உதவிக்கு {link} ஐப் பார்க்கவும்."
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "மைக்ரோஃபோன் ஆதாரம் எதுவும் கிடைக்கவில்லை"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "டெஸ்க்டாப் ஸ்பீக்கர் ஆதாரம் இல்லை"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம்."
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr "எழுதுவதற்கு “{path}” திறக்க முடியவில்லை"
 
@@ -372,51 +360,52 @@ msgstr "எழுதுவதற்கு “{path}” திறக்க மு
 msgid "Select Recordings Folder"
 msgstr "பதிவுகள் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
 msgstr "இடைநிறுத்தத்தை மாற்றுவதில் தோல்வி"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "விரிவான பிழையைக் காட்டு"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "உதவி"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "சரி"
+#: src/window/mod.rs:291
+#, fuzzy
+msgid "Ok, Got It"
+msgstr "சரி, புரிந்தது"
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
 msgstr "விருப்பத்தேர்வுகளை திறக்கவா?"
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -424,29 +413,44 @@ msgstr ""
 "முன்பு தேர்ந்தெடுக்கப்பட்ட வடிவம் கிடைக்காமல் இருக்கலாம். பதிவுகளைத் தொடர "
 "விருப்பத்தேர்வுகளைத் திறந்து வடிவமைப்பைத் தேர்ந்தெடுக்கவும்."
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr "பின்னர்"
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr "திறக்கவும்"
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
 msgstr ""
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "இயல்பானது"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "தேர்வு"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "சாதன மானிட்டரைத் தொடங்குவதில் தோல்வி"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "பல்ஸ்ஆடியோ டீமானுடன் இணைக்க முடியவில்லை"
+
+#~ msgid "No microphone source found"
+#~ msgstr "மைக்ரோஃபோன் ஆதாரம் எதுவும் கிடைக்கவில்லை"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "டெஸ்க்டாப் ஸ்பீக்கர் ஆதாரம் இல்லை"
+
+#~ msgid "Ok"
+#~ msgstr "சரி"
 
 #~ msgid "This frame rate may cause performance issues."
 #~ msgstr "இந்த பிரேம் வீதம் செயல்திறன் சிக்கல்களை ஏற்படுத்தலாம்."

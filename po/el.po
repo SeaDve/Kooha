@@ -8,19 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-01-18 07:31+0000\n"
-"Last-Translator: greek anon <rnation@bbq59.xyz>\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"PO-Revision-Date: 2024-02-24 02:33+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/seadve/kooha/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
@@ -83,7 +83,7 @@ msgid "Select Area"
 msgstr "Επιλέξτε Περιοχή"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -139,11 +139,11 @@ msgstr "Εμφάνιση Προτιμήσεων"
 msgid "Show Shortcuts"
 msgstr "Εμφάνιση Συντομεύσεων"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "Έξοδος"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "Εγγραφή"
 
@@ -260,19 +260,19 @@ msgid "_About Kooha"
 msgstr "_Σχετικά με το Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr "συντελεστές-μετάφρασης"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Δωρεά (Αγόρασέ μου έναν καφέ)"
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "Μετάφραση"
 
@@ -285,17 +285,13 @@ msgstr "Μετάδοση Οθόνης καταγράφηκε"
 msgid "Show in Files"
 msgstr "Εμφάνιση σε Αρχεία"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Βεβαιωθείτε ότι έχετε εγκαταστήσει το PulseAudio στο σύστημά σας."
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "Αποτυχία εκκίνησης οθόνης συσκευής"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "Αποτυχία σύνδεσης με διεργασία του PulseAudio"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -318,57 +314,49 @@ msgid_plural "{time} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr "Αυτή η μορφή είναι πειραματική και δεν υποστηρίζεται."
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "Κανένας"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr "Κανένα ενεργό προφίλ"
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "Αποτυχία έναρξης εγγραφής"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "Δεν βρέθηκε πηγή μικροφώνου"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "Δεν βρέθηκε πηγή ηχείων"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr "Η επέκταση GStreamer ίσως δεν έχει εγκατασταθεί."
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Βεβαιωθείτε ότι η τοποθεσία αποθήκευσης υπάρχει και είναι προσβάσιμη."
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "Παρουσιάστηκε σφάλμα κατά την εγγραφή"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
@@ -376,51 +364,52 @@ msgstr ""
 msgid "Select Recordings Folder"
 msgstr "Επιλέξτε Φάκελο Εγγραφών"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
 msgstr "Απέτυχε η μεταβολή παύσης"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
 msgstr ""
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "Αντιγραφή στο πρόχειρο"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "Αντιγράφηκε στο πρόχειρο"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "Εμφάνιση λεπτομερειών σφάλματος"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "Εντάξει"
+#: src/window/mod.rs:291
+#, fuzzy
+msgid "Ok, Got It"
+msgstr "Εντάξει, Κατάλαβα"
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
 msgstr "Άνοιγμα Προτιμήσεων;"
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -428,29 +417,44 @@ msgstr ""
 "Η προηγουμένως επιλεγμένη μορφή ίσως δεν είναι διαθέσιμη. Ανοίξτε τις "
 "προτιμήσεις και επιλέξτε μια μορφή για συνέχιση εγγραφής."
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr "Αργότερα"
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
 msgstr ""
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "Σε παύση"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "Κανονικό"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "Επιλογή"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "Αποτυχία εκκίνησης οθόνης συσκευής"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "Αποτυχία σύνδεσης με διεργασία του PulseAudio"
+
+#~ msgid "No microphone source found"
+#~ msgstr "Δεν βρέθηκε πηγή μικροφώνου"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "Δεν βρέθηκε πηγή ηχείων"
+
+#~ msgid "Ok"
+#~ msgstr "Εντάξει"
 
 #~ msgid "This frame rate may cause performance issues."
 #~ msgstr "Αυτός ο ρυθμός καρέ ίσως προκαλέσει προβλήματα απόδοσης."

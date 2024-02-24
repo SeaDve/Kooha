@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 11:37+0800\n"
-"PO-Revision-Date: 2024-02-20 02:02+0000\n"
-"Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
+"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"PO-Revision-Date: 2024-02-24 02:33+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
 "uk/>\n"
 "Language: uk\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
 #: src/main.rs:67
 msgid "Kooha"
 msgstr "Kooha"
@@ -85,7 +85,7 @@ msgid "Select Area"
 msgstr "Вибрати ділянку"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:211
+#: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -141,11 +141,11 @@ msgstr "Показати налаштування"
 msgid "Show Shortcuts"
 msgstr "Показати комбінації клавіш"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:213
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
 msgstr "Вийти"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:472
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
 msgstr "Запис"
 
@@ -262,19 +262,19 @@ msgid "_About Kooha"
 msgstr "_Про Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:27
+#: src/about.rs:33
 msgid "translator-credits"
 msgstr "Ihor Hordiichuk, Serhii Honcharuk"
 
-#: src/about.rs:37
+#: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Підтримати (Buy Me a Coffee)"
 
-#: src/about.rs:40
+#: src/about.rs:46
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:42
+#: src/about.rs:48
 msgid "Translate"
 msgstr "Перекласти"
 
@@ -287,17 +287,13 @@ msgstr "Скрінкаст записаний"
 msgid "Show in Files"
 msgstr "Показати у Файлах"
 
-#: src/audio_device.rs:45 src/audio_device.rs:157
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Переконайтеся, що у вашій системі встановлено PulseAudio."
-
-#: src/audio_device.rs:46
-msgid "Failed to start device monitor"
-msgstr "Не вдалося запустити монітор пристрою"
-
-#: src/audio_device.rs:158
-msgid "Failed to connect to PulseAudio daemon"
-msgstr "Не вдалося під'єднатися до фонової служби PulseAudio"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -323,59 +319,51 @@ msgstr[0] "{time} секунда"
 msgstr[1] "{time} секунди"
 msgstr[2] "{time} секунд"
 
-#: src/preferences_dialog.rs:66
+#: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
 msgstr "Не вдалося встановити теку для записів"
 
-#: src/preferences_dialog.rs:207
+#: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Така частота кадрів може спричинити проблеми зі швидкодією у вибраному "
 "форматі."
 
-#: src/preferences_dialog.rs:246
+#: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
 msgstr "Цей формат експериментальний і не підтримується."
 
-#: src/preferences_dialog.rs:253 src/window/mod.rs:530
+#: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
 msgstr "Немає"
 
-#: src/recording.rs:43
+#: src/recording.rs:42
 msgid "No active profile"
 msgstr "Немає активного профілю"
 
-#: src/recording.rs:193 src/recording.rs:236 src/recording.rs:279
+#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
 msgid "Failed to start recording"
 msgstr "Не вдалося розпочати запис"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:189
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "Довідка: {link}."
 
-#: src/recording.rs:221
-msgid "No microphone source found"
-msgstr "Не знайдено мікрофона"
-
-#: src/recording.rs:228
-msgid "No desktop speaker source found"
-msgstr "Не знайдено динаміка настільного ПК"
-
-#: src/recording.rs:235
+#: src/recording.rs:224
 msgid "A GStreamer plugin may not be installed."
 msgstr "Плагін GStreamer може бути не встановлений."
 
-#: src/recording.rs:278 src/recording.rs:510
+#: src/recording.rs:269 src/recording.rs:494
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Переконайтеся, що місце збереження існує та доступне."
 
-#: src/recording.rs:506
+#: src/recording.rs:485
 msgid "An error occurred while recording"
 msgstr "Сталася помилка під час запису"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:513
+#: src/recording.rs:491
 msgid "Failed to open “{path}” for writing"
 msgstr "Не вдалося відкрити “{path}” для запису"
 
@@ -383,11 +371,11 @@ msgstr "Не вдалося відкрити “{path}” для запису"
 msgid "Select Recordings Folder"
 msgstr "Вибрати теку для записів"
 
-#: src/window/mod.rs:80
+#: src/window/mod.rs:79
 msgid "Failed to toggle pause"
 msgstr "Не вдалося перемкнути паузу"
 
-#: src/window/mod.rs:197
+#: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
@@ -395,42 +383,43 @@ msgstr ""
 "Наразі триває запис. Негайний вихід може призвести до неможливості "
 "відтворення запису. Зупиніть запис перед виходом."
 
-#: src/window/mod.rs:200
+#: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
 "Вихід скасує обробку і може призвести до неможливості відтворення запису."
 
-#: src/window/mod.rs:206
+#: src/window/mod.rs:205
 msgid "Quit the Application?"
 msgstr "Вийти з застосунку?"
 
-#: src/window/mod.rs:251
+#: src/window/mod.rs:253
 msgid "Copy to clipboard"
 msgstr "Копіювання до буфера обміну"
 
-#: src/window/mod.rs:257
+#: src/window/mod.rs:258
 msgid "Copied to clipboard"
 msgstr "Скопійовано до буфера обміну"
 
-#: src/window/mod.rs:263
+#: src/window/mod.rs:264
 msgid "Show detailed error"
 msgstr "Показати подробиці помилки"
 
-#: src/window/mod.rs:283
+#: src/window/mod.rs:286
 msgid "Help"
 msgstr "Довідка"
 
-#: src/window/mod.rs:286
-msgid "Ok"
-msgstr "Гаразд"
+#: src/window/mod.rs:291
+#, fuzzy
+msgid "Ok, Got It"
+msgstr "Гаразд, зрозуміло"
 
-#: src/window/mod.rs:295
+#: src/window/mod.rs:300
 msgid "Open Preferences?"
 msgstr "Відкрити налаштування?"
 
-#: src/window/mod.rs:296
+#: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -438,29 +427,44 @@ msgstr ""
 "Можливо, раніше вибраний формат недоступний. Відкрийте налаштування і "
 "виберіть формат для продовження запису."
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:305
 msgid "Later"
 msgstr "Пізніше"
 
-#: src/window/mod.rs:302
+#: src/window/mod.rs:307
 msgid "Open"
 msgstr "Відкрити"
 
-#: src/window/mod.rs:432
+#: src/window/mod.rs:437
 msgid "A recording is in progress"
 msgstr "Триває запис"
 
-#: src/window/mod.rs:480
+#: src/window/mod.rs:485
 msgid "Paused"
 msgstr "Зупинено"
 
-#: src/window/mod.rs:517
+#: src/window/mod.rs:522
 msgid "Normal"
 msgstr "Звичайний"
 
-#: src/window/mod.rs:518
+#: src/window/mod.rs:523
 msgid "Selection"
 msgstr "Ділянка"
+
+#~ msgid "Failed to start device monitor"
+#~ msgstr "Не вдалося запустити монітор пристрою"
+
+#~ msgid "Failed to connect to PulseAudio daemon"
+#~ msgstr "Не вдалося під'єднатися до фонової служби PulseAudio"
+
+#~ msgid "No microphone source found"
+#~ msgstr "Не знайдено мікрофона"
+
+#~ msgid "No desktop speaker source found"
+#~ msgstr "Не знайдено динаміка настільного ПК"
+
+#~ msgid "Ok"
+#~ msgstr "Гаразд"
 
 #~ msgid "This frame rate may cause performance issues."
 #~ msgstr "Така частота кадрів може спричинити проблеми зі швидкодією."
