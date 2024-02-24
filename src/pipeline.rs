@@ -73,6 +73,7 @@ impl PipelineBuilder {
             file_path = %self.file_path.display(),
             framerate = ?self.framerate,
             profile = ?self.profile.id(),
+            fd = self.fd,
             stream_len = self.streams.len(),
             streams = ?self.streams,
             record_desktop_audio = ?self.record_desktop_audio,
