@@ -23,7 +23,7 @@ gdk-wayland = { package = "gdk4-wayland", version = "0.8" }
 gdk-x11 = { package = "gdk4-x11", version = "0.8" }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gsettings-macro = "0.2"
-gst = { package = "gstreamer", version = "0.22" }
+gst = { package = "gstreamer", version = "0.22", features = ["v1_20"] }
 gst-plugin-gif = "0.12"
 gst-plugin-gtk4 = { version = "0.12", features = ["gtk_v4_14"] }
 gtk = { package = "gtk4", version = "0.8", features = ["v4_14"] }

@@ -115,7 +115,7 @@ experimental:
     name: WebM VA H264
     extension: mp4
     videoenc: >
-      glupload ! glcolorconvert ! gldownload !
+      vapostproc !
       vah264enc !
       queue !
       h264parse

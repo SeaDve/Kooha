@@ -564,6 +564,29 @@ impl Recording {
 
                 glib::ControlFlow::Continue
             }
+            MessageView::AsyncDone(ad) => {
+                tracing::trace!("Received async-done message on bus: {:?}", ad);
+
+                if tracing::enabled!(tracing::Level::DEBUG) {
+                    self.pipeline()
+                        .iterate_all_by_element_factory_name("pipewiresrc")
+                        .into_iter()
+                        .filter_map(|element| {
+                            element
+                                .ok()
+                                .and_then(|e| e.static_pad("src"))
+                                .and_then(|pad| pad.current_caps())
+                        })
+                        .for_each(|caps| {
+                            tracing::debug!(
+                                "Pipewiresrc current caps: {}",
+                                caps.serialize(gst::SerializeFlags::NONE)
+                            );
+                        });
+                }
+
+                glib::ControlFlow::Continue
+            }
             MessageView::Warning(w) => {
                 tracing::warn!("Received warning message on bus: {:?}", w);
                 glib::ControlFlow::Continue
