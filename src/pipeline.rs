@@ -311,18 +311,10 @@ pub fn make_pipewiresrc_bin(
         videoscale.link_filtered(&videocrop, &videoscale_caps)?;
 
         let src_pad = videocrop.static_pad("src").unwrap();
-        bin.add_pad(
-            &gst::GhostPad::builder_with_target(&src_pad)?
-                .name("src")
-                .build(),
-        )?;
+        bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
     } else {
         let src_pad = src_element.static_pad("src").unwrap();
-        bin.add_pad(
-            &gst::GhostPad::builder_with_target(&src_pad)?
-                .name("src")
-                .build(),
-        )?;
+        bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
     }
 
     Ok(bin)
@@ -386,11 +378,7 @@ fn make_pulsesrc_bin<'a>(
     bin.add(&audiomixer)?;
 
     let src_pad = audiomixer.static_pad("src").unwrap();
-    bin.add_pad(
-        &gst::GhostPad::builder_with_target(&src_pad)?
-            .name("src")
-            .build(),
-    )?;
+    bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
 
     let pulsesrc_caps = gst::Caps::builder("audio/x-raw")
         .field("rate", AUDIO_SAMPLE_RATE)
