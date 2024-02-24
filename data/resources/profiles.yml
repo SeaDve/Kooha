@@ -85,6 +85,21 @@ experimental:
       queue
     muxer: webmmux
 
+  - id: va-h264
+    name: WebM VA H264
+    extension: mp4
+    videoenc: >
+      vapostproc !
+      vah264enc !
+      queue !
+      h264parse
+    audioenc: >
+      audioconvert !
+      lamemp3enc !
+      queue !
+      mpegaudioparse
+    muxer: mp4mux fragment-duration=500 fragment-mode=first-moov-then-finalise
+
   - id: vaapi-vp8
     name: WebM VAAPI VP8
     extension: webm
@@ -110,18 +125,3 @@ experimental:
       opusenc !
       queue
     muxer: webmmux
-
-  - id: va-h264
-    name: WebM VA H264
-    extension: mp4
-    videoenc: >
-      vapostproc !
-      vah264enc !
-      queue !
-      h264parse
-    audioenc: >
-      audioconvert !
-      lamemp3enc !
-      queue !
-      mpegaudioparse
-    muxer: mp4mux fragment-duration=500 fragment-mode=first-moov-then-finalise
