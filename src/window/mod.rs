@@ -78,7 +78,7 @@ mod imp {
                 if let Err(err) = obj.toggle_pause() {
                     let err = err.context(gettext("Failed to toggle pause"));
                     tracing::error!("{:?}", err);
-                    obj.present_error_dialog(&err);
+                    obj.present_recording_error_dialog(&err);
                 }
             });
 
@@ -219,7 +219,7 @@ impl Window {
         }
     }
 
-    pub fn present_error_dialog(&self, err: &Error) {
+    pub fn present_recording_error_dialog(&self, err: &Error) {
         const OK_RESPONSE_ID: &str = "ok";
 
         let err_text = format!("{:?}", err);
@@ -404,7 +404,7 @@ impl Window {
                 } else {
                     tracing::error!("{:?}", err);
 
-                    self.present_error_dialog(err);
+                    self.present_recording_error_dialog(err);
 
                     if let Some(surface) = self.surface() {
                         surface.beep();
