@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-02-25 07:01+0000\n"
+"Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/seadve/kooha/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -292,7 +292,7 @@ msgstr "Zobrazit v Souborech"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Nepodařilo se nalézt výchozí zvukové zařízení"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -412,7 +412,6 @@ msgid "Help"
 msgstr "Nápověda"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
 msgstr "Jasně, chápu"
 

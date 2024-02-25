@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-02-25 07:01+0000\n"
+"Last-Translator: Сергій <sergiy.goncharuk.1@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
 "uk/>\n"
 "Language: uk\n"
@@ -289,7 +289,7 @@ msgstr "Показати у Файлах"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Не вдалося знайти аудіопристрій за замовчуванням"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -411,7 +411,6 @@ msgid "Help"
 msgstr "Довідка"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
 msgstr "Гаразд, зрозуміло"
 

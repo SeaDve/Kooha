@@ -4,14 +4,14 @@
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
 # Luna Jernberg <droidbittin@gmail.com>, 2021, 2022, 2023.
 # Kristoffer Grundström <swedishsailfishosuser@tutanota.com>, 2021.
-# bittin1ddc447d824349b2 <bittin@reimu.nl>, 2023.
+# bittin1ddc447d824349b2 <bittin@reimu.nl>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-02-25 07:01+0000\n"
+"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/seadve/kooha/sv/>"
 "\n"
 "Language: sv\n"
@@ -67,7 +67,7 @@ msgstr "📼 Stöd för WebM, MP4, GIF och Matroska format"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Välj en bildskärm eller en del av skärmen att spela in"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -106,7 +106,7 @@ msgstr "Fördröjning (sekunder)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Tidsintervall innan inspelningen börjar"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -114,7 +114,7 @@ msgstr "Inspelningsmapp"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Destinationsmapp för inspelningarna"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -263,9 +263,7 @@ msgstr "_Om Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr ""
-"Kristoffer Grundström\n"
-"Luna Jernberg"
+msgstr "Luna Jernberg"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
@@ -290,7 +288,7 @@ msgstr "Visa i Filer"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Misslyckades att hitta standardljudenheten"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -300,30 +298,30 @@ msgstr "Se till att du har PulseAudio installerat i ditt system."
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time}timme"
+msgstr[1] "{time} timmar"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} minut"
+msgstr[1] "{time} minuter"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} sekund"
+msgstr[1] "{time} sekunder"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Misslyckades att ställa in inspelningsmapp"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
-msgstr ""
+msgstr "Denna bildhastighet kan orsaka prestandaproblem i det valda formatet."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -376,16 +374,20 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"En inspelning pågår för närvarande. Att avsluta omedelbart kan göra att "
+"inspelningen inte går att spela upp. Stoppa inspelningen innan du avslutar."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Om du avslutar avbryts behandlingen och kan göra att inspelningen inte kan "
+"spelas upp."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Avsluta programmet?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -404,7 +406,6 @@ msgid "Help"
 msgstr "Hjälp"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
 msgstr "Ok, jag förstår"
 
@@ -430,7 +431,7 @@ msgstr "Öppna"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "En inspelning pågår"
 
 #: src/window/mod.rs:485
 msgid "Paused"
