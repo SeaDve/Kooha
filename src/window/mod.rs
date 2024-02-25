@@ -219,7 +219,7 @@ impl Window {
         }
     }
 
-    pub fn present_recording_error_dialog(&self, err: &Error) {
+    fn present_recording_error_dialog(&self, err: &Error) {
         const OK_RESPONSE_ID: &str = "ok";
 
         let err_text = format!("{:?}", err);
