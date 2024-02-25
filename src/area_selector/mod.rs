@@ -218,16 +218,33 @@ impl AreaSelector {
 
         // Setup pipeline
         let pipeline = gst::Pipeline::new();
-        let videosrc_bin = pipeline::make_pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
-        let videoconvert = gst::ElementFactory::make("videoconvert").build()?;
-        let sink = gst::ElementFactory::make("gtk4paintablesink").build()?;
-        pipeline.add_many([videosrc_bin.upcast_ref(), &videoconvert, &sink])?;
-        gst::Element::link_many([videosrc_bin.upcast_ref(), &videoconvert, &sink])?;
         imp.pipeline.set(pipeline.clone()).unwrap();
 
-        // Setup paintable
-        let paintable = sink.property::<gdk::Paintable>("paintable");
-        imp.view_port.set_paintable(Some(paintable));
+        let videosrc_bin = pipeline::make_pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
+        let gtksink = gst::ElementFactory::make("gtk4paintablesink").build()?;
+
+        let paintable = gtksink.property::<gdk::Paintable>("paintable");
+        paintable.set_property("use-scaling-filter", true);
+        imp.view_port.set_paintable(Some(paintable.clone()));
+
+        if paintable
+            .property::<Option<gdk::GLContext>>("gl-context")
+            .is_some()
+        {
+            tracing::debug!("Using gl pipeline");
+
+            let glsinkbin = gst::ElementFactory::make("glsinkbin")
+                .property("sink", &gtksink)
+                .build()?;
+            pipeline.add_many([videosrc_bin.upcast_ref(), &glsinkbin])?;
+            videosrc_bin.link(&glsinkbin)?;
+        } else {
+            tracing::debug!("Falling back to non-gl pipeline");
+
+            let videoconvert = gst::ElementFactory::make("videoconvert").build()?;
+            pipeline.add_many([videosrc_bin.upcast_ref(), &videoconvert, &gtksink])?;
+            gst::Element::link_many([videosrc_bin.upcast_ref(), &videoconvert, &gtksink])?;
+        }
 
         let (async_done_tx, async_done_rx) = oneshot::channel();
         imp.async_done_tx.replace(Some(async_done_tx));
