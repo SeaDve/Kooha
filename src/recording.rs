@@ -176,7 +176,7 @@ impl Recording {
             },
             *IS_EXPERIMENTAL_MODE,
             Some(&restore_token),
-            PersistMode::ExplicitlyRevoked,
+            PersistMode::Persistent,
             parent,
         )
         .await

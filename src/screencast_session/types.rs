@@ -26,9 +26,12 @@ bitflags! {
 #[derive(Debug, Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
 pub enum PersistMode {
-    DoNot = 0,
-    Application = 1,
-    ExplicitlyRevoked = 2,
+    /// Do not persist.
+    None = 0,
+    /// Persist as long as the application is alive.
+    Transient = 1,
+    /// Persist until the user revokes this permission.
+    Persistent = 2,
 }
 
 type StreamVariantType = (u32, VariantDict);
