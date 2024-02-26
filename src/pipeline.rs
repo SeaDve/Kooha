@@ -225,12 +225,12 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 /// pipewiresrc -> videorate -> videoscale -> videocrop
 ///
 /// Multiple streams:
-///                                                (If has select area data)
-/// pipewiresrc1 -> videorate -> |                       |            |
-///                              |                       V            V
-/// pipewiresrc2 -> videorate -> | -> compositor -> videoscale -> videocrop
-///                              |
-/// pipewiresrcn -> videorate -> |
+///                                                 (If has select area data)
+/// pipewiresrc1 -> |                                    |            |
+///                 |                                    V            V
+/// pipewiresrc2 -> | -> compositor -> videorate -> videoscale -> videocrop
+///                 |
+/// pipewiresrcn -> |
 pub fn make_pipewiresrc_bin(
     fd: RawFd,
     streams: &[Stream],
@@ -239,65 +239,56 @@ pub fn make_pipewiresrc_bin(
 ) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
-    let videorate_caps = optional_dmabuf_feature_caps(
-        gst::Structure::builder("video/x-raw")
-            .field("framerate", gst::Fraction::from(framerate))
-            .build(),
-    );
+    let videorate = gst::ElementFactory::make("videorate")
+        .property("skip-to-first", true)
+        .build()?;
+    let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
+        .property(
+            "caps",
+            &optional_dmabuf_feature_caps(
+                gst::Structure::builder("video/x-raw")
+                    .field("framerate", gst::Fraction::from(framerate))
+                    .build(),
+            ),
+        )
+        .build()?;
+    bin.add_many([&videorate, &videorate_capsfilter])?;
+    videorate.link(&videorate_capsfilter)?;
 
-    let src_element = match streams {
+    match streams {
         [] => bail!("No streams provided"),
         [stream] => {
             let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
-            let videorate = gst::ElementFactory::make("videorate")
-                .property("skip-to-first", true)
-                .build()?;
-            let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
-                .property("caps", &videorate_caps)
-                .build()?;
-
-            bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+            bin.add(&pipewiresrc)?;
             pipewiresrc.link_filtered(
                 &videorate,
                 &optional_dmabuf_feature_caps(gst::Structure::builder("video/x-raw").build()),
             )?;
-            videorate.link(&videorate_capsfilter)?;
-
-            videorate_capsfilter
         }
         streams => {
             let compositor = gst::ElementFactory::make("compositor").build()?;
             bin.add(&compositor)?;
+            compositor.link(&videorate)?;
 
             let mut last_pos = 0;
             for stream in streams {
                 let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
-                let videorate = gst::ElementFactory::make("videorate")
-                    .property("skip-to-first", true)
-                    .build()?;
-                let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
-                    .property("caps", &videorate_caps)
-                    .build()?;
-
-                bin.add_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
-                gst::Element::link_many([&pipewiresrc, &videorate, &videorate_capsfilter])?;
+                bin.add(&pipewiresrc)?;
 
                 let compositor_sink_pad = compositor
                     .request_pad_simple("sink_%u")
                     .context("Failed to request sink_%u pad from compositor")?;
                 compositor_sink_pad.set_property("xpos", last_pos);
-                videorate_capsfilter
+                pipewiresrc
                     .static_pad("src")
                     .unwrap()
                     .link(&compositor_sink_pad)?;
 
-                let stream_width = stream.size().unwrap().0;
+                let (stream_width, _) = stream.size().unwrap();
                 last_pos += stream_width;
             }
-
-            compositor
         }
-    };
+    }
 
     if let Some(data) = select_area_data {
         let videoscale = gst::ElementFactory::make("videoscale").build()?;
@@ -311,13 +302,13 @@ pub fn make_pipewiresrc_bin(
             .build();
 
         bin.add_many([&videoscale, &videocrop])?;
-        src_element.link(&videoscale)?;
+        videorate_capsfilter.link(&videoscale)?;
         videoscale.link_filtered(&videocrop, &videoscale_caps)?;
 
         let src_pad = videocrop.static_pad("src").unwrap();
         bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
     } else {
-        let src_pad = src_element.static_pad("src").unwrap();
+        let src_pad = videorate_capsfilter.static_pad("src").unwrap();
         bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
     }
 

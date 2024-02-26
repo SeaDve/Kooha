@@ -23,7 +23,6 @@ supported:
     extension: mp4
     videoenc: >
       videoconvert chroma-mode=none dither=none matrix-mode=output-only n-threads=${N_THREADS} !
-      videorate skip-to-first=true !
       x264enc qp-max=17 speed-preset=ultrafast threads=${N_THREADS} !
       capsfilter caps=video/x-h264,profile=baseline !
       queue !
