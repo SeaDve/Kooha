@@ -220,7 +220,7 @@ impl AreaSelector {
         let pipeline = gst::Pipeline::new();
         imp.pipeline.set(pipeline.clone()).unwrap();
 
-        let videosrc_bin = pipeline::make_pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE, None)?;
+        let videosrc_bin = pipeline::make_pipewiresrc_bin(fd, streams, PREVIEW_FRAMERATE)?;
         let gtksink = gst::ElementFactory::make("gtk4paintablesink").build()?;
 
         let paintable = gtksink.property::<gdk::Paintable>("paintable");

@@ -65,6 +65,14 @@ impl PipelineBuilder {
         self
     }
 
+    /// Builds the pipeline.
+    ///
+    ///                   (If has select_area_data)
+    ///                        |             |
+    ///                        v             v
+    /// pipewiresrc-bin -> videoscale -> videocrop -> queue -> |
+    ///                                                        | -> profile.attach -> filesink
+    ///                               pulsesrc-bin -> queue -> |
     pub fn build(&self) -> Result<gst::Pipeline> {
         tracing::debug!(
             file_path = %self.file_path.display(),
@@ -78,14 +86,10 @@ impl PipelineBuilder {
             select_area_data = ?self.select_area_data,
         );
 
-        let videosrc_bin = make_pipewiresrc_bin(
-            self.fd,
-            &self.streams,
-            self.framerate,
-            self.select_area_data.as_ref(),
-        )
-        .context("Failed to create videosrc bin")?;
+        let pipeline = gst::Pipeline::new();
 
+        let videosrc_bin = make_pipewiresrc_bin(self.fd, &self.streams, self.framerate)
+            .context("Failed to create videosrc bin")?;
         let videoenc_queue = gst::ElementFactory::make("queue").build()?;
         let filesink = gst::ElementFactory::make("filesink")
             .property(
@@ -95,20 +99,35 @@ impl PipelineBuilder {
                     .context("Could not convert file path to string")?,
             )
             .build()?;
-
-        let pipeline = gst::Pipeline::new();
-
         pipeline.add_many([videosrc_bin.upcast_ref(), &videoenc_queue, &filesink])?;
-        videosrc_bin.link(&videoenc_queue)?;
+
+        if let Some(ref data) = self.select_area_data {
+            let videoscale = gst::ElementFactory::make("videoscale").build()?;
+            let videocrop = make_videocrop(data)?;
+            pipeline.add_many([&videoscale, &videocrop])?;
+
+            // x264enc requires even resolution.
+            let (stream_width, stream_height) = data.stream_size;
+            let videoscale_caps = gst::Caps::builder("video/x-raw")
+                .field("width", round_to_even(stream_width))
+                .field("height", round_to_even(stream_height))
+                .build();
+
+            videosrc_bin.link(&videoscale)?;
+            videoscale.link_filtered(&videocrop, &videoscale_caps)?;
+            videocrop.link(&videoenc_queue)?;
+        } else {
+            videosrc_bin.link(&videoenc_queue)?;
+        }
 
         let audioenc_queue = if self.record_desktop_audio || self.record_microphone {
             debug_assert!(self.profile.supports_audio());
 
             let pulsesrcs = [
                 self.record_desktop_audio
-                    .then(|| make_pulsesrc(DeviceClass::Sink, "desktop-audio-src")),
+                    .then(|| make_pulsesrc(DeviceClass::Sink, "kooha-desktop-audio-src")),
                 self.record_microphone
-                    .then(|| make_pulsesrc(DeviceClass::Source, "microphone-src")),
+                    .then(|| make_pulsesrc(DeviceClass::Source, "kooha-microphone-src")),
             ];
             let audiosrc_bin = make_pulsesrc_bin(
                 &pulsesrcs
@@ -219,23 +238,20 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 /// Creates a bin with a src pad for multiple pipewire streams.
 ///
 /// Single stream:
-///                           (If has select area data)
-///                                 |            |
-///                                 V            V
-/// pipewiresrc -> videorate -> videoscale -> videocrop
+///
+/// pipewiresrc -> videorate
 ///
 /// Multiple streams:
-///                                                 (If has select area data)
-/// pipewiresrc1 -> |                                    |            |
-///                 |                                    V            V
-/// pipewiresrc2 -> | -> compositor -> videorate -> videoscale -> videocrop
+///
+/// pipewiresrc1 -> |
+///                 |
+/// pipewiresrc2 -> | -> compositor -> videorate
 ///                 |
 /// pipewiresrcn -> |
 pub fn make_pipewiresrc_bin(
     fd: RawFd,
     streams: &[Stream],
     framerate: Framerate,
-    select_area_data: Option<&SelectAreaData>,
 ) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
@@ -290,27 +306,8 @@ pub fn make_pipewiresrc_bin(
         }
     }
 
-    if let Some(data) = select_area_data {
-        let videoscale = gst::ElementFactory::make("videoscale").build()?;
-        let videocrop = make_videocrop(data)?;
-
-        // x264enc requires even resolution.
-        let (stream_width, stream_height) = data.stream_size;
-        let videoscale_caps = gst::Caps::builder("video/x-raw")
-            .field("width", round_to_even(stream_width))
-            .field("height", round_to_even(stream_height))
-            .build();
-
-        bin.add_many([&videoscale, &videocrop])?;
-        videorate_capsfilter.link(&videoscale)?;
-        videoscale.link_filtered(&videocrop, &videoscale_caps)?;
-
-        let src_pad = videocrop.static_pad("src").unwrap();
-        bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
-    } else {
-        let src_pad = videorate_capsfilter.static_pad("src").unwrap();
-        bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
-    }
+    let src_pad = videorate_capsfilter.static_pad("src").unwrap();
+    bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
 
     Ok(bin)
 }
