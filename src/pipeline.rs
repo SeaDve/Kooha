@@ -90,7 +90,9 @@ impl PipelineBuilder {
 
         let videosrc_bin = make_pipewiresrc_bin(self.fd, &self.streams, self.framerate)
             .context("Failed to create videosrc bin")?;
-        let videoenc_queue = gst::ElementFactory::make("queue").build()?;
+        let videoenc_queue = gst::ElementFactory::make("queue")
+            .name("kooha-videoenc-queue")
+            .build()?;
         let filesink = gst::ElementFactory::make("filesink")
             .property(
                 "location",
@@ -136,7 +138,9 @@ impl PipelineBuilder {
                     .collect::<Result<Vec<_>>>()?,
             )
             .context("Failed to create audiosrc bin")?;
-            let audioenc_queue = gst::ElementFactory::make("queue").build()?;
+            let audioenc_queue = gst::ElementFactory::make("queue")
+                .name("kooha-audioenc-queue")
+                .build()?;
 
             pipeline.add_many([audiosrc_bin.upcast_ref(), &audioenc_queue])?;
             audiosrc_bin.link(&audioenc_queue)?;
