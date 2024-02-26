@@ -198,7 +198,7 @@ impl Recording {
         imp.file.set(gio::File::for_path(&file_path)).unwrap();
 
         let mut pipeline_builder = PipelineBuilder::new(
-            &file_path,
+            file_path,
             settings.framerate(),
             profile.clone(),
             fd,

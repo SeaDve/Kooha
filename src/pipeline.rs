@@ -3,10 +3,7 @@ use gst::prelude::*;
 use gtk::graphene::Rect;
 use num_rational::Rational32;
 
-use std::{
-    os::unix::io::RawFd,
-    path::{Path, PathBuf},
-};
+use std::{os::unix::io::RawFd, path::PathBuf};
 
 use crate::{
     area_selector::SelectAreaData,
@@ -35,14 +32,14 @@ pub struct PipelineBuilder {
 
 impl PipelineBuilder {
     pub fn new(
-        file_path: &Path,
+        file_path: PathBuf,
         framerate: Framerate,
         profile: Profile,
         fd: RawFd,
         streams: Vec<Stream>,
     ) -> Self {
         Self {
-            file_path: file_path.to_path_buf(),
+            file_path,
             framerate,
             profile,
             fd,
