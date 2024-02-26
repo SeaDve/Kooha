@@ -55,7 +55,8 @@ supported:
     suggested-max-fps: 24
     videoenc: >
       videoconvert chroma-mode=none dither=none matrix-mode=output-only n-threads=${N_THREADS} !
-      gifenc repeat=-1 speed=30
+      gifenc repeat=-1 speed=30 !
+      queue
 
 experimental:
   - id: webm-vp9
