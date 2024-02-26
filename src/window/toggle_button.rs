@@ -47,54 +47,50 @@ mod imp {
     }
 
     impl ToggleButton {
-        fn set_default_icon_name(&self, default_icon_name: &str) {
+        fn set_default_icon_name(&self, default_icon_name: String) {
             let obj = self.obj();
 
             if default_icon_name == obj.default_icon_name().as_str() {
                 return;
             }
 
-            self.default_icon_name
-                .replace(default_icon_name.to_string());
+            self.default_icon_name.replace(default_icon_name);
             obj.update_icon_name();
             obj.notify_default_icon_name();
         }
 
-        fn set_toggled_icon_name(&self, toggled_icon_name: &str) {
+        fn set_toggled_icon_name(&self, toggled_icon_name: String) {
             let obj = self.obj();
 
             if toggled_icon_name == obj.toggled_icon_name().as_str() {
                 return;
             }
 
-            self.toggled_icon_name
-                .replace(toggled_icon_name.to_string());
+            self.toggled_icon_name.replace(toggled_icon_name);
             obj.update_icon_name();
             obj.notify_toggled_icon_name();
         }
 
-        fn set_default_tooltip_text(&self, default_tooltip_text: &str) {
+        fn set_default_tooltip_text(&self, default_tooltip_text: String) {
             let obj = self.obj();
 
             if default_tooltip_text == obj.default_tooltip_text().as_str() {
                 return;
             }
 
-            self.default_tooltip_text
-                .replace(default_tooltip_text.to_string());
+            self.default_tooltip_text.replace(default_tooltip_text);
             obj.update_tooltip_text();
             obj.notify_default_tooltip_text();
         }
 
-        fn set_toggled_tooltip_text(&self, toggled_tooltip_text: &str) {
+        fn set_toggled_tooltip_text(&self, toggled_tooltip_text: String) {
             let obj = self.obj();
 
             if toggled_tooltip_text == obj.toggled_tooltip_text().as_str() {
                 return;
             }
 
-            self.toggled_tooltip_text
-                .replace(toggled_tooltip_text.to_string());
+            self.toggled_tooltip_text.replace(toggled_tooltip_text);
             obj.update_tooltip_text();
             obj.notify_toggled_tooltip_text();
         }
