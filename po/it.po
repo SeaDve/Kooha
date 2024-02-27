@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-02-27 18:50+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/seadve/kooha/it/>"
 "\n"
 "Language: it\n"
@@ -291,7 +291,7 @@ msgstr "Mostra in File"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Impossibile trovare il dispositivo audio predefinito"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -412,9 +412,8 @@ msgid "Help"
 msgstr "Aiuto"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
-msgstr "Ok capito"
+msgstr "Ok, ho capito"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
