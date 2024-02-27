@@ -225,9 +225,6 @@ impl Recording {
         })?;
         imp.pipeline.set(pipeline.clone()).unwrap();
 
-        // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
-        pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
-
         // Setup and run timer
         let timer = Timer::new(
             settings.record_delay(),
@@ -566,8 +563,10 @@ impl Recording {
             MessageView::AsyncDone(ad) => {
                 tracing::trace!("Received async-done message on bus: {:?}", ad);
 
+                let pipeline = self.pipeline();
+
                 if tracing::enabled!(tracing::Level::DEBUG) {
-                    self.pipeline()
+                    pipeline
                         .iterate_all_by_element_factory_name("pipewiresrc")
                         .into_iter()
                         .filter_map(|element| {
@@ -583,6 +582,10 @@ impl Recording {
                             );
                         });
                 }
+
+                // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
+                pipeline
+                    .debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
 
                 glib::ControlFlow::Continue
             }
