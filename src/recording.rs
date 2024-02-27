@@ -160,7 +160,7 @@ impl Recording {
         let profile = settings.profile().context(NoProfileError)?;
         let profile_supports_audio = profile.supports_audio();
 
-        // setup screencast session
+        // Setup screencast session
         let restore_token = settings.screencast_restore_token();
         settings.reset_screencast_restore_token();
         let (screencast_session, streams, restore_token, fd) = new_screencast_session(
@@ -205,19 +205,18 @@ impl Recording {
             streams.clone(),
         );
 
-        // select area
+        // Select area
         if settings.capture_mode() == CaptureMode::Selection {
             let data = AreaSelector::select(fd, &streams, &Application::get().window()).await?;
             pipeline_builder.select_area_data(data);
         }
 
-        // setup audio sources
         if profile_supports_audio {
             pipeline_builder.record_desktop_audio(settings.record_desktop_audio());
             pipeline_builder.record_microphone(settings.record_microphone());
         }
 
-        // build pipeline
+        // Build pipeline
         let pipeline = pipeline_builder.build().with_context(|| {
             ContextWithHelp::new(
                 gettext("Failed to start recording"),
@@ -229,7 +228,7 @@ impl Recording {
         // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
         pipeline.debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
 
-        // setup timer
+        // Setup and run timer
         let timer = Timer::new(
             settings.record_delay(),
             clone!(@weak self as obj => move |secs_left| {
