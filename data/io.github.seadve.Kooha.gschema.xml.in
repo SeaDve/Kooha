@@ -8,12 +8,6 @@
       </choices>
       <default>"monitor-window"</default>
     </key>
-    <key type="s" name="profile-id">
-      <default>"webm-vp8"</default>
-    </key>
-    <key type="u" name="record-delay">
-      <default>0</default>
-    </key>
     <key type="b" name="record-desktop-audio">
       <default>true</default>
     </key>
@@ -23,8 +17,14 @@
     <key type="b" name="show-pointer">
       <default>true</default>
     </key>
+    <key type="u" name="record-delay">
+      <default>0</default>
+    </key>
     <key type="ay" name="saving-location">
       <default>b""</default>
+    </key>
+    <key type="s" name="profile-id">
+      <default>"webm-vp8"</default>
     </key>
     <key type="(ii)" name="framerate">
       <default>(30, 1)</default>
