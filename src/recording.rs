@@ -158,7 +158,6 @@ impl Recording {
     ) -> Result<()> {
         let imp = self.imp();
         let profile = settings.profile().context(NoProfileError)?;
-        let profile_supports_audio = profile.supports_audio();
 
         // Setup screencast session
         let restore_token = settings.screencast_restore_token();
@@ -211,7 +210,7 @@ impl Recording {
             pipeline_builder.select_area_data(data);
         }
 
-        if profile_supports_audio {
+        if profile.supports_audio() {
             pipeline_builder.record_desktop_audio(settings.record_desktop_audio());
             pipeline_builder.record_microphone(settings.record_microphone());
         }
