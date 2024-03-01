@@ -29,7 +29,7 @@ use crate::{
     },
     settings::{CaptureMode, Settings},
     timer::Timer,
-    GST_DEBUG_DUMP_DOT_DIR, IS_EXPERIMENTAL_MODE,
+    IS_EXPERIMENTAL_MODE,
 };
 
 const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
@@ -563,14 +563,8 @@ impl Recording {
                 tracing::trace!("Received async-done message on bus: {:?}", ad);
 
                 // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
-                if !GST_DEBUG_DUMP_DOT_DIR.is_empty() {
-                    let file_name = format!(
-                        "kooha-pipeline-{}",
-                        glib::DateTime::now_utc().unwrap().format_iso8601().unwrap()
-                    );
-                    self.pipeline()
-                        .debug_to_dot_file(gst::DebugGraphDetails::VERBOSE, file_name);
-                }
+                self.pipeline()
+                    .debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
 
                 glib::ControlFlow::Continue
             }

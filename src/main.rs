@@ -57,9 +57,6 @@ use self::{
 static IS_EXPERIMENTAL_MODE: Lazy<bool> =
     Lazy::new(|| env::var("KOOHA_EXPERIMENTAL").is_ok_and(|value| value == "1"));
 
-static GST_DEBUG_DUMP_DOT_DIR: Lazy<String> =
-    Lazy::new(|| env::var("GST_DEBUG_DUMP_DOT_DIR").unwrap_or_default());
-
 fn main() -> glib::ExitCode {
     tracing_subscriber::fmt::init();
 
