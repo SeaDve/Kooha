@@ -24,6 +24,13 @@ pub use self::{
 };
 use crate::cancelled::Cancelled;
 
+const DESKTOP_BUS_NAME: &str = "org.freedesktop.portal.Desktop";
+const DESKTOP_OBJECT_PATH: &str = "/org/freedesktop/portal/desktop";
+
+const SESSION_IFACE_NAME: &str = "org.freedesktop.portal.Session";
+const REQUEST_IFACE_NAME: &str = "org.freedesktop.portal.Request";
+const SCREENCAST_IFACE_NAME: &str = "org.freedesktop.portal.ScreenCast";
+
 const PROXY_CALL_TIMEOUT: Duration = Duration::from_secs(5);
 
 pub struct Proxy(gio::DBusProxy);
@@ -34,9 +41,9 @@ impl Proxy {
             gio::BusType::Session,
             gio::DBusProxyFlags::NONE,
             None,
-            "org.freedesktop.portal.Desktop",
-            "/org/freedesktop/portal/desktop",
-            "org.freedesktop.portal.ScreenCast",
+            DESKTOP_BUS_NAME,
+            DESKTOP_OBJECT_PATH,
+            SCREENCAST_IFACE_NAME,
         )
         .await?;
 
@@ -193,9 +200,9 @@ impl Session {
             .proxy
             .connection()
             .call_future(
-                Some("org.freedesktop.portal.Desktop"),
+                Some(DESKTOP_BUS_NAME),
                 self.session_handle.as_str(),
-                "org.freedesktop.portal.Session",
+                SESSION_IFACE_NAME,
                 "Close",
                 None,
                 None,
@@ -242,9 +249,9 @@ async fn screencast_request_call(
             | gio::DBusProxyFlags::DO_NOT_CONNECT_SIGNALS
             | gio::DBusProxyFlags::DO_NOT_LOAD_PROPERTIES,
         None,
-        "org.freedesktop.portal.Desktop",
+        DESKTOP_BUS_NAME,
         request_path.as_str(),
-        "org.freedesktop.portal.Request",
+        REQUEST_IFACE_NAME,
     )
     .await?;
 
@@ -267,8 +274,8 @@ async fn screencast_request_call(
     let response_tx = RefCell::new(Some(response_tx));
 
     let subscription_id = connection.signal_subscribe(
-        Some("org.freedesktop.portal.Desktop"),
-        Some("org.freedesktop.portal.Request"),
+        Some(DESKTOP_BUS_NAME),
+        Some(REQUEST_IFACE_NAME),
         Some("Response"),
         Some(request_path.as_str()),
         None,
