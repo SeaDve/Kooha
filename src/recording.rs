@@ -29,7 +29,7 @@ use crate::{
     },
     settings::{CaptureMode, Settings},
     timer::Timer,
-    IS_EXPERIMENTAL_MODE,
+    GST_DEBUG_DUMP_DOT_DIR, IS_EXPERIMENTAL_MODE,
 };
 
 const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
@@ -563,29 +563,15 @@ impl Recording {
             MessageView::AsyncDone(ad) => {
                 tracing::trace!("Received async-done message on bus: {:?}", ad);
 
-                let pipeline = self.pipeline();
-
-                if tracing::enabled!(tracing::Level::DEBUG) {
-                    pipeline
-                        .iterate_all_by_element_factory_name("pipewiresrc")
-                        .into_iter()
-                        .filter_map(|element| {
-                            element
-                                .ok()
-                                .and_then(|e| e.static_pad("src"))
-                                .and_then(|pad| pad.current_caps())
-                        })
-                        .for_each(|caps| {
-                            tracing::debug!(
-                                "Pipewiresrc current caps: {}",
-                                caps.serialize(gst::SerializeFlags::NONE)
-                            );
-                        });
-                }
-
                 // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
-                pipeline
-                    .debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
+                if !GST_DEBUG_DUMP_DOT_DIR.is_empty() {
+                    let file_name = format!(
+                        "kooha-pipeline-{}",
+                        glib::DateTime::now_utc().unwrap().format_iso8601().unwrap()
+                    );
+                    self.pipeline()
+                        .debug_to_dot_file(gst::DebugGraphDetails::VERBOSE, file_name);
+                }
 
                 glib::ControlFlow::Continue
             }
