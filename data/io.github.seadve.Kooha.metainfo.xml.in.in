@@ -49,6 +49,7 @@
           <li>Progress is now shown when flushing the recording</li>
           <li>It is now much easier to pick from frame rate options</li>
           <li>Actually fixed audio from stuttering and being cut on long recordings</li>
+          <li>Record audio in stereo rather than mono when possible</li>
           <li>Recordings are no longer deleted when flushing is cancelled</li>
           <li>Significant improvements in recording performance</li>
           <li>Improved preferences dialog UI</li>

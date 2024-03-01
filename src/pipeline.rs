@@ -13,7 +13,6 @@ use crate::{
 };
 
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
-const AUDIO_N_CHANNELS: i32 = 1;
 
 pub type Framerate = Rational32;
 
@@ -368,25 +367,40 @@ fn make_pulsesrc_bin<'a>(
 ) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pulsesrc-bin").build();
 
+    let caps = gst::Caps::builder_full()
+        .structure(
+            gst::Structure::builder("audio/x-raw")
+                .field("rate", AUDIO_SAMPLE_RATE)
+                .field("channels", 2)
+                .build(),
+        )
+        .structure(
+            gst::Structure::builder("audio/x-raw")
+                .field("rate", AUDIO_SAMPLE_RATE)
+                .field("channels", 1)
+                .build(),
+        )
+        .build();
+
     let audiomixer = gst::ElementFactory::make("audiomixer")
         .property("latency", gst::ClockTime::from_seconds(2))
         .build()?;
-    bin.add(&audiomixer)?;
+    let audiomixer_capsfilter = gst::ElementFactory::make("capsfilter")
+        .property("caps", &caps)
+        .build()?;
+    bin.add_many([&audiomixer, &audiomixer_capsfilter])?;
+    audiomixer.link(&audiomixer_capsfilter)?;
 
-    let src_pad = audiomixer.static_pad("src").unwrap();
+    let src_pad = audiomixer_capsfilter.static_pad("src").unwrap();
     bin.add_pad(&gst::GhostPad::with_target(&src_pad)?)?;
 
-    let pulsesrc_caps = gst::Caps::builder("audio/x-raw")
-        .field("rate", AUDIO_SAMPLE_RATE)
-        .field("channels", AUDIO_N_CHANNELS)
-        .build();
     for pulsesrc in pulsesrcs {
         let audiorate = gst::ElementFactory::make("audiorate")
             .property("skip-to-first", true)
             .build()?;
 
         bin.add_many([&pulsesrc, &audiorate])?;
-        pulsesrc.link_filtered(&audiorate, &pulsesrc_caps)?;
+        pulsesrc.link_filtered(&audiorate, &caps)?;
         audiorate.link_pads(None, &audiomixer, Some("sink_%u"))?;
     }
 
