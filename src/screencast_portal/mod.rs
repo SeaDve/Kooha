@@ -60,8 +60,7 @@ impl Proxy {
             .build();
         let response =
             screencast_request_call(&self.0, &handle_token, "CreateSession", &(session_options,))
-                .await
-                .context("Failed to create session")?;
+                .await?;
 
         tracing::trace!(?response, "Created screencast session");
 
