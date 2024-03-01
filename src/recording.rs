@@ -24,8 +24,8 @@ use crate::{
     help::ContextWithHelp,
     i18n::gettext_f,
     pipeline::PipelineBuilder,
-    screencast_session::{
-        CursorMode, PersistMode, ScreencastSession, SourceType, Stream, WindowIdentifier,
+    screencast_portal::{
+        CursorMode, PersistMode, Proxy, Session, SourceType, Stream, WindowIdentifier,
     },
     settings::{CaptureMode, Settings},
     timer::Timer,
@@ -86,7 +86,7 @@ mod imp {
         pub(super) estimated_final_duration: Cell<Option<gst::ClockTime>>,
 
         pub(super) timer: RefCell<Option<Timer>>,
-        pub(super) session: RefCell<Option<ScreencastSession>>,
+        pub(super) session: RefCell<Option<Session>>,
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
         pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) bus_watch_guard: RefCell<Option<BusWatchGuard>>,
@@ -602,17 +602,22 @@ async fn new_screencast_session(
     restore_token: Option<&str>,
     persist_mode: PersistMode,
     parent_window: Option<&impl IsA<gtk::Window>>,
-) -> Result<(ScreencastSession, Vec<Stream>, Option<String>, RawFd)> {
-    let session = ScreencastSession::new()
+) -> Result<(Session, Vec<Stream>, Option<String>, RawFd)> {
+    let proxy = Proxy::new()
         .await
-        .context("Failed to create session")?;
+        .context("Failed to create screencast proxy")?;
 
     tracing::debug!(
-        version = ?session.version(),
-        available_cursor_modes = ?session.available_cursor_modes(),
-        available_source_types = ?session.available_source_types(),
+        version = ?proxy.version(),
+        available_cursor_modes = ?proxy.available_cursor_modes(),
+        available_source_types = ?proxy.available_source_types(),
         "Created screencast proxy"
     );
+
+    let session = proxy
+        .create_session()
+        .await
+        .context("Failed to create session")?;
 
     tracing::debug!(
         ?cursor_mode,

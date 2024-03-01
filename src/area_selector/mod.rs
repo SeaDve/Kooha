@@ -18,7 +18,7 @@ use crate::{
     application::Application,
     cancelled::Cancelled,
     pipeline::{self, Framerate},
-    screencast_session::Stream,
+    screencast_portal::Stream,
 };
 
 const PREVIEW_FRAMERATE: Framerate = Framerate::new_raw(60, 1);

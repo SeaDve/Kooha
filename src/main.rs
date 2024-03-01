@@ -38,7 +38,7 @@ mod pipeline;
 mod preferences_dialog;
 mod profile;
 mod recording;
-mod screencast_session;
+mod screencast_portal;
 mod settings;
 mod timer;
 mod window;

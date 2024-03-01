@@ -26,15 +26,11 @@ use crate::cancelled::Cancelled;
 
 const PROXY_CALL_TIMEOUT: Duration = Duration::from_secs(5);
 
-#[derive(Debug)]
-pub struct ScreencastSession {
-    proxy: gio::DBusProxy,
-    session_handle: ObjectPath,
-}
+pub struct Proxy(gio::DBusProxy);
 
-impl ScreencastSession {
+impl Proxy {
     pub async fn new() -> Result<Self> {
-        let proxy = gio::DBusProxy::for_bus_future(
+        let inner = gio::DBusProxy::for_bus_future(
             gio::BusType::Session,
             gio::DBusProxyFlags::NONE,
             None,
@@ -42,9 +38,12 @@ impl ScreencastSession {
             "/org/freedesktop/portal/desktop",
             "org.freedesktop.portal.ScreenCast",
         )
-        .await
-        .context("Failed to create screencast proxy")?;
+        .await?;
 
+        Ok(Self(inner))
+    }
+
+    pub async fn create_session(&self) -> Result<Session> {
         let session_handle_token = HandleToken::new();
         let handle_token = HandleToken::new();
 
@@ -53,7 +52,7 @@ impl ScreencastSession {
             .entry("session_handle_token", &session_handle_token)
             .build();
         let response =
-            screencast_request_call(&proxy, &handle_token, "CreateSession", &(session_options,))
+            screencast_request_call(&self.0, &handle_token, "CreateSession", &(session_options,))
                 .await
                 .context("Failed to create session")?;
 
@@ -63,12 +62,45 @@ impl ScreencastSession {
         let session_handle = response.get_flatten::<String>("session_handle")?;
         debug_assert!(session_handle.ends_with(&session_handle_token.as_str()));
 
-        Ok(Self {
-            proxy,
+        Ok(Session {
+            proxy: self.0.clone(),
             session_handle: ObjectPath::try_from(session_handle)?,
         })
     }
 
+    pub fn version(&self) -> Result<u32> {
+        self.property("version")
+    }
+
+    pub fn available_cursor_modes(&self) -> Result<CursorMode> {
+        let value = self.property::<u32>("AvailableCursorModes")?;
+
+        CursorMode::from_bits(value).ok_or_else(|| anyhow!("Invalid cursor mode: {}", value))
+    }
+
+    pub fn available_source_types(&self) -> Result<SourceType> {
+        let value = self.property::<u32>("AvailableSourceTypes")?;
+
+        SourceType::from_bits(value).ok_or_else(|| anyhow!("Invalid source type: {}", value))
+    }
+
+    fn property<T: FromVariant>(&self, name: &str) -> Result<T> {
+        let variant = self
+            .0
+            .cached_property(name)
+            .ok_or_else(|| anyhow!("No cached property named `{}`", name))?;
+
+        variant_get::<T>(&variant)
+    }
+}
+
+#[derive(Debug)]
+pub struct Session {
+    proxy: gio::DBusProxy,
+    session_handle: ObjectPath,
+}
+
+impl Session {
     pub async fn select_sources(
         &self,
         source_type: SourceType,
@@ -177,31 +209,6 @@ impl ScreencastSession {
         tracing::trace!(%response, "Closed screencast session");
 
         Ok(())
-    }
-
-    pub fn version(&self) -> Result<u32> {
-        self.property("version")
-    }
-
-    pub fn available_cursor_modes(&self) -> Result<CursorMode> {
-        let value = self.property::<u32>("AvailableCursorModes")?;
-
-        CursorMode::from_bits(value).ok_or_else(|| anyhow!("Invalid cursor mode: {}", value))
-    }
-
-    pub fn available_source_types(&self) -> Result<SourceType> {
-        let value = self.property::<u32>("AvailableSourceTypes")?;
-
-        SourceType::from_bits(value).ok_or_else(|| anyhow!("Invalid source type: {}", value))
-    }
-
-    fn property<T: FromVariant>(&self, name: &str) -> Result<T> {
-        let variant = self
-            .proxy
-            .cached_property(name)
-            .ok_or_else(|| anyhow!("No cached property named `{}`", name))?;
-
-        variant_get::<T>(&variant)
     }
 }
 

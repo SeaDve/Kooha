@@ -9,7 +9,7 @@ use crate::{
     area_selector::SelectAreaData,
     device::{self, DeviceClass},
     profile::Profile,
-    screencast_session::Stream,
+    screencast_portal::Stream,
 };
 
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
