@@ -385,9 +385,9 @@ mod imp {
             }
 
             self.paintable_rect.set(None);
+            obj.notify_paintable_rect();
 
             obj.queue_resize();
-            obj.notify_paintable_rect();
             obj.notify_paintable();
         }
 
