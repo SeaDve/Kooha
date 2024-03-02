@@ -21,6 +21,7 @@ use crate::{
     application::Application,
     area_selector::AreaSelector,
     cancelled::Cancelled,
+    experimental::Feature,
     help::ContextWithHelp,
     i18n::gettext_f,
     pipeline::PipelineBuilder,
@@ -29,7 +30,6 @@ use crate::{
     },
     settings::{CaptureMode, Settings},
     timer::Timer,
-    IS_EXPERIMENTAL_MODE,
 };
 
 const DURATION_UPDATE_INTERVAL: Duration = Duration::from_millis(200);
@@ -168,12 +168,12 @@ impl Recording {
             } else {
                 CursorMode::HIDDEN
             },
-            if *IS_EXPERIMENTAL_MODE {
+            if Feature::WindowRecording.is_enabled() {
                 SourceType::MONITOR | SourceType::WINDOW
             } else {
                 SourceType::MONITOR
             },
-            *IS_EXPERIMENTAL_MODE,
+            Feature::MultipleVideoSources.is_enabled(),
             Some(&restore_token),
             PersistMode::Persistent,
             parent,

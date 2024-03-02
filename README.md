@@ -61,25 +61,16 @@ can also check for the [troubleshooting checklist](https://github.com/emersion/x
 
 These features are disabled by default due to stability issues and possible
 performance degradation. However, they can be enabled manually by running Kooha
-with `KOOHA_EXPERIMENTAL` env var set to `1`. (e.g. `KOOHA_EXPERIMENTAL=1 flatpak run io.github.seadve.Kooha`).
+with `KOOHA_EXPERIMENTAL` env var set to `all` (e.g., `KOOHA_EXPERIMENTAL=all flatpak run io.github.seadve.Kooha`), or individually, by setting
+`KOOHA_EXPERIMENTAL` to the following keys (e.g., `KOOHA_EXPERIMENTAL=experimental-formats,window-recording`):
 
-### Enable hardware-accelerated encoding and other encoders
+| Feature Key              | Description                                                              | Issues      |
+| ------------------------ | ------------------------------------------------------------------------ | ----------- |
+| `experimental-formats`   | Enables other codecs (e.g., hardware-accelerate encoders*, VP9, and AV1) | Stability   |
+| `multiple-video-sources` | Enables recording multiple monitor or windows                            | Performance |
+| `window-recording`       | Enables recording a specific window                                      | Flickering  |
 
-Together with `KOOHA_EXPERIMENTAL` env var, it is also needed
-to set `GST_VAAPI_ALL_DRIVERS` to `1` to enable the needed drivers.
-
-Additionally, `gstreamer-vaapi`
-is required to be installed on your system. If Kooha is installed through Flatpak,
-it is as simple as running `flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi`
-to install the package.
-
-### Recording specific window
-
-Due to flickering, this has been disabled by default.
-
-### Recording multiple sources
-
-Due to performance degradation, this has been disabled by default.
+\* Requires `GST_VAAPI_ALL_DRIVERS` env var to be set to `1` and `gstreamer-vaapi` to be installed.
 
 ## 📋 Runtime Requirements
 

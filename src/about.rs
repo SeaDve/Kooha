@@ -13,7 +13,7 @@ use gtk::glib;
 
 use crate::{
     config::{APP_ID, VERSION},
-    IS_EXPERIMENTAL_MODE,
+    experimental,
 };
 
 pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {
@@ -109,7 +109,7 @@ fn gpu_model() -> Result<String> {
 
 fn debug_info() -> String {
     let is_flatpak = Path::new("/.flatpak-info").exists();
-    let is_experimental_mode = *IS_EXPERIMENTAL_MODE;
+    let experimental_features = experimental::enabled_features();
 
     let language_names = glib::language_names().join(", ");
 
@@ -144,7 +144,7 @@ fn debug_info() -> String {
     format!(
         r#"- {APP_ID} {VERSION}
 - Flatpak: {is_flatpak}
-- Experimental: {is_experimental_mode}
+- Experimental Features: {experimental_features:?}
 
 - Language: {language_names}
 

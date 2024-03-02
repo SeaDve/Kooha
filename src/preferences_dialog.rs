@@ -8,8 +8,8 @@ use gtk::{
 };
 
 use crate::{
-    framerate_option::FramerateOption, item_row::ItemRow, profile::Profile, settings::Settings,
-    IS_EXPERIMENTAL_MODE,
+    experimental::Feature, framerate_option::FramerateOption, item_row::ItemRow, profile::Profile,
+    settings::Settings,
 };
 
 const ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY: &str = "kooha-row-selected-item-notify-handler-id";
@@ -277,7 +277,7 @@ impl PreferencesDialog {
         };
         let filter = gtk::CustomFilter::new(move |obj| {
             profile_from_obj(obj).map_or(true, |profile| {
-                (*IS_EXPERIMENTAL_MODE
+                (Feature::ExperimentalFormats.is_enabled()
                     || !profile.is_experimental()
                     || active_profile.is_some_and(|active_profile| active_profile == profile))
                     && profile.is_available()

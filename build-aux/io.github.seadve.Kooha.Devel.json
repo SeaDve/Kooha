@@ -18,7 +18,7 @@
         "--env=RUST_LIB_BACKTRACE=0",
         "--env=RUST_LOG=kooha=debug",
         "--env=G_MESSAGES_DEBUG=none",
-        "--env=KOOHA_EXPERIMENTAL=1"
+        "--env=KOOHA_EXPERIMENTAL=all"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/llvm16/bin:/usr/lib/sdk/rust-stable/bin",
