@@ -51,7 +51,7 @@ enum CursorType {
 }
 
 impl CursorType {
-    fn name(self) -> &'static str {
+    fn as_str(self) -> &'static str {
         match self {
             Self::Default => "default",
             Self::Crosshair => "crosshair",
@@ -417,7 +417,15 @@ impl ViewPort {
     }
 
     fn set_cursor(&self, cursor_type: CursorType) {
-        self.set_cursor_from_name(Some(cursor_type.name()));
+        if self
+            .cursor()
+            .and_then(|cursor| cursor.name())
+            .is_some_and(|name| name == cursor_type.as_str())
+        {
+            return;
+        }
+
+        self.set_cursor_from_name(Some(cursor_type.as_str()));
     }
 
     fn compute_cursor_type(&self, x: f32, y: f32) -> CursorType {
