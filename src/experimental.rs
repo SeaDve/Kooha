@@ -34,7 +34,7 @@ pub enum Feature {
 impl Feature {
     fn from_str(string: &str) -> Option<Self> {
         match string {
-            "all" => Some(Self::All),
+            "all" | "1" => Some(Self::All),
             "experimental-formats" => Some(Self::ExperimentalFormats),
             "multiple-video-sources" => Some(Self::MultipleVideoSources),
             "window-recording" => Some(Self::WindowRecording),
