@@ -428,10 +428,8 @@ impl ViewPort {
         self.set_cursor_from_name(Some(cursor_type.as_str()));
     }
 
-    fn compute_cursor_type(&self, x: f32, y: f32) -> CursorType {
+    fn compute_cursor_type(&self, position: Point) -> CursorType {
         let imp = self.imp();
-
-        let point = Point::new(x, y);
 
         if self.paintable().is_none() {
             return CursorType::Default;
@@ -444,34 +442,34 @@ impl ViewPort {
         let [top_left_handle, top_right_handle, bottom_right_handle, bottom_left_handle] =
             imp.selection_handles.get().unwrap();
 
-        if top_left_handle.contains_point(&point) {
+        if top_left_handle.contains_point(&position) {
             CursorType::NorthWestResize
-        } else if top_right_handle.contains_point(&point) {
+        } else if top_right_handle.contains_point(&position) {
             CursorType::NorthEastResize
-        } else if bottom_right_handle.contains_point(&point) {
+        } else if bottom_right_handle.contains_point(&position) {
             CursorType::SouthEastResize
-        } else if bottom_left_handle.contains_point(&point) {
+        } else if bottom_left_handle.contains_point(&position) {
             CursorType::SouthWestResize
-        } else if selection.rect().contains_point(&point) {
+        } else if selection.rect().contains_point(&position) {
             CursorType::Move
         } else if top_left_handle
             .union(&top_right_handle)
-            .contains_point(&point)
+            .contains_point(&position)
         {
             CursorType::NorthResize
         } else if top_right_handle
             .union(&bottom_right_handle)
-            .contains_point(&point)
+            .contains_point(&position)
         {
             CursorType::EastResize
         } else if bottom_right_handle
             .union(&bottom_left_handle)
-            .contains_point(&point)
+            .contains_point(&position)
         {
             CursorType::SouthResize
         } else if bottom_left_handle
             .union(&top_left_handle)
-            .contains_point(&point)
+            .contains_point(&position)
         {
             CursorType::WestResize
         } else {
@@ -540,7 +538,7 @@ impl ViewPort {
             .set(Some(Point::new(x as f32, y as f32)));
 
         if imp.drag_start.get().is_none() {
-            let cursor_type = self.compute_cursor_type(x as f32, y as f32);
+            let cursor_type = self.compute_cursor_type(Point::new(x as f32, y as f32));
             self.set_cursor(cursor_type);
         }
     }
@@ -563,7 +561,7 @@ impl ViewPort {
         };
 
         let imp = self.imp();
-        let cursor_type = self.compute_cursor_type(x as f32, y as f32);
+        let cursor_type = self.compute_cursor_type(Point::new(x as f32, y as f32));
 
         if cursor_type == CursorType::Crosshair {
             imp.drag_cursor.set(CursorType::Crosshair);
@@ -831,7 +829,7 @@ impl ViewPort {
         }
 
         if let Some(pointer_position) = imp.pointer_position.get() {
-            let cursor_type = self.compute_cursor_type(pointer_position.x(), pointer_position.y());
+            let cursor_type = self.compute_cursor_type(pointer_position);
             self.set_cursor(cursor_type);
         }
     }
