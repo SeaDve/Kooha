@@ -752,15 +752,12 @@ impl ViewPort {
                     } else if drag_cursor == CursorType::WestResize {
                         imp.drag_cursor.set(CursorType::EastResize);
                     }
-                } else {
-                    // Disable clippy error
-                    if drag_cursor == CursorType::NorthEastResize {
-                        imp.drag_cursor.set(CursorType::NorthWestResize);
-                    } else if drag_cursor == CursorType::SouthEastResize {
-                        imp.drag_cursor.set(CursorType::SouthWestResize);
-                    } else if drag_cursor == CursorType::EastResize {
-                        imp.drag_cursor.set(CursorType::WestResize);
-                    }
+                } else if drag_cursor == CursorType::NorthEastResize {
+                    imp.drag_cursor.set(CursorType::NorthWestResize);
+                } else if drag_cursor == CursorType::SouthEastResize {
+                    imp.drag_cursor.set(CursorType::SouthWestResize);
+                } else if drag_cursor == CursorType::EastResize {
+                    imp.drag_cursor.set(CursorType::WestResize);
                 }
 
                 if selection.end_y > selection.start_y {
@@ -771,15 +768,12 @@ impl ViewPort {
                     } else if drag_cursor == CursorType::NorthResize {
                         imp.drag_cursor.set(CursorType::SouthResize);
                     }
-                } else {
-                    // Disable clippy error
-                    if drag_cursor == CursorType::SouthWestResize {
-                        imp.drag_cursor.set(CursorType::NorthWestResize);
-                    } else if drag_cursor == CursorType::SouthEastResize {
-                        imp.drag_cursor.set(CursorType::NorthEastResize);
-                    } else if drag_cursor == CursorType::SouthResize {
-                        imp.drag_cursor.set(CursorType::NorthResize);
-                    }
+                } else if drag_cursor == CursorType::SouthWestResize {
+                    imp.drag_cursor.set(CursorType::NorthWestResize);
+                } else if drag_cursor == CursorType::SouthEastResize {
+                    imp.drag_cursor.set(CursorType::NorthEastResize);
+                } else if drag_cursor == CursorType::SouthResize {
+                    imp.drag_cursor.set(CursorType::NorthResize);
                 }
 
                 self.set_cursor(imp.drag_cursor.get());
