@@ -11,8 +11,8 @@ gnome = import('gnome')
 
 base_id = 'io.github.seadve.Kooha'
 
-dependency('glib-2.0', version: '>= 2.66')
-dependency('gio-2.0', version: '>= 2.66')
+dependency('glib-2.0', version: '>= 2.79')
+dependency('gio-2.0', version: '>= 2.79')
 dependency('gtk4', version: '>= 4.13')
 dependency('libadwaita-1', version: '>= 1.5')
 dependency('gstreamer-1.0', version: '>= 1.22')
