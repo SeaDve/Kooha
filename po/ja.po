@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2024-02-24 02:28+0000\n"
+"PO-Revision-Date: 2024-03-03 02:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
 ">\n"
@@ -295,7 +295,7 @@ msgstr "ファイル で表示"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "デフォルトの音声デバイスを検出できませんでした"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -411,7 +411,7 @@ msgstr "ヘルプ"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr ""
+msgstr "了解しました"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
