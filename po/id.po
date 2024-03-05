@@ -7,14 +7,14 @@
 # Sucipto <sucipto@pm.me>, 2021.
 # Hervy Qurrotul Ainur Rozi <hervyqa@proton.me>, 2022.
 # Muhammad Akbar Yanuar Mantari <mantarimay@users.noreply.hosted.weblate.org>, 2023.
+# Nur Ihsan <mnurihsanmutaqin66@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2023-09-25 07:01+0000\n"
-"Last-Translator: Muhammad Akbar Yanuar Mantari <mantarimay@users.noreply."
-"hosted.weblate.org>\n"
+"PO-Revision-Date: 2024-03-05 18:01+0000\n"
+"Last-Translator: Nur Ihsan <mnurihsanmutaqin66@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/seadve/kooha/"
 "id/>\n"
 "Language: id\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
@@ -69,7 +69,7 @@ msgstr "📼 Dukungan untuk format WebM, MP4, GIF, dan Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Pilih monitor atau bagian dari layar untuk direkam"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -109,7 +109,7 @@ msgstr "Penundaan (Detik)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Interval waktu sebelum memulai perekaman"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -117,7 +117,7 @@ msgstr "Folder Rekaman"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Folder tujuan untuk hasil perekaman"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -265,12 +265,9 @@ msgstr "_Tentang Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
+#, fuzzy
 msgid "translator-credits"
-msgstr ""
-"@liimee\n"
-"Hervy Qurrotul Ainur Rozi\n"
-"Reza Almanda\n"
-"@mantarimay"
+msgstr "@liimee,Hervy Qurrotul Ainur Rozi,Reza Almanda,@mantarimay,@nurihsan_m"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
@@ -295,7 +292,7 @@ msgstr "Tampilkan di Berkas"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Gagal menemukan perangkat audio default"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -305,27 +302,29 @@ msgstr "Pastikan Anda telah memasang PulseAudio pada sistem Anda."
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
+msgstr[0] "{time} jam"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
+msgstr[0] "menit"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
+msgstr[0] "detik"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Gagal mengatur folder hasil perekaman"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Frame rate ini mungkin akan menyebabkan isu terhadap performa pada format "
+"yang dipilih."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -378,16 +377,20 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Sebuah perekaman sedang berlangsung. Keluar sekarang dapat menyebabkan hasil "
+"perekaman tidak dapat diputar. Silahkan hentikan perekaman sebelum keluar."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Keluar akan menghentikan proses berjalan dan dapat menyebabkan hasil "
+"perekaman tidak dapat diputar."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Keluar dari Aplikasi?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -407,7 +410,7 @@ msgstr "Bantuan"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Ya, Mengerti"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
@@ -431,7 +434,7 @@ msgstr "Buka"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Perekaman sedang berlangsung"
 
 #: src/window/mod.rs:485
 msgid "Paused"

@@ -3,23 +3,23 @@
 # This file is distributed under the same license as the kooha package.
 # cubells <vicent@vcubells.net>, 2022.
 # Joan Aymà <joanayma@gmail.com>, 2023.
-# victor dargallo <victordargallo@disroot.org>, 2023.
+# victor dargallo <victordargallo@disroot.org>, 2023, 2024.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2023-12-17 17:09+0000\n"
+"PO-Revision-Date: 2024-03-05 18:01+0000\n"
 "Last-Translator: victor dargallo <victordargallo@disroot.org>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/seadve/kooha/ca/"
-">\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/seadve/kooha/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
@@ -70,6 +70,7 @@ msgstr "📼 Suport pels formats WebM, MP4, GIF i Matroska"
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "🖥️ Select a monitor or a portion of the screen to record"
 msgstr ""
+"🖥️ Seleccioneu un monitor o una porció de la pantalla per enregistrar-la"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid ""
@@ -109,7 +110,7 @@ msgstr "Retard (en segons)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Interval de temps abans de començar l'enregistrament"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -117,7 +118,7 @@ msgstr "Carpeta d'enregistraments"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Carpeta de destinació de les gravacions"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -266,7 +267,7 @@ msgstr "_Quant a Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr "Adolfo Jayme Barrientos , Víctor Dargallo"
+msgstr "Adolfo Jayme Barrientos, Víctor Dargallo"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
@@ -291,7 +292,7 @@ msgstr "Mostra a Fitxers"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "No s'ha pogut trobar el dispositiu d'àudio predeterminat"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -301,30 +302,32 @@ msgstr "Assegureu-vos de tenir PulseAudio instaŀlat al vostre sistema."
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} hora"
+msgstr[1] "{time} hores"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} minut"
+msgstr[1] "{time} minuts"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} segon"
+msgstr[1] "{time} segons"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "No s'ha pogut establir la carpeta d'enregistraments"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Aquesta velocitat de fotogrames pot provocar problemes de rendiment al "
+"format seleccionat."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -377,16 +380,20 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Actualment hi ha una gravació en curs. Si tanqueu immediatament, la gravació "
+"no es podrà reproduir. Si us plau, atureu la gravació abans de sortir."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Si es tanca, es cancel·larà el processament i pot provocar que la gravació "
+"no es pugui reproduir."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Voleu tancar l'aplicació?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -406,7 +413,7 @@ msgstr "Ajuda"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr ""
+msgstr "D'acord, entès"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
@@ -430,7 +437,7 @@ msgstr "Obre"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Hi ha una gravació en curs"
 
 #: src/window/mod.rs:485
 msgid "Paused"
