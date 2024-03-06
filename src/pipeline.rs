@@ -179,6 +179,14 @@ fn make_pipewiresrc(fd: RawFd, path: &str) -> Result<gst::Element> {
     Ok(src)
 }
 
+fn make_videoflip() -> Result<gst::Element> {
+    let videoflip = gst::ElementFactory::make("videoflip")
+        .property_from_str("video-direction", "auto")
+        .build()?;
+
+    Ok(videoflip)
+}
+
 /// Create a videocrop element that computes the crop from the given coordinates
 /// and size.
 fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
@@ -242,15 +250,15 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 ///
 /// Single stream:
 ///
-/// pipewiresrc -> videorate
+/// pipewiresrc -> videoflip -> videorate
 ///
 /// Multiple streams:
 ///
-/// pipewiresrc1 -> |
-///                 |
-/// pipewiresrc2 -> | -> compositor -> videorate
-///                 |
-/// pipewiresrcn -> |
+/// pipewiresrc1 -> videoflip -> |
+///                              |
+/// pipewiresrc2 -> videoflip -> | -> compositor -> videorate
+///                              |
+/// pipewiresrcn -> videoflip -> |
 pub fn make_pipewiresrc_bin(
     fd: RawFd,
     streams: &[Stream],
@@ -276,8 +284,9 @@ pub fn make_pipewiresrc_bin(
         [] => bail!("No streams provided"),
         [stream] => {
             let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
-            bin.add(&pipewiresrc)?;
-            pipewiresrc.link(&videorate)?;
+            let videoflip = make_videoflip()?;
+            bin.add_many([&pipewiresrc, &videoflip])?;
+            gst::Element::link_many([&pipewiresrc, &videoflip, &videorate])?;
         }
         streams => {
             let compositor = gst::ElementFactory::make("compositor").build()?;
@@ -287,13 +296,15 @@ pub fn make_pipewiresrc_bin(
             let mut last_pos = 0;
             for stream in streams {
                 let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
-                bin.add(&pipewiresrc)?;
+                let videoflip = make_videoflip()?;
+                bin.add_many([&pipewiresrc, &videoflip])?;
+                pipewiresrc.link(&videoflip)?;
 
                 let compositor_sink_pad = compositor
                     .request_pad_simple("sink_%u")
                     .context("Failed to request sink_%u pad from compositor")?;
                 compositor_sink_pad.set_property("xpos", last_pos);
-                pipewiresrc
+                videoflip
                     .static_pad("src")
                     .unwrap()
                     .link(&compositor_sink_pad)?;
