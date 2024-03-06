@@ -264,11 +264,9 @@ pub fn make_pipewiresrc_bin(
     let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
         .property(
             "caps",
-            &optional_dmabuf_feature_caps(
-                gst::Structure::builder("video/x-raw")
-                    .field("framerate", gst::Fraction::from(framerate))
-                    .build(),
-            ),
+            gst::Caps::builder("video/x-raw")
+                .field("framerate", gst::Fraction::from(framerate))
+                .build(),
         )
         .build()?;
     bin.add_many([&videorate, &videorate_capsfilter])?;
@@ -279,10 +277,7 @@ pub fn make_pipewiresrc_bin(
         [stream] => {
             let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
             bin.add(&pipewiresrc)?;
-            pipewiresrc.link_filtered(
-                &videorate,
-                &optional_dmabuf_feature_caps(gst::Structure::builder("video/x-raw").build()),
-            )?;
+            pipewiresrc.link(&videorate)?;
         }
         streams => {
             let compositor = gst::ElementFactory::make("compositor").build()?;
@@ -405,14 +400,6 @@ fn make_pulsesrc_bin<'a>(
     }
 
     Ok(bin)
-}
-
-/// Creates a caps with the given structure and adds the same structure but with `memory:DMABuf` feature.
-fn optional_dmabuf_feature_caps(structure: gst::Structure) -> gst::Caps {
-    gst::Caps::builder_full()
-        .structure_with_features(structure.clone(), gst::CapsFeatures::new(["memory:DMABuf"]))
-        .structure(structure)
-        .build()
 }
 
 fn round_to_even(number: i32) -> i32 {
