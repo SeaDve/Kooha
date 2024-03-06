@@ -87,7 +87,7 @@ impl PipelineBuilder {
 
         let pipeline = gst::Pipeline::new();
 
-        let videosrc_bin = make_pipewiresrc_bin(self.fd, &self.streams, self.framerate)
+        let videosrc_bin = make_videosrc_bin(self.fd, &self.streams, self.framerate)
             .context("Failed to create videosrc bin")?;
         let videoenc_queue = gst::ElementFactory::make("queue")
             .name("kooha-videoenc-queue")
@@ -130,7 +130,7 @@ impl PipelineBuilder {
                 self.record_microphone
                     .then(|| make_pulsesrc(DeviceClass::Source, "kooha-microphone-src")),
             ];
-            let audiosrc_bin = make_pulsesrc_bin(
+            let audiosrc_bin = make_audiosrc_bin(
                 &pulsesrcs
                     .into_iter()
                     .flatten()
@@ -259,11 +259,7 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 /// pipewiresrc2 -> videoflip -> | -> compositor -> videorate
 ///                              |
 /// pipewiresrcn -> videoflip -> |
-pub fn make_pipewiresrc_bin(
-    fd: RawFd,
-    streams: &[Stream],
-    framerate: Framerate,
-) -> Result<gst::Bin> {
+pub fn make_videosrc_bin(fd: RawFd, streams: &[Stream], framerate: Framerate) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
     let videorate = gst::ElementFactory::make("videorate")
@@ -368,7 +364,7 @@ fn make_pulsesrc(class: DeviceClass, element_name: &str) -> Result<gst::Element>
 /// pulsesrc2 -> audiorate -> | -> audiomixer
 ///                           |
 /// pulsesrcn -> audiorate -> |
-fn make_pulsesrc_bin<'a>(
+fn make_audiosrc_bin<'a>(
     pulsesrcs: impl IntoIterator<Item = &'a gst::Element>,
 ) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pulsesrc-bin").build();
