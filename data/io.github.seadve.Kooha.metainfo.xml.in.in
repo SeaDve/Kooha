@@ -375,5 +375,6 @@
   <recommends>
     <control>keyboard</control>
     <control>pointing</control>
+    <control>touch</control>
   </recommends>
 </component>
