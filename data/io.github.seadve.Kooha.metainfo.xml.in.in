@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2024 Dave Patrick Caberto -->
 <component type="desktop-application">
   <id>@app-id@</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -29,12 +30,12 @@
       <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/screenshot3.png</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://github.com/SeaDve/Kooha</url>
   <url type="bugtracker">https://github.com/SeaDve/Kooha/issues</url>
-  <url type="vcs-browser">https://github.com/SeaDve/Kooha</url>
+  <url type="homepage">https://github.com/SeaDve/Kooha</url>
+  <url type="donation">https://seadve.github.io/donate/</url>
   <url type="translate">https://hosted.weblate.org/projects/seadve/kooha/</url>
-  <url type="donation">https://www.buymeacoffee.com/seadve</url>
-  <content_rating type="oars-1.0"/>
+  <url type="vcs-browser">https://github.com/SeaDve/Kooha</url>
+  <content_rating type="oars-1.1"/>
   <releases>
     <release version="2.3.0" date="2024-02-08">
       <description translatable="no">
@@ -365,7 +366,7 @@
   </kudos>
   <!-- developer_name tag deprecated with Appstream 1.0 -->
   <developer_name translatable="no">Dave Patrick Caberto</developer_name>
-  <developer id="gitlab.com">
+  <developer id="io.github">
     <name translatable="no">Dave Patrick Caberto</name>
   </developer>
   <update_contact>davecruz48@gmail.com</update_contact>
