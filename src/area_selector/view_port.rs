@@ -319,7 +319,7 @@ mod imp {
                 if let Some(paintable_rect) = obj.paintable_rect() {
                     snapshot.push_mask(gsk::MaskMode::InvertedAlpha);
 
-                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect.inset_r(3.0, 3.0));
+                    snapshot.append_color(&gdk::RGBA::BLACK, &selection_rect);
                     snapshot.pop();
 
                     snapshot.append_color(&SHADE_COLOR, &paintable_rect);
