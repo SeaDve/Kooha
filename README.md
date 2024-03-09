@@ -64,8 +64,9 @@ performance degradation. However, they can be enabled manually by running Kooha
 with `KOOHA_EXPERIMENTAL` env var set to `all` (e.g., `KOOHA_EXPERIMENTAL=all flatpak run io.github.seadve.Kooha`), or individually, by setting
 `KOOHA_EXPERIMENTAL` to the following keys (e.g., `KOOHA_EXPERIMENTAL=experimental-formats,window-recording`):
 
-| Feature Key              | Description                                                              | Issues                    |
+| Feature                  | Description                                                              | Issues                    |
 | ------------------------ | ------------------------------------------------------------------------ | ------------------------- |
+| `all`                    | Enables all experimental features                                        | -                         |
 | `experimental-formats`   | Enables other codecs (e.g., hardware-accelerate encoders*, VP9, and AV1) | Stability                 |
 | `multiple-video-sources` | Enables recording multiple monitor or windows                            | Stability and performance |
 | `window-recording`       | Enables recording a specific window                                      | Flickering                |
