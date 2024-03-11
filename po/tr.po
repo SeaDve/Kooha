@@ -5,13 +5,14 @@
 # ToldYouThat <itoldyouthat@protonmail.com>, 2021.
 # Sabri Ünal <libreajans@gmail.com>, 2022, 2023, 2024.
 # Oğuz Ersen <oguz@ersen.moe>, 2022, 2024.
+# Sabri Ünal <yakushabb@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2024-02-25 07:01+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"PO-Revision-Date: 2024-03-11 22:01+0000\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/>"
 "\n"
 "Language: tr\n"
@@ -264,7 +265,7 @@ msgstr "Kooha _Hakkında"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr "Sabri Ünal (libreajans@gmail.com), Oğuz Ersen"
+msgstr "Sabri Ünal (yakushabb@gmail.com), Oğuz Ersen"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
