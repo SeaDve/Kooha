@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the kooha package.
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
 # Luna Jernberg <droidbittin@gmail.com>, 2021, 2022, 2023.
-# Kristoffer Grundström <swedishsailfishosuser@tutanota.com>, 2021.
+# Kristoffer Grundström <swedishsailfishosuser@tutanota.com>, 2021, 2024.
 # bittin1ddc447d824349b2 <bittin@reimu.nl>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-23 19:32+0800\n"
-"PO-Revision-Date: 2024-02-25 07:01+0000\n"
-"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
+"PO-Revision-Date: 2024-03-14 13:01+0000\n"
+"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/seadve/kooha/sv/>"
 "\n"
 "Language: sv\n"
@@ -42,7 +42,7 @@ msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
-"Fånga din skärm på ett intuitivt och rakt på sak-sätt utan distraktioner."
+"Fånga din skärm på ett intuitivt och o-komplicerat sätt utan distraktioner."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
@@ -55,7 +55,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
 msgid "The main features of Kooha include the following:"
-msgstr "De viktigaste funktionerna i Kooha är följande:"
+msgstr "De huvudsakliga funktionerna i Kooha inkluderar följande:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
@@ -158,7 +158,7 @@ msgstr "Paus på/av"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Avbryt inspelning"
+msgstr "Avbryt inspelningen"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
