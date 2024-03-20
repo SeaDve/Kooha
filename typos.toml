@@ -1,2 +1,5 @@
+[default.extend-words]
+numer = "numer"
+
 [files]
 extend-exclude = ["data/icons/*.svg", "po/*.po"]
