@@ -90,7 +90,7 @@ impl Settings {
     }
 
     pub fn set_framerate(&self, framerate: gst::Fraction) {
-        let raw: (i32, i32) = framerate.into();
+        let raw = <(i32, i32)>::from(framerate);
         self.0.set("framerate", raw).unwrap();
     }
 
