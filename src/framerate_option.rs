@@ -130,7 +130,7 @@ mod tests {
     }
 
     #[test]
-    fn conversion() {
+    fn equivalence() {
         test_framerate(
             gst::Fraction::from_integer(5),
             FramerateOption::Other(gst::Fraction::from_integer(5)),
