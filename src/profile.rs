@@ -7,9 +7,7 @@ use gtk::{
 use once_cell::sync::OnceCell as OnceLock;
 use serde::Deserialize;
 
-use crate::pipeline::Framerate;
-
-const DEFAULT_SUGGESTED_MAX_FRAMERATE: Framerate = Framerate::new_raw(60, 1);
+const DEFAULT_SUGGESTED_MAX_FRAMERATE: gst::Fraction = gst::Fraction::from_integer(60);
 const MAX_THREAD_COUNT: u32 = 64;
 
 #[derive(Debug, Deserialize)]
@@ -115,10 +113,10 @@ impl Profile {
         self.data().audioenc_bin_str.is_some()
     }
 
-    pub fn suggested_max_framerate(&self) -> Framerate {
+    pub fn suggested_max_framerate(&self) -> gst::Fraction {
         self.data().suggested_max_framerate.map_or_else(
             || DEFAULT_SUGGESTED_MAX_FRAMERATE,
-            |raw| Framerate::approximate_float(raw).unwrap(),
+            |raw| gst::Fraction::approximate_f64(raw).unwrap(),
         )
     }
 
@@ -273,7 +271,7 @@ mod tests {
             assert!(!profile.file_extension().is_empty());
             assert_ne!(
                 profile.suggested_max_framerate(),
-                Framerate::from_integer(0)
+                gst::Fraction::from_integer(0)
             );
 
             assert!(

@@ -3,7 +3,7 @@ use std::fmt;
 use gtk::{gio, glib::BoxedAnyObject};
 use num_traits::Signed;
 
-use crate::{pipeline::Framerate, settings::Settings};
+use crate::settings::Settings;
 
 /// The available options for the framerate.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -18,7 +18,7 @@ pub enum FramerateOption {
     _50,
     _59_94,
     _60,
-    Other(Framerate),
+    Other(gst::Fraction),
 }
 
 impl FramerateOption {
@@ -56,18 +56,18 @@ impl FramerateOption {
     }
 
     /// Returns the corresponding `FramerateOption` for the given framerate.
-    pub fn from_framerate(framerate: Framerate) -> Self {
+    pub fn from_framerate(framerate: gst::Fraction) -> Self {
         // This must be updated if an option is added or removed.
-        let epsilon = Framerate::new_raw(1, 100);
+        let epsilon = gst::Fraction::new_raw(1, 100);
 
         Self::all_except_other()
             .into_iter()
-            .find(|o| (o.as_framerate() - framerate).abs() < epsilon)
+            .find(|o| (o.as_framerate() - framerate).abs() < epsilon.0)
             .unwrap_or(Self::Other(framerate))
     }
 
     /// Converts a `FramerateOption` to a framerate.
-    pub const fn as_framerate(self) -> Framerate {
+    pub const fn as_framerate(self) -> gst::Fraction {
         let (numerator, denominator) = match self {
             Self::_10 => (10, 1),
             Self::_20 => (20, 1),
@@ -81,7 +81,7 @@ impl FramerateOption {
             Self::_60 => (60, 1),
             Self::Other(framerate) => return framerate,
         };
-        Framerate::new_raw(numerator, denominator)
+        gst::Fraction::new_raw(numerator, denominator)
     }
 }
 
@@ -105,40 +105,38 @@ impl fmt::Display for FramerateOption {
 
 #[cfg(test)]
 mod tests {
-    use crate::pipeline::Framerate;
-
     use super::*;
 
     #[track_caller]
-    fn test_framerate(framerate: Framerate, expected: FramerateOption) {
+    fn test_framerate(framerate: gst::Fraction, expected: FramerateOption) {
         assert_eq!(FramerateOption::from_framerate(framerate), expected);
     }
 
     #[test]
     fn framerate_option() {
         test_framerate(
-            Framerate::from_integer(5),
-            FramerateOption::Other(Framerate::from_integer(5)),
+            gst::Fraction::from_integer(5),
+            FramerateOption::Other(gst::Fraction::from_integer(5)),
         );
-        test_framerate(Framerate::from_integer(10), FramerateOption::_10);
-        test_framerate(Framerate::from_integer(20), FramerateOption::_20);
-        test_framerate(Framerate::from_integer(24), FramerateOption::_24);
-        test_framerate(Framerate::from_integer(25), FramerateOption::_25);
+        test_framerate(gst::Fraction::from_integer(10), FramerateOption::_10);
+        test_framerate(gst::Fraction::from_integer(20), FramerateOption::_20);
+        test_framerate(gst::Fraction::from_integer(24), FramerateOption::_24);
+        test_framerate(gst::Fraction::from_integer(25), FramerateOption::_25);
         test_framerate(
-            Framerate::approximate_float(29.97).unwrap(),
+            gst::Fraction::approximate_f64(29.97).unwrap(),
             FramerateOption::_29_97,
         );
-        test_framerate(Framerate::from_integer(30), FramerateOption::_30);
-        test_framerate(Framerate::from_integer(48), FramerateOption::_48);
-        test_framerate(Framerate::from_integer(50), FramerateOption::_50);
+        test_framerate(gst::Fraction::from_integer(30), FramerateOption::_30);
+        test_framerate(gst::Fraction::from_integer(48), FramerateOption::_48);
+        test_framerate(gst::Fraction::from_integer(50), FramerateOption::_50);
         test_framerate(
-            Framerate::approximate_float(59.94).unwrap(),
+            gst::Fraction::approximate_f64(59.94).unwrap(),
             FramerateOption::_59_94,
         );
-        test_framerate(Framerate::from_integer(60), FramerateOption::_60);
+        test_framerate(gst::Fraction::from_integer(60), FramerateOption::_60);
         test_framerate(
-            Framerate::from_integer(120),
-            FramerateOption::Other(Framerate::from_integer(120)),
+            gst::Fraction::from_integer(120),
+            FramerateOption::Other(gst::Fraction::from_integer(120)),
         );
     }
 }

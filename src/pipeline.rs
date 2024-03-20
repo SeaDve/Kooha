@@ -1,7 +1,6 @@
 use anyhow::{bail, ensure, Context, Ok, Result};
 use gst::prelude::*;
 use gtk::graphene::Rect;
-use num_rational::Rational32;
 
 use std::{os::unix::io::RawFd, path::PathBuf};
 
@@ -14,13 +13,11 @@ use crate::{
 
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
 
-pub type Framerate = Rational32;
-
 #[derive(Debug)]
 #[must_use]
 pub struct PipelineBuilder {
     file_path: PathBuf,
-    framerate: Framerate,
+    framerate: gst::Fraction,
     profile: Profile,
     fd: RawFd,
     streams: Vec<Stream>,
@@ -32,7 +29,7 @@ pub struct PipelineBuilder {
 impl PipelineBuilder {
     pub fn new(
         file_path: PathBuf,
-        framerate: Framerate,
+        framerate: gst::Fraction,
         profile: Profile,
         fd: RawFd,
         streams: Vec<Stream>,
@@ -259,7 +256,11 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 /// pipewiresrc2 -> videoflip -> | -> compositor -> videorate
 ///                              |
 /// pipewiresrcn -> videoflip -> |
-pub fn make_videosrc_bin(fd: RawFd, streams: &[Stream], framerate: Framerate) -> Result<gst::Bin> {
+pub fn make_videosrc_bin(
+    fd: RawFd,
+    streams: &[Stream],
+    framerate: gst::Fraction,
+) -> Result<gst::Bin> {
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
     let videorate = gst::ElementFactory::make("videorate")
@@ -269,7 +270,7 @@ pub fn make_videosrc_bin(fd: RawFd, streams: &[Stream], framerate: Framerate) ->
         .property(
             "caps",
             gst::Caps::builder("video/x-raw")
-                .field("framerate", gst::Fraction::from(framerate))
+                .field("framerate", framerate)
                 .build(),
         )
         .build()?;

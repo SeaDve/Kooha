@@ -9,7 +9,6 @@ use gtk::{gio, glib};
 use crate::{
     area_selector::{Selection, SelectionContext},
     config::APP_ID,
-    pipeline::Framerate,
     profile::Profile,
 };
 
@@ -86,11 +85,11 @@ impl Settings {
             })
     }
 
-    pub fn framerate(&self) -> Framerate {
+    pub fn framerate(&self) -> gst::Fraction {
         self.0.get::<(i32, i32)>("framerate").into()
     }
 
-    pub fn set_framerate(&self, framerate: Framerate) {
+    pub fn set_framerate(&self, framerate: gst::Fraction) {
         let raw: (i32, i32) = framerate.into();
         self.0.set("framerate", raw).unwrap();
     }
