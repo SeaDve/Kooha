@@ -108,12 +108,32 @@ mod tests {
     use super::*;
 
     #[track_caller]
+    fn assert_simplified(option: FramerateOption) {
+        let framerate = option.as_framerate();
+        let reduced = framerate.0.reduced();
+
+        assert_eq!(
+            (framerate.numer(), framerate.denom()),
+            (*reduced.numer(), *reduced.denom())
+        );
+    }
+
+    #[test]
+    fn simplified() {
+        for option in FramerateOption::all_except_other() {
+            assert_simplified(option);
+        }
+
+        assert_simplified(FramerateOption::Other(gst::Fraction::from_integer(120)));
+    }
+
+    #[track_caller]
     fn test_framerate(framerate: gst::Fraction, expected: FramerateOption) {
         assert_eq!(FramerateOption::from_framerate(framerate), expected);
     }
 
     #[test]
-    fn framerate_option() {
+    fn conversion() {
         test_framerate(
             gst::Fraction::from_integer(5),
             FramerateOption::Other(gst::Fraction::from_integer(5)),
