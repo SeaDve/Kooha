@@ -35,7 +35,7 @@ pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {
         .support_url("https://github.com/SeaDve/Kooha/discussions")
         .debug_info(debug_info())
         .debug_info_filename("kooha-debug-info")
-        .release_notes_version("2.2.0")
+        .release_notes_version("2.3.0")
         .release_notes(release_notes())
         .build();
 
@@ -55,16 +55,22 @@ pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {
 fn release_notes() -> &'static str {
     r#"<p>This release contains new features and fixes:</p>
     <ul>
-      <li>New area selection UI</li>
-      <li>Added option to change the frame rate through the UI</li>
-      <li>Improved delay settings flexibility</li>
-      <li>Added preferences window for easier configuration</li>
-      <li>Added `KOOHA_EXPERIMENTAL` env var to show experimental (unsupported) encoders like VAAPI-VP8 and VAAPI-H264</li>
-      <li>Added the following experimental (unsupported) encoders: VP9, AV1, and VAAPI-VP9</li>
-      <li>Unavailable formats/encoders are now hidden from the UI</li>
-      <li>Fixed broken audio on long recordings</li>
-      <li>Only show None profile when it is active</li>
-      <li>Guard window selection behind `KOOHA_EXPERIMENTAL` env var</li>
+      <li>Area selector window is now resizable</li>
+      <li>Previous selected area is now remembered</li>
+      <li>Logout and idle are now inhibited while recording</li>
+      <li>Video format and FPS are now shown in the main view</li>
+      <li>Notifications now show the duration and size of the recording</li>
+      <li>Notification actions now work even when the application is closed</li>
+      <li>Progress is now shown when flushing the recording</li>
+      <li>It is now much easier to pick from frame rate options</li>
+      <li>Actually fixed audio from stuttering and being cut on long recordings</li>
+      <li>Record audio in stereo rather than mono when possible</li>
+      <li>Recordings are no longer deleted when flushing is cancelled</li>
+      <li>Significant improvements in recording performance</li>
+      <li>Improved preferences dialog UI</li>
+      <li>Fixed incorrect output video orientation on certain compositors</li>
+      <li>Fixed incorrect focus on area selector</li>
+      <li>Fixed too small area selector window default size on HiDPI monitors</li>
       <li>Updated translations</li>
     </ul>"#
 }
