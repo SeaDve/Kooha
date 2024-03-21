@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"POT-Creation-Date: 2024-03-21 20:05+0800\n"
 "PO-Revision-Date: 2024-02-24 02:33+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
@@ -19,13 +19,13 @@ msgstr ""
 "X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
-#: src/main.rs:67
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
+#: src/main.rs:71
 msgid "Kooha"
 msgstr "கூஹா"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "உங்கள் திரையை நேர்த்தியாக பதிவு செய்யவும்"
 
@@ -34,14 +34,14 @@ msgstr "உங்கள் திரையை நேர்த்தியாக 
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "ஸ்கிரீன்காஸ்ட்;ரெக்கார்டர்;திரை;வீடியோ;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
 "கவனச்சிதறல்கள் இல்லாமல் உங்கள் திரையை உள்ளுணர்வு மற்றும் நேரடியான வழியில் படம்பிடிக்கவும்."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -49,28 +49,28 @@ msgstr ""
 "கூஹா என்பது குறைந்தபட்ச இடைமுகத்துடன் கூடிய எளிய ஸ்கிரீன் ரெக்கார்டர் ஆகும். நீங்கள் பல "
 "அமைப்புகளை உள்ளமைக்காமல் பதிவு பொத்தானைக் கிளிக் செய்யலாம்."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
 msgstr "கூஹாவின் முக்கிய அம்சங்கள் பின்வருவனவற்றை உள்ளடக்குகின்றன:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr "🎙️ மைக்ரோஃபோன், டெஸ்க்டாப் ஆடியோ அல்லது இரண்டையும் ஒரே நேரத்தில் பதிவு செய்யவும்"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 WebM, MP4, GIF மற்றும் Matroska வடிவங்களுக்கான ஆதரவு"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr "🛠️ உள்ளமைக்கக்கூடிய சேமிப்பு இடம், சுட்டித் தெரிவுநிலை, பிரேம் வீதம் மற்றும் தாமதம்"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 பரிசோதனை வன்பொருள் முடுக்கப்பட்ட குறியாக்கம்"
 
@@ -330,33 +330,33 @@ msgstr "எதுவும் இல்லை"
 msgid "No active profile"
 msgstr "செயலில் சுயவிவரம் இல்லை"
 
-#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:187
 msgid "Check out {link} for help."
 msgstr "உதவிக்கு {link} ஐப் பார்க்கவும்."
 
-#: src/recording.rs:224
+#: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம்."
 
-#: src/recording.rs:269 src/recording.rs:494
+#: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:485
+#: src/recording.rs:480
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:491
+#: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
 msgstr "எழுதுவதற்கு “{path}” திறக்க முடியவில்லை"
 
-#: src/settings.rs:44
+#: src/settings.rs:43
 msgid "Select Recordings Folder"
 msgstr "பதிவுகள் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 

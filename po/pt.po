@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"POT-Creation-Date: 2024-03-21 20:05+0800\n"
 "PO-Revision-Date: 2024-02-24 02:33+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/seadve/kooha/"
@@ -24,13 +24,13 @@ msgstr ""
 "X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
-#: src/main.rs:67
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
+#: src/main.rs:71
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "Grave o seu ecrã com estilo"
 
@@ -39,13 +39,13 @@ msgstr "Grave o seu ecrã com estilo"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Captura de Tela;Gravador;Tela;Vídeo;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr "Capture sua tela de forma intuitiva e direta, sem distrações."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -53,30 +53,30 @@ msgstr ""
 "Kooha é um gravador de tela simples com uma interface minimalista. Basta "
 "clicar no botão de gravação sem ter de configurar um monte de definições."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
 msgstr "As principais características da Kooha incluem as seguintes:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr "🎙️ Grave microfone, áudio da área de trabalho, ou ambos ao mesmo tempo"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 Suporte para WebM, MP4, GIF e formatos Matroska"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Possibilidade de configurar local de salvamento, visibilidade do rato, "
 "taxa de quadros e atraso"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Codificação de aceleração de hardware experimental"
 
@@ -336,33 +336,33 @@ msgstr "Nenhum"
 msgid "No active profile"
 msgstr "Sem perfil ativo"
 
-#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
 msgstr "Falha ao iniciar gravação"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:187
 msgid "Check out {link} for help."
 msgstr "Confira {link} para obter ajuda."
 
-#: src/recording.rs:224
+#: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
 msgstr "Um plugin GStreamer pode não estar instalado."
 
-#: src/recording.rs:269 src/recording.rs:494
+#: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Certifique-se de que o local de salvamento existe e é acessível."
 
-#: src/recording.rs:485
+#: src/recording.rs:480
 msgid "An error occurred while recording"
 msgstr "Um erro ocorreu durante a gravação"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:491
+#: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
 msgstr "Falha ao abrir “{path}” para escrita"
 
-#: src/settings.rs:44
+#: src/settings.rs:43
 msgid "Select Recordings Folder"
 msgstr "Selecione pasta de gravações"
 

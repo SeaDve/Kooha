@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"POT-Creation-Date: 2024-03-21 20:05+0800\n"
 "PO-Revision-Date: 2024-03-01 05:00+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
@@ -22,13 +22,13 @@ msgstr ""
 "X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
-#: src/main.rs:67
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
+#: src/main.rs:71
 msgid "Kooha"
 msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "Елегантно записуйте ваш екран"
 
@@ -37,7 +37,7 @@ msgstr "Елегантно записуйте ваш екран"
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Записувач;Екран;Відео;Screencast;Recorder;Screen;Video;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
@@ -45,7 +45,7 @@ msgstr ""
 "Вибирайте ділянку інтуїтивно зрозумілим і простим способом без зайвих "
 "чинників."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
@@ -53,30 +53,30 @@ msgstr ""
 "Kooha — це простий записувач екрана з мінімалістичним інтерфейсом. Ви можете "
 "просто натиснути кнопку запису без витрачання часу на налаштування."
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
 msgstr "Основні можливості Kooha:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr "🎙️ Запис з мікрофона, звуків комп'ютера або з обох одночасно"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 Підтримка форматів WebM, MP4, GIF і Matroska"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
 msgstr "🖥️ Виберіть монітор або ділянку екрана для запису"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Налаштовуване розташування для збереження, видимість вказівника, частота "
 "кадрів і затримка"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Експериментальне кодування з апаратним прискоренням"
 
@@ -341,33 +341,33 @@ msgstr "Немає"
 msgid "No active profile"
 msgstr "Немає активного профілю"
 
-#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
 msgstr "Не вдалося розпочати запис"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:187
 msgid "Check out {link} for help."
 msgstr "Довідка: {link}."
 
-#: src/recording.rs:224
+#: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
 msgstr "Плагін GStreamer може бути не встановлений."
 
-#: src/recording.rs:269 src/recording.rs:494
+#: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Переконайтеся, що місце збереження існує та доступне."
 
-#: src/recording.rs:485
+#: src/recording.rs:480
 msgid "An error occurred while recording"
 msgstr "Сталася помилка під час запису"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:491
+#: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
 msgstr "Не вдалося відкрити “{path}” для запису"
 
-#: src/settings.rs:44
+#: src/settings.rs:43
 msgid "Select Recordings Folder"
 msgstr "Вибрати теку для записів"
 

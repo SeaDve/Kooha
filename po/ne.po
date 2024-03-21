@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 19:32+0800\n"
+"POT-Creation-Date: 2024-03-21 20:05+0800\n"
 "PO-Revision-Date: 2022-05-17 03:17+0000\n"
 "Last-Translator: Diggaj Upadhyay <dcozupadhyay@duck.com>\n"
 "Language-Team: Nepali <https://hosted.weblate.org/projects/seadve/kooha/ne/"
@@ -19,14 +19,14 @@ msgstr ""
 "X-Generator: Weblate 4.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:6 src/about.rs:22
-#: src/main.rs:67
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
+#: src/main.rs:71
 #, fuzzy
 msgid "Kooha"
 msgstr "कोहा"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "सुन्दर रूपमा आफ्नो स्क्रिन रेकर्ड गर्नुहोस्"
 
@@ -35,41 +35,41 @@ msgstr "सुन्दर रूपमा आफ्नो स्क्रिन
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "स्क्रिनकास्ट; रेकर्डर; स्क्रिन; भिडियो;"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:9
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 #, fuzzy
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr "आफ्नो स्क्रिनलाई सहज र सीधा तरिकाले विचलित नगरी खिच्नुहोस्।"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:12
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
 msgstr "कोहा को मुख्य विशेषताहरु निम्न समावेश छन्:"
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:14
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr ""
 
@@ -330,33 +330,33 @@ msgstr "केहि छैन"
 msgid "No active profile"
 msgstr ""
 
-#: src/recording.rs:185 src/recording.rs:223 src/recording.rs:268
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
 msgstr ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:187
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:224
+#: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
 msgstr ""
 
-#: src/recording.rs:269 src/recording.rs:494
+#: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/recording.rs:485
+#: src/recording.rs:480
 msgid "An error occurred while recording"
 msgstr ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:491
+#: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
-#: src/settings.rs:44
+#: src/settings.rs:43
 #, fuzzy
 msgid "Select Recordings Folder"
 msgstr "रेकर्डिङ फोल्डर चयन गर्नुहोस्"
