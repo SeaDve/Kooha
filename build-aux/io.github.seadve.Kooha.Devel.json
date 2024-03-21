@@ -42,7 +42,8 @@
                 {
                     "type": "git",
                     "url": "https://code.videolan.org/videolan/x264.git",
-                    "commit": "baee400fa9ced6f5481a728138fed6e867b0ff7f"
+                    "branch": "stable",
+                    "commit": "31e19f92f00c7003fa115047ce50978bc98c3a0d"
                 }
             ]
         },
@@ -59,8 +60,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.22.8.tar.xz",
-                    "sha256": "0761d96ba508e01c0271881b26828c2bffd7d8afd50872219f088f755b252ca7"
+                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.22.10.tar.xz",
+                    "sha256": "cc80a81a22c0b3b31ab7f1b8bf18dda23c72d2791b86cc6264923a68336329ea"
                 }
             ]
         },
