@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-03-03 02:01+0000\n"
+"PO-Revision-Date: 2024-03-23 20:17+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
 ">\n"
@@ -62,7 +62,7 @@ msgstr "Koohaの主な機能は以下の通りです："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙マイクやデスクトップオーディオ、またはその両方を同時に記録"
+msgstr "🎙️ マイクやデスクトップオーディオ、またはその両方を同時に記録"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -75,7 +75,7 @@ msgstr "🖥️ モニター、あるいは画面の一部を選択して録画"
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr "🛠 設定可能な保存先、カーソルの可視性、フレームレート、遅延"
+msgstr "🛠️ 保存先、カーソルの表示有無、フレームレート、遅延を設定可能"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
@@ -260,7 +260,7 @@ msgstr "キーボードショートカット(_K)"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
-msgstr "Koohaについて(_A)"
+msgstr "Kooha について(_A)"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33

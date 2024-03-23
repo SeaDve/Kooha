@@ -10,15 +10,16 @@
 # Schlömi <a.schloemi@gmail.com>, 2022.
 # Nils Martel <nilsmartel@yahoo.de>, 2022.
 # Justin Nogossek <justmegaliga10000@gmail.com>, 2023.
+# Starbat <thw.schroeder@posteo.de>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/seadve/kooha/de/"
-">\n"
+"PO-Revision-Date: 2024-03-23 20:17+0000\n"
+"Last-Translator: Starbat <thw.schroeder@posteo.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/seadve/kooha/de/>"
+"\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr "Nehme deinen Bildschirm elegant auf"
+msgstr "Nimm deinen Bildschirm elegant auf"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
@@ -47,7 +48,7 @@ msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
-"Nehme deinen Bildschirm auf intuitive und unkomplizierte Weise ohne "
+"Nimm deinen Bildschirm auf intuitive und unkomplizierte Weise ohne "
 "Ablenkungen auf."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
@@ -65,7 +66,7 @@ msgstr "Zu den Hauptmerkmalen von Kooha gehören:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "Nehme das Mikrofon, den Computer, oder beides gleichzeitig auf"
+msgstr "🎙️ Nimm Mikrofon, Computer oder beides gleichzeitig auf"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -73,7 +74,7 @@ msgstr "Unterstützung für WebM, MP4, GIF und das Matroska Format"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Wähle einen Monitor oder Bildausschnitt für die Aufnahme"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -113,7 +114,7 @@ msgstr "Verzögerung (Sekunden)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Zeitintervall bevor die Aufnahme beginnt"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -121,7 +122,7 @@ msgstr "Aufnahmen Speicherort"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Zielordner für die Aufnahmen"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -297,7 +298,7 @@ msgstr "In Dateien anzeigen"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Standard-Audiogerät konnte nicht gefunden werden"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -307,30 +308,31 @@ msgstr "Stelle sicher, dass PulseAudio auf deinem System installiert ist."
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} Stunde"
+msgstr[1] "{time} Stunden"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} Minute"
+msgstr[1] "{time} Minuten"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} Sekunde"
+msgstr[1] "{time} Sekunden"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Aufnahmeordner konnte nicht festgelegt werden"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Diese Bildrate kann Performance-Probleme beim gewählten Format verursachen."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -351,7 +353,7 @@ msgstr "Aufnahme konnte nicht gestartet werden"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Schau bei {link} nach Hilfe."
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
@@ -368,7 +370,7 @@ msgstr "Bei der Aufzeichnung ist ein Fehler aufgetreten"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Konnte “{path}” nicht zum Schreiben öffnen"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
@@ -383,16 +385,20 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Eine Aufnahme läuft gerade. Sofortiges Beenden kann dazu führen, dass die "
+"Aufnahme nicht abspielbar ist. Bitte stoppe die Aufnahme vor dem Beenden."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Beenden bricht die Verarbeitung ab und kann dazu führen, dass die Aufnahme "
+"nicht abspielbar ist."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Anwendung beenden?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -411,7 +417,6 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
 msgstr "OK, verstanden"
 
@@ -437,7 +442,7 @@ msgstr "Öffnen"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Eine Aufnahme läuft"
 
 #: src/window/mod.rs:485
 msgid "Paused"
