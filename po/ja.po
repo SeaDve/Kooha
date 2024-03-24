@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-03-23 20:17+0000\n"
+"PO-Revision-Date: 2024-03-24 21:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
 ">\n"
@@ -52,13 +52,12 @@ msgstr "直感的かつ分かりやすい方法で気を散らすことなく画
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
-msgstr ""
-"Koohaはシンプルでミニマルなインターフェイスを備えたスクリーンレコーダーです。"
-"複雑な設定をせず、ボタン一つで録画することができます。"
+msgstr "Kooha はシンプルでミニマルなインターフェイスを備えたスクリーンレコーダーです"
+"。複雑な設定をせず、ボタン一つで録画することができます。"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr "Koohaの主な機能は以下の通りです："
+msgstr "Kooha の主な機能は以下の通りです:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
@@ -66,7 +65,7 @@ msgstr "🎙️ マイクやデスクトップオーディオ、またはその�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr "📼 WebM、MP4、GIF、Matroshka形式をサポート"
+msgstr "📼 WebM、MP4、GIF、Matroshka 形式をサポート"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
@@ -299,7 +298,7 @@ msgstr "デフォルトの音声デバイスを検出できませんでした"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr "PulseAudioがシステムにインストールされていることを確認してください。"
+msgstr "PulseAudio がシステムにインストールされていることを確認してください。"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -352,7 +351,7 @@ msgstr "ヘルプは {link} をご確認ください。"
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
-msgstr "GStreamerプラグインがインストールされていない可能性があります。"
+msgstr "GStreamer プラグインがインストールされていない可能性があります。"
 
 #: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."

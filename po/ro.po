@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # C0sM1n <bordeic4@gmail.com>, 2023.
+# Gabriel Cozma <me@gabs.eu.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2023-10-22 18:03+0000\n"
-"Last-Translator: C0sM1n <bordeic4@gmail.com>\n"
+"PO-Revision-Date: 2024-03-24 21:01+0000\n"
+"Last-Translator: Gabriel Cozma <me@gabs.eu.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/seadve/kooha/ro/"
 ">\n"
 "Language: ro\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -28,53 +29,58 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Înregistrați elegant ecranul"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Ecran;Video;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "Capturați-vă ecranul într-un mod intuitiv și simplu, fără distrageri."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha este un simplu înregistrator de ecran, cu o interfață minimalistă. "
+"Puteți doar să faceți un clic pe butonul de înregistrare fără a fi nevoie să "
+"configurați o grămadă de setări."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Principalele caracteristici ale lui Kooha includ următoarele:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Înregistrați microfon, sunet desktop sau ambele în același timp"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Suport pentru formatele WebM, MP4, GIF și Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Selectați un monitor sau o porțiune a ecranului pentru a înregistra"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Locație configurabilă de salvare, vizibilitate indicator, rata de cadre "
+"și întârziere"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Codare accelerată hardware experimentală"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Selectați Zona"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:210
@@ -83,55 +89,55 @@ msgstr "Renunță"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Terminat"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Resetează selecția"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Întârziere (secunde)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Interval de timp înainte de începerea înregistrării"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Fișier de înregistrări"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Fișierul de destinație pentru înregistrări"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "Rata de Cadre"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Deschideți Meniu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Afișați preferințe"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Afișați comenzile rapide"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
@@ -139,23 +145,23 @@ msgstr "Închide programul"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
-msgstr ""
+msgstr "Înregistrare"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr ""
+msgstr "Comutați înregistrarea"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Comutați întreruperea"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "Anulează înregistrarea"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
-msgstr ""
+msgstr "Setări"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
@@ -255,21 +261,22 @@ msgstr ""
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
-#, fuzzy
 msgid "translator-credits"
-msgstr "Danny3"
+msgstr ""
+"Gabriel Cozma\n"
+"Danny3"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Donează (Cumpără-mi o cafea)"
 
 #: src/about.rs:46
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/about.rs:48
 msgid "Translate"
-msgstr ""
+msgstr "Traduceți"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
