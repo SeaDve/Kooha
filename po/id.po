@@ -8,13 +8,14 @@
 # Hervy Qurrotul Ainur Rozi <hervyqa@proton.me>, 2022.
 # Muhammad Akbar Yanuar Mantari <mantarimay@users.noreply.hosted.weblate.org>, 2023.
 # Nur Ihsan <mnurihsanmutaqin66@gmail.com>, 2024.
+# Taufiq H <hosterwebplate.prh28@passinbox.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-03-05 18:01+0000\n"
-"Last-Translator: Nur Ihsan <mnurihsanmutaqin66@gmail.com>\n"
+"PO-Revision-Date: 2024-03-26 12:59+0000\n"
+"Last-Translator: Taufiq H <hosterwebplate.prh28@passinbox.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/seadve/kooha/"
 "id/>\n"
 "Language: id\n"
@@ -253,7 +254,7 @@ msgstr "Membersihkan…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr "Pre_ferensi"
+msgstr "_Preferensi"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
@@ -265,11 +266,13 @@ msgstr "_Tentang Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
-#, fuzzy
 msgid "translator-credits"
-msgstr "@liimee,Hervy Qurrotul Ainur Rozi,Reza Almanda,@mantarimay,@nurihsan_m"
+msgstr ""
+"@liimee,Hervy Qurrotul Ainur Rozi,Reza "
+"Almanda,@mantarimay,@nurihsan_m,@tmhidayat"
 
 #: src/about.rs:43
+#, fuzzy
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Donasi (Traktir Saya Kopi)"
 
@@ -410,7 +413,7 @@ msgstr "Bantuan"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr "Ya, Mengerti"
+msgstr "Ok, Mengerti"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
