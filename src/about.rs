@@ -1,11 +1,13 @@
 use std::{
     env,
-    io::BufRead,
+    fs::File,
+    io::{BufRead, BufReader},
     path::Path,
     process::{Command, Stdio},
 };
 
 use adw::prelude::*;
+use anyhow::anyhow;
 use anyhow::Result;
 use gettextrs::gettext;
 use gst::prelude::*;
@@ -113,8 +115,12 @@ fn gpu_model() -> Result<String> {
     Ok("<unknown>".into())
 }
 
+fn is_flatpak() -> bool {
+    Path::new("/.flatpak-info").exists()
+}
+
 fn debug_info() -> String {
-    let is_flatpak = Path::new("/.flatpak-info").exists();
+    let is_flatpak = is_flatpak();
     let experimental_features = experimental::enabled_features();
 
     let language_names = glib::language_names().join(", ");
@@ -122,7 +128,7 @@ fn debug_info() -> String {
     let cpu_model = cpu_model().unwrap_or_else(|e| format!("<{}>", e));
     let gpu_model = gpu_model().unwrap_or_else(|e| format!("<{}>", e));
 
-    let distribution = glib::os_info("PRETTY_NAME").unwrap_or_else(|| "<unknown>".into());
+    let distribution = os_info("PRETTY_NAME").unwrap_or_else(|e| format!("<{}>", e));
     let desktop_session = env::var("DESKTOP_SESSION").unwrap_or_else(|_| "<unknown>".into());
     let display_server = env::var("XDG_SESSION_TYPE").unwrap_or_else(|_| "<unknown>".into());
 
@@ -166,4 +172,26 @@ fn debug_info() -> String {
 - {gst_version_string}
 - Pipewire {pipewire_version}"#
     )
+}
+
+fn os_info(key_name: &str) -> Result<String> {
+    let os_release_path = if is_flatpak() {
+        "/run/host/etc/os-release"
+    } else {
+        "/etc/os-release"
+    };
+    let file = File::open(os_release_path)?;
+
+    for line in BufReader::new(file).lines() {
+        let line = line?;
+        let Some((key, value)) = line.split_once('=') else {
+            continue;
+        };
+
+        if key == key_name {
+            return Ok(value.trim_matches('\"').to_string());
+        }
+    }
+
+    Err(anyhow!("unknown"))
 }
