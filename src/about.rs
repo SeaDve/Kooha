@@ -120,7 +120,10 @@ fn is_flatpak() -> bool {
 }
 
 fn debug_info() -> String {
-    let is_flatpak = is_flatpak();
+    let container = env::var("container")
+        .ok()
+        .or_else(|| is_flatpak().then(|| "Flatpak".to_string()))
+        .unwrap_or_else(|| "none".into());
     let experimental_features = experimental::enabled_features();
 
     let language_names = glib::language_names().join(", ");
@@ -155,7 +158,7 @@ fn debug_info() -> String {
 
     format!(
         r#"- {APP_ID} {VERSION}
-- Flatpak: {is_flatpak}
+- Container: {container}
 - Experimental Features: {experimental_features:?}
 
 - Language: {language_names}
