@@ -14,13 +14,14 @@
 # yangyangdaji <1504305527@qq.com>, 2023.
 # CrackTC <chenrke369@gmail.com>, 2023.
 # Carter Zhang <mcut17198@autistici.org>, 2023.
+# Jianhua Lu <lujianhua000@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-03-28 05:01+0000\n"
+"Last-Translator: Jianhua Lu <lujianhua000@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "seadve/kooha/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -73,7 +74,7 @@ msgstr "📼 支持MP4、GIF、WebM、MKV、MKA和MKS格式"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️选择显示器或者屏幕的一块区域进行录制"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -111,7 +112,7 @@ msgstr "延迟（s）"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "开始录制之前的时间间隔"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -119,7 +120,7 @@ msgstr "录制文件夹"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "录制的目标文件夹"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -298,7 +299,7 @@ msgstr "在文件中显示"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "寻找默认音频设备失败"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -308,27 +309,27 @@ msgstr "确保你已在系统安装PulseAudio。"
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
+msgstr[0] "{time} 时"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
+msgstr[0] "{time} 分"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
+msgstr[0] "{time} 秒"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "设置录制文件夹失败"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
-msgstr ""
+msgstr "在已选择的编码格式下此帧率可能会造成性能问题。"
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -380,17 +381,18 @@ msgstr "切换暂停状态失败"
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
-msgstr ""
+msgstr "当前一个录制任务正在进行。 立即退出可能造成录制的文件无法播放。 "
+"请在退出前停止录制。"
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
+msgstr "退出会取消此正在处理的任务且可能导致录制的文件无法播放。"
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "退出此应用？"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -409,9 +411,8 @@ msgid "Help"
 msgstr "帮助"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
-msgstr "好的，我知道了"
+msgstr "好的，明白了"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
@@ -433,7 +434,7 @@ msgstr "打开"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "一个录制任务正在进行"
 
 #: src/window/mod.rs:485
 msgid "Paused"
