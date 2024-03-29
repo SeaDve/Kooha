@@ -31,7 +31,7 @@ mod config;
 mod device;
 mod experimental;
 mod format_time;
-mod framerate_option;
+mod framerate;
 mod help;
 mod i18n;
 mod item_row;

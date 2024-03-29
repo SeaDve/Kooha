@@ -1029,7 +1029,6 @@ dependencies = [
  "gstreamer",
  "gtk4",
  "libadwaita",
- "num-traits",
  "once_cell",
  "serde",
  "serde_yaml",
