@@ -15,8 +15,7 @@ use self::{progress_icon::ProgressIcon, toggle_button::ToggleButton};
 use crate::{
     cancelled::Cancelled,
     config::PROFILE,
-    format_time,
-    framerate_option::FramerateOption,
+    format_time, framerate,
     help::ContextWithHelp,
     preferences_dialog::PreferencesDialog,
     recording::{NoProfileError, Recording, RecordingState},
@@ -533,10 +532,10 @@ impl Window {
         let profile_text = settings
             .profile()
             .map_or_else(|| gettext("None"), |profile| profile.name().to_string());
-        let framerate_option = FramerateOption::from_framerate(settings.framerate());
+        let framerate_text = framerate::format(settings.framerate());
 
         imp.title
-            .set_subtitle(&format!("{} • {} FPS", profile_text, framerate_option));
+            .set_subtitle(&format!("{} • {} FPS", profile_text, framerate_text));
     }
 
     fn update_audio_actions(&self) {

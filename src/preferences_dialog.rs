@@ -8,8 +8,7 @@ use gtk::{
 };
 
 use crate::{
-    experimental::Feature, framerate_option::FramerateOption, item_row::ItemRow, profile::Profile,
-    settings::Settings,
+    experimental::Feature, framerate, item_row::ItemRow, profile::Profile, settings::Settings,
 };
 
 const ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY: &str = "kooha-row-selected-item-notify-handler-id";
@@ -114,12 +113,11 @@ mod imp {
             self.framerate_row
                 .connect_selected_item_notify(clone!(@weak obj => move |row| {
                     if let Some(item) = row.selected_item() {
-                        let framerate_option = item
+                        let framerate = item
                             .downcast_ref::<BoxedAnyObject>()
                             .unwrap()
-                            .borrow::<FramerateOption>();
-                        obj.settings()
-                            .set_framerate(framerate_option.as_framerate());
+                            .borrow::<gst::Fraction>();
+                        obj.settings().set_framerate(*framerate);
                     }
                 }));
         }
@@ -182,18 +180,18 @@ impl PreferencesDialog {
         let imp = self.imp();
 
         let settings = self.settings();
-        let framerate_option = FramerateOption::from_framerate(settings.framerate());
+        let framerate = settings.framerate();
 
         let model = imp.framerate_row.model().unwrap();
         let position = model
             .iter::<BoxedAnyObject>()
-            .position(|item| *item.unwrap().borrow::<FramerateOption>() == framerate_option);
+            .position(|item| *item.unwrap().borrow::<gst::Fraction>() == framerate);
         if let Some(position) = position {
             imp.framerate_row.set_selected(position as u32);
         } else {
             tracing::error!(
                 "Active framerate `{:?}` was not found on framerate model",
-                framerate_option
+                framerate
             );
         }
     }
@@ -210,11 +208,11 @@ impl PreferencesDialog {
                 let item = list_item.item().unwrap();
                 let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
 
-                let framerate_option = item
+                let framerate = item
                     .downcast_ref::<BoxedAnyObject>()
                     .unwrap()
-                    .borrow::<FramerateOption>();
-                item_row.set_title(framerate_option.to_string());
+                    .borrow::<gst::Fraction>();
+                item_row.set_title(framerate::format(*framerate));
 
                 unsafe {
                     list_item.set_data(
@@ -239,7 +237,7 @@ impl PreferencesDialog {
             }),
         )));
 
-        let framerate_model = FramerateOption::model(&settings);
+        let framerate_model = framerate::builtins_model(&settings);
         imp.framerate_row.set_model(Some(&framerate_model));
 
         imp.profile_row.set_factory(Some(&row_factory(
@@ -361,14 +359,16 @@ fn update_framerate_row_shows_warning_icon(settings: &Settings, list_item: &gtk:
     let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
     let item = list_item.item().unwrap();
 
-    let framerate_option = item
+    let framerate = item
         .downcast_ref::<BoxedAnyObject>()
         .unwrap()
-        .borrow::<FramerateOption>();
+        .borrow::<gst::Fraction>();
 
-    item_row.set_shows_warning_icon(settings.profile().is_some_and(|profile| {
-        framerate_option.as_framerate() > profile.suggested_max_framerate()
-    }));
+    item_row.set_shows_warning_icon(
+        settings
+            .profile()
+            .is_some_and(|profile| *framerate > profile.suggested_max_framerate()),
+    );
 }
 
 /// Returns `Some` if the object is a `Profile`, otherwise `None`, if the object is a `NoneProfile`.
