@@ -1,8 +1,4 @@
-use gtk::{gio, glib::BoxedAnyObject};
-
-use crate::settings::Settings;
-
-static BUILTINS: &[gst::Fraction] = &[
+pub static BUILTINS: &[gst::Fraction] = &[
     gst::Fraction::from_integer(10),
     gst::Fraction::from_integer(20),
     gst::Fraction::from_integer(24),
@@ -14,26 +10,6 @@ static BUILTINS: &[gst::Fraction] = &[
     gst::Fraction::new_raw(60_000, 1001), // 59.94
     gst::Fraction::from_integer(60),
 ];
-
-/// Returns a model of type `BoxedAnyObject`.
-///
-/// This appends the current framerate in the settings if it does not match any built-in ones.
-pub fn builtins_model(settings: &Settings) -> gio::ListStore {
-    let list_store = gio::ListStore::new::<BoxedAnyObject>();
-
-    let items = BUILTINS
-        .iter()
-        .map(|fraction| BoxedAnyObject::new(*fraction))
-        .collect::<Vec<_>>();
-    list_store.splice(0, 0, &items);
-
-    let other = settings.framerate();
-    if !BUILTINS.contains(&other) {
-        list_store.append(&BoxedAnyObject::new(other));
-    }
-
-    list_store
-}
 
 /// Formats a framerate in a human-readable format.
 pub fn format(framerate: gst::Fraction) -> String {

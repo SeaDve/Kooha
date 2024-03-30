@@ -237,7 +237,22 @@ impl PreferencesDialog {
             }),
         )));
 
-        let framerate_model = framerate::builtins_model(&settings);
+        let framerate_model = {
+            let items = framerate::BUILTINS
+                .iter()
+                .map(|fraction| BoxedAnyObject::new(*fraction))
+                .collect::<Vec<_>>();
+
+            let model = gio::ListStore::new::<BoxedAnyObject>();
+            model.splice(0, 0, &items);
+
+            let active_framerate = settings.framerate();
+            if !framerate::BUILTINS.contains(&active_framerate) {
+                model.append(&BoxedAnyObject::new(active_framerate));
+            }
+
+            model
+        };
         imp.framerate_row.set_model(Some(&framerate_model));
 
         imp.profile_row.set_factory(Some(&row_factory(
