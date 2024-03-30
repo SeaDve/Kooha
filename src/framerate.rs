@@ -1,28 +1,19 @@
-use std::sync::OnceLock;
-
 use gtk::{gio, glib::BoxedAnyObject};
 
 use crate::settings::Settings;
 
-/// Built-in framerates.
-fn builtins() -> &'static [gst::Fraction] {
-    static BUILTINS: OnceLock<Vec<gst::Fraction>> = OnceLock::new();
-
-    BUILTINS.get_or_init(|| {
-        vec![
-            gst::Fraction::from_integer(10),
-            gst::Fraction::from_integer(20),
-            gst::Fraction::from_integer(24),
-            gst::Fraction::from_integer(25),
-            gst::Fraction::new(30_000, 1001), // 29.97
-            gst::Fraction::from_integer(30),
-            gst::Fraction::from_integer(48),
-            gst::Fraction::from_integer(50),
-            gst::Fraction::new(60_000, 1001), // 59.94
-            gst::Fraction::from_integer(60),
-        ]
-    })
-}
+static BUILTINS: &[gst::Fraction] = &[
+    gst::Fraction::from_integer(10),
+    gst::Fraction::from_integer(20),
+    gst::Fraction::from_integer(24),
+    gst::Fraction::from_integer(25),
+    gst::Fraction::new_raw(30_000, 1001), // 29.97
+    gst::Fraction::from_integer(30),
+    gst::Fraction::from_integer(48),
+    gst::Fraction::from_integer(50),
+    gst::Fraction::new_raw(60_000, 1001), // 59.94
+    gst::Fraction::from_integer(60),
+];
 
 /// Returns a model of type `BoxedAnyObject`.
 ///
@@ -30,14 +21,14 @@ fn builtins() -> &'static [gst::Fraction] {
 pub fn builtins_model(settings: &Settings) -> gio::ListStore {
     let list_store = gio::ListStore::new::<BoxedAnyObject>();
 
-    let items = builtins()
+    let items = BUILTINS
         .iter()
         .map(|fraction| BoxedAnyObject::new(*fraction))
         .collect::<Vec<_>>();
     list_store.splice(0, 0, &items);
 
     let other = settings.framerate();
-    if !builtins().contains(&other) {
+    if !BUILTINS.contains(&other) {
         list_store.append(&BoxedAnyObject::new(other));
     }
 
@@ -72,7 +63,7 @@ mod tests {
 
     #[test]
     fn simplified() {
-        for framerate in builtins() {
+        for framerate in BUILTINS {
             assert_simplified(*framerate);
         }
     }
