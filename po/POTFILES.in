@@ -8,7 +8,7 @@ data/resources/ui/window.ui
 src/about.rs
 src/application.rs
 src/device.rs
-src/format_time.rs
+src/format.rs
 src/main.rs
 src/preferences_dialog.rs
 src/recording.rs
