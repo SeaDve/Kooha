@@ -9,13 +9,14 @@
 # matb <perso@mathieu-bousquet.fr>, 2022.
 # rene-coty <irenee.thirion@e.email>, 2022, 2023, 2024.
 # "Mathieu B." <mathieu.bousquet2@gmail.com>, 2023.
+# p h <phhens@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-03-23 20:17+0000\n"
-"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
+"PO-Revision-Date: 2024-04-03 12:02+0000\n"
+"Last-Translator: p h <phhens@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/seadve/kooha/fr/>"
 "\n"
 "Language: fr_FR\n"
@@ -91,6 +92,7 @@ msgstr "Sélectionnez une zone"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:210
+#, fuzzy
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -183,6 +185,7 @@ msgid "Toggle Pointer"
 msgstr "Activer / Désactiver le curseur"
 
 #: data/resources/ui/window.ui:24
+#, fuzzy
 msgid "Main Menu"
 msgstr "Menu principal"
 
@@ -259,6 +262,7 @@ msgid "_Preferences"
 msgstr "_Préférences"
 
 #: data/resources/ui/window.ui:297
+#, fuzzy
 msgid "_Keyboard Shortcuts"
 msgstr "_Raccourcis clavier"
 
@@ -268,18 +272,22 @@ msgstr "À _propos de Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
+#, fuzzy
 msgid "translator-credits"
 msgstr "J. Lavoie, M. Bousquet, Irénée Thirion"
 
 #: src/about.rs:43
+#, fuzzy
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Faire un don (Buy Me a Coffee)"
 
 #: src/about.rs:46
+#, fuzzy
 msgid "GitHub"
 msgstr "GitHub"
 
 #: src/about.rs:48
+#, fuzzy
 msgid "Translate"
 msgstr "Traduire"
 
@@ -289,6 +297,7 @@ msgid "Screencast recorded"
 msgstr "Écran enregistré"
 
 #: src/application.rs:144
+#, fuzzy
 msgid "Show in Files"
 msgstr "Montrer dans Fichiers"
 
@@ -434,6 +443,7 @@ msgid "Later"
 msgstr "Plus tard"
 
 #: src/window/mod.rs:307
+#, fuzzy
 msgid "Open"
 msgstr "Ouvrir"
 
