@@ -8,7 +8,7 @@ use gtk::{
 use crate::{
     about,
     config::{APP_ID, PKGDATADIR, PROFILE, VERSION},
-    format_time,
+    format,
     preferences_dialog::PreferencesDialog,
     settings::Settings,
     window::Window,
@@ -116,7 +116,7 @@ impl Application {
         recording_file: &gio::File,
         duration: gst::ClockTime,
     ) {
-        let mut body_fragments = vec![format_time::duration(duration)];
+        let mut body_fragments = vec![format::duration(duration)];
 
         match recording_file
             .query_info_future(

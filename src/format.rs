@@ -1,5 +1,17 @@
 use crate::i18n::ngettext_f;
 
+/// Formats a framerate in a more human-readable format.
+pub fn framerate(framerate: gst::Fraction) -> String {
+    let reduced = framerate.reduced();
+
+    if reduced.is_integer() {
+        return reduced.numer().to_string();
+    }
+
+    let float = *reduced.numer() as f64 / *reduced.denom() as f64;
+    format!("{:.2}", float)
+}
+
 /// Formats time in MM:SS.
 ///
 /// The MM part will be more than 2 digits if the time is >= 100 minutes.
@@ -59,6 +71,13 @@ pub fn duration(clock_time: gst::ClockTime) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_framerate() {
+        assert_eq!(framerate(gst::Fraction::from_integer(24)), "24");
+        assert_eq!(framerate(gst::Fraction::new(30_000, 1001)), "29.97");
+        assert_eq!(framerate(gst::Fraction::new(60_000, 1001)), "59.94");
+    }
 
     #[test]
     fn test_duration() {

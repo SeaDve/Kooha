@@ -15,7 +15,7 @@ use self::{progress_icon::ProgressIcon, toggle_button::ToggleButton};
 use crate::{
     cancelled::Cancelled,
     config::PROFILE,
-    format_time, framerate,
+    format,
     help::ContextWithHelp,
     preferences_dialog::PreferencesDialog,
     recording::{NoProfileError, Recording, RecordingState},
@@ -338,7 +338,7 @@ impl Window {
                 obj.update_inhibit();
             })),
             recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
-                let formatted_time = format_time::digital_clock(recording.duration());
+                let formatted_time = format::digital_clock(recording.duration());
                 obj.imp().recording_time_label.set_label(&formatted_time);
             })),
             recording.connect_finished(clone!(@weak self as obj => move |recording, res| {
@@ -463,7 +463,7 @@ impl Window {
                 imp.stack.set_visible_child(&*imp.main_page);
 
                 imp.recording_time_label
-                    .set_label(&format_time::digital_clock(gst::ClockTime::ZERO));
+                    .set_label(&format::digital_clock(gst::ClockTime::ZERO));
             }
             RecordingState::Delayed { secs_left } => {
                 imp.delay_label.set_label(&secs_left.to_string());
@@ -532,7 +532,7 @@ impl Window {
         let profile_text = settings
             .profile()
             .map_or_else(|| gettext("None"), |profile| profile.name().to_string());
-        let framerate_text = framerate::format(settings.framerate());
+        let framerate_text = format::framerate(settings.framerate());
 
         imp.title
             .set_subtitle(&format!("{} • {} FPS", profile_text, framerate_text));

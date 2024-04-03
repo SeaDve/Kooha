@@ -8,8 +8,21 @@ use gtk::{
 };
 
 use crate::{
-    experimental::Feature, framerate, item_row::ItemRow, profile::Profile, settings::Settings,
+    experimental::Feature, format, item_row::ItemRow, profile::Profile, settings::Settings,
 };
+
+static BUILTIN_FRAMERATES: &[gst::Fraction] = &[
+    gst::Fraction::from_integer(10),
+    gst::Fraction::from_integer(20),
+    gst::Fraction::from_integer(24),
+    gst::Fraction::from_integer(25),
+    gst::Fraction::new_raw(30_000, 1001), // 29.97
+    gst::Fraction::from_integer(30),
+    gst::Fraction::from_integer(48),
+    gst::Fraction::from_integer(50),
+    gst::Fraction::new_raw(60_000, 1001), // 59.94
+    gst::Fraction::from_integer(60),
+];
 
 const ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY: &str = "kooha-row-selected-item-notify-handler-id";
 const SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY: &str = "kooha-settings-profile-changed-handler-id";
@@ -212,7 +225,7 @@ impl PreferencesDialog {
                     .downcast_ref::<BoxedAnyObject>()
                     .unwrap()
                     .borrow::<gst::Fraction>();
-                item_row.set_title(framerate::format(*framerate));
+                item_row.set_title(format::framerate(*framerate));
 
                 unsafe {
                     list_item.set_data(
@@ -238,7 +251,7 @@ impl PreferencesDialog {
         )));
 
         let framerate_model = {
-            let items = framerate::BUILTINS
+            let items = BUILTIN_FRAMERATES
                 .iter()
                 .map(|fraction| BoxedAnyObject::new(*fraction))
                 .collect::<Vec<_>>();
@@ -247,7 +260,7 @@ impl PreferencesDialog {
             model.splice(0, 0, &items);
 
             let active_framerate = settings.framerate();
-            if !framerate::BUILTINS.contains(&active_framerate) {
+            if !BUILTIN_FRAMERATES.contains(&active_framerate) {
                 model.append(&BoxedAnyObject::new(active_framerate));
             }
 
@@ -416,4 +429,26 @@ fn display_path(path: &Path) -> String {
     }
 
     path_display
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[track_caller]
+    fn assert_simplified_framerate(framerate: gst::Fraction) {
+        let reduced = framerate.0.reduced();
+
+        assert_eq!(
+            (framerate.numer(), framerate.denom()),
+            (*reduced.numer(), *reduced.denom())
+        );
+    }
+
+    #[test]
+    fn simplified_framerate() {
+        for framerate in BUILTIN_FRAMERATES {
+            assert_simplified_framerate(*framerate);
+        }
+    }
 }
