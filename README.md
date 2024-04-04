@@ -100,7 +100,7 @@ The following packages are required to build Kooha:
 
 * meson
 * ninja
-* appstream-glib (for checks)
+* appstreamcli (for checks)
 * cargo
 * x264 (for MP4)
 * gstreamer
