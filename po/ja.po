@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-03-24 21:01+0000\n"
+"PO-Revision-Date: 2024-04-05 12:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
 ">\n"
@@ -179,7 +179,7 @@ msgstr "ポインターの表示／非表示"
 
 #: data/resources/ui/window.ui:24
 msgid "Main Menu"
-msgstr "メニュー"
+msgstr "メインメニュー"
 
 #: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
