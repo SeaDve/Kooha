@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2022.
-# "K.B.Dharun Krishna" <kbdharunkrishna@gmail.com>, 2023.
+# "K.B.Dharun Krishna" <kbdharunkrishna@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-04-17 10:50+0000\n"
+"Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -64,6 +64,7 @@ msgstr "📼 WebM, MP4, GIF மற்றும் Matroska வடிவங்க
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
 msgstr ""
+"🖥️ பதிவு செய்ய மானிட்டரையோ அல்லது திரையின் ஒரு பகுதியையோ தேர்ந்தெடுக்கவும்"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -101,7 +102,7 @@ msgstr "தாமதம் (வினாடிகள்)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "பதிவு தொடங்கும் முன் நேர இடைவெளி"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -109,7 +110,7 @@ msgstr "பதிவுகள் கோப்புறை"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "பதிவுகளுக்கான இலக்கு கோப்புறை"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -283,7 +284,7 @@ msgstr "கோப்புகளில் காட்டு"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "இயல்பு ஆடியோ சாதனத்தைக் கண்டறிய முடியவில்லை"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -293,30 +294,32 @@ msgstr "பல்ஸ்ஆடியோ உங்கள் கணினியி�
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} மணி"
+msgstr[1] "{time} hours"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} நிமிடம்"
+msgstr[1] "{time} நிமிடங்கள்"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} வினாடி"
+msgstr[1] "{time} வினாடிகள்"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "ரெக்கார்டிங் கோப்புறையை அமைப்பதில் தோல்வி"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"இந்த பிரேம் வீதம் தேர்ந்தெடுக்கப்பட்ட வடிவமைப்பில் செயல்திறன் சிக்கல்களை "
+"ஏற்படுத்தலாம்."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -369,16 +372,20 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"தற்போது ஒரு பதிவு நடந்து கொண்டிருக்கிறது. உடனடியாக வெளியேறுவது ரெக்கார்டிங்கை"
+" இயக்க முடியாமல் போகலாம். வெளியேறும் முன் பதிவை நிறுத்தவும்."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"வெளியேறுவது செயலாக்கத்தை ரத்து செய்து, ரெக்கார்டிங்கை இயக்க முடியாமல் "
+"போகலாம்."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "பயன்பாட்டிலிருந்து வெளியேறவா?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -397,7 +404,6 @@ msgid "Help"
 msgstr "உதவி"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
 msgstr "சரி, புரிந்தது"
 
@@ -423,7 +429,7 @@ msgstr "திறக்கவும்"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "ஒரு பதிவு நடந்து கொண்டிருக்கிறது"
 
 #: src/window/mod.rs:485
 msgid "Paused"
