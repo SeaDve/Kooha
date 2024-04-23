@@ -5,21 +5,22 @@
 # Dušan Kazik <prescott66@gmail.com>, 2021.
 # Marek Ľach <graweeld@googlemail.com>, 2022.
 # Jozef Číž <jozef.ciz.ml@gmail.com>, 2023.
+# LvargaDS <lvarga@digitalsystems.eu>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2023-03-09 18:36+0000\n"
-"Last-Translator: Jozef Číž <jozef.ciz.ml@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/seadve/kooha/sk/"
-">\n"
+"PO-Revision-Date: 2024-04-23 23:07+0000\n"
+"Last-Translator: LvargaDS <lvarga@digitalsystems.eu>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/seadve/kooha/sk/>"
+"\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -68,7 +69,7 @@ msgstr "📼 Podpora pre WebM, MP4, GIF, a Matroska formáty"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "Zvoľte obrazovku, alebo jej časť, ktorá sa má nahrávať"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -108,7 +109,7 @@ msgstr "Oneskorenie (Sekundy)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Čas čakania pred začatím nahrávania"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -116,7 +117,7 @@ msgstr "Priečinok nahrávok"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Cieľový adresár pre nahrávky"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -144,7 +145,7 @@ msgstr "Zobrazenie klávesových skratiek"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
-msgstr "Ukončenie"
+msgstr "Ukončit"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
@@ -160,7 +161,7 @@ msgstr "Prepnutie pozastavenia"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Zrušiť nahrávanie"
+msgstr "Zrušiť záznam"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -244,7 +245,7 @@ msgstr "Zaznamenáva sa…"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr "Zrušiť nahrávanie"
+msgstr "Zrušiť záznam"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
@@ -266,12 +267,13 @@ msgstr "_O aplikácii Kooha"
 #: src/about.rs:33
 msgid "translator-credits"
 msgstr ""
-"MartinIIOT <https://github.com/MartinIIOT>\n"
-"Dušan Kazik <prescott66@gmail.com>"
+"MartinIIOT <https://github.com/MartinIIOT>,\n"
+"Dušan Kazik <prescott66@gmail.com>,\n"
+"Ľubo Varga https://github.com/LvargaDS,"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Prispieť (Kúp mi kávu)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -292,7 +294,7 @@ msgstr "Ukázať v Súboroch"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Chyba pri hľadaní štandardného audio zariadenia"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -302,37 +304,39 @@ msgstr "Uistite sa, že máte na vašom systéme nainštalované PulseAudio."
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} hodina"
+msgstr[1] "{time} hodiny"
+msgstr[2] "{time} hodín"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} minúta"
+msgstr[1] "{time} minúty"
+msgstr[2] "{time} minút"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} sekunda"
+msgstr[1] "{time} sekundy"
+msgstr[2] "{time} sekúnd"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Zlyhalo nastavenie adresáru pre nahrávky"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Zvolaná snímková frekvencia môže spôsobovať výkonnostný problém pri zvolenom "
+"formáte."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Tento formát je experimentálny a nie je k nemu poskytovaná podpora."
 
 #: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
@@ -340,7 +344,7 @@ msgstr "Žiadne"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Žiaden aktívny profil"
 
 #: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
@@ -349,11 +353,11 @@ msgstr "Začatie nahrávania zlyhalo"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Pre pomoc navštívte {link}."
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "GStreamer plugin možno nie je nainštalovaný."
 
 #: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
@@ -366,7 +370,7 @@ msgstr "Počas nahrávania nastala chýba"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť „{path}“ pre zápis"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
@@ -374,31 +378,35 @@ msgstr "Výber priečinka pre záznamy"
 
 #: src/window/mod.rs:79
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Nepodarilo sa zmeniť stav pauznutia"
 
 #: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Nahrávanie práve prebieha. Okamžité skončenie môže spôsobiť, že nahrávka sa "
+"nebude dať prehrať. Prosím stopnite nahrávanie pred ukončením aplikácie."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Ukončenie aplikácie zruší prebiehajúce spracovávanie a môže spôsobiť, že "
+"nahrávka nebude prehrateľná."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Vypnúť aplikáciu?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopírovať do schránky"
 
 #: src/window/mod.rs:258
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Skopírované do schránky"
 
 #: src/window/mod.rs:264
 msgid "Show detailed error"
@@ -410,29 +418,31 @@ msgstr "Pomoc"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Ok, Viem"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Otvoriť nastavenia?"
 
 #: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Formát zvolený minule môže byť nedostupný. Otvorte nastavenia a zvolte "
+"formát pre pokračovanie v nahrávaní."
 
 #: src/window/mod.rs:305
 msgid "Later"
-msgstr ""
+msgstr "Neskôr"
 
 #: src/window/mod.rs:307
 msgid "Open"
-msgstr ""
+msgstr "Otvoriť"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Nahrávanie aktívne"
 
 #: src/window/mod.rs:485
 msgid "Paused"

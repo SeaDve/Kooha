@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Milo Ivir <mail@milotype.de>, 2021, 2022, 2023.
+# Milo Ivir <mail@milotype.de>, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-04-23 23:07+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/seadve/kooha/hr/"
 ">\n"
 "Language: hr\n"
@@ -64,7 +64,7 @@ msgstr "📼 Podrška za WebM, MP4, GIF i Matroska formate"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Biranje monitora ili dio ekrana za snimanje"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -104,15 +104,15 @@ msgstr "Kašnjenje (sekunde)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Vremenski interval prije početka snimanja"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr "Mapa sa snimkama"
+msgstr "Mapa sa snimanjima"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Odredišna mapa za snimanja"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -124,7 +124,7 @@ msgstr "Format"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr "Brzina kadrova"
+msgstr "Broj sličica u sekundi"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -286,7 +286,7 @@ msgstr "Pokaži u „Datoteke”"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Zadani audio uređaj nije pronađen"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -296,33 +296,34 @@ msgstr "Osiguraj da je PulseAudio instaliran u tvom sustavu."
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} sat"
+msgstr[1] "{time} sata"
+msgstr[2] "{time} sati"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} minuta"
+msgstr[1] "{time} minute"
+msgstr[2] "{time} minuta"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} sekunda"
+msgstr[1] "{time} sekunde"
+msgstr[2] "{time} sekundi"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Neuspjelo postavljanje mape snimaka"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Ovaj broj sličica u sekundi može prouzročiti probleme za odabrani format."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -375,16 +376,20 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Snimanje je trenutačno je u tijeku. Trenutno prekidanje može prouzročiti da "
+"se snimka neće moći reproducirati. Prekini snimanje prije prekidanja."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Prekidanje će poništiti obradu i može prouzročiti da se snimka neće moći "
+"reproducirati."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Zatvoriti aplikaciju?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -403,7 +408,6 @@ msgid "Help"
 msgstr "Pomoć"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
 msgstr "U redu, razumijem"
 
@@ -429,7 +433,7 @@ msgstr "Otvori"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Jedno snimanje je u tijeku"
 
 #: src/window/mod.rs:485
 msgid "Paused"
