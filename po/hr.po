@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-04-23 23:07+0000\n"
+"PO-Revision-Date: 2024-04-25 12:07+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/seadve/kooha/hr/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -282,7 +282,7 @@ msgstr "Videosnimka ekrana snimljena"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Pokaži u „Datoteke”"
+msgstr "Prikaži u mapi „Datoteke”"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-03-11 22:01+0000\n"
+"PO-Revision-Date: 2024-04-25 12:07+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/seadve/kooha/cs/>\n"
 "Language: cs\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -178,7 +178,7 @@ msgstr "Zapnout/vypnout kurzor"
 
 #: data/resources/ui/window.ui:24
 msgid "Main Menu"
-msgstr "Hlavní Menu"
+msgstr "Hlavní nabídka"
 
 #: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
@@ -271,7 +271,7 @@ msgstr ""
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Přispět (kupte mi kávu)"
+msgstr "Darovat (kupte mi kávu)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -288,7 +288,7 @@ msgstr "Záznam obrazovky ukončen"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Zobrazit v Souborech"
+msgstr "Zobrazit v souborech"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
