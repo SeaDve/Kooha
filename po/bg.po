@@ -2,21 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Victor Keranov <vkeranov@gmail.com>, 2022.
+# twlvnn <kraft_werk@tutanota.com>, 2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2022-08-29 09:18+0000\n"
-"Last-Translator: Victor Keranov <vkeranov@gmail.com>\n"
-"Language-Team: Bulgarian <https://hosted.weblate.org/projects/seadve/kooha/"
-"bg/>\n"
+"PO-Revision-Date: 2024-04-28 13:13+0200\n"
+"Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 46.0\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -55,27 +56,30 @@ msgstr "Основните функции на Kooha включват следн
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr ""
+"🎙️ Записвайте микрофона, звука от работния плот или и двете едновременно"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Поддръжка на форматите WebM, MP4, GIF и Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Изберете монитор или част от екрана за запис"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Настройване на папката за запазване, видимостта на показалеца, честотата "
+"на кадрите и закъснението"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Експериментално хардуерно ускорено кодиране"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Избиране на участъка"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:210
@@ -84,11 +88,11 @@ msgstr "Откажи"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Връщане на избора"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -96,31 +100,31 @@ msgstr "Основни"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Закъснение (секунди)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Времеви интервал преди началото на записа"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Папка със записите"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Целева папка за записите"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "Видео"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "Формат"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "Честота на кадри"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -128,7 +132,7 @@ msgstr "Отвори меню"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Показване на настройките"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -160,7 +164,7 @@ msgstr "Настройки"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Превключване на звука на работния плот"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
@@ -184,11 +188,11 @@ msgstr "Запис на участък от екрана"
 
 #: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Активиране на звука на работния плот"
 
 #: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Изключване на звука на работния плот"
 
 #: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
@@ -244,7 +248,7 @@ msgstr "Изчистване…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr ""
+msgstr "_Настройки"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
@@ -261,7 +265,7 @@ msgstr "Victor Keranov"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Дарете (купете ми кафе)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -282,7 +286,7 @@ msgstr "Покажи във файлове"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Неуспешно намиране на звуковото устройство по подразбиране"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -292,34 +296,36 @@ msgstr "Убеди се, че имаш инсталиран PulseAudio на тв
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} час"
+msgstr[1] "{time} часа"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} минута"
+msgstr[1] "{time} минути"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} секунда"
+msgstr[1] "{time} секунди"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Неуспешно задаване на папката за записи"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Тази честота на кадри може да доведе до проблеми с производителността на "
+"избрания формат."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Този формат е експериментален и не се поддържа."
 
 #: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
@@ -327,7 +333,7 @@ msgstr "Без"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Няма активен профил"
 
 #: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
@@ -336,11 +342,11 @@ msgstr "Неуспех при старт на записа"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Вижте {link} за помощ."
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Възможно е да не е инсталирана приставка GStreamer."
 
 #: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
@@ -353,11 +359,11 @@ msgstr "Възникна грешка по време на запис"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Неуспешно отваряне на „{path}“ за записване"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr "Избери директория за записи"
+msgstr "Избери папка за записи"
 
 #: src/window/mod.rs:79
 msgid "Failed to toggle pause"
@@ -368,16 +374,21 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"В момента се прави запис. Незабавното спиране на програмата може да доведе "
+"до невъзможност за възпроизвеждане на записа. Спрете записа, преди спиране "
+"на програмата."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Спиране на програмата ще прекрати обработването и може да доведе до "
+"невъзможност за възпроизвеждане на записа."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Искате ли да спрете програмата?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -397,29 +408,31 @@ msgstr "Помощ"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Добре"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Искате ли да отворите настройките?"
 
 #: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Възможно е избраният преди това формат да не е наличен. Отворете настройките "
+"и изберете формат, за да продължите да записвате."
 
 #: src/window/mod.rs:305
 msgid "Later"
-msgstr ""
+msgstr "По-късно"
 
 #: src/window/mod.rs:307
 msgid "Open"
-msgstr ""
+msgstr "Отваряне"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Запис е в ход"
 
 #: src/window/mod.rs:485
 msgid "Paused"
