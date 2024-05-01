@@ -54,12 +54,20 @@ impl Settings {
     pub fn saving_location(&self) -> PathBuf {
         let stored_saving_location: PathBuf = self.0.get("saving-location");
 
-        if !stored_saving_location.as_os_str().is_empty() {
-            return stored_saving_location;
-        }
-
         let saving_location =
             glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir);
+        
+        if !stored_saving_location.as_os_str().is_empty() {
+            if let Err(err) = fs::create_dir_all(&stored_saving_location) {
+                tracing::warn!(
+                    "Failed to create dir at `{}`: {:?}",
+                    stored_saving_location.display(),
+                    err
+                );
+                return saving_location;
+            }
+            return stored_saving_location;
+        }
 
         let kooha_saving_location = saving_location.join("Kooha");
 
