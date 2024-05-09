@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the kooha package.
 # Hemish <hemish04082005@gmail.com>, 2021, 2022.
 # Th3 A6add0n <th3.a6add0n@gmail.com>, 2023.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2023-07-12 10:51+0000\n"
-"Last-Translator: Th3 A6add0n <th3.a6add0n@gmail.com>\n"
+"PO-Revision-Date: 2024-05-09 19:07+0000\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/seadve/kooha/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.5.4-rc\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -92,7 +93,7 @@ msgstr "चयन रीसेट करें"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "आम (General)"
+msgstr "सामान्य"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
@@ -124,7 +125,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr "मेन्यू खोलें"
+msgstr "मेनू खोलें"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
@@ -172,7 +173,7 @@ msgstr "माऊस पाइंटर को रिकार्ड करन�
 
 #: data/resources/ui/window.ui:24
 msgid "Main Menu"
-msgstr "मुख्य मेन्यू"
+msgstr "मुख्य मेनू"
 
 #: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
@@ -257,19 +258,21 @@ msgstr "'कूहा' का परिचय (_A)"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr "Hemish <hemish04082005@gmail.com>"
+msgstr ""
+"Hemish <hemish04082005@gmail.com>\n"
+"Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "दान करें (मेरे लिए कॉफ़ी खरीदें)"
 
 #: src/about.rs:46
 msgid "GitHub"
-msgstr "गिटहब"
+msgstr "GitHub"
 
 #: src/about.rs:48
 msgid "Translate"
-msgstr "अनुवादन"
+msgstr "अनुवाद करें"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
