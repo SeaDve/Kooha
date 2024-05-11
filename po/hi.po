@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-05-09 19:07+0000\n"
+"PO-Revision-Date: 2024-05-11 05:00+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/seadve/kooha/hi/>\n"
 "Language: hi\n"
@@ -17,75 +17,75 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5.4-rc\n"
+"X-Generator: Weblate 5.5.4\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
 #: src/main.rs:71
 msgid "Kooha"
-msgstr "कूहा"
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr "अपनी स्क्रीन को अच्छे ढंग से रिकॉर्ड करें"
+msgstr "अपनी स्क्रीन को खूबसूरती से रिकॉर्ड करें"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Screencast;Recorder;Screen;Video;रिकार्ड;स्क्रीन;वीडीयो;वीडीओ;"
+msgstr "स्क्रीनकास्ट;रिकॉर्डर;स्क्रीन;वीडियो;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr "बिना विचलित हुए सहज और सीधे तरीके से अपनी स्क्रीन को कैप्चर करें।"
+msgstr "अपनी स्क्रीन को बिना किसी व्यवधान के सहज और सरल तरीके से कैप्चर करें।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"'कूहा' एक साधारण स्क्रीन रिकॉर्डर है जिसमें न्यूनतम इंटरफ़ेस है। आप सेटिंग्स के एक समूह को "
-"कॉन्फ़िगर किए बिना रिकॉर्ड बटन पर क्लिक कर सकते हैं।"
+"Kooha न्यूनतम इंटरफ़ेस वाला एक सरल स्क्रीन रिकॉर्डर है। आप बहुत सारी सेटिंग्"
+"स विन्यस्त किए बिना केवल रिकॉर्ड बटन पर क्लिक कर सकते हैं।"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr "'कूहा' की मुख्य विशेषताओं निम्नलिखित हैं:"
+msgstr "Kooha की मुख्य विशेषताएं निम्नलिखित हैं:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ एक ही समय में माइक्रोफोन, डेस्कटॉप ऑडियो या दोनों रिकॉर्ड करें"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 WebM, MP4, GIF और Matroska प्रारूपों के लिए समर्थन"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ रिकॉर्ड करने के लिए मॉनिटर या स्क्रीन का हिस्सा चुनें"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr ""
+msgstr "🛠️ विन्यास योग्य सहेजने का स्थान, सूचक दृश्यता, फ्रेम दर और विलंब"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 प्रायोगिक हार्डवेयर त्वरित एन्कोडिंग"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr "क्षेत्र का चयन करें"
+msgstr "क्षेत्र चुनें"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
-msgstr "रद्द"
+msgstr "रद्द करें"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr "हो गया"
+msgstr "संपन्न"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
@@ -97,31 +97,31 @@ msgstr "सामान्य"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr "ठहराव (सेकेंडों में)"
+msgstr "विलंब (सेकंड)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "रिकॉर्डिंग शुरू होने से पहले का समय अंतराल"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr "रिकॉर्डिंग फ़ोल्डर"
+msgstr "रिकॉर्डिंग फोल्डर"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "रिकॉर्डिंग के लिए गंतव्य फोल्डर"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "वीडियो"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "प्रारूप"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "फ्रेम दर"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -129,11 +129,11 @@ msgstr "मेनू खोलें"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr "सेटिंग्स (वरीयताएँ) दिखाएँ"
+msgstr "प्राथमिकताएं दिखाएं"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
-msgstr "शॉर्टकट दिखाएँ"
+msgstr "शॉर्टकट दिखाएं"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
@@ -141,15 +141,15 @@ msgstr "बंद करें"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
-msgstr "रिकार्डिंग"
+msgstr "रिकॉर्डिंग"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr "रिकार्डिंग को बंद-शुरू करें"
+msgstr "रिकार्डिंग शुरू/बंद करें"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr "रिकार्डिंग पाज़-शुरू करें"
+msgstr "विराम शुरू/बंद करें"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
@@ -157,19 +157,19 @@ msgstr "रिकार्डिंग रद्द करें"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
-msgstr "सेटिंग्स"
+msgstr "सेटिंग"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "डेस्कटॉप ऑडियो चालु/बंद करें"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr "माइक्रोफ़ोन को रिकार्ड करने या ना करने को बदलें"
+msgstr "माइक्रोफोन चालु/बंद करें"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr "माऊस पाइंटर को रिकार्ड करने या ना करने को बदलें"
+msgstr "सूचक चालु/बंद करें"
 
 #: data/resources/ui/window.ui:24
 msgid "Main Menu"
@@ -181,35 +181,35 @@ msgstr "मॉनिटर या विंडो कैप्चर करे�
 
 #: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
-msgstr "स्क्रीन का एक चयन कैप्चर करें"
+msgstr "स्क्रीन का चयन कैप्चर करें"
 
 #: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "डेस्कटॉप ऑडियो सक्षम करें"
 
 #: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "डेस्कटॉप ऑडियो अक्षम करें"
 
 #: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
-msgstr ""
+msgstr "माइक्रोफोन सक्षम करें"
 
 #: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
-msgstr "माइक्रोफ़ोन से रिकार्ड न करें"
+msgstr "माइक्रोफोन अक्षम करें"
 
 #: data/resources/ui/window.ui:104
 msgid "Show Pointer"
-msgstr "माउस पॉइंटर दिखाएँ"
+msgstr "सूचक दिखाएं"
 
 #: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
-msgstr ""
+msgstr "सूचक छुपाएं"
 
 #: data/resources/ui/window.ui:115
 msgid "Start Recording"
-msgstr ""
+msgstr "रिकॉर्डिंग प्रारंभ करें"
 
 #: data/resources/ui/window.ui:116
 msgid "Record"
@@ -217,11 +217,11 @@ msgstr "रिकार्ड करें"
 
 #: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "पहले चयनित वीडियो स्रोतों को भूल जाएं"
 
 #: data/resources/ui/window.ui:180
 msgid "Stop Recording"
-msgstr ""
+msgstr "रिकॉर्डिंग रोकें"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop"
@@ -229,42 +229,42 @@ msgstr "रोकें"
 
 #: data/resources/ui/window.ui:191
 msgid "Pause Recording"
-msgstr ""
+msgstr "रिकॉर्डिंग विरामित करें"
 
 #: data/resources/ui/window.ui:214
 msgid "Recording in…"
-msgstr "इतने क्षणों में रिकार्डिंग शुरू…"
+msgstr "रिकॉर्डिंग शुरू होने में…"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr ""
+msgstr "रिकॉर्डिंग रद्द करें"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "हटाया जा रहा है…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr "_वरीयता"
+msgstr "प्राथमिकताएं (_P)"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr "_कीबोर्ड शॉर्टकट्स"
+msgstr "कीबोर्ड शॉर्टकट (_K)"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
-msgstr "'कूहा' का परिचय (_A)"
+msgstr "Kooha के बारे में (_A)"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
 msgstr ""
-"Hemish <hemish04082005@gmail.com>\n"
-"Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024"
+"Hemish &lt;hemish04082005@gmail.com&gt;\n"
+"Scrambled777 &lt;weblate.scrambled777@simplelogin.com&gt;"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr "दान करें (मेरे लिए कॉफ़ी खरीदें)"
+msgstr "दान करें (मेरे लिए कॉफी खरीदें)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -277,48 +277,48 @@ msgstr "अनुवाद करें"
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "स्क्रीनकास्ट रिकॉर्ड किया गया"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "फाइलों में दिखाएं"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "तयशुदा ऑडियो डिवाइस ढूंढने में विफल"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "सुनिश्चित करें कि आपके सिस्टम में PulseAudio स्थापित है।"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} घंटा"
+msgstr[1] "{time} घंटे"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} मिनट"
+msgstr[1] "{time} मिनट"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} सेकंड"
+msgstr[1] "{time} सेकंड"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "रिकॉर्डिंग फोल्डर निर्धारित करने में विफल"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
-msgstr ""
+msgstr "यह फ्रेम दर चयनित प्रारूप पर प्रदर्शन संबंधी समस्याएं पैदा कर सकती है।"
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -326,107 +326,112 @@ msgstr "यह प्रारूप प्रयोगात्मक और �
 
 #: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
-msgstr ""
+msgstr "कोई नहीं"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "कोई सक्रिय प्रोफाइल नहीं"
 
 #: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
-msgstr ""
+msgstr "रिकॉर्डिंग प्रारंभ करने में विफल"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "सहायता के लिए {link} देखें।"
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "GStreamer प्लगइन स्थापित नहीं किया जा सकता है।"
 
 #: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "सुनिश्चित करें कि सहेजने हेतु स्थान मौजूद है और पहुंच योग्य है।"
 
 #: src/recording.rs:480
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "रिकॉर्डिंग करते समय एक त्रुटि उत्पन्न हुई"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "लिखने के लिए “{path}” खोलने में विफल"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "रिकॉर्डिंग फोल्डर चुनें"
 
 #: src/window/mod.rs:79
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "विराम शुरू/बंद करने में विफल"
 
 #: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"अभी एक रिकॉर्डिंग चल रही है। तुरंत बंद करने से रिकॉर्डिंग चलने योग्य नहीं रह "
+"जाएगी। कृपया छोड़ने से पहले रिकॉर्डिंग रोकें।"
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"छोड़ने से प्रसंस्करण रद्द हो जायेगा और रिकॉर्डिंग चलने योग्य नहीं रह जाएगी।"
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "अनुप्रयोग छोड़ें?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "क्लिपबोर्ड पर कॉपी करें"
 
 #: src/window/mod.rs:258
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "क्लिपबोर्ड पर कॉपी किया गया"
 
 #: src/window/mod.rs:264
 msgid "Show detailed error"
-msgstr ""
+msgstr "विस्तृत त्रुटि दिखाएं"
 
 #: src/window/mod.rs:286
 msgid "Help"
-msgstr ""
+msgstr "सहायता"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr ""
+msgstr "ठीक है, समझ गया"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
-msgstr ""
+msgstr "प्राथमिकताएं खोलें?"
 
 #: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"पहले चयनित प्रारूप अनुपलब्ध हो सकता है। प्राथमिकताएं खोलें और रिकॉर्डिंग जारी"
+" रखने के लिए एक प्रारूप चुनें।"
 
 #: src/window/mod.rs:305
 msgid "Later"
-msgstr ""
+msgstr "बाद में"
 
 #: src/window/mod.rs:307
 msgid "Open"
-msgstr ""
+msgstr "खोलें"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "रिकॉर्डिंग प्रगति पर है"
 
 #: src/window/mod.rs:485
 msgid "Paused"
-msgstr ""
+msgstr "विरामित"
 
 #: src/window/mod.rs:522
 msgid "Normal"
