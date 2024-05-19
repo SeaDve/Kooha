@@ -402,7 +402,7 @@ fn make_audiosrc_bin<'a>(
             .property("skip-to-first", true)
             .build()?;
 
-        bin.add_many([&pulsesrc, &audiorate])?;
+        bin.add_many([pulsesrc, &audiorate])?;
         pulsesrc.link_filtered(&audiorate, &caps)?;
         audiorate.link_pads(None, &audiomixer, Some("sink_%u"))?;
     }

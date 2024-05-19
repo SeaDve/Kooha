@@ -26,7 +26,7 @@ const ASSUMED_HEADER_BAR_HEIGHT: f64 = 46.0;
 
 #[derive(Debug)]
 pub struct SelectAreaData {
-    /// Selection relative to paintable_rect
+    /// Selection relative to `paintable_rect`
     pub selection: Selection,
     /// The geometry of paintable where the stream is displayed
     pub paintable_rect: Rect,
