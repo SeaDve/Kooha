@@ -5,22 +5,23 @@
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2021.
 # guymii <guy.minsky@gmail.com>, 2023.
 # Araxeus <oaeben@gmail.com>, 2023.
+# "Omer I.S." <omeritzicschwartz@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2023-01-14 19:48+0000\n"
-"Last-Translator: Araxeus <oaeben@gmail.com>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/seadve/kooha/he/"
-">\n"
+"PO-Revision-Date: 2024-06-21 17:09+0000\n"
+"Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/seadve/kooha/he/>"
+"\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -267,7 +268,7 @@ msgstr "עומר א״ש <omeritzicschwartz@gmail.com>"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "תרומה (Buy Me a Coffee)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -275,7 +276,7 @@ msgstr "GitHub"
 
 #: src/about.rs:48
 msgid "Translate"
-msgstr "תרגם"
+msgstr "תרגום"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
