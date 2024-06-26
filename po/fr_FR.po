@@ -11,13 +11,14 @@
 # "Mathieu B." <mathieu.bousquet2@gmail.com>, 2023.
 # p h <phhens@gmail.com>, 2024.
 # Wedone <cafh62@gmail.com>, 2024.
+# Clyhtsuriva <aimeric@adjutor.xyz>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-06-12 03:13+0000\n"
-"Last-Translator: Wedone <cafh62@gmail.com>\n"
+"PO-Revision-Date: 2024-06-26 22:09+0000\n"
+"Last-Translator: Clyhtsuriva <aimeric@adjutor.xyz>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/seadve/kooha/fr/>"
 "\n"
 "Language: fr_FR\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -85,7 +86,7 @@ msgstr ""
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr "🚀 Encodage expérimental avec accélération matérielle"
+msgstr "🚀 Encodage expérimental accéléré par matériel"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -266,12 +267,12 @@ msgstr "_Raccourcis clavier"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
-msgstr "À _propos de Kooha"
+msgstr "_À propos de Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr "J. Lavoie, M. Bousquet, Irénée Thirion, Wedone"
+msgstr "J. Lavoie, M. Bousquet, Irénée Thirion, Wedone, Clyhtsuriva"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
@@ -291,9 +292,8 @@ msgid "Screencast recorded"
 msgstr "Écran enregistré"
 
 #: src/application.rs:144
-#, fuzzy
 msgid "Show in Files"
-msgstr "Montrer dans Fichiers"
+msgstr "Afficher dans les fichiers"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
@@ -437,7 +437,6 @@ msgid "Later"
 msgstr "Plus tard"
 
 #: src/window/mod.rs:307
-#, fuzzy
 msgid "Open"
 msgstr "Ouvrir"
 
