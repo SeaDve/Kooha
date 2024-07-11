@@ -6,13 +6,14 @@
 # guymii <guy.minsky@gmail.com>, 2023.
 # Araxeus <oaeben@gmail.com>, 2023.
 # "Omer I.S." <omeritzicschwartz@gmail.com>, 2024.
+# JerryDX <jerrythemagmacubeofficial@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-06-21 17:09+0000\n"
-"Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
+"PO-Revision-Date: 2024-07-11 14:09+0000\n"
+"Last-Translator: JerryDX <jerrythemagmacubeofficial@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/seadve/kooha/he/>"
 "\n"
 "Language: he\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -67,7 +68,7 @@ msgstr "📼 תמיכה בפורמטי הוידאו: WebM, MP4, GIF, ו-Matroska
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ בחר איזה מסך או איזה חלק מהמסך להקליט"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -107,7 +108,7 @@ msgstr "השהייה (בשניות)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "כמה זמן יעבור לפני התחלת ההקלטה"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -115,7 +116,7 @@ msgstr "תיקיית ההקלטות"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "תיקיית יעד להקלטות"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -289,7 +290,7 @@ msgstr "הראה בקבצים"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "לא הצליח למצוא את מכשיר השמע"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
