@@ -47,5 +47,6 @@ jobs:
         with:
           bundle: kooha.flatpak
           manifest-path: build-aux/io.github.seadve.Kooha.Devel.json
+          repository-name: flathub-beta
           run-tests: true
           cache-key: flatpak-builder-${{ github.sha }}
