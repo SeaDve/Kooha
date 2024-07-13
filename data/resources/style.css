@@ -9,7 +9,7 @@ label.large-time {
 }
 
 label.recording {
-  color: @destructive_bg_color;
+  color: var(--destructive-bg-color);
 }
 
 label.paused {
@@ -20,7 +20,7 @@ label.paused {
 }
 
 button.copy-done {
-  color: @accent_bg_color;
+  color: var(--accent-bg-color);
 }
 
 window.area-selector .view-port {
@@ -30,6 +30,6 @@ window.area-selector .view-port {
 
 @keyframes blinking {
   0% {
-    color: @window_fg_color;
+    color: var(--window-fg-color);
   }
 }
