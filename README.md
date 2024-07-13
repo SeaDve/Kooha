@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="data/icons/io.github.seadve.Kooha.svg" alt="Kooha" width="192" height="192"/>
+  <img alt="Kooha" src="data/icons/io.github.seadve.Kooha.svg" width="192" height="192"/>
   <br>
   Kooha
 </h1>
@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://flathub.org/apps/details/io.github.seadve.Kooha">
-    <img width="200" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-i-en.svg"/>
+    <img alt="Download on Flathub" src="https://flathub.org/api/badge?svg&locale=en&light" width="200"/>
   </a>
   <br>
   <a href="https://www.buymeacoffee.com/seadve">
