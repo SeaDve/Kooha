@@ -43,8 +43,6 @@ mod settings;
 mod timer;
 mod window;
 
-use std::env;
-
 use gettextrs::{gettext, LocaleCategory};
 use gtk::{gio, glib};
 
@@ -54,13 +52,6 @@ use self::{
 };
 
 fn main() -> glib::ExitCode {
-    // HACK Use gl renderer by default instead of ngl due to gtk4paintablesink bug.
-    // See https://gitlab.gnome.org/GNOME/gtk/-/issues/6411 and
-    // https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/issues/508
-    if env::var("GSK_RENDERER").map_or(true, |val| val.is_empty()) {
-        env::set_var("GSK_RENDERER", "gl");
-    }
-
     tracing_subscriber::fmt::init();
 
     gettextrs::setlocale(LocaleCategory::LcAll, "");
