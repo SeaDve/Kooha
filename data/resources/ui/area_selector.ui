@@ -48,8 +48,7 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">24</property>
                 <child>
-                  <object class="GtkSpinner">
-                    <property name="spinning">True</property>
+                  <object class="AdwSpinner">
                     <property name="height-request">24</property>
                     <property name="width-request">24</property>
                   </object>

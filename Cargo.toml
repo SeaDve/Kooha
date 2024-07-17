@@ -15,7 +15,7 @@ debug = 0
 strip = "debuginfo"
 
 [dependencies]
-adw = { package = "libadwaita", version = "0.7", features = ["v1_5"] }
+adw = { package = "libadwaita", version = "0.7", features = ["v1_6"] }
 anyhow = "1.0.59"
 futures-channel = "0.3.19"
 futures-util = { version = "0.3", default-features = false }
