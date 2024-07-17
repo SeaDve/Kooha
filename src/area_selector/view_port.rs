@@ -372,16 +372,20 @@ mod imp {
             }
 
             if let Some(paintable) = paintable {
-                handler_ids.push(paintable.connect_invalidate_contents(
-                    clone!(@weak obj => move |_| {
+                handler_ids.push(paintable.connect_invalidate_contents(clone!(
+                    #[weak]
+                    obj,
+                    move |_| {
                         obj.queue_draw();
-                    }),
-                ));
-                handler_ids.push(
-                    paintable.connect_invalidate_size(clone!(@weak obj => move |_| {
+                    }
+                )));
+                handler_ids.push(paintable.connect_invalidate_size(clone!(
+                    #[weak]
+                    obj,
+                    move |_| {
                         obj.queue_resize();
-                    })),
-                );
+                    }
+                )));
             }
 
             self.paintable_rect.set(None);

@@ -227,11 +227,13 @@ impl Recording {
         // Setup and run timer
         let timer = Timer::new(
             settings.record_delay(),
-            clone!(@weak self as obj => move |secs_left| {
-                obj.set_state(RecordingState::Delayed {
-                    secs_left
-                });
-            }),
+            clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |secs_left| {
+                    obj.set_state(RecordingState::Delayed { secs_left });
+                }
+            ),
         );
         imp.timer.replace(Some(Timer::clone(&timer)));
         timer.await?;
@@ -239,20 +241,26 @@ impl Recording {
         let bus_watch_guard = pipeline
             .bus()
             .unwrap()
-            .add_watch_local(
-                clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move |_, message|  {
-                    obj.handle_bus_message(message)
-                }),
-            )
+            .add_watch_local(clone!(
+                #[weak(rename_to = obj)]
+                self,
+                #[upgrade_or_panic]
+                move |_, message| obj.handle_bus_message(message)
+            ))
             .unwrap();
         imp.bus_watch_guard.replace(Some(bus_watch_guard));
         imp.duration_source_id.replace(Some(glib::timeout_add_local(
             DURATION_UPDATE_INTERVAL,
-            clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move || {
-                obj.update_duration();
-                obj.update_flushing_progress();
-                glib::ControlFlow::Continue
-            }),
+            clone!(
+                #[weak(rename_to = obj)]
+                self,
+                #[upgrade_or_panic]
+                move || {
+                    obj.update_duration();
+                    obj.update_flushing_progress();
+                    glib::ControlFlow::Continue
+                }
+            ),
         )));
 
         pipeline
@@ -349,9 +357,13 @@ impl Recording {
         // HACK we need to return before calling this to avoid a `BorrowMutError` when
         // `Window` tried to take the `recording` on finished callback while `recording`
         // is borrowed to call `cancel`.
-        glib::idle_add_local_once(clone!(@weak self as obj => move || {
-            obj.set_finished(Err(Error::from(Cancelled::new("recording"))));
-        }));
+        glib::idle_add_local_once(clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move || {
+                obj.set_finished(Err(Error::from(Cancelled::new("recording"))));
+            }
+        ));
     }
 
     pub fn connect_finished<F>(&self, f: F) -> glib::SignalHandlerId

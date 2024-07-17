@@ -141,27 +141,36 @@ impl Future for Timer {
             .secs_left_changed_source_id
             .replace(Some(glib::timeout_add_local(
                 SECS_LEFT_UPDATE_INTERVAL,
-                clone!(@weak self.inner as inner => @default-return glib::ControlFlow::Break, move || {
-                    (inner.secs_left_changed_cb)(inner.secs_left());
-                    glib::ControlFlow::Continue
-                }),
+                clone!(
+                    #[weak(rename_to = inner)]
+                    self.inner,
+                    #[upgrade_or_panic]
+                    move || {
+                        (inner.secs_left_changed_cb)(inner.secs_left());
+                        glib::ControlFlow::Continue
+                    }
+                ),
             )));
 
         self.inner
             .source_id
             .replace(Some(glib::timeout_add_local_once(
                 self.inner.duration,
-                clone!(@weak self.inner as inner => move || {
-                    inner.state.set(State::Done);
+                clone!(
+                    #[weak(rename_to = inner)]
+                    self.inner,
+                    move || {
+                        inner.state.set(State::Done);
 
-                    if let Some(source_id) = inner.secs_left_changed_source_id.take() {
-                        source_id.remove();
-                    }
+                        if let Some(source_id) = inner.secs_left_changed_source_id.take() {
+                            source_id.remove();
+                        }
 
-                    if let Some(waker) = inner.waker.take() {
-                        waker.wake();
+                        if let Some(waker) = inner.waker.take() {
+                            waker.wake();
+                        }
                     }
-                }),
+                ),
             )));
         self.inner.instant.set(Some(Instant::now()));
         (self.inner.secs_left_changed_cb)(self.inner.secs_left());

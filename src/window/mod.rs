@@ -131,11 +131,15 @@ mod imp {
             let obj = self.obj();
 
             if obj.is_busy() {
-                glib::spawn_future_local(clone!(@weak obj => async move {
-                    if obj.run_quit_confirmation_dialog().await.is_proceed() {
-                        obj.destroy();
+                glib::spawn_future_local(clone!(
+                    #[weak]
+                    obj,
+                    async move {
+                        if obj.run_quit_confirmation_dialog().await.is_proceed() {
+                            obj.destroy();
+                        }
                     }
-                }));
+                ));
                 return glib::Propagation::Stop;
             }
 
@@ -308,16 +312,20 @@ impl Window {
 
         dialog.connect_response(
             Some(OPEN_RESPONSE_ID),
-            clone!(@weak self as obj => move |dialog, _| {
-                dialog.close();
+            clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |dialog, _| {
+                    dialog.close();
 
-                let app = Application::get();
-                let preferences_dialog = PreferencesDialog::new(app.settings());
-                preferences_dialog.present(Some(&obj));
+                    let app = Application::get();
+                    let preferences_dialog = PreferencesDialog::new(app.settings());
+                    preferences_dialog.present(Some(&obj));
 
-                let was_focused = preferences_dialog.profile_row_grab_focus();
-                debug_assert!(was_focused);
-            }),
+                    let was_focused = preferences_dialog.profile_row_grab_focus();
+                    debug_assert!(was_focused);
+                }
+            ),
         );
 
         dialog.present(Some(self));
@@ -333,17 +341,29 @@ impl Window {
 
         let recording = Recording::new();
         let handler_ids = vec![
-            recording.connect_state_notify(clone!(@weak self as obj => move |_| {
-                obj.update_view();
-                obj.update_inhibit();
-            })),
-            recording.connect_duration_notify(clone!(@weak self as obj => move |recording| {
-                let formatted_time = format::digital_clock(recording.duration());
-                obj.imp().recording_time_label.set_label(&formatted_time);
-            })),
-            recording.connect_finished(clone!(@weak self as obj => move |recording, res| {
-                obj.handle_recording_finished(recording, res);
-            })),
+            recording.connect_state_notify(clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_| {
+                    obj.update_view();
+                    obj.update_inhibit();
+                }
+            )),
+            recording.connect_duration_notify(clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |recording| {
+                    let formatted_time = format::digital_clock(recording.duration());
+                    obj.imp().recording_time_label.set_label(&formatted_time);
+                }
+            )),
+            recording.connect_finished(clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |recording, res| {
+                    obj.handle_recording_finished(recording, res);
+                }
+            )),
         ];
         imp.recording
             .replace(Some((recording.clone(), handler_ids)));
@@ -387,10 +407,15 @@ impl Window {
         match res {
             Ok((recording_file, duration)) => {
                 let duration = *duration;
-                glib::spawn_future_local(clone!(@strong recording_file => async move {
-                    let app = Application::get();
-                    app.send_record_success_notification(&recording_file, duration).await;
-                }));
+                glib::spawn_future_local(clone!(
+                    #[strong]
+                    recording_file,
+                    async move {
+                        let app = Application::get();
+                        app.send_record_success_notification(&recording_file, duration)
+                            .await;
+                    }
+                ));
 
                 let recent_manager = gtk::RecentManager::default();
                 recent_manager.add_item(&recording_file.uri());
@@ -565,22 +590,38 @@ impl Window {
         let app = Application::get();
         let settings = app.settings();
 
-        settings.connect_capture_mode_changed(clone!(@weak self as obj => move |_| {
-            obj.update_title_label();
-        }));
+        settings.connect_capture_mode_changed(clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move |_| {
+                obj.update_title_label();
+            }
+        ));
 
-        settings.connect_profile_changed(clone!(@weak self as obj => move |_| {
-            obj.update_audio_actions();
-            obj.update_subtitle_label();
-        }));
+        settings.connect_profile_changed(clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move |_| {
+                obj.update_audio_actions();
+                obj.update_subtitle_label();
+            }
+        ));
 
-        settings.connect_framerate_changed(clone!(@weak self as obj => move |_| {
-            obj.update_subtitle_label();
-        }));
+        settings.connect_framerate_changed(clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move |_| {
+                obj.update_subtitle_label();
+            }
+        ));
 
-        settings.connect_screencast_restore_token_changed(clone!(@weak self as obj => move |_| {
-            obj.update_forget_video_sources_action();
-        }));
+        settings.connect_screencast_restore_token_changed(clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move |_| {
+                obj.update_forget_video_sources_action();
+            }
+        ));
 
         self.add_action(&settings.create_record_desktop_audio_action());
         self.add_action(&settings.create_record_microphone_action());

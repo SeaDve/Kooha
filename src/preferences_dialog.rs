@@ -100,15 +100,27 @@ mod imp {
             settings
                 .bind_record_delay(&self.delay_row.get(), "value")
                 .build();
-            settings.connect_saving_location_changed(clone!(@weak obj => move |_| {
-                obj.update_file_chooser_label();
-            }));
-            settings.connect_profile_changed(clone!(@weak obj => move |_| {
-                obj.update_profile_row_selected();
-            }));
-            settings.connect_framerate_changed(clone!(@weak obj => move |_| {
-                obj.update_framerate_row_selected();
-            }));
+            settings.connect_saving_location_changed(clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.update_file_chooser_label();
+                }
+            ));
+            settings.connect_profile_changed(clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.update_profile_row_selected();
+                }
+            ));
+            settings.connect_framerate_changed(clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.update_framerate_row_selected();
+                }
+            ));
 
             obj.update_file_chooser_label();
             obj.update_profile_row_selected();
@@ -116,15 +128,20 @@ mod imp {
 
             // Load last active value first in `update_*_row` before connecting to
             // the signal to avoid unnecessary updates.
-            self.profile_row
-                .connect_selected_item_notify(clone!(@weak obj => move |row| {
+            self.profile_row.connect_selected_item_notify(clone!(
+                #[weak]
+                obj,
+                move |row| {
                     if let Some(item) = row.selected_item() {
                         let profile = profile_from_obj(&item);
                         obj.settings().set_profile(profile);
                     }
-                }));
-            self.framerate_row
-                .connect_selected_item_notify(clone!(@weak obj => move |row| {
+                }
+            ));
+            self.framerate_row.connect_selected_item_notify(clone!(
+                #[weak]
+                obj,
+                move |row| {
                     if let Some(item) = row.selected_item() {
                         let framerate = item
                             .downcast_ref::<BoxedAnyObject>()
@@ -132,7 +149,8 @@ mod imp {
                             .borrow::<gst::Fraction>();
                         obj.settings().set_framerate(*framerate);
                     }
-                }));
+                }
+            ));
         }
     }
 
@@ -217,37 +235,47 @@ impl PreferencesDialog {
         imp.framerate_row.set_factory(Some(&row_factory(
             &imp.framerate_row,
             &gettext("This frame rate may cause performance issues on the selected format."),
-            clone!(@strong settings => move |list_item| {
-                let item = list_item.item().unwrap();
-                let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
+            clone!(
+                #[strong]
+                settings,
+                move |list_item| {
+                    let item = list_item.item().unwrap();
+                    let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
 
-                let framerate = item
-                    .downcast_ref::<BoxedAnyObject>()
-                    .unwrap()
-                    .borrow::<gst::Fraction>();
-                item_row.set_title(format::framerate(*framerate));
+                    let framerate = item
+                        .downcast_ref::<BoxedAnyObject>()
+                        .unwrap()
+                        .borrow::<gst::Fraction>();
+                    item_row.set_title(format::framerate(*framerate));
 
-                unsafe {
-                    list_item.set_data(
-                        SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY,
-                        settings.connect_profile_changed(
-                            clone!(@weak list_item => move |settings| {
-                                update_framerate_row_shows_warning_icon(settings, &list_item);
-                            }),
-                        ),
-                    );
+                    unsafe {
+                        list_item.set_data(
+                            SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY,
+                            settings.connect_profile_changed(clone!(
+                                #[weak]
+                                list_item,
+                                move |settings| {
+                                    update_framerate_row_shows_warning_icon(settings, &list_item);
+                                }
+                            )),
+                        );
+                    }
+
+                    update_framerate_row_shows_warning_icon(&settings, list_item);
                 }
-
-                update_framerate_row_shows_warning_icon(&settings, list_item);
-            }),
-            clone!(@strong settings => move |list_item| {
-                unsafe {
-                    let handler_id = list_item
-                        .steal_data(SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY)
-                        .unwrap();
-                    settings.disconnect(handler_id);
+            ),
+            clone!(
+                #[strong]
+                settings,
+                move |list_item| {
+                    unsafe {
+                        let handler_id = list_item
+                            .steal_data(SETTINGS_PROFILE_CHANGED_HANDLER_ID_KEY)
+                            .unwrap();
+                        settings.disconnect(handler_id);
+                    }
                 }
-            }),
+            ),
         )));
 
         let framerate_model = {
@@ -323,56 +351,69 @@ fn row_factory(
     let factory = gtk::SignalListItemFactory::new();
 
     let warning_tooltip_text = warning_tooltip_text.to_string();
-    factory.connect_setup(clone!(@weak row => move |_, list_item| {
+    factory.connect_setup(move |_, list_item| {
         let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
 
         let item_row = ItemRow::new();
         item_row.set_warning_tooltip_text(warning_tooltip_text.as_str());
 
         list_item.set_child(Some(&item_row));
-    }));
+    });
 
-    factory.connect_bind(clone!(@weak row => move |_, list_item| {
-        let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
+    factory.connect_bind(clone!(
+        #[weak]
+        row,
+        move |_, list_item| {
+            let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
 
-        let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
+            let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
 
-        // Only show the selected icon when it is inside the given row's popover. This assumes that
-        // the parent of the given row is not a popover, so we can tell which is which.
-        if item_row.ancestor(gtk::Popover::static_type()).is_some() {
-            debug_assert!(row.ancestor(gtk::Popover::static_type()).is_none());
+            // Only show the selected icon when it is inside the given row's popover. This assumes that
+            // the parent of the given row is not a popover, so we can tell which is which.
+            if item_row.ancestor(gtk::Popover::static_type()).is_some() {
+                debug_assert!(row.ancestor(gtk::Popover::static_type()).is_none());
 
-            item_row.set_is_on_popover(true);
+                item_row.set_is_on_popover(true);
+
+                unsafe {
+                    list_item.set_data(
+                        ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY,
+                        row.connect_selected_item_notify(clone!(
+                            #[weak]
+                            list_item,
+                            move |row| {
+                                update_item_row_is_selected(row, &list_item);
+                            }
+                        )),
+                    );
+                }
+
+                update_item_row_is_selected(&row, list_item);
+            } else {
+                item_row.set_is_on_popover(false);
+            }
+
+            bind_cb(list_item);
+        }
+    ));
+
+    factory.connect_unbind(clone!(
+        #[weak]
+        row,
+        move |_, list_item| {
+            let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
 
             unsafe {
-                list_item.set_data(
-                    ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY,
-                    row.connect_selected_item_notify(clone!(@weak list_item => move |row| {
-                        update_item_row_is_selected(row, &list_item);
-                    })),
-                );
+                if let Some(handler_id) =
+                    list_item.steal_data(ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY)
+                {
+                    row.disconnect(handler_id);
+                }
             }
 
-            update_item_row_is_selected(&row, list_item);
-        } else {
-            item_row.set_is_on_popover(false);
+            unbind_cb(list_item);
         }
-
-        bind_cb(list_item);
-    }));
-
-    factory.connect_unbind(clone!(@weak row => move |_, list_item| {
-        let list_item = list_item.downcast_ref::<gtk::ListItem>().unwrap();
-
-        unsafe {
-            if let Some(handler_id) = list_item.steal_data(ROW_SELECTED_ITEM_NOTIFY_HANDLER_ID_KEY)
-            {
-                row.disconnect(handler_id);
-            }
-        }
-
-        unbind_cb(list_item);
-    }));
+    ));
 
     factory
 }

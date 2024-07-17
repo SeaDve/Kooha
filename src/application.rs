@@ -158,11 +158,15 @@ impl Application {
     }
 
     pub fn quit(&self) {
-        glib::spawn_future_local(clone!(@weak self as obj => async move {
-            if obj.quit_request().await.is_proceed() {
-                ApplicationExt::quit(&obj);
+        glib::spawn_future_local(clone!(
+            #[weak(rename_to = obj)]
+            self,
+            async move {
+                if obj.quit_request().await.is_proceed() {
+                    ApplicationExt::quit(&obj);
+                }
             }
-        }));
+        ));
     }
 
     async fn quit_request(&self) -> glib::Propagation {
@@ -182,28 +186,36 @@ impl Application {
             .parameter_type(Some(&String::static_variant_type()))
             .activate(|obj: &Self, _, param| {
                 let uri = param.unwrap().get::<String>().unwrap();
-                glib::spawn_future_local(clone!(@strong obj => async move {
-                    if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
-                        .launch_future(obj.active_window().as_ref())
-                        .await
-                    {
-                        tracing::error!("Failed to launch uri `{}`: {:?}", uri, err);
+                glib::spawn_future_local(clone!(
+                    #[strong]
+                    obj,
+                    async move {
+                        if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
+                            .launch_future(obj.active_window().as_ref())
+                            .await
+                        {
+                            tracing::error!("Failed to launch uri `{}`: {:?}", uri, err);
+                        }
                     }
-                }));
+                ));
             })
             .build();
         let show_in_files_action = gio::ActionEntry::builder("show-in-files")
             .parameter_type(Some(&String::static_variant_type()))
             .activate(|obj: &Self, _, param| {
                 let uri = param.unwrap().get::<String>().unwrap();
-                glib::spawn_future_local(clone!(@strong obj => async move {
-                    if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
-                        .open_containing_folder_future(obj.active_window().as_ref())
-                        .await
-                    {
-                        tracing::warn!("Failed to show `{}` in files: {:?}", uri, err);
+                glib::spawn_future_local(clone!(
+                    #[strong]
+                    obj,
+                    async move {
+                        if let Err(err) = gtk::FileLauncher::new(Some(&gio::File::for_uri(&uri)))
+                            .open_containing_folder_future(obj.active_window().as_ref())
+                            .await
+                        {
+                            tracing::warn!("Failed to show `{}` in files: {:?}", uri, err);
+                        }
                     }
-                }));
+                ));
             })
             .build();
         let quit_action = gio::ActionEntry::builder("quit")

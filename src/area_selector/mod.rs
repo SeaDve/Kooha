@@ -136,15 +136,21 @@ mod imp {
 
             let obj = self.obj();
 
-            self.view_port
-                .connect_selection_notify(clone!(@weak obj => move |_| {
+            self.view_port.connect_selection_notify(clone!(
+                #[weak]
+                obj,
+                move |_| {
                     obj.update_selection_ui();
-                }));
+                }
+            ));
 
-            self.view_port
-                .connect_paintable_rect_notify(clone!(@weak obj => move |_| {
+            self.view_port.connect_paintable_rect_notify(clone!(
+                #[weak]
+                obj,
+                move |_| {
                     obj.update_selection_ui();
-                }));
+                }
+            ));
 
             obj.update_selection_ui();
         }
@@ -248,11 +254,12 @@ impl AreaSelector {
         let bus_watch_guard = pipeline
             .bus()
             .unwrap()
-            .add_watch_local(
-                clone!(@weak this as obj => @default-return glib::ControlFlow::Break, move |_, message| {
-                    obj.handle_bus_message(message)
-                }),
-            )
+            .add_watch_local(clone!(
+                #[weak]
+                this,
+                #[upgrade_or_panic]
+                move |_, message| this.handle_bus_message(message)
+            ))
             .unwrap();
         imp.bus_watch_guard.set(bus_watch_guard).unwrap();
 

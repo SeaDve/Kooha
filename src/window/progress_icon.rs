@@ -44,12 +44,15 @@ mod imp {
 
             let obj = self.obj();
 
-            let animation_target =
-                adw::CallbackAnimationTarget::new(clone!(@weak obj => move |value| {
+            let animation_target = adw::CallbackAnimationTarget::new(clone!(
+                #[weak]
+                obj,
+                move |value| {
                     let imp = obj.imp();
                     imp.display_progress.set(value);
                     obj.queue_draw();
-                }));
+                }
+            ));
             let animation = adw::TimedAnimation::builder()
                 .widget(&*obj)
                 .duration(ANIMATION_DURATION_MS)
