@@ -214,7 +214,7 @@ impl Application {
         let show_preferences_action = gio::ActionEntry::builder("show-preferences")
             .activate(|obj: &Self, _, _| {
                 let dialog = PreferencesDialog::new(obj.settings());
-                dialog.present(&obj.window());
+                dialog.present(Some(&obj.window()));
             })
             .build();
         let show_about_action = gio::ActionEntry::builder("show-about")

@@ -288,7 +288,7 @@ impl Window {
         }
 
         dialog.add_response(OK_RESPONSE_ID, &gettext("Ok, Got It"));
-        dialog.present(self);
+        dialog.present(Some(self));
     }
 
     fn present_no_profile_error_dialog(&self) {
@@ -313,14 +313,14 @@ impl Window {
 
                 let app = Application::get();
                 let preferences_dialog = PreferencesDialog::new(app.settings());
-                preferences_dialog.present(&obj);
+                preferences_dialog.present(Some(&obj));
 
                 let was_focused = preferences_dialog.profile_row_grab_focus();
                 debug_assert!(was_focused);
             }),
         );
 
-        dialog.present(self);
+        dialog.present(Some(self));
     }
 
     async fn toggle_record(&self) {

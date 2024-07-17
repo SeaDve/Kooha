@@ -51,7 +51,7 @@ pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {
         "https://hosted.weblate.org/projects/seadve/kooha",
     );
 
-    dialog.present(parent);
+    dialog.present(Some(parent));
 }
 
 fn release_notes() -> &'static str {
