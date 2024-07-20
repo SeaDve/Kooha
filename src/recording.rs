@@ -575,8 +575,10 @@ impl Recording {
                 tracing::trace!("Received async-done message on bus: {:?}", ad);
 
                 // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
-                self.pipeline()
-                    .debug_to_dot_file_with_ts(gst::DebugGraphDetails::VERBOSE, "kooha-pipeline");
+                self.pipeline().debug_to_dot_file_with_ts(
+                    gst::DebugGraphDetails::VERBOSE,
+                    "kooha-recording-pipeline",
+                );
 
                 glib::ControlFlow::Continue
             }

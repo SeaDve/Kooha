@@ -276,6 +276,12 @@ impl AreaSelector {
         // Wait for pipeline to be on playing state
         async_done_rx.await.unwrap()?;
 
+        // This is enabled by setting `GST_DEBUG_DUMP_DOT_DIR` to a directory (e.g. `GST_DEBUG_DUMP_DOT_DIR=.`).
+        pipeline.debug_to_dot_file_with_ts(
+            gst::DebugGraphDetails::VERBOSE,
+            "kooha-area-selector-pipeline",
+        );
+
         // Get stream size
         let caps = videosrc_bin
             .static_pad("src")
