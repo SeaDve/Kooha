@@ -269,9 +269,11 @@ pub fn make_videosrc_bin(
     let videorate_capsfilter = gst::ElementFactory::make("capsfilter")
         .property(
             "caps",
-            gst::Caps::builder("video/x-raw")
-                .field("framerate", framerate)
-                .build(),
+            &optional_dmabuf_feature_caps(
+                gst::Structure::builder("video/x-raw")
+                    .field("framerate", framerate)
+                    .build(),
+            ),
         )
         .build()?;
     bin.add_many([&videorate, &videorate_capsfilter])?;
@@ -295,7 +297,10 @@ pub fn make_videosrc_bin(
                 let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
                 let videoflip = make_videoflip()?;
                 bin.add_many([&pipewiresrc, &videoflip])?;
-                pipewiresrc.link(&videoflip)?;
+                pipewiresrc.link_filtered(
+                    &videoflip,
+                    &optional_dmabuf_feature_caps(gst::Structure::builder("video/x-raw").build()),
+                )?;
 
                 let compositor_sink_pad = compositor
                     .request_pad_simple("sink_%u")
@@ -408,6 +413,23 @@ fn make_audiosrc_bin<'a>(
     }
 
     Ok(bin)
+}
+
+/// Creates a caps with the given structure and adds the same structure but with `memory:DMABuf` feature.
+fn optional_dmabuf_feature_caps(original: gst::Structure) -> gst::Caps {
+    let dmabuf_feature = gst::CapsFeatures::new(["memory:DMABuf"]);
+
+    let with_dma_drm_format = {
+        let mut s = original.clone();
+        s.set("format", "DMA_DRM");
+        s
+    };
+
+    gst::Caps::builder_full()
+        .structure_with_features(with_dma_drm_format, dmabuf_feature.clone())
+        .structure_with_features(original.clone(), dmabuf_feature)
+        .structure(original)
+        .build()
 }
 
 fn round_to_even(number: i32) -> i32 {
