@@ -295,7 +295,7 @@ mod tests {
             }
 
             // FIXME Remove this. This is needed as x264enc is somehow not found.
-            if profile.id() == "mp4" {
+            if matches!(profile.id(), "mp4" | "matroska-h264") {
                 continue;
             }
 
