@@ -290,7 +290,7 @@ mod tests {
 
         for profile in Profile::all().unwrap() {
             // These profiles are not supported by the CI runner.
-            if matches!(profile.id(), "vaapi-vp8" | "vaapi-vp9" | "va-h264") {
+            if matches!(profile.id(), "va-h264") {
                 continue;
             }
 

@@ -99,29 +99,3 @@ experimental:
       queue !
       mpegaudioparse
     muxer: mp4mux fragment-duration=500 fragment-mode=first-moov-then-finalise
-
-  - id: vaapi-vp8
-    name: WebM VAAPI VP8
-    extension: webm
-    videoenc: >
-      glupload ! glcolorconvert ! gldownload !
-      vaapivp8enc !
-      queue
-    audioenc: >
-      audioconvert !
-      opusenc !
-      queue
-    muxer: webmmux
-
-  - id: vaapi-vp9
-    name: WebM VAAPI VP9
-    extension: webm
-    videoenc: >
-      glupload ! glcolorconvert ! gldownload !
-      vaapivp9enc !
-      queue
-    audioenc: >
-      audioconvert !
-      opusenc !
-      queue
-    muxer: webmmux
