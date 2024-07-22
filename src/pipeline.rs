@@ -247,15 +247,15 @@ fn make_videocrop(data: &SelectAreaData) -> Result<gst::Element> {
 ///
 /// Single stream:
 ///
-/// pipewiresrc -> videoflip -> videorate
+/// pipewiresrc -> videoconvert -> videoflip -> videorate
 ///
 /// Multiple streams:
 ///
-/// pipewiresrc1 -> videoflip -> |
-///                              |
-/// pipewiresrc2 -> videoflip -> | -> compositor -> videorate
-///                              |
-/// pipewiresrcn -> videoflip -> |
+/// pipewiresrc1 -> videoconvert -> videoflip -> |
+///                                              |
+/// pipewiresrc2 -> videoconvert -> videoflip -> | -> compositor -> videorate
+///                                              |
+/// pipewiresrcn -> videoconvert -> videoflip -> |
 pub fn make_videosrc_bin(
     fd: RawFd,
     streams: &[Stream],
@@ -283,9 +283,10 @@ pub fn make_videosrc_bin(
         [] => bail!("No streams provided"),
         [stream] => {
             let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
+            let videoconvert = gst::ElementFactory::make("videoconvert").build()?;
             let videoflip = make_videoflip()?;
-            bin.add_many([&pipewiresrc, &videoflip])?;
-            gst::Element::link_many([&pipewiresrc, &videoflip, &videorate])?;
+            bin.add_many([&pipewiresrc, &videoconvert, &videoflip])?;
+            gst::Element::link_many([&pipewiresrc, &videoconvert, &videoflip, &videorate])?;
         }
         streams => {
             let compositor = gst::ElementFactory::make("compositor").build()?;
@@ -295,12 +296,14 @@ pub fn make_videosrc_bin(
             let mut last_pos = 0;
             for stream in streams {
                 let pipewiresrc = make_pipewiresrc(fd, &stream.node_id().to_string())?;
+                let videoconvert = gst::ElementFactory::make("videoconvert").build()?;
                 let videoflip = make_videoflip()?;
-                bin.add_many([&pipewiresrc, &videoflip])?;
+                bin.add_many([&pipewiresrc, &videoconvert, &videoflip])?;
                 pipewiresrc.link_filtered(
-                    &videoflip,
+                    &videoconvert,
                     &optional_dmabuf_feature_caps(gst::Structure::builder("video/x-raw").build()),
                 )?;
+                videoconvert.link(&videoflip)?;
 
                 let compositor_sink_pad = compositor
                     .request_pad_simple("sink_%u")
