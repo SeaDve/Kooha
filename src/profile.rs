@@ -294,7 +294,7 @@ mod tests {
                 continue;
             }
 
-            // FIXME No idea why x264enc is not found
+            // FIXME Remove this. This is needed as x264enc is somehow not found.
             if profile.id() == "mp4" {
                 continue;
             }
