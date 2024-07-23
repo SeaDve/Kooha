@@ -22,12 +22,15 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/screenshot.png</image>
+      <caption>Recording options and button to start recording</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/screenshot2.png</image>
+      <caption>In-progress recording duration and button to stop recording</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/SeaDve/Kooha/main/data/screenshots/screenshot3.png</image>
+      <caption>Countdown to start recording and button to cancel recording</caption>
     </screenshot>
   </screenshots>
   <url type="bugtracker">https://github.com/SeaDve/Kooha/issues</url>
