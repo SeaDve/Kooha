@@ -261,6 +261,8 @@ pub fn make_videosrc_bin(
     streams: &[Stream],
     framerate: gst::Fraction,
 ) -> Result<gst::Bin> {
+    // TODO Create a bin that hotswaps compositor depending whether gl is supported or not.
+
     let bin = gst::Bin::builder().name("kooha-pipewiresrc-bin").build();
 
     let videorate = gst::ElementFactory::make("videorate")
