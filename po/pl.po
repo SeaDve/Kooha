@@ -8,13 +8,14 @@
 # gnu-ewm <gnu.ewm@protonmail.com>, 2022.
 # David <troianovskyidavid@gmail.com>, 2023.
 # Eryk Michalak <gnu.ewm@protonmail.com>, 2023, 2024.
+# Kuba <pojg77g1@kbb.anonaddy.me>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-06-15 03:39+0000\n"
-"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"PO-Revision-Date: 2024-08-09 19:09+0000\n"
+"Last-Translator: Kuba <pojg77g1@kbb.anonaddy.me>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/seadve/kooha/pl/>"
 "\n"
 "Language: pl\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -71,7 +72,7 @@ msgstr "📼 Obsługuje WebM, MP4, GIF i formaty Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Zaznacz monitor lub porcję ekranu do nagrania"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -294,7 +295,7 @@ msgstr "Pokaż w plikach"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Błąd w znalezieniu domyślnego urządzenia audio"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -331,6 +332,7 @@ msgstr "Nie udało się ustawić katalogu z nagraniami"
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Liczba klatek na sekundę może powodować problemy wydajności w tym formacie."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -351,7 +353,7 @@ msgstr "Nie udało się rozpocząć nagrywania"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Sprawdź {link} po pomoc."
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
@@ -368,7 +370,7 @@ msgstr "Wystąpił błąd podczas nagrywania"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Błąd w otwarciu \"{path}\" do zapisu"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
@@ -383,12 +385,14 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Nagrywanie jest aktualnie w toku. Nagłe wyjście może zrobić nagranie "
+"nieodtwarzalnym. Proszę zatrzymaj nagranie przed wyjściem."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
+msgstr "Wyjście zatrzyma przetwarzanie i zrobi nagranie nieodtwarzalnym."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
@@ -436,7 +440,7 @@ msgstr "Otwarto"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Nagrywanie jest w toku"
 
 #: src/window/mod.rs:485
 msgid "Paused"
