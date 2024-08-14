@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Context, Result};
+use anyhow::{anyhow, ensure, Context, Result};
 use gettextrs::gettext;
 use gst::prelude::*;
 
@@ -35,40 +35,8 @@ pub fn find_default(class: DeviceClass) -> Result<gst::Device> {
     tracing::debug!("Finding device name for class `{:?}`", class);
 
     for device in devices {
-        if !device.has_classes(class.as_str()) {
-            tracing::debug!(
-                "Skipping device `{}` as it has unknown device class `{}`",
-                device.name(),
-                device.device_class()
-            );
-            continue;
-        }
-
-        let Some(properties) = device.properties() else {
-            tracing::warn!(
-                "Skipping device `{}` as it has no properties",
-                device.name()
-            );
-            continue;
-        };
-
-        let is_default = match properties.get::<bool>("is-default") {
-            Ok(is_default) => is_default,
-            Err(err) => {
-                tracing::warn!(
-                    "Skipping device `{}` as it has no `is-default` property: {:?}",
-                    device.name(),
-                    err
-                );
-                continue;
-            }
-        };
-
-        if !is_default {
-            tracing::debug!(
-                "Skipping device `{}` as it is not the default",
-                device.name()
-            );
+        if let Err(err) = validate_device(&device, class) {
+            tracing::debug!("Skipping device `{}`: {:?}", device.name(), err);
             continue;
         }
 
@@ -76,4 +44,22 @@ pub fn find_default(class: DeviceClass) -> Result<gst::Device> {
     }
 
     Err(anyhow!("Failed to find a default device"))
+}
+
+fn validate_device(device: &gst::Device, class: DeviceClass) -> Result<()> {
+    ensure!(
+        device.has_classes(class.as_str()),
+        "Unknown device class `{}`",
+        device.device_class()
+    );
+
+    let is_default = device
+        .properties()
+        .context("No properties")?
+        .get::<bool>("is-default")
+        .context("No `is-default` property")?;
+
+    ensure!(is_default, "Not the default device");
+
+    Ok(())
 }
