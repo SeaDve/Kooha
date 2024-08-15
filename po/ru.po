@@ -14,22 +14,23 @@
 # Vik <xasertop@gmail.com>, 2022.
 # Vik <k3kelm4vw@mozmail.com>, 2022.
 # Сергей <asvmail.as@gmail.com>, 2023, 2024.
+# Степан Наумов <st250492@yandex.ru>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-02-26 09:02+0000\n"
-"Last-Translator: Сергей <asvmail.as@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/seadve/kooha/ru/"
-">\n"
+"PO-Revision-Date: 2024-08-15 06:09+0000\n"
+"Last-Translator: Степан Наумов <st250492@yandex.ru>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/seadve/kooha/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -103,7 +104,7 @@ msgstr "Готово"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr "Сбросить выбор"
+msgstr "Сброс"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -167,7 +168,7 @@ msgstr "Вкл./Выкл. паузу"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Отменить запись"
+msgstr "Отменить запись \"ignore-same\""
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -243,7 +244,7 @@ msgstr "Остановить"
 
 #: data/resources/ui/window.ui:191
 msgid "Pause Recording"
-msgstr "Приостановить запись"
+msgstr "Пауза \"ignore-same\""
 
 #: data/resources/ui/window.ui:214
 msgid "Recording in…"
@@ -382,7 +383,7 @@ msgstr "Выберите папку для записей"
 
 #: src/window/mod.rs:79
 msgid "Failed to toggle pause"
-msgstr "Не удалось переключить паузу"
+msgstr "Не удалось включить/выключить паузу"
 
 #: src/window/mod.rs:196
 msgid ""
@@ -455,7 +456,7 @@ msgstr "Приостановлено"
 
 #: src/window/mod.rs:522
 msgid "Normal"
-msgstr "Обычный"
+msgstr "Нормальный"
 
 #: src/window/mod.rs:523
 msgid "Selection"
