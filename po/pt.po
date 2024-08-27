@@ -7,13 +7,14 @@
 # Juliano de Souza Camargo <julianosc@protonmail.com>, 2021.
 # Laura Vasconcelos Pereira Felippe <lauravpf@gmail.com>, 2022.
 # Danilo Alfredo Vieira <danilovieira978@gmail.com>, 2023.
+# Alexandre Vergueiro <alexandrevergueirojr@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-08-27 21:09+0000\n"
+"Last-Translator: Alexandre Vergueiro <alexandrevergueirojr@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/seadve/kooha/"
 "pt/>\n"
 "Language: pt\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -67,7 +68,7 @@ msgstr "📼 Suporte para WebM, MP4, GIF e formatos Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Selecione um monitor ou uma parte da tela para gravar"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -107,7 +108,7 @@ msgstr "Atraso (Segundos)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Intervalo de tempo antes da gravação começar"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -115,7 +116,7 @@ msgstr "Pasta de Gravações"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Pasta destino para as gravações"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -143,7 +144,7 @@ msgstr "Mostrar atalhos"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
-msgstr "Desistir"
+msgstr "Sair"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
@@ -151,15 +152,15 @@ msgstr "Gravando"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr "Alternar o botão de gravação"
+msgstr "Alternar gravação"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr "Alternar o botão de pausar"
+msgstr "Alternar pausa"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Cancelar a gravação"
+msgstr "Cancelar gravação"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -187,7 +188,7 @@ msgstr "Capturar um Monitor ou Janela"
 
 #: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
-msgstr "Capturar uma Seleção da ecrã"
+msgstr "Capturar uma Seleção da tela"
 
 #: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
@@ -251,24 +252,24 @@ msgstr "Em andamento…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr "Preferências"
+msgstr "_Preferências"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr "Atalhos do teclado"
+msgstr "_Atalhos do teclado"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
-msgstr "Acerca do Kooha"
+msgstr "_Acerca do Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr "créditos do Tradutor"
+msgstr "Créditos do tradutor"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Doe (compre um café para mim)"
+msgstr "Doe (Compre um café para mim)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -281,15 +282,15 @@ msgstr "Traduzir"
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr "Gravação concluída"
+msgstr "Captura de tela gravada"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Mostrar nos Ficheiros"
+msgstr "Mostrar nos arquivos"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Falhou em buscar o driver de áudio padrão"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -299,30 +300,32 @@ msgstr "Certifique-se de que tem o PulseAudio instalado no seu sistema."
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} hora"
+msgstr[1] "{time} horas"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} minutos"
+msgstr[1] "{time} minutos"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} segundo"
+msgstr[1] "{time} segundos"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Falhou em determinar a pasta de gravação"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Esta taxa de quadros pode causar problemas de desempenho no formato "
+"selecionado."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
@@ -360,11 +363,11 @@ msgstr "Um erro ocorreu durante a gravação"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
-msgstr "Falha ao abrir “{path}” para escrita"
+msgstr "Falha ao abrir “{path}” para gravar"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr "Selecione pasta de gravações"
+msgstr "Selecione a pasta de gravações"
 
 #: src/window/mod.rs:79
 msgid "Failed to toggle pause"
@@ -375,16 +378,19 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Uma gravação está atualmente em progresso. Sair imediatamente pode tornar a "
+"gravação não visualizável. Por favor, pare a gravação antes de sair."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Sair ira cancelar o processamento e pode tornar a gravação não visualizável."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Sair da aplicação?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
@@ -403,7 +409,6 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: src/window/mod.rs:291
-#, fuzzy
 msgid "Ok, Got It"
 msgstr "OK, entendi"
 
@@ -429,7 +434,7 @@ msgstr "Abrir"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Uma gravação está em progresso"
 
 #: src/window/mod.rs:485
 msgid "Paused"
