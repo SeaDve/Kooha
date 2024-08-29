@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-05-17 20:01+0000\n"
+"PO-Revision-Date: 2024-08-29 12:09+0000\n"
 "Last-Translator: victor dargallo <victordargallo@disroot.org>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/seadve/kooha/ca/>"
 "\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -181,7 +181,6 @@ msgid "Toggle Pointer"
 msgstr "Commuta el punter"
 
 #: data/resources/ui/window.ui:24
-#, fuzzy
 msgid "Main Menu"
 msgstr "Menú principal"
 
