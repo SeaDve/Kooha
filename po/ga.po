@@ -7,425 +7,447 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-09-02 10:09+0000\n"
+"Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
+"Language-Team: Irish <https://hosted.weblate.org/projects/seadve/kooha/ga/>\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
 "n>6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
 #: src/main.rs:71
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Taifead go galánta do scáileán"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Taifeadán;Scáileán;Físeán;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "Gabh do scáileán ar bhealach iomasach agus simplí gan aon seachrán."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Is taifeadán scáileáin simplí é Kooha le comhéadan íostach. Is féidir leat "
+"cliceáil ar an gcnaipe taifead gan a bheith a chumrú a bunch de shocruithe."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Áirítear ar phríomhghnéithe Kooha na nithe seo a leanas:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Taifead micreafón, fuaim deisce, nó an dá cheann ag an am céanna"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Tacaíocht d'fhormáidí WebM, MP4, GIF, agus Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Roghnaigh monatóir nó cuid den scáileán le taifeadadh"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Suíomh coigilte inchumraithe, infheictheacht an phointeora, ráta fráma, "
+"agus moill"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Ionchódú luathaithe crua-earraí turgnamhacha"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Roghnaigh Réimse"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
-msgstr ""
+msgstr "Cealaigh"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Déanta"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Athshocraigh Roghnú"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "Ginearálta"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Moill (Soicindí)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Eatramh ama sula dtosaíonn an taifeadadh"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Fillteán Taifeadtaí"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Fillteán sprice do na taifeadtaí"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "Físeán"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "Formáid"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "Ráta Fráma"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Roghchlár Oscailte"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Taispeáin Roghanna"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Taispeáin Aicearraí"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
-msgstr ""
+msgstr "Scoir"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
-msgstr ""
+msgstr "Taifeadadh"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr ""
+msgstr "Scoránaigh Taifead"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Scoránaigh Sos"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "Cealaigh Taifead"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
-msgstr ""
+msgstr "Socruithe"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Scoránaigh Fuaime Deisce"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Scoránaigh Micreafón"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Scoránaigh Pointeoir"
 
 #: data/resources/ui/window.ui:24
 msgid "Main Menu"
-msgstr ""
+msgstr "Príomh-Roghchlár"
 
 #: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Gabháil Monatóir nó Fuinneog"
 
 #: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Gabháil Roghnú Scáileáin"
 
 #: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Cumasaigh Fuaime Deisce"
 
 #: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Díchumasaigh Fuaime Deisce"
 
 #: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Cumasaigh Micreafón"
 
 #: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Díchumasaigh Micreafón"
 
 #: data/resources/ui/window.ui:104
 msgid "Show Pointer"
-msgstr ""
+msgstr "Taispeáin Pointeoir"
 
 #: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Folaigh Pointeoir"
 
 #: data/resources/ui/window.ui:115
 msgid "Start Recording"
-msgstr ""
+msgstr "Tosaigh Taifeadadh"
 
 #: data/resources/ui/window.ui:116
 msgid "Record"
-msgstr ""
+msgstr "Taifead"
 
 #: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Nábac Foinsí Físeáin Roghnaithe Roimhe Seo"
 
 #: data/resources/ui/window.ui:180
 msgid "Stop Recording"
-msgstr ""
+msgstr "Stop Taifeadadh"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: data/resources/ui/window.ui:191
 msgid "Pause Recording"
-msgstr ""
+msgstr "Taifeadadh Sos"
 
 #: data/resources/ui/window.ui:214
 msgid "Recording in…"
-msgstr ""
+msgstr "Ag taifeadadh i…"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Cealaigh Taifeadadh"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Ag sileadh…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr ""
+msgstr "_Roghanna"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Aicearraí méarchláir"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Maidir le Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr ""
+msgstr "creidiúintí aistritheora"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Deonaigh (Ceannaigh Caife Liom)"
 
 #: src/about.rs:46
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/about.rs:48
 msgid "Translate"
-msgstr ""
+msgstr "Aistrigh"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Screencast taifeadta"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "Taispeáin i gComhaid"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Theip ar an ngléas fuaime réamhshocraithe a aimsiú"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Cinntigh go bhfuil PulseAudio suiteáilte agat i do chóras."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time}uair"
+msgstr[1] "{time} uaireanta"
+msgstr[2] "{time} uaireanta"
+msgstr[3] "{time} uaireanta"
+msgstr[4] "{time} uaireanta"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:31
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} nóiméad"
+msgstr[1] "{time} nóiméaid"
+msgstr[2] "{time} nóiméaid"
+msgstr[3] "{time} nóiméaid"
+msgstr[4] "{time} nóiméaid"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:38
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} soicind"
+msgstr[1] "{time} soicindí"
+msgstr[2] "{time} soicindí"
+msgstr[3] "{time} soicindí"
+msgstr[4] "{time} soicindí"
 
 #: src/preferences_dialog.rs:65
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Theip ar fhillteán taifeadtaí a shocrú"
 
 #: src/preferences_dialog.rs:208
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Féadfaidh an ráta fráma seo a bheith ina chúis le saincheisteanna "
+"feidhmíochta ar an bhformáid roghnaithe."
 
 #: src/preferences_dialog.rs:247
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Tá an fhormáid seo turgnamhach agus ní thacaítear léi."
 
 #: src/preferences_dialog.rs:254 src/window/mod.rs:535
 msgid "None"
-msgstr ""
+msgstr "Dada"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Níl aon phróifíl ghníomhach ann"
 
 #: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Theip ar an taifeadadh a thosú"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Seiceáil {link} le haghaidh cabhrach."
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Seans nach bhfuil breiseán GStreamer suiteáilte."
 
 #: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Cinntigh go bhfuil an suíomh coigilte ann agus go bhfuil rochtain air."
 
 #: src/recording.rs:480
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Tharla earráid agus an taifeadadh"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:486
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Theip ar “{path}” a oscailt chun é a scríobh"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Roghnaigh Fillteán Taifeadtaí"
 
 #: src/window/mod.rs:79
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Theip ar scoránú sos"
 
 #: src/window/mod.rs:196
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Tá taifeadadh ar siúl faoi láthair. D'fhéadfadh sé nach bhféadfaí an "
+"taifeadadh a sheinm má scoirtear láithreach. Stop an taifeadadh roimh scor."
 
 #: src/window/mod.rs:199
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Má scoireann tú, cuirfear an phróiseáil ar ceal agus d'fhéadfadh sé go "
+"mbeifear in ann an taifeadadh a sheinm."
 
 #: src/window/mod.rs:205
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Scoir an Iarratas?"
 
 #: src/window/mod.rs:253
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Cóipeáil chuig an ngearrthaisce"
 
 #: src/window/mod.rs:258
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Cóipeáladh chuig an ngearrthaisce"
 
 #: src/window/mod.rs:264
 msgid "Show detailed error"
-msgstr ""
+msgstr "Taispeáin earráid mhionsonraithe"
 
 #: src/window/mod.rs:286
 msgid "Help"
-msgstr ""
+msgstr "Cabhrú"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Ceart go leor, thuig mé"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Oscail Roghanna?"
 
 #: src/window/mod.rs:301
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Seans nach raibh an fhormáid a roghnaíodh roimhe seo ar fáil. Oscail "
+"roghanna agus roghnaigh formáid chun leanúint ar aghaidh ag taifeadadh."
 
 #: src/window/mod.rs:305
 msgid "Later"
-msgstr ""
+msgstr "Níos déanaí"
 
 #: src/window/mod.rs:307
 msgid "Open"
-msgstr ""
+msgstr "Oscail"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Tá taifeadadh ar siúl"
 
 #: src/window/mod.rs:485
 msgid "Paused"
-msgstr ""
+msgstr "Ar Sos"
 
 #: src/window/mod.rs:522
 msgid "Normal"
-msgstr ""
+msgstr "Gnáth"
 
 #: src/window/mod.rs:523
 msgid "Selection"
-msgstr ""
+msgstr "Roghnú"
