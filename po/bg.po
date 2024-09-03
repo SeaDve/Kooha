@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the kooha package.
 # Victor Keranov <vkeranov@gmail.com>, 2022.
 # twlvnn <kraft_werk@tutanota.com>, 2024.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-04-28 13:13+0200\n"
+"PO-Revision-Date: 2024-09-03 21:34+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
-"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/seadve/kooha/"
+"bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 46.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -96,7 +96,7 @@ msgstr "Връщане на избора"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "Основни"
+msgstr "Общи"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
@@ -128,7 +128,7 @@ msgstr "Честота на кадри"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr "Отвори меню"
+msgstr "Отваряне на менюто"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
@@ -140,7 +140,7 @@ msgstr "Покажи клавишни комбинации"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
-msgstr "Изход"
+msgstr "Спиране на програмата"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
@@ -261,7 +261,9 @@ msgstr "_Относно Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr "Victor Keranov"
+msgstr ""
+"Victor Keranov\n"
+"twlvnn kraft_werk <kraft_werk@tutanota.com>"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
