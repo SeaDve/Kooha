@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-09-03 21:34+0000\n"
+"PO-Revision-Date: 2024-09-04 22:09+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/seadve/kooha/"
 "bg/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.7.2-rc\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
@@ -84,7 +84,7 @@ msgstr "Избиране на участъка"
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:210
 msgid "Cancel"
-msgstr "Откажи"
+msgstr "Отказване"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
@@ -136,7 +136,7 @@ msgstr "Показване на настройките"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
-msgstr "Покажи клавишни комбинации"
+msgstr "Показване на клавишните комбинации"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
 msgid "Quit"
@@ -144,7 +144,7 @@ msgstr "Спиране на програмата"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
 msgid "Recording"
-msgstr "Запис"
+msgstr "Записване"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
@@ -156,7 +156,7 @@ msgstr "Превключване на пауза"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr "Отказ на запис"
+msgstr "Прекратяване на записването"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -180,11 +180,11 @@ msgstr "Основно меню"
 
 #: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
-msgstr "Запис на целия екран или на прозорец"
+msgstr "Записване на целия екран или на прозорец"
 
 #: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
-msgstr "Запис на участък от екрана"
+msgstr "Записване на участък от екрана"
 
 #: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
@@ -196,51 +196,51 @@ msgstr "Изключване на звука на работния плот"
 
 #: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
-msgstr "Разреши микрофона"
+msgstr "Включване на микрофона"
 
 #: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
-msgstr "Забрани микрофона"
+msgstr "Забраняване микрофона"
 
 #: data/resources/ui/window.ui:104
 msgid "Show Pointer"
-msgstr "Покажи курсора"
+msgstr "Показване на показалеца"
 
 #: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
-msgstr "Скрий курсора"
+msgstr "Скриване на показалеца"
 
 #: data/resources/ui/window.ui:115
 msgid "Start Recording"
-msgstr "Започни запис"
+msgstr "Започване на запис"
 
 #: data/resources/ui/window.ui:116
 msgid "Record"
-msgstr "Запис"
+msgstr "Записване"
 
 #: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
-msgstr "Забрави предишно избрани източници на запис"
+msgstr "Забравяне на предишно избраните източници на записване"
 
 #: data/resources/ui/window.ui:180
 msgid "Stop Recording"
-msgstr "Спри запис"
+msgstr "Спиране на записването"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop"
-msgstr "Спри"
+msgstr "Спиране"
 
 #: data/resources/ui/window.ui:191
 msgid "Pause Recording"
-msgstr "Пауза запис"
+msgstr "Пауза на записването"
 
 #: data/resources/ui/window.ui:214
 msgid "Recording in…"
-msgstr "Запис след…"
+msgstr "Записване след…"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr "Откажи запис"
+msgstr "Прекратяване на записването"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
@@ -256,7 +256,7 @@ msgstr "_Клавишни комбинации"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
-msgstr "_Относно Kooha"
+msgstr "_Относно „Kooha“"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
@@ -284,7 +284,7 @@ msgstr "Клипът е записан"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Покажи във файлове"
+msgstr "Показване във „Файлове“"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
@@ -292,7 +292,7 @@ msgstr "Неуспешно намиране на звуковото устрой
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr "Убеди се, че имаш инсталиран PulseAudio на твоята система."
+msgstr "Убедете се, че имате инсталиран PulseAudio на твоята система."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format_time.rs:24
@@ -352,7 +352,7 @@ msgstr "Възможно е да не е инсталирана приставк
 
 #: src/recording.rs:264 src/recording.rs:489
 msgid "Make sure that the saving location exists and is accessible."
-msgstr "Моля увери се, че локацията за запис съществува и е достъпна."
+msgstr "Уверете се, че местоположението за записа съществува и е достъпно."
 
 #: src/recording.rs:480
 msgid "An error occurred while recording"
@@ -434,7 +434,7 @@ msgstr "Отваряне"
 
 #: src/window/mod.rs:437
 msgid "A recording is in progress"
-msgstr "Запис е в ход"
+msgstr "Записване е в ход"
 
 #: src/window/mod.rs:485
 msgid "Paused"
@@ -442,7 +442,7 @@ msgstr "На пауза"
 
 #: src/window/mod.rs:522
 msgid "Normal"
-msgstr "Нормален"
+msgstr "Нормално"
 
 #: src/window/mod.rs:523
 msgid "Selection"
