@@ -74,7 +74,7 @@ mod imp {
                 return;
             }
 
-            self.title.set(title);
+            self.title.replace(title);
             obj.update_title_label();
             obj.notify_title();
         }
@@ -86,7 +86,7 @@ mod imp {
                 return;
             }
 
-            self.warning_tooltip_text.set(warning_tooltip_text);
+            self.warning_tooltip_text.replace(warning_tooltip_text);
             obj.update_warning_icon_tooltip_text();
             obj.notify_warning_tooltip_text();
         }
