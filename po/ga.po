@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-21 20:05+0800\n"
-"PO-Revision-Date: 2024-09-02 10:09+0000\n"
+"PO-Revision-Date: 2024-09-23 13:15+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/seadve/kooha/ga/>\n"
 "Language: ga\n"
@@ -226,7 +226,7 @@ msgstr "Stop Taifeadadh"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop"
-msgstr "Stop"
+msgstr "Stad"
 
 #: data/resources/ui/window.ui:191
 msgid "Pause Recording"
@@ -259,11 +259,11 @@ msgstr "_Maidir le Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:33
 msgid "translator-credits"
-msgstr "creidiúintí aistritheora"
+msgstr "aistritheoir-creidmheasa"
 
 #: src/about.rs:43
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Deonaigh (Ceannaigh Caife Liom)"
+msgstr "Deonaigh (Ceannaigh caife dom)"
 
 #: src/about.rs:46
 msgid "GitHub"
@@ -414,7 +414,7 @@ msgstr "Cabhrú"
 
 #: src/window/mod.rs:291
 msgid "Ok, Got It"
-msgstr "Ceart go leor, thuig mé"
+msgstr "Ceart go leor, Fuair mé"
 
 #: src/window/mod.rs:300
 msgid "Open Preferences?"
