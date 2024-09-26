@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 20:05+0800\n"
+"POT-Creation-Date: 2024-09-26 20:06+0800\n"
 "PO-Revision-Date: 2024-09-04 22:09+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/seadve/kooha/"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Generator: Weblate 5.7.2-rc\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
-#: src/main.rs:71
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -77,12 +77,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Експериментално хардуерно ускорено кодиране"
 
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
+msgid "Recording options and button to start recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+msgid "In-progress recording duration and button to stop recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
+msgid "Countdown to start recording and button to cancel recording"
+msgstr ""
+
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "Избиране на участъка"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:210
+#: data/resources/ui/window.ui:276 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "Отказване"
 
@@ -138,11 +150,11 @@ msgstr "Показване на настройките"
 msgid "Show Shortcuts"
 msgstr "Показване на клавишните комбинации"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
 msgid "Quit"
 msgstr "Спиране на програмата"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
 msgid "Recording"
 msgstr "Записване"
 
@@ -259,21 +271,21 @@ msgid "_About Kooha"
 msgstr "_Относно „Kooha“"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:33
+#: src/about.rs:35
 msgid "translator-credits"
 msgstr ""
 "Victor Keranov\n"
 "twlvnn kraft_werk <kraft_werk@tutanota.com>"
 
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Дарете (купете ми кафе)"
 
-#: src/about.rs:46
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:48
+#: src/about.rs:50
 msgid "Translate"
 msgstr "Преведи"
 
@@ -295,41 +307,41 @@ msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Убедете се, че имате инсталиран PulseAudio на твоята система."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:24
+#: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] "{time} час"
 msgstr[1] "{time} часа"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:31
+#: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] "{time} минута"
 msgstr[1] "{time} минути"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:38
+#: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] "{time} секунда"
 msgstr[1] "{time} секунди"
 
-#: src/preferences_dialog.rs:65
+#: src/preferences_dialog.rs:77
 msgid "Failed to set recordings folder"
 msgstr "Неуспешно задаване на папката за записи"
 
-#: src/preferences_dialog.rs:208
+#: src/preferences_dialog.rs:237
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Тази честота на кадри може да доведе до проблеми с производителността на "
 "избрания формат."
 
-#: src/preferences_dialog.rs:247
+#: src/preferences_dialog.rs:301
 msgid "This format is experimental and unsupported."
 msgstr "Този формат е експериментален и не се поддържа."
 
-#: src/preferences_dialog.rs:254 src/window/mod.rs:535
+#: src/preferences_dialog.rs:308 src/window/mod.rs:559
 msgid "None"
 msgstr "Без"
 
@@ -337,7 +349,7 @@ msgstr "Без"
 msgid "No active profile"
 msgstr "Няма активен профил"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
 msgid "Failed to start recording"
 msgstr "Неуспех при старт на записа"
 
@@ -350,16 +362,16 @@ msgstr "Вижте {link} за помощ."
 msgid "A GStreamer plugin may not be installed."
 msgstr "Възможно е да не е инсталирана приставка GStreamer."
 
-#: src/recording.rs:264 src/recording.rs:489
+#: src/recording.rs:272 src/recording.rs:501
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Уверете се, че местоположението за записа съществува и е достъпно."
 
-#: src/recording.rs:480
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Възникна грешка по време на запис"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:486
+#: src/recording.rs:498
 msgid "Failed to open “{path}” for writing"
 msgstr "Неуспешно отваряне на „{path}“ за записване"
 
@@ -367,11 +379,11 @@ msgstr "Неуспешно отваряне на „{path}“ за записв�
 msgid "Select Recordings Folder"
 msgstr "Избери папка за записи"
 
-#: src/window/mod.rs:79
+#: src/window/mod.rs:78
 msgid "Failed to toggle pause"
 msgstr "Неуспех при превключване на пауза"
 
-#: src/window/mod.rs:196
+#: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
@@ -380,7 +392,7 @@ msgstr ""
 "до невъзможност за възпроизвеждане на записа. Спрете записа, преди спиране "
 "на програмата."
 
-#: src/window/mod.rs:199
+#: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
@@ -388,35 +400,35 @@ msgstr ""
 "Спиране на програмата ще прекрати обработването и може да доведе до "
 "невъзможност за възпроизвеждане на записа."
 
-#: src/window/mod.rs:205
+#: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Искате ли да спрете програмата?"
 
-#: src/window/mod.rs:253
+#: src/window/mod.rs:256
 msgid "Copy to clipboard"
 msgstr "Копирай в системния буфер"
 
-#: src/window/mod.rs:258
+#: src/window/mod.rs:261
 msgid "Copied to clipboard"
 msgstr "Копирано в системния буфер"
 
-#: src/window/mod.rs:264
+#: src/window/mod.rs:267
 msgid "Show detailed error"
 msgstr "Покажи подробна грешка"
 
-#: src/window/mod.rs:286
+#: src/window/mod.rs:289
 msgid "Help"
 msgstr "Помощ"
 
-#: src/window/mod.rs:291
+#: src/window/mod.rs:294
 msgid "Ok, Got It"
 msgstr "Добре"
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:303
 msgid "Open Preferences?"
 msgstr "Искате ли да отворите настройките?"
 
-#: src/window/mod.rs:301
+#: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -424,27 +436,27 @@ msgstr ""
 "Възможно е избраният преди това формат да не е наличен. Отворете настройките "
 "и изберете формат, за да продължите да записвате."
 
-#: src/window/mod.rs:305
+#: src/window/mod.rs:308
 msgid "Later"
 msgstr "По-късно"
 
-#: src/window/mod.rs:307
+#: src/window/mod.rs:310
 msgid "Open"
 msgstr "Отваряне"
 
-#: src/window/mod.rs:437
+#: src/window/mod.rs:461
 msgid "A recording is in progress"
 msgstr "Записване е в ход"
 
-#: src/window/mod.rs:485
+#: src/window/mod.rs:509
 msgid "Paused"
 msgstr "На пауза"
 
-#: src/window/mod.rs:522
+#: src/window/mod.rs:546
 msgid "Normal"
 msgstr "Нормално"
 
-#: src/window/mod.rs:523
+#: src/window/mod.rs:547
 msgid "Selection"
 msgstr "Участък"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 20:05+0800\n"
+"POT-Creation-Date: 2024-09-26 20:06+0800\n"
 "PO-Revision-Date: 2024-03-11 22:01+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/"
@@ -24,8 +24,8 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
-#: src/main.rs:71
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -81,12 +81,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Deneysel donanım hızlandırmalı kodlama"
 
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
+msgid "Recording options and button to start recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+msgid "In-progress recording duration and button to stop recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
+msgid "Countdown to start recording and button to cancel recording"
+msgstr ""
+
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "Alan Seç"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:210
+#: data/resources/ui/window.ui:276 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "İptal"
 
@@ -142,11 +154,11 @@ msgstr "Tercihleri Göster"
 msgid "Show Shortcuts"
 msgstr "Kısayolları Göster"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
 msgid "Quit"
 msgstr "Çıkış"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
 msgid "Recording"
 msgstr "Kaydediliyor"
 
@@ -263,19 +275,19 @@ msgid "_About Kooha"
 msgstr "Kooha _Hakkında"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:33
+#: src/about.rs:35
 msgid "translator-credits"
 msgstr "Sabri Ünal (yakushabb@gmail.com), Oğuz Ersen"
 
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Bağış Yap (Buy Me a Coffee)"
 
-#: src/about.rs:46
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:48
+#: src/about.rs:50
 msgid "Translate"
 msgstr "Çevir"
 
@@ -297,39 +309,39 @@ msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Sisteminizde PulseAudio'nun kurulu olduğundan emin olun."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:24
+#: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] "{time} saat"
 msgstr[1] "{time} saat"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:31
+#: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] "{time} dakika"
 msgstr[1] "{time} dakika"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:38
+#: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] "{time} saniye"
 msgstr[1] "{time} saniye"
 
-#: src/preferences_dialog.rs:65
+#: src/preferences_dialog.rs:77
 msgid "Failed to set recordings folder"
 msgstr "Kayıt klasörü ayarlanamadı"
 
-#: src/preferences_dialog.rs:208
+#: src/preferences_dialog.rs:237
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr "Bu kare hızı, seçilen biçimde performans sorunlarına neden olabilir."
 
-#: src/preferences_dialog.rs:247
+#: src/preferences_dialog.rs:301
 msgid "This format is experimental and unsupported."
 msgstr "Bu biçim deneysel ve desteklenmemektedir."
 
-#: src/preferences_dialog.rs:254 src/window/mod.rs:535
+#: src/preferences_dialog.rs:308 src/window/mod.rs:559
 msgid "None"
 msgstr "Yok"
 
@@ -337,7 +349,7 @@ msgstr "Yok"
 msgid "No active profile"
 msgstr "Etkin profil yok"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
 msgid "Failed to start recording"
 msgstr "Kayıt başlatılamadı"
 
@@ -350,16 +362,16 @@ msgstr "Yardım için {link} bağlantısına bakınız."
 msgid "A GStreamer plugin may not be installed."
 msgstr "Bir GStreamer eklentisi kurulmamış olabilir."
 
-#: src/recording.rs:264 src/recording.rs:489
+#: src/recording.rs:272 src/recording.rs:501
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Kaydetme konumunun var ve erişilebilir olduğundan emin olun."
 
-#: src/recording.rs:480
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Kayıt sırasında bir hata oluştu"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:486
+#: src/recording.rs:498
 msgid "Failed to open “{path}” for writing"
 msgstr "“{path}” yolu yazma için açılamadı"
 
@@ -367,11 +379,11 @@ msgstr "“{path}” yolu yazma için açılamadı"
 msgid "Select Recordings Folder"
 msgstr "Kayıtlar Klasörünü Seç"
 
-#: src/window/mod.rs:79
+#: src/window/mod.rs:78
 msgid "Failed to toggle pause"
 msgstr "Duraklatma değiştirilemedi"
 
-#: src/window/mod.rs:196
+#: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
@@ -379,7 +391,7 @@ msgstr ""
 "Şu anda bir kayıt devam ediyor. Hemen çıkmak kaydın oynatılamamasına neden "
 "olabilir. Lütfen çıkmadan önce kaydı durdurun."
 
-#: src/window/mod.rs:199
+#: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
@@ -387,35 +399,35 @@ msgstr ""
 "Çıkmak işlemi iptal edecek ve kaydın oynatılamaz hale gelmesine neden "
 "olabilecektir."
 
-#: src/window/mod.rs:205
+#: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Uygulamadan çıkılsın mı?"
 
-#: src/window/mod.rs:253
+#: src/window/mod.rs:256
 msgid "Copy to clipboard"
 msgstr "Panoya kopyala"
 
-#: src/window/mod.rs:258
+#: src/window/mod.rs:261
 msgid "Copied to clipboard"
 msgstr "Panoya kopyalandı"
 
-#: src/window/mod.rs:264
+#: src/window/mod.rs:267
 msgid "Show detailed error"
 msgstr "Ayrıntılı hata göster"
 
-#: src/window/mod.rs:286
+#: src/window/mod.rs:289
 msgid "Help"
 msgstr "Yardım"
 
-#: src/window/mod.rs:291
+#: src/window/mod.rs:294
 msgid "Ok, Got It"
 msgstr "Anladım"
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:303
 msgid "Open Preferences?"
 msgstr "Tercihler Açılsın Mı?"
 
-#: src/window/mod.rs:301
+#: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -423,27 +435,27 @@ msgstr ""
 "Önceki seçilen biçim kullanılamıyor olabilir. Kayda devam etmek için "
 "tercihleri açın ve bir biçim seçin."
 
-#: src/window/mod.rs:305
+#: src/window/mod.rs:308
 msgid "Later"
 msgstr "Daha sonra"
 
-#: src/window/mod.rs:307
+#: src/window/mod.rs:310
 msgid "Open"
 msgstr "Aç"
 
-#: src/window/mod.rs:437
+#: src/window/mod.rs:461
 msgid "A recording is in progress"
 msgstr "Bir kayıt devam ediyor"
 
-#: src/window/mod.rs:485
+#: src/window/mod.rs:509
 msgid "Paused"
 msgstr "Duraklatıldı"
 
-#: src/window/mod.rs:522
+#: src/window/mod.rs:546
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window/mod.rs:523
+#: src/window/mod.rs:547
 msgid "Selection"
 msgstr "Seçim"
 

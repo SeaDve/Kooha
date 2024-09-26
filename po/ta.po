@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 20:05+0800\n"
+"POT-Creation-Date: 2024-09-26 20:06+0800\n"
 "PO-Revision-Date: 2024-04-17 10:50+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "X-Generator: Weblate 5.5-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
-#: src/main.rs:71
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "கூஹா"
 
@@ -63,8 +63,7 @@ msgstr "📼 WebM, MP4, GIF மற்றும் Matroska வடிவங்க
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
-"🖥️ பதிவு செய்ய மானிட்டரையோ அல்லது திரையின் ஒரு பகுதியையோ தேர்ந்தெடுக்கவும்"
+msgstr "🖥️ பதிவு செய்ய மானிட்டரையோ அல்லது திரையின் ஒரு பகுதியையோ தேர்ந்தெடுக்கவும்"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -75,12 +74,24 @@ msgstr "🛠️ உள்ளமைக்கக்கூடிய சேமிப
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 பரிசோதனை வன்பொருள் முடுக்கப்பட்ட குறியாக்கம்"
 
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
+msgid "Recording options and button to start recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+msgid "In-progress recording duration and button to stop recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
+msgid "Countdown to start recording and button to cancel recording"
+msgstr ""
+
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "பகுதியைத் தேர்ந்தெடுக்கவும்"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:210
+#: data/resources/ui/window.ui:276 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
@@ -136,11 +147,11 @@ msgstr "விருப்பங்களைக் காட்டு"
 msgid "Show Shortcuts"
 msgstr "குறுக்குவழிகளைக் காட்டு"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
 msgid "Recording"
 msgstr "ஒலியை பதிவு செய்கிறது"
 
@@ -257,19 +268,19 @@ msgid "_About Kooha"
 msgstr "_கூஹா பற்றி"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:33
+#: src/about.rs:35
 msgid "translator-credits"
 msgstr "தருண் கிருஷ்ணா.க.பா"
 
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
 msgstr "நன்கொடை (எனக்கு ஒரு காபி வாங்கிக் கொடு)"
 
-#: src/about.rs:46
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "கிட்ஹப்"
 
-#: src/about.rs:48
+#: src/about.rs:50
 msgid "Translate"
 msgstr "மொழிபெயர்"
 
@@ -291,41 +302,39 @@ msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "பல்ஸ்ஆடியோ உங்கள் கணினியில் நிறுவப்பட்டுள்ளதா என்பதை உறுதிப்படுத்தவும்."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:24
+#: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] "{time} மணி"
 msgstr[1] "{time} hours"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:31
+#: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] "{time} நிமிடம்"
 msgstr[1] "{time} நிமிடங்கள்"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:38
+#: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] "{time} வினாடி"
 msgstr[1] "{time} வினாடிகள்"
 
-#: src/preferences_dialog.rs:65
+#: src/preferences_dialog.rs:77
 msgid "Failed to set recordings folder"
 msgstr "ரெக்கார்டிங் கோப்புறையை அமைப்பதில் தோல்வி"
 
-#: src/preferences_dialog.rs:208
+#: src/preferences_dialog.rs:237
 msgid "This frame rate may cause performance issues on the selected format."
-msgstr ""
-"இந்த பிரேம் வீதம் தேர்ந்தெடுக்கப்பட்ட வடிவமைப்பில் செயல்திறன் சிக்கல்களை "
-"ஏற்படுத்தலாம்."
+msgstr "இந்த பிரேம் வீதம் தேர்ந்தெடுக்கப்பட்ட வடிவமைப்பில் செயல்திறன் சிக்கல்களை ஏற்படுத்தலாம்."
 
-#: src/preferences_dialog.rs:247
+#: src/preferences_dialog.rs:301
 msgid "This format is experimental and unsupported."
 msgstr "இந்த வடிவம் சோதனைக்குரியது மற்றும் ஆதரிக்கப்படாது."
 
-#: src/preferences_dialog.rs:254 src/window/mod.rs:535
+#: src/preferences_dialog.rs:308 src/window/mod.rs:559
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
@@ -333,7 +342,7 @@ msgstr "எதுவும் இல்லை"
 msgid "No active profile"
 msgstr "செயலில் சுயவிவரம் இல்லை"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
@@ -346,16 +355,16 @@ msgstr "உதவிக்கு {link} ஐப் பார்க்கவும
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம்."
 
-#: src/recording.rs:264 src/recording.rs:489
+#: src/recording.rs:272 src/recording.rs:501
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:480
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:486
+#: src/recording.rs:498
 msgid "Failed to open “{path}” for writing"
 msgstr "எழுதுவதற்கு “{path}” திறக்க முடியவில்லை"
 
@@ -363,55 +372,53 @@ msgstr "எழுதுவதற்கு “{path}” திறக்க மு
 msgid "Select Recordings Folder"
 msgstr "பதிவுகள் கோப்புறையைத் தேர்ந்தெடுக்கவும்"
 
-#: src/window/mod.rs:79
+#: src/window/mod.rs:78
 msgid "Failed to toggle pause"
 msgstr "இடைநிறுத்தத்தை மாற்றுவதில் தோல்வி"
 
-#: src/window/mod.rs:196
+#: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
-"தற்போது ஒரு பதிவு நடந்து கொண்டிருக்கிறது. உடனடியாக வெளியேறுவது ரெக்கார்டிங்கை"
-" இயக்க முடியாமல் போகலாம். வெளியேறும் முன் பதிவை நிறுத்தவும்."
+"தற்போது ஒரு பதிவு நடந்து கொண்டிருக்கிறது. உடனடியாக வெளியேறுவது ரெக்கார்டிங்கை இயக்க "
+"முடியாமல் போகலாம். வெளியேறும் முன் பதிவை நிறுத்தவும்."
 
-#: src/window/mod.rs:199
+#: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
-"வெளியேறுவது செயலாக்கத்தை ரத்து செய்து, ரெக்கார்டிங்கை இயக்க முடியாமல் "
-"போகலாம்."
+msgstr "வெளியேறுவது செயலாக்கத்தை ரத்து செய்து, ரெக்கார்டிங்கை இயக்க முடியாமல் போகலாம்."
 
-#: src/window/mod.rs:205
+#: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "பயன்பாட்டிலிருந்து வெளியேறவா?"
 
-#: src/window/mod.rs:253
+#: src/window/mod.rs:256
 msgid "Copy to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
 
-#: src/window/mod.rs:258
+#: src/window/mod.rs:261
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
-#: src/window/mod.rs:264
+#: src/window/mod.rs:267
 msgid "Show detailed error"
 msgstr "விரிவான பிழையைக் காட்டு"
 
-#: src/window/mod.rs:286
+#: src/window/mod.rs:289
 msgid "Help"
 msgstr "உதவி"
 
-#: src/window/mod.rs:291
+#: src/window/mod.rs:294
 msgid "Ok, Got It"
 msgstr "சரி, புரிந்தது"
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:303
 msgid "Open Preferences?"
 msgstr "விருப்பத்தேர்வுகளை திறக்கவா?"
 
-#: src/window/mod.rs:301
+#: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -419,27 +426,27 @@ msgstr ""
 "முன்பு தேர்ந்தெடுக்கப்பட்ட வடிவம் கிடைக்காமல் இருக்கலாம். பதிவுகளைத் தொடர "
 "விருப்பத்தேர்வுகளைத் திறந்து வடிவமைப்பைத் தேர்ந்தெடுக்கவும்."
 
-#: src/window/mod.rs:305
+#: src/window/mod.rs:308
 msgid "Later"
 msgstr "பின்னர்"
 
-#: src/window/mod.rs:307
+#: src/window/mod.rs:310
 msgid "Open"
 msgstr "திறக்கவும்"
 
-#: src/window/mod.rs:437
+#: src/window/mod.rs:461
 msgid "A recording is in progress"
 msgstr "ஒரு பதிவு நடந்து கொண்டிருக்கிறது"
 
-#: src/window/mod.rs:485
+#: src/window/mod.rs:509
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
-#: src/window/mod.rs:522
+#: src/window/mod.rs:546
 msgid "Normal"
 msgstr "இயல்பானது"
 
-#: src/window/mod.rs:523
+#: src/window/mod.rs:547
 msgid "Selection"
 msgstr "தேர்வு"
 

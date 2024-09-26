@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 20:05+0800\n"
+"POT-Creation-Date: 2024-09-26 20:06+0800\n"
 "PO-Revision-Date: 2024-09-23 13:15+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/seadve/kooha/ga/>\n"
@@ -14,13 +14,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
-"n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
-#: src/main.rs:71
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -75,12 +75,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Ionchódú luathaithe crua-earraí turgnamhacha"
 
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
+msgid "Recording options and button to start recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+msgid "In-progress recording duration and button to stop recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
+msgid "Countdown to start recording and button to cancel recording"
+msgstr ""
+
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "Roghnaigh Réimse"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:210
+#: data/resources/ui/window.ui:276 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "Cealaigh"
 
@@ -136,11 +148,11 @@ msgstr "Taispeáin Roghanna"
 msgid "Show Shortcuts"
 msgstr "Taispeáin Aicearraí"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
 msgid "Quit"
 msgstr "Scoir"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
 msgid "Recording"
 msgstr "Taifeadadh"
 
@@ -257,19 +269,19 @@ msgid "_About Kooha"
 msgstr "_Maidir le Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:33
+#: src/about.rs:35
 msgid "translator-credits"
 msgstr "aistritheoir-creidmheasa"
 
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Deonaigh (Ceannaigh caife dom)"
 
-#: src/about.rs:46
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:48
+#: src/about.rs:50
 msgid "Translate"
 msgstr "Aistrigh"
 
@@ -291,7 +303,7 @@ msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Cinntigh go bhfuil PulseAudio suiteáilte agat i do chóras."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:24
+#: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] "{time}uair"
@@ -301,7 +313,7 @@ msgstr[3] "{time} uaireanta"
 msgstr[4] "{time} uaireanta"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:31
+#: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] "{time} nóiméad"
@@ -311,7 +323,7 @@ msgstr[3] "{time} nóiméaid"
 msgstr[4] "{time} nóiméaid"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:38
+#: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] "{time} soicind"
@@ -320,21 +332,21 @@ msgstr[2] "{time} soicindí"
 msgstr[3] "{time} soicindí"
 msgstr[4] "{time} soicindí"
 
-#: src/preferences_dialog.rs:65
+#: src/preferences_dialog.rs:77
 msgid "Failed to set recordings folder"
 msgstr "Theip ar fhillteán taifeadtaí a shocrú"
 
-#: src/preferences_dialog.rs:208
+#: src/preferences_dialog.rs:237
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Féadfaidh an ráta fráma seo a bheith ina chúis le saincheisteanna "
 "feidhmíochta ar an bhformáid roghnaithe."
 
-#: src/preferences_dialog.rs:247
+#: src/preferences_dialog.rs:301
 msgid "This format is experimental and unsupported."
 msgstr "Tá an fhormáid seo turgnamhach agus ní thacaítear léi."
 
-#: src/preferences_dialog.rs:254 src/window/mod.rs:535
+#: src/preferences_dialog.rs:308 src/window/mod.rs:559
 msgid "None"
 msgstr "Dada"
 
@@ -342,7 +354,7 @@ msgstr "Dada"
 msgid "No active profile"
 msgstr "Níl aon phróifíl ghníomhach ann"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
 msgid "Failed to start recording"
 msgstr "Theip ar an taifeadadh a thosú"
 
@@ -355,16 +367,16 @@ msgstr "Seiceáil {link} le haghaidh cabhrach."
 msgid "A GStreamer plugin may not be installed."
 msgstr "Seans nach bhfuil breiseán GStreamer suiteáilte."
 
-#: src/recording.rs:264 src/recording.rs:489
+#: src/recording.rs:272 src/recording.rs:501
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Cinntigh go bhfuil an suíomh coigilte ann agus go bhfuil rochtain air."
 
-#: src/recording.rs:480
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Tharla earráid agus an taifeadadh"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:486
+#: src/recording.rs:498
 msgid "Failed to open “{path}” for writing"
 msgstr "Theip ar “{path}” a oscailt chun é a scríobh"
 
@@ -372,11 +384,11 @@ msgstr "Theip ar “{path}” a oscailt chun é a scríobh"
 msgid "Select Recordings Folder"
 msgstr "Roghnaigh Fillteán Taifeadtaí"
 
-#: src/window/mod.rs:79
+#: src/window/mod.rs:78
 msgid "Failed to toggle pause"
 msgstr "Theip ar scoránú sos"
 
-#: src/window/mod.rs:196
+#: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
@@ -384,7 +396,7 @@ msgstr ""
 "Tá taifeadadh ar siúl faoi láthair. D'fhéadfadh sé nach bhféadfaí an "
 "taifeadadh a sheinm má scoirtear láithreach. Stop an taifeadadh roimh scor."
 
-#: src/window/mod.rs:199
+#: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
@@ -392,35 +404,35 @@ msgstr ""
 "Má scoireann tú, cuirfear an phróiseáil ar ceal agus d'fhéadfadh sé go "
 "mbeifear in ann an taifeadadh a sheinm."
 
-#: src/window/mod.rs:205
+#: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Scoir an Iarratas?"
 
-#: src/window/mod.rs:253
+#: src/window/mod.rs:256
 msgid "Copy to clipboard"
 msgstr "Cóipeáil chuig an ngearrthaisce"
 
-#: src/window/mod.rs:258
+#: src/window/mod.rs:261
 msgid "Copied to clipboard"
 msgstr "Cóipeáladh chuig an ngearrthaisce"
 
-#: src/window/mod.rs:264
+#: src/window/mod.rs:267
 msgid "Show detailed error"
 msgstr "Taispeáin earráid mhionsonraithe"
 
-#: src/window/mod.rs:286
+#: src/window/mod.rs:289
 msgid "Help"
 msgstr "Cabhrú"
 
-#: src/window/mod.rs:291
+#: src/window/mod.rs:294
 msgid "Ok, Got It"
 msgstr "Ceart go leor, Fuair mé"
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:303
 msgid "Open Preferences?"
 msgstr "Oscail Roghanna?"
 
-#: src/window/mod.rs:301
+#: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -428,26 +440,26 @@ msgstr ""
 "Seans nach raibh an fhormáid a roghnaíodh roimhe seo ar fáil. Oscail "
 "roghanna agus roghnaigh formáid chun leanúint ar aghaidh ag taifeadadh."
 
-#: src/window/mod.rs:305
+#: src/window/mod.rs:308
 msgid "Later"
 msgstr "Níos déanaí"
 
-#: src/window/mod.rs:307
+#: src/window/mod.rs:310
 msgid "Open"
 msgstr "Oscail"
 
-#: src/window/mod.rs:437
+#: src/window/mod.rs:461
 msgid "A recording is in progress"
 msgstr "Tá taifeadadh ar siúl"
 
-#: src/window/mod.rs:485
+#: src/window/mod.rs:509
 msgid "Paused"
 msgstr "Ar Sos"
 
-#: src/window/mod.rs:522
+#: src/window/mod.rs:546
 msgid "Normal"
 msgstr "Gnáth"
 
-#: src/window/mod.rs:523
+#: src/window/mod.rs:547
 msgid "Selection"
 msgstr "Roghnú"

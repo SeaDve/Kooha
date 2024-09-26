@@ -13,11 +13,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 20:05+0800\n"
+"POT-Creation-Date: 2024-09-26 20:06+0800\n"
 "PO-Revision-Date: 2024-08-09 19:09+0000\n"
 "Last-Translator: Kuba <pojg77g1@kbb.anonaddy.me>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/seadve/kooha/pl/>"
-"\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/seadve/kooha/pl/"
+">\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,8 +27,8 @@ msgstr ""
 "X-Generator: Weblate 5.7-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
-#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:22
-#: src/main.rs:71
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
+#: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
@@ -85,12 +85,24 @@ msgstr ""
 msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Eksperymentalne kodowanie z akceleracją sprzętową"
 
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
+msgid "Recording options and button to start recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+msgid "In-progress recording duration and button to stop recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
+msgid "Countdown to start recording and button to cancel recording"
+msgstr ""
+
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
 msgstr "Wybierz powierzchnię"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:210
+#: data/resources/ui/window.ui:276 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -146,11 +158,11 @@ msgstr "Pokaż Preferencje"
 msgid "Show Shortcuts"
 msgstr "Pokaż skróty klawiszowe"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:212
+#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
 msgid "Quit"
 msgstr "Zakończ"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:477
+#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
 msgid "Recording"
 msgstr "Nagrywanie"
 
@@ -267,20 +279,20 @@ msgid "_About Kooha"
 msgstr "_O Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
-#: src/about.rs:33
+#: src/about.rs:35
 msgid "translator-credits"
 msgstr ""
 "Radek Raczkowski, Adam Hulewicz, Radosław Korotkiewicz, David Troianovskyi"
 
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Wspomóż (Buy Me a Coffee)"
 
-#: src/about.rs:46
+#: src/about.rs:48
 msgid "GitHub"
 msgstr "GitHub"
 
-#: src/about.rs:48
+#: src/about.rs:50
 msgid "Translate"
 msgstr "Pomóż w tłumaczeniu"
 
@@ -302,7 +314,7 @@ msgid "Make sure that you have PulseAudio installed in your system."
 msgstr "Upewnij się, że w systemie jest zainstalowane PulseAudio."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:24
+#: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
 msgstr[0] "{time} godzina"
@@ -310,7 +322,7 @@ msgstr[1] "{time} godziny"
 msgstr[2] "{time} godzin"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:31
+#: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
 msgstr[0] "{time} minuta"
@@ -318,27 +330,27 @@ msgstr[1] "{time} minuty"
 msgstr[2] "{time} minut"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/format_time.rs:38
+#: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] "{time} sekunda"
 msgstr[1] "{time} sekundy"
 msgstr[2] "{time} sekund"
 
-#: src/preferences_dialog.rs:65
+#: src/preferences_dialog.rs:77
 msgid "Failed to set recordings folder"
 msgstr "Nie udało się ustawić katalogu z nagraniami"
 
-#: src/preferences_dialog.rs:208
+#: src/preferences_dialog.rs:237
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Liczba klatek na sekundę może powodować problemy wydajności w tym formacie."
 
-#: src/preferences_dialog.rs:247
+#: src/preferences_dialog.rs:301
 msgid "This format is experimental and unsupported."
 msgstr "Ten format jest eksperymentalny i nie jest wspierany."
 
-#: src/preferences_dialog.rs:254 src/window/mod.rs:535
+#: src/preferences_dialog.rs:308 src/window/mod.rs:559
 msgid "None"
 msgstr "Brak"
 
@@ -346,7 +358,7 @@ msgstr "Brak"
 msgid "No active profile"
 msgstr "Brak aktywnego profilu"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:263
+#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
 msgid "Failed to start recording"
 msgstr "Nie udało się rozpocząć nagrywania"
 
@@ -359,16 +371,16 @@ msgstr "Sprawdź {link} po pomoc."
 msgid "A GStreamer plugin may not be installed."
 msgstr "Plugin GStreamer może nie być zainstalowany."
 
-#: src/recording.rs:264 src/recording.rs:489
+#: src/recording.rs:272 src/recording.rs:501
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Upewnij się, że lokalizacja zapisu istnieje i jest dostępna."
 
-#: src/recording.rs:480
+#: src/recording.rs:492
 msgid "An error occurred while recording"
 msgstr "Wystąpił błąd podczas nagrywania"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:486
+#: src/recording.rs:498
 msgid "Failed to open “{path}” for writing"
 msgstr "Błąd w otwarciu \"{path}\" do zapisu"
 
@@ -376,11 +388,11 @@ msgstr "Błąd w otwarciu \"{path}\" do zapisu"
 msgid "Select Recordings Folder"
 msgstr "Wybierz Katalog Nagrań"
 
-#: src/window/mod.rs:79
+#: src/window/mod.rs:78
 msgid "Failed to toggle pause"
 msgstr "Nie udało się włączyć pauzy"
 
-#: src/window/mod.rs:196
+#: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
@@ -388,41 +400,41 @@ msgstr ""
 "Nagrywanie jest aktualnie w toku. Nagłe wyjście może zrobić nagranie "
 "nieodtwarzalnym. Proszę zatrzymaj nagranie przed wyjściem."
 
-#: src/window/mod.rs:199
+#: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr "Wyjście zatrzyma przetwarzanie i zrobi nagranie nieodtwarzalnym."
 
-#: src/window/mod.rs:205
+#: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Zamknąć aplikację?"
 
-#: src/window/mod.rs:253
+#: src/window/mod.rs:256
 msgid "Copy to clipboard"
 msgstr "Skopiuj do schowka"
 
-#: src/window/mod.rs:258
+#: src/window/mod.rs:261
 msgid "Copied to clipboard"
 msgstr "Skopiowano do schowka"
 
-#: src/window/mod.rs:264
+#: src/window/mod.rs:267
 msgid "Show detailed error"
 msgstr "Pokaż szczegóły błędu"
 
-#: src/window/mod.rs:286
+#: src/window/mod.rs:289
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/window/mod.rs:291
+#: src/window/mod.rs:294
 msgid "Ok, Got It"
 msgstr "Ok, zrozumiano"
 
-#: src/window/mod.rs:300
+#: src/window/mod.rs:303
 msgid "Open Preferences?"
 msgstr "Otworzyć Preferencje?"
 
-#: src/window/mod.rs:301
+#: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
@@ -430,27 +442,27 @@ msgstr ""
 "Poprzednio wybrany format może być niedostępny. Otwórz ustawienia "
 "preferencji i wybierz format przed kontynuowaniem."
 
-#: src/window/mod.rs:305
+#: src/window/mod.rs:308
 msgid "Later"
 msgstr "Później"
 
-#: src/window/mod.rs:307
+#: src/window/mod.rs:310
 msgid "Open"
 msgstr "Otwarto"
 
-#: src/window/mod.rs:437
+#: src/window/mod.rs:461
 msgid "A recording is in progress"
 msgstr "Nagrywanie jest w toku"
 
-#: src/window/mod.rs:485
+#: src/window/mod.rs:509
 msgid "Paused"
 msgstr "Pauza"
 
-#: src/window/mod.rs:522
+#: src/window/mod.rs:546
 msgid "Normal"
 msgstr "Normalny"
 
-#: src/window/mod.rs:523
+#: src/window/mod.rs:547
 msgid "Selection"
 msgstr "Zaznaczenie"
 
