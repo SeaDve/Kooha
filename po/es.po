@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
-# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021, 2022.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021, 2022, 2024.
 # Roberto Bautista <robertobau45@gmail.com>, 2021.
 # Juan David Sanchez Lean <jdsljuan@gmail.com>, 2021.
 # robert schneider <robertschv@gmail.com>, 2021.
@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-09-27 12:16+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2024-09-28 15:15+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/seadve/kooha/es/>"
 "\n"
 "Language: es\n"
@@ -271,7 +271,7 @@ msgstr "_Preferencias"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr "_Atajos del teclado"
+msgstr "Atajos del _teclado"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
@@ -303,7 +303,7 @@ msgstr "Grabación de pantalla finalizada"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Mostrar en archivos"
+msgstr "Mostrar en Archivos"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
