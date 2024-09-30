@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-02-27 18:50+0000\n"
+"PO-Revision-Date: 2024-09-30 11:18+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/seadve/kooha/it/"
-">\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/seadve/kooha/it/>"
+"\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -84,15 +84,19 @@ msgstr "🚀 Codifica sperimentale con accelerazione hardware"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Opzioni di registrazione e pulsante per avviare la registrazione"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
 msgstr ""
+"Durata della registrazione in corso e pulsante per interrompere la "
+"registrazione"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
 msgstr ""
+"Conto alla rovescia per avviare la registrazione e pulsante per annullare la "
+"registrazione"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
