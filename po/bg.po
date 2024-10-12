@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the kooha package.
 # Victor Keranov <vkeranov@gmail.com>, 2022.
 # twlvnn <kraft_werk@tutanota.com>, 2024.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-09-04 22:09+0000\n"
-"Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
-"Language-Team: Bulgarian <https://hosted.weblate.org/projects/seadve/kooha/"
-"bg/>\n"
+"PO-Revision-Date: 2024-10-12 12:54+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7.2-rc\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 46.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -79,15 +80,16 @@ msgstr "🚀 Експериментално хардуерно ускорено 
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Опции за запис и бутон за начало на запис"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
 msgstr ""
+"Продължителност на записа в процес на работа и бутон за спиране на записа"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "Отброяване до началото на запис и бутон за прекратяване на записа"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -224,7 +226,7 @@ msgstr "Скриване на показалеца"
 
 #: data/resources/ui/window.ui:115
 msgid "Start Recording"
-msgstr "Започване на запис"
+msgstr "Начало на записването"
 
 #: data/resources/ui/window.ui:116
 msgid "Record"
