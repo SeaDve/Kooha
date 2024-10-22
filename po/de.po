@@ -11,21 +11,22 @@
 # Nils Martel <nilsmartel@yahoo.de>, 2022.
 # Justin Nogossek <justmegaliga10000@gmail.com>, 2023.
 # Starbat <thw.schroeder@posteo.de>, 2024.
+# ChefExperte <aaron+git@chefexperte.de>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-03-23 20:17+0000\n"
-"Last-Translator: Starbat <thw.schroeder@posteo.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/seadve/kooha/de/"
-">\n"
+"PO-Revision-Date: 2024-10-22 21:16+0000\n"
+"Last-Translator: ChefExperte <aaron+git@chefexperte.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/seadve/kooha/de/>"
+"\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -89,7 +90,7 @@ msgstr "Experimentelles, hardwarebeschleunigtes Kodieren"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Aufnahmeoptionen und Startknopf der Aufnahme"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
