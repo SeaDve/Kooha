@@ -5,21 +5,22 @@
 # Jan Kuparinen <copper_fin@hotmail.com>, 2021.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2022.
 # Jiri Nakola <github@nakola.fi>, 2023.
+# Linus Virtanen <linus.virtanen@protonmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-03-22 21:01+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/seadve/kooha/fi/"
-">\n"
+"PO-Revision-Date: 2024-10-25 01:34+0000\n"
+"Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/seadve/kooha/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -84,15 +85,18 @@ msgstr "🚀 Kokeellinen laitteistokiihdytetty enkoodaus"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Tallennuksen vaihtoehdot ja painike joka aloittaa tallennuksen"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
 msgstr ""
+"Toimessa olevan tallennuksen kesto ja painike joka lopettaa tallennuksen"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
 msgstr ""
+"Lähtölaskenta tallennuksen aloittamiseen ja painike tallentamisen "
+"peruuttamiseksi"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
