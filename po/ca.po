@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-11-08 13:00+0000\n"
-"Last-Translator: xavi Julián <xaviju@gmail.com>\n"
+"PO-Revision-Date: 2024-11-16 22:00+0000\n"
+"Last-Translator: Joan Aymà <joanayma@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/seadve/kooha/ca/>"
 "\n"
 "Language: ca\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -279,7 +279,7 @@ msgstr "_Quant a Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr "Adolfo Jayme Barrientos, Víctor Dargallo"
+msgstr "Adolfo Jayme Barrientos, Víctor Dargallo, Joan Aymà"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
