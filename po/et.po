@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Henri <contact@hen.ee>, 2022.
+# Priit Jõerüüt <hwlate@joeruut.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2022-08-21 11:17+0000\n"
-"Last-Translator: Henri <contact@hen.ee>\n"
+"PO-Revision-Date: 2024-12-01 23:00+0000\n"
+"Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/seadve/kooha/et/"
 ">\n"
 "Language: et\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -54,24 +55,26 @@ msgstr "Kooha põhifunktsioonid:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Salvesta heli mikrofonist, töölaualt või mõlemat korraga"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 WebM, MP4, GIF ja Matroska vormingute tugi"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Vali salvestatav monitor või ekraaniosa"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Seadistatav salvestuse asukoht, osutusseadme nähtavus, kaadrisagedus ja "
+"viivitus enne salvestamise alustamist"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Katseline võimalus kasutada raudvaralist kiirendamist kodeerimisel"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
@@ -96,51 +99,51 @@ msgstr "Tühista"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Valmis"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Lähtesta valik"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr "Üldine"
+msgstr "Üldised seadistused"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Viivitus (sekundites)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Viivitus enne salvestamise algust"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Salvestuste kaust"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Kaust, kuhu soovid salvestused lisada"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "Videoseadistused"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "Vorming"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "Kaadrisagedus"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr "Ava valikud"
+msgstr "Ava menüü"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
-msgstr ""
+msgstr "Näita eelistusi"
 
 #: data/resources/ui/shortcuts.ui:26
 msgid "Show Shortcuts"
@@ -148,79 +151,79 @@ msgstr "Näita kiirklahve"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
 msgid "Quit"
-msgstr "Lahku"
+msgstr "Välju"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
 msgid "Recording"
-msgstr "Salvestamine"
+msgstr "Salvestame"
 
 #: data/resources/ui/shortcuts.ui:43
 msgid "Toggle Record"
-msgstr ""
+msgstr "Lülita salvestamine sisse/välja"
 
 #: data/resources/ui/shortcuts.ui:50
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Lülita paus sisse/välja"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "Katkesta salvestamine"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
-msgstr "Sätted"
+msgstr "Seadistused"
 
 #: data/resources/ui/shortcuts.ui:67
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Lülita töölaua heli salvestamine sisse/välja"
 
 #: data/resources/ui/shortcuts.ui:73
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Lülita mikrofon sisse/välja"
 
 #: data/resources/ui/shortcuts.ui:79
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Lülita ostutusseadme salvestamine sisse/välja"
 
 #: data/resources/ui/window.ui:24
 msgid "Main Menu"
-msgstr "Valikud"
+msgstr "Põhimenüü"
 
 #: data/resources/ui/window.ui:53
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Salvesta monitori või akna vaade"
 
 #: data/resources/ui/window.ui:66
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Salvesta valitud ala ekraanilt"
 
 #: data/resources/ui/window.ui:86
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Lülita töölaua heli salvestamine sisse"
 
 #: data/resources/ui/window.ui:87
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Lülita töölaua heli salvestamine välja"
 
 #: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Lülita mikrofon sisse"
 
 #: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Lülita mikrofon välja"
 
 #: data/resources/ui/window.ui:104
 msgid "Show Pointer"
-msgstr ""
+msgstr "Näita osutusseadet"
 
 #: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Peaida osutusseade"
 
 #: data/resources/ui/window.ui:115
 msgid "Start Recording"
-msgstr ""
+msgstr "Alusta salvestamist"
 
 #: data/resources/ui/window.ui:116
 msgid "Record"
@@ -232,7 +235,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:180
 msgid "Stop Recording"
-msgstr ""
+msgstr "Lõpeta salvestamine"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop"
@@ -240,7 +243,7 @@ msgstr "Peata"
 
 #: data/resources/ui/window.ui:191
 msgid "Pause Recording"
-msgstr ""
+msgstr "Peata salvestamine"
 
 #: data/resources/ui/window.ui:214
 msgid "Recording in…"
@@ -248,7 +251,7 @@ msgstr "Salvestus algab…"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Katkesta salvestamine"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
@@ -256,7 +259,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
-msgstr ""
+msgstr "_Eelistused"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
@@ -273,7 +276,7 @@ msgstr "Henri <contact@hen.ee>"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Toeta meid (Buy Me a Coffee)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -281,7 +284,7 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Tõlgi"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
@@ -290,48 +293,51 @@ msgstr ""
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "Näita failides"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Vaikimisi heliseadet ei õnnestunud leida"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
 msgstr ""
+"Palun kontrolli, et PulseAudio oleks sinu arvutis või nutiseadmes olemas."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} tund"
+msgstr[1] "{time} tundi"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} minut"
+msgstr[1] "{time} minutit"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} sekund"
+msgstr[1] "{time} sekundit"
 
 #: src/preferences_dialog.rs:77
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Salvestuste kausta määramine ei õnnestunud"
 
 #: src/preferences_dialog.rs:237
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Niisuguse kaadrisageduse puhul võib antud vormingu puhul tekkida "
+"jõudlusprobleeme."
 
 #: src/preferences_dialog.rs:301
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "See vorming on katseline ning mittetoetatud."
 
 #: src/preferences_dialog.rs:308 src/window/mod.rs:559
 msgid "None"
@@ -339,11 +345,11 @@ msgstr "Pole"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Aktiivset profiili ei leidu"
 
 #: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Ei õnnestunud alustada salvestamist"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
@@ -389,31 +395,31 @@ msgstr ""
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Kas soovid väljuda rakendusest?"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopeeri lõikelauale"
 
 #: src/window/mod.rs:261
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopeeritud lõikelauale"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
-msgstr ""
+msgstr "Näita üksikasjalikku veateavet"
 
 #: src/window/mod.rs:289
 msgid "Help"
-msgstr ""
+msgstr "Abiteave"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Selge, sain aru"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Kas avame eelistused?"
 
 #: src/window/mod.rs:304
 msgid ""
