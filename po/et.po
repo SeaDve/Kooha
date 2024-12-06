@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-12-01 23:00+0000\n"
+"PO-Revision-Date: 2024-12-06 16:00+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/seadve/kooha/et/"
 ">\n"
@@ -55,7 +55,7 @@ msgstr "Kooha põhifunktsioonid:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙️ Salvesta heli mikrofonist, töölaualt või mõlemat korraga"
+msgstr "🎙️ Salvesta heli mikrofonist, töölaualt või mõlemast korraga"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -78,19 +78,21 @@ msgstr "🚀 Katseline võimalus kasutada raudvaralist kiirendamist kodeerimisel
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Salvestamise valikud ja nupp salvestuse alustamiseks"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Salvestamise vaade kestusega ja nupuga salvestuse lõpetamiseks"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
 msgstr ""
+"Pöördloendus salvestuse alguseni ning nupp, mis võimaldab tühistada "
+"salvestamise"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Vali ekraaniala"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:213
@@ -231,7 +233,7 @@ msgstr "Salvesta"
 
 #: data/resources/ui/window.ui:129
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Unusta eelnevalt valitud videoallikad"
 
 #: data/resources/ui/window.ui:180
 msgid "Stop Recording"
@@ -255,7 +257,7 @@ msgstr "Katkesta salvestamine"
 
 #: data/resources/ui/window.ui:257
 msgid "Flushing…"
-msgstr ""
+msgstr "Eemaldame…"
 
 #: data/resources/ui/window.ui:293
 msgid "_Preferences"
@@ -289,7 +291,7 @@ msgstr "Tõlgi"
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Ekraanisalvestus on tehtud"
 
 #: src/application.rs:144
 msgid "Show in Files"
@@ -354,24 +356,24 @@ msgstr "Ei õnnestunud alustada salvestamist"
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:187
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Abiteavet leiad siit lehelt: {link}"
 
 #: src/recording.rs:222
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "GStreameri lisamoodul on ilmselt paigaldamata."
 
 #: src/recording.rs:272 src/recording.rs:501
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Palun kontrolli, et salvestuse kaust on olemas ja ligipääsetav."
 
 #: src/recording.rs:492
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Salvestamisel tekkis viga"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:498
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "„{path}“ avamine salvestamiseks ei õnnestunud"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
@@ -379,19 +381,24 @@ msgstr "Vali salvestusasukoha kaust"
 
 #: src/window/mod.rs:78
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Pausi sisse- või väljalülitamine ei õnnestunud"
 
 #: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Salvestamine on hetkel pooleli. Kui lõpetad rakenduse töö kohe, siis "
+"videofail ei pruugi jääda kasutatavaks. Palun esmalt lõpeta salvestamine ja "
+"siis välju rakendusest."
 
 #: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Kui lõpetad rakenduse töö, siis katkeb ka videofaili kodeerimine ning "
+"salvestis võib muutuda kõlbmatuks."
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
@@ -426,18 +433,20 @@ msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Varemvalitud vorming ilmselt pole enam saadaval. Palun ava eelistused ja "
+"salvestamise jätkamiseks vali uus vorming."
 
 #: src/window/mod.rs:308
 msgid "Later"
-msgstr ""
+msgstr "Hiljem"
 
 #: src/window/mod.rs:310
 msgid "Open"
-msgstr ""
+msgstr "Ava"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Salvestamine on pooleli"
 
 #: src/window/mod.rs:509
 msgid "Paused"
@@ -445,11 +454,11 @@ msgstr "Peatatud"
 
 #: src/window/mod.rs:546
 msgid "Normal"
-msgstr ""
+msgstr "Tavaline"
 
 #: src/window/mod.rs:547
 msgid "Selection"
-msgstr ""
+msgstr "Valik"
 
 #~ msgid "GIF"
 #~ msgstr "GIF"
