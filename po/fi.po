@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-10-25 01:34+0000\n"
+"PO-Revision-Date: 2024-12-10 10:00+0000\n"
 "Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/seadve/kooha/fi/>"
 "\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -421,7 +421,7 @@ msgstr "Kopioitu leikepöydälle"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
-msgstr "Näytä yksityiskohtainen virhe"
+msgstr "Näytä virhe yksityiskohtineen"
 
 #: src/window/mod.rs:289
 msgid "Help"
@@ -453,11 +453,11 @@ msgstr "Avaa"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr "Tallenne on käynnissä"
+msgstr "Tallennus on käynnissä"
 
 #: src/window/mod.rs:509
 msgid "Paused"
-msgstr "Keskeytetty"
+msgstr "Tauotettu"
 
 #: src/window/mod.rs:546
 msgid "Normal"
