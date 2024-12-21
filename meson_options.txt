@@ -8,3 +8,5 @@ option(
   value: 'default',
   description: 'The build profile for Kooha. One of "default" or "development".'
 )
+option('wayland', type : 'boolean', value : true, description: 'Wayland support.')
+option('x11', type : 'boolean', value : true, description: 'X11 support.')
