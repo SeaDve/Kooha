@@ -30,6 +30,15 @@ else
   message('Building in debug mode')
 endif
 
+cargo_options += [ '--no-default-features' ]
+if get_option('x11')
+  cargo_options += [ '--features', 'x11' ]
+endif
+
+if get_option('wayland')
+  cargo_options += [ '--features', 'wayland' ]
+endif
+
 cargo_env = [ 'CARGO_HOME=' + meson.project_build_root() / 'cargo-home' ]
 
 cargo_build = custom_target(
