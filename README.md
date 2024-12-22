@@ -104,9 +104,9 @@ The following packages are required to build Kooha:
 * gstreamer
 * gstreamer-plugins-base
 * gstreamer-plugins-ugly (for MP4)
-* media-plugins/gst-plugins-lame (for MP4)
+* gstreamer-plugins-lame (for MP4)
 * gstreamer-plugins-bad (for VA encoders)
-* media-plugins/gst-plugins-vpx (for WebM)
+* gstreamer-plugins-vpx (for WebM)
 * glib2
 * gtk4
 * libadwaita
