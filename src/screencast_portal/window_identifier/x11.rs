@@ -12,9 +12,7 @@ impl fmt::Display for X11Identifier {
 }
 
 pub fn try_downcast(surface: &Surface) -> Option<super::WindowIdentifier> {
-    if let Some(surface) = surface.downcast_ref::<gdk_x11::X11Surface>() {
-        Some(super::WindowIdentifier::X11(X11Identifier(surface.xid())))
-    } else {
-        None
-    }
+    surface
+        .downcast_ref::<gdk_x11::X11Surface>()
+        .map(|surface| super::WindowIdentifier::X11(X11Identifier(surface.xid())))
 }
