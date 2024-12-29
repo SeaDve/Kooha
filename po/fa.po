@@ -9,21 +9,22 @@
 # MohammadSaleh Kamyab <mskf1383@envs.net>, 2023.
 # qqqq1 <qqqq1@hi2.in>, 2023.
 # Sadjad Abedi <abedisadjad@gmail.com>, 2023.
+# Amirmatin Roosta <amirmatinrousta@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Persian <https://hosted.weblate.org/projects/seadve/kooha/fa/"
-">\n"
+"PO-Revision-Date: 2024-12-29 07:04+0000\n"
+"Last-Translator: Amirmatin Roosta <amirmatinrousta@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/seadve/kooha/fa/>"
+"\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -69,7 +70,7 @@ msgstr "📼 پشتیبانی از قالب‌های WebM، ‏MP4، ‏GIF و M
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "مانیتور یا قسمتی از صفحه را برای ضبط انتخاب کنید"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -82,15 +83,15 @@ msgstr "🚀 کدبندی شتاب‌یافتهٔ سخت‌افزاری آزما
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "گزینه‌های ضبط و دکمه برای شروع ضبط"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "مدت زمان ضبط در حال انجام و دکمه برای توقف ضبط"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "شمارش معکوس برای شروع ضبط و دکمه برای لغو ضبط"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -119,7 +120,7 @@ msgstr "تأخیر (ثانیه)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "فاصله زمانی قبل از شروع ضبط"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -127,7 +128,7 @@ msgstr "پوشهٔ ضبط‌ها"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "پوشه مقصد برای فایل های ضبط‌ شده"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
