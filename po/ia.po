@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2025-01-21 00:34+0000\n"
+"PO-Revision-Date: 2025-01-21 00:36+0000\n"
 "Last-Translator: \"Emilio S.\" <emism.translations@gmail.com>\n"
 "Language-Team: Interlingua <https://hosted.weblate.org/projects/seadve/kooha/"
 "ia/>\n"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
