@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2025-01-21 00:37+0000\n"
+"PO-Revision-Date: 2025-01-21 00:52+0000\n"
 "Last-Translator: \"Emilio S.\" <emism.translations@gmail.com>\n"
 "Language-Team: Interlingua <https://hosted.weblate.org/projects/seadve/kooha/"
 "ia/>\n"
@@ -279,7 +279,7 @@ msgstr ""
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Traducer"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
