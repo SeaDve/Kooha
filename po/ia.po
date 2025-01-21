@@ -134,7 +134,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
-msgstr ""
+msgstr "Aperir menu"
 
 #: data/resources/ui/shortcuts.ui:20
 msgid "Show Preferences"
