@@ -67,9 +67,10 @@ pub enum RecordingState {
 struct BoxedResult(Rc<Result<(gio::File, gst::ClockTime)>>);
 
 mod imp {
+    use std::sync::LazyLock;
+
     use glib::subclass::Signal;
     use gst::bus::BusWatchGuard;
-    use once_cell::sync::Lazy;
 
     use super::*;
 
@@ -119,7 +120,7 @@ mod imp {
         }
 
         fn signals() -> &'static [glib::subclass::Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
+            static SIGNALS: LazyLock<Vec<Signal>> = LazyLock::new(|| {
                 vec![Signal::builder("finished")
                     .param_types([BoxedResult::static_type()])
                     .build()]
