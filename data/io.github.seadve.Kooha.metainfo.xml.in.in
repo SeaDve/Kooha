@@ -362,11 +362,6 @@
       </description>
     </release>
   </releases>
-  <kudos>
-    <kudo>ModernToolkit</kudo>
-    <kudo>HiDpiIcon</kudo>
-    <kudo>Notifications</kudo>
-  </kudos>
   <!-- developer_name tag deprecated with Appstream 1.0 -->
   <developer_name translate="no">Dave Patrick Caberto</developer_name>
   <developer id="io.github.seadve">
