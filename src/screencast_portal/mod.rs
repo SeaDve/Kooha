@@ -180,6 +180,7 @@ impl Session {
                 gio::UnixFDList::NONE,
             )
             .await?;
+        let fd_list = fd_list.context("No given fd list")?;
 
         tracing::trace!(%response, fd_list = ?fd_list.peek_fds(), "Opened pipe wire remote");
 
