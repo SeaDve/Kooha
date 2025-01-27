@@ -2,21 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kooha package.
 # Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
+# 黃政揚 <noobpenguin0405@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2022-07-27 17:16+0000\n"
-"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
-"seadve/kooha/zh_Hant/>\n"
+"PO-Revision-Date: 2025-01-27 12:02+0000\n"
+"Last-Translator: 黃政揚 <noobpenguin0405@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/seadve/kooha/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -54,28 +55,28 @@ msgstr "以下是 Kooha 的主要功能："
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️用麥克風錄音，電腦聲音，或兩者同時進行"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼支持WebM,MP4,GIF,MKV檔案格式"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️選擇一個顯示器或是螢幕的一部分來紀錄"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr ""
+msgstr "🛠️可自訂的儲存位置，游標能見度，影格速率和延遲"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀實驗性的硬體加速編碼"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "錄影的選項和按鈕來開始錄影"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
@@ -96,11 +97,11 @@ msgstr ""
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "重設選擇"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -108,7 +109,7 @@ msgstr "一般"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "延遲(秒)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
