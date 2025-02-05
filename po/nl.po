@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the kooha package.
 # Heimen Stoffels <vistausss@outlook.com>, 2021.
 # Heimen Stoffels <vistausss@fastmail.com>, 2021, 2022.
-# Philip Goto <philip.goto@gmail.com>, 2023, 2024.
+# Philip Goto <philip.goto@gmail.com>, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-02-25 07:01+0000\n"
+"PO-Revision-Date: 2025-02-05 19:50+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/seadve/kooha/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -80,15 +80,15 @@ msgstr "🚀 Hardware-versnelde encodering (experimenteel)"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Opname­opties en knop om de opname te starten"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Duur van de lopende opname en knop om de opname te stoppen"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "Aftelling om de opname te starten en knop om de opname te annuleren"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
