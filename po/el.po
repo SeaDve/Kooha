@@ -4,20 +4,21 @@
 # Nikos <dizars1776@yahoo.gr>, 2022.
 # Nikolaos Georgiou <dizars1776@yahoo.gr>, 2022.
 # greek anon <rnation@bbq59.xyz>, 2023, 2024.
+# GiannosOB <giannos2105@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-04-22 18:25+0000\n"
+"Last-Translator: GiannosOB <giannos2105@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/seadve/kooha/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.11.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -65,7 +66,7 @@ msgstr "📼 Υποστήριξη για WebM, MP4, GIF και Matroska μορφ
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Επιλέξτε μια οθόνη ή ένα τμήμα της οθόνης για εγγραφή"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -80,15 +81,17 @@ msgstr "🚀 Πειραματική κωδικοποίηση μέσω επιτά
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Επιλογές εγγραφής και κουμπί για την έναρξη της εγγραφής"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Διάρκεια εγγραφής σε εξέλιξη και κουμπί για τη διακοπή της εγγραφής"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
 msgstr ""
+"Αντίστροφη μέτρηση για την έναρξη της εγγραφής και κουμπί για την ακύρωση "
+"της εγγραφής"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -117,7 +120,7 @@ msgstr "Καθυστέρηση (Δευτερόλεπτα)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Χρονικό διάστημα πριν από την έναρξη της εγγραφής"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -125,7 +128,7 @@ msgstr "Φάκελος Εγγραφών"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Φάκελος προορισμού για τις εγγραφές"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -299,7 +302,7 @@ msgstr "Εμφάνιση σε Αρχεία"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Αποτυχία εύρεσης της προεπιλεγμένης συσκευής ήχου"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
