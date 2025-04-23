@@ -567,7 +567,7 @@ impl Window {
         let is_enabled = Application::get()
             .settings()
             .profile()
-            .map_or(true, |profile| profile.supports_audio());
+            .is_none_or(|profile| profile.supports_audio());
 
         self.action_set_enabled("win.record-desktop-audio", is_enabled);
         self.action_set_enabled("win.record-microphone", is_enabled);
