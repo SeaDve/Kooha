@@ -12,21 +12,22 @@
 # p h <phhens@gmail.com>, 2024.
 # Wedone <cafh62@gmail.com>, 2024.
 # Clyhtsuriva <aimeric@adjutor.xyz>, 2024.
+# Kevin Gagnon <kvnggn@pm.me>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-06-26 22:09+0000\n"
-"Last-Translator: Clyhtsuriva <aimeric@adjutor.xyz>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/seadve/kooha/fr/"
-">\n"
+"PO-Revision-Date: 2025-06-10 17:01+0000\n"
+"Last-Translator: Kevin Gagnon <kvnggn@pm.me>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/seadve/kooha/fr/>"
+"\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -90,15 +91,15 @@ msgstr "🚀 Encodage expérimental accéléré par matériel"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Options d'enregistrement et bouton pour démarrer"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Temps d'enregistrement en cours et bouton d'arrêt"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "Décompte pour démarrer l'enregistrement et bouton d'arrêt"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
