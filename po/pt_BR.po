@@ -10,13 +10,14 @@
 # Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2023.
 # Claudio Campos <clau.d.campos83@gmail.com>, 2025.
 # John Peter Sa <johnppetersa@gmail.com>, 2025.
+# Xen'on <saveliyburk@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2025-05-25 15:01+0000\n"
-"Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
+"PO-Revision-Date: 2025-06-13 10:52+0000\n"
+"Last-Translator: Xen'on <saveliyburk@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "seadve/kooha/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -69,9 +70,8 @@ msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
 msgstr "📼 Suporte para WebM, MP4, GIF e formatos Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
-#, fuzzy
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr "🖥️ Selecione um monitor ou uma parte da tela para gravar."
+msgstr "🖥️ Selecione um monitor ou uma parte da tela para gravar"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -85,14 +85,12 @@ msgid "🚀 Experimental hardware accelerated encoding"
 msgstr "🚀 Codificação de aceleração de hardware experimental"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
-#, fuzzy
 msgid "Recording options and button to start recording"
-msgstr "Opções de gravação e botão para iniciar a gravação."
+msgstr "Opções de gravação e botão para iniciar a gravação"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
-#, fuzzy
 msgid "In-progress recording duration and button to stop recording"
-msgstr "Duração da gravação em andamento e botão para parar de gravar."
+msgstr "Duração da gravação em andamento e botão para parar de gravar"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
@@ -133,9 +131,8 @@ msgid "Recordings Folder"
 msgstr "Pasta de Gravações"
 
 #: data/resources/ui/preferences_dialog.ui:28
-#, fuzzy
 msgid "Destination folder for the recordings"
-msgstr "Pasta de destino para as gravações"
+msgstr "Destino para as gravações"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -308,7 +305,6 @@ msgid "Show in Files"
 msgstr "Mostrar em arquivos"
 
 #: src/device.rs:26
-#, fuzzy
 msgid "Failed to find the default audio device"
 msgstr "Falha ao encontrar o dispositivo de áudio padrão"
 
@@ -342,7 +338,6 @@ msgid "Failed to set recordings folder"
 msgstr "Não foi possível definir a pasta de gravações"
 
 #: src/preferences_dialog.rs:237
-#, fuzzy
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Esta taxa de quadros pode causar problemas de desempenho no formato "
@@ -395,14 +390,12 @@ msgid "Failed to toggle pause"
 msgstr "Falha ao alternar pausa"
 
 #: src/window/mod.rs:199
-#, fuzzy
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 "Uma gravação está em andamento. Encerrar imediatamente pode fazer com que a "
-"gravação fique indisponível. \n"
-"Interrompa a gravação antes de encerrar."
+"gravação fique indisponível. Interrompa a gravação antes de fechar."
 
 #: src/window/mod.rs:202
 msgid ""
@@ -433,9 +426,8 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: src/window/mod.rs:294
-#, fuzzy
 msgid "Ok, Got It"
-msgstr "OK, entendi"
+msgstr "OK"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
