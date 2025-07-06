@@ -6,22 +6,23 @@
 # Mehdi Essalehi <messalehi2001@outlook.com>, 2021.
 # Muhammad Yasser <iamrokt@gmail.com>, 2021.
 # Ali Aljishi <ahj696@hotmail.com>, 2023.
+# Yassin Amr <justxeez@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2024-02-24 02:33+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/seadve/kooha/ar/"
-">\n"
+"PO-Revision-Date: 2025-07-06 03:47+0000\n"
+"Last-Translator: Yassin Amr <justxeez@gmail.com>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/seadve/kooha/ar/>"
+"\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -67,7 +68,7 @@ msgstr "📼 دعم نُسُق وِب‌إم وإم‌بي٤ وجِف ومترو
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ اختر شاشة أو جزء من الشاشة للتسجيل"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -80,19 +81,19 @@ msgstr "🚀 ترميز تجريبيٌّ مسرَّع بمساعدة العتا�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "اعدادات تسجيل وزِر لبداية التسجيل"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "مدة التسجيل الجاري و زر لايقاف التسجيل"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "عد تنازلي لبدء التسجيل وزِر لِإلغاء التسجيل"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr "حدِّد مساحةً"
+msgstr "حدِّد مساحة"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:213
@@ -105,7 +106,7 @@ msgstr "تمَّ"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr "صفِّر التحديد"
+msgstr "أعِد التحديد"
 
 #: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
 msgid "General"
@@ -117,7 +118,7 @@ msgstr "التأخير (بالثواني)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "فاصل زمني قبل بدء التسجيل"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
@@ -125,7 +126,7 @@ msgstr "مجلَّد التسجيلات"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "مجلد التسجيلات"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -275,9 +276,8 @@ msgstr "_عن كوها"
 #: src/about.rs:35
 msgid "translator-credits"
 msgstr ""
-"Mehdi Essalehi\n"
-"Muhammad Yasser\n"
-"علي الجشي https://github.com/Ali-x98"
+"Ali Elgashy\n"
+"Yassin Amr"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
@@ -302,7 +302,7 @@ msgstr "أظهره في الملفَّات"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "فشل ايجاد جهاز الصوت الافتراضي"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
@@ -312,42 +312,42 @@ msgstr "تأكَّد من تثبيتك بُلس‌أوديو في جهازك."
 #: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "صفر"
+msgstr[1] "ساعة"
+msgstr[2] "ساعتان"
+msgstr[3] "ساعات"
+msgstr[4] "ساعات"
+msgstr[5] "ساعات"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "صفر"
+msgstr[1] "دقيقة"
+msgstr[2] "دقيقتان"
+msgstr[3] "دقائق"
+msgstr[4] "دقائق"
+msgstr[5] "دقائق"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "صفر"
+msgstr[1] "ثانية"
+msgstr[2] "ثانيتان"
+msgstr[3] "ثوانٍ"
+msgstr[4] "ثوانٍ"
+msgstr[5] "ثوانٍ"
 
 #: src/preferences_dialog.rs:77
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "فشل تحديد مجلد التسجيلات"
 
 #: src/preferences_dialog.rs:237
 msgid "This frame rate may cause performance issues on the selected format."
-msgstr ""
+msgstr "معدل الاطارات هذا قد يسبب مشاكل اداء على النسق المختار."
 
 #: src/preferences_dialog.rs:301
 msgid "This format is experimental and unsupported."
@@ -400,16 +400,18 @@ msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"هناك تسجيل جاري. الخروج حالا قد يجعل التسجيل غير قابل للتشغيل. من فضلك اقف "
+"التسجيل قبل الخروج."
 
 #: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
+msgstr "الخروج سيلغي المعالجة وقد يجعل التسجيل غير قابل للتشغيل."
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr ""
+msgstr "الخروج من التطبيق؟"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -428,9 +430,8 @@ msgid "Help"
 msgstr "مساعدة"
 
 #: src/window/mod.rs:294
-#, fuzzy
 msgid "Ok, Got It"
-msgstr "حسنًا"
+msgstr "حسنًا, فهمتك"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
@@ -453,7 +454,7 @@ msgstr "افتح"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr ""
+msgstr "هناك تسجيل جارٍ"
 
 #: src/window/mod.rs:509
 msgid "Paused"
