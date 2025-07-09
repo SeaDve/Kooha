@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2025-02-02 19:14+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-07-09 15:02+0000\n"
+"Last-Translator: \"Emilio S.\" <emism.translations@gmail.com>\n"
 "Language-Team: Interlingua <https://hosted.weblate.org/projects/seadve/kooha/"
 "ia/>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -259,7 +259,7 @@ msgstr "_Preferentias"
 
 #: data/resources/ui/window.ui:297
 msgid "_Keyboard Shortcuts"
-msgstr "_Commandos curte de claviero"
+msgstr "Vias breve de _claviero"
 
 #: data/resources/ui/window.ui:301
 msgid "_About Kooha"
