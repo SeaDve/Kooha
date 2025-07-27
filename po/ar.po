@@ -7,13 +7,14 @@
 # Muhammad Yasser <iamrokt@gmail.com>, 2021.
 # Ali Aljishi <ahj696@hotmail.com>, 2023.
 # Yassin Amr <justxeez@gmail.com>, 2025.
+# Ahmed Najmawi <iramosu@protonmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2025-07-06 03:47+0000\n"
-"Last-Translator: Yassin Amr <justxeez@gmail.com>\n"
+"PO-Revision-Date: 2025-07-27 16:13+0000\n"
+"Last-Translator: Ahmed Najmawi <iramosu@protonmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/seadve/kooha/ar/>"
 "\n"
 "Language: ar\n"
@@ -154,7 +155,7 @@ msgstr "أظهر الاختصارات"
 
 #: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
 msgid "Quit"
-msgstr "أنهِ"
+msgstr "اخرُج"
 
 #: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
 msgid "Recording"
@@ -275,9 +276,7 @@ msgstr "_عن كوها"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr ""
-"Ali Elgashy\n"
-"Yassin Amr"
+msgstr "علي الجشي، عمرو ياسين، أحمد النجماوي"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
@@ -431,7 +430,7 @@ msgstr "مساعدة"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr "حسنًا, فهمتك"
+msgstr "حسنًا"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
