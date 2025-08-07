@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 # 黃政揚 <noobpenguin0405@gmail.com>, 2025.
+# wumou <gvchd4@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 20:06+0800\n"
-"PO-Revision-Date: 2025-01-27 12:02+0000\n"
-"Last-Translator: 黃政揚 <noobpenguin0405@gmail.com>\n"
+"PO-Revision-Date: 2025-08-07 21:01+0000\n"
+"Last-Translator: wumou <gvchd4@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/seadve/kooha/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:3
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -88,12 +89,12 @@ msgstr ""
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "選擇範圍"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
 #: data/resources/ui/window.ui:276 src/window/mod.rs:213
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
@@ -125,15 +126,15 @@ msgstr ""
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "影片"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "格式"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "幀率"
 
 #: data/resources/ui/shortcuts.ui:14
 msgid "Open Menu"
@@ -165,7 +166,7 @@ msgstr "切換暫停"
 
 #: data/resources/ui/shortcuts.ui:56
 msgid "Cancel Record"
-msgstr ""
+msgstr "取消錄影"
 
 #: data/resources/ui/shortcuts.ui:63
 msgid "Settings"
@@ -205,11 +206,11 @@ msgstr ""
 
 #: data/resources/ui/window.ui:95
 msgid "Enable Microphone"
-msgstr ""
+msgstr "開啟麥克風"
 
 #: data/resources/ui/window.ui:96
 msgid "Disable Microphone"
-msgstr ""
+msgstr "關閉麥克風"
 
 #: data/resources/ui/window.ui:104
 msgid "Show Pointer"
@@ -217,11 +218,11 @@ msgstr "顯示游標"
 
 #: data/resources/ui/window.ui:105
 msgid "Hide Pointer"
-msgstr ""
+msgstr "隱藏游標"
 
 #: data/resources/ui/window.ui:115
 msgid "Start Recording"
-msgstr ""
+msgstr "開始錄影"
 
 #: data/resources/ui/window.ui:116
 msgid "Record"
@@ -233,7 +234,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:180
 msgid "Stop Recording"
-msgstr ""
+msgstr "停止錄影"
 
 #: data/resources/ui/window.ui:181
 msgid "Stop"
@@ -249,7 +250,7 @@ msgstr "即將開始錄影…"
 
 #: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
 msgid "Cancel Recording"
-msgstr ""
+msgstr "取消錄影"
 
 #: data/resources/ui/window.ui:257
 #, fuzzy
@@ -275,7 +276,7 @@ msgstr "Kisaragi Hiu"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "贊助（請我一杯咖啡）"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -283,7 +284,7 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "翻譯"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
