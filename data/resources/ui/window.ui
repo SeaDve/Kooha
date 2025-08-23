@@ -3,6 +3,8 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="KoohaWindow" parent="AdwApplicationWindow">
+    <property name="height-request">-1</property>
+    <property name="width-request">-1</property>
     <property name="resizable">False</property>
     <property name="default-width">220</property>
     <property name="default-height">230</property>
