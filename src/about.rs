@@ -41,10 +41,7 @@ pub fn present_dialog(parent: &impl IsA<gtk::Widget>) {
         .release_notes(release_notes())
         .build();
 
-    dialog.add_link(
-        &gettext("Donate (Buy Me a Coffee)"),
-        "https://www.buymeacoffee.com/seadve",
-    );
+    dialog.add_link(&gettext("Donate"), "https://seadve.github.io/donate/");
     dialog.add_link(&gettext("GitHub"), "https://github.com/SeaDve/Kooha");
     dialog.add_link(
         &gettext("Translate"),
