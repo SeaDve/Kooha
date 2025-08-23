@@ -1,4 +1,4 @@
-use anyhow::{bail, Context, Result};
+use anyhow::{Context, Result, bail};
 use gst::prelude::*;
 use gtk::{
     gio,
@@ -322,9 +322,11 @@ mod tests {
                 panic!("can't attach profile `{}`: {:?}", profile.id(), err);
             }
 
-            assert!(pipeline
-                .find_unlinked_pad(gst::PadDirection::Sink)
-                .is_none());
+            assert!(
+                pipeline
+                    .find_unlinked_pad(gst::PadDirection::Sink)
+                    .is_none()
+            );
             assert!(pipeline.find_unlinked_pad(gst::PadDirection::Src).is_none());
 
             assert!(profile.is_available());

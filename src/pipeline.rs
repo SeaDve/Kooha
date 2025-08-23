@@ -1,4 +1,4 @@
-use anyhow::{bail, ensure, Context, Ok, Result};
+use anyhow::{Context, Ok, Result, bail, ensure};
 use gst::prelude::*;
 use gtk::graphene::Rect;
 

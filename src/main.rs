@@ -43,7 +43,7 @@ mod settings;
 mod timer;
 mod window;
 
-use gettextrs::{gettext, LocaleCategory};
+use gettextrs::{LocaleCategory, gettext};
 use gtk::{gio, glib};
 
 use self::{

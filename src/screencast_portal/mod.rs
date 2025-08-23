@@ -3,7 +3,7 @@ mod types;
 mod variant_dict;
 mod window_identifier;
 
-use anyhow::{anyhow, bail, Context, Result};
+use anyhow::{Context, Result, anyhow, bail};
 use futures_channel::oneshot;
 use futures_util::future::{self, Either};
 use gtk::{

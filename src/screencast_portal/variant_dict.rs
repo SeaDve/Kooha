@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Result};
+use anyhow::{Result, anyhow};
 use gtk::glib::{self, prelude::*};
 
 use std::{borrow::Cow, collections::HashMap, fmt};
