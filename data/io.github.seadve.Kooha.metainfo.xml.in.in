@@ -40,6 +40,15 @@
   <url type="vcs-browser">https://github.com/SeaDve/Kooha</url>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="2.3.1" date="2025-08-23">
+      <description translate="no">
+        <p>This release contains minor changes:</p>
+        <ul>
+          <li>Updated UI</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.3.0" date="2024-03-21">
       <description translate="no">
         <p>This release contains new features and fixes:</p>

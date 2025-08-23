@@ -1,7 +1,7 @@
 project(
   'kooha',
   'rust',
-  version: '2.3.0',
+  version: '2.3.1',
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.59',
 )
