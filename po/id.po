@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 11:08+0800\n"
-"PO-Revision-Date: 2024-03-26 12:59+0000\n"
-"Last-Translator: Taufiq H <hosterwebplate.prh28@passinbox.com>\n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
+"PO-Revision-Date: 2025-08-23 08:45+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/seadve/kooha/"
 "id/>\n"
 "Language: id\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -112,7 +112,7 @@ msgstr "Selesai"
 msgid "Reset Selection"
 msgstr "Atur Ulang Pilihan"
 
-#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "Umum"
 
@@ -144,53 +144,80 @@ msgstr "Format"
 msgid "Frame Rate"
 msgstr "Laju Bingkai"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:10
+#, fuzzy
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Umum"
+
+#: data/resources/ui/shortcuts.ui:13
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Buka Menu"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:19
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Tampilkan Preferensi"
+msgstr "Menampilkan Preferensi"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:25
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Tampilkan Pintasan"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Keluar"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
 msgid "Recording"
-msgstr "Merekam"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "Tombol Perekaman"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "Tombol Jeda"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr "Batal Merekam"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:63
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
 msgid "Settings"
-msgstr "Pengaturan"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "Tombol Audio Desktop"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "Tombol Mikrofon"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:79
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Tombol Penunjuk"
+msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -331,21 +358,21 @@ msgid "{time} second"
 msgid_plural "{time} seconds"
 msgstr[0] "detik"
 
-#: src/preferences_dialog.rs:77
+#: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
 msgstr "Gagal mengatur folder hasil perekaman"
 
-#: src/preferences_dialog.rs:238
+#: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Frame rate ini mungkin akan menyebabkan isu terhadap performa pada format "
 "yang dipilih."
 
-#: src/preferences_dialog.rs:302
+#: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
 msgstr "Format ini eksperimental dan tidak didukung."
 
-#: src/preferences_dialog.rs:309 src/window/mod.rs:559
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
 msgstr "Tidak ada"
 
@@ -353,29 +380,29 @@ msgstr "Tidak ada"
 msgid "No active profile"
 msgstr "Tidak ada profil yang aktif"
 
-#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "Gagal memulai perekaman"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:190
 msgid "Check out {link} for help."
 msgstr "Rujukan {link} untuk bantuan."
 
-#: src/recording.rs:225
+#: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
 msgstr "Plugin GStreamer mungkin tidak terpasang."
 
-#: src/recording.rs:275 src/recording.rs:504
+#: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Pastikan lokasi penyimpanan ada dan dapat diakses."
 
-#: src/recording.rs:495
+#: src/recording.rs:497
 msgid "An error occurred while recording"
 msgstr "Kesalahan terjadi ketika merekam"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:501
+#: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
 msgstr "Gagal membuka “{path}” untuk bekerja"
 
@@ -406,6 +433,10 @@ msgstr ""
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Keluar dari Aplikasi?"
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr "Keluar"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -451,17 +482,51 @@ msgstr "Buka"
 msgid "A recording is in progress"
 msgstr "Perekaman sedang berlangsung"
 
-#: src/window/mod.rs:509
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr "Merekam"
+
+#: src/window/mod.rs:507
 msgid "Paused"
 msgstr "Dijeda"
 
-#: src/window/mod.rs:546
+#: src/window/mod.rs:544
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window/mod.rs:547
+#: src/window/mod.rs:545
 msgid "Selection"
 msgstr "Potongan"
+
+#~ msgid "Open Menu"
+#~ msgstr "Buka Menu"
+
+#~ msgid "Show Preferences"
+#~ msgstr "Tampilkan Preferensi"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "Tampilkan Pintasan"
+
+#~ msgid "Toggle Record"
+#~ msgstr "Tombol Perekaman"
+
+#~ msgid "Toggle Pause"
+#~ msgstr "Tombol Jeda"
+
+#~ msgid "Cancel Record"
+#~ msgstr "Batal Merekam"
+
+#~ msgid "Settings"
+#~ msgstr "Pengaturan"
+
+#~ msgid "Toggle Desktop Audio"
+#~ msgstr "Tombol Audio Desktop"
+
+#~ msgid "Toggle Microphone"
+#~ msgstr "Tombol Mikrofon"
+
+#~ msgid "Toggle Pointer"
+#~ msgstr "Tombol Penunjuk"
 
 #~ msgid "Failed to start device monitor"
 #~ msgstr "Gagal memulai perangkat monitor"

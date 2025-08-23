@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 11:08+0800\n"
-"PO-Revision-Date: 2024-05-11 05:00+0000\n"
-"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
+"PO-Revision-Date: 2025-08-23 08:45+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/seadve/kooha/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5.4\n"
+"X-Generator: Weblate 5.13\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -103,7 +103,7 @@ msgstr "संपन्न"
 msgid "Reset Selection"
 msgstr "चयन रीसेट करें"
 
-#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "सामान्य"
 
@@ -135,53 +135,80 @@ msgstr "प्रारूप"
 msgid "Frame Rate"
 msgstr "फ्रेम दर"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:10
+#, fuzzy
+msgctxt "shortcut window"
+msgid "General"
+msgstr "सामान्य"
+
+#: data/resources/ui/shortcuts.ui:13
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "मेनू खोलें"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:19
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "प्राथमिकताएं दिखाएं"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:25
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "शॉर्टकट दिखाएं"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "बंद करें"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
 msgid "Recording"
-msgstr "रिकॉर्डिंग"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "रिकार्डिंग शुरू/बंद करें"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "विराम शुरू/बंद करें"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr "रिकार्डिंग रद्द करें"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:63
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
 msgid "Settings"
-msgstr "सेटिंग"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "डेस्कटॉप ऑडियो चालु/बंद करें"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "माइक्रोफोन चालु/बंद करें"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:79
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "सूचक चालु/बंद करें"
+msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -324,19 +351,19 @@ msgid_plural "{time} seconds"
 msgstr[0] "{time} सेकंड"
 msgstr[1] "{time} सेकंड"
 
-#: src/preferences_dialog.rs:77
+#: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
 msgstr "रिकॉर्डिंग फोल्डर निर्धारित करने में विफल"
 
-#: src/preferences_dialog.rs:238
+#: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr "यह फ्रेम दर चयनित प्रारूप पर प्रदर्शन संबंधी समस्याएं पैदा कर सकती है।"
 
-#: src/preferences_dialog.rs:302
+#: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
 msgstr "यह प्रारूप प्रयोगात्मक और असमर्थित है।"
 
-#: src/preferences_dialog.rs:309 src/window/mod.rs:559
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
 msgstr "कोई नहीं"
 
@@ -344,29 +371,29 @@ msgstr "कोई नहीं"
 msgid "No active profile"
 msgstr "कोई सक्रिय प्रोफाइल नहीं"
 
-#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "रिकॉर्डिंग प्रारंभ करने में विफल"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:190
 msgid "Check out {link} for help."
 msgstr "सहायता के लिए {link} देखें।"
 
-#: src/recording.rs:225
+#: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer प्लगइन स्थापित नहीं किया जा सकता है।"
 
-#: src/recording.rs:275 src/recording.rs:504
+#: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "सुनिश्चित करें कि सहेजने हेतु स्थान मौजूद है और पहुंच योग्य है।"
 
-#: src/recording.rs:495
+#: src/recording.rs:497
 msgid "An error occurred while recording"
 msgstr "रिकॉर्डिंग करते समय एक त्रुटि उत्पन्न हुई"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:501
+#: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
 msgstr "लिखने के लिए “{path}” खोलने में विफल"
 
@@ -395,6 +422,10 @@ msgstr "छोड़ने से प्रसंस्करण रद्द �
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "अनुप्रयोग छोड़ें?"
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr "बंद करें"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -440,17 +471,51 @@ msgstr "खोलें"
 msgid "A recording is in progress"
 msgstr "रिकॉर्डिंग प्रगति पर है"
 
-#: src/window/mod.rs:509
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr "रिकॉर्डिंग"
+
+#: src/window/mod.rs:507
 msgid "Paused"
 msgstr "विरामित"
 
-#: src/window/mod.rs:546
+#: src/window/mod.rs:544
 msgid "Normal"
 msgstr "साधारण"
 
-#: src/window/mod.rs:547
+#: src/window/mod.rs:545
 msgid "Selection"
 msgstr "चयन"
+
+#~ msgid "Open Menu"
+#~ msgstr "मेनू खोलें"
+
+#~ msgid "Show Preferences"
+#~ msgstr "प्राथमिकताएं दिखाएं"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "शॉर्टकट दिखाएं"
+
+#~ msgid "Toggle Record"
+#~ msgstr "रिकार्डिंग शुरू/बंद करें"
+
+#~ msgid "Toggle Pause"
+#~ msgstr "विराम शुरू/बंद करें"
+
+#~ msgid "Cancel Record"
+#~ msgstr "रिकार्डिंग रद्द करें"
+
+#~ msgid "Settings"
+#~ msgstr "सेटिंग"
+
+#~ msgid "Toggle Desktop Audio"
+#~ msgstr "डेस्कटॉप ऑडियो चालु/बंद करें"
+
+#~ msgid "Toggle Microphone"
+#~ msgstr "माइक्रोफोन चालु/बंद करें"
+
+#~ msgid "Toggle Pointer"
+#~ msgstr "सूचक चालु/बंद करें"
 
 #~ msgid "approx."
 #~ msgstr "लगभग"

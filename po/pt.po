@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 11:08+0800\n"
-"PO-Revision-Date: 2024-08-27 21:09+0000\n"
-"Last-Translator: Alexandre Vergueiro <alexandrevergueirojr@gmail.com>\n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
+"PO-Revision-Date: 2025-08-23 08:45+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/seadve/kooha/"
 "pt/>\n"
 "Language: pt\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7.1-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -110,7 +110,7 @@ msgstr "Concluído"
 msgid "Reset Selection"
 msgstr "Reiniciar seleção"
 
-#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "Geral"
 
@@ -142,53 +142,80 @@ msgstr "Formato"
 msgid "Frame Rate"
 msgstr "Taxa de quadros"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:10
+#, fuzzy
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Geral"
+
+#: data/resources/ui/shortcuts.ui:13
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Abrir Menu Principal"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:19
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Mostrar preferências"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:25
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostrar atalhos"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Sair"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
 msgid "Recording"
-msgstr "Gravando"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "Alternar gravação"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "Alternar pausa"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr "Cancelar gravação"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:63
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
 msgid "Settings"
-msgstr "Configurações"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "Alternar áudio da área de trabalho"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "Alternar microfone"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:79
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Alternar ponteiro"
+msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -329,21 +356,21 @@ msgid_plural "{time} seconds"
 msgstr[0] "{time} segundo"
 msgstr[1] "{time} segundos"
 
-#: src/preferences_dialog.rs:77
+#: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
 msgstr "Falhou em determinar a pasta de gravação"
 
-#: src/preferences_dialog.rs:238
+#: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Esta taxa de quadros pode causar problemas de desempenho no formato "
 "selecionado."
 
-#: src/preferences_dialog.rs:302
+#: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
 msgstr "Esse formato é experimental e não suportado."
 
-#: src/preferences_dialog.rs:309 src/window/mod.rs:559
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
 msgstr "Nenhum"
 
@@ -351,29 +378,29 @@ msgstr "Nenhum"
 msgid "No active profile"
 msgstr "Sem perfil ativo"
 
-#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "Falha ao iniciar gravação"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:190
 msgid "Check out {link} for help."
 msgstr "Confira {link} para obter ajuda."
 
-#: src/recording.rs:225
+#: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
 msgstr "Um plugin GStreamer pode não estar instalado."
 
-#: src/recording.rs:275 src/recording.rs:504
+#: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Certifique-se de que o local de salvamento existe e é acessível."
 
-#: src/recording.rs:495
+#: src/recording.rs:497
 msgid "An error occurred while recording"
 msgstr "Um erro ocorreu durante a gravação"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:501
+#: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
 msgstr "Falha ao abrir “{path}” para gravar"
 
@@ -403,6 +430,10 @@ msgstr ""
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Sair da aplicação?"
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr "Sair"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -448,17 +479,51 @@ msgstr "Abrir"
 msgid "A recording is in progress"
 msgstr "Uma gravação está em progresso"
 
-#: src/window/mod.rs:509
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr "Gravando"
+
+#: src/window/mod.rs:507
 msgid "Paused"
 msgstr "Pausado"
 
-#: src/window/mod.rs:546
+#: src/window/mod.rs:544
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window/mod.rs:547
+#: src/window/mod.rs:545
 msgid "Selection"
 msgstr "Seleção"
+
+#~ msgid "Open Menu"
+#~ msgstr "Abrir Menu Principal"
+
+#~ msgid "Show Preferences"
+#~ msgstr "Mostrar preferências"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "Mostrar atalhos"
+
+#~ msgid "Toggle Record"
+#~ msgstr "Alternar gravação"
+
+#~ msgid "Toggle Pause"
+#~ msgstr "Alternar pausa"
+
+#~ msgid "Cancel Record"
+#~ msgstr "Cancelar gravação"
+
+#~ msgid "Settings"
+#~ msgstr "Configurações"
+
+#~ msgid "Toggle Desktop Audio"
+#~ msgstr "Alternar áudio da área de trabalho"
+
+#~ msgid "Toggle Microphone"
+#~ msgstr "Alternar microfone"
+
+#~ msgid "Toggle Pointer"
+#~ msgstr "Alternar ponteiro"
 
 #~ msgid "Failed to start device monitor"
 #~ msgstr "Falha ao iniciar o monitor do aparelho"

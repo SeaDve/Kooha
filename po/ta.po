@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 11:08+0800\n"
-"PO-Revision-Date: 2024-04-17 10:50+0000\n"
-"Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
+"PO-Revision-Date: 2025-08-23 08:45+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -103,7 +103,7 @@ msgstr "முடிந்தது"
 msgid "Reset Selection"
 msgstr "தேர்வை மீட்டமைக்கவும்"
 
-#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "பொது"
 
@@ -135,53 +135,80 @@ msgstr "வடிவம்"
 msgid "Frame Rate"
 msgstr "பிரேம் வீதம்"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:10
+#, fuzzy
+msgctxt "shortcut window"
+msgid "General"
+msgstr "பொது"
+
+#: data/resources/ui/shortcuts.ui:13
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "மெனுவை திறக்கவும்"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:19
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "விருப்பங்களைக் காட்டு"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:25
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "குறுக்குவழிகளைக் காட்டு"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
 msgid "Recording"
-msgstr "ஒலியை பதிவு செய்கிறது"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "பதிவை நிலைமாற்றவும்"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "இடைநிறுத்தத்தை நிலைமாற்று"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr "பதிவை ரத்துசெய்"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:63
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
 msgid "Settings"
-msgstr "செட்டிங்ஸ்"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "டெஸ்க்டாப் ஆடியோவை நிலைமாற்று"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "ஒலிவாங்கியை நிலைமாற்று"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:79
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "சுட்டியை நிலைமாற்றவும்"
+msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -322,19 +349,19 @@ msgid_plural "{time} seconds"
 msgstr[0] "{time} வினாடி"
 msgstr[1] "{time} வினாடிகள்"
 
-#: src/preferences_dialog.rs:77
+#: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
 msgstr "ரெக்கார்டிங் கோப்புறையை அமைப்பதில் தோல்வி"
 
-#: src/preferences_dialog.rs:238
+#: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr "இந்த பிரேம் வீதம் தேர்ந்தெடுக்கப்பட்ட வடிவமைப்பில் செயல்திறன் சிக்கல்களை ஏற்படுத்தலாம்."
 
-#: src/preferences_dialog.rs:302
+#: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
 msgstr "இந்த வடிவம் சோதனைக்குரியது மற்றும் ஆதரிக்கப்படாது."
 
-#: src/preferences_dialog.rs:309 src/window/mod.rs:559
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
@@ -342,29 +369,29 @@ msgstr "எதுவும் இல்லை"
 msgid "No active profile"
 msgstr "செயலில் சுயவிவரம் இல்லை"
 
-#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "பதிவைத் தொடங்குவதில் தோல்வி"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:190
 msgid "Check out {link} for help."
 msgstr "உதவிக்கு {link} ஐப் பார்க்கவும்."
 
-#: src/recording.rs:225
+#: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer செருகுநிரல் நிறுவப்படாமல் இருக்கலாம்."
 
-#: src/recording.rs:275 src/recording.rs:504
+#: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "சேமிக்கும் இடம் உள்ளதா மற்றும் அணுகக்கூடியதா என்பதை உறுதிப்படுத்தவும்."
 
-#: src/recording.rs:495
+#: src/recording.rs:497
 msgid "An error occurred while recording"
 msgstr "பதிவு செய்யும் போது பிழை ஏற்பட்டது"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:501
+#: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
 msgstr "எழுதுவதற்கு “{path}” திறக்க முடியவில்லை"
 
@@ -393,6 +420,10 @@ msgstr "வெளியேறுவது செயலாக்கத்தை �
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "பயன்பாட்டிலிருந்து வெளியேறவா?"
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr "வெளியேறு"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -438,17 +469,51 @@ msgstr "திறக்கவும்"
 msgid "A recording is in progress"
 msgstr "ஒரு பதிவு நடந்து கொண்டிருக்கிறது"
 
-#: src/window/mod.rs:509
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr "ஒலியை பதிவு செய்கிறது"
+
+#: src/window/mod.rs:507
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
-#: src/window/mod.rs:546
+#: src/window/mod.rs:544
 msgid "Normal"
 msgstr "இயல்பானது"
 
-#: src/window/mod.rs:547
+#: src/window/mod.rs:545
 msgid "Selection"
 msgstr "தேர்வு"
+
+#~ msgid "Open Menu"
+#~ msgstr "மெனுவை திறக்கவும்"
+
+#~ msgid "Show Preferences"
+#~ msgstr "விருப்பங்களைக் காட்டு"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "குறுக்குவழிகளைக் காட்டு"
+
+#~ msgid "Toggle Record"
+#~ msgstr "பதிவை நிலைமாற்றவும்"
+
+#~ msgid "Toggle Pause"
+#~ msgstr "இடைநிறுத்தத்தை நிலைமாற்று"
+
+#~ msgid "Cancel Record"
+#~ msgstr "பதிவை ரத்துசெய்"
+
+#~ msgid "Settings"
+#~ msgstr "செட்டிங்ஸ்"
+
+#~ msgid "Toggle Desktop Audio"
+#~ msgstr "டெஸ்க்டாப் ஆடியோவை நிலைமாற்று"
+
+#~ msgid "Toggle Microphone"
+#~ msgstr "ஒலிவாங்கியை நிலைமாற்று"
+
+#~ msgid "Toggle Pointer"
+#~ msgstr "சுட்டியை நிலைமாற்றவும்"
 
 #~ msgid "Failed to start device monitor"
 #~ msgstr "சாதன மானிட்டரைத் தொடங்குவதில் தோல்வி"

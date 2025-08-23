@@ -10,17 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 11:08+0800\n"
-"PO-Revision-Date: 2024-04-23 23:07+0000\n"
-"Last-Translator: LvargaDS <lvarga@digitalsystems.eu>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/seadve/kooha/sk/"
-">\n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
+"PO-Revision-Date: 2025-08-23 08:45+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/seadve/kooha/sk/>"
+"\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -111,7 +111,7 @@ msgstr "Hotovo"
 msgid "Reset Selection"
 msgstr "Resetovať oblasť"
 
-#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "Všeobecné"
 
@@ -143,53 +143,78 @@ msgstr "Formát"
 msgid "Frame Rate"
 msgstr "Snímková frekvencia"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:10
+#, fuzzy
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Všeobecné"
+
+#: data/resources/ui/shortcuts.ui:13
+msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr "Otvorenie ponuky"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:19
+msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Zobraziť Nastavenia"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:25
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Zobrazenie klávesových skratiek"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Ukončit"
+msgstr "Ukončenie"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
 msgid "Recording"
-msgstr "Zaznamenávanie"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "Prepnutie zaznamenávania"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "Prepnutie pozastavenia"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr "Zrušiť záznam"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:63
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
 msgid "Settings"
-msgstr "Nastavenia"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "Prepnutie zvuku počítača"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "Prepnutie mikrofónu"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:79
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Prepnutie ukazovateľa"
+msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -336,21 +361,21 @@ msgstr[0] "{time} sekunda"
 msgstr[1] "{time} sekundy"
 msgstr[2] "{time} sekúnd"
 
-#: src/preferences_dialog.rs:77
+#: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
 msgstr "Zlyhalo nastavenie adresáru pre nahrávky"
 
-#: src/preferences_dialog.rs:238
+#: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Zvolaná snímková frekvencia môže spôsobovať výkonnostný problém pri zvolenom "
 "formáte."
 
-#: src/preferences_dialog.rs:302
+#: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
 msgstr "Tento formát je experimentálny a nie je k nemu poskytovaná podpora."
 
-#: src/preferences_dialog.rs:309 src/window/mod.rs:559
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
 msgstr "Žiadne"
 
@@ -358,29 +383,29 @@ msgstr "Žiadne"
 msgid "No active profile"
 msgstr "Žiaden aktívny profil"
 
-#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "Začatie nahrávania zlyhalo"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:190
 msgid "Check out {link} for help."
 msgstr "Pre pomoc navštívte {link}."
 
-#: src/recording.rs:225
+#: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer plugin možno nie je nainštalovaný."
 
-#: src/recording.rs:275 src/recording.rs:504
+#: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Overte si, že miesto na ukladanie existuje a je dostupné."
 
-#: src/recording.rs:495
+#: src/recording.rs:497
 msgid "An error occurred while recording"
 msgstr "Počas nahrávania nastala chýba"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:501
+#: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
 msgstr "Nepodarilo sa otvoriť „{path}“ pre zápis"
 
@@ -411,6 +436,10 @@ msgstr ""
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Vypnúť aplikáciu?"
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr "Ukončit"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -456,17 +485,51 @@ msgstr "Otvoriť"
 msgid "A recording is in progress"
 msgstr "Nahrávanie aktívne"
 
-#: src/window/mod.rs:509
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr "Zaznamenávanie"
+
+#: src/window/mod.rs:507
 msgid "Paused"
 msgstr "Pozastavené"
 
-#: src/window/mod.rs:546
+#: src/window/mod.rs:544
 msgid "Normal"
 msgstr "Normálne"
 
-#: src/window/mod.rs:547
+#: src/window/mod.rs:545
 msgid "Selection"
 msgstr "Výber"
+
+#~ msgid "Open Menu"
+#~ msgstr "Otvorenie ponuky"
+
+#~ msgid "Show Preferences"
+#~ msgstr "Zobraziť Nastavenia"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "Zobrazenie klávesových skratiek"
+
+#~ msgid "Toggle Record"
+#~ msgstr "Prepnutie zaznamenávania"
+
+#~ msgid "Toggle Pause"
+#~ msgstr "Prepnutie pozastavenia"
+
+#~ msgid "Cancel Record"
+#~ msgstr "Zrušiť záznam"
+
+#~ msgid "Settings"
+#~ msgstr "Nastavenia"
+
+#~ msgid "Toggle Desktop Audio"
+#~ msgstr "Prepnutie zvuku počítača"
+
+#~ msgid "Toggle Microphone"
+#~ msgstr "Prepnutie mikrofónu"
+
+#~ msgid "Toggle Pointer"
+#~ msgstr "Prepnutie ukazovateľa"
 
 #~ msgid "No microphone source found"
 #~ msgstr "Zdroj mikrofónu nenájdený"

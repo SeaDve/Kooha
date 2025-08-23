@@ -9,17 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 11:08+0800\n"
-"PO-Revision-Date: 2024-10-07 15:16+0000\n"
-"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/seadve/kooha/sv/"
-">\n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
+"PO-Revision-Date: 2025-08-23 08:45+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/seadve/kooha/sv/>"
+"\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -109,7 +109,7 @@ msgstr "Klart"
 msgid "Reset Selection"
 msgstr "Återställ val"
 
-#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "Allmänt"
 
@@ -141,53 +141,80 @@ msgstr "Format"
 msgid "Frame Rate"
 msgstr "Bildhastighet"
 
-#: data/resources/ui/shortcuts.ui:14
+#: data/resources/ui/shortcuts.ui:10
+#, fuzzy
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allmänt"
+
+#: data/resources/ui/shortcuts.ui:13
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Öppna meny"
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:19
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Visa inställningar"
+msgstr "Visa Inställningar"
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:25
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Visa genvägar"
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
 msgid "Recording"
-msgstr "Spelar in"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "Inspelning på/av"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "Paus på/av"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr "Avbryt inspelningen"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:63
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
 msgid "Settings"
-msgstr "Inställningar"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "Växla skrivbordsljud"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "Mikrofon på/av"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:79
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Muspekare på/av"
+msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -328,19 +355,19 @@ msgid_plural "{time} seconds"
 msgstr[0] "{time} sekund"
 msgstr[1] "{time} sekunder"
 
-#: src/preferences_dialog.rs:77
+#: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
 msgstr "Misslyckades att ställa in inspelningsmapp"
 
-#: src/preferences_dialog.rs:238
+#: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr "Denna bildhastighet kan orsaka prestandaproblem i det valda formatet."
 
-#: src/preferences_dialog.rs:302
+#: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
 msgstr "Det här formatet är experimentellt och stöds inte."
 
-#: src/preferences_dialog.rs:309 src/window/mod.rs:559
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
 msgstr "Ingen"
 
@@ -348,29 +375,29 @@ msgstr "Ingen"
 msgid "No active profile"
 msgstr "Ingen aktiv profil"
 
-#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr "Misslyckades att starta inspelningen"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:190
 msgid "Check out {link} for help."
 msgstr "Kolla in {link} för hjälp."
 
-#: src/recording.rs:225
+#: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
 msgstr "En GStreamer-plugin kanske inte är installerad."
 
-#: src/recording.rs:275 src/recording.rs:504
+#: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Se till att sparplatsen finns och är tillgänglig."
 
-#: src/recording.rs:495
+#: src/recording.rs:497
 msgid "An error occurred while recording"
 msgstr "Ett fel uppstod under inspelningen"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:501
+#: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
 msgstr "Misslyckades att öppna \"{path}\" för skrivning"
 
@@ -401,6 +428,10 @@ msgstr ""
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr "Avsluta programmet?"
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr "Avsluta"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -446,17 +477,51 @@ msgstr "Öppna"
 msgid "A recording is in progress"
 msgstr "En inspelning pågår"
 
-#: src/window/mod.rs:509
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr "Spelar in"
+
+#: src/window/mod.rs:507
 msgid "Paused"
 msgstr "Pausad"
 
-#: src/window/mod.rs:546
+#: src/window/mod.rs:544
 msgid "Normal"
 msgstr "Normal"
 
-#: src/window/mod.rs:547
+#: src/window/mod.rs:545
 msgid "Selection"
 msgstr "Markering"
+
+#~ msgid "Open Menu"
+#~ msgstr "Öppna meny"
+
+#~ msgid "Show Preferences"
+#~ msgstr "Visa inställningar"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "Visa genvägar"
+
+#~ msgid "Toggle Record"
+#~ msgstr "Inspelning på/av"
+
+#~ msgid "Toggle Pause"
+#~ msgstr "Paus på/av"
+
+#~ msgid "Cancel Record"
+#~ msgstr "Avbryt inspelningen"
+
+#~ msgid "Settings"
+#~ msgstr "Inställningar"
+
+#~ msgid "Toggle Desktop Audio"
+#~ msgstr "Växla skrivbordsljud"
+
+#~ msgid "Toggle Microphone"
+#~ msgstr "Mikrofon på/av"
+
+#~ msgid "Toggle Pointer"
+#~ msgstr "Muspekare på/av"
 
 #~ msgid "Failed to start device monitor"
 #~ msgstr "Misslyckades att starta enhetsövervakning"

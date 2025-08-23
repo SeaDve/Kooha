@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-23 11:08+0800\n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
 "PO-Revision-Date: 2023-12-16 01:06+0000\n"
 "Last-Translator: Luka Momčilović <l.momcilovic61@gmail.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/seadve/kooha/sr/"
@@ -105,7 +105,7 @@ msgstr ""
 msgid "Reset Selection"
 msgstr ""
 
-#: data/resources/ui/preferences_dialog.ui:10 data/resources/ui/shortcuts.ui:10
+#: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "Опште"
 
@@ -137,53 +137,75 @@ msgstr ""
 msgid "Frame Rate"
 msgstr ""
 
-#: data/resources/ui/shortcuts.ui:14
-msgid "Open Menu"
-msgstr "Отвори изборник"
+#: data/resources/ui/shortcuts.ui:10
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:20
+#: data/resources/ui/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "Open Menu"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:19
+msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr ""
 
-#: data/resources/ui/shortcuts.ui:26
+#: data/resources/ui/shortcuts.ui:25
+msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Приказ пречица"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:32 src/window/mod.rs:215
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Изађи"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:39 src/window/mod.rs:501
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
 msgid "Recording"
-msgstr "Снимање"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:43
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "Покрени/заустави снимање"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:50
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "Паузирај/настави снимање"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:56
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
 msgid "Cancel Record"
 msgstr ""
 
-#: data/resources/ui/shortcuts.ui:63
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
 msgid "Settings"
-msgstr "Подешавања"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:67
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
 msgstr ""
 
-#: data/resources/ui/shortcuts.ui:73
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "Укључи/искључи микрофон"
+msgstr ""
 
-#: data/resources/ui/shortcuts.ui:79
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Прикажи/сакриј курсор"
+msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -330,19 +352,19 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/preferences_dialog.rs:77
+#: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:238
+#: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:302
+#: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
 msgstr ""
 
-#: src/preferences_dialog.rs:309 src/window/mod.rs:559
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
 msgstr "Нема"
 
@@ -350,29 +372,29 @@ msgstr "Нема"
 msgid "No active profile"
 msgstr ""
 
-#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
 msgstr ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:188
+#: src/recording.rs:190
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:225
+#: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
 msgstr ""
 
-#: src/recording.rs:275 src/recording.rs:504
+#: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
 msgstr ""
 
-#: src/recording.rs:495
+#: src/recording.rs:497
 msgid "An error occurred while recording"
 msgstr ""
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:501
+#: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
@@ -399,6 +421,10 @@ msgstr ""
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
 msgstr ""
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr "Изађи"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
@@ -442,17 +468,42 @@ msgstr ""
 msgid "A recording is in progress"
 msgstr ""
 
-#: src/window/mod.rs:509
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr "Снимање"
+
+#: src/window/mod.rs:507
 msgid "Paused"
 msgstr "Паузирано"
 
-#: src/window/mod.rs:546
+#: src/window/mod.rs:544
 msgid "Normal"
 msgstr "Нормално"
 
-#: src/window/mod.rs:547
+#: src/window/mod.rs:545
 msgid "Selection"
 msgstr "Избор"
+
+#~ msgid "Open Menu"
+#~ msgstr "Отвори изборник"
+
+#~ msgid "Show Shortcuts"
+#~ msgstr "Приказ пречица"
+
+#~ msgid "Toggle Record"
+#~ msgstr "Покрени/заустави снимање"
+
+#~ msgid "Toggle Pause"
+#~ msgstr "Паузирај/настави снимање"
+
+#~ msgid "Settings"
+#~ msgstr "Подешавања"
+
+#~ msgid "Toggle Microphone"
+#~ msgstr "Укључи/искључи микрофон"
+
+#~ msgid "Toggle Pointer"
+#~ msgstr "Прикажи/сакриј курсор"
 
 #~ msgid "GIF"
 #~ msgstr "GIF"
