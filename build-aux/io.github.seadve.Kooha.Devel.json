@@ -5,7 +5,7 @@
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm18"
+        "org.freedesktop.Sdk.Extension.llvm20"
     ],
     "command": "kooha",
     "finish-args": [
@@ -21,7 +21,7 @@
         "--env=KOOHA_EXPERIMENTAL=all"
     ],
     "build-options": {
-        "append-path": "/usr/lib/sdk/llvm18/bin:/usr/lib/sdk/rust-stable/bin",
+        "append-path": "/usr/lib/sdk/llvm20/bin:/usr/lib/sdk/rust-stable/bin",
         "build-args": [
             "--share=network"
         ],
@@ -60,8 +60,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.24.5.tar.xz",
-                    "sha256": "333267b6e00770440a4a00402910dd59ed8fd619eaebf402815fbe111da7776d"
+                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.26.5.tar.xz",
+                    "sha256": "3dfc43435be97e110816bac6d602b0f206a038546279683d9d25372ff127db52"
                 }
             ]
         },
