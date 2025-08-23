@@ -12,11 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 20:06+0800\n"
+"POT-Creation-Date: 2025-08-23 11:08+0800\n"
 "PO-Revision-Date: 2024-09-30 11:18+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/seadve/kooha/it/>"
-"\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/seadve/kooha/it/"
+">\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,19 +24,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.8-dev\n"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:3
+#: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
 #: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:5
+#: data/io.github.seadve.Kooha.desktop.in.in:4
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "Registra il tuo schermo elegantemente"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.seadve.Kooha.desktop.in.in:10
+#: data/io.github.seadve.Kooha.desktop.in.in:9
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Screencast;Registratore;Schermo;Video;"
 
@@ -102,8 +102,8 @@ msgstr ""
 msgid "Select Area"
 msgstr "Seleziona Area"
 
-#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:213
+#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
+#: data/resources/ui/window.ui:278 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -195,87 +195,87 @@ msgstr "Attiva/disattiva microfono"
 msgid "Toggle Pointer"
 msgstr "Attiva/disattiva puntatore"
 
-#: data/resources/ui/window.ui:24
+#: data/resources/ui/window.ui:26
 msgid "Main Menu"
 msgstr "Menu principale"
 
-#: data/resources/ui/window.ui:53
+#: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
 msgstr "Cattura uno schermo o una finestra"
 
-#: data/resources/ui/window.ui:66
+#: data/resources/ui/window.ui:68
 msgid "Capture a Selection of Screen"
 msgstr "Cattura una selezione di schermo"
 
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
 msgstr "Abilita audio desktop"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
 msgstr "Disabilita l'audio del desktop"
 
-#: data/resources/ui/window.ui:95
+#: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
 msgstr "Abilita microfono"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
 msgstr "Disabilita microfono"
 
-#: data/resources/ui/window.ui:104
+#: data/resources/ui/window.ui:106
 msgid "Show Pointer"
 msgstr "Mostra il puntatore"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
 msgstr "Nascondi puntatore"
 
-#: data/resources/ui/window.ui:115
+#: data/resources/ui/window.ui:117
 msgid "Start Recording"
 msgstr "Inizia a registrare"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:118
 msgid "Record"
 msgstr "Registra"
 
-#: data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
 msgstr "Dimentica le sorgenti video selezionate in precedenza"
 
-#: data/resources/ui/window.ui:180
+#: data/resources/ui/window.ui:182
 msgid "Stop Recording"
 msgstr "Interrompi registrazione"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:183
 msgid "Stop"
 msgstr "Ferma"
 
-#: data/resources/ui/window.ui:191
+#: data/resources/ui/window.ui:193
 msgid "Pause Recording"
 msgstr "Metti in pausa la registrazione"
 
-#: data/resources/ui/window.ui:214
+#: data/resources/ui/window.ui:216
 msgid "Recording in…"
 msgstr "In registrazione tra…"
 
-#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
 msgstr "Cancella registrazione"
 
-#: data/resources/ui/window.ui:257
+#: data/resources/ui/window.ui:259
 msgid "Flushing…"
 msgstr "Pulizia…"
 
-#: data/resources/ui/window.ui:293
+#: data/resources/ui/window.ui:295
 msgid "_Preferences"
 msgstr "Im_postazioni"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
 msgstr "_Scorciatoie da tastiera"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:303
 msgid "_About Kooha"
 msgstr "_Informazioni su Kooha"
 
@@ -338,17 +338,17 @@ msgstr[1] "{time} secondi"
 msgid "Failed to set recordings folder"
 msgstr "Impossibile impostare la cartella delle registrazioni"
 
-#: src/preferences_dialog.rs:237
+#: src/preferences_dialog.rs:238
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "Questa frequenza fotogrammi potrebbe causare problemi di prestazioni nel "
 "formato selezionato."
 
-#: src/preferences_dialog.rs:301
+#: src/preferences_dialog.rs:302
 msgid "This format is experimental and unsupported."
 msgstr "Questo formato è sperimentale e non supportato."
 
-#: src/preferences_dialog.rs:308 src/window/mod.rs:559
+#: src/preferences_dialog.rs:309 src/window/mod.rs:559
 msgid "None"
 msgstr "Nessuno"
 
@@ -356,29 +356,29 @@ msgstr "Nessuno"
 msgid "No active profile"
 msgstr "Nessun profilo attivo"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
+#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
 msgid "Failed to start recording"
 msgstr "Impossibile avviare la registrazione"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:187
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "Dai un'occhiata a {link} per ricevere aiuto."
 
-#: src/recording.rs:222
+#: src/recording.rs:225
 msgid "A GStreamer plugin may not be installed."
 msgstr "Un plug-in GStreamer potrebbe non essere installato."
 
-#: src/recording.rs:272 src/recording.rs:501
+#: src/recording.rs:275 src/recording.rs:504
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Assicurati che la posizione di salvataggio esista e sia accessibile."
 
-#: src/recording.rs:492
+#: src/recording.rs:495
 msgid "An error occurred while recording"
 msgstr "Si è verificato un errore durante la registrazione"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:498
+#: src/recording.rs:501
 msgid "Failed to open “{path}” for writing"
 msgstr "Impossibile aprire \"{percorso}\" per la scrittura"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 20:06+0800\n"
+"POT-Creation-Date: 2025-08-23 11:08+0800\n"
 "PO-Revision-Date: 2024-04-19 13:03+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
@@ -24,19 +24,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.5-dev\n"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:3
+#: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
 #: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:5
+#: data/io.github.seadve.Kooha.desktop.in.in:4
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "エレガントに画面を記録"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.seadve.Kooha.desktop.in.in:10
+#: data/io.github.seadve.Kooha.desktop.in.in:9
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr ""
 "Screencast;Recorder;Screen;Video;画面録画;画面キャプチャ;録画;キャプチャ;画"
@@ -97,8 +97,8 @@ msgstr ""
 msgid "Select Area"
 msgstr "範囲選択"
 
-#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:213
+#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
+#: data/resources/ui/window.ui:278 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -190,87 +190,87 @@ msgstr "マイクの有効化／無効化"
 msgid "Toggle Pointer"
 msgstr "ポインターの表示／非表示"
 
-#: data/resources/ui/window.ui:24
+#: data/resources/ui/window.ui:26
 msgid "Main Menu"
 msgstr "メインメニュー"
 
-#: data/resources/ui/window.ui:53
+#: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
 msgstr "モニタまたはウィンドウをキャプチャする"
 
-#: data/resources/ui/window.ui:66
+#: data/resources/ui/window.ui:68
 msgid "Capture a Selection of Screen"
 msgstr "スクリーンの選択範囲をキャプチャする"
 
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
 msgstr "デスクトップ音声を有効化"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
 msgstr "デスクトップ音声を無効化"
 
-#: data/resources/ui/window.ui:95
+#: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
 msgstr "マイクを有効化"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
 msgstr "マイクを無効化"
 
-#: data/resources/ui/window.ui:104
+#: data/resources/ui/window.ui:106
 msgid "Show Pointer"
 msgstr "ポインターを表示する"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
 msgstr "ポインターを隠す"
 
-#: data/resources/ui/window.ui:115
+#: data/resources/ui/window.ui:117
 msgid "Start Recording"
 msgstr "録画を開始"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:118
 msgid "Record"
 msgstr "録画"
 
-#: data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
 msgstr "以前に選択した録画元の記録を消去"
 
-#: data/resources/ui/window.ui:180
+#: data/resources/ui/window.ui:182
 msgid "Stop Recording"
 msgstr "録画を停止"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:183
 msgid "Stop"
 msgstr "停止"
 
-#: data/resources/ui/window.ui:191
+#: data/resources/ui/window.ui:193
 msgid "Pause Recording"
 msgstr "録画を一時停止"
 
-#: data/resources/ui/window.ui:214
+#: data/resources/ui/window.ui:216
 msgid "Recording in…"
 msgstr "録画開始まで…"
 
-#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
 msgstr "録画をキャンセル"
 
-#: data/resources/ui/window.ui:257
+#: data/resources/ui/window.ui:259
 msgid "Flushing…"
 msgstr "書き込んでいます…"
 
-#: data/resources/ui/window.ui:293
+#: data/resources/ui/window.ui:295
 msgid "_Preferences"
 msgstr "設定(_P)"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
 msgstr "キーボードショートカット(_K)"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:303
 msgid "_About Kooha"
 msgstr "Kooha について(_A)"
 
@@ -335,17 +335,17 @@ msgstr[0] "{time} 秒"
 msgid "Failed to set recordings folder"
 msgstr "録画フォルダーを設定できませんでした"
 
-#: src/preferences_dialog.rs:237
+#: src/preferences_dialog.rs:238
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 "選択したフォーマットの場合、このフレームレートではパフォーマンス上の問題が発"
 "生する可能性があります。"
 
-#: src/preferences_dialog.rs:301
+#: src/preferences_dialog.rs:302
 msgid "This format is experimental and unsupported."
 msgstr "このフォーマットは実験的でありサポートされていません。"
 
-#: src/preferences_dialog.rs:308 src/window/mod.rs:559
+#: src/preferences_dialog.rs:309 src/window/mod.rs:559
 msgid "None"
 msgstr "なし"
 
@@ -353,29 +353,29 @@ msgstr "なし"
 msgid "No active profile"
 msgstr "有効なプロファイルなし"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
+#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
 msgid "Failed to start recording"
 msgstr "録画の開始に失敗しました"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:187
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr "ヘルプは {link} をご確認ください。"
 
-#: src/recording.rs:222
+#: src/recording.rs:225
 msgid "A GStreamer plugin may not be installed."
 msgstr "GStreamer プラグインがインストールされていない可能性があります。"
 
-#: src/recording.rs:272 src/recording.rs:501
+#: src/recording.rs:275 src/recording.rs:504
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "保存場所が存在し、アクセス可能であることを確認してください。"
 
-#: src/recording.rs:492
+#: src/recording.rs:495
 msgid "An error occurred while recording"
 msgstr "録画中にエラーが発生しました"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:498
+#: src/recording.rs:501
 msgid "Failed to open “{path}” for writing"
 msgstr "“{path}” を書き込み用に開けませんでした"
 

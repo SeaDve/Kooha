@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 20:06+0800\n"
+"POT-Creation-Date: 2025-08-23 11:08+0800\n"
 "PO-Revision-Date: 2025-04-22 18:25+0000\n"
 "Last-Translator: GiannosOB <giannos2105@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/seadve/kooha/el/>\n"
@@ -20,19 +20,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.11.1-dev\n"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:3
+#: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
 #: src/main.rs:61
 msgid "Kooha"
 msgstr "Kooha"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:5
+#: data/io.github.seadve.Kooha.desktop.in.in:4
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "Κομψή καταγραφή οθόνης"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.seadve.Kooha.desktop.in.in:10
+#: data/io.github.seadve.Kooha.desktop.in.in:9
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Μετάδοση;Εγγραφή;Οθόνη;Βίντεο;"
 
@@ -97,8 +97,8 @@ msgstr ""
 msgid "Select Area"
 msgstr "Επιλέξτε Περιοχή"
 
-#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:233
-#: data/resources/ui/window.ui:276 src/window/mod.rs:213
+#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
+#: data/resources/ui/window.ui:278 src/window/mod.rs:213
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -190,87 +190,87 @@ msgstr "Μεταβολή Μικροφώνου"
 msgid "Toggle Pointer"
 msgstr "Μεταβολή Δείκτη"
 
-#: data/resources/ui/window.ui:24
+#: data/resources/ui/window.ui:26
 msgid "Main Menu"
 msgstr "Κυρίως Μενού"
 
-#: data/resources/ui/window.ui:53
+#: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
 msgstr "Καταγράψτε μια Οθόνη ή ένα Παράθυρο"
 
-#: data/resources/ui/window.ui:66
+#: data/resources/ui/window.ui:68
 msgid "Capture a Selection of Screen"
 msgstr "Καταγράψτε μια Περιοχή της Οθόνης"
 
-#: data/resources/ui/window.ui:86
+#: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
 msgstr "Ενεργοποίηση Ήχου Επιφάνειας Εργασίας"
 
-#: data/resources/ui/window.ui:87
+#: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
 msgstr "Απενεργοποίηση Ήχου Επιφάνειας Εργασίας"
 
-#: data/resources/ui/window.ui:95
+#: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
 msgstr "Ενεργοποίηση Μικροφώνου"
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
 msgstr "Απενεργοποίηση Μικροφώνου"
 
-#: data/resources/ui/window.ui:104
+#: data/resources/ui/window.ui:106
 msgid "Show Pointer"
 msgstr "Εμφάνιση Δείκτη"
 
-#: data/resources/ui/window.ui:105
+#: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
 msgstr "Απόκρυψη Δείκτη"
 
-#: data/resources/ui/window.ui:115
+#: data/resources/ui/window.ui:117
 msgid "Start Recording"
 msgstr "Έναρξη Εγγραφής"
 
-#: data/resources/ui/window.ui:116
+#: data/resources/ui/window.ui:118
 msgid "Record"
 msgstr "Εγγραφή"
 
-#: data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
 msgstr "Ξέχνα Προηγουμένως Επιλεγμένες Πηγές Βίντεο"
 
-#: data/resources/ui/window.ui:180
+#: data/resources/ui/window.ui:182
 msgid "Stop Recording"
 msgstr "Τέλος Εγγραφής"
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:183
 msgid "Stop"
 msgstr "Τέλος"
 
-#: data/resources/ui/window.ui:191
+#: data/resources/ui/window.ui:193
 msgid "Pause Recording"
 msgstr "Παύση Εγγραφής"
 
-#: data/resources/ui/window.ui:214
+#: data/resources/ui/window.ui:216
 msgid "Recording in…"
 msgstr "Εγγραφή σε…"
 
-#: data/resources/ui/window.ui:232 data/resources/ui/window.ui:275
+#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
 msgstr "Ακύρωση Εγγραφής"
 
-#: data/resources/ui/window.ui:257
+#: data/resources/ui/window.ui:259
 msgid "Flushing…"
 msgstr "Εκκαθάριση…"
 
-#: data/resources/ui/window.ui:293
+#: data/resources/ui/window.ui:295
 msgid "_Preferences"
 msgstr "_Προτιμήσεις"
 
-#: data/resources/ui/window.ui:297
+#: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
 msgstr "_Συντομεύσεις Πληκτρολογίου"
 
-#: data/resources/ui/window.ui:301
+#: data/resources/ui/window.ui:303
 msgid "_About Kooha"
 msgstr "_Σχετικά με το Kooha"
 
@@ -333,15 +333,15 @@ msgstr[1] ""
 msgid "Failed to set recordings folder"
 msgstr ""
 
-#: src/preferences_dialog.rs:237
+#: src/preferences_dialog.rs:238
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
 
-#: src/preferences_dialog.rs:301
+#: src/preferences_dialog.rs:302
 msgid "This format is experimental and unsupported."
 msgstr "Αυτή η μορφή είναι πειραματική και δεν υποστηρίζεται."
 
-#: src/preferences_dialog.rs:308 src/window/mod.rs:559
+#: src/preferences_dialog.rs:309 src/window/mod.rs:559
 msgid "None"
 msgstr "Κανένας"
 
@@ -349,29 +349,29 @@ msgstr "Κανένας"
 msgid "No active profile"
 msgstr "Κανένα ενεργό προφίλ"
 
-#: src/recording.rs:184 src/recording.rs:221 src/recording.rs:271
+#: src/recording.rs:185 src/recording.rs:224 src/recording.rs:274
 msgid "Failed to start recording"
 msgstr "Αποτυχία έναρξης εγγραφής"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:187
+#: src/recording.rs:188
 msgid "Check out {link} for help."
 msgstr ""
 
-#: src/recording.rs:222
+#: src/recording.rs:225
 msgid "A GStreamer plugin may not be installed."
 msgstr "Η επέκταση GStreamer ίσως δεν έχει εγκατασταθεί."
 
-#: src/recording.rs:272 src/recording.rs:501
+#: src/recording.rs:275 src/recording.rs:504
 msgid "Make sure that the saving location exists and is accessible."
 msgstr "Βεβαιωθείτε ότι η τοποθεσία αποθήκευσης υπάρχει και είναι προσβάσιμη."
 
-#: src/recording.rs:492
+#: src/recording.rs:495
 msgid "An error occurred while recording"
 msgstr "Παρουσιάστηκε σφάλμα κατά την εγγραφή"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
-#: src/recording.rs:498
+#: src/recording.rs:501
 msgid "Failed to open “{path}” for writing"
 msgstr ""
 
