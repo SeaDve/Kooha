@@ -14,7 +14,7 @@
   </a>
   <br>
   <a href="https://seadve.github.io/donate/">
-    <img alt="Donate" src="https://img.shields.io/badge/%E2%9D%A4-donate-blue?style=for-the-badge"/>
+    <img alt="Donate" src="https://img.shields.io/badge/%E2%9D%A4-donate-yellow?style=for-the-badge"/>
   </a>
 </p>
 
