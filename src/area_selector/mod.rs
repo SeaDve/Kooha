@@ -182,7 +182,7 @@ mod imp {
 glib::wrapper! {
     pub struct AreaSelector(ObjectSubclass<imp::AreaSelector>)
         @extends gtk::Widget, gtk::Window, adw::Window,
-        @implements gtk::Native;
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Native, gtk::Root, gtk::ShortcutManager;
 }
 
 impl AreaSelector {

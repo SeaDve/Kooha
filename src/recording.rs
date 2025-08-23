@@ -3,7 +3,7 @@ use std::{
     error,
     ffi::OsStr,
     fmt,
-    os::unix::prelude::RawFd,
+    os::fd::{IntoRawFd, OwnedFd},
     path::{Path, PathBuf},
     rc::Rc,
     time::Duration,
@@ -197,17 +197,19 @@ impl Recording {
         let file_path = new_recording_path(&settings.saving_location(), profile.file_extension());
         imp.file.set(gio::File::for_path(&file_path)).unwrap();
 
+        let raw_fd = fd.into_raw_fd();
+
         let mut pipeline_builder = PipelineBuilder::new(
             file_path,
             settings.framerate(),
             profile.clone(),
-            fd,
+            raw_fd,
             streams.clone(),
         );
 
         // Select area
         if settings.capture_mode() == CaptureMode::Selection {
-            let data = AreaSelector::select(fd, &streams, &Application::get().window()).await?;
+            let data = AreaSelector::select(raw_fd, &streams, &Application::get().window()).await?;
             pipeline_builder.select_area_data(data);
         }
 
@@ -610,7 +612,7 @@ async fn new_screencast_session(
     restore_token: Option<&str>,
     persist_mode: PersistMode,
     parent_window: Option<&impl IsA<gtk::Window>>,
-) -> Result<(Session, Vec<Stream>, Option<String>, RawFd)> {
+) -> Result<(Session, Vec<Stream>, Option<String>, OwnedFd)> {
     let proxy = Proxy::new()
         .await
         .context("Failed to create screencast proxy")?;

@@ -15,7 +15,7 @@ use gtk::{
     prelude::*,
 };
 
-use std::{cell::RefCell, os::unix::io::RawFd, time::Duration};
+use std::{cell::RefCell, os::fd::OwnedFd, time::Duration};
 
 use self::{handle_token::HandleToken, variant_dict::VariantDict};
 pub use self::{
@@ -169,7 +169,7 @@ impl Session {
         Ok((streams, restore_token))
     }
 
-    pub async fn open_pipe_wire_remote(&self) -> Result<RawFd> {
+    pub async fn open_pipe_wire_remote(&self) -> Result<OwnedFd> {
         let (response, fd_list) = self
             .proxy
             .call_with_unix_fd_list_future(

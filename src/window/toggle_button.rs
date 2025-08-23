@@ -102,7 +102,8 @@ glib::wrapper! {
     ///
     /// Note: `icon-name` and `tooltip-text` must not be set directly.
      pub struct ToggleButton(ObjectSubclass<imp::ToggleButton>)
-        @extends gtk::Widget, gtk::Button, gtk::ToggleButton;
+        @extends gtk::Widget, gtk::Button, gtk::ToggleButton,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Actionable;
 }
 
 impl ToggleButton {

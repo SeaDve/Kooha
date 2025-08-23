@@ -412,7 +412,8 @@ mod imp {
 
 glib::wrapper! {
      pub struct ViewPort(ObjectSubclass<imp::ViewPort>)
-        @extends gtk::Widget;
+        @extends gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl ViewPort {

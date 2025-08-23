@@ -15,24 +15,24 @@ debug = 0
 strip = "debuginfo"
 
 [dependencies]
-adw = { package = "libadwaita", version = "0.7", features = ["v1_6"] }
+adw = { package = "libadwaita", version = "0.8", features = ["v1_6"] }
 anyhow = "1.0.59"
 futures-channel = "0.3.19"
 futures-util = { version = "0.3", default-features = false }
-gdk-wayland = { package = "gdk4-wayland", version = "0.9" }
-gdk-x11 = { package = "gdk4-x11", version = "0.9" }
+gdk-wayland = { package = "gdk4-wayland", version = "0.10" }
+gdk-x11 = { package = "gdk4-x11", version = "0.10" }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gsettings-macro = "0.2"
-gst = { package = "gstreamer", version = "0.23", features = ["v1_20"] }
-gst-plugin-gif = "0.13"
-gst-plugin-gtk4 = { version = "0.13", features = [
+gst = { package = "gstreamer", version = "0.24", features = ["v1_20"] }
+gst-plugin-gif = "0.14"
+gst-plugin-gtk4 = { version = "0.14", features = [
     "dmabuf",
     "gtk_v4_14",
     "wayland",
     "x11egl",
     "x11glx",
 ] }
-gtk = { package = "gtk4", version = "0.9", features = ["gnome_46"] }
+gtk = { package = "gtk4", version = "0.10", features = ["gnome_46"] }
 once_cell = "1.19.0"
 serde_yaml = "0.9.31"
 serde = { version = "1.0.196", features = ["derive"] }
