@@ -13,6 +13,7 @@ use std::cell::RefCell;
 
 use self::{progress_icon::ProgressIcon, toggle_button::ToggleButton};
 use crate::{
+    Application,
     cancelled::Cancelled,
     config::PROFILE,
     format,
@@ -20,7 +21,6 @@ use crate::{
     preferences_dialog::PreferencesDialog,
     recording::{NoProfileError, Recording, RecordingState},
     settings::CaptureMode,
-    Application,
 };
 
 mod imp {
@@ -420,7 +420,7 @@ impl Window {
                 let recent_manager = gtk::RecentManager::default();
                 recent_manager.add_item(&recording_file.uri());
             }
-            Err(ref err) => {
+            Err(err) => {
                 if err.is::<Cancelled>() {
                     tracing::debug!("{:?}", err);
                 } else if err.is::<NoProfileError>() {
@@ -463,12 +463,10 @@ impl Window {
             imp.inhibit_cookie.replace(Some(inhibit_cookie));
 
             tracing::debug!("Inhibited logout and idle");
-        } else if !is_busy {
-            if let Some(inhibit_cookie) = imp.inhibit_cookie.take() {
-                app.uninhibit(inhibit_cookie);
+        } else if !is_busy && let Some(inhibit_cookie) = imp.inhibit_cookie.take() {
+            app.uninhibit(inhibit_cookie);
 
-                tracing::debug!("Uninhibited logout and idle");
-            }
+            tracing::debug!("Uninhibited logout and idle");
         }
     }
 

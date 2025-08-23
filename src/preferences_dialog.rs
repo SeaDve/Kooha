@@ -4,7 +4,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use gtk::{
     gio,
-    glib::{self, clone, BoxedAnyObject},
+    glib::{self, BoxedAnyObject, clone},
 };
 
 use crate::{
@@ -66,17 +66,15 @@ mod imp {
                 None,
                 |obj, _, _| async move {
                     let parent = obj.root().map(|r| r.downcast::<gtk::Window>().unwrap());
-                    if let Err(err) = obj.settings().select_saving_location(parent.as_ref()).await {
-                        if !err
+                    if let Err(err) = obj.settings().select_saving_location(parent.as_ref()).await
+                        && !err
                             .downcast_ref::<glib::Error>()
                             .is_some_and(|error| error.matches(gtk::DialogError::Dismissed))
-                        {
-                            tracing::error!("Failed to select saving location: {:?}", err);
+                    {
+                        tracing::error!("Failed to select saving location: {:?}", err);
 
-                            let toast =
-                                adw::Toast::new(&gettext("Failed to set recordings folder"));
-                            obj.add_toast(toast);
-                        }
+                        let toast = adw::Toast::new(&gettext("Failed to set recordings folder"));
+                        obj.add_toast(toast);
                     }
                 },
             );

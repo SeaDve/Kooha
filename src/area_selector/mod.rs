@@ -156,10 +156,10 @@ mod imp {
         }
 
         fn dispose(&self) {
-            if let Some(pipeline) = self.pipeline.get() {
-                if let Err(err) = pipeline.set_state(gst::State::Null) {
-                    tracing::warn!("Failed to set pipeline to Null: {}", err);
-                }
+            if let Some(pipeline) = self.pipeline.get()
+                && let Err(err) = pipeline.set_state(gst::State::Null)
+            {
+                tracing::warn!("Failed to set pipeline to Null: {}", err);
             }
         }
     }
@@ -265,10 +265,10 @@ impl AreaSelector {
 
         let state_change = pipeline.set_state(gst::State::Playing)?;
 
-        if state_change != gst::StateChangeSuccess::Async {
-            if let Some(async_done_tx) = imp.async_done_tx.take() {
-                let _ = async_done_tx.send(Ok(()));
-            }
+        if state_change != gst::StateChangeSuccess::Async
+            && let Some(async_done_tx) = imp.async_done_tx.take()
+        {
+            let _ = async_done_tx.send(Ok(()));
         }
 
         this.present();
@@ -302,10 +302,10 @@ impl AreaSelector {
         let handler_id = imp
             .view_port
             .connect_paintable_rect_notify(move |view_port| {
-                if view_port.paintable_rect().is_some() {
-                    if let Some(selection_context_set_tx) = paintable_rect_set_tx.take() {
-                        let _ = selection_context_set_tx.send(());
-                    }
+                if view_port.paintable_rect().is_some()
+                    && let Some(selection_context_set_tx) = paintable_rect_set_tx.take()
+                {
+                    let _ = selection_context_set_tx.send(());
                 }
             });
 

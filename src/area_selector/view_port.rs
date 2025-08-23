@@ -274,23 +274,23 @@ mod imp {
             obj.notify_paintable_rect();
 
             // Update selection if paintable rect changed.
-            if let Some(prev_paintable_rect) = prev_paintable_rect {
-                if let Some(selection) = obj.selection() {
-                    let selection_rect = selection.rect();
+            if let Some(prev_paintable_rect) = prev_paintable_rect
+                && let Some(selection) = obj.selection()
+            {
+                let selection_rect = selection.rect();
 
-                    let scale_x = new_paintable_rect.width() / prev_paintable_rect.width();
-                    let scale_y = new_paintable_rect.height() / prev_paintable_rect.height();
+                let scale_x = new_paintable_rect.width() / prev_paintable_rect.width();
+                let scale_y = new_paintable_rect.height() / prev_paintable_rect.height();
 
-                    let rel_x = selection_rect.x() - prev_paintable_rect.x();
-                    let rel_y = selection_rect.y() - prev_paintable_rect.y();
+                let rel_x = selection_rect.x() - prev_paintable_rect.x();
+                let rel_y = selection_rect.y() - prev_paintable_rect.y();
 
-                    obj.set_selection(Some(Selection::from_rect(
-                        new_paintable_rect.x() + rel_x * scale_x,
-                        new_paintable_rect.y() + rel_y * scale_y,
-                        selection_rect.width() * scale_x,
-                        selection_rect.height() * scale_y,
-                    )));
-                }
+                obj.set_selection(Some(Selection::from_rect(
+                    new_paintable_rect.x() + rel_x * scale_x,
+                    new_paintable_rect.y() + rel_y * scale_y,
+                    selection_rect.width() * scale_x,
+                    selection_rect.height() * scale_y,
+                )));
             }
         }
 
@@ -444,8 +444,12 @@ impl ViewPort {
             return CursorType::Crosshair;
         };
 
-        let [top_left_handle, top_right_handle, bottom_right_handle, bottom_left_handle] =
-            imp.selection_handles.get().unwrap();
+        let [
+            top_left_handle,
+            top_right_handle,
+            bottom_right_handle,
+            bottom_left_handle,
+        ] = imp.selection_handles.get().unwrap();
 
         if top_left_handle.contains_point(&position) {
             CursorType::NorthWestResize
@@ -800,37 +804,36 @@ impl ViewPort {
 
         // The user clicked without dragging. Make up a larger selection
         // to reduce confusion.
-        if let Some(mut selection) = self.selection() {
-            if imp.drag_cursor.get() == CursorType::Crosshair
-                && selection.end_x == selection.start_x
-                && selection.end_y == selection.start_y
-            {
-                let offset = DEFAULT_SELECTION_SIZE / 2.0;
-                selection.start_x -= offset;
-                selection.start_y -= offset;
-                selection.end_x += offset;
-                selection.end_y += offset;
+        if let Some(mut selection) = self.selection()
+            && imp.drag_cursor.get() == CursorType::Crosshair
+            && selection.end_x == selection.start_x
+            && selection.end_y == selection.start_y
+        {
+            let offset = DEFAULT_SELECTION_SIZE / 2.0;
+            selection.start_x -= offset;
+            selection.start_y -= offset;
+            selection.end_x += offset;
+            selection.end_y += offset;
 
-                let selection_rect = selection.rect();
+            let selection_rect = selection.rect();
 
-                // Keep the coordinates inside the paintable rect.
-                if selection.start_x < paintable_rect.x() {
-                    selection.start_x = paintable_rect.x();
-                    selection.end_x = selection.start_x + selection_rect.width();
-                } else if selection.end_x > paintable_rect.width() + paintable_rect.x() {
-                    selection.end_x = paintable_rect.width() + paintable_rect.x();
-                    selection.start_x = selection.end_x - selection_rect.width();
-                }
-                if selection.start_y < paintable_rect.y() {
-                    selection.start_y = paintable_rect.y();
-                    selection.end_y = selection.start_y + selection_rect.height();
-                } else if selection.end_y > paintable_rect.height() + paintable_rect.y() {
-                    selection.end_y = paintable_rect.height() + paintable_rect.y();
-                    selection.start_y = selection.end_y - selection_rect.height();
-                }
-
-                self.set_selection(Some(selection));
+            // Keep the coordinates inside the paintable rect.
+            if selection.start_x < paintable_rect.x() {
+                selection.start_x = paintable_rect.x();
+                selection.end_x = selection.start_x + selection_rect.width();
+            } else if selection.end_x > paintable_rect.width() + paintable_rect.x() {
+                selection.end_x = paintable_rect.width() + paintable_rect.x();
+                selection.start_x = selection.end_x - selection_rect.width();
             }
+            if selection.start_y < paintable_rect.y() {
+                selection.start_y = paintable_rect.y();
+                selection.end_y = selection.start_y + selection_rect.height();
+            } else if selection.end_y > paintable_rect.height() + paintable_rect.y() {
+                selection.end_y = paintable_rect.height() + paintable_rect.y();
+                selection.start_y = selection.end_y - selection_rect.height();
+            }
+
+            self.set_selection(Some(selection));
         }
 
         if let Some(pointer_position) = imp.pointer_position.get() {

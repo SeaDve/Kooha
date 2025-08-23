@@ -7,8 +7,8 @@ use std::{
 };
 
 use adw::prelude::*;
-use anyhow::anyhow;
 use anyhow::Result;
+use anyhow::anyhow;
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::glib;
@@ -86,10 +86,10 @@ fn cpu_model() -> Result<String> {
     for res in output.stdout.lines() {
         let line = res?;
 
-        if line.contains("Model name:") {
-            if let Some((_, value)) = line.split_once(':') {
-                return Ok(value.trim().to_string());
-            }
+        if line.contains("Model name:")
+            && let Some((_, value)) = line.split_once(':')
+        {
+            return Ok(value.trim().to_string());
         }
     }
 
@@ -105,10 +105,10 @@ fn gpu_model() -> Result<String> {
     for res in output.stdout.lines() {
         let line = res?;
 
-        if line.contains("VGA") {
-            if let Some(value) = line.splitn(3, ':').last() {
-                return Ok(value.trim().to_string());
-            }
+        if line.contains("VGA")
+            && let Some(value) = line.splitn(3, ':').last()
+        {
+            return Ok(value.trim().to_string());
         }
     }
 

@@ -9,7 +9,7 @@ use std::{
     time::Duration,
 };
 
-use anyhow::{ensure, Context, Error, Result};
+use anyhow::{Context, Error, Result, ensure};
 use gettextrs::gettext;
 use gst::prelude::*;
 use gtk::{
@@ -106,10 +106,10 @@ mod imp {
                 timer.cancel();
             }
 
-            if let Some(pipeline) = self.pipeline.get() {
-                if let Err(err) = pipeline.set_state(gst::State::Null) {
-                    tracing::warn!("Failed to stop pipeline on dispose: {:?}", err);
-                }
+            if let Some(pipeline) = self.pipeline.get()
+                && let Err(err) = pipeline.set_state(gst::State::Null)
+            {
+                tracing::warn!("Failed to stop pipeline on dispose: {:?}", err);
             }
 
             self.obj().close_session();
@@ -121,9 +121,11 @@ mod imp {
 
         fn signals() -> &'static [glib::subclass::Signal] {
             static SIGNALS: LazyLock<Vec<Signal>> = LazyLock::new(|| {
-                vec![Signal::builder("finished")
-                    .param_types([BoxedResult::static_type()])
-                    .build()]
+                vec![
+                    Signal::builder("finished")
+                        .param_types([BoxedResult::static_type()])
+                        .build(),
+                ]
             });
 
             SIGNALS.as_ref()
@@ -343,10 +345,10 @@ impl Recording {
             timer.cancel();
         }
 
-        if let Some(pipeline) = imp.pipeline.get() {
-            if let Err(err) = pipeline.set_state(gst::State::Null) {
-                tracing::warn!("Failed to stop pipeline on cancel: {:?}", err);
-            }
+        if let Some(pipeline) = imp.pipeline.get()
+            && let Err(err) = pipeline.set_state(gst::State::Null)
+        {
+            tracing::warn!("Failed to stop pipeline on cancel: {:?}", err);
         }
 
         let _ = imp.bus_watch_guard.take();

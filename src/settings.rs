@@ -175,8 +175,10 @@ mod tests {
                 );
             }
 
-            env::set_var("GSETTINGS_SCHEMA_DIR", schema_dir);
-            env::set_var("GSETTINGS_BACKEND", "memory");
+            unsafe {
+                env::set_var("GSETTINGS_SCHEMA_DIR", schema_dir);
+                env::set_var("GSETTINGS_BACKEND", "memory");
+            }
         });
     }
 
