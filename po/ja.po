@@ -4,7 +4,7 @@
 # tinaxd <systemd.tinaxd@gmail.com>, 2021.
 # tinaxd <tinaxd@protonmail.com>, 2021.
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
-# Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022, 2023, 2024.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022, 2023, 2024, 2025.
 # Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021, 2022.
 # Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 # kj7kt <yyhuton@gmail.com>, 2023.
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-08-24 22:02+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
 ">\n"
 "Language: ja\n"
@@ -83,15 +83,15 @@ msgstr "🚀 実験的なハードウェアアクセラレーションによる�
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "録画オプションと録画開始ボタン"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "録画開始からの経過時間表示と録画停止ボタン"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "録画開始までのカウントダウンと録画キャンセルボタン"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -143,25 +143,21 @@ msgid "Frame Rate"
 msgstr "フレームレート"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "一般"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "メニューを開く"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "設定を表示する"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "ショートカット一覧を表示する"
@@ -169,53 +165,52 @@ msgstr "ショートカット一覧を表示する"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "ウィンドウを閉じる"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "終了"
+msgstr "終了する"
 
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "録画"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "録画を開始/終了する"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "録画を一時停止/再開する"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "録画をキャンセルする"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "内部音声の録音を有効化/無効化"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "マイクからの録音を有効化/無効化"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "マウスポインターを表示/非表示"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
