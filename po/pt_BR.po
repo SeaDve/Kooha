@@ -11,13 +11,14 @@
 # Claudio Campos <clau.d.campos83@gmail.com>, 2025.
 # John Peter Sa <johnppetersa@gmail.com>, 2025.
 # Xen'on <saveliyburk@gmail.com>, 2025.
+# Tanaca <jtanacar@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-08-26 15:02+0000\n"
+"Last-Translator: Tanaca <jtanacar@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "seadve/kooha/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -173,7 +174,7 @@ msgstr "Mostrar atalhos"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Fechar janela"
 
 #: data/resources/ui/shortcuts.ui:37
 #, fuzzy
@@ -184,27 +185,27 @@ msgstr "Sair"
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Gravando"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Gravar"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Pausar"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Cancelar gravação"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
@@ -214,12 +215,12 @@ msgstr ""
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Mudar microfone"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Trocar ponteiro"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
