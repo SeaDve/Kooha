@@ -5,14 +5,14 @@
 # ToldYouThat <itoldyouthat@protonmail.com>, 2021.
 # Sabri Ünal <libreajans@gmail.com>, 2022, 2023, 2024.
 # Oğuz Ersen <oguz@ersen.moe>, 2022, 2024.
-# Sabri Ünal <yakushabb@gmail.com>, 2024.
+# Sabri Ünal <yakushabb@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-08-30 16:01+0000\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/>"
 "\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
@@ -169,13 +169,12 @@ msgstr "Kısayolları Göster"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Pencereyi Kapat"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Çıkış"
+msgstr "Çık"
 
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
