@@ -5,14 +5,14 @@
 # Jan Kuparinen <copper_fin@hotmail.com>, 2021.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2022, 2025.
 # Jiri Nakola <github@nakola.fi>, 2023.
-# Linus Virtanen <linus.virtanen@protonmail.com>, 2024.
+# Linus Virtanen <linus.virtanen@protonmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-09-04 12:02+0000\n"
+"Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/seadve/kooha/fi/>"
 "\n"
 "Language: fi\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.13.1-rc\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -148,36 +148,31 @@ msgid "Frame Rate"
 msgstr "Kuvataajuus"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Yleiset"
+msgstr "Yleistä"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Avaa valikko"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Näytä asetukset"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Näytä pikanäppäimet"
+msgstr "Näytä pikavalinnat"
 
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Sulje ikkuna"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Lopeta"
@@ -185,42 +180,42 @@ msgstr "Lopeta"
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Tallennus"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Tallennus päälle / pois"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Tauko päälle / pois"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Peru tallennus"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Asetukset"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Työpöydän äänet päälle / pois"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Mikrofoni päälle / pois"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Osoitin päälle / pois"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
