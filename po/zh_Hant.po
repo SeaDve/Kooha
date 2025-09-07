@@ -4,13 +4,14 @@
 # Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 # 黃政揚 <noobpenguin0405@gmail.com>, 2025.
 # wumou <gvchd4@gmail.com>, 2025.
+# noeFly <noefly@proton.me>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-09-07 01:56+0000\n"
+"Last-Translator: noeFly <noefly@proton.me>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/seadve/kooha/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -81,11 +82,11 @@ msgstr "錄影的選項和按鈕來開始錄影"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "進行中的錄影時長與停止錄音按鈕"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "開始錄影倒數計時與取消錄影按鈕"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -114,15 +115,15 @@ msgstr "延遲(秒)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "錄影開始前的時間間隔"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "錄影影片資料夾"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "錄影影片的儲存路徑"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -145,67 +146,67 @@ msgstr "一般"
 #: data/resources/ui/shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr ""
+msgstr "開啟選單"
 
 #: data/resources/ui/shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "顯示偏好選項"
 
 #: data/resources/ui/shortcuts.ui:25
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "顯示快捷鍵"
 
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "關閉視窗"
 
 #: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "離開"
 
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "錄影中"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "切換錄影"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "切換暫停"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "取消錄影"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "切換桌面音效"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "切換麥克風"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "切換滑鼠指標"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -221,11 +222,11 @@ msgstr "選取畫面上的區域進行截取"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "啟用桌面音效"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "停用桌面音效"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
@@ -253,7 +254,7 @@ msgstr "錄影"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "忘記先前選取的視訊來源"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
@@ -265,7 +266,7 @@ msgstr "停止"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr ""
+msgstr "暫停錄影"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
@@ -282,7 +283,7 @@ msgstr "正在寫入…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
-msgstr ""
+msgstr "偏好設定（_P）"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
@@ -312,15 +313,15 @@ msgstr "翻譯"
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "已錄製螢幕"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "在檔案中開啟"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "尋找預設音訊裝置失敗"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
