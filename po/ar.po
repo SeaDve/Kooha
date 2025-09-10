@@ -8,13 +8,14 @@
 # Ali Aljishi <ahj696@hotmail.com>, 2023.
 # Yassin Amr <justxeez@gmail.com>, 2025.
 # Ahmed Najmawi <iramosu@protonmail.com>, 2025.
+# Ziad El-sayed <ziadelsayed1797@tutamail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-30 16:01+0000\n"
-"Last-Translator: Ahmed Najmawi <iramosu@protonmail.com>\n"
+"PO-Revision-Date: 2025-09-10 07:15+0000\n"
+"Last-Translator: Ziad El-sayed <ziadelsayed1797@tutamail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/seadve/kooha/ar/>"
 "\n"
 "Language: ar\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -142,28 +143,24 @@ msgid "Frame Rate"
 msgstr "معدَّل الإطارات"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "عام"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "افتح القائمة"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "أظهِر التفضيلات"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "أظهِر الاختصارات"
+msgstr "أظهِر الإختصارات"
 
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
@@ -171,50 +168,49 @@ msgid "Close Window"
 msgstr "أغلق النافذة"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "اخرُج"
+msgstr "خروج"
 
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "تسجيل"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "زر تشغيل/إيقاف التسجيل"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "زر الإيقاف المؤقت"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "إلغاء التسجيل"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "الإعدادات"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "تشغيل/إيقاف صوت سطح المكتب"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "تشغيل/إيقاف المايكروفون"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "تشغيل/إيقاف المؤشر"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
