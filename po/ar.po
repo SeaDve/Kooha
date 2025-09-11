@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-09-10 07:15+0000\n"
+"PO-Revision-Date: 2025-09-11 07:42+0000\n"
 "Last-Translator: Ziad El-sayed <ziadelsayed1797@tutamail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/seadve/kooha/ar/>"
 "\n"
@@ -299,7 +299,7 @@ msgstr "_عن كوها"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr "علي الجشي، عمرو ياسين، أحمد النجماوي"
+msgstr "علي الجشي، عمرو ياسين، أحمد النجماوي, زياد السيد"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
