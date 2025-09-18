@@ -1,0 +1,477 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kooha package.
+# ButterflyOfFire <boffire@users.noreply.hosted.weblate.org>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: kooha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-23 12:12+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: kab\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+
+#: data/io.github.seadve.Kooha.desktop.in.in:2
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
+#: src/main.rs:61
+msgid "Kooha"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.desktop.in.in:4
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
+msgid "Elegantly record your screen"
+msgstr ""
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.seadve.Kooha.desktop.in.in:9
+msgid "Screencast;Recorder;Screen;Video;"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
+msgid ""
+"Capture your screen in a intuitive and straightforward way without "
+"distractions."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
+msgid ""
+"Kooha is a simple screen recorder with a minimalist interface. You can just "
+"click the record button without having to configure a bunch of settings."
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
+msgid "The main features of Kooha include the following:"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+msgid "🎙️ Record microphone, desktop audio, or both at the same time"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+msgid "🖥️ Select a monitor or a portion of the screen to record"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
+msgid ""
+"🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+msgid "🚀 Experimental hardware accelerated encoding"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
+msgid "Recording options and button to start recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+msgid "In-progress recording duration and button to stop recording"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
+msgid "Countdown to start recording and button to cancel recording"
+msgstr ""
+
+#: data/resources/ui/area_selector.ui:15
+msgid "Select Area"
+msgstr ""
+
+#: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
+#: data/resources/ui/window.ui:278 src/window/mod.rs:213
+msgid "Cancel"
+msgstr ""
+
+#: data/resources/ui/area_selector.ui:26
+msgid "Done"
+msgstr ""
+
+#: data/resources/ui/area_selector.ui:35
+msgid "Reset Selection"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:10
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:13
+msgid "Delay (Seconds)"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:14
+msgid "Time interval before recording begins"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:27
+msgid "Recordings Folder"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:28
+msgid "Destination folder for the recordings"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:50
+msgid "Video"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:53
+msgid "Format"
+msgstr ""
+
+#: data/resources/ui/preferences_dialog.ui:58
+msgid "Frame Rate"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:10
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "Open Menu"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:19
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:25
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:31
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:45
+msgctxt "shortcut window"
+msgid "Recording"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:48
+msgctxt "shortcut window"
+msgid "Toggle Record"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:55
+msgctxt "shortcut window"
+msgid "Toggle Pause"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:61
+msgctxt "shortcut window"
+msgid "Cancel Record"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:69
+msgctxt "shortcut window"
+msgid "Settings"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:72
+msgctxt "shortcut window"
+msgid "Toggle Desktop Audio"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:78
+msgctxt "shortcut window"
+msgid "Toggle Microphone"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:84
+msgctxt "shortcut window"
+msgid "Toggle Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:26
+msgid "Main Menu"
+msgstr ""
+
+#: data/resources/ui/window.ui:55
+msgid "Capture a Monitor or Window"
+msgstr ""
+
+#: data/resources/ui/window.ui:68
+msgid "Capture a Selection of Screen"
+msgstr ""
+
+#: data/resources/ui/window.ui:88
+msgid "Enable Desktop Audio"
+msgstr ""
+
+#: data/resources/ui/window.ui:89
+msgid "Disable Desktop Audio"
+msgstr ""
+
+#: data/resources/ui/window.ui:97
+msgid "Enable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:98
+msgid "Disable Microphone"
+msgstr ""
+
+#: data/resources/ui/window.ui:106
+msgid "Show Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:107
+msgid "Hide Pointer"
+msgstr ""
+
+#: data/resources/ui/window.ui:117
+msgid "Start Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:118
+msgid "Record"
+msgstr ""
+
+#: data/resources/ui/window.ui:131
+msgid "Forget Previously Selected Video Sources"
+msgstr ""
+
+#: data/resources/ui/window.ui:182
+msgid "Stop Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:183
+msgid "Stop"
+msgstr ""
+
+#: data/resources/ui/window.ui:193
+msgid "Pause Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:216
+msgid "Recording in…"
+msgstr ""
+
+#: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
+msgid "Cancel Recording"
+msgstr ""
+
+#: data/resources/ui/window.ui:259
+msgid "Flushing…"
+msgstr ""
+
+#: data/resources/ui/window.ui:295
+msgid "_Preferences"
+msgstr ""
+
+#: data/resources/ui/window.ui:299
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: data/resources/ui/window.ui:303
+msgid "_About Kooha"
+msgstr ""
+
+#. Translators: Replace "translator-credits" with your names. Put a comma between.
+#: src/about.rs:35
+msgid "translator-credits"
+msgstr ""
+
+#: src/about.rs:45
+msgid "Donate (Buy Me a Coffee)"
+msgstr ""
+
+#: src/about.rs:48
+msgid "GitHub"
+msgstr ""
+
+#: src/about.rs:50
+msgid "Translate"
+msgstr ""
+
+#. Translators: This is a message that the user will see when the recording is finished.
+#: src/application.rs:137
+msgid "Screencast recorded"
+msgstr ""
+
+#: src/application.rs:144
+msgid "Show in Files"
+msgstr ""
+
+#: src/device.rs:26
+msgid "Failed to find the default audio device"
+msgstr ""
+
+#: src/device.rs:27
+msgid "Make sure that you have PulseAudio installed in your system."
+msgstr ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format.rs:36
+#, rust-format
+msgid "{time} hour"
+msgid_plural "{time} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format.rs:43
+#, rust-format
+msgid "{time} minute"
+msgid_plural "{time} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/format.rs:50
+#, rust-format
+msgid "{time} second"
+msgid_plural "{time} seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/preferences_dialog.rs:76
+msgid "Failed to set recordings folder"
+msgstr ""
+
+#: src/preferences_dialog.rs:236
+msgid "This frame rate may cause performance issues on the selected format."
+msgstr ""
+
+#: src/preferences_dialog.rs:300
+msgid "This format is experimental and unsupported."
+msgstr ""
+
+#: src/preferences_dialog.rs:307 src/window/mod.rs:557
+msgid "None"
+msgstr ""
+
+#: src/recording.rs:42
+msgid "No active profile"
+msgstr ""
+
+#: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
+msgid "Failed to start recording"
+msgstr ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:190
+#, rust-format
+msgid "Check out {link} for help."
+msgstr ""
+
+#: src/recording.rs:227
+msgid "A GStreamer plugin may not be installed."
+msgstr ""
+
+#: src/recording.rs:277 src/recording.rs:506
+msgid "Make sure that the saving location exists and is accessible."
+msgstr ""
+
+#: src/recording.rs:497
+msgid "An error occurred while recording"
+msgstr ""
+
+#. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
+#: src/recording.rs:503
+#, rust-format
+msgid "Failed to open “{path}” for writing"
+msgstr ""
+
+#: src/settings.rs:43
+msgid "Select Recordings Folder"
+msgstr ""
+
+#: src/window/mod.rs:78
+msgid "Failed to toggle pause"
+msgstr ""
+
+#: src/window/mod.rs:199
+msgid ""
+"A recording is currently in progress. Quitting immediately may cause the "
+"recording to be unplayable. Please stop the recording before quitting."
+msgstr ""
+
+#: src/window/mod.rs:202
+msgid ""
+"Quitting will cancel the processing and may cause the recording to be "
+"unplayable."
+msgstr ""
+
+#: src/window/mod.rs:208
+msgid "Quit the Application?"
+msgstr ""
+
+#: src/window/mod.rs:215
+msgid "Quit"
+msgstr ""
+
+#: src/window/mod.rs:256
+msgid "Copy to clipboard"
+msgstr ""
+
+#: src/window/mod.rs:261
+msgid "Copied to clipboard"
+msgstr ""
+
+#: src/window/mod.rs:267
+msgid "Show detailed error"
+msgstr ""
+
+#: src/window/mod.rs:289
+msgid "Help"
+msgstr ""
+
+#: src/window/mod.rs:294
+msgid "Ok, Got It"
+msgstr ""
+
+#: src/window/mod.rs:303
+msgid "Open Preferences?"
+msgstr ""
+
+#: src/window/mod.rs:304
+msgid ""
+"The previously selected format may have been unavailable. Open preferences "
+"and select a format to continue recording."
+msgstr ""
+
+#: src/window/mod.rs:308
+msgid "Later"
+msgstr ""
+
+#: src/window/mod.rs:310
+msgid "Open"
+msgstr ""
+
+#: src/window/mod.rs:461
+msgid "A recording is in progress"
+msgstr ""
+
+#: src/window/mod.rs:499
+msgid "Recording"
+msgstr ""
+
+#: src/window/mod.rs:507
+msgid "Paused"
+msgstr ""
+
+#: src/window/mod.rs:544
+msgid "Normal"
+msgstr ""
+
+#: src/window/mod.rs:545
+msgid "Selection"
+msgstr ""
