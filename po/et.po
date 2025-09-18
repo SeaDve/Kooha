@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-24 22:02+0000\n"
+"PO-Revision-Date: 2025-09-18 00:42+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/seadve/kooha/et/"
 ">\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -145,7 +145,7 @@ msgstr "Kaadrisagedus"
 #: data/resources/ui/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Üldised"
+msgstr "Üldine"
 
 #: data/resources/ui/shortcuts.ui:13
 msgctxt "shortcut window"
@@ -214,7 +214,7 @@ msgstr "Lülita kursor sisse/välja"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
-msgstr "Põhimenüü"
+msgstr "Peamenüü"
 
 #: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
