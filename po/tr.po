@@ -4,15 +4,15 @@
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021, 2022.
 # ToldYouThat <itoldyouthat@protonmail.com>, 2021.
 # Sabri Ünal <libreajans@gmail.com>, 2022, 2023, 2024.
-# Oğuz Ersen <oguz@ersen.moe>, 2022, 2024.
+# Oğuz Ersen <oguz@ersen.moe>, 2022, 2024, 2025.
 # Sabri Ünal <yakushabb@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Kooha Ekran Kayıt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-30 16:01+0000\n"
-"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"PO-Revision-Date: 2025-10-11 09:07+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/seadve/kooha/tr/>"
 "\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
@@ -143,25 +143,21 @@ msgid "Frame Rate"
 msgstr "Kare Hızı"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Genel"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Menüyü Aç"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Tercihleri Göster"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Kısayolları Göster"
@@ -174,47 +170,47 @@ msgstr "Pencereyi Kapat"
 #: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Çık"
+msgstr "Çıkış"
 
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Kaydediliyor"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Kaydı Aç/Kapat"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Duraklatmayı Aç/Kapat"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Kaydı İptal Et"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Ayarlar"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Masaüstü Sesini Aç/Kapat"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Mikrofonu Aç/Kapat"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "İşaretçiyi Aç/Kapat"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
