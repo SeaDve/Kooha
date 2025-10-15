@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Balázs Úr <balazs@urbalazs.hu>, 2021.
 # Cimbora <domonkos.sebestyen@gmail.com>, 2023.
+# Rémiás Tamás <remtamas96@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-10-15 15:08+0000\n"
+"Last-Translator: Rémiás Tamás <remtamas96@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/seadve/kooha/"
 "hu/>\n"
 "Language: hu\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -56,41 +57,54 @@ msgid "The main features of Kooha include the following:"
 msgstr "A Kooha fő funkciói a következők:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
+#, fuzzy
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
 msgstr ""
+"🎙️ Rögzíts mikrofont, asztali hangot (rendszerhangot) vagy mindkettőt "
+"egyszerre"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
+#, fuzzy
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 WebM, MP4, GIF és Matroska formátumok támogatása"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
+#, fuzzy
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Válassz ki egy monitort vagy a képernyő egy részét a rögzítéshez"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Konfigurálható mentési hely, mutató láthatósága, képkockasebesség és "
+"késleltetés"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
+#, fuzzy
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Kísérleti hardveres gyorsítású kódolás"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
+#, fuzzy
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Felvételi lehetőségek és gomb a rögzítés indításához"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
+#, fuzzy
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Folyamatban lévő felvétel időtartama és gomb a rögzítés leállításához"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
+#, fuzzy
 msgid "Countdown to start recording and button to cancel recording"
 msgstr ""
+"Visszaszámlálás a felvétel indításáig és gomb a rögzítés megszakításához"
 
 #: data/resources/ui/area_selector.ui:15
+#, fuzzy
 msgid "Select Area"
-msgstr ""
+msgstr "Terület kiválasztása"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
@@ -98,61 +112,69 @@ msgid "Cancel"
 msgstr "Mégse"
 
 #: data/resources/ui/area_selector.ui:26
+#, fuzzy
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 #: data/resources/ui/area_selector.ui:35
+#, fuzzy
 msgid "Reset Selection"
-msgstr ""
+msgstr "Kijelölés visszaállítása"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
 msgstr "Általános"
 
 #: data/resources/ui/preferences_dialog.ui:13
+#, fuzzy
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Késés (másodperc)"
 
 #: data/resources/ui/preferences_dialog.ui:14
+#, fuzzy
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Időtartam a felvétel megkezdése előtt"
 
 #: data/resources/ui/preferences_dialog.ui:27
+#, fuzzy
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Felvételek mappa"
 
 #: data/resources/ui/preferences_dialog.ui:28
+#, fuzzy
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Célmappa a felvételeknek"
 
 #: data/resources/ui/preferences_dialog.ui:50
+#, fuzzy
 msgid "Video"
-msgstr ""
+msgstr "Videó"
 
 #: data/resources/ui/preferences_dialog.ui:53
+#, fuzzy
 msgid "Format"
-msgstr ""
+msgstr "Formátum"
 
 #: data/resources/ui/preferences_dialog.ui:58
+#, fuzzy
 msgid "Frame Rate"
-msgstr ""
+msgstr "Képkockasebesség"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Általános"
+msgstr "Általánosság"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Menü megnyitása"
 
 #: data/resources/ui/shortcuts.ui:19
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Beállítások megjelenítése"
 
 #: data/resources/ui/shortcuts.ui:25
 #, fuzzy
@@ -163,53 +185,60 @@ msgstr "Gyorsbillentyűk megjelenítése"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Ablak bezárása?"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Kilépés"
 
 #: data/resources/ui/shortcuts.ui:45
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Felvétel"
 
 #: data/resources/ui/shortcuts.ui:48
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Rekord be-/kikapcsolása"
 
 #: data/resources/ui/shortcuts.ui:55
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Szünet be-/kikapcsolása"
 
 #: data/resources/ui/shortcuts.ui:61
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Felvétel törlése"
 
 #: data/resources/ui/shortcuts.ui:69
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Beállítások"
 
 #: data/resources/ui/shortcuts.ui:72
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Asztali hang be-/kikapcsolása"
 
 #: data/resources/ui/shortcuts.ui:78
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Mikrofon be-/kikapcsolása"
 
 #: data/resources/ui/shortcuts.ui:84
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Mutató be-/kikapcsolása"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -298,7 +327,9 @@ msgstr "A Kooha _névjegye"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr "Úr Balázs &lt;balazs@urbalazs.hu&gt;"
+msgstr ""
+"Fordítók: Cserélje le a \"translator-credits\" szöveget a neveire, minden "
+"név külön sorban"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
@@ -310,7 +341,7 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Fordítás"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
