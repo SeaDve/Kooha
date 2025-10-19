@@ -4,6 +4,7 @@ version = "2.3.1"
 authors = ["Dave Patrick Caberto <davecruz48@gmail.com>"]
 license = "GPL-3.0-or-later"
 edition = "2024"
+rust-version = "1.90"
 
 [profile.release]
 lto = true
