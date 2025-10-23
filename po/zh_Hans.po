@@ -15,13 +15,14 @@
 # CrackTC <chenrke369@gmail.com>, 2023.
 # Carter Zhang <mcut17198@autistici.org>, 2023.
 # Jianhua Lu <lujianhua000@gmail.com>, 2024.
+# Haoyu Qiu <timothyqiu32@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-10-23 13:02+0000\n"
+"Last-Translator: Haoyu Qiu <timothyqiu32@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/seadve/kooha/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -29,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -87,15 +88,15 @@ msgstr "🚀 尝试使用硬件加速编码"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "录制选项与开始录制按钮"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "当前录制时长与停止录制按钮"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "开始录制倒计时与取消录制按钮"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -147,25 +148,21 @@ msgid "Frame Rate"
 msgstr "帧率"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "通用"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "打开菜单"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "显示首选项"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "显示快捷键"
@@ -173,10 +170,9 @@ msgstr "显示快捷键"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "关闭窗口"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "退出"
@@ -184,42 +180,42 @@ msgstr "退出"
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "录制"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "开关录制"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "开关暂停"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "取消录制"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "开关桌面音频"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "开关麦克风"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "开关指针"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -283,7 +279,7 @@ msgstr "停止录制"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
-msgstr "即将录制……"
+msgstr "即将录制…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
@@ -313,7 +309,8 @@ msgstr ""
 "Zhou Nan &lt;zhounan@nfschina.com&gt;\n"
 "Zhongrui Cao &lt;zhongrui.cao@suse.com&gt;\n"
 "WhiredPlanck &lt;wplanck@aosc.io&gt;\n"
-"lumingzh &lt;lumingzh@qq.com&gt;"
+"lumingzh &lt;lumingzh@qq.com&gt;\n"
+"Haoyu Qiu &lt;timothyqiu32@gmail.com&gt;"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
@@ -393,7 +390,7 @@ msgstr "查看 “{link}” 以获取帮助。"
 
 #: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
-msgstr "GStreamer plugin可能没有安装。"
+msgstr "GStreamer 插件可能没有安装。"
 
 #: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
