@@ -273,16 +273,16 @@ async fn screencast_request_call(
     let (response_tx, response_rx) = oneshot::channel();
     let response_tx = RefCell::new(Some(response_tx));
 
-    let subscription_id = connection.signal_subscribe(
+    let subscription = connection.subscribe_to_signal(
         Some(DESKTOP_BUS_NAME),
         Some(REQUEST_IFACE_NAME),
         Some("Response"),
         Some(request_path.as_str()),
         None,
         gio::DBusSignalFlags::NONE,
-        move |_connection, _sender_name, _object_path, _interface_name, _signal_name, output| {
+        move |signal_ref| {
             if let Some(tx) = response_tx.take() {
-                let _ = tx.send(output.clone());
+                let _ = tx.send(signal_ref.parameters.clone());
             } else {
                 tracing::warn!("Received another response for already finished request");
             }
@@ -310,7 +310,7 @@ async fn screencast_request_call(
         Either::Right(_) => bail!("Lost name owner for request"),
     };
     request_proxy.disconnect(handler_id);
-    connection.signal_unsubscribe(subscription_id);
+    drop(subscription);
 
     tracing::trace!("Request response received for method `{}`", method);
 
