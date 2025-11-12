@@ -5,24 +5,24 @@
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2021.
 # guymii <guy.minsky@gmail.com>, 2023.
 # Araxeus <oaeben@gmail.com>, 2023.
-# "Omer I.S." <omeritzicschwartz@gmail.com>, 2024.
+# "Omer I.S." <omeritzicschwartz@gmail.com>, 2024, 2025.
 # JerryDX <jerrythemagmacubeofficial@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-11-12 17:51+0000\n"
+"Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/seadve/kooha/he/>"
 "\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
-"n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 5.13\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : "
+"((n > 10 && n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -33,7 +33,7 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:4
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr "הקלט את המסך באלגנטיות"
+msgstr "להקלטת המסך באלגנטיות"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:9
@@ -44,7 +44,7 @@ msgstr "צילום מסך;הקלטה;מסך;וידאו;"
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr "הקלט את המסך בדרך פשוטה ואינטואיטיבית ללא הסחות דעת."
+msgstr "הקלטת המסך בדרך פשוטה ואינטואיטיבית ללא הסחות דעת."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -60,7 +60,7 @@ msgstr "היכולות העיקריות של Kooha הן:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙️ הקלטת קול מהמיקרופון, מהשמע, או משניהם בו זמנית"
+msgstr "🎙️ הקלטת קול מהמיקרופון, מהשמע בשולחן העבודה, או משניהם בבת אחת"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -68,7 +68,7 @@ msgstr "📼 תמיכה בפורמטי הוידאו: WebM, MP4, GIF, ו-Matroska
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr "🖥️ בחר איזה מסך או איזה חלק מהמסך להקליט"
+msgstr "🖥️ אפשר לבחור איזה צג או איזה חלק מהמסך להקליט"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
@@ -83,7 +83,7 @@ msgstr "🚀 קידוד באמצעות חומרה (ניסיוני)"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "אפשרויות הקלטה וכפתור להתחלת ההקלטה"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
@@ -95,16 +95,16 @@ msgstr ""
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr "בחר אזור"
+msgstr "נא לבחור אזור"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
 msgid "Cancel"
-msgstr "בטל"
+msgstr "ביטול"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr "אשר"
+msgstr "בוצע"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
@@ -143,34 +143,31 @@ msgid "Frame Rate"
 msgstr "קצב פריימים"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "כללי"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr "פתיחת התפריט"
+msgstr "פתיחת תפריט"
 
 #: data/resources/ui/shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "הצגת ההעדפות"
 
 #: data/resources/ui/shortcuts.ui:25
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "הצגת קיצורי המקשים"
 
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "סגירת החלון"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "יציאה"
@@ -178,7 +175,7 @@ msgstr "יציאה"
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "בהקלטה"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
@@ -198,7 +195,7 @@ msgstr ""
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "הגדרות"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
@@ -217,7 +214,7 @@ msgstr ""
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
-msgstr "התפריט הראשי"
+msgstr "תפריט ראשי"
 
 #: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
@@ -229,59 +226,59 @@ msgstr "תפוס אזור מהמסך"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr "הפעל שמע מהמחשב"
+msgstr "הפעלת שמע משולחן העבודה"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr "בטל שמע מהמחשב"
+msgstr "בטל שמע משולחן העבודה"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
-msgstr "הפעל מיקרופון"
+msgstr "הפעלת מיקרופון"
 
 #: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
-msgstr "בטל מיקרופון"
+msgstr "ביטול מיקרופון"
 
 #: data/resources/ui/window.ui:106
 msgid "Show Pointer"
-msgstr "הראה את הסמן"
+msgstr "הצגת הסמן"
 
 #: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
-msgstr "הסתר את הסמן"
+msgstr "הסתרת הסמן"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr "הפעל הקלטה"
+msgstr "התחלת הקלטה"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
-msgstr "הקלט"
+msgstr "הקלטה"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr "שכח את מקור הוידאו שנבחר בפעם הקודמת"
+msgstr "לשכוח את מקור הווידאו שנבחר בפעם הקודמת"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
-msgstr "הפסק להקליט"
+msgstr "הפסקת הקלטה"
 
 #: data/resources/ui/window.ui:183
 msgid "Stop"
-msgstr "הפסק"
+msgstr "עצירה"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr "השהה הקלטה"
+msgstr "השהיית הקלטה"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
-msgstr "מקליט בעוד…"
+msgstr "תתבצע הקלטה בעוד…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
-msgstr "בטל הקלטה"
+msgstr "ביטול הקלטה"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
@@ -289,20 +286,20 @@ msgstr "מעבד…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
-msgstr "_העדפות"
+msgstr "ה_עדפות"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
-msgstr "_קיצורי מקלדת"
+msgstr "_קיצורי מקשים"
 
 #: data/resources/ui/window.ui:303
 msgid "_About Kooha"
-msgstr "_אודות Kooha"
+msgstr "על _אודות Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr "עומר א״ש <omeritzicschwartz@gmail.com>"
+msgstr "עומר א״ש(@omeritzics)"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
@@ -319,11 +316,11 @@ msgstr "תרגום"
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr "הקלטה הסתיימה"
+msgstr "המסך הוקלט"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "הראה בקבצים"
+msgstr "הצגה בקבצים"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
@@ -428,7 +425,7 @@ msgstr ""
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr ""
+msgstr "לצאת מהיישום?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
@@ -436,11 +433,11 @@ msgstr "יציאה"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "העתקה ללוח"
 
 #: src/window/mod.rs:261
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "הועתק ללוח"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
@@ -448,11 +445,11 @@ msgstr ""
 
 #: src/window/mod.rs:289
 msgid "Help"
-msgstr ""
+msgstr "עזרה"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr ""
+msgstr "בסדר, הבנתי"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
@@ -466,11 +463,11 @@ msgstr ""
 
 #: src/window/mod.rs:308
 msgid "Later"
-msgstr ""
+msgstr "מאוחר יותר"
 
 #: src/window/mod.rs:310
 msgid "Open"
-msgstr ""
+msgstr "פתיחה"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
