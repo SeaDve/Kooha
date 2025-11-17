@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-11-12 17:51+0000\n"
+"PO-Revision-Date: 2025-11-17 06:51+0000\n"
 "Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/seadve/kooha/he/>"
 "\n"
@@ -371,7 +371,7 @@ msgstr ""
 
 #: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
-msgstr ""
+msgstr "ללא"
 
 #: src/recording.rs:42
 msgid "No active profile"
@@ -487,7 +487,7 @@ msgstr ""
 
 #: src/window/mod.rs:545
 msgid "Selection"
-msgstr ""
+msgstr "בחירה"
 
 #~ msgid "Open Menu"
 #~ msgstr "פתיחת התפריט"
