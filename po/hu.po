@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-10-15 15:08+0000\n"
+"PO-Revision-Date: 2025-12-04 19:00+0000\n"
 "Last-Translator: Rémiás Tamás <remtamas96@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/seadve/kooha/"
 "hu/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -185,7 +185,7 @@ msgstr "Gyorsbillentyűk megjelenítése"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr "Ablak bezárása?"
+msgstr "Ablak bezárása"
 
 #: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
