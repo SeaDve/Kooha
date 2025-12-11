@@ -54,25 +54,15 @@ impl Settings {
     pub fn saving_location(&self) -> PathBuf {
         let stored_saving_location: PathBuf = self.0.get("saving-location");
 
-        if !stored_saving_location.as_os_str().is_empty() {
-            return stored_saving_location;
-        }
-
         let saving_location =
             glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir);
 
-        let kooha_saving_location = saving_location.join("Kooha");
-
-        if let Err(err) = fs::create_dir_all(&kooha_saving_location) {
-            tracing::warn!(
-                "Failed to create dir at `{}`: {:?}",
-                kooha_saving_location.display(),
-                err
-            );
-            return saving_location;
+        if !stored_saving_location.as_os_str().is_empty() {
+            return ensure_location(stored_saving_location);
         }
 
-        kooha_saving_location
+        let kooha_saving_location = saving_location.join("Kooha");
+        ensure_location(kooha_saving_location)
     }
 
     pub fn connect_saving_location_changed(
@@ -148,6 +138,18 @@ impl Settings {
     pub fn reset_profile(&self) {
         self.0.reset("profile-id");
     }
+}
+
+fn ensure_location(saving_location: PathBuf) -> PathBuf {
+    if let Err(err) = fs::create_dir_all(&saving_location) {
+        tracing::warn!(
+            "Failed to create dir at `{}`: {:?}",
+            saving_location.display(),
+            err
+        );
+        return glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir);
+    }
+    saving_location
 }
 
 #[cfg(test)]
