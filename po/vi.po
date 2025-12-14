@@ -7,471 +7,480 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-12-14 05:00+0000\n"
+"Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/seadve/kooha/"
+"vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
 #: src/main.rs:61
 msgid "Kooha"
-msgstr ""
+msgstr "Kooha"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:4
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr ""
+msgstr "Ghi màn hình một cách tinh tế"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:9
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr ""
+msgstr "Screencast;Recorder;Screen;Video;ghi màn hình;trình ghi;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "Ghi lại màn hình theo cách trực quan, đơn giản và không gây xao nhãng."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
+"Kooha là trình ghi màn hình đơn giản với giao diện tối giản. Bạn chỉ cần "
+"nhấn nút ghi mà không phải cấu hình hàng loạt thiết lập."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr ""
+msgstr "Các tính năng chính của Kooha bao gồm:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Ghi âm microphone, âm thanh desktop hoặc cả hai cùng lúc"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Hỗ trợ định dạng WebM, MP4, GIF và Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Chọn màn hình hoặc một vùng màn hình để ghi"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Có thể cấu hình vị trí lưu, hiển thị con trỏ, tốc độ khung hình và độ trễ"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Mã hóa tăng tốc phần cứng thử nghiệm"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Tùy chọn ghi và nút bắt đầu ghi"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Thời lượng ghi đang diễn ra và nút dừng ghi"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "Đếm ngược trước khi ghi và nút hủy ghi"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Chọn vùng"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
 msgid "Cancel"
-msgstr ""
+msgstr "Hủy"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Xong"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Đặt lại vùng chọn"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
-msgstr ""
+msgstr "Chung"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Độ trễ (giây)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Khoảng thời gian trước khi bắt đầu ghi"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Thư mục ghi"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Thư mục lưu các bản ghi"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "Định dạng"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "Tốc độ khung hình"
 
 #: data/resources/ui/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Tổng quan"
 
 #: data/resources/ui/shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr ""
+msgstr "Mở menu"
 
 #: data/resources/ui/shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Hiện tùy chọn"
 
 #: data/resources/ui/shortcuts.ui:25
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Hiện phím tắt"
 
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Đóng cửa sổ"
 
 #: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Thoát"
 
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Ghi"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Bật/tắt ghi"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Bật/tắt tạm dừng"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Hủy ghi"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Cài đặt"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Bật/tắt âm thanh desktop"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Bật/tắt microphone"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Bật/tắt con trỏ"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu chính"
 
 #: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Ghi một màn hình hoặc cửa sổ"
 
 #: data/resources/ui/window.ui:68
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Ghi một vùng màn hình"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Bật âm thanh desktop"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Tắt âm thanh desktop"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Bật microphone"
 
 #: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Tắt microphone"
 
 #: data/resources/ui/window.ui:106
 msgid "Show Pointer"
-msgstr ""
+msgstr "Hiện con trỏ"
 
 #: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Ẩn con trỏ"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr ""
+msgstr "Bắt đầu ghi"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
-msgstr ""
+msgstr "Ghi"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Quên nguồn video đã chọn trước đó"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
-msgstr ""
+msgstr "Dừng ghi"
 
 #: data/resources/ui/window.ui:183
 msgid "Stop"
-msgstr ""
+msgstr "Dừng"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr ""
+msgstr "Tạm dừng ghi"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
-msgstr ""
+msgstr "Ghi trong…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Hủy ghi"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
-msgstr ""
+msgstr "Đang xử lý…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
-msgstr ""
+msgstr "Tùy chọ_n"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "Phím _tắt"
 
 #: data/resources/ui/window.ui:303
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Giới thiệu Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
 msgstr ""
+"Vietnam Linux L10n <https://github.com/linux-l10n-vi>\n"
+"Loc Huynh <https://github.com/hthienloc>"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Quyên góp (Buy Me a Coffee)"
 
 #: src/about.rs:48
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr ""
+msgstr "Dịch"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Đã ghi xong screencast"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "Hiện trong Files"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Không tìm thấy thiết bị âm thanh mặc định"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Đảm bảo PulseAudio đã được cài đặt trên hệ thống."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:36
 #, rust-format
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} giờ"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:43
 #, rust-format
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} phút"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:50
 #, rust-format
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} giây"
 
 #: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Không đặt được thư mục ghi"
 
 #: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Tốc độ khung hình này có thể gây vấn đề hiệu năng với định dạng đã chọn."
 
 #: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Định dạng này đang thử nghiệm và chưa được hỗ trợ."
 
 #: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
-msgstr ""
+msgstr "Không có"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Không có hồ sơ hoạt động"
 
 #: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Không thể bắt đầu ghi"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:190
 #, rust-format
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Xem {link} để được trợ giúp."
 
 #: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Có thể một plugin GStreamer chưa được cài đặt."
 
 #: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Đảm bảo vị trí lưu tồn tại và có thể truy cập."
 
 #: src/recording.rs:497
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Đã xảy ra lỗi khi ghi"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:503
 #, rust-format
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Không thể mở “{path}” để ghi"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Chọn thư mục ghi"
 
 #: src/window/mod.rs:78
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Không thể bật/tắt tạm dừng"
 
 #: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Hiện đang có bản ghi. Thoát ngay có thể khiến bản ghi không phát được. Vui "
+"lòng dừng ghi trước khi thoát."
 
 #: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
+msgstr "Thoát sẽ hủy quá trình xử lý và có thể khiến bản ghi không phát được."
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Thoát ứng dụng?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
-msgstr ""
+msgstr "Thoát"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Sao chép vào bộ nhớ tạm"
 
 #: src/window/mod.rs:261
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Đã sao chép vào bộ nhớ tạm"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
-msgstr ""
+msgstr "Hiện lỗi chi tiết"
 
 #: src/window/mod.rs:289
 msgid "Help"
-msgstr ""
+msgstr "Trợ giúp"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Ok, đã hiểu"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Mở tùy chọn?"
 
 #: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Định dạng đã chọn trước đó có thể không khả dụng. Mở tùy chọn và chọn một "
+"định dạng để tiếp tục ghi."
 
 #: src/window/mod.rs:308
 msgid "Later"
-msgstr ""
+msgstr "Để sau"
 
 #: src/window/mod.rs:310
 msgid "Open"
-msgstr ""
+msgstr "Mở"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Đang có bản ghi"
 
 #: src/window/mod.rs:499
 msgid "Recording"
-msgstr ""
+msgstr "Đang ghi"
 
 #: src/window/mod.rs:507
 msgid "Paused"
-msgstr ""
+msgstr "Đã tạm dừng"
 
 #: src/window/mod.rs:544
 msgid "Normal"
-msgstr ""
+msgstr "Bình thường"
 
 #: src/window/mod.rs:545
 msgid "Selection"
-msgstr ""
+msgstr "Vùng chọn"
