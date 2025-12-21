@@ -6,13 +6,14 @@
 # victor dargallo <victordargallo@disroot.org>, 2023, 2024.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2023.
 # xavi Julián <xaviju@gmail.com>, 2024.
+# Isard Sabut <weblate@puntnet.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-12-21 22:00+0000\n"
+"Last-Translator: Isard Sabut <weblate@puntnet.org>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/seadve/kooha/ca/>"
 "\n"
 "Language: ca\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -172,7 +173,7 @@ msgstr "Mostra les dreceres"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Tanca la finestra"
 
 #: data/resources/ui/shortcuts.ui:37
 #, fuzzy
@@ -203,17 +204,19 @@ msgstr ""
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Paràmetres"
 
 #: data/resources/ui/shortcuts.ui:72
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Commuta l'àudio de l'escriptori"
 
 #: data/resources/ui/shortcuts.ui:78
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Commuta el micròfon"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
