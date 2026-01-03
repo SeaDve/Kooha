@@ -12,13 +12,13 @@
 # Justin Nogossek <justmegaliga10000@gmail.com>, 2023.
 # Starbat <thw.schroeder@posteo.de>, 2024.
 # ChefExperte <aaron+git@chefexperte.de>, 2024.
-# Sebastian Hagn <sebastian@hagn.me>, 2025.
+# Sebastian Hagn <sebastian@hagn.me>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-09-30 15:01+0000\n"
+"PO-Revision-Date: 2026-01-03 18:01+0000\n"
 "Last-Translator: Sebastian Hagn <sebastian@hagn.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/seadve/kooha/de/>"
 "\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -176,7 +176,7 @@ msgstr "Tastaturkürzel anzeigen"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Fenster schließen"
 
 #: data/resources/ui/shortcuts.ui:37
 #, fuzzy
