@@ -12,13 +12,16 @@
 # John Peter Sa <johnppetersa@gmail.com>, 2025.
 # Xen'on <saveliyburk@gmail.com>, 2025.
 # Tanaca <jtanacar@gmail.com>, 2025.
+# William Teles <967teles@gmail.com>, 2026.
+# "André L. Alvares" <andrluiz.alvares.alvares84@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-26 15:02+0000\n"
-"Last-Translator: Tanaca <jtanacar@gmail.com>\n"
+"PO-Revision-Date: 2026-01-28 21:24+0000\n"
+"Last-Translator: \"André L. Alvares\" <andrluiz.alvares.alvares84@gmail.com>"
+"\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "seadve/kooha/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -26,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -64,7 +67,7 @@ msgstr "Os principais recursos do Kooha incluem:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙️ Grave microfone, áudio da área de trabalho, ou ambos ao mesmo tempo"
+msgstr "🎙️ Grave o microfone, áudio do computador, ou ambos ao mesmo tempo"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -78,12 +81,12 @@ msgstr "🖥️ Selecione um monitor ou uma parte da tela para gravar"
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
-"🛠️ Possibilidade de configurar local de salvamento, visibilidade do mouse, "
-"taxa de quadros e atraso"
+"🛠️ Local de salvamento, visualização de ponteiro, taxa de atualização e "
+"tempo de resposta configuráveis"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr "🚀 Codificação de aceleração de hardware experimental"
+msgstr "🚀 Codificação experimental por aceleração de hardware"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
@@ -100,7 +103,7 @@ msgstr ""
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr "Selecionar Área"
+msgstr "Selecione a área"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
@@ -113,7 +116,7 @@ msgstr "Concluído"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr "Reiniciar seleção"
+msgstr "Restaurar seleção"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
@@ -129,7 +132,7 @@ msgstr "Intervalo de tempo antes de a gravação começar"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr "Pasta de Gravações"
+msgstr "Pasta de gravações"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
@@ -145,28 +148,24 @@ msgstr "Formato"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr "Taxa de quadros"
+msgstr "Taxa de atualização"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Geral"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Abrir menu"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Mostrar preferências"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostrar atalhos"
@@ -177,7 +176,6 @@ msgid "Close Window"
 msgstr "Fechar janela"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Sair"
@@ -210,7 +208,7 @@ msgstr "Configurações"
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Trocar áudio"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
@@ -470,7 +468,7 @@ msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
-"O formato selecionado anteriormente pode estar indisponível. Abra o menu de "
+"O formato selecionado anteriormente pode estar indisponível. Abra as "
 "preferências e selecione um formato para continuar a gravação."
 
 #: src/window/mod.rs:308
