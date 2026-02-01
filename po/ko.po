@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the kooha package.
 # Seong-ho Cho <shcho@gnome.org>, 2021.
 # 정지우 <jgw1010@ajou.ac.kr>, 2023.
+# 이승훈 <shlee23e@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-02-01 08:01+0000\n"
+"Last-Translator: 이승훈 <shlee23e@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/seadve/kooha/ko/>"
 "\n"
 "Language: ko\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -41,7 +42,7 @@ msgstr ""
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "방해 요소 없이 직관적이고 간편한 방식으로 화면을 캡처하세요."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -57,40 +58,40 @@ msgstr "쿠하의 주요 기능은 다음과 같습니다:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ 마이크, 데스크톱 오디오 또는 모두 동시에 녹음하세요"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 WebM, MP4, GIF 및 Matroska 형식 지원"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ 녹화할 모니터 또는 화면 영역을 선택하세요"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
-msgstr ""
+msgstr "🛠️ 저장 위치, 포인터 표시, 프레임 속도 및 지연 시간 설정 가능"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 실험적 하드웨어 가속 인코딩"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "녹화 옵션 및 녹화 시작 버튼"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "진행 중인 녹화 시간 및 녹화 중지 버튼"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "녹화 시작 카운트다운 및 녹화 취소 버튼"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "선택 영역"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
@@ -99,11 +100,11 @@ msgstr "취소"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "완료"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "선택 재설정"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
@@ -111,31 +112,31 @@ msgstr "일반적인"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "딜레이 (초)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "녹화 시작 전 시간 간격"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "촬영 폴더"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "녹음 파일 저장 위치"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "영상"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "포맷"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "프레임 속도"
 
 #: data/resources/ui/shortcuts.ui:10
 #, fuzzy
