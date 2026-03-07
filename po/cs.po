@@ -8,20 +8,21 @@
 # Fjuro <ifjuro@proton.me>, 2023, 2024.
 # Fjuro <fjuro@alius.cz>, 2024, 2025.
 # Jiří Doubravský <jiri.doubravsky@gmail.com>, 2025.
+# Pavel Borecki <pavel.borecki@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-09-15 08:01+0000\n"
-"Last-Translator: Fjuro <fjuro@alius.cz>\n"
+"PO-Revision-Date: 2026-03-07 21:09+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/seadve/kooha/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -314,7 +315,7 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr "Překlad"
+msgstr "Překládat do mého jazyka"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
