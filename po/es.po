@@ -11,13 +11,14 @@
 # Sergio Varela <sergitroll9@gmail.com>, 2022, 2024.
 # gallegonovato <fran-carro@hotmail.es>, 2023, 2024.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2023.
+# Francisco Serrador <fserrador@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-09 07:09+0000\n"
+"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/seadve/kooha/es/>"
 "\n"
 "Language: es\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -146,13 +147,11 @@ msgid "Frame Rate"
 msgstr "Tasa de fotogramas"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Abrir menú"
@@ -172,53 +171,59 @@ msgstr "Mostrar atajos"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Cerrar Ventana"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Salir"
 
 #: data/resources/ui/shortcuts.ui:45
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Grabación"
 
 #: data/resources/ui/shortcuts.ui:48
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Conmutar Grabador"
 
 #: data/resources/ui/shortcuts.ui:55
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Conmutar Pausa"
 
 #: data/resources/ui/shortcuts.ui:61
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Cancelar Grabación"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Ajustes"
 
 #: data/resources/ui/shortcuts.ui:72
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Conmutar sonido del escritorio"
 
 #: data/resources/ui/shortcuts.ui:78
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Conmutar micrófono"
 
 #: data/resources/ui/shortcuts.ui:84
+#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Conmutar puntero"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"

@@ -9,13 +9,14 @@
 # Muhammad Akbar Yanuar Mantari <mantarimay@users.noreply.hosted.weblate.org>, 2023.
 # Nur Ihsan <mnurihsanmutaqin66@gmail.com>, 2024.
 # Taufiq H <hosterwebplate.prh28@passinbox.com>, 2024.
+# Arif Budiman <arifpedia@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-09 07:09+0000\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/seadve/kooha/"
 "id/>\n"
 "Language: id\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -85,15 +86,18 @@ msgstr "🚀 Uji coba pengodean menggunakan akselarasi perangkat keras"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Opsi perekaman dan tombol untuk memulai perekaman"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
 msgstr ""
+"Durasi perekaman yang sedang berlangsung dan tombol untuk menghentikan "
+"perekaman"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
 msgstr ""
+"Hitung mundur untuk memulai perekaman dan tombol untuk membatalkan perekaman"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -145,25 +149,21 @@ msgid "Frame Rate"
 msgstr "Laju Bingkai"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Umum"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Buka Menu"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Menampilkan Preferensi"
+msgstr "Tampilkan Preferensi"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Tampilkan Pintasan"
@@ -171,10 +171,9 @@ msgstr "Tampilkan Pintasan"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Tutup Jendela"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Keluar"
@@ -182,42 +181,42 @@ msgstr "Keluar"
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Perekaman"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Alihkan Perekaman"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Alihkan Jeda"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Batalkan Perekaman"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Pengaturan"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Alihkan Audio Desktop"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Alihkan Mikrofon"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Alihkan Penunjuk"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -297,7 +296,7 @@ msgstr "_Preferensi"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
-msgstr "_Pintasan Papan Ketik"
+msgstr "_Pintasan Keyboard"
 
 #: data/resources/ui/window.ui:303
 msgid "_About Kooha"
@@ -306,12 +305,9 @@ msgstr "_Tentang Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr ""
-"@liimee,Hervy Qurrotul Ainur Rozi,Reza Almanda,@mantarimay,@nurihsan_m,"
-"@tmhidayat"
+msgstr "kredit-penerjemah"
 
 #: src/about.rs:45
-#, fuzzy
 msgid "Donate (Buy Me a Coffee)"
 msgstr "Donasi (Traktir Saya Kopi)"
 
@@ -330,7 +326,7 @@ msgstr "Rekaman layar selesai"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Tampilkan di Berkas"
+msgstr "Tampilkan di File"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
