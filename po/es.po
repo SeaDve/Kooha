@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2026-03-09 07:09+0000\n"
+"PO-Revision-Date: 2026-03-13 12:09+0000\n"
 "Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/seadve/kooha/es/>"
 "\n"
@@ -157,13 +157,11 @@ msgid "Open Menu"
 msgstr "Abrir menú"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Mostrar preferencias"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostrar atajos"
@@ -179,25 +177,21 @@ msgid "Quit"
 msgstr "Salir"
 
 #: data/resources/ui/shortcuts.ui:45
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Recording"
 msgstr "Grabación"
 
 #: data/resources/ui/shortcuts.ui:48
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "Conmutar Grabador"
+msgstr "Alternar Grabador"
 
 #: data/resources/ui/shortcuts.ui:55
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "Conmutar Pausa"
+msgstr "Alternar Pausa"
 
 #: data/resources/ui/shortcuts.ui:61
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Cancel Record"
 msgstr "Cancelar Grabación"
@@ -208,22 +202,19 @@ msgid "Settings"
 msgstr "Ajustes"
 
 #: data/resources/ui/shortcuts.ui:72
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "Conmutar sonido del escritorio"
+msgstr "Alternar audio del escritorio"
 
 #: data/resources/ui/shortcuts.ui:78
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "Conmutar micrófono"
+msgstr "Alternar micrófono"
 
 #: data/resources/ui/shortcuts.ui:84
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Conmutar puntero"
+msgstr "Alternar puntero"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -314,11 +305,11 @@ msgstr "_Acerca de Kooha"
 msgid "translator-credits"
 msgstr ""
 "Óscar Fernández Díaz (oscfdezdz@tuta.io), Adolfo Jayme Barrientos "
-"(fitojb@ubuntu.com)"
+"(fitojb@ubuntu.com), Javier F. Serrador (fserrador@gmail.com)"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Donar (Buy Me a Coffee)"
+msgstr "Donar (cómprame un café)"
 
 #: src/about.rs:48
 msgid "GitHub"
