@@ -4,13 +4,14 @@
 # Balázs Úr <balazs@urbalazs.hu>, 2021.
 # Cimbora <domonkos.sebestyen@gmail.com>, 2023.
 # Rémiás Tamás <remtamas96@gmail.com>, 2025.
+# Romhányi-Kakucska Viktor <viktor@romhanyi.dev>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-12-04 19:00+0000\n"
-"Last-Translator: Rémiás Tamás <remtamas96@gmail.com>\n"
+"PO-Revision-Date: 2026-03-16 11:09+0000\n"
+"Last-Translator: Romhányi-Kakucska Viktor <viktor@romhanyi.dev>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/seadve/kooha/"
 "hu/>\n"
 "Language: hu\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -254,19 +255,19 @@ msgstr "A képernyő kijelölésének felvétele"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Asztali hang engedélyezése"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Asztali hang letiltása"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Mikrofon engedélyezése"
 
 #: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Mikrofon letiltása"
 
 #: data/resources/ui/window.ui:106
 msgid "Show Pointer"
@@ -274,11 +275,11 @@ msgstr "Mutató megjelenítése"
 
 #: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Mutató elrejtése"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr ""
+msgstr "Felvétel elindítása"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
@@ -286,11 +287,11 @@ msgstr "Felvétel"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "A korábban kiválasztott videóforrások törlése"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
-msgstr ""
+msgstr "Felvétel leállítása"
 
 #: data/resources/ui/window.ui:183
 msgid "Stop"
@@ -298,7 +299,7 @@ msgstr "Leállítás"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr ""
+msgstr "Felvétel szüneteltetés"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
@@ -306,7 +307,7 @@ msgstr "Felvétel ekkor…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Felvétel megszakítása"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
@@ -333,7 +334,7 @@ msgstr ""
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
-msgstr ""
+msgstr "Adományozz (Vegyél nekem egy kávét)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -346,52 +347,54 @@ msgstr "Fordítás"
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Képernyőfelvétel sikeres"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "Megjelenítés a Fájlok között"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Nem sikerült megtalálni az alapértelmezett hangkimeneti eszközt"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Győződjön meg arról, hogy a PulseAudio telepítve van a rendszerén."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} óra"
+msgstr[1] "{time} órák"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} perc"
+msgstr[1] "{time} percek"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} másodperc"
+msgstr[1] "{time} másodpercek"
 
 #: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Nem sikerült beállítani a felvételek mappáját"
 
 #: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Ez a képfrissítési gyakoriság teljesítményproblémákat okozhat a kiválasztott "
+"formátum esetén."
 
 #: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Ez a formátum kísérleti jellegű és nem támogatott."
 
 #: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
@@ -399,33 +402,33 @@ msgstr "Nincs"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Nincs aktív profil"
 
 #: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Sikertelen felvétel elindítás"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:190
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Segítségért látogasson el {link}."
 
 #: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Lehet, hogy nincs telepítve GStreamer-bővítmény."
 
 #: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Győződjön meg arról, hogy a mentési hely létezik és elérhető."
 
 #: src/recording.rs:497
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Hiba történt a felvétel közben"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Nem sikerült megnyitni az \"{path}\" írási célra"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
@@ -433,23 +436,27 @@ msgstr "Felvételek mappájának kiválasztása"
 
 #: src/window/mod.rs:78
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Nem sikerült a szüneteltetés"
 
 #: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Jelenleg felvétel folyik. Ha most kilép, előfordulhat, hogy a felvétel "
+"lejátszhatatlanná válik. Kérjük, a kilépés előtt állítsa le a felvételt."
 
 #: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"A kilépés megszakítja a feldolgozást, és előfordulhat, hogy a felvétel "
+"lejátszhatatlanná válik."
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Bezárja az alkalmazást?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
@@ -457,45 +464,47 @@ msgstr "Kilépés"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Másolás a vágólapra"
 
 #: src/window/mod.rs:261
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "A vágólapra másolva"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
-msgstr ""
+msgstr "Részletes hiba mutatása"
 
 #: src/window/mod.rs:289
 msgid "Help"
-msgstr ""
+msgstr "Segítség"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Oké, értem"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Beállítások megnyitása?"
 
 #: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Lehet, hogy a korábban kiválasztott formátum nem volt elérhető. Nyissa meg a "
+"beállításokat, és válasszon ki egy formátumot a felvétel folytatásához."
 
 #: src/window/mod.rs:308
 msgid "Later"
-msgstr ""
+msgstr "Később"
 
 #: src/window/mod.rs:310
 msgid "Open"
-msgstr ""
+msgstr "Megnyitás"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Felvétel folyamatban"
 
 #: src/window/mod.rs:499
 msgid "Recording"
