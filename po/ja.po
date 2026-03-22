@@ -4,7 +4,7 @@
 # tinaxd <systemd.tinaxd@gmail.com>, 2021.
 # tinaxd <tinaxd@protonmail.com>, 2021.
 # 小山田純 <oyamada.junjun@outlook.jp>, 2021.
-# Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022, 2023, 2024, 2025.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2021, 2022, 2023, 2024, 2025, 2026.
 # Kaz Sibuya <sibuyakazokuu@gmail.com>, 2021, 2022.
 # Kisaragi Hiu <mail@kisaragi-hiu.com>, 2022.
 # kj7kt <yyhuton@gmail.com>, 2023.
@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-24 22:02+0000\n"
+"PO-Revision-Date: 2026-03-22 14:09+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/ja/"
-">\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/"
+"ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -301,7 +301,7 @@ msgstr "Kooha について(_A)"
 msgid "translator-credits"
 msgstr ""
 "小山田 純\n"
-"Ryo Nakano\n"
+"Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Kaz Sibuya\n"
 "Kisaragi Hiu\n"
 "kj7kt"

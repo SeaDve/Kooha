@@ -13,13 +13,14 @@
 # Wedone <cafh62@gmail.com>, 2024.
 # Clyhtsuriva <aimeric@adjutor.xyz>, 2024.
 # Kevin Gagnon <kvnggn@pm.me>, 2025.
+# "Loïc \"Lauloque\" Dautry" <loic.dautry@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2025-08-23 08:45+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-03-22 14:09+0000\n"
+"Last-Translator: \"Loïc \\\"Lauloque\\\" Dautry\" <loic.dautry@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/seadve/kooha/fr/>"
 "\n"
 "Language: fr_FR\n"
@@ -27,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -151,25 +152,21 @@ msgid "Frame Rate"
 msgstr "Fréquence d’images"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Général"
 
 #: data/resources/ui/shortcuts.ui:13
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr "Ouvrir le menu"
+msgstr "Menu Ouvrir"
 
 #: data/resources/ui/shortcuts.ui:19
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Afficher les Préférences"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Afficher les raccourcis"
@@ -177,10 +174,9 @@ msgstr "Afficher les raccourcis"
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Fermer la Fenêtre"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitter"
@@ -188,12 +184,12 @@ msgstr "Quitter"
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Enregistrement"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Basculer l'Enregistrement"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
