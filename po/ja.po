@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2026-03-22 14:09+0000\n"
+"PO-Revision-Date: 2026-04-04 15:09+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/seadve/kooha/"
 "ja/>\n"
@@ -112,7 +112,7 @@ msgstr "選択をリセット"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
-msgstr "一般"
+msgstr "全般"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
@@ -145,7 +145,7 @@ msgstr "フレームレート"
 #: data/resources/ui/shortcuts.ui:10
 msgctxt "shortcut window"
 msgid "General"
-msgstr "一般"
+msgstr "全般"
 
 #: data/resources/ui/shortcuts.ui:13
 msgctxt "shortcut window"
