@@ -6,13 +6,14 @@
 # Marek Ľach <graweeld@googlemail.com>, 2022.
 # Jozef Číž <jozef.ciz.ml@gmail.com>, 2023.
 # LvargaDS <lvarga@digitalsystems.eu>, 2024.
+# Peter Vančo <petervanco347@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2026-04-03 09:09+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-04-06 17:09+0000\n"
+"Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/seadve/kooha/sk/>"
 "\n"
 "Language: sk\n"
@@ -84,15 +85,15 @@ msgstr "🚀 Experimentálne hardvérovo akcelerované kódovanie"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Možnosti nahrávania a tlačidlo na spustenie nahrávania"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Dĺžka prebiehajúceho nahrávania a tlačidlo na zastavenie nahrávania"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "Odpočet do začiatku nahrávania a tlačidlo na zrušenie nahrávania"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
@@ -144,7 +145,6 @@ msgid "Frame Rate"
 msgstr "Snímková frekvencia"
 
 #: data/resources/ui/shortcuts.ui:10
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Všeobecné"
@@ -152,69 +152,67 @@ msgstr "Všeobecné"
 #: data/resources/ui/shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr ""
+msgstr "Otvoriť ponuku"
 
 #: data/resources/ui/shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Zobraziť predvoľby"
 
 #: data/resources/ui/shortcuts.ui:25
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Zobrazenie klávesových skratiek"
+msgstr "Zobraziť skratky"
 
 #: data/resources/ui/shortcuts.ui:31
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Zavrieť okno"
 
 #: data/resources/ui/shortcuts.ui:37
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Ukončit"
+msgstr "Ukončiť"
 
 #: data/resources/ui/shortcuts.ui:45
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Nahrávanie"
 
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Nahrávať/nenahrávať"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr ""
+msgstr "Pozastaviť/pokračovať"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Zrušiť nahrávanie"
 
 #: data/resources/ui/shortcuts.ui:69
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Nastavenia"
 
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Vyp./zap. zvuky z desktopového prostredia"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "„Vyp./zap. zvuk z mikrofónu"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Vyp./zap. nahrávanie aj ukazovatele myši"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -290,7 +288,7 @@ msgstr "Čistí sa…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
-msgstr "_Nastavenia"
+msgstr "_Předvolby"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
