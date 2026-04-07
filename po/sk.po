@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2026-04-06 17:09+0000\n"
+"PO-Revision-Date: 2026-04-07 19:09+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/seadve/kooha/sk/>"
 "\n"
@@ -288,7 +288,7 @@ msgstr "Čistí sa…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
-msgstr "_Předvolby"
+msgstr "_Predvoľby"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
@@ -437,7 +437,7 @@ msgstr "Vypnúť aplikáciu?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
-msgstr "Ukončit"
+msgstr "Ukončiť"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
