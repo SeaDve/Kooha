@@ -215,7 +215,7 @@ impl Window {
         dialog.add_response(QUIT_RESPONSE_ID, &gettext("Quit"));
         dialog.set_response_appearance(QUIT_RESPONSE_ID, adw::ResponseAppearance::Destructive);
 
-        match dialog.choose_future(self).await.as_str() {
+        match dialog.choose_future(Some(self)).await.as_str() {
             CANCEL_RESPONSE_ID => glib::Propagation::Stop,
             QUIT_RESPONSE_ID => glib::Propagation::Proceed,
             _ => unreachable!(),
