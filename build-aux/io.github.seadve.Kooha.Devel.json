@@ -28,39 +28,6 @@
     },
     "modules": [
         {
-            "name": "x264",
-            "config-opts": [
-                "--enable-shared",
-                "--enable-pic",
-                "--disable-cli"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://code.videolan.org/videolan/x264.git",
-                    "commit": "b35605ace3ddf7c1a5d67a2eb553f034aef41d55"
-                }
-            ]
-        },
-        {
-            "name": "gst-plugins-ugly",
-            "buildsystem": "meson",
-            "builddir": true,
-            "config-opts": [
-                "-Ddoc=disabled",
-                "-Dnls=disabled",
-                "-Dtests=disabled",
-                "-Dgpl=enabled"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.26.5.tar.xz",
-                    "sha256": "3dfc43435be97e110816bac6d602b0f206a038546279683d9d25372ff127db52"
-                }
-            ]
-        },
-        {
             "name": "kooha",
             "buildsystem": "meson",
             "run-tests": true,
