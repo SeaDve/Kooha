@@ -1,90 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <object class="GtkShortcutsWindow" id="help_overlay">
-    <property name="modal">True</property>
+  <object class="AdwShortcutsDialog" id="shortcuts_dialog">
     <child>
-      <object class="GtkShortcutsSection">
-        <property name="section-name">shortcuts</property>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">General</property>
         <child>
-          <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes" context="shortcut window">General</property>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Open Menu</property>
-                <property name="accelerator">F10</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Show Preferences</property>
-                <property name="action-name">app.show-preferences</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Show Shortcuts</property>
-                <property name="action-name">win.show-help-overlay</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Close Window</property>
-                <property name="action-name">window.close</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Quit</property>
-                <property name="action-name">app.quit</property>
-              </object>
-            </child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Open Menu</property>
+            <property name="accelerator">F10</property>
           </object>
         </child>
         <child>
-          <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes" context="shortcut window">Recording</property>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Toggle Record</property>
-                <property name="action-name">win.toggle-record</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="visible">False</property>
-                <property name="title" translatable="yes" context="shortcut window">Toggle Pause</property>
-                <property name="action-name">win.toggle-pause</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Cancel Record</property>
-                <property name="action-name">win.cancel-record</property>
-              </object>
-            </child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Show Preferences</property>
+            <property name="action-name">app.show-preferences</property>
           </object>
         </child>
         <child>
-          <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes" context="shortcut window">Settings</property>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Toggle Desktop Audio</property>
-                <property name="action-name">win.record-desktop-audio</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Toggle Microphone</property>
-                <property name="action-name">win.record-microphone</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Toggle Pointer</property>
-                <property name="action-name">win.show-pointer</property>
-              </object>
-            </child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Show Shortcuts</property>
+            <property name="action-name">app.shortcuts</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Close Window</property>
+            <property name="action-name">window.close</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Quit</property>
+            <property name="action-name">app.quit</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">Recording</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Toggle Record</property>
+            <property name="action-name">win.toggle-record</property>
+          </object>
+        </child>
+        <!-- <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Toggle Pause</property>
+            <property name="action-name">win.toggle-pause</property>
+          </object>
+        </child> -->
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Cancel Record</property>
+            <property name="action-name">win.cancel-record</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">Settings</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Toggle Desktop Audio</property>
+            <property name="action-name">win.record-desktop-audio</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Toggle Microphone</property>
+            <property name="action-name">win.record-microphone</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Toggle Pointer</property>
+            <property name="action-name">win.show-pointer</property>
           </object>
         </child>
       </object>

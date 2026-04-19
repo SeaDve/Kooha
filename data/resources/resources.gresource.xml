@@ -17,7 +17,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/area_selector.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/item_row.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences_dialog.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/shortcuts.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="shortcuts-dialog.ui">ui/shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/view_port.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
   </gresource>
