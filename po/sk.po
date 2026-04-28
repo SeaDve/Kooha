@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 12:12+0800\n"
-"PO-Revision-Date: 2026-04-07 19:09+0000\n"
+"PO-Revision-Date: 2026-04-28 19:09+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/seadve/kooha/sk/>"
 "\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -32,56 +32,54 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:4
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr "Elegantne zaznamenáva vašu obrazovku"
+msgstr "Elegantne nahrávajte svoju obrazovku"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:9
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "záznam;záznamník;rekordér;obrazovka;video;"
+msgstr "Nahrávanie obrazovky;Nahrávač;Obrazovka;Video;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
-"Zachytávajte vašu obrazovku intuitívnym a zreteľným spôsobom bez "
-"rozptyľovania."
+"Nahrávajte svoju obrazovku intuitívnym a jednoduchým spôsobom bez rušenia."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Aplikácia Kooha je jednoduchým záznamníkom obrazovky s minimalistickým "
-"rozhraním. Stačí len kliknúť na zaznamenávacie tlačidlo bez zložitého "
-"nastavovania."
+"Kooha je jednoduchý nahrávač obrazovky s minimalistickým rozhraním. Stačí "
+"len kliknúť na tlačidlo nahrávania bez nutnosti nastavovania veľa možností."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr "Hlavnými funkciami aplikácie Kooha sú:"
+msgstr "Hlavné funkcie aplikácie Kooha zahŕňajú:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙️ Nahrávaj mikrofón, zvuk z počítača, alebo oboje naraz"
+msgstr "🎙️ Nahrávanie mikrofónu, zvuku z pracovnej plochy alebo oboch naraz"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr "📼 Podpora pre WebM, MP4, GIF, a Matroska formáty"
+msgstr "📼 Podpora formátov WebM, MP4, GIF a Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr "Zvoľte obrazovku, alebo jej časť, ktorá sa má nahrávať"
+msgstr "🖥️ Výber monitora alebo časti obrazovky na nahrávanie"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
-"🛠️ Konfigurovateľné miesto uloženia, viditeľnosť kurzoru, obnovovacia "
-"frekvencia, a oneskorenie"
+"🛠️ Nastaviteľné umiestnenie uloženia, viditeľnosť kurzora, snímková "
+"frekvencia a oneskorenie"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr "🚀 Experimentálne hardvérovo akcelerované kódovanie"
+msgstr "🚀 Experimentálne hardvérovo zrýchlené kódovanie"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
@@ -89,15 +87,16 @@ msgstr "Možnosti nahrávania a tlačidlo na spustenie nahrávania"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr "Dĺžka prebiehajúceho nahrávania a tlačidlo na zastavenie nahrávania"
+msgstr "Trvanie prebiehajúcej nahrávky a tlačidlo na zastavenie nahrávania"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr "Odpočet do začiatku nahrávania a tlačidlo na zrušenie nahrávania"
+msgstr ""
+"Odpočítavanie pred spustením nahrávania a tlačidlo na zrušenie nahrávania"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr "Zvoľ oblasť"
+msgstr "Vybrať oblasť"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
@@ -110,7 +109,7 @@ msgstr "Hotovo"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr "Resetovať oblasť"
+msgstr "Obnoviť výber"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
@@ -118,19 +117,19 @@ msgstr "Všeobecné"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr "Oneskorenie (Sekundy)"
+msgstr "Oneskorenie (sekundy)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr "Čas čakania pred začatím nahrávania"
+msgstr "Časový interval pred začatím nahrávania"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr "Priečinok nahrávok"
+msgstr "Priečinok s nahrávkami"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr "Cieľový adresár pre nahrávky"
+msgstr "Cieľový priečinok pre nahrávky"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -157,7 +156,7 @@ msgstr "Otvoriť ponuku"
 #: data/resources/ui/shortcuts.ui:19
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Zobraziť predvoľby"
+msgstr "Zobraziť nastavenia"
 
 #: data/resources/ui/shortcuts.ui:25
 msgctxt "shortcut window"
@@ -182,12 +181,12 @@ msgstr "Nahrávanie"
 #: data/resources/ui/shortcuts.ui:48
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr "Nahrávať/nenahrávať"
+msgstr "Prepnúť nahrávanie"
 
 #: data/resources/ui/shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Toggle Pause"
-msgstr "Pozastaviť/pokračovať"
+msgstr "Prepnúť pozastavenie"
 
 #: data/resources/ui/shortcuts.ui:61
 msgctxt "shortcut window"
@@ -202,17 +201,17 @@ msgstr "Nastavenia"
 #: data/resources/ui/shortcuts.ui:72
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "Vyp./zap. zvuky z desktopového prostredia"
+msgstr "Prepnúť zvuk plochy"
 
 #: data/resources/ui/shortcuts.ui:78
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "„Vyp./zap. zvuk z mikrofónu"
+msgstr "Prepnúť mikrofón"
 
 #: data/resources/ui/shortcuts.ui:84
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Vyp./zap. nahrávanie aj ukazovatele myši"
+msgstr "Prepnúť kurzor"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -220,19 +219,19 @@ msgstr "Hlavná ponuka"
 
 #: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
-msgstr "Zachytí monitor alebo okno"
+msgstr "Zachytiť monitor alebo okno"
 
 #: data/resources/ui/window.ui:68
 msgid "Capture a Selection of Screen"
-msgstr "Zachytí výber obrazovky"
+msgstr "Zachytiť výber z obrazovky"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr "Povoliť zvuk počítača"
+msgstr "Povoliť zvuk plochy"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr "Zakázať zvuk počítača"
+msgstr "Zakázať zvuk plochy"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
@@ -244,7 +243,7 @@ msgstr "Zakázať mikrofón"
 
 #: data/resources/ui/window.ui:106
 msgid "Show Pointer"
-msgstr "Zobrazovať kurzor"
+msgstr "Zobraziť kurzor"
 
 #: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
@@ -252,15 +251,15 @@ msgstr "Skryť kurzor"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr "Začať nahrávanie"
+msgstr "Spustiť nahrávanie"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
-msgstr "Zaznamenať"
+msgstr "Nahrávať"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr "Zabudnúť na predošle vybrané zdroje pre video"
+msgstr "Zabudnúť predtým vybrané video zdroje"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
@@ -276,19 +275,19 @@ msgstr "Pozastaviť nahrávanie"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
-msgstr "Zaznamenáva sa…"
+msgstr "Nahrávanie prebieha…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
-msgstr "Zrušiť záznam"
+msgstr "Zrušiť nahrávanie"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
-msgstr "Čistí sa…"
+msgstr "Vyprázdňovanie…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
-msgstr "_Predvoľby"
+msgstr "_Nastavenia"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
@@ -301,14 +300,11 @@ msgstr "_O aplikácii Kooha"
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr ""
-"MartinIIOT <https://github.com/MartinIIOT>,\n"
-"Dušan Kazik <prescott66@gmail.com>,\n"
-"Ľubo Varga https://github.com/LvargaDS,"
+msgstr "Prekladatelia"
 
 #: src/about.rs:45
 msgid "Donate (Buy Me a Coffee)"
-msgstr "Prispieť (Kúp mi kávu)"
+msgstr "Darovať (Kúpte mi kávu)"
 
 #: src/about.rs:48
 msgid "GitHub"
@@ -316,74 +312,74 @@ msgstr "GitHub"
 
 #: src/about.rs:50
 msgid "Translate"
-msgstr "Prekladať"
+msgstr "Preložiť"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr "Nahrávanie obrazovky dokončené"
+msgstr "Nahrávka obrazovky dokončená"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr "Ukázať v Súboroch"
+msgstr "Zobraziť v Súboroch"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr "Chyba pri hľadaní štandardného audio zariadenia"
+msgstr "Nepodarilo sa nájsť predvolené zvukové zariadenie"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr "Uistite sa, že máte na vašom systéme nainštalované PulseAudio."
+msgstr "Uistite sa, že máte v systéme nainštalovaný PulseAudio."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] "{time} hodina"
-msgstr[1] "{time} hodiny"
-msgstr[2] "{time} hodín"
+msgstr[0] "{time} hodina"
+msgstr[1] "{time} hodiny"
+msgstr[2] "{time} hodín"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] "{time} minúta"
-msgstr[1] "{time} minúty"
-msgstr[2] "{time} minút"
+msgstr[0] "{time} minúta"
+msgstr[1] "{time} minúty"
+msgstr[2] "{time} minút"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] "{time} sekunda"
-msgstr[1] "{time} sekundy"
-msgstr[2] "{time} sekúnd"
+msgstr[0] "{time} sekunda"
+msgstr[1] "{time} sekundy"
+msgstr[2] "{time} sekúnd"
 
 #: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
-msgstr "Zlyhalo nastavenie adresáru pre nahrávky"
+msgstr "Nepodarilo sa nastaviť priečinok s nahrávkami"
 
 #: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
-"Zvolaná snímková frekvencia môže spôsobovať výkonnostný problém pri zvolenom "
+"Táto snímková frekvencia môže spôsobiť problémy s výkonom vo vybranom "
 "formáte."
 
 #: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
-msgstr "Tento formát je experimentálny a nie je k nemu poskytovaná podpora."
+msgstr "Tento formát je experimentálny a nepodporovaný."
 
 #: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
-msgstr "Žiadne"
+msgstr "Žiadny"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr "Žiaden aktívny profil"
+msgstr "Žiadny aktívny profil"
 
 #: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
-msgstr "Začatie nahrávania zlyhalo"
+msgstr "Nepodarilo sa spustiť nahrávanie"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:190
@@ -392,48 +388,46 @@ msgstr "Pre pomoc navštívte {link}."
 
 #: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
-msgstr "GStreamer plugin možno nie je nainštalovaný."
+msgstr "Možno nie je nainštalovaný plugin GStreamer."
 
 #: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
-msgstr "Overte si, že miesto na ukladanie existuje a je dostupné."
+msgstr "Uistite sa, že umiestnenie na uloženie existuje a je prístupné."
 
 #: src/recording.rs:497
 msgid "An error occurred while recording"
-msgstr "Počas nahrávania nastala chýba"
+msgstr "Počas nahrávania došlo k chybe"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
-msgstr "Nepodarilo sa otvoriť „{path}“ pre zápis"
+msgstr "Nepodarilo sa otvoriť „{path}“ na zápis"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr "Výber priečinka pre záznamy"
+msgstr "Vybrať priečinok s nahrávkami"
 
 #: src/window/mod.rs:78
 msgid "Failed to toggle pause"
-msgstr "Nepodarilo sa zmeniť stav pauznutia"
+msgstr "Nepodarilo sa prepnúť pozastavenie"
 
 #: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
-"Nahrávanie práve prebieha. Okamžité skončenie môže spôsobiť, že nahrávka sa "
-"nebude dať prehrať. Prosím stopnite nahrávanie pred ukončením aplikácie."
+"V súčasnosti prebieha nahrávanie. Okamžité ukončenie môže spôsobiť, že "
+"nahrávka bude neprehrávateľná. Pred ukončením prosím zastavte nahrávanie."
 
 #: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
-"Ukončenie aplikácie zruší prebiehajúce spracovávanie a môže spôsobiť, že "
-"nahrávka nebude prehrateľná."
+msgstr "Ukončením sa zruší spracovanie a nahrávka môže byť neprehrávateľná."
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr "Vypnúť aplikáciu?"
+msgstr "Ukončiť aplikáciu?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
@@ -449,7 +443,7 @@ msgstr "Skopírované do schránky"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
-msgstr "Ukázať podrobnosti chyby"
+msgstr "Zobraziť podrobnú chybu"
 
 #: src/window/mod.rs:289
 msgid "Help"
@@ -457,7 +451,7 @@ msgstr "Pomoc"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr "Ok, Viem"
+msgstr "Dobre, rozumiem"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
@@ -468,8 +462,8 @@ msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
-"Formát zvolený minule môže byť nedostupný. Otvorte nastavenia a zvolte "
-"formát pre pokračovanie v nahrávaní."
+"Predtým vybraný formát možno nie je k dispozícii. Otvorte nastavenia a "
+"vyberte formát pre pokračovanie v nahrávaní."
 
 #: src/window/mod.rs:308
 msgid "Later"
@@ -481,11 +475,11 @@ msgstr "Otvoriť"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr "Nahrávanie aktívne"
+msgstr "Prebieha nahrávanie"
 
 #: src/window/mod.rs:499
 msgid "Recording"
-msgstr "Zaznamenávanie"
+msgstr "Nahrávanie"
 
 #: src/window/mod.rs:507
 msgid "Paused"
@@ -493,7 +487,7 @@ msgstr "Pozastavené"
 
 #: src/window/mod.rs:544
 msgid "Normal"
-msgstr "Normálne"
+msgstr "Normálny"
 
 #: src/window/mod.rs:545
 msgid "Selection"
