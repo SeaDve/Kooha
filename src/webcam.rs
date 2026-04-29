@@ -1,6 +1,6 @@
 //! Webcam device detection via PipeWire and GStreamer pipeline elements for webcam overlay.
 //!
-//! Uses `pipewiresrc` for the video source and `wpctl` to enumerate camera nodes.
+//! Uses `pipewiresrc` for the video source and `pw-dump` to enumerate camera nodes.
 
 use anyhow::{Context, Result, anyhow};
 use gst::prelude::*;
@@ -16,49 +16,60 @@ pub struct WebcamDevice {
     pub node_id: String,
 }
 
-/// Find all available webcam devices via PipeWire using `wpctl`.
+/// Find all available webcam devices via PipeWire using `pw-dump`.
 ///
-/// Enumerates devices of type `Camera` and returns their names and node IDs.
+/// Enumerates Node objects with media.class "Video/Source" and returns their
+/// names and node IDs.
 pub fn find_webcams() -> Result<Vec<WebcamDevice>> {
-    let output = Command::new("wpctl")
-        .args(["list", "devices", "--json"])
+    let output = Command::new("pw-dump")
         .output()
-        .context("Failed to execute `wpctl list devices --json`. Make sure PipeWire is running.")?;
+        .context("Failed to execute `pw-dump`. Make sure PipeWire is running.")?;
 
     if !output.status.success() {
         let stderr = str::from_utf8(&output.stderr).unwrap_or("<binary>");
-        return Err(anyhow!("`wpctl` failed: {}", stderr));
+        return Err(anyhow!("`pw-dump` failed: {}", stderr));
     }
 
-    let stdout = str::from_utf8(&output.stdout).context("`wpctl` output is not valid UTF-8")?;
+    let stdout = str::from_utf8(&output.stdout).context("`pw-dump` output is not valid UTF-8")?;
 
-    let devices: serde_json::Value =
-        serde_json::from_str(stdout).context("Failed to parse `wpctl` JSON output")?;
+    let objects: serde_json::Value =
+        serde_json::from_str(stdout).context("Failed to parse `pw-dump` JSON output")?;
 
     let mut webcams = Vec::new();
 
-    if let Some(arr) = devices.as_array() {
-        for device in arr {
-            let device_type = device.get("device.api").and_then(|v| v.as_str());
-            let media_class = device.get("media.class").and_then(|v| v.as_str());
+    if let Some(arr) = objects.as_array() {
+        for obj in arr {
+            // pw-dump returns objects with a "type" field and "info.props"
+            let obj_type = obj.get("type").and_then(|v| v.as_str());
+            if obj_type != Some("PipeWire:Interface:Node") {
+                continue;
+            }
 
-            // Match PipeWire camera devices
-            if device_type == Some("api.vidcap") && media_class == Some("Video/Source/Camera") {
-                let name = device
-                    .get("description.name")
-                    .and_then(|v| v.as_str())
-                    .unwrap_or("Unknown Camera")
-                    .to_string();
+            let props = match obj.get("info").and_then(|i| i.get("props")) {
+                Some(p) => p,
+                None => continue,
+            };
 
-                let node_id = device
-                    .get("node.id")
-                    .and_then(|v| v.as_u64())
-                    .map(|id| id.to_string())
-                    .unwrap_or_default();
+            let media_class = props.get("media.class").and_then(|v| v.as_str());
+            if media_class != Some("Video/Source") {
+                continue;
+            }
 
-                if !node_id.is_empty() {
-                    webcams.push(WebcamDevice { name, node_id });
-                }
+            let name = props
+                .get("node.description")
+                .or_else(|| props.get("node.name"))
+                .and_then(|v| v.as_str())
+                .unwrap_or("Unknown Camera")
+                .to_string();
+
+            let node_id = obj
+                .get("id")
+                .and_then(|v| v.as_u64())
+                .map(|id| id.to_string())
+                .unwrap_or_default();
+
+            if !node_id.is_empty() {
+                webcams.push(WebcamDevice { name, node_id });
             }
         }
     }
