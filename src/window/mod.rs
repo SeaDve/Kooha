@@ -624,6 +624,9 @@ impl Window {
         self.add_action(&settings.create_record_desktop_audio_action());
         self.add_action(&settings.create_record_microphone_action());
         self.add_action(&settings.create_show_pointer_action());
+        self.add_action(&settings.create_webcam_overlay_action());
+        self.add_action(&settings.create_auto_compress_action());
+        self.add_action(&settings.create_target_size_mb_action());
         self.add_action(&settings.create_capture_mode_action());
     }
 }

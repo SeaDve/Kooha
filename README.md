@@ -41,12 +41,22 @@ Capture your screen in an intuitive and straightforward way without distractions
 Kooha is a simple screen recorder with a minimal interface. You can simply click
 the record button without having to configure a bunch of settings.
 
+### Quick Install
+
+Download the latest Flatpak from [GitHub Actions artifacts](https://github.com/hanthor/Kooha/actions/workflows/ci.yml) and run:
+
+```bash
+flatpak install --user kooha.flatpak
+```
+
 The main features of Kooha include the following:
 * 🎙️ Record microphone, desktop audio, or both at the same time
 * 📼 Support for WebM, MP4, GIF, and Matroska formats
 * 🖥️ Select a monitor or a portion of the screen to record
 * 🛠️ Configurable saving location, pointer visibility, frame rate, and delay
 * 🚀 Experimental hardware-accelerated encoding
+* 📹 Webcam overlay (PipeWire-based, circular, bottom-left)
+* 📹 Webcam overlay (pipeWire-based, circular, bottom-left)
 
 ## 😕 It Doesn't Work
 

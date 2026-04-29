@@ -107,6 +107,15 @@
                             <property name="toggled-tooltip-text" translatable="yes">Hide Pointer</property>
                           </object>
                         </child>
+                        <child>
+                          <object class="KoohaToggleButton">
+                            <property name="action-name">win.webcam-overlay</property>
+                            <property name="default-icon-name">video-headset-symbolic</property>
+                            <property name="toggled-icon-name">video-display-symbolic</property>
+                            <property name="default-tooltip-text" translatable="yes">Enable Webcam Overlay</property>
+                            <property name="toggled-tooltip-text" translatable="yes">Disable Webcam Overlay</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                     <child>

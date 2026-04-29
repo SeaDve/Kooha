@@ -38,5 +38,26 @@
     <key type="((dddd)(ii))" name="selection-context">
       <default>((-1, -1, -1, -1), (-1, -1))</default>
     </key>
+    <key type="b" name="webcam-overlay">
+      <default>false</default>
+    </key>
+    <key type="s" name="webcam-device">
+      <default>""</default>
+    </key>
+    <key type="s" name="compression-preset">
+      <default>"balanced"</default>
+      <summary>Compression preset</summary>
+      <description>Default compression preset: best-quality, balanced, or smallest.</description>
+    </key>
+    <key type="b" name="auto-compress">
+      <default>false</default>
+      <summary>Auto-compress after recording</summary>
+      <description>Whether to automatically compress recordings after completion.</description>
+    </key>
+    <key type="i" name="target-size-mb">
+      <default>50</default>
+      <summary>Target size in MB</summary>
+      <description>Target file size in megabytes for auto-compression.</description>
+    </key>
   </schema>
 </schemalist>

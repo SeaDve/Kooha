@@ -61,7 +61,7 @@ impl Settings {
         let saving_location =
             glib::user_special_dir(glib::UserDirectory::Videos).unwrap_or_else(glib::home_dir);
 
-        let kooha_saving_location = saving_location.join("Kooha");
+        let kooha_saving_location = saving_location.join("Screencasts");
 
         if let Err(err) = fs::create_dir_all(&kooha_saving_location) {
             tracing::warn!(
@@ -147,6 +147,92 @@ impl Settings {
 
     pub fn reset_profile(&self) {
         self.0.reset("profile-id");
+    }
+
+    /// Whether the webcam overlay is enabled.
+    pub fn webcam_overlay(&self) -> bool {
+        self.0.get("webcam-overlay")
+    }
+
+    /// Set whether the webcam overlay is enabled.
+    pub fn set_webcam_overlay(&self, enabled: bool) {
+        self.0.set("webcam-overlay", enabled).unwrap();
+    }
+
+    pub fn create_webcam_overlay_action(&self) -> gio::Action {
+        self.0.create_action("webcam-overlay")
+    }
+
+    pub fn connect_webcam_overlay_changed(
+        &self,
+        f: impl Fn(&Self) + 'static,
+    ) -> glib::SignalHandlerId {
+        self.0
+            .connect_changed(Some("webcam-overlay"), move |settings, _| {
+                f(&Self(settings.clone()));
+            })
+    }
+
+    /// The PipeWire node ID of the webcam device to use.
+    pub fn webcam_device(&self) -> String {
+        self.0.get("webcam-device")
+    }
+
+    /// Set the webcam device node ID.
+    pub fn set_webcam_device(&self, node_id: &str) {
+        self.0.set("webcam-device", node_id).unwrap();
+    }
+
+    /// Get the compression preset.
+    pub fn compression_preset(&self) -> crate::reencode::CompressionPreset {
+        let preset: String = self.0.get("compression-preset");
+        match preset.as_str() {
+            "best-quality" => crate::reencode::CompressionPreset::BestQuality,
+            "smallest" => crate::reencode::CompressionPreset::Smallest,
+            _ => crate::reencode::CompressionPreset::Balanced,
+        }
+    }
+
+    /// Set the compression preset.
+    pub fn set_compression_preset(&self, preset: crate::reencode::CompressionPreset) {
+        let value = match preset {
+            crate::reencode::CompressionPreset::BestQuality => "best-quality",
+            crate::reencode::CompressionPreset::Smallest => "smallest",
+            crate::reencode::CompressionPreset::Balanced => "balanced",
+        };
+        self.0.set("compression-preset", value).unwrap();
+    }
+
+    pub fn create_compression_preset_action(&self) -> gio::Action {
+        self.0.create_action("compression-preset")
+    }
+
+    /// Whether to auto-compress recordings after completion.
+    pub fn auto_compress(&self) -> bool {
+        self.0.get("auto-compress")
+    }
+
+    /// Set whether to auto-compress recordings.
+    pub fn set_auto_compress(&self, enabled: bool) {
+        self.0.set("auto-compress", enabled).unwrap();
+    }
+
+    pub fn create_auto_compress_action(&self) -> gio::Action {
+        self.0.create_action("auto-compress")
+    }
+
+    /// Target size in MB for auto-compression.
+    pub fn target_size_mb(&self) -> i32 {
+        self.0.get("target-size-mb")
+    }
+
+    /// Set the target size in MB.
+    pub fn set_target_size_mb(&self, mb: i32) {
+        self.0.set("target-size-mb", mb).unwrap();
+    }
+
+    pub fn create_target_size_mb_action(&self) -> gio::Action {
+        self.0.create_action("target-size-mb")
     }
 }
 

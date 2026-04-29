@@ -60,6 +60,55 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Webcam</property>
+            <child>
+              <object class="AdwComboRow" id="webcam_device_row">
+                <property name="title" translatable="yes">Camera</property>
+                <property name="subtitle" translatable="yes">Webcam device for overlay</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Compression</property>
+            <child>
+              <object class="AdwComboRow" id="compression_preset_row">
+                <property name="title" translatable="yes">Compression Preset</property>
+                <property name="subtitle" translatable="yes">Quality vs. file size trade-off</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow" id="auto_compress_row">
+                <property name="title" translatable="yes">Auto-compress after recording</property>
+                <property name="subtitle" translatable="yes">Re-encode to target size</property>
+                <child>
+                  <object class="GtkSwitch" id="auto_compress_switch">
+                    <property name="valign">center</property>
+                    <property name="action-name">settings.auto-compress</property>
+                    <property name="action-target">true</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSpinRow" id="target_size_row">
+                <property name="title" translatable="yes">Target Size (MB)</property>
+                <property name="adjustment">
+                  <object class="GtkAdjustment">
+                    <property name="lower">5</property>
+                    <property name="upper">500</property>
+                    <property name="step-increment">5</property>
+                    <property name="page-increment">25</property>
+                    <property name="value">50</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>

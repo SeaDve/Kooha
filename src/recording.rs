@@ -220,6 +220,11 @@ impl Recording {
             pipeline_builder.record_microphone(settings.record_microphone());
         }
 
+        // Webcam overlay
+        if settings.webcam_overlay() {
+            pipeline_builder.webcam_overlay(true, settings.webcam_device());
+        }
+
         // Build pipeline
         let pipeline = pipeline_builder.build().with_context(|| {
             ContextWithHelp::new(
@@ -537,7 +542,15 @@ impl Recording {
                     source_id.remove();
                 }
 
-                self.set_finished(Ok((self.file().clone(), duration)));
+                // Copy file to clipboard on successful completion
+                let file = self.file().clone();
+                if let Err(err) = crate::clipboard::copy_file_to_clipboard(&file) {
+                    tracing::warn!("Failed to copy file to clipboard: {:?}", err);
+                } else {
+                    tracing::info!("Copied recording to clipboard: {:?}", file.path());
+                }
+
+                self.set_finished(Ok((file, duration)));
 
                 glib::ControlFlow::Break
             }

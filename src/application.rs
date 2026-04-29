@@ -250,8 +250,10 @@ impl Application {
         self.set_accels_for_action("win.record-desktop-audio", &["<Control>a"]);
         self.set_accels_for_action("win.record-microphone", &["<Control>m"]);
         self.set_accels_for_action("win.show-pointer", &["<Control>p"]);
+        self.set_accels_for_action("win.webcam-overlay", &["<Control>w"]);
         self.set_accels_for_action("win.toggle-record", &["<Control>r"]);
         // self.set_accels_for_action("win.toggle-pause", &["<Control>k"]); // See issue #112 in GitHub repo
         self.set_accels_for_action("win.cancel-record", &["<Control>c"]);
+        self.set_accels_for_action("win.auto-compress", &["<Control><Shift>c"]);
     }
 }

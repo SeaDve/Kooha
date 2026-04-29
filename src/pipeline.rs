@@ -9,6 +9,7 @@ use crate::{
     device::{self, DeviceClass},
     profile::Profile,
     screencast_portal::Stream,
+    webcam,
 };
 
 const AUDIO_SAMPLE_RATE: i32 = 48_000;
@@ -24,6 +25,8 @@ pub struct PipelineBuilder {
     record_desktop_audio: bool,
     record_microphone: bool,
     select_area_data: Option<SelectAreaData>,
+    webcam_overlay: bool,
+    webcam_device_path: Option<String>,
 }
 
 impl PipelineBuilder {
@@ -43,6 +46,8 @@ impl PipelineBuilder {
             record_desktop_audio: false,
             record_microphone: false,
             select_area_data: None,
+            webcam_overlay: false,
+            webcam_device_path: None,
         }
     }
 
@@ -61,13 +66,26 @@ impl PipelineBuilder {
         self
     }
 
+    pub fn webcam_overlay(&mut self, enabled: bool, device_path: String) -> &mut Self {
+        self.webcam_overlay = enabled;
+        self.webcam_device_path = Some(device_path);
+        self
+    }
+
     /// Builds the pipeline.
     ///
+    /// Without webcam overlay:
     ///                   (If has select_area_data)
     ///                        |             |
     ///                        v             v
     /// pipewiresrc-bin -> videoscale -> videocrop -> queue -> |
     ///                                                        | -> profile.attach -> filesink
+    ///                               pulsesrc-bin -> queue -> |
+    ///
+    /// With webcam overlay:
+    /// pipewiresrc-bin -> ... -> queue -> |                        
+    ///                                     | -> compositor -> queue -> |
+    /// v4l2src (webcam) -> circle -> |   |                            | -> profile.attach -> filesink
     ///                               pulsesrc-bin -> queue -> |
     pub fn build(&self) -> Result<gst::Pipeline> {
         tracing::debug!(
@@ -80,6 +98,8 @@ impl PipelineBuilder {
             record_desktop_audio = ?self.record_desktop_audio,
             record_microphone = ?self.record_microphone,
             select_area_data = ?self.select_area_data,
+            webcam_overlay = self.webcam_overlay,
+            webcam_device_path = ?self.webcam_device_path,
         );
 
         let pipeline = gst::Pipeline::new();
@@ -99,7 +119,7 @@ impl PipelineBuilder {
             .build()?;
         pipeline.add_many([videosrc_bin.upcast_ref(), &videoenc_queue, &filesink])?;
 
-        if let Some(ref data) = self.select_area_data {
+        let screen_video_output = if let Some(ref data) = self.select_area_data {
             let videoscale = gst::ElementFactory::make("videoscale").build()?;
             let videocrop = make_videocrop(data)?;
             pipeline.add_many([&videoscale, &videocrop])?;
@@ -113,9 +133,68 @@ impl PipelineBuilder {
 
             videosrc_bin.link(&videoscale)?;
             videoscale.link_filtered(&videocrop, &videoscale_caps)?;
-            videocrop.link(&videoenc_queue)?;
+            // Return the element that outputs screen video (videocrop)
+            videocrop
         } else {
             videosrc_bin.link(&videoenc_queue)?;
+            videoenc_queue.clone()
+        };
+
+        // If webcam overlay is enabled, use compositor to combine screen + webcam
+        let final_video_output = if self.webcam_overlay {
+            let device_path = self
+                .webcam_device_path
+                .as_ref()
+                .context("Webcam overlay enabled but no device path set")?;
+
+            let webcam_size = 120; // Size of the webcam overlay in pixels
+            let webcam_bin = webcam::make_webcam_bin(device_path, webcam_size)
+                .context("Failed to create webcam bin")?;
+
+            // Compositor to overlay webcam on screen
+            let compositor = gst::ElementFactory::make("compositor")
+                .name("kooha-overlay-compositor")
+                .property("background-alpha", 0u8)
+                .build()?;
+            let compositor_queue = gst::ElementFactory::make("queue")
+                .name("kooha-compositor-queue")
+                .build()?;
+
+            pipeline.add_many([webcam_bin.upcast_ref(), &compositor, &compositor_queue])?;
+
+            // Connect screen video to compositor sink_0
+            let screen_sink_pad = compositor
+                .request_pad_simple("sink_0")
+                .context("Failed to request sink_0 pad from compositor")?;
+            screen_video_output
+                .static_pad("src")
+                .unwrap()
+                .link(&screen_sink_pad)?;
+
+            // Connect webcam to compositor sink_1, positioned bottom-left with margin
+            let webcam_sink_pad = compositor
+                .request_pad_simple("sink_1")
+                .context("Failed to request sink_1 pad from compositor")?;
+            // Bottom-left position with 20px margin
+            webcam_sink_pad.set_property("xpos", 20i32);
+            webcam_sink_pad.set_property("ypos", -1i32); // -1 means bottom-aligned (auto)
+            webcam_sink_pad.set_property("zorder", 1i32);
+            webcam_bin
+                .static_pad("src")
+                .unwrap()
+                .link(&webcam_sink_pad)?;
+
+            compositor.link(&compositor_queue)?;
+            compositor_queue.link(&videoenc_queue)?;
+
+            compositor_queue
+        } else {
+            screen_video_output
+        };
+
+        // Link the final video output to the encoder queue (if not already linked)
+        if !self.webcam_overlay {
+            // Already linked above
         }
 
         let audioenc_queue = if self.record_desktop_audio || self.record_microphone {
@@ -145,6 +224,11 @@ impl PipelineBuilder {
         } else {
             None
         };
+
+        // Link final video output to encoder queue
+        if !self.webcam_overlay {
+            // screen_video_output is already linked to videoenc_queue
+        }
 
         self.profile
             .attach(

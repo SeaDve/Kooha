@@ -49,3 +49,9 @@ jobs:
           manifest-path: build-aux/io.github.seadve.Kooha.Devel.json
           run-tests: true
           cache-key: flatpak-builder-${{ github.sha }}
+      - name: Upload Flatpak
+        uses: actions/upload-artifact@v4
+        with:
+          name: kooha
+          path: kooha.flatpak
+          retention-days: 90

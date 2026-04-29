@@ -8,7 +8,7 @@ use gtk::{
 };
 
 use crate::{
-    experimental::Feature, format, item_row::ItemRow, profile::Profile, settings::Settings,
+    experimental::Feature, format, item_row::ItemRow, profile::Profile, settings::Settings, webcam,
 };
 
 static BUILTIN_FRAMERATES: &[gst::Fraction] = &[
@@ -50,6 +50,12 @@ mod imp {
         pub(super) profile_row: TemplateChild<adw::ComboRow>,
         #[template_child]
         pub(super) framerate_row: TemplateChild<adw::ComboRow>,
+        #[template_child]
+        pub(super) webcam_device_row: TemplateChild<adw::ComboRow>,
+        #[template_child]
+        pub(super) compression_preset_row: TemplateChild<adw::ComboRow>,
+        #[template_child]
+        pub(super) target_size_row: TemplateChild<adw::SpinRow>,
     }
 
     #[glib::object_subclass]
@@ -123,6 +129,8 @@ mod imp {
             obj.update_file_chooser_label();
             obj.update_profile_row_selected();
             obj.update_framerate_row_selected();
+            obj.setup_webcam_device_row();
+            obj.setup_compression_row();
 
             // Load last active value first in `update_*_row` before connecting to
             // the signal to avoid unnecessary updates.
@@ -146,6 +154,18 @@ mod imp {
                             .unwrap()
                             .borrow::<gst::Fraction>();
                         obj.settings().set_framerate(*framerate);
+                    }
+                }
+            ));
+
+            // Webcam device selection handler
+            self.webcam_device_row.connect_selected_item_notify(clone!(
+                #[weak]
+                obj,
+                move |row| {
+                    if let Some(item) = row.selected_item() {
+                        let device: &webcam::WebcamDevice = item.downcast_ref().unwrap();
+                        obj.settings().set_webcam_device(&device.node_id);
                     }
                 }
             ));
@@ -338,6 +358,116 @@ impl PreferencesDialog {
         });
         let profile_filter_model = gtk::FilterListModel::new(Some(profile_model), Some(filter));
         imp.profile_row.set_model(Some(&profile_filter_model));
+    }
+
+    fn setup_webcam_device_row(&self) {
+        let imp = self.imp();
+        let settings = self.settings();
+
+        // Populate webcam devices
+        let devices = webcam::find_webcams().unwrap_or_default();
+
+        let model = gio::ListStore::new::<webcam::WebcamDevice>();
+        if devices.is_empty() {
+            let no_device = webcam::WebcamDevice {
+                name: gettext("No camera available").to_string(),
+                node_id: String::new(),
+            };
+            model.append(&no_device);
+        } else {
+            for device in devices {
+                model.append(&device);
+            }
+        }
+        imp.webcam_device_row.set_model(Some(&model));
+
+        // Set factory for webcam device row
+        let factory = gtk::SignalListItemFactory::new();
+        factory.connect_setup(move |_, list_item| {
+            let item_row = ItemRow::new();
+            list_item.set_child(Some(&item_row));
+        });
+        factory.connect_bind(move |_, list_item| {
+            let item = list_item.item().unwrap();
+            let device: &webcam::WebcamDevice = item.downcast_ref().unwrap();
+            let item_row = list_item.child().unwrap().downcast::<ItemRow>().unwrap();
+            item_row.set_title(&device.name);
+
+            // Mark as selected if matches settings
+            if device.node_id == settings.webcam_device()
+                || (device.node_id.is_empty() && settings.webcam_device().is_empty())
+            {
+                item_row.set_is_selected(true);
+            }
+        });
+        imp.webcam_device_row.set_factory(Some(&factory));
+
+        // Set initial selection
+        let saved_node_id = settings.webcam_device();
+        if !saved_node_id.is_empty() {
+            let position = model.iter().position(|item| {
+                item.and_then(|d: webcam::WebcamDevice| (d.node_id == saved_node_id).then_some(d))
+                    .is_some()
+            });
+            if let Some(position) = position {
+                imp.webcam_device_row.set_selected(position as u32);
+            }
+        } else if !devices.is_empty() {
+            // Default to first device
+            imp.webcam_device_row.set_selected(0);
+        }
+    }
+
+    fn setup_compression_row(&self) {
+        let imp = self.imp();
+        let settings = self.settings();
+
+        // Compression preset options
+        let presets = [
+            (
+                crate::reencode::CompressionPreset::BestQuality,
+                gettext("Best Quality (60fps)").to_string(),
+            ),
+            (
+                crate::reencode::CompressionPreset::Balanced,
+                gettext("Balanced (30fps)").to_string(),
+            ),
+            (
+                crate::reencode::CompressionPreset::Smallest,
+                gettext("Smallest (15fps)").to_string(),
+            ),
+        ];
+
+        let model = gio::ListStore::new::<String>();
+        for (_, label) in &presets {
+            model.append(label);
+        }
+        imp.compression_preset_row.set_model(Some(&model));
+
+        // Set initial selection
+        let current_preset = settings.compression_preset();
+        let selected_index = presets
+            .iter()
+            .position(|(p, _)| *p == current_preset)
+            .unwrap_or(1) as u32;
+        imp.compression_preset_row.set_selected(selected_index);
+
+        // Handle preset changes
+        imp.compression_preset_row.connect_selected_notify(clone!(
+            #[weak]
+            obj,
+            move |row| {
+                let index = row.selected() as usize;
+                if index < presets.len() {
+                    settings.set_compression_preset(presets[index].0);
+                }
+            }
+        ));
+
+        // Bind target size
+        imp.target_size_row
+            .bind("value", settings.gtk_settings(), "target-size-mb")
+            .build();
     }
 }
 
