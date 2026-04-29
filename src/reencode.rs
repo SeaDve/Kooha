@@ -6,7 +6,6 @@
 use anyhow::{Context, Result};
 use gst::prelude::*;
 use gtk::gio;
-use std::path::PathBuf;
 use std::time::Duration;
 
 /// Compression preset for recordings.
@@ -44,39 +43,48 @@ impl CompressionPreset {
 
 /// Probe the duration of a video file using GStreamer.
 async fn probe_duration(file: &gio::File) -> Result<Duration> {
+    let path = file
+        .path()
+        .ok_or_else(|| anyhow::anyhow!("No path for file"))?;
+
     let pipeline_str = format!(
-        "filesrc location={} ! decodebin ! fakesink sync=true",
-        file.path()
-            .ok_or_else(|| anyhow::anyhow!("No path for file"))?
-            .display()
+        "filesrc location={} ! decodebin ! fakesink sync=false",
+        path.display()
     );
 
-    let pipeline = gst::Pipeline::builder().name("duration-probe").build();
-    let elements = gst::parse::launch(&pipeline_str)
-        .context("Failed to parse GStreamer pipeline for duration probe")?;
+    let pipeline = gst::parse::launch(&pipeline_str)
+        .context("Failed to parse GStreamer pipeline for duration probe")?
+        .downcast::<gst::Pipeline>()
+        .map_err(|_| anyhow::anyhow!("Expected pipeline from parse::launch"))?;
 
-    let playbin = elements
-        .into_iter()
-        .next()
-        .context("No element from pipeline")?;
-    pipeline.add_many([&playbin])?;
+    // Pause to load metadata without full decode
+    pipeline.set_state(gst::State::Paused)?;
 
-    // Set to playing to read metadata
-    pipeline.set_state(gst::State::Playing)?;
-
-    // Wait for metadata
+    // Wait for ASYNC_DONE (pipeline reaches PAUSED with metadata loaded)
     let bus = pipeline.bus().unwrap();
-    for msg in bus.iter_timed(gst::ClockTime::from_seconds(5), gst::ClockTime::NONE) {
-        if let gst::MessageView::Tag { tag, .. } = msg.view() {
-            if let Some(duration_ns) = tag.duration() {
+    loop {
+        match bus.timed_pop(gst::ClockTime::from_seconds(5)) {
+            Some(msg) => match msg.view() {
+                gst::MessageView::AsyncDone(_) => break,
+                gst::MessageView::Error(e) => {
+                    pipeline.set_state(gst::State::Null)?;
+                    return Err(anyhow::anyhow!("Pipeline error during probe: {}", e.error()));
+                }
+                _ => {}
+            },
+            None => {
                 pipeline.set_state(gst::State::Null)?;
-                return Ok(Duration::from_nanos(duration_ns as u64));
+                return Err(anyhow::anyhow!("Timed out waiting for pipeline to pause"));
             }
         }
     }
 
+    let duration = pipeline
+        .query_duration::<gst::ClockTime>()
+        .ok_or_else(|| anyhow::anyhow!("Could not query video duration"))?;
+
     pipeline.set_state(gst::State::Null)?;
-    Err(anyhow::anyhow!("Could not probe video duration"))
+    Ok(Duration::from_nanos(duration.nseconds()))
 }
 
 /// Re-encode a video file to target a specific size.
@@ -136,11 +144,11 @@ pub async fn reencode_to_target_size(
     // Determine framerate based on how aggressive the compression needs to be
     let size_ratio = target_size_bytes as f64 / input_size as f64;
     let framerate = if size_ratio > 0.5 {
-        gst::Fraction::from_integer(60) // Keep 60fps if target is >50% of original
+        gst::Fraction::from_integer(60)
     } else if size_ratio > 0.2 {
-        gst::Fraction::from_integer(30) // Drop to 30fps for moderate compression
+        gst::Fraction::from_integer(30)
     } else {
-        gst::Fraction::from_integer(15) // Drop to 15fps for aggressive compression
+        gst::Fraction::from_integer(15)
     };
 
     tracing::info!(
@@ -151,7 +159,6 @@ pub async fn reencode_to_target_size(
         framerate.numer()
     );
 
-    // Build re-encode pipeline
     let input_path = input_file
         .path()
         .ok_or_else(|| anyhow!("No path for input file"))?;
@@ -159,12 +166,6 @@ pub async fn reencode_to_target_size(
         .path()
         .ok_or_else(|| anyhow!("No path for output file"))?;
 
-    let pipeline_desc = format!(
-        "filesrc location={} ! qtdemux ! h264parse ! rtph264pay config-interval=3 pt=96 ! udpsink host=127.0.0.1 port=5000",
-        input_path.display()
-    );
-
-    // Use a simpler approach with decodebin + encoder
     let pipeline_str = format!(
         "filesrc location={} ! decodebin ! videoconvert ! x264enc bitrate={} tune=zerolatency speed-preset=veryfast threads=0 ! mp4mux ! filesink location={}",
         input_path.display(),
@@ -172,22 +173,13 @@ pub async fn reencode_to_target_size(
         output_path.display()
     );
 
-    let pipeline = gst::Pipeline::builder().name("reencode-pipeline").build();
+    let pipeline = gst::parse::launch(&pipeline_str)
+        .context("Failed to parse re-encode pipeline")?
+        .downcast::<gst::Pipeline>()
+        .map_err(|_| anyhow!("Expected pipeline from parse::launch"))?;
 
-    let elements =
-        gst::parse::launch(&pipeline_str).context("Failed to parse re-encode pipeline")?;
-
-    for element in elements.iter() {
-        pipeline.add(&element)?;
-    }
-
-    // Link elements
-    elements.link()?;
-
-    // Start re-encoding
     pipeline.set_state(gst::State::Playing)?;
 
-    // Wait for completion
     let bus = pipeline.bus().unwrap();
     loop {
         let message = bus.timed_pop(gst::ClockTime::NONE);
@@ -200,9 +192,6 @@ pub async fn reencode_to_target_size(
                 gst::MessageView::Error { error, debug } => {
                     pipeline.set_state(gst::State::Null)?;
                     return Err(anyhow!("Re-encode error: {} ({})", error, debug));
-                }
-                gst::MessageView::AsyncDone { .. } => {
-                    // Continue waiting
                 }
                 _ => {}
             },
@@ -245,20 +234,13 @@ pub async fn reencode_with_preset(
         output_path.display()
     );
 
-    let pipeline = gst::Pipeline::builder().name("reencode-pipeline").build();
-
-    let elements =
-        gst::parse::launch(&pipeline_str).context("Failed to parse re-encode pipeline")?;
-
-    for element in elements.iter() {
-        pipeline.add(&element)?;
-    }
-
-    elements.link()?;
+    let pipeline = gst::parse::launch(&pipeline_str)
+        .context("Failed to parse re-encode pipeline")?
+        .downcast::<gst::Pipeline>()
+        .map_err(|_| anyhow!("Expected pipeline from parse::launch"))?;
 
     pipeline.set_state(gst::State::Playing)?;
 
-    // Wait for completion
     let bus = pipeline.bus().unwrap();
     loop {
         let message = bus.timed_pop(gst::ClockTime::NONE);
