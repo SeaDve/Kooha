@@ -192,11 +192,6 @@ impl PipelineBuilder {
             screen_video_output
         };
 
-        // Link the final video output to the encoder queue (if not already linked)
-        if !self.webcam_overlay {
-            // Already linked above
-        }
-
         let audioenc_queue = if self.record_desktop_audio || self.record_microphone {
             debug_assert!(self.profile.supports_audio());
 
@@ -224,11 +219,6 @@ impl PipelineBuilder {
         } else {
             None
         };
-
-        // Link final video output to encoder queue
-        if !self.webcam_overlay {
-            // screen_video_output is already linked to videoenc_queue
-        }
 
         self.profile
             .attach(
