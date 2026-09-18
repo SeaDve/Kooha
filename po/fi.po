@@ -5,16 +5,15 @@
 # Jan Kuparinen <copper_fin@hotmail.com>, 2021.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2022, 2025.
 # Jiri Nakola <github@nakola.fi>, 2023.
-# Linus Virtanen <linus.virtanen@protonmail.com>, 2024, 2025.
+# Linus Virtanen <linus.virtanen@protonmail.com>, 2024, 2025, 2026.
 # Automatic translation add-on <noreply-addon-autotranslate@weblate.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-05 14:41+0800\n"
-"PO-Revision-Date: 2026-06-05 06:45+0000\n"
-"Last-Translator: Automatic translation add-on <noreply-addon-"
-"autotranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-09-18 11:51+0000\n"
+"Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/seadve/kooha/fi/>"
 "\n"
 "Language: fi\n"
@@ -22,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.6\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -33,20 +32,20 @@ msgstr "Kooha"
 #: data/io.github.seadve.Kooha.desktop.in.in:4
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
-msgstr "Tallenna näyttösi tapahtumat"
+msgstr "Tallenna näyttösi tapahtumat elegantisti"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:9
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Screencast;Recorder;Screen;Video;tallennin;nauhoitus;"
+msgstr "Screencast;Recorder;Screen;Video;tallennin;kuvankaappaus;nauhoitus;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
 msgstr ""
-"Kaappaa näyttösi sisältö intuitiivisella ja suoraviivaisella tavalla ilman "
-"häiriötekijöitä."
+"Kaappaa näytölläsi tapahtuvaa toimintaa intuitiivisella ja suoraviivaisella "
+"tavalla ilman häiriötekijöitä."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
@@ -304,7 +303,6 @@ msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
 #: src/about.rs:44
-#, fuzzy
 msgid "Donate"
 msgstr "Lahjoita"
 
