@@ -5,14 +5,14 @@
 # Dave Patrick <davecruz48@gmail.com>, 2021.
 # Unai Hernández Minaberry <unihernandez22@gmail.com>, 2021.
 # Automatic translation add-on <noreply-addon-autotranslate@weblate.org>, 2026.
+# GalaxyShard <galaxyshard.vcs@byteroach.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-05 14:41+0800\n"
-"PO-Revision-Date: 2026-06-05 06:45+0000\n"
-"Last-Translator: Automatic translation add-on <noreply-addon-"
-"autotranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-09-23 22:51+0000\n"
+"Last-Translator: GalaxyShard <galaxyshard.vcs@byteroach.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/seadve/kooha/"
 "eo/>\n"
 "Language: eo\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.6\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -42,439 +42,446 @@ msgstr "Ekranelsendi;Registrilo;Ekrano;Bildbendo;"
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr ""
+msgstr "Registru vian ekranon intue kaj simple sen distraktaĵoj."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha estas simpla ekranregistrilo kun minimumista interfaco. Vi povas nur "
-"alklaki la registran butonon sen devi agordi multajn reguligojn."
+"Kooha estas simpla ekranregistrilo kun minimumista interfaco. Vi povas "
+"alklaki la registran butonon sen devi agordi multajn agordojn."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr "La precipaj ebloj de Kooha inkludas la sekvantan:"
+msgstr "La ĉefaj funkcioj de Kooha inkluzivas la sekvantajn:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr ""
+msgstr "🎙️ Registri mikrofonon, labortabla sono, aŭ ambaŭ samtempe"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
-msgstr ""
+msgstr "📼 Subtenon por dosierformoj WebM, MP4, GIF, kaj Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr ""
+msgstr "🖥️ Elekti ekranon aŭ parton de ekrano por registri"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
+"🛠️ Agordeblajn konservlokon, videblecon de montrilo, bildrapidon, kaj "
+"prokraston"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
-msgstr ""
+msgstr "🚀 Eksperimenta kodado rapidigita per aparato"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Agordojn pri registrado kaj butonon por komenci registri"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Daŭron de farata registro kaj butonon por fini la registradon"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
+msgstr "Retrokalkulon antaŭ ol registri kaj butonon por fini la registradon"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr ""
+msgstr "Elekti areon"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
 msgid "Cancel"
-msgstr ""
+msgstr "Nuligi"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
-msgstr ""
+msgstr "Fini"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr ""
+msgstr "Nuligi elekton"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
-msgstr "Ĝenerala"
+msgstr "Ĝeneralaj"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr ""
+msgstr "Prokrasto (sekundoj)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
-msgstr ""
+msgstr "Daŭro antaŭ ol komenci registri"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr ""
+msgstr "Dosierujo de registroj"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr ""
+msgstr "Celdosierujo por registroj"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
-msgstr ""
+msgstr "Videaj"
 
 #: data/resources/ui/preferences_dialog.ui:53
 msgid "Format"
-msgstr ""
+msgstr "Dosierformo"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr ""
+msgstr "Bildrapido"
 
 #: data/resources/ui/shortcuts.ui:6
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Ĝenerala"
+msgstr "Ĝeneralaj"
 
 #: data/resources/ui/shortcuts.ui:9
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr ""
+msgstr "Malfermi menuon"
 
 #: data/resources/ui/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Montri preferojn"
 
 #: data/resources/ui/shortcuts.ui:21
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Montri fulmoklavojn"
 
 #: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Fermi fenestron"
 
 #: data/resources/ui/shortcuts.ui:33
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Lasi"
+msgstr "Ĉesigi apon"
 
 #: data/resources/ui/shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Registradaj"
 
 #: data/resources/ui/shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Baskuli ĉu registri"
 
 #: data/resources/ui/shortcuts.ui:56
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Nuligi registradon"
 
 #: data/resources/ui/shortcuts.ui:64
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Agordaj"
 
 #: data/resources/ui/shortcuts.ui:67
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Baskuli labortablan sonon"
 
 #: data/resources/ui/shortcuts.ui:73
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Baskuli mikrofonon"
 
 #: data/resources/ui/shortcuts.ui:79
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Baskuli montrilon"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
-msgstr ""
+msgstr "Ĉefmenuo"
 
 #: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Registri ekranon aŭ fenestron"
 
 #: data/resources/ui/window.ui:68
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Registri areon de ekrano"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Ŝalti labortablan sonon"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Malŝalti labortablan sonon"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Ŝalti mikrofonon"
 
 #: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Malŝalti mikrofonon"
 
 #: data/resources/ui/window.ui:106
 msgid "Show Pointer"
-msgstr ""
+msgstr "Montri montrilon"
 
 #: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Kaŝi montrilon"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr ""
+msgstr "Komenci registri"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
-msgstr ""
+msgstr "Registri"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Forgesi antaŭe elektitajn videofontojn"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
-msgstr ""
+msgstr "Fini registradon"
 
 #: data/resources/ui/window.ui:183
 msgid "Stop"
-msgstr ""
+msgstr "Fini"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr ""
+msgstr "Paŭzigi registradon"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
-msgstr ""
+msgstr "Registronte post…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Nuligi registradon"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
-msgstr ""
+msgstr "Elbufrigante…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferoj"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Fulmoklavoj"
 
 #: data/resources/ui/window.ui:303
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Pri Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr ""
+msgstr "Slami"
 
 #: src/about.rs:44
 msgid "Donate"
-msgstr ""
+msgstr "Donaci"
 
 #: src/about.rs:45
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/about.rs:47
 msgid "Translate"
-msgstr ""
+msgstr "Traduki"
 
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Registrinte ekranon"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "Montri en dosierestro"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Malsukcesis trovi la defaŭltan sonludilon"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Certigu ke vi instalis PulseAudio en vian sistemon."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} horo"
+msgstr[1] "{time} horoj"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} minuto"
+msgstr[1] "{time} minutoj"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{time} sekundo"
+msgstr[1] "{time} sekundoj"
 
 #: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Malsukcesis agordi dosierujon por registri"
 
 #: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Tiu ĉi bildrapido povas malpliigi rendimenton uzante la elektitan "
+"dosierformon."
 
 #: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Tiu ĉi dosierformo estas eksperimenta kaj nesubtenata."
 
 #: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
-msgstr ""
+msgstr "Neniu"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Neniu aktiva profilo"
 
 #: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Malsukcesis komenci registri"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:190
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Rigardu {link} por ricevi helpon."
 
 #: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "GStreamer-aldonaĵo eble ne instaliĝis."
 
 #: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Certigu ke la konservloko ekzistas kaj estas atingebla."
 
 #: src/recording.rs:497
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "Eraris dum registrado"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Malsukcesis malfermi \"{path}\" por skribado"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Elekti dosierujon de registroj"
 
 #: src/window/mod.rs:78
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Malsukcesis baskuli paŭzostaton"
 
 #: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"Registrado nun okazas. Tuj ĉesigi apon povas igi la registron nespektebla. "
+"Bonvolu fini la registradon antaŭ ol ĉesigi la apon."
 
 #: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
 msgstr ""
+"Ĉesigi la apon nuligos la laboradon kaj povas igi la registron nespektebla."
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Ĉu ĉesigi la aplikaĵon?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
-msgstr "Lasi"
+msgstr "Ĉesigi apon"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Kopii al tondujo"
 
 #: src/window/mod.rs:261
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Kopiita al tondujo"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
-msgstr ""
+msgstr "Montri detalan eraron"
 
 #: src/window/mod.rs:289
 msgid "Help"
-msgstr ""
+msgstr "Helpo"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Bone, konsentite"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Ĉu malfermi preferojn?"
 
 #: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"La antaŭelektita dosierformo eble estis nedisponebla. Malfermu preferojn kaj "
+"elektu formon por daŭri registradon."
 
 #: src/window/mod.rs:308
 msgid "Later"
-msgstr ""
+msgstr "Poste"
 
 #: src/window/mod.rs:310
 msgid "Open"
-msgstr ""
+msgstr "Malfermi"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Registrado nun okazas"
 
 #: src/window/mod.rs:499
 msgid "Recording"
-msgstr "Registranti"
+msgstr "Registrante"
 
 #: src/window/mod.rs:507
 msgid "Paused"
-msgstr ""
+msgstr "Paŭzinta"
 
 #: src/window/mod.rs:544
 msgid "Normal"
-msgstr ""
+msgstr "Normala"
 
 #: src/window/mod.rs:545
 msgid "Selection"
-msgstr ""
+msgstr "Elekta"
 
 #~ msgid "🎥 Capture your screen without any hassle."
 #~ msgstr "🎥 Enkaptu vian ekranon sen iu malfacilaĵo."
