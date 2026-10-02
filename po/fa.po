@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-05 14:41+0800\n"
-"PO-Revision-Date: 2026-06-05 06:45+0000\n"
+"PO-Revision-Date: 2026-10-02 21:23+0000\n"
 "Last-Translator: Automatic translation add-on <noreply-addon-"
 "autotranslate@weblate.org>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/seadve/kooha/fa/>"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.6\n"
+"X-Generator: Weblate 2026.10\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -176,7 +176,7 @@ msgstr ""
 #, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "ترک"
+msgstr "خروج"
 
 #: data/resources/ui/shortcuts.ui:41
 msgctxt "shortcut window"
