@@ -67,7 +67,9 @@ impl PipelineBuilder {
     ///                        |             |
     ///                        v             v
     /// pipewiresrc-bin -> videoscale -> videocrop -> queue -> |
-    ///                                                        | -> profile.attach -> filesink
+    ///         |                                              | -> profile.attach -> filesink
+    ///         | (If combined stream size is odd or unknown)  |
+    ///         +---------> videoscale --------> queue --------+
     ///                               pulsesrc-bin -> queue -> |
     pub fn build(&self) -> Result<gst::Pipeline> {
         tracing::debug!(
@@ -114,8 +116,28 @@ impl PipelineBuilder {
             videosrc_bin.link(&videoscale)?;
             videoscale.link_filtered(&videocrop, &videoscale_caps)?;
             videocrop.link(&videoenc_queue)?;
-        } else {
+        } else if streams_total_size(&self.streams)
+            .is_some_and(|(width, height)| width % 2 == 0 && height % 2 == 0)
+        {
             videosrc_bin.link(&videoenc_queue)?;
+        } else {
+            // Some encoders (e.g., x264enc) require even resolution, but the
+            // streams (e.g., a window capture) may have odd dimensions, and
+            // their size may be unknown or differ from the portal metadata
+            // (e.g., due to rotation), so restrict the caps to even values and
+            // let videoscale follow the negotiated size.
+            let videoscale = gst::ElementFactory::make("videoscale").build()?;
+            pipeline.add(&videoscale)?;
+
+            // The maximum must be well below `i32::MAX`, as larger values
+            // overflow videoscale's internal aspect-ratio arithmetic.
+            let videoscale_caps = gst::Caps::builder("video/x-raw")
+                .field("width", gst::IntRange::with_step(2, 65536, 2))
+                .field("height", gst::IntRange::with_step(2, 65536, 2))
+                .build();
+
+            videosrc_bin.link(&videoscale)?;
+            videoscale.link_filtered(&videoenc_queue, &videoscale_caps)?;
         }
 
         let audioenc_queue = if self.record_desktop_audio || self.record_microphone {
@@ -414,6 +436,25 @@ fn make_audiosrc_bin<'a>(
     Ok(bin)
 }
 
+/// Computes the total size of the streams when combined in the pipeline.
+///
+/// Multiple streams are stacked horizontally, so the total width is the sum
+/// of the stream widths and the height is the maximum of the stream heights.
+///
+/// Returns `None` if the size of a stream is unknown.
+fn streams_total_size(streams: &[Stream]) -> Option<(i32, i32)> {
+    let mut total_width = 0;
+    let mut max_height = 0;
+
+    for stream in streams {
+        let (width, height) = stream.size()?;
+        total_width += width;
+        max_height = max_height.max(height);
+    }
+
+    Some((total_width, max_height))
+}
+
 fn round_to_even(number: i32) -> i32 {
     number / 2 * 2
 }
@@ -425,6 +466,8 @@ fn round_to_even_f32(number: f32) -> i32 {
 #[cfg(test)]
 mod test {
     use super::*;
+
+    use gtk::glib::{self, prelude::*};
 
     macro_rules! assert_even {
         ($number:expr) => {
@@ -460,5 +503,45 @@ mod test {
     fn float_round_to_even_f32() {
         assert_even!(round_to_even_f32(5.3));
         assert_even!(round_to_even_f32(2.9));
+    }
+
+    fn stream_with_size(size: Option<(i32, i32)>) -> Stream {
+        let variant_str = match size {
+            Some((width, height)) => {
+                format!("(uint32 63, {{'size': <({width}, {height})>}})")
+            }
+            None => "(uint32 63, {})".to_string(),
+        };
+        glib::Variant::parse(Some(&Stream::static_variant_type()), &variant_str)
+            .unwrap()
+            .get::<Stream>()
+            .unwrap()
+    }
+
+    #[test]
+    fn streams_total_size_single() {
+        let streams = [stream_with_size(Some((1920, 1080)))];
+        assert_eq!(streams_total_size(&streams), Some((1920, 1080)));
+    }
+
+    #[test]
+    fn streams_total_size_single_odd() {
+        let streams = [stream_with_size(Some((1365, 717)))];
+        assert_eq!(streams_total_size(&streams), Some((1365, 717)));
+    }
+
+    #[test]
+    fn streams_total_size_multiple_stacked_horizontally() {
+        let streams = [
+            stream_with_size(Some((1920, 1080))),
+            stream_with_size(Some((2560, 1440))),
+        ];
+        assert_eq!(streams_total_size(&streams), Some((4480, 1440)));
+    }
+
+    #[test]
+    fn streams_total_size_unknown() {
+        let streams = [stream_with_size(Some((1920, 1080))), stream_with_size(None)];
+        assert_eq!(streams_total_size(&streams), None);
     }
 }
