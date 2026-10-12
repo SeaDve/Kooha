@@ -68,6 +68,8 @@ mod imp {
         #[template_child]
         pub(super) window_title: TemplateChild<adw::WindowTitle>,
         #[template_child]
+        pub(super) manual_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub(super) done_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub(super) stack: TemplateChild<gtk::Stack>,
@@ -103,6 +105,108 @@ mod imp {
                 } else {
                     tracing::error!("Sent result twice");
                 }
+            });
+
+            klass.install_action("area-selector.manual", None, move |obj, _, _| {
+                let paintable_width = obj.imp().view_port.paintable_rect().unwrap().width();
+                let paintable_height = obj.imp().view_port.paintable_rect().unwrap().height();
+                let intrinsic_width = obj.imp().view_port.paintable().unwrap().intrinsic_width();
+                let intrinsic_height = obj.imp().view_port.paintable().unwrap().intrinsic_height();
+                let mul = paintable_width / intrinsic_width as f32;
+
+                let min_usable_x = obj.imp().view_port.paintable_rect().unwrap().x(); // offset
+                let min_usable_y = obj.imp().view_port.paintable_rect().unwrap().y();
+
+                let dialog = adw::Dialog::builder().build();
+                let context_box = gtk::Box::new(gtk::Orientation::Vertical, 12);
+
+                // x
+                let x_adj = create_coordinate_adjustment(
+                    (obj.imp().view_port.selection().unwrap().left_x() - min_usable_x) / mul,
+                    intrinsic_width,
+                );
+                let x_label = gtk::Label::new(Some(&"X"));
+                let x_field = gtk::SpinButton::new(Some(&x_adj), 100f64, 0u32);
+                context_box.append(&x_field);
+                context_box.append(&x_label);
+
+                // y
+                let y_adj = create_coordinate_adjustment(
+                    (obj.imp().view_port.selection().unwrap().top_y() - min_usable_y) / mul,
+                    intrinsic_height,
+                );
+                let y_label = gtk::Label::new(Some(&"Y"));
+                let y_field = gtk::SpinButton::new(Some(&y_adj), 100f64, 0u32);
+                context_box.append(&y_field);
+                context_box.append(&y_label);
+
+                // width
+                let width_adj = create_coordinate_adjustment(
+                    obj.imp().view_port.selection().unwrap().rect().width() / mul,
+                    intrinsic_width,
+                );
+                let width_label = gtk::Label::new(Some(&"Width"));
+                let width_field = gtk::SpinButton::new(Some(&width_adj), 100f64, 0u32);
+                context_box.append(&width_field);
+                context_box.append(&width_label);
+
+                // height
+                let height_adj = create_coordinate_adjustment(
+                    obj.imp().view_port.selection().unwrap().rect().height() / mul,
+                    intrinsic_height,
+                );
+                let height_label = gtk::Label::new(Some(&"Height"));
+                let height_field = gtk::SpinButton::new(Some(&height_adj), 100f64, 0u32);
+                context_box.append(&height_field);
+                context_box.append(&height_label);
+
+                // cancel and apply buttons
+                let cancel_btn = gtk::Button::with_label("Cancel");
+                context_box.append(&cancel_btn);
+
+                let apply_btn = gtk::Button::with_label("Apply");
+                apply_btn.add_css_class("suggested-action");
+                context_box.append(&apply_btn);
+
+                let margin = 16;
+                context_box.set_margin_bottom(margin);
+                context_box.set_margin_top(margin);
+                context_box.set_margin_start(margin);
+                context_box.set_margin_end(margin);
+
+                dialog.set_child(Some(&context_box));
+                dialog.present(Some(obj));
+
+                // button callbacks
+                cancel_btn.connect_clicked(move |_| {
+                    dialog.close();
+                });
+
+                let weak_obj = obj.downgrade();
+                apply_btn.connect_clicked(move |_btn| {
+                    let Some(obj) = weak_obj.upgrade() else {
+                        return;
+                    };
+
+                    let mut x = x_adj.value() as f32 * mul;
+                    x += min_usable_x;
+
+                    let mut y = y_adj.value() as f32 * mul;
+                    y += min_usable_y;
+
+                    let mut width = width_adj.value() as f32 * mul;
+                    let mut height = height_adj.value() as f32 * mul;
+
+                    // bounds checks
+                    x = f32::max(x, min_usable_x);
+                    y = f32::max(y, min_usable_y);
+                    width = f32::min(width, paintable_width - x + min_usable_x);
+                    height = f32::min(height, paintable_height - y + min_usable_y);
+
+                    obj.imp()
+                        .view_port
+                        .set_selection(Some(Selection::from_rect(x, y, width, height)));
+                });
             });
 
             klass.install_action("area-selector.done", None, move |obj, _, _| {
@@ -177,6 +281,10 @@ mod imp {
     }
 
     impl AdwWindowImpl for AreaSelector {}
+
+    fn create_coordinate_adjustment(default: f32, upper: i32) -> gtk::Adjustment {
+        return gtk::Adjustment::new(default as f64, 0f64, upper as f64, 100f64, 100f64, 0f64);
+    }
 }
 
 glib::wrapper! {
@@ -461,6 +569,7 @@ impl AreaSelector {
 
         self.action_set_enabled("area-selector.reset", selection.is_some());
         self.action_set_enabled("area-selector.done", selection.is_some());
+        self.action_set_enabled("area-selector.manual", true);
 
         if selection.is_some() {
             imp.done_button.grab_focus();
