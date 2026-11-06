@@ -4,14 +4,14 @@
 # C0sM1n <bordeic4@gmail.com>, 2023.
 # Gabriel Cozma <me@gabs.eu.org>, 2024.
 # Automatic translation add-on <noreply-addon-autotranslate@weblate.org>, 2026.
+# A D <load.txt@users.noreply.hosted.weblate.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-05 14:41+0800\n"
-"PO-Revision-Date: 2026-06-05 06:45+0000\n"
-"Last-Translator: Automatic translation add-on <noreply-addon-"
-"autotranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-11-06 08:51+0000\n"
+"Last-Translator: A D <load.txt@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/seadve/kooha/"
 "ro/>\n"
 "Language: ro\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.6\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -82,24 +82,26 @@ msgstr "🚀 Codare accelerată hardware experimentală"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:25
 msgid "Recording options and button to start recording"
-msgstr ""
+msgstr "Opțiuni de înregistrare și buton pentru a începe înregistrarea"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:29
 msgid "In-progress recording duration and button to stop recording"
-msgstr ""
+msgstr "Durata înregistrării în curs și buton pentru a opri înregistrarea"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
 msgstr ""
+"Numărătoare inversă pentru începerea înregistrării și buton pentru anularea "
+"înregistrării"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"
-msgstr "Selectați Zona"
+msgstr "Selectați zona"
 
 #: data/resources/ui/area_selector.ui:20 data/resources/ui/window.ui:235
 #: data/resources/ui/window.ui:278 src/window/mod.rs:213
 msgid "Cancel"
-msgstr "Renunță"
+msgstr "Renunțați"
 
 #: data/resources/ui/area_selector.ui:26
 msgid "Done"
@@ -107,7 +109,7 @@ msgstr "Terminat"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr "Resetează selecția"
+msgstr "Resetați selecția"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
@@ -123,11 +125,11 @@ msgstr "Interval de timp înainte de începerea înregistrării"
 
 #: data/resources/ui/preferences_dialog.ui:27
 msgid "Recordings Folder"
-msgstr "Fișier de înregistrări"
+msgstr "Dosarul cu înregistrări"
 
 #: data/resources/ui/preferences_dialog.ui:28
 msgid "Destination folder for the recordings"
-msgstr "Fișierul de destinație pentru înregistrări"
+msgstr "Dosarul de destinație pentru înregistrări"
 
 #: data/resources/ui/preferences_dialog.ui:50
 msgid "Video"
@@ -139,37 +141,34 @@ msgstr "Format"
 
 #: data/resources/ui/preferences_dialog.ui:58
 msgid "Frame Rate"
-msgstr "Rata de Cadre"
+msgstr "Rata de cadre"
 
 #: data/resources/ui/shortcuts.ui:6
-#, fuzzy
 msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
 #: data/resources/ui/shortcuts.ui:9
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Open Menu"
-msgstr "Deschideți Meniu"
+msgstr "Deschideți meniul"
 
 #: data/resources/ui/shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Afișați preferințele"
 
 #: data/resources/ui/shortcuts.ui:21
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Afișați comenzile rapide"
 
 #: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "Închideți fereastra"
 
 #: data/resources/ui/shortcuts.ui:33
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Închide programul"
@@ -177,37 +176,37 @@ msgstr "Închide programul"
 #: data/resources/ui/shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Recording"
-msgstr ""
+msgstr "Înregistrare"
 
 #: data/resources/ui/shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Toggle Record"
-msgstr ""
+msgstr "Comutați înregistrarea"
 
 #: data/resources/ui/shortcuts.ui:56
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr ""
+msgstr "Renunțați la înregistrare"
 
 #: data/resources/ui/shortcuts.ui:64
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr ""
+msgstr "Setări"
 
 #: data/resources/ui/shortcuts.ui:67
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr ""
+msgstr "Comutați sunetul desktopului"
 
 #: data/resources/ui/shortcuts.ui:73
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr ""
+msgstr "Comutați microfonul"
 
 #: data/resources/ui/shortcuts.ui:79
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr ""
+msgstr "Comutați cursorul"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -215,71 +214,71 @@ msgstr "Meniul principal"
 
 #: data/resources/ui/window.ui:55
 msgid "Capture a Monitor or Window"
-msgstr ""
+msgstr "Capturați un monitor sau o fereastră"
 
 #: data/resources/ui/window.ui:68
 msgid "Capture a Selection of Screen"
-msgstr ""
+msgstr "Capturați o selecție de pe ecran"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr ""
+msgstr "Activați sunetul desktopului"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr ""
+msgstr "Dezactivați sunetul desktopului"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
-msgstr ""
+msgstr "Activați microfonul"
 
 #: data/resources/ui/window.ui:98
 msgid "Disable Microphone"
-msgstr ""
+msgstr "Dezactivați microfonul"
 
 #: data/resources/ui/window.ui:106
 msgid "Show Pointer"
-msgstr ""
+msgstr "Afișați cursorul"
 
 #: data/resources/ui/window.ui:107
 msgid "Hide Pointer"
-msgstr ""
+msgstr "Ascundeți cursorul"
 
 #: data/resources/ui/window.ui:117
 msgid "Start Recording"
-msgstr ""
+msgstr "Începeți înregistrarea"
 
 #: data/resources/ui/window.ui:118
 msgid "Record"
-msgstr ""
+msgstr "Înregistrați"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr ""
+msgstr "Uitați sursele video selectate anterior"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
-msgstr ""
+msgstr "Opriți înregistrarea"
 
 #: data/resources/ui/window.ui:183
 msgid "Stop"
-msgstr ""
+msgstr "Opriți"
 
 #: data/resources/ui/window.ui:193
 msgid "Pause Recording"
-msgstr ""
+msgstr "Suspendați înregistrarea"
 
 #: data/resources/ui/window.ui:216
 msgid "Recording in…"
-msgstr ""
+msgstr "Se înregistrează în…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
-msgstr ""
+msgstr "Anulați înregistrarea"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
-msgstr ""
+msgstr "Se salvează…"
 
 #: data/resources/ui/window.ui:295
 msgid "_Preferences"
@@ -291,18 +290,16 @@ msgstr "Scurtături _tastatură"
 
 #: data/resources/ui/window.ui:303
 msgid "_About Kooha"
-msgstr ""
+msgstr "_Despre Kooha"
 
 #. Translators: Replace "translator-credits" with your names. Put a comma between.
 #: src/about.rs:35
 msgid "translator-credits"
-msgstr ""
-"Gabriel Cozma\n"
-"Danny3"
+msgstr "Gabriel Cozma, Danny3"
 
 #: src/about.rs:44
 msgid "Donate"
-msgstr ""
+msgstr "Donați"
 
 #: src/about.rs:45
 msgid "GitHub"
@@ -315,113 +312,117 @@ msgstr "Traduceți"
 #. Translators: This is a message that the user will see when the recording is finished.
 #: src/application.rs:137
 msgid "Screencast recorded"
-msgstr ""
+msgstr "Înregistrarea de ecran a fost salvată"
 
 #: src/application.rs:144
 msgid "Show in Files"
-msgstr ""
+msgstr "Afișați în Fișiere"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr ""
+msgstr "Nu s-a putut găsi dispozitivul audio implicit"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr ""
+msgstr "Asigurați-vă că PulseAudio este instalat în sistem."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:36
 msgid "{time} hour"
 msgid_plural "{time} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} oră"
+msgstr[1] "{time} de ore"
+msgstr[2] "{time} de ore"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:43
 msgid "{time} minute"
 msgid_plural "{time} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} minut"
+msgstr[1] "{time} de minute"
+msgstr[2] "{time} de minute"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:50
 msgid "{time} second"
 msgid_plural "{time} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{time} secundă"
+msgstr[1] "{time} de secunde"
+msgstr[2] "{time} de secunde"
 
 #: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
-msgstr ""
+msgstr "Nu s-a putut seta dosarul cu înregistrări"
 
 #: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
+"Această rată de cadre poate cauza probleme de performanță la formatul "
+"selectat."
 
 #: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
-msgstr ""
+msgstr "Acest format este experimental și nu este acceptat."
 
 #: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
-msgstr ""
+msgstr "Niciuna"
 
 #: src/recording.rs:42
 msgid "No active profile"
-msgstr ""
+msgstr "Niciun profil activ"
 
 #: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
-msgstr ""
+msgstr "Nu s-a putut începe înregistrarea"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:190
 msgid "Check out {link} for help."
-msgstr ""
+msgstr "Consultați {link} pentru ajutor."
 
 #: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
-msgstr ""
+msgstr "Este posibil să nu fie instalat un supliment GStreamer."
 
 #: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
-msgstr ""
+msgstr "Asigurați-vă că locația de salvare există și este accesibilă."
 
 #: src/recording.rs:497
 msgid "An error occurred while recording"
-msgstr ""
+msgstr "A apărut o eroare în timpul înregistrării"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
-msgstr ""
+msgstr "Nu s-a putut deschide „{path}” pentru scriere"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
-msgstr ""
+msgstr "Selectați dosarul cu înregistrări"
 
 #: src/window/mod.rs:78
 msgid "Failed to toggle pause"
-msgstr ""
+msgstr "Nu s-a putut comuta suspendarea"
 
 #: src/window/mod.rs:199
 msgid ""
 "A recording is currently in progress. Quitting immediately may cause the "
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
+"În acest moment rulează o înregistrare. Ieșirea imediată poate face "
+"înregistrarea neizbibilă. Opriți înregistrarea înainte de a ieși."
 
 #: src/window/mod.rs:202
 msgid ""
 "Quitting will cancel the processing and may cause the recording to be "
 "unplayable."
-msgstr ""
+msgstr "Ieșirea va anula prelucrarea și poate face înregistrarea neizbibilă."
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr ""
+msgstr "Închideți aplicația?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
@@ -429,45 +430,47 @@ msgstr "Închide programul"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Copiați în clipboard"
 
 #: src/window/mod.rs:261
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "Copiat în clipboard"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
-msgstr ""
+msgstr "Afișați eroarea detaliată"
 
 #: src/window/mod.rs:289
 msgid "Help"
-msgstr ""
+msgstr "Ajutor"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr ""
+msgstr "Ok, am înțeles"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
-msgstr ""
+msgstr "Deschideți preferințele?"
 
 #: src/window/mod.rs:304
 msgid ""
 "The previously selected format may have been unavailable. Open preferences "
 "and select a format to continue recording."
 msgstr ""
+"Formatul selectat anterior ar fi putut să nu fie disponibil. Deschideți "
+"preferințele și selectați un format pentru a continua înregistrarea."
 
 #: src/window/mod.rs:308
 msgid "Later"
-msgstr ""
+msgstr "Mai târziu"
 
 #: src/window/mod.rs:310
 msgid "Open"
-msgstr ""
+msgstr "Deschideți"
 
 #: src/window/mod.rs:461
 msgid "A recording is in progress"
-msgstr ""
+msgstr "Rulează o înregistrare"
 
 #: src/window/mod.rs:499
 msgid "Recording"
@@ -475,15 +478,15 @@ msgstr "Înregistrare"
 
 #: src/window/mod.rs:507
 msgid "Paused"
-msgstr ""
+msgstr "Suspendat"
 
 #: src/window/mod.rs:544
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/window/mod.rs:545
 msgid "Selection"
-msgstr ""
+msgstr "Selecție"
 
 #~ msgid "Donate (Buy Me a Coffee)"
 #~ msgstr "Donează (Cumpără-mi o cafea)"

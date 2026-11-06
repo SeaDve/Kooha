@@ -13,14 +13,14 @@
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2023.
 # Francisco Serrador <fserrador@gmail.com>, 2026.
 # Automatic translation add-on <noreply-addon-autotranslate@weblate.org>, 2026.
+# Adolfo Jayme Barrientos <fito@libreoffice.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-05 14:41+0800\n"
-"PO-Revision-Date: 2026-06-05 06:45+0000\n"
-"Last-Translator: Automatic translation add-on <noreply-addon-"
-"autotranslate@weblate.org>\n"
+"PO-Revision-Date: 2026-11-06 08:51+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fito@libreoffice.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/seadve/kooha/es/>"
 "\n"
 "Language: es\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.6\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: data/io.github.seadve.Kooha.desktop.in.in:2
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:7 src/about.rs:24
@@ -44,29 +44,30 @@ msgstr "Grabe su pantalla elegantemente"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.seadve.Kooha.desktop.in.in:9
 msgid "Screencast;Recorder;Screen;Video;"
-msgstr "Capturar pantalla;Grabador;Pantalla;Vídeo;"
+msgstr "Grabación de pantalla;Grabadora;Pantalla;Vídeo;"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:10
 msgid ""
 "Capture your screen in a intuitive and straightforward way without "
 "distractions."
-msgstr "Capture su pantalla de forma intuitiva y directa, sin distracciones."
+msgstr "Capture su pantalla de forma intuitiva y sencilla, sin distracciones."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:11
 msgid ""
 "Kooha is a simple screen recorder with a minimalist interface. You can just "
 "click the record button without having to configure a bunch of settings."
 msgstr ""
-"Kooha es un grabador de pantalla simple con una interfaz minimalista. Pulse "
-"en el botón grabar sin tener que configurar un centenar de ajustes."
+"Kooha es un sencillo programa de grabación de pantalla con una interfaz "
+"minimalista. Puede simplemente pulsar en el botón de grabación sin tener que "
+"configurar un montón de opciones."
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:13
 msgid "The main features of Kooha include the following:"
-msgstr "Las características principales de Kooha incluyen lo siguiente:"
+msgstr "Entre las funcionalidades principales de Kooha se incluyen:"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:15
 msgid "🎙️ Record microphone, desktop audio, or both at the same time"
-msgstr "🎙️ Graba el micrófono, el audio del escritorio, o ambos a la vez"
+msgstr "🎙️ Grabar el micrófono, el audio del escritorio, o ambos a la vez"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:16
 msgid "📼 Support for WebM, MP4, GIF, and Matroska formats"
@@ -74,14 +75,14 @@ msgstr "📼 Compatibilidad con los formatos WebM, MP4, GIF y Matroska"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:17
 msgid "🖥️ Select a monitor or a portion of the screen to record"
-msgstr "🖥️ Seleccione un monitor o una parte de la pantalla para grabar"
+msgstr "🖥️ Selección de un monitor o una parte de la pantalla para grabar"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:18
 msgid ""
 "🛠️ Configurable saving location, pointer visibility, frame rate, and delay"
 msgstr ""
 "🛠️ Ubicación de guardado, visibilidad del puntero, tasa de fotogramas y "
-"retardo configurables"
+"demora configurables"
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:19
 msgid "🚀 Experimental hardware accelerated encoding"
@@ -114,7 +115,7 @@ msgstr "Hecho"
 
 #: data/resources/ui/area_selector.ui:35
 msgid "Reset Selection"
-msgstr "Reiniciar selección"
+msgstr "Restablecer selección"
 
 #: data/resources/ui/preferences_dialog.ui:10
 msgid "General"
@@ -122,7 +123,7 @@ msgstr "General"
 
 #: data/resources/ui/preferences_dialog.ui:13
 msgid "Delay (Seconds)"
-msgstr "Retardo (segundos)"
+msgstr "Demora (segundos)"
 
 #: data/resources/ui/preferences_dialog.ui:14
 msgid "Time interval before recording begins"
@@ -171,7 +172,7 @@ msgstr "Mostrar atajos"
 #: data/resources/ui/shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr "Cerrar Ventana"
+msgstr "Cerrar ventana"
 
 #: data/resources/ui/shortcuts.ui:33
 msgctxt "shortcut window"
@@ -191,27 +192,27 @@ msgstr "Alternar Grabador"
 #: data/resources/ui/shortcuts.ui:56
 msgctxt "shortcut window"
 msgid "Cancel Record"
-msgstr "Cancelar Grabación"
+msgstr "Cancelar grabación"
 
 #: data/resources/ui/shortcuts.ui:64
 msgctxt "shortcut window"
 msgid "Settings"
-msgstr "Ajustes"
+msgstr "Configuración"
 
 #: data/resources/ui/shortcuts.ui:67
 msgctxt "shortcut window"
 msgid "Toggle Desktop Audio"
-msgstr "Alternar audio del escritorio"
+msgstr "Activar o desactivar audio del escritorio"
 
 #: data/resources/ui/shortcuts.ui:73
 msgctxt "shortcut window"
 msgid "Toggle Microphone"
-msgstr "Alternar micrófono"
+msgstr "Activar o desactivar micrófono"
 
 #: data/resources/ui/shortcuts.ui:79
 msgctxt "shortcut window"
 msgid "Toggle Pointer"
-msgstr "Alternar puntero"
+msgstr "Activar o desactivar puntero"
 
 #: data/resources/ui/window.ui:26
 msgid "Main Menu"
@@ -227,11 +228,11 @@ msgstr "Capturar una selección de la pantalla"
 
 #: data/resources/ui/window.ui:88
 msgid "Enable Desktop Audio"
-msgstr "Activar el audio de escritorio"
+msgstr "Activar audio del escritorio"
 
 #: data/resources/ui/window.ui:89
 msgid "Disable Desktop Audio"
-msgstr "Desactivar el audio del escritorio"
+msgstr "Desactivar audio del escritorio"
 
 #: data/resources/ui/window.ui:97
 msgid "Enable Microphone"
@@ -259,7 +260,7 @@ msgstr "Grabar"
 
 #: data/resources/ui/window.ui:131
 msgid "Forget Previously Selected Video Sources"
-msgstr "Olvidar las fuentes de vídeo previamente seleccionadas"
+msgstr "Olvidar fuentes de vídeo anteriormente seleccionadas"
 
 #: data/resources/ui/window.ui:182
 msgid "Stop Recording"
@@ -279,7 +280,7 @@ msgstr "Grabando en…"
 
 #: data/resources/ui/window.ui:234 data/resources/ui/window.ui:277
 msgid "Cancel Recording"
-msgstr "Cancelar la grabación"
+msgstr "Cancelar grabación"
 
 #: data/resources/ui/window.ui:259
 msgid "Flushing…"
@@ -291,7 +292,7 @@ msgstr "_Preferencias"
 
 #: data/resources/ui/window.ui:299
 msgid "_Keyboard Shortcuts"
-msgstr "Atajos del _teclado"
+msgstr "Atajos de _teclado"
 
 #: data/resources/ui/window.ui:303
 msgid "_About Kooha"
@@ -301,11 +302,11 @@ msgstr "_Acerca de Kooha"
 #: src/about.rs:35
 msgid "translator-credits"
 msgstr ""
-"Óscar Fernández Díaz (oscfdezdz@tuta.io), Adolfo Jayme Barrientos "
-"(fitojb@ubuntu.com), Javier F. Serrador (fserrador@gmail.com)"
+"Óscar Fernández Díaz (oscfdezdz@tuta.io)\n"
+"Adolfo Jayme Barrientos (fitojb@ubuntu.com)\n"
+"Javier F. Serrador (fserrador@gmail.com)"
 
 #: src/about.rs:44
-#, fuzzy
 msgid "Donate"
 msgstr "Donar"
 
@@ -328,11 +329,11 @@ msgstr "Mostrar en Archivos"
 
 #: src/device.rs:26
 msgid "Failed to find the default audio device"
-msgstr "No se ha encontrado el dispositivo de audio predeterminado"
+msgstr "No se pudo encontrar el dispositivo de audio predeterminado"
 
 #: src/device.rs:27
 msgid "Make sure that you have PulseAudio installed in your system."
-msgstr "Asegúrese de que tiene instalado PulseAudio en su sistema."
+msgstr "Cerciórese de que tiene instalado PulseAudio en el sistema."
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/format.rs:36
@@ -357,17 +358,17 @@ msgstr[1] "{time} segundos"
 
 #: src/preferences_dialog.rs:76
 msgid "Failed to set recordings folder"
-msgstr "Error al configurar la carpeta de grabaciones"
+msgstr "No se pudo configurar la carpeta de grabaciones"
 
 #: src/preferences_dialog.rs:236
 msgid "This frame rate may cause performance issues on the selected format."
 msgstr ""
-"Esta velocidad de fotogramas puede causar problemas de rendimiento en el "
-"formato seleccionado."
+"Esta tasa de fotogramas puede causar problemas de desempeño en el formato "
+"seleccionado."
 
 #: src/preferences_dialog.rs:300
 msgid "This format is experimental and unsupported."
-msgstr "Este formato es experimental y no está soportado."
+msgstr "Este formato es experimental y no está respaldado."
 
 #: src/preferences_dialog.rs:307 src/window/mod.rs:557
 msgid "None"
@@ -379,29 +380,29 @@ msgstr "Ningún perfil activo"
 
 #: src/recording.rs:187 src/recording.rs:226 src/recording.rs:276
 msgid "Failed to start recording"
-msgstr "No se ha podido iniciar la grabación"
+msgstr "No se pudo iniciar la grabación"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:190
 msgid "Check out {link} for help."
-msgstr "Consulta {link} para obtener ayuda."
+msgstr "Consulte {link} para obtener ayuda."
 
 #: src/recording.rs:227
 msgid "A GStreamer plugin may not be installed."
-msgstr "Es posible que no esté instalado un plugin de GStreamer."
+msgstr "Es posible que no se haya instalado un complemento de GStreamer."
 
 #: src/recording.rs:277 src/recording.rs:506
 msgid "Make sure that the saving location exists and is accessible."
-msgstr "Asegúrese de que la ubicación de guardado existe y es accesible."
+msgstr "Asegúrese de que la ubicación de guardado exista y sea accesible."
 
 #: src/recording.rs:497
 msgid "An error occurred while recording"
-msgstr "Se ha producido un error al grabar"
+msgstr "Se produjo un error al grabar"
 
 #. Translators: Do NOT translate the contents between '{' and '}', this is a variable name.
 #: src/recording.rs:503
 msgid "Failed to open “{path}” for writing"
-msgstr "Error al abrir \"{path}\" para modificarlo"
+msgstr "No se pudo abrir «{path}» para escritura"
 
 #: src/settings.rs:43
 msgid "Select Recordings Folder"
@@ -409,7 +410,7 @@ msgstr "Elegir carpeta de grabaciones"
 
 #: src/window/mod.rs:78
 msgid "Failed to toggle pause"
-msgstr "Fallo al conmutar la pausa"
+msgstr "No se pudo conmutar la pausa"
 
 #: src/window/mod.rs:199
 msgid ""
@@ -417,8 +418,7 @@ msgid ""
 "recording to be unplayable. Please stop the recording before quitting."
 msgstr ""
 "Hay una grabación en curso. Salir inmediatamente puede hacer que la "
-"grabación no se pueda reproducir. Por favor, detenga la grabación antes de "
-"salir."
+"grabación no se pueda reproducir. Detenga la grabación antes de salir."
 
 #: src/window/mod.rs:202
 msgid ""
@@ -430,7 +430,7 @@ msgstr ""
 
 #: src/window/mod.rs:208
 msgid "Quit the Application?"
-msgstr "¿Salir de la aplicación?"
+msgstr "¿Quiere salir de la aplicación?"
 
 #: src/window/mod.rs:215
 msgid "Quit"
@@ -438,11 +438,11 @@ msgstr "Salir"
 
 #: src/window/mod.rs:256
 msgid "Copy to clipboard"
-msgstr "Copiar al portapapeles"
+msgstr "Copiar en el portapapeles"
 
 #: src/window/mod.rs:261
 msgid "Copied to clipboard"
-msgstr "Copiado al portapapeles"
+msgstr "Se copió en el portapapeles"
 
 #: src/window/mod.rs:267
 msgid "Show detailed error"
@@ -454,11 +454,11 @@ msgstr "Ayuda"
 
 #: src/window/mod.rs:294
 msgid "Ok, Got It"
-msgstr "Vale, lo tengo"
+msgstr "Entendido"
 
 #: src/window/mod.rs:303
 msgid "Open Preferences?"
-msgstr "¿Abrir preferencias?"
+msgstr "¿Quiere abrir las preferencias?"
 
 #: src/window/mod.rs:304
 msgid ""
