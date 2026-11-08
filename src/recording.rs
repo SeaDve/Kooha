@@ -91,6 +91,14 @@ mod imp {
         pub(super) duration_source_id: RefCell<Option<glib::SourceId>>,
         pub(super) pipeline: OnceCell<gst::Pipeline>,
         pub(super) bus_watch_guard: RefCell<Option<BusWatchGuard>>,
+        /// Kept alive for as long as we want to be notified about the
+        /// session being closed externally; see `Session::connect_closed`.
+        pub(super) session_closed_subscription: RefCell<Option<gio::SignalSubscription>>,
+        /// Set when the screencast session was closed by something other
+        /// than our own `close_session()` (e.g. the compositor's stop
+        /// control). Used to treat the `not-negotiated` pipeline error
+        /// that follows as expected rather than a recording failure.
+        pub(super) session_closed_externally: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -193,6 +201,14 @@ impl Recording {
             )
         })?;
 
+        let closed_subscription = screencast_session.connect_closed(clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move || {
+                obj.handle_session_closed_externally();
+            }
+        ));
+        imp.session_closed_subscription.replace(Some(closed_subscription));
         imp.session.replace(Some(screencast_session));
         settings.set_screencast_restore_token(&restore_token.unwrap_or_default());
 
@@ -352,6 +368,7 @@ impl Recording {
         }
 
         let _ = imp.bus_watch_guard.take();
+        let _ = imp.session_closed_subscription.take();
 
         self.close_session();
 
@@ -414,6 +431,53 @@ impl Recording {
 
         let result = BoxedResult(Rc::new(res));
         self.emit_by_name::<()>("finished", &[&result]);
+    }
+
+    /// Called when the screencast session was torn down by something other
+    /// than our own `close_session()` — most notably the compositor's own
+    /// stop-recording control, which closes the session directly instead
+    /// of going through the app's stop button.
+    ///
+    /// The video source (`pipewiresrc`, inside `kooha-pipewiresrc-bin`)
+    /// dies along with the session: its GStreamer task ends up paused
+    /// after a stream error, so it can no longer forward an ordinary
+    /// `stop()`-style eos event downstream on its own — sending eos to the
+    /// whole pipeline as `stop()` does would just leave the encoder/muxer
+    /// waiting forever and, if we forced the pipeline to `Null` instead,
+    /// would truncate the file before the muxer finalizes it. So instead,
+    /// eos is injected directly onto the encoder queues, bypassing the
+    /// dead source, letting the encoder/muxer/filesink downstream of it
+    /// finish and finalize the file normally; the resulting bus error from
+    /// the dead source itself is swallowed in `handle_bus_message` since
+    /// `session_closed_externally` is set below.
+    fn handle_session_closed_externally(&self) {
+        let imp = self.imp();
+        let state = self.state();
+
+        if !matches!(state, RecordingState::Recording | RecordingState::Paused) {
+            return;
+        }
+
+        tracing::warn!(
+            ?state,
+            "Screencast session was closed externally while active; finishing gracefully"
+        );
+
+        imp.session_closed_externally.set(true);
+
+        let pipeline = self.pipeline();
+        for queue_name in ["kooha-videoenc-queue", "kooha-audioenc-queue"] {
+            if let Some(queue) = pipeline.by_name(queue_name) {
+                if !queue.send_event(gst::event::Eos::new()) {
+                    tracing::warn!("Failed to send eos event to `{}`", queue_name);
+                }
+            }
+        }
+
+        self.set_state(RecordingState::Flushing { progress: 0 });
+        imp.estimated_final_duration
+            .set(pipeline.current_running_time());
+        self.update_flushing_progress();
     }
 
     /// Closes session on the background
@@ -479,6 +543,29 @@ impl Recording {
         match message.view() {
             MessageView::Error(e) => {
                 tracing::debug!(state = ?self.state(), "Received error at bus");
+
+                if imp.session_closed_externally.get() {
+                    // Expected: this is the now-dead video source (killed
+                    // along with the externally closed screencast session)
+                    // reporting its own demise (observed as a generic
+                    // pipewiresrc "not-negotiated" stream error). We've
+                    // already injected eos directly into the encoder
+                    // queues downstream of it (see
+                    // `handle_session_closed_externally`), so the
+                    // pipeline is still meant to be running — swallow this
+                    // error instead of tearing the pipeline down here. The
+                    // muxer/filesink still need to process that eos, and
+                    // will produce a normal `MessageView::Eos` (handled
+                    // below) once they do, finalizing the file correctly.
+                    tracing::info!(
+                        error = %e.error(),
+                        src = ?message.src().map(|s| s.name()),
+                        "Ignoring pipeline error from source killed by externally closed \
+                         screencast session; already injected eos downstream of it"
+                    );
+
+                    return glib::ControlFlow::Continue;
+                }
 
                 if let Err(err) = self.pipeline().set_state(gst::State::Null) {
                     tracing::warn!("Failed to stop pipeline on error: {:?}", err);
