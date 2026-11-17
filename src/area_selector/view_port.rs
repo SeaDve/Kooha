@@ -90,7 +90,7 @@ impl fmt::Debug for Selection {
 }
 
 impl Selection {
-    fn from_rect(x: f32, y: f32, width: f32, height: f32) -> Self {
+    pub fn from_rect(x: f32, y: f32, width: f32, height: f32) -> Self {
         Self {
             start_x: x,
             start_y: y,

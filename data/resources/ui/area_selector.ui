@@ -31,6 +31,12 @@
               </object>
             </child>
             <child type="end">
+              <object class="GtkButton" id="manual_button">
+                <property name="label" translatable="yes">Manual Coordinates</property>
+                <property name="action-name">area-selector.manual</property>
+              </object>
+            </child>
+            <child type="end">
               <object class="GtkButton">
                 <property name="tooltip-text" translatable="yes">Reset Selection</property>
                 <property name="action-name">area-selector.reset</property>
