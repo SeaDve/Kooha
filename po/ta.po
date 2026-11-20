@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-05 14:41+0800\n"
+"POT-Creation-Date: 2026-11-19 10:29+0000\n"
 "PO-Revision-Date: 2026-09-16 18:51+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/seadve/kooha/ta/>\n"
@@ -26,13 +26,17 @@ msgstr ""
 msgid "Kooha"
 msgstr "கூஹா"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:4
+#: data/io.github.seadve.Kooha.desktop.in.in:3
+msgid "Screen Recorder"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "உங்கள் திரையை நேர்த்தியாக பதிவு செய்யவும்"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.seadve.Kooha.desktop.in.in:9
+#: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "ஸ்கிரீன்காஸ்ட்;ரெக்கார்டர்;திரை;வீடியோ;"
 
@@ -86,8 +90,7 @@ msgstr "பதிவுசெய்யும் கால அளவு மற்
 
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:33
 msgid "Countdown to start recording and button to cancel recording"
-msgstr ""
-"பதிவைத் தொடங்குவதற்கான நேரக் கணக்கு மற்றும் பதிவை ரத்து செய்வதற்கான பொத்தான்"
+msgstr "பதிவைத் தொடங்குவதற்கான நேரக் கணக்கு மற்றும் பதிவை ரத்து செய்வதற்கான பொத்தான்"
 
 #: data/resources/ui/area_selector.ui:15
 msgid "Select Area"

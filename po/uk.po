@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kooha\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-05 14:41+0800\n"
+"POT-Creation-Date: 2026-11-19 10:29+0000\n"
 "PO-Revision-Date: 2026-07-29 21:01+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/seadve/kooha/"
@@ -30,13 +30,17 @@ msgstr ""
 msgid "Kooha"
 msgstr "Kooha"
 
-#: data/io.github.seadve.Kooha.desktop.in.in:4
+#: data/io.github.seadve.Kooha.desktop.in.in:3
+msgid "Screen Recorder"
+msgstr ""
+
+#: data/io.github.seadve.Kooha.desktop.in.in:5
 #: data/io.github.seadve.Kooha.metainfo.xml.in.in:8
 msgid "Elegantly record your screen"
 msgstr "Елегантно записуйте ваш екран"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.seadve.Kooha.desktop.in.in:9
+#: data/io.github.seadve.Kooha.desktop.in.in:10
 msgid "Screencast;Recorder;Screen;Video;"
 msgstr "Записувач;Екран;Відео;Screencast;Recorder;Screen;Video;"
 
