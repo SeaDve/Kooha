@@ -195,6 +195,29 @@ impl Session {
         Ok(fd)
     }
 
+    /// Subscribes to this session's `Closed` D-Bus signal, which fires when
+    /// the session is torn down by something other than our own `close()`
+    /// call — most notably the compositor's own screen-recording stop
+    /// control (e.g. GNOME Shell's top bar indicator), which closes the
+    /// session directly and bypasses the app's normal stop flow.
+    ///
+    /// The returned `SignalSubscription` must be kept alive for as long as
+    /// the subscription should stay active; dropping it unsubscribes.
+    pub fn connect_closed<F>(&self, f: F) -> gio::SignalSubscription
+    where
+        F: Fn() + 'static,
+    {
+        self.proxy.connection().subscribe_to_signal(
+            Some(DESKTOP_BUS_NAME),
+            Some(SESSION_IFACE_NAME),
+            Some("Closed"),
+            Some(self.session_handle.as_str()),
+            None,
+            gio::DBusSignalFlags::NONE,
+            move |_| f(),
+        )
+    }
+
     pub async fn close(self) -> Result<()> {
         let response = self
             .proxy
